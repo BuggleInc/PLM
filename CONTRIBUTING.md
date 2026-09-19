@@ -5,17 +5,8 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 * [Overall architecture](#Architecture) and concepts, to help the onboarding of prospective contributors
 * [How to translate the project](#Translating_the_PLM)
-* [Adding a new exercise](#Adding_a_new_exercise)
+* [How to add new exercises and design new universes](#Extending_the_PLM)
 * [Maintainer's notes](#Maintainers_notes): how to merge in new translation and how to release a new version of the PLM.
-
-TODO: move the entity templating logic from sourceFileTemplated to TemplatedRemoteLanguage
-TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
-TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
-TODO: Port the SimpleExercise tests to LangC
-TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
-TODO: Split Lightbot away from the other languages, by defining another subclass of Lecture that is not an Exercise but a Brainteaser. Exercises are the one you can do in any programming language; brain teasers are in a specific, probably dedicated, programming language. 
-TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
-TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code
 
 # Architecture
 
@@ -55,19 +46,19 @@ TODO: would it be possible to not generate a package name in Java/Scala now that
     CDR](https://en.wikipedia.org/wiki/CAR_and_CDR) constructs of LISP). The cons micro-world is subclassed from the bat one.
   - Recreative microworlds: `lightbot` a programming challenge using a graphical programming, `lander` a lunar lander
     programming challenge. 
-  - Ongoing microworlds that do not work yet: `backtracking` should be completed or removed.
 - **Correction entity**: for each exercise/language pair, a source file (e.g. `MoriaEntity.java`, `MoriaEntity.py`,
   `ScalaMoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference solution and the template shown to the
-  student. See "Adding a new exercise" below for the file layout and the BEGIN/END TEMPLATE/SOLUTION markers.
+  student. See "Adding a new exercise" below for the file layout and "From correction entity to compilable source: templating".
 
 ## How an exercise executes
 
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
-* **Compile**: `Exercise.compile()` delegates to `ProgrammingLanguage.compileExo()` for the selected language. Java, Scala
-  and C are compiled to an external executable/jar; Python needs no compilation step, just the student's `.py` files written
-  out to a workspace. Either way, `compileExo()` returns a textual reference to the result (a jar/binary path, a
-  "jarPath|mainClass" pair, etc., or `null` for LightBoy that don't compile at all), which the caller then passes down as-is
-  to `runEntity()`'s `executable` parameter below.
+* **Compile**: `Exercise.compile()` delegates to `ProgrammingLanguage.compileExo()` for the selected language.
+  - A source code containing the student code and the execution harness is generated (see the section on templating below).
+    The code is then compiled to an external executable/jar on need (Java/Scala/C). 
+  - `compileExo()` returns a textual reference to the result (a jar/binary/script path, a "jarPath|mainClass" pair,
+    etc., or `null` for LightBoy that don't compile at all), which the caller then passes down as-is to `runEntity()`'s
+    `executable` parameter below.
 * **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`:
    - Java/Scala/Python/C: all four inherit the same `RemoteExecutionLang.runEntity()`. It binds a UNIX domain socket, starts
      the student code as an external process, and relays primitive calls over that socket to `plm.universe.CommandExecutor`.
@@ -80,13 +71,12 @@ TODO: would it be possible to not generate a package name in Java/Scala now that
   between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks whether the lunar lander reached
   a pad or crashed.
 
-Runaway/infinite-loop student code: the "Stop" action calls `LessonRunner.stopAll()`, which cooperatively `Thread.interrupt()`s
-each per-entity runner thread (a deprecated `Thread.stop()` used to be used instead, back when Java exercises were compiled
-in-process). Since student code is now an external process, interrupting the runner thread only unblocks it from
-`Process.waitFor()`; `RemoteExecutionLang.runEntity()` catches that `InterruptedException` and calls `destroyForcibly()` on the
-child process before returning, so a stopped infinite loop does not leave any orphaned process behind. This mechanism is not
-a hard sandbox either: the process is killed, but nothing prevents it from spawning its own children or from being heavy
-enough to matter for the second or so it takes to die.
+* **Dealing with infinite loops in student code**. The "Stop" action calls `LessonRunner.stopAll()`, which cooperatively
+  `Thread.interrupt()`s each per-entity runner thread. Since student code is an external process, interrupting the runner thread
+  only unblocks it from `Process.waitFor()`; `RemoteExecutionLang.runEntity()` catches that `InterruptedException` and calls
+  `destroyForcibly()` on the child process before returning, so a stopped infinite loop does not leave any orphaned process
+  behind. This mechanism is not a hard sandbox either: the process is killed, but nothing prevents it from spawning its own
+  children or from being heavy enough to matter for the second or so it takes to die.
 
 ## From correction entity to compilable source: templating
 
@@ -236,14 +226,6 @@ mvn test -Dtest=none -Dsurefire.failIfNoSpecifiedTests=false   # Only the C unit
 
 Entry point: `plm.core.ui.ProgrammersLearningMachine` (`main.class` in `pom.xml`).
 
-## Designing a new universe
-
-Extend, at minimum: `World` (state/data), an `Entity` subclass (ancestor of correction entities, exposes primitives), a
-`WorldView` (graphical rendering), and usually a `WorldPanel`/`EntityControlPanel` for interactive controls. Document it with an
-HTML file following the same convention as mission texts. Existing universes stay small (a few hundred to ~1500 lines including
-the buggle map editor) because all non-functional plumbing (compilation, templating, session handling) is factored into
-`plm.core`.
-
 # Translating the PLM
 
 The easiest is to use
@@ -268,9 +250,11 @@ Everytime that you think you reached a milestone in your translation
 drop an email to Martin Quinson so that he publishes your work in a
 new release of the PLM.
 
-# Adding a new exercise
+# Extending the PLM
 
-## Defining an exercise
+## Adding a new exercise
+
+### Defining an exercise
 
 The Moria exercise is representative of what you want to do
 https://github.com/BuggleInc/PLM/tree/javaUI/src/lessons/welcome/summative
@@ -310,26 +294,32 @@ language. Next time that po4a is run, a new translated mission file
 will be created (if over 80% of its content is translated) and added
 to the git.
 
-## World instance (map)
+### World instance (map)
 
-If you want to add an exercise for the Buggle universe, you can open
-the map editor with:
+If you want to add an exercise for the Buggle universe, you can open the map editor with:
   java -cp /usr/share/java/plm-*.jar plm.core.ui.editor.buggleeditor.MapEditorApp
 
-There is no graphical editors for the other universes, so you will
-have to create the world instances programatically, from your exercise.
+There is no graphical editors for the other universes, so you will have to create the world instances programatically, from your
+exercise.
 
-## Mission text
+### Mission text
 
-You can either write the text manually in html, or use the PLM mission
-editor, that make it easier to write mission texts that work for more
-than one programming language. You can start it with:
+You can either write the text manually in html, or use the PLM mission editor, that make it easier to write mission texts that
+work for more than one programming language. You can start it with:
   java -cp /usr/share/java/plm-*.jar plm.core.ui.editor.MissionEditorApp
 
-## Connecting your exercise to the lesson
+### Connecting your exercise to the lesson
 
 The lesson is defined as a Java file:
 https://github.com/BuggleInc/PLM/blob/javaUI/src/lessons/welcome/Main.java#L226
+
+## Designing a new universe
+
+Extend, at minimum: `World` (state/data), an `Entity` subclass (ancestor of correction entities, exposes primitives), a
+`WorldView` (graphical rendering), and usually a `WorldPanel`/`EntityControlPanel` for interactive controls. Document it with an
+HTML file following the same convention as mission texts. Existing universes stay small (a few hundred to ~1500 lines including
+the buggle map editor) because all non-functional plumbing (compilation, templating, session handling) is factored into
+`plm.core`.
 
 # Maintainer's note
 
@@ -389,3 +379,16 @@ Publishing the Debian package:
 Preparing the next release cycle
 - Create a new entry in Changelog with an odd patch version
 - Update the version number in .appveyor.yml and plm.configuration.properties
+
+## TODOs
+
+TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
+TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
+TODO: Port the SimpleExercise tests to LangC
+TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
+TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
+TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code by aleviating the need to rewrite a dynamic package name
+TODO: merge both steps of the templating process? Or rather, kill the first step which result is never used.
+TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
+TODO: Use the PLM's JVM to compile Java and Scala, rather than firing a new JVM just for that
+TODO: benchmark the tests to understand where the time goes, and optimize this out
