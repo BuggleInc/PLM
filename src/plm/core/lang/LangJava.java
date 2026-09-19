@@ -90,25 +90,10 @@ public class LangJava extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  private static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
-
-  private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
-
-  /**
-   * Everything compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on
-   * packageNameCache (which changes per compile).
-   *
-   * @param remote      the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
-   *                    turns that into a compile failure)
-   * @param rawImports  the raw content of any BEGIN/END IMPORT section(s), NOT the full $imports replacement
-   *                    compileExo() builds (which also injects packageNameCache-qualified lines)
-   */
-  record JavaExtraction(String remote, String runFunction, String dependency, String rawImports, String template) {}
-
-  JavaExtraction extractOnce(String correction)
+  JvmExtraction extractOnce(String correction)
   {
-    return new JavaExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
-                              getCorrectedTemplate(correction));
+    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
+                             getCorrectedTemplate(correction));
   }
 
   private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException
@@ -230,7 +215,7 @@ public class LangJava extends JvmTemplatedLang {
 
         String correction = sf.getCorrection();
 
-        JavaExtraction extraction = sf.cached(JavaExtraction.class, () -> extractOnce(correction));
+        JvmExtraction extraction  = sf.cached(JvmExtraction.class, () -> extractOnce(correction));
         String remote             = checkRemoteOrFail(extraction.remote(), "Java", exo, diagnostic);
 
         runtimePatterns.put("\\$run", extraction.runFunction());

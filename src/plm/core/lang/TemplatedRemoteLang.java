@@ -120,15 +120,9 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
    * to a compilation error) when {@code code}'s universe couldn't be guessed.
    * {@code diagnostic} may be null (Python and C have no javac-style DiagnosticCollector to attach).
    */
-  protected String getRemoteOrFail(String code, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
-  {
-    return checkRemoteOrFail(getRemote(code), langName, exo, diagnostic);
-  }
-
   /**
-   * Same null-check-and-throw as {@link #getRemoteOrFail(String, String, Exercise, DiagnosticCollector)}, but takes
-   * an already-guessed (possibly cached, e.g. via {@link SourceFile#cached}) {@code remote} instead of re-guessing it
-   * from {@code code} via {@link #getRemote}.
+   * Fails the compile with a clear message if {@code remote} is null (the RemoteXxx universe couldn't be guessed from
+   * the correction, see {@link #getRemote}), otherwise returns it unchanged.
    */
   protected String checkRemoteOrFail(String remote, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
   {

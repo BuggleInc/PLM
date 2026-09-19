@@ -29,6 +29,28 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
   public JvmTemplatedLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
+  /** Java/Scala's extra code delimited with BEGIN DEPENDENCY/END DEPENDENCY must carry over verbatim */
+  protected static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
+
+  /** Java/Scala's extra imports delimited with BEGIN IMPORT/END IMPORT. */
+  protected static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
+
+  /**
+   * Everything Java/Scala's compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on
+   * packageNameCache (which changes per compile: it is derived from the exercise id, STUDENT/CORRECTION, and a
+   * content hash). {@code correction} itself never changes between compiles of the same SourceFile, so compileExo()
+   * computes this once per SourceFile via {@link SourceFile#cached}/{@link SourceFile#cachedOrThrow} instead of on
+   * every compile (see CONTRIBUTING.md, "From correction entity to compilable source: templating"). Python has its
+   * own shape (JvmExtraction's {@code template} is a plain String; Python's corresponding piece is a
+   * {@code (template, bodySource)} pair, and it has no {@code rawImports} field at all), so it keeps its own record.
+   *
+   * @param remote      the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
+   *                    turns that into a compile failure)
+   * @param rawImports  the raw content of any BEGIN/END IMPORT section(s), NOT the full $imports replacement
+   *                    compileExo() builds (which also injects packageNameCache-qualified lines)
+   */
+  public record JvmExtraction(String remote, String runFunction, String dependency, String rawImports, String template) {}
+
   /**
    * Run "jar cfm &lt;jarFile&gt; &lt;manifest declaring Main-Class: mainClassDotPath&gt; &lt;classFiles...&gt;" from
    *  workDir, throwing if the tool reports anything on stderr.

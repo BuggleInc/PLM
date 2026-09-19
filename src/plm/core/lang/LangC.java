@@ -109,7 +109,7 @@ public class LangC extends TemplatedRemoteLang {
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
-      String remote = getRemoteOrFail(code, "C", exo, null);
+      String remote = checkRemoteOrFail(getRemote(code), "C", exo, null);
 
       String valueSerializerH = readResource("value_serializer.h");
       String valueSerializerC = readResource("value_serializer.c");

@@ -236,20 +236,10 @@ public class LangScala extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  private static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
-
-  private static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
-
-  /**
-   * Everything compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on
-   * packageNameCache (which changes per compile).
-   */
-  record ScalaExtraction(String remote, String runFunction, String dependency, String rawImports, String template) {}
-
-  ScalaExtraction extractOnce(String correction) throws PLMCompilerException
+  JvmExtraction extractOnce(String correction) throws PLMCompilerException
   {
-    return new ScalaExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
-                               getCorrectedTemplate(correction));
+    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
+                             getCorrectedTemplate(correction));
   }
 
   /**
@@ -388,7 +378,7 @@ public class LangScala extends JvmTemplatedLang {
 
         String correction = sf.getCorrection();
 
-        ScalaExtraction extraction = sf.cachedOrThrow(ScalaExtraction.class, () -> extractOnce(correction));
+        JvmExtraction extraction   = sf.cachedOrThrow(JvmExtraction.class, () -> extractOnce(correction));
         String remote              = checkRemoteOrFail(extraction.remote(), "Scala", exo, diagnostic);
 
         runtimePatterns.put("\\$run", extraction.runFunction());
