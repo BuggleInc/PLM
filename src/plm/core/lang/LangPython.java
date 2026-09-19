@@ -241,7 +241,6 @@ public class LangPython extends TemplatedRemoteLang {
                                               .replace('\n', '\u0001'));
 
         CorrectedTemplate corrected = extraction.corrected();
-        sf.setTemplate(corrected.template());
 
         // The template SHAPE ($run/$body placement) always comes from the correction's own markers, but the actual
         // $body CONTENT must be the student's current text when compiling the student's attempt (SourceFile's own
@@ -252,7 +251,7 @@ public class LangPython extends TemplatedRemoteLang {
         // correction and can.
         String correctionBody = stripMarkers(corrected.bodySource());
 
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, correctionBody);
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, corrected.template(), correctionBody);
         entityCode        = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));

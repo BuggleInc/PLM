@@ -226,9 +226,7 @@ public class LangJava extends JvmTemplatedLang {
                                            + "import static " + packageNameCache + "." + remote + ".*;\n" + extraction.rawImports())
                                               .replace('\n', ' '));
 
-        sf.setTemplate(extraction.template());
-
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template());
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
         entityCode        = Pattern.compile("this.").matcher(entityCode).replaceAll("");
         entityCode        = Pattern.compile("@Override").matcher(entityCode).replaceAll("");
@@ -325,8 +323,11 @@ public class LangJava extends JvmTemplatedLang {
         out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
       if (Game.getInstance().isDebugEnabled())
-        for (SourceFile sf : exo.getSourceFilesList(this))
-          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile));
+        for (SourceFile sf : exo.getSourceFilesList(this)) {
+          String correction        = sf.getCorrection();
+          JvmExtraction extraction = sf.cached(JvmExtraction.class, () -> extractOnce(correction));
+          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template()));
+        }
 
       throw e;
     }

@@ -389,9 +389,7 @@ public class LangScala extends JvmTemplatedLang {
                                            + "import " + packageNameCache + "." + remote + "._; " + extraction.rawImports())
                                               .replace('\n', ' '));
 
-        sf.setTemplate(extraction.template());
-
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template());
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
         entityCode        = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
         // Scala's "override" needs a real supertype member to override, but Entity is a flat `object` extending nothing
@@ -491,8 +489,11 @@ public class LangScala extends JvmTemplatedLang {
         out.log(exo.lastResult.compilationError);
 
       if (Game.getInstance().isDebugEnabled())
-        for (SourceFile sf : exo.getSourceFilesList(this))
-          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile));
+        for (SourceFile sf : exo.getSourceFilesList(this)) {
+          String correction        = sf.getCorrection();
+          JvmExtraction extraction = sf.cachedOrThrow(JvmExtraction.class, () -> extractOnce(correction));
+          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template()));
+        }
 
       throw e;
     }

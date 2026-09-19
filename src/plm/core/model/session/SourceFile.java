@@ -14,7 +14,7 @@ import plm.core.ui.JavaEditorPanel;
 public class SourceFile {
 
   protected String name;
-  private String template;
+  private final String template;
   private String body;
   private int offset;
   private String correction;
@@ -27,7 +27,7 @@ public class SourceFile {
     this.body       = initialBody;
     this.offset     = _offset;
     this.correction = _correctionCtn;
-    setTemplate(template);
+    this.template   = template;
   }
 
   public String getName() { return this.name; }
@@ -42,8 +42,6 @@ public class SourceFile {
       body = text;
     notifyListener();
   }
-  public void setTemplate(String string) { this.template = string; }
-  public String getTemplate() { return template; }
   public void setCorrection(String c) { this.correction = c; }
   public String getCorrection() { return this.correction; }
 
@@ -76,12 +74,12 @@ public class SourceFile {
 
   public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
   {
-    return getCompilableContent(runtimePatterns, whatToRetrieve, deriveCorrectionBody());
+    return getCompilableContent(runtimePatterns, whatToRetrieve, this.template);
   }
 
   /**
    * The `$body` value to substitute in {@code template} for {@code StudentOrCorrection.CORRECTION}, as derived from
-   * {@link #correction} by the two-argument {@link #getCompilableContent}: the text between whichever of
+   * {@link #correction} by {@link #getCompilableContent}'s shorter overloads: the text between whichever of
    * BEGIN/END TEMPLATE or BEGIN/END SOLUTION exists in {@code correction} (comment-delimited, `/* ... *&#47;`-style --
    * i.e. Java/Scala/C's marker syntax), markers included.
    */
@@ -111,11 +109,28 @@ public class SourceFile {
   }
 
   /**
-   * Returns the source text that we should compile
+   * Same as the full 4-argument {@link #getCompilableContent}, using this SourceFile's own step-1 {@link #template}
+   * (Java/Scala re-derive their own per-compile shape instead -- see LangJava/LangScala.compileExo()) and this
+   * SourceFile's own {@link #deriveCorrectionBody} (Python computes its own instead -- see LangPython.compileExo()).
+   */
+  public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve, String template)
+  {
+    return getCompilableContent(runtimePatterns, whatToRetrieve, template, deriveCorrectionBody());
+  }
+
+  /**
+   * Returns the source text that we should compile. Pure function of its arguments: unlike a plain {@code $body}
+   * mutable field, {@code template} is never stored back onto this SourceFile, so compiling STUDENT right after
+   * CORRECTION (or vice-versa, or Java right after Scala on an unrelated SourceFile) can never see a stale shape
+   * left over by a previous call.
    * @param runtimePatterns
    * 			some last-minute replacement to do (such as package name adjustment)
    * @param whatToRetrieve
    * 			whether we want to retrieve the student-provided content or the correction
+   * @param template
+   * 			the "head + $body + tail" shape to fill in. Java/Scala rebuild their own on every compile (their `run()`
+   * 			may or may not overlap with the templated region, which changes the shape); Python and C always pass this
+   * 			SourceFile's own step-1 {@link #template} (see the 3-argument overload).
    * @param correctionBody
    * 			the `$body` value to use for {@code StudentOrCorrection.CORRECTION} (ignored for STUDENT, which always uses
    * 			this SourceFile's own {@link #body}). Callers whose marker syntax or CORRECTION-body rule differs from
@@ -124,7 +139,7 @@ public class SourceFile {
    * 			marker-delimited slice -- compute their own instead of relying on it (see LangPython.compileExo()).
    * @return
    */
-  public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve, String correctionBody)
+  public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve, String template, String correctionBody)
   {
     String res;
 
