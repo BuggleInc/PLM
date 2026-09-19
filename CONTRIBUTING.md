@@ -98,10 +98,9 @@ one for the STUDENT's current editor content. It happens in two separate steps.
 
 Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded. It reads the
 raw `XxxEntity.<ext>` file and runs it character-by-character (line-by-line) through a hand-written state machine (states 0
-to 6) driven by marker comments found in the file: `BEGIN/END TEMPLATE`, `BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`,
-`BEGIN/END SKEL`. `BEGIN/END HIDDEN` is stripped from what the student sees but kept in the correction (e.g. helper code the
-student shouldn't have to read); `BEGIN/END SKEL` (currently unused by any shipped exercise) is collected separately without
-otherwise being classified as head/template/solution/tail. Out of that pass, it builds several `StringBuffer`s:
+to 6) driven by marker comments found in the file: `BEGIN/END TEMPLATE`, `BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`.
+`BEGIN/END HIDDEN` is stripped from what the student sees but kept in the correction (e.g. helper code the student shouldn't
+have to read). Out of that pass, it builds several `StringBuffer`s:
 - `head`/`tail`: the file content strictly outside the templated region (before `BEGIN TEMPLATE`/after `END TEMPLATE`,
   or the whole file if only `BEGIN/END SOLUTION` is used).
 - `templateHead`/`templateTail`: inside the templated region but outside the solution -- concatenated together as
@@ -116,8 +115,8 @@ leading whitespace to the smallest common indentation, and folds `head`+`tail` d
 (the Python/Scala/C compilers/offset-tracking don't need that flattening the way javac's line-based error reporting does).
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), and `offset` is `head`'s line count
 (used later to translate a compiler error's line number back into the student's own editor coordinates). An optional
-`patternString` (`s/regex/replacement/;...`, only used by a couple of exercises) can further rewrite `template`,
-`initialContent` and `skelContent` at this point. `newSource()` then stores `(name, initialContent, template, offset,
+`patternString` (`s/regex/replacement/;...`, only used by a couple of exercises) can further rewrite `template` and
+`initialContent` at this point. `newSource()` then stores `(name, initialContent, template, offset,
 correction)` as one `SourceFile` per `(exercise, language)` in `Exercise.sourceFiles`.
 
 ### Step 2 (upon the first compilation): each language re-parses `correction` and fills in `$body` and friends
@@ -150,7 +149,7 @@ Everything in step 2 above is a pure function of `correction`, which never chang
 `SourceFile`, so it's computed only the first time a given exercise is compiled, and the result is cached in the `SourceFile`.
 
 So the same `XxxEntity` file is walked twice by two independent parsers using two different marker vocabularies: once by
-`ExerciseTemplated` (TEMPLATE/SOLUTION/HIDDEN/SKEL, to build the student-visible `initialContent` and the outer `$body`
+`ExerciseTemplated` (TEMPLATE/SOLUTION/HIDDEN, to build the student-visible `initialContent` and the outer `$body`
 template) and once per-language inside `compileExo()` (DEPENDENCY/IMPORT/run(), to fill in everything else). The `correction`
 string is the only link between the two passes.
 
