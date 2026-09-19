@@ -163,9 +163,9 @@ public abstract class Exercise extends Lecture {
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
   public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
 
-  public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template, int offset, String correctionCtn)
+  public void newSource(ProgrammingLanguage lang, String name, TemplatedEntity parsed)
   {
-    getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset, correctionCtn));
+    getSourceFilesList(lang).add(new SourceFileRevertable(name, parsed.initialContent(), parsed.template(), parsed.offset(), parsed.correction()));
   }
 
   public Vector<World> getWorlds(WorldKind kind)
