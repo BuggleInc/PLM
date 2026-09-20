@@ -55,7 +55,11 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
 * **Compile**: `Exercise.compile()` delegates to `ProgrammingLanguage.compileExo()` for the selected language.
   - A source code containing the student code and the execution harness is generated (see the section on templating below).
-    The code is then compiled to an external executable/jar on need (Java/Scala/C). 
+  - The code is then compiled to an external executable/jar if needed. Java compiles in-process to avoid the startup time of an
+    external JVM, using the same API than javac. Scala and C are stating external compilers, and Python has nothing to compile.
+    - TODO: Scala should be converted to compile in-process too, as Java. But it's a bit more difficult as its API is less
+      stable than the Java counterpart (so we should transition to Scala 3 first, at leat), and may introduce thread safety
+      issues.
   - `compileExo()` returns a textual reference to the result (a jar/binary/script path, a "jarPath|mainClass" pair,
     etc., or `null` for LightBoy that don't compile at all), which the caller then passes down as-is to `runEntity()`'s
     `executable` parameter below.
@@ -390,5 +394,7 @@ TODO: split the UI from the compilation+exec services. The latter may be pure fu
 TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code by aleviating the need to rewrite a dynamic package name
 TODO: merge both steps of the templating process? Or rather, kill the first step which result is never used.
 TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
-TODO: Use the PLM's JVM to compile Java and Scala, rather than firing a new JVM just for that
+TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process)
 TODO: benchmark the tests to understand where the time goes, and optimize this out
+TODO: ensure that the templating honors the BEGIN/END HIDDEN section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method
+TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.

@@ -10,7 +10,11 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.tools.DiagnosticCollector;
+import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.StandardLocation;
+import javax.tools.ToolProvider;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -96,10 +100,8 @@ public class LangJava extends JvmTemplatedLang {
                              getCorrectedTemplate(correction));
   }
 
-  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException
+  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File... files) throws PLMCompilerException
   {
-    Runtime rt = Runtime.getRuntime();
-
     for (File javaFile : files) {
 
       String path = javaFile.toPath().toString();
@@ -108,25 +110,24 @@ public class LangJava extends JvmTemplatedLang {
       }
     }
 
-    List<String> names = Arrays.asList(files).stream().map(s -> s.getName()).toList();
     List<String> paths = Arrays.asList(files).stream().map(s -> s.toPath().toString()).toList();
 
-    ArrayList<String> args = new ArrayList<>();
+    // Do not start an external javac process that takes time to kick in, but use javax.tools.JavaCompiler (the API "javac" itself is built on)
+    JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+    if (compiler == null)
+      throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error(), diagnostic);
 
-    args.add("javac");
-    args.addAll(names);
+    try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
+      // set CLASS_PATH="" (empty) instead of java.class.path, so that the student code cannot see PLM's own classes.
+      // CLASS_OUTPUT not specified (as if -d were omitted) so that the .class files land next to their .java source
+      fileManager.setLocation(StandardLocation.CLASS_PATH, List.of());
 
-    Process proc;
-    try {
-      proc = rt.exec(args.toArray(String[] ::new), new String[] {}, packageFolder);
+      Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
+      boolean success                                     = compiler.getTask(null, fileManager, diagnostic, null, null, compilationUnits).call();
 
-      BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-      BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-
-      String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
-      String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
-
-      if (!rtStderr.isEmpty()) {
+      // Any diagnostic, even a warning, is treated as an error.
+      if (!success || !diagnostic.getDiagnostics().isEmpty()) {
+        String rtStderr = diagnostic.getDiagnostics().stream().map(Object::toString).collect(Collectors.joining("\n"));
         throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error(), diagnostic);
       }
     } catch (IOException e) {
@@ -301,7 +302,7 @@ public class LangJava extends JvmTemplatedLang {
 
           List<File> filesToCompile = new ArrayList<>(List.of(mainFile, mainRemote, entityRemote, entityFile, valueSerializer));
           filesToCompile.addAll(extraFiles);
-          compileJavaFiles(diagnostic, workspace, filesToCompile.toArray(File[] ::new));
+          compileJavaFiles(diagnostic, filesToCompile.toArray(File[] ::new));
 
           File jarFile = new File(workspace, "Code.jar");
           List<File> filesToJar =
