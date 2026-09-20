@@ -236,10 +236,10 @@ public class LangScala extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  JvmExtraction extractOnce(String correction) throws PLMCompilerException
+  @Override public JvmExtraction extract(String correction, String template, String name) throws PLMCompilerException
   {
     return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
-                             getCorrectedTemplate(correction));
+                             getCorrectedTemplate(correction), deriveCorrectionBody(correction, name));
   }
 
   /**
@@ -376,9 +376,7 @@ public class LangScala extends JvmTemplatedLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String key = packageNameCache + "." + sf.getName();
 
-        String correction = sf.getCorrection();
-
-        JvmExtraction extraction   = sf.cachedOrThrow(JvmExtraction.class, () -> extractOnce(correction));
+        JvmExtraction extraction   = (JvmExtraction)sf.getExtraction();
         String remote              = checkRemoteOrFail(extraction.remote(), "Scala", exo, diagnostic);
 
         runtimePatterns.put("\\$run", extraction.runFunction());
@@ -389,7 +387,7 @@ public class LangScala extends JvmTemplatedLang {
                                            + "import " + packageNameCache + "." + remote + "._; " + extraction.rawImports())
                                               .replace('\n', ' '));
 
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template());
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
         entityCode        = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
         // Scala's "override" needs a real supertype member to override, but Entity is a flat `object` extending nothing
@@ -451,7 +449,7 @@ public class LangScala extends JvmTemplatedLang {
           }
 
           Files.writeString(new File(workspace, "Template.txt").toPath(), extraction.template());
-          Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
+          Files.writeString(new File(workspace, "Correction.txt").toPath(), extraction.correctionBody());
           Files.writeString(mainRemote.toPath(), mainRemoteContent);
           Files.writeString(entityRemote.toPath(), entityRemoteContent);
           Files.writeString(entityFile.toPath(), entityCode);
@@ -489,11 +487,8 @@ public class LangScala extends JvmTemplatedLang {
         out.log(exo.lastResult.compilationError);
 
       if (Game.getInstance().isDebugEnabled())
-        for (SourceFile sf : exo.getSourceFilesList(this)) {
-          String correction        = sf.getCorrection();
-          JvmExtraction extraction = sf.cachedOrThrow(JvmExtraction.class, () -> extractOnce(correction));
-          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template()));
-        }
+        for (SourceFile sf : exo.getSourceFilesList(this))
+          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile));
 
       throw e;
     }

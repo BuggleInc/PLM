@@ -133,17 +133,29 @@ public class LangPython extends TemplatedRemoteLang {
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
   /**
-   * Everything compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on runName
-   * (packageNameForExercise(), which changes per compile).
+   * Everything compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly, right after
+   * step 1 (see {@code ExerciseTemplated.newSourceFromFile()}), rather than lazily on first compile.
    *
    * Unlike Java, Python's extra $imports (remoteExtraSourceFiles-derived) do not depend on {@code correction} at
    * all, so they are NOT part of this record; only what compileExo() reads out of {@code correction} itself is.
+   * {@code template()} delegates to {@code corrected.template()} to satisfy {@link LanguageExtraction}.
    */
-  record PythonExtraction(String remote, String runFunction, String dependency, CorrectedTemplate corrected) {}
-
-  PythonExtraction extractOnce(String correction)
+  public record PythonExtraction(String remote, String runFunction, String dependency, CorrectedTemplate corrected, String correctionBody)
+      implements LanguageExtraction
   {
-    return new PythonExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), getCorrectedTemplate(correction));
+    @Override public String template()
+    {
+      return corrected.template();
+    }
+  }
+
+  @Override public PythonExtraction extract(String correction, String template, String name)
+  {
+    CorrectedTemplate corrected = getCorrectedTemplate(correction);
+    // Python entity files never nest "# BEGIN/END DEPENDENCY" inside the templated region, so the student-visible
+    // text never carries one to strip; stripMarkers() is only ever needed on this raw-correction-derived body.
+    return new PythonExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), corrected,
+                                stripMarkers(corrected.bodySource()));
   }
 
   /**
@@ -224,9 +236,7 @@ public class LangPython extends TemplatedRemoteLang {
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
-        String correction = sf.getCorrection();
-
-        PythonExtraction extraction = sf.cached(PythonExtraction.class, () -> extractOnce(correction));
+        PythonExtraction extraction = (PythonExtraction)sf.getExtraction();
         String remote               = checkRemoteOrFail(extraction.remote(), "Python", exo, null);
 
         List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());
@@ -240,18 +250,7 @@ public class LangPython extends TemplatedRemoteLang {
                                            + "from Remote import *\n" + extraImports)
                                               .replace('\n', '\u0001'));
 
-        CorrectedTemplate corrected = extraction.corrected();
-
-        // The template SHAPE ($run/$body placement) always comes from the correction's own markers, but the actual
-        // $body CONTENT must be the student's current text when compiling the student's attempt (SourceFile's own
-        // STUDENT-side handling of that, shared with Java/Scala/C) -- otherwise "Run" always executes the teacher's
-        // correction, regardless of what the student wrote. Only CORRECTION needs stripMarkers(): Python entity
-        // files never nest "# BEGIN/END DEPENDENCY" inside the templated region, so the student-visible text
-        // (SourceFile's own #body) never carries one to strip; corrected.bodySource() is built from the raw
-        // correction and can.
-        String correctionBody = stripMarkers(corrected.bodySource());
-
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, corrected.template(), correctionBody);
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
         entityCode        = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
@@ -273,7 +272,7 @@ public class LangPython extends TemplatedRemoteLang {
           extraFiles.add(extraFile);
         }
 
-        Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
+        Files.writeString(new File(workspace, "Correction.txt").toPath(), extraction.correctionBody());
         Files.copy(new File("lib/resources/langages/python/ValueSerializer.py").toPath(), valueSerializer.toPath(),
                    java.nio.file.StandardCopyOption.REPLACE_EXISTING);
         Files.writeString(mainRemote.toPath(), getRemotePythonFile(null));

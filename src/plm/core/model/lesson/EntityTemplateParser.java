@@ -224,6 +224,8 @@ public class EntityTemplateParser {
       }
     }
 
-    return new TemplatedEntity(initialContent, template, offset, correction.toString());
+    // extraction (step 2) is not computed here: this parser stays unaware of any per-language marker syntax, see
+    // ExerciseTemplated.newSourceFromFile() and TemplatedEntity's own javadoc.
+    return new TemplatedEntity(initialContent, template, offset, correction.toString(), null);
   }
 }

@@ -94,10 +94,10 @@ public class LangJava extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  JvmExtraction extractOnce(String correction)
+  @Override public JvmExtraction extract(String correction, String template, String name)
   {
     return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
-                             getCorrectedTemplate(correction));
+                             getCorrectedTemplate(correction), deriveCorrectionBody(correction, name));
   }
 
   private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File... files) throws PLMCompilerException
@@ -214,9 +214,7 @@ public class LangJava extends JvmTemplatedLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String key = packageNameCache + "." + sf.getName();
 
-        String correction = sf.getCorrection();
-
-        JvmExtraction extraction  = sf.cached(JvmExtraction.class, () -> extractOnce(correction));
+        JvmExtraction extraction  = (JvmExtraction)sf.getExtraction();
         String remote             = checkRemoteOrFail(extraction.remote(), "Java", exo, diagnostic);
 
         runtimePatterns.put("\\$run", extraction.runFunction());
@@ -227,7 +225,7 @@ public class LangJava extends JvmTemplatedLang {
                                            + "import static " + packageNameCache + "." + remote + ".*;\n" + extraction.rawImports())
                                               .replace('\n', ' '));
 
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template());
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
         entityCode        = Pattern.compile("this.").matcher(entityCode).replaceAll("");
         entityCode        = Pattern.compile("@Override").matcher(entityCode).replaceAll("");
@@ -294,7 +292,7 @@ public class LangJava extends JvmTemplatedLang {
           }
 
           Files.writeString(new File(workspace, "Template.txt").toPath(), extraction.template());
-          Files.writeString(new File(workspace, "Correction.txt").toPath(), correction);
+          Files.writeString(new File(workspace, "Correction.txt").toPath(), extraction.correctionBody());
           Files.writeString(mainRemote.toPath(), mainRemoteContent);
           Files.writeString(entityRemote.toPath(), entityRemoteContent);
           Files.writeString(entityFile.toPath(), entityCode);
@@ -324,11 +322,8 @@ public class LangJava extends JvmTemplatedLang {
         out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
       if (Game.getInstance().isDebugEnabled())
-        for (SourceFile sf : exo.getSourceFilesList(this)) {
-          String correction        = sf.getCorrection();
-          JvmExtraction extraction = sf.cached(JvmExtraction.class, () -> extractOnce(correction));
-          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile, extraction.template()));
-        }
+        for (SourceFile sf : exo.getSourceFilesList(this))
+          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile));
 
       throw e;
     }

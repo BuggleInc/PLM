@@ -135,6 +135,44 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   }
 
   /**
+   * The `$body` value to substitute in {@code template} for {@code StudentOrCorrection.CORRECTION}: the text between
+   * whichever of BEGIN/END TEMPLATE or BEGIN/END SOLUTION exists in {@code correction} (comment-delimited,
+   * `/* ... *&#47;`-style -- i.e. Java/Scala/C's marker syntax), markers included. Used by every language but Python
+   * (whose markers and CORRECTION-body rule differ, see {@code LangPython.extract()}).
+   */
+  protected static String deriveCorrectionBody(String correction, String name)
+  {
+    final String BEGIN_TEMPLATE = "/* BEGIN TEMPLATE */";
+    final String END_TEMPLATE   = "/* END TEMPLATE */";
+    final String BEGIN_SOLUTION = "/* BEGIN SOLUTION */";
+    final String END_SOLUTION   = "/* END SOLUTION */";
+
+    String beginMarker;
+    String endMarker;
+    if (correction.contains(BEGIN_TEMPLATE) && correction.contains(END_TEMPLATE)) {
+      /* Normal case: the correction entity explicitly delimits the templated region */
+      beginMarker = BEGIN_TEMPLATE;
+      endMarker   = END_TEMPLATE;
+    } else if (correction.contains(BEGIN_SOLUTION) && correction.contains(END_SOLUTION)) {
+      /* No BEGIN/END TEMPLATE: the whole run() is graded, only BEGIN/END SOLUTION delimit it. */
+      beginMarker = BEGIN_SOLUTION;
+      endMarker   = END_SOLUTION;
+    } else {
+      throw new RuntimeException("Broken exercise: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION exist in file " + name);
+    }
+
+    return correction.substring(Math.max(correction.indexOf(beginMarker), 0),
+                                Math.min(correction.indexOf(endMarker) + endMarker.length() + 1, correction.length()));
+  }
+
+  /**
+   * {@link LanguageExtraction} for a language that, unlike Java/Scala/Python, never rebuilds its own per-compile
+   * template: currently only {@code LangC}, which just reuses step 1's template unchanged alongside the derived
+   * correction body.
+   */
+  public record SimpleExtraction(String template, String correctionBody) implements LanguageExtraction {}
+
+  /**
    * Read a classloader resource at {@code path} (relative to the classpath root) as a UTF-8 string. Low-level
    * primitive behind {@link #loadRemoteFile} and LangC's own resource reading.
    */

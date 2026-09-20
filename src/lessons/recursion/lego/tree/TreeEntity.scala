@@ -33,9 +33,7 @@ class TreeEntity extends Turtle {
 			current(steps);
 			backward(length);
 		}
-		/* END SOLUTION */	
 	}
-	/* END TEMPLATE */
 	def subtree(steps:Int, length:Double, angle:Double, shrink:Double)	{
 		if (steps != 0) {
 			setColor(Color.black)
@@ -49,6 +47,7 @@ class TreeEntity extends Turtle {
 		}
 		/* END SOLUTION */	
 	}
+	/* END TEMPLATE */
 
 	override def run() {
 		tree(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double],

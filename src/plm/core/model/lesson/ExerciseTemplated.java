@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
+import plm.core.lang.LanguageExtraction;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
@@ -26,11 +27,11 @@ public abstract class ExerciseTemplated extends Exercise {
   public ExerciseTemplated(Lesson lesson) { super(lesson, null); }
   public ExerciseTemplated(Lesson lesson, String basename) { super(lesson, basename); }
 
-  public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException
+  public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException, PLMCompilerException
   {
     newSourceFromFile(lang, name, filename, "");
   }
-  public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String patternString) throws NoSuchEntityException
+  public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String patternString) throws NoSuchEntityException, PLMCompilerException
   {
     String shownFilename = filename.replaceAll("\\.", "/") + "." + lang.getExt();
     StringBuffer sb      = null;
@@ -41,7 +42,10 @@ public abstract class ExerciseTemplated extends Exercise {
     }
 
     TemplatedEntity parsed = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename, patternString);
-    newSource(lang, name, parsed);
+    // Step 2 (see CONTRIBUTING.md, "From correction entity to compilable source: templating"), computed right here
+    // rather than inside EntityTemplateParser.parse() -- see TemplatedEntity's javadoc.
+    LanguageExtraction extraction = lang.extract(parsed.correction(), parsed.template(), name);
+    newSource(lang, name, new TemplatedEntity(parsed.initialContent(), parsed.template(), parsed.offset(), parsed.correction(), extraction));
   }
 
   protected final void setup(World w) { setup(new World[] {w}); }
@@ -101,6 +105,11 @@ public abstract class ExerciseTemplated extends Exercise {
                                                     getName(), lang, e.toString()));
           /* Ok, this language does not work for this exercise but didn't promise anything. I can deal with
            * it */
+        } catch (PLMCompilerException e) {
+          // Unlike NoSuchEntityException above, this means the entity file exists but is malformed in a way that
+          // breaks step 2's extraction (e.g. Scala's getCorrectedTemplate() rejecting an ill-formed template) --
+          // always a real authoring bug in the exercise, not just "this language isn't offered", so always loud.
+          throw new RuntimeException(Game.i18n.tr("Exercise {0} ({1}): the {2} entity is broken: {3}", getName(), getId(), lang, e.getMessage()), e);
         }
       } else {
         foundALanguage = true;

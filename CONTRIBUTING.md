@@ -88,64 +88,76 @@ This section is about how the single `XxxEntity.<ext>` file described in "Adding
 teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION,
 one for the STUDENT's current editor content. It happens in two separate steps.
 
-### Step 1 (load time): `ExerciseTemplated.newSourceFromFile()` parses the entity file once
+### Step 1 (load time): `EntityTemplateParser.parse()` parses the entity file, then `ExerciseTemplated.newSourceFromFile()`
+extracts each language's own pieces right away
 
-Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded. It reads the
-raw `XxxEntity.<ext>` file and runs it character-by-character (line-by-line) through a hand-written state machine (states 0
-to 6) driven by marker comments found in the file: `BEGIN/END TEMPLATE`, `BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`.
-`BEGIN/END HIDDEN` is stripped from what the student sees but kept in the correction (e.g. helper code the student shouldn't
-have to read). Out of that pass, it builds several `StringBuffer`s:
+Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded.
+`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file and runs it character-by-character (line-by-line)
+through a hand-written state machine (states 0 to 5) driven by marker comments found in the file: `BEGIN/END TEMPLATE`,
+`BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`. `BEGIN/END HIDDEN` is stripped from what the student sees but kept in the
+correction (e.g. helper code the student shouldn't have to read). Out of that pass, it builds several `StringBuffer`s:
 - `head`/`tail`: the file content strictly outside the templated region (before `BEGIN TEMPLATE`/after `END TEMPLATE`,
   or the whole file if only `BEGIN/END SOLUTION` is used).
 - `templateHead`/`templateTail`: inside the templated region but outside the solution -- concatenated together as
   `initialContent`, what the student sees in the editor the first time.
 - `solution`: the reference implementation, discarded here (it goes into `correction` below, not into what the student sees).
-- `correction`: the *entire* file content again, unchanged except for the class/package name rewrite -- this is stored
-  as-is and re-parsed later, at every compile, by each language's own marker-extraction logic (see step 2).
+- `correction`: the *entire* file content again, unchanged except for the class/package name rewrite.
 
 It then does bookkeeping common to all languages: rewrites the `class`/`package` line to use the exercise's own class name,
 inserts a `#line` C preprocessor directive so compiler errors point at the right file for C, collapses `initialContent`'s
 leading whitespace to the smallest common indentation, and folds `head`+`tail` down to a single line for Java 
 (the Python/Scala/C compilers/offset-tracking don't need that flattening the way javac's line-based error reporting does).
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), and `offset` is `head`'s line count
-(used later to translate a compiler error's line number back into the student's own editor coordinates). An optional
-`patternString` (`s/regex/replacement/;...`, only used by a couple of exercises) can further rewrite `template` and
-`initialContent` at this point. `newSource()` then stores `(name, initialContent, template, offset,
-correction)` as one `SourceFile` per `(exercise, language)` in `Exercise.sourceFiles`.
+(meant to translate a compiler error's line number back into the student's own editor coordinates -- not wired to
+anything yet, see the TODOs). An optional `patternString` (`s/regex/replacement/;...`, only used by a couple of
+exercises) can further rewrite `template` and `initialContent` at this point. The result is a `TemplatedEntity` record:
+`initialContent`, `template`, `offset`, `correction`, plus `extraction` (still empty at this point, filled in next).
 
-### Step 2 (upon the first compilation): each language re-parses `correction` and fills in `$body` and friends
+Right after `parse()` returns, still inside `newSourceFromFile()`, `ProgrammingLanguage.extract(correction, template,
+name)` is called on the concrete language to do step 2 immediately below -- rather than waiting for the first compile,
+as it used to. `Exercise.newSource()` then stores `(name, initialContent, extraction, offset, correction)` as one
+`SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`. `correction` and `offset` are kept on
+`SourceFile` even though templating itself has no further use for them past this point: `GitSpy` and
+`TemplatedRemoteLang.packageNameForExercise()` independently read the raw `correction` back later, and `offset` is
+reserved for a still-missing feature (see the TODOs).
 
-`SourceFile` only knows about the single `$body` placeholder above; everything else is language-specific and lives in
-`ProgrammingLanguage.compileExo()` (Java/Scala/Python/C, sharing common helpers through `TemplatedRemoteLang`):
-- It re-extracts pieces out of the *raw* `correction` string using its own marker syntax (comment-delimited for Java/Scala/C,
-  e.g. `/* BEGIN DEPENDENCY */.../* END DEPENDENCY */`, `/* BEGIN IMPORT */.../* END IMPORT */`): the `run()`
-  method's own text (`extractRunFunction()`/`extractRunSpan()` -- brace-matching for Java/Scala/C, indentation-based for
-  Python, see `LangPython`'s override), any extra dependency code, extra imports, and which `RemoteXxx` micro-world glue
-  file to compile against (guessed from keywords found in the source, e.g. `"Buggle"` -> `RemoteBuggle`, see
-  `TemplatedRemoteLang.getRemote()`).
-- It builds a `runtimePatterns` map of regex->replacement (`$package`, `$run`, `$dependency`, `$imports`, ...) to be
-  substituted into whatever template ends up being used.
-- Java additionally computes its own, second, per-compile `template` string (`LangJava.getCorrectedTemplate()`), picking
-  one of three class-body shapes depending on whether the file's templated region and `run()`'s own braces overlap, are
-  nested, or are disjoint, and overwrites the `SourceFile`'s stored template with it via `sf.setTemplate()` -- so the
-  `template`/`offset` computed once in step 1 are actually only the final answer for Python/Scala/C; Java rebuilds
-  `template` from scratch on every compile and only keeps `offset` from step 1.
-- Finally `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution: for
-  `StudentOrCorrection.CORRECTION` it slices the solution back out of `correction` (the text between the same
-  `BEGIN/END TEMPLATE` or `BEGIN/END SOLUTION` markers step 1 already knew about) and substitutes it for `$body`;
-  for `STUDENT` it substitutes the editor's current `body` instead; either way `runtimePatterns` is then applied on top
-  of the result, and non-breaking spaces are stripped. The resulting string is written to a per-compile workspace
-  (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id, `STUDENT`/`CORRECTION` and a hash
-  of the source, so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx` glue
-  file and any other support file the exercise needs, then compiled/run the usual way.
+### Step 2 (still at load time, right after step 1): each language extracts its own pieces out of `correction`
 
-Everything in step 2 above is a pure function of `correction`, which never changes between compiles of the same
-`SourceFile`, so it's computed only the first time a given exercise is compiled, and the result is cached in the `SourceFile`.
+`SourceFile` only knows about `LanguageExtraction.template()`/`correctionBody()`; everything else is language-specific
+and lives in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
+`TemplatedRemoteLang`/`JvmTemplatedLang`):
+- Java/Scala re-extract pieces out of the *raw* `correction` string using their own marker syntax (comment-delimited,
+  e.g. `/* BEGIN DEPENDENCY */.../* END DEPENDENCY */`, `/* BEGIN IMPORT */.../* END IMPORT */`, both in
+  `JvmTemplatedLang`): the `run()` method's own text (`extractRunFunction()`/`extractRunSpan()` -- brace-matching for
+  Java/Scala, indentation-based for Python's own override), any extra dependency code, extra imports, and which
+  `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in the source, e.g. `"Buggle"` ->
+  `RemoteBuggle`, see `TemplatedRemoteLang.getRemote()`). Java/Scala also each rebuild their own per-compile `template`
+  string (`getCorrectedTemplate()`), picking one of three class-body shapes depending on whether the file's templated
+  region and `run()`'s own braces overlap, are nested, or are disjoint; Python has an equivalent three-case
+  `getCorrectedTemplate()` of its own.
+- C never rebuilds a template at all: its `extract()` just reuses step 1's `template` unchanged, wrapped alongside the
+  derived correction body in a small `TemplatedRemoteLang.SimpleExtraction`.
+- Every language also derives its own `correctionBody` (the `$body` value used for `StudentOrCorrection.CORRECTION`)
+  here: Java/Scala/C share `TemplatedRemoteLang.deriveCorrectionBody()` (the text between whichever of
+  `BEGIN/END TEMPLATE` or `BEGIN/END SOLUTION` markers exists in `correction`); Python computes its own, since its
+  `#`-style markers and its "disjoint" case's body rule (`correction` minus `run()`'s own span) don't match the shared one.
+- The result -- `JvmExtraction` for Java/Scala, `PythonExtraction`, or `TemplatedRemoteLang.SimpleExtraction` for C, all
+  implementing `LanguageExtraction` -- is stored as-is on the `SourceFile` (`SourceFile.getExtraction()`). Each
+  language's own `compileExo()` reads it back with a cast (e.g. `(JvmExtraction)sf.getExtraction()` in `LangJava`,
+  safe since a given `SourceFile` is only ever populated by the one language it was parsed for) to fill in a
+  `runtimePatterns` map of regex->replacement (`$package`, `$run`, `$dependency`, `$imports`, ...) -- this part still
+  happens on every compile, since it depends on `packageNameForExercise()`'s per-compile hash, not on `correction`.
+- `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution: for
+  `StudentOrCorrection.CORRECTION` it substitutes the extraction's `correctionBody` for `$body`; for `STUDENT` it
+  substitutes the editor's current `body` instead; either way `runtimePatterns` is then applied on top of the result,
+  and non-breaking spaces are stripped. The resulting string is written to a per-compile workspace
+  (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id, `STUDENT`/`CORRECTION` and a
+  hash of the source, so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx`
+  glue file and any other support file the exercise needs, then compiled/run the usual way.
 
-So the same `XxxEntity` file is walked twice by two independent parsers using two different marker vocabularies: once by
-`ExerciseTemplated` (TEMPLATE/SOLUTION/HIDDEN, to build the student-visible `initialContent` and the outer `$body`
-template) and once per-language inside `compileExo()` (DEPENDENCY/IMPORT/run(), to fill in everything else). The `correction`
-string is the only link between the two passes.
+Both steps now run once, eagerly, at lesson-load time: an extraction failure (e.g. Scala rejecting an ill-formed
+template) surfaces then, as a loud `RuntimeException` out of `ExerciseTemplated.setup()`, rather than waiting for a
+student's first "Compile" click on that exercise.
 
 ## Saving the student's work: GitSpy and friends
 
@@ -189,9 +201,9 @@ for/cancels help, or reads a hint:
   `studentWork`'s pass/fail state; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy`
   already keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one
   `.summary` file per lesson (a `StudentWork`-produced digest, not something `GitSpy` writes).
-- `SourceFileRevertable` (what `ExerciseTemplated.newSourceFromFile()` actually instantiates) keeps the original
-  `initialContent` from step 1 above so the "revert" action (`Game.worldHasChanged()`) can restore the editor to it; this is
-  unrelated to git and only concerns the in-memory `SourceFile`.
+- `SourceFileRevertable` (what `Exercise.newSource()` actually instantiates, see "From correction entity to compilable
+  source" above) keeps the original `initialContent` from step 1 above so the "revert" action (`Game.worldHasChanged()`)
+  can restore the editor to it; this is unrelated to git and only concerns the in-memory `SourceFile`.
 
 ## How tests work
 
@@ -396,5 +408,5 @@ TODO: merge both steps of the templating process? Or rather, kill the first step
 TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
 TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process)
 TODO: benchmark the tests to understand where the time goes, and optimize this out
-TODO: ensure that the templating honors the BEGIN/END HIDDEN section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method
+TODO: ensure that the templating honors the BEGIN/END HIDDEN section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method. For example, TreeEntity hides the subtree method this way
 TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.

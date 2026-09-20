@@ -1,5 +1,6 @@
 package plm.core.model.session;
 
+import plm.core.lang.LanguageExtraction;
 import plm.core.lang.ProgrammingLanguage;
 
 public class SourceFileRevertable extends SourceFile {
@@ -8,9 +9,9 @@ public class SourceFileRevertable extends SourceFile {
 
   public SourceFileRevertable(String name) { this(name, "", null, 0, ""); }
 
-  public SourceFileRevertable(String name, String initialBody, String template, int offset, String correctionCtn)
+  public SourceFileRevertable(String name, String initialBody, LanguageExtraction extraction, int offset, String correctionCtn)
   {
-    super(name, initialBody, template, offset, correctionCtn);
+    super(name, initialBody, extraction, offset, correctionCtn);
     this.initialBody = initialBody;
   }
 

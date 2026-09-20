@@ -36,20 +36,21 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   protected static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
 
   /**
-   * Everything Java/Scala's compileExo() extracts out of one SourceFile's {@code correction} that does NOT depend on
-   * packageNameCache (which changes per compile: it is derived from the exercise id, STUDENT/CORRECTION, and a
-   * content hash). {@code correction} itself never changes between compiles of the same SourceFile, so compileExo()
-   * computes this once per SourceFile via {@link SourceFile#cached}/{@link SourceFile#cachedOrThrow} instead of on
-   * every compile (see CONTRIBUTING.md, "From correction entity to compilable source: templating"). Python has its
-   * own shape (JvmExtraction's {@code template} is a plain String; Python's corresponding piece is a
-   * {@code (template, bodySource)} pair, and it has no {@code rawImports} field at all), so it keeps its own record.
+   * Everything Java/Scala's compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly,
+   * right after step 1 (see {@code ExerciseTemplated.newSourceFromFile()}), rather than lazily on first compile.
+   * Python has its own shape (its {@code template} comes from a nested {@code (template, bodySource)} pair, and it
+   * has no {@code rawImports} field at all), so it keeps its own record.
    *
-   * @param remote      the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
-   *                    turns that into a compile failure)
-   * @param rawImports  the raw content of any BEGIN/END IMPORT section(s), NOT the full $imports replacement
-   *                    compileExo() builds (which also injects packageNameCache-qualified lines)
+   * @param remote         the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
+   *                       turns that into a compile failure)
+   * @param rawImports     the raw content of any BEGIN/END IMPORT section(s), NOT the full $imports replacement
+   *                       compileExo() builds (which also injects packageNameCache-qualified lines)
+   * @param correctionBody see {@link LanguageExtraction#correctionBody()}
    */
-  public record JvmExtraction(String remote, String runFunction, String dependency, String rawImports, String template) {}
+  public record JvmExtraction(String remote, String runFunction, String dependency, String rawImports, String template, String correctionBody)
+      implements LanguageExtraction
+  {
+  }
 
   /**
    * Run "jar cfm &lt;jarFile&gt; &lt;manifest declaring Main-Class: mainClassDotPath&gt; &lt;classFiles...&gt;" from
