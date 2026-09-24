@@ -3,6 +3,13 @@ package lessons.lander.lvl1_lander_101;
 import lessons.lander.universe._;
 
 class Lander101Entity extends LanderEntity {
+	override def run() {
+		while (isFlying()) {
+			step()
+			simulateStep()
+		}
+	}
+
 	override def step() {
 		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */

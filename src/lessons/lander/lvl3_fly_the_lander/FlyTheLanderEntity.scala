@@ -7,6 +7,14 @@ import lessons.lander.universe._;
 import lessons.lander.universe.LanderWorld._;
 
 class FlyTheLanderEntity extends LanderEntity {
+  override def run() {
+    initialize()
+    while (isFlying()) {
+      step()
+      simulateStep()
+    }
+  }
+
   /* BEGIN TEMPLATE */
   /* BEGIN HIDDEN */
   var targetStart=0.0

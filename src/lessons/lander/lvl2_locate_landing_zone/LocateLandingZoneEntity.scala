@@ -26,6 +26,14 @@ class LocateLandingZoneEntity extends LanderEntity {
   var targetStart = 0.0;
   var targetEnd = 0.0;
 
+  override def run() {
+    initialize()
+    while (isFlying()) {
+      step()
+      simulateStep()
+    }
+  }
+
   override def initialize() {
     var landingZone = getLandingZone();
     targetStart = landingZone.start.x;
