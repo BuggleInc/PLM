@@ -408,6 +408,7 @@ Preparing the next release cycle
 
 ## TODOs
 
+TODO: kill JvmTemplatedLang.extractMarkedSection() ?
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
 TODO: Port the SimpleExercise tests to LangC

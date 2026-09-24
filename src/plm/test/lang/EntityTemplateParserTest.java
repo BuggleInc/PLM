@@ -54,7 +54,7 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals(content + "\n", e.correction());
   }
 
-  /** Java: line comments dropped, class/package lines rewritten, head/tail flattened on one line, initial content dedented. */
+  /** Java: line comments dropped from the flattened head only, class/package lines rewritten, initial content dedented. */
   @Test public void testJavaFlatteningAndRewrites()
   {
     String content    = lines("package foo;", "public class FooEntity {", "  // comment", "  /* BEGIN TEMPLATE */", "  int a;", "  /* BEGIN SOLUTION */",
@@ -63,8 +63,9 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("int a;\n", e.initialContent());
     Assertions.assertEquals("$package  public class Bar {    $body } ", e.template());
-    Assertions.assertEquals(1, e.offset());
+    Assertions.assertEquals(0, e.offset());
     Assertions.assertTrue(e.correction().startsWith("$package \npublic class Bar {\n"));
+    Assertions.assertTrue(e.correction().contains("// comment")); // correction stays a faithful copy of the file, comments included
   }
 
   /** C: a {@code #line} directive is inserted in the head right before the template. */
@@ -108,5 +109,29 @@ public class EntityTemplateParserTest {
   {
     Assertions.assertThrows(RuntimeException.class,
                             () -> parse(lines("/* BEGIN IMPORT */", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END IMPORT */"), new LangJava()));
+  }
+
+  /** DEPENDENCY sections are exposed separately and removed from the head, but kept in the correction. */
+  @Test public void testJavaDependencies()
+  {
+    TemplatedEntity e = parse(lines("/* BEGIN DEPENDENCY */", "class Helper {}", "/* END DEPENDENCY */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
+                                    "  int a;", "  /* END TEMPLATE */", "}"),
+                              new LangJava());
+
+    Assertions.assertEquals("class Helper {}\n", e.dependencies());
+    Assertions.assertEquals("public class Bar { $body } ", e.template());
+    Assertions.assertEquals("int a;\n", e.initialContent());
+    Assertions.assertTrue(e.correction().contains("class Helper {}"));
+  }
+
+  @Test public void testUnclosedDependency()
+  {
+    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN DEPENDENCY */", "class Helper {}"), new LangJava()));
+  }
+
+  @Test public void testImportInsideDependency()
+  {
+    Assertions.assertThrows(RuntimeException.class,
+                            () -> parse(lines("/* BEGIN DEPENDENCY */", "/* BEGIN IMPORT */", "/* END IMPORT */", "/* END DEPENDENCY */"), new LangJava()));
   }
 }

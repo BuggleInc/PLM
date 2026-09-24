@@ -17,11 +17,17 @@ import plm.core.lang.LanguageExtraction;
  *
  * @param initialContent what the student sees in the editor the first time (templateHead + templateTail)
  * @param template        head + "$body" + tail; substituting $body at compile time rebuilds a compilable source
- * @param offset          number of lines in head, used to translate a compiler error's line number back to the
- *                         student's own editor coordinates
+ * @param offset          how many physical lines of the compiled file come before {@code $body}'s own first line (head's line
+ *                         count, or 0 when head is flattened onto a single line, see {@code EntityTemplateParser}), used to
+ *                         translate a compiler error's line number back to the student's own editor coordinates
  * @param correction      the whole entity file, unchanged except for the class/package name rewrite
  * @param imports         the lines found between BEGIN IMPORT and END IMPORT markers (any number of sections), which are not part of
  *                         {@code template} nor {@code initialContent}, but are still in {@code correction}
+ * @param dependencies    the lines found between BEGIN DEPENDENCY and END DEPENDENCY markers (any number of sections), same rules as
+ *                         {@code imports}
  * @param extraction      this language's own once-computed extraction out of {@code correction}, or {@code null}
  */
-public record TemplatedEntity(String initialContent, String template, int offset, String correction, String imports, LanguageExtraction extraction) {}
+public record TemplatedEntity(String initialContent, String template, int offset, String correction, String imports, String dependencies,
+                              LanguageExtraction extraction)
+{
+}

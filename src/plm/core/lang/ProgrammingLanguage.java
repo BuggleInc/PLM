@@ -95,10 +95,14 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    * @param correction the whole entity file, as produced by step 1 (see {@code EntityTemplateParser})
    * @param template   step 1's own "head + $body + tail" shape; only used by languages that don't rebuild their own
    *                   per-compile template (C -- Java/Scala/Python always ignore it, see their own {@code extract()})
-   * @param imports    the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
-   * @param name       the exercise's own class/package name, only used in error messages
+   * @param imports      the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
+   * @param dependencies the content of the BEGIN/END DEPENDENCY sections, as split out by step 1 (only used by Java and Scala)
+   * @param name         the exercise's own class/package name, only used in error messages
    */
-  public LanguageExtraction extract(String correction, String template, String imports, String name) throws PLMCompilerException { return null; }
+  public LanguageExtraction extract(String correction, String template, String imports, String dependencies, String name) throws PLMCompilerException
+  {
+    return null;
+  }
 
   /**
    * Compile the exercise, and return a textual reference to the result (a jar/binary path, a "jarPath|mainClass"

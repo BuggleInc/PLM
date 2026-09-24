@@ -29,9 +29,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
   public JvmTemplatedLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
-  /** Java/Scala's extra code delimited with BEGIN DEPENDENCY/END DEPENDENCY must carry over verbatim */
-  protected static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
-
   /**
    * Everything Java/Scala's compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly,
    * right after step 1 (see {@code ExerciseTemplated.newSourceFromFile()}), rather than lazily on first compile.

@@ -94,9 +94,9 @@ public class LangJava extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  @Override public JvmExtraction extract(String correction, String template, String imports, String name)
+  @Override public JvmExtraction extract(String correction, String template, String imports, String dependencies, String name)
   {
-    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), imports, getCorrectedTemplate(correction),
+    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), dependencies, imports, getCorrectedTemplate(correction),
                              deriveCorrectionBody(correction, name));
   }
 
