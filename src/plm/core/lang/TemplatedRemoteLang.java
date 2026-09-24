@@ -21,26 +21,6 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   public TemplatedRemoteLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
   /**
-   * Extract every section of {@code code} delimited by a (possibly repeated) {@code beginMarker}/{@code endMarker}
-   * pair, concatenated with a newline after each occurrence. Used to pull out the "/* BEGIN DEPENDENCY *&#47;
-   * ... /* END DEPENDENCY *&#47;"-style sections that Java and Scala exercises use to mark code the template must
-   * carry over verbatim (dependencies, extra imports).
-   */
-  protected static String extractMarkedSection(String code, String beginMarker, String endMarker)
-  {
-    StringBuilder section = new StringBuilder();
-    for (int i = 0; i < code.length(); i++) {
-      if (!code.startsWith(beginMarker, i))
-        continue;
-      int begin = i + beginMarker.length();
-      int end   = code.indexOf(endMarker, i);
-      section.append(code, begin, end).append("\n");
-      i = end + endMarker.length();
-    }
-    return section.toString();
-  }
-
-  /**
    * Return [start, end) of a method's own text (its declaration line through its brace-matched closing '}') within
    * code, searching for the given declaration keyword (e.g. "void run(" for Java, "def run(" for Scala) -- or null if
    * that keyword doesn't appear at all. This brace-based algorithm is the default for every language except Python,

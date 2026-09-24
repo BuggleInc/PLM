@@ -408,16 +408,14 @@ Preparing the next release cycle
 
 ## TODOs
 
-TODO: kill JvmTemplatedLang.extractMarkedSection() ?
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
-TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code by aleviating the need to rewrite a dynamic package name
-TODO: merge both steps of the templating process? Or rather, kill the first step which result is never used.
-TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
+*TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code by aleviating the need to rewrite a dynamic package name
+*TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
 TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process)
 TODO: benchmark the tests to understand where the time goes, and optimize this out
 TODO: ensure that the templating honors the BEGIN/END HIDDEN section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method. For example, TreeEntity hides the subtree method this way
-TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.
+*TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.
