@@ -95,14 +95,24 @@ Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, o
 `EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
 1. `rewriteDeclarations()` rewrites the first `class` declaration to use the exercise's own class name, and the first line
    containing `package` to `$package`.
-2. `split()` cuts the lines into a list of `Segment(kind, text)`, driven by marker comments: `BEGIN/END TEMPLATE`,
-   `BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`, `BEGIN/END IMPORT`. Markers are language-agnostic (matched anywhere in
-   a line) and are expected alone on their line: marker lines belong to no segment. The kinds are `HEAD` (before the
-   template, or before the solution if there is no template), `TEMPLATE`, `SOLUTION`, `HIDDEN`, `IMPORT` and `TAIL`.
-   `HIDDEN` only exists inside the template (elsewhere, hidden lines are plain `HEAD`/`TAIL`), while `IMPORT` lines
-   are never part of `HEAD`, `TEMPLATE` or `TAIL`. The markers are validated on the fly: BEGIN/END pairs must match and
-   cannot be nested, there is at most one `TEMPLATE` and one `SOLUTION`, and no BEGIN comes after `END TEMPLATE`. Any
-   violation throws a `RuntimeException` with the file name and line number.
+2. `split()` cuts the lines into a list of `Segment(kind, text)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
+   SOLUTION`, `BEGIN/END HIDDEN`, `BEGIN/END IMPORT`, `BEGIN/END DEPENDENCY`. Markers are language-agnostic: matched anywhere in
+   a line, and expected alone on their line. Marker lines belong to any segment. 
+   
+   The kinds are:
+   - `HEAD`: (out of any marker) before the template, or before the solution if there is no template
+   - `IMPORT`: extra headers that must be added to the student entity for it to compile
+   - `DEPENDENCY`: some helper functions to be copied within both the student code and the correction code, but not to be shown
+     to the student in any way.
+   - `TEMPLATE`: part of the code that will be presented to the student
+     - `SOLUTION`: the code to use instead of the student code to produce the correction entity. Must be part of TEMPLATE if it
+       exists, or may be alone when no TEMPLATE exists at all.
+     - `HIDDEN`: code that must be kept for the correction but not for the student-facing code. It must be within the TEMPLATE
+       and come after the SOLUTION. BDR2Entity use it
+   - `TAIL`: (out of any marker)
+   
+   Any invalid markup throws a RuntimeException: incorrect matching of BEGIN/END, incorrect nesting of segments, more than one
+   `TEMPLATE` and zero or several `SOLUTION`.
 3. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
 - `head`/`tail`: the `HEAD`/`TAIL` segments, i.e. the file content strictly outside the templated region (before
   `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used).
@@ -122,26 +132,20 @@ exercises) can further rewrite `template` and `initialContent` at this point. Th
 `initialContent`, `template`, `offset`, `correction`, `imports`, plus `extraction` (still empty at this point, filled in next).
 
 Right after `parse()` returns, still inside `newSourceFromFile()`, `ProgrammingLanguage.extract(correction, template,
-imports, name)` is called on the concrete language to do step 2 immediately below -- rather than waiting for the first compile,
-as it used to. `Exercise.newSource()` then stores `(name, initialContent, extraction, offset, correction)` as one
-`SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`. `correction` and `offset` are kept on
-`SourceFile` even though templating itself has no further use for them past this point: `GitSpy` and
-`TemplatedRemoteLang.packageNameForExercise()` independently read the raw `correction` back later, and `offset` is
-reserved for a still-missing feature (see the TODOs).
+imports, name)` is called on the concrete language to do step 2 immediately below. `Exercise.newSource()` then stores 
+`(name, initialContent, extraction, offset, correction)` as one `SourceFileRevertable` per `(exercise, language)` in 
+`Exercise.sourceFiles`. 
 
 ### Step 2 (still at load time, right after step 1): each language extracts its own pieces out of `correction`
 
 `SourceFile` only knows about `LanguageExtraction.template()`/`correctionBody()`; everything else is language-specific
 and lives in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
 `TemplatedRemoteLang`/`JvmTemplatedLang`):
-- Java/Scala re-extract pieces out of the *raw* `correction` string using their own marker syntax (comment-delimited,
-  e.g. `/* BEGIN DEPENDENCY */.../* END DEPENDENCY */`, in `JvmTemplatedLang`): the `run()` method's own text
+- Java/Scala/Python re-extract pieces out of the *raw* `correction` string: the `run()` method's own text
   (`extractRunFunction()`/`extractRunSpan()` -- brace-matching for Java/Scala, indentation-based for Python's own
   override) and any extra dependency code. The extra imports are not re-extracted: they come from step 1's `imports`
-  as is. They also guess which `RemoteXxx`
-  micro-world glue file to compile against
-  `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in the source, e.g. `"Buggle"` ->
-  `RemoteBuggle`, see `TemplatedRemoteLang.getRemote()`). Each also rebuilds its own per-compile `template`
+  as is. They also guess which `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in
+  the source by `TemplatedRemoteLang.getRemote()`). Each also rebuilds its own per-compile `template`
   string (`getCorrectedTemplate()`), picking one of three class-body shapes depending on whether the file's templated
   region and `run()`'s own braces overlap, are nested, or are disjoint; Python has an equivalent three-case
   `getCorrectedTemplate()` of its own.
@@ -164,10 +168,6 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id, `STUDENT`/`CORRECTION` and a
   hash of the source, so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx`
   glue file and any other support file the exercise needs, then compiled/run the usual way.
-
-Both steps now run once, eagerly, at lesson-load time: an extraction failure (e.g. Scala rejecting an ill-formed
-template) surfaces then, as a loud `RuntimeException` out of `ExerciseTemplated.setup()`, rather than waiting for a
-student's first "Compile" click on that exercise.
 
 ## Saving the student's work: GitSpy and friends
 
@@ -408,14 +408,16 @@ Preparing the next release cycle
 
 ## TODOs
 
+TODO: ensure that HIDDEN comes after the solution (to simplify the line collapsing that helps Java computing the offset)
+TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code by aleviating the need to rewrite a dynamic package name
+TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
+TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.
+
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
-*TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code by aleviating the need to rewrite a dynamic package name
-*TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
 TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process)
 TODO: benchmark the tests to understand where the time goes, and optimize this out
 TODO: ensure that the templating honors the BEGIN/END HIDDEN section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method. For example, TreeEntity hides the subtree method this way
-*TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.
