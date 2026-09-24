@@ -94,10 +94,10 @@ public class LangJava extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  @Override public JvmExtraction extract(String correction, String template, String name)
+  @Override public JvmExtraction extract(String correction, String template, String imports, String name)
   {
-    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
-                             getCorrectedTemplate(correction), deriveCorrectionBody(correction, name));
+    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), imports, getCorrectedTemplate(correction),
+                             deriveCorrectionBody(correction, name));
   }
 
   private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File... files) throws PLMCompilerException

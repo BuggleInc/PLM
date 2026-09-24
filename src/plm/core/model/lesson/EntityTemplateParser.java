@@ -1,6 +1,10 @@
 package plm.core.model.lesson;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,7 +12,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
 /**
- * Parses the BEGIN/END TEMPLATE/SOLUTION/HIDDEN markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
+ * Parses the BEGIN/END TEMPLATE/SOLUTION/HIDDEN/IMPORT markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
  * This results in a {@link TemplatedEntity} reccord.
  */
 public class EntityTemplateParser {
@@ -32,135 +36,27 @@ public class EntityTemplateParser {
       content                    = lineCommentMatcher.replaceAll("");
     }
 
-    /* Extract the template, the initial content and the solution out of the file */
-    int state                 = 0;
-    int savedState            = 0;
-    StringBuffer head         = new StringBuffer(); /* before the template (state 0) */
-    StringBuffer templateHead = new StringBuffer(); /* in template before solution (state 1) */
-    StringBuffer solution     = new StringBuffer(); /* the solution (state 2) -- kept for parity, unused below */
-    StringBuffer templateTail = new StringBuffer(); /* in template after solution (state 3) */
-    StringBuffer tail =
-        new StringBuffer("\n");                            /* after the template (state 4)
-                                                            *   This contains a preliminar \n to help python understanding that the following is not in the same block.
-                                                            *   Not doing Without it, we would have issues if the student puts some empty lines with the indentation marker at tail
-                                                            */
-    StringBuffer correction          = new StringBuffer(); /* the unchanged content, but the package and className modification */
-    boolean containsLinePreprocessor = false;
+    String[] lines             = rewriteDeclarations(content.split("\n"), name);
+    List<Segment> segments     = split(lines, shownFilename);
+    StringBuilder correctionSb = new StringBuilder();
+    for (String line : lines)
+      correctionSb.append(line).append("\n");
+    String correction = correctionSb.toString();
 
-    boolean seenTemplate = false; // whether B/E SOLUTION seems included within B/E TEMPLATE
-    for (String line : content.split("\n")) {
-      switch (state) {
-        case 0: /* initial content */
-          if (line.contains("class ")) {
-            String modified = line.replaceAll("class \\S*", "class " + name);
-            head.append(modified);
-            correction.append(modified + "\n");
-          } else if (line.contains("package")) {
-            head.append("$package \n");
-            correction.append("$package \n");
-          } else if (line.contains("#line") && lang.isC()) {
-            containsLinePreprocessor = true;
-            head.append(line + "\n");
-          } else if (line.contains("BEGIN TEMPLATE")) {
-            if (!containsLinePreprocessor && lang.isC()) {
-              head.append("#line 1 \"" + name + ".c\" \n");
-              containsLinePreprocessor = true;
-            }
-            correction.append(line + "\n");
-            seenTemplate = true;
-            state        = 1;
-          } else if (line.contains("BEGIN SOLUTION")) {
-            if (!containsLinePreprocessor && lang.isC()) {
-              head.append("#line 1 \"" + name + ".c\" \n");
-              containsLinePreprocessor = true;
-            }
-            correction.append(line + "\n");
-            state = 2;
-          } else {
-            correction.append(line + "\n");
-            head.append(line + "\n");
-          }
-          break;
-        case 1: /* template head */
-          correction.append(line + "\n");
-          if (line.contains("BEGIN TEMPLATE")) {
-            System.out.println(Game.i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.", shownFilename));
-            state = 4;
-          } else if (line.contains("public class ")) {
-            templateHead.append(line.replaceAll("public class \\S*", "public class " + name) + "\n");
-          } else if (line.contains("END TEMPLATE")) {
-            state = 4;
-          } else if (line.contains("BEGIN SOLUTION")) {
-            state = 2;
-          } else if (line.contains("BEGIN HIDDEN")) {
-            savedState = 1;
-            state      = 5;
-          } else {
-            templateHead.append(line + "\n");
-          }
-          break;
-        case 2: /* solution */
-          correction.append(line + "\n");
-          if (line.contains("END TEMPLATE")) {
-            System.out.println(Game.i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.", shownFilename));
-            state = 4;
-          } else if (line.contains("END SOLUTION")) {
-            if (seenTemplate)
-              state = 3;
-            else
-              state = 4; // Jump directly to end of template
-          } else {
-            solution.append(line + "\n");
-          }
-          break;
-        case 3: /* template tail */
-          correction.append(line + "\n");
-          if (line.contains("END TEMPLATE")) {
-            if (!seenTemplate)
-              System.out.println(Game.i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.", shownFilename));
+    /* The tail starts with a \n so that Python sees it as a new block, even if the student left indented blank lines at the end of the template */
+    String head      = text(segments, Kind.HEAD);
+    String tail      = "\n" + text(segments, Kind.TAIL);
+    boolean hasBegin = Arrays.stream(lines).anyMatch(l -> l.contains("BEGIN TEMPLATE") || l.contains("BEGIN SOLUTION"));
+    if (lang.isC() && hasBegin && !head.contains("#line"))
+      head += "#line 1 \"" + name + ".c\" \n";
 
-            state = 4;
-          } else if (line.contains("BEGIN SOLUTION")) {
-            throw new RuntimeException(Game.i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN.", shownFilename));
-          } else if (line.contains("BEGIN HIDDEN")) {
-            savedState = 3;
-            state      = 5;
-          } else {
-            templateTail.append(line + "\n");
-          }
-          break;
-        case 4: /* end of file */
-          correction.append(line + "\n");
-          if (line.contains("END TEMPLATE"))
-            if (!seenTemplate)
-              System.out.println(Game.i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.", shownFilename));
-
-          tail.append(line + "\n");
-          break;
-        case 5: /* Hidden but not bodied */
-          correction.append(line + "\n");
-          if (line.contains("END HIDDEN")) {
-            state = savedState;
-          }
-          break;
-        default:
-          throw new RuntimeException(Game.i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.", shownFilename, state));
-      }
-    }
-    if (state == 3) {
-      if (seenTemplate)
-        System.out.println(
-            Game.i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.", shownFilename, state));
-    } else if (state != 4)
-      System.out.println(Game.i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",
-                                      shownFilename, state));
-
-    String initialContent = templateHead.toString() + templateTail.toString();
+    String initialContent = text(segments, Kind.TEMPLATE);
+    String imports        = text(segments, Kind.IMPORT);
     String headContent;
     if (lang.isPython() || lang.isScala() || lang.isC()) {
-      headContent = head.toString();
+      headContent = head;
     } else {
-      headContent = head.toString().replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
+      headContent = head.replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
     }
 
     String template = (headContent + "$body" + tail);
@@ -226,6 +122,159 @@ public class EntityTemplateParser {
 
     // extraction (step 2) is not computed here: this parser stays unaware of any per-language marker syntax, see
     // ExerciseTemplated.newSourceFromFile() and TemplatedEntity's own javadoc.
-    return new TemplatedEntity(initialContent, template, offset, correction.toString(), null);
+    return new TemplatedEntity(initialContent, template, offset, correction, imports, null);
+  }
+
+  /**
+   * Where a run of lines sits relative to the markers. HIDDEN only exists inside the template; elsewhere hidden lines are plain HEAD/TAIL.
+   * IMPORT lines are never part of HEAD, TEMPLATE nor TAIL, wherever they are written.
+   */
+  enum Kind { HEAD, TEMPLATE, SOLUTION, HIDDEN, IMPORT, TAIL }
+
+  /** Consecutive lines of one {@link Kind}, each ended by a \n. Marker lines belong to no segment. */
+  record Segment(Kind kind, String text) {}
+
+  private enum Marker {
+    BEGIN_TEMPLATE("BEGIN TEMPLATE"),
+    END_TEMPLATE("END TEMPLATE"),
+    BEGIN_SOLUTION("BEGIN SOLUTION"),
+    END_SOLUTION("END SOLUTION"),
+    BEGIN_HIDDEN("BEGIN HIDDEN"),
+    END_HIDDEN("END HIDDEN"),
+    BEGIN_IMPORT("BEGIN IMPORT"),
+    END_IMPORT("END IMPORT");
+
+    final String text;
+    Marker(String text) { this.text = text; }
+
+    /** The marker written on this line, or null. Markers are expected alone on their line. */
+    static Marker of(String line)
+    {
+      for (Marker m : values())
+        if (line.contains(m.text))
+          return m;
+      return null;
+    }
+  }
+
+  private enum Phase { BEFORE, IN_TEMPLATE, AFTER }
+
+  private static final Pattern CLASS_DECLARATION = Pattern.compile("\\bclass\\s+\\w+");
+
+  /** Concatenates the text of all segments of the given kinds, in file order. */
+  private static String text(List<Segment> segments, Kind... kinds)
+  {
+    EnumSet<Kind> wanted = EnumSet.copyOf(Arrays.asList(kinds));
+    StringBuilder sb     = new StringBuilder();
+    for (Segment s : segments)
+      if (wanted.contains(s.kind()))
+        sb.append(s.text());
+    return sb.toString();
+  }
+
+  /** Rewrites the first class declaration to use {@code name}, and the first package line to {@code $package}. Marker lines are left alone. */
+  private static String[] rewriteDeclarations(String[] lines, String name)
+  {
+    String[] res      = lines.clone();
+    boolean classDone = false, packageDone = false;
+    for (int i = 0; i < res.length; i++) {
+      if (Marker.of(res[i]) != null)
+        continue;
+      Matcher m = CLASS_DECLARATION.matcher(res[i]);
+      if (!classDone && m.find()) {
+        res[i]    = m.replaceFirst("class " + Matcher.quoteReplacement(name));
+        classDone = true;
+      } else if (!packageDone && res[i].contains("package")) {
+        res[i]      = "$package ";
+        packageDone = true;
+      }
+    }
+    return res;
+  }
+
+  /**
+   * Splits the lines into segments, checking that markers are well-formed on the way: BEGIN/END pairs are matched and not
+   * nested, there is at most one TEMPLATE and one SOLUTION (any number of IMPORT sections), and no BEGIN marker comes after the end of the template.
+   *
+   * @throws RuntimeException on the first ill-formed marker
+   */
+  static List<Segment> split(String[] lines, String shownFilename)
+  {
+    List<Segment> segments = new ArrayList<>();
+    StringBuilder current  = new StringBuilder();
+    Kind currentKind       = Kind.HEAD;
+
+    Phase phase          = Phase.BEFORE;
+    boolean inSolution   = false;
+    boolean seenSolution = false;
+    boolean inHidden     = false;
+    boolean inImport     = false;
+
+    for (int i = 0; i < lines.length; i++) {
+      Marker marker = Marker.of(lines[i]);
+      boolean legal = true;
+      if (marker != null) {
+        switch (marker) {
+          case BEGIN_TEMPLATE:
+            legal = phase == Phase.BEFORE && !inSolution && !inHidden && !inImport && !seenSolution;
+            phase = Phase.IN_TEMPLATE;
+            break;
+          case END_TEMPLATE:
+            legal = phase == Phase.IN_TEMPLATE && !inSolution && !inHidden && !inImport;
+            phase = Phase.AFTER;
+            break;
+          case BEGIN_SOLUTION:
+            legal        = phase != Phase.AFTER && !inSolution && !seenSolution && !inHidden && !inImport;
+            inSolution   = true;
+            seenSolution = true;
+            break;
+          case END_SOLUTION:
+            legal      = inSolution;
+            inSolution = false;
+            if (phase == Phase.BEFORE) // solution without template: the tail starts right after it
+              phase = Phase.AFTER;
+            break;
+          case BEGIN_HIDDEN:
+            legal    = !inHidden && !inSolution && !inImport;
+            inHidden = true;
+            break;
+          case END_HIDDEN:
+            legal    = inHidden;
+            inHidden = false;
+            break;
+          case BEGIN_IMPORT:
+            legal    = !inImport && !inSolution && !inHidden;
+            inImport = true;
+            break;
+          case END_IMPORT:
+            legal    = inImport;
+            inImport = false;
+            break;
+        }
+        if (!legal)
+          throw new RuntimeException(Game.i18n.tr("{0}, line {1}: unexpected \"{2}\". Please fix your entity.", shownFilename, i + 1, marker.text));
+      }
+
+      Kind kind = inImport                                   ? Kind.IMPORT
+                  : inSolution                               ? Kind.SOLUTION
+                  : (inHidden && phase == Phase.IN_TEMPLATE) ? Kind.HIDDEN
+                  : phase == Phase.BEFORE                    ? Kind.HEAD
+                  : phase == Phase.IN_TEMPLATE               ? Kind.TEMPLATE
+                                                             : Kind.TAIL;
+      if (kind != currentKind) {
+        if (current.length() > 0)
+          segments.add(new Segment(currentKind, current.toString()));
+        current     = new StringBuilder();
+        currentKind = kind;
+      }
+      if (marker == null)
+        current.append(lines[i]).append("\n");
+    }
+    if (current.length() > 0)
+      segments.add(new Segment(currentKind, current.toString()));
+
+    if (phase == Phase.IN_TEMPLATE || inSolution || inHidden || inImport)
+      throw new RuntimeException(Game.i18n.tr("{0}: end of file reached inside a BEGIN/END block. Please fix your entity.", shownFilename));
+    return segments;
   }
 }

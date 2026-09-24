@@ -92,29 +92,37 @@ one for the STUDENT's current editor content. It happens in two separate steps.
 extracts each language's own pieces right away
 
 Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded.
-`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file and runs it character-by-character (line-by-line)
-through a hand-written state machine (states 0 to 5) driven by marker comments found in the file: `BEGIN/END TEMPLATE`,
-`BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`. `BEGIN/END HIDDEN` is stripped from what the student sees but kept in the
-correction (e.g. helper code the student shouldn't have to read). Out of that pass, it builds several `StringBuffer`s:
-- `head`/`tail`: the file content strictly outside the templated region (before `BEGIN TEMPLATE`/after `END TEMPLATE`,
-  or the whole file if only `BEGIN/END SOLUTION` is used).
-- `templateHead`/`templateTail`: inside the templated region but outside the solution -- concatenated together as
-  `initialContent`, what the student sees in the editor the first time.
-- `solution`: the reference implementation, discarded here (it goes into `correction` below, not into what the student sees).
-- `correction`: the *entire* file content again, unchanged except for the class/package name rewrite.
+`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
+1. `rewriteDeclarations()` rewrites the first `class` declaration to use the exercise's own class name, and the first line
+   containing `package` to `$package`.
+2. `split()` cuts the lines into a list of `Segment(kind, text)`, driven by marker comments: `BEGIN/END TEMPLATE`,
+   `BEGIN/END SOLUTION`, `BEGIN/END HIDDEN`, `BEGIN/END IMPORT`. Markers are language-agnostic (matched anywhere in
+   a line) and are expected alone on their line: marker lines belong to no segment. The kinds are `HEAD` (before the
+   template, or before the solution if there is no template), `TEMPLATE`, `SOLUTION`, `HIDDEN`, `IMPORT` and `TAIL`.
+   `HIDDEN` only exists inside the template (elsewhere, hidden lines are plain `HEAD`/`TAIL`), while `IMPORT` lines
+   are never part of `HEAD`, `TEMPLATE` or `TAIL`. The markers are validated on the fly: BEGIN/END pairs must match and
+   cannot be nested, there is at most one `TEMPLATE` and one `SOLUTION`, and no BEGIN comes after `END TEMPLATE`. Any
+   violation throws a `RuntimeException` with the file name and line number.
+3. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
+- `head`/`tail`: the `HEAD`/`TAIL` segments, i.e. the file content strictly outside the templated region (before
+  `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used).
+- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution and the hidden
+  sections), what the student sees in the editor the first time.
+- `imports`: the `IMPORT` segments.
+- the `SOLUTION` and `HIDDEN` segments are not used here: they only reach the student through `correction`.
+- `correction`: the *entire* file content again (marker lines included), unchanged except for the class/package name rewrite.
 
-It then does bookkeeping common to all languages: rewrites the `class`/`package` line to use the exercise's own class name,
-inserts a `#line` C preprocessor directive so compiler errors point at the right file for C, collapses `initialContent`'s
+It then does bookkeeping common to all languages: inserts a `#line` C preprocessor directive so compiler errors point at the right file for C, collapses `initialContent`'s
 leading whitespace to the smallest common indentation, and folds `head`+`tail` down to a single line for Java 
 (the Python/Scala/C compilers/offset-tracking don't need that flattening the way javac's line-based error reporting does).
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), and `offset` is `head`'s line count
 (meant to translate a compiler error's line number back into the student's own editor coordinates -- not wired to
 anything yet, see the TODOs). An optional `patternString` (`s/regex/replacement/;...`, only used by a couple of
 exercises) can further rewrite `template` and `initialContent` at this point. The result is a `TemplatedEntity` record:
-`initialContent`, `template`, `offset`, `correction`, plus `extraction` (still empty at this point, filled in next).
+`initialContent`, `template`, `offset`, `correction`, `imports`, plus `extraction` (still empty at this point, filled in next).
 
 Right after `parse()` returns, still inside `newSourceFromFile()`, `ProgrammingLanguage.extract(correction, template,
-name)` is called on the concrete language to do step 2 immediately below -- rather than waiting for the first compile,
+imports, name)` is called on the concrete language to do step 2 immediately below -- rather than waiting for the first compile,
 as it used to. `Exercise.newSource()` then stores `(name, initialContent, extraction, offset, correction)` as one
 `SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`. `correction` and `offset` are kept on
 `SourceFile` even though templating itself has no further use for them past this point: `GitSpy` and
@@ -127,11 +135,13 @@ reserved for a still-missing feature (see the TODOs).
 and lives in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
 `TemplatedRemoteLang`/`JvmTemplatedLang`):
 - Java/Scala re-extract pieces out of the *raw* `correction` string using their own marker syntax (comment-delimited,
-  e.g. `/* BEGIN DEPENDENCY */.../* END DEPENDENCY */`, `/* BEGIN IMPORT */.../* END IMPORT */`, both in
-  `JvmTemplatedLang`): the `run()` method's own text (`extractRunFunction()`/`extractRunSpan()` -- brace-matching for
-  Java/Scala, indentation-based for Python's own override), any extra dependency code, extra imports, and which
+  e.g. `/* BEGIN DEPENDENCY */.../* END DEPENDENCY */`, in `JvmTemplatedLang`): the `run()` method's own text
+  (`extractRunFunction()`/`extractRunSpan()` -- brace-matching for Java/Scala, indentation-based for Python's own
+  override) and any extra dependency code. The extra imports are not re-extracted: they come from step 1's `imports`
+  as is. They also guess which `RemoteXxx`
+  micro-world glue file to compile against
   `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in the source, e.g. `"Buggle"` ->
-  `RemoteBuggle`, see `TemplatedRemoteLang.getRemote()`). Java/Scala also each rebuild their own per-compile `template`
+  `RemoteBuggle`, see `TemplatedRemoteLang.getRemote()`). Each also rebuilds its own per-compile `template`
   string (`getCorrectedTemplate()`), picking one of three class-body shapes depending on whether the file's templated
   region and `run()`'s own braces overlap, are nested, or are disjoint; Python has an equivalent three-case
   `getCorrectedTemplate()` of its own.

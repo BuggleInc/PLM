@@ -236,10 +236,10 @@ public class LangScala extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  @Override public JvmExtraction extract(String correction, String template, String name) throws PLMCompilerException
+  @Override public JvmExtraction extract(String correction, String template, String imports, String name) throws PLMCompilerException
   {
-    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), extractImportDependency(correction),
-                             getCorrectedTemplate(correction), deriveCorrectionBody(correction, name));
+    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), imports, getCorrectedTemplate(correction),
+                             deriveCorrectionBody(correction, name));
   }
 
   /**

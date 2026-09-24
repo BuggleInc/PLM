@@ -27,7 +27,7 @@ void tree(int steps, double length, double angle, double shrink)	{
 	}
 	/* END SOLUTION */
 }
-/* END TEMPLATE */
+/* BEGIN HIDDEN */
 void subtree(int steps, double length, double angle, double shrink)	{
 	if (steps != 0) {
 		setColor(black);
@@ -38,9 +38,10 @@ void subtree(int steps, double length, double angle, double shrink)	{
 		subtree(steps-1, length*shrink, angle, shrink);
 		right(angle);
 		backward(length);
-	}
-	/* END SOLUTION */
+        }
 }
+/* END HIDDEN */
+/* END TEMPLATE */
 
 void run() {
 	tree(getParamInt(0),getParamDouble(1),getParamDouble(2),getParamDouble(3));

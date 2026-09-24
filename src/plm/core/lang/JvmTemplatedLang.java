@@ -32,9 +32,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /** Java/Scala's extra code delimited with BEGIN DEPENDENCY/END DEPENDENCY must carry over verbatim */
   protected static String extractRunDependency(String code) { return extractMarkedSection(code, "/* BEGIN DEPENDENCY */", "/* END DEPENDENCY */"); }
 
-  /** Java/Scala's extra imports delimited with BEGIN IMPORT/END IMPORT. */
-  protected static String extractImportDependency(String code) { return extractMarkedSection(code, "/* BEGIN IMPORT */", "/* END IMPORT */"); }
-
   /**
    * Everything Java/Scala's compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly,
    * right after step 1 (see {@code ExerciseTemplated.newSourceFromFile()}), rather than lazily on first compile.
@@ -43,7 +40,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    *
    * @param remote         the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
    *                       turns that into a compile failure)
-   * @param rawImports     the raw content of any BEGIN/END IMPORT section(s), NOT the full $imports replacement
+   * @param rawImports     the content of any BEGIN/END IMPORT section(s), as split out by the entity parser, NOT the full $imports replacement
    *                       compileExo() builds (which also injects packageNameCache-qualified lines)
    * @param correctionBody see {@link LanguageExtraction#correctionBody()}
    */

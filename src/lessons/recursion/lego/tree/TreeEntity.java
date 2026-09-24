@@ -51,7 +51,7 @@ public class TreeEntity extends Turtle {
     }
     /* END SOLUTION */
   }
-  /* END TEMPLATE */
+  /* BEGIN HIDDEN */
   public void subtree(int steps, double length, double angle, double shrink)
   {
     if (steps != 0) {
@@ -64,8 +64,9 @@ public class TreeEntity extends Turtle {
       right(angle);
       backward(length);
     }
-    /* END SOLUTION */
   }
+  /* END HIDDEN */
+  /* END TEMPLATE */
 
   public void run() { tree(getParamInt(0), getParamDouble(1), getParamDouble(2), getParamDouble(3)); }
 }

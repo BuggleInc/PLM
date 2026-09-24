@@ -62,7 +62,7 @@ public class EntityTemplateParserTest {
     TemplatedEntity e = parse(content, new LangJava());
 
     Assertions.assertEquals("int a;\n", e.initialContent());
-    Assertions.assertEquals("$package  public class Bar {   $body } ", e.template());
+    Assertions.assertEquals("$package  public class Bar {    $body } ", e.template());
     Assertions.assertEquals(1, e.offset());
     Assertions.assertTrue(e.correction().startsWith("$package \npublic class Bar {\n"));
   }
@@ -84,5 +84,29 @@ public class EntityTemplateParserTest {
         EntityTemplateParser.parse(lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # END TEMPLATE"), new LangPython(), "Bar", "Foo", "s/a/z/");
 
     Assertions.assertEquals("  z = 1\n", e.initialContent());
+  }
+
+  /** IMPORT sections are exposed separately and removed from the head, but kept in the correction. */
+  @Test public void testJavaImports()
+  {
+    TemplatedEntity e = parse(lines("/* BEGIN IMPORT */", "import java.util.Stack;", "/* END IMPORT */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
+                                    "  int a;", "  /* END TEMPLATE */", "}"),
+                              new LangJava());
+
+    Assertions.assertEquals("import java.util.Stack;\n", e.imports());
+    Assertions.assertEquals("public class Bar { $body } ", e.template());
+    Assertions.assertEquals("int a;\n", e.initialContent());
+    Assertions.assertTrue(e.correction().contains("import java.util.Stack;"));
+  }
+
+  @Test public void testUnclosedImport()
+  {
+    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN IMPORT */", "import java.util.Stack;"), new LangJava()));
+  }
+
+  @Test public void testSolutionInsideImport()
+  {
+    Assertions.assertThrows(RuntimeException.class,
+                            () -> parse(lines("/* BEGIN IMPORT */", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END IMPORT */"), new LangJava()));
   }
 }

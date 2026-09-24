@@ -20,6 +20,8 @@ import plm.core.lang.LanguageExtraction;
  * @param offset          number of lines in head, used to translate a compiler error's line number back to the
  *                         student's own editor coordinates
  * @param correction      the whole entity file, unchanged except for the class/package name rewrite
+ * @param imports         the lines found between BEGIN IMPORT and END IMPORT markers (any number of sections), which are not part of
+ *                         {@code template} nor {@code initialContent}, but are still in {@code correction}
  * @param extraction      this language's own once-computed extraction out of {@code correction}, or {@code null}
  */
-public record TemplatedEntity(String initialContent, String template, int offset, String correction, LanguageExtraction extraction) {}
+public record TemplatedEntity(String initialContent, String template, int offset, String correction, String imports, LanguageExtraction extraction) {}
