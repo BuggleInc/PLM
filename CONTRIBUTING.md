@@ -160,13 +160,13 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   language's own `compileExo()` reads it back with a cast (e.g. `(JvmExtraction)sf.getExtraction()` in `LangJava`,
   safe since a given `SourceFile` is only ever populated by the one language it was parsed for) to fill in a
   `runtimePatterns` map of regex->replacement (`$package`, `$run`, `$dependency`, `$imports`, ...) -- this part still
-  happens on every compile, since it depends on `packageNameForExercise()`'s per-compile hash, not on `correction`.
+  happens on every compile.
 - `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution: for
   `StudentOrCorrection.CORRECTION` it substitutes the extraction's `correctionBody` for `$body`; for `STUDENT` it
   substitutes the editor's current `body` instead; either way `runtimePatterns` is then applied on top of the result,
   and non-breaking spaces are stripped. The resulting string is written to a per-compile workspace
-  (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id, `STUDENT`/`CORRECTION` and a
-  hash of the source, so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx`
+  (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id and `STUDENT`/`CORRECTION`,
+  so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx`
   glue file and any other support file the exercise needs, then compiled/run the usual way.
 
 ## Saving the student's work: GitSpy and friends
@@ -409,7 +409,6 @@ Preparing the next release cycle
 ## TODOs
 
 TODO: ensure that HIDDEN comes after the solution (to simplify the line collapsing that helps Java computing the offset)
-TODO: would it be possible to not generate a package name in Java/Scala now that it's a separated build directory? That would further simplify the templating code by aleviating the need to rewrite a dynamic package name
 TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
 TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.
 

@@ -9,7 +9,6 @@ import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
-import plm.core.model.session.SourceFile;
 
 /**
  * Ancestor of the all programming languages, in charge of generating student code by injecting extracted pieces of the
@@ -188,36 +187,23 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   }
 
   /**
-   * Unique-enough package name for one compile, derived from the exercise id, which side gets compiled
-   * (STUDENT/CORRECTION), and a hash of the actual source content about to be compiled -- instead of a shared,
-   * manually-incremented counter (the old packageNameSuffix), which raced across concurrent compiles whenever this
-   * (singleton) language instance served two threads at once: one thread could read the workspace directory name
-   * right as another thread bumped the counter again, so the jar ended up in a directory named after one value but
-   * with a manifest naming another.
+   * Unique-enough package name for one compile, derived from the exercise id and which side gets compiled
+   * (STUDENT/CORRECTION) -- instead of a shared, manually-incremented counter (the old packageNameSuffix), which
+   * raced across concurrent compiles whenever this (singleton) language instance served two threads at once: one
+   * thread could read the workspace directory name right as another thread bumped the counter again, so the jar
+   * ended up in a directory named after one value but with a manifest naming another.
    *
-   * Same content always maps to the same name (harmless: nothing actually changed, so reusing it is fine), while
-   * any edit -- and any concurrent, unrelated compile, whose own id/content differs -- gets its own name. This
-   * mirrors LangC's ensureCachedObject() naming (baseName + hash of its own source).
-   */
-  protected String packageName(Exercise exo, Exercise.StudentOrCorrection whatToCompile, String content)
-  {
-    String id   = exo.getId().replaceAll("[^a-zA-Z0-9]", "_");
-    String hash = Integer.toHexString(content.hashCode());
-    return packageNamePrefix + id + "_" + whatToCompile + "_" + hash;
-  }
-
-  /**
-   * Convenience wrapper around {@link #packageName(Exercise, Exercise.StudentOrCorrection, String)} for the common
-   * case (Java, Scala, Python, C): the "content" to hash is simply every source file's correction, concatenated.
-   * Every one of the four languages now compiles by writing files into a per-compile workspace named after this,
-   * so this used to be duplicated in each of their compileExo() -- factored here once they all converged on it.
+   * This name is stable across compiles of the same exercise and the same side: reusing it is normally harmless,
+   * since nothing changed. The one case it does not cover is an entity file edited on disk without restarting PLM
+   * (there is no live-reload of entities otherwise, so this is a developer-only corner case): the old id-plus-a-
+   * hash-of-the-source scheme picked up such changes automatically by landing in a fresh directory; this one does
+   * not, so pick "clean workspace" (or restart PLM) after editing an entity file, or delete the stale directory by
+   * hand under the language's own tempFolder.
    */
   protected String packageNameForExercise(Exercise exo, Exercise.StudentOrCorrection whatToCompile)
   {
-    StringBuilder allCorrections = new StringBuilder();
-    for (SourceFile sf : exo.getSourceFilesList(this))
-      allCorrections.append(sf.getCorrection());
-    return packageName(exo, whatToCompile, allCorrections.toString());
+    String id = exo.getId().replaceAll("[^a-zA-Z0-9]", "_");
+    return packageNamePrefix + id + "_" + whatToCompile;
   }
 
   protected static final String packageNamePrefix = "plm.runtime";

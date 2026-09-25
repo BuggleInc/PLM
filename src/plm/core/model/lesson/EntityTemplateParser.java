@@ -53,7 +53,7 @@ public class EntityTemplateParser {
        * predictably ends up on the same compiled line as head, giving offset 0 below. A "//" comment in head would then
        * swallow everything joined after it on that line (including $body itself), so line comments must be stripped first;
        * this must not touch correction/initialContent/imports/dependencies, which stay a faithful copy of the file. */
-      headContent = head.replaceAll("//.*", "").replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
+      headContent = head.replaceAll("//.*", "").replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOL
     }
 
     String template = (headContent + "$body" + tail);
