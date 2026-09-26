@@ -79,15 +79,15 @@ public class LangJava extends JvmTemplatedLang {
     String template;
     if (runSpan != null && runSpan[0] <= runFunctionI && endTemplateIndex != -1 && beginTemplateIndex <= runFunctionI && runFunctionI <= endTemplateIndex) {
       // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included).
-      template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\t\n$body\n}";
+      template = "package generated;\n\n$imports\n\npublic class Entity {\n$dependency\n\t\n$body\n}";
     } else if (runSpan != null && runSpan[0] <= beginTemplateIndex && endTemplateIndexEnd <= runSpan[1]) {
       // The templated region sits fully inside run()'s braces, but run()'s own declaration line is outside it: the
       // templated text is just run()'s body.
-      template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n\tpublic void run(){\n$body\t}\n}";
+      template = "package generated;\n\n$imports\n\npublic class Entity {\n$dependency\n\tpublic void run(){\n$body\t}\n}";
     } else {
       // run() and the templated region are disjoint (e.g. templated code lives in a separate step()-like method): keep
       // run() intact via $run, and place the templated text elsewhere in the class body via $body.
-      template = "$package\n\n$imports\n\npublic class Entity {\n$dependency\n$run\n\t\n$body\n}";
+      template = "package generated;\n\n$imports\n\npublic class Entity {\n$dependency\n$run\n\t\n$body\n}";
     }
     return template;
   }
@@ -100,7 +100,7 @@ public class LangJava extends JvmTemplatedLang {
                              deriveCorrectionBody(correction, name));
   }
 
-  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File... files) throws PLMCompilerException
+  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, File... files) throws PLMCompilerException
   {
     for (File javaFile : files) {
 
@@ -119,8 +119,9 @@ public class LangJava extends JvmTemplatedLang {
 
     try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
       // set CLASS_PATH="" (empty) instead of java.class.path, so that the student code cannot see PLM's own classes.
-      // CLASS_OUTPUT not specified (as if -d were omitted) so that the .class files land next to their .java source
+      // CLASS_OUTPUT is classOutputDir itself, so ".class" files land nested under their "generated/" package folder.
       fileManager.setLocation(StandardLocation.CLASS_PATH, List.of());
+      fileManager.setLocation(StandardLocation.CLASS_OUTPUT, List.of(classOutputDir));
 
       Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
       boolean success                                     = compiler.getTask(null, fileManager, diagnostic, null, null, compilationUnits).call();
@@ -135,34 +136,29 @@ public class LangJava extends JvmTemplatedLang {
     }
   }
 
-  private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File root, File packageFolder, File jarFile, File mainFile, File... files)
+  private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File root, File packageFolder, File jarFile, File mainFile)
       throws PLMCompilerException
   {
-
-    Set<File> allFiles = new HashSet<>();
-    allFiles.add(mainFile);
-    allFiles.addAll(List.of(files));
 
     if (!packageFolder.toPath().toString().startsWith(root.toPath().toString())) {
       throw new PLMCompilerException("Root folder (" + root.toPath() + ") is not above package folder (" + packageFolder.toPath() + ") in file hierarchy.",
                                      Set.of(), new Error(), diagnostic);
     }
 
-    String packagePath = packageFolder.toPath().toString().substring(root.toPath().toString().length() + 1);
-    String packageName = packagePath.replace('/', '.');
+    // Every class compiles under the fixed "generated" package (see compileJavaFiles(), which sets CLASS_OUTPUT to
+    // packageFolder itself), so ".class" files land nested under a "generated/" folder there, same as any normal -d
+    // compile -- walk packageFolder for them rather than deriving their location from the ".java" source files,
+    // which no longer tells us where javac put the output.
+    String mainFileDotPath = "generated." + mainFile.getName().substring(0, mainFile.getName().indexOf('.'));
 
-    String mainFileDotPath = packageName + "." + mainFile.getName().substring(0, mainFile.getName().indexOf('.'));
+    List<String> classFiles;
+    try (var paths = Files.walk(packageFolder.toPath())) {
+      classFiles = paths.filter(p -> p.toString().endsWith(".class")).map(p -> packageFolder.toPath().relativize(p).toString()).toList();
+    } catch (IOException e) {
+      throw new PLMCompilerException(e.getMessage(), Set.of(), new Error(), diagnostic);
+    }
 
-    List<String> classFiles = allFiles.stream()
-                                  .map(s -> {
-                                    String javaPath = s.toPath().toString();
-                                    return javaPath.substring(0, javaPath.lastIndexOf('.')) + ".class";
-                                  })
-                                  .filter(s -> s.endsWith(".class"))
-                                  .toList();
-    classFiles = classFiles.stream().map(s -> s.substring(root.toPath().toString().length() + 1)).toList();
-
-    runJarTool(root, jarFile, mainFileDotPath, new HashSet<>(classFiles), diagnostic);
+    runJarTool(packageFolder, jarFile, mainFileDotPath, new HashSet<>(classFiles), diagnostic);
   }
 
   @Override public boolean isJava() { return true; }
@@ -177,10 +173,10 @@ public class LangJava extends JvmTemplatedLang {
     return brokenLanguageState != BrokenLanguageState.Usable;
   }
 
-  public String getRemoteJavaFile(String remoteName, String packageName)
+  public String getRemoteJavaFile(String remoteName)
   {
     String remoteCode         = loadRemoteFile(remoteName, "java", ".java");
-    String packageDeclaration = "package " + packageName + ";";
+    String packageDeclaration = "package generated;";
 
     if (remoteCode.startsWith("package"))
       remoteCode = remoteCode.replaceFirst("package .*;", packageDeclaration);
@@ -190,10 +186,10 @@ public class LangJava extends JvmTemplatedLang {
     return remoteCode;
   }
 
-  private String copyFile(String path, String packageName) throws IOException
+  private String copyFile(String path) throws IOException
   {
     String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
-    content        = content.replaceFirst("package .*;", "package " + packageName + ";\n");
+    content        = content.replaceFirst("package .*;", "package generated;\n");
     return content;
   }
 
@@ -202,11 +198,8 @@ public class LangJava extends JvmTemplatedLang {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
     Map<String, String> runtimePatterns = new TreeMap<String, String>();
-    runtimePatterns.put("\\$package", "package " + packageNameCache + ";");
 
-    String mainRemoteContent =
-        getRemoteJavaFile(null, packageNameCache).replace("import static ValueSerializer.*;", "import static " + packageNameCache + ".ValueSerializer.*;");
-    ;
+    String mainRemoteContent = getRemoteJavaFile(null);
 
     String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
@@ -219,10 +212,10 @@ public class LangJava extends JvmTemplatedLang {
 
         runtimePatterns.put("\\$run", extraction.runFunction());
         runtimePatterns.put("\\$dependency", extraction.dependency());
-        runtimePatterns.put("\\$imports", ("import static " + packageNameCache + ".ValueSerializer.*;\n"
+        runtimePatterns.put("\\$imports", ("import static generated.ValueSerializer.*;\n"
                                            + "import java.awt.Color;\n"
-                                           + "import static " + packageNameCache + ".Remote.*;\n"
-                                           + "import static " + packageNameCache + "." + remote + ".*;\n" + extraction.rawImports())
+                                           + "import static generated.Remote.*;\n"
+                                           + "import static generated." + remote + ".*;\n" + extraction.rawImports())
                                               .replace('\n', ' '));
 
         String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
@@ -236,16 +229,13 @@ public class LangJava extends JvmTemplatedLang {
 
         File mainRemote = new File(workspace, "Remote.java");
 
-        String entityRemoteContent =
-            getRemoteJavaFile(remote, packageNameCache).replace("import static Remote.*;", "import static " + packageNameCache + ".Remote.*;");
-        File entityRemote = new File(workspace, remote + ".java");
+        String entityRemoteContent = getRemoteJavaFile(remote);
+        File entityRemote          = new File(workspace, remote + ".java");
 
         File entityFile = new File(workspace, "Entity.java");
         File mainFile   = new File(workspace, "Main.java");
 
-        String mainContent = "package " + packageNameCache + ";\n"
-                             + "import " + packageNameCache + ".Entity;\n"
-                             + "import " + packageNameCache + ".Remote;\n"
+        String mainContent = "package generated;\n"
                              + "\n"
                              + "public class Main {\n"
                              + "   public static void main(String[] args) {\n"
@@ -276,18 +266,18 @@ public class LangJava extends JvmTemplatedLang {
             for (String sourcePath : extraSourcePaths) {
               String originalFqcn = fqcnFromSourcePath(sourcePath);
               String simpleName   = fileNameWithoutExtension(sourcePath);
-              content             = content.replace("import " + originalFqcn + ";", "import " + packageNameCache + "." + simpleName + ";");
+              content             = content.replace("import " + originalFqcn + ";", "import generated." + simpleName + ";");
             }
             return content;
           };
 
           entityCode = rewriteExtraImports.apply(entityCode);
-          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFile("src/plm/core/ValueSerializer.java", packageNameCache)));
+          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFile("src/plm/core/ValueSerializer.java")));
 
           List<File> extraFiles = new ArrayList<>();
           for (String sourcePath : extraSourcePaths) {
             File extraFile = new File(workspace, new File(sourcePath).getName());
-            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFile(sourcePath, packageNameCache)));
+            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFile(sourcePath)));
             extraFiles.add(extraFile);
           }
 
@@ -300,13 +290,10 @@ public class LangJava extends JvmTemplatedLang {
 
           List<File> filesToCompile = new ArrayList<>(List.of(mainFile, mainRemote, entityRemote, entityFile, valueSerializer));
           filesToCompile.addAll(extraFiles);
-          compileJavaFiles(diagnostic, filesToCompile.toArray(File[] ::new));
+          compileJavaFiles(diagnostic, workspace, filesToCompile.toArray(File[] ::new));
 
           File jarFile = new File(workspace, "Code.jar");
-          List<File> filesToJar =
-              new ArrayList<>(List.of(entityFile, mainRemote, entityRemote, valueSerializer, new File(workspace, "ValueSerializer$Parser.class")));
-          filesToJar.addAll(extraFiles);
-          createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile, filesToJar.toArray(File[] ::new));
+          createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
 
           jarPath = jarFile.toPath().toString();
 
@@ -413,7 +400,7 @@ public class LangJava extends JvmTemplatedLang {
 
     String wrapCode(String name, String body)
     {
-      return "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static Remote.*;\nimport java.awt.Color;\n\npublic class " + name + " {" +
+      return "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static generated.Remote.*;\nimport java.awt.Color;\n\npublic class " + name + " {" +
           body.replace("\n", "\n\t") + "\n}";
     }
   }

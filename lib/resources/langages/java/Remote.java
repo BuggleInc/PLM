@@ -1,4 +1,4 @@
-import static ValueSerializer.*;
+import static generated.ValueSerializer.*;
 
 import java.awt.Color;
 import java.io.*;

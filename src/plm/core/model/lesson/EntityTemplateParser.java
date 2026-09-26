@@ -22,13 +22,14 @@ public class EntityTemplateParser {
   /**
    * @param content        the raw content of the entity file, as read from disk
    * @param lang           the language this entity file is written in
-   * @param name           the class/package name to substitute in the file's own class/package declaration
+   * @param name           the class name to substitute in the file's own class declaration; the package line, if any, is rewritten to the fixed "generated"
+   *     instead
    * @param shownFilename  the human-readable file name, only used in warning/error messages
    * @param patternString  optional {@code s/regex/replacement/;...} rewrites applied to template/initialContent
    */
   public static TemplatedEntity parse(String content, ProgrammingLanguage lang, String name, String shownFilename, String patternString)
   {
-    String[] lines             = rewriteDeclarations(content.split("\n"), name);
+    String[] lines             = rewriteDeclarations(content.split("\n"), name, lang);
     List<Segment> segments     = split(lines, shownFilename);
     StringBuilder correctionSb = new StringBuilder();
     for (String line : lines)
@@ -173,8 +174,12 @@ public class EntityTemplateParser {
     return sb.toString();
   }
 
-  /** Rewrites the first class declaration to use {@code name}, and the first package line to {@code $package}. Marker lines are left alone. */
-  private static String[] rewriteDeclarations(String[] lines, String name)
+  /**
+   * Rewrites the first class declaration to use {@code name}, and the first package line to the fixed "generated" (Java/Scala
+   *  only: "import static X.*;" needs a real package, even though it does not need to be a per-exercise one, as we use separate
+   *  directories and processes to ensure that runs never collide). Marker lines are left alone.
+   */
+  private static String[] rewriteDeclarations(String[] lines, String name, ProgrammingLanguage lang)
   {
     String[] res      = lines.clone();
     boolean classDone = false, packageDone = false;
@@ -185,8 +190,8 @@ public class EntityTemplateParser {
       if (!classDone && m.find()) {
         res[i]    = m.replaceFirst("class " + Matcher.quoteReplacement(name));
         classDone = true;
-      } else if (!packageDone && res[i].contains("package")) {
-        res[i]      = "$package ";
+      } else if (!packageDone && res[i].contains("package") && (lang.isJava() || lang.isScala())) {
+        res[i]      = "package generated" + (lang.isScala() ? "" : ";");
         packageDone = true;
       }
     }

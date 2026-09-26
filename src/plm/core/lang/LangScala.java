@@ -223,13 +223,13 @@ public class LangScala extends JvmTemplatedLang {
     String template;
     if (beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex) {
       // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included).
-      template = "$package\n\n$imports\n\nobject Entity {\n$dependency\n\t\n$body\n}";
+      template = "package generated\n\n$imports\n\nobject Entity {\n$dependency\n\t\n$body\n}";
     } else if (runSpan[0] <= beginTemplateIndexRaw && endTemplateIndexEnd <= runSpan[1]) {
       // The templated region sits fully inside run()'s braces, but run()'s own declaration line is outside it.
-      template = "$package\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}";
+      template = "package generated\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}";
     } else {
       // Genuinely disjoint (validated above): a separate templated method, run() itself untouched.
-      template = "$package\n\n$imports\n\nobject Entity {\n$dependency\n$run\n\t\n$body\n}";
+      template = "package generated\n\n$imports\n\nobject Entity {\n$dependency\n$run\n\t\n$body\n}";
     }
     return template;
   }
@@ -338,10 +338,10 @@ public class LangScala extends JvmTemplatedLang {
     runJarTool(packageFolder, jarFile, mainClassDotPath, classFiles, diagnostic);
   }
 
-  public String getRemoteScalaFile(String remoteName, String packageName)
+  public String getRemoteScalaFile(String remoteName)
   {
     String remoteCode         = loadRemoteFile(remoteName, "scala", ".scala");
-    String packageDeclaration = "package " + packageName;
+    String packageDeclaration = "package generated";
 
     if (remoteCode.startsWith("package"))
       remoteCode = remoteCode.replaceFirst("package .*", packageDeclaration);
@@ -351,12 +351,12 @@ public class LangScala extends JvmTemplatedLang {
     return remoteCode;
   }
 
-  private String copyFile(String path, String packageName) throws IOException
+  private String copyFile(String path) throws IOException
   {
     String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
     // Java source files copied in verbatim (e.g. RecList.java, ValueSerializer.java, Point.java) use "package x.y.z;",
     // Scala's own generated files use "package x.y.z" (no semicolon) -- replaceFirst matches either.
-    content = content.replaceFirst("package [^;\\n]*;?", "package " + packageName + (path.endsWith(".java") ? ";" : ""));
+    content = content.replaceFirst("package [^;\\n]*;?", "package generated" + (path.endsWith(".java") ? ";" : ""));
     return content;
   }
 
@@ -365,10 +365,8 @@ public class LangScala extends JvmTemplatedLang {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
     Map<String, String> runtimePatterns = new TreeMap<String, String>();
-    runtimePatterns.put("\\$package", "package " + packageNameCache + ";");
 
-    String mainRemoteContent =
-        getRemoteScalaFile(null, packageNameCache).replace("import ValueSerializer._", "import " + packageNameCache + ".ValueSerializer._");
+    String mainRemoteContent = getRemoteScalaFile(null);
 
     String jarPathAndMain                          = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
@@ -381,10 +379,10 @@ public class LangScala extends JvmTemplatedLang {
 
         runtimePatterns.put("\\$run", extraction.runFunction());
         runtimePatterns.put("\\$dependency", extraction.dependency());
-        runtimePatterns.put("\\$imports", ("import " + packageNameCache + ".ValueSerializer._; "
+        runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
                                            + "import java.awt.Color; "
-                                           + "import " + packageNameCache + ".Remote._; "
-                                           + "import " + packageNameCache + "." + remote + "._; " + extraction.rawImports())
+                                           + "import generated.Remote._; "
+                                           + "import generated." + remote + "._; " + extraction.rawImports())
                                               .replace('\n', ' '));
 
         String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
@@ -399,13 +397,13 @@ public class LangScala extends JvmTemplatedLang {
 
         File mainRemote = new File(workspace, "Remote.scala");
 
-        String entityRemoteContent = getRemoteScalaFile(remote, packageNameCache).replace("import Remote._", "import " + packageNameCache + ".Remote._");
+        String entityRemoteContent = getRemoteScalaFile(remote);
         File entityRemote          = new File(workspace, remote + ".scala");
 
         File entityFile = new File(workspace, "Entity.scala");
         File mainFile   = new File(workspace, "Main.scala");
 
-        String mainContent = "package " + packageNameCache + "\n"
+        String mainContent = "package generated\n"
                              + "\n"
                              + "object Main {\n"
                              + "  def main(args: Array[String]): Unit = {\n"
@@ -433,18 +431,18 @@ public class LangScala extends JvmTemplatedLang {
             for (String sourcePath : extraSourcePaths) {
               String originalFqcn = fqcnFromSourcePath(sourcePath);
               String simpleName   = fileNameWithoutExtension(sourcePath);
-              content             = content.replace("import " + originalFqcn + ";", "import " + packageNameCache + "." + simpleName + ";");
+              content             = content.replace("import " + originalFqcn + ";", "import generated." + simpleName + ";");
             }
             return content;
           };
 
           entityCode = rewriteExtraImports.apply(entityCode);
-          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFile("src/plm/core/ValueSerializer.java", packageNameCache)));
+          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFile("src/plm/core/ValueSerializer.java")));
 
           List<File> extraFiles = new ArrayList<>();
           for (String sourcePath : extraSourcePaths) {
             File extraFile = new File(workspace, new File(sourcePath).getName());
-            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFile(sourcePath, packageNameCache)));
+            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFile(sourcePath)));
             extraFiles.add(extraFile);
           }
 
@@ -471,9 +469,9 @@ public class LangScala extends JvmTemplatedLang {
             walk.filter(p -> p.toString().endsWith(".class")).forEach(p -> classFiles.add(workspace.toPath().relativize(p).toString()));
           }
 
-          createJarFile(diagnostic, workspace, jarFile, packageNameCache + ".Main", classFiles);
+          createJarFile(diagnostic, workspace, jarFile, "generated.Main", classFiles);
 
-          jarPathAndMain = jarFile.toPath().toString() + "|" + packageNameCache + ".Main";
+          jarPathAndMain = jarFile.toPath().toString() + "|generated.Main";
 
         } catch (IOException e) {
           throw new RuntimeException(e);

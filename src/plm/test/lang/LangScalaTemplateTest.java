@@ -39,7 +39,7 @@ public class LangScalaTemplateTest {
                         + "\t\t/* END SOLUTION */\n"
                         + "\t}\n"
                         + "}";
-    assertAccepted(correction, "$package\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}");
+    assertAccepted(correction, "package generated\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}");
   }
 
   @Test public void testTemplateBeginWithoutEnd() { assertRejected("def run() { /* BEGIN TEMPLATE */ foo() }", "must be paired one-to-one"); }
@@ -82,7 +82,7 @@ public class LangScalaTemplateTest {
                         + "  /* END SOLUTION */\n"
                         + "}\n"
                         + "/* END TEMPLATE */";
-    assertAccepted(correction, "$package\n\n$imports\n\nobject Entity {\n$dependency\n\t\n$body\n}");
+    assertAccepted(correction, "package generated\n\n$imports\n\nobject Entity {\n$dependency\n\t\n$body\n}");
   }
 
   /** Well-formed: the templated region sits entirely inside run()'s own body, not touching its declaration. */
@@ -95,7 +95,7 @@ public class LangScalaTemplateTest {
                         + "  /* END SOLUTION */\n"
                         + "  /* END TEMPLATE */\n"
                         + "}";
-    assertAccepted(correction, "$package\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}");
+    assertAccepted(correction, "package generated\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}");
   }
 
   /** Well-formed: the templated region is a separate method entirely, disjoint from run(). */
@@ -111,6 +111,6 @@ public class LangScalaTemplateTest {
                         + "  /* END SOLUTION */\n"
                         + "}\n"
                         + "/* END TEMPLATE */";
-    assertAccepted(correction, "$package\n\n$imports\n\nobject Entity {\n$dependency\n$run\n\t\n$body\n}");
+    assertAccepted(correction, "package generated\n\n$imports\n\nobject Entity {\n$dependency\n$run\n\t\n$body\n}");
   }
 }

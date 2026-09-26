@@ -93,8 +93,10 @@ extracts each language's own pieces right away
 
 Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded.
 `EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
-1. `rewriteDeclarations()` rewrites the first `class` declaration to use the exercise's own class name, and the first line
-   containing `package` to `$package`.
+1. `rewriteDeclarations()` rewrites the first `class` declaration to use the exercise's own class name, for
+   Java/Scala only, the first line containing `package` to the fixed `generated` (the same for every exercise):
+   `import static X.*;` needs a real package name to be legal syntax, but nothing requires that name to vary across
+   exercises (each gets its own isolated workspace directory and its own separate `java` process at run time.
 2. `split()` cuts the lines into a list of `Segment(kind, text)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
    SOLUTION`, `BEGIN/END HIDDEN`, `BEGIN/END IMPORT`, `BEGIN/END DEPENDENCY`. Markers are language-agnostic: matched anywhere in
    a line, and expected alone on their line. Marker lines belong to any segment. 
@@ -159,7 +161,7 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   implementing `LanguageExtraction` -- is stored as-is on the `SourceFile` (`SourceFile.getExtraction()`). Each
   language's own `compileExo()` reads it back with a cast (e.g. `(JvmExtraction)sf.getExtraction()` in `LangJava`,
   safe since a given `SourceFile` is only ever populated by the one language it was parsed for) to fill in a
-  `runtimePatterns` map of regex->replacement (`$package`, `$run`, `$dependency`, `$imports`, ...) -- this part still
+  `runtimePatterns` map of regex->replacement (`$run`, `$dependency`, `$imports`, ...) -- this part still
   happens on every compile.
 - `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution: for
   `StudentOrCorrection.CORRECTION` it substitutes the extraction's `correctionBody` for `$body`; for `STUDENT` it

@@ -54,7 +54,7 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals(content + "\n", e.correction());
   }
 
-  /** Java: line comments dropped from the flattened head only, class/package lines rewritten, initial content dedented. */
+  /** Java: line comments dropped from the flattened head only, class declaration rewritten, package line dropped, initial content dedented. */
   @Test public void testJavaFlatteningAndRewrites()
   {
     String content    = lines("package foo;", "public class FooEntity {", "  // comment", "  /* BEGIN TEMPLATE */", "  int a;", "  /* BEGIN SOLUTION */",
@@ -62,9 +62,10 @@ public class EntityTemplateParserTest {
     TemplatedEntity e = parse(content, new LangJava());
 
     Assertions.assertEquals("int a;\n", e.initialContent());
-    Assertions.assertEquals("$package  public class Bar {    $body } ", e.template());
+    Assertions.assertEquals(" public class Bar {    $body\n}\n", e.template());
     Assertions.assertEquals(0, e.offset());
-    Assertions.assertTrue(e.correction().startsWith("$package \npublic class Bar {\n"));
+    Assertions.assertFalse(e.template().contains("package")); // no more per-exercise package declaration
+    Assertions.assertTrue(e.correction().startsWith("\npublic class Bar {\n"));
     Assertions.assertTrue(e.correction().contains("// comment")); // correction stays a faithful copy of the file, comments included
   }
 
@@ -95,7 +96,7 @@ public class EntityTemplateParserTest {
                               new LangJava());
 
     Assertions.assertEquals("import java.util.Stack;\n", e.imports());
-    Assertions.assertEquals("public class Bar { $body } ", e.template());
+    Assertions.assertEquals("public class Bar { $body\n}\n", e.template());
     Assertions.assertEquals("int a;\n", e.initialContent());
     Assertions.assertTrue(e.correction().contains("import java.util.Stack;"));
   }
@@ -119,7 +120,7 @@ public class EntityTemplateParserTest {
                               new LangJava());
 
     Assertions.assertEquals("class Helper {}\n", e.dependencies());
-    Assertions.assertEquals("public class Bar { $body } ", e.template());
+    Assertions.assertEquals("public class Bar { $body\n}\n", e.template());
     Assertions.assertEquals("int a;\n", e.initialContent());
     Assertions.assertTrue(e.correction().contains("class Helper {}"));
   }
