@@ -411,8 +411,9 @@ Preparing the next release cycle
 ## TODOs
 
 TODO: ensure that HIDDEN comes after the solution (to simplify the line collapsing that helps Java computing the offset)
-TODO: simplify scala compilation by always using the same class name so that compileExo only returns a path, not a pair
 TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.
+
+TODO: add to the exercice a verification of the source code, so that MethodDogHouse can verify that there is only one occurence of the left() method in the source code
 
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends

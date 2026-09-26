@@ -26,7 +26,7 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
                            .getOffset();
           String msg = Game.i18n.tr("Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
                                         + "exercise. You can write left() only once in this exercise.",
-                                    (line - offset + 1), (s.getLineNumber() - offset + 1));
+                                    (line - offset), (s.getLineNumber() - offset));
 
           throw new RuntimeException(msg);
         } else {

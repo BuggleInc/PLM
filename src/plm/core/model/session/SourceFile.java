@@ -57,6 +57,13 @@ public class SourceFile {
 
   /**
    * Returns the source text that we should compile.
+   *
+   * The template (if any) has its {@code $body} placeholder substituted last, after every other {@code runtimePattern}
+   * has been applied: a pattern's replacement text may itself span several lines, which shifts how many physical lines
+   * come before {@code $body} in the final compiled file. {@link #offset} (see {@link #getOffset()}) is (re)computed at
+   * that point, as the number of lines separating the start of the generated file from {@code $body}'s own first line,
+   * so that a compiler error line number can later be translated back into the student's own editor coordinates.
+   *
    * @param runtimePatterns
    * 			some last-minute replacement to do (such as package name adjustment)
    * @param whatToRetrieve
@@ -66,16 +73,8 @@ public class SourceFile {
   public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
   {
     String template = extraction == null ? null : extraction.template();
-    String res;
+    String res      = template != null ? template : this.body;
 
-    if (whatToRetrieve == StudentOrCorrection.CORRECTION) {
-      res = template.replace("$body", extraction.correctionBody() + " \n");
-    } else if (template != null) {
-      res = template.replaceAll("\\$body", this.body + " \n");
-
-    } else {
-      res = this.body;
-    }
     if (runtimePatterns != null)
       for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
         res = res.replaceAll(pattern.getKey(), pattern.getValue());
@@ -97,6 +96,19 @@ public class SourceFile {
                              "; arch: " + System.getProperty("os.arch") + ")");
         }
       }
+
+    if (template != null) {
+      int bodyIndex = res.indexOf("$body");
+      int newlines  = 0;
+      for (int i = 0; i < bodyIndex; i++)
+        if (res.charAt(i) == '\n')
+          newlines++;
+      this.offset = newlines;
+
+      String bodyContent = whatToRetrieve == StudentOrCorrection.CORRECTION ? extraction.correctionBody() : this.body;
+      res                = res.replace("$body", bodyContent + " \n");
+    }
+
     return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
   }
 
