@@ -105,8 +105,8 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   }
 
   /**
-   * Compile the exercise, and return a textual reference to the result (a jar/binary path, a "jarPath|mainClass"
-   * pair, etc.) that {@link #runEntity} will later need to actually run it.
+   * Compile the exercise, and return a textual reference to the result (a jar or binary path) that {@link #runEntity} will
+   * later need to actually run it.
    */
   public abstract String compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
 

@@ -368,7 +368,7 @@ public class LangScala extends JvmTemplatedLang {
 
     String mainRemoteContent = getRemoteScalaFile(null);
 
-    String jarPathAndMain                          = null;
+    String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
@@ -471,7 +471,7 @@ public class LangScala extends JvmTemplatedLang {
 
           createJarFile(diagnostic, workspace, jarFile, "generated.Main", classFiles);
 
-          jarPathAndMain = jarFile.toPath().toString() + "|generated.Main";
+          jarPath = jarFile.toPath().toString();
 
         } catch (IOException e) {
           throw new RuntimeException(e);
@@ -490,28 +490,22 @@ public class LangScala extends JvmTemplatedLang {
 
       throw e;
     }
-    return jarPathAndMain;
+    return jarPath;
   }
 
   /**
-   * Runs "java -cp &lt;jarPath&gt;:&lt;scala-library.jar&gt; &lt;mainClass&gt; &lt;socketPath&gt;", executable being the
-   * "jarPath|mainClass" pair returned by compileExo(). We cannot use "java -jar" alone
-   * because a jar's Class-Path manifest attribute is only reliably resolved for relative paths, while the path of
-   * scala-library.jar is probably absolute, leading to silent failures at startup.
+   * Runs "java -cp &lt;jarPath&gt;:&lt;scala-library.jar&gt; generated.Main &lt;socketPath&gt;", executable being the jar path
+   * returned by compileExo() -- the main class is always "generated.Main". We cannot use "java -jar" alone because a jar's
+   * Class-Path manifest attribute is only reliably resolved for relative paths, while the path of scala-library.jar is probably
+   * absolute, leading to silent failures at startup.
    */
   @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {
-    String[] parts   = executable.split("\\|", 2);
-    String jarPath   = parts[0];
-    String mainClass = parts.length > 1 ? parts[1] : null;
-    if (mainClass == null)
-      throw new RuntimeException("Malformed script reference (missing main class): " + executable);
-
-    File exec = new File(jarPath);
+    File exec = new File(executable);
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    return new ProcessBuilder("java", "-cp", jarPath + File.pathSeparator + scalaLibraryJar(), mainClass, socketPath.toString());
+    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + scalaLibraryJar(), "generated.Main", socketPath.toString());
   }
 
   public static class LangScalaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {
