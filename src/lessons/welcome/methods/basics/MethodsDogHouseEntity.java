@@ -1,7 +1,6 @@
 package lessons.welcome.methods.basics;
 
 import plm.core.model.Game;
-import plm.core.model.lesson.Exercise;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsDogHouseEntity extends SimpleBuggle {
@@ -21,12 +20,11 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
     for (StackTraceElement s : Thread.currentThread().getStackTrace()) {
       if (s.getMethodName().equals("dogHouse")) {
         if (line != -1 && line != s.getLineNumber()) {
-          int offset = ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise())
-                           .getSourceFile(Game.getInstance().programmingLanguageManager.JAVA, 0)
-                           .getOffset();
+          // FIXME: Compute the right line number. Or even better, redo this verication entierely, on the PLM side by inspecting the source code before
+          // compilation
           String msg = Game.i18n.tr("Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
                                         + "exercise. You can write left() only once in this exercise.",
-                                    (line - offset), (s.getLineNumber() - offset));
+                                    line, s.getLineNumber());
 
           throw new RuntimeException(msg);
         } else {

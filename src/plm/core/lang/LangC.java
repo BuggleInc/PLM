@@ -89,7 +89,7 @@ public class LangC extends TemplatedRemoteLang {
 
     String execPath = null;
     for (SourceFile sf : sfs) {
-      String code = sf.getCompilableContent(runtimePatterns, whatToCompile);
+      String code = sf.getCompilableContent(runtimePatterns, whatToCompile).content();
       execPath    = compile(code, exo.getId(), exo, whatToCompile);
     }
     return execPath;

@@ -250,7 +250,7 @@ public class LangPython extends TemplatedRemoteLang {
                                            + "from Remote import *\n" + extraImports)
                                               .replace('\n', '\u0001'));
 
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile).content();
         entityCode        = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));

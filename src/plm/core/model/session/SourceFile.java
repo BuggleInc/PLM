@@ -15,16 +15,14 @@ public class SourceFile {
   protected String name;
   private final LanguageExtraction extraction;
   private String body;
-  private int offset;
   private String correction;
   private ISourceFileListener listener = null;
 
-  public SourceFile(String name, String initialBody, LanguageExtraction extraction, int _offset, String _correctionCtn)
+  public SourceFile(String name, String initialBody, LanguageExtraction extraction, String _correctionCtn)
   {
     this.name       = name;
     this.body       = initialBody;
     this.extraction = extraction;
-    this.offset     = _offset;
     this.correction = _correctionCtn;
   }
 
@@ -53,16 +51,22 @@ public class SourceFile {
    */
   public LanguageExtraction getExtraction() { return extraction; }
 
-  public String getCompilableContent(StudentOrCorrection whatToRetrieve) { return getCompilableContent(null, whatToRetrieve); }
+  /**
+   * The result of {@link #getCompilableContent(Map, StudentOrCorrection)}: the compilable source text, plus how many
+   * lines of it come before the student/correction body's own first line (see {@code offset} there).
+   */
+  public record CompilableContent(String content, int offset) {}
+
+  public CompilableContent getCompilableContent(StudentOrCorrection whatToRetrieve) { return getCompilableContent(null, whatToRetrieve); }
 
   /**
-   * Returns the source text that we should compile.
+   * Returns the source text that we should compile, alongside the {@code $body} offset computed along the way.
    *
    * The template (if any) has its {@code $body} placeholder substituted last, after every other {@code runtimePattern}
    * has been applied: a pattern's replacement text may itself span several lines, which shifts how many physical lines
-   * come before {@code $body} in the final compiled file. {@link #offset} (see {@link #getOffset()}) is (re)computed at
-   * that point, as the number of lines separating the start of the generated file from {@code $body}'s own first line,
-   * so that a compiler error line number can later be translated back into the student's own editor coordinates.
+   * come before {@code $body} in the final compiled file. The returned {@code offset} is the number of lines
+   * separating the start of the generated file from {@code $body}'s own first line, so that a compiler error line
+   * number can later be translated back into the student's own editor coordinates.
    *
    * @param runtimePatterns
    * 			some last-minute replacement to do (such as package name adjustment)
@@ -70,7 +74,7 @@ public class SourceFile {
    * 			whether we want to retrieve the student-provided content or the correction
    * @return
    */
-  public String getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
+  public CompilableContent getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
   {
     String template = extraction == null ? null : extraction.template();
     String res      = template != null ? template : this.body;
@@ -97,19 +101,19 @@ public class SourceFile {
         }
       }
 
+    int offset = 0;
     if (template != null) {
       int bodyIndex = res.indexOf("$body");
-      int newlines  = 0;
       for (int i = 0; i < bodyIndex; i++)
         if (res.charAt(i) == '\n')
-          newlines++;
-      this.offset = newlines;
+          offset++;
 
       String bodyContent = whatToRetrieve == StudentOrCorrection.CORRECTION ? extraction.correctionBody() : this.body;
       res                = res.replace("$body", bodyContent + " \n");
     }
 
-    return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
+    res = res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
+    return new CompilableContent(res, offset);
   }
 
   public void setListener(ISourceFileListener l) { this.listener = l; }
@@ -148,6 +152,4 @@ public class SourceFile {
   }
 
   public JScrollPane getEditorPanel(ProgrammingLanguage lang) { return new JavaEditorPanel(this, lang); }
-
-  public int getOffset() { return offset; }
 }

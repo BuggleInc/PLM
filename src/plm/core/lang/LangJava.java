@@ -218,7 +218,7 @@ public class LangJava extends JvmTemplatedLang {
                                            + "import static generated." + remote + ".*;\n" + extraction.rawImports())
                                               .replace('\n', ' '));
 
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile);
+        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile).content();
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
         entityCode        = Pattern.compile("this.").matcher(entityCode).replaceAll("");
         entityCode        = Pattern.compile("@Override").matcher(entityCode).replaceAll("");
@@ -310,7 +310,7 @@ public class LangJava extends JvmTemplatedLang {
 
       if (Game.getInstance().isDebugEnabled())
         for (SourceFile sf : exo.getSourceFilesList(this))
-          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile));
+          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile).content());
 
       throw e;
     }
