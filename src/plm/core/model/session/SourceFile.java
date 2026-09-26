@@ -57,8 +57,6 @@ public class SourceFile {
    */
   public record CompilableContent(String content, int offset) {}
 
-  public CompilableContent getCompilableContent(StudentOrCorrection whatToRetrieve) { return getCompilableContent(null, whatToRetrieve); }
-
   /**
    * Returns the source text that we should compile, alongside the {@code $body} offset computed along the way.
    *
