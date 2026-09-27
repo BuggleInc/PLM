@@ -122,9 +122,9 @@ public class LangScala extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  @Override public JvmExtraction extract(String correction, String template, String imports, String dependencies, String name) throws PLMCompilerException
+  @Override public JvmExtraction extract(String correction, String template, String imports, String helpers, String name) throws PLMCompilerException
   {
-    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), dependencies, imports, getCorrectedTemplate(correction),
+    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), helpers, imports, getCorrectedTemplate(correction),
                              deriveCorrectionBody(correction, name));
   }
 
@@ -264,7 +264,7 @@ public class LangScala extends JvmTemplatedLang {
         String remote              = checkRemoteOrFail(extraction.remote(), "Scala", exo, diagnostic);
 
         runtimePatterns.put("\\$run", extraction.runFunction());
-        runtimePatterns.put("\\$dependency", extraction.dependency());
+        runtimePatterns.put("\\$helper", extraction.helper());
         runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
                                            + "import java.awt.Color; "
                                            + "import generated.Remote._; "

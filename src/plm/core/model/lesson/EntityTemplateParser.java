@@ -12,7 +12,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
 /**
- * Parses the BEGIN/END TEMPLATE/SOLUTION/HIDDEN/IMPORT/DEPENDENCY markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
+ * Parses the BEGIN/END TEMPLATE/SOLUTION/SOLUTIONHELPER/IMPORT/HELPER markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
  * This results in a {@link TemplatedEntity} reccord.
  */
 public class EntityTemplateParser {
@@ -45,22 +45,9 @@ public class EntityTemplateParser {
 
     String initialContent = text(segments, Kind.TEMPLATE);
     String imports        = text(segments, Kind.IMPORT);
-    String dependencies   = text(segments, Kind.DEPENDENCY);
-    String headContent;
-    if (lang.isPython() || lang.isScala() || lang.isC()) {
-      headContent = head;
-    } else {
-      /* Java only: flatten head onto a single physical line, so that $body always starts right there too -- its first line
-       * predictably ends up on the same compiled line as head, giving offset 0 below. A "//" comment in head would then
-       * swallow everything joined after it on that line (including $body itself), so line comments must be stripped first;
-       * this must not touch correction/initialContent/imports/dependencies, which stay a faithful copy of the file. */
-      headContent = head.replaceAll("//.*", "").replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOL
-    }
+    String helpers        = text(segments, Kind.HELPER);
 
-    String template = (headContent + "$body" + tail);
-    /* How many physical lines of the compiled file come before $body's own first line: head's line count when kept as is,
-     * or 0 when flattened above (head and $body's first line then share the same physical line). */
-    int offset = (lang.isPython() || lang.isScala() || lang.isC()) ? headContent.split("\n").length : 0;
+    String template = head + "$body" + tail;
 
     /* Remove the unnecessary leading spaces from the initial content */
     Pattern newLinePattern = Pattern.compile("\n", Pattern.MULTILINE);
@@ -95,14 +82,6 @@ public class EntityTemplateParser {
       }
     }
 
-    /* Java: remove any \n from template to not desynchronize line numbers between compiler and editor
-     * Python: We should obviously not change blank signs in Python
-     * Scala: no need since our compiler's front-end is aware of these offsets */
-    if (lang.isJava()) {
-      Matcher newLineMatcher = newLinePattern.matcher(template);
-      template               = newLineMatcher.replaceAll(" ");
-    }
-
     /* Apply all requested rewrites, if any */
     if (patternString != null) {
       Map<String, String> patterns = new HashMap<String, String>();
@@ -122,14 +101,15 @@ public class EntityTemplateParser {
 
     // extraction (step 2) is not computed here: this parser stays unaware of any per-language marker syntax, see
     // ExerciseTemplated.newSourceFromFile() and TemplatedEntity's own javadoc.
-    return new TemplatedEntity(initialContent, template, offset, correction, imports, dependencies, null);
+    return new TemplatedEntity(initialContent, template, correction, imports, helpers, null);
   }
 
   /**
-   * Where a run of lines sits relative to the markers. HIDDEN only exists inside the template; elsewhere hidden lines are plain HEAD/TAIL.
-   * IMPORT and DEPENDENCY lines are never part of HEAD, TEMPLATE nor TAIL, wherever they are written.
+   * Where a run of lines sits relative to the markers. SOLUTIONHELPER only exists inside the template; elsewhere
+   * solution-helper lines are plain HEAD/TAIL. IMPORT and HELPER lines are never part of HEAD, TEMPLATE nor TAIL,
+   * wherever they are written.
    */
-  enum Kind { HEAD, TEMPLATE, SOLUTION, HIDDEN, IMPORT, DEPENDENCY, TAIL }
+  enum Kind { HEAD, TEMPLATE, SOLUTION, SOLUTIONHELPER, IMPORT, HELPER, TAIL }
 
   /** Consecutive lines of one {@link Kind}, each ended by a \n. Marker lines belong to no segment. */
   record Segment(Kind kind, String text) {}
@@ -137,14 +117,15 @@ public class EntityTemplateParser {
   private enum Marker {
     BEGIN_TEMPLATE("BEGIN TEMPLATE"),
     END_TEMPLATE("END TEMPLATE"),
+    // SOLUTION HELPER must be listed before SOLUTION to ensure that SOLUTIONHELPER are not read as SOLUTION by error
+    BEGIN_SOLUTIONHELPER("BEGIN SOLUTIONHELPER"),
+    END_SOLUTIONHELPER("END SOLUTIONHELPER"),
     BEGIN_SOLUTION("BEGIN SOLUTION"),
     END_SOLUTION("END SOLUTION"),
-    BEGIN_HIDDEN("BEGIN HIDDEN"),
-    END_HIDDEN("END HIDDEN"),
     BEGIN_IMPORT("BEGIN IMPORT"),
     END_IMPORT("END IMPORT"),
-    BEGIN_DEPENDENCY("BEGIN DEPENDENCY"),
-    END_DEPENDENCY("END DEPENDENCY");
+    BEGIN_HELPER("BEGIN HELPER"),
+    END_HELPER("END HELPER");
 
     final String text;
     Marker(String text) { this.text = text; }
@@ -200,7 +181,7 @@ public class EntityTemplateParser {
 
   /**
    * Splits the lines into segments, checking that markers are well-formed on the way: BEGIN/END pairs are matched and not
-   * nested, there is at most one TEMPLATE and one SOLUTION (any number of IMPORT/DEPENDENCY sections), and no BEGIN marker comes after the end of the template.
+   * nested, there is at most one TEMPLATE and one SOLUTION (any number of IMPORT/HELPER sections), and no BEGIN marker comes after the end of the template.
    *
    * @throws RuntimeException on the first ill-formed marker
    */
@@ -210,12 +191,12 @@ public class EntityTemplateParser {
     StringBuilder current  = new StringBuilder();
     Kind currentKind       = Kind.HEAD;
 
-    Phase phase          = Phase.BEFORE;
-    boolean inSolution   = false;
-    boolean seenSolution = false;
-    boolean inHidden     = false;
-    boolean inImport     = false;
-    boolean inDependency = false;
+    Phase phase              = Phase.BEFORE;
+    boolean inSolution       = false;
+    boolean seenSolution     = false;
+    boolean inSolutionHelper = false;
+    boolean inImport         = false;
+    boolean inHelper         = false;
 
     for (int i = 0; i < lines.length; i++) {
       Marker marker = Marker.of(lines[i]);
@@ -223,15 +204,15 @@ public class EntityTemplateParser {
       if (marker != null) {
         switch (marker) {
           case BEGIN_TEMPLATE:
-            legal = phase == Phase.BEFORE && !inSolution && !inHidden && !inImport && !inDependency && !seenSolution;
+            legal = phase == Phase.BEFORE && !inSolution && !inSolutionHelper && !inImport && !inHelper && !seenSolution;
             phase = Phase.IN_TEMPLATE;
             break;
           case END_TEMPLATE:
-            legal = phase == Phase.IN_TEMPLATE && !inSolution && !inHidden && !inImport && !inDependency;
+            legal = phase == Phase.IN_TEMPLATE && !inSolution && !inSolutionHelper && !inImport && !inHelper;
             phase = Phase.AFTER;
             break;
           case BEGIN_SOLUTION:
-            legal        = phase != Phase.AFTER && !inSolution && !seenSolution && !inHidden && !inImport && !inDependency;
+            legal        = phase != Phase.AFTER && !inSolution && !seenSolution && !inSolutionHelper && !inImport && !inHelper;
             inSolution   = true;
             seenSolution = true;
             break;
@@ -241,42 +222,42 @@ public class EntityTemplateParser {
             if (phase == Phase.BEFORE) // solution without template: the tail starts right after it
               phase = Phase.AFTER;
             break;
-          case BEGIN_HIDDEN:
-            legal    = !inHidden && !inSolution && !inImport && !inDependency;
-            inHidden = true;
+          case BEGIN_SOLUTIONHELPER:
+            legal            = !inSolutionHelper && !inSolution && !inImport && !inHelper;
+            inSolutionHelper = true;
             break;
-          case END_HIDDEN:
-            legal    = inHidden;
-            inHidden = false;
+          case END_SOLUTIONHELPER:
+            legal            = inSolutionHelper;
+            inSolutionHelper = false;
             break;
           case BEGIN_IMPORT:
-            legal    = !inImport && !inSolution && !inHidden;
+            legal    = !inImport && !inSolution && !inSolutionHelper;
             inImport = true;
             break;
           case END_IMPORT:
             legal    = inImport;
             inImport = false;
             break;
-          case BEGIN_DEPENDENCY:
-            legal        = !inDependency && !inImport && !inSolution && !inHidden;
-            inDependency = true;
+          case BEGIN_HELPER:
+            legal    = !inHelper && !inImport && !inSolution && !inSolutionHelper;
+            inHelper = true;
             break;
-          case END_DEPENDENCY:
-            legal        = inDependency;
-            inDependency = false;
+          case END_HELPER:
+            legal    = inHelper;
+            inHelper = false;
             break;
         }
         if (!legal)
           throw new RuntimeException(Game.i18n.tr("{0}, line {1}: unexpected \"{2}\". Please fix your entity.", shownFilename, i + 1, marker.text));
       }
 
-      Kind kind = inDependency                               ? Kind.DEPENDENCY
-                  : inImport                                 ? Kind.IMPORT
-                  : inSolution                               ? Kind.SOLUTION
-                  : (inHidden && phase == Phase.IN_TEMPLATE) ? Kind.HIDDEN
-                  : phase == Phase.BEFORE                    ? Kind.HEAD
-                  : phase == Phase.IN_TEMPLATE               ? Kind.TEMPLATE
-                                                             : Kind.TAIL;
+      Kind kind = inHelper                                           ? Kind.HELPER
+                  : inImport                                         ? Kind.IMPORT
+                  : inSolution                                       ? Kind.SOLUTION
+                  : (inSolutionHelper && phase == Phase.IN_TEMPLATE) ? Kind.SOLUTIONHELPER
+                  : phase == Phase.BEFORE                            ? Kind.HEAD
+                  : phase == Phase.IN_TEMPLATE                       ? Kind.TEMPLATE
+                                                                     : Kind.TAIL;
       if (kind != currentKind) {
         if (current.length() > 0)
           segments.add(new Segment(currentKind, current.toString()));
@@ -289,7 +270,7 @@ public class EntityTemplateParser {
     if (current.length() > 0)
       segments.add(new Segment(currentKind, current.toString()));
 
-    if (phase == Phase.IN_TEMPLATE || inSolution || inHidden || inImport || inDependency)
+    if (phase == Phase.IN_TEMPLATE || inSolution || inSolutionHelper || inImport || inHelper)
       throw new RuntimeException(Game.i18n.tr("{0}: end of file reached inside a BEGIN/END block. Please fix your entity.", shownFilename));
     return segments;
   }

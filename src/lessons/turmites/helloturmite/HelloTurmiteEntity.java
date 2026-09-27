@@ -8,7 +8,7 @@ import lessons.turmites.universe.TurmiteEntity;
 public class HelloTurmiteEntity extends TurmiteEntity {
   /* BEGIN TEMPLATE */
   final static int STOP = 0; /* for example */
-  /* BEGIN HIDDEN */
+  /* BEGIN SOLUTIONHELPER */
   final static int NOTURN = 1;
   final static int LEFT   = 2;
   final static int BACK   = 4;
@@ -17,7 +17,7 @@ public class HelloTurmiteEntity extends TurmiteEntity {
   final static int NEXT_COLOR = 0;
   final static int NEXT_MOVE  = 1;
   final static int NEXT_STATE = 2;
-  /* END HIDDEN */
+  /* END SOLUTIONHELPER */
 
   int state = 0;
 

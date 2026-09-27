@@ -924,7 +924,7 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
+msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
 msgstr ""
 "{0}: வார்ப்புரு வாலில் தீர்வைத் தொடங்குங்கள். மறைக்கத் தொடங்க அதை மாற்றவும்."
 

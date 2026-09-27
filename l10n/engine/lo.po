@@ -859,8 +859,8 @@ msgstr "{0}: ພົບ END TEMPLATE ໂດຍທີ່ບໍ່ມີ BEGIN TEMP
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
-msgstr "{0}: ພົບສ່ວນເລີ່ມຕົ້ນຂອງຄຳຕອບຢູ່ທ້າຍເທມເພຼດ. ໃຫ້ປ່ຽນເປັນ BEGIN HIDDEN."
+msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
+msgstr "{0}: ພົບສ່ວນເລີ່ມຕົ້ນຂອງຄຳຕອບຢູ່ທ້າຍເທມເພຼດ. ໃຫ້ປ່ຽນເປັນ BEGIN SOLUTIONHELPER."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format

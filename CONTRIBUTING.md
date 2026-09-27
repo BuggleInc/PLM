@@ -98,19 +98,18 @@ Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, o
    `import static X.*;` needs a real package name to be legal syntax, but nothing requires that name to vary across
    exercises (each gets its own isolated workspace directory and its own separate `java` process at run time.
 2. `split()` cuts the lines into a list of `Segment(kind, text)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
-   SOLUTION`, `BEGIN/END HIDDEN`, `BEGIN/END IMPORT`, `BEGIN/END DEPENDENCY`. Markers are language-agnostic: matched anywhere in
-   a line, and expected alone on their line. Marker lines belong to any segment. 
+   SOLUTION`, `BEGIN/END SOLUTIONHELPER`, `BEGIN/END IMPORT`, `BEGIN/END HELPER`. Markers are language-agnostic: matched
+   anywhere in a line, and expected alone on their line. Marker lines are removed and thus not part of any segment.
    
    The kinds are:
    - `HEAD`: (out of any marker) before the template, or before the solution if there is no template
    - `IMPORT`: extra headers that must be added to the student entity for it to compile
-   - `DEPENDENCY`: some helper functions to be copied within both the student code and the correction code, but not to be shown
-     to the student in any way.
+   - `HELPER`: some helper functions to be copied within both the student code and the correction code, but not to be shown
+     to the student.
    - `TEMPLATE`: part of the code that will be presented to the student
      - `SOLUTION`: the code to use instead of the student code to produce the correction entity. Must be part of TEMPLATE if it
        exists, or may be alone when no TEMPLATE exists at all.
-     - `HIDDEN`: code that must be kept for the correction but not for the student-facing code. It must be within the TEMPLATE
-       and come after the SOLUTION. BDR2Entity use it
+     - `SOLUTIONHELPER`: code that must be kept for the correction but not for the student-facing code. Must be within TEMPLATE
    - `TAIL`: (out of any marker)
    
    Any invalid markup throws a RuntimeException: incorrect matching of BEGIN/END, incorrect nesting of segments, more than one
@@ -118,10 +117,10 @@ Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, o
 3. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
 - `head`/`tail`: the `HEAD`/`TAIL` segments, i.e. the file content strictly outside the templated region (before
   `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used).
-- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution and the hidden
+- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution and the solution-helper
   sections), what the student sees in the editor the first time.
 - `imports`: the `IMPORT` segments.
-- the `SOLUTION` and `HIDDEN` segments are not used here: they only reach the student through `correction`.
+- the `SOLUTION` and `SOLUTIONHELPER` segments are not used here: they only reach the student through `correction`.
 - `correction`: the *entire* file content again (marker lines included), unchanged except for the class/package name rewrite.
 
 It then does bookkeeping common to all languages: inserts a `#line` C preprocessor directive so compiler errors point at
@@ -143,7 +142,7 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
 `TemplatedRemoteLang`/`JvmTemplatedLang`):
 - Java/Scala/Python re-extract pieces out of the *raw* `correction` string: the `run()` method's own text
   (`extractRunFunction()`/`extractRunSpan()` -- brace-matching for Java/Scala, indentation-based for Python's own
-  override) and any extra dependency code. The extra imports are not re-extracted: they come from step 1's `imports`
+  override) and any extra helper code. The extra imports are not re-extracted: they come from step 1's `imports`
   as is. They also guess which `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in
   the source by `TemplatedRemoteLang.getRemote()`). Each also rebuilds its own per-compile `template`
   string (`getCorrectedTemplate()`), picking one of three class-body shapes depending on whether the file's templated
@@ -159,7 +158,7 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   implementing `LanguageExtraction` -- is stored as-is on the `SourceFile` (`SourceFile.getExtraction()`). Each
   language's own `compileExo()` reads it back with a cast (e.g. `(JvmExtraction)sf.getExtraction()` in `LangJava`,
   safe since a given `SourceFile` is only ever populated by the one language it was parsed for) to fill in a
-  `runtimePatterns` map of regex->replacement (`$run`, `$dependency`, `$imports`, ...) -- this part still
+  `runtimePatterns` map of regex->replacement (`$run`, `$helper`, `$imports`, ...) -- this part still
   happens on every compile.
 - `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution:
   - `runtimePatterns` is applied first to `template` (which still holds the literal `$body` placeholder after this step)
@@ -428,4 +427,4 @@ TODO: Precompile the correction entities within the jar file so that they don't 
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
 TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process)
 TODO: benchmark the tests to understand where the time goes, and optimize this out
-TODO: ensure that the templating honors the BEGIN/END HIDDEN section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method. For example, TreeEntity hides the subtree method this way
+TODO: ensure that the templating honors the BEGIN/END SOLUTIONHELPER section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method. For example, TreeEntity hides the subtree method this way

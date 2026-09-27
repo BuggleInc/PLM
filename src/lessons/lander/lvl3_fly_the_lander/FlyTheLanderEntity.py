@@ -17,7 +17,7 @@ def run():
     # END TEMPLATE
     
     def step():
-    # BEGIN HIDDEN
+    # BEGIN SOLUTIONHELPER
         if (getX() < startPos):
             setDesiredAngle(-30)
         elif (getX() > endPos):
@@ -33,7 +33,7 @@ def run():
             setDesiredThrust(4)
         else:
             setDesiredThrust(3)    
-    # END HIDDEN
+    # END SOLUTIONHELPER
     
     
     initialize()

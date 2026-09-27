@@ -31,7 +31,7 @@ void run() {
 }
 /* END TEMPLATE */
 
-/* BEGIN HIDDEN */
+/* BEGIN SOLUTIONHELPER */
 
 int getPlayerColorInsert(int pos) {
 	return getPlayerColor(pos / getPositionsAmount(), pos % getPositionsAmount());
@@ -52,5 +52,4 @@ void out(char* msg) {
 	}
 
 }
-/* END HIDDEN */
-
+/* END SOLUTIONHELPER */

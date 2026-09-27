@@ -795,7 +795,7 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
+msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
 msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203

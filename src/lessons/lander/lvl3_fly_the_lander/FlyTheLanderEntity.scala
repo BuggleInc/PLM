@@ -16,12 +16,12 @@ class FlyTheLanderEntity extends LanderEntity {
   }
 
   /* BEGIN TEMPLATE */
-  /* BEGIN HIDDEN */
+  /* BEGIN SOLUTIONHELPER */
   var targetStart=0.0
   var targetEnd=0.0
-  /* END HIDDEN */
+  /* END SOLUTIONHELPER */
   override def initialize() {
-    /* BEGIN HIDDEN */
+    /* BEGIN SOLUTIONHELPER */
     var lastPoint:Point = getGround.get(0);
     for (point <- getGround()) {
       if (point != lastPoint) { // Avoid the loop when point is on the first element
@@ -32,7 +32,7 @@ class FlyTheLanderEntity extends LanderEntity {
       }
       lastPoint = point
     }
-    /* END HIDDEN */
+    /* END SOLUTIONHELPER */
   }
 
   override def step() {

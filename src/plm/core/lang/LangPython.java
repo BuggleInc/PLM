@@ -140,7 +140,7 @@ public class LangPython extends TemplatedRemoteLang {
    * all, so they are NOT part of this record; only what compileExo() reads out of {@code correction} itself is.
    * {@code template()} delegates to {@code corrected.template()} to satisfy {@link LanguageExtraction}.
    */
-  public record PythonExtraction(String remote, String runFunction, String dependency, CorrectedTemplate corrected, String correctionBody)
+  public record PythonExtraction(String remote, String runFunction, String helper, CorrectedTemplate corrected, String correctionBody)
       implements LanguageExtraction
   {
     @Override public String template()
@@ -149,12 +149,12 @@ public class LangPython extends TemplatedRemoteLang {
     }
   }
 
-  @Override public PythonExtraction extract(String correction, String template, String imports, String dependencies, String name)
+  @Override public PythonExtraction extract(String correction, String template, String imports, String helpers, String name)
   {
     CorrectedTemplate corrected = getCorrectedTemplate(correction);
-    // Python entity files never nest "# BEGIN/END DEPENDENCY" inside the templated region, so the student-visible
+    // Python entity files never nest "# BEGIN/END HELPER" inside the templated region, so the student-visible
     // text never carries one to strip; stripMarkers() is only ever needed on this raw-correction-derived body.
-    return new PythonExtraction(getRemote(correction), extractRunFunction(correction), extractRunDependency(correction), corrected,
+    return new PythonExtraction(getRemote(correction), extractRunFunction(correction), extractRunHelper(correction), corrected,
                                 stripMarkers(corrected.bodySource()));
   }
 
@@ -198,18 +198,18 @@ public class LangPython extends TemplatedRemoteLang {
     return new CorrectedTemplate("$imports\n\n$run\n\n$body", bodySource);
   }
 
-  private static String extractRunDependency(String code)
+  private static String extractRunHelper(String code)
   {
     StringBuilder section = new StringBuilder();
     for (int i = 0; i < code.length(); i++) {
-      if (!code.startsWith("# BEGIN DEPENDENCY", i))
+      if (!code.startsWith("# BEGIN HELPER", i))
         continue;
       int begin = code.indexOf('\n', i) + 1;
-      int end   = code.indexOf("# END DEPENDENCY", i);
+      int end   = code.indexOf("# END HELPER", i);
       if (end == -1)
         break;
       section.append(code, begin, end).append("\n");
-      i = end + "# END DEPENDENCY".length();
+      i = end + "# END HELPER".length();
     }
     return section.toString();
   }
@@ -245,7 +245,7 @@ public class LangPython extends TemplatedRemoteLang {
           extraImports.append("from ").append(fileNameWithoutExtension(sourcePath)).append(" import *\n");
 
         runtimePatterns.put("\\$run", Matcher_quoteReplacement(extraction.runFunction()));
-        runtimePatterns.put("\\$dependency", Matcher_quoteReplacement(extraction.dependency()));
+        runtimePatterns.put("\\$helper", Matcher_quoteReplacement(extraction.helper()));
         runtimePatterns.put("\\$imports", ("from ValueSerializer import *\n"
                                            + "from Remote import *\n" + extraImports)
                                               .replace('\n', '\u0001'));
@@ -316,7 +316,7 @@ public class LangPython extends TemplatedRemoteLang {
     for (String line : code.split("\n", -1)) {
       String trimmed = line.strip();
       if (trimmed.startsWith("# BEGIN TEMPLATE") || trimmed.startsWith("# END TEMPLATE") || trimmed.startsWith("# BEGIN SOLUTION") ||
-          trimmed.startsWith("# END SOLUTION") || trimmed.startsWith("# BEGIN DEPENDENCY") || trimmed.startsWith("# END DEPENDENCY"))
+          trimmed.startsWith("# END SOLUTION") || trimmed.startsWith("# BEGIN HELPER") || trimmed.startsWith("# END HELPER"))
         continue;
       result.append(line).append("\n");
     }

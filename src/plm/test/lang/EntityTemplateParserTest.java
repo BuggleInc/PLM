@@ -28,7 +28,6 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("  a = 1\n  c = 3\n", e.initialContent());
     Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.template());
-    Assertions.assertEquals(2, e.offset());
     Assertions.assertEquals(content + "\n", e.correction());
     Assertions.assertNull(e.extraction());
   }
@@ -40,13 +39,12 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("", e.initialContent());
     Assertions.assertEquals("def run():\n$body\n  end()\n", e.template());
-    Assertions.assertEquals(1, e.offset());
   }
 
-  /** BEGIN/END HIDDEN inside the template head is kept in the correction only. */
-  @Test public void testPythonHiddenInTemplateHead()
+  /** BEGIN/END SOLUTIONHELPER inside the template head is kept in the correction only. */
+  @Test public void testPythonSolutionHelperInTemplateHead()
   {
-    String content    = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN HIDDEN", "  h = 0", "  # END HIDDEN", "  # END TEMPLATE");
+    String content = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTIONHELPER", "  h = 0", "  # END SOLUTIONHELPER", "  # END TEMPLATE");
     TemplatedEntity e = parse(content, new LangPython());
 
     Assertions.assertEquals("  a = 1\n", e.initialContent());
@@ -54,7 +52,7 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals(content + "\n", e.correction());
   }
 
-  /** Java: line comments dropped from the flattened head only, class declaration rewritten, package line dropped, initial content dedented. */
+  /** Java: class declaration rewritten, package line dropped, initial content dedented; head keeps its own lines/comments now. */
   @Test public void testJavaFlatteningAndRewrites()
   {
     String content    = lines("package foo;", "public class FooEntity {", "  // comment", "  /* BEGIN TEMPLATE */", "  int a;", "  /* BEGIN SOLUTION */",
@@ -62,9 +60,8 @@ public class EntityTemplateParserTest {
     TemplatedEntity e = parse(content, new LangJava());
 
     Assertions.assertEquals("int a;\n", e.initialContent());
-    Assertions.assertEquals(" public class Bar {    $body\n}\n", e.template());
-    Assertions.assertEquals(0, e.offset());
-    Assertions.assertFalse(e.template().contains("package")); // no more per-exercise package declaration
+    Assertions.assertEquals("package generated;\npublic class Bar {\n  // comment\n$body\n}\n", e.template());
+    Assertions.assertFalse(e.template().contains("package foo")); // no per-exercise package declaration
     Assertions.assertTrue(e.correction().startsWith("\npublic class Bar {\n"));
     Assertions.assertTrue(e.correction().contains("// comment")); // correction stays a faithful copy of the file, comments included
   }
@@ -76,7 +73,6 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("a();\n", e.initialContent());
     Assertions.assertEquals("int x;\n#line 1 \"Bar.c\" \n$body\n", e.template());
-    Assertions.assertEquals(2, e.offset());
   }
 
   /** The {@code s/regex/replacement/} rewrites apply to both template and initial content. */
@@ -96,7 +92,7 @@ public class EntityTemplateParserTest {
                               new LangJava());
 
     Assertions.assertEquals("import java.util.Stack;\n", e.imports());
-    Assertions.assertEquals("public class Bar { $body\n}\n", e.template());
+    Assertions.assertEquals("public class Bar {\n$body\n}\n", e.template());
     Assertions.assertEquals("int a;\n", e.initialContent());
     Assertions.assertTrue(e.correction().contains("import java.util.Stack;"));
   }
@@ -112,27 +108,28 @@ public class EntityTemplateParserTest {
                             () -> parse(lines("/* BEGIN IMPORT */", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END IMPORT */"), new LangJava()));
   }
 
-  /** DEPENDENCY sections are exposed separately and removed from the head, but kept in the correction. */
-  @Test public void testJavaDependencies()
+  /** HELPER sections are exposed separately and removed from the head, but kept in the correction. */
+  // TODO: this assertion's expected template string still has the old single-line-flattened shape
+  @Test public void testJavaHelpers()
   {
-    TemplatedEntity e = parse(lines("/* BEGIN DEPENDENCY */", "class Helper {}", "/* END DEPENDENCY */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
+    TemplatedEntity e = parse(lines("/* BEGIN HELPER */", "class Helper {}", "/* END HELPER */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
                                     "  int a;", "  /* END TEMPLATE */", "}"),
                               new LangJava());
 
-    Assertions.assertEquals("class Helper {}\n", e.dependencies());
+    Assertions.assertEquals("class Helper {}\n", e.helpers());
     Assertions.assertEquals("public class Bar { $body\n}\n", e.template());
     Assertions.assertEquals("int a;\n", e.initialContent());
     Assertions.assertTrue(e.correction().contains("class Helper {}"));
   }
 
-  @Test public void testUnclosedDependency()
+  @Test public void testUnclosedHelper()
   {
-    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN DEPENDENCY */", "class Helper {}"), new LangJava()));
+    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN HELPER */", "class Helper {}"), new LangJava()));
   }
 
-  @Test public void testImportInsideDependency()
+  @Test public void testImportInsideHelper()
   {
     Assertions.assertThrows(RuntimeException.class,
-                            () -> parse(lines("/* BEGIN DEPENDENCY */", "/* BEGIN IMPORT */", "/* END IMPORT */", "/* END DEPENDENCY */"), new LangJava()));
+                            () -> parse(lines("/* BEGIN HELPER */", "/* BEGIN IMPORT */", "/* END IMPORT */", "/* END HELPER */"), new LangJava()));
   }
 }

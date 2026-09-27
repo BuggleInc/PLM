@@ -11,7 +11,7 @@ public class BDR2Entity extends SimpleBuggle {
    * (because we want all buggle to follow the same relative trajectory).
    * It is intended to help the process of board creation. */
 
-  /* BEGIN DEPENDENCY */
+  /* BEGIN HELPER */
   boolean checking          = false;
   Stack<Character> todoList = new Stack<Character>();
   public void addTODO(String s)
@@ -85,20 +85,20 @@ public class BDR2Entity extends SimpleBuggle {
     }
     return func + "(" + getX() + "," + getY() + ")";
   }
-  /* END DEPENDENCY */
+  /* END HELPER */
 
   public void run()
   {
-    /* BEGIN HIDDEN (don't put that is student's code) */
+    /* BEGIN SOLUTIONHELPER (don't put that is student's code) */
     addTODO(getParamString(0));
-    /* END HIDDEN */
+    /* END SOLUTIONHELPER */
 
     solve();
 
-    /* BEGIN HIDDEN (don't put that is student's code) */
+    /* BEGIN SOLUTIONHELPER (don't put that is student's code) */
     if (checking && todoList.size() != 0)
       complain(getName() + "I'm done, but I was supposed to do " + fmt(todoList.pop()) + ";");
-    /* END HIDDEN */
+    /* END SOLUTIONHELPER */
   }
 
   /* BEGIN TEMPLATE */

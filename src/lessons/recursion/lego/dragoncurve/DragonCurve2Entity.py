@@ -3,7 +3,7 @@ from RemoteTurtle import *
 def run():
   # BEGIN TEMPLATE
   def dragon(order, x, y, z, t):
-    # BEGIN HIDDEN
+    # BEGIN SOLUTIONHELPER
     if (order == 1):
       setColor(Color.red)
       moveTo(z, t)
@@ -12,10 +12,10 @@ def run():
       v = (y + t - z + x) / 2
       dragon(order - 1, x, y, u, v)
       dragonInverse(order - 1, u, v, z, t)
-    # END HIDDEN
+    # END SOLUTIONHELPER
   
   def dragonInverse(order, x, y, z, t):
-    # BEGIN HIDDEN
+    # BEGIN SOLUTIONHELPER
     if (order == 1):
       setColor(Color.blue)
       moveTo(z, t)
@@ -24,7 +24,7 @@ def run():
       v = (y + t + z - x) / 2;
       dragon(order - 1, x, y, u, v);
       dragonInverse(order - 1, u, v, z, t);
-    # END HIDDEN
+    # END SOLUTIONHELPER
   # END TEMPLATE
   
   dragon(getParamInt(0), getParamDouble(1), getParamDouble(2), getParamDouble(3), getParamDouble(4))

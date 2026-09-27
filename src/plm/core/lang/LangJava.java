@@ -73,9 +73,9 @@ public class LangJava extends JvmTemplatedLang {
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  @Override public JvmExtraction extract(String correction, String template, String imports, String dependencies, String name) throws PLMCompilerException
+  @Override public JvmExtraction extract(String correction, String template, String imports, String helpers, String name) throws PLMCompilerException
   {
-    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), dependencies, imports, getCorrectedTemplate(correction),
+    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), helpers, imports, getCorrectedTemplate(correction),
                              deriveCorrectionBody(correction, name));
   }
 
@@ -190,7 +190,7 @@ public class LangJava extends JvmTemplatedLang {
         String remote             = checkRemoteOrFail(extraction.remote(), "Java", exo, diagnostic);
 
         runtimePatterns.put("\\$run", extraction.runFunction());
-        runtimePatterns.put("\\$dependency", extraction.dependency());
+        runtimePatterns.put("\\$helper", extraction.helper());
         runtimePatterns.put("\\$imports", ("import static generated.ValueSerializer.*;\n"
                                            + "import java.awt.Color;\n"
                                            + "import static generated.Remote.*;\n"

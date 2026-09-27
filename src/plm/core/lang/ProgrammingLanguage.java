@@ -86,7 +86,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
   /**
-   * Extracts and returns this language's once-per-{@code SourceFile} pieces (run()/dependency/imports/corrected
+   * Extracts and returns this language's once-per-{@code SourceFile} pieces (run()/helper/imports/corrected
    * template, see {@code JvmExtraction}/{@code PythonExtraction}) out of one entity's raw {@code correction} text.
    * Defaults to {@code null} (nothing to extract): only overridden by languages that re-parse {@code correction} with
    * their own marker syntax (Java, Scala, Python, C); LightBot needs none of this (see CONTRIBUTING.md, "From
@@ -95,11 +95,11 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    * @param correction the whole entity file, as produced by step 1 (see {@code EntityTemplateParser})
    * @param template   step 1's own "head + $body + tail" shape; only used by languages that don't rebuild their own
    *                   per-compile template (C -- Java/Scala/Python always ignore it, see their own {@code extract()})
-   * @param imports      the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
-   * @param dependencies the content of the BEGIN/END DEPENDENCY sections, as split out by step 1 (only used by Java and Scala)
+   * @param imports  the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
+   * @param helpers  the content of the BEGIN/END HELPER sections, as split out by step 1 (only used by Java and Scala)
    * @param name         the exercise's own class/package name, only used in error messages
    */
-  public LanguageExtraction extract(String correction, String template, String imports, String dependencies, String name) throws PLMCompilerException
+  public LanguageExtraction extract(String correction, String template, String imports, String helpers, String name) throws PLMCompilerException
   {
     return null;
   }

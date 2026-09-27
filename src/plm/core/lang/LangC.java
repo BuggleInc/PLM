@@ -46,11 +46,11 @@ public class LangC extends TemplatedRemoteLang {
   public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
 
   /**
-   * Unlike Java/Scala/Python, C never rebuilds its own per-compile template (no run()/dependency/imports
+   * Unlike Java/Scala/Python, C never rebuilds its own per-compile template (no run()/helper/imports
    * re-extraction, see CONTRIBUTING.md): it just reuses step 1's template unchanged, alongside the derived
    * correction body (same comment-delimited markers as Java/Scala).
    */
-  @Override public LanguageExtraction extract(String correction, String template, String imports, String dependencies, String name)
+  @Override public LanguageExtraction extract(String correction, String template, String imports, String helpers, String name)
   {
     return new SimpleExtraction(template, deriveCorrectionBody(correction, name));
   }

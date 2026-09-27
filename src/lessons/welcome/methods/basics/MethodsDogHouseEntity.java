@@ -6,10 +6,10 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class MethodsDogHouseEntity extends SimpleBuggle {
   @Override public void right() { throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead.")); }
 
-  /* BEGIN DEPENDENCY */
+  /* BEGIN HELPER */
   private int line            = -1;
   private boolean studentCode = true;
-  /* END DEPENDENCY */
+  /* END HELPER */
   @Override public void left()
   {
     if (!studentCode) {

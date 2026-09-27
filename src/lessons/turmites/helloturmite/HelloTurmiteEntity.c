@@ -4,7 +4,7 @@ Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta
 
 /* BEGIN TEMPLATE */
 #define STOP    0 /* for example */
-/* BEGIN HIDDEN */
+/* BEGIN SOLUTIONHELPER */
 #define NOTURN  1
 #define LEFT    2
 #define BACK    4
@@ -13,7 +13,7 @@ Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta
 #define NEXT_COLOR  0
 #define NEXT_MOVE   1
 #define NEXT_STATE  2
-/* END HIDDEN */
+/* END SOLUTIONHELPER */
 
 int state = 0;
 

@@ -5,9 +5,7 @@ import java.util.Map.Entry;
 import javax.swing.JScrollPane;
 import plm.core.lang.LanguageExtraction;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.Lesson;
 import plm.core.ui.JavaEditorPanel;
 
 public class SourceFile {
@@ -78,26 +76,8 @@ public class SourceFile {
     String res      = template != null ? template : this.body;
 
     if (runtimePatterns != null)
-      for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
+      for (Entry<String, String> pattern : runtimePatterns.entrySet())
         res = res.replaceAll(pattern.getKey(), pattern.getValue());
-        // This is a trap to find issue #42 that I fail to reproduce
-        if (pattern.getValue().contains("\n") && !pattern.getKey().equals("\\$run")) {
-          System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
-                             + "Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
-          System.out.println("pattern key: " + pattern.getKey());
-          System.out.println("pattern value: " + pattern.getValue());
-
-          Lesson lesson = Game.getInstance().getCurrentLesson();
-          String exo    = lesson == null ? "unknown" : lesson.getCurrentExercise().getName();
-          System.out.println("Exercise: " + exo);
-
-          System.out.println("PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" +
-                             Game.getProperty("plm.major.version", "internal", false) + "." + Game.getProperty("plm.minor.version", "", false) + ")");
-          System.out.println("Java version: " + System.getProperty("java.version") + " (VM version: " + System.getProperty("java.vm.version") + ")");
-          System.out.println("System: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") +
-                             "; arch: " + System.getProperty("os.arch") + ")");
-        }
-      }
 
     int offset = 0;
     if (template != null) {

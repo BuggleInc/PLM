@@ -14,13 +14,13 @@ public class FlyTheLanderEntity extends LanderEntity {
   }
 
   /* BEGIN TEMPLATE */
-  /* BEGIN HIDDEN */
+  /* BEGIN SOLUTIONHELPER */
   double targetStart;
   double targetEnd;
-  /* END HIDDEN */
+  /* END SOLUTIONHELPER */
   public void initialize()
   {
-    /* BEGIN HIDDEN */
+    /* BEGIN SOLUTIONHELPER */
     Point[] ground  = getGround();
     Point lastPoint = ground[0];
     for (Point point : ground) {
@@ -31,7 +31,7 @@ public class FlyTheLanderEntity extends LanderEntity {
       }
       lastPoint = point;
     }
-    /* END HIDDEN */
+    /* END SOLUTIONHELPER */
   }
 
   public void step()

@@ -41,7 +41,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    *                       compileExo() builds (which also injects packageNameCache-qualified lines)
    * @param correctionBody see {@link LanguageExtraction#correctionBody()}
    */
-  public record JvmExtraction(String remote, String runFunction, String dependency, String rawImports, String template, String correctionBody)
+  public record JvmExtraction(String remote, String runFunction, String helper, String rawImports, String template, String correctionBody)
       implements LanguageExtraction
   {
   }
@@ -108,7 +108,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    * @param runKeyword     the run() declaration's exact prefix ("void run(" for Java, "def run(" for Scala)
    * @param exampleRunDecl a realistic full run() declaration, shown in the "no run() found" error message
    */
-  private static void validateTemplateWellFormedness(String correction, String runKeyword, String exampleRunDecl) throws PLMCompilerException
+  private void validateTemplateWellFormedness(String correction, String runKeyword, String exampleRunDecl) throws PLMCompilerException
   {
     int runCount = countOccurrences(correction, runKeyword);
     if (runCount == 0)
@@ -158,7 +158,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    * @param runDeclLine    the run() declaration line used to re-wrap the "nested" case ("public void run(){" for
    *                       Java, "def run(): Unit = {" for Scala)
    */
-  protected static String getCorrectedTemplate(String correction, String runKeyword, String exampleRunDecl, String wrapperHeader, String runDeclLine)
+  protected String getCorrectedTemplate(String correction, String runKeyword, String exampleRunDecl, String wrapperHeader, String runDeclLine)
       throws PLMCompilerException
   {
     validateTemplateWellFormedness(correction, runKeyword, exampleRunDecl);
@@ -169,12 +169,12 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
     if (beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex)
       // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included).
-      return wrapperHeader + "$dependency\n\t\n$body\n}";
+      return wrapperHeader + "$helper\n\t\n$body\n}";
     if (runSpan[0] <= beginTemplateIndexRaw && endTemplateIndexEnd <= runSpan[1])
       // The templated region sits fully inside run()'s braces, but run()'s own declaration line is outside it.
-      return wrapperHeader + "$dependency\n\t" + runDeclLine + "\n$body\t}\n}";
+      return wrapperHeader + "$helper\n\t" + runDeclLine + "\n$body\t}\n}";
     // Genuinely disjoint (validated above): a separate templated method, run() itself untouched.
-    return wrapperHeader + "$dependency\n$run\n\t\n$body\n}";
+    return wrapperHeader + "$helper\n$run\n\t\n$body\n}";
   }
 
   /**

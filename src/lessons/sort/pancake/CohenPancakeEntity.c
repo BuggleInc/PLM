@@ -22,7 +22,7 @@ int max(int a, int b){
 	}
 }
 
-/* BEGIN HIDDEN */
+/* BEGIN SOLUTIONHELPER */
 int getRankOf(int size) {
 	int rank=0;
 	for (rank=0;rank<getStackSize();rank++)
@@ -98,7 +98,7 @@ int blockLength() {
 	return pos+1;
 }
 int debug=0; // 0: silence; 1: which cases; 2: all details
-/* END HIDDEN */
+/* END SOLUTIONHELPER */
 
 /* BEGIN TEMPLATE */
 void solve() {

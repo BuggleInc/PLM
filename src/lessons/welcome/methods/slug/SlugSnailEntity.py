@@ -15,7 +15,7 @@ def run():
       # END SOLUTION
    
    def hunt(color):
-      # BEGIN HIDDEN
+      # BEGIN SOLUTIONHELPER
       while not isOverBaggle():
          brushUp()
          if isFacingTrail(color):
@@ -25,7 +25,7 @@ def run():
          else:
             left()
       pickupBaggle()
-      # END HIDDEN
+      # END SOLUTIONHELPER
    # END TEMPLATE
    
    hunt(getColorIntParam())

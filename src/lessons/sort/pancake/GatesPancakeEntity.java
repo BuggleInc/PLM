@@ -22,8 +22,8 @@ public class GatesPancakeEntity extends PancakeEntity {
 
   public void run() { solve(); }
 
-  /* BEGIN HIDDEN */
-  /* END HIDDEN */
+  /* BEGIN SOLUTIONHELPER */
+  /* END SOLUTIONHELPER */
 
   /* BEGIN TEMPLATE */
   public void solve()

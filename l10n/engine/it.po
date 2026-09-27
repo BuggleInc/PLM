@@ -941,9 +941,9 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, fuzzy, java-format
-#| msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
-msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN."
-msgstr "{0}: Begin solution nella coda del template. Cambiato in BEGIN HIDDEN"
+#| msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER"
+msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
+msgstr "{0}: Begin solution nella coda del template. Cambiato in BEGIN SOLUTIONHELPER"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format

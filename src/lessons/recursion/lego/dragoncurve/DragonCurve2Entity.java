@@ -8,7 +8,7 @@ public class DragonCurve2Entity extends Turtle {
   /* BEGIN TEMPLATE */
   public void dragon(int order, double x, double y, double z, double t)
   {
-    /* BEGIN HIDDEN */
+    /* BEGIN SOLUTIONHELPER */
     double u, v;
 
     if (order == 1) {
@@ -20,12 +20,12 @@ public class DragonCurve2Entity extends Turtle {
       dragon(order - 1, x, y, u, v);
       dragonInverse(order - 1, u, v, z, t);
     }
-    /* END HIDDEN */
+    /* END SOLUTIONHELPER */
   }
 
   public void dragonInverse(int order, double x, double y, double z, double t)
   {
-    /* BEGIN HIDDEN */
+    /* BEGIN SOLUTIONHELPER */
     double u, v;
 
     if (order == 1) {
@@ -37,7 +37,7 @@ public class DragonCurve2Entity extends Turtle {
       dragon(order - 1, x, y, u, v);
       dragonInverse(order - 1, u, v, z, t);
     }
-    /* END HIDDEN */
+    /* END SOLUTIONHELPER */
   }
   /* END TEMPLATE */
 
