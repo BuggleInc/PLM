@@ -456,8 +456,8 @@ msgstr ""
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:57
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:61
 msgid ""
-"Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
-"y) instead."
+"Sorry Dave, I cannot let you use backward() in this exercise. Use "
+"setPos(x,y) instead."
 msgstr ""
 "Desculpe Dave, não o posso deixar usar backward() neste exercício. Use "
 "setPos(x,y) ao invés disto."
@@ -915,9 +915,11 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
+msgid ""
+"{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
 msgstr ""
-"{0}: Começar solução em \"template tail\". Mudar isto para BEGIN SOLUTIONHELPER."
+"{0}: Começar solução em \"template tail\". Mudar isto para BEGIN "
+"SOLUTIONHELPER."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
