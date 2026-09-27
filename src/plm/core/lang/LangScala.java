@@ -110,128 +110,14 @@ public class LangScala extends JvmTemplatedLang {
 
   private static final String RUN_KEYWORD = "def run(";
 
-  private static int countOccurrences(String haystack, String needle)
-  {
-    int count = 0;
-    for (int i = haystack.indexOf(needle); i != -1; i = haystack.indexOf(needle, i + needle.length()))
-      count++;
-    return count;
-  }
-
   /**
-   * A correction is allowed to omit '/* BEGIN TEMPLATE *\/' / '/* END TEMPLATE *\/' entirely: that legally means an
-   * empty template, as if those markers sat immediately before '/* BEGIN SOLUTION *\/' and immediately after
-   * '/* END SOLUTION *\/'. Both validateTemplateWellFormedness() and getCorrectedTemplate() need the exact same
-   * [begin, endExclusive) span, whichever pair of markers it actually comes from -- factored here once instead of
-   * duplicated in both.
-   *
-   * @return {beginTemplateIndexRaw, endTemplateIndex, endTemplateIndexEnd}, or null if neither marker pair is present.
-   */
-  private static int[] effectiveTemplateSpan(String correction)
-  {
-    String begin = correction.contains("/* BEGIN TEMPLATE */") ? "/* BEGIN TEMPLATE */" : "/* BEGIN SOLUTION */";
-    String end   = correction.contains("/* BEGIN TEMPLATE */") ? "/* END TEMPLATE */" : "/* END SOLUTION */";
-    if (!correction.contains(begin))
-      return null;
-
-    int beginTemplateIndexRaw = correction.indexOf(begin);
-    int endTemplateIndex      = correction.indexOf(end);
-    int endTemplateIndexEnd   = endTemplateIndex + end.length();
-    return new int[] {beginTemplateIndexRaw, endTemplateIndex, endTemplateIndexEnd};
-  }
-
-  /**
-   * Refuses to guess when a correction's markup is ambiguous or incomplete -- picking a plausible-looking template shape
-   * anyway is exactly what silently duplicated a primitive call in welcome.Environment earlier this session (BEGIN
-   * TEMPLATE overlapping run() in a way that doesn't match any of the 3 supported cases, so the "disjoint" fallback
-   * fired even though the whole solution was already nested inside an existing run()). Every check here exists because
-   * some real correction file, if not rejected, would make getCorrectedTemplate() produce code that compiles but
-   * behaves wrong, not code that fails to compile -- the worse failure mode, since nothing points the author at the
-   * actual problem. A missing BEGIN/END TEMPLATE pair is not such a case: see effectiveTemplateSpan().
-   */
-  private void validateTemplateWellFormedness(String correction) throws PLMCompilerException
-  {
-    int runCount = countOccurrences(correction, RUN_KEYWORD);
-    if (runCount == 0)
-      throw new PLMCompilerException("No '" + RUN_KEYWORD + "' found in the correction. Every Scala exercise must define exactly one run() method"
-                                     + " (e.g. \"def run(): Unit = { ... }\").");
-    if (runCount > 1)
-      throw new PLMCompilerException("Found " + runCount + " occurrences of '" + RUN_KEYWORD + "' in the correction, expected exactly one."
-                                     + " Rename or remove the extra one(s) (this also matches a run() mentioned only in a comment or string).");
-
-    checkMarkerPair(correction, "/* BEGIN TEMPLATE */", "/* END TEMPLATE */");
-    checkMarkerPair(correction, "/* BEGIN SOLUTION */", "/* END SOLUTION */");
-
-    int[] span = effectiveTemplateSpan(correction);
-    if (span == null) {
-      throw new PLMCompilerException("Neither '/* BEGIN TEMPLATE */' nor '/* BEGIN SOLUTION */' markers found, although run() exists. Add at least"
-                                     + " '/* BEGIN SOLUTION */' / '/* END SOLUTION */' around the templated portion -- e.g. right after"
-                                     + " \"def run() {\" and right before its closing \"}\" if the whole run() body is templated, or around a"
-                                     + " separate method if run() itself should stay untouched.");
-    }
-    int beginTemplateIndexRaw = span[0], endTemplateIndex = span[1], endTemplateIndexEnd = span[2];
-    int runFunctionI          = correction.indexOf(RUN_KEYWORD);
-    int[] runSpan             = extractRunSpan(correction, RUN_KEYWORD);
-
-    boolean case1 = beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex;
-    boolean case2 = runSpan[0] <= beginTemplateIndexRaw && endTemplateIndexEnd <= runSpan[1];
-    boolean case3 = endTemplateIndexEnd <= runSpan[0] || runSpan[1] <= beginTemplateIndexRaw;
-
-    if (!case1 && !case2 && !case3) {
-      throw new PLMCompilerException("The '/* BEGIN TEMPLATE */' / '/* END TEMPLATE */' region partially overlaps run() in a way that cannot be"
-                                     + " safely interpreted. It must either: (1) contain run()'s own declaration entirely, (2) sit entirely inside"
-                                     + " run()'s body, or (3) be entirely disjoint from run() (a separate method). Adjust the marker placement to"
-                                     + " match one of these exactly.");
-    }
-  }
-
-  private static void checkMarkerPair(String correction, String begin, String end) throws PLMCompilerException
-  {
-    int beginCount = countOccurrences(correction, begin);
-    int endCount   = countOccurrences(correction, end);
-
-    if (beginCount == 0 && endCount == 0)
-      return;
-
-    if (beginCount != endCount) {
-      throw new PLMCompilerException("'" + begin + "' appears " + beginCount + " time(s) but '" + end + "' appears " + endCount
-                                     + " time(s): they must be paired one-to-one.");
-    }
-    if (beginCount > 1) {
-      throw new PLMCompilerException("'" + begin + "' / '" + end + "' appear " + beginCount + " times; exactly one pair (or none, for '"
-                                     + begin + "') is supported.");
-    }
-    if (correction.indexOf(begin) > correction.indexOf(end))
-      throw new PLMCompilerException("'" + begin + "' appears after '" + end + "': they must appear in that order.");
-  }
-
-  /**
-   * Scala counterpart of LangJava's getCorrectedTemplate(), but built on ExerciseTemplated.extractRunSpan() (the shared,
-   * containment-based utility -- see its javadoc) instead of duplicating that logic locally.
-   *
-   * The LangJava version is separated for now (TBD) and computes the offset to ensure that the presented error messages match the code.
+   * Scala counterpart of LangJava's getCorrectedTemplate(): both now share their three-case logic and validation via
+   * {@link JvmTemplatedLang#getCorrectedTemplate}, only the run() syntax and class/object wrapper differ.
    */
   public @NonNull String getCorrectedTemplate(String correction) throws PLMCompilerException
   {
-    validateTemplateWellFormedness(correction);
-    int[] span                = effectiveTemplateSpan(correction);
-    int beginTemplateIndexRaw = span[0], endTemplateIndex = span[1], endTemplateIndexEnd = span[2];
-    int runFunctionI          = correction.indexOf(RUN_KEYWORD);
-
-    int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);
-
-    String template;
-    if (beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex) {
-      // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included).
-      template = "package generated\n\n$imports\n\nobject Entity {\n$dependency\n\t\n$body\n}";
-    } else if (runSpan[0] <= beginTemplateIndexRaw && endTemplateIndexEnd <= runSpan[1]) {
-      // The templated region sits fully inside run()'s braces, but run()'s own declaration line is outside it.
-      template = "package generated\n\n$imports\n\nobject Entity {\n$dependency\n\tdef run(): Unit = {\n$body\t}\n}";
-    } else {
-      // Genuinely disjoint (validated above): a separate templated method, run() itself untouched.
-      template = "package generated\n\n$imports\n\nobject Entity {\n$dependency\n$run\n\t\n$body\n}";
-    }
-    return template;
+    return getCorrectedTemplate(correction, RUN_KEYWORD, "def run(): Unit = { ... }", "package generated\n\n$imports\n\nobject Entity {\n",
+                                "def run(): Unit = {");
   }
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }

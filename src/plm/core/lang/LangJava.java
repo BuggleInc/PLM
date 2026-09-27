@@ -65,36 +65,15 @@ public class LangJava extends JvmTemplatedLang {
 
   private static final String RUN_KEYWORD = "void run(";
 
-  private @NonNull String getCorrectedTemplate(String correction)
+  private @NonNull String getCorrectedTemplate(String correction) throws PLMCompilerException
   {
-    int beginTemplateIndex    = correction.indexOf("/* BEGIN TEMPLATE */");
-    int beginTemplateIndexEnd = beginTemplateIndex + "/* BEGIN TEMPLATE */".length();
-    int endTemplateIndex      = correction.indexOf("/* END TEMPLATE */");
-    int endTemplateIndexEnd   = endTemplateIndex + "/* END TEMPLATE */".length();
-    int runFunctionI          = correction.indexOf(RUN_KEYWORD);
-
-    // Containment between the templated region [beginTemplateIndexRaw, endTemplateIndexEnd) and run() body
-    int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);
-
-    String template;
-    if (runSpan != null && runSpan[0] <= runFunctionI && endTemplateIndex != -1 && beginTemplateIndex <= runFunctionI && runFunctionI <= endTemplateIndex) {
-      // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included).
-      template = "package generated;\n\n$imports\n\npublic class Entity {\n$dependency\n\t\n$body\n}";
-    } else if (runSpan != null && runSpan[0] <= beginTemplateIndex && endTemplateIndexEnd <= runSpan[1]) {
-      // The templated region sits fully inside run()'s braces, but run()'s own declaration line is outside it: the
-      // templated text is just run()'s body.
-      template = "package generated;\n\n$imports\n\npublic class Entity {\n$dependency\n\tpublic void run(){\n$body\t}\n}";
-    } else {
-      // run() and the templated region are disjoint (e.g. templated code lives in a separate step()-like method): keep
-      // run() intact via $run, and place the templated text elsewhere in the class body via $body.
-      template = "package generated;\n\n$imports\n\npublic class Entity {\n$dependency\n$run\n\t\n$body\n}";
-    }
-    return template;
+    return getCorrectedTemplate(correction, RUN_KEYWORD, "public void run() { ... }", "package generated;\n\n$imports\n\npublic class Entity {\n",
+                                "public void run(){");
   }
 
   private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
 
-  @Override public JvmExtraction extract(String correction, String template, String imports, String dependencies, String name)
+  @Override public JvmExtraction extract(String correction, String template, String imports, String dependencies, String name) throws PLMCompilerException
   {
     return new JvmExtraction(getRemote(correction), extractRunFunction(correction), dependencies, imports, getCorrectedTemplate(correction),
                              deriveCorrectionBody(correction, name));
