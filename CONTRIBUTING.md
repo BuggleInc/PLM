@@ -88,11 +88,10 @@ This section is about how the single `XxxEntity.<ext>` file described in "Adding
 teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION,
 one for the STUDENT's current editor content. It happens in two separate steps, both at load time.
 
-### Step 1: `EntityTemplateParser.parse()` parses the entity file, then `ExerciseTemplated.newSourceFromFile()`
-extracts each language's own pieces right away
+### Step 1: `EntityTemplateParser.parse()` parses the entity file, then extracts each language's own pieces right away
 
-Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded.
-`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
+Called from `ExerciseTemplated.setup()` (via `newSourceFromFile()`) for every `(exercise, language)` pair, once when
+the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
 1. `rewriteDeclarations()` rewrites the first `class` declaration to use the exercise's own class name, for
    Java/Scala only, the first line containing `package` to the fixed `generated` (the same for every exercise):
    `import static X.*;` needs a real package name to be legal syntax, but nothing requires that name to vary across
@@ -127,13 +126,13 @@ It then does bookkeeping common to all languages: inserts a `#line` C preprocess
 the right file for C, and collapses `initialContent`'s leading whitespace to the smallest common indentation.
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`). An optional `patternString`
 (`s/regex/replacement/;...`, only used by a couple of exercises) can further rewrite `template` and `initialContent` at
-this point. The result is a `TemplatedEntity` record: `initialContent`, `template`, `correction`, `imports`, plus
-`extraction` (still empty at this point, filled in next).
+this point.
 
-Right after `parse()` returns, still inside `newSourceFromFile()`, `ProgrammingLanguage.extract(correction, template,
-imports, name)` is called on the concrete language to do step 2 immediately below. `Exercise.newSource()` then stores 
-`(name, initialContent, extraction, correction)` as one `SourceFileRevertable` per `(exercise, language)` in
-`Exercise.sourceFiles`. 
+Still inside `parse()`, `ProgrammingLanguage.extract(correction, template, imports, helpers, name)` is then called on
+the concrete language to do step 2 immediately below, even though `EntityTemplateParser` otherwise stays unaware of any
+per-language marker syntax. The result is a `TemplatedEntity` record: `initialContent`, `template`, `correction`,
+`imports`, `helpers`, plus that `extraction`. `Exercise.newSource()` (still called from `newSourceFromFile()`) then
+stores that whole `TemplatedEntity` as one `SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`.
 
 ### Step 2: each language extracts its own pieces out of `correction`
 

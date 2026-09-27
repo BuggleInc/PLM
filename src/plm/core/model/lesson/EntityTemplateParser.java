@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import plm.core.PLMCompilerException;
+import plm.core.lang.LanguageExtraction;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
@@ -28,6 +30,7 @@ public class EntityTemplateParser {
    * @param patternString  optional {@code s/regex/replacement/;...} rewrites applied to template/initialContent
    */
   public static TemplatedEntity parse(String content, ProgrammingLanguage lang, String name, String shownFilename, String patternString)
+      throws PLMCompilerException
   {
     String[] lines             = rewriteDeclarations(content.split("\n"), name, lang);
     List<Segment> segments     = split(lines, shownFilename);
@@ -99,9 +102,11 @@ public class EntityTemplateParser {
       }
     }
 
-    // extraction (step 2) is not computed here: this parser stays unaware of any per-language marker syntax, see
-    // ExerciseTemplated.newSourceFromFile() and TemplatedEntity's own javadoc.
-    return new TemplatedEntity(initialContent, template, correction, imports, helpers, null);
+    // Step 2 (see CONTRIBUTING.md, "From correction entity to compilable source: templating"): each language's own
+    // extract() re-parses `correction` with its own marker syntax, so this parser stays unaware of it -- see
+    // TemplatedEntity's javadoc.
+    LanguageExtraction extraction = lang.extract(correction, template, imports, helpers, name);
+    return new TemplatedEntity(initialContent, template, correction, imports, helpers, extraction);
   }
 
   /**

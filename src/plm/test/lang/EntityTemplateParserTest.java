@@ -2,6 +2,7 @@ package plm.test.lang;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import plm.core.PLMCompilerException;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
@@ -15,12 +16,15 @@ import plm.core.model.lesson.TemplatedEntity;
  */
 public class EntityTemplateParserTest {
 
-  private static TemplatedEntity parse(String content, ProgrammingLanguage lang) { return EntityTemplateParser.parse(content, lang, "Bar", "Foo", null); }
+  private static TemplatedEntity parse(String content, ProgrammingLanguage lang) throws PLMCompilerException
+  {
+    return EntityTemplateParser.parse(content, lang, "Bar", "Foo", null);
+  }
 
   private static String lines(String... l) { return String.join("\n", l); }
 
   /** BEGIN/END TEMPLATE around a BEGIN/END SOLUTION, Python: no whitespace rewriting at all. */
-  @Test public void testPythonTemplateWithSolution()
+  @Test public void testPythonTemplateWithSolution() throws PLMCompilerException
   {
     String content    = lines("import x", "def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTION", "  b = 2", "  # END SOLUTION", "  c = 3",
                               "  # END TEMPLATE", "  end()");
@@ -29,11 +33,11 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals("  a = 1\n  c = 3\n", e.initialContent());
     Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.template());
     Assertions.assertEquals(content + "\n", e.correction());
-    Assertions.assertNull(e.extraction());
+    Assertions.assertNotNull(e.extraction());
   }
 
   /** Only BEGIN/END SOLUTION: the template is empty and the tail starts right after the solution. */
-  @Test public void testPythonSolutionOnly()
+  @Test public void testPythonSolutionOnly() throws PLMCompilerException
   {
     TemplatedEntity e = parse(lines("def run():", "  # BEGIN SOLUTION", "  x = 1", "  # END SOLUTION", "  end()"), new LangPython());
 
@@ -42,7 +46,7 @@ public class EntityTemplateParserTest {
   }
 
   /** BEGIN/END SOLUTIONHELPER inside the template head is kept in the correction only. */
-  @Test public void testPythonSolutionHelperInTemplateHead()
+  @Test public void testPythonSolutionHelperInTemplateHead() throws PLMCompilerException
   {
     String content = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTIONHELPER", "  h = 0", "  # END SOLUTIONHELPER", "  # END TEMPLATE");
     TemplatedEntity e = parse(content, new LangPython());
@@ -53,7 +57,7 @@ public class EntityTemplateParserTest {
   }
 
   /** Java: class declaration rewritten, package line dropped, initial content dedented; head keeps its own lines/comments now. */
-  @Test public void testJavaFlatteningAndRewrites()
+  @Test public void testJavaFlatteningAndRewrites() throws PLMCompilerException
   {
     String content    = lines("package foo;", "public class FooEntity {", "  // comment", "  /* BEGIN TEMPLATE */", "  int a;", "  /* BEGIN SOLUTION */",
                               "  int b;", "  /* END SOLUTION */", "  /* END TEMPLATE */", "}");
@@ -67,7 +71,7 @@ public class EntityTemplateParserTest {
   }
 
   /** C: a {@code #line} directive is inserted in the head right before the template. */
-  @Test public void testCLineDirective()
+  @Test public void testCLineDirective() throws PLMCompilerException
   {
     TemplatedEntity e = parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* END TEMPLATE */"), new LangC());
 
@@ -76,7 +80,7 @@ public class EntityTemplateParserTest {
   }
 
   /** The {@code s/regex/replacement/} rewrites apply to both template and initial content. */
-  @Test public void testPatternString()
+  @Test public void testPatternString() throws PLMCompilerException
   {
     TemplatedEntity e =
         EntityTemplateParser.parse(lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # END TEMPLATE"), new LangPython(), "Bar", "Foo", "s/a/z/");
@@ -85,7 +89,7 @@ public class EntityTemplateParserTest {
   }
 
   /** IMPORT sections are exposed separately and removed from the head, but kept in the correction. */
-  @Test public void testJavaImports()
+  @Test public void testJavaImports() throws PLMCompilerException
   {
     TemplatedEntity e = parse(lines("/* BEGIN IMPORT */", "import java.util.Stack;", "/* END IMPORT */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
                                     "  int a;", "  /* END TEMPLATE */", "}"),
@@ -110,7 +114,7 @@ public class EntityTemplateParserTest {
 
   /** HELPER sections are exposed separately and removed from the head, but kept in the correction. */
   // TODO: this assertion's expected template string still has the old single-line-flattened shape
-  @Test public void testJavaHelpers()
+  @Test public void testJavaHelpers() throws PLMCompilerException
   {
     TemplatedEntity e = parse(lines("/* BEGIN HELPER */", "class Helper {}", "/* END HELPER */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
                                     "  int a;", "  /* END TEMPLATE */", "}"),

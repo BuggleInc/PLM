@@ -10,10 +10,9 @@ import plm.core.lang.LanguageExtraction;
  * {@code initialContent}/{@code template}/{@code correction} are step 1 (computed once, at lesson-load
  * time, language-agnostic beyond a few flattening/marker-syntax quirks -- see {@link EntityTemplateParser}).
  * {@code extraction} is step 2 (run() body, helpers, imports, remote-world hint, corrected template shape --
- * language-specific, e.g. {@code JvmExtraction}/{@code PythonExtraction}), computed right after step 1 by
- * {@code ExerciseTemplated.newSourceFromFile()} (via {@code ProgrammingLanguage.extract()}) rather than by
- * {@link EntityTemplateParser} itself, so this class stays unaware of any per-language marker syntax. {@code null} for
- * languages that need no such extraction (C).
+ * language-specific, e.g. {@code JvmExtraction}/{@code PythonExtraction}), computed right after step 1, still inside
+ * {@link EntityTemplateParser#parse} (via {@code ProgrammingLanguage.extract()}) even though that class otherwise
+ * stays unaware of any per-language marker syntax. {@code null} for languages that need no such extraction (C).
  *
  * @param initialContent what the student sees in the editor the first time (templateHead + templateTail)
  * @param template        head + "$body" + tail; substituting $body at compile time rebuilds a compilable source

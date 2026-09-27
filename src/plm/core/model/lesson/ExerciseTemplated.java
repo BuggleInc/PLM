@@ -10,7 +10,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
-import plm.core.lang.LanguageExtraction;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
@@ -42,10 +41,7 @@ public abstract class ExerciseTemplated extends Exercise {
     }
 
     TemplatedEntity parsed = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename, patternString);
-    // Step 2 (see CONTRIBUTING.md, "From correction entity to compilable source: templating"), computed right here
-    // rather than inside EntityTemplateParser.parse() -- see TemplatedEntity's javadoc.
-    LanguageExtraction extraction = lang.extract(parsed.correction(), parsed.template(), parsed.imports(), parsed.helpers(), name);
-    newSource(lang, name, new TemplatedEntity(parsed.initialContent(), parsed.template(), parsed.correction(), parsed.imports(), parsed.helpers(), extraction));
+    newSource(lang, name, parsed);
   }
 
   protected final void setup(World w) { setup(new World[] {w}); }
