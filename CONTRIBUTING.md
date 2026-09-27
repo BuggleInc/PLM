@@ -44,8 +44,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   - Specific recusion microwords: `recursion/hanoi` (comes with a rich set of exercises on recursive problem decomposition),
     `recursion/cons` (recursive strings using the [cons](https://en.wikipedia.org/wiki/Cons) [car and
     CDR](https://en.wikipedia.org/wiki/CAR_and_CDR) constructs of LISP). The cons micro-world is subclassed from the bat one.
-  - Recreative microworlds: `lightbot` a programming challenge using a graphical programming, `lander` a lunar lander
-    programming challenge. 
+  - Recreative microworlds: `lightbot` a brain teaser for programmers, `lander` a lunar lander programming challenge. 
 - **Correction entity**: for each exercise/language pair, a source file (e.g. `MoriaEntity.java`, `MoriaEntity.py`,
   `ScalaMoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference solution and the template shown to the
   student. See "Adding a new exercise" below for the file layout and "From correction entity to compilable source: templating".
@@ -60,15 +59,14 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
     - TODO: Scala should be converted to compile in-process too, as Java. But it's a bit more difficult as its API is less
       stable than the Java counterpart (so we should transition to Scala 3 first, at leat), and may introduce thread safety
       issues.
-  - `compileExo()` returns a textual reference to the result (a jar/binary/script path, a "jarPath|mainClass" pair,
-    etc., or `null` for LightBoy that don't compile at all), which the caller then passes down as-is to `runEntity()`'s
-    `executable` parameter below.
+  - `compileExo()` returns a textual reference to the result (the path to a jar, a binary or a script, or `null` for LightBoy
+    that don't compile at all), which the caller then passes down as-is to `runEntity()`'s `executable` parameter below.
 * **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`:
    - Java/Scala/Python/C: all four inherit the same `RemoteExecutionLang.runEntity()`. It binds a UNIX domain socket, starts
      the student code as an external process, and relays primitive calls over that socket to `plm.universe.CommandExecutor`.
      The only thing each language still implements on its own is `buildProcess()`, which turns the compiled/written artifact
      into the right command line (`java -jar ...`, `python3 ...`, the compiled binary, etc).
-   - LightBot: This challenge is an exception, as it can only be solved using the graphical block-list rather than a real
+   - LightBot: This brain teaser is an exception, as it can only be solved using the graphical block-list rather than a real
      programming language. Thus, `run()` *interprets* a student-authored program.
 * **Check**: `Exercise.check()` compares each `currentWorld` to its `answerWorld` via `World.winning()`. On mismatch,
   `World.diffTo()` produces a human-readable diff shown to the student. All the universes but Lander use a structural equality
@@ -412,6 +410,7 @@ Preparing the next release cycle
 TODO: unify the code paths in templating, reducing the amount of overloads between languages and ensuring that the segmentation between "BEGIN/END <SOMETHING>" is not dupplicated in lang.extract() by Java/Scala/Python. 
 
 TODO: add to the exercice a verification of the source code, so that MethodDogHouse can verify that there is only one occurence of the left() method in the source code
+TODO: Move the getRemote() to the earlier phase of templating so that it's stored in the SourceFile
 
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: fix the compilation error messages to match the student code: `SourceFile.getCompilableContent()` now returns the
@@ -423,3 +422,4 @@ TODO: Precompile the correction entities within the jar file so that they don't 
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
 TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process). We need to transition to Scala3 first
 TODO: benchmark the tests to understand where the time goes, and optimize this out
+TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
