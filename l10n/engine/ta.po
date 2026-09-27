@@ -10,8 +10,8 @@ msgstr ""
 "POT-Creation-Date: 2021-06-25 04:57+0200\n"
 "PO-Revision-Date: 2025-07-19 15:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
-"Language-Team: Tamil <https://hosted.weblate.org/projects/"
-"programmers-learning-machine/binary/ta/>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/programmers-"
+"learning-machine/binary/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,8 +73,8 @@ msgid ""
 "Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your "
 "goal instead."
 msgstr ""
-"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் செட்ச்போச் (எக்ச், ஒய்) ஐப் பயன்படுத்த அனுமதிக்க முடியாது"
-". அதற்கு பதிலாக உங்கள் இலக்கை நோக்கி நடந்து செல்லுங்கள்."
+"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் செட்ச்போச் (எக்ச், ஒய்) ஐப் பயன்படுத்த அனுமதிக்க "
+"முடியாது. அதற்கு பதிலாக உங்கள் இலக்கை நோக்கி நடந்து செல்லுங்கள்."
 
 #: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
 #: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
@@ -91,8 +91,9 @@ msgid ""
 "Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, "
 "from 1 to 2 or from 2 to 0 only, not from {0} to {1}."
 msgstr ""
-"மன்னிக்கவும் டேவ், வட்டுகளை எதிரெதிர் திசையில் நகர்த்த அனுமதிக்க முடியாது. 0 முதல் 2 வரை"
-" அல்லது 2 முதல் 2 வரை அல்லது 2 முதல் 0 வரை மட்டுமே நகர்த்தவும், {0} முதல் {1} வரை அல்ல."
+"மன்னிக்கவும் டேவ், வட்டுகளை எதிரெதிர் திசையில் நகர்த்த அனுமதிக்க முடியாது. 0 முதல் 2 "
+"வரை அல்லது 2 முதல் 2 வரை அல்லது 2 முதல் 0 வரை மட்டுமே நகர்த்தவும், {0} முதல் {1} வரை "
+"அல்ல."
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
 #: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
@@ -158,8 +159,7 @@ msgstr "தவறான ச்லாட்: {0}."
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:231
 #, java-format
 msgid "Slot {0} is only {1} high; Cannot get the color of the {2}th disk."
-msgstr ""
-"ச்லாட் {0} மட்டுமே {1} உயர்ந்தது; {2} வது வட்டின் நிறத்தைப் பெற முடியாது."
+msgstr "ச்லாட் {0} மட்டுமே {1} உயர்ந்தது; {2} வது வட்டின் நிறத்தைப் பெற முடியாது."
 
 #. Create the button
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
@@ -214,8 +214,7 @@ msgstr ""
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:412
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
-msgstr ""
-"0 மற்றும் {1 between க்கு இடையில் இல்லாததால் {0} நிலையிலிருந்து நகர முடியாது)"
+msgstr "0 மற்றும் {1 between க்கு இடையில் இல்லாததால் {0} நிலையிலிருந்து நகர முடியாது)"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:421
 #, java-format
@@ -258,8 +257,8 @@ msgstr " கதிர் #{0} வேறுபடுகிறது: வண்ண
 #, java-format
 msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
 msgstr ""
-"{0} மற்றும் {1} இடமாற்றம் செய்ய முடியாது, ஏனெனில் {2} 0 மற்றும் {3 between க்கு இடையில்"
-" இல்லை"
+"{0} மற்றும் {1} இடமாற்றம் செய்ய முடியாது, ஏனெனில் {2} 0 மற்றும் {3 between க்கு "
+"இடையில் இல்லை"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:197
 #, java-format
@@ -317,8 +316,7 @@ msgstr ""
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack."
-msgstr ""
-"{0} அப்பத்தை புரட்டும்படி கேட்டார், ஆனால் இந்த அடுக்கில் {1} அப்பங்கள் மட்டுமே உள்ளன."
+msgstr "{0} அப்பத்தை புரட்டும்படி கேட்டார், ஆனால் இந்த அடுக்கில் {1} அப்பங்கள் மட்டுமே உள்ளன."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:242
 #, java-format
@@ -334,8 +332,8 @@ msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}."
 msgstr ""
-"பான்கேக் #{0 of இன் நோக்குநிலையைப் பெற முடியாது, ஏனெனில் இது 0 மற்றும் {1 between க்கு"
-" இடையில் இல்லை."
+"பான்கேக் #{0 of இன் நோக்குநிலையைப் பெற முடியாது, ஏனெனில் இது 0 மற்றும் {1 between "
+"க்கு இடையில் இல்லை."
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:10
 #: src/lessons/welcome/loopdowhile/Poucet2Entity.java:12
@@ -352,8 +350,8 @@ msgid ""
 "Sorry Dave, I cannot let you use forward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
-"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் ஒரு வாதத்துடன் முன்னோக்கி பயன்படுத்த நான் உங்களை அனுமதிக்"
-"க முடியாது. அதற்கு பதிலாக ஒரு வளையத்தைப் பயன்படுத்தவும்."
+"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் ஒரு வாதத்துடன் முன்னோக்கி பயன்படுத்த நான் உங்களை "
+"அனுமதிக்க முடியாது. அதற்கு பதிலாக ஒரு வளையத்தைப் பயன்படுத்தவும்."
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:14
 #: src/lessons/welcome/loopdowhile/Poucet2Entity.java:16
@@ -370,8 +368,8 @@ msgid ""
 "Sorry Dave, I cannot let you use backward with an argument in this exercise. "
 "Use a loop instead."
 msgstr ""
-"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் ஒரு வாதத்துடன் பின்னோக்கி பயன்படுத்த நான் உங்களை அனுமதிக்"
-"க முடியாது. அதற்கு பதிலாக ஒரு வளையத்தைப் பயன்படுத்தவும்."
+"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் ஒரு வாதத்துடன் பின்னோக்கி பயன்படுத்த நான் உங்களை "
+"அனுமதிக்க முடியாது. அதற்கு பதிலாக ஒரு வளையத்தைப் பயன்படுத்தவும்."
 
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:18
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:18
@@ -461,11 +459,11 @@ msgstr ""
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:57
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:61
 msgid ""
-"Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
-"y) instead."
+"Sorry Dave, I cannot let you use backward() in this exercise. Use "
+"setPos(x,y) instead."
 msgstr ""
-"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் பின்னோக்கி () பயன்படுத்த நான் உங்களை அனுமதிக்க முடியாது"
-". அதற்கு பதிலாக SetPos (x, y) ஐப் பயன்படுத்தவும்."
+"மன்னிக்கவும் டேவ், இந்த பயிற்சியில் பின்னோக்கி () பயன்படுத்த நான் உங்களை அனுமதிக்க "
+"முடியாது. அதற்கு பதிலாக SetPos (x, y) ஐப் பயன்படுத்தவும்."
 
 #: src/plm/core/lang/JVMCompiledLang.java:53
 msgid ""
@@ -491,8 +489,8 @@ msgstr ""
 " முறை எ.கா. () இயக்கவும், ஆனால் எந்தவொரு முறைக்கும் வெளியே சில அறிக்கைகளை (எ.கா. "
 "முன்னோக்கி ()) வைக்கிறீர்கள்.\n"
 "\n"
-" அதை வரிசைப்படுத்த எளிதான தீர்வு உங்கள் எல்லா குறியீட்டையும் (Ctrl-a ctrl-c) நகலெடுப்பது"
-", பயன்படுத்தவும்\n"
+" அதை வரிசைப்படுத்த எளிதான தீர்வு உங்கள் எல்லா குறியீட்டையும் (Ctrl-a ctrl-c) "
+"நகலெடுப்பது, பயன்படுத்தவும்\n"
 " வார்ப்புருவை மீட்டமைக்க 'உடற்பயிற்சி/மாற்றியமைத்தல்' பட்டியல், மற்றும் உங்கள் குறியீட்டை "
 "ஒட்டவும் (Ctrl-V) உள்ளே\n"
 " வழங்கப்பட்ட முறை."
@@ -604,8 +602,7 @@ msgstr ""
 
 #: src/plm/core/lang/LangPython.java:91
 msgid "Error: your buggle just teleported to the outer space..."
-msgstr ""
-"பிழை: உங்கள் பிழையானது வெளிப்புற இடத்திற்கு டெலிபோர்ட் செய்யப்பட்டது ..."
+msgstr "பிழை: உங்கள் பிழையானது வெளிப்புற இடத்திற்கு டெலிபோர்ட் செய்யப்பட்டது ..."
 
 #: src/plm/core/lang/LangPython.java:93
 msgid "Error: your buggle just hit a wall. That hurts."
@@ -660,8 +657,7 @@ msgstr "உங்கள் கணினியில் ச்கலா பயன
 
 #: src/plm/core/model/Game.java:164
 msgid "Please install Scala version 2.11 or higher to use it in the PLM."
-msgstr ""
-"பி.எல்.எம்மில் பயன்படுத்த ச்கலா பதிப்பு 2.11 அல்லது அதற்கு மேல் நிறுவவும்."
+msgstr "பி.எல்.எம்மில் பயன்படுத்த ச்கலா பதிப்பு 2.11 அல்லது அதற்கு மேல் நிறுவவும்."
 
 #: src/plm/core/model/Game.java:166
 msgid "Jython is usable on your machine. Congratulations."
@@ -748,8 +744,8 @@ msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
 msgstr ""
-"பைதான் ச்கிரிப்டெங்கைனை மீட்டெடுக்க முடியாது. சைதான்.சார் மற்றும் அதன் சார்புகள் வகுப்பறையில்"
-" உள்ளதா?"
+"பைதான் ச்கிரிப்டெங்கைனை மீட்டெடுக்க முடியாது. சைதான்.சார் மற்றும் அதன் சார்புகள் "
+"வகுப்பறையில் உள்ளதா?"
 
 #: src/plm/core/model/Game.java:308
 #, java-format
@@ -904,8 +900,7 @@ msgstr "மூல கோப்பு {0}. {1} காணப்படவில்�
 #: src/plm/core/model/lesson/ExerciseTemplated.java:120
 #, java-format
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
-msgstr ""
-"{0}: வார்ப்புருவுக்குள் வார்ப்புருவைத் தொடங்குங்கள். உங்கள் நிறுவனத்தை சரிசெய்யவும்."
+msgstr "{0}: வார்ப்புருவுக்குள் வார்ப்புருவைத் தொடங்குங்கள். உங்கள் நிறுவனத்தை சரிசெய்யவும்."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:141
 #, java-format
@@ -924,17 +919,17 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
-msgstr ""
-"{0}: வார்ப்புரு வாலில் தீர்வைத் தொடங்குங்கள். மறைக்கத் தொடங்க அதை மாற்றவும்."
+msgid ""
+"{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
+msgstr "{0}: வார்ப்புரு வாலில் தீர்வைத் தொடங்குங்கள். மறைக்கத் தொடங்க அதை மாற்றவும்."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
 msgstr ""
-"கோப்பில் பாகுபடுத்தி பிழை {0}. இது ஒரு பாகுபடுத்தி பிழை (மாநிலம் = {1}), தயவுசெய்து"
-" புகாரளிக்கவும்."
+"கோப்பில் பாகுபடுத்தி பிழை {0}. இது ஒரு பாகுபடுத்தி பிழை (மாநிலம் = {1}), "
+"தயவுசெய்து புகாரளிக்கவும்."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:208
 #, java-format
@@ -972,8 +967,7 @@ msgstr ""
 #: src/plm/core/model/lesson/ExerciseTemplated.java:406
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
-msgstr ""
-"உலகம் {0} உடைந்துவிட்டது ({1}). எல்லா பதில் உலகங்களையும் மீண்டும் இணைக்கவும்."
+msgstr "உலகம் {0} உடைந்துவிட்டது ({1}). எல்லா பதில் உலகங்களையும் மீண்டும் இணைக்கவும்."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:410
 #, java-format
@@ -1024,8 +1018,8 @@ msgid ""
 "Something weird happened. Your session was not created/reloaded properly. "
 "Please report this issue."
 msgstr ""
-"ஏதோ வித்தியாசமானது நடந்தது. உங்கள் அமர்வு சரியாக உருவாக்கப்படவில்லை/மீண்டும் ஏற்றப்படவில்லை"
-". இந்த சிக்கலைப் புகாரளிக்கவும்."
+"ஏதோ வித்தியாசமானது நடந்தது. உங்கள் அமர்வு சரியாக உருவாக்கப்படவில்லை/மீண்டும் "
+"ஏற்றப்படவில்லை. இந்த சிக்கலைப் புகாரளிக்கவும்."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
 msgid "Ok, quit and lose my data."
@@ -1198,8 +1192,8 @@ msgstr ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">பதிப்பு {0}&nbsp; "
 "0px; 2008-2020 பங்களிப்பாளர்கள். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. டர்பக் (வெல்லச்லி "
 "கல்லூரி) </i> </li> <li> வடிவமைப்பு மற்றும் குறியீடு: <i> மீ. குயின்சன் மற்றும் சி. > "
-"உங்கள் குறியீடு {1} <br/> க்கு சேமிக்கப்படுகிறது உங்கள் ரகசிய அமர்வு ஐடி {2} <br/> "
-"</html>"
+"உங்கள் குறியீடு {1} <br/> க்கு சேமிக்கப்படுகிறது உங்கள் ரகசிய அமர்வு ஐடி {2} <br/> </"
+"html>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:81
 msgid "About"
@@ -1237,10 +1231,10 @@ msgstr ""
 " <p> பிஎல்எம் மென்பொருள் அணியால் உள்நாட்டில் எழுதப்பட்டது. இந்த மென்பொருள் குனு பொது "
 "பொதுமக்கள் உரிமம் பதிப்பு 3 (சிபிஎல்.வி 3) இன் கீழ் விநியோகிக்கப்படுகிறது. </p>\n"
 " <p> பி.எல்.எம் உடன் விநியோகிக்கப்படும் கற்பித்தல் பொருள் சி.பி.எல்.வி 3 உரிமம் "
-"(முக்கியமாகச் சேர்க்கப்பட்ட குறியீட்டிற்கு) மற்றும் சிசி-பை-எச்ஏ உரிமத்தால் (முக்கியமாகப் பி"
-"ற ஊடக கோப்புகளுக்கு) மூடப்பட்டுள்ளது. ஆனால் மூலக் குறியீட்டிற்கும் ஊடகத்திற்கும் இடையிலான "
-"சரியான எல்லை வாசகருக்கு ஒரு பயிற்சியாக விடப்படுகிறது, எனவே இந்தப் பொருள் இரு "
-"உரிமங்களின் கீழ் எளிமைக்காக விநியோகிக்கப்படுகிறது. </p>\n"
+"(முக்கியமாகச் சேர்க்கப்பட்ட குறியீட்டிற்கு) மற்றும் சிசி-பை-எச்ஏ உரிமத்தால் (முக்கியமாகப் "
+"பிற ஊடக கோப்புகளுக்கு) மூடப்பட்டுள்ளது. ஆனால் மூலக் குறியீட்டிற்கும் ஊடகத்திற்கும் "
+"இடையிலான சரியான எல்லை வாசகருக்கு ஒரு பயிற்சியாக விடப்படுகிறது, எனவே இந்தப் பொருள் "
+"இரு உரிமங்களின் கீழ் எளிமைக்காக விநியோகிக்கப்படுகிறது. </p>\n"
 " <p> GPLV3 உரிமத்தை உரிமம்-GPL-3 என்ற பெயரில் காப்பகத்தில் காணலாம். CC-BY-SA உரிமத்தை "
 "ஆன்லைனில் காணலாம்: http://creativecommons.org/licenses/by-sa/3.0/ </p>\n"
 " <p> முழு கலைப்படைப்புகளும் இலவச உள்ளடக்கம், CC-BY-SA, GPL, LGPL மற்றும்/அல்லது CC0-"
@@ -1323,8 +1317,8 @@ msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
 "found)</p>"
 msgstr ""
-"<p> (இந்த பாடத்தின் குறுகிய விளக்கத்தைக் காட்ட முடியவில்லை: கோப்பு {0} கிடைக்கவில்லை) "
-"</p>"
+"<p> (இந்த பாடத்தின் குறுகிய விளக்கத்தைக் காட்ட முடியவில்லை: கோப்பு {0} கிடைக்கவில்லை) </"
+"p>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:227
 msgid "<p><b>Your score:</b> "
@@ -1354,13 +1348,11 @@ msgstr "<i> தவறு செய்வது மனிதர் </i>, அவ�
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:29
 msgid "You should keep trying until you get it right!"
-msgstr ""
-"நீங்கள் அதை சரியாகப் பெறும் வரை நீங்கள் தொடர்ந்து முயற்சி செய்ய வேண்டும்!"
+msgstr "நீங்கள் அதை சரியாகப் பெறும் வரை நீங்கள் தொடர்ந்து முயற்சி செய்ய வேண்டும்!"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:30
 msgid "We all learn from our mistakes, so, good job!"
-msgstr ""
-"நாம் அனைவரும் எங்கள் தவறுகளிலிருந்து கற்றுக்கொள்கிறோம், எனவே, நல்ல வேலை!"
+msgstr "நாம் அனைவரும் எங்கள் தவறுகளிலிருந்து கற்றுக்கொள்கிறோம், எனவே, நல்ல வேலை!"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:31
 msgid "We learn from failure, not from success!"
@@ -1457,8 +1449,7 @@ msgstr ""
 
 #: src/plm/core/ui/ExercisePassedDialog.java:49
 msgid "<html>Congratulations, you passed this exercise.</html>"
-msgstr ""
-"<html>வாழ்த்துக்கள், நீங்கள் இந்தப் பயிற்சியை நிறைவேற்றினீர்கள். </html>"
+msgstr "<html>வாழ்த்துக்கள், நீங்கள் இந்தப் பயிற்சியை நிறைவேற்றினீர்கள். </html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:59
 #, java-format
@@ -1474,8 +1465,8 @@ msgid ""
 "<html>Congratulations, you passed this exercise.<br><br><br><br>Select your "
 "next exercise:</html>"
 msgstr ""
-"<html>வாழ்த்துக்கள், நீங்கள் இந்தப் பயிற்சியை நிறைவேற்றினீர்கள். <br><br><br><br> உங்கள் அடுத்"
-"த பயிற்சியைத் தேர்ந்தெடுக்கவும்: </html>"
+"<html>வாழ்த்துக்கள், நீங்கள் இந்தப் பயிற்சியை நிறைவேற்றினீர்கள். <br><br><br><br> உங்கள் "
+"அடுத்த பயிற்சியைத் தேர்ந்தெடுக்கவும்: </html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:72
 msgid "Give feedback"
@@ -1646,19 +1637,19 @@ msgstr ""
 "இல் விவாதிக்கலாம். பி.எல்.எம் நீட்டிக்கப் புதிய யோசனைகளைப் பற்றி அரட்டையடிக்க இந்தச் சேனலைப் "
 "பயன்படுத்தலாம் அல்லது பி.எல்.எம் உடன் பணிபுரியும் எங்களுடன் அரட்டையடிக்கலாம். </p>\n"
 " <H1> பி.எல்.எம் </எச் 1> இல் ஒரு பிழையைப் புகாரளித்தல்\n"
-" <p> உங்களிடம் உங்கள் சொந்த அறிவிலிமையம் கணக்கு இருந்தால், தயவுசெய்து <a href = 'https:"
-" //github.com/buggleinc/plm'> plm பிழை டிராக்கர் </a> க்குச் செல்லுங்கள். இல்லையென்றால்"
-", பி.எல்.எம்மில் ஒரு சிக்கலைப் புகாரளிக்க இந்தச் சாளரத்தைப் பயன்படுத்தலாம் (அது ஒரு "
-"உடற்பயிற்சியில் அல்லது பி.எல்.எம். இந்தச் சேனலில் பதிலை வழங்க. முடிந்தால் உங்கள் அறிக்கையை "
-"ஆங்கிலம் அல்லது பிரஞ்சு மொழியில் எழுதுங்கள். </p>\n"
+" <p> உங்களிடம் உங்கள் சொந்த அறிவிலிமையம் கணக்கு இருந்தால், தயவுசெய்து <a href = "
+"'https: //github.com/buggleinc/plm'> plm பிழை டிராக்கர் </a> க்குச் செல்லுங்கள். "
+"இல்லையென்றால், பி.எல்.எம்மில் ஒரு சிக்கலைப் புகாரளிக்க இந்தச் சாளரத்தைப் பயன்படுத்தலாம் (அது "
+"ஒரு உடற்பயிற்சியில் அல்லது பி.எல்.எம். இந்தச் சேனலில் பதிலை வழங்க. முடிந்தால் உங்கள் "
+"அறிக்கையை ஆங்கிலம் அல்லது பிரஞ்சு மொழியில் எழுதுங்கள். </p>\n"
 " <p> சிக்கலைச் சரிசெய்ய எங்களுக்கு உதவும் அனைத்து தொடர்புடைய தகவல்களையும் நீங்கள் சேர்க்க "
 "வேண்டும். தொழில்நுட்ப விவரங்கள் பொருந்தாது என்று உங்களுக்குத் தெரியாவிட்டால் அவற்றை அகற்ற "
 "வேண்டாம். நீங்கள் இங்கே எழுதுவது பொதுவில் இருக்கும்: <b> பிழை டிராக்கரில் கடவுச்சொற்கள் "
 "அல்லது பிற விவேகமான தகவல்களை ஒருபோதும் வெளியிட வேண்டாம் </b> </p>\n"
-" <p> புரிந்துகொள்ளக் கடினமாக இருக்கும் ஒரு எழுத்துப்பிழை அல்லது வாக்கியத்தைக் கண்டறிந்தால்"
-", இது ஒரு புதிய சொற்களைப் பரிந்துரைக்க உதவுகிறது. நீங்கள் ஒரு தொழில்நுட்ப பிழையை "
-"எதிர்கொண்டால், நீங்கள் என்ன செய்தீர்கள், எந்த விளைவு நீங்கள் எதிர்பார்த்தீர்கள், அதற்குப் பதிலாக என்"
-"ன நடந்தது என்பதை எங்களிடம் கூறுங்கள். </p> <br/>"
+" <p> புரிந்துகொள்ளக் கடினமாக இருக்கும் ஒரு எழுத்துப்பிழை அல்லது வாக்கியத்தைக் "
+"கண்டறிந்தால், இது ஒரு புதிய சொற்களைப் பரிந்துரைக்க உதவுகிறது. நீங்கள் ஒரு தொழில்நுட்ப "
+"பிழையை எதிர்கொண்டால், நீங்கள் என்ன செய்தீர்கள், எந்த விளைவு நீங்கள் எதிர்பார்த்தீர்கள், அதற்குப் "
+"பதிலாக என்ன நடந்தது என்பதை எங்களிடம் கூறுங்கள். </p> <br/>"
 
 #: src/plm/core/ui/FeedbackDialog.java:158
 #: src/plm/core/ui/action/RevertExercise.java:20
@@ -1667,8 +1658,7 @@ msgstr "ரத்துசெய்"
 
 #: src/plm/core/ui/FeedbackDialog.java:163
 msgid "Do you really want to cancel your feedback and lose any edit?"
-msgstr ""
-"உங்கள் கருத்தை ரத்துசெய்து எந்த திருத்தத்தையும் இழக்க விரும்புகிறீர்களா?"
+msgstr "உங்கள் கருத்தை ரத்துசெய்து எந்த திருத்தத்தையும் இழக்க விரும்புகிறீர்களா?"
 
 #: src/plm/core/ui/FeedbackDialog.java:164
 msgid "are you sure?"
@@ -1889,8 +1879,7 @@ msgstr "அடுத்தது"
 
 #: src/plm/core/ui/MainFrame.java:587
 msgid "Please wait, while the PLM is saving your session data."
-msgstr ""
-"தயவுசெய்து காத்திருங்கள், பி.எல்.எம் உங்கள் அமர்வு தரவைச் சேமிக்கும்போது."
+msgstr "தயவுசெய்து காத்திருங்கள், பி.எல்.எம் உங்கள் அமர்வு தரவைச் சேமிக்கும்போது."
 
 #: src/plm/core/ui/MainFrame.java:718
 msgid "Lesson related functions"
@@ -1925,8 +1914,7 @@ msgstr "<myg> ஆஃப்செட் {0 at இல் எச்.ஆர்.ச�
 #: src/plm/core/ui/PlmHtmlEditorKit.java:345
 #, java-format
 msgid "<img> tag without src attribute in exercise {0} at offset {1}"
-msgstr ""
-"<myg> ஆஃப்செட் {0} இல் உடற்பயிற்சியில் SRC பண்புக்கூறு இல்லாமல் குறிச்சொல்"
+msgstr "<myg> ஆஃப்செட் {0} இல் உடற்பயிற்சியில் SRC பண்புக்கூறு இல்லாமல் குறிச்சொல்"
 
 #: src/plm/core/ui/StatusBar.java:154
 msgid "Saving"
@@ -2008,8 +1996,7 @@ msgstr "உதவிக்கு அழைக்கவும்"
 
 #: src/plm/core/ui/action/PlayDemo.java:27
 msgid "Run the demo of what you should code for this exercise"
-msgstr ""
-"இந்த பயிற்சிக்கு நீங்கள் என்ன குறியிட வேண்டும் என்பதற்கான டெமோவை இயக்கவும்"
+msgstr "இந்த பயிற்சிக்கு நீங்கள் என்ன குறியிட வேண்டும் என்பதற்கான டெமோவை இயக்கவும்"
 
 #: src/plm/core/ui/action/PlayDemo.java:28
 msgid "Impossible to run the demo right now"
@@ -2085,8 +2072,7 @@ msgstr "எச்சரிக்கை"
 
 #: src/plm/core/ui/action/RevertExercise.java:28
 msgid "Revert canceled on user request -- your work was preserved."
-msgstr ""
-"பயனர் கோரிக்கையின் பேரில் ரத்துசெய்யப்பட்டது - உங்கள் பணி பாதுகாக்கப்பட்டது."
+msgstr "பயனர் கோரிக்கையின் பேரில் ரத்துசெய்யப்பட்டது - உங்கள் பணி பாதுகாக்கப்பட்டது."
 
 #: src/plm/core/ui/action/RevertExercise.java:39
 msgid "Exercise reverted"
@@ -2105,8 +2091,8 @@ msgstr ""
 "தொலைநிலை சேவையகங்களில் உங்கள் தரவை அநாமதேயமாக சேமிக்க பி.எல்.எம். அந்த வழியில், நீங்கள்\n"
 " இணைக்கப்பட்ட எந்த கணினியிலிருந்தும் உங்கள் அநாமதேய குறிச்சொல்லிலிருந்து உங்கள் அமர்வை "
 "மீட்டெடுக்க முடியும்.\n"
-" இந்த அநாமதேய தரவு விஞ்ஞானிகளுக்கு மக்கள் எவ்வாறு கற்றுக்கொள்கிறார்கள் என்பதைப் புரிந்துகொள்"
-"ள உதவுகிறது\n"
+" இந்த அநாமதேய தரவு விஞ்ஞானிகளுக்கு மக்கள் எவ்வாறு கற்றுக்கொள்கிறார்கள் என்பதைப் "
+"புரிந்துகொள்ள உதவுகிறது\n"
 " நிரலாக்க. பெயரிடப்பட்ட தகவல்கள் எதுவும் சேமிக்கப்படவில்லை, மூலக் குறியீடு மட்டுமே "
 "எழுதப்பட்டுள்ளது\n"
 " சவால்களை தீர்க்க.\n"
@@ -2412,16 +2398,16 @@ msgid ""
 "Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
 "pens. Use brushDown() instead."
 msgstr ""
-"மன்னிக்கவும் டேவ், இங்கே பெண்டவுன் () ஐப் பயன்படுத்த அனுமதிக்க முடியாது. பங்குகள் தூரிகைகள்"
-" உள்ளன, பேனாக்கள் அல்ல. அதற்கு பதிலாக பிரச் பேரூர் () ஐப் பயன்படுத்தவும்."
+"மன்னிக்கவும் டேவ், இங்கே பெண்டவுன் () ஐப் பயன்படுத்த அனுமதிக்க முடியாது. பங்குகள் "
+"தூரிகைகள் உள்ளன, பேனாக்கள் அல்ல. அதற்கு பதிலாக பிரச் பேரூர் () ஐப் பயன்படுத்தவும்."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:99
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
 msgstr ""
-"மன்னிக்கவும் டேவ், இங்கே பெனப் () ஐப் பயன்படுத்த அனுமதிக்க முடியாது. பங்குகள் தூரிகைகள் உள்"
-"ளன, பேனாக்கள் அல்ல. அதற்கு பதிலாக துலக்குதல் () ஐப் பயன்படுத்தவும்."
+"மன்னிக்கவும் டேவ், இங்கே பெனப் () ஐப் பயன்படுத்த அனுமதிக்க முடியாது. பங்குகள் தூரிகைகள் "
+"உள்ளன, பேனாக்கள் அல்ல. அதற்கு பதிலாக துலக்குதல் () ஐப் பயன்படுத்தவும்."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:175
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2465,8 +2451,7 @@ msgstr ""
 #: src/plm/universe/bugglequest/AbstractBuggle.java:255
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
-msgstr ""
-"நீங்கள் ஃச் ஐ {0 bo ஆக அமைக்க முயற்சித்தீர்கள், ஆனால் இந்த உலகில் அதிகபட்ச ஃச் {0}."
+msgstr "நீங்கள் ஃச் ஐ {0 bo ஆக அமைக்க முயற்சித்தீர்கள், ஆனால் இந்த உலகில் அதிகபட்ச ஃச் {0}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:238
 #: src/plm/universe/bugglequest/AbstractBuggle.java:253
@@ -2503,8 +2488,7 @@ msgstr "    எதிர்பாராத சிக்கல்: {0}\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:480
 msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
-msgstr ""
-"    இது எதிர்பாராத சிக்கலை எதிர்கொண்டது (ஒரு சுவரில் மோதுவது போன்றவை).\n"
+msgstr "    இது எதிர்பாராத சிக்கலை எதிர்கொண்டது (ஒரு சுவரில் மோதுவது போன்றவை).\n"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:484
 #, java-format
@@ -2573,8 +2557,7 @@ msgstr "{0} .மேப்: உலக அளவு விவரக்குறி
 #: src/plm/universe/bugglequest/BuggleWorld.java:147
 #, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''."
-msgstr ""
-"{0} .மேப்: 1: எதிர்பார்க்கப்படும் '' அளவு: nnxmm '' ஆனால் '' {0} '' கிடைத்தது."
+msgstr "{0} .மேப்: 1: எதிர்பார்க்கப்படும் '' அளவு: nnxmm '' ஆனால் '' {0} '' கிடைத்தது."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:173
 #, java-format
@@ -2827,8 +2810,7 @@ msgstr "தவறான எழுது எண்ணிக்கை. எதி�
 #: src/plm/universe/sort/SortingWorld.java:126
 #, java-format
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
-msgstr ""
-"குறியீட்டு {0} இல் உள்ள மதிப்பு வேறுபடுகிறது. எதிர்பார்க்கப்படுகிறது {1}; {2}\n"
+msgstr "குறியீட்டு {0} இல் உள்ள மதிப்பு வேறுபடுகிறது. எதிர்பார்க்கப்படுகிறது {1}; {2}\n"
 
 #: src/plm/universe/sort/SortingWorld.java:368
 #: src/plm/universe/sort/SortingWorld.java:369
@@ -2864,8 +2846,7 @@ msgstr "நிறம் வேறுபடுகிறது."
 
 #: src/plm/universe/turtles/Line.java:118
 msgid "I dont see the difference (please report this bug)."
-msgstr ""
-"நான் வித்தியாசத்தைக் காணவில்லை (தயவுசெய்து இந்த பிழையைப் புகாரளிக்கவும்)."
+msgstr "நான் வித்தியாசத்தைக் காணவில்லை (தயவுசெய்து இந்த பிழையைப் புகாரளிக்கவும்)."
 
 #: src/plm/universe/turtles/Line.java:120
 msgid "That's not a line (please report this bug)."
@@ -2905,14 +2886,12 @@ msgstr "  {0} நிறுவனங்கள் உள்ளன, ஆனால்
 #: src/plm/universe/turtles/TurtleWorld.java:388
 #, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
-msgstr ""
-"  {0} வடிவங்கள் உள்ளன, ஆனால் {1} வடிவங்கள் மட்டுமே எதிர்பார்க்கப்பட்டன\n"
+msgstr "  {0} வடிவங்கள் உள்ளன, ஆனால் {1} வடிவங்கள் மட்டுமே எதிர்பார்க்கப்பட்டன\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:390
 #, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
-msgstr ""
-"  {0} வடிவங்கள் மட்டுமே உள்ளன, ஆனால் {1} வடிவங்கள் எதிர்பார்க்கப்பட்டன\n"
+msgstr "  {0} வடிவங்கள் மட்டுமே உள்ளன, ஆனால் {1} வடிவங்கள் எதிர்பார்க்கப்பட்டன\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:417
 msgid "Superflous shapes in your solution:\n"
