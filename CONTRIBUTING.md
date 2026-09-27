@@ -124,9 +124,7 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
 
 It then does bookkeeping common to all languages: inserts a `#line` C preprocessor directive so compiler errors point at
 the right file for C, and collapses `initialContent`'s leading whitespace to the smallest common indentation.
-`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`). An optional `patternString`
-(`s/regex/replacement/;...`, only used by a couple of exercises) can further rewrite `template` and `initialContent` at
-this point.
+`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`).
 
 Still inside `parse()`, `ProgrammingLanguage.extract(correction, template, imports, helpers, name)` is then called on
 the concrete language to do step 2 immediately below, even though `EntityTemplateParser` otherwise stays unaware of any

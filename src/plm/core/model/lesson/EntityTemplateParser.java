@@ -3,9 +3,7 @@ package plm.core.model.lesson;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
@@ -27,10 +25,8 @@ public class EntityTemplateParser {
    * @param name           the class name to substitute in the file's own class declaration; the package line, if any, is rewritten to the fixed "generated"
    *     instead
    * @param shownFilename  the human-readable file name, only used in warning/error messages
-   * @param patternString  optional {@code s/regex/replacement/;...} rewrites applied to template/initialContent
    */
-  public static TemplatedEntity parse(String content, ProgrammingLanguage lang, String name, String shownFilename, String patternString)
-      throws PLMCompilerException
+  public static TemplatedEntity parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
   {
     String[] lines             = rewriteDeclarations(content.split("\n"), name, lang);
     List<Segment> segments     = split(lines, shownFilename);
@@ -82,23 +78,6 @@ public class EntityTemplateParser {
             sbCtn.append(line.substring(minAmountOfLeadingSpace) + "\n");
         /* Rebuild the initial content */
         initialContent = sbCtn.toString();
-      }
-    }
-
-    /* Apply all requested rewrites, if any */
-    if (patternString != null) {
-      Map<String, String> patterns = new HashMap<String, String>();
-      for (String pattern : patternString.split(";")) {
-        String[] parts = pattern.split("/");
-        if (parts.length != 1 || !parts[0].equals("")) {
-          if (parts.length != 3 || !parts[0].equals("s"))
-            throw new RuntimeException("Malformed pattern for file " + name + ": '" + pattern + "' (from '" + patterns + "')");
-
-          if (Game.getInstance().isDebugEnabled())
-            System.out.println("Replace all " + parts[1] + " to " + parts[2]);
-          template       = template.replaceAll(parts[1], parts[2]);
-          initialContent = initialContent.replaceAll(parts[1], parts[2]);
-        }
       }
     }
 

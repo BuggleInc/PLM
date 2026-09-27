@@ -18,7 +18,7 @@ public class EntityTemplateParserTest {
 
   private static TemplatedEntity parse(String content, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    return EntityTemplateParser.parse(content, lang, "Bar", "Foo", null);
+    return EntityTemplateParser.parse(content, lang, "Bar", "Foo");
   }
 
   private static String lines(String... l) { return String.join("\n", l); }
@@ -77,15 +77,6 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("a();\n", e.initialContent());
     Assertions.assertEquals("int x;\n#line 1 \"Bar.c\" \n$body\n", e.template());
-  }
-
-  /** The {@code s/regex/replacement/} rewrites apply to both template and initial content. */
-  @Test public void testPatternString() throws PLMCompilerException
-  {
-    TemplatedEntity e =
-        EntityTemplateParser.parse(lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # END TEMPLATE"), new LangPython(), "Bar", "Foo", "s/a/z/");
-
-    Assertions.assertEquals("  z = 1\n", e.initialContent());
   }
 
   /** IMPORT sections are exposed separately and removed from the head, but kept in the correction. */

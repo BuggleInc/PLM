@@ -28,10 +28,6 @@ public abstract class ExerciseTemplated extends Exercise {
 
   public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException, PLMCompilerException
   {
-    newSourceFromFile(lang, name, filename, "");
-  }
-  public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String patternString) throws NoSuchEntityException, PLMCompilerException
-  {
     String shownFilename = filename.replaceAll("\\.", "/") + "." + lang.getExt();
     StringBuffer sb      = null;
     try {
@@ -40,7 +36,7 @@ public abstract class ExerciseTemplated extends Exercise {
       throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replaceAll("\\.", "/"), lang.getExt()));
     }
 
-    TemplatedEntity parsed = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename, patternString);
+    TemplatedEntity parsed = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename);
     newSource(lang, name, parsed);
   }
 
