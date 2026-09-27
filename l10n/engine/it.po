@@ -481,8 +481,8 @@ msgstr ""
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:57
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:61
 msgid ""
-"Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
-"y) instead."
+"Sorry Dave, I cannot let you use backward() in this exercise. Use "
+"setPos(x,y) instead."
 msgstr ""
 "Scusa Dave, non ti posso permettere l'utilizzo di backward() in questo "
 "esercizio. Usa setPos(x,y) invece."
@@ -941,9 +941,12 @@ msgstr ""
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, fuzzy, java-format
-#| msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER"
-msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
-msgstr "{0}: Begin solution nella coda del template. Cambiato in BEGIN SOLUTIONHELPER"
+#| msgid ""
+#| "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER"
+msgid ""
+"{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
+msgstr ""
+"{0}: Begin solution nella coda del template. Cambiato in BEGIN SOLUTIONHELPER"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
@@ -2526,9 +2529,9 @@ msgid ""
 "{0}: The path to the map on disk should not include the .map extension (or "
 "it won''t work in jarfiles). Please fix your exercise."
 msgstr ""
-"{0}: Il percorso della mappa sul disco non dovrebbe includere l'estenzione ."
-"map (oppure non funzionerà nel jarfiles).  Per piacere correggi il tuo "
-"esercizio."
+"{0}: Il percorso della mappa sul disco non dovrebbe includere "
+"l'estenzione .map (oppure non funzionerà nel jarfiles).  Per piacere "
+"correggi il tuo esercizio."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:130
 #, fuzzy, java-format
@@ -3046,8 +3049,8 @@ msgstr "  {0} (ottenuto {1} invece di {2})\n"
 #~ "technical information (such as your version of PLM and Java) will <br/"
 #~ ">automatically be added to your feedback. None of these automatic "
 #~ "information <br/>are personal and you still have to identify yourself if "
-#~ "you want to.</p><p>Alternatively, you can use the <a href='http://github."
-#~ "com/oster/PLM/issues'>github interface</a> for feedback.</p></html>"
+#~ "you want to.</p><p>Alternatively, you can use the <a href='http://"
+#~ "github.com/oster/PLM/issues'>github interface</a> for feedback.</p></html>"
 #~ msgstr ""
 #~ "<html><p>Grazie per il vostro parere su PLM. Ci è utile per avvicinarci "
 #~ "alle vostre<br/>esigenze, non esistate quindi a segnalarci errori e parti "
