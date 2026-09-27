@@ -163,8 +163,7 @@ msgstr "ເລີ່ມ"
 msgid ""
 "The player {0} of the base {1} cannot reach the hole that is too far from "
 "its position"
-msgstr ""
-"ຜູ້ຫຼິ້ນ {0} ຂອງເບສ {1} ບໍ່ສາມາດໄປຮອດຂຸມທີ່ຢູ່ໄກເກີນໄປຈາກຕຳແໜ່ງຂອງລາວໄດ້"
+msgstr "ຜູ້ຫຼິ້ນ {0} ຂອງເບສ {1} ບໍ່ສາມາດໄປຮອດຂຸມທີ່ຢູ່ໄກເກີນໄປຈາກຕຳແໜ່ງຂອງລາວໄດ້"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:146
 msgid "This is not a baseball world :-("
@@ -210,8 +209,7 @@ msgstr "ບໍ່ສາມາດຍ້າຍຈາກຕຳແໜ່ງ {0} ໄ�
 msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
 "it in one move"
-msgstr ""
-"ຜູ້ຫຼິ້ນ {0} ຈາກເບສ {1} ຢູ່ໄກຈາກຂຸມ (ທີ່ເບສ {2}) ຫຼາຍເກີນໄປທີ່ຈະໄປຮອດໃນການຍ້າຍຄັ້ງດຽວ"
+msgstr "ຜູ້ຫຼິ້ນ {0} ຈາກເບສ {1} ຢູ່ໄກຈາກຂຸມ (ທີ່ເບສ {2}) ຫຼາຍເກີນໄປທີ່ຈະໄປຮອດໃນການຍ້າຍຄັ້ງດຽວ"
 
 #: src/lessons/sort/baseball/universe/BaseballWorldView.java:669
 #: src/plm/universe/sort/SortingWorldView.java:52
@@ -305,16 +303,14 @@ msgstr "ມີຄຳສັ່ງໃຫ້ປີ້ນແພນເຄັກ {0} �
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}."
-msgstr ""
-"ບໍ່ສາມາດເບິ່ງລັດສະໝີຂອງແພນເຄັກທີ #{0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}."
+msgstr "ບໍ່ສາມາດເບິ່ງລັດສະໝີຂອງແພນເຄັກທີ #{0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:261
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}."
-msgstr ""
-"ບໍ່ສາມາດເບິ່ງທິດທາງຂອງແພນເຄັກທີ #{0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}."
+msgstr "ບໍ່ສາມາດເບິ່ງທິດທາງຂອງແພນເຄັກທີ #{0} ໄດ້ ເພາະມັນບໍ່ໄດ້ຢູ່ລະຫວ່າງ 0 ຫາ {1}."
 
 #: src/lessons/welcome/loopdowhile/Poucet1Entity.java:10
 #: src/lessons/welcome/loopdowhile/Poucet2Entity.java:12
@@ -395,8 +391,7 @@ msgstr "ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ backward ແບບກຳ�
 msgid ""
 "Sorry Dave, I cannot let you use right() in this exercise. Use left() "
 "instead."
-msgstr ""
-"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ right() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ left() ແທນ."
+msgstr "ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ right() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ left() ແທນ."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
 #, java-format
@@ -404,8 +399,8 @@ msgid ""
 "Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
 "exercise. You can write left() only once in this exercise."
 msgstr ""
-"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ left() ທັງໃນແຖວ {0} ແລະ {1} ບໍ່ໄດ້. ເຈົ້າສາມາດຂຽນ left() ໄດ້ພ"
-"ຽງຄັ້ງດຽວເທົ່ານັ້ນໃນບົດຝຶກຫັດນີ້."
+"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ left() ທັງໃນແຖວ {0} ແລະ {1} ບໍ່ໄດ້. ເຈົ້າສາມາດຂຽນ left() "
+"ໄດ້ພຽງຄັ້ງດຽວເທົ່ານັ້ນໃນບົດຝຶກຫັດນີ້."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:42
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:47
@@ -418,8 +413,7 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
 "instead."
-msgstr ""
-"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ forward() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ setPos(x,y) ແທນ."
+msgstr "ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ forward() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ setPos(x,y) ແທນ."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:51
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:55
@@ -430,10 +424,9 @@ msgstr ""
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:57
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:61
 msgid ""
-"Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
-"y) instead."
-msgstr ""
-"ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ backward() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ setPos(x,y) ແທນ."
+"Sorry Dave, I cannot let you use backward() in this exercise. Use "
+"setPos(x,y) instead."
+msgstr "ຂໍໂທດເດີ ເດຟ, ຂ້ອຍໃຫ້ເຈົ້າໃຊ້ backward() ໃນບົດຝຶກຫັດນີ້ບໍ່ໄດ້. ໃຫ້ໃຊ້ setPos(x,y) ແທນ."
 
 #: src/plm/core/lang/JVMCompiledLang.java:53
 msgid ""
@@ -465,8 +458,8 @@ msgid ""
 "Your entity failed to start. Your constructor seems to be broken, but I have "
 "no clue."
 msgstr ""
-"ຕົວລະຄອນບໍ່ສາມາດເລີ່ມເຮັດວຽກໄດ້. ຄອນສະຕຣັກເຕີ (constructor) ຂອງເຈົ້າຄືຊິມີບັນຫາ, ແຕ່ຂ້ອຍກໍບໍ່ແນ່ໃ"
-"ຈ."
+"ຕົວລະຄອນບໍ່ສາມາດເລີ່ມເຮັດວຽກໄດ້. ຄອນສະຕຣັກເຕີ (constructor) ຂອງເຈົ້າຄືຊິມີບັນຫາ, "
+"ແຕ່ຂ້ອຍກໍບໍ່ແນ່ໃຈ."
 
 #: src/plm/core/lang/JVMCompiledLang.java:83
 #: src/plm/core/lang/LangLightbot.java:39
@@ -522,8 +515,8 @@ msgid ""
 msgstr ""
 "ຂໍ້ຜິດພາດການຍັບຍໍ້ (Indentation error): {0}\n"
 "ແຖວ {1}: {2}\n"
-"ກະລຸນາກວດເບິ່ງວ່າເຈົ້າບໍ່ໄດ້ໃຊ້ Tab ປະສົມກັບ Space. ໃຫ້ໃຊ້ປຸ່ມ TAB ແລະ Shift-TAB ເພື່ອຈັດລະບຽບກາ"
-"ນຍັບຍໍ້.\n"
+"ກະລຸນາກວດເບິ່ງວ່າເຈົ້າບໍ່ໄດ້ໃຊ້ Tab ປະສົມກັບ Space. ໃຫ້ໃຊ້ປຸ່ມ TAB ແລະ Shift-TAB "
+"ເພື່ອຈັດລະບຽບການຍັບຍໍ້.\n"
 
 #: src/plm/core/lang/LangPython.java:66
 msgid ""
@@ -537,8 +530,7 @@ msgstr ""
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos.\n"
-msgstr ""
-"ເກີດ NameError: ເບິ່ງຄືວ່າເຈົ້າໃຊ້ຊື່ຕົວແປ ຫຼື ຟັງຊັນທີ່ບໍ່ມີຢູ່ຈິງ; ກະລຸນາກວດເບິ່ງການຂຽນຜິດ.\n"
+msgstr "ເກີດ NameError: ເບິ່ງຄືວ່າເຈົ້າໃຊ້ຊື່ຕົວແປ ຫຼື ຟັງຊັນທີ່ບໍ່ມີຢູ່ຈິງ; ກະລຸນາກວດເບິ່ງການຂຽນຜິດ.\n"
 
 #: src/plm/core/lang/LangPython.java:76
 msgid "TypeError raised: you are probably misusing a function or something.\n"
@@ -548,8 +540,7 @@ msgstr "ເກີດ TypeError: ເຈົ້າອາດຈະໃຊ້ຟັງ
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
-msgstr ""
-"ເກີດ UnboundLocalError: ເຈົ້າອາດຈະໃຊ້ຕົວແປ global ໂດຍທີ່ບໍ່ໄດ້ປະກາດໃຫ້ຖືກຕ້ອງ.\n"
+msgstr "ເກີດ UnboundLocalError: ເຈົ້າອາດຈະໃຊ້ຕົວແປ global ໂດຍທີ່ບໍ່ໄດ້ປະກາດໃຫ້ຖືກຕ້ອງ.\n"
 
 #: src/plm/core/lang/LangPython.java:87
 msgid "Error: there is no baggle to pickup under the buggle."
@@ -557,8 +548,7 @@ msgstr "ຂໍ້ຜິດພາດ: ບໍ່ມີບັກເກີລ (baggl
 
 #: src/plm/core/lang/LangPython.java:89
 msgid "Error: a buggle cannot carry more than one baggle at the same time."
-msgstr ""
-"ຂໍ້ຜິດພາດ: ບັກເກີລ (buggle) ບໍ່ສາມາດຖືບັກເກີລ (baggle) ຫຼາຍກວ່າໜຶ່ງອັນໃນເວລາດຽວກັນ."
+msgstr "ຂໍ້ຜິດພາດ: ບັກເກີລ (buggle) ບໍ່ສາມາດຖືບັກເກີລ (baggle) ຫຼາຍກວ່າໜຶ່ງອັນໃນເວລາດຽວກັນ."
 
 #: src/plm/core/lang/LangPython.java:91
 msgid "Error: your buggle just teleported to the outer space..."
@@ -581,8 +571,7 @@ msgstr ""
 #, java-format
 msgid ""
 "No ScriptEngine for {0}. Please check your classpath and similar settings."
-msgstr ""
-"ບໍ່ມີ ScriptEngine ສຳລັບ {0}. ກະລຸນາກວດເບິ່ງ classpath ແລະ ການຕັ້ງຄ່າທີ່ກ່ຽວຂ້ອງ."
+msgstr "ບໍ່ມີ ScriptEngine ສຳລັບ {0}. ກະລຸນາກວດເບິ່ງ classpath ແລະ ການຕັ້ງຄ່າທີ່ກ່ຽວຂ້ອງ."
 
 #: src/plm/core/lang/ScriptingLanguage.java:96
 #, java-format
@@ -669,15 +658,13 @@ msgstr ""
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
-msgstr ""
-"ພາສາຫຼັກແມ່ນ C, ແຕ່ການຕິດຕັ້ງ C ຂອງເຈົ້າໃຊ້ງານບໍ່ໄດ້. ລະບົບຈະປ່ຽນໄປໃຊ້ Java ແທນ.\n"
+msgstr "ພາສາຫຼັກແມ່ນ C, ແຕ່ການຕິດຕັ້ງ C ຂອງເຈົ້າໃຊ້ງານບໍ່ໄດ້. ລະບົບຈະປ່ຽນໄປໃຊ້ Java ແທນ.\n"
 
 #: src/plm/core/model/Game.java:209 src/plm/core/model/tracking/GitSpy.java:90
 msgid ""
 "You found a bug in the PLM. Please report it with all possible details "
 "(including the stacktrace below)."
-msgstr ""
-"ເຈົ້າພົບຂໍ້ຜິດພາດໃນ PLM. ກະລຸນາລາຍງານພ້ອມລາຍລະອຽດ (ລວມທັງ stacktrace ດ້ານລຸ່ມ)."
+msgstr "ເຈົ້າພົບຂໍ້ຜິດພາດໃນ PLM. ກະລຸນາລາຍງານພ້ອມລາຍລະອຽດ (ລວມທັງ stacktrace ດ້ານລຸ່ມ)."
 
 #: src/plm/core/model/Game.java:235
 #, java-format
@@ -726,8 +713,7 @@ msgstr "ໂຫຼດບົດຮຽນ {0}"
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
-msgstr ""
-"ບົດຮຽນ {0} ເກີດບັນຫາຂະນະໂຫຼດບົດຝຶກຫັດ, ກະລຸນາລາຍງານບັນຫາ ແລະ ເລືອກບົດຮຽນອື່ນ."
+msgstr "ບົດຮຽນ {0} ເກີດບັນຫາຂະນະໂຫຼດບົດຝຶກຫັດ, ກະລຸນາລາຍງານບັນຫາ ແລະ ເລືອກບົດຮຽນອື່ນ."
 
 #: src/plm/core/model/Game.java:364
 msgid "Broken lesson"
@@ -859,15 +845,15 @@ msgstr "{0}: ພົບ END TEMPLATE ໂດຍທີ່ບໍ່ມີ BEGIN TEMP
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:163
 #, java-format
-msgid "{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
+msgid ""
+"{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
 msgstr "{0}: ພົບສ່ວນເລີ່ມຕົ້ນຂອງຄຳຕອບຢູ່ທ້າຍເທມເພຼດ. ໃຫ້ປ່ຽນເປັນ BEGIN SOLUTIONHELPER."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:203
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
-msgstr ""
-"ຂໍ້ຜິດພາດໃນການອ່ານໄຟລ໌ {0}. ນີ້ແມ່ນບັກຂອງລະບົບອ່ານ (state={1}), ກະລຸນາລາຍງານ."
+msgstr "ຂໍ້ຜິດພາດໃນການອ່ານໄຟລ໌ {0}. ນີ້ແມ່ນບັກຂອງລະບົບອ່ານ (state={1}), ກະລຸນາລາຍງານ."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:208
 #, java-format
@@ -927,8 +913,7 @@ msgstr "ເກີດຂໍ້ຜິດພາດຂະນະຂຽນໂລກຄ
 #: src/plm/core/model/lesson/ExerciseTemplated.java:469
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
-msgstr ""
-"ບໍ່ສາມາດຂຽນໂລກຄຳຕອບຂອງ {0} ໄດ້. ກະລຸນາກວດເບິ່ງສິດການເຂົ້າເຖິງ (permissions)."
+msgstr "ບໍ່ສາມາດຂຽນໂລກຄຳຕອບຂອງ {0} ໄດ້. ກະລຸນາກວດເບິ່ງສິດການເຂົ້າເຖິງ (permissions)."
 
 #: src/plm/core/model/lesson/Lecture.java:90
 #: src/plm/core/model/lesson/Lesson.java:94
@@ -948,8 +933,8 @@ msgid ""
 "Something weird happened. Your session was not created/reloaded properly. "
 "Please report this issue."
 msgstr ""
-"ເກີດເຫດການທີ່ບໍ່ຄາດຄິດ. ເຊດຊັນ (session) ຂອງເຈົ້າບໍ່ຖືກສ້າງ ຫຼື ໂຫຼດຢ່າງຖືກຕ້ອງ. ກະລຸນາລາຍງານບັນຫາ"
-"ນີ້."
+"ເກີດເຫດການທີ່ບໍ່ຄາດຄິດ. ເຊດຊັນ (session) ຂອງເຈົ້າບໍ່ຖືກສ້າງ ຫຼື ໂຫຼດຢ່າງຖືກຕ້ອງ. "
+"ກະລຸນາລາຍງານບັນຫານີ້."
 
 #: src/plm/core/model/session/ZipSessionKit.java:252
 msgid "Ok, quit and lose my data."
@@ -1055,8 +1040,7 @@ msgstr "ຮວມຂໍ້ມູນເຊດຊັນຫຼ້າສຸດສຳ
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
-msgstr ""
-"ພົບຂໍ້ຂັດແຍ້ງຂອງຂໍ້ມູນຂະນະກຳລັງຊິ້ງຄ໌ (synchronizing), ກຳລັງພະຍາຍາມແກ້ໄຂ..."
+msgstr "ພົບຂໍ້ຂັດແຍ້ງຂອງຂໍ້ມູນຂະນະກຳລັງຊິ້ງຄ໌ (synchronizing), ກຳລັງພະຍາຍາມແກ້ໄຂ..."
 
 #. TODO: handle this case
 #: src/plm/core/model/tracking/GitUtils.java:166
@@ -1084,8 +1068,7 @@ msgstr "ກຳລັງດຶງຂໍ້ມູນເວີຊັນຫຼ້າ
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
-msgstr ""
-"ການດຶງຂໍ້ມູນເວີຊັນຫຼ້າສຸດບໍ່ສາມາດແກ້ໄຂບັນຫາໄດ້, ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້."
+msgstr "ການດຶງຂໍ້ມູນເວີຊັນຫຼ້າສຸດບໍ່ສາມາດແກ້ໄຂບັນຫາໄດ້, ກະລຸນາລາຍງານຂໍ້ຜິດພາດນີ້."
 
 #: src/plm/core/model/tracking/GitUtils.java:255
 msgid ""
@@ -1114,13 +1097,13 @@ msgid ""
 "li></ul><br/>Your code is saved to {2}<br/>Your secret session ID is {3}<br/"
 "></html>"
 msgstr ""
-"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">ເວີຊັນ {0}"
-"&nbsp;<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">("
-"{1})</span></h3><br/>&copy; 2008-2020 ທີມງານຜູ້ພັດທະນາ. ສະຫງວນລິຂະສິດ.<br/><ul "
-"style=\"margin-left:20px;\"><li>ແນວຄິດເລີ່ມຕົ້ນ: <i>L. Turbak (Wellesley College)"
-"</i></li><li>ອອກແບບ ແລະ ຂຽນລະຫັດ: <i>M. Quinson ແລະ G. Oster</i></li><li>ທົດສອບ"
-"ໂດຍ: <i>ນັກສຶກສາ Telecom Nancy (ຮຸ່ນປີ ''11 ຫາ ''15)</i></li></ul><br/>ລະຫັດຂອງທ່ານຖື"
-"ກບັນທຶກໄວ້ທີ່ {2}<br/>ລະຫັດເຊດຊັນລັບຂອງທ່ານແມ່ນ {3}<br/></html>"
+"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">ເວີຊັນ {0}&nbsp;"
+"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
+"span></h3><br/>&copy; 2008-2020 ທີມງານຜູ້ພັດທະນາ. ສະຫງວນລິຂະສິດ.<br/><ul "
+"style=\"margin-left:20px;\"><li>ແນວຄິດເລີ່ມຕົ້ນ: <i>L. Turbak (Wellesley "
+"College)</i></li><li>ອອກແບບ ແລະ ຂຽນລະຫັດ: <i>M. Quinson ແລະ G. Oster</i></"
+"li><li>ທົດສອບໂດຍ: <i>ນັກສຶກສາ Telecom Nancy (ຮຸ່ນປີ ''11 ຫາ ''15)</i></li></ul><br/"
+">ລະຫັດຂອງທ່ານຖືກບັນທຶກໄວ້ທີ່ {2}<br/>ລະຫັດເຊດຊັນລັບຂອງທ່ານແມ່ນ {3}<br/></html>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:81
 msgid "About"
@@ -1197,9 +1180,9 @@ msgstr ""
 "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
 "</tr></table>\n"
 "\n"
-"<p><font size=\"+1\">PLM ແມ່ນລະບົບຈັດການການຮຽນຮູ້ (LMS) ທີ່ເນັ້ນການສອນສິລະປະການຂຽນໂປຣແກ"
-"ຣມຄອມພິວເຕີຜ່ານບົດຝຶກຫັດແບບໂຕ້ຕອບ. ມັນມີບົດຝຶກຫັດທີ່ຫຼາກຫຼາຍ ເພື່ອໃຫ້ທ່ານໄດ້ຝຶກຝົນຕາມຄວາມໄວທີ່ທ່ານຕ້ອງກາ"
-"ນ.</font></p><br/>"
+"<p><font size=\"+1\">PLM ແມ່ນລະບົບຈັດການການຮຽນຮູ້ (LMS) "
+"ທີ່ເນັ້ນການສອນສິລະປະການຂຽນໂປຣແກຣມຄອມພິວເຕີຜ່ານບົດຝຶກຫັດແບບໂຕ້ຕອບ. ມັນມີບົດຝຶກຫັດທີ່ຫຼາກຫຼາຍ "
+"ເພື່ອໃຫ້ທ່ານໄດ້ຝຶກຝົນຕາມຄວາມໄວທີ່ທ່ານຕ້ອງການ.</font></p><br/>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:144
 msgid "PLM lesson files"
@@ -1273,8 +1256,7 @@ msgstr "ຄວາມສຳເລັດມາຫຼັງຈາກຄວາມລ
 msgid ""
 "<i>The master has failed more time than the beginner has even tried</i>,<br> "
 "as they say."
-msgstr ""
-"<i>ອາຈານລົ້ມເຫຼວມາຫຼາຍຄັ້ງ ກວ່າທີ່ມືໃໝ່ເຄີຍໄດ້ລອງເຮັດຊ້ຳ</i> ດັ່ງຄຳເພິ່ນວ່າ."
+msgstr "<i>ອາຈານລົ້ມເຫຼວມາຫຼາຍຄັ້ງ ກວ່າທີ່ມືໃໝ່ເຄີຍໄດ້ລອງເຮັດຊ້ຳ</i> ດັ່ງຄຳເພິ່ນວ່າ."
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid ""
@@ -1346,8 +1328,7 @@ msgstr "ຍິນດີດ້ວຍ"
 #, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>"
-msgstr ""
-"<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.<br>ຜ່ານການທົດສອບ {0} ຄັ້ງ.</html>"
+msgstr "<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.<br>ຜ່ານການທົດສອບ {0} ຄັ້ງ.</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:49
 msgid "<html>Congratulations, you passed this exercise.</html>"
@@ -1359,8 +1340,8 @@ msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
 "passed)<br><br><br>Select your next exercise:</html>"
 msgstr ""
-"<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.<br>(ຜ່ານການທົດສອບ {0} ຄັ້ງ)<br><br><br>ເລືອກບົດຝຶກຫັດ"
-"ຕໍ່ໄປຂອງທ່ານ:</html>"
+"<html>ຍິນດີດ້ວຍ, ທ່ານຜ່ານບົດຝຶກຫັດນີ້ແລ້ວ.<br>(ຜ່ານການທົດສອບ {0} "
+"ຄັ້ງ)<br><br><br>ເລືອກບົດຝຶກຫັດຕໍ່ໄປຂອງທ່ານ:</html>"
 
 #: src/plm/core/ui/ExercisePassedDialog.java:62
 msgid ""
@@ -1496,8 +1477,7 @@ msgstr ""
 
 #: src/plm/core/ui/FeedbackDialog.java:71
 msgid "--------------------[ my code for this exercise ]--------------------\n"
-msgstr ""
-"--------------------[ ລະຫັດຂອງຂ້ອຍສຳລັບບົດຝຶກຫັດນີ້ ]--------------------\n"
+msgstr "--------------------[ ລະຫັດຂອງຂ້ອຍສຳລັບບົດຝຶກຫັດນີ້ ]--------------------\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:94
 msgid "Report your feedback"
@@ -1583,8 +1563,7 @@ msgstr "ຄຳຄິດເຫັນບໍ່ຖືກຕ້ອງ"
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
-msgstr ""
-"ຫົວຂໍ້ຄຳຄິດເຫັນຍັງເປັນຄ່າເລີ່ມຕົ້ນຢູ່, ກະລຸນາກຳນົດຫົວຂໍ້ໃຫ້ກ່ຽວຂ້ອງກັບບັນຫາ.\n"
+msgstr "ຫົວຂໍ້ຄຳຄິດເຫັນຍັງເປັນຄ່າເລີ່ມຕົ້ນຢູ່, ກະລຸນາກຳນົດຫົວຂໍ້ໃຫ້ກ່ຽວຂ້ອງກັບບັນຫາ.\n"
 
 #: src/plm/core/ui/FeedbackDialog.java:246
 msgid "The current title is empty, please specify a relevant title.\n"
@@ -1594,8 +1573,7 @@ msgstr "ຫົວຂໍ້ຫວ່າງເປົ່າ, ກະລຸນາກ�
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
-msgstr ""
-"ຄຳຄິດເຫັນຍັງມີຂໍ້ຄວາມອະທິບາຍ (ສ່ວນທີ່ຢູ່ເໜືອເສັ້ນ ---------) ຢູ່, ກະລຸນາລຶບອອກ.\n"
+msgstr "ຄຳຄິດເຫັນຍັງມີຂໍ້ຄວາມອະທິບາຍ (ສ່ວນທີ່ຢູ່ເໜືອເສັ້ນ ---------) ຢູ່, ກະລຸນາລຶບອອກ.\n"
 
 #: src/plm/core/ui/LoggerPanel.java:30 src/plm/core/ui/LoggerPanel.java:95
 msgid "Where error and other messages get written"
@@ -1825,8 +1803,7 @@ msgstr "(ບໍ່ມີເຄັດລັບທີ່ຈະສະແດງ)"
 msgid ""
 "If you already have a UUID, paste it here. If not, you can use that randomly "
 "generated identifier."
-msgstr ""
-"ຖ້າທ່ານມີ UUID ແລ້ວ, ໃຫ້ວາງຢູ່ນີ້. ຖ້າບໍ່ມີ, ທ່ານສາມາດໃຊ້ລະຫັດທີ່ລະບົບສຸ່ມໃຫ້ໄດ້."
+msgstr "ຖ້າທ່ານມີ UUID ແລ້ວ, ໃຫ້ວາງຢູ່ນີ້. ຖ້າບໍ່ມີ, ທ່ານສາມາດໃຊ້ລະຫັດທີ່ລະບົບສຸ່ມໃຫ້ໄດ້."
 
 #: src/plm/core/ui/action/AddUser.java:29
 msgid "Username:"
@@ -2254,8 +2231,7 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
 "pens. Use brushUp() instead."
-msgstr ""
-"ຂໍໂທດເດີ ເດຟ, ໃຊ້ penUp() ຢູ່ນີ້ບໍ່ໄດ້. ບັກເກີລມີແປງ ບໍ່ແມ່ນບິກ. ໃຫ້ໃຊ້ brushUp() ແທນ."
+msgstr "ຂໍໂທດເດີ ເດຟ, ໃຊ້ penUp() ຢູ່ນີ້ບໍ່ໄດ້. ບັກເກີລມີແປງ ບໍ່ແມ່ນບິກ. ໃຫ້ໃຊ້ brushUp() ແທນ."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:175
 #: src/plm/universe/bugglequest/SimpleBuggle.java:31
@@ -2674,15 +2650,13 @@ msgstr "ນັ້ນບໍ່ແມ່ນເສັ້ນຊື່ (ກະລຸ�
 msgid ""
 "Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
 "brushes. Use penDown() instead."
-msgstr ""
-"ຂໍໂທດເດີ ເດຟ, ໃຊ້ brushDown() ຢູ່ນີ້ບໍ່ໄດ້. ເຕົ່າມີບິກ ບໍ່ແມ່ນແປງ. ໃຫ້ໃຊ້ penDown() ແທນ."
+msgstr "ຂໍໂທດເດີ ເດຟ, ໃຊ້ brushDown() ຢູ່ນີ້ບໍ່ໄດ້. ເຕົ່າມີບິກ ບໍ່ແມ່ນແປງ. ໃຫ້ໃຊ້ penDown() ແທນ."
 
 #: src/plm/universe/turtles/Turtle.java:228
 msgid ""
 "Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
 "brushes. Use penUp() instead."
-msgstr ""
-"ຂໍໂທດເດີ ເດຟ, ໃຊ້ brushUp() ຢູ່ນີ້ບໍ່ໄດ້. ເຕົ່າມີບິກ ບໍ່ແມ່ນແປງ. ໃຫ້ໃຊ້ penUp() ແທນ."
+msgstr "ຂໍໂທດເດີ ເດຟ, ໃຊ້ brushUp() ຢູ່ນີ້ບໍ່ໄດ້. ເຕົ່າມີບິກ ບໍ່ແມ່ນແປງ. ໃຫ້ໃຊ້ penUp() ແທນ."
 
 #: src/plm/universe/turtles/Turtle.java:409
 #, java-format
