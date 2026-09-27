@@ -409,8 +409,7 @@ Preparing the next release cycle
 
 ## TODOs
 
-TODO: ensure that HIDDEN comes after the solution (to simplify the line collapsing that helps Java computing the offset)
-TODO: unify the code paths in templating, reducing the amount of overloads. There is no need for a specific overload in Scala just because it may raise more exceptions.
+TODO: unify the code paths in templating, reducing the amount of overloads between languages and ensuring that the segmentation between "BEGIN/END <SOMETHING>" is not dupplicated in lang.extract() by Java/Scala/Python. 
 
 TODO: add to the exercice a verification of the source code, so that MethodDogHouse can verify that there is only one occurence of the left() method in the source code
 
@@ -422,6 +421,5 @@ TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
-TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process)
+TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process). We need to transition to Scala3 first
 TODO: benchmark the tests to understand where the time goes, and optimize this out
-TODO: ensure that the templating honors the BEGIN/END SOLUTIONHELPER section, as it simplifies some solutions which now use tricks to hide helper functions in the body of the run() method. For example, TreeEntity hides the subtree method this way
