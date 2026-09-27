@@ -86,9 +86,9 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 This section is about how the single `XxxEntity.<ext>` file described in "Adding a new exercise" below (which mixes the
 teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION,
-one for the STUDENT's current editor content. It happens in two separate steps.
+one for the STUDENT's current editor content. It happens in two separate steps, both at load time.
 
-### Step 1 (load time): `EntityTemplateParser.parse()` parses the entity file, then `ExerciseTemplated.newSourceFromFile()`
+### Step 1: `EntityTemplateParser.parse()` parses the entity file, then `ExerciseTemplated.newSourceFromFile()`
 extracts each language's own pieces right away
 
 Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, once when the lesson is loaded.
@@ -124,21 +124,19 @@ Called from `ExerciseTemplated.setup()` for every `(exercise, language)` pair, o
 - the `SOLUTION` and `HIDDEN` segments are not used here: they only reach the student through `correction`.
 - `correction`: the *entire* file content again (marker lines included), unchanged except for the class/package name rewrite.
 
-It then does bookkeeping common to all languages: inserts a `#line` C preprocessor directive so compiler errors point at the right file for C, collapses `initialContent`'s
-leading whitespace to the smallest common indentation, and folds `head`+`tail` down to a single line for Java 
-(the Python/Scala/C compilers/offset-tracking don't need that flattening the way javac's line-based error reporting does).
-`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), and `offset` is `head`'s line count
-(meant to translate a compiler error's line number back into the student's own editor coordinates -- not wired to
-anything yet, see the TODOs). An optional `patternString` (`s/regex/replacement/;...`, only used by a couple of
-exercises) can further rewrite `template` and `initialContent` at this point. The result is a `TemplatedEntity` record:
-`initialContent`, `template`, `offset`, `correction`, `imports`, plus `extraction` (still empty at this point, filled in next).
+It then does bookkeeping common to all languages: inserts a `#line` C preprocessor directive so compiler errors point at
+the right file for C, and collapses `initialContent`'s leading whitespace to the smallest common indentation.
+`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`). An optional `patternString`
+(`s/regex/replacement/;...`, only used by a couple of exercises) can further rewrite `template` and `initialContent` at
+this point. The result is a `TemplatedEntity` record: `initialContent`, `template`, `correction`, `imports`, plus
+`extraction` (still empty at this point, filled in next).
 
 Right after `parse()` returns, still inside `newSourceFromFile()`, `ProgrammingLanguage.extract(correction, template,
 imports, name)` is called on the concrete language to do step 2 immediately below. `Exercise.newSource()` then stores 
-`(name, initialContent, extraction, offset, correction)` as one `SourceFileRevertable` per `(exercise, language)` in 
+`(name, initialContent, extraction, correction)` as one `SourceFileRevertable` per `(exercise, language)` in
 `Exercise.sourceFiles`. 
 
-### Step 2 (still at load time, right after step 1): each language extracts its own pieces out of `correction`
+### Step 2: each language extracts its own pieces out of `correction`
 
 `SourceFile` only knows about `LanguageExtraction.template()`/`correctionBody()`; everything else is language-specific
 and lives in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
@@ -163,13 +161,18 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   safe since a given `SourceFile` is only ever populated by the one language it was parsed for) to fill in a
   `runtimePatterns` map of regex->replacement (`$run`, `$dependency`, `$imports`, ...) -- this part still
   happens on every compile.
-- `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution: for
-  `StudentOrCorrection.CORRECTION` it substitutes the extraction's `correctionBody` for `$body`; for `STUDENT` it
-  substitutes the editor's current `body` instead; either way `runtimePatterns` is then applied on top of the result,
-  and non-breaking spaces are stripped. The resulting string is written to a per-compile workspace
-  (`TemplatedRemoteLang.packageNameForExercise()`: a name derived from the exercise id and `STUDENT`/`CORRECTION`,
-  so unrelated concurrent compiles never collide, see its Javadoc) alongside the copied `RemoteXxx`
-  glue file and any other support file the exercise needs, then compiled/run the usual way.
+- `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution:
+  - `runtimePatterns` is applied first to `template` (which still holds the literal `$body` placeholder after this step)
+  - `offset` is computed. It's the number of lines of the patched template before `$body`'s own first line, and it's used to fix
+    the location of the compilation errors so that they point to the code written by the student.
+  - Then is `$body` substituted with the extraction's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
+    current content `body` for `StudentOrCorrection.STUDENT`
+  - non-breaking spaces are stripped.
+  - The method returns a `SourceFile.CompilableContent(content, offset)` record
+- The `content` is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
+  This name derived from the exercise id and `STUDENT`/`CORRECTION`, so unrelated concurrent compiles never collide) alongside
+  the copied `RemoteXxx` glue file and any other support file the exercise needs, then compiled/run the usual way. `offset` is
+  meant to translate a compiler error's line number back into the student's own editor location but it not wired to anything yet.
 
 ## Saving the student's work: GitSpy and friends
 
@@ -416,9 +419,12 @@ TODO: unify the code paths in templating, reducing the amount of overloads. Ther
 TODO: add to the exercice a verification of the source code, so that MethodDogHouse can verify that there is only one occurence of the left() method in the source code
 
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
-TODO: fix the compilation error messages to match the student code, fixing Entity.setScriptOffset and friends
+TODO: fix the compilation error messages to match the student code: `SourceFile.getCompilableContent()` now returns the
+      `$body` offset alongside the compilable source, but no caller uses it yet to shift a compiler diagnostic's line number
+      back to the student's own editor coordinates.
 TODO: Port the SimpleExercise tests to LangC
-TODO: Precompile the correction entities so that they don't get generated/compiled/executed every time we load the lesson
+TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
+      load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
 TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process)
 TODO: benchmark the tests to understand where the time goes, and optimize this out
