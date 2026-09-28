@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 public class AlgInsertionSortEntity extends SortingEntity {
 
+  /* BEGIN REMOTE */
   public void run() { this.insertionSort(); }
 
   /* BEGIN TEMPLATE */
@@ -22,4 +23,5 @@ public class AlgInsertionSortEntity extends SortingEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

@@ -4,15 +4,16 @@ import plm.universe.bugglequest.SimpleBuggle;
 import plm.core.model.Game
 
 class TraversalByColumnEntity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */	
 		var cpt=0;
-		writeMessage(cpt);
+		writeMessage(cpt.asInstanceOf[String]);
 		while (!endingPosition()) {
 			nextStep();
 			cpt+=1;
-			writeMessage(cpt);
+			writeMessage(cpt.asInstanceOf[String]);
 		}
 	}
 	def nextStep() {	
@@ -50,4 +51,5 @@ class TraversalByColumnEntity extends SimpleBuggle {
 	override def stepBackward() {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
 	}
+	/* END REMOTE */
 }

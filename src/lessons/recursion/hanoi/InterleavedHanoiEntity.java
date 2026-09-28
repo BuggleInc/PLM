@@ -4,6 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class InterleavedHanoiEntity extends HanoiEntity {
 
+  /* BEGIN REMOTE */
   public void run() { solve(getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3)); }
   /* BEGIN TEMPLATE */
   public void solve(int src1, int src2, int other, int dst)
@@ -36,4 +37,5 @@ public class InterleavedHanoiEntity extends HanoiEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

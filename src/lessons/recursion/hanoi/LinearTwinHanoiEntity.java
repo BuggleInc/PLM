@@ -12,6 +12,7 @@ public class LinearTwinHanoiEntity extends HanoiEntity {
     super.move(from, to);
   }
 
+  /* BEGIN REMOTE */
   public void run() { solve(getParamInt(0), getParamInt(1), getParamInt(2)); }
 
   /* BEGIN TEMPLATE */
@@ -74,4 +75,5 @@ public class LinearTwinHanoiEntity extends HanoiEntity {
   }
 
   /* END TEMPLATE */
+  /* END REMOTE */
 }

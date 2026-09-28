@@ -6,9 +6,8 @@ import lessons.recursion.cons.universe.ConsEntity
 
 class OccurrenceEntity extends ConsEntity {
 
+    /* BEGIN REMOTE */
     override def run() {
-      import plm.core.ValueSerializer._
-
       val count = getTestCount()
       for (i <- 0 to count -1) {
         val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
@@ -27,4 +26,5 @@ class OccurrenceEntity extends ConsEntity {
 	/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

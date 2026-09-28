@@ -12,6 +12,7 @@ public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
   public boolean estSurBlanc() { return isGroundWhite(); }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -22,4 +23,5 @@ public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

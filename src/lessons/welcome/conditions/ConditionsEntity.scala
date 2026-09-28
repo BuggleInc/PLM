@@ -3,6 +3,7 @@ package lessons.welcome.conditions;
 import plm.universe.bugglequest.SimpleBuggle;
 
 class ConditionsEntity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	override def run() { 
 		/* BEGIN SOLUTION */
 		if (isFacingWall())
@@ -11,4 +12,5 @@ class ConditionsEntity extends SimpleBuggle {
 			stepForward();
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

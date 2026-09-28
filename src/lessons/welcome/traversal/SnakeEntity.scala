@@ -5,6 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class SnakeEntity extends SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -43,4 +44,5 @@ class SnakeEntity extends SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */	
+	/* END REMOTE */
 }

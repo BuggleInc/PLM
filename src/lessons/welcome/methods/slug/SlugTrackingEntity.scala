@@ -4,6 +4,7 @@ import java.awt.Color;
 
 class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		while (! isOverBaggle()) {
 			if (isFacingTrail()) {
@@ -30,5 +31,6 @@ class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}		
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

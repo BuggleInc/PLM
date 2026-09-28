@@ -18,6 +18,7 @@ class WallFindFollowMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 	 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -45,5 +46,6 @@ class WallFindFollowMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }
 

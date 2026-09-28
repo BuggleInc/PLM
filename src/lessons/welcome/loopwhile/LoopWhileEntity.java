@@ -15,6 +15,7 @@ public class LoopWhileEntity extends SimpleBuggle {
   }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -24,4 +25,5 @@ public class LoopWhileEntity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

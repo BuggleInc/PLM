@@ -5,6 +5,7 @@ import java.awt.Color;
 import plm.universe.bugglequest.SimpleBuggle;
 
 class LangtonEntity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def step() {
 		/* BEGIN SOLUTION */
@@ -36,4 +37,5 @@ class LangtonEntity extends SimpleBuggle {
 			stepDone();
 		}
 	}
+	/* END REMOTE */
 }

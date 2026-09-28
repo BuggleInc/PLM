@@ -6,6 +6,7 @@ import plm.core.lang.primitives.EntityPrimitives;
 @EntityPrimitives(lessons.recursion.hanoi.HanoiBoardEntity.class)
 public class HanoiBoardEntity extends HanoiEntity {
 
+  /* BEGIN REMOTE */
   public void run() { solve(getParamInt(1), getParamInt(1), getParamInt(2)); }
 
   /* BEGIN TEMPLATE */
@@ -25,4 +26,5 @@ public class HanoiBoardEntity extends HanoiEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

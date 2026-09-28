@@ -16,6 +16,7 @@ public class MoriaEntity extends SimpleBuggle {
   }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -44,4 +45,5 @@ public class MoriaEntity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

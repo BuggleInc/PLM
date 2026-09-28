@@ -6,6 +6,7 @@ import plm.universe.bat.BatEntity;
 
 public class Has271Entity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -32,4 +33,5 @@ public class Has271Entity extends BatEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

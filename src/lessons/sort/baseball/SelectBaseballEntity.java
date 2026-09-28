@@ -4,6 +4,7 @@ import lessons.sort.baseball.universe.BaseballEntity;
 
 public class SelectBaseballEntity extends BaseballEntity {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -76,4 +77,5 @@ public class SelectBaseballEntity extends BaseballEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

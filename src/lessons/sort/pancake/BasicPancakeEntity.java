@@ -4,6 +4,7 @@ import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BasicPancakeEntity extends PancakeEntity {
 
+  /* BEGIN REMOTE */
   public void run() { solve(); }
 
   /* BEGIN TEMPLATE */
@@ -29,4 +30,5 @@ public class BasicPancakeEntity extends PancakeEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

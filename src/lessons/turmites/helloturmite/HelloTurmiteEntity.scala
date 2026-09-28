@@ -19,6 +19,7 @@ class HelloTurmiteEntity extends SimpleBuggle {
 	val NEXT_STATE = 2;
 
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	var state = 0;
 
@@ -65,4 +66,5 @@ class HelloTurmiteEntity extends SimpleBuggle {
 			step(colors,rule);
 		}
 	}
+	/* END REMOTE */
 }

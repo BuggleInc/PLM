@@ -7,6 +7,7 @@ import plm.universe.bat.BatEntity;
 
 public class SortaSumEntity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -28,4 +29,5 @@ public class SortaSumEntity extends BatEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

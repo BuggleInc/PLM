@@ -48,6 +48,7 @@ class LoopCourseForestEntity extends SimpleBuggle {
 		}
 	}
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 7;  side <- 1 to 4){
@@ -69,4 +70,5 @@ class LoopCourseForestEntity extends SimpleBuggle {
 		}
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

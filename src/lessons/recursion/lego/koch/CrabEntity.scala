@@ -5,6 +5,7 @@ import java.awt.Color
 
 class CrabEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def crab(levels:Int, length:Double) {
 		/* BEGIN SOLUTION */
@@ -24,4 +25,5 @@ class CrabEntity extends Turtle {
 	override def run() {
 		crab(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
+	/* END REMOTE */
 }

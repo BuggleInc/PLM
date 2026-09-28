@@ -9,6 +9,7 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 
   @Primitive(215) public Color getColorIntParam() { return (Color)getParam(0); }
 
+  /* BEGIN REMOTE */
   @Override public void run() { hunt(getColorIntParam()); }
 
   /* BEGIN TEMPLATE */
@@ -44,4 +45,5 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
   }
   /* END SOLUTIONHELPER */
   /* END TEMPLATE */
+  /* END REMOTE */
 }

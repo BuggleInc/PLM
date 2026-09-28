@@ -3,6 +3,7 @@ package lessons.lander.lvl1_lander_101;
 import lessons.lander.universe._;
 
 class Lander101Entity extends LanderEntity {
+	/* BEGIN REMOTE */
 	override def run() {
 		while (isFlying()) {
 			step()
@@ -20,5 +21,6 @@ class Lander101Entity extends LanderEntity {
 		}
 		/* END SOLUTION */
 		/* END TEMPLATE */
+		/* END REMOTE */
 	}
 }

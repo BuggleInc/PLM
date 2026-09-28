@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 class HouseThreeEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -36,4 +37,5 @@ class HouseThreeEntity extends Turtle {
 	    /* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

@@ -12,6 +12,7 @@ class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 	}
 
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		var stepper = 0;
@@ -27,4 +28,5 @@ class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 		dropBaggle();
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

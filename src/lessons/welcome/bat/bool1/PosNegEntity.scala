@@ -5,9 +5,8 @@ import plm.universe.bat.BatTest
 
 class PosNegEntity extends BatEntity {
 
+    /* BEGIN REMOTE */
     override def run() {
-      import plm.core.ValueSerializer._
-
       val count = getTestCount()
       for (i <- 0 to count -1) {
         val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]
@@ -24,4 +23,5 @@ class PosNegEntity extends BatEntity {
 	/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

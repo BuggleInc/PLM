@@ -1,6 +1,7 @@
 package lessons.welcome.methods.returning;
 
 public class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
+  /* BEGIN REMOTE */
   @Override public void run()
   {
     for (int i = 0; i < 7; i++) {
@@ -26,4 +27,5 @@ public class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggl
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

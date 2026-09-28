@@ -2,6 +2,7 @@ package lessons.recursion.lego.spiral;
 
 class SpiralEntity extends plm.universe.turtles.Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def spiral(steps:Int, angle:Int, length:Int, increment:Int)	{
 		/* BEGIN SOLUTION */
@@ -20,4 +21,5 @@ class SpiralEntity extends plm.universe.turtles.Turtle {
 		spiral(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Int],
 		    getParam(2).asInstanceOf[Int],getParam(3).asInstanceOf[Int]);
 	}
+	/* END REMOTE */
 }

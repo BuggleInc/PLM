@@ -6,6 +6,7 @@ import plm.universe.turtles.Turtle;
 
 class DiskTwoEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -25,4 +26,5 @@ class DiskTwoEntity extends Turtle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

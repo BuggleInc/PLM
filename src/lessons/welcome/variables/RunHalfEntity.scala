@@ -13,6 +13,7 @@ class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 	/* BINDINGS TRANSLATION */
 	def estSurOrange():Boolean = { return isOverOrange(); }
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
@@ -30,4 +31,5 @@ class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 		/* END TEMPLATE */
 	}
+	/* END REMOTE */
 }

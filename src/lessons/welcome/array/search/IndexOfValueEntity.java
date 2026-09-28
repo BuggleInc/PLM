@@ -7,6 +7,7 @@ import plm.universe.bat.BatEntity;
 
 public class IndexOfValueEntity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -30,4 +31,5 @@ public class IndexOfValueEntity extends BatEntity {
   }
 
   /* END TEMPLATE */
+  /* END REMOTE */
 }

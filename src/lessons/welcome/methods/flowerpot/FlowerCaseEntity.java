@@ -4,6 +4,7 @@ import java.awt.Color;
 import plm.universe.bugglequest.SimpleBuggle;
 public class FlowerCaseEntity extends SimpleBuggle {
 
+  /* BEGIN REMOTE */
   public void run() { growFlowers(); }
 
   /* BEGIN TEMPLATE */
@@ -77,4 +78,5 @@ public class FlowerCaseEntity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

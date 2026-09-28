@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class HexaKochEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   void drawCurve(int levels, double length) { hexaKoch(levels, length); }
   void hexaKoch(int levels, double length)
@@ -26,4 +27,5 @@ public class HexaKochEntity extends Turtle {
   /* END TEMPLATE */
 
   public void run() { drawCurve(getParamInt(0), getParamDouble(1)); }
+  /* END REMOTE */
 }

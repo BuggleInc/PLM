@@ -6,6 +6,7 @@ import java.awt.Color;
 import lessons.turmites.universe.TurmiteEntity;
 
 public class HelloTurmiteEntity extends TurmiteEntity {
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   final static int STOP = 0; /* for example */
   /* BEGIN SOLUTIONHELPER */
@@ -83,4 +84,5 @@ public class HelloTurmiteEntity extends TurmiteEntity {
       step(colors, rule);
     }
   }
+  /* END REMOTE */
 }

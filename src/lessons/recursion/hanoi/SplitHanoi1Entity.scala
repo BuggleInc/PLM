@@ -4,6 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 class SplitHanoi1Entity extends HanoiEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		solve(getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3));
 	}
@@ -35,5 +36,6 @@ class SplitHanoi1Entity extends HanoiEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

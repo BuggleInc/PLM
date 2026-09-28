@@ -21,6 +21,7 @@ public class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
   public boolean estSurOrange() { return isOverOrange(); }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -39,4 +40,5 @@ public class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

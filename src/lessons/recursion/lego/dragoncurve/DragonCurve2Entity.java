@@ -5,6 +5,7 @@ import plm.universe.turtles.Turtle;
 
 public class DragonCurve2Entity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void dragon(int order, double x, double y, double z, double t)
   {
@@ -42,4 +43,5 @@ public class DragonCurve2Entity extends Turtle {
   /* END TEMPLATE */
 
   public void run() { dragon(getParamInt(0), getParamDouble(1), getParamDouble(2), getParamDouble(3), getParamDouble(4)); }
+  /* END REMOTE */
 }

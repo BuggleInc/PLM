@@ -2,6 +2,7 @@ package lessons.welcome.bdr;
 
 class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 	    var done = false
@@ -31,4 +32,5 @@ class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
 		}		
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

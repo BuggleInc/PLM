@@ -4,6 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class TricolorHanoi2Entity extends HanoiEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int src = getParamInt(0);
@@ -41,4 +42,5 @@ public class TricolorHanoi2Entity extends HanoiEntity {
   }
 
   /* END TEMPLATE */
+  /* END REMOTE */
 }

@@ -41,6 +41,7 @@ public class ShortestPathMazeEntity extends SimpleBuggle implements ShortestPath
 
   @Override public boolean hasBaggle(int x, int y) { return ((BuggleWorld)world).getCell(x, y).hasBaggle(); }
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -134,6 +135,7 @@ public class ShortestPathMazeEntity extends SimpleBuggle implements ShortestPath
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 
   /* BINDINGS TRANSLATION to French: Don't translate getIndication */
   boolean aBiscuit(int x, int y) { return hasBaggle(x, y); }

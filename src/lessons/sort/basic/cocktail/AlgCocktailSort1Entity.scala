@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 class AlgCocktailSort1Entity extends SortingEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		cocktailSort();
 	}
@@ -28,6 +29,7 @@ class AlgCocktailSort1Entity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }
 

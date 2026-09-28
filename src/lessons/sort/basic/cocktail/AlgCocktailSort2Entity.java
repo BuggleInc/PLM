@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 public class AlgCocktailSort2Entity extends SortingEntity {
 
+  /* BEGIN REMOTE */
   public void run() { this.cocktailSort2(); }
 
   /* BEGIN TEMPLATE */
@@ -31,4 +32,5 @@ public class AlgCocktailSort2Entity extends SortingEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

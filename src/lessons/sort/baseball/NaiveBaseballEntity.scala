@@ -5,6 +5,7 @@ import lessons.sort.baseball.universe.BaseballWorld;
 
 class NaiveBaseballEntity extends BaseballEntity {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -28,5 +29,6 @@ class NaiveBaseballEntity extends BaseballEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

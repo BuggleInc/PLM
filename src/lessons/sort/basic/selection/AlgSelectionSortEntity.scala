@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 class AlgSelectionSortEntity extends SortingEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		selectionSort();
 	}
@@ -26,4 +27,5 @@ class AlgSelectionSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

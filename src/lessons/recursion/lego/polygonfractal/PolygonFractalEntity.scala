@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 class PolygonFractalEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def polygonFractal (levels:Int, sides:Int, length:Double, shrink:Double) {
 		/* BEGIN SOLUTION */
@@ -28,4 +29,5 @@ class PolygonFractalEntity extends Turtle {
 		polygonFractal(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Int],
 		    getParam(2).asInstanceOf[Double],getParam(3).asInstanceOf[Double]);
 	}
+	/* END REMOTE */
 }

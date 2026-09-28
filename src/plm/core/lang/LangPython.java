@@ -149,7 +149,7 @@ public class LangPython extends TemplatedRemoteLang {
     }
   }
 
-  @Override public PythonExtraction extract(String correction, String template, String imports, String helpers, String name)
+  @Override public PythonExtraction extract(String correction, String template, String correctionBody, String imports, String helpers)
   {
     CorrectedTemplate corrected = getCorrectedTemplate(correction);
     // Python entity files never nest "# BEGIN/END HELPER" inside the templated region, so the student-visible

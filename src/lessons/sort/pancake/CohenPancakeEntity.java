@@ -4,6 +4,7 @@ import lessons.sort.pancake.universe.PancakeEntity;
 
 public class CohenPancakeEntity extends PancakeEntity {
 
+  /* BEGIN REMOTE */
   public void run() { this.solve(); }
 
   /* BEGIN TEMPLATE */
@@ -120,4 +121,5 @@ public class CohenPancakeEntity extends PancakeEntity {
   }
 
   /* END TEMPLATE */
+  /* END REMOTE */
 }

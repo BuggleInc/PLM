@@ -3,6 +3,7 @@ package lessons.welcome.methods.picture;
 import plm.universe.bugglequest.SimpleBuggle;
 public class PictureMono1Entity extends SimpleBuggle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -38,4 +39,5 @@ public class PictureMono1Entity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

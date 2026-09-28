@@ -5,6 +5,7 @@ import plm.universe.bat.BatEntity
 
 class StringTimesEntity extends BatEntity {
 
+    /* BEGIN REMOTE */
     override def run() {
       import ValueSerializer._
 
@@ -25,4 +26,5 @@ class StringTimesEntity extends BatEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

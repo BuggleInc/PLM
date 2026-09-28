@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 class AlgBubbleSort1Entity extends SortingEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		bubbleSort();
 	}
@@ -23,5 +24,6 @@ class AlgBubbleSort1Entity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

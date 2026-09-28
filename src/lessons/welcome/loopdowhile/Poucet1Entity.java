@@ -23,6 +23,7 @@ public class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle impleme
   boolean croisement() { return crossing(); }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -45,4 +46,5 @@ public class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle impleme
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

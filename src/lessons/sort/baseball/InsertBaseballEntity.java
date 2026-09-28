@@ -4,6 +4,7 @@ import lessons.sort.baseball.universe.BaseballEntity;
 
 public class InsertBaseballEntity extends BaseballEntity {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -39,4 +40,5 @@ public class InsertBaseballEntity extends BaseballEntity {
   }
 
   /* END TEMPLATE */
+  /* END REMOTE */
 }

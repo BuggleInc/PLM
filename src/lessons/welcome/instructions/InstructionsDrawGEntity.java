@@ -2,6 +2,7 @@ package lessons.welcome.instructions;
 
 public class InstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBuggle {
 
+  /* BEGIN REMOTE */
   @Override public void run()
   {
     /* BEGIN TEMPLATE */
@@ -37,4 +38,5 @@ public class InstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBugg
     /* END SOLUTION */
     /* END TEMPLATE */
   }
+  /* END REMOTE */
 }

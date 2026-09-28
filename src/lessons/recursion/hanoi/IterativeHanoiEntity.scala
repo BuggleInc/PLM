@@ -3,6 +3,7 @@ package lessons.recursion.hanoi;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 class IterativeHanoiEntity extends HanoiEntity {
+	/* BEGIN REMOTE */
 	override def run() {
     val initialPos=getParamInt(0)
     val increasing=getParamBoolean(1)
@@ -42,5 +43,6 @@ class IterativeHanoiEntity extends HanoiEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

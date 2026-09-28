@@ -1,10 +1,10 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
-import lessons.sort.baseball.universe.BaseballWorld;
 
 public class BubbleBaseballEntity extends BaseballEntity {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -35,4 +35,5 @@ public class BubbleBaseballEntity extends BaseballEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

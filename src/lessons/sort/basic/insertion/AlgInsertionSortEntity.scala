@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 class AlgInsertionSortEntity extends SortingEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		insertionSort();
 	}
@@ -23,6 +24,7 @@ class AlgInsertionSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }
 

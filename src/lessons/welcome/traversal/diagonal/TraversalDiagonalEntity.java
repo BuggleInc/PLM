@@ -4,6 +4,7 @@ import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalDiagonalEntity extends SimpleBuggle {
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   int diag = 0;
   public void run()
@@ -45,6 +46,7 @@ public class TraversalDiagonalEntity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 
   @Override public void forward(int i)
   {

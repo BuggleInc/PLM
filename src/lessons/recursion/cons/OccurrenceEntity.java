@@ -7,6 +7,7 @@ import lessons.recursion.cons.universe.RecList;
 
 public class OccurrenceEntity extends ConsEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -28,4 +29,5 @@ public class OccurrenceEntity extends ConsEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

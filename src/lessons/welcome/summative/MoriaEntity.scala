@@ -11,6 +11,7 @@ class MoriaEntity extends SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		back();
@@ -34,4 +35,5 @@ class MoriaEntity extends SimpleBuggle {
 		stepForward();
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

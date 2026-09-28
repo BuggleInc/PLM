@@ -7,6 +7,7 @@ import plm.universe.bat.BatEntity;
 
 public class AlarmClockEntity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -34,4 +35,5 @@ public class AlarmClockEntity extends BatEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

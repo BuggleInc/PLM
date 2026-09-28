@@ -7,6 +7,7 @@ import plm.universe.turtles.Turtle;
 @EntityPrimitives(SpiralUseEntity.class)
 public class SpiralUseEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void spiral(int steps, int angle, int length, int increment)
   {
@@ -21,4 +22,5 @@ public class SpiralUseEntity extends Turtle {
   /* END TEMPLATE */
 
   public void run() { spiral(100, 91, 1, 2); }
+  /* END REMOTE */
 }

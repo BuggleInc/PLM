@@ -4,6 +4,7 @@ import lessons.sort.pancake.universe.PancakeEntity;
 
 class BasicPancakeEntity extends PancakeEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		solve();
 	}
@@ -30,6 +31,7 @@ class BasicPancakeEntity extends PancakeEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 
 }

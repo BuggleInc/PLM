@@ -2,6 +2,7 @@ package lessons.welcome.instructions;
 
 class InstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		brushDown();
@@ -34,4 +35,5 @@ class InstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBuggle {
 		left();
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

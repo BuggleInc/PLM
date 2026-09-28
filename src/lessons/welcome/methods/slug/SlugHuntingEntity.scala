@@ -4,6 +4,7 @@ import java.awt.Color;
 
 class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		hunt(); 
 	}
@@ -38,4 +39,5 @@ class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 	
 	// Copy your isFacingTrail() here
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

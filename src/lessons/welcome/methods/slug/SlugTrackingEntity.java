@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
+  /* BEGIN REMOTE */
   @Override public void run()
   {
     while (!isOverBaggle()) {
@@ -32,4 +33,5 @@ public class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

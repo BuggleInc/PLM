@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class CrabEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   void crab(int levels, double length)
   {
@@ -22,4 +23,5 @@ public class CrabEntity extends Turtle {
   /* END TEMPLATE */
 
   public void run() { crab(getParamInt(0), getParamDouble(1)); }
+  /* END REMOTE */
 }

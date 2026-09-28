@@ -5,6 +5,7 @@ import java.awt.Color;
 import plm.universe.bugglequest.SimpleBuggle;
 class PictureMono1Entity extends SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -36,4 +37,5 @@ class PictureMono1Entity extends SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

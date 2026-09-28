@@ -4,6 +4,7 @@ import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
 class TraversalByLineEntity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -37,6 +38,7 @@ class TraversalByLineEntity extends SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */	
+	/* END REMOTE */
 
 
 	override def forward(i:Int)  {

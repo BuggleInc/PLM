@@ -13,6 +13,7 @@ class MethodsArgsEntity extends SimpleBuggle {
 	}
 
 
+	/* BEGIN REMOTE */
 	override def run() { 
 		move(getY(),getDirection() == Direction.NORTH); 
 	} 
@@ -30,4 +31,5 @@ class MethodsArgsEntity extends SimpleBuggle {
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

@@ -8,6 +8,7 @@ public class CyclicHanoiEntity extends lessons.recursion.hanoi.universe.HanoiEnt
     cyclicMove(src, dst);
   }
 
+  /* BEGIN REMOTE */
   public void run() { clockwise(getSlotSize(getParamInt(0)), getParamInt(0), getParamInt(1), getParamInt(2)); }
 
   /* BEGIN TEMPLATE */
@@ -36,4 +37,5 @@ public class CyclicHanoiEntity extends lessons.recursion.hanoi.universe.HanoiEnt
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

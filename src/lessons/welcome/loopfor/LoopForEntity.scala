@@ -11,6 +11,7 @@ class LoopForEntity extends SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		var cpt = 0
@@ -25,4 +26,5 @@ class LoopForEntity extends SimpleBuggle {
 		dropBaggle();
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

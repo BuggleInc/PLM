@@ -8,6 +8,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 	val allColors = Array(Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray);
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def step(rule:Array[Char], colors:Array[Color]) {
 		/* BEGIN SOLUTION */
@@ -46,4 +47,5 @@ class LangtonColorsEntity extends SimpleBuggle {
 			step(rule,colors);
 		}
 	}
+	/* END REMOTE */
 }

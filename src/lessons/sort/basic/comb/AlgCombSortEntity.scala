@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 class AlgCombSortEntity extends SortingEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		combSort();
 	}
@@ -26,6 +27,7 @@ class AlgCombSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }
 

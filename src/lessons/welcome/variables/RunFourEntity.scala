@@ -10,6 +10,7 @@ class RunFourEntity extends plm.universe.bugglequest.SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		var cpt = 0;
@@ -20,4 +21,5 @@ class RunFourEntity extends plm.universe.bugglequest.SimpleBuggle {
 		}
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

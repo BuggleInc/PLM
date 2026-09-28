@@ -6,6 +6,7 @@ import plm.universe.turtles.Turtle;
 
 class Kerr36Entity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run():Unit= {
 		/* BEGIN SOLUTION */
@@ -56,4 +57,5 @@ class Kerr36Entity extends Turtle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

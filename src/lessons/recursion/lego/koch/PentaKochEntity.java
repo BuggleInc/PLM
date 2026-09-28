@@ -5,6 +5,7 @@ import plm.universe.turtles.Turtle;
 
 public class PentaKochEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   void pentaKoch(int levels, double length)
   {
@@ -50,4 +51,5 @@ public class PentaKochEntity extends Turtle {
   }
 
   public void run() { pentaKoch(getParamInt(0), getParamDouble(1)); }
+  /* END REMOTE */
 }

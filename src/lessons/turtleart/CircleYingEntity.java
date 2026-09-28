@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class CircleYingEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -23,4 +24,5 @@ public class CircleYingEntity extends Turtle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

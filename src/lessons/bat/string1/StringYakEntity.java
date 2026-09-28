@@ -6,6 +6,7 @@ import plm.universe.bat.BatEntity;
 
 public class StringYakEntity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -34,4 +35,5 @@ public class StringYakEntity extends BatEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

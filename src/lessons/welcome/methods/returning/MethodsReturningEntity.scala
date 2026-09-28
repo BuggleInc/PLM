@@ -3,6 +3,7 @@ package lessons.welcome.methods.returning;
 import plm.core.model.Game
 
 class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
+	/* BEGIN REMOTE */
 	override def run() { 
 		for (i <- 1 to 7) {
 			if (haveBaggle()) 
@@ -26,4 +27,5 @@ class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

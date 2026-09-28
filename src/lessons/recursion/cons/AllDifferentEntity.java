@@ -7,6 +7,7 @@ import lessons.recursion.cons.universe.RecList;
 
 public class AllDifferentEntity extends ConsEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -33,4 +34,5 @@ public class AllDifferentEntity extends ConsEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

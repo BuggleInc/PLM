@@ -14,6 +14,7 @@ public class MethodsArgsEntity extends SimpleBuggle {
     throw new RuntimeException(Game.i18n.tr("I cannot let you use backward with an argument in this exercise. Use a loop instead."));
   }
 
+  /* BEGIN REMOTE */
   @Override public void run() { move(getY(), getDirection() == Direction.NORTH); }
 
   /* BEGIN TEMPLATE */
@@ -30,4 +31,5 @@ public class MethodsArgsEntity extends SimpleBuggle {
   }
   /* END SOLUTION */
   /* END TEMPLATE */
+  /* END REMOTE */
 }

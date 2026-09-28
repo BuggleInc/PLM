@@ -19,6 +19,7 @@ class Array2Entity extends SimpleBuggle {
 	}
 
 	
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 	/* BEGIN SOLUTION */
@@ -57,4 +58,5 @@ class Array2Entity extends SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

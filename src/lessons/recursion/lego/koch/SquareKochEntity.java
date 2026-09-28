@@ -5,6 +5,7 @@ import plm.universe.turtles.Turtle;
 
 public class SquareKochEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   void snowSquare(int levels, double length)
   {
@@ -62,4 +63,5 @@ public class SquareKochEntity extends Turtle {
   }
 
   public void run() { snowSquare(getParamInt(0), getParamDouble(1)); }
+  /* END REMOTE */
 }

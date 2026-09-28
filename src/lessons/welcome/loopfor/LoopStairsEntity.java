@@ -32,6 +32,7 @@ public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
   }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -49,4 +50,5 @@ public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

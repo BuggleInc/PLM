@@ -5,6 +5,7 @@ import java.awt.Color
 
 class PentaKochEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def pentaKoch(levels:Int, length:Double) {
 		/* BEGIN SOLUTION */
@@ -30,4 +31,5 @@ class PentaKochEntity extends Turtle {
 	override def run() {
 		pentaKoch(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
+	/* END REMOTE */
 }

@@ -5,6 +5,7 @@ import lessons.sort.dutchflag.universe.DutchFlagWorld;
 
 public class DutchFlagAlgoEntity extends DutchFlagEntity {
 
+  /* BEGIN REMOTE */
   public void run() { solve(); }
 
   /* BEGIN TEMPLATE */
@@ -40,4 +41,5 @@ public class DutchFlagAlgoEntity extends DutchFlagEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

@@ -5,6 +5,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class CyclicHanoiEntity extends HanoiEntity {
   override def move(from:Int, to:Int) = cyclicMove(from, to)
   
+	/* BEGIN REMOTE */
 	override def run() {
     val src=getParamInt(0)
     val mid=getParamInt(1)
@@ -34,5 +35,6 @@ class CyclicHanoiEntity extends HanoiEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 public class AlgBubbleSort1Entity extends SortingEntity {
 
+  /* BEGIN REMOTE */
   public void run() { this.bubbleSort(); }
 
   /* BEGIN TEMPLATE */
@@ -22,4 +23,5 @@ public class AlgBubbleSort1Entity extends SortingEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

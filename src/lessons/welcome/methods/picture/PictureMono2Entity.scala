@@ -3,6 +3,7 @@ package lessons.welcome.methods.picture;
 
 class PictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -54,4 +55,5 @@ class PictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

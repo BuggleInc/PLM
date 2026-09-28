@@ -15,6 +15,7 @@ public class BaggleSeekerEntity extends SimpleBuggle {
     throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
   }
 
+  /* BEGIN REMOTE */
   @Override public void run()
   {
     /* BEGIN TEMPLATE */
@@ -25,4 +26,5 @@ public class BaggleSeekerEntity extends SimpleBuggle {
     /* END SOLUTION */
     /* END TEMPLATE */
   }
+  /* END REMOTE */
 }

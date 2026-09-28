@@ -36,6 +36,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 				state = rule(state)(currentColor)(NEXT_STATE);
 	}
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	/* Do not change these definitions */
 	val STOP   = 0;
@@ -136,4 +137,5 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 			stepDone();
 		}
 	}
+	/* END REMOTE */
 }

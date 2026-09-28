@@ -4,6 +4,7 @@ import lessons.lander.universe.LanderEntity;
 import plm.universe.Point;
 
 public class FlyTheLanderEntity extends LanderEntity {
+  /* BEGIN REMOTE */
   @Override public void run()
   {
     initialize();
@@ -54,4 +55,5 @@ public class FlyTheLanderEntity extends LanderEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

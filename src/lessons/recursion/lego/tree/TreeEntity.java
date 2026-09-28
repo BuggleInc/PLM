@@ -32,6 +32,7 @@ public class TreeEntity extends Turtle {
     setColor(colors[v]);
   }
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void tree(int steps, double length, double angle, double shrink)
   {
@@ -69,4 +70,5 @@ public class TreeEntity extends Turtle {
   /* END TEMPLATE */
 
   public void run() { tree(getParamInt(0), getParamDouble(1), getParamDouble(2), getParamDouble(3)); }
+  /* END REMOTE */
 }

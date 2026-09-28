@@ -18,6 +18,7 @@ import lessons.sort.pancake.universe.PancakeWorld;
 
 class GatesPancakeEntity extends PancakeEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		solve();
 	}
@@ -281,6 +282,7 @@ class GatesPancakeEntity extends PancakeEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 
 }

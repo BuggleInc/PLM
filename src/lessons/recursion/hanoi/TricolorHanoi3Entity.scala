@@ -4,6 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 class TricolorHanoi3Entity extends HanoiEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
     val src = getParamInt(0)
     val mid = getParamInt(1)
@@ -52,4 +53,5 @@ class TricolorHanoi3Entity extends HanoiEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

@@ -131,14 +131,11 @@ public abstract class Exercise extends Lecture {
   }
 
   /**
-   * Generate Java source from the user function, and return a textual reference to what got compiled (a jar/binary
-   * path, a "jarPath|mainClass" pair, etc. depending on the language -- see {@link ProgrammingLanguage#compileExo}),
-   * to be passed down to {@link ProgrammingLanguage#runEntity} later on. May be null for languages that don't
-   * compile at all (e.g. LightBot).
-   * @param out
-   * 			where to display our errors
-   * @param whatToCompile
-   * 			either STUDENT's provided data or CORRECTION entity
+   * Generate Java source from the user function, and return a textual reference to what got compiled (the path to a jar, a
+   * binary or a script, depending on the language -- see {@link ProgrammingLanguage#compileExo}), to be passed down to
+   * {@link ProgrammingLanguage#runEntity} later on. May be null for languages that don't compile at all (e.g. LightBot).
+   * @param out where to display our errors
+   * @param whatToCompile either STUDENT's provided data or CORRECTION entity
    * @throws PLMCompilerException
    *
    * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly

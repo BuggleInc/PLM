@@ -4,6 +4,7 @@ import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
 class TraversalDiagonalEntity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	var diag = 0;
 	override def run() {
@@ -42,6 +43,7 @@ class TraversalDiagonalEntity extends SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 	override def forward(i:Int)  {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));

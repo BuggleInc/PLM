@@ -99,7 +99,7 @@ public abstract class ExerciseTemplated extends Exercise {
            * it */
         } catch (PLMCompilerException e) {
           // Unlike NoSuchEntityException above, this means the entity file exists but is malformed in a way that
-          // breaks step 2's extraction (e.g. Scala's getCorrectedTemplate() rejecting an ill-formed template) --
+          // breaks step 2's extraction (e.g. a language's extract() rejecting the segmented entity) --
           // always a real authoring bug in the exercise, not just "this language isn't offered", so always loud.
           throw new RuntimeException(Game.i18n.tr("Exercise {0} ({1}): the {2} entity is broken: {3}", getName(), getId(), lang, e.getMessage()), e);
         }

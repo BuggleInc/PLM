@@ -4,6 +4,7 @@ import java.awt.Color;
 import plm.universe.turtles.Turtle;
 
 public class KochEntity extends Turtle {
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   void snowFlake(int levels, double length)
   {
@@ -35,6 +36,7 @@ public class KochEntity extends Turtle {
   /* END TEMPLATE */
 
   public void run() { snowFlake(getParamInt(0), getParamDouble(1)); }
+  /* END REMOTE */
 
   public void drawHint()
   {

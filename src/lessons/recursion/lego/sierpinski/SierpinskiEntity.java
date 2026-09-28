@@ -1,6 +1,7 @@
 package lessons.recursion.lego.sierpinski;
 
 public class SierpinskiEntity extends plm.universe.turtles.Turtle {
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void sierpinski(int level, double length)
   {
@@ -17,4 +18,5 @@ public class SierpinskiEntity extends plm.universe.turtles.Turtle {
   /* END TEMPLATE */
 
   public void run() { sierpinski(getParamInt(0), getParamDouble(1)); }
+  /* END REMOTE */
 }

@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 class CircleTwoEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -18,4 +19,5 @@ class CircleTwoEntity extends Turtle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

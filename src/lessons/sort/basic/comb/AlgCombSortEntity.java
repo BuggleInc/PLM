@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 public class AlgCombSortEntity extends SortingEntity {
 
+  /* BEGIN REMOTE */
   public void run() { this.combSort(); }
 
   /* BEGIN TEMPLATE */
@@ -25,4 +26,5 @@ public class AlgCombSortEntity extends SortingEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

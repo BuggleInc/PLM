@@ -5,6 +5,7 @@ import lessons.turmites.universe.TurmiteEntity;
 
 public class LangtonColorsEntity extends TurmiteEntity {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void step(char[] rule, Color[] colors)
   {
@@ -53,4 +54,5 @@ public class LangtonColorsEntity extends TurmiteEntity {
       step(rule, colors);
     }
   }
+  /* END REMOTE */
 }

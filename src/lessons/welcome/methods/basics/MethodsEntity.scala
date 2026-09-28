@@ -10,6 +10,7 @@ class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 		throw new RuntimeException(Game.i18n.tr("I cannot let you use backward with an argument. Use a loop instead."));
 	}
 
+	/* BEGIN REMOTE */
 	override def run() { 
 		/* BEGIN TEMPLATE */
 		def goAndGet() {
@@ -36,4 +37,5 @@ class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 		}
 		/* END TEMPLATE */
 	} 
+	/* END REMOTE */
 }

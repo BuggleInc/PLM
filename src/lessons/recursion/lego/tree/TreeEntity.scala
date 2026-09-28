@@ -19,6 +19,7 @@ class TreeEntity extends Turtle {
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 	
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def tree(steps:Int, length:Double, angle:Double, shrink:Double)	{
 		/* BEGIN SOLUTION */
@@ -53,4 +54,5 @@ class TreeEntity extends Turtle {
 		tree(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double],
 		    getParam(2).asInstanceOf[Double],getParam(3).asInstanceOf[Double]);
 	}
+	/* END REMOTE */
 }

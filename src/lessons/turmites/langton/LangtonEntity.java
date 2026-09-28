@@ -4,6 +4,7 @@ import java.awt.Color;
 import lessons.turmites.universe.TurmiteEntity;
 
 public class LangtonEntity extends TurmiteEntity {
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void step()
   {
@@ -37,4 +38,5 @@ public class LangtonEntity extends TurmiteEntity {
       stepDone();
     }
   }
+  /* END REMOTE */
 }

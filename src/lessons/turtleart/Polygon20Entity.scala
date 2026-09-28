@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 class Polygon20Entity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -17,4 +18,5 @@ class Polygon20Entity extends Turtle {
 	    /* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

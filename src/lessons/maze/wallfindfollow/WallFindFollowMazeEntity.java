@@ -22,6 +22,7 @@ public class WallFindFollowMazeEntity extends plm.universe.bugglequest.SimpleBug
       throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
   }
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -51,4 +52,5 @@ public class WallFindFollowMazeEntity extends plm.universe.bugglequest.SimpleBug
              /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

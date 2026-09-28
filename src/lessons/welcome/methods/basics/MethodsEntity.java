@@ -5,6 +5,7 @@ public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 
   @Override public void backward(int i) { throw new RuntimeException("I cannot let you use backward with an argument in this exercise. Use a loop instead."); }
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
   public void goAndGet()
@@ -33,4 +34,5 @@ public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
       left();
     }
   }
+  /* END REMOTE */
 }

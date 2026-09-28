@@ -4,6 +4,7 @@ import plm.universe.sort.SortingEntity;
 
 class AlgGnomeSortEntity extends SortingEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		gnomeSort();
 	}
@@ -25,6 +26,7 @@ class AlgGnomeSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }
 

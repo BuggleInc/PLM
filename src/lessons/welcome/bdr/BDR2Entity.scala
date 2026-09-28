@@ -5,6 +5,7 @@ import java.util.Stack;
 import plm.universe.bugglequest.SimpleBuggle;
 
 class BDR2Entity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	override def run() { 
 		/* BEGIN SOLUTION */
 		var moreMusic = true;
@@ -34,4 +35,5 @@ class BDR2Entity extends SimpleBuggle {
 		}
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

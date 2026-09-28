@@ -5,6 +5,7 @@ import java.awt.Color
 
 class SquareKochEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def snowSquare (levels:Int, length:Double) {
 		squareSide(levels, length);
@@ -41,4 +42,5 @@ class SquareKochEntity extends Turtle {
 	override def run() {
 		snowSquare(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
+	/* END REMOTE */
 }

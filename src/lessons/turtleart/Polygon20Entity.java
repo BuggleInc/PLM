@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class Polygon20Entity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -18,4 +19,5 @@ public class Polygon20Entity extends Turtle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

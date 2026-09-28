@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 class TriangleEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -17,4 +18,5 @@ class TriangleEntity extends Turtle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

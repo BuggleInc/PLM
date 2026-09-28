@@ -22,8 +22,8 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   /**
    * Return [start, end) of a method's own text (its declaration line through its brace-matched closing '}') within
    * code, searching for the given declaration keyword (e.g. "void run(" for Java, "def run(" for Scala) -- or null if
-   * that keyword doesn't appear at all. This brace-based algorithm is the default for every language except Python,
-   * whose blocks are indentation-delimited instead; see LangPython's override.
+   * that keyword doesn't appear at all. Only Python still uses this (with its own indentation-based override, see
+   * LangPython): Java, Scala and C read the REMOTE-narrowed template from step 1 instead.
    *
    * This is offsets, not a substring, so callers can test containment against another region (e.g. a templated
    * region) without caring how many characters of incidental whitespace separate two markers.
@@ -111,37 +111,6 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
       throw e;
     }
     return remote;
-  }
-
-  /**
-   * The `$body` value to substitute in {@code template} for {@code StudentOrCorrection.CORRECTION}: the text between
-   * whichever of BEGIN/END TEMPLATE or BEGIN/END SOLUTION exists in {@code correction} (comment-delimited,
-   * `/* ... *&#47;`-style -- i.e. Java/Scala/C's marker syntax), markers included. Used by every language but Python
-   * (whose markers and CORRECTION-body rule differ, see {@code LangPython.extract()}).
-   */
-  protected static String deriveCorrectionBody(String correction, String name)
-  {
-    final String BEGIN_TEMPLATE = "/* BEGIN TEMPLATE */";
-    final String END_TEMPLATE   = "/* END TEMPLATE */";
-    final String BEGIN_SOLUTION = "/* BEGIN SOLUTION */";
-    final String END_SOLUTION   = "/* END SOLUTION */";
-
-    String beginMarker;
-    String endMarker;
-    if (correction.contains(BEGIN_TEMPLATE) && correction.contains(END_TEMPLATE)) {
-      /* Normal case: the correction entity explicitly delimits the templated region */
-      beginMarker = BEGIN_TEMPLATE;
-      endMarker   = END_TEMPLATE;
-    } else if (correction.contains(BEGIN_SOLUTION) && correction.contains(END_SOLUTION)) {
-      /* No BEGIN/END TEMPLATE: the whole run() is graded, only BEGIN/END SOLUTION delimit it. */
-      beginMarker = BEGIN_SOLUTION;
-      endMarker   = END_SOLUTION;
-    } else {
-      throw new RuntimeException("Broken exercise: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION exist in file " + name);
-    }
-
-    return correction.substring(Math.max(correction.indexOf(beginMarker), 0),
-                                Math.min(correction.indexOf(endMarker) + endMarker.length() + 1, correction.length()));
   }
 
   /**

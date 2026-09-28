@@ -7,6 +7,7 @@ import lessons.lander.universe._;
 import lessons.lander.universe.LanderWorld._;
 
 class FlyTheLanderEntity extends LanderEntity {
+  /* BEGIN REMOTE */
   override def run() {
     initialize()
     while (isFlying()) {
@@ -59,4 +60,5 @@ class FlyTheLanderEntity extends LanderEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

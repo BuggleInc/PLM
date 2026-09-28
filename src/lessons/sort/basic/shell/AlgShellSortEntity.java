@@ -15,6 +15,7 @@ import plm.universe.sort.SortingEntity;
 
 public class AlgShellSortEntity extends SortingEntity {
 
+  /* BEGIN REMOTE */
   public void run() { shellSort(); }
 
   /* BEGIN TEMPLATE */
@@ -46,4 +47,5 @@ public class AlgShellSortEntity extends SortingEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

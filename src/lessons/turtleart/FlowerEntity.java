@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class FlowerEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -37,4 +38,5 @@ public class FlowerEntity extends Turtle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

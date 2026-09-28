@@ -6,6 +6,7 @@ import lessons.sort.pancake.universe.PancakeWorld;
 class GatesBurnedPancakeEntity extends PancakeEntity {
 
 
+	/* BEGIN REMOTE */
 	override def run() {
 		solve();
 	}
@@ -331,5 +332,6 @@ class GatesBurnedPancakeEntity extends PancakeEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

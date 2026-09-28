@@ -11,6 +11,7 @@ public class BDR2Entity extends SimpleBuggle {
    * (because we want all buggle to follow the same relative trajectory).
    * It is intended to help the process of board creation. */
 
+  /* BEGIN REMOTE */
   /* BEGIN HELPER */
   boolean checking          = false;
   Stack<Character> todoList = new Stack<Character>();
@@ -181,4 +182,5 @@ public class BDR2Entity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

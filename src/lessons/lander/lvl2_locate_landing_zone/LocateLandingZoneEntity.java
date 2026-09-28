@@ -4,6 +4,7 @@ import lessons.lander.universe.LanderEntity;
 import plm.universe.Point;
 
 public class LocateLandingZoneEntity extends LanderEntity {
+  /* BEGIN REMOTE */
   @Override public void run()
   {
     Point[] landingZone = getLandingZone();
@@ -43,4 +44,5 @@ public class LocateLandingZoneEntity extends LanderEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

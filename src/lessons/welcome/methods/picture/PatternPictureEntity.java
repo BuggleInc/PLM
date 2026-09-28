@@ -5,6 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class PatternPictureEntity extends SimpleBuggle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -86,4 +87,5 @@ public class PatternPictureEntity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

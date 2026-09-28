@@ -17,6 +17,7 @@ class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 	def sortieTrouvee(): Boolean = { return exitReached() }
 	def croisement(): Boolean = { return crossing() }
 
+	/* BEGIN REMOTE */
 	override def run() { 
 		/* BEGIN SOLUTION */
 		while (!exitReached()) {
@@ -36,4 +37,5 @@ class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle {
 		stepForward();
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

@@ -38,6 +38,7 @@ class LoopCourseEntity extends SimpleBuggle {
 		brushUp();
 	}
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 10; side <- 1 to 4) {
@@ -48,4 +49,5 @@ class LoopCourseEntity extends SimpleBuggle {
 		} 
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

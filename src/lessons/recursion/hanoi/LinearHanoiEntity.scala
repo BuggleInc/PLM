@@ -12,6 +12,7 @@ class LinearHanoiEntity extends HanoiEntity {
   }
   
 
+	/* BEGIN REMOTE */
 	override def run() {
     val src= getParamInt(0)
     val mid= getParamInt(1)
@@ -32,5 +33,6 @@ class LinearHanoiEntity extends HanoiEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

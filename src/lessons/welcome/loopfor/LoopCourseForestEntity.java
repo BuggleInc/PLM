@@ -46,6 +46,7 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
   }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -71,4 +72,5 @@ public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggl
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

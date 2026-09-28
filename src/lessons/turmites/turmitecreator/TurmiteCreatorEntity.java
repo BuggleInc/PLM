@@ -6,6 +6,7 @@ import lessons.turmites.universe.TurmiteEntity;
 public class TurmiteCreatorEntity extends TurmiteEntity {
 
   /* Do not change these definitions */
+  /* BEGIN REMOTE */
   /* BEGIN HELPER */
   Color[] colors;
   int state = 0;
@@ -148,4 +149,5 @@ public class TurmiteCreatorEntity extends TurmiteEntity {
       stepDone();
     }
   }
+  /* END REMOTE */
 }

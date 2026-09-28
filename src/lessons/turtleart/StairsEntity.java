@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class StairsEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -19,4 +20,5 @@ public class StairsEntity extends Turtle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

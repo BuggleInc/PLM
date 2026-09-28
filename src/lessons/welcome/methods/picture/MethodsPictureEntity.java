@@ -4,6 +4,7 @@ import java.awt.Color;
 
 public class MethodsPictureEntity extends plm.universe.bugglequest.SimpleBuggle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -63,4 +64,5 @@ public class MethodsPictureEntity extends plm.universe.bugglequest.SimpleBuggle 
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

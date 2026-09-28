@@ -20,6 +20,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 
   @Primitive(116) public boolean wasRandom() { return ((PancakeWorld)world).wasRandom; }
 
+  /* BEGIN REMOTE */
   public void run() { solve(); }
 
   /* BEGIN SOLUTIONHELPER */
@@ -288,4 +289,5 @@ public class GatesPancakeEntity extends PancakeEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
+  /* BEGIN REMOTE */
   @Override public void run() { hunt(); }
 
   /* BEGIN TEMPLATE */
@@ -37,4 +38,5 @@ public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
   }
   // Copy your isFacingTrail here
   /* END TEMPLATE */
+  /* END REMOTE */
 }

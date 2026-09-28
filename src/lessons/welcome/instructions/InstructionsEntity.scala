@@ -4,6 +4,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class InstructionsEntity extends SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
@@ -20,5 +21,6 @@ class InstructionsEntity extends SimpleBuggle {
 		/* END SOLUTION */
 		/* END TEMPLATE */
 	}
+	/* END REMOTE */
 
 }

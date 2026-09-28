@@ -4,6 +4,7 @@ import lessons.sort.pancake.universe.PancakeEntity;
 
 public class BubblePancakeEntity extends PancakeEntity {
 
+  /* BEGIN REMOTE */
   public void run() { this.solve(); }
 
   /* BEGIN TEMPLATE */
@@ -32,4 +33,5 @@ public class BubblePancakeEntity extends PancakeEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

@@ -4,6 +4,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class PictureMono3Entity extends SimpleBuggle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -62,4 +63,5 @@ public class PictureMono3Entity extends SimpleBuggle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

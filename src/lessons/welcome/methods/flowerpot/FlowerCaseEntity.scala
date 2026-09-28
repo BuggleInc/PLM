@@ -5,6 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class FlowerCaseEntity extends SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		growFlowers();
 	}
@@ -71,4 +72,5 @@ class FlowerCaseEntity extends SimpleBuggle {
 		boxes();
 	}
 	/* END SOLUTION */
+	/* END REMOTE */
 }

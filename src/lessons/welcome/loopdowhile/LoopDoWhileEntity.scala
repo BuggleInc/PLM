@@ -6,6 +6,7 @@ class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 	/* BINDINGS TRANSLATION */
 	def estSurBlanc():Boolean = { return isGroundWhite(); }
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		do {
@@ -13,4 +14,5 @@ class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 		} while (!isGroundWhite());
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

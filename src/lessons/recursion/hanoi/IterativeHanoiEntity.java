@@ -4,6 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 public class IterativeHanoiEntity extends HanoiEntity {
 
+  /* BEGIN REMOTE */
   public void run() { hanoi(getParamInt(0), getParamBoolean(1)); }
 
   /* BEGIN TEMPLATE */
@@ -47,4 +48,5 @@ public class IterativeHanoiEntity extends HanoiEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

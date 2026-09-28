@@ -6,6 +6,7 @@ import plm.universe.bat.BatEntity;
 
 public class OccurrenceOfValueEntity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -31,4 +32,5 @@ public class OccurrenceOfValueEntity extends BatEntity {
   }
 
   /* END TEMPLATE */
+  /* END REMOTE */
 }

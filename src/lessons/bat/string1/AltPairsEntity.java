@@ -6,6 +6,7 @@ import plm.universe.bat.BatEntity;
 
 public class AltPairsEntity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -26,4 +27,5 @@ public class AltPairsEntity extends BatEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

@@ -31,6 +31,7 @@ class LoopStairsEntity extends SimpleBuggle {
 		inTeerNal_Steep_Count += 1; 
 	}
 
+	/* BEGIN REMOTE */
 	override def run() {
 		/* BEGIN SOLUTION */
 		forward(3);
@@ -45,4 +46,5 @@ class LoopStairsEntity extends SimpleBuggle {
 		forward(3);
 		/* END SOLUTION */
 	}
+	/* END REMOTE */
 }

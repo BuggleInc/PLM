@@ -5,6 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle
 
 class MethodsPictureEntity extends SimpleBuggle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
@@ -58,4 +59,5 @@ class MethodsPictureEntity extends SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class SquareEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -18,4 +19,5 @@ public class SquareEntity extends Turtle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

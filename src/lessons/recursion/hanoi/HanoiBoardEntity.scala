@@ -4,6 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 class HanoiBoardEntity extends HanoiEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		val src = getParamInt(0)
 		hanoi(getSlotSize(src), src, getParamInt(1), getParamInt(2));
@@ -20,5 +21,6 @@ class HanoiBoardEntity extends HanoiEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }

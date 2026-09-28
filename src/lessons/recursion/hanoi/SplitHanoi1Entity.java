@@ -6,6 +6,7 @@ import plm.core.lang.primitives.EntityPrimitives;
 @EntityPrimitives(lessons.recursion.hanoi.SplitHanoi1Entity.class)
 public class SplitHanoi1Entity extends HanoiEntity {
 
+  /* BEGIN REMOTE */
   public void run() { solve(getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3)); }
   /* BEGIN TEMPLATE */
   public void solve(int src, int other, int dst1, int dst2)
@@ -39,4 +40,5 @@ public class SplitHanoi1Entity extends HanoiEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

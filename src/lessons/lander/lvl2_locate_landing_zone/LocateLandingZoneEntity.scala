@@ -7,6 +7,7 @@ import lessons.lander.universe.LanderWorld._
 import lessons.lander.universe._;
 
 class LocateLandingZoneEntity extends LanderEntity {
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   def getLandingZone():Segment = {
     /* BEGIN SOLUTION */
@@ -33,6 +34,7 @@ class LocateLandingZoneEntity extends LanderEntity {
       simulateStep()
     }
   }
+  /* END REMOTE */
 
   override def initialize() {
     var landingZone = getLandingZone();

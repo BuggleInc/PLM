@@ -4,6 +4,7 @@ import plm.universe.turtles.Turtle;
 
 public class DiskFourthEntity extends Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run()
   {
@@ -17,4 +18,5 @@ public class DiskFourthEntity extends Turtle {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

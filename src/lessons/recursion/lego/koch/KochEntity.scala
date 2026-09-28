@@ -5,6 +5,7 @@ import java.awt.Color
 
 class KochEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def snowFlake (levels:Int, length:Double) {
 		snowSide(levels, length);
@@ -36,4 +37,5 @@ class KochEntity extends Turtle {
 	override def run() {
 		snowFlake(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
+	/* END REMOTE */
 }

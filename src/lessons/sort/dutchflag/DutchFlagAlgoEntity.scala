@@ -6,6 +6,7 @@ import lessons.sort.dutchflag.universe.DutchFlagWorld;
 
 class DutchFlagAlgoEntity extends DutchFlagEntity {
 	
+	/* BEGIN REMOTE */
 	override def run() {
 		solve();
 	}
@@ -39,4 +40,5 @@ class DutchFlagAlgoEntity extends DutchFlagEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

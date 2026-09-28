@@ -5,6 +5,7 @@ import plm.universe.bat.BatEntity
 
 class FrontTimesEntity extends BatEntity {
 
+    /* BEGIN REMOTE */
     override def run() {
       import ValueSerializer._
 
@@ -28,4 +29,5 @@ class FrontTimesEntity extends BatEntity {
 	/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

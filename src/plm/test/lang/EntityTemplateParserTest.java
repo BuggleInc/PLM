@@ -43,6 +43,7 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("", e.initialContent());
     Assertions.assertEquals("def run():\n$body\n  end()\n", e.template());
+    Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.correctionBody());
   }
 
   /** BEGIN/END SOLUTIONHELPER inside the template head is kept in the correction only. */
@@ -126,5 +127,34 @@ public class EntityTemplateParserTest {
   {
     Assertions.assertThrows(RuntimeException.class,
                             () -> parse(lines("/* BEGIN HELPER */", "/* BEGIN IMPORT */", "/* END IMPORT */", "/* END HELPER */"), new LangJava()));
+  }
+
+  /** REMOTE narrows head/tail down to what is written between its markers; correctionBody keeps the TEMPLATE markers. */
+  @Test public void testRemoteNarrowsHeadAndTail() throws PLMCompilerException
+  {
+    TemplatedEntity e = parse(lines("package foo;", "public class FooEntity {", "  /* BEGIN REMOTE */", "  void run() {", "    /* BEGIN TEMPLATE */",
+                                    "    int a;", "    /* END TEMPLATE */", "  }", "  /* END REMOTE */", "}"),
+                              new LangJava());
+
+    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.template());
+    Assertions.assertEquals("int a;\n", e.initialContent());
+    Assertions.assertEquals("    /* BEGIN TEMPLATE */\n    int a;\n    /* END TEMPLATE */\n", e.correctionBody());
+  }
+
+  @Test public void testUnclosedRemote()
+  {
+    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */", "/* END TEMPLATE */"), new LangJava()));
+  }
+
+  /** REMOTE must fully enclose the templated region: closing it mid-template is rejected. */
+  @Test public void testRemoteClosingInsideTemplate()
+  {
+    Assertions.assertThrows(RuntimeException.class,
+                            () -> parse(lines("/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */", "/* END REMOTE */", "/* END TEMPLATE */"), new LangJava()));
+  }
+
+  @Test public void testNoTemplateNorSolution()
+  {
+    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("public class FooEntity {", "}"), new LangJava()));
   }
 }

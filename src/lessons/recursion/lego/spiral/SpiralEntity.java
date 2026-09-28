@@ -2,6 +2,7 @@ package lessons.recursion.lego.spiral;
 
 public class SpiralEntity extends plm.universe.turtles.Turtle {
 
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void spiral(int steps, int angle, int length, int increment)
   {
@@ -18,4 +19,5 @@ public class SpiralEntity extends plm.universe.turtles.Turtle {
   /* END TEMPLATE */
 
   public void run() { spiral(getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3)); }
+  /* END REMOTE */
 }

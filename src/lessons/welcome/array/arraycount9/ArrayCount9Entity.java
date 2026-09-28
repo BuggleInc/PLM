@@ -6,6 +6,7 @@ import plm.universe.bat.BatEntity;
 
 public class ArrayCount9Entity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -29,4 +30,5 @@ public class ArrayCount9Entity extends BatEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

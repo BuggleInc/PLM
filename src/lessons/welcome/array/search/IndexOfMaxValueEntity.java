@@ -6,6 +6,7 @@ import plm.universe.bat.BatEntity;
 
 public class IndexOfMaxValueEntity extends BatEntity {
 
+  /* BEGIN REMOTE */
   public void run()
   {
     int count = getTestCount();
@@ -32,4 +33,5 @@ public class IndexOfMaxValueEntity extends BatEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

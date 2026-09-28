@@ -13,7 +13,6 @@ import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import plm.core.PLMCompilerException;
-import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
@@ -108,24 +107,10 @@ public class LangScala extends JvmTemplatedLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  private static final String RUN_KEYWORD = "def run(";
-
-  /**
-   * Scala counterpart of LangJava's getCorrectedTemplate(): both now share their three-case logic and validation via
-   * {@link JvmTemplatedLang#getCorrectedTemplate}, only the run() syntax and class/object wrapper differ.
-   */
-  public @NonNull String getCorrectedTemplate(String correction) throws PLMCompilerException
+  @Override public JvmExtraction extract(String correction, String template, String correctionBody, String imports, String helpers)
   {
-    return getCorrectedTemplate(correction, RUN_KEYWORD, "def run(): Unit = { ... }", "package generated\n\n$imports\n\nobject Entity {\n",
-                                "def run(): Unit = {");
-  }
-
-  private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
-
-  @Override public JvmExtraction extract(String correction, String template, String imports, String helpers, String name) throws PLMCompilerException
-  {
-    return new JvmExtraction(getRemote(correction), extractRunFunction(correction), helpers, imports, getCorrectedTemplate(correction),
-                             deriveCorrectionBody(correction, name));
+    return new JvmExtraction(getRemote(correction), helpers, imports, getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", template),
+                             correctionBody);
   }
 
   /**
@@ -263,7 +248,6 @@ public class LangScala extends JvmTemplatedLang {
         JvmExtraction extraction   = (JvmExtraction)sf.getExtraction();
         String remote              = checkRemoteOrFail(extraction.remote(), "Scala", exo, diagnostic);
 
-        runtimePatterns.put("\\$run", extraction.runFunction());
         runtimePatterns.put("\\$helper", extraction.helper());
         runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
                                            + "import java.awt.Color; "

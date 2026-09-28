@@ -5,6 +5,7 @@ import java.awt.Color
 
 class HexaKochEntity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
     def drawCurve(levels:Int, length:Double) {
     	hexaKoch(levels, length);
@@ -30,4 +31,5 @@ class HexaKochEntity extends Turtle {
 	override def run() {
 		drawCurve(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
+	/* END REMOTE */
 }

@@ -6,6 +6,7 @@ import plm.universe.turtles.Turtle;
 
 class Flower3Entity extends Turtle {
 
+	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	override def run():Unit= {
 		/* BEGIN SOLUTION */
@@ -40,4 +41,5 @@ class Flower3Entity extends Turtle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

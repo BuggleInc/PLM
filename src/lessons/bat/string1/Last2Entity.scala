@@ -5,6 +5,7 @@ import plm.universe.bat.BatEntity
 
 class Last2Entity extends BatEntity {
 
+    /* BEGIN REMOTE */
     override def run() {
       import ValueSerializer._
 
@@ -30,4 +31,5 @@ class Last2Entity extends BatEntity {
   	/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 }

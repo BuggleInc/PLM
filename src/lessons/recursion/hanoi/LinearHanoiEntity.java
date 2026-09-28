@@ -13,6 +13,7 @@ public class LinearHanoiEntity extends HanoiEntity {
     super.move(from, to);
   }
 
+  /* BEGIN REMOTE */
   public void run() { linearHanoi(getSlotSize(getParamInt(0)), getParamInt(0), getParamInt(1), getParamInt(2)); }
 
   /* BEGIN TEMPLATE */
@@ -29,4 +30,5 @@ public class LinearHanoiEntity extends HanoiEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

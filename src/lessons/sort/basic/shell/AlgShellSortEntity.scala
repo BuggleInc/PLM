@@ -15,6 +15,7 @@ import plm.universe.sort.SortingEntity;
 
 class AlgShellSortEntity extends SortingEntity {
 
+	/* BEGIN REMOTE */
 	override def run() {
 		shellSort();
 	}
@@ -48,6 +49,7 @@ class AlgShellSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	/* END REMOTE */
 
 }
 

@@ -86,20 +86,21 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
   /**
-   * Extracts and returns this language's once-per-{@code SourceFile} pieces (run()/helper/imports/corrected
-   * template, see {@code JvmExtraction}/{@code PythonExtraction}) out of one entity's raw {@code correction} text.
-   * Defaults to {@code null} (nothing to extract): only overridden by languages that re-parse {@code correction} with
-   * their own marker syntax (Java, Scala, Python, C); LightBot needs none of this (see CONTRIBUTING.md, "From
-   * correction entity to compilable source: templating").
+   * Extracts and returns this language's once-per-{@code SourceFile} pieces (remote universe, helper/imports, corrected
+   * template, see {@code JvmExtraction}/{@code PythonExtraction}) out of what {@code EntityTemplateParser} already
+   * segmented. Defaults to {@code null} (nothing to extract): only overridden by the languages that compile a
+   * templated entity (Java, Scala, Python, C); LightBot needs none of this (see CONTRIBUTING.md, "From correction
+   * entity to compilable source: templating").
    *
-   * @param correction the whole entity file, as produced by step 1 (see {@code EntityTemplateParser})
-   * @param template   step 1's own "head + $body + tail" shape; only used by languages that don't rebuild their own
-   *                   per-compile template (C -- Java/Scala/Python always ignore it, see their own {@code extract()})
-   * @param imports  the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
-   * @param helpers  the content of the BEGIN/END HELPER sections, as split out by step 1 (only used by Java and Scala)
-   * @param name         the exercise's own class/package name, only used in error messages
+   * @param correction     the whole entity file, as produced by step 1 (see {@code EntityTemplateParser})
+   * @param template       step 1's own "head + $body + tail" shape, head/tail being narrowed to the BEGIN/END REMOTE
+   *                       markers when the entity has them
+   * @param correctionBody the {@code $body} value to use for {@code StudentOrCorrection.CORRECTION}, as computed by step 1
+   *                       (Python still derives its own)
+   * @param imports        the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
+   * @param helpers        the content of the BEGIN/END HELPER sections, as split out by step 1 (only used by Java and Scala)
    */
-  public LanguageExtraction extract(String correction, String template, String imports, String helpers, String name) throws PLMCompilerException
+  public LanguageExtraction extract(String correction, String template, String correctionBody, String imports, String helpers) throws PLMCompilerException
   {
     return null;
   }

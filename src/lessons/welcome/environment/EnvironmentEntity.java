@@ -3,6 +3,7 @@ package lessons.welcome.environment;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class EnvironmentEntity extends SimpleBuggle {
+  /* BEGIN REMOTE */
   @Override public void run()
   {
     /* BEGIN TEMPLATE */
@@ -11,4 +12,5 @@ public class EnvironmentEntity extends SimpleBuggle {
     /* END SOLUTION */
     /* END TEMPLATE */
   }
+  /* END REMOTE */
 }
