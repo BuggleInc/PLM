@@ -419,6 +419,8 @@ TODO: add to the exercice a verification of the source code, so that MethodDogHo
 TODO: Move the getRemote() to the earlier phase of templating so that it's stored in the SourceFile
 
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
+TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
+
 TODO: fix the compilation error messages to match the student code: `SourceFile.getCompilableContent()` now returns the
       `$body` offset alongside the compilable source, but no caller uses it yet to shift a compiler diagnostic's line number
       back to the student's own editor coordinates.
@@ -428,4 +430,6 @@ TODO: Precompile the correction entities within the jar file so that they don't 
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
 TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process). We need to transition to Scala3 first
 TODO: benchmark the tests to understand where the time goes, and optimize this out
-TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
+
+TODO: Primitive numbering should be automatic
+TODO: Find a way for the exercise to specify which primitives should be forbidden to the student in this specific exercise 
