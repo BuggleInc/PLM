@@ -80,138 +80,18 @@ public class LangPython extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  private static final String RUN_KEYWORD = "def run(";
-
-  /**
-   * Python counterpart of {@link TemplatedRemoteLang#extractRunSpan}: Python has no braces, so a function's body is
-   * delimited by indentation instead -- it ends at the first subsequent non-blank line indented no more than the
-   * "def" line itself (or at end of file). Tabs and spaces are counted as plain characters (not expanded), which only
-   * matters if a single file mixes the two inconsistently -- not a case seen in any exercise file so far.
-   */
-  @Override protected int[] extractRunSpan(String code, String runKeyword)
-  {
-    int startRun = code.indexOf(runKeyword);
-    if (startRun == -1)
-      return null;
-
-    int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
-    beginOfRunLine     = beginOfRunLine == -1 ? 0 : beginOfRunLine + 1;
-
-    int defIndent = startRun - beginOfRunLine;
-
-    int lineEnd = code.indexOf('\n', startRun);
-    if (lineEnd == -1)
-      lineEnd = code.length();
-
-    int pos = lineEnd + 1;
-    int end = lineEnd;
-    while (pos <= code.length()) {
-      int nextLineEnd = code.indexOf('\n', pos);
-      if (nextLineEnd == -1)
-        nextLineEnd = code.length();
-
-      String line    = code.substring(pos, nextLineEnd);
-      String trimmed = line.strip();
-
-      if (!trimmed.isEmpty()) {
-        int indent = 0;
-        while (indent < line.length() && (line.charAt(indent) == ' ' || line.charAt(indent) == '\t'))
-          indent++;
-        if (indent <= defIndent)
-          break;
-      }
-
-      end = nextLineEnd;
-      if (nextLineEnd == code.length())
-        break;
-      pos = nextLineEnd + 1;
-    }
-
-    return new int[] {beginOfRunLine, end};
-  }
-
-  private String extractRunFunction(String code) { return extractRunFunction(code, RUN_KEYWORD); }
-
   /**
    * Everything compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly, right after
-   * step 1 (see {@code ExerciseTemplated.newSourceFromFile()}), rather than lazily on first compile.
-   *
-   * Unlike Java, Python's extra $imports (remoteExtraSourceFiles-derived) do not depend on {@code correction} at
-   * all, so they are NOT part of this record; only what compileExo() reads out of {@code correction} itself is.
-   * {@code template()} delegates to {@code corrected.template()} to satisfy {@link LanguageExtraction}.
+   * step 1 (see {@code EntityTemplateParser.parse()}), rather than lazily on first compile. {@code template()} is
+   * step 1's own template ({@code head + "$body" + tail}, head/tail defaulting to the whole file since no Python
+   * entity uses BEGIN/END REMOTE -- see CONTRIBUTING.md), with the "$imports" slot prepended: Python entities are just
+   * top-level function definitions, so unlike Java/Scala there is no class/object wrapper to inject it into.
    */
-  public record PythonExtraction(String remote, String runFunction, String helper, CorrectedTemplate corrected, String correctionBody)
-      implements LanguageExtraction
-  {
-    @Override public String template()
-    {
-      return corrected.template();
-    }
-  }
+  public record PythonExtraction(String remote, String template, String correctionBody) implements LanguageExtraction {}
 
   @Override public PythonExtraction extract(String correction, String template, String correctionBody, String imports, String helpers)
   {
-    CorrectedTemplate corrected = getCorrectedTemplate(correction);
-    // Python entity files never nest "# BEGIN/END HELPER" inside the templated region, so the student-visible
-    // text never carries one to strip; stripMarkers() is only ever needed on this raw-correction-derived body.
-    return new PythonExtraction(getRemote(correction), extractRunFunction(correction), extractRunHelper(correction), corrected,
-                                stripMarkers(corrected.bodySource()));
-  }
-
-  /**
-   * Python counterpart of LangJava/LangScala's getCorrectedTemplate(), built on
-   * ExerciseTemplated.extractRunSpanIndentBased() (Python has no braces -- see that method's javadoc). No class/object
-   * wrapper is needed at all (unlike Java/Scala): Entity.py is just top-level function definitions, so the three cases
-   * only decide how to concatenate $run/$body, not how to wrap them.
-   */
-  private record CorrectedTemplate(String template, String bodySource) {}
-
-  private CorrectedTemplate getCorrectedTemplate(String correction)
-  {
-    int beginTemplateIndexRaw = correction.indexOf("# BEGIN TEMPLATE");
-    int endTemplateIndex      = correction.indexOf("# END TEMPLATE");
-    int endTemplateIndexEnd   = endTemplateIndex == -1 ? -1 : endTemplateIndex + "# END TEMPLATE".length();
-    int runFunctionI          = correction.indexOf(RUN_KEYWORD);
-
-    int[] runSpan = extractRunSpan(correction, RUN_KEYWORD);
-    if (runSpan == null)
-      throw new RuntimeException("No '" + RUN_KEYWORD + "' found in the correction. Every Python exercise must define a run() function.");
-
-    if (endTemplateIndex != -1 && beginTemplateIndexRaw <= runFunctionI && runFunctionI <= endTemplateIndex) {
-      // run()'s own declaration falls inside the templated region: the templated text IS run() (signature included),
-      // so $body -- built from the whole correction -- already is a single, complete, self-contained "def run(): ..."
-      // and needs no wrapper of its own.
-      return new CorrectedTemplate("$imports\n\n$body", correction);
-    }
-    if (runSpan[0] <= beginTemplateIndexRaw && endTemplateIndexEnd <= runSpan[1]) {
-      // The templated region sits fully inside an EXISTING run()'s indented body (already indented in the source, unlike
-      // the runSpan==null case above), but run()'s own "def" line is outside it. $body is still the whole correction,
-      // which -- exactly like the case just above -- already starts with that "def run():" line: it's a complete
-      // definition on its own and must NOT be wrapped in another "def run():", or the outer one becomes a dead
-      // function that defines an inner "run" and never calls it.
-      return new CorrectedTemplate("$imports\n\n$body", correction);
-    }
-    // run() and the templated region are disjoint (a separate templated function, run() elsewhere -- the common case
-    // for the Bat/Cons exercises, whose run() was mechanically added precisely to make this uniform with Java/Scala).
-    // $run already reproduces run() verbatim, so exclude its span from $body to avoid defining it a second time.
-    String bodySource = correction.substring(0, runSpan[0]) + correction.substring(runSpan[1]);
-    return new CorrectedTemplate("$imports\n\n$run\n\n$body", bodySource);
-  }
-
-  private static String extractRunHelper(String code)
-  {
-    StringBuilder section = new StringBuilder();
-    for (int i = 0; i < code.length(); i++) {
-      if (!code.startsWith("# BEGIN HELPER", i))
-        continue;
-      int begin = code.indexOf('\n', i) + 1;
-      int end   = code.indexOf("# END HELPER", i);
-      if (end == -1)
-        break;
-      section.append(code, begin, end).append("\n");
-      i = end + "# END HELPER".length();
-    }
-    return section.toString();
+    return new PythonExtraction(getRemote(correction), "$imports\n\n" + template, correctionBody);
   }
 
   @Override protected String getRemote(String code)
@@ -244,8 +124,6 @@ public class LangPython extends TemplatedRemoteLang {
         for (String sourcePath : extraSourcePaths)
           extraImports.append("from ").append(fileNameWithoutExtension(sourcePath)).append(" import *\n");
 
-        runtimePatterns.put("\\$run", Matcher_quoteReplacement(extraction.runFunction()));
-        runtimePatterns.put("\\$helper", Matcher_quoteReplacement(extraction.helper()));
         runtimePatterns.put("\\$imports", ("from ValueSerializer import *\n"
                                            + "from Remote import *\n" + extraImports)
                                               .replace('\n', '\u0001'));
@@ -305,22 +183,6 @@ public class LangPython extends TemplatedRemoteLang {
       throw new RuntimeException(e);
     }
     return mainPath;
-  }
-
-  /** Escapes $ and \ for use as the replacement argument of String.replaceAll(). */
-  private static String Matcher_quoteReplacement(String s) { return s.replace("\\", "\\\\").replace("$", "\\$"); }
-
-  private static String stripMarkers(String code)
-  {
-    StringBuilder result = new StringBuilder();
-    for (String line : code.split("\n", -1)) {
-      String trimmed = line.strip();
-      if (trimmed.startsWith("# BEGIN TEMPLATE") || trimmed.startsWith("# END TEMPLATE") || trimmed.startsWith("# BEGIN SOLUTION") ||
-          trimmed.startsWith("# END SOLUTION") || trimmed.startsWith("# BEGIN HELPER") || trimmed.startsWith("# END HELPER"))
-        continue;
-      result.append(line).append("\n");
-    }
-    return result.toString();
   }
 
   /** Runs "python3 &lt;executable&gt; &lt;socketPath&gt;" from the executable's own directory. */

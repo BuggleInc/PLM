@@ -151,15 +151,16 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   re-parsed: `run()`, the templated methods and everything else compiled are already in `template`, as delimited by
   `BEGIN/END REMOTE`. They also guess which `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in
   the source by `TemplatedRemoteLang.getRemote()`), and keep step 1's `imports`, `helpers` and `correctionBody` as is.
-- Python still re-extracts pieces out of the *raw* `correction` string with its own logic (`extractRunFunction()`/
-  `extractRunSpan()`, indentation-based, and its own three-case `getCorrectedTemplate()` and correction body).
+- Python only prepends its own `$imports` slot (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
+  no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing: nothing else in the file needs
+  excluding the way Java/Scala's package/class boilerplate does). It reads step 1's `correctionBody` unchanged, like Java/Scala.
 - C never rebuilds a template at all: its `extract()` just reuses step 1's `template` and `correctionBody` unchanged, in a
   small `TemplatedRemoteLang.SimpleExtraction`.
 - The result -- `JvmExtraction` for Java/Scala, `PythonExtraction`, or `TemplatedRemoteLang.SimpleExtraction` for C, all
   implementing `LanguageExtraction` -- is stored as-is on the `SourceFile` (`SourceFile.getExtraction()`). Each
   language's own `compileExo()` reads it back with a cast (e.g. `(JvmExtraction)sf.getExtraction()` in `LangJava`,
   safe since a given `SourceFile` is only ever populated by the one language it was parsed for) to fill in a
-  `runtimePatterns` map of regex->replacement (`$helper`, `$imports`, ... and `$run` for Python) -- this part still
+  `runtimePatterns` map of regex->replacement (`$helper`, `$imports`, ...) -- this part still
   happens on every compile.
 - `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution:
   - `runtimePatterns` is applied first to `template` (which still holds the literal `$body` placeholder after this step)

@@ -20,47 +20,6 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   public TemplatedRemoteLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
   /**
-   * Return [start, end) of a method's own text (its declaration line through its brace-matched closing '}') within
-   * code, searching for the given declaration keyword (e.g. "void run(" for Java, "def run(" for Scala) -- or null if
-   * that keyword doesn't appear at all. Only Python still uses this (with its own indentation-based override, see
-   * LangPython): Java, Scala and C read the REMOTE-narrowed template from step 1 instead.
-   *
-   * This is offsets, not a substring, so callers can test containment against another region (e.g. a templated
-   * region) without caring how many characters of incidental whitespace separate two markers.
-   */
-  protected int[] extractRunSpan(String code, String runKeyword)
-  {
-    int startRun = code.indexOf(runKeyword);
-    if (startRun == -1)
-      return null;
-
-    int beginOfRunLine = code.substring(0, startRun).lastIndexOf('\n');
-    if (beginOfRunLine == -1)
-      beginOfRunLine = 0;
-
-    int i       = code.indexOf('{', startRun) + 1;
-    int bracket = 1;
-    for (; i < code.length() && bracket > 0; i++) {
-      if (code.charAt(i) == '{')
-        bracket++;
-      if (code.charAt(i) == '}')
-        bracket--;
-    }
-    return new int[] {beginOfRunLine, i};
-  }
-
-  /**
-   * The method's own text (declaration through closing brace/block), or "" if runKeyword doesn't appear in code at
-   * all. Built generically on top of (the possibly overridden) {@link #extractRunSpan}, so languages only need to
-   * override the span logic, not this.
-   */
-  protected String extractRunFunction(String code, String runKeyword)
-  {
-    int[] span = extractRunSpan(code, runKeyword);
-    return span == null ? "" : code.substring(span[0], span[1]);
-  }
-
-  /**
    * Guess which RemoteXxx universe an exercise belongs to. Shared by Java, Scala and C.
    * Python instead requires an explicit "from RemoteXxx import *" line (see its own getRemote()).
    */
@@ -95,13 +54,9 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   }
 
   /**
-   * Same as {@link #getRemote(String)}, but fails uniformly (PLMCompilerException thrown + {@code exo.lastResult} set
-   * to a compilation error) when {@code code}'s universe couldn't be guessed.
-   * {@code diagnostic} may be null (Python and C have no javac-style DiagnosticCollector to attach).
-   */
-  /**
    * Fails the compile with a clear message if {@code remote} is null (the RemoteXxx universe couldn't be guessed from
-   * the correction, see {@link #getRemote}), otherwise returns it unchanged.
+   * the correction, see {@link #getRemote}), otherwise returns it unchanged. {@code diagnostic} may be null (Python
+   * and C have no javac-style DiagnosticCollector to attach).
    */
   protected String checkRemoteOrFail(String remote, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
   {
