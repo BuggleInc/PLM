@@ -86,7 +86,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
   /**
-   * Extracts and returns this language's once-per-{@code SourceFile} pieces (remote universe, helper/imports, corrected
+   * Extracts and returns this language's once-per-{@code SourceFile} pieces (remote universe, imports, corrected
    * template, see {@code JvmExtraction}/{@code PythonExtraction}) out of what {@code EntityTemplateParser} already
    * segmented. Defaults to {@code null} (nothing to extract): only overridden by the languages that compile a
    * templated entity (Java, Scala, Python, C); LightBot needs none of this (see CONTRIBUTING.md, "From correction
@@ -96,14 +96,9 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    * @param template       step 1's own "head + $body + tail" shape, head/tail being narrowed to the BEGIN/END REMOTE
    *                       markers when the entity has them
    * @param correctionBody the {@code $body} value to use for {@code StudentOrCorrection.CORRECTION}, as computed by step 1
-   *                       (Python still derives its own)
    * @param imports        the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
-   * @param helpers        the content of the BEGIN/END HELPER sections, as split out by step 1 (only used by Java and Scala)
    */
-  public LanguageExtraction extract(String correction, String template, String correctionBody, String imports, String helpers) throws PLMCompilerException
-  {
-    return null;
-  }
+  public LanguageExtraction extract(String correction, String template, String correctionBody, String imports) throws PLMCompilerException { return null; }
 
   /**
    * Compile the exercise, and return a textual reference to the result (a jar or binary path) that {@link #runEntity} will

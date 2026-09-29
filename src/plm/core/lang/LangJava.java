@@ -62,10 +62,10 @@ public class LangJava extends JvmTemplatedLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public JvmExtraction extract(String correction, String template, String correctionBody, String imports, String helpers)
+  @Override public JvmExtraction extract(String correction, String template, String correctionBody, String imports)
   {
-    return new JvmExtraction(getRemote(correction), helpers, imports,
-                             getCorrectedTemplate("package generated;\n\n$imports\n\npublic class Entity {\n", template), correctionBody);
+    return new JvmExtraction(getRemote(correction), imports, getCorrectedTemplate("package generated;\n\n$imports\n\npublic class Entity {\n", template),
+                             correctionBody);
   }
 
   private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, File... files) throws PLMCompilerException
@@ -178,7 +178,6 @@ public class LangJava extends JvmTemplatedLang {
         JvmExtraction extraction  = (JvmExtraction)sf.getExtraction();
         String remote             = checkRemoteOrFail(extraction.remote(), "Java", exo, diagnostic);
 
-        runtimePatterns.put("\\$helper", extraction.helper());
         runtimePatterns.put("\\$imports", ("import static generated.ValueSerializer.*;\n"
                                            + "import java.awt.Color;\n"
                                            + "import static generated.Remote.*;\n"

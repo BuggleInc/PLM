@@ -89,7 +89,7 @@ public class LangPython extends TemplatedRemoteLang {
    */
   public record PythonExtraction(String remote, String template, String correctionBody) implements LanguageExtraction {}
 
-  @Override public PythonExtraction extract(String correction, String template, String correctionBody, String imports, String helpers)
+  @Override public PythonExtraction extract(String correction, String template, String correctionBody, String imports)
   {
     return new PythonExtraction(getRemote(correction), "$imports\n\n" + template, correctionBody);
   }

@@ -32,8 +32,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /**
    * Everything Java/Scala's compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly,
    * right after step 1 (see {@code EntityTemplateParser.parse()}), rather than lazily on first compile.
-   * Python has its own shape (its {@code template} comes from a nested {@code (template, bodySource)} pair, and it
-   * has no {@code rawImports} field at all), so it keeps its own record.
+   * Python keeps its own, smaller record: it has no class/object wrapper to inject {@code rawImports} into.
    *
    * @param remote         the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
    *                       turns that into a compile failure)
@@ -41,18 +40,18 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    *                       compileExo() builds (which also injects packageNameCache-qualified lines)
    * @param correctionBody see {@link LanguageExtraction#correctionBody()}
    */
-  public record JvmExtraction(String remote, String helper, String rawImports, String template, String correctionBody) implements LanguageExtraction {}
+  public record JvmExtraction(String remote, String rawImports, String template, String correctionBody) implements LanguageExtraction {}
 
   /**
    * The per-compile template shared by Java and Scala: the language's own class/object wrapper around step 1's
    * {@code template} (which is {@code head + "$body" + tail}, head/tail being the text written between BEGIN REMOTE and
-   * BEGIN TEMPLATE/SOLUTION, and between END TEMPLATE/SOLUTION and END REMOTE), preceded by the {@code $helper} slot.
+   * BEGIN TEMPLATE/SOLUTION, and between END TEMPLATE/SOLUTION and END REMOTE).
    *
    * @param wrapperHeader the package+imports+class/object-opening boilerplate, up to and including the opening "{" and
    *                      its trailing "\n" (contains exactly one "$imports" placeholder)
    * @param template      step 1's template for this entity
    */
-  protected static String getCorrectedTemplate(String wrapperHeader, String template) { return wrapperHeader + "$helper\n" + template + "\n}"; }
+  protected static String getCorrectedTemplate(String wrapperHeader, String template) { return wrapperHeader + template + "\n}"; }
 
   /**
    * Run "jar cfm &lt;jarFile&gt; &lt;manifest declaring Main-Class: mainClassDotPath&gt; &lt;classFiles...&gt;" from

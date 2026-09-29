@@ -12,7 +12,7 @@ import plm.core.model.lesson.RunOutcome;
 
 /**
  * Ancestor of the all programming languages, in charge of generating student code by injecting extracted pieces of the
- * student/correction source (the run() method, its helpers, its imports...) into a language-specific template,
+ * student/correction source (the run() method, its imports...) into a language-specific template,
  * then to compile and run as an external process.
  */
 public abstract class TemplatedRemoteLang extends RemoteExecutionLang {

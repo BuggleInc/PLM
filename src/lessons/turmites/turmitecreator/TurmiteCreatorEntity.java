@@ -7,7 +7,6 @@ public class TurmiteCreatorEntity extends TurmiteEntity {
 
   /* Do not change these definitions */
   /* BEGIN REMOTE */
-  /* BEGIN HELPER */
   Color[] colors;
   int state = 0;
 
@@ -47,7 +46,6 @@ public class TurmiteCreatorEntity extends TurmiteEntity {
 
     state = rule[state][currentColor][NEXT_STATE];
   }
-  /* END HELPER */
 
   /* BEGIN TEMPLATE */
   final static int STOP   = 0;

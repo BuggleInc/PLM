@@ -12,8 +12,8 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
 /**
- * Parses the BEGIN/END TEMPLATE/SOLUTION/SOLUTIONHELPER/IMPORT/HELPER/REMOTE markers out of one entity file's raw content, as described in the CONTRIBUTING.md
- * file. This results in a {@link TemplatedEntity} reccord.
+ * Parses the BEGIN/END TEMPLATE/SOLUTION/SOLUTIONHELPER/IMPORT/REMOTE markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
+ * This results in a {@link TemplatedEntity} reccord.
  */
 public class EntityTemplateParser {
 
@@ -46,7 +46,6 @@ public class EntityTemplateParser {
 
     String initialContent = text(segments, Kind.TEMPLATE);
     String imports        = text(segments, Kind.IMPORT);
-    String helpers        = text(segments, Kind.HELPER);
 
     String template = head + "$body" + tail;
 
@@ -86,17 +85,17 @@ public class EntityTemplateParser {
     // Step 2 (see CONTRIBUTING.md, "From correction entity to compilable source: templating"): each language's own
     // extract() re-parses `correction` with its own marker syntax, so this parser stays unaware of it -- see
     // TemplatedEntity's javadoc.
-    LanguageExtraction extraction = lang.extract(correction, template, split.correctionBody(), imports, helpers);
-    return new TemplatedEntity(initialContent, template, split.correctionBody(), correction, imports, helpers, extraction);
+    LanguageExtraction extraction = lang.extract(correction, template, split.correctionBody(), imports);
+    return new TemplatedEntity(initialContent, template, split.correctionBody(), correction, imports, extraction);
   }
 
   /**
    * Where a run of lines sits relative to the markers. SOLUTIONHELPER only exists inside the template; elsewhere
-   * solution-helper lines are plain HEAD/TAIL. IMPORT and HELPER lines are never part of HEAD, TEMPLATE nor TAIL,
-   * wherever they are written. IGNORED is TAIL content written after END REMOTE closes: still part of the raw
-   * file/correction, but outside what {@code head}/{@code tail} expose once REMOTE has narrowed them.
+   * solution-helper lines are plain HEAD/TAIL. IMPORT lines are never part of HEAD, TEMPLATE nor TAIL, wherever they
+   * are written. IGNORED is TAIL content written after END REMOTE closes: still part of the raw file/correction, but
+   * outside what {@code head}/{@code tail} expose once REMOTE has narrowed them.
    */
-  enum Kind { HEAD, TEMPLATE, SOLUTION, SOLUTIONHELPER, IMPORT, HELPER, TAIL, IGNORED }
+  enum Kind { HEAD, TEMPLATE, SOLUTION, SOLUTIONHELPER, IMPORT, TAIL, IGNORED }
 
   /** Consecutive lines of one {@link Kind}, each ended by a \n. Marker lines belong to no segment. */
   record Segment(Kind kind, String text) {}
@@ -115,9 +114,7 @@ public class EntityTemplateParser {
     BEGIN_SOLUTION("BEGIN SOLUTION"),
     END_SOLUTION("END SOLUTION"),
     BEGIN_IMPORT("BEGIN IMPORT"),
-    END_IMPORT("END IMPORT"),
-    BEGIN_HELPER("BEGIN HELPER"),
-    END_HELPER("END HELPER");
+    END_IMPORT("END IMPORT");
 
     final String text;
     Marker(String text) { this.text = text; }
@@ -173,7 +170,7 @@ public class EntityTemplateParser {
 
   /**
    * Splits the lines into segments, checking that markers are well-formed on the way: BEGIN/END pairs are matched and not
-   * nested, there is at most one TEMPLATE and one SOLUTION (any number of IMPORT/HELPER sections), and no BEGIN marker comes
+   * nested, there is at most one TEMPLATE and one SOLUTION (any number of IMPORT sections), and no BEGIN marker comes
    * after the end of the template. Also accumulates {@code correctionBody}, the raw (markers included) span from BEGIN
    * TEMPLATE to END TEMPLATE, or from BEGIN SOLUTION to END SOLUTION when there is no template.
    *
@@ -198,7 +195,6 @@ public class EntityTemplateParser {
     boolean seenSolution     = false;
     boolean inSolutionHelper = false;
     boolean inImport         = false;
-    boolean inHelper         = false;
     boolean inRemote         = false;
     boolean remoteSeen       = false;
     boolean remoteClosed     = false;
@@ -221,7 +217,7 @@ public class EntityTemplateParser {
       if (marker != null) {
         switch (marker) {
           case BEGIN_REMOTE:
-            legal = phase == Phase.BEFORE && !inRemote && !remoteSeen && !inImport && !inHelper;
+            legal = phase == Phase.BEFORE && !inRemote && !remoteSeen && !inImport;
             if (legal) {
               // Drop whatever HEAD content was accumulated so far: only what comes after BEGIN REMOTE counts as head.
               segments.removeIf(s -> s.kind() == Kind.HEAD);
@@ -237,15 +233,15 @@ public class EntityTemplateParser {
             remoteClosed = true; // stop collecting TAIL content from here on
             break;
           case BEGIN_TEMPLATE:
-            legal = phase == Phase.BEFORE && !inSolution && !inSolutionHelper && !inImport && !inHelper && !seenSolution;
+            legal = phase == Phase.BEFORE && !inSolution && !inSolutionHelper && !inImport && !seenSolution;
             phase = Phase.IN_TEMPLATE;
             break;
           case END_TEMPLATE:
-            legal = phase == Phase.IN_TEMPLATE && !inSolution && !inSolutionHelper && !inImport && !inHelper;
+            legal = phase == Phase.IN_TEMPLATE && !inSolution && !inSolutionHelper && !inImport;
             phase = Phase.AFTER;
             break;
           case BEGIN_SOLUTION:
-            legal        = phase != Phase.AFTER && !inSolution && !seenSolution && !inSolutionHelper && !inImport && !inHelper;
+            legal        = phase != Phase.AFTER && !inSolution && !seenSolution && !inSolutionHelper && !inImport;
             inSolution   = true;
             seenSolution = true;
             break;
@@ -256,7 +252,7 @@ public class EntityTemplateParser {
               phase = Phase.AFTER;
             break;
           case BEGIN_SOLUTIONHELPER:
-            legal            = !inSolutionHelper && !inSolution && !inImport && !inHelper;
+            legal            = !inSolutionHelper && !inSolution && !inImport;
             inSolutionHelper = true;
             break;
           case END_SOLUTIONHELPER:
@@ -271,21 +267,12 @@ public class EntityTemplateParser {
             legal    = inImport;
             inImport = false;
             break;
-          case BEGIN_HELPER:
-            legal    = !inHelper && !inImport && !inSolution && !inSolutionHelper;
-            inHelper = true;
-            break;
-          case END_HELPER:
-            legal    = inHelper;
-            inHelper = false;
-            break;
         }
         if (!legal)
           throw new RuntimeException(Game.i18n.tr("{0}, line {1}: unexpected \"{2}\". Please fix your entity.", shownFilename, i + 1, marker.text));
       }
 
-      Kind kind = inHelper                                           ? Kind.HELPER
-                  : inImport                                         ? Kind.IMPORT
+      Kind kind = inImport                                           ? Kind.IMPORT
                   : inSolution                                       ? Kind.SOLUTION
                   : (inSolutionHelper && phase == Phase.IN_TEMPLATE) ? Kind.SOLUTIONHELPER
                   : phase == Phase.BEFORE                            ? Kind.HEAD
@@ -304,7 +291,7 @@ public class EntityTemplateParser {
     if (current.length() > 0)
       segments.add(new Segment(currentKind, current.toString()));
 
-    if (phase == Phase.IN_TEMPLATE || inSolution || inSolutionHelper || inImport || inHelper || inRemote)
+    if (phase == Phase.IN_TEMPLATE || inSolution || inSolutionHelper || inImport || inRemote)
       throw new RuntimeException(Game.i18n.tr("{0}: end of file reached inside a BEGIN/END block. Please fix your entity.", shownFilename));
     if (!correctionBodyStarted)
       throw new RuntimeException(Game.i18n.tr("{0}: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION found. Please fix your entity.", shownFilename));

@@ -104,31 +104,6 @@ public class EntityTemplateParserTest {
                             () -> parse(lines("/* BEGIN IMPORT */", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END IMPORT */"), new LangJava()));
   }
 
-  /** HELPER sections are exposed separately and removed from the head, but kept in the correction. */
-  // TODO: this assertion's expected template string still has the old single-line-flattened shape
-  @Test public void testJavaHelpers() throws PLMCompilerException
-  {
-    TemplatedEntity e = parse(lines("/* BEGIN HELPER */", "class Helper {}", "/* END HELPER */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
-                                    "  int a;", "  /* END TEMPLATE */", "}"),
-                              new LangJava());
-
-    Assertions.assertEquals("class Helper {}\n", e.helpers());
-    Assertions.assertEquals("public class Bar { $body\n}\n", e.template());
-    Assertions.assertEquals("int a;\n", e.initialContent());
-    Assertions.assertTrue(e.correction().contains("class Helper {}"));
-  }
-
-  @Test public void testUnclosedHelper()
-  {
-    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN HELPER */", "class Helper {}"), new LangJava()));
-  }
-
-  @Test public void testImportInsideHelper()
-  {
-    Assertions.assertThrows(RuntimeException.class,
-                            () -> parse(lines("/* BEGIN HELPER */", "/* BEGIN IMPORT */", "/* END IMPORT */", "/* END HELPER */"), new LangJava()));
-  }
-
   /** REMOTE narrows head/tail down to what is written between its markers; correctionBody keeps the TEMPLATE markers. */
   @Test public void testRemoteNarrowsHeadAndTail() throws PLMCompilerException
   {

@@ -2,9 +2,9 @@ package plm.core.lang;
 
 /**
  * Marker for the per-language, once-computed extraction records ({@code JvmExtraction}, {@code PythonExtraction},
- * {@code TemplatedRemoteLang.SimpleExtraction}) returned by {@link ProgrammingLanguage#extract(String, String, String, String, String)}.
+ * {@code TemplatedRemoteLang.SimpleExtraction}) returned by {@link ProgrammingLanguage#extract(String, String, String, String)}.
  * {@link SourceFile} only needs these two accessors to build a compilable source; the rest of each record ({@code
- * remote}, {@code helper}, ...) stays language-specific, read back by that language's own
+ * remote}, ...) stays language-specific, read back by that language's own
  * {@code compileExo()} via a cast (see e.g. {@code LangJava.compileExo()}).
  *
  * @see plm.core.model.session.SourceFile

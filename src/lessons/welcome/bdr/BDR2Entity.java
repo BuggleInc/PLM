@@ -12,7 +12,6 @@ public class BDR2Entity extends SimpleBuggle {
    * It is intended to help the process of board creation. */
 
   /* BEGIN REMOTE */
-  /* BEGIN HELPER */
   boolean checking          = false;
   Stack<Character> todoList = new Stack<Character>();
   public void addTODO(String s)
@@ -86,7 +85,6 @@ public class BDR2Entity extends SimpleBuggle {
     }
     return func + "(" + getX() + "," + getY() + ")";
   }
-  /* END HELPER */
 
   public void run()
   {
