@@ -38,9 +38,12 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    *                       turns that into a compile failure)
    * @param rawImports     the content of any BEGIN/END IMPORT section(s), as split out by the entity parser, NOT the full $imports replacement
    *                       compileExo() builds (which also injects packageNameCache-qualified lines)
+   * @param correctionTemplate see {@link LanguageExtraction#correctionTemplate()}
    * @param correctionBody see {@link LanguageExtraction#correctionBody()}
    */
-  public record JvmExtraction(String remote, String rawImports, String template, String correctionBody) implements LanguageExtraction {}
+  public record JvmExtraction(String remote, String rawImports, String template, String correctionTemplate, String correctionBody) implements LanguageExtraction
+  {
+  }
 
   /**
    * The per-compile template shared by Java and Scala: the language's own class/object wrapper around step 1's

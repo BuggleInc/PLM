@@ -94,7 +94,7 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
    Java/Scala only, the first line containing `package` to the fixed `generated` (the same for every exercise):
    `import static X.*;` needs a real package name to be legal syntax, but nothing requires that name to vary across
    exercises (each gets its own isolated workspace directory and its own separate `java` process at run time.
-2. `split()` cuts the lines into a list of `Segment(kind, text)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
+2. `split()` cuts the lines into a list of `Segment(kind, text, helper)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
    SOLUTION`, `BEGIN/END SOLUTIONHELPER`, `BEGIN/END IMPORT`, `BEGIN/END REMOTE`. Markers are
    language-agnostic: matched anywhere in a line, and expected alone on their line. Marker lines are removed and thus not part
    of any segment.
@@ -105,8 +105,12 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
    - `TEMPLATE`: part of the code that will be presented to the student
      - `SOLUTION`: the code to use instead of the student code to produce the correction entity. Must be part of TEMPLATE if it
        exists, or may be alone when no TEMPLATE exists at all.
-     - `SOLUTIONHELPER`: code that must be kept for the correction but not for the student-facing code. Must be within TEMPLATE
    - `TAIL`: (out of any marker)
+
+   `BEGIN/END SOLUTIONHELPER` is not a kind of its own either: it sets the `helper` flag of the segments it encloses (whatever
+   their kind). Helper code is kept for the correction but not for the student-facing code. It may sit before, inside or
+   after the templated region; when the file has a `BEGIN/END REMOTE`, it must be within it, as it would otherwise be dropped
+   silently. It cannot straddle any other marker.
 
    `BEGIN/END REMOTE` is optional and is not a kind of its own: it narrows `HEAD` and `TAIL`. Without it, they are the whole
    file before/after the templated region. With it, whatever was accumulated in `HEAD` before `BEGIN REMOTE` is dropped, and
@@ -118,41 +122,44 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
    Any invalid markup throws a RuntimeException: incorrect matching of BEGIN/END, incorrect nesting of segments, more than one
    `TEMPLATE` and zero or several `SOLUTION`.
 3. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
-- `head`/`tail`: the `HEAD`/`TAIL` segments, i.e. the file content strictly outside the templated region (before
-  `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed to
-  `BEGIN/END REMOTE` when present.
+- `head`/`tail`: the `HEAD`/`TAIL` segments without the helper ones, i.e. the file content strictly outside the templated region
+  (before `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed to
+  `BEGIN/END REMOTE` when present. This is the student's view.
+- `correctionHead`/`correctionTail`: same as `head`/`tail`, but keeping the helper segments.
 - `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution and the solution-helper
   sections), what the student sees in the editor the first time.
 - `imports`: the `IMPORT` segments.
-- the `SOLUTION` and `SOLUTIONHELPER` segments are not used here: they only reach the student through `correction`.
+- the `SOLUTION` segments and the helper segments inside the template are not used here: they only reach the compiled
+  correction through `correctionBody`.
 - `correction`: the *entire* file content again (marker lines included), unchanged except for the class/package name rewrite.
 - `correctionBody`: the raw text (marker lines included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` when there is no template. It is the `$body` value used to compile the correction.
 
 It then does bookkeeping common to all languages: inserts a `#line` C preprocessor directive so compiler errors point at
 the right file for C, and collapses `initialContent`'s leading whitespace to the smallest common indentation.
-`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`).
+`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code. Likewise,
+`correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
 
-Still inside `parse()`, `ProgrammingLanguage.extract(correction, template, correctionBody, imports)` is then called on
+Still inside `parse()`, `ProgrammingLanguage.extract(correction, template, correctionTemplate, correctionBody, imports)` is then called on
 the concrete language to do step 2 immediately below, even though `EntityTemplateParser` otherwise stays unaware of any
-per-language marker syntax. The result is a `TemplatedEntity` record: `initialContent`, `template`, `correctionBody`,
-`correction`, `imports`, plus that `extraction`. `Exercise.newSource()` (still called from `newSourceFromFile()`) then
+per-language marker syntax. The result is a `TemplatedEntity` record: `initialContent`, `template`, `correctionTemplate`,
+`correctionBody`, `correction`, `imports`, plus that `extraction`. `Exercise.newSource()` (still called from `newSourceFromFile()`) then
 stores that whole `TemplatedEntity` as one `SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`.
 
 ### Step 2: each language extracts its own pieces out of `correction`
 
-`SourceFile` only knows about `LanguageExtraction.template()`/`correctionBody()`; everything else is language-specific
+`SourceFile` only knows about `LanguageExtraction.template()`/`correctionTemplate()`/`correctionBody()`; everything else is language-specific
 and lives in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
 `TemplatedRemoteLang`/`JvmTemplatedLang`):
-- Java/Scala wrap step 1's `template` in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`:
-  `package`, `$imports`, `class Entity {`, then step 1's `template`, then the closing brace). Nothing is
+- Java/Scala wrap step 1's `template` and `correctionTemplate` in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`:
+  `package`, `$imports`, `class Entity {`, then step 1's template, then the closing brace). Nothing is
   re-parsed: `run()`, the templated methods and everything else compiled are already in `template`, as delimited by
   `BEGIN/END REMOTE`. They also guess which `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in
   the source by `TemplatedRemoteLang.getRemote()`), and keep step 1's `imports` and `correctionBody` as is.
-- Python only prepends its own `$imports` slot (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
+- Python only prepends its own `$imports` slot to both templates (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
   no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing: nothing else in the file needs
   excluding the way Java/Scala's package/class boilerplate does). It reads step 1's `correctionBody` unchanged, like Java/Scala.
-- C never rebuilds a template at all: its `extract()` just reuses step 1's `template` and `correctionBody` unchanged, in a
+- C never rebuilds a template at all: its `extract()` just reuses step 1's `template`, `correctionTemplate` and `correctionBody` unchanged, in a
   small `TemplatedRemoteLang.SimpleExtraction`.
 - The result -- `JvmExtraction` for Java/Scala, `PythonExtraction`, or `TemplatedRemoteLang.SimpleExtraction` for C, all
   implementing `LanguageExtraction` -- is stored as-is on the `SourceFile` (`SourceFile.getExtraction()`). Each
@@ -161,7 +168,8 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   `runtimePatterns` map of regex->replacement (`$imports`, ...) -- this part still
   happens on every compile.
 - `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution:
-  - `runtimePatterns` is applied first to `template` (which still holds the literal `$body` placeholder after this step)
+  - `runtimePatterns` is applied first to the extraction's `correctionTemplate` for `StudentOrCorrection.CORRECTION`, or to its
+    `template` for `StudentOrCorrection.STUDENT` (which still holds the literal `$body` placeholder after this step)
   - `offset` is computed. It's the number of lines of the patched template before `$body`'s own first line, and it's used to fix
     the location of the compilation errors so that they point to the code written by the student.
   - Then is `$body` substituted with the extraction's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
@@ -411,8 +419,6 @@ Preparing the next release cycle
 - Update the version number in .appveyor.yml and plm.configuration.properties
 
 ## TODOs
-
-TODO: unify the code paths in templating, reducing the amount of overloads between languages and ensuring that the segmentation between "BEGIN/END <SOMETHING>" is not dupplicated in lang.extract() by Java/Scala/Python. 
 
 TODO: add to the exercice a verification of the source code, so that MethodDogHouse can verify that there is only one occurence of the left() method in the source code
 TODO: Move the getRemote() to the earlier phase of templating so that it's stored in the SourceFile

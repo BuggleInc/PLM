@@ -58,7 +58,8 @@ public class SourceFile {
   /**
    * Returns the source text that we should compile, alongside the {@code $body} offset computed along the way.
    *
-   * The template (if any) has its {@code $body} placeholder substituted last, after every other {@code runtimePattern}
+   * The template (if any) is the correction one, which keeps the solution-helper sections of head/tail, or the student one
+   * otherwise. It has its {@code $body} placeholder substituted last, after every other {@code runtimePattern}
    * has been applied: a pattern's replacement text may itself span several lines, which shifts how many physical lines
    * come before {@code $body} in the final compiled file. The returned {@code offset} is the number of lines
    * separating the start of the generated file from {@code $body}'s own first line, so that a compiler error line
@@ -72,7 +73,7 @@ public class SourceFile {
    */
   public CompilableContent getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
   {
-    String template = extraction == null ? null : extraction.template();
+    String template = extraction == null ? null : whatToRetrieve == StudentOrCorrection.CORRECTION ? extraction.correctionTemplate() : extraction.template();
     String res      = template != null ? template : this.body;
 
     if (runtimePatterns != null)

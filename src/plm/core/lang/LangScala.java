@@ -107,10 +107,10 @@ public class LangScala extends JvmTemplatedLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public JvmExtraction extract(String correction, String template, String correctionBody, String imports)
+  @Override public JvmExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
   {
     return new JvmExtraction(getRemote(correction), imports, getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", template),
-                             correctionBody);
+                             getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", correctionTemplate), correctionBody);
   }
 
   /**
@@ -315,7 +315,8 @@ public class LangScala extends JvmTemplatedLang {
             extraFiles.add(extraFile);
           }
 
-          Files.writeString(new File(workspace, "Template.txt").toPath(), extraction.template());
+          Files.writeString(new File(workspace, "Template.txt").toPath(),
+                            whatToCompile == StudentOrCorrection.CORRECTION ? extraction.correctionTemplate() : extraction.template());
           Files.writeString(new File(workspace, "Correction.txt").toPath(), extraction.correctionBody());
           Files.writeString(mainRemote.toPath(), mainRemoteContent);
           Files.writeString(entityRemote.toPath(), entityRemoteContent);

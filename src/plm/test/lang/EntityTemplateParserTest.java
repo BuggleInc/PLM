@@ -132,4 +132,39 @@ public class EntityTemplateParserTest {
   {
     Assertions.assertThrows(RuntimeException.class, () -> parse(lines("public class FooEntity {", "}"), new LangJava()));
   }
+
+  /** SOLUTIONHELPER inside REMOTE but outside the template: kept in correctionTemplate only. */
+  @Test public void testSolutionHelperInRemoteHeadAndTail() throws PLMCompilerException
+  {
+    TemplatedEntity e = parse(lines("public class FooEntity {", "  /* BEGIN REMOTE */", "  /* BEGIN SOLUTIONHELPER */", "  int h;",
+                                    "  /* END SOLUTIONHELPER */", "  void run() {", "    /* BEGIN TEMPLATE */", "    int a;", "    /* END TEMPLATE */",
+                                    "    /* BEGIN SOLUTIONHELPER */", "    check();", "    /* END SOLUTIONHELPER */", "  }", "  /* END REMOTE */", "}"),
+                              new LangJava());
+
+    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.template());
+    Assertions.assertEquals("  int h;\n  void run() {\n$body\n    check();\n  }\n", e.correctionTemplate());
+  }
+
+  /** SOLUTIONHELPER before BEGIN REMOTE or after END REMOTE would be silently dropped: rejected. */
+  @Test public void testSolutionHelperOutsideRemote()
+  {
+    Assertions.assertThrows(RuntimeException.class,
+                            ()
+                                -> parse(lines("/* BEGIN SOLUTIONHELPER */", "/* END SOLUTIONHELPER */", "/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */",
+                                               "/* END TEMPLATE */", "/* END REMOTE */"),
+                                         new LangJava()));
+    Assertions.assertThrows(RuntimeException.class,
+                            ()
+                                -> parse(lines("/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */", "/* END TEMPLATE */", "/* END REMOTE */",
+                                               "/* BEGIN SOLUTIONHELPER */", "/* END SOLUTIONHELPER */"),
+                                         new LangJava()));
+  }
+
+  /** SOLUTIONHELPER must not straddle the template boundary. */
+  @Test public void testSolutionHelperStraddlingTemplate()
+  {
+    Assertions.assertThrows(
+        RuntimeException.class,
+        () -> parse(lines("/* BEGIN SOLUTIONHELPER */", "/* BEGIN TEMPLATE */", "/* END SOLUTIONHELPER */", "/* END TEMPLATE */"), new LangJava()));
+  }
 }

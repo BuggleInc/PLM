@@ -17,7 +17,8 @@ import plm.core.lang.LanguageExtraction;
  * @param initialContent what the student sees in the editor the first time (templateHead + templateTail)
  * @param template        head + "$body" + tail; substituting $body at compile time rebuilds a compilable source. head/tail
  *                         default to the whole file before/after the templated region, narrowed down to the BEGIN/END REMOTE
- *                         markers when the entity declares them (see {@link EntityTemplateParser#split})
+ *                         markers when the entity declares them (see {@link EntityTemplateParser#split}); used for the student code
+ * @param correctionTemplate same as {@code template} but with the SOLUTIONHELPER sections of head/tail kept, to compile the correction
  * @param correctionBody  the raw (markers included) BEGIN/END TEMPLATE span, or BEGIN/END SOLUTION when there is no
  *                         template; the {@code $body} value used for {@code StudentOrCorrection.CORRECTION}
  * @param correction      the whole entity file, unchanged except for the class/package name rewrite
@@ -25,6 +26,7 @@ import plm.core.lang.LanguageExtraction;
  *                         {@code template} nor {@code initialContent}, but are still in {@code correction}
  * @param extraction      this language's own once-computed extraction out of {@code correction}, or {@code null}
  */
-public record TemplatedEntity(String initialContent, String template, String correctionBody, String correction, String imports, LanguageExtraction extraction)
+public record TemplatedEntity(String initialContent, String template, String correctionTemplate, String correctionBody, String correction, String imports,
+                              LanguageExtraction extraction)
 {
 }

@@ -87,11 +87,11 @@ public class LangPython extends TemplatedRemoteLang {
    * entity uses BEGIN/END REMOTE -- see CONTRIBUTING.md), with the "$imports" slot prepended: Python entities are just
    * top-level function definitions, so unlike Java/Scala there is no class/object wrapper to inject it into.
    */
-  public record PythonExtraction(String remote, String template, String correctionBody) implements LanguageExtraction {}
+  public record PythonExtraction(String remote, String template, String correctionTemplate, String correctionBody) implements LanguageExtraction {}
 
-  @Override public PythonExtraction extract(String correction, String template, String correctionBody, String imports)
+  @Override public PythonExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new PythonExtraction(getRemote(correction), "$imports\n\n" + template, correctionBody);
+    return new PythonExtraction(getRemote(correction), "$imports\n\n" + template, "$imports\n\n" + correctionTemplate, correctionBody);
   }
 
   @Override protected String getRemote(String code)

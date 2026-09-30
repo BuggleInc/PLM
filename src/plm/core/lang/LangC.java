@@ -50,9 +50,9 @@ public class LangC extends TemplatedRemoteLang {
    * re-extraction, see CONTRIBUTING.md): it just reuses step 1's template unchanged, alongside the derived
    * correction body (same comment-delimited markers as Java/Scala).
    */
-  @Override public LanguageExtraction extract(String correction, String template, String correctionBody, String imports)
+  @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new SimpleExtraction(template, correctionBody);
+    return new SimpleExtraction(template, correctionTemplate, correctionBody);
   }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }

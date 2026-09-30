@@ -73,7 +73,7 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
    * template: currently only {@code LangC}, which just reuses step 1's template unchanged alongside the derived
    * correction body.
    */
-  public record SimpleExtraction(String template, String correctionBody) implements LanguageExtraction {}
+  public record SimpleExtraction(String template, String correctionTemplate, String correctionBody) implements LanguageExtraction {}
 
   /**
    * Read a classloader resource at {@code path} (relative to the classpath root) as a UTF-8 string. Low-level
