@@ -80,18 +80,9 @@ public class LangPython extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  /**
-   * Everything compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly, right after
-   * step 1 (see {@code EntityTemplateParser.parse()}), rather than lazily on first compile. {@code template()} is
-   * step 1's own template ({@code head + "$body" + tail}, head/tail defaulting to the whole file since no Python
-   * entity uses BEGIN/END REMOTE -- see CONTRIBUTING.md), with the "$imports" slot prepended: Python entities are just
-   * top-level function definitions, so unlike Java/Scala there is no class/object wrapper to inject it into.
-   */
-  public record PythonExtraction(String remote, String template, String correctionTemplate, String correctionBody) implements LanguageExtraction {}
-
-  @Override public PythonExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
+  @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new PythonExtraction(getRemote(correction), "$imports\n\n" + template, "$imports\n\n" + correctionTemplate, correctionBody);
+    return new LanguageExtraction(getRemote(correction), imports, "$imports\n\n" + template, "$imports\n\n" + correctionTemplate, correctionBody);
   }
 
   @Override protected String getRemote(String code)
@@ -116,7 +107,7 @@ public class LangPython extends TemplatedRemoteLang {
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
-        PythonExtraction extraction = (PythonExtraction)sf.getExtraction();
+        LanguageExtraction extraction = sf.getExtraction();
         String remote               = checkRemoteOrFail(extraction.remote(), "Python", exo, null);
 
         List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());

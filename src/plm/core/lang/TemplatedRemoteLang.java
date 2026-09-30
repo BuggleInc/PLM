@@ -69,13 +69,6 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   }
 
   /**
-   * {@link LanguageExtraction} for a language that, unlike Java/Scala/Python, never rebuilds its own per-compile
-   * template: currently only {@code LangC}, which just reuses step 1's template unchanged alongside the derived
-   * correction body.
-   */
-  public record SimpleExtraction(String template, String correctionTemplate, String correctionBody) implements LanguageExtraction {}
-
-  /**
    * Read a classloader resource at {@code path} (relative to the classpath root) as a UTF-8 string. Low-level
    * primitive behind {@link #loadRemoteFile} and LangC's own resource reading.
    */

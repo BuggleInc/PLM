@@ -30,22 +30,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   public JvmTemplatedLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
   /**
-   * Everything Java/Scala's compileExo() reads out of one SourceFile's {@code correction}: computed once, eagerly,
-   * right after step 1 (see {@code EntityTemplateParser.parse()}), rather than lazily on first compile.
-   * Python keeps its own, smaller record: it has no class/object wrapper to inject {@code rawImports} into.
-   *
-   * @param remote         the guessed RemoteXxx universe, or null if it couldn't be guessed ({@link #checkRemoteOrFail}
-   *                       turns that into a compile failure)
-   * @param rawImports     the content of any BEGIN/END IMPORT section(s), as split out by the entity parser, NOT the full $imports replacement
-   *                       compileExo() builds (which also injects packageNameCache-qualified lines)
-   * @param correctionTemplate see {@link LanguageExtraction#correctionTemplate()}
-   * @param correctionBody see {@link LanguageExtraction#correctionBody()}
-   */
-  public record JvmExtraction(String remote, String rawImports, String template, String correctionTemplate, String correctionBody) implements LanguageExtraction
-  {
-  }
-
-  /**
    * The per-compile template shared by Java and Scala: the language's own class/object wrapper around step 1's
    * {@code template} (which is {@code head + "$body" + tail}, head/tail being the text written between BEGIN REMOTE and
    * BEGIN TEMPLATE/SOLUTION, and between END TEMPLATE/SOLUTION and END REMOTE).

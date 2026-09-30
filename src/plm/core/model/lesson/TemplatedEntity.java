@@ -10,7 +10,7 @@ import plm.core.lang.LanguageExtraction;
  * {@code initialContent}/{@code template}/{@code correctionBody}/{@code correction} are step 1 (computed once, at
  * lesson-load time, language-agnostic beyond a few flattening/marker-syntax quirks -- see {@link EntityTemplateParser}).
  * {@code extraction} is step 2 (run() body, imports, remote-world hint, corrected template shape --
- * language-specific, e.g. {@code JvmExtraction}/{@code PythonExtraction}), computed right after step 1, still inside
+ * language-specific), computed right after step 1, still inside
  * {@link EntityTemplateParser#parse} (via {@code ProgrammingLanguage.extract()}) even though that class otherwise
  * stays unaware of any per-language marker syntax. {@code null} for languages that need no such extraction (C).
  *

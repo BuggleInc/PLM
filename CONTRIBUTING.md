@@ -148,8 +148,8 @@ stores that whole `TemplatedEntity` as one `SourceFileRevertable` per `(exercise
 
 ### Step 2: each language extracts its own pieces out of `correction`
 
-`SourceFile` only knows about `LanguageExtraction.template()`/`correctionTemplate()`/`correctionBody()`; everything else is language-specific
-and lives in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
+`SourceFile` only reads `LanguageExtraction.template()`/`correctionTemplate()`/`correctionBody()`; the other fields are language-specific
+and computed in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
 `TemplatedRemoteLang`/`JvmTemplatedLang`):
 - Java/Scala wrap step 1's `template` and `correctionTemplate` in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`:
   `package`, `$imports`, `class Entity {`, then step 1's template, then the closing brace). Nothing is
@@ -160,11 +160,10 @@ and lives in each language's own `extract()` override (Java/Scala/Python/C, shar
   no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing: nothing else in the file needs
   excluding the way Java/Scala's package/class boilerplate does). It reads step 1's `correctionBody` unchanged, like Java/Scala.
 - C never rebuilds a template at all: its `extract()` just reuses step 1's `template`, `correctionTemplate` and `correctionBody` unchanged, in a
-  small `TemplatedRemoteLang.SimpleExtraction`.
-- The result -- `JvmExtraction` for Java/Scala, `PythonExtraction`, or `TemplatedRemoteLang.SimpleExtraction` for C, all
-  implementing `LanguageExtraction` -- is stored as-is on the `SourceFile` (`SourceFile.getExtraction()`). Each
-  language's own `compileExo()` reads it back with a cast (e.g. `(JvmExtraction)sf.getExtraction()` in `LangJava`,
-  safe since a given `SourceFile` is only ever populated by the one language it was parsed for) to fill in a
+  with no `remote`.
+- The result -- a `LanguageExtraction` record (`remote`, `rawImports`, `template`, `correctionTemplate`, `correctionBody`),
+  the same for every language, with unused fields left as-is or `null` -- is stored as-is on the `SourceFile`
+  (`SourceFile.getExtraction()`). Each language's own `compileExo()` reads it back (e.g. in `LangJava`) to fill in a
   `runtimePatterns` map of regex->replacement (`$imports`, ...) -- this part still
   happens on every compile.
 - `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution:

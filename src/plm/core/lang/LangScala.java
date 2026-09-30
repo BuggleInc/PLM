@@ -107,10 +107,10 @@ public class LangScala extends JvmTemplatedLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public JvmExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
+  @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new JvmExtraction(getRemote(correction), imports, getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", template),
-                             getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", correctionTemplate), correctionBody);
+    return new LanguageExtraction(getRemote(correction), imports, getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", template),
+                                  getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", correctionTemplate), correctionBody);
   }
 
   /**
@@ -245,7 +245,7 @@ public class LangScala extends JvmTemplatedLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String key = packageNameCache + "." + sf.getName();
 
-        JvmExtraction extraction   = (JvmExtraction)sf.getExtraction();
+        LanguageExtraction extraction = sf.getExtraction();
         String remote              = checkRemoteOrFail(extraction.remote(), "Scala", exo, diagnostic);
 
         runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "

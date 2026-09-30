@@ -42,10 +42,7 @@ public class SourceFile {
   /**
    * This SourceFile's per-language extraction (step 2, computed once, eagerly, at lesson-load time -- see
    * CONTRIBUTING.md, "From correction entity to compilable source: templating"), for the owning language's own
-   * {@code compileExo()} to read its own fields back from via a cast (e.g. {@code (JvmExtraction)sf.getExtraction()}
-   * in {@code LangJava.compileExo()}). Safe by construction: a given SourceFile is only ever populated by the one
-   * language it was parsed for (see {@code Exercise.newSource()}), so the concrete type is always the one that
-   * language's own {@code extract()} returns.
+   * {@code compileExo()} to read its own fields back from.
    */
   public LanguageExtraction getExtraction() { return extraction; }
 

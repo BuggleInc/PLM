@@ -47,12 +47,12 @@ public class LangC extends TemplatedRemoteLang {
 
   /**
    * Unlike Java/Scala/Python, C never rebuilds its own per-compile template (no run()/imports
-   * re-extraction, see CONTRIBUTING.md): it just reuses step 1's template unchanged, alongside the derived
+   * re-extraction, see CONTRIBUTING.md): it just reuses step 1's templates unchanged, alongside the derived
    * correction body (same comment-delimited markers as Java/Scala).
    */
   @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new SimpleExtraction(template, correctionTemplate, correctionBody);
+    return new LanguageExtraction(null, imports, template, correctionTemplate, correctionBody);
   }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }

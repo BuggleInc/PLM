@@ -87,7 +87,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 
   /**
    * Extracts and returns this language's once-per-{@code SourceFile} pieces (remote universe, imports, corrected
-   * template, see {@code JvmExtraction}/{@code PythonExtraction}) out of what {@code EntityTemplateParser} already
+   * template) out of what {@code EntityTemplateParser} already
    * segmented. Defaults to {@code null} (nothing to extract): only overridden by the languages that compile a
    * templated entity (Java, Scala, Python, C); LightBot needs none of this (see CONTRIBUTING.md, "From correction
    * entity to compilable source: templating").
