@@ -11,15 +11,17 @@ import plm.core.ui.JavaEditorPanel;
 public class SourceFile {
 
   protected String name;
+  private final String remote;
   private final LanguageExtraction extraction;
   private String body;
   private String correction;
   private ISourceFileListener listener = null;
 
-  public SourceFile(String name, String initialBody, LanguageExtraction extraction, String _correctionCtn)
+  public SourceFile(String name, String initialBody, String remote, LanguageExtraction extraction, String _correctionCtn)
   {
     this.name       = name;
     this.body       = initialBody;
+    this.remote     = remote;
     this.extraction = extraction;
     this.correction = _correctionCtn;
   }
@@ -45,6 +47,9 @@ public class SourceFile {
    * {@code compileExo()} to read its own fields back from.
    */
   public LanguageExtraction getExtraction() { return extraction; }
+
+  /** The RemoteXxx universe guessed once from the whole entity file at lesson-load time (see {@code ProgrammingLanguage.getRemote()}), or null. */
+  public String getRemote() { return remote; }
 
   /**
    * The result of {@link #getCompilableContent(Map, StudentOrCorrection)}: the compilable source text, plus how many

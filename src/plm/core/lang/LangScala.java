@@ -107,9 +107,9 @@ public class LangScala extends JvmTemplatedLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
+  @Override public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new LanguageExtraction(getRemote(correction), imports, getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", template),
+    return new LanguageExtraction(imports, getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", template),
                                   getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", correctionTemplate), correctionBody);
   }
 
@@ -246,7 +246,7 @@ public class LangScala extends JvmTemplatedLang {
         String key = packageNameCache + "." + sf.getName();
 
         LanguageExtraction extraction = sf.getExtraction();
-        String remote              = checkRemoteOrFail(extraction.remote(), "Scala", exo, diagnostic);
+        String remote              = checkRemoteOrFail(sf.getRemote(), "Scala", exo, diagnostic);
 
         runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
                                            + "import java.awt.Color; "

@@ -7,11 +7,11 @@ public class SourceFileRevertable extends SourceFile {
 
   private String initialBody;
 
-  public SourceFileRevertable(String name) { this(name, "", null, ""); }
+  public SourceFileRevertable(String name) { this(name, "", null, null, ""); }
 
-  public SourceFileRevertable(String name, String initialBody, LanguageExtraction extraction, String correctionCtn)
+  public SourceFileRevertable(String name, String initialBody, String remote, LanguageExtraction extraction, String correctionCtn)
   {
-    super(name, initialBody, extraction, correctionCtn);
+    super(name, initialBody, remote, extraction, correctionCtn);
     this.initialBody = initialBody;
   }
 

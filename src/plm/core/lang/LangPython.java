@@ -80,12 +80,12 @@ public class LangPython extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
+  @Override public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new LanguageExtraction(getRemote(correction), imports, "$imports\n\n" + template, "$imports\n\n" + correctionTemplate, correctionBody);
+    return new LanguageExtraction(imports, "$imports\n\n" + template, "$imports\n\n" + correctionTemplate, correctionBody);
   }
 
-  @Override protected String getRemote(String code)
+  @Override public String getRemote(String code)
   {
     // Python exercises must declare their universe explicitly with a real "from RemoteXxx import *" line
     Matcher explicit = Pattern.compile("(?m)^from (Remote\\w+) import \\*").matcher(code);
@@ -108,7 +108,7 @@ public class LangPython extends TemplatedRemoteLang {
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         LanguageExtraction extraction = sf.getExtraction();
-        String remote               = checkRemoteOrFail(extraction.remote(), "Python", exo, null);
+        String remote               = checkRemoteOrFail(sf.getRemote(), "Python", exo, null);
 
         List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());
         StringBuilder extraImports    = new StringBuilder();

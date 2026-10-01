@@ -23,7 +23,7 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
    * Guess which RemoteXxx universe an exercise belongs to. Shared by Java, Scala and C.
    * Python instead requires an explicit "from RemoteXxx import *" line (see its own getRemote()).
    */
-  protected String getRemote(String code)
+  @Override public String getRemote(String code)
   {
     if (code.contains("setObjectif") || code.contains("RemoteSimple"))
       return "RemoteSimple";

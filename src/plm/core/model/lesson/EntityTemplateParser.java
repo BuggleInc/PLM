@@ -90,8 +90,8 @@ public class EntityTemplateParser {
     // Step 2 (see CONTRIBUTING.md, "From correction entity to compilable source: templating"): each language's own
     // extract() re-parses `correction` with its own marker syntax, so this parser stays unaware of it -- see
     // TemplatedEntity's javadoc.
-    LanguageExtraction extraction = lang.extract(correction, template, correctionTemplate, split.correctionBody(), imports);
-    return new TemplatedEntity(initialContent, template, correctionTemplate, split.correctionBody(), correction, imports, extraction);
+    LanguageExtraction extraction = lang.extract(template, correctionTemplate, split.correctionBody(), imports);
+    return new TemplatedEntity(initialContent, template, correctionTemplate, split.correctionBody(), correction, lang.getRemote(correction), imports, extraction);
   }
 
   /**

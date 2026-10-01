@@ -50,9 +50,9 @@ public class LangC extends TemplatedRemoteLang {
    * re-extraction, see CONTRIBUTING.md): it just reuses step 1's templates unchanged, alongside the derived
    * correction body (same comment-delimited markers as Java/Scala).
    */
-  @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
+  @Override public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new LanguageExtraction(null, imports, template, correctionTemplate, correctionBody);
+    return new LanguageExtraction(imports, template, correctionTemplate, correctionBody);
   }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
@@ -90,7 +90,7 @@ public class LangC extends TemplatedRemoteLang {
     String execPath = null;
     for (SourceFile sf : sfs) {
       String code = sf.getCompilableContent(runtimePatterns, whatToCompile).content();
-      execPath    = compile(code, exo.getId(), exo, whatToCompile);
+      execPath    = compile(code, sf.getRemote(), exo.getId(), exo, whatToCompile);
     }
     return execPath;
   }
@@ -110,7 +110,7 @@ public class LangC extends TemplatedRemoteLang {
    * reuses it afterwards. Only the student/correction file itself is compiled anew every time, then linked against
    * those cached objects.
    */
-  private String compile(String code, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  private String compile(String code, String remoteGuess, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     try {
       Files.createDirectories(C_ROOT);
@@ -119,7 +119,7 @@ public class LangC extends TemplatedRemoteLang {
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
-      String remote = checkRemoteOrFail(getRemote(code), "C", exo, null);
+      String remote = checkRemoteOrFail(remoteGuess, "C", exo, null);
 
       String valueSerializerH = readResource("value_serializer.h");
       String valueSerializerC = readResource("value_serializer.c");

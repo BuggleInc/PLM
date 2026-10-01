@@ -153,14 +153,13 @@ and computed in each language's own `extract()` override (Java/Scala/Python/C, s
 - Java/Scala wrap step 1's `template` and `correctionTemplate` in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`:
   `package`, `$imports`, `class Entity {`, then step 1's template, then the closing brace). Nothing is
   re-parsed: `run()`, the templated methods and everything else compiled are already in `template`, as delimited by
-  `BEGIN/END REMOTE`. They also guess which `RemoteXxx` micro-world glue file to compile against (guessed from keywords found in
-  the source by `TemplatedRemoteLang.getRemote()`), and keep step 1's `imports` and `correctionBody` as is.
+  `BEGIN/END REMOTE`. They keep step 1's `imports` and `correctionBody` as is.
 - Python only prepends its own `$imports` slot to both templates (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
   no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing: nothing else in the file needs
   excluding the way Java/Scala's package/class boilerplate does). It reads step 1's `correctionBody` unchanged, like Java/Scala.
 - C never rebuilds a template at all: its `extract()` just reuses step 1's `template`, `correctionTemplate` and `correctionBody` unchanged, in a
-  with no `remote`.
-- The result -- a `LanguageExtraction` record (`remote`, `rawImports`, `template`, `correctionTemplate`, `correctionBody`),
+  `LanguageExtraction`.
+- The result -- a `LanguageExtraction` record (`rawImports`, `template`, `correctionTemplate`, `correctionBody`),
   the same for every language, with unused fields left as-is or `null` -- is stored as-is on the `SourceFile`
   (`SourceFile.getExtraction()`). Each language's own `compileExo()` reads it back (e.g. in `LangJava`) to fill in a
   `runtimePatterns` map of regex->replacement (`$imports`, ...) -- this part still
@@ -419,7 +418,6 @@ Preparing the next release cycle
 ## TODOs
 
 TODO: add to the exercice a verification of the source code, so that MethodDogHouse can verify that there is only one occurence of the left() method in the source code
-TODO: Move the getRemote() to the earlier phase of templating so that it's stored in the SourceFile
 
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage

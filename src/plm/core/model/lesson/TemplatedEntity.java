@@ -22,11 +22,12 @@ import plm.core.lang.LanguageExtraction;
  * @param correctionBody  the raw (markers included) BEGIN/END TEMPLATE span, or BEGIN/END SOLUTION when there is no
  *                         template; the {@code $body} value used for {@code StudentOrCorrection.CORRECTION}
  * @param correction      the whole entity file, unchanged except for the class/package name rewrite
+ * @param remote          the RemoteXxx universe guessed by {@code lang.getRemote(correction)}, or null if none
  * @param imports         the lines found between BEGIN IMPORT and END IMPORT markers (any number of sections), which are not part of
  *                         {@code template} nor {@code initialContent}, but are still in {@code correction}
  * @param extraction      this language's own once-computed extraction out of {@code correction}, or {@code null}
  */
-public record TemplatedEntity(String initialContent, String template, String correctionTemplate, String correctionBody, String correction, String imports,
+public record TemplatedEntity(String initialContent, String template, String correctionTemplate, String correctionBody, String correction, String remote, String imports,
                               LanguageExtraction extraction)
 {
 }

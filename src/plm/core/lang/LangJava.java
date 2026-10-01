@@ -62,9 +62,9 @@ public class LangJava extends JvmTemplatedLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
+  @Override public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
   {
-    return new LanguageExtraction(getRemote(correction), imports, getCorrectedTemplate("package generated;\n\n$imports\n\npublic class Entity {\n", template),
+    return new LanguageExtraction(imports, getCorrectedTemplate("package generated;\n\n$imports\n\npublic class Entity {\n", template),
                                   getCorrectedTemplate("package generated;\n\n$imports\n\npublic class Entity {\n", correctionTemplate), correctionBody);
   }
 
@@ -176,7 +176,7 @@ public class LangJava extends JvmTemplatedLang {
         String key = packageNameCache + "." + sf.getName();
 
         LanguageExtraction extraction = sf.getExtraction();
-        String remote             = checkRemoteOrFail(extraction.remote(), "Java", exo, diagnostic);
+        String remote             = checkRemoteOrFail(sf.getRemote(), "Java", exo, diagnostic);
 
         runtimePatterns.put("\\$imports", ("import static generated.ValueSerializer.*;\n"
                                            + "import java.awt.Color;\n"

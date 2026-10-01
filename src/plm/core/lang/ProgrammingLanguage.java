@@ -86,20 +86,25 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
   /**
-   * Extracts and returns this language's once-per-{@code SourceFile} pieces (remote universe, imports, corrected
+   * Guesses which RemoteXxx universe an entity belongs to, out of the whole entity file ({@code correction}). Returns
+   * null if there is none to guess, or if it couldn't be. Overridden by the languages that run entities remotely.
+   */
+  public String getRemote(String correction) { return null; }
+
+  /**
+   * Extracts and returns this language's once-per-{@code SourceFile} pieces (imports, corrected
    * template) out of what {@code EntityTemplateParser} already
    * segmented. Defaults to {@code null} (nothing to extract): only overridden by the languages that compile a
    * templated entity (Java, Scala, Python, C); LightBot needs none of this (see CONTRIBUTING.md, "From correction
    * entity to compilable source: templating").
    *
-   * @param correction     the whole entity file, as produced by step 1 (see {@code EntityTemplateParser})
    * @param template       step 1's own "head + $body + tail" shape, head/tail being narrowed to the BEGIN/END REMOTE
    *                       markers when the entity has them
-   * @param correctionTemplate same shape as {@code template}, but keeping the solution-helper sections of head/tail (for the correction)
+   * @param correctionTemplate same shape as {@code template}, but keeping the solution sections of head/tail (for the correction)
    * @param correctionBody the {@code $body} value to use for {@code StudentOrCorrection.CORRECTION}, as computed by step 1
    * @param imports        the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
    */
-  public LanguageExtraction extract(String correction, String template, String correctionTemplate, String correctionBody, String imports)
+  public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
       throws PLMCompilerException
   {
     return null;
