@@ -23,7 +23,7 @@ class GatesPancakeEntity extends PancakeEntity {
 		solve();
 	}
 
-	/* BEGIN SOLUTIONHELPER */
+	/* BEGIN SOLUTION */
 	def getRankOf(size:Int ): Int = {
 		for (rank <- 0 to getStackSize()-1)
 			if (getPancakeRadius(rank) == size)
@@ -96,7 +96,7 @@ class GatesPancakeEntity extends PancakeEntity {
 		return pos+1;
 	}
 	val debug=0; // 0: silence; 1: which cases; 2: all details
-	/* END SOLUTIONHELPER */
+	/* END SOLUTION */
 	
 	/* BEGIN TEMPLATE */
 	def solve() {

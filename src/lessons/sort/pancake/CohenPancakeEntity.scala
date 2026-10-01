@@ -9,7 +9,7 @@ class CohenPancakeEntity extends PancakeEntity {
 		solve();
 	}
 
-	/* BEGIN SOLUTIONHELPER */
+	/* BEGIN SOLUTION */
 	def getRankOf(size: Integer):Integer = {
 			for (rank <- 0 to getStackSize()-1)
 				if (getPancakeRadius(rank) == size)
@@ -30,7 +30,7 @@ class CohenPancakeEntity extends PancakeEntity {
 				System.out.println();
 		}
 	}
-	/* END SOLUTIONHELPER */
+	/* END SOLUTION */
 
 	/* BEGIN TEMPLATE */
 	def solve() {

@@ -46,10 +46,10 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.correctionBody());
   }
 
-  /** BEGIN/END SOLUTIONHELPER inside the template head is kept in the correction only. */
-  @Test public void testPythonSolutionHelperInTemplateHead() throws PLMCompilerException
+  /** A second BEGIN/END SOLUTION inside the template is kept in the correction only. */
+  @Test public void testPythonSecondSolutionInTemplate() throws PLMCompilerException
   {
-    String content = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTIONHELPER", "  h = 0", "  # END SOLUTIONHELPER", "  # END TEMPLATE");
+    String content    = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTION", "  h = 0", "  # END SOLUTION", "  # END TEMPLATE");
     TemplatedEntity e = parse(content, new LangPython());
 
     Assertions.assertEquals("  a = 1\n", e.initialContent());
@@ -133,38 +133,57 @@ public class EntityTemplateParserTest {
     Assertions.assertThrows(RuntimeException.class, () -> parse(lines("public class FooEntity {", "}"), new LangJava()));
   }
 
-  /** SOLUTIONHELPER inside REMOTE but outside the template: kept in correctionTemplate only. */
-  @Test public void testSolutionHelperInRemoteHeadAndTail() throws PLMCompilerException
+  /** SOLUTION in REMOTE but outside the template: kept in correctionTemplate only. */
+  @Test public void testHiddenSolutionInRemoteHeadAndTail() throws PLMCompilerException
   {
-    TemplatedEntity e = parse(lines("public class FooEntity {", "  /* BEGIN REMOTE */", "  /* BEGIN SOLUTIONHELPER */", "  int h;",
-                                    "  /* END SOLUTIONHELPER */", "  void run() {", "    /* BEGIN TEMPLATE */", "    int a;", "    /* END TEMPLATE */",
-                                    "    /* BEGIN SOLUTIONHELPER */", "    check();", "    /* END SOLUTIONHELPER */", "  }", "  /* END REMOTE */", "}"),
+    TemplatedEntity e = parse(lines("public class FooEntity {", "  /* BEGIN REMOTE */", "  /* BEGIN SOLUTION */", "  int h;", "  /* END SOLUTION */",
+                                    "  void run() {", "    /* BEGIN TEMPLATE */", "    int a;", "    /* END TEMPLATE */", "    /* BEGIN SOLUTION */",
+                                    "    check();", "    /* END SOLUTION */", "  }", "  /* END REMOTE */", "}"),
                               new LangJava());
 
     Assertions.assertEquals("  void run() {\n$body\n  }\n", e.template());
     Assertions.assertEquals("  int h;\n  void run() {\n$body\n    check();\n  }\n", e.correctionTemplate());
   }
 
-  /** SOLUTIONHELPER before BEGIN REMOTE or after END REMOTE would be silently dropped: rejected. */
-  @Test public void testSolutionHelperOutsideRemote()
+  /** A SOLUTION before BEGIN REMOTE or after END REMOTE would be silently dropped: rejected. */
+  @Test public void testHiddenSolutionOutsideRemote()
   {
     Assertions.assertThrows(RuntimeException.class,
                             ()
-                                -> parse(lines("/* BEGIN SOLUTIONHELPER */", "/* END SOLUTIONHELPER */", "/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */",
-                                               "/* END TEMPLATE */", "/* END REMOTE */"),
+                                -> parse(lines("/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */", "/* END TEMPLATE */",
+                                               "/* END REMOTE */"),
                                          new LangJava()));
     Assertions.assertThrows(RuntimeException.class,
                             ()
-                                -> parse(lines("/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */", "/* END TEMPLATE */", "/* END REMOTE */",
-                                               "/* BEGIN SOLUTIONHELPER */", "/* END SOLUTIONHELPER */"),
+                                -> parse(lines("/* BEGIN REMOTE */", "/* BEGIN TEMPLATE */", "/* END TEMPLATE */", "/* END REMOTE */", "/* BEGIN SOLUTION */",
+                                               "/* END SOLUTION */"),
                                          new LangJava()));
   }
 
-  /** SOLUTIONHELPER must not straddle the template boundary. */
-  @Test public void testSolutionHelperStraddlingTemplate()
+  /** A SOLUTION must not straddle the template boundary. */
+  @Test public void testHiddenSolutionStraddlingTemplate()
   {
-    Assertions.assertThrows(
-        RuntimeException.class,
-        () -> parse(lines("/* BEGIN SOLUTIONHELPER */", "/* BEGIN TEMPLATE */", "/* END SOLUTIONHELPER */", "/* END TEMPLATE */"), new LangJava()));
+    Assertions.assertThrows(RuntimeException.class,
+                            () -> parse(lines("/* BEGIN SOLUTION */", "/* BEGIN TEMPLATE */", "/* END SOLUTION */", "/* END TEMPLATE */"), new LangJava()));
+  }
+
+  /** Without a TEMPLATE, the single SOLUTION plays its role: several of them are ambiguous and rejected. */
+  @Test public void testSeveralSolutionsWithoutTemplate()
+  {
+    Assertions.assertThrows(RuntimeException.class,
+                            () -> parse(lines("/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* BEGIN SOLUTION */", "/* END SOLUTION */"), new LangJava()));
+  }
+
+  /** With a TEMPLATE, any number of SOLUTIONs is fine, before, inside and after it. */
+  @Test public void testSeveralSolutionsWithTemplate() throws PLMCompilerException
+  {
+    TemplatedEntity e =
+        parse(lines("/* BEGIN SOLUTION */", "int h;", "/* END SOLUTION */", "/* BEGIN TEMPLATE */", "/* BEGIN SOLUTION */", "int a;", "/* END SOLUTION */",
+                    "/* BEGIN SOLUTION */", "int b;", "/* END SOLUTION */", "/* END TEMPLATE */", "/* BEGIN SOLUTION */", "int t;", "/* END SOLUTION */"),
+              new LangJava());
+
+    Assertions.assertEquals("", e.initialContent());
+    Assertions.assertEquals("$body\n", e.template());
+    Assertions.assertEquals("int h;\n$body\nint t;\n", e.correctionTemplate());
   }
 }

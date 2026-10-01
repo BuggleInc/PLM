@@ -14,9 +14,9 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
    */
   public HanoiEntity(String name, World world)
   {
-    /* BEGIN SOLUTIONHELPER */
+    /* BEGIN SOLUTION */
     super(name, world);
-    /* END SOLUTIONHELPER */
+    /* END SOLUTION */
   }
 
   /**
@@ -25,16 +25,16 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
    */
   public HanoiEntity(String name)
   {
-    /* BEGIN SOLUTIONHELPER */
+    /* BEGIN SOLUTION */
     super(name);
-    /* END SOLUTIONHELPER */
+    /* END SOLUTION */
   }
   /** Must exist too. Calling HanoiEntity("dummy name") is ok */
   public HanoiEntity()
   {
-    /* BEGIN SOLUTIONHELPER */
+    /* BEGIN SOLUTION */
     this("Hanoi Entity");
-    /* END SOLUTIONHELPER */
+    /* END SOLUTION */
   }
 
   /** Must exist so that exercises can instantiate your entity (Entity is abstract) */
@@ -44,10 +44,10 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
   @Override public void move(int src, int dst) { regularMove(src, dst); }
   public void regularMove(int src, int dst)
   {
-    /* BEGIN SOLUTIONHELPER */
+    /* BEGIN SOLUTION */
     ((HanoiWorld)world).move(src, dst);
     stepUI();
-    /* END SOLUTIONHELPER */
+    /* END SOLUTION */
   }
   @Override public void cyclicMove(int src, int dst)
   {
@@ -62,9 +62,9 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
 
   @Primitive(307) public int getSlotRadius(int slot) { return ((HanoiWorld)world).getRadius(slot); }
 
-  /* BEGIN SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
   @Override public String toString() { return "HanoiEntity (" + this.getClass().getName() + ")"; }
-  /* END SOLUTIONHELPER */
+  /* END SOLUTION */
 
   /* BINDINGS TRANSLATION: French */
   public void deplace(int src, int dst) { move(src, dst); }

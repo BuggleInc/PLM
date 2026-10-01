@@ -9,7 +9,7 @@ class DragonCurve2Entity extends Turtle {
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def dragon(order:Int, x:Double, y:Double, z:Double, t:Double) {
-		/* BEGIN SOLUTIONHELPER */
+		/* BEGIN SOLUTION */
 
 		if (order == 1) {
 			setColor(Color.red);
@@ -20,11 +20,11 @@ class DragonCurve2Entity extends Turtle {
 			dragon(order - 1, x, y, u, v);
 			dragonInverse(order - 1, u, v, z, t);
 		}
-		/* END SOLUTIONHELPER */
+		/* END SOLUTION */
 	}
 
 	def dragonInverse(order:Int, x:Double, y:Double, z:Double, t:Double) {
-		/* BEGIN SOLUTIONHELPER */
+		/* BEGIN SOLUTION */
 
 		if (order == 1) {
 			setColor(Color.blue);
@@ -35,7 +35,7 @@ class DragonCurve2Entity extends Turtle {
 			dragon(order - 1, x, y, u, v);
 			dragonInverse(order - 1, u, v, z, t);
 		}
-		/* END SOLUTIONHELPER */
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
 

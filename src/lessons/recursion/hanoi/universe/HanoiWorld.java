@@ -106,16 +106,16 @@ public class HanoiWorld extends World {
 
   @Override public HanoiWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) { return (HanoiWorld)super.replaceEntities(newEntitySupplier); }
 
-  /* BEGIN SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
   /**
    * Returns a component able of displaying the world -- will be used in third exercise
    * You should comment this for the first exercises
    */
   @Override public WorldView getView() { return new HanoiWorldView(this); }
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_hanoi.png"); }
-  /* END SOLUTIONHELPER */
+  /* END SOLUTION */
 
-  /* BEGIN SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
   @Override public String toString()
   {
     StringBuffer sb = new StringBuffer();
@@ -128,12 +128,12 @@ public class HanoiWorld extends World {
     }
     return sb.toString();
   }
-  /* END SOLUTIONHELPER */
+  /* END SOLUTION */
 
   /** Used to check whether the student code changed the world in the right state -- see exercise 4 */
   @Override public boolean equals(Object o)
   {
-    /* BEGIN SOLUTIONHELPER */
+    /* BEGIN SOLUTION */
     if (o == null || !(o instanceof HanoiWorld))
       return false;
     HanoiWorld other = (HanoiWorld)o;
@@ -145,7 +145,7 @@ public class HanoiWorld extends World {
       if (!(this.slotsVal[i].equals(other.slotsVal[i])) || !(this.slotsColor[i].equals(other.slotsColor[i])))
         return false;
     }
-    /* END SOLUTIONHELPER */
+    /* END SOLUTION */
     return getName().equals(other.getName());
   }
 
@@ -179,7 +179,7 @@ public class HanoiWorld extends World {
   }
 
   /* Here comes the world logic */
-  /* BEGIN SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
   private Vector<Integer> slotsVal[];
   private Vector<Color> slotsColor[];
   public int moveCount = 0;
@@ -226,6 +226,6 @@ public class HanoiWorld extends World {
    * Return the panel which let the user to interact dynamically with the world
    */
   @Override public EntityControlPanel getEntityControlPanel() { return new HanoiMovePanel(); }
-  /* END SOLUTIONHELPER */
+  /* END SOLUTION */
 }
 /* END TEMPLATE */

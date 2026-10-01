@@ -94,8 +94,8 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
    Java/Scala only, the first line containing `package` to the fixed `generated` (the same for every exercise):
    `import static X.*;` needs a real package name to be legal syntax, but nothing requires that name to vary across
    exercises (each gets its own isolated workspace directory and its own separate `java` process at run time.
-2. `split()` cuts the lines into a list of `Segment(kind, text, helper)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
-   SOLUTION`, `BEGIN/END SOLUTIONHELPER`, `BEGIN/END IMPORT`, `BEGIN/END REMOTE`. Markers are
+2. `split()` cuts the lines into a list of `Segment(kind, text, solution)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
+   SOLUTION`, `BEGIN/END IMPORT`, `BEGIN/END REMOTE`. Markers are
    language-agnostic: matched anywhere in a line, and expected alone on their line. Marker lines are removed and thus not part
    of any segment.
    
@@ -103,14 +103,14 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
    - `HEAD`: (out of any marker) before the template, or before the solution if there is no template
    - `IMPORT`: extra headers that must be added to the student entity for it to compile
    - `TEMPLATE`: part of the code that will be presented to the student
-     - `SOLUTION`: the code to use instead of the student code to produce the correction entity. Must be part of TEMPLATE if it
-       exists, or may be alone when no TEMPLATE exists at all.
    - `TAIL`: (out of any marker)
 
-   `BEGIN/END SOLUTIONHELPER` is not a kind of its own either: it sets the `helper` flag of the segments it encloses (whatever
-   their kind). Helper code is kept for the correction but not for the student-facing code. It may sit before, inside or
-   after the templated region; when the file has a `BEGIN/END REMOTE`, it must be within it, as it would otherwise be dropped
-   silently. It cannot straddle any other marker.
+   `BEGIN/END SOLUTION` is not a kind of its own: it sets the `solution` flag of the segments it encloses (whatever their
+   kind). Solution code is kept for the correction but not for the student-facing code. When there is a `TEMPLATE`, any
+   number of `SOLUTION` sections may sit before, inside or after it; those outside the templated region must be within
+   `REMOTE` when the file has one, as they would otherwise be dropped silently. When there is no `TEMPLATE`, there is exactly
+   one `SOLUTION`, which plays the role of the templated region: the student's code replaces it. A `SOLUTION` cannot straddle
+   any other marker.
 
    `BEGIN/END REMOTE` is optional and is not a kind of its own: it narrows `HEAD` and `TAIL`. Without it, they are the whole
    file before/after the templated region. With it, whatever was accumulated in `HEAD` before `BEGIN REMOTE` is dropped, and
@@ -120,17 +120,16 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
    TEMPLATE`/`BEGIN SOLUTION` and closes after the matching end marker.
    
    Any invalid markup throws a RuntimeException: incorrect matching of BEGIN/END, incorrect nesting of segments, more than one
-   `TEMPLATE` and zero or several `SOLUTION`.
+   `TEMPLATE`, and zero or several `SOLUTION` when there is no `TEMPLATE`.
 3. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
-- `head`/`tail`: the `HEAD`/`TAIL` segments without the helper ones, i.e. the file content strictly outside the templated region
+- `head`/`tail`: the `HEAD`/`TAIL` segments without the solution ones, i.e. the file content strictly outside the templated region
   (before `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed to
   `BEGIN/END REMOTE` when present. This is the student's view.
-- `correctionHead`/`correctionTail`: same as `head`/`tail`, but keeping the helper segments.
-- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution and the solution-helper
-  sections), what the student sees in the editor the first time.
+- `correctionHead`/`correctionTail`: same as `head`/`tail`, but keeping the solution segments.
+- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution sections), what the student sees in the editor the first time.
 - `imports`: the `IMPORT` segments.
-- the `SOLUTION` segments and the helper segments inside the template are not used here: they only reach the compiled
-  correction through `correctionBody`.
+- the `SOLUTION` segments inside the template are not used here: they only reach the compiled correction through
+  `correctionBody`.
 - `correction`: the *entire* file content again (marker lines included), unchanged except for the class/package name rewrite.
 - `correctionBody`: the raw text (marker lines included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` when there is no template. It is the `$body` value used to compile the correction.

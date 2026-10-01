@@ -3,7 +3,7 @@ void dragon(int order, double x, double y, double z, double t);
 void dragonInverse(int order, double x, double y, double z, double t);
 /* BEGIN TEMPLATE */
 void dragon(int order, double x, double y, double z, double t) {
-  /* BEGIN SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
   double u, v;
 
   if (order == 1) {
@@ -15,11 +15,11 @@ void dragon(int order, double x, double y, double z, double t) {
     dragon(order - 1, x, y, u, v);
     dragonInverse(order - 1, u, v, z, t);
   }
-  /* END SOLUTIONHELPER */
+  /* END SOLUTION */
 }
 
 void dragonInverse(int order, double x, double y, double z, double t) {
-  /* BEGIN SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
   double u, v;
 
   if (order == 1) {
@@ -31,7 +31,7 @@ void dragonInverse(int order, double x, double y, double z, double t) {
     dragon(order - 1, x, y, u, v);
     dragonInverse(order - 1, u, v, z, t);
   }
-  /* END SOLUTIONHELPER */
+  /* END SOLUTION */
 }
 /* END TEMPLATE */
 

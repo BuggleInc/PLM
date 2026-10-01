@@ -9,7 +9,7 @@ public class HelloTurmiteEntity extends TurmiteEntity {
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   final static int STOP = 0; /* for example */
-  /* BEGIN SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
   final static int NOTURN = 1;
   final static int LEFT   = 2;
   final static int BACK   = 4;
@@ -18,7 +18,7 @@ public class HelloTurmiteEntity extends TurmiteEntity {
   final static int NEXT_COLOR = 0;
   final static int NEXT_MOVE  = 1;
   final static int NEXT_STATE = 2;
-  /* END SOLUTIONHELPER */
+  /* END SOLUTION */
 
   int state = 0;
 

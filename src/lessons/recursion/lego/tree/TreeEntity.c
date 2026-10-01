@@ -27,7 +27,7 @@ void tree(int steps, double length, double angle, double shrink)	{
 	}
 	/* END SOLUTION */
 }
-/* BEGIN SOLUTIONHELPER */
+/* BEGIN SOLUTION */
 void subtree(int steps, double length, double angle, double shrink)	{
 	if (steps != 0) {
 		setColor(black);
@@ -40,7 +40,7 @@ void subtree(int steps, double length, double angle, double shrink)	{
 		backward(length);
         }
 }
-/* END SOLUTIONHELPER */
+/* END SOLUTION */
 /* END TEMPLATE */
 
 void run() {

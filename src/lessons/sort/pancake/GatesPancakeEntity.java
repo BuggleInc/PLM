@@ -23,8 +23,8 @@ public class GatesPancakeEntity extends PancakeEntity {
   /* BEGIN REMOTE */
   public void run() { solve(); }
 
-  /* BEGIN SOLUTIONHELPER */
-  /* END SOLUTIONHELPER */
+  /* BEGIN SOLUTION */
+  /* END SOLUTION */
 
   /* BEGIN TEMPLATE */
   public void solve()

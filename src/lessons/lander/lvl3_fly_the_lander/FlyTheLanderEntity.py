@@ -13,11 +13,10 @@ def run():
                 if lastPoint.y == point.y:
                     startPos, endPos = lastPoint.x, point.x
             lastPoint = point
-        # END SOLUTION
-    # END TEMPLATE
+    # END SOLUTION
     
     def step():
-    # BEGIN SOLUTIONHELPER
+    # BEGIN SOLUTION
         if (getX() < startPos):
             setDesiredAngle(-30)
         elif (getX() > endPos):
@@ -32,8 +31,9 @@ def run():
         if (getSpeedY() <-9):
             setDesiredThrust(4)
         else:
-            setDesiredThrust(3)    
-    # END SOLUTIONHELPER
+            setDesiredThrust(3)
+    # END SOLUTION
+    # END TEMPLATE
     
     
     initialize()

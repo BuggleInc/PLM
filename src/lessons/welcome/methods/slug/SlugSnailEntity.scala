@@ -29,7 +29,7 @@ class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
    
 	// here comes your isFacingTrail method   
 
-	/* BEGIN SOLUTIONHELPER */
+	/* BEGIN SOLUTION */
 	def isFacingTrail(c:Color):Boolean = {
 		if (isFacingWall())
 			return false;
@@ -39,7 +39,7 @@ class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 		stepBackward();
 		return res;
 	}		
-	/* END SOLUTIONHELPER */
+	/* END SOLUTION */
 	/* END TEMPLATE */
 	/* END REMOTE */
 

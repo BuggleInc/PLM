@@ -4,7 +4,7 @@ import plm.core.lang.LanguageExtraction;
 
 /**
  * Result of parsing one {@code XxxEntity.<ext>} source file's {@code BEGIN}/{@code END} {@code TEMPLATE}/{@code SOLUTION}/
- * {@code SOLUTIONHELPER}/{@code REMOTE} markers (see {@link EntityTemplateParser} and CONTRIBUTING.md, "From correction entity
+ * {@code REMOTE} markers (see {@link EntityTemplateParser} and CONTRIBUTING.md, "From correction entity
  * to compilable source: templating"), plus that language's own extraction out of the resulting {@code correction} text.
  *
  * {@code initialContent}/{@code template}/{@code correctionBody}/{@code correction} are step 1 (computed once, at
@@ -18,7 +18,7 @@ import plm.core.lang.LanguageExtraction;
  * @param template        head + "$body" + tail; substituting $body at compile time rebuilds a compilable source. head/tail
  *                         default to the whole file before/after the templated region, narrowed down to the BEGIN/END REMOTE
  *                         markers when the entity declares them (see {@link EntityTemplateParser#split}); used for the student code
- * @param correctionTemplate same as {@code template} but with the SOLUTIONHELPER sections of head/tail kept, to compile the correction
+ * @param correctionTemplate same as {@code template} but with the SOLUTION sections of head/tail kept, to compile the correction
  * @param correctionBody  the raw (markers included) BEGIN/END TEMPLATE span, or BEGIN/END SOLUTION when there is no
  *                         template; the {@code $body} value used for {@code StudentOrCorrection.CORRECTION}
  * @param correction      the whole entity file, unchanged except for the class/package name rewrite

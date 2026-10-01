@@ -15,7 +15,7 @@ void run() {
 	/* END SOLUTION */
 }
 /* END TEMPLATE */
-/* BEGIN SOLUTIONHELPER */
+/* BEGIN SOLUTION */
 
 void bringPlayersHome(int base) {
 	int positionToFill;
@@ -77,4 +77,4 @@ int findPlayerPos(int base, int color) {
 	}
 	return -1;
 }
-/* END SOLUTIONHELPER */
+/* END SOLUTION */

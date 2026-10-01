@@ -88,16 +88,16 @@ public class BDR2Entity extends SimpleBuggle {
 
   public void run()
   {
-    /* BEGIN SOLUTIONHELPER (don't put that is student's code) */
+    /* BEGIN SOLUTION (don't put that is student's code) */
     addTODO(getParamString(0));
-    /* END SOLUTIONHELPER */
+    /* END SOLUTION */
 
     solve();
 
-    /* BEGIN SOLUTIONHELPER (don't put that is student's code) */
+    /* BEGIN SOLUTION (don't put that is student's code) */
     if (checking && todoList.size() != 0)
       complain(getName() + "I'm done, but I was supposed to do " + fmt(todoList.pop()) + ";");
-    /* END SOLUTIONHELPER */
+    /* END SOLUTION */
   }
 
   /* BEGIN TEMPLATE */
