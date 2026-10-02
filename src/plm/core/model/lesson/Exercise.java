@@ -160,6 +160,9 @@ public abstract class Exercise extends Lecture {
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
   public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
 
+  /** The source files of this language that were already loaded: never loads anything, unlike {@link #getSourceFilesList} */
+  public synchronized List<SourceFile> getLoadedSourceFiles(ProgrammingLanguage lang) { return sourceFiles.getOrDefault(lang, List.of()); }
+
   /** Called right after the list of source files of this language got created, to fill it if this exercise knows how */
   protected void loadSourceFiles(ProgrammingLanguage lang) {}
 

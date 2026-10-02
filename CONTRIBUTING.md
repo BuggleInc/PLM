@@ -83,21 +83,33 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 ## From correction entity to compilable source: templating
 
 This section is about how the single `XxxEntity.<ext>` file described in "Adding a new exercise" below (which mixes the
-teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION,
-one for the STUDENT's current editor content. It happens in two separate steps: the first at load time, the second at each compilation.
+teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION which is
+used to compute the demo and the `answerWorld`, and one for the student's current editor content when the "Run" button is hit in
+the GUI. This process can be decomposed as follows:
 
-### Step 1: `EntityTemplateParser.parse()` parses the entity file at load time
+- When the lesson is loaded, `ExerciseTemplated.setup()` only checks which languages have an entity file (`FileUtils.exists()`)
+  but the files are not parsed nor even loaded in memory at this stage since we almost never need to parse all entities in all
+  language for a given PLM usage session.
+- When needed, the entity content is parsed (split into parts), and a `SourceFile` is created to store the result of this
+  parsing. This step (detailed below) is language agnostic: it applies exactly the same for all entities of all languages.
+- When the "Run" button is hit, a compilable file content is derived from the current content of the editor and along with the
+  `SourceFile` that was previously parsed. This happens for each new exercice compilation, and also to compile the correction
+  entity that computes the `answerWorld`.
 
-Called from `ExerciseTemplated.setup()` (via `newSourceFromFile()`) for every `(exercise, language)` pair, once when
-the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
+### Entity content parsing: `EntityTemplateParser.parse()` (language agnostic)
+
+This happens via `newSourceFromFile()`, the first time `Exercise.getSourceFilesList(lang)` is called for that language (see
+`loadSourceFiles()`) and the result is kept in cache as a `SourceFile`. `Exercise.getLoadedSourceFiles(lang)` returns what was
+already loaded without triggering any parsing: session saving and `Game.revertExo()` use it.
+
+`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
 1. `rewriteDeclarations()` rewrites the first `class` declaration to use the exercise's own class name, for
    Java/Scala only, the first line containing `package` to the fixed `generated` (the same for every exercise):
    `import static X.*;` needs a real package name to be legal syntax, but nothing requires that name to vary across
    exercises (each gets its own isolated workspace directory and its own separate `java` process at run time.
-2. `split()` cuts the lines into a list of `Segment(kind, text, solution)`, driven by marker comments: `BEGIN/END TEMPLATE`, `BEGIN/END
-   SOLUTION`, `BEGIN/END IMPORT`, `BEGIN/END REMOTE`. Markers are
-   language-agnostic: matched anywhere in a line, and expected alone on their line. Marker lines are removed and thus not part
-   of any segment.
+2. `split()` cuts the lines into a list of `Segment(kind, text, solution)`, driven by marker comments: `BEGIN/END TEMPLATE`,
+   `BEGIN/END SOLUTION`, `BEGIN/END IMPORT`, `BEGIN/END REMOTE`. Markers are language-agnostic: matched anywhere in a line, and
+   expected alone on their line. Marker lines are removed and thus not part of any segment.
    
    The kinds are:
    - `HEAD`: (out of any marker) before the template, or before the solution if there is no template
@@ -126,7 +138,8 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
   (before `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed to
   `BEGIN/END REMOTE` when present. This is the student's view.
 - `correctionHead`/`correctionTail`: same as `head`/`tail`, but keeping the solution segments.
-- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution sections), what the student sees in the editor the first time.
+- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution sections), what the student
+  sees in the editor the first time.
 - `imports`: the `IMPORT` segments.
 - the `SOLUTION` segments inside the template are not used here: they only reach the compiled correction through
   `correctionBody`.
@@ -138,10 +151,10 @@ It then collapses `initialContent`'s leading whitespace to the smallest common i
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code. Likewise,
 `correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
 
-`lang.getRemote(correction)` is also called there to guess the `RemoteXxx` universe. The result is a `SourceFileRevertable`, whose editor
-content starts as `initialContent`, and which also keeps `template`, `correctionTemplate`, `correctionBody`, `correction`, `remote` and
-`imports`. `Exercise.newSource()` (still called from `newSourceFromFile()`) stores it as the one source per `(exercise, language)` in
-`Exercise.sourceFiles`.
+`lang.getRemote(correction)` is also called there to guess the `RemoteXxx` universe. The result is a `SourceFileRevertable`,
+whose editor content starts as `initialContent`, and which also keeps `template`, `correctionTemplate`, `correctionBody`,
+`correction`, `remote` and `imports`. `Exercise.newSource()` (still called from `newSourceFromFile()`) stores it as the one
+source per `(exercise, language)` in `Exercise.sourceFiles`.
 
 ### Step 2: each language's `compileExo()` builds the compilable source
 
@@ -319,6 +332,10 @@ weblate. There, volunteers will translate your content to their
 language. Next time that po4a is run, a new translated mission file
 will be created (if over 80% of its content is translated) and added
 to the git.
+
+Since the entities are loaded lazily by the PLM, you need either to switch the programming languages in the interface (or to run
+the maven tests) to ensure that your exercise entities are correctly formatted. If not, the student code may not compile
+properly.
 
 ### World instance (map)
 

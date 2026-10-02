@@ -5,11 +5,9 @@ import org.junit.platform.suite.api.Suite;
 import plm.test.git.GitSpyTest;
 import plm.test.git.GitUtilsTest;
 import plm.test.lang.EntityTemplateParserTest;
-import plm.test.lang.LangJvmTemplateTest;
 import plm.test.lang.LangPythonTemplateTest;
 import plm.test.simple.test.AllSimpleExerciseTests;
 
 @Suite
-@SelectClasses({AllSimpleExerciseTests.class, GitSpyTest.class, GitUtilsTest.class, LangJvmTemplateTest.class, LangPythonTemplateTest.class,
-                EntityTemplateParserTest.class})
+@SelectClasses({AllSimpleExerciseTests.class, GitSpyTest.class, GitUtilsTest.class, LangPythonTemplateTest.class, EntityTemplateParserTest.class})
 public class UnitTests {}

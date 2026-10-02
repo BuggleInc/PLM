@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -207,9 +209,7 @@ public class ZipSessionKit implements ISessionKit {
             }
 
             // save exercise body
-            for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {
-              SourceFile sf = exercise.getSourceFile(lang, i);
-
+            for (SourceFile sf : exercise.getLoadedSourceFiles(lang)) { // the sources not loaded yet were never modified
               if (!(sf instanceof SourceFileRevertable))
                 continue;
 
@@ -284,12 +284,17 @@ public class ZipSessionKit implements ISessionKit {
               Game.getInstance().studentWork.setPassed(exercise, lang, true);
             }
 
-            for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {
-              SourceFile srcFile = exercise.getSourceFile(lang, i);
+            // Look for the saved code of the already loaded sources, or of the entity (named after the tab) if it is not loaded yet
+            List<String> names = new ArrayList<>();
+            for (SourceFile sf : exercise.getLoadedSourceFiles(lang))
+              names.add(sf.getName());
+            if (names.isEmpty())
+              names.add(exercise.getTabName());
 
-              ZipEntry srcEntry = zf.getEntry(lang + "/" + exercise.getId() + "/" + srcFile.getName());
+            for (String name : names) {
+              ZipEntry srcEntry = zf.getEntry(lang + "/" + exercise.getId() + "/" + name);
               if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
-                srcEntry = zf.getEntry(exercise.getId() + "/" + srcFile.getName());
+                srcEntry = zf.getEntry(exercise.getId() + "/" + name);
 
               if (srcEntry != null) {
                 InputStream is = zf.getInputStream(srcEntry);
@@ -306,7 +311,9 @@ public class ZipSessionKit implements ISessionKit {
                     b.append("\n");
                   }
 
-                  srcFile.setBody(b.toString(), lang);
+                  for (SourceFile srcFile : exercise.getSourceFilesList(lang)) // only loads the entity if some code was saved
+                    if (srcFile.getName().equals(name))
+                      srcFile.setBody(b.toString(), lang);
                 } catch (IOException e) {
                   e.printStackTrace();
                 } finally {

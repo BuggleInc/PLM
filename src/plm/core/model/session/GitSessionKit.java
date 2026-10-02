@@ -174,7 +174,6 @@ public class GitSessionKit implements ISessionKit {
             Game.getInstance().studentWork.setPassed(exercise, lang, false);
           }
           // load source code
-          SourceFile srcFile = exercise.getSourceFile(lang, 0);
           String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() +
                             "." + lang.getExt() + ".code";
           // System.out.println(fileName);
@@ -188,7 +187,7 @@ public class GitSessionKit implements ISessionKit {
                 b.append("\n");
               }
             }
-            srcFile.setBody(b.toString(), lang);
+            exercise.getSourceFile(lang, 0).setBody(b.toString(), lang); // only loads the entity if some code was saved
           } catch (FileNotFoundException fnf) {
             /* that's fine, we never did that exercise */
           } catch (IOException ex) {

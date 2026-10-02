@@ -993,11 +993,9 @@ public class Game implements IWorldView {
 
     Exercise ex = (Exercise)lect;
     for (ProgrammingLanguage lang : ex.getProgLanguages())
-      for (int i = 0; i < ex.getSourceFileCount(lang); i++) {
-        SourceFile sf = ex.getSourceFile(lang, i);
+      for (SourceFile sf : ex.getLoadedSourceFiles(lang)) // the sources not loaded yet are still in their initial state
         if (sf instanceof SourceFileRevertable)
           ((SourceFileRevertable)sf).revert(lang);
-      }
     for (ProgrammingLanguage pl : programmingLanguageManager.langs)
       Game.getInstance().studentWork.setPassed(ex, pl, false);
     for (ProgressSpyListener l : this.progressSpyListeners) {
