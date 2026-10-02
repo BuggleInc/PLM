@@ -9,10 +9,11 @@ import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.session.SourceFileRevertable;
 
 /**
  * Parses the BEGIN/END TEMPLATE/SOLUTION/IMPORT/REMOTE markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
- * This results in a {@link TemplatedEntity} reccord.
+ * This results in a {@link SourceFileRevertable}.
  */
 public class EntityTemplateParser {
 
@@ -25,7 +26,7 @@ public class EntityTemplateParser {
    *     instead
    * @param shownFilename  the human-readable file name, only used in warning/error messages
    */
-  public static TemplatedEntity parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
+  public static SourceFileRevertable parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
   {
     String[] lines             = rewriteDeclarations(content.split("\n"), name, lang);
     SplitResult split          = split(lines, shownFilename);
@@ -86,7 +87,7 @@ public class EntityTemplateParser {
       }
     }
 
-    return new TemplatedEntity(initialContent, template, correctionTemplate, split.correctionBody(), correction, lang.getRemote(correction), imports);
+    return new SourceFileRevertable(name, initialContent, correction, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction));
   }
 
   /**

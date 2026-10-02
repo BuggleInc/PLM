@@ -17,7 +17,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.session.SourceFile;
-import plm.core.model.session.SourceFileRevertable;
 import plm.universe.World;
 
 public abstract class Exercise extends Lecture {
@@ -160,9 +159,9 @@ public abstract class Exercise extends Lecture {
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
   public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
 
-  public void newSource(ProgrammingLanguage lang, String name, TemplatedEntity parsed)
+  public void newSource(ProgrammingLanguage lang, SourceFile source)
   {
-    getSourceFilesList(lang).add(new SourceFileRevertable(name, parsed.initialContent(), parsed, parsed.correction()));
+    getSourceFilesList(lang).add(source);
   }
 
   public Vector<World> getWorlds(WorldKind kind)

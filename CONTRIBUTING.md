@@ -139,13 +139,14 @@ the right file for C, and collapses `initialContent`'s leading whitespace to the
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code. Likewise,
 `correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
 
-`lang.getRemote(correction)` is also called there to guess the `RemoteXxx` universe. The result is a `TemplatedEntity` record:
-`initialContent`, `template`, `correctionTemplate`, `correctionBody`, `correction`, `remote`, `imports`. `Exercise.newSource()` (still
-called from `newSourceFromFile()`) stores it as one `SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`.
+`lang.getRemote(correction)` is also called there to guess the `RemoteXxx` universe. The result is a `SourceFileRevertable`, whose editor
+content starts as `initialContent`, and which also keeps `template`, `correctionTemplate`, `correctionBody`, `correction`, `remote` and
+`imports`. `Exercise.newSource()` (still called from `newSourceFromFile()`) stores it as the one source per `(exercise, language)` in
+`Exercise.sourceFiles`.
 
 ### Step 2: each language's `compileExo()` builds the compilable source
 
-Each `compileExo()` reads the `TemplatedEntity` of every `SourceFile` (`SourceFile.getEntity()`), picks `correctionTemplate` for
+Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correctionTemplate` for
 `StudentOrCorrection.CORRECTION` or `template` otherwise, and wraps it the way its language needs:
 - Java/Scala wrap it in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`: `package`, `$imports`,
   `class Entity {`, then the template, then the closing brace). Nothing is re-parsed: `run()`, the templated methods and everything
@@ -159,7 +160,7 @@ It then fills a `runtimePatterns` map of regex->replacement (`$imports`, ...) an
   - `runtimePatterns` is applied first to the given `template` (which still holds the literal `$body` placeholder after this step)
   - `offset` is computed. It's the number of lines of the patched template before `$body`'s own first line, and it's used to fix
     the location of the compilation errors so that they point to the code written by the student.
-  - Then is `$body` substituted with the entity's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
+  - Then is `$body` substituted with the source's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
     current content `body` for `StudentOrCorrection.STUDENT`
   - non-breaking spaces are stripped.
   - The method returns a `SourceFile.CompilableContent(content, offset)` record

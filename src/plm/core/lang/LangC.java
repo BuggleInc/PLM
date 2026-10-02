@@ -21,7 +21,6 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
-import plm.core.model.lesson.TemplatedEntity;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -80,9 +79,8 @@ public class LangC extends TemplatedRemoteLang {
 
     String execPath = null;
     for (SourceFile sf : sfs) {
-      TemplatedEntity entity = sf.getEntity();
-      String code            = sf.getCompilableContent(whatToCompile == StudentOrCorrection.CORRECTION ? entity.correctionTemplate() : entity.template(), runtimePatterns, whatToCompile).content();
-      execPath               = compile(code, entity.remote(), exo.getId(), exo, whatToCompile);
+      String code            = sf.getCompilableContent(whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate(), runtimePatterns, whatToCompile).content();
+      execPath               = compile(code, sf.getRemote(), exo.getId(), exo, whatToCompile);
     }
     return execPath;
   }

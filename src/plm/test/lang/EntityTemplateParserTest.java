@@ -8,7 +8,7 @@ import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.EntityTemplateParser;
-import plm.core.model.lesson.TemplatedEntity;
+import plm.core.model.session.SourceFile;
 
 /**
  * Characterization tests of {@link EntityTemplateParser#parse}: expected values were derived by hand from the current
@@ -16,7 +16,7 @@ import plm.core.model.lesson.TemplatedEntity;
  */
 public class EntityTemplateParserTest {
 
-  private static TemplatedEntity parse(String content, ProgrammingLanguage lang) throws PLMCompilerException
+  private static SourceFile parse(String content, ProgrammingLanguage lang) throws PLMCompilerException
   {
     return EntityTemplateParser.parse(content, lang, "Bar", "Foo");
   }
@@ -28,32 +28,32 @@ public class EntityTemplateParserTest {
   {
     String content    = lines("import x", "def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTION", "  b = 2", "  # END SOLUTION", "  c = 3",
                               "  # END TEMPLATE", "  end()");
-    TemplatedEntity e = parse(content, new LangPython());
+    SourceFile e = parse(content, new LangPython());
 
-    Assertions.assertEquals("  a = 1\n  c = 3\n", e.initialContent());
-    Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.template());
-    Assertions.assertEquals(content + "\n", e.correction());
+    Assertions.assertEquals("  a = 1\n  c = 3\n", e.getBody());
+    Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.getTemplate());
+    Assertions.assertEquals(content + "\n", e.getCorrection());
   }
 
   /** Only BEGIN/END SOLUTION: the template is empty and the tail starts right after the solution. */
   @Test public void testPythonSolutionOnly() throws PLMCompilerException
   {
-    TemplatedEntity e = parse(lines("def run():", "  # BEGIN SOLUTION", "  x = 1", "  # END SOLUTION", "  end()"), new LangPython());
+    SourceFile e = parse(lines("def run():", "  # BEGIN SOLUTION", "  x = 1", "  # END SOLUTION", "  end()"), new LangPython());
 
-    Assertions.assertEquals("", e.initialContent());
-    Assertions.assertEquals("def run():\n$body\n  end()\n", e.template());
-    Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.correctionBody());
+    Assertions.assertEquals("", e.getBody());
+    Assertions.assertEquals("def run():\n$body\n  end()\n", e.getTemplate());
+    Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.getCorrectionBody());
   }
 
   /** A second BEGIN/END SOLUTION inside the template is kept in the correction only. */
   @Test public void testPythonSecondSolutionInTemplate() throws PLMCompilerException
   {
     String content    = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTION", "  h = 0", "  # END SOLUTION", "  # END TEMPLATE");
-    TemplatedEntity e = parse(content, new LangPython());
+    SourceFile e = parse(content, new LangPython());
 
-    Assertions.assertEquals("  a = 1\n", e.initialContent());
-    Assertions.assertEquals("def run():\n$body\n", e.template());
-    Assertions.assertEquals(content + "\n", e.correction());
+    Assertions.assertEquals("  a = 1\n", e.getBody());
+    Assertions.assertEquals("def run():\n$body\n", e.getTemplate());
+    Assertions.assertEquals(content + "\n", e.getCorrection());
   }
 
   /** Java: class declaration rewritten, package line dropped, initial content dedented; head keeps its own lines/comments now. */
@@ -61,35 +61,35 @@ public class EntityTemplateParserTest {
   {
     String content    = lines("package foo;", "public class FooEntity {", "  // comment", "  /* BEGIN TEMPLATE */", "  int a;", "  /* BEGIN SOLUTION */",
                               "  int b;", "  /* END SOLUTION */", "  /* END TEMPLATE */", "}");
-    TemplatedEntity e = parse(content, new LangJava());
+    SourceFile e = parse(content, new LangJava());
 
-    Assertions.assertEquals("int a;\n", e.initialContent());
-    Assertions.assertEquals("package generated;\npublic class Bar {\n  // comment\n$body\n}\n", e.template());
-    Assertions.assertFalse(e.template().contains("package foo")); // no per-exercise package declaration
-    Assertions.assertTrue(e.correction().startsWith("\npublic class Bar {\n"));
-    Assertions.assertTrue(e.correction().contains("// comment")); // correction stays a faithful copy of the file, comments included
+    Assertions.assertEquals("int a;\n", e.getBody());
+    Assertions.assertEquals("package generated;\npublic class Bar {\n  // comment\n$body\n}\n", e.getTemplate());
+    Assertions.assertFalse(e.getTemplate().contains("package foo")); // no per-exercise package declaration
+    Assertions.assertTrue(e.getCorrection().startsWith("\npublic class Bar {\n"));
+    Assertions.assertTrue(e.getCorrection().contains("// comment")); // correction stays a faithful copy of the file, comments included
   }
 
   /** C: a {@code #line} directive is inserted in the head right before the template. */
   @Test public void testCLineDirective() throws PLMCompilerException
   {
-    TemplatedEntity e = parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* END TEMPLATE */"), new LangC());
+    SourceFile e = parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* END TEMPLATE */"), new LangC());
 
-    Assertions.assertEquals("a();\n", e.initialContent());
-    Assertions.assertEquals("int x;\n#line 1 \"Bar.c\" \n$body\n", e.template());
+    Assertions.assertEquals("a();\n", e.getBody());
+    Assertions.assertEquals("int x;\n#line 1 \"Bar.c\" \n$body\n", e.getTemplate());
   }
 
   /** IMPORT sections are exposed separately and removed from the head, but kept in the correction. */
   @Test public void testJavaImports() throws PLMCompilerException
   {
-    TemplatedEntity e = parse(lines("/* BEGIN IMPORT */", "import java.util.Stack;", "/* END IMPORT */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
+    SourceFile e = parse(lines("/* BEGIN IMPORT */", "import java.util.Stack;", "/* END IMPORT */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
                                     "  int a;", "  /* END TEMPLATE */", "}"),
                               new LangJava());
 
-    Assertions.assertEquals("import java.util.Stack;\n", e.imports());
-    Assertions.assertEquals("public class Bar {\n$body\n}\n", e.template());
-    Assertions.assertEquals("int a;\n", e.initialContent());
-    Assertions.assertTrue(e.correction().contains("import java.util.Stack;"));
+    Assertions.assertEquals("import java.util.Stack;\n", e.getImports());
+    Assertions.assertEquals("public class Bar {\n$body\n}\n", e.getTemplate());
+    Assertions.assertEquals("int a;\n", e.getBody());
+    Assertions.assertTrue(e.getCorrection().contains("import java.util.Stack;"));
   }
 
   @Test public void testUnclosedImport()
@@ -106,13 +106,13 @@ public class EntityTemplateParserTest {
   /** REMOTE narrows head/tail down to what is written between its markers; correctionBody keeps the TEMPLATE markers. */
   @Test public void testRemoteNarrowsHeadAndTail() throws PLMCompilerException
   {
-    TemplatedEntity e = parse(lines("package foo;", "public class FooEntity {", "  /* BEGIN REMOTE */", "  void run() {", "    /* BEGIN TEMPLATE */",
+    SourceFile e = parse(lines("package foo;", "public class FooEntity {", "  /* BEGIN REMOTE */", "  void run() {", "    /* BEGIN TEMPLATE */",
                                     "    int a;", "    /* END TEMPLATE */", "  }", "  /* END REMOTE */", "}"),
                               new LangJava());
 
-    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.template());
-    Assertions.assertEquals("int a;\n", e.initialContent());
-    Assertions.assertEquals("    /* BEGIN TEMPLATE */\n    int a;\n    /* END TEMPLATE */\n", e.correctionBody());
+    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.getTemplate());
+    Assertions.assertEquals("int a;\n", e.getBody());
+    Assertions.assertEquals("    /* BEGIN TEMPLATE */\n    int a;\n    /* END TEMPLATE */\n", e.getCorrectionBody());
   }
 
   @Test public void testUnclosedRemote()
@@ -135,13 +135,13 @@ public class EntityTemplateParserTest {
   /** SOLUTION in REMOTE but outside the template: kept in correctionTemplate only. */
   @Test public void testHiddenSolutionInRemoteHeadAndTail() throws PLMCompilerException
   {
-    TemplatedEntity e = parse(lines("public class FooEntity {", "  /* BEGIN REMOTE */", "  /* BEGIN SOLUTION */", "  int h;", "  /* END SOLUTION */",
+    SourceFile e = parse(lines("public class FooEntity {", "  /* BEGIN REMOTE */", "  /* BEGIN SOLUTION */", "  int h;", "  /* END SOLUTION */",
                                     "  void run() {", "    /* BEGIN TEMPLATE */", "    int a;", "    /* END TEMPLATE */", "    /* BEGIN SOLUTION */",
                                     "    check();", "    /* END SOLUTION */", "  }", "  /* END REMOTE */", "}"),
                               new LangJava());
 
-    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.template());
-    Assertions.assertEquals("  int h;\n  void run() {\n$body\n    check();\n  }\n", e.correctionTemplate());
+    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.getTemplate());
+    Assertions.assertEquals("  int h;\n  void run() {\n$body\n    check();\n  }\n", e.getCorrectionTemplate());
   }
 
   /** A SOLUTION before BEGIN REMOTE or after END REMOTE would be silently dropped: rejected. */
@@ -176,13 +176,13 @@ public class EntityTemplateParserTest {
   /** With a TEMPLATE, any number of SOLUTIONs is fine, before, inside and after it. */
   @Test public void testSeveralSolutionsWithTemplate() throws PLMCompilerException
   {
-    TemplatedEntity e =
+    SourceFile e =
         parse(lines("/* BEGIN SOLUTION */", "int h;", "/* END SOLUTION */", "/* BEGIN TEMPLATE */", "/* BEGIN SOLUTION */", "int a;", "/* END SOLUTION */",
                     "/* BEGIN SOLUTION */", "int b;", "/* END SOLUTION */", "/* END TEMPLATE */", "/* BEGIN SOLUTION */", "int t;", "/* END SOLUTION */"),
               new LangJava());
 
-    Assertions.assertEquals("", e.initialContent());
-    Assertions.assertEquals("$body\n", e.template());
-    Assertions.assertEquals("int h;\n$body\nint t;\n", e.correctionTemplate());
+    Assertions.assertEquals("", e.getBody());
+    Assertions.assertEquals("$body\n", e.getTemplate());
+    Assertions.assertEquals("int h;\n$body\nint t;\n", e.getCorrectionTemplate());
   }
 }

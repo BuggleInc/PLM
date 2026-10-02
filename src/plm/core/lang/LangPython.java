@@ -16,7 +16,6 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
-import plm.core.model.lesson.TemplatedEntity;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -103,8 +102,7 @@ public class LangPython extends TemplatedRemoteLang {
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
-        TemplatedEntity entity = sf.getEntity();
-        String remote = checkRemoteOrFail(entity.remote(), "Python", exo, null);
+        String remote = checkRemoteOrFail(sf.getRemote(), "Python", exo, null);
 
         List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());
         StringBuilder extraImports    = new StringBuilder();
@@ -115,7 +113,7 @@ public class LangPython extends TemplatedRemoteLang {
                                            + "from Remote import *\n" + extraImports)
                                               .replace('\n', '\u0001'));
 
-        String template   = "$imports\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? entity.correctionTemplate() : entity.template());
+        String template   = "$imports\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
         String entityCode = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
         entityCode        = entityCode.replace('\u0001', '\n');
 

@@ -3,7 +3,6 @@ package plm.core.model.session;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.swing.JScrollPane;
-import plm.core.model.lesson.TemplatedEntity;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.ui.JavaEditorPanel;
@@ -11,17 +10,40 @@ import plm.core.ui.JavaEditorPanel;
 public class SourceFile {
 
   protected String name;
-  private final TemplatedEntity entity;
   private String body;
   private String correction;
+  private final String template;
+  private final String correctionTemplate;
+  private final String correctionBody;
+  private final String imports;
+  private final String remote;
   private ISourceFileListener listener = null;
 
-  public SourceFile(String name, String initialBody, TemplatedEntity entity, String _correctionCtn)
+  /**
+   * Computed once, at lesson-load time, by {@code EntityTemplateParser} (see CONTRIBUTING.md, "From correction entity to
+   * compilable source: templating"); {@code null} where there is nothing to template.
+   *
+   * @param initialBody        what the student sees in the editor the first time
+   * @param correction         the whole entity file, unchanged except for the class/package name rewrite
+   * @param template           head + "$body" + tail, for the student's code; substituting $body rebuilds a compilable source
+   * @param correctionTemplate same as {@code template} but keeping the SOLUTION sections of head/tail, for the correction
+   * @param correctionBody     the raw (markers included) BEGIN/END TEMPLATE span, or BEGIN/END SOLUTION when there is no template;
+   *                           the {@code $body} value used for {@code StudentOrCorrection.CORRECTION}
+   * @param imports            the lines found between BEGIN IMPORT and END IMPORT markers: not part of the templates nor of
+   *                           the initial body, but still in {@code correction}
+   * @param remote             the RemoteXxx universe guessed by {@code lang.getRemote(correction)}, or null if none
+   */
+  public SourceFile(String name, String initialBody, String correction, String template, String correctionTemplate, String correctionBody, String imports,
+                    String remote)
   {
-    this.name       = name;
-    this.body       = initialBody;
-    this.entity     = entity;
-    this.correction = _correctionCtn;
+    this.name               = name;
+    this.body               = initialBody;
+    this.correction         = correction;
+    this.template           = template;
+    this.correctionTemplate = correctionTemplate;
+    this.correctionBody     = correctionBody;
+    this.imports            = imports;
+    this.remote             = remote;
   }
 
   public String getName() { return this.name; }
@@ -39,8 +61,11 @@ public class SourceFile {
   public void setCorrection(String c) { this.correction = c; }
   public String getCorrection() { return this.correction; }
 
-  /** What the entity parser extracted from this source file at lesson-load time, or null for sources that were not parsed. */
-  public TemplatedEntity getEntity() { return entity; }
+  public String getTemplate() { return template; }
+  public String getCorrectionTemplate() { return correctionTemplate; }
+  public String getCorrectionBody() { return correctionBody; }
+  public String getImports() { return imports; }
+  public String getRemote() { return remote; }
 
   /**
    * The result of {@link #getCompilableContent(String, Map, StudentOrCorrection)}: the compilable source text, plus how many
@@ -79,7 +104,7 @@ public class SourceFile {
         if (res.charAt(i) == '\n')
           offset++;
 
-      String bodyContent = whatToRetrieve == StudentOrCorrection.CORRECTION ? entity.correctionBody() : this.body;
+      String bodyContent = whatToRetrieve == StudentOrCorrection.CORRECTION ? correctionBody : this.body;
       res                = res.replace("$body", bodyContent + " \n");
     }
 

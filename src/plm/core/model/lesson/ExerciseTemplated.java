@@ -36,8 +36,7 @@ public abstract class ExerciseTemplated extends Exercise {
       throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replaceAll("\\.", "/"), lang.getExt()));
     }
 
-    TemplatedEntity parsed = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename);
-    newSource(lang, name, parsed);
+    newSource(lang, EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename));
   }
 
   protected final void setup(World w) { setup(new World[] {w}); }

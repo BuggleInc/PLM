@@ -20,7 +20,6 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
-import plm.core.model.lesson.TemplatedEntity;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -241,17 +240,16 @@ public class LangScala extends JvmTemplatedLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String key = packageNameCache + "." + sf.getName();
 
-        TemplatedEntity entity = sf.getEntity();
-        String remote = checkRemoteOrFail(entity.remote(), "Scala", exo, diagnostic);
+        String remote = checkRemoteOrFail(sf.getRemote(), "Scala", exo, diagnostic);
 
         runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
                                            + "import java.awt.Color; "
                                            + "import generated.Remote._; "
-                                           + "import generated." + remote + "._; " + entity.imports())
+                                           + "import generated." + remote + "._; " + sf.getImports())
                                               .replace('\n', ' '));
 
         String template   = getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n",
-                                               whatToCompile == StudentOrCorrection.CORRECTION ? entity.correctionTemplate() : entity.template());
+                                               whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
         String entityCode = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
