@@ -35,7 +35,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
     - `turmites` is a subclass of the buggle microworld introducing [2D turing machines](https://en.wikipedia.org/wiki/Turmite).
   - `turtles`: LOGO-style turtle graphics, used to teach recursion through the drawing of fractals.
   - `sort`: sorting algorithms; primitives (`isSmaller`, `copy`, `swap`) observe the data accesses patterns so the student must
-    reproduce the *expected algorithm*, not just a correctly sorted array.
+    reproduce the *expected algorithm*, not just a correctly sorted array. To make this efficient, the student-facing API is instrumented to count the amount of data access in read and write. We don't observe the complete operation list but only the amount of reads and writes to the data array. This is not perfect as a student may manage to get the data sorted with the exact same amount of operations without following the exact expected algorithm, but it's rather unlikely and a perfect verification of the operations history would probably be too computationally intensive.
   - `bat`: unit-testing style no graphical world but a textual output; a method prototype is filled in and tested against many
     parameter values.
   - Specific sorting microwords: `sort/baseball` ([pebble-motion](https://en.wikipedia.org/wiki/Pebble_motion_problems)),
@@ -96,7 +96,7 @@ the GUI. This process can be decomposed as follows:
   `SourceFile` that was previously parsed. This happens for each new exercice compilation, and also to compile the correction
   entity that computes the `answerWorld`.
 
-### Entity content parsing: `EntityTemplateParser.parse()` (language agnostic)
+### Entity content parsing: `EntityTemplateParser.parse()` (language agnostic -- cached)
 
 This happens via `newSourceFromFile()`, the first time `Exercise.getSourceFilesList(lang)` is called for that language (see
 `loadSourceFiles()`) and the result is kept in cache as a `SourceFile`. `Exercise.getLoadedSourceFiles(lang)` returns what was
@@ -130,9 +130,9 @@ already loaded without triggering any parsing: session saving and `Game.revertEx
    Any invalid markup throws a RuntimeException: incorrect matching of BEGIN/END, incorrect nesting of segments, more than one
    `TEMPLATE`, and zero or several `SOLUTION` when there is no `TEMPLATE`.
 2. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
-- `head`/`tail`: the `HEAD`/`TAIL` segments without the solution ones, i.e. the file content strictly outside the templated region
-  (before `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed to
-  `BEGIN/END REMOTE` when present. This is the student's view.
+- `head`/`tail`: the `HEAD`/`TAIL` segments without the solution ones, i.e. the file content strictly outside the templated
+  region (before `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed
+  to `BEGIN/END REMOTE` when present. This is the student's view.
 - `correctionHead`/`correctionTail`: same as `head`/`tail`, but keeping the solution segments.
 - `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution sections), what the student
   sees in the editor the first time.
@@ -143,16 +143,18 @@ already loaded without triggering any parsing: session saving and `Game.revertEx
 - `correctionBody`: the raw text (marker lines included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` when there is no template. It is the `$body` value used to compile the correction.
 
-It then collapses `initialContent`'s leading whitespace to the smallest common indentation.
-`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code. Likewise,
-`correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
+It then collapses `initialContent`'s leading whitespace to the smallest common indentation to make sure that it looks great in
+the student's editor.
+
+`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code.
+Likewise, `correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
 
 `lang.getRemote(correction)` is also called there to guess the `RemoteXxx` universe. The result is a `SourceFileRevertable`,
 whose editor content starts as `initialContent`, and which also keeps `template`, `correctionTemplate`, `correctionBody`,
 `correction`, `remote` and `imports`. `Exercise.newSource()` (still called from `newSourceFromFile()`) stores it as the one
 source per `(exercise, language)` in `Exercise.sourceFiles`.
 
-### Step 2: each language's `compileExo()` builds the compilable source
+### Step 2: building a compilable source (language-specific in `compileExo()`, not cached)
 
 Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correctionTemplate` for
 `StudentOrCorrection.CORRECTION` or `template` otherwise, and wraps it the way its language needs:
@@ -166,7 +168,8 @@ Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correc
 
 It then fills a `runtimePatterns` map of regex->replacement (`$imports`, ...) and calls
 `SourceFile.getCompilableContent(template, runtimePatterns, whatToCompile)`, which does the actual substitution:
-  - `runtimePatterns` is applied first to the given `template` (which still holds the literal `$body` placeholder after this step)
+  - `runtimePatterns` is applied first to the given `template` (which still holds the literal `$body` placeholder after this
+    step)
   - `offset` is computed. It's the number of lines of the patched template before `$body`'s own first line, and it's used to fix
     the location of the compilation errors so that they point to the code written by the student.
   - Then is `$body` substituted with the source's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
