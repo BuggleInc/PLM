@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- PLM lesson icon: an open book under a mortarboard. Drawn for PLM, CC-BY-SA like the rest of our artwork (see COPYING). -->
+<!-- PLM lesson icon: an open book under a mortarboard. Made for PLM, public domain under CC0 1.0 (see COPYING). -->
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <!-- open book -->
   <path d="M16 15 C12 13 7 13 3 14.5 L3 28 C7 26.5 12 26.5 16 28.5 Z" fill="#f4f1e8" stroke="#5a4a32" stroke-width="1" stroke-linejoin="round"/>

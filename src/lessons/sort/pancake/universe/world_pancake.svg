@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- PLM pancake world icon: an unsorted stack of pancakes of different sizes,
-     as in the pancake sorting exercise. Drawn for PLM, CC-BY-SA like the rest of our artwork (see COPYING). -->
+     as in the pancake sorting exercise. Made for PLM, public domain under CC0 1.0 (see COPYING). -->
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <ellipse cx="16" cy="28.5" rx="15" ry="2" fill="#d9d9d9"/>
   <g stroke="#8a4f12" stroke-width="0.8">

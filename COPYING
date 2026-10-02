@@ -41,13 +41,6 @@ The artwork we did ourselves is distributed under the CC-BY-SA license.
  img/world_buggle.svg
  img/world_hanoi.png
  img/world_sorting.png
- img/lang_c.png img/lang_java.png img/lang_python.png img/lang_scala.png
-   (and their .svg sources: plain text badges, no language logo)
- img/world_lesson.png img/world_lesson.svg
- src/lessons/sort/pancake/universe/world_pancake.png
- src/lessons/sort/pancake/universe/world_pancake.svg
-   (drawn by Juan Manuel Méndez Rey in 2026 to replace images whose
-   licence was unknown)
 
  img/btn-reset.png is a mashup of mine between btn-start.png (CC-BY-SA) and
  http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/run-rebuild.png
@@ -123,3 +116,12 @@ Public domain images (CC0 PD)
               even if I didn't write down the exact URL for them.
 * img/trophy.png         http://openclipart.org/detail/48937/trophy-by-sheikh_tuhin	     
 * img/world_baseball.png http://openclipart.org/detail/76927/baseball2-by-shokunin
+* img/lang_c.png img/lang_java.png img/lang_python.png img/lang_scala.png
+  (and their .svg sources: plain text badges, no language logo),
+  img/world_lesson.png img/world_lesson.svg,
+  src/lessons/sort/pancake/universe/world_pancake.png and .svg:
+  made in 2026 with an AI assistant writing the SVG code to Juan Manuel
+  Méndez Rey's instructions (no image generator, no existing artwork as
+  input), to replace images whose licence was unknown. Dedicated to the
+  public domain under CC0 1.0:
+  https://creativecommons.org/publicdomain/zero/1.0/
