@@ -102,12 +102,8 @@ This happens via `newSourceFromFile()`, the first time `Exercise.getSourceFilesL
 `loadSourceFiles()`) and the result is kept in cache as a `SourceFile`. `Exercise.getLoadedSourceFiles(lang)` returns what was
 already loaded without triggering any parsing: session saving and `Game.revertExo()` use it.
 
-`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
-1. `rewriteDeclarations()` rewrites the first `class` declaration to use the exercise's own class name, for
-   Java/Scala only, the first line containing `package` to the fixed `generated` (the same for every exercise):
-   `import static X.*;` needs a real package name to be legal syntax, but nothing requires that name to vary across
-   exercises (each gets its own isolated workspace directory and its own separate `java` process at run time.
-2. `split()` cuts the lines into a list of `Segment(kind, text, solution)`, driven by marker comments: `BEGIN/END TEMPLATE`,
+`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in two passes over its lines:
+1. `split()` cuts the lines into a list of `Segment(kind, text, solution)`, driven by marker comments: `BEGIN/END TEMPLATE`,
    `BEGIN/END SOLUTION`, `BEGIN/END IMPORT`, `BEGIN/END REMOTE`. Markers are language-agnostic: matched anywhere in a line, and
    expected alone on their line. Marker lines are removed and thus not part of any segment.
    
@@ -133,7 +129,7 @@ already loaded without triggering any parsing: session saving and `Game.revertEx
    
    Any invalid markup throws a RuntimeException: incorrect matching of BEGIN/END, incorrect nesting of segments, more than one
    `TEMPLATE`, and zero or several `SOLUTION` when there is no `TEMPLATE`.
-3. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
+2. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
 - `head`/`tail`: the `HEAD`/`TAIL` segments without the solution ones, i.e. the file content strictly outside the templated region
   (before `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed to
   `BEGIN/END REMOTE` when present. This is the student's view.
@@ -143,7 +139,7 @@ already loaded without triggering any parsing: session saving and `Game.revertEx
 - `imports`: the `IMPORT` segments.
 - the `SOLUTION` segments inside the template are not used here: they only reach the compiled correction through
   `correctionBody`.
-- `correction`: the *entire* file content again (marker lines included), unchanged except for the class/package name rewrite.
+- `correction`: the *entire* file content again (marker lines included), unchanged.
 - `correctionBody`: the raw text (marker lines included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` when there is no template. It is the `$body` value used to compile the correction.
 

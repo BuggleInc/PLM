@@ -56,18 +56,16 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals(content + "\n", e.getCorrection());
   }
 
-  /** Java: class declaration rewritten, package line dropped, initial content dedented; head keeps its own lines/comments now. */
-  @Test public void testJavaFlatteningAndRewrites() throws PLMCompilerException
+  /** Java: head keeps its own lines/comments, initial content is dedented, and the correction is a faithful copy of the file. */
+  @Test public void testJavaFlattening() throws PLMCompilerException
   {
     String content    = lines("package foo;", "public class FooEntity {", "  // comment", "  /* BEGIN TEMPLATE */", "  int a;", "  /* BEGIN SOLUTION */",
                               "  int b;", "  /* END SOLUTION */", "  /* END TEMPLATE */", "}");
     SourceFile e = parse(content, new LangJava());
 
     Assertions.assertEquals("int a;\n", e.getBody());
-    Assertions.assertEquals("package generated;\npublic class Bar {\n  // comment\n$body\n}\n", e.getTemplate());
-    Assertions.assertFalse(e.getTemplate().contains("package foo")); // no per-exercise package declaration
-    Assertions.assertTrue(e.getCorrection().startsWith("\npublic class Bar {\n"));
-    Assertions.assertTrue(e.getCorrection().contains("// comment")); // correction stays a faithful copy of the file, comments included
+    Assertions.assertEquals("package foo;\npublic class FooEntity {\n  // comment\n$body\n}\n", e.getTemplate());
+    Assertions.assertEquals(content + "\n", e.getCorrection());
   }
 
   /** C: the template is left as is (the {@code #line} directive is added later, when compiling). */

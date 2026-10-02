@@ -20,11 +20,11 @@ public class SourceFile {
   private ISourceFileListener listener = null;
 
   /**
-   * Computed once, at lesson-load time, by {@code EntityTemplateParser} (see CONTRIBUTING.md, "From correction entity to
+   * Computed once, when the entity is first needed, by {@code EntityTemplateParser} (see CONTRIBUTING.md, "From correction entity to
    * compilable source: templating"); {@code null} where there is nothing to template.
    *
    * @param initialBody        what the student sees in the editor the first time
-   * @param correction         the whole entity file, unchanged except for the class/package name rewrite
+   * @param correction         the whole entity file, unchanged
    * @param template           head + "$body" + tail, for the student's code; substituting $body rebuilds a compilable source
    * @param correctionTemplate same as {@code template} but keeping the SOLUTION sections of head/tail, for the correction
    * @param correctionBody     the raw (markers included) BEGIN/END TEMPLATE span, or BEGIN/END SOLUTION when there is no template;

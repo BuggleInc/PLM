@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
@@ -22,13 +21,12 @@ public class EntityTemplateParser {
   /**
    * @param content        the raw content of the entity file, as read from disk
    * @param lang           the language this entity file is written in
-   * @param name           the class name to substitute in the file's own class declaration; the package line, if any, is rewritten to the fixed "generated"
-   *     instead
+   * @param name           the name of the resulting source file
    * @param shownFilename  the human-readable file name, only used in warning/error messages
    */
   public static SourceFileRevertable parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
   {
-    String[] lines             = rewriteDeclarations(content.split("\n"), name, lang);
+    String[] lines             = content.split("\n");
     SplitResult split          = split(lines, shownFilename);
     List<Segment> segments     = split.segments();
     StringBuilder correctionSb = new StringBuilder();
@@ -126,8 +124,6 @@ public class EntityTemplateParser {
 
   private enum Phase { BEFORE, IN_TEMPLATE, AFTER }
 
-  private static final Pattern CLASS_DECLARATION = Pattern.compile("\\bclass\\s+\\w+");
-
   /** Concatenates the text of all segments of the given kinds, in file order; solution segments only if {@code withSolutions}. */
   private static String text(List<Segment> segments, boolean withSolutions, Kind... kinds)
   {
@@ -137,30 +133,6 @@ public class EntityTemplateParser {
       if (wanted.contains(s.kind()) && (withSolutions || !s.solution()))
         sb.append(s.text());
     return sb.toString();
-  }
-
-  /**
-   * Rewrites the first class declaration to use {@code name}, and the first package line to the fixed "generated" (Java/Scala
-   *  only: "import static X.*;" needs a real package, even though it does not need to be a per-exercise one, as we use separate
-   *  directories and processes to ensure that runs never collide). Marker lines are left alone.
-   */
-  private static String[] rewriteDeclarations(String[] lines, String name, ProgrammingLanguage lang)
-  {
-    String[] res      = lines.clone();
-    boolean classDone = false, packageDone = false;
-    for (int i = 0; i < res.length; i++) {
-      if (Marker.of(res[i]) != null)
-        continue;
-      Matcher m = CLASS_DECLARATION.matcher(res[i]);
-      if (!classDone && m.find()) {
-        res[i]    = m.replaceFirst("class " + Matcher.quoteReplacement(name));
-        classDone = true;
-      } else if (!packageDone && res[i].contains("package") && (lang.isJava() || lang.isScala())) {
-        res[i]      = "package generated" + (lang.isScala() ? "" : ";");
-        packageDone = true;
-      }
-    }
-    return res;
   }
 
   /**
