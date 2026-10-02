@@ -144,13 +144,14 @@ public abstract class Exercise extends Lecture {
     return lang.compileExo(this, out, whatToCompile);
   }
 
-  /** get the list of source files for a given language, or create it if not existent yet */
-  public List<SourceFile> getSourceFilesList(ProgrammingLanguage lang)
+  /** get the list of source files for a given language, or create (and load) it if not existent yet */
+  public synchronized List<SourceFile> getSourceFilesList(ProgrammingLanguage lang)
   {
     List<SourceFile> res = sourceFiles.get(lang);
     if (res == null) {
       res = new ArrayList<SourceFile>();
       sourceFiles.put(lang, res);
+      loadSourceFiles(lang);
     }
     if (res.size() > 1)
       throw new IllegalStateException("For now, it's impossible to have more than one entity script in a given exercise.");
@@ -158,6 +159,9 @@ public abstract class Exercise extends Lecture {
   }
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
   public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
+
+  /** Called right after the list of source files of this language got created, to fill it if this exercise knows how */
+  protected void loadSourceFiles(ProgrammingLanguage lang) {}
 
   public void newSource(ProgrammingLanguage lang, SourceFile source)
   {

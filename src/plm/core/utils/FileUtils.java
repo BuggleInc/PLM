@@ -102,6 +102,16 @@ public class FileUtils {
     throw new FileNotFoundException(file + " with extension " + extension + " could not be found.");
   }
 
+  /** Whether {@link #readContentAsText} would find this (non translatable) file, without opening it. */
+  public static boolean exists(String file, String extension)
+  {
+    String fileName = file.replace('.', '/') + (extension != null ? "." + extension : "");
+    for (String directory : directories)
+      if (new File(directory + fileName).exists())
+        return true;
+    return ExerciseTemplated.class.getResource("/" + fileName.replace('\\', '/')) != null;
+  }
+
   public static StringBuffer readContentAsText(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException
   {
     BufferedReader br = FileUtils.newFileReader(file, extension, translatable);

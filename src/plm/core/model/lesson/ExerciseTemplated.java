@@ -3,7 +3,9 @@ package plm.core.model.lesson;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.Future;
 import java.util.regex.Matcher;
@@ -25,6 +27,21 @@ public abstract class ExerciseTemplated extends Exercise {
 
   public ExerciseTemplated(Lesson lesson) { super(lesson, null); }
   public ExerciseTemplated(Lesson lesson, String basename) { super(lesson, basename); }
+
+  /** The languages for which an entity file exists, to be loaded when first needed */
+  private final Set<ProgrammingLanguage> entityLanguages = new HashSet<>();
+
+  @Override protected void loadSourceFiles(ProgrammingLanguage lang)
+  {
+    if (!entityLanguages.contains(lang))
+      return;
+    try {
+      newSourceFromFile(lang, tabName, nameOfCorrectionEntity());
+    } catch (NoSuchEntityException | PLMCompilerException e) {
+      // Whatever the reason, this is a real authoring bug in the exercise, as the entity file did exist when the exercise got loaded
+      throw new RuntimeException(Game.i18n.tr("Exercise {0} ({1}): the {2} entity is broken: {3}", getName(), getId(), lang, e.getMessage()), e);
+    }
+  }
 
   public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException, PLMCompilerException
   {
@@ -62,7 +79,7 @@ public abstract class ExerciseTemplated extends Exercise {
     for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
       boolean foundThisLanguage = false;
       String searchedName       = null;
-      for (SourceFile sf : getSourceFilesList(lang)) {
+      for (SourceFile sf : sourceFiles.getOrDefault(lang, List.of())) { // sources added explicitly, not to be loaded from an entity file
         if (searchedName == null) { // lazy initialization if there is any sourcefile to parse
           Pattern p = Pattern.compile(".*?([^.]*)$");
           Matcher m = p.matcher(nameOfCorrectionEntity());
@@ -79,28 +96,22 @@ public abstract class ExerciseTemplated extends Exercise {
           foundThisLanguage = true;
       }
       if (!foundThisLanguage) {
-        try {
-          newSourceFromFile(lang, tabName, nameOfCorrectionEntity());
+        if (FileUtils.exists(nameOfCorrectionEntity(), lang.getExt())) {
+          entityLanguages.add(lang); // the entity itself is only loaded and parsed when needed, see loadSourceFiles()
           super.addProgLanguage(lang);
           foundALanguage = true;
           if (Game.getInstance().isDebugEnabled() && !Game.getInstance().isBatchExecution())
             System.out.println("Found suitable templating entity " + nameOfCorrectionEntity() + " in " + lang);
-
-        } catch (NoSuchEntityException e) {
+        } else {
           if (lang.isPython() || lang.isScala() || lang.isJava())
-            System.out.println("No templating entity found: " + e);
+            System.out.println("No templating entity found: " + nameOfCorrectionEntity() + "." + lang.getExt());
 
           if (getProgLanguages().contains(lang))
             throw new RuntimeException(Game.i18n.tr("Exercise {0} is said to be compatible with language "
                                                         + "{1}, but there is no entity for this language: {2}",
-                                                    getName(), lang, e.toString()));
+                                                    getName(), lang, nameOfCorrectionEntity() + "." + lang.getExt()));
           /* Ok, this language does not work for this exercise but didn't promise anything. I can deal with
            * it */
-        } catch (PLMCompilerException e) {
-          // Unlike NoSuchEntityException above, this means the entity file exists but is malformed in a way that
-          // breaks the entity parsing (e.g. ill-formed markers) --
-          // always a real authoring bug in the exercise, not just "this language isn't offered", so always loud.
-          throw new RuntimeException(Game.i18n.tr("Exercise {0} ({1}): the {2} entity is broken: {3}", getName(), getId(), lang, e.getMessage()), e);
         }
       } else {
         foundALanguage = true;
