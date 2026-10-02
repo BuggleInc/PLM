@@ -42,11 +42,6 @@ public class EntityTemplateParser {
     String tail           = "\n" + text(segments, false, Kind.TAIL);
     String correctionHead = text(segments, true, Kind.HEAD);
     String correctionTail = "\n" + text(segments, true, Kind.TAIL);
-    boolean hasBegin = Arrays.stream(lines).anyMatch(l -> l.contains("BEGIN TEMPLATE") || l.contains("BEGIN SOLUTION"));
-    if (lang.isC() && hasBegin && !head.contains("#line")) {
-      head += "#line 1 \"" + name + ".c\" \n";
-      correctionHead += "#line 1 \"" + name + ".c\" \n";
-    }
 
     String initialContent = text(segments, false, Kind.TEMPLATE);
     String imports        = text(segments, false, Kind.IMPORT);

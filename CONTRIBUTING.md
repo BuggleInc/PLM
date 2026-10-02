@@ -134,8 +134,7 @@ the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<e
 - `correctionBody`: the raw text (marker lines included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` when there is no template. It is the `$body` value used to compile the correction.
 
-It then does bookkeeping common to all languages: inserts a `#line` C preprocessor directive so compiler errors point at
-the right file for C, and collapses `initialContent`'s leading whitespace to the smallest common indentation.
+It then collapses `initialContent`'s leading whitespace to the smallest common indentation.
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code. Likewise,
 `correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
 
@@ -153,7 +152,8 @@ Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correc
   else compiled are already in the template, as delimited by `BEGIN/END REMOTE`. They also add the entity's `imports`.
 - Python only prepends its own `$imports` slot (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
   no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing).
-- C uses the template unchanged.
+- C inserts a `#line` preprocessor directive right before `$body`, so that compiler errors point at the entity's own file, unless the
+  head already contains one.
 
 It then fills a `runtimePatterns` map of regex->replacement (`$imports`, ...) and calls
 `SourceFile.getCompilableContent(template, runtimePatterns, whatToCompile)`, which does the actual substitution:

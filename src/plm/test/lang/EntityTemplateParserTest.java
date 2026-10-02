@@ -70,13 +70,13 @@ public class EntityTemplateParserTest {
     Assertions.assertTrue(e.getCorrection().contains("// comment")); // correction stays a faithful copy of the file, comments included
   }
 
-  /** C: a {@code #line} directive is inserted in the head right before the template. */
-  @Test public void testCLineDirective() throws PLMCompilerException
+  /** C: the template is left as is (the {@code #line} directive is added later, when compiling). */
+  @Test public void testCTemplate() throws PLMCompilerException
   {
     SourceFile e = parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* END TEMPLATE */"), new LangC());
 
     Assertions.assertEquals("a();\n", e.getBody());
-    Assertions.assertEquals("int x;\n#line 1 \"Bar.c\" \n$body\n", e.getTemplate());
+    Assertions.assertEquals("int x;\n$body\n", e.getTemplate());
   }
 
   /** IMPORT sections are exposed separately and removed from the head, but kept in the correction. */

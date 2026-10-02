@@ -79,8 +79,14 @@ public class LangC extends TemplatedRemoteLang {
 
     String execPath = null;
     for (SourceFile sf : sfs) {
-      String code            = sf.getCompilableContent(whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate(), runtimePatterns, whatToCompile).content();
-      execPath               = compile(code, sf.getRemote(), exo.getId(), exo, whatToCompile);
+      String template = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate();
+
+      // Make the compiler errors point at the entity's own file, unless its head already sets that up
+      if (!template.substring(0, template.indexOf("$body")).contains("#line"))
+        template = template.replace("$body", "#line 1 \"" + sf.getName() + ".c\" \n$body");
+
+      String code = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
+      execPath    = compile(code, sf.getRemote(), exo.getId(), exo, whatToCompile);
     }
     return execPath;
   }
