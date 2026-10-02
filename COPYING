@@ -110,37 +110,18 @@ The following logos are GPLv2:
 
 =========================================================================
 
-The logos of the programming languages are certainly free, even if I
-didn't dig for their exact licence.
-
-img/lang_java.png
-img/lang_javascript.png 
-img/lang_python.png
-img/lang_ruby.png
-img/lang_scala.png
-
-=========================================================================
-
 Public domain images (CC0 PD)
 
 * img/focus_* These images were retrieved from http://openclipart.org/
               even if I didn't write down the exact URL for them.
 * img/trophy.png         http://openclipart.org/detail/48937/trophy-by-sheikh_tuhin	     
 * img/world_baseball.png http://openclipart.org/detail/76927/baseball2-by-shokunin
-
-=========================================================================
-
-The following images are believed to be free, even if I cannot
-remember where they come from. We should maybe play safe and replace
-them. But as you can see from the rest of the project, we are
-better programmers than designers... You are welcome if you can help.
-
-* src/lessons/sort/pancake/img/world_pancake.png 
-  It was retrieved from 
-  http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
-  It seems rather free, but the exact license is not known.
-* img/world_lesson.png
-  I cannot remember where it comes from. It looks very similar to the
-  logo for education applications in KDE so I guess it's ok. And since
-  I'm planning at removing the whole concept of lessons, it's probably
-  not worth digging any further on this one.
+* img/lang_c.png img/lang_java.png img/lang_python.png img/lang_scala.png
+  (and their .svg sources: plain text badges, no language logo),
+  img/world_lesson.png img/world_lesson.svg,
+  src/lessons/sort/pancake/universe/world_pancake.png and .svg:
+  made in 2026 with an AI assistant writing the SVG code to Juan Manuel
+  Méndez Rey's instructions (no image generator, no existing artwork as
+  input), to replace images whose licence was unknown. Dedicated to the
+  public domain under CC0 1.0:
+  https://creativecommons.org/publicdomain/zero/1.0/
