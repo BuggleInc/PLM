@@ -30,17 +30,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   public JvmTemplatedLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
   /**
-   * The per-compile template shared by Java and Scala: the language's own class/object wrapper around step 1's
-   * {@code template} (which is {@code head + "$body" + tail}, head/tail being the text written between BEGIN REMOTE and
-   * BEGIN TEMPLATE/SOLUTION, and between END TEMPLATE/SOLUTION and END REMOTE).
-   *
-   * @param wrapperHeader the package+imports+class/object-opening boilerplate, up to and including the opening "{" and
-   *                      its trailing "\n" (contains exactly one "$imports" placeholder)
-   * @param template      step 1's template for this entity
-   */
-  protected static String getCorrectedTemplate(String wrapperHeader, String template) { return wrapperHeader + template + "\n}"; }
-
-  /**
    * Run "jar cfm &lt;jarFile&gt; &lt;manifest declaring Main-Class: mainClassDotPath&gt; &lt;classFiles...&gt;" from
    *  workDir, throwing if the tool reports anything on stderr.
    */

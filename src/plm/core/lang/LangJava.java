@@ -178,8 +178,8 @@ public class LangJava extends JvmTemplatedLang {
                                            + "import static generated." + remote + ".*;\n" + sf.getImports())
                                               .replace('\n', ' '));
 
-        String template   = getCorrectedTemplate("package generated;\n\n$imports\n\npublic class Entity {\n",
-                                               whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
+        String template   = "package generated;\n\n$imports\n\npublic class Entity {\n"
+                            + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
         String entityCode = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");

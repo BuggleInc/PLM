@@ -248,8 +248,8 @@ public class LangScala extends JvmTemplatedLang {
                                            + "import generated." + remote + "._; " + sf.getImports())
                                               .replace('\n', ' '));
 
-        String template   = getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n",
-                                               whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
+        String template   = "package generated\n\n$imports\n\nobject Entity {\n"
+                            + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
         String entityCode = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");

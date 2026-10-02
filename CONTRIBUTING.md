@@ -147,7 +147,7 @@ content starts as `initialContent`, and which also keeps `template`, `correction
 
 Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correctionTemplate` for
 `StudentOrCorrection.CORRECTION` or `template` otherwise, and wraps it the way its language needs:
-- Java/Scala wrap it in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`: `package`, `$imports`,
+- Java/Scala wrap it in their own class/object boilerplate (`package`, `$imports`,
   `class Entity {`, then the template, then the closing brace). Nothing is re-parsed: `run()`, the templated methods and everything
   else compiled are already in the template, as delimited by `BEGIN/END REMOTE`. They also add the entity's `imports`.
 - Python only prepends its own `$imports` slot (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
