@@ -33,7 +33,6 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals("  a = 1\n  c = 3\n", e.initialContent());
     Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.template());
     Assertions.assertEquals(content + "\n", e.correction());
-    Assertions.assertNotNull(e.extraction());
   }
 
   /** Only BEGIN/END SOLUTION: the template is empty and the tail starts right after the solution. */

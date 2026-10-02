@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
-import plm.core.lang.LanguageExtraction;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
@@ -87,11 +86,7 @@ public class EntityTemplateParser {
       }
     }
 
-    // Step 2 (see CONTRIBUTING.md, "From correction entity to compilable source: templating"): each language's own
-    // extract() re-parses `correction` with its own marker syntax, so this parser stays unaware of it -- see
-    // TemplatedEntity's javadoc.
-    LanguageExtraction extraction = lang.extract(template, correctionTemplate, split.correctionBody(), imports);
-    return new TemplatedEntity(initialContent, template, correctionTemplate, split.correctionBody(), correction, lang.getRemote(correction), imports, extraction);
+    return new TemplatedEntity(initialContent, template, correctionTemplate, split.correctionBody(), correction, lang.getRemote(correction), imports);
   }
 
   /**

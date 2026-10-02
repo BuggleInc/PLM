@@ -21,6 +21,7 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.lesson.TemplatedEntity;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -44,16 +45,6 @@ public class LangC extends TemplatedRemoteLang {
   private static final Path OBJECTS_DIR = C_ROOT.resolve("objects");
 
   public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
-
-  /**
-   * Unlike Java/Scala/Python, C never rebuilds its own per-compile template (no run()/imports
-   * re-extraction, see CONTRIBUTING.md): it just reuses step 1's templates unchanged, alongside the derived
-   * correction body (same comment-delimited markers as Java/Scala).
-   */
-  @Override public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
-  {
-    return new LanguageExtraction(imports, template, correctionTemplate, correctionBody);
-  }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
 
@@ -89,8 +80,9 @@ public class LangC extends TemplatedRemoteLang {
 
     String execPath = null;
     for (SourceFile sf : sfs) {
-      String code = sf.getCompilableContent(runtimePatterns, whatToCompile).content();
-      execPath    = compile(code, sf.getRemote(), exo.getId(), exo, whatToCompile);
+      TemplatedEntity entity = sf.getEntity();
+      String code            = sf.getCompilableContent(whatToCompile == StudentOrCorrection.CORRECTION ? entity.correctionTemplate() : entity.template(), runtimePatterns, whatToCompile).content();
+      execPath               = compile(code, entity.remote(), exo.getId(), exo, whatToCompile);
     }
     return execPath;
   }

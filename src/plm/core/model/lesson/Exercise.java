@@ -162,7 +162,7 @@ public abstract class Exercise extends Lecture {
 
   public void newSource(ProgrammingLanguage lang, String name, TemplatedEntity parsed)
   {
-    getSourceFilesList(lang).add(new SourceFileRevertable(name, parsed.initialContent(), parsed.remote(), parsed.extraction(), parsed.correction()));
+    getSourceFilesList(lang).add(new SourceFileRevertable(name, parsed.initialContent(), parsed, parsed.correction()));
   }
 
   public Vector<World> getWorlds(WorldKind kind)

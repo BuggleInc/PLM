@@ -16,6 +16,7 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.lesson.TemplatedEntity;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -80,11 +81,6 @@ public class LangPython extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
-  {
-    return new LanguageExtraction(imports, "$imports\n\n" + template, "$imports\n\n" + correctionTemplate, correctionBody);
-  }
-
   @Override public String getRemote(String code)
   {
     // Python exercises must declare their universe explicitly with a real "from RemoteXxx import *" line
@@ -107,8 +103,8 @@ public class LangPython extends TemplatedRemoteLang {
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
-        LanguageExtraction extraction = sf.getExtraction();
-        String remote               = checkRemoteOrFail(sf.getRemote(), "Python", exo, null);
+        TemplatedEntity entity = sf.getEntity();
+        String remote = checkRemoteOrFail(entity.remote(), "Python", exo, null);
 
         List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());
         StringBuilder extraImports    = new StringBuilder();
@@ -119,7 +115,8 @@ public class LangPython extends TemplatedRemoteLang {
                                            + "from Remote import *\n" + extraImports)
                                               .replace('\n', '\u0001'));
 
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile).content();
+        String template   = "$imports\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? entity.correctionTemplate() : entity.template());
+        String entityCode = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
         entityCode        = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
@@ -141,7 +138,6 @@ public class LangPython extends TemplatedRemoteLang {
           extraFiles.add(extraFile);
         }
 
-        Files.writeString(new File(workspace, "Correction.txt").toPath(), extraction.correctionBody());
         Files.copy(new File("lib/resources/langages/python/ValueSerializer.py").toPath(), valueSerializer.toPath(),
                    java.nio.file.StandardCopyOption.REPLACE_EXISTING);
         Files.writeString(mainRemote.toPath(), getRemotePythonFile(null));

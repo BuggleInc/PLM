@@ -20,6 +20,7 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.lesson.TemplatedEntity;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -105,12 +106,6 @@ public class LangScala extends JvmTemplatedLang {
     String name = new File(path).getName();
     int dot     = name.lastIndexOf('.');
     return dot < 0 ? name : name.substring(0, dot);
-  }
-
-  @Override public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
-  {
-    return new LanguageExtraction(imports, getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", template),
-                                  getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n", correctionTemplate), correctionBody);
   }
 
   /**
@@ -241,20 +236,24 @@ public class LangScala extends JvmTemplatedLang {
 
     String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
+    List<String> generatedSources = new ArrayList<>(); // kept to dump them on failure when debugging
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String key = packageNameCache + "." + sf.getName();
 
-        LanguageExtraction extraction = sf.getExtraction();
-        String remote              = checkRemoteOrFail(sf.getRemote(), "Scala", exo, diagnostic);
+        TemplatedEntity entity = sf.getEntity();
+        String remote = checkRemoteOrFail(entity.remote(), "Scala", exo, diagnostic);
 
         runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
                                            + "import java.awt.Color; "
                                            + "import generated.Remote._; "
-                                           + "import generated." + remote + "._; " + extraction.rawImports())
+                                           + "import generated." + remote + "._; " + entity.imports())
                                               .replace('\n', ' '));
 
-        String entityCode = sf.getCompilableContent(runtimePatterns, whatToCompile).content();
+        String template   = getCorrectedTemplate("package generated\n\n$imports\n\nobject Entity {\n",
+                                               whatToCompile == StudentOrCorrection.CORRECTION ? entity.correctionTemplate() : entity.template());
+        String entityCode = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
+        generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
         entityCode        = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
         // Scala's "override" needs a real supertype member to override, but Entity is a flat `object` extending nothing
@@ -315,9 +314,6 @@ public class LangScala extends JvmTemplatedLang {
             extraFiles.add(extraFile);
           }
 
-          Files.writeString(new File(workspace, "Template.txt").toPath(),
-                            whatToCompile == StudentOrCorrection.CORRECTION ? extraction.correctionTemplate() : extraction.template());
-          Files.writeString(new File(workspace, "Correction.txt").toPath(), extraction.correctionBody());
           Files.writeString(mainRemote.toPath(), mainRemoteContent);
           Files.writeString(entityRemote.toPath(), entityRemoteContent);
           Files.writeString(entityFile.toPath(), entityCode);
@@ -355,8 +351,8 @@ public class LangScala extends JvmTemplatedLang {
         out.log(exo.lastResult.compilationError);
 
       if (Game.getInstance().isDebugEnabled())
-        for (SourceFile sf : exo.getSourceFilesList(this))
-          System.out.println("Source file " + sf.getName() + ":" + sf.getCompilableContent(runtimePatterns, whatToCompile).content());
+        for (String source : generatedSources)
+          System.out.println("Source file " + source);
 
       throw e;
     }

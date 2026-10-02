@@ -84,9 +84,9 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 This section is about how the single `XxxEntity.<ext>` file described in "Adding a new exercise" below (which mixes the
 teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION,
-one for the STUDENT's current editor content. It happens in two separate steps, both at load time.
+one for the STUDENT's current editor content. It happens in two separate steps: the first at load time, the second at each compilation.
 
-### Step 1: `EntityTemplateParser.parse()` parses the entity file, then extracts each language's own pieces right away
+### Step 1: `EntityTemplateParser.parse()` parses the entity file at load time
 
 Called from `ExerciseTemplated.setup()` (via `newSourceFromFile()`) for every `(exercise, language)` pair, once when
 the lesson is loaded. `EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in three passes over its lines:
@@ -139,37 +139,27 @@ the right file for C, and collapses `initialContent`'s leading whitespace to the
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code. Likewise,
 `correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
 
-Still inside `parse()`, `ProgrammingLanguage.extract(correction, template, correctionTemplate, correctionBody, imports)` is then called on
-the concrete language to do step 2 immediately below, even though `EntityTemplateParser` otherwise stays unaware of any
-per-language marker syntax. The result is a `TemplatedEntity` record: `initialContent`, `template`, `correctionTemplate`,
-`correctionBody`, `correction`, `imports`, plus that `extraction`. `Exercise.newSource()` (still called from `newSourceFromFile()`) then
-stores that whole `TemplatedEntity` as one `SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`.
+`lang.getRemote(correction)` is also called there to guess the `RemoteXxx` universe. The result is a `TemplatedEntity` record:
+`initialContent`, `template`, `correctionTemplate`, `correctionBody`, `correction`, `remote`, `imports`. `Exercise.newSource()` (still
+called from `newSourceFromFile()`) stores it as one `SourceFileRevertable` per `(exercise, language)` in `Exercise.sourceFiles`.
 
-### Step 2: each language extracts its own pieces out of `correction`
+### Step 2: each language's `compileExo()` builds the compilable source
 
-`SourceFile` only reads `LanguageExtraction.template()`/`correctionTemplate()`/`correctionBody()`; the other fields are language-specific
-and computed in each language's own `extract()` override (Java/Scala/Python/C, sharing common helpers through
-`TemplatedRemoteLang`/`JvmTemplatedLang`):
-- Java/Scala wrap step 1's `template` and `correctionTemplate` in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`:
-  `package`, `$imports`, `class Entity {`, then step 1's template, then the closing brace). Nothing is
-  re-parsed: `run()`, the templated methods and everything else compiled are already in `template`, as delimited by
-  `BEGIN/END REMOTE`. They keep step 1's `imports` and `correctionBody` as is.
-- Python only prepends its own `$imports` slot to both templates (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
-  no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing: nothing else in the file needs
-  excluding the way Java/Scala's package/class boilerplate does). It reads step 1's `correctionBody` unchanged, like Java/Scala.
-- C never rebuilds a template at all: its `extract()` just reuses step 1's `template`, `correctionTemplate` and `correctionBody` unchanged, in a
-  `LanguageExtraction`.
-- The result -- a `LanguageExtraction` record (`rawImports`, `template`, `correctionTemplate`, `correctionBody`),
-  the same for every language, with unused fields left as-is or `null` -- is stored as-is on the `SourceFile`
-  (`SourceFile.getExtraction()`). Each language's own `compileExo()` reads it back (e.g. in `LangJava`) to fill in a
-  `runtimePatterns` map of regex->replacement (`$imports`, ...) -- this part still
-  happens on every compile.
-- `SourceFile.getCompilableContent(runtimePatterns, whatToCompile)` does the actual substitution:
-  - `runtimePatterns` is applied first to the extraction's `correctionTemplate` for `StudentOrCorrection.CORRECTION`, or to its
-    `template` for `StudentOrCorrection.STUDENT` (which still holds the literal `$body` placeholder after this step)
+Each `compileExo()` reads the `TemplatedEntity` of every `SourceFile` (`SourceFile.getEntity()`), picks `correctionTemplate` for
+`StudentOrCorrection.CORRECTION` or `template` otherwise, and wraps it the way its language needs:
+- Java/Scala wrap it in their own class/object boilerplate (`JvmTemplatedLang.getCorrectedTemplate()`: `package`, `$imports`,
+  `class Entity {`, then the template, then the closing brace). Nothing is re-parsed: `run()`, the templated methods and everything
+  else compiled are already in the template, as delimited by `BEGIN/END REMOTE`. They also add the entity's `imports`.
+- Python only prepends its own `$imports` slot (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
+  no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing).
+- C uses the template unchanged.
+
+It then fills a `runtimePatterns` map of regex->replacement (`$imports`, ...) and calls
+`SourceFile.getCompilableContent(template, runtimePatterns, whatToCompile)`, which does the actual substitution:
+  - `runtimePatterns` is applied first to the given `template` (which still holds the literal `$body` placeholder after this step)
   - `offset` is computed. It's the number of lines of the patched template before `$body`'s own first line, and it's used to fix
     the location of the compilation errors so that they point to the code written by the student.
-  - Then is `$body` substituted with the extraction's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
+  - Then is `$body` substituted with the entity's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
     current content `body` for `StudentOrCorrection.STUDENT`
   - non-breaking spaces are stripped.
   - The method returns a `SourceFile.CompilableContent(content, offset)` record

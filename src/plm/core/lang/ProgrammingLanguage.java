@@ -92,25 +92,6 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   public String getRemote(String correction) { return null; }
 
   /**
-   * Extracts and returns this language's once-per-{@code SourceFile} pieces (imports, corrected
-   * template) out of what {@code EntityTemplateParser} already
-   * segmented. Defaults to {@code null} (nothing to extract): only overridden by the languages that compile a
-   * templated entity (Java, Scala, Python, C); LightBot needs none of this (see CONTRIBUTING.md, "From correction
-   * entity to compilable source: templating").
-   *
-   * @param template       step 1's own "head + $body + tail" shape, head/tail being narrowed to the BEGIN/END REMOTE
-   *                       markers when the entity has them
-   * @param correctionTemplate same shape as {@code template}, but keeping the solution sections of head/tail (for the correction)
-   * @param correctionBody the {@code $body} value to use for {@code StudentOrCorrection.CORRECTION}, as computed by step 1
-   * @param imports        the content of the BEGIN/END IMPORT sections, as split out by step 1 (only used by Java and Scala)
-   */
-  public LanguageExtraction extract(String template, String correctionTemplate, String correctionBody, String imports)
-      throws PLMCompilerException
-  {
-    return null;
-  }
-
-  /**
    * Compile the exercise, and return a textual reference to the result (a jar or binary path) that {@link #runEntity} will
    * later need to actually run it.
    */

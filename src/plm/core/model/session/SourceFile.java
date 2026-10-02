@@ -3,7 +3,7 @@ package plm.core.model.session;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.swing.JScrollPane;
-import plm.core.lang.LanguageExtraction;
+import plm.core.model.lesson.TemplatedEntity;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.ui.JavaEditorPanel;
@@ -11,18 +11,16 @@ import plm.core.ui.JavaEditorPanel;
 public class SourceFile {
 
   protected String name;
-  private final String remote;
-  private final LanguageExtraction extraction;
+  private final TemplatedEntity entity;
   private String body;
   private String correction;
   private ISourceFileListener listener = null;
 
-  public SourceFile(String name, String initialBody, String remote, LanguageExtraction extraction, String _correctionCtn)
+  public SourceFile(String name, String initialBody, TemplatedEntity entity, String _correctionCtn)
   {
     this.name       = name;
     this.body       = initialBody;
-    this.remote     = remote;
-    this.extraction = extraction;
+    this.entity     = entity;
     this.correction = _correctionCtn;
   }
 
@@ -41,18 +39,11 @@ public class SourceFile {
   public void setCorrection(String c) { this.correction = c; }
   public String getCorrection() { return this.correction; }
 
-  /**
-   * This SourceFile's per-language extraction (step 2, computed once, eagerly, at lesson-load time -- see
-   * CONTRIBUTING.md, "From correction entity to compilable source: templating"), for the owning language's own
-   * {@code compileExo()} to read its own fields back from.
-   */
-  public LanguageExtraction getExtraction() { return extraction; }
-
-  /** The RemoteXxx universe guessed once from the whole entity file at lesson-load time (see {@code ProgrammingLanguage.getRemote()}), or null. */
-  public String getRemote() { return remote; }
+  /** What the entity parser extracted from this source file at lesson-load time, or null for sources that were not parsed. */
+  public TemplatedEntity getEntity() { return entity; }
 
   /**
-   * The result of {@link #getCompilableContent(Map, StudentOrCorrection)}: the compilable source text, plus how many
+   * The result of {@link #getCompilableContent(String, Map, StudentOrCorrection)}: the compilable source text, plus how many
    * lines of it come before the student/correction body's own first line (see {@code offset} there).
    */
   public record CompilableContent(String content, int offset) {}
@@ -73,10 +64,9 @@ public class SourceFile {
    * 			whether we want to retrieve the student-provided content or the correction
    * @return
    */
-  public CompilableContent getCompilableContent(Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
+  public CompilableContent getCompilableContent(String template, Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
   {
-    String template = extraction == null ? null : whatToRetrieve == StudentOrCorrection.CORRECTION ? extraction.correctionTemplate() : extraction.template();
-    String res      = template != null ? template : this.body;
+    String res = template != null ? template : this.body;
 
     if (runtimePatterns != null)
       for (Entry<String, String> pattern : runtimePatterns.entrySet())
@@ -89,7 +79,7 @@ public class SourceFile {
         if (res.charAt(i) == '\n')
           offset++;
 
-      String bodyContent = whatToRetrieve == StudentOrCorrection.CORRECTION ? extraction.correctionBody() : this.body;
+      String bodyContent = whatToRetrieve == StudentOrCorrection.CORRECTION ? entity.correctionBody() : this.body;
       res                = res.replace("$body", bodyContent + " \n");
     }
 

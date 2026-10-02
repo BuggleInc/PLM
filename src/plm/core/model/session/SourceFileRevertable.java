@@ -1,17 +1,17 @@
 package plm.core.model.session;
 
-import plm.core.lang.LanguageExtraction;
+import plm.core.model.lesson.TemplatedEntity;
 import plm.core.lang.ProgrammingLanguage;
 
 public class SourceFileRevertable extends SourceFile {
 
   private String initialBody;
 
-  public SourceFileRevertable(String name) { this(name, "", null, null, ""); }
+  public SourceFileRevertable(String name) { this(name, "", null, ""); }
 
-  public SourceFileRevertable(String name, String initialBody, String remote, LanguageExtraction extraction, String correctionCtn)
+  public SourceFileRevertable(String name, String initialBody, TemplatedEntity entity, String correctionCtn)
   {
-    super(name, initialBody, remote, extraction, correctionCtn);
+    super(name, initialBody, entity, correctionCtn);
     this.initialBody = initialBody;
   }
 
