@@ -134,9 +134,8 @@ public class ExoTest {
     }
 
     if (exo.lastResult.compilationError != null) {
-      String msg =
-          exo.getId() + ": compilation error: " + exo.lastResult.compilationError + ". Compiled file:\n" +
-          ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getCompilableContent(null, null, StudentOrCorrection.CORRECTION).content()) : "none");
+      String msg = exo.getId() + ": compilation error: " + exo.lastResult.compilationError + ". Compiled file:\n" +
+                   ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getCorrection()) : "none");
       System.err.println(msg);
       Assertions.fail(msg);
     }

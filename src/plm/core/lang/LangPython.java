@@ -18,6 +18,7 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
+import plm.core.utils.Indentation;
 import plm.universe.Direction;
 import plm.universe.Point;
 
@@ -93,6 +94,38 @@ public class LangPython extends TemplatedRemoteLang {
 
   public String getRemotePythonFile(String remoteName) { return loadRemoteFile(remoteName, "python", ".py"); }
 
+  /**
+   * The editor content is flush left, but the body sits {@code indent} spaces deep in the template: python needs it to be indented
+   * accordingly. Code that is already indented (saved by a previous version) keeps its relative indentation.
+   */
+  private static String reindent(String codeWithTabs, int indent)
+  {
+    String code = Indentation.expandLeadingTabs(codeWithTabs);
+    int common  = Integer.MAX_VALUE;
+    for (String line : code.split("\n")) {
+      if (line.isBlank())
+        continue;
+      int len = 0;
+      while (len < line.length() && line.charAt(len) == ' ')
+        len++;
+      common = Math.min(common, len);
+    }
+    if (common == Integer.MAX_VALUE)
+      return code;
+
+    StringBuilder sb = new StringBuilder();
+    String[] lines   = code.split("\n", -1);
+    for (int i = 0; i < lines.length; i++) {
+      if (i > 0)
+        sb.append("\n");
+      if (!lines[i].isBlank())
+        sb.append(" ".repeat(indent)).append(lines[i].substring(Math.min(common, lines[i].length())));
+      else
+        sb.append(lines[i]);
+    }
+    return sb.toString();
+  }
+
   @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String runName = packageNameForExercise(exo, whatToCompile);
@@ -114,7 +147,9 @@ public class LangPython extends TemplatedRemoteLang {
                                               .replace('\n', '\u0001'));
 
         String template   = "$imports\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
-        String entityCode = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
+        String body       = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : reindent(sf.getBody(), sf.getBodyIndent());
+        // The tabs of the entity and of the student are expanded the way python reads them, so that they never get mixed up with spaces
+        String entityCode = Indentation.expandLeadingTabs(sf.getCompilableContent(template, body, runtimePatterns).content());
         entityCode        = entityCode.replace('\u0001', '\n');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));

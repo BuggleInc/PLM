@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.ui.JavaEditorPanel;
 
 public class SourceFile {
@@ -17,6 +16,7 @@ public class SourceFile {
   private final String correctionBody;
   private final String imports;
   private final String remote;
+  private final int bodyIndent;
   private ISourceFileListener listener = null;
 
   /**
@@ -32,9 +32,10 @@ public class SourceFile {
    * @param imports            the lines found between BEGIN IMPORT and END IMPORT markers: not part of the templates nor of
    *                           the initial body, but still in {@code correction}
    * @param remote             the RemoteXxx universe guessed by {@code lang.getRemote(correction)}, or null if none
+   * @param bodyIndent         how many spaces the templated region is indented by in the entity: the editor content is flush left instead
    */
   public SourceFile(String name, String initialBody, String correction, String template, String correctionTemplate, String correctionBody, String imports,
-                    String remote)
+                    String remote, int bodyIndent)
   {
     this.name               = name;
     this.body               = initialBody;
@@ -44,6 +45,7 @@ public class SourceFile {
     this.correctionBody     = correctionBody;
     this.imports            = imports;
     this.remote             = remote;
+    this.bodyIndent         = bodyIndent;
   }
 
   public String getName() { return this.name; }
@@ -66,9 +68,10 @@ public class SourceFile {
   public String getCorrectionBody() { return correctionBody; }
   public String getImports() { return imports; }
   public String getRemote() { return remote; }
+  public int getBodyIndent() { return bodyIndent; }
 
   /**
-   * The result of {@link #getCompilableContent(String, Map, StudentOrCorrection)}: the compilable source text, plus how many
+   * The result of {@link #getCompilableContent(String, String, Map)}: the compilable source text, plus how many
    * lines of it come before the student/correction body's own first line (see {@code offset} there).
    */
   public record CompilableContent(String content, int offset) {}
@@ -76,22 +79,23 @@ public class SourceFile {
   /**
    * Returns the source text that we should compile, alongside the {@code $body} offset computed along the way.
    *
-   * The template (if any) is the correction one, which keeps the solution-helper sections of head/tail, or the student one
-   * otherwise. It has its {@code $body} placeholder substituted last, after every other {@code runtimePattern}
+   * The template (if any) has its {@code $body} placeholder substituted last, after every other {@code runtimePattern}
    * has been applied: a pattern's replacement text may itself span several lines, which shifts how many physical lines
    * come before {@code $body} in the final compiled file. The returned {@code offset} is the number of lines
    * separating the start of the generated file from {@code $body}'s own first line, so that a compiler error line
    * number can later be translated back into the student's own editor coordinates.
    *
+   * @param template
+   * 			the template to fill, or null to compile the body alone
+   * @param body
+   * 			what goes in place of {@code $body}: the student-provided content or the correction
    * @param runtimePatterns
    * 			some last-minute replacement to do (such as package name adjustment)
-   * @param whatToRetrieve
-   * 			whether we want to retrieve the student-provided content or the correction
    * @return
    */
-  public CompilableContent getCompilableContent(String template, Map<String, String> runtimePatterns, StudentOrCorrection whatToRetrieve)
+  public CompilableContent getCompilableContent(String template, String body, Map<String, String> runtimePatterns)
   {
-    String res = template != null ? template : this.body;
+    String res = template != null ? template : body;
 
     if (runtimePatterns != null)
       for (Entry<String, String> pattern : runtimePatterns.entrySet())
@@ -104,8 +108,7 @@ public class SourceFile {
         if (res.charAt(i) == '\n')
           offset++;
 
-      String bodyContent = whatToRetrieve == StudentOrCorrection.CORRECTION ? correctionBody : this.body;
-      res                = res.replace("$body", bodyContent + " \n");
+      res = res.replace("$body", body + " \n");
     }
 
     res = res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)

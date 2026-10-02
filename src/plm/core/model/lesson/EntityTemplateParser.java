@@ -9,6 +9,7 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.session.SourceFileRevertable;
+import plm.core.utils.Indentation;
 
 /**
  * Parses the BEGIN/END TEMPLATE/SOLUTION/IMPORT/REMOTE markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
@@ -47,40 +48,22 @@ public class EntityTemplateParser {
     String template           = head + "$body" + tail;
     String correctionTemplate = correctionHead + "$body" + correctionTail;
 
-    /* Remove the unnecessary leading spaces from the initial content */
-    Pattern newLinePattern = Pattern.compile("\n", Pattern.MULTILINE);
-    if (!lang.isPython()) {
+    /* The editor starts flush left: remove the indentation shared by the whole templated region (solution included) from the initial
+     * content. Python is indentation-sensitive, so LangPython.compileExo() indents the student's code back by bodyIndent: its tabs are
+     * expanded as python reads them, to not mix up with spaces. Elsewhere, tabs are simply converted to spaces. */
+    String templateRegion = text(segments, true, Kind.TEMPLATE);
+    if (lang.isPython()) {
+      initialContent = Indentation.expandLeadingTabs(initialContent);
+      templateRegion = Indentation.expandLeadingTabs(templateRegion);
+    } else {
       initialContent = initialContent.replaceAll("\t", "    ");
-      String[] ctn   = newLinePattern.split(initialContent);
-      /* Compute the minimal amount of leading spaces on all lines */
-      int minAmountOfLeadingSpace = -1;
-      for (String line : ctn) {
-        if (line.equals(""))
-          continue;
-        int len = 0;
-        for (char c : line.toCharArray())
-          if (c == ' ') {
-            len++;
-          } else {
-            break;
-          }
-        if (minAmountOfLeadingSpace == -1 || len < minAmountOfLeadingSpace)
-          minAmountOfLeadingSpace = len;
-      }
-      if (minAmountOfLeadingSpace > 0) {
-        /* Remove that amount of leading spaces on all lines, and rebuilds initialContent */
-        StringBuffer sbCtn = new StringBuffer();
-        for (String line : ctn)
-          if (line.equals(""))
-            sbCtn.append("\n");
-          else
-            sbCtn.append(line.substring(minAmountOfLeadingSpace) + "\n");
-        /* Rebuild the initial content */
-        initialContent = sbCtn.toString();
-      }
+      templateRegion = templateRegion.replaceAll("\t", "    ");
     }
+    int bodyIndent = minLeadingSpaces(templateRegion);
+    initialContent = removeLeadingSpaces(initialContent, bodyIndent);
 
-    return new SourceFileRevertable(name, initialContent, correction, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction));
+    return new SourceFileRevertable(name, initialContent, correction, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction),
+                                    bodyIndent);
   }
 
   /**
@@ -120,6 +103,33 @@ public class EntityTemplateParser {
           return m;
       return null;
     }
+  }
+
+  /** The smallest number of leading spaces among the non blank lines of {@code text}, or 0 if there is none. */
+  private static int minLeadingSpaces(String text)
+  {
+    int min = -1;
+    for (String line : text.split("\n")) {
+      if (line.isBlank())
+        continue;
+      int len = 0;
+      while (len < line.length() && line.charAt(len) == ' ')
+        len++;
+      if (min == -1 || len < min)
+        min = len;
+    }
+    return Math.max(min, 0);
+  }
+
+  /** Removes (at most) {@code n} leading spaces from every line of {@code text}, which ends with a \n if it was not empty. */
+  private static String removeLeadingSpaces(String text, int n)
+  {
+    if (n == 0)
+      return text;
+    StringBuilder sb = new StringBuilder();
+    for (String line : text.split("\n"))
+      sb.append(line.substring(Math.min(n, line.length()))).append("\n");
+    return sb.toString();
   }
 
   private enum Phase { BEFORE, IN_TEMPLATE, AFTER }

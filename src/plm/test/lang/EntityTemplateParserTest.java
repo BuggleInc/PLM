@@ -23,14 +23,15 @@ public class EntityTemplateParserTest {
 
   private static String lines(String... l) { return String.join("\n", l); }
 
-  /** BEGIN/END TEMPLATE around a BEGIN/END SOLUTION, Python: no whitespace rewriting at all. */
+  /** BEGIN/END TEMPLATE around a BEGIN/END SOLUTION, Python: the common indentation is removed from the editor content, and kept apart. */
   @Test public void testPythonTemplateWithSolution() throws PLMCompilerException
   {
     String content    = lines("import x", "def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTION", "  b = 2", "  # END SOLUTION", "  c = 3",
                               "  # END TEMPLATE", "  end()");
     SourceFile e = parse(content, new LangPython());
 
-    Assertions.assertEquals("  a = 1\n  c = 3\n", e.getBody());
+    Assertions.assertEquals("a = 1\nc = 3\n", e.getBody());
+    Assertions.assertEquals(2, e.getBodyIndent());
     Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.getTemplate());
     Assertions.assertEquals(content + "\n", e.getCorrection());
   }
@@ -41,6 +42,7 @@ public class EntityTemplateParserTest {
     SourceFile e = parse(lines("def run():", "  # BEGIN SOLUTION", "  x = 1", "  # END SOLUTION", "  end()"), new LangPython());
 
     Assertions.assertEquals("", e.getBody());
+    Assertions.assertEquals(2, e.getBodyIndent()); // the indentation of the solution itself
     Assertions.assertEquals("def run():\n$body\n  end()\n", e.getTemplate());
     Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.getCorrectionBody());
   }
@@ -51,7 +53,7 @@ public class EntityTemplateParserTest {
     String content    = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTION", "  h = 0", "  # END SOLUTION", "  # END TEMPLATE");
     SourceFile e = parse(content, new LangPython());
 
-    Assertions.assertEquals("  a = 1\n", e.getBody());
+    Assertions.assertEquals("a = 1\n", e.getBody());
     Assertions.assertEquals("def run():\n$body\n", e.getTemplate());
     Assertions.assertEquals(content + "\n", e.getCorrection());
   }
@@ -182,5 +184,15 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals("", e.getBody());
     Assertions.assertEquals("$body\n", e.getTemplate());
     Assertions.assertEquals("int h;\n$body\nint t;\n", e.getCorrectionTemplate());
+  }
+
+  /** Python: the tabs of the templated region are expanded the way python reads them, to find out its indentation. */
+  @Test public void testPythonTabs() throws PLMCompilerException
+  {
+    SourceFile e =
+        parse(lines("def run():", "\t# BEGIN TEMPLATE", "\ta = 1", "\t# BEGIN SOLUTION", "\tb = 2", "\t# END SOLUTION", "\t# END TEMPLATE"), new LangPython());
+
+    Assertions.assertEquals("a = 1\n", e.getBody());
+    Assertions.assertEquals(8, e.getBodyIndent());
   }
 }

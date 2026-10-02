@@ -85,7 +85,8 @@ public class LangC extends TemplatedRemoteLang {
       if (!template.substring(0, template.indexOf("$body")).contains("#line"))
         template = template.replace("$body", "#line 1 \"" + sf.getName() + ".c\" \n$body");
 
-      String code = sf.getCompilableContent(template, runtimePatterns, whatToCompile).content();
+      String code =
+          sf.getCompilableContent(template, whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody(), runtimePatterns).content();
       execPath    = compile(code, sf.getRemote(), exo.getId(), exo, whatToCompile);
     }
     return execPath;

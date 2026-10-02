@@ -144,7 +144,8 @@ already loaded without triggering any parsing: session saving and `Game.revertEx
   `END SOLUTION` when there is no template. It is the `$body` value used to compile the correction.
 
 It then collapses `initialContent`'s leading whitespace to the smallest common indentation to make sure that it looks great in
-the student's editor.
+the student's editor. That number of spaces is kept as `bodyIndent`. For Python, each tab found in leading whitespace is first
+expanded 8 spaces.
 
 `head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code.
 Likewise, `correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
@@ -158,22 +159,23 @@ source per `(exercise, language)` in `Exercise.sourceFiles`.
 
 Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correctionTemplate` for
 `StudentOrCorrection.CORRECTION` or `template` otherwise, and wraps it the way its language needs:
-- Java/Scala wrap it in their own class/object boilerplate (`package`, `$imports`,
-  `class Entity {`, then the template, then the closing brace). Nothing is re-parsed: `run()`, the templated methods and everything
-  else compiled are already in the template, as delimited by `BEGIN/END REMOTE`. They also add the entity's `imports`.
-- Python only prepends its own `$imports` slot (`"$imports\n\n" + template`): no class/object wrapper to place it into, and
-  no entity currently uses `BEGIN/END REMOTE` (Python's own template needs no narrowing).
+- Java/Scala wrap it in their own class/object boilerplate: `package`, `$imports`, `class Entity {`, then the template, then a
+  closing brace.
+- Python only prepends its own `$imports` slot (`"$imports\n\n" + template`) with no further boilerplate. As indentation matters
+  in Python, it indents the student's code by `bodyIndent` spaces (after removing its own common indentation) before
+  substituting it. The tabs found in the leading whitespace of the whole source (entity and student) are then expanded as well, so
+  that tabs and spaces never get mixed up.
 - C inserts a `#line` preprocessor directive right before `$body`, so that compiler errors point at the entity's own file, unless the
   head already contains one.
 
 It then fills a `runtimePatterns` map of regex->replacement (`$imports`, ...) and calls
-`SourceFile.getCompilableContent(template, runtimePatterns, whatToCompile)`, which does the actual substitution:
-  - `runtimePatterns` is applied first to the given `template` (which still holds the literal `$body` placeholder after this
-    step)
+`SourceFile.getCompilableContent(template, body, runtimePatterns)` that does the actual substitution:
+  - `runtimePatterns` is applied first to the given `template` (the literal `$body` remains after this step)
   - `offset` is computed. It's the number of lines of the patched template before `$body`'s own first line, and it's used to fix
     the location of the compilation errors so that they point to the code written by the student.
-  - Then is `$body` substituted with the source's `correctionBody` for `StudentOrCorrection.CORRECTION`, or the editor's
-    current content `body` for `StudentOrCorrection.STUDENT`
+  - `$body` is substituted with the actual body. The language retrieves it first: either the source's `correctionBody` or the
+    editor's current content. It could be generated locally, but asking it to the language gives  Python the opportunity to fix
+    the indentation.
   - non-breaking spaces are stripped.
   - The method returns a `SourceFile.CompilableContent(content, offset)` record
 - The `content` is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
