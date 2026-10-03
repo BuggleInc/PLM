@@ -131,8 +131,11 @@ public class LangPython extends TemplatedRemoteLang {
         String imports    = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports;
         String template   = imports + "\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
         String body       = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : reindent(sf.getBody(), sf.getBodyIndent());
-        // The tabs of the entity and of the student are expanded the way python reads them, so that they never get mixed up with spaces
-        String entityCode = Indentation.expandLeadingTabs(sf.getCompilableContent(template, body).content());
+        String entityCode = template.replace("$body", body + " \n");
+        // Expend any tabs to spaces the way python reads them to avoid mixing tabs and spaces
+        entityCode = Indentation.expandLeadingTabs(entityCode);
+        // Kill those damn \160 chars, which are non-breaking spaces
+        entityCode = entityCode.replace('\u00A0', ' ');
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
         // noinspection ResultOfMethodCallIgnored

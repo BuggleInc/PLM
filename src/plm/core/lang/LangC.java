@@ -79,14 +79,15 @@ public class LangC extends TemplatedRemoteLang {
 
     String execPath = null;
     for (SourceFile sf : sfs) {
-      String template = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate();
+      String body = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody();
+      // Make the compiler errors point at the entity's own file
+      body = "#line 1 \"" + sf.getName() + ".c\" \n" + body;
 
-      // Make the compiler errors point at the entity's own file, unless its head already sets that up
-      if (!template.substring(0, template.indexOf("$body")).contains("#line"))
-        template = template.replace("$body", "#line 1 \"" + sf.getName() + ".c\" \n$body");
+      String entityCode = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate();
+      entityCode        = entityCode.replace("$body", body);
 
-      String code = sf.getCompilableContent(template, whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody()).content();
-      execPath    = compile(code, sf.getRemote(), exo.getId(), exo, whatToCompile);
+      entityCode = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
+      execPath   = compile(entityCode, sf.getRemote(), exo.getId(), exo, whatToCompile);
     }
     return execPath;
   }
