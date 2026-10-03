@@ -13,7 +13,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 
 	var state = 0;
 
-	def step(colors:Array[Color]) {
+	def step(colors:Array[Color]): Unit = {
 		var currentColor=0;
 
 		val current = getGroundColor();
@@ -58,7 +58,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 	 *  You can use this method inside your init() method if you want 
 	 *  to test langton's ant instead of full turmites.
 	 */
-	def initLangton(name:String) {
+	def initLangton(name:String): Unit = {
 		val nbColors = name.length(); /* As many colors as letters in the ant's name */
 
 		rule = new Array[Array[Array[Int]]] (1); /* one state only */
@@ -81,7 +81,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 			// println("{"+rule(0)(i)(NEXT_COLOR)+","+rule(0)(i)(NEXT_MOVE)+","+rule(0)(i)(NEXT_STATE)+"}");
 		}
 	}
-	def init() {
+	def init(): Unit = {
 		/* Your code comes here. */
 
 		/* Something like 
@@ -105,7 +105,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		init();
 
 		var colors = new Array[Color] (rule(0).length);

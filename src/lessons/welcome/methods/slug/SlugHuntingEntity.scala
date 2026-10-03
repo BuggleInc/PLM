@@ -5,12 +5,12 @@ import java.awt.Color;
 class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		hunt(); 
 	}
 
 	/* BEGIN TEMPLATE */
-	def hunt() {
+	def hunt(): Unit = {
 		// Write your code here
 		/* BEGIN SOLUTION */
 		while (! isOverBaggle()) {

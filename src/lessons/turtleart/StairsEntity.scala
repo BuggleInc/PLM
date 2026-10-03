@@ -6,7 +6,7 @@ class StairsEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
         addSizeHint(50,170, 85,170);
 

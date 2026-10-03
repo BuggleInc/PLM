@@ -5,12 +5,12 @@ import lessons.sort.pancake.universe.PancakeEntity;
 class BasicPancakeEntity extends PancakeEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		solve();
 	}
 
 	/* BEGIN TEMPLATE */
-	def solve() {
+	def solve(): Unit = {
 		/* BEGIN SOLUTION */		
 		for (rank <- getStackSize()-1 to 0 by -1) {
 			if (isSorted()) 

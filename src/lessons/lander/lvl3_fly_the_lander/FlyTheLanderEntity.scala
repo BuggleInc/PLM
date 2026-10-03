@@ -8,7 +8,7 @@ import lessons.lander.universe.LanderWorld._;
 
 class FlyTheLanderEntity extends LanderEntity {
   /* BEGIN REMOTE */
-  override def run() {
+  override def run(): Unit = {
     initialize()
     while (isFlying()) {
       step()
@@ -21,7 +21,7 @@ class FlyTheLanderEntity extends LanderEntity {
   var targetStart=0.0
   var targetEnd=0.0
   /* END SOLUTION */
-  override def initialize() {
+  override def initialize(): Unit = {
     /* BEGIN SOLUTION */
     var lastPoint:Point = getGround.get(0);
     for (point <- getGround()) {
@@ -36,7 +36,7 @@ class FlyTheLanderEntity extends LanderEntity {
     /* END SOLUTION */
   }
 
-  override def step() {
+  override def step(): Unit = {
     /* BEGIN SOLUTION */
     if (getX() < targetStart) {
       setDesiredAngle(-30);

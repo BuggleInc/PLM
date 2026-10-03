@@ -6,12 +6,12 @@ import plm.universe.bugglequest.SimpleBuggle;
 class FlowerCaseEntity extends SimpleBuggle {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		growFlowers();
 	}
 	/* BEGIN SOLUTION */
 
-	def makeFlower(c:Color) {
+	def makeFlower(c:Color): Unit = {
 		setBrushColor(c);
 		brushDown();
 		forward(2);
@@ -26,7 +26,7 @@ class FlowerCaseEntity extends SimpleBuggle {
 		stepBackward();
 	}
 
-	def line(colors:Array[Color], returnBack:Boolean) {
+	def line(colors:Array[Color], returnBack:Boolean): Unit = {
 		var first = true;
 		for (c <- colors) {
 			if (!first)
@@ -38,17 +38,17 @@ class FlowerCaseEntity extends SimpleBuggle {
 		if (returnBack)
 			backward(4*(colors.length-1));
 	}
-	def RLforward(steps: Int) {
+	def RLforward(steps: Int): Unit = {
 		right();
 		forward(steps);
 		left();
 	}
-	def LRforward(steps: Int) {
+	def LRforward(steps: Int): Unit = {
 		left();
 		forward(steps);
 		right();
 	}
-	def boxes() {
+	def boxes(): Unit = {
 		line(Array(Color.RED, Color.CYAN),true);        
 		RLforward(4);
 		line(Array(Color.PINK, Color.GREEN),true);
@@ -64,7 +64,7 @@ class FlowerCaseEntity extends SimpleBuggle {
 		RLforward(4);
 		line(Array(Color.PINK, Color.GREEN),true);
 	}
-	def growFlowers() {
+	def growFlowers(): Unit = {
 		boxes();
 		LRforward(1);
 		backward(8);

@@ -5,7 +5,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class TricolorHanoi3Entity extends HanoiEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
     val src = getParamInt(0)
     val mid = getParamInt(1)
     val dst = getParamInt(2)
@@ -13,14 +13,14 @@ class TricolorHanoi3Entity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-  def tricolor(height:Int, src:Int, mid:Int, dst:Int) {
+  def tricolor(height:Int, src:Int, mid:Int, dst:Int): Unit = {
 	  /* BEGIN SOLUTION */
 	  gather(height, src, mid, dst);
     move3(height, dst,mid,src);
     move3(height, src,dst,mid);
     scatter(height, mid,dst,src);
   }
-  def scatter(height:Int, src:Int, mid:Int, dst:Int) {
+  def scatter(height:Int, src:Int, mid:Int, dst:Int): Unit = {
     if (height >0) {
       move3(height-1, src, dst,mid);
       move(src,dst);
@@ -31,7 +31,7 @@ class TricolorHanoi3Entity extends HanoiEntity {
     }   
   }
 
-  def gather(height:Int, src:Int, mid:Int, dst:Int) {
+  def gather(height:Int, src:Int, mid:Int, dst:Int): Unit = {
     if (height >0) {
       gather(height-1,src,mid,dst);
       move(src,mid);
@@ -42,7 +42,7 @@ class TricolorHanoi3Entity extends HanoiEntity {
     }
 	}
 
-  def move3(height:Int, src:Int, mid:Int, dst:Int) {
+  def move3(height:Int, src:Int, mid:Int, dst:Int): Unit = {
     if (height>0) {
       move3(height-1, src, dst, mid);
       move(src,dst);

@@ -4,7 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.model.Game
 
 class LinearTwinHanoiEntity extends HanoiEntity {
-  override def move(from:Int, to:Int) {
+  override def move(from:Int, to:Int): Unit = {
     if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
       throw new RuntimeException(Game.i18n.tr(
           "Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
@@ -13,7 +13,7 @@ class LinearTwinHanoiEntity extends HanoiEntity {
   
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
     val src= getParamInt(0)
     val mid= getParamInt(1)
     val dst= getParamInt(2)
@@ -21,7 +21,7 @@ class LinearTwinHanoiEntity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-  def linearTwinHanoi(height:Int, src:Int, mid:Int, dst:Int) {
+  def linearTwinHanoi(height:Int, src:Int, mid:Int, dst:Int): Unit = {
 	  /* BEGIN SOLUTION */
     gather(height-1,src,mid,dst);
     move(src,mid);
@@ -33,7 +33,7 @@ class LinearTwinHanoiEntity extends HanoiEntity {
     move(mid, dst);
     scatter(height-1, src, mid, dst);
   }
-  def gather(height:Int, src:Int, mid:Int, dst:Int) {
+  def gather(height:Int, src:Int, mid:Int, dst:Int): Unit = {
     if (height >0) {
       gather(height-1,src,mid,dst);
       move(src,mid);
@@ -42,7 +42,7 @@ class LinearTwinHanoiEntity extends HanoiEntity {
       moveDouble(height-1, src, mid, dst);
     }
   }
-  def scatter(height:Int, src:Int, mid:Int, dst:Int) {
+  def scatter(height:Int, src:Int, mid:Int, dst:Int): Unit = {
     if (height>0) {
       moveDouble(height-1, src, mid, dst);
       move(src,mid);
@@ -51,7 +51,7 @@ class LinearTwinHanoiEntity extends HanoiEntity {
       scatter(height-1,src,mid,dst);
     }
   }
-  def moveDouble(height:Int, src:Int, mid:Int, dst:Int) {
+  def moveDouble(height:Int, src:Int, mid:Int, dst:Int): Unit = {
     if (height>0) {
       moveDouble(height-1, src, mid, dst);
       move(src,mid);

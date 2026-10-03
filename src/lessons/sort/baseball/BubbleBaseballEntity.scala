@@ -7,7 +7,7 @@ class BubbleBaseballEntity extends BaseballEntity {
 	
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		while (!isSorted()) {
 			while (getHoleBase()>0) {

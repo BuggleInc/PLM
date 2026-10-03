@@ -7,18 +7,18 @@ class PictureMono1Entity extends SimpleBuggle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 4) {
 			makeV();
 		}
 	}
-	def mark() {
+	def mark(): Unit = {
 		brushDown();
 		brushUp();
 	}
 
-	def makeV() {
+	def makeV(): Unit = {
 		forward(2);
 		mark();
 

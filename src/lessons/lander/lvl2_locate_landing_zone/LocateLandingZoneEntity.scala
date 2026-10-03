@@ -27,7 +27,7 @@ class LocateLandingZoneEntity extends LanderEntity {
   var targetStart = 0.0;
   var targetEnd = 0.0;
 
-  override def run() {
+  override def run(): Unit = {
     initialize()
     while (isFlying()) {
       step()
@@ -36,13 +36,13 @@ class LocateLandingZoneEntity extends LanderEntity {
   }
   /* END REMOTE */
 
-  override def initialize() {
+  override def initialize(): Unit = {
     var landingZone = getLandingZone();
     targetStart = landingZone.start.x;
     targetEnd = landingZone.end.x;
   }
 
-  override def step() {
+  override def step(): Unit = {
     if (getX() < targetStart) {
       setDesiredAngle(-30);
     } else if (getX() > targetEnd) {

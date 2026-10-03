@@ -8,7 +8,7 @@ import plm.core.model.lesson.Exercise
 class MethodsDogHouseEntity extends SimpleBuggle {
 	/* BEGIN REMOTE */
 	/* BEGIN SOLUTION */
-	def dogHouse() {
+	def dogHouse(): Unit = {
 		for (i <- 1 to 4) {
 			stepForward()
 			stepForward()
@@ -17,7 +17,7 @@ class MethodsDogHouseEntity extends SimpleBuggle {
 	}
 	/* END SOLUTION */
 
-	override def run() {
+	override def run(): Unit = {
 		brushDown();
 		dogHouse();
 		brushUp();

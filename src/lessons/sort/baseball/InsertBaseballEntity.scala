@@ -7,7 +7,7 @@ class InsertBaseballEntity extends BaseballEntity {
 	
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		/* Bring the hole in 0,1 */
 		if (getHole() == 0) // It is already on base 0, but on another position
@@ -34,7 +34,7 @@ class InsertBaseballEntity extends BaseballEntity {
 	def _move(pos:Int):Unit = move(pos / getPositionsAmount(), pos % getPositionsAmount());
 	def getHole():Int = getPositionsAmount()*getHoleBase()+getHolePosition();
 	
-	def out(msg:String) {
+	def out(msg:String): Unit = {
 		if (isSelected())
 			System.out.println(msg);
 		/* END SOLUTION */

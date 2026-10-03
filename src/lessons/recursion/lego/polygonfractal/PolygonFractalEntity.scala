@@ -6,7 +6,7 @@ class PolygonFractalEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	def polygonFractal (levels:Int, sides:Int, length:Double, shrink:Double) {
+	def polygonFractal (levels:Int, sides:Int, length:Double, shrink:Double): Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			/* do nothing */
@@ -25,7 +25,7 @@ class PolygonFractalEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		polygonFractal(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Int],
 		    getParam(2).asInstanceOf[Double],getParam(3).asInstanceOf[Double]);
 	}

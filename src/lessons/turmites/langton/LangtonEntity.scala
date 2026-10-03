@@ -7,7 +7,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 class LangtonEntity extends SimpleBuggle {
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	def step() {
+	def step(): Unit = {
 		/* BEGIN SOLUTION */
 		if (getGroundColor() == Color.white) {
 			right();
@@ -30,7 +30,7 @@ class LangtonEntity extends SimpleBuggle {
 	}
 	/* END TEMPLATE */
 
-	override def run() { 
+	override def run(): Unit = { 
 		val nbSteps = getParamInt(0) 
 		for (i <- 1 to nbSteps) {
 			step();

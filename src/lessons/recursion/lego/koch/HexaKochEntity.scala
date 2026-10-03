@@ -7,10 +7,10 @@ class HexaKochEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-    def drawCurve(levels:Int, length:Double) {
+    def drawCurve(levels:Int, length:Double): Unit = {
     	hexaKoch(levels, length);
     }
-	def hexaKoch(levels:Int, length:Double) {
+	def hexaKoch(levels:Int, length:Double): Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);;
@@ -28,7 +28,7 @@ class HexaKochEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		drawCurve(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
 	/* END REMOTE */

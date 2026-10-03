@@ -4,7 +4,7 @@ import plm.core.model.Game
 
 class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
 	/* BEGIN REMOTE */
-	override def run() { 
+	override def run(): Unit = { 
 		for (i <- 1 to 7) {
 			if (haveBaggle()) 
 				return;

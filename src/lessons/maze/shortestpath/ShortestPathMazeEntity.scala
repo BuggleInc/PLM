@@ -6,22 +6,22 @@ import plm.universe.bugglequest.BuggleWorldCell;
 import plm.core.model.Game
 
 class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
-	override def setX(i: Int)  {
+	override def setX(i: Int): Unit = {
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
 	}
-	override def setY(i: Int)  { 
+	override def setY(i: Int): Unit = { 
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
 	}
-	override def setPos(x: Int, y:Int)  { 
+	override def setPos(x: Int, y:Int): Unit = { 
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		// Your code here
 		/* BEGIN SOLUTION */
 		evaluatePaths(); // write on each case the distance to the maze exit
@@ -41,7 +41,7 @@ class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		return false;
 	}
 
-	def evaluatePaths() {
+	def evaluatePaths(): Unit = {
 		// looking for labyrinth exit	
 		for (x <- 0 to getWorldWidth() -1; y <- 0 to getWorldHeight()-1)        
 			if (hasBaggle(x,y))
@@ -70,7 +70,7 @@ class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 		}
 	}
 
-	def followShortestPath() {
+	def followShortestPath(): Unit = {
 		while (! isOverBaggle()) {
 
 			var x = getX();

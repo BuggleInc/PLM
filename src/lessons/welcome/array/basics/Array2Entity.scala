@@ -5,15 +5,15 @@ import plm.universe.bugglequest.SimpleBuggle;
 import plm.core.model.Game
 
 class Array2Entity extends SimpleBuggle {
-	override def setX(i: Int)  {
+	override def setX(i: Int): Unit = {
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
 	}
-	override def setY(i: Int)  { 
+	override def setY(i: Int): Unit = { 
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
 	}
-	override def setPos(x: Int, y:Int)  { 
+	override def setPos(x: Int, y:Int): Unit = { 
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
@@ -21,7 +21,7 @@ class Array2Entity extends SimpleBuggle {
 	
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 	/* BEGIN SOLUTION */
 		val colors = new Array[Color](getWorldHeight());
 
@@ -42,7 +42,7 @@ class Array2Entity extends SimpleBuggle {
 		}
 	}
 
-	def makeLine(colors: Array[Color]) {
+	def makeLine(colors: Array[Color]): Unit = {
 		val offset = readMessage().toInt;
 		mark(colors( (0+offset)%colors.length ) );
 		for (i <- 1 to getWorldWidth()-1) {
@@ -51,7 +51,7 @@ class Array2Entity extends SimpleBuggle {
 		}
 		backward(getWorldHeight()-1);
 	}
-	def mark(c:Color){
+	def mark(c:Color): Unit = {
 		setBrushColor(c);
 		brushDown();
 		brushUp();

@@ -6,7 +6,7 @@ class StarEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		addSizeHint(165, 200, 165, 150)
 
@@ -15,7 +15,7 @@ class StarEntity extends Turtle {
 		
 	}
 	val BRANCH_COUNT = 5;
-	def branch(size:Int) {
+	def branch(size:Int): Unit = {
 		forward(size);
 		right(360 / BRANCH_COUNT);
 		forward(size);

@@ -7,7 +7,7 @@ class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 	def estSurBlanc():Boolean = { return isGroundWhite(); }
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		do {
 			stepForward();

@@ -8,7 +8,7 @@ class PatternPictureEntity extends SimpleBuggle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		bigSquare();
 		forward(4);
@@ -23,12 +23,12 @@ class PatternPictureEntity extends SimpleBuggle {
 		forward(4);
 		bigSquare();
 	}
-	def mark() {
+	def mark(): Unit = {
 		brushDown();
 		brushUp();
 	}
 
-	def squareA(c:Color) {
+	def squareA(c:Color): Unit = {
 		setBrushColor(c);
 
 		stepForward();
@@ -46,7 +46,7 @@ class PatternPictureEntity extends SimpleBuggle {
 		left();
 	}
 
-	def squareB(c: Color) {
+	def squareB(c: Color): Unit = {
 		setBrushColor(c);
 		mark();
 
@@ -64,7 +64,7 @@ class PatternPictureEntity extends SimpleBuggle {
 		left();
 	}
 
-	def bigSquare() {
+	def bigSquare(): Unit = {
 		squareA(Color.RED); 
 		forward(2);
 		squareB(Color.BLUE);

@@ -28,9 +28,9 @@ import plm.universe.Point;
 /**
  * Remote execution for Scala, mirroring LangJava's architecture as closely as possible on purpose (see the class-level
  * comment there): an external "java" process is spawned per run, running compiled Scala bytecode that talks back to
- * CommandExecutor over a UNIX domain socket. Compilation is done by driving the SAME scala-compiler.jar the previously
- * embedded in-JVM compiler used (scala.tools.nsc.Main), but as a *separate* "java -cp <scala jars> scala.tools.nsc.Main"
- * process, to avoid assuming a standalone "scalac" binary is installed on the machine.
+ * CommandExecutor over a UNIX domain socket. Compilation is done by driving the Scala 3 compiler shipped as a PLM
+ * dependency (dotty.tools.dotc.Main) as a *separate* "java -cp <scala jars> dotty.tools.dotc.Main" process, to avoid
+ * assuming a standalone "scalac" binary is installed on the machine.
  *
  * Not yet factored with LangJava (structure kept close on purpose to make that factoring easy later); several private
  * helpers below are near-verbatim ports of LangJava's, adapted to Scala syntax where the generated code shape differs.
@@ -52,8 +52,8 @@ public class LangScala extends JvmTemplatedLang {
   @SuppressWarnings({"rawtypes", "unchecked"}) @Override public boolean isBrokenLanguage()
   {
     if (brokenLanguageState == BrokenLanguageState.Unitialized) {
-      String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/Unit", "/scala/reflect/io/AbstractFile"};
-      String[] hints     = new String[] {"scala-compiler.jar", "scala-library.jar", "scala-reflect.jar"};
+      String[] resources = new String[] {"/dotty/tools/dotc/Main", "/scala/Unit", "/scala/runtime/LazyVals$"};
+      String[] hints     = new String[] {"scala3-compiler.jar", "scala-library.jar", "scala3-library.jar"};
       for (int i = 0; i < resources.length; i++) {
         brokenLanguageMessage = canResolve(resources[i], hints[i]);
         if (!brokenLanguageMessage.isEmpty()) {
@@ -65,9 +65,10 @@ public class LangScala extends JvmTemplatedLang {
 
       String version = "";
       try {
-        Class props = Class.forName("scala.util.Properties");
-        Method meth = props.getMethod("versionString", new Class[] {});
-        version     = (String)meth.invoke(props);
+        // dotty.tools.dotc.config.Properties is a Scala object: read its singleton instance.
+        Class props = Class.forName("dotty.tools.dotc.config.Properties$");
+        Method meth = props.getMethod("simpleVersionString");
+        version     = (String)meth.invoke(props.getField("MODULE$").get(null));
       } catch (Exception e) {
         brokenLanguageMessage = Game.i18n.tr("Error {0} while retrieving the Scala version: {1}", e.getClass().getName(), e.getLocalizedMessage());
         System.err.println(brokenLanguageMessage);
@@ -75,10 +76,10 @@ public class LangScala extends JvmTemplatedLang {
         return false;
       }
 
-      if (version.contains("version 2.12") || version.contains("version 2.13")) {
+      if (version.startsWith("3.")) {
         brokenLanguageState = BrokenLanguageState.Usable;
       } else {
-        brokenLanguageMessage = Game.i18n.tr("Scala is too ancient. Found {0} while I need 2.12 or higher.", version);
+        brokenLanguageMessage = Game.i18n.tr("Unsupported Scala version. Found {0} while I need Scala 3.", version);
         System.err.println(brokenLanguageMessage);
         brokenLanguageState = BrokenLanguageState.NotUsable;
         return false;
@@ -107,28 +108,52 @@ public class LangScala extends JvmTemplatedLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
+  /** Classes identifying the jars that the Scala compiler needs on its own classpath (the first four are mandatory). */
+  private static final String[] SCALA_COMPILER_CLASSES = {"dotty.tools.dotc.Main", "dotty.tools.tasty.TastyFormat", "dotty.tools.dotc.interfaces.Diagnostic",
+                                                          "scala.tools.asm.ClassWriter"};
+  /** Jars only needed by some compiler code paths; silently skipped when absent. */
+  private static final String[] SCALA_COMPILER_OPTIONAL_CLASSES = {"xsbti.Reporter"};
+  /** Classes identifying the jars that compiled Scala code needs at run time. */
+  private static final String[] SCALA_RUNTIME_CLASSES = {"scala.collection.immutable.List", "scala.runtime.LazyVals$"};
+
   /**
-   * Absolute path of the jar a given class was loaded from -- used to locate scala-library.jar/scala-compiler.jar/
-   * scala-reflect.jar on disk (already proven present as PLM dependencies by isBrokenLanguage() above), so the external
-   * "java" processes below can be given an explicit classpath without assuming any standalone "scalac"/"scala" binary is
-   * installed on the machine.
+   * Absolute path of the jar a given class was loaded from, or null if the class cannot be found. This locates the Scala
+   * jars on disk (proven present as PLM dependencies by isBrokenLanguage() above), so the external "java" processes below get
+   * an explicit classpath without assuming any standalone "scalac"/"scala" binary is installed. Classes are not initialized.
    */
-  private static String jarPathFor(Class<?> cls)
+  private static String jarPathFor(String className)
   {
     try {
+      Class<?> cls = Class.forName(className, false, LangScala.class.getClassLoader());
       return new File(cls.getProtectionDomain().getCodeSource().getLocation().toURI()).getAbsolutePath();
+    } catch (ClassNotFoundException e) {
+      return null;
     } catch (Exception e) {
-      throw new RuntimeException("Cannot locate the jar providing " + cls.getName() + ". Is Scala properly installed?", e);
+      throw new RuntimeException("Cannot locate the jar providing " + className + ". Is Scala properly installed?", e);
     }
+  }
+
+  /** Path-separated, duplicate-free classpath of the jars providing the given classes. Fails on a missing class if mandatory. */
+  private static String classpathOf(boolean mandatory, String... classNames)
+  {
+    List<String> jars = new ArrayList<>();
+    for (String name : classNames) {
+      String jar = jarPathFor(name);
+      if (jar == null && mandatory)
+        throw new RuntimeException("Cannot locate the jar providing " + name + ". Is Scala properly installed?");
+      if (jar != null && !jars.contains(jar))
+        jars.add(jar);
+    }
+    return String.join(File.pathSeparator, jars);
   }
 
   private static String scalaCompilerClasspath()
   {
-    return String.join(File.pathSeparator, jarPathFor(scala.tools.nsc.Main.class), jarPathFor(scala.collection.immutable.List.class),
-                       jarPathFor(scala.reflect.io.AbstractFile.class));
+    String optional = classpathOf(false, SCALA_COMPILER_OPTIONAL_CLASSES);
+    return classpathOf(true, SCALA_COMPILER_CLASSES) + File.pathSeparator + scalaRuntimeClasspath() + (optional.isEmpty() ? "" : File.pathSeparator + optional);
   }
 
-  private static String scalaLibraryJar() { return jarPathFor(scala.collection.immutable.List.class); }
+  private static String scalaRuntimeClasspath() { return classpathOf(true, SCALA_RUNTIME_CLASSES); }
 
   private static void compileScalaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException
   {
@@ -150,7 +175,7 @@ public class LangScala extends JvmTemplatedLang {
       scalacArgs.add("java");
       scalacArgs.add("-cp");
       scalacArgs.add(scalaCompilerClasspath());
-      scalacArgs.add("scala.tools.nsc.Main");
+      scalacArgs.add("dotty.tools.dotc.Main");
       scalacArgs.add("-classpath");
       // "." : packageFolder itself, where javac (above, if any) just wrote the already-compiled Java classes.
       scalacArgs.add(scalaCompilerClasspath() + File.pathSeparator + ".");
@@ -358,9 +383,9 @@ public class LangScala extends JvmTemplatedLang {
   }
 
   /**
-   * Runs "java -cp &lt;jarPath&gt;:&lt;scala-library.jar&gt; generated.Main &lt;socketPath&gt;", executable being the jar path
+   * Runs "java -cp &lt;jarPath&gt;:&lt;scala runtime jars&gt; generated.Main &lt;socketPath&gt;", executable being the jar path
    * returned by compileExo() -- the main class is always "generated.Main". We cannot use "java -jar" alone because a jar's
-   * Class-Path manifest attribute is only reliably resolved for relative paths, while the path of scala-library.jar is probably
+   * Class-Path manifest attribute is only reliably resolved for relative paths, while the Scala jars' paths are probably
    * absolute, leading to silent failures at startup.
    */
   @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
@@ -369,7 +394,7 @@ public class LangScala extends JvmTemplatedLang {
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + scalaLibraryJar(), "generated.Main", socketPath.toString());
+    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + scalaRuntimeClasspath(), "generated.Main", socketPath.toString());
   }
 
   public static class LangScalaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {

@@ -6,22 +6,22 @@ import plm.core.model.Game
 
 class TreeEntity extends Turtle {
 
-	override def setX(i: Int)  {
+	override def setX(i: Int): Unit = {
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
 	}
-	override def setY(i: Int)  { 
+	override def setY(i: Int): Unit = { 
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
 	}
-	override def setPos(x: Int, y:Int)  { 
+	override def setPos(x: Int, y:Int): Unit = { 
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
 	}
 	
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	def tree(steps:Int, length:Double, angle:Double, shrink:Double)	{
+	def tree(steps:Int, length:Double, angle:Double, shrink:Double): Unit = {
 		/* BEGIN SOLUTION */
 		if (steps != 0) {
 		    current(steps)
@@ -35,7 +35,7 @@ class TreeEntity extends Turtle {
 			backward(length);
 		}
 	}
-	def subtree(steps:Int, length:Double, angle:Double, shrink:Double)	{
+	def subtree(steps:Int, length:Double, angle:Double, shrink:Double): Unit = {
 		if (steps != 0) {
 			setColor(Color.black)
 			forward(length);
@@ -50,7 +50,7 @@ class TreeEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		tree(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double],
 		    getParam(2).asInstanceOf[Double],getParam(3).asInstanceOf[Double]);
 	}

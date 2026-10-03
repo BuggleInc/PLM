@@ -5,7 +5,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class TricolorHanoi1Entity extends HanoiEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
     val src = getParamInt(0)
     val mid = getParamInt(1)
     val dst = getParamInt(2)
@@ -13,7 +13,7 @@ class TricolorHanoi1Entity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-  def move3(height:Int, src:Int, mid:Int, dst:Int) {
+  def move3(height:Int, src:Int, mid:Int, dst:Int): Unit = {
 	  /* BEGIN SOLUTION */
     if (height>0) {
 //      System.err.println("move3("+height+","+src+","+dst+")");

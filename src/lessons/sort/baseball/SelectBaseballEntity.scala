@@ -7,19 +7,19 @@ class SelectBaseballEntity extends BaseballEntity {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		for (base <- 0 to getBasesAmount() -2) 
 			bringPlayersHome(base);
 		
 		assertSorted("selection sort");
 	}
-	def out(msg:String) {
+	def out(msg:String): Unit = {
 		//if (false)
 		//	System.out.println(msg);
 	}
 	
-	def bringPlayersHome(base:Int) {
+	def bringPlayersHome(base:Int): Unit = {
 		for (positionToFill <- 0 to getPositionsAmount()-1) {
 			out("Sort base "+base+", position "+positionToFill);
 			if (getPlayerColor(base, positionToFill) != base) { // not home yet

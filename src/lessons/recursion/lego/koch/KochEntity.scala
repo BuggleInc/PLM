@@ -7,7 +7,7 @@ class KochEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	def snowFlake (levels:Int, length:Double) {
+	def snowFlake (levels:Int, length:Double): Unit = {
 		snowSide(levels, length);
 		right(120);
 		setColor(Color.blue);
@@ -17,7 +17,7 @@ class KochEntity extends Turtle {
 		snowSide(levels, length);
 		right(120);
 	}
-	def snowSide(levels:Int, length:Double) {
+	def snowSide(levels:Int, length:Double): Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);
@@ -34,7 +34,7 @@ class KochEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		snowFlake(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
 	/* END REMOTE */

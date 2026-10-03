@@ -6,7 +6,7 @@ class FlowerEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 
 		addSizeHint(80, 175, 80, 125)

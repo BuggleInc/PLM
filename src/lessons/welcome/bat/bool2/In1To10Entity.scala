@@ -6,7 +6,7 @@ import plm.universe.bat.BatTest
 class In1To10Entity extends BatEntity {
 
     /* BEGIN REMOTE */
-    override def run() {
+    override def run(): Unit = {
       val count = getTestCount()
       for (i <- 0 to count -1) {
         val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]

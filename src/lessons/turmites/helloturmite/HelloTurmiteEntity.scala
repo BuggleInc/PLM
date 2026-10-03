@@ -23,7 +23,7 @@ class HelloTurmiteEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	var state = 0;
 
-	def step(colors:Array[Color], rule:Array[Array[Array[Int]]] ) {
+	def step(colors:Array[Color], rule:Array[Array[Array[Int]]] ): Unit = {
 		/* Your code comes here */
 		/* BEGIN SOLUTION */
 		var currentColor=0;
@@ -51,7 +51,7 @@ class HelloTurmiteEntity extends SimpleBuggle {
 	}
 	/* END TEMPLATE */
 
-	override def run() { 
+	override def run(): Unit = { 
 		val nbSteps = getParamInt(0);
 		val rule = deserialize(getParamString(1)).asInstanceOf[ Array[Array[Array[Int]]] ];
 

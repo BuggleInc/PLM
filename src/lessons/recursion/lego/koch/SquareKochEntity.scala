@@ -7,7 +7,7 @@ class SquareKochEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	def snowSquare (levels:Int, length:Double) {
+	def snowSquare (levels:Int, length:Double): Unit = {
 		squareSide(levels, length);
 		right(90);
 		setColor(Color.blue);
@@ -20,7 +20,7 @@ class SquareKochEntity extends Turtle {
 		squareSide(levels, length);
 		right(90);
 	}
-	def squareSide(levels:Int, length:Double) {
+	def squareSide(levels:Int, length:Double): Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);
@@ -39,7 +39,7 @@ class SquareKochEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		snowSquare(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
 	/* END REMOTE */

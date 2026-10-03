@@ -6,7 +6,7 @@ class CircleTenEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 	    for (i <- 10 to 100 by 10) {
 	        circle(i);

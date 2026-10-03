@@ -19,7 +19,7 @@ import lessons.sort.pancake.universe.PancakeWorld;
 class GatesPancakeEntity extends PancakeEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		solve();
 	}
 
@@ -99,7 +99,7 @@ class GatesPancakeEntity extends PancakeEntity {
 	/* END SOLUTION */
 	
 	/* BEGIN TEMPLATE */
-	def solve() {
+	def solve(): Unit = {
 		/* BEGIN SOLUTION */
 		/* cruft to search for an instance exercising all transformations */
 		var doneA=false;

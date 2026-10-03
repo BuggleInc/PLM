@@ -6,7 +6,7 @@ import plm.universe.bat.BatEntity
 class StringSplosionEntity extends BatEntity {
 
     /* BEGIN REMOTE */
-    override def run() {
+    override def run(): Unit = {
       import ValueSerializer._
 
       val count = getTestCount()

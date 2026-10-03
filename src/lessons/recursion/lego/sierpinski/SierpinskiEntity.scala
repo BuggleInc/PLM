@@ -3,7 +3,7 @@ package lessons.recursion.lego.sierpinski;
 class SierpinskiEntity extends plm.universe.turtles.Turtle {
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	def sierpinski(level:Int, length:Double) {
+	def sierpinski(level:Int, length:Double): Unit = {
 		/* BEGIN SOLUTION */
 		if (level >= 0) {
 			for (i <- 1 to 3) {
@@ -16,7 +16,7 @@ class SierpinskiEntity extends plm.universe.turtles.Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		sierpinski(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Double]);
 	}
 	/* END REMOTE */

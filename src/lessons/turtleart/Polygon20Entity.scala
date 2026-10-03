@@ -6,7 +6,7 @@ class Polygon20Entity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 	    addSizeHint(45,135, 45,165);
 	    val sides=20;

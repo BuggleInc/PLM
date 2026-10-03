@@ -5,12 +5,12 @@ import plm.universe.sort.SortingEntity;
 class AlgBubbleSort3Entity extends SortingEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		bubbleSort3();
 	}
 
 	/* BEGIN TEMPLATE */
-	def bubbleSort3() {
+	def bubbleSort3(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- getValueCount()-1 to 0 by -1) {
 			var swapped = false;

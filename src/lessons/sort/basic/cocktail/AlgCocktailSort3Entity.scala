@@ -5,12 +5,12 @@ import plm.universe.sort.SortingEntity;
 class AlgCocktailSort3Entity extends SortingEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		cocktailSort3();
 	}
 
 	/* BEGIN TEMPLATE */
-	def cocktailSort3() {
+	def cocktailSort3(): Unit = {
 		/* BEGIN SOLUTION */
 		var swapped=false;
 		var begin=0;

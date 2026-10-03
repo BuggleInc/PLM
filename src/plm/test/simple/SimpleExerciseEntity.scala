@@ -4,7 +4,7 @@ import plm.test.simple.SimpleWorld; // Do not optimize this away, or it will be 
 
 class SimpleExerciseEntity extends plm.test.simple.SimpleExerciseEntity {
   /* BEGIN TEMPLATE */
-  override def run() {
+  override def run(): Unit = {
     /* BEGIN SOLUTION */
     setObjectif(true);
     /* END SOLUTION */

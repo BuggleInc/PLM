@@ -10,7 +10,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray);
 
 	/* BEGIN TEMPLATE */
-	def step(rule:Array[Char], colors:Array[Color]) {
+	def step(rule:Array[Char], colors:Array[Color]): Unit = {
 		/* BEGIN SOLUTION */
 		var current = getGroundColor(); 
 		for (i <- 0 to colors.length-1) {
@@ -34,7 +34,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 	}
 	/* END TEMPLATE */
 
-	override def run() { 
+	override def run(): Unit = { 
 		val nbSteps = getParamInt(0);
 		val rule = getParamString(1).toCharArray;
 

@@ -7,7 +7,7 @@ class CrabEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	def crab(levels:Int, length:Double) {
+	def crab(levels:Int, length:Double): Unit = {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);
@@ -22,7 +22,7 @@ class CrabEntity extends Turtle {
 	}
 	/* END TEMPLATE */
 
-	override def run() {
+	override def run(): Unit = {
 		crab(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
 	}
 	/* END REMOTE */

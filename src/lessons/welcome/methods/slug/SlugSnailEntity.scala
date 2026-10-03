@@ -6,12 +6,12 @@ import java.awt.Color;
 class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		hunt(getColorIntParam()); 
 	}
 
 	/* BEGIN TEMPLATE */
-	def hunt(c:Color) {
+	def hunt(c:Color): Unit = {
 		// Write your code here
 		/* BEGIN SOLUTION */
 		while (! isOverBaggle()) {

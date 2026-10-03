@@ -5,7 +5,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class TricolorHanoi2Entity extends HanoiEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
     val src = getParamInt(0)
     val mid = getParamInt(1)
     val dst = getParamInt(2)
@@ -13,7 +13,7 @@ class TricolorHanoi2Entity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-	def gather(height:Int, src:Int, mid:Int, dst:Int) {
+	def gather(height:Int, src:Int, mid:Int, dst:Int): Unit = {
 		/* BEGIN SOLUTION */
     if (height >0) {
       gather(height-1,src,mid,dst);
@@ -25,7 +25,7 @@ class TricolorHanoi2Entity extends HanoiEntity {
     }
 	}
 
-  def move3(height:Int, src:Int, mid:Int, dst:Int) {
+  def move3(height:Int, src:Int, mid:Int, dst:Int): Unit = {
     if (height>0) {
       move3(height-1, src, dst, mid);
       move(src,dst);

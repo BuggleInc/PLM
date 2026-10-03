@@ -6,10 +6,10 @@ import plm.universe.GridWorld
 import plm.universe.bugglequest.BuggleWorldCell
 
 class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
-	override def forward(i: Int)  {
+	override def forward(i: Int): Unit = {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
 	}
-	override def backward(i: Int) {
+	override def backward(i: Int): Unit = {
 		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
 	}
 
@@ -18,7 +18,7 @@ class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
 	def croisement(): Boolean = { return crossing() }
 
 	/* BEGIN REMOTE */
-	override def run() { 
+	override def run(): Unit = { 
 		/* BEGIN SOLUTION */
 		while (!exitReached()) {
 			var count = 0;

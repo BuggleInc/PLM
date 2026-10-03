@@ -6,7 +6,7 @@ class DiskFourthEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		addSizeHint(135, 150, 135, 50);
 	    for (i <- 1 to 90) {

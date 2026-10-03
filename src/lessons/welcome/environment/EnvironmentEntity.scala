@@ -4,7 +4,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class EnvironmentEntity extends SimpleBuggle {
 	/* BEGIN REMOTE */
-	override def run() { 
+	override def run(): Unit = { 
 		/* BEGIN SOLUTION */
 		stepForward();
 		/* END SOLUTION */

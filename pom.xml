@@ -19,8 +19,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
-    <scala.version>2.12.20</scala.version>
-    <scala.compat.version>2.12</scala.compat.version>
+    <scala.version>3.9.0</scala.version>
     <main.class>plm.core.ui.ProgrammersLearningMachine</main.class>
     <!-- Tests run by default. The build/jar job skips their EXECUTION with
          -DskipTests (the jar does not need the plm.test.* suite); the separate
@@ -29,22 +28,16 @@
   </properties>
   
   <dependencies>
-    <!-- Scala toolchain. 2.12.x to match the wider scala-dev effort
-         (upstream pinned 2.11.12). scala-compiler/reflect are needed at
-         runtime: PLM compiles user Scala exercises in-process. -->
+    <!-- Scala 3 toolchain (LTS). The compiler is needed at runtime: PLM compiles
+         user Scala exercises by spawning it in a separate JVM. -->
     <dependency>
       <groupId>org.scala-lang</groupId>
-      <artifactId>scala-library</artifactId>
+      <artifactId>scala3-library_3</artifactId>
       <version>${scala.version}</version>
     </dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
-      <artifactId>scala-reflect</artifactId>
-      <version>${scala.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-compiler</artifactId>
+      <artifactId>scala3-compiler_3</artifactId>
       <version>${scala.version}</version>
     </dependency>
 

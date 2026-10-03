@@ -7,7 +7,7 @@ import lessons.recursion.cons.universe.ConsEntity
 class AllDifferentEntity extends ConsEntity {
 
     /* BEGIN REMOTE */
-    override def run() {
+    override def run(): Unit = {
       val count = getTestCount()
       for (i <- 0 to count -1) {
         val param = deserialize(getTest(i)).asInstanceOf[Array[Object]]

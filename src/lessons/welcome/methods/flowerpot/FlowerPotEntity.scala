@@ -6,11 +6,11 @@ import plm.universe.bugglequest.SimpleBuggle;
 class FlowerPotEntity extends SimpleBuggle {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 	    growFlowers();
 	}
 	/* BEGIN SOLUTION */
-	def makeFlower(c: Color) {
+	def makeFlower(c: Color): Unit = {
 	    setBrushColor(c);
 	    brushDown();
 	    forward(2);
@@ -24,18 +24,18 @@ class FlowerPotEntity extends SimpleBuggle {
 	    right();    
 	}
 
-	def line(c1:Color, c2: Color) {
+	def line(c1:Color, c2: Color): Unit = {
 	    makeFlower(c1);
 	    forward(3);
 	    makeFlower(c2);
 	    backward(5);
 	}
-	def halfLine(c:Color) {
+	def halfLine(c:Color): Unit = {
 	    forward(2);
 	    makeFlower(c);
 	    backward(3);
 	}
-	def growFlowers() {
+	def growFlowers(): Unit = {
 	    line(Color.RED, Color.CYAN);
 	    
 	    right();    

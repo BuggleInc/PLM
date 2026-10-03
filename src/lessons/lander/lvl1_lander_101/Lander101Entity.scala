@@ -4,14 +4,14 @@ import lessons.lander.universe._;
 
 class Lander101Entity extends LanderEntity {
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		while (isFlying()) {
 			step()
 			simulateStep()
 		}
 	}
 
-	override def step() {
+	override def step(): Unit = {
 		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
 		if (getSpeedY() < -9) {

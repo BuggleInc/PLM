@@ -4,7 +4,7 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 import plm.core.model.Game
 
 class LinearHanoiEntity extends HanoiEntity {
-  override def move(from:Int, to:Int) {
+  override def move(from:Int, to:Int): Unit = {
     if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
       throw new RuntimeException(Game.i18n.tr(
           "Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
@@ -13,7 +13,7 @@ class LinearHanoiEntity extends HanoiEntity {
   
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
     val src= getParamInt(0)
     val mid= getParamInt(1)
     val dst= getParamInt(2)
@@ -21,7 +21,7 @@ class LinearHanoiEntity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-  def linearHanoi(height:Int, src:Int, mid:Int, dst:Int) {
+  def linearHanoi(height:Int, src:Int, mid:Int, dst:Int): Unit = {
 	  /* BEGIN SOLUTION */
     if (height > 0) {
       linearHanoi(height-1, src,mid,dst);

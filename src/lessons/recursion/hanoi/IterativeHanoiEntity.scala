@@ -4,14 +4,14 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 
 class IterativeHanoiEntity extends HanoiEntity {
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
     val initialPos=getParamInt(0)
     val increasing=getParamBoolean(1)
 		hanoi(initialPos, increasing);
 	}
 
 	/* BEGIN TEMPLATE */
-	def hanoi(initialPos:Int, increasing:Boolean) {
+	def hanoi(initialPos:Int, increasing:Boolean): Unit = {
 		/* BEGIN SOLUTION */
 		var small = initialPos
     var count = 0

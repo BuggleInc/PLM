@@ -6,7 +6,7 @@ class SmallSquareEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
         addSizeHint(35,50, 35,150);
         addSizeHint(150,35, 50,35);

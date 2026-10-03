@@ -5,19 +5,19 @@ class PictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 3) {
 			makeLine(3);
 			nextLine();
 		}
 	}
-	def mark() {
+	def mark(): Unit = {
 		brushDown();
 		brushUp();
 	}
 
-	def makeV() {
+	def makeV(): Unit = {
 		forward(2);
 		mark();
 
@@ -35,20 +35,20 @@ class PictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 		left();
 	}
 
-	def makePattern() {
+	def makePattern(): Unit = {
 	  for (i <- 1 to 4) {
 		  makeV();
 	  }
 	  forward(7);
 	}
 
-	def makeLine(count: Int){
+	def makeLine(count: Int): Unit = {
 		for (i <- 1 to count)
 			makePattern();
 		backward(count*7);
 	}
 
-	def nextLine() {
+	def nextLine(): Unit = {
 		left();
 		forward(7);
 		right();	

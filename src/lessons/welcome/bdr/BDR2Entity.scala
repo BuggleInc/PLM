@@ -6,7 +6,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class BDR2Entity extends SimpleBuggle {
 	/* BEGIN REMOTE */
-	override def run() { 
+	override def run(): Unit = { 
 		/* BEGIN SOLUTION */
 		var moreMusic = true;
 

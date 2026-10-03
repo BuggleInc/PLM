@@ -5,12 +5,12 @@ import plm.universe.sort.SortingEntity;
 class AlgCombSortEntity extends SortingEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		combSort();
 	}
 
 	/* BEGIN TEMPLATE */
-	def combSort() {
+	def combSort(): Unit = {
 		/* BEGIN SOLUTION */
 		var gap = getValueCount();
 		var swapped=false;

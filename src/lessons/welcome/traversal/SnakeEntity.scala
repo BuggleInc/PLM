@@ -7,7 +7,7 @@ class SnakeEntity extends SimpleBuggle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		brushDown();
 		while (!endingPosition()) {
@@ -26,7 +26,7 @@ class SnakeEntity extends SimpleBuggle {
 		return res;
 	}
 
-	def snakeStep() {
+	def snakeStep(): Unit = {
 		if (isFacingWall()) {
 			if (getDirection() == Direction.EAST) {
 				left();

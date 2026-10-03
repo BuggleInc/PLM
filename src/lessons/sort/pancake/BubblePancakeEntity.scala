@@ -5,12 +5,12 @@ import lessons.sort.pancake.universe.PancakeEntity;
 class BubblePancakeEntity extends PancakeEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		solve();
 	}
 
 	/* BEGIN TEMPLATE */
-	def solve() {
+	def solve(): Unit = {
 		/* BEGIN SOLUTION */		
     val stackSize = getStackSize();
     var swapped=false;

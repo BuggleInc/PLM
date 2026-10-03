@@ -8,7 +8,7 @@ class DiskFourEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		quadrant();
 		setColor(Color.RED);
@@ -18,7 +18,7 @@ class DiskFourEntity extends Turtle {
 		setColor(Color.MAGENTA);
 		quadrant();
 	}
-	def quadrant() {
+	def quadrant(): Unit = {
 		for (i <- 1 to 90) {
 			forward(100);
 			backward(100);

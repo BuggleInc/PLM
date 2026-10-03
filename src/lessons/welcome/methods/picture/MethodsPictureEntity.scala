@@ -7,19 +7,19 @@ class MethodsPictureEntity extends SimpleBuggle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 3) {
 			makeLine(3);
 			nextLine();
 		}
 	}
-	def mark() {
+	def mark(): Unit = {
 		brushDown();
 		brushUp();
 	}
 
-	def makeV(c:Color) {
+	def makeV(c:Color): Unit = {
 		setBrushColor(c);
 		stepForward();
 		mark();
@@ -38,7 +38,7 @@ class MethodsPictureEntity extends SimpleBuggle {
 		left();
 	}
 
-	def makePattern() {
+	def makePattern(): Unit = {
 		makeV(Color.YELLOW);
 		makeV(Color.RED);
 		makeV(Color.BLUE);
@@ -46,13 +46,13 @@ class MethodsPictureEntity extends SimpleBuggle {
 		forward(5);
 	}
 
-	def makeLine(count: Int){
+	def makeLine(count: Int): Unit = {
 		for (i <- 1 to count)
 			makePattern();
 		backward(count*5);
 	}
 
-	def nextLine() {
+	def nextLine(): Unit = {
 		left();
 		forward(5);
 		right();	

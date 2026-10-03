@@ -7,7 +7,7 @@ import lessons.sort.dutchflag.universe.DutchFlagWorld;
 class DutchFlagAlgoEntity extends DutchFlagEntity {
 	
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		solve();
 	}
 
@@ -16,7 +16,7 @@ class DutchFlagAlgoEntity extends DutchFlagEntity {
 	val WHITE = 1
     val RED   = 2
 
-	def solve() {
+	def solve(): Unit = {
 		/* BEGIN SOLUTION */
 		var afterBlue=0;
 		var beforeWhite=getSize()-1;

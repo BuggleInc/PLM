@@ -6,14 +6,14 @@ class HouseEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 	    addSizeHint(50,265, 150,265);
 	    addSizeHint(35,250, 35,150);
 	 
 	    house(100);
 	}
-	def house(len:Int) {
+	def house(len:Int): Unit = {
 	    forward(len);
 	    
 	    right(30);

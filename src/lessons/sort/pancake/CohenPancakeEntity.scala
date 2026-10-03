@@ -5,7 +5,7 @@ import lessons.sort.pancake.universe.PancakeEntity;
 class CohenPancakeEntity extends PancakeEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		solve();
 	}
 
@@ -17,7 +17,7 @@ class CohenPancakeEntity extends PancakeEntity {
 					return -99; // Well, be robust to border cases 
 	}
 	var debug=false; 
-	def showStack(nl:Boolean) {
+	def showStack(nl:Boolean): Unit = {
 		if (debug) {
 			System.out.print("{");
 			for (rank <- 0 to getStackSize()-1) {
@@ -33,7 +33,7 @@ class CohenPancakeEntity extends PancakeEntity {
 	/* END SOLUTION */
 
 	/* BEGIN TEMPLATE */
-	def solve() {
+	def solve(): Unit = {
 		/* BEGIN SOLUTION */
 		var maxPos = getStackSize();
 		while (true) {

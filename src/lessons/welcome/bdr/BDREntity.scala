@@ -3,7 +3,7 @@ package lessons.welcome.bdr;
 class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 	    var done = false
 		while (!done) {

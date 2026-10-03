@@ -16,12 +16,12 @@ import plm.universe.sort.SortingEntity;
 class AlgShellSortEntity extends SortingEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		shellSort();
 	}
 
 	/* BEGIN TEMPLATE */
-	def shellSort()  {
+	def shellSort(): Unit = {
 		/* BEGIN SOLUTION */
 		var gap = getValueCount()/2;
 

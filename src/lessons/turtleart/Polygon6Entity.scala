@@ -6,7 +6,7 @@ class Polygon6Entity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 	    addSizeHint(65,110, 65,190);
 

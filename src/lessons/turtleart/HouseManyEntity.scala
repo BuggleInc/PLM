@@ -6,7 +6,7 @@ class HouseManyEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 	    addSizeHint(35,220, 35,250);
 	    addSizeHint(80,250, 100,250);
@@ -24,7 +24,7 @@ class HouseManyEntity extends Turtle {
 	    penDown();
 	    line();
 	}
-	def nextLine() {
+	def nextLine(): Unit = {
 	     penUp();
 	     left(90);
 	     forward(200);
@@ -32,7 +32,7 @@ class HouseManyEntity extends Turtle {
 	     forward(75);
 	     penDown();    
 	}
-	def line() {
+	def line(): Unit = {
 	     for (i <- 1 to 4) {
 	        house(30);
 	        penUp();
@@ -43,7 +43,7 @@ class HouseManyEntity extends Turtle {
 	     }
 	     nextLine();
 	}
-	def house(len:Int) {
+	def house(len:Int): Unit = {
 	    forward(len);
 	    
 	    right(30);

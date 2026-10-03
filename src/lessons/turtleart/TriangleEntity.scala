@@ -6,7 +6,7 @@ class TriangleEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
         addSizeHint(50,265, 250,265);
         

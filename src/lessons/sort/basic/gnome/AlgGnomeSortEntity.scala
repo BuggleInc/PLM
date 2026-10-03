@@ -5,12 +5,12 @@ import plm.universe.sort.SortingEntity;
 class AlgGnomeSortEntity extends SortingEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		gnomeSort();
 	}
 
 	/* BEGIN TEMPLATE */
-	def gnomeSort() {
+	def gnomeSort(): Unit = {
 		/* BEGIN SOLUTION */
 		var i=0;
 		while (i<getValueCount()-1) {

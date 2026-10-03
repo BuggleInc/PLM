@@ -4,7 +4,7 @@ import plm.universe.turtles.Turtle;
 
 class SpiralUseEntity extends Turtle {
 
-	def spiral(steps:Int, angle:Int, length:Int, increment:Int)	{
+	def spiral(steps:Int, angle:Int, length:Int, increment:Int): Unit = {
 		if (steps <= 0) {
 			return;
 		} else {
@@ -16,7 +16,7 @@ class SpiralUseEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		spiral(100,91,1,2);
 	}
 	/* BEGIN SOLUTION */

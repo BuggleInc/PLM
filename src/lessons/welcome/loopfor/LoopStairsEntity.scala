@@ -5,7 +5,7 @@ import plm.universe.bugglequest.SimpleBuggle
 import plm.core.model.Game
 
 class LoopStairsEntity extends SimpleBuggle {
-	override def forward(i: Int)  {
+	override def forward(i: Int): Unit = {
 		for (i <- 1 to i) {
 			stepForward()
 		}
@@ -16,7 +16,7 @@ class LoopStairsEntity extends SimpleBuggle {
 			Color.orange,  Color.red,  Color.magenta,Color.pink)
 	
 	var inTeerNal_Steep_Count = -3
-	override def stepForward() {
+	override def stepForward(): Unit = {
 		super.stepForward();
 		if (inTeerNal_Steep_Count<0 || inTeerNal_Steep_Count%2 == 1 || (inTeerNal_Steep_Count/2)>=colors.length) {
 			if (inTeerNal_Steep_Count < 0)
@@ -32,7 +32,7 @@ class LoopStairsEntity extends SimpleBuggle {
 	}
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		forward(3);
 		left();

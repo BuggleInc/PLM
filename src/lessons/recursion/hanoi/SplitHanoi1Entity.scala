@@ -5,16 +5,16 @@ import lessons.recursion.hanoi.universe.HanoiEntity;
 class SplitHanoi1Entity extends HanoiEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		solve(getParamInt(0), getParamInt(1), getParamInt(2), getParamInt(3));
 	}
 
-	def solve(src:Int,other:Int, dst1:Int, dst2:Int) {
+	def solve(src:Int,other:Int, dst1:Int, dst2:Int): Unit = {
 		splitHanoi(getSlotSize(src)/2, src,other, dst1,dst2);
 	}
 
 	/* BEGIN TEMPLATE */
-  def splitHanoi(height:Int, src:Int, other:Int, dst1:Int, dst2:Int) {
+  def splitHanoi(height:Int, src:Int, other:Int, dst1:Int, dst2:Int): Unit = {
 	  /* BEGIN SOLUTION */
     if (height > 0) {
       moveDouble(height-1, src,dst1,dst2,other);
@@ -23,7 +23,7 @@ class SplitHanoi1Entity extends HanoiEntity {
       splitHanoi(height-1, other,src,dst1, dst2);
     }    
   }
-  def moveDouble(height:Int, src:Int, other1:Int, other2:Int, dst:Int) {
+  def moveDouble(height:Int, src:Int, other1:Int, other2:Int, dst:Int): Unit = {
     //for (int i=4;i>height;i--) System.out.print(" ");
     //System.out.println("hanoi("+height+","+src+","+other+","+dst+")");
     if (height>0) {

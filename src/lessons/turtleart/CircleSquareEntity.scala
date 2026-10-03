@@ -6,7 +6,7 @@ class CircleSquareEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
         addSizeHint(35,100, 35,200);
 

@@ -6,7 +6,7 @@ class CyclicHanoiEntity extends HanoiEntity {
   override def move(from:Int, to:Int) = cyclicMove(from, to)
   
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
     val src=getParamInt(0)
     val mid=getParamInt(1)
     val dst=getParamInt(2)
@@ -14,7 +14,7 @@ class CyclicHanoiEntity extends HanoiEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-	def clockwise(height:Int, src:Int, mid:Int, dst:Int) {
+	def clockwise(height:Int, src:Int, mid:Int, dst:Int): Unit = {
 		/* BEGIN SOLUTION */
 		if (height>0) {
       anti(height-1,src,dst,mid);
@@ -22,7 +22,7 @@ class CyclicHanoiEntity extends HanoiEntity {
       anti(height-1,mid,src,dst);
 		}
   }
-  def anti(height:Int, src:Int, mid:Int, dst:Int) {
+  def anti(height:Int, src:Int, mid:Int, dst:Int): Unit = {
 	  if (height > 0) {   
       //System.err.println("beg counterclockwise("+height+","+src+","+mid+","+dst+")");
       anti(height-1,src,mid,dst);

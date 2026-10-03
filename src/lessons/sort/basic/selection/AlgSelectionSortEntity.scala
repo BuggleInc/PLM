@@ -5,12 +5,12 @@ import plm.universe.sort.SortingEntity;
 class AlgSelectionSortEntity extends SortingEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		selectionSort();
 	}
 
 	/* BEGIN TEMPLATE */
-	def selectionSort() {
+	def selectionSort(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- 0 to getValueCount()-2) {
 			var min = i;	

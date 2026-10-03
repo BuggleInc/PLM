@@ -6,7 +6,7 @@ class CircleYingEntity extends Turtle {
 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
-	override def run() {
+	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 	    for (i <- 1 to 360) {
 	        forward(2);

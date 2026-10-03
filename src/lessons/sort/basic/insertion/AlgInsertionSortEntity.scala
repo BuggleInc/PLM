@@ -5,12 +5,12 @@ import plm.universe.sort.SortingEntity;
 class AlgInsertionSortEntity extends SortingEntity {
 
 	/* BEGIN REMOTE */
-	override def run() {
+	override def run(): Unit = {
 		insertionSort();
 	}
 
 	/* BEGIN TEMPLATE */
-	def insertionSort() {
+	def insertionSort(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to getValueCount()-1) {
 			var value = getValue(i);
