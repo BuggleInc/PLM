@@ -6,6 +6,7 @@ import plm.universe.bugglequest.SimpleBuggle
 import lessons.turmites.universe.TurmiteWorld
 
 class TurmiteCreatorEntity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	val allColors = Array(Color.white, Color.yellow, Color.red, Color.cyan, Color.green, Color.orange, 
 			Color.blue, Color.black,
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray);
@@ -36,7 +37,6 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 				state = rule(state)(currentColor)(NEXT_STATE);
 	}
 
-	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	/* Do not change these definitions */
 	val STOP   = 0;

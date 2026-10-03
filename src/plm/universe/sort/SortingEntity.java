@@ -20,16 +20,16 @@ public class SortingEntity extends Entity implements SortingEntityPrimitives {
 
   @Override public boolean isSmaller(int i, int j) { return ((SortingWorld)this.world).isSmaller(i, j); }
 
-  @Override public boolean isSmallerThan(int i, int val) { return ((SortingWorld)this.world).isSmallerThan(i, val); }
+  @Override public boolean isSmallerThan(int i, int value) { return ((SortingWorld)this.world).isSmallerThan(i, value); }
 
   public void run()
   {
     // Child implement this
   }
 
-  @Override public void setValue(int i, int val)
+  @Override public void setValue(int i, int value)
   {
-    ((SortingWorld)this.world).setValue(i, val);
+    ((SortingWorld)this.world).setValue(i, value);
     stepUI();
   }
 
@@ -43,7 +43,7 @@ public class SortingEntity extends Entity implements SortingEntityPrimitives {
   public int getNombreValeurs() { return getValueCount(); }
 
   public int getValeur(int i) { return getValue(i); }
-  public void setValeur(int i, int val) { setValue(i, val); }
+  public void setValeur(int i, int value) { setValue(i, value); }
 
   public boolean plusPetit(int i, int j) { return isSmaller(i, j); }
   public boolean plusPetitQue(int i, int value) { return isSmallerThan(i, value); }

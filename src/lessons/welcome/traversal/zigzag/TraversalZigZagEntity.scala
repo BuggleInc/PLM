@@ -9,11 +9,11 @@ class TraversalZigZagEntity extends SimpleBuggle {
 	override def run() {
 		/* BEGIN SOLUTION */
 		var cpt=0;
-		writeMessage(cpt);
+		writeMessage(Integer.toString(cpt));
 		while (!endingPosition()) {
 			nextStep();
 			cpt+=1;
-			writeMessage(cpt);
+			writeMessage(Integer.toString(cpt));
 		}
 	}
 

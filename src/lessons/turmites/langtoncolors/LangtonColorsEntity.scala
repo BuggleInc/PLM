@@ -5,10 +5,10 @@ import plm.universe.bugglequest.SimpleBuggle;
 import lessons.turmites.universe.TurmiteWorld
 
 class LangtonColorsEntity extends SimpleBuggle {
+	/* BEGIN REMOTE */
 	val allColors = Array(Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray);
 
-	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	def step(rule:Array[Char], colors:Array[Color]) {
 		/* BEGIN SOLUTION */
@@ -35,8 +35,8 @@ class LangtonColorsEntity extends SimpleBuggle {
 	/* END TEMPLATE */
 
 	override def run() { 
-		val nbSteps = getParam(0).asInstanceOf[Int];
-		val rule = getParam(1).asInstanceOf[String].toCharArray;
+		val nbSteps = getParamInt(0);
+		val rule = getParamString(1).toCharArray;
 
 		var colors = new Array[Color] (rule.length);
 		for (i <- 0 to rule.length-1)

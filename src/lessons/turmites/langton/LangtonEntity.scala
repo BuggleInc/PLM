@@ -31,7 +31,7 @@ class LangtonEntity extends SimpleBuggle {
 	/* END TEMPLATE */
 
 	override def run() { 
-		val nbSteps = getParam(0).asInstanceOf[Int]; 
+		val nbSteps = getParamInt(0) 
 		for (i <- 1 to nbSteps) {
 			step();
 			stepDone();

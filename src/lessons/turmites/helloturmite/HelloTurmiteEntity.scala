@@ -5,8 +5,9 @@ import plm.universe.bugglequest.SimpleBuggle;
 import lessons.turmites.universe.TurmiteWorld
 
 class HelloTurmiteEntity extends SimpleBuggle {
-		val allColors = Array(Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
-			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray);
+	/* BEGIN REMOTE */
+	val allColors = Array(Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
+		Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray);
 
 	val STOP   = 0;
 	val NOTURN = 1;
@@ -19,7 +20,6 @@ class HelloTurmiteEntity extends SimpleBuggle {
 	val NEXT_STATE = 2;
 
 
-	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */
 	var state = 0;
 
@@ -52,9 +52,8 @@ class HelloTurmiteEntity extends SimpleBuggle {
 	/* END TEMPLATE */
 
 	override def run() { 
-		val nbSteps = getParam(0).asInstanceOf[Int];
-
-		val rule = getParam(1).asInstanceOf[ Array[Array[Array[Int]]] ];
+		val nbSteps = getParamInt(0);
+		val rule = deserialize(getParamString(1)).asInstanceOf[ Array[Array[Array[Int]]] ];
 
 		var colors = new Array[Color] (rule.length);
 		for (i <- 0 to rule.length-1)

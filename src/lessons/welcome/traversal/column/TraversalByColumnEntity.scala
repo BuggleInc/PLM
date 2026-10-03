@@ -9,11 +9,11 @@ class TraversalByColumnEntity extends SimpleBuggle {
 	override def run() {
 		/* BEGIN SOLUTION */	
 		var cpt=0;
-		writeMessage(cpt.asInstanceOf[String]);
+		writeMessage(Integer.toString(cpt));
 		while (!endingPosition()) {
 			nextStep();
 			cpt+=1;
-			writeMessage(cpt.asInstanceOf[String]);
+			writeMessage(Integer.toString(cpt));
 		}
 	}
 	def nextStep() {	
@@ -40,16 +40,16 @@ class TraversalByColumnEntity extends SimpleBuggle {
 	/* END TEMPLATE */	
 
 	override def forward(i:Int)  {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
+		throw new RuntimeException("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead.");
 	}
 	override def stepForward()  {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
+		throw new RuntimeException("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead.");
 	}
 	override def backward(i:Int) {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
+		throw new RuntimeException("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead.");
 	}
 	override def stepBackward() {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
+		throw new RuntimeException("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead.");
 	}
 	/* END REMOTE */
 }

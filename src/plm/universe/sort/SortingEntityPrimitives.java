@@ -12,9 +12,9 @@ public interface SortingEntityPrimitives extends EntityPrimitivesBase {
 
   @Primitive(111) boolean isSmaller(int i, int j);
 
-  @Primitive(112) boolean isSmallerThan(int i, int val);
+  @Primitive(112) boolean isSmallerThan(int i, int value);
 
-  @Primitive(116) void setValue(int i, int val);
+  @Primitive(116) void setValue(int i, int value);
 
   @Primitive(113) void swap(int i, int j);
 
