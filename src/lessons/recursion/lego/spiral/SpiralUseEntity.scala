@@ -19,6 +19,9 @@ class SpiralUseEntity extends Turtle {
 	override def run() {
 		spiral(100,91,1,2);
 	}
+	/* BEGIN SOLUTION */
+	// nothing to hide: the template above is already the solution
+	/* END SOLUTION */
 	/* END TEMPLATE */
 	/* END REMOTE */
 }

@@ -11,4 +11,7 @@ def run():
     
   # BEGIN TEMPLATE
   spiral(100,91,1,2)
+  # BEGIN SOLUTION
+  # nothing to hide: the template above is already the solution
+  # END SOLUTION
   # END TEMPLATE

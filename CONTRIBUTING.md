@@ -107,13 +107,13 @@ The entity file is read and parsed the first time `Exercise.getSourceFilesList(l
 and removed from the segments:
 - `BEGIN/END TEMPLATE`: the code initially shown to the student in the editor (at most one).
 - `BEGIN/END SOLUTION`: code kept for the correction but hidden from the student. With a `TEMPLATE`, there can be any number of
-  them, before, inside or after it. Without a `TEMPLATE`, there is exactly one, and it plays the role of the templated region:
-  the editor is initially empty in this case. If there is a `TEMPLATE` but no `SOLUTION`, the whole template is taken as a
-  solution (the initial content is empty).
+  `SOLUTION`s, before, inside or after it. Without a `TEMPLATE`, there is exactly `SOLUTION`, and it plays the role of the
+  templated region: the editor is initially empty in this case. An entity without any `SOLUTION` is rejected as a likely
+  mistake: if the template is meant to be the answer already, say so with an empty `SOLUTION` section.
 - `BEGIN/END IMPORT`: extra imports, kept out of the template.
 - `BEGIN/END REMOTE` (optional): narrows what counts as head and tail. Everything before `BEGIN REMOTE` and after `END REMOTE`
   is dropped, which lets Java/Scala leave out their own package/class declaration (their wrapper provides it). It must fully
-  enclose the templated region, and any `SOLUTION` outside that region must be within it.
+  enclose the templated region, and any `SOLUTION` out of the template region must be within the remote region.
 
 Any invalid markup throws a RuntimeException (unmatched or nested markers, several `TEMPLATE`s, a `SOLUTION` straddling another
 marker, ...).

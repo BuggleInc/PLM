@@ -273,6 +273,10 @@ public class EntityTemplateParser {
 
     if (phase == Phase.IN_TEMPLATE || inSolution || inImport || inRemote)
       throw new RuntimeException(Game.i18n.tr("{0}: end of file reached inside a BEGIN/END block. Please fix your entity.", shownFilename));
+    if (hasTemplate && !seenSolution)
+      throw new RuntimeException(Game.i18n.tr(
+          "{0}: a BEGIN/END TEMPLATE needs at least one BEGIN/END SOLUTION (even an empty one if the template is already the answer). Please fix your entity.",
+          shownFilename));
     if (!correctionBodyStarted)
       throw new RuntimeException(Game.i18n.tr("{0}: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION found. Please fix your entity.", shownFilename));
     return new SplitResult(segments, correctionBody.toString());

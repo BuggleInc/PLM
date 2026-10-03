@@ -70,7 +70,8 @@ public class EntityTemplateParserTest {
   /** C: the template is left as is (the {@code #line} directive is added later, when compiling). */
   @Test public void testCTemplate() throws PLMCompilerException
   {
-    SourceFile e = parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* END TEMPLATE */"), new LangC());
+    SourceFile e =
+        parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* BEGIN SOLUTION */", "b();", "/* END SOLUTION */", "/* END TEMPLATE */"), new LangC());
 
     Assertions.assertEquals("a();\n", e.getBody());
     Assertions.assertEquals("int x;\n$body\n", e.getTemplate());
@@ -80,11 +81,11 @@ public class EntityTemplateParserTest {
   @Test public void testJavaImports() throws PLMCompilerException
   {
     SourceFile e = parse(lines("/* BEGIN IMPORT */", "import java.util.Stack;", "/* END IMPORT */", "public class FooEntity {", "  /* BEGIN TEMPLATE */",
-                                    "  int a;", "  /* END TEMPLATE */", "}"),
-                              new LangJava());
+                               "  int a;", "  /* BEGIN SOLUTION */", "  int b;", "  /* END SOLUTION */", "  /* END TEMPLATE */", "}"),
+                         new LangJava());
 
     Assertions.assertEquals("import java.util.Stack;\n", e.getImports());
-    Assertions.assertEquals("public class Bar {\n$body\n}\n", e.getTemplate());
+    Assertions.assertEquals("public class FooEntity {\n$body\n}\n", e.getTemplate());
     Assertions.assertEquals("int a;\n", e.getBody());
   }
 
@@ -102,13 +103,14 @@ public class EntityTemplateParserTest {
   /** REMOTE narrows head/tail down to what is written between its markers; correctionBody keeps the TEMPLATE markers. */
   @Test public void testRemoteNarrowsHeadAndTail() throws PLMCompilerException
   {
-    SourceFile e = parse(lines("package foo;", "public class FooEntity {", "  /* BEGIN REMOTE */", "  void run() {", "    /* BEGIN TEMPLATE */",
-                                    "    int a;", "    /* END TEMPLATE */", "  }", "  /* END REMOTE */", "}"),
-                              new LangJava());
+    SourceFile e = parse(lines("package foo;", "public class FooEntity {", "  /* BEGIN REMOTE */", "  void run() {", "    /* BEGIN TEMPLATE */", "    int a;",
+                               "    /* BEGIN SOLUTION */", "    int b;", "    /* END SOLUTION */", "    /* END TEMPLATE */", "  }", "  /* END REMOTE */", "}"),
+                         new LangJava());
 
     Assertions.assertEquals("  void run() {\n$body\n  }\n", e.getTemplate());
     Assertions.assertEquals("int a;\n", e.getBody());
-    Assertions.assertEquals("    /* BEGIN TEMPLATE */\n    int a;\n    /* END TEMPLATE */\n", e.getCorrectionBody());
+    Assertions.assertEquals("    /* BEGIN TEMPLATE */\n    int a;\n    /* BEGIN SOLUTION */\n    int b;\n    /* END SOLUTION */\n    /* END TEMPLATE */\n",
+                            e.getCorrectionBody());
   }
 
   @Test public void testUnclosedRemote()
@@ -190,5 +192,14 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("a = 1\n", e.getBody());
     Assertions.assertEquals(8, e.getBodyIndent());
+  }
+
+  /** A TEMPLATE without any SOLUTION is rejected as a likely mistake, unless an (empty) SOLUTION says that the template is the answer. */
+  @Test public void testTemplateWithoutSolution() throws PLMCompilerException
+  {
+    Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN TEMPLATE */", "a();", "/* END TEMPLATE */"), new LangC()));
+
+    SourceFile e = parse(lines("/* BEGIN TEMPLATE */", "a();", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END TEMPLATE */"), new LangC());
+    Assertions.assertEquals("a();\n", e.getBody());
   }
 }
