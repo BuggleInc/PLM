@@ -128,7 +128,7 @@ What lies outside the templated region is the `head` and the `tail`. The resulti
 - `correctionBody`: the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` without template. It is the `$body` value used to compile the correction.
 - `imports`: the content of the `IMPORT` sections.
-- `remote`: the `RemoteXxx` universe guessed by `lang.getRemote(correction)`.
+- `remote`: the `RemoteXxx` universe guessed by `guessRemote()` from the entity file content.
 - `bodyIndent`: see above.
 
 ### Step 2: building a compilable source (language-specific in `compileExo()`, not cached)
