@@ -57,8 +57,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   - The code is then compiled to an external executable/jar if needed. Java compiles in-process to avoid the startup time of an
     external JVM, using the same API than javac. Scala and C are stating external compilers, and Python has nothing to compile.
     - TODO: Scala should be converted to compile in-process too, as Java. But it's a bit more difficult as its API is less
-      stable than the Java counterpart (so we should transition to Scala 3 first, at leat), and may introduce thread safety
-      issues.
+      stable than the Java counterpart, and may introduce thread safety issues.
   - `compileExo()` returns a textual reference to the result (the path to a jar, a binary or a script, or `null` for LightBoy
     that don't compile at all), which the caller then passes down as-is to `runEntity()`'s `executable` parameter below.
 * **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`:
@@ -221,7 +220,7 @@ for/cancels help, or reads a hint:
 - **Student languages** (each implemented as a `ProgrammingLanguage` subclass in `plm.core.lang`):
   - **Java**: compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
     void main` boilerplate exposed to the student).
-  - **Scala**: `scala-library`/`scala-compiler`/`scala-reflect` 2.12.20; compiled by driving `scala.tools.nsc.Main` as a
+  - **Scala**: `scala3-library_3`/`scala3-compiler_3` 3.9.0 (LTS); compiled by driving `dotty.tools.dotc.Main` as a
     separate `java -cp <scala jars> ...` process, then run as its own `java -jar` process like Java.
   - **Python**: an external `python3` process is spawned per run.
   - **C** compiled externally and driven over pipes.
@@ -412,7 +411,7 @@ TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
-TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process). We need to transition to Scala3 first
+TODO: Use the PLM's JVM to compile Scala too (Java's own compilation is now in-process).
 TODO: benchmark the tests to understand where the time goes, and optimize this out
 
 TODO: Primitive numbering should be automatic

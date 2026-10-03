@@ -13,7 +13,7 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
   @Override public String generateNullPointerErrorCode()
   {
-    return "override def run() {\n"
+    return "override def run(): Unit = {\n"
         + "  var s:String = null;\n"
         + "  println(s.length());\n"
         + "}";
@@ -21,7 +21,7 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
   @Override public String generateOutOfBoundsErrorCode()
   {
-    return "override def run() {\n"
+    return "override def run(): Unit = {\n"
         + "  var t:Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);\n"
         + "  println(t(42));\n"
         + "}";
@@ -29,14 +29,14 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
   @Override public String generateWrongCode()
   {
-    return "override def run() {\n"
+    return "override def run(): Unit = {\n"
         + "  setObjectif(false);\n"
         + "}";
   }
 
   @Override public String generateSolutionFollowedByError()
   {
-    return "override def run() {\n"
+    return "override def run(): Unit = {\n"
         + "  setObjectif(true);\n"
         + "  var t:Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);\n"
         + "  println(t(42));\n"
@@ -45,7 +45,7 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
   @Override public String generateExceptionRaisingCode()
   {
-    return "override def run() {\n"
+    return "override def run(): Unit = {\n"
         + "  throw new Exception(\"easy exception\")\n"
         + "}";
   }
