@@ -6,6 +6,7 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
+import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.EntityTemplateParser;
 import plm.core.model.session.SourceFile;
@@ -201,5 +202,16 @@ public class EntityTemplateParserTest {
 
     SourceFile e = parse(lines("/* BEGIN TEMPLATE */", "a();", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END TEMPLATE */"), new LangC());
     Assertions.assertEquals("a();\n", e.getBody());
+  }
+
+  /** The universe is guessed from words found in the entity, the same way in every language. */
+  @Test public void testRemote() throws PLMCompilerException
+  {
+    String solution = "# BEGIN TEMPLATE\n# BEGIN SOLUTION\n# END SOLUTION\n# END TEMPLATE";
+    Assertions.assertEquals("RemoteBuggle", parse(lines("from RemoteBuggle import *", solution), new LangPython()).getRemote());
+    Assertions.assertEquals("RemoteBat", parse(lines("#include \"RemoteBat.h\"", solution), new LangC()).getRemote());
+    Assertions.assertEquals("RemoteTurtle", parse(lines("val t = new Turtle()", solution), new LangScala()).getRemote());
+    Assertions.assertEquals("RemoteCons", parse(lines("#include \"RemoteBat.h\"", "#include \"universe/RecList.h\"", solution), new LangC()).getRemote());
+    Assertions.assertNull(parse(lines("int x;", solution), new LangC()).getRemote());
   }
 }

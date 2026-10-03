@@ -107,7 +107,7 @@ public class LangC extends TemplatedRemoteLang {
    * reuses it afterwards. Only the student/correction file itself is compiled anew every time, then linked against
    * those cached objects.
    */
-  private String compile(String code, String remoteGuess, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  private String compile(String code, String remote, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     try {
       Files.createDirectories(C_ROOT);
@@ -115,8 +115,6 @@ public class LangC extends TemplatedRemoteLang {
 
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
-
-      String remote = checkRemoteOrFail(remoteGuess, "C", exo, null);
 
       String valueSerializerH = readResource("value_serializer.h");
       String valueSerializerC = readResource("value_serializer.c");

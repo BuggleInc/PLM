@@ -30,7 +30,7 @@ public class SourceFile {
    *                           the {@code $body} value used for {@code StudentOrCorrection.CORRECTION}
    * @param imports            the lines found between BEGIN IMPORT and END IMPORT markers: not part of the templates nor of
    *                           the initial body, but still in {@code correction}
-   * @param remote             the RemoteXxx universe guessed by {@code lang.getRemote(correction)}, or null if none
+   * @param remote             the RemoteXxx universe guessed by {@code EntityTemplateParser}, or null if none
    * @param bodyIndent         how many spaces the templated region is indented by in the entity: the editor content is flush left instead
    */
   public SourceFile(String name, String initialBody, String template, String correctionTemplate, String correctionBody, String imports, String remote,

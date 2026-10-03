@@ -170,7 +170,7 @@ public class LangJava extends JvmTemplatedLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String key = packageNameCache + "." + sf.getName();
 
-        String remote = checkRemoteOrFail(sf.getRemote(), "Java", exo, diagnostic);
+        String remote = sf.getRemote();
 
         runtimePatterns.put("\\$imports", ("import static generated.ValueSerializer.*;\n"
                                            + "import java.awt.Color;\n"

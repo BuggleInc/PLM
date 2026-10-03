@@ -53,7 +53,11 @@ public abstract class ExerciseTemplated extends Exercise {
       throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replaceAll("\\.", "/"), lang.getExt()));
     }
 
-    newSource(lang, EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename));
+    SourceFile source = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename);
+    if (source.getRemote() == null)
+      throw new PLMCompilerException(Game.i18n.tr("{0}: cannot guess which RemoteXxx universe this entity belongs to. Please fix your entity.", shownFilename),
+                                     null, null);
+    newSource(lang, source);
   }
 
   protected final void setup(World w) { setup(new World[] {w}); }

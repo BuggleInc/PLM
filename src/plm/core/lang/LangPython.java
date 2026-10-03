@@ -4,8 +4,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -81,17 +79,6 @@ public class LangPython extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public String getRemote(String code)
-  {
-    // Python exercises must declare their universe explicitly with a real "from RemoteXxx import *" line
-    Matcher explicit = Pattern.compile("(?m)^from (Remote\\w+) import \\*").matcher(code);
-    if (explicit.find())
-      return explicit.group(1);
-
-    // If there is no such explicit import, fail fast and get the exercise author fix the issue
-    return null;
-  }
-
   public String getRemotePythonFile(String remoteName) { return loadRemoteFile(remoteName, "python", ".py"); }
 
   /**
@@ -134,7 +121,7 @@ public class LangPython extends TemplatedRemoteLang {
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
-        String remote = checkRemoteOrFail(sf.getRemote(), "Python", exo, null);
+        String remote = sf.getRemote();
 
         List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());
         StringBuilder extraImports    = new StringBuilder();

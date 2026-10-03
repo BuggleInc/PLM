@@ -86,12 +86,6 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
   /**
-   * Guesses which RemoteXxx universe an entity belongs to, out of the whole entity file ({@code correction}). Returns
-   * null if there is none to guess, or if it couldn't be. Overridden by the languages that run entities remotely.
-   */
-  public String getRemote(String correction) { return null; }
-
-  /**
    * Compile the exercise, and return a textual reference to the result (a jar or binary path) that {@link #runEntity} will
    * later need to actually run it.
    */

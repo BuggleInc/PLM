@@ -3,7 +3,9 @@ package plm.core.model.lesson;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
@@ -25,6 +27,37 @@ public class EntityTemplateParser {
    * @param name           the name of the resulting source file
    * @param shownFilename  the human-readable file name, only used in warning/error messages
    */
+  /**
+   * The RemoteXxx universes, with the words found in the entities of that universe, in the order of the search: the first universe
+   * with a matching word wins, so RemoteCons is listed before RemoteBat as some cons entities also mention the bat universe.
+   */
+  private static final Map<String, List<String>> UNIVERSES = new LinkedHashMap<>();
+  static
+  {
+    UNIVERSES.put("RemoteSimple", List.of("setObjectif", "RemoteSimple"));
+    UNIVERSES.put("RemoteCons", List.of(".cons.", "#include \"universe/RecList.h", "RemoteCons"));
+    UNIVERSES.put("RemoteBat", List.of(".bat.", "RemoteBat"));
+    UNIVERSES.put("RemoteBuggle", List.of("Buggle", "RemoteBuggle"));
+    UNIVERSES.put("RemoteTurmite", List.of("Langton", "Turmite", "RemoteTurmite"));
+    UNIVERSES.put("RemoteTurtle", List.of("Turtle", "RemoteTurtle"));
+    UNIVERSES.put("RemoteDutchFlag", List.of("Flag", "RemoteDutchFlag"));
+    UNIVERSES.put("RemoteBaseball", List.of("Baseball", "RemoteBaseball"));
+    UNIVERSES.put("RemotePancake", List.of("Pancake", "RemotePancake"));
+    UNIVERSES.put("RemoteHanoi", List.of("Hanoi", "RemoteHanoi"));
+    UNIVERSES.put("RemoteSort", List.of("Sort", "RemoteSort"));
+    UNIVERSES.put("RemoteLander", List.of("Lander", "RemoteLander"));
+  }
+
+  /** Guesses which RemoteXxx universe an entity file belongs to, or null if it couldn't be guessed. */
+  private static String guessRemote(String entity)
+  {
+    for (Map.Entry<String, List<String>> universe : UNIVERSES.entrySet())
+      for (String word : universe.getValue())
+        if (entity.contains(word))
+          return universe.getKey();
+    return null;
+  }
+
   public static SourceFile parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
   {
     String[] lines             = content.split("\n");
@@ -62,7 +95,7 @@ public class EntityTemplateParser {
     int bodyIndent = minLeadingSpaces(templateRegion);
     initialContent = removeLeadingSpaces(initialContent, bodyIndent);
 
-    return new SourceFile(name, initialContent, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction), bodyIndent);
+    return new SourceFile(name, initialContent, template, correctionTemplate, split.correctionBody(), imports, guessRemote(correction), bodyIndent);
   }
 
   /**

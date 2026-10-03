@@ -4,11 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import javax.swing.ImageIcon;
-import javax.tools.DiagnosticCollector;
-import javax.tools.JavaFileObject;
-import plm.core.PLMCompilerException;
 import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.RunOutcome;
 
 /**
  * Ancestor of the all programming languages, in charge of generating student code by injecting extracted pieces of the
@@ -18,55 +14,6 @@ import plm.core.model.lesson.RunOutcome;
 public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
 
   public TemplatedRemoteLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
-
-  /**
-   * Guess which RemoteXxx universe an exercise belongs to. Shared by Java, Scala and C.
-   * Python instead requires an explicit "from RemoteXxx import *" line (see its own getRemote()).
-   */
-  @Override public String getRemote(String code)
-  {
-    if (code.contains("setObjectif") || code.contains("RemoteSimple"))
-      return "RemoteSimple";
-    if (code.contains(".bat."))
-      return "RemoteBat";
-    if (code.contains(".cons.") || code.contains("#include \"universe/RecList.h"))
-      return "RemoteCons";
-    if (code.contains("Buggle"))
-      return "RemoteBuggle";
-    if (code.contains("Langton") || code.contains("Turmite"))
-      return "RemoteTurmite";
-    if (code.contains("Turtle"))
-      return "RemoteTurtle";
-    if (code.contains("Flag"))
-      return "RemoteDutchFlag";
-    if (code.contains("Baseball"))
-      return "RemoteBaseball";
-    if (code.contains("Pancake"))
-      return "RemotePancake";
-    if (code.contains("Hanoi"))
-      return "RemoteHanoi";
-    if (code.contains("Sort"))
-      return "RemoteSort";
-    if (code.contains("Lander"))
-      return "RemoteLander";
-
-    return null;
-  }
-
-  /**
-   * Fails the compile with a clear message if {@code remote} is null (the RemoteXxx universe couldn't be guessed from
-   * the correction, see {@link #getRemote}), otherwise returns it unchanged. {@code diagnostic} may be null (Python
-   * and C have no javac-style DiagnosticCollector to attach).
-   */
-  protected String checkRemoteOrFail(String remote, String langName, Exercise exo, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
-  {
-    if (remote == null) {
-      PLMCompilerException e = new PLMCompilerException("This universe is not implemented in " + langName + ".", null, diagnostic);
-      exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
-      throw e;
-    }
-    return remote;
-  }
 
   /**
    * Read a classloader resource at {@code path} (relative to the classpath root) as a UTF-8 string. Low-level

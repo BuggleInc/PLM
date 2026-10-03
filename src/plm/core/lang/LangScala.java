@@ -240,7 +240,7 @@ public class LangScala extends JvmTemplatedLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String key = packageNameCache + "." + sf.getName();
 
-        String remote = checkRemoteOrFail(sf.getRemote(), "Scala", exo, diagnostic);
+        String remote = sf.getRemote();
 
         runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
                                            + "import java.awt.Color; "
