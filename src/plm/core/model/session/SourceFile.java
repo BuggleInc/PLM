@@ -103,7 +103,7 @@ public class SourceFile {
       res = res.replace("$body", body + " \n");
     }
 
-    res = res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
+    res = res.replace('\u00A0', ' '); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
     return new CompilableContent(res, offset);
   }
 
