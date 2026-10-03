@@ -159,8 +159,6 @@ public class LangJava extends JvmTemplatedLang {
   {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
-    Map<String, String> runtimePatterns = new TreeMap<String, String>();
-
     String mainRemoteContent = getRemoteJavaFile(null);
 
     String jarPath                                 = null;
@@ -172,17 +170,16 @@ public class LangJava extends JvmTemplatedLang {
 
         String remote = sf.getRemote();
 
-        runtimePatterns.put("\\$imports", ("import static generated.ValueSerializer.*;\n"
-                                           + "import java.awt.Color;\n"
-                                           + "import static generated.Remote.*;\n"
-                                           + "import static generated." + remote + ".*;\n" + sf.getImports())
-                                              .replace('\n', ' '));
+        String imports = ("import static generated.ValueSerializer.*;\n"
+                          + "import java.awt.Color;\n"
+                          + "import static generated.Remote.*;\n"
+                          + "import static generated." + remote + ".*;\n" + sf.getImports())
+                             .replace('\n', ' ');
 
-        String template   = "package generated;\n\n$imports\n\npublic class Entity {\n"
-                            + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
+        String template = "package generated;\n\n" + imports + "\n\npublic class Entity {\n" +
+                          (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
         String entityCode =
-            sf.getCompilableContent(template, whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody(), runtimePatterns)
-                .content();
+            sf.getCompilableContent(template, whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody()).content();
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
         entityCode        = Pattern.compile("this.").matcher(entityCode).replaceAll("");

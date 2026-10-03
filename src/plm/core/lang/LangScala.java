@@ -229,8 +229,6 @@ public class LangScala extends JvmTemplatedLang {
   {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
-    Map<String, String> runtimePatterns = new TreeMap<String, String>();
-
     String mainRemoteContent = getRemoteScalaFile(null);
 
     String jarPath                                 = null;
@@ -242,17 +240,17 @@ public class LangScala extends JvmTemplatedLang {
 
         String remote = sf.getRemote();
 
-        runtimePatterns.put("\\$imports", ("import generated.ValueSerializer._; "
-                                           + "import java.awt.Color; "
-                                           + "import generated.Remote._; "
-                                           + "import generated." + remote + "._; " + sf.getImports())
-                                              .replace('\n', ' '));
+        // All the imports go on a single line, so that the line numbers of the generated code do not depend on how many there are
+        String imports = ("import generated.ValueSerializer._; "
+                          + "import java.awt.Color; "
+                          + "import generated.Remote._; "
+                          + "import generated." + remote + "._; " + sf.getImports())
+                             .replace('\n', ' ');
 
-        String template   = "package generated\n\n$imports\n\nobject Entity {\n"
-                            + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
+        String template = "package generated\n\n" + imports + "\n\nobject Entity {\n" +
+                          (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
         String entityCode =
-            sf.getCompilableContent(template, whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody(), runtimePatterns)
-                .content();
+            sf.getCompilableContent(template, whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody()).content();
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
         entityCode        = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");

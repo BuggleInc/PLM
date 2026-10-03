@@ -135,20 +135,18 @@ What lies outside the templated region is the `head` and the `tail`. The resulti
 
 Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correctionTemplate` for
 `StudentOrCorrection.CORRECTION` or `template` otherwise, and wraps it the way its language needs:
-- Java/Scala wrap it in their own class/object boilerplate: `package`, `$imports`, `class Entity {`, then the template, then a
-  closing brace.
-- Python only prepends its own `$imports` slot (`"$imports\n\n" + template`) with no further boilerplate. As indentation matters
-  in Python, it indents the student's code by `bodyIndent` spaces (after removing its own common indentation) before
-  substituting it. The tabs found in the leading whitespace of the whole source (entity and student) are then expanded as well, so
-  that tabs and spaces never get mixed up.
+- Java/Scala wrap it in their own class/object boilerplate: `package`, their imports (all on a single line, so that the line
+  numbers of the generated code do not depend on how many there are), `class Entity {`, then the template, then a closing brace.
+- Python only prepends its own imports to the template, with no further boilerplate. As indentation matters in Python, it
+  indents the student's code by `bodyIndent` spaces (after removing its own common indentation) before substituting it. The tabs
+  found in the leading whitespace of the whole source (entity and student) are then expanded as well, so that tabs and spaces
+  never get mixed up.
 - C inserts a `#line` preprocessor directive right before `$body`, so that compiler errors point at the entity's own file, unless the
   head already contains one.
 
-It then fills a `runtimePatterns` map of regex->replacement (`$imports`, ...) and calls
-`SourceFile.getCompilableContent(template, body, runtimePatterns)` that does the actual substitution:
-  - `runtimePatterns` is applied first to the given `template` (the literal `$body` remains after this step)
-  - `offset` is computed. It's the number of lines of the patched template before `$body`'s own first line, and it's used to fix
-    the location of the compilation errors so that they point to the code written by the student.
+It then calls `SourceFile.getCompilableContent(template, body)` that does the actual substitution:
+  - `offset` is computed. It's the number of lines of the template before `$body`'s own first line, meant to fix the location of
+    the compilation errors so that they point to the code written by the student (no caller uses it yet).
   - `$body` is substituted with the actual body. The language retrieves it first: either the source's `correctionBody` or the
     editor's current content. It could be generated locally, but asking it to the language gives  Python the opportunity to fix
     the indentation.

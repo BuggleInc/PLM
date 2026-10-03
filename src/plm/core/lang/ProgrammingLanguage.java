@@ -1,8 +1,6 @@
 package plm.core.lang;
 
 import java.net.URL;
-import java.util.Map;
-import java.util.TreeMap;
 import javax.swing.ImageIcon;
 import lessons.lightbot.universe.LightBotEntity;
 import plm.core.PLMCompilerException;
@@ -82,8 +80,6 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
       return Game.i18n.tr("{0} received while searching for resource {1}: {2}", e.getClass().getName(), resource, e.getLocalizedMessage());
     }
   }
-
-  protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
   /**
    * Compile the exercise, and return a textual reference to the result (a jar or binary path) that {@link #runEntity} will

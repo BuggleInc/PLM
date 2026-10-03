@@ -1,7 +1,5 @@
 package plm.core.model.session;
 
-import java.util.Map;
-import java.util.Map.Entry;
 import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.JavaEditorPanel;
@@ -74,7 +72,7 @@ public class SourceFile {
   public int getBodyIndent() { return bodyIndent; }
 
   /**
-   * The result of {@link #getCompilableContent(String, String, Map)}: the compilable source text, plus how many
+   * The result of {@link #getCompilableContent(String, String)}: the compilable source text, plus how many
    * lines of it come before the student/correction body's own first line (see {@code offset} there).
    */
   public record CompilableContent(String content, int offset) {}
@@ -82,27 +80,18 @@ public class SourceFile {
   /**
    * Returns the source text that we should compile, alongside the {@code $body} offset computed along the way.
    *
-   * The template (if any) has its {@code $body} placeholder substituted last, after every other {@code runtimePattern}
-   * has been applied: a pattern's replacement text may itself span several lines, which shifts how many physical lines
-   * come before {@code $body} in the final compiled file. The returned {@code offset} is the number of lines
-   * separating the start of the generated file from {@code $body}'s own first line, so that a compiler error line
-   * number can later be translated back into the student's own editor coordinates.
+   * The returned {@code offset} is the number of lines separating the start of the generated file from {@code $body}'s own
+   * first line, so that a compiler error line number can later be translated back into the student's own editor coordinates.
    *
    * @param template
    * 			the template to fill, or null to compile the body alone
    * @param body
    * 			what goes in place of {@code $body}: the student-provided content or the correction
-   * @param runtimePatterns
-   * 			some last-minute replacement to do (such as package name adjustment)
    * @return
    */
-  public CompilableContent getCompilableContent(String template, String body, Map<String, String> runtimePatterns)
+  public CompilableContent getCompilableContent(String template, String body)
   {
     String res = template != null ? template : body;
-
-    if (runtimePatterns != null)
-      for (Entry<String, String> pattern : runtimePatterns.entrySet())
-        res = res.replaceAll(pattern.getKey(), pattern.getValue());
 
     int offset = 0;
     if (template != null) {

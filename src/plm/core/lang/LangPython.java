@@ -132,7 +132,7 @@ public class LangPython extends TemplatedRemoteLang {
         String template   = imports + "\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
         String body       = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : reindent(sf.getBody(), sf.getBodyIndent());
         // The tabs of the entity and of the student are expanded the way python reads them, so that they never get mixed up with spaces
-        String entityCode = Indentation.expandLeadingTabs(sf.getCompilableContent(template, body, null).content());
+        String entityCode = Indentation.expandLeadingTabs(sf.getCompilableContent(template, body).content());
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
         // noinspection ResultOfMethodCallIgnored
