@@ -130,8 +130,7 @@ public class LangPython extends TemplatedRemoteLang {
   {
     String runName = packageNameForExercise(exo, whatToCompile);
 
-    Map<String, String> runtimePatterns = new TreeMap<String, String>();
-    String mainPath                     = null;
+    String mainPath = null;
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
@@ -142,15 +141,11 @@ public class LangPython extends TemplatedRemoteLang {
         for (String sourcePath : extraSourcePaths)
           extraImports.append("from ").append(fileNameWithoutExtension(sourcePath)).append(" import *\n");
 
-        runtimePatterns.put("\\$imports", ("from ValueSerializer import *\n"
-                                           + "from Remote import *\n" + extraImports)
-                                              .replace('\n', '\u0001'));
-
-        String template   = "$imports\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
+        String imports    = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports;
+        String template   = imports + "\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
         String body       = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : reindent(sf.getBody(), sf.getBodyIndent());
         // The tabs of the entity and of the student are expanded the way python reads them, so that they never get mixed up with spaces
-        String entityCode = Indentation.expandLeadingTabs(sf.getCompilableContent(template, body, runtimePatterns).content());
-        entityCode        = entityCode.replace('\u0001', '\n');
+        String entityCode = Indentation.expandLeadingTabs(sf.getCompilableContent(template, body, null).content());
 
         File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
         // noinspection ResultOfMethodCallIgnored
