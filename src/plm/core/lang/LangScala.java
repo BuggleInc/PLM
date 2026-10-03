@@ -1,5 +1,7 @@
 package plm.core.lang;
 
+import dotty.tools.dotc.Driver;
+import dotty.tools.dotc.reporting.Reporter;
 import java.awt.Color;
 import java.io.*;
 import java.lang.reflect.Method;
@@ -10,7 +12,11 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.tools.DiagnosticCollector;
+import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.StandardLocation;
+import javax.tools.ToolProvider;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.PrimitiveMethod;
@@ -28,9 +34,11 @@ import plm.universe.Point;
 /**
  * Remote execution for Scala, mirroring LangJava's architecture as closely as possible on purpose (see the class-level
  * comment there): an external "java" process is spawned per run, running compiled Scala bytecode that talks back to
- * CommandExecutor over a UNIX domain socket. Compilation is done by driving the Scala 3 compiler shipped as a PLM
- * dependency (dotty.tools.dotc.Main) as a *separate* "java -cp <scala jars> dotty.tools.dotc.Main" process, to avoid
- * assuming a standalone "scalac" binary is installed on the machine.
+ * CommandExecutor over a UNIX domain socket. Compilation now happens entirely in-process, exactly like LangJava: the
+ * ancillary ".java" helper files copied alongside the student's Scala code (ValueSerializer.java, Point.java,
+ * RecList.java) go through javax.tools.JavaCompiler, and the Scala 3 compiler shipped as a PLM dependency is driven
+ * directly through dotty.tools.dotc.Driver -- no "java -cp ... javac/dotty.tools.dotc.Main ..." subprocess is spawned
+ * for compiling anymore.
  *
  * Not yet factored with LangJava (structure kept close on purpose to make that factoring easy later); several private
  * helpers below are near-verbatim ports of LangJava's, adapted to Scala syntax where the generated code shape differs.
@@ -155,65 +163,95 @@ public class LangScala extends JvmTemplatedLang {
 
   private static String scalaRuntimeClasspath() { return classpathOf(true, SCALA_RUNTIME_CLASSES); }
 
+  /**
+   * Compiles the plain ".java" helper files copied alongside the student's Scala code (ValueSerializer.java,
+   * Point.java, RecList.java) in-process, exactly like LangJava.compileJavaFiles() does for the student's own Java
+   * entities. classOutputDir is also where compileScalaFiles() below points scalac's "-classpath" so that the Scala
+   * sources can reference these already-compiled classes.
+   */
+  private static void compileJavaHelperFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, File... files) throws PLMCompilerException
+  {
+    List<String> paths = Arrays.asList(files).stream().map(f -> f.toPath().toString()).toList();
+
+    JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+    if (compiler == null)
+      throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error(), diagnostic);
+
+    try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
+      // Same reasoning as LangJava.compileJavaFiles(): CLASS_PATH is left empty so these files (and whatever student
+      // Scala code ends up seeing them through scalac's own classpath) cannot see PLM's own classes.
+      fileManager.setLocation(StandardLocation.CLASS_PATH, List.of());
+      fileManager.setLocation(StandardLocation.CLASS_OUTPUT, List.of(classOutputDir));
+
+      Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
+      boolean success                                     = compiler.getTask(null, fileManager, diagnostic, null, null, compilationUnits).call();
+
+      // Any diagnostic, even a warning, is treated as an error, same as everywhere else in this class.
+      if (!success || !diagnostic.getDiagnostics().isEmpty()) {
+        String rtStderr = diagnostic.getDiagnostics().stream().map(Object::toString).collect(Collectors.joining("\n"));
+        throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error(), diagnostic);
+      }
+    } catch (IOException e) {
+      throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error(), diagnostic);
+    }
+  }
+
   private static void compileScalaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException
   {
     List<File> javaFiles  = Arrays.asList(files).stream().filter(f -> f.getName().endsWith(".java")).toList();
     List<File> scalaFiles = Arrays.asList(files).stream().filter(f -> f.getName().endsWith(".scala")).toList();
     List<String> paths    = Arrays.asList(files).stream().map(s -> s.toPath().toString()).toList();
 
-    if (!javaFiles.isEmpty()) {
-      ArrayList<String> javacArgs = new ArrayList<>();
-      javacArgs.add("javac");
-      javacArgs.add("-d");
-      javacArgs.add(".");
-      javaFiles.forEach(f -> javacArgs.add(f.getName()));
-      runToolProcess(diagnostic, packageFolder, paths, javacArgs);
-    }
+    if (!javaFiles.isEmpty())
+      compileJavaHelperFiles(diagnostic, packageFolder, javaFiles.toArray(File[] ::new));
 
     if (!scalaFiles.isEmpty()) {
-      ArrayList<String> scalacArgs = new ArrayList<>();
-      scalacArgs.add("java");
-      scalacArgs.add("-cp");
-      scalacArgs.add(scalaCompilerClasspath());
-      scalacArgs.add("dotty.tools.dotc.Main");
+      List<String> scalacArgs = new ArrayList<>();
       scalacArgs.add("-classpath");
-      // "." : packageFolder itself, where javac (above, if any) just wrote the already-compiled Java classes.
-      scalacArgs.add(scalaCompilerClasspath() + File.pathSeparator + ".");
+      // packageFolder itself, where javac (above, if any) just wrote the already-compiled Java classes.
+      scalacArgs.add(scalaCompilerClasspath() + File.pathSeparator + packageFolder.getAbsolutePath());
       scalacArgs.add("-d");
-      scalacArgs.add(".");
-      scalaFiles.forEach(f -> scalacArgs.add(f.getName()));
-      runToolProcess(diagnostic, packageFolder, paths, scalacArgs);
+      scalacArgs.add(packageFolder.getAbsolutePath());
+      scalacArgs.add("-color:never"); // avoid ANSI escapes polluting the captured diagnostic text below
+      scalaFiles.forEach(f -> scalacArgs.add(f.getAbsolutePath()));
+      runDotc(diagnostic, paths, scalacArgs);
     }
   }
 
-  private static void runToolProcess(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, List<String> paths, List<String> args)
-      throws PLMCompilerException
+  /**
+   * dotc has no DiagnosticCollector-like API as stable as javac's (see the class-level comment): with no custom
+   * Reporter passed in, Driver.process() uses its default ConsoleReporter, which prints diagnostics straight to
+   * System.out/System.err. Those are JVM-wide, so DOTC_LOCK serializes compiles, and System.out/err are swapped for
+   * capturing ByteArrayOutputStreams only for the duration of this call, then restored.
+   */
+  private static final Object DOTC_LOCK = new Object();
+
+  /** Drives the Scala 3 compiler in-process (dotty.tools.dotc.Driver), mirroring LangJava's in-process javac call. */
+  private static void runDotc(DiagnosticCollector<JavaFileObject> diagnostic, List<String> paths, List<String> args) throws PLMCompilerException
   {
-    try {
-      String[] params = args.toArray(String[] ::new);
-      Process proc    = Runtime.getRuntime().exec(params, new String[] {}, packageFolder);
+    ByteArrayOutputStream outBuf = new ByteArrayOutputStream();
+    ByteArrayOutputStream errBuf = new ByteArrayOutputStream();
+    Reporter reporter;
 
-      BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-      BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-
-      String rtStdout = stdInput.lines().collect(Collectors.joining("\n"));
-      String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
-
-      int retcode = -1;
+    synchronized (DOTC_LOCK) {
+      PrintStream origOut = System.out;
+      PrintStream origErr = System.err;
+      System.setOut(new PrintStream(outBuf, true, StandardCharsets.UTF_8));
+      System.setErr(new PrintStream(errBuf, true, StandardCharsets.UTF_8));
       try {
-        retcode = proc.waitFor();
-      } catch (InterruptedException ie) {
-        Thread.currentThread().interrupt();
+        reporter = new Driver().process(args.toArray(new String[0]));
+      } finally {
+        System.setOut(origOut);
+        System.setErr(origErr);
       }
+    }
 
-      if (retcode != 0 || !rtStderr.isBlank()) {
-        String msg = "The following command failed: " + String.join(" ", params);
-        msg += rtStderr.isBlank() ? rtStdout : rtStderr;
-
-        throw new PLMCompilerException(msg.toString(), new HashSet<>(paths), new Error(), diagnostic);
-      }
-    } catch (IOException e) {
-      throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error(), diagnostic);
+    // Any diagnostic, even a mere warning, fails the compile.
+    if (reporter.hasErrors() || reporter.hasWarnings()) {
+      String rtStdout = outBuf.toString(StandardCharsets.UTF_8);
+      String rtStderr = errBuf.toString(StandardCharsets.UTF_8);
+      String msg      = "The following Scala 3 compilation failed: " + String.join(" ", args) + "\n" + (rtStderr.isBlank() ? rtStdout : rtStderr);
+      throw new PLMCompilerException(msg, new HashSet<>(paths), new Error(), diagnostic);
     }
   }
 
