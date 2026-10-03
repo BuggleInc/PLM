@@ -209,11 +209,7 @@ public class ZipSessionKit implements ISessionKit {
             }
 
             // save exercise body
-            for (SourceFile sf : exercise.getLoadedSourceFiles(lang)) { // the sources not loaded yet were never modified
-              if (!(sf instanceof SourceFileRevertable))
-                continue;
-
-              SourceFileRevertable srcFile = (SourceFileRevertable)sf;
+            for (SourceFile srcFile : exercise.getLoadedSourceFiles(lang)) { // the sources not loaded yet were never modified
 
               ZipEntry ze = new ZipEntry(lang + "/" + exercise.getId() + "/" + srcFile.getName());
               zos.putNextEntry(ze);

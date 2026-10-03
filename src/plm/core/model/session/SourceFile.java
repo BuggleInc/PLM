@@ -9,6 +9,7 @@ import plm.core.ui.JavaEditorPanel;
 public class SourceFile {
 
   protected String name;
+  private final String initialBody;
   private String body;
   private String correction;
   private final String template;
@@ -38,6 +39,7 @@ public class SourceFile {
                     String remote, int bodyIndent)
   {
     this.name               = name;
+    this.initialBody        = initialBody;
     this.body               = initialBody;
     this.correction         = correction;
     this.template           = template;
@@ -47,6 +49,9 @@ public class SourceFile {
     this.remote             = remote;
     this.bodyIndent         = bodyIndent;
   }
+
+  /** A source file that is not templated: only its editable body matters. */
+  public SourceFile(String name) { this(name, "", "", null, null, null, null, null, 0); }
 
   public String getName() { return this.name; }
 
@@ -60,6 +65,10 @@ public class SourceFile {
       body = text;
     notifyListener();
   }
+
+  /** Puts back the body the student saw the first time */
+  public void revert(ProgrammingLanguage lang) { setBody(this.initialBody, lang); }
+
   public void setCorrection(String c) { this.correction = c; }
   public String getCorrection() { return this.correction; }
 
@@ -130,6 +139,7 @@ public class SourceFile {
     final int PRIME = 31;
     int result      = 1;
     result          = PRIME * result + ((body == null) ? 0 : body.hashCode());
+    result          = PRIME * result + ((initialBody == null) ? 0 : initialBody.hashCode());
     return result;
   }
 
@@ -146,6 +156,11 @@ public class SourceFile {
       if (other.body != null)
         return false;
     } else if (!body.equals(other.body))
+      return false;
+    if (initialBody == null) {
+      if (other.initialBody != null)
+        return false;
+    } else if (!initialBody.equals(other.initialBody))
       return false;
     return true;
   }

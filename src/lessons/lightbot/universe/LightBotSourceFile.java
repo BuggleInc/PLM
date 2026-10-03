@@ -2,9 +2,9 @@ package lessons.lightbot.universe;
 
 import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.session.SourceFileRevertable;
+import plm.core.model.session.SourceFile;
 
-public class LightBotSourceFile extends SourceFileRevertable {
+public class LightBotSourceFile extends SourceFile {
   private LightBotInstruction[] main;
   private LightBotInstruction[] func1;
   private LightBotInstruction[] func2;

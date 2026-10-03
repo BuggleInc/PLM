@@ -8,12 +8,12 @@ import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.session.SourceFileRevertable;
+import plm.core.model.session.SourceFile;
 import plm.core.utils.Indentation;
 
 /**
  * Parses the BEGIN/END TEMPLATE/SOLUTION/IMPORT/REMOTE markers out of one entity file's raw content, as described in the CONTRIBUTING.md file.
- * This results in a {@link SourceFileRevertable}.
+ * This results in a {@link SourceFile}.
  */
 public class EntityTemplateParser {
 
@@ -25,7 +25,7 @@ public class EntityTemplateParser {
    * @param name           the name of the resulting source file
    * @param shownFilename  the human-readable file name, only used in warning/error messages
    */
-  public static SourceFileRevertable parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
+  public static SourceFile parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
   {
     String[] lines             = content.split("\n");
     SplitResult split          = split(lines, shownFilename);
@@ -62,8 +62,8 @@ public class EntityTemplateParser {
     int bodyIndent = minLeadingSpaces(templateRegion);
     initialContent = removeLeadingSpaces(initialContent, bodyIndent);
 
-    return new SourceFileRevertable(name, initialContent, correction, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction),
-                                    bodyIndent);
+    return new SourceFile(name, initialContent, correction, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction),
+                          bodyIndent);
   }
 
   /**

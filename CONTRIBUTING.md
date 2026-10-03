@@ -98,62 +98,39 @@ the GUI. This process can be decomposed as follows:
 
 ### Entity content parsing: `EntityTemplateParser.parse()` (language agnostic -- cached)
 
-This happens via `newSourceFromFile()`, the first time `Exercise.getSourceFilesList(lang)` is called for that language (see
-`loadSourceFiles()`) and the result is kept in cache as a `SourceFile`. `Exercise.getLoadedSourceFiles(lang)` returns what was
-already loaded without triggering any parsing: session saving and `Game.revertExo()` use it.
+The entity file is read and parsed the first time `Exercise.getSourceFilesList(lang)` is called for that language (see
+`loadSourceFiles()` and `newSourceFromFile()`). The result is cached as a `SourceFile` in `Exercise.sourceFiles`.
+`Exercise.getLoadedSourceFiles(lang)` returns what is already loaded without parsing anything: session saving and
+`Game.revertExo()` use it.
 
-`EntityTemplateParser.parse()` reads the raw `XxxEntity.<ext>` file in two passes over its lines:
-1. `split()` cuts the lines into a list of `Segment(kind, text, solution)`, driven by marker comments: `BEGIN/END TEMPLATE`,
-   `BEGIN/END SOLUTION`, `BEGIN/END IMPORT`, `BEGIN/END REMOTE`. Markers are language-agnostic: matched anywhere in a line, and
-   expected alone on their line. Marker lines are removed and thus not part of any segment.
-   
-   The kinds are:
-   - `HEAD`: (out of any marker) before the template, or before the solution if there is no template
-   - `IMPORT`: extra headers that must be added to the student entity for it to compile
-   - `TEMPLATE`: part of the code that will be presented to the student
-   - `TAIL`: (out of any marker)
+`split()` cuts the file into segments, driven by marker comments. Markers are matched anywhere in a line, expected alone on it,
+and removed from the segments:
+- `BEGIN/END TEMPLATE`: the code initially shown to the student in the editor (at most one).
+- `BEGIN/END SOLUTION`: code kept for the correction but hidden from the student. With a `TEMPLATE`, there can be any number of
+  them, before, inside or after it. Without a `TEMPLATE`, there is exactly one, and it plays the role of the templated region:
+  the editor is initially empty in this case. If there is a `TEMPLATE` but no `SOLUTION`, the whole template is taken as a
+  solution (the initial content is empty).
+- `BEGIN/END IMPORT`: extra imports, kept out of the template.
+- `BEGIN/END REMOTE` (optional): narrows what counts as head and tail. Everything before `BEGIN REMOTE` and after `END REMOTE`
+  is dropped, which lets Java/Scala leave out their own package/class declaration (their wrapper provides it). It must fully
+  enclose the templated region, and any `SOLUTION` outside that region must be within it.
 
-   `BEGIN/END SOLUTION` is not a kind of its own: it sets the `solution` flag of the segments it encloses (whatever their
-   kind). Solution code is kept for the correction but not for the student-facing code. When there is a `TEMPLATE`, any
-   number of `SOLUTION` sections may sit before, inside or after it; those outside the templated region must be within
-   `REMOTE` when the file has one, as they would otherwise be dropped silently. When there is no `TEMPLATE`, there is exactly
-   one `SOLUTION`, which plays the role of the templated region: the student's code replaces it. A `SOLUTION` cannot straddle
-   any other marker.
+Any invalid markup throws a RuntimeException (unmatched or nested markers, several `TEMPLATE`s, a `SOLUTION` straddling another
+marker, ...).
 
-   `BEGIN/END REMOTE` is optional and is not a kind of its own: it narrows `HEAD` and `TAIL`. Without it, they are the whole
-   file before/after the templated region. With it, whatever was accumulated in `HEAD` before `BEGIN REMOTE` is dropped, and
-   `TAIL` stops being collected at `END REMOTE`. Languages that wrap the entity in their own class/object (Java, Scala) use it
-   to leave the entity's own package/class declaration and closing brace out, and to include everything else that must be
-   compiled (`run()`, the templated methods, ...). `REMOTE` must fully enclose the templated region: it opens before `BEGIN
-   TEMPLATE`/`BEGIN SOLUTION` and closes after the matching end marker.
-   
-   Any invalid markup throws a RuntimeException: incorrect matching of BEGIN/END, incorrect nesting of segments, more than one
-   `TEMPLATE`, and zero or several `SOLUTION` when there is no `TEMPLATE`.
-2. `head`, `tail`, `initialContent`, `imports` and `correction` are derived from the segments:
-- `head`/`tail`: the `HEAD`/`TAIL` segments without the solution ones, i.e. the file content strictly outside the templated
-  region (before `BEGIN TEMPLATE`/after `END TEMPLATE`, or around the solution if only `BEGIN/END SOLUTION` is used), narrowed
-  to `BEGIN/END REMOTE` when present. This is the student's view.
-- `correctionHead`/`correctionTail`: same as `head`/`tail`, but keeping the solution segments.
-- `initialContent`: the `TEMPLATE` segments (inside the templated region but outside the solution sections), what the student
-  sees in the editor the first time.
-- `imports`: the `IMPORT` segments.
-- the `SOLUTION` segments inside the template are not used here: they only reach the compiled correction through
-  `correctionBody`.
-- `correction`: the *entire* file content again (marker lines included), unchanged.
-- `correctionBody`: the raw text (marker lines included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
-  `END SOLUTION` when there is no template. It is the `$body` value used to compile the correction.
-
-It then collapses `initialContent`'s leading whitespace to the smallest common indentation to make sure that it looks great in
-the student's editor. That number of spaces is kept as `bodyIndent`. For Python, each tab found in leading whitespace is first
-expanded 8 spaces.
-
-`head + "$body" + tail` becomes `template` (a string with one placeholder, `$body`), used to compile the student's code.
-Likewise, `correctionHead + "$body" + correctionTail` becomes `correctionTemplate`, used to compile the correction.
-
-`lang.getRemote(correction)` is also called there to guess the `RemoteXxx` universe. The result is a `SourceFileRevertable`,
-whose editor content starts as `initialContent`, and which also keeps `template`, `correctionTemplate`, `correctionBody`,
-`correction`, `remote` and `imports`. `Exercise.newSource()` (still called from `newSourceFromFile()`) stores it as the one
-source per `(exercise, language)` in `Exercise.sourceFiles`.
+What lies outside the templated region is the `head` and the `tail`. The resulting `SourceFile` holds:
+- `body`: initially the `TEMPLATE` content minus its `SOLUTION` sections, what the student sees in the editor. It is dedented by
+  `bodyIndent`, the indentation shared by the whole templated region (solutions included). For Python, leading tabs are first
+  expanded to spaces, with tab stops every 8 columns.
+- `template`: `head + "$body" + tail`, without any `SOLUTION` section. It is used to compile the student's code by substituting
+  the string "$body" with the editor's content.
+- `correctionTemplate`: same, but keeping the `SOLUTION` sections of head and tail. It is used to compile the correction.
+- `correctionBody`: the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
+  `END SOLUTION` without template. It is the `$body` value used to compile the correction.
+- `correction`: the whole file, unchanged.
+- `imports`: the content of the `IMPORT` sections.
+- `remote`: the `RemoteXxx` universe guessed by `lang.getRemote(correction)`.
+- `bodyIndent`: see above.
 
 ### Step 2: building a compilable source (language-specific in `compileExo()`, not cached)
 
@@ -225,9 +202,9 @@ for/cancels help, or reads a hint:
   `studentWork`'s pass/fail state; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy`
   already keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one
   `.summary` file per lesson (a `StudentWork`-produced digest, not something `GitSpy` writes).
-- `SourceFileRevertable` (what `Exercise.newSource()` actually instantiates, see "From correction entity to compilable
-  source" above) keeps the original `initialContent` from step 1 above so the "revert" action (`Game.worldHasChanged()`)
-  can restore the editor to it; this is unrelated to git and only concerns the in-memory `SourceFile`.
+- `SourceFile` (what `Exercise.newSource()` actually stores, see "From correction entity to compilable source" above) keeps the
+  original `initialContent` from step 1 above so the "revert" action (`Game.worldHasChanged()`) can restore the editor to it; this is
+  unrelated to git and only concerns the in-memory `SourceFile`.
 
 ## How tests work
 
