@@ -127,7 +127,6 @@ What lies outside the templated region is the `head` and the `tail`. The resulti
 - `correctionTemplate`: same, but keeping the `SOLUTION` sections of head and tail. It is used to compile the correction.
 - `correctionBody`: the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` without template. It is the `$body` value used to compile the correction.
-- `correction`: the whole file, unchanged.
 - `imports`: the content of the `IMPORT` sections.
 - `remote`: the `RemoteXxx` universe guessed by `lang.getRemote(correction)`.
 - `bodyIndent`: see above.
@@ -181,8 +180,8 @@ for/cancels help, or reads a hint:
     `fetch`+`merge` the same branch from the server to resume a previous session (`GitUtils.mergeRemoteIntoLocalBranch()`
     resolves conflicts file-by-file by keeping whichever side's last commit on that path is more recent), commits a
     `"started"` marker, then asks for a (rate-limited, see below) push.
-  - `executed()`: writes/rewrites 4 files per exercise (`<id>.<ext>.code`, `.error`, `.correction`, `.mission`, via
-    `createFiles()`), creates or deletes a `.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
+  - `executed()`: writes/rewrites 4 files per exercise (`<id>.<ext>.code`, `.error`, `.correction` (the entity file, read again
+    from its source), `.mission`, via `createFiles()`), creates or deletes a `.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
     commit message, see below) and asks for a push.
   - `switched()`/`reverted()`: same idea for "the student navigated away from an exercise that had a result" (re-writes its
     files before committing) and "the student clicked revert" (deletes that exercise's files instead).

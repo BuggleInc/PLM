@@ -11,7 +11,6 @@ public class SourceFile {
   protected String name;
   private final String initialBody;
   private String body;
-  private String correction;
   private final String template;
   private final String correctionTemplate;
   private final String correctionBody;
@@ -25,7 +24,6 @@ public class SourceFile {
    * compilable source: templating"); {@code null} where there is nothing to template.
    *
    * @param initialBody        what the student sees in the editor the first time
-   * @param correction         the whole entity file, unchanged
    * @param template           head + "$body" + tail, for the student's code; substituting $body rebuilds a compilable source
    * @param correctionTemplate same as {@code template} but keeping the SOLUTION sections of head/tail, for the correction
    * @param correctionBody     the raw (markers included) BEGIN/END TEMPLATE span, or BEGIN/END SOLUTION when there is no template;
@@ -35,13 +33,12 @@ public class SourceFile {
    * @param remote             the RemoteXxx universe guessed by {@code lang.getRemote(correction)}, or null if none
    * @param bodyIndent         how many spaces the templated region is indented by in the entity: the editor content is flush left instead
    */
-  public SourceFile(String name, String initialBody, String correction, String template, String correctionTemplate, String correctionBody, String imports,
-                    String remote, int bodyIndent)
+  public SourceFile(String name, String initialBody, String template, String correctionTemplate, String correctionBody, String imports, String remote,
+                    int bodyIndent)
   {
     this.name               = name;
     this.initialBody        = initialBody;
     this.body               = initialBody;
-    this.correction         = correction;
     this.template           = template;
     this.correctionTemplate = correctionTemplate;
     this.correctionBody     = correctionBody;
@@ -51,7 +48,7 @@ public class SourceFile {
   }
 
   /** A source file that is not templated: only its editable body matters. */
-  public SourceFile(String name) { this(name, "", "", null, null, null, null, null, 0); }
+  public SourceFile(String name) { this(name, "", null, null, null, null, null, 0); }
 
   public String getName() { return this.name; }
 
@@ -68,9 +65,6 @@ public class SourceFile {
 
   /** Puts back the body the student saw the first time */
   public void revert(ProgrammingLanguage lang) { setBody(this.initialBody, lang); }
-
-  public void setCorrection(String c) { this.correction = c; }
-  public String getCorrection() { return this.correction; }
 
   public String getTemplate() { return template; }
   public String getCorrectionTemplate() { return correctionTemplate; }

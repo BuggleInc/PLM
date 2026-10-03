@@ -33,7 +33,6 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals("a = 1\nc = 3\n", e.getBody());
     Assertions.assertEquals(2, e.getBodyIndent());
     Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.getTemplate());
-    Assertions.assertEquals(content + "\n", e.getCorrection());
   }
 
   /** Only BEGIN/END SOLUTION: the template is empty and the tail starts right after the solution. */
@@ -55,7 +54,6 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("a = 1\n", e.getBody());
     Assertions.assertEquals("def run():\n$body\n", e.getTemplate());
-    Assertions.assertEquals(content + "\n", e.getCorrection());
   }
 
   /** Java: head keeps its own lines/comments, initial content is dedented, and the correction is a faithful copy of the file. */
@@ -67,7 +65,6 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("int a;\n", e.getBody());
     Assertions.assertEquals("package foo;\npublic class FooEntity {\n  // comment\n$body\n}\n", e.getTemplate());
-    Assertions.assertEquals(content + "\n", e.getCorrection());
   }
 
   /** C: the template is left as is (the {@code #line} directive is added later, when compiling). */
@@ -89,7 +86,6 @@ public class EntityTemplateParserTest {
     Assertions.assertEquals("import java.util.Stack;\n", e.getImports());
     Assertions.assertEquals("public class Bar {\n$body\n}\n", e.getTemplate());
     Assertions.assertEquals("int a;\n", e.getBody());
-    Assertions.assertTrue(e.getCorrection().contains("import java.util.Stack;"));
   }
 
   @Test public void testUnclosedImport()

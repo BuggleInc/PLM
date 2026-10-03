@@ -62,8 +62,7 @@ public class EntityTemplateParser {
     int bodyIndent = minLeadingSpaces(templateRegion);
     initialContent = removeLeadingSpaces(initialContent, bodyIndent);
 
-    return new SourceFile(name, initialContent, correction, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction),
-                          bodyIndent);
+    return new SourceFile(name, initialContent, template, correctionTemplate, split.correctionBody(), imports, lang.getRemote(correction), bodyIndent);
   }
 
   /**

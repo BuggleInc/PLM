@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -59,7 +61,21 @@ public class GitSpyTest {
 
   @BeforeEach public void setUp() {}
 
-  @AfterEach public void tearDown() { utils.deleteRepo(repoDir); }
+  @AfterEach public void tearDown() throws IOException
+  {
+    utils.deleteRepo(repoDir);
+    Files.deleteIfExists(ENTITY_FILE);
+  }
+
+  // GitSpy reads the correction from the entity file of the exercise
+  private static final String ENTITY    = "target.gitspytest.ExoTestEntity";
+  private static final Path ENTITY_FILE = Path.of("target/gitspytest/ExoTestEntity.java");
+
+  private void writeEntity(String content) throws IOException
+  {
+    Files.createDirectories(ENTITY_FILE.getParent());
+    Files.writeString(ENTITY_FILE, content + System.lineSeparator());
+  }
 
   @Test
   public void testCreateFilesWithoutPreviouslyCreatedFiles()
@@ -76,10 +92,11 @@ public class GitSpyTest {
 
     SourceFile sf = Mockito.mock(SourceFile.class);
     Mockito.when(sf.getBody()).thenReturn(code);
-    Mockito.when(sf.getCorrection()).thenReturn(correction);
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
+    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
+    writeEntity(correction);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     Mockito.when(exo.getMission(lastResult.language)).thenReturn(mission);
@@ -110,7 +127,7 @@ public class GitSpyTest {
     if (!hm.get(".code").equals(code)) {
       Assertions.fail("Code file's content is different from code:\nexpected: " + code + "\nresult: " + hm.get(".code"));
     }
-    if (!hm.get(".correction").equals(correction)) {
+    if (!hm.get(".correction").equals(correction + System.lineSeparator())) {
       Assertions.fail("Correction file's content is different from correction:\nexpected: " + correction + "\nresult: " + hm.get(".correction"));
     }
     if (!hm.get(".error").equals(error)) {
@@ -137,10 +154,11 @@ public class GitSpyTest {
 
     SourceFile sf = Mockito.mock(SourceFile.class);
     Mockito.when(sf.getBody()).thenReturn(code);
-    Mockito.when(sf.getCorrection()).thenReturn(correction);
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
+    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
+    writeEntity(correction);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     Mockito.when(exo.getMission(lastResult.language)).thenReturn(mission);
@@ -180,7 +198,7 @@ public class GitSpyTest {
     if (!hm.get(".code").equals(code)) {
       Assertions.fail("Code file's content is different from code:\nexpected: " + code + "\nresult: " + hm.get(".code"));
     }
-    if (!hm.get(".correction").equals(correction)) {
+    if (!hm.get(".correction").equals(correction + System.lineSeparator())) {
       Assertions.fail("Correction file's content is different from correction:\nexpected: " + correction + "\nresult: " + hm.get(".correction"));
     }
     if (!hm.get(".error").equals(error)) {
@@ -201,6 +219,7 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
+    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -227,6 +246,7 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
+    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -259,6 +279,7 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
+    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -285,6 +306,7 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
+    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");

@@ -17,6 +17,7 @@ import plm.core.model.User;
 import plm.core.model.Users;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.utils.FileUtils;
 
 public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
@@ -252,8 +253,13 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     String exoError = lastResult.compilationError;                         // retrieve the compilation error
     if (lastResult.compilationError == null)
       exoError = lastResult.executionError;
-    String exoCorrection = exo.getSourceFile(lastResult.language, 0).getCorrection(); // retrieve the correction
-    String exoMission    = exo.getMission(lastResult.language);                       // retrieve the mission
+    String exoCorrection = ""; // retrieve the correction: the whole entity file, if there is one in this language
+    try {
+      exoCorrection = FileUtils.readContentAsText(exo.nameOfCorrectionEntity(), lastResult.language.getExt(), false).toString();
+    } catch (IOException e) {
+      // no entity in this language
+    }
+    String exoMission = exo.getMission(lastResult.language); // retrieve the mission
 
     // create the different files
     String ext = "." + lastResult.language.getExt();
