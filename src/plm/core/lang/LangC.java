@@ -2,14 +2,19 @@ package plm.core.lang;
 
 import java.awt.Color;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
@@ -176,7 +181,7 @@ public class LangC extends TemplatedRemoteLang {
 
   /**
    * Compile a fixed (student-independent) C source to a .o file at most once, reusing it on every later call. Cached
-   * objects are named after a hash of their own source content, not a fixed name: a PLM upgrade that changes one of
+   * objects are named after a hash of their own source and headers, not a fixed name: a PLM upgrade that changes one of
    * these bundled sources then simply produces a differently-named object instead of silently reusing a stale one --
    * the old, now-unreferenced object is just harmless orphaned disk usage, same as the per-compile directories above.
    *
@@ -192,7 +197,7 @@ public class LangC extends TemplatedRemoteLang {
   private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, boolean isWindows)
       throws IOException, InterruptedException, PLMCompilerException
   {
-    String hash     = Integer.toHexString(sourceContent.hashCode());
+    String hash     = contentHash(sourceContent, headers);
     Path objectFile = OBJECTS_DIR.resolve(baseName + "-" + hash + ".o");
     if (Files.exists(objectFile))
       return objectFile;
@@ -232,6 +237,19 @@ public class LangC extends TemplatedRemoteLang {
       }
     }
     return objectFile;
+  }
+
+  /** The first 8 bytes, in hexadecimal, of the SHA-256 of a source and of the headers it includes. */
+  private static String contentHash(String sourceContent, Map<String, String> headers)
+  {
+    try {
+      MessageDigest digest = MessageDigest.getInstance("SHA-256");
+      digest.update(sourceContent.getBytes(StandardCharsets.UTF_8));
+      new TreeMap<>(headers).forEach((name, content) -> digest.update((name + content).getBytes(StandardCharsets.UTF_8)));
+      return HexFormat.of().formatHex(digest.digest(), 0, 8);
+    } catch (NoSuchAlgorithmException e) {
+      throw new IllegalStateException(e); // every JVM must provide SHA-256
+    }
   }
 
   /**
