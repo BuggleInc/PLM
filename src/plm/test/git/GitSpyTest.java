@@ -91,7 +91,7 @@ public class GitSpyTest {
     lastResult.compilationError = error;
 
     SourceFile sf = Mockito.mock(SourceFile.class);
-    Mockito.when(sf.getBody()).thenReturn(code);
+    Mockito.when(sf.getEditorContent()).thenReturn(code);
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
@@ -153,7 +153,7 @@ public class GitSpyTest {
     lastResult.executionError   = error;
 
     SourceFile sf = Mockito.mock(SourceFile.class);
-    Mockito.when(sf.getBody()).thenReturn(code);
+    Mockito.when(sf.getEditorContent()).thenReturn(code);
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;

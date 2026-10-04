@@ -44,7 +44,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
-      exo.getSourceFile(pl, 0).setBody(generateSyntaxErrorCode(), pl);
+      exo.getSourceFile(pl, 0).setEditorContent(generateSyntaxErrorCode(), pl);
       exo.compile(null, StudentOrCorrection.STUDENT, pl);
     });
   }
@@ -52,7 +52,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   @Test public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
-      exo.getSourceFile(pl, 0).setBody(generateVariableErrorCode(), pl);
+      exo.getSourceFile(pl, 0).setEditorContent(generateVariableErrorCode(), pl);
       exo.compile(null, StudentOrCorrection.STUDENT, pl);
     });
   }

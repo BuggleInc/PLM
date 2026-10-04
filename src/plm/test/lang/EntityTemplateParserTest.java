@@ -41,7 +41,7 @@ public class EntityTemplateParserTest {
                               "  # END TEMPLATE", "  end()");
     SourceFile e = parse(content, new LangPython());
 
-    Assertions.assertEquals("a = 1\nc = 3\n", e.getBody());
+    Assertions.assertEquals("a = 1\nc = 3\n", e.getEditorContent());
     Assertions.assertEquals(2, e.getBodyIndent());
     assertFrame(e, StudentOrCorrection.STUDENT, "import x\ndef run():\n", "\n  end()\n");
   }
@@ -51,7 +51,7 @@ public class EntityTemplateParserTest {
   {
     SourceFile e = parse(lines("def run():", "  # BEGIN SOLUTION", "  x = 1", "  # END SOLUTION", "  end()"), new LangPython());
 
-    Assertions.assertEquals("", e.getBody());
+    Assertions.assertEquals("", e.getEditorContent());
     Assertions.assertEquals(2, e.getBodyIndent()); // the indentation of the solution itself
     assertFrame(e, StudentOrCorrection.STUDENT, "def run():\n", "\n  end()\n");
     Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.getSegments(StudentOrCorrection.CORRECTION).body());
@@ -63,7 +63,7 @@ public class EntityTemplateParserTest {
     String content    = lines("def run():", "  # BEGIN TEMPLATE", "  a = 1", "  # BEGIN SOLUTION", "  h = 0", "  # END SOLUTION", "  # END TEMPLATE");
     SourceFile e = parse(content, new LangPython());
 
-    Assertions.assertEquals("a = 1\n", e.getBody());
+    Assertions.assertEquals("a = 1\n", e.getEditorContent());
     assertFrame(e, StudentOrCorrection.STUDENT, "def run():\n", "\n");
   }
 
@@ -74,7 +74,7 @@ public class EntityTemplateParserTest {
                               "  int b;", "  /* END SOLUTION */", "  /* END TEMPLATE */", "}");
     SourceFile e = parse(content, new LangJava());
 
-    Assertions.assertEquals("int a;\n", e.getBody());
+    Assertions.assertEquals("int a;\n", e.getEditorContent());
     assertFrame(e, StudentOrCorrection.STUDENT, "package foo;\npublic class FooEntity {\n  // comment\n", "\n}\n");
   }
 
@@ -84,7 +84,7 @@ public class EntityTemplateParserTest {
     SourceFile e =
         parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* BEGIN SOLUTION */", "b();", "/* END SOLUTION */", "/* END TEMPLATE */"), new LangC());
 
-    Assertions.assertEquals("a();\n", e.getBody());
+    Assertions.assertEquals("a();\n", e.getEditorContent());
     assertFrame(e, StudentOrCorrection.STUDENT, "int x;\n", "\n");
   }
 
@@ -97,7 +97,7 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("import java.util.Stack;\n", e.getImports());
     assertFrame(e, StudentOrCorrection.STUDENT, "public class FooEntity {\n", "\n}\n");
-    Assertions.assertEquals("int a;\n", e.getBody());
+    Assertions.assertEquals("int a;\n", e.getEditorContent());
   }
 
   @Test public void testUnclosedImport()
@@ -119,7 +119,7 @@ public class EntityTemplateParserTest {
                          new LangJava());
 
     assertFrame(e, StudentOrCorrection.STUDENT, "  void run() {\n", "\n  }\n");
-    Assertions.assertEquals("int a;\n", e.getBody());
+    Assertions.assertEquals("int a;\n", e.getEditorContent());
     Assertions.assertEquals("    /* BEGIN TEMPLATE */\n    int a;\n    /* BEGIN SOLUTION */\n    int b;\n    /* END SOLUTION */\n    /* END TEMPLATE */\n",
                             e.getSegments(StudentOrCorrection.CORRECTION).body());
   }
@@ -190,7 +190,7 @@ public class EntityTemplateParserTest {
                     "/* BEGIN SOLUTION */", "int b;", "/* END SOLUTION */", "/* END TEMPLATE */", "/* BEGIN SOLUTION */", "int t;", "/* END SOLUTION */"),
               new LangJava());
 
-    Assertions.assertEquals("", e.getBody());
+    Assertions.assertEquals("", e.getEditorContent());
     assertFrame(e, StudentOrCorrection.STUDENT, "", "\n");
     assertFrame(e, StudentOrCorrection.CORRECTION, "int h;\n", "\nint t;\n");
   }
@@ -201,7 +201,7 @@ public class EntityTemplateParserTest {
     SourceFile e =
         parse(lines("def run():", "\t# BEGIN TEMPLATE", "\ta = 1", "\t# BEGIN SOLUTION", "\tb = 2", "\t# END SOLUTION", "\t# END TEMPLATE"), new LangPython());
 
-    Assertions.assertEquals("a = 1\n", e.getBody());
+    Assertions.assertEquals("a = 1\n", e.getEditorContent());
     Assertions.assertEquals(8, e.getBodyIndent());
   }
 
@@ -211,7 +211,7 @@ public class EntityTemplateParserTest {
     Assertions.assertThrows(RuntimeException.class, () -> parse(lines("/* BEGIN TEMPLATE */", "a();", "/* END TEMPLATE */"), new LangC()));
 
     SourceFile e = parse(lines("/* BEGIN TEMPLATE */", "a();", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END TEMPLATE */"), new LangC());
-    Assertions.assertEquals("a();\n", e.getBody());
+    Assertions.assertEquals("a();\n", e.getEditorContent());
   }
 
   /** The universe is guessed from words found in the entity, the same way in every language. */

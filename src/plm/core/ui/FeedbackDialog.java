@@ -66,7 +66,7 @@ public class FeedbackDialog extends JDialog {
     String proposedExo = "";
     if (exo instanceof Exercise)
       proposedExo = "\n" + FeedbackDialog.instance.i18n.tr("--------------------[ my code for this exercise ]--------------------\n") +
-                    ((Exercise)exo).getSourceFile(Game.getInstance().getProgrammingLanguage(), 0).getBody();
+                    ((Exercise)exo).getSourceFile(Game.getInstance().getProgrammingLanguage(), 0).getEditorContent();
 
     FeedbackDialog.instance.feedback.setText(
         defaultText + "Lesson: " + Game.getInstance().getCurrentLesson().getId() + "\n"

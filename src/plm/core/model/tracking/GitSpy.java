@@ -249,7 +249,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
   {
     RunOutcome lastResult = exo.lastResult;
 
-    String exoCode  = exo.getSourceFile(lastResult.language, 0).getBody(); // retrieve the code from the student
+    String exoCode  = exo.getSourceFile(lastResult.language, 0).getEditorContent(); // retrieve the code from the student
     String exoError = lastResult.compilationError;                         // retrieve the compilation error
     if (lastResult.compilationError == null)
       exoError = lastResult.executionError;
@@ -355,7 +355,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
   {
     Exercise lastExo    = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
     RunOutcome execProg = lastExo.lastResult;
-    String exoCode      = lastExo.getSourceFile(execProg.language, 0).getBody();
+    String exoCode      = lastExo.getSourceFile(execProg.language, 0).getEditorContent();
     String ext          = "." + execProg.language.getExt();
     File exoFile        = new File(repoDir, lastExo.getId() + ext + ".code");
 

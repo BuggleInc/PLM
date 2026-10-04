@@ -77,7 +77,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
-    exo.getSourceFile(pl, 0).setBody(generateOutOfBoundsErrorCode(), pl);
+    exo.getSourceFile(pl, 0).setEditorContent(generateOutOfBoundsErrorCode(), pl);
     String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
 
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
@@ -89,7 +89,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testNullPointerErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
-    exo.getSourceFile(pl, 0).setBody(generateNullPointerErrorCode(), pl);
+    exo.getSourceFile(pl, 0).setEditorContent(generateNullPointerErrorCode(), pl);
     String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
 
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
@@ -100,7 +100,7 @@ public abstract class SimpleExerciseTest {
   }
   @Test public void testExceptionRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
-    exo.getSourceFile(pl, 0).setBody(generateExceptionRaisingCode(), pl);
+    exo.getSourceFile(pl, 0).setEditorContent(generateExceptionRaisingCode(), pl);
     String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
 
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
@@ -112,7 +112,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testWrongCodeShouldNotPass() throws PLMCompilerException, InterruptedException
   {
-    exo.getSourceFile(pl, 0).setBody(generateWrongCode(), pl);
+    exo.getSourceFile(pl, 0).setEditorContent(generateWrongCode(), pl);
     String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
 
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
@@ -125,7 +125,7 @@ public abstract class SimpleExerciseTest {
 
   @Test public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException, InterruptedException
   {
-    exo.getSourceFile(pl, 0).setBody(generateSolutionFollowedByError(), pl);
+    exo.getSourceFile(pl, 0).setEditorContent(generateSolutionFollowedByError(), pl);
     String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
 
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);

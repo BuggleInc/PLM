@@ -13,7 +13,7 @@ public class SourceFile {
   private final int bodyIndent;
   private final EntityFileSegments student;
   private final EntityFileSegments correction;
-  private String body;
+  private String editorContent;
   private ISourceFileListener listener = null;
 
   /**
@@ -30,38 +30,38 @@ public class SourceFile {
    */
   public SourceFile(String name, String remote, String imports, int bodyIndent, EntityFileSegments student, EntityFileSegments correction)
   {
-    this.name       = name;
-    this.remote     = remote;
-    this.imports    = imports;
-    this.bodyIndent = bodyIndent;
-    this.student    = student;
-    this.correction = correction;
-    this.body       = student.body();
+    this.name          = name;
+    this.remote        = remote;
+    this.imports       = imports;
+    this.bodyIndent    = bodyIndent;
+    this.student       = student;
+    this.correction    = correction;
+    this.editorContent = student.body();
   }
 
-  /** A source file that is not templated: only its editable body matters. */
+  /** A source file that is not templated: only its editor content matters. Lightbot uses it. */
   public SourceFile(String name) { this(name, null, null, 0, new EntityFileSegments("", "", ""), null); }
 
   public String getName() { return this.name; }
 
-  public String getBody() { return this.body; }
+  public String getEditorContent() { return this.editorContent; }
 
-  public void setBody(String text, ProgrammingLanguage lang)
+  public void setEditorContent(String text, ProgrammingLanguage lang)
   {
     if (lang.isPython())
-      body = text.replaceAll("\\t", "    ");
+      editorContent = text.replaceAll("\\t", "    ");
     else
-      body = text;
+      editorContent = text;
     notifyListener();
   }
 
-  /** Puts back the body the student saw the first time */
-  public void revert(ProgrammingLanguage lang) { setBody(student.body(), lang); }
+  /** Puts back the editor content the student saw the first time */
+  public void revert(ProgrammingLanguage lang) { setEditorContent(student.body(), lang); }
 
   /** The pieces of the program to compile: the correction's, or the student's wrapped around the current editor content. */
   public EntityFileSegments getSegments(StudentOrCorrection whatToCompile)
   {
-    return whatToCompile == StudentOrCorrection.CORRECTION ? correction : student.withBody(getBody());
+    return whatToCompile == StudentOrCorrection.CORRECTION ? correction : student.withBody(getEditorContent());
   }
 
   public String getRemote() { return remote; }
@@ -82,7 +82,7 @@ public class SourceFile {
   {
     final int PRIME = 31;
     int result      = 1;
-    result          = PRIME * result + ((body == null) ? 0 : body.hashCode());
+    result          = PRIME * result + ((editorContent == null) ? 0 : editorContent.hashCode());
     result          = PRIME * result + student.body().hashCode();
     return result;
   }
@@ -96,10 +96,10 @@ public class SourceFile {
     if (getClass() != obj.getClass())
       return false;
     final SourceFile other = (SourceFile)obj;
-    if (body == null) {
-      if (other.body != null)
+    if (editorContent == null) {
+      if (other.editorContent != null)
         return false;
-    } else if (!body.equals(other.body))
+    } else if (!editorContent.equals(other.editorContent))
       return false;
     return student.body().equals(other.student.body());
   }

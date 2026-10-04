@@ -71,11 +71,11 @@ public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
   {
     setDebug(false);
     try {
-      exo.getSourceFile(pl, 0).setBody("public void run() {\n"
-                                           + "    int a = 1;\n"
-                                           + "    toto++;\n"
-                                           + "}",
-                                       pl);
+      exo.getSourceFile(pl, 0).setEditorContent("public void run() {\n"
+                                                    + "    int a = 1;\n"
+                                                    + "    toto++;\n"
+                                                    + "}",
+                                                pl);
       PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> exo.compile(null, StudentOrCorrection.STUDENT, pl));
       Assertions.assertTrue(e.getMessage().contains("Entity.java:3: "), e.getMessage());
     } finally {
@@ -91,7 +91,7 @@ public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
     setDebug(false);
     System.setErr(new PrintStream(capture, true));
     try {
-      exo.getSourceFile(pl, 0).setBody(generateExceptionRaisingCode(), pl);
+      exo.getSourceFile(pl, 0).setEditorContent(generateExceptionRaisingCode(), pl);
       String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
       exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
     } finally {

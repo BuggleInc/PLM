@@ -137,10 +137,10 @@ The resulting `SourceFile` holds:
 - `correction`: same record, to generate a correction entity, but `correction.pre` and `correction.post` keep the `SOLUTION`
   sections of head and tail. `correction.body` is the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or
   from `BEGIN SOLUTION` to `END SOLUTION` when no template is given.
-- `body`: the editor's current content, initially the `student.body`.
+- `editorContent`: the editor's current content, initially the `student.body`.
 
-After the SourceFile creation, only SourceFile.body is mutable: it is synchronized with the editor's content. The rest of that
-object is immutable, except for the listener that is notified of the changes of the body.
+After the SourceFile creation, only SourceFile.editorContent is mutable: it is synchronized with the editor's content. The rest of that
+object is immutable, except for the listener that is notified of the changes of the editor content.
 
 ### Step 2: building a compilable source (language-specific code in `compileExo()`, not cached)
 
@@ -212,7 +212,7 @@ for/cancels help, or reads a hint:
     it actually pushes, run off the Swing EDT via a `SwingWorker`; `forcefullyPushToUserBranch()` used by `leave()` skips
     that delay. A push that's rejected retries once after fetching and merging the remote branch first.
 - `GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitSpy` writes:
-  at startup, `loadLesson()` reads each exercise's `.code` file back into its `SourceFile.body` and its `.DONE` file into
+  at startup, `loadLesson()` reads each exercise's `.code` file back into its `SourceFile.editorContent` and its `.DONE` file into
   `studentWork`'s pass/fail state; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy`
   already keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one
   `.summary` file per lesson (a `StudentWork`-produced digest, not something `GitSpy` writes).

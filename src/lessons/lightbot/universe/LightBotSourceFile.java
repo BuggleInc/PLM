@@ -12,9 +12,9 @@ public class LightBotSourceFile extends SourceFile {
   public LightBotSourceFile(String name)
   {
     super(name);
-    resetBody();
+    resetEditorContent();
   }
-  @Override public String getBody()
+  @Override public String getEditorContent()
   {
     StringBuffer sb = new StringBuffer();
     for (int i = 0; i < main.length; i++)
@@ -29,7 +29,7 @@ public class LightBotSourceFile extends SourceFile {
     return sb.toString();
   }
 
-  private void resetBody()
+  private void resetEditorContent()
   {
     main = new LightBotInstruction[12];
     for (int i = 0; i < main.length; i++)
@@ -42,13 +42,13 @@ public class LightBotSourceFile extends SourceFile {
       func2[i] = LightBotInstruction.noop();
   }
 
-  @Override public void setBody(String newBody, ProgrammingLanguage lang)
+  @Override public void setEditorContent(String newContent, ProgrammingLanguage lang)
   {
     /* reset everything to noop */
-    resetBody();
+    resetEditorContent();
 
     /* parse content */
-    String[] lines = newBody.split("\n");
+    String[] lines = newContent.split("\n");
     int pos        = 0;
     if (lines.length > 0)
       for (char c : lines[0].toCharArray())

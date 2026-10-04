@@ -54,7 +54,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
     this.propagationInProgress = true;
     try {
-      this.sourceFile.setBody(this.document.getText(0, this.document.getLength()), this.lang);
+      this.sourceFile.setEditorContent(this.document.getText(0, this.document.getLength()), this.lang);
     } catch (BadLocationException e1) {
       e1.printStackTrace();
     } finally {
@@ -76,11 +76,11 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
     this.propagationInProgress = true;
     try {
       this.document.remove(0, this.document.getLength());
-      String body = this.sourceFile.getBody();
-      if (body == null || body.equals("")) {
+      String editorContent = this.sourceFile.getEditorContent();
+      if (editorContent == null || editorContent.equals("")) {
         return;
       }
-      Reader reader = new StringReader(body);
+      Reader reader = new StringReader(editorContent);
       this.editorKit.read(reader, this.document, 0);
     } catch (IOException e) {
       e.printStackTrace();

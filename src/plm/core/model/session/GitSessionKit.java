@@ -187,7 +187,7 @@ public class GitSessionKit implements ISessionKit {
                 b.append("\n");
               }
             }
-            exercise.getSourceFile(lang, 0).setBody(b.toString(), lang); // only loads the entity if some code was saved
+            exercise.getSourceFile(lang, 0).setEditorContent(b.toString(), lang); // only loads the entity if some code was saved
           } catch (FileNotFoundException fnf) {
             /* that's fine, we never did that exercise */
           } catch (IOException ex) {
