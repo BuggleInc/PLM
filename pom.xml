@@ -407,6 +407,14 @@
                     <exclude>module-info.class</exclude>
                   </excludes>
                 </filter>
+                <!-- The Java and Scala glue is shipped precompiled in plm-entities-*.jar -->
+                <filter>
+                  <artifact>${project.groupId}:${project.artifactId}</artifact>
+                  <excludes>
+                    <exclude>resources/langages/java/**</exclude>
+                    <exclude>resources/langages/scala/**</exclude>
+                  </excludes>
+                </filter>
               </filters>
               <transformers>
                 <transformer

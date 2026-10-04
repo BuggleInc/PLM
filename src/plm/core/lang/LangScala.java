@@ -12,12 +12,9 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.tools.DiagnosticCollector;
-import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
-import javax.tools.StandardJavaFileManager;
-import javax.tools.StandardLocation;
-import javax.tools.ToolProvider;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
@@ -34,10 +31,9 @@ import plm.universe.Point;
 /**
  * Remote execution for Scala, mirroring LangJava's architecture as closely as possible on purpose (see the class-level comment
  * there): an external "java" process is spawned per run, running compiled Scala bytecode that talks back to CommandExecutor
- * over a UNIX domain socket. Compilation happens entirely in-process, exactly like LangJava: the ancillary ".java" helper files
- * copied alongside the student's Scala code (ValueSerializer.java, Point.java, RecList.java) go through
- * javax.tools.JavaCompiler, and the Scala 3 compiler shipped as a PLM dependency is driven directly through
- * dotty.tools.dotc.Driver.
+ * over a UNIX domain socket. Compilation happens entirely in-process: the Scala 3 compiler shipped as a PLM dependency is driven
+ * directly through dotty.tools.dotc.Driver. The ancillary files (Remote*, ValueSerializer, Point, RecList) are precompiled in
+ * plm-entities-scala.jar, which is on the classpath of both the compilation and the run.
  *
  * The structure is kept close to LangJava's on purpose, even if we favor code readability and flow linearity over absolute code
  * factorization.
@@ -46,6 +42,9 @@ public class LangScala extends JvmTemplatedLang {
   /* Language detection logic */
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+
+  /** The precompiled glue (Remote*, ValueSerializer, Point...), shipped as a resource and deployed in TMP_ROOT. */
+  private static final String ENTITIES_JAR = "plm-entities-scala.jar";
 
   public LangScala() { super("Scala", "scala", ResourcesCache.getIcon("img/lang_scala.png")); }
   @Override public boolean isScala() { return true; }
@@ -129,7 +128,7 @@ public class LangScala extends JvmTemplatedLang {
     return String.join(File.pathSeparator, jars);
   }
 
-  private static String scalaCompilerClasspath()
+  public static String scalaCompilerClasspath()
   {
     String optional = classpathOf(false, SCALA_COMPILER_OPTIONAL_CLASSES);
     return classpathOf(true, SCALA_COMPILER_CLASSES) + File.pathSeparator + scalaRuntimeClasspath() + (optional.isEmpty() ? "" : File.pathSeparator + optional);
@@ -137,59 +136,17 @@ public class LangScala extends JvmTemplatedLang {
 
   private static String scalaRuntimeClasspath() { return classpathOf(true, SCALA_RUNTIME_CLASSES); }
 
-  /**
-   * Compiles the plain ".java" helper files copied alongside the student's Scala code (ValueSerializer.java,
-   * Point.java, RecList.java) in-process, exactly like LangJava.compileJavaFiles() does for the student's own Java
-   * entities. classOutputDir is also where compileScalaFiles() below points scalac's "-classpath" so that the Scala
-   * sources can reference these already-compiled classes.
-   */
-  private static void compileJavaHelperFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, File... files) throws PLMCompilerException
+  /** Compiles the Scala files into packageFolder, against the Scala runtime and the precompiled entities jar. */
+  private static void compileScalaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File entitiesJar, File... files)
+      throws PLMCompilerException
   {
-    List<String> paths = Arrays.asList(files).stream().map(f -> f.toPath().toString()).toList();
-
-    JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-    if (compiler == null)
-      throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error());
-
-    try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
-      // Same reasoning as LangJava.compileJavaFiles(): CLASS_PATH is left empty so these files (and whatever student
-      // Scala code ends up seeing them through scalac's own classpath) cannot see PLM's own classes.
-      fileManager.setLocation(StandardLocation.CLASS_PATH, List.of());
-      fileManager.setLocation(StandardLocation.CLASS_OUTPUT, List.of(classOutputDir));
-
-      Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
-      boolean success                                     = compiler.getTask(null, fileManager, diagnostic, null, null, compilationUnits).call();
-
-      // Any diagnostic, even a warning, is treated as an error, same as everywhere else in this class.
-      if (!success || !diagnostic.getDiagnostics().isEmpty()) {
-        String rtStderr = diagnostic.getDiagnostics().stream().map(Object::toString).collect(Collectors.joining("\n"));
-        throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error());
-      }
-    } catch (IOException e) {
-      throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error());
-    }
-  }
-
-  private static void compileScalaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File... files) throws PLMCompilerException
-  {
-    List<File> javaFiles  = Arrays.asList(files).stream().filter(f -> f.getName().endsWith(".java")).toList();
-    List<File> scalaFiles = Arrays.asList(files).stream().filter(f -> f.getName().endsWith(".scala")).toList();
-    List<String> paths    = Arrays.asList(files).stream().map(s -> s.toPath().toString()).toList();
-
-    if (!javaFiles.isEmpty())
-      compileJavaHelperFiles(diagnostic, packageFolder, javaFiles.toArray(File[] ::new));
-
-    if (!scalaFiles.isEmpty()) {
-      List<String> scalacArgs = new ArrayList<>();
-      scalacArgs.add("-classpath");
-      // packageFolder itself, where javac (above, if any) just wrote the already-compiled Java classes.
-      scalacArgs.add(scalaCompilerClasspath() + File.pathSeparator + packageFolder.getAbsolutePath());
-      scalacArgs.add("-d");
-      scalacArgs.add(packageFolder.getAbsolutePath());
-      scalacArgs.add("-color:never"); // avoid ANSI escapes polluting the captured diagnostic text below
-      scalaFiles.forEach(f -> scalacArgs.add(f.getAbsolutePath()));
-      runDotc(diagnostic, paths, scalacArgs);
-    }
+    List<String> paths = Arrays.stream(files).map(f -> f.toPath().toString()).toList();
+    List<String> scalacArgs =
+        new ArrayList<>(List.of("-classpath", scalaCompilerClasspath() + File.pathSeparator + entitiesJar.getAbsolutePath(), "-d",
+                                packageFolder.getAbsolutePath(), "-color:never")); // avoid ANSI escapes polluting the captured diagnostic text
+    for (File file : files)
+      scalacArgs.add(file.getAbsolutePath());
+    runDotc(diagnostic, paths, scalacArgs);
   }
 
   /**
@@ -229,24 +186,11 @@ public class LangScala extends JvmTemplatedLang {
     }
   }
 
-  public String getRemoteScalaFile(String remoteName)
-  {
-    String remoteCode         = loadRemoteFile(remoteName, "scala", ".scala");
-    String packageDeclaration = "package generated";
-
-    if (remoteCode.startsWith("package"))
-      remoteCode = remoteCode.replaceFirst("package .*", packageDeclaration);
-    else
-      remoteCode = packageDeclaration + "\n" + remoteCode;
-
-    return remoteCode;
-  }
-
   @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
-    String mainRemoteContent = getRemoteScalaFile(null);
+    Path entitiesJar = deployResource(ENTITIES_JAR, TMP_ROOT);
 
     String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
@@ -279,11 +223,6 @@ public class LangScala extends JvmTemplatedLang {
         File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
         workspace.mkdirs();
 
-        File mainRemote = new File(workspace, "Remote.scala");
-
-        String entityRemoteContent = getRemoteScalaFile(remote);
-        File entityRemote          = new File(workspace, remote + ".scala");
-
         File entityFile = new File(workspace, "Entity.scala");
         File mainFile   = new File(workspace, "Main.scala");
 
@@ -304,40 +243,14 @@ public class LangScala extends JvmTemplatedLang {
                              + "}\n";
 
         try {
-          File valueSerializer = new File(workspace, "ValueSerializer.java");
+          // The entities jar holds the helpers (Point, ValueSerializer...) in the "generated" package: make the imports refer to them
+          for (String helper : CodeCreation.JAVA_HELPER_SOURCES)
+            entityCode = entityCode.replace("import " + fqcnFromSourcePath(helper) + ";", "import generated." + fileNameWithoutExtension(helper) + ";");
 
-          List<String> extraSourcePaths = new ArrayList<>(List.of("src/plm/universe/Point.java"));
-          extraSourcePaths.addAll(REMOTE_EXTRA_SOURCE_FILES.getOrDefault(remote, List.of()));
-
-          // See LangJava.compileExo()'s identical comment: same reasoning, same fix, applied here too.
-          java.util.function.UnaryOperator<String> rewriteExtraImports = content ->
-          {
-            for (String sourcePath : extraSourcePaths) {
-              String originalFqcn = fqcnFromSourcePath(sourcePath);
-              String simpleName   = fileNameWithoutExtension(sourcePath);
-              content             = content.replace("import " + originalFqcn + ";", "import generated." + simpleName + ";");
-            }
-            return content;
-          };
-
-          entityCode = rewriteExtraImports.apply(entityCode);
-          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage("src/plm/core/ValueSerializer.java")));
-
-          List<File> extraFiles = new ArrayList<>();
-          for (String sourcePath : extraSourcePaths) {
-            File extraFile = new File(workspace, new File(sourcePath).getName());
-            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage(sourcePath)));
-            extraFiles.add(extraFile);
-          }
-
-          Files.writeString(mainRemote.toPath(), mainRemoteContent);
-          Files.writeString(entityRemote.toPath(), entityRemoteContent);
           Files.writeString(entityFile.toPath(), entityCode);
           Files.writeString(mainFile.toPath(), mainContent);
 
-          List<File> filesToCompile = new ArrayList<>(List.of(mainFile, mainRemote, entityRemote, entityFile, valueSerializer));
-          filesToCompile.addAll(extraFiles);
-          compileScalaFiles(diagnostic, workspace, filesToCompile.toArray(File[] ::new));
+          compileScalaFiles(diagnostic, workspace, entitiesJar.toFile(), mainFile, entityFile);
 
           // Scala compiles "object Main" to Main.class (plus a Main$.class holding the singleton); the manifest only
           // needs the former as its Main-Class entry point, exactly like a Java class with a static main().
@@ -372,7 +285,7 @@ public class LangScala extends JvmTemplatedLang {
   }
 
   /**
-   * Runs "java -cp &lt;jarPath&gt;:&lt;scala runtime jars&gt; generated.Main &lt;socketPath&gt;", executable being the jar path
+   * Runs "java -cp &lt;jarPath&gt;:&lt;entities jar&gt;:&lt;scala runtime jars&gt; generated.Main &lt;socketPath&gt;", executable being the jar path
    * returned by compileExo() -- the main class is always "generated.Main". We cannot use "java -jar" alone because a jar's
    * Class-Path manifest attribute is only reliably resolved for relative paths, while the Scala jars' paths are probably
    * absolute, leading to silent failures at startup.
@@ -383,7 +296,8 @@ public class LangScala extends JvmTemplatedLang {
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + scalaRuntimeClasspath(), "generated.Main", socketPath.toString());
+    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + TMP_ROOT.resolve(ENTITIES_JAR) + File.pathSeparator + scalaRuntimeClasspath(),
+                              "generated.Main", socketPath.toString());
   }
 
   public static class LangScalaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {

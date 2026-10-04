@@ -16,6 +16,7 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -35,13 +36,16 @@ public class LangJava extends JvmTemplatedLang {
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
+  /** The precompiled glue (Remote*, ValueSerializer, Point...), shipped as a resource and deployed in TMP_ROOT. */
+  private static final String ENTITIES_JAR = "plm-entities-java.jar";
+
   public LangJava() { super("Java", "java", ResourcesCache.getIcon("img/lang_java.png")); }
 
   /**
    * Compiles the files in-process. Unless debugging is enabled, the line numbers reported for Entity.java are decreased by
    * {@code lineShift}, the number of lines of the generated source before the body, to match the lines of the editor.
    */
-  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, int lineShift, File... files)
+  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, int lineShift, File entitiesJar, File... files)
       throws PLMCompilerException
   {
     for (File javaFile : files) {
@@ -60,9 +64,9 @@ public class LangJava extends JvmTemplatedLang {
       throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error());
 
     try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
-      // set CLASS_PATH="" (empty) instead of java.class.path, so that the student code cannot see PLM's own classes.
+      // CLASS_PATH is the entities jar only, instead of java.class.path, so that the student code cannot see PLM's own classes.
       // CLASS_OUTPUT is classOutputDir itself, so ".class" files land nested under their "generated/" package folder.
-      fileManager.setLocation(StandardLocation.CLASS_PATH, List.of());
+      fileManager.setLocation(StandardLocation.CLASS_PATH, List.of(entitiesJar));
       fileManager.setLocation(StandardLocation.CLASS_OUTPUT, List.of(classOutputDir));
 
       Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
@@ -115,24 +119,11 @@ public class LangJava extends JvmTemplatedLang {
     return brokenLanguageState != BrokenLanguageState.Usable;
   }
 
-  public String getRemoteJavaFile(String remoteName)
-  {
-    String remoteCode         = loadRemoteFile(remoteName, "java", ".java");
-    String packageDeclaration = "package generated;";
-
-    if (remoteCode.startsWith("package"))
-      remoteCode = remoteCode.replaceFirst("package .*;", packageDeclaration);
-    else
-      remoteCode = packageDeclaration + "\n" + remoteCode;
-
-    return remoteCode;
-  }
-
   public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
 
-    String mainRemoteContent = getRemoteJavaFile(null);
+    Path entitiesJar = deployResource(ENTITIES_JAR, TMP_ROOT);
 
     String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
@@ -163,11 +154,6 @@ public class LangJava extends JvmTemplatedLang {
         // noinspection ResultOfMethodCallIgnored
         workspace.mkdirs();
 
-        File mainRemote = new File(workspace, "Remote.java");
-
-        String entityRemoteContent = getRemoteJavaFile(remote);
-        File entityRemote          = new File(workspace, remote + ".java");
-
         File entityFile = new File(workspace, "Entity.java");
         File mainFile   = new File(workspace, "Main.java");
 
@@ -187,46 +173,16 @@ public class LangJava extends JvmTemplatedLang {
                              + "}\n";
 
         try {
-          File valueSerializer = new File(workspace, "ValueSerializer.java");
+          // The entities jar holds the helpers (Point, ValueSerializer...) in the "generated" package: make the imports refer to them
+          for (String helper : CodeCreation.JAVA_HELPER_SOURCES)
+            entityCode = entityCode.replace("import " + fqcnFromSourcePath(helper) + ";", "import generated." + fileNameWithoutExtension(helper) + ";");
 
-          List<String> extraSourcePaths = new ArrayList<>(Arrays.asList("src/plm/universe/Point.java", "src/plm/core/ValueSerializer.java"));
-          extraSourcePaths.addAll(REMOTE_EXTRA_SOURCE_FILES.getOrDefault(remote, List.of()));
-
-          // Rewrite any import of a type we're about to copy locally, in EVERY file that might reference it (the
-          // student's own code, and our own runtime files like ValueSerializer.java) -- otherwise e.g.
-          // ValueSerializer.deserialize() would keep building instances of the ORIGINAL plm.universe.Point while
-          // RemoteLander.java expects the local copy: same simple name, different package, so it compiles fine and throws
-          // ClassCastException at runtime.
-          java.util.function.UnaryOperator<String> rewriteExtraImports = content ->
-          {
-            for (String sourcePath : extraSourcePaths) {
-              String originalFqcn = fqcnFromSourcePath(sourcePath);
-              String simpleName   = fileNameWithoutExtension(sourcePath);
-              content             = content.replace("import " + originalFqcn + ";", "import generated." + simpleName + ";");
-            }
-            return content;
-          };
-
-          entityCode = rewriteExtraImports.apply(entityCode);
-          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage("src/plm/core/ValueSerializer.java")));
-
-          List<File> extraFiles = new ArrayList<>();
-          for (String sourcePath : extraSourcePaths) {
-            File extraFile = new File(workspace, new File(sourcePath).getName());
-            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage(sourcePath)));
-            extraFiles.add(extraFile);
-          }
-
-          Files.writeString(mainRemote.toPath(), mainRemoteContent);
-          Files.writeString(entityRemote.toPath(), entityRemoteContent);
           Files.writeString(entityFile.toPath(), entityCode);
           Files.writeString(mainFile.toPath(), mainContent);
 
-          List<File> filesToCompile = new ArrayList<>(List.of(mainFile, mainRemote, entityRemote, entityFile, valueSerializer));
-          filesToCompile.addAll(extraFiles);
           // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
           int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
-          compileJavaFiles(diagnostic, workspace, lineShift, filesToCompile.toArray(File[] ::new));
+          compileJavaFiles(diagnostic, workspace, lineShift, entitiesJar.toFile(), mainFile, entityFile);
 
           File jarFile = new File(workspace, "Code.jar");
           createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
@@ -254,14 +210,14 @@ public class LangJava extends JvmTemplatedLang {
     return jarPath;
   }
 
-  /** Runs "java -jar &lt;executable&gt; &lt;socketPath&gt;", the executable being the jar path produced by compileExo(). */
+  /** Runs "java -cp &lt;executable&gt;:&lt;entities jar&gt; generated.Main &lt;socketPath&gt;", the executable being the jar path produced by compileExo(). */
   @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {
     File exec = new File(executable);
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    return new ProcessBuilder("java", "-jar", executable, socketPath.toString());
+    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + TMP_ROOT.resolve(ENTITIES_JAR), "generated.Main", socketPath.toString());
   }
 
   public static class LangJavaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {

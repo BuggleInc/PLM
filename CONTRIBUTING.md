@@ -35,7 +35,11 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
     - `turmites` is a subclass of the buggle microworld introducing [2D turing machines](https://en.wikipedia.org/wiki/Turmite).
   - `turtles`: LOGO-style turtle graphics, used to teach recursion through the drawing of fractals.
   - `sort`: sorting algorithms; primitives (`isSmaller`, `copy`, `swap`) observe the data accesses patterns so the student must
-    reproduce the *expected algorithm*, not just a correctly sorted array. To make this efficient, the student-facing API is instrumented to count the amount of data access in read and write. We don't observe the complete operation list but only the amount of reads and writes to the data array. This is not perfect as a student may manage to get the data sorted with the exact same amount of operations without following the exact expected algorithm, but it's rather unlikely and a perfect verification of the operations history would probably be too computationally intensive.
+    reproduce the *expected algorithm*, not just a correctly sorted array. To make this efficient, the student-facing API is
+    instrumented to count the amount of data access in read and write. We don't observe the complete operation list but only the
+    amount of reads and writes to the data array. This is not perfect as a student may manage to get the data sorted with the
+    exact same amount of operations without following the exact expected algorithm, but it's rather unlikely and a perfect
+    verification of the operations history would probably be too computationally intensive.
   - `bat`: unit-testing style no graphical world but a textual output; a method prototype is filled in and tested against many
     parameter values.
   - Specific sorting microwords: `sort/baseball` ([pebble-motion](https://en.wikipedia.org/wiki/Pebble_motion_problems)),
@@ -172,7 +176,18 @@ handful of one-off helper lines elsewhere:
   - non-breaking spaces are stripped.
 - The resulting source is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
   This name derived from the exercise id and `STUDENT`/`CORRECTION`, so unrelated concurrent compiles never collide) alongside
-  the copied `RemoteXxx` glue file and any other support file the exercise needs, then compiled/run the usual way.
+  only the entity file and the generated `Main`, then compiled/run the usual way against the shared glue described below.
+- The glue that does not depend on the exercise (`Remote`, `RemoteXxx`, `ValueSerializer`, `Point`, `RecList`...) is built once and
+  shared by all compilations:
+  - Java/Scala: `CodeCreation` (run by maven at `process-classes`) generates the `RemoteXxx` sources, then compiles them in-process
+    with the helper sources into `plm-entities-java.jar` and `plm-entities-scala.jar`. The staged sources are kept in
+    `target/plm-entities/` for debugging. These jars are resources of PLM.jar, deployed to `/tmp/plm` by
+    `TemplatedRemoteLang.deployResource()` and put on the classpath of both the compilation and the run. The glue sources themselves
+    are excluded from PLM.jar by a filter of the shade plugin.
+  - Python: the modules are deployed in `/tmp/plm/python-entities`, which is prepended to the `PYTHONPATH` of the run. Python caches
+    their bytecode by itself.
+  - C: `LangC.ensureCachedObject()` compiles each file once to an object cached in `/tmp/plm/C/objects`, which is linked with each
+    exercise.
 
 ## Saving the student's work: GitSpy and friends
 

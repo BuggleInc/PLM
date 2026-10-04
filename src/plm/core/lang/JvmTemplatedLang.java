@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,10 +30,6 @@ import plm.universe.Point;
  *  same way, only differing in the exact syntax produced.
  */
 public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
-
-  /** Extra source files to be copied alongside the student's code, keyed by the RemoteXxx universe needing them. */
-  protected static final Map<String, List<String>> REMOTE_EXTRA_SOURCE_FILES =
-      Map.of("RemoteCons", List.of("src/lessons/recursion/cons/universe/RecList.java"));
 
   /** Per-language scratch directory, nested under the shared TMP_ROOT, e.g. .../plm/java or .../plm/scala. */
   protected final File tempFolder = TMP_ROOT.resolve(getExt()).toFile();
@@ -77,17 +72,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     String name = new File(path).getName();
     int dot     = name.lastIndexOf('.');
     return dot < 0 ? name : name.substring(0, dot);
-  }
-
-  /**
-   * Reads a source file to be copied verbatim alongside generated code (ValueSerializer.java, Point.java,
-   * RecList.java...), rewriting its package declaration to "generated". Matches both Java's "package x.y.z;" and
-   * Scala's "package x.y.z" (no trailing semicolon), and only adds the semicolon back for ".java" files.
-   */
-  protected static String copyFileRenamingPackage(String path) throws IOException
-  {
-    String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
-    return content.replaceFirst("package [^;\\n]*;?", "package generated" + (path.endsWith(".java") ? ";" : ""));
   }
 
   /**

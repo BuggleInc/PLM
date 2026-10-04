@@ -89,8 +89,8 @@ public class EntityTemplateParser {
       initialContent = initialContent.replaceAll("\t", "    ");
       templateRegion = templateRegion.replaceAll("\t", "    ");
     }
-    int bodyIndent = minLeadingSpaces(templateRegion);
-    initialContent = removeLeadingSpaces(initialContent, bodyIndent);
+    int bodyIndent = Indentation.minLeadingSpaces(templateRegion);
+    initialContent = Indentation.reindent(initialContent, bodyIndent, 0);
 
     EntityFileSegments student        = new EntityFileSegments(head, initialContent, tail);
     EntityFileSegments correctionSegs = new EntityFileSegments(correctionHead, split.correctionBody(), correctionTail);
@@ -134,33 +134,6 @@ public class EntityTemplateParser {
           return m;
       return null;
     }
-  }
-
-  /** The smallest number of leading spaces among the non blank lines of {@code text}, or 0 if there is none. */
-  private static int minLeadingSpaces(String text)
-  {
-    int min = -1;
-    for (String line : text.split("\n")) {
-      if (line.isBlank())
-        continue;
-      int len = 0;
-      while (len < line.length() && line.charAt(len) == ' ')
-        len++;
-      if (min == -1 || len < min)
-        min = len;
-    }
-    return Math.max(min, 0);
-  }
-
-  /** Removes (at most) {@code n} leading spaces from every line of {@code text}, which ends with a \n if it was not empty. */
-  private static String removeLeadingSpaces(String text, int n)
-  {
-    if (n == 0)
-      return text;
-    StringBuilder sb = new StringBuilder();
-    for (String line : text.split("\n"))
-      sb.append(line.substring(Math.min(n, line.length()))).append("\n");
-    return sb.toString();
   }
 
   private enum Phase { BEFORE, IN_TEMPLATE, AFTER }

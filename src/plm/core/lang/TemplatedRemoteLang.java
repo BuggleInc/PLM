@@ -2,7 +2,12 @@ package plm.core.lang;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import plm.core.model.lesson.Exercise;
 
@@ -16,17 +21,44 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   public TemplatedRemoteLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
   /**
-   * Read a classloader resource at {@code path} (relative to the classpath root) as a UTF-8 string. Low-level
-   * primitive behind {@link #loadRemoteFile} and LangC's own resource reading.
+   * Read a classloader resource at {@code path} (relative to the classpath root) as bytes.
    */
-  protected static String readClasspathResource(String path) throws IOException
+  protected static byte[] readClasspathBytes(String path) throws IOException
   {
     try (InputStream in = TemplatedRemoteLang.class.getClassLoader().getResourceAsStream(path)) {
       if (in == null)
         throw new IOException("Resource '" + path + "' does not exist.");
-      return new String(in.readAllBytes(), StandardCharsets.UTF_8);
+      return in.readAllBytes();
     }
   }
+
+  /**
+   * Copies the classloader resource "resources/langages/&lt;resource&gt;" to targetDir, under its own file name, unless an identical
+   * file is already there, and returns its path. The copy goes through a temporary file moved atomically, as several PLM instances
+   * may deploy it at once.
+   */
+  protected static synchronized Path deployResource(String resource, Path targetDir)
+  {
+    try {
+      byte[] content = readClasspathBytes("resources/langages/" + resource);
+      Path target    = targetDir.resolve(resource.substring(resource.lastIndexOf('/') + 1));
+      if (!Files.exists(target) || !Arrays.equals(Files.readAllBytes(target), content)) {
+        Files.createDirectories(targetDir);
+        Path tmp = Files.createTempFile(targetDir, target.getFileName().toString(), ".tmp");
+        Files.write(tmp, content);
+        Files.move(tmp, target, StandardCopyOption.ATOMIC_MOVE);
+      }
+      return target;
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  /**
+   * Read a classloader resource at {@code path} as a UTF-8 string. Low-level primitive behind {@link #loadRemoteFile} and
+   * LangC's own resource reading.
+   */
+  protected static String readClasspathResource(String path) throws IOException { return new String(readClasspathBytes(path), StandardCharsets.UTF_8); }
 
   /**
    * Load the raw content of a "RemoteXxx" universe-glue file (e.g. RemoteBuggle.java/.scala/.py), shipped as a

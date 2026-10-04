@@ -28,19 +28,20 @@ import plm.universe.Point;
  *
  * The per-compile workspace name (packageNameForExercise(), shared with Java/Scala/C in TemplatedRemoteLang) is
  * factored; the rest of the pipeline isn't yet. Substantially simpler than LangJava/LangScala in one respect: Python
- * needs no compilation step at all (just write the .py files and spawn "python3 Main.py <socket>"), and no
- * import-rewriting for its copied support files (ValueSerializer.py, RecList.py):
- * Python resolves "from X import *" by file presence in the working directory, not by a package-qualified name the way
- * Java/Scala do, so there is no analogue of the ClassCastException-class bug LangJava/LangScala had to work around there.
+ * needs no compilation step at all (just write Entity.py and Main.py and spawn "python3 Main.py <socket>"), and no
+ * import-rewriting for its support modules (ValueSerializer.py, Remote*.py, RecList.py): they are deployed once in ENTITIES_DIR,
+ * which is on the PYTHONPATH of the run. Python resolves "from X import *" by module name, not by a package-qualified name the
+ * way Java/Scala do, so there is no analogue of the ClassCastException-class bug LangJava/LangScala had to work around there.
  */
 public class LangPython extends TemplatedRemoteLang {
   /**
-   * Extra source files to be copied alongside the student's code (unlike LangJava/LangScala, no per-universe
-   * "coreExtraSourceFiles vs remoteExtraSourceFiles" split is needed: ValueSerializer.py has no external dependency of its
-   * own to drag in, so it doesn't need to always be paired with anything the way ValueSerializer.java needs Point.java).
+   * Extra modules needed by some universes, besides ValueSerializer.py, Remote.py and the RemoteXxx.py of the universe (unlike
+   * LangJava/LangScala, ValueSerializer.py has no external dependency of its own to drag in).
    */
-  private static final Map<String, List<String>> remoteExtraSourceFiles =
-      Map.of("RemoteCons", List.of("lib/resources/langages/python/RecList.py"));
+  private static final Map<String, List<String>> remoteExtraModules = Map.of("RemoteCons", List.of("RecList.py"));
+
+  /** Where the modules above are deployed once and for all. Python caches their bytecode in its __pycache__ on first import. */
+  private static final Path ENTITIES_DIR = TMP_ROOT.resolve("python-entities");
 
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
@@ -80,40 +81,6 @@ public class LangPython extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  public String getRemotePythonFile(String remoteName) { return loadRemoteFile(remoteName, "python", ".py"); }
-
-  /**
-   * The editor content is flush left, but the body sits {@code indent} spaces deep in the template: python needs it to be indented
-   * accordingly. Code that is already indented (saved by a previous version) keeps its relative indentation.
-   */
-  private static String reindent(String codeWithTabs, int indent)
-  {
-    String code = Indentation.expandLeadingTabs(codeWithTabs);
-    int common  = Integer.MAX_VALUE;
-    for (String line : code.split("\n")) {
-      if (line.isBlank())
-        continue;
-      int len = 0;
-      while (len < line.length() && line.charAt(len) == ' ')
-        len++;
-      common = Math.min(common, len);
-    }
-    if (common == Integer.MAX_VALUE)
-      return code;
-
-    StringBuilder sb = new StringBuilder();
-    String[] lines   = code.split("\n", -1);
-    for (int i = 0; i < lines.length; i++) {
-      if (i > 0)
-        sb.append("\n");
-      if (!lines[i].isBlank())
-        sb.append(" ".repeat(indent)).append(lines[i].substring(Math.min(common, lines[i].length())));
-      else
-        sb.append(lines[i]);
-    }
-    return sb.toString();
-  }
-
   @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String runName = packageNameForExercise(exo, whatToCompile);
@@ -124,14 +91,25 @@ public class LangPython extends TemplatedRemoteLang {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
         String remote = sf.getRemote();
 
-        List<String> extraSourcePaths = remoteExtraSourceFiles.getOrDefault(remote, List.of());
-        StringBuilder extraImports    = new StringBuilder();
-        for (String sourcePath : extraSourcePaths)
-          extraImports.append("from ").append(fileNameWithoutExtension(sourcePath)).append(" import *\n");
+        List<String> extraModules  = remoteExtraModules.getOrDefault(remote, List.of());
+        StringBuilder extraImports = new StringBuilder();
+        for (String module : extraModules)
+          extraImports.append("from ").append(fileNameWithoutExtension(module)).append(" import *\n");
+
+        for (String module : List.of("ValueSerializer.py", "Remote.py", remote + ".py"))
+          deployResource("python/" + module, ENTITIES_DIR);
+        for (String module : extraModules)
+          deployResource("python/" + module, ENTITIES_DIR);
 
         String imports    = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports;
         EntityFileSegments segments = sf.getSegments(whatToCompile);
-        String body                 = whatToCompile == StudentOrCorrection.CORRECTION ? segments.body() : reindent(segments.body(), sf.getBodyIndent());
+        String body                 = segments.body();
+        if (whatToCompile == StudentOrCorrection.STUDENT) {
+          // The editor content is flush left, but the body sits bodyIndent spaces deep in the template: python needs it to be indented
+          // accordingly. Code that is already indented (saved by a previous version) keeps its relative indentation.
+          String code = Indentation.expandLeadingTabs(body);
+          body        = Indentation.reindent(code, Indentation.minLeadingSpaces(code), sf.getBodyIndent());
+        }
         String entityCode           = imports + "\n\n" + segments.pre() + body + " \n" + segments.post();
         // Expend any tabs to spaces the way python reads them to avoid mixing tabs and spaces
         entityCode = Indentation.expandLeadingTabs(entityCode);
@@ -142,25 +120,11 @@ public class LangPython extends TemplatedRemoteLang {
         // noinspection ResultOfMethodCallIgnored
         workspace.mkdirs();
 
-        File valueSerializer = new File(workspace, "ValueSerializer.py");
-        File mainRemote       = new File(workspace, "Remote.py");
-        File entityRemote     = new File(workspace, remote + ".py");
-        File entityFile       = new File(workspace, "Entity.py");
-        File mainFile         = new File(workspace, "Main.py");
+        File entityFile = new File(workspace, "Entity.py");
+        File mainFile   = new File(workspace, "Main.py");
 
         String mainContent = "import sys\n" + "from Remote import connect\n" + "from Entity import run\n" + "\n" + "connect(sys.argv[1])\n" + "run()\n";
 
-        List<File> extraFiles = new ArrayList<>();
-        for (String sourcePath : extraSourcePaths) {
-          File extraFile = new File(workspace, new File(sourcePath).getName());
-          Files.copy(new File(sourcePath).toPath(), extraFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-          extraFiles.add(extraFile);
-        }
-
-        Files.copy(new File("lib/resources/langages/python/ValueSerializer.py").toPath(), valueSerializer.toPath(),
-                   java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-        Files.writeString(mainRemote.toPath(), getRemotePythonFile(null));
-        Files.writeString(entityRemote.toPath(), getRemotePythonFile(remote));
         Files.writeString(entityFile.toPath(), entityCode);
         Files.writeString(mainFile.toPath(), mainContent);
 
@@ -191,7 +155,7 @@ public class LangPython extends TemplatedRemoteLang {
     return mainPath;
   }
 
-  /** Runs "python3 &lt;executable&gt; &lt;socketPath&gt;" from the executable's own directory. */
+  /** Runs "python3 &lt;executable&gt; &lt;socketPath&gt;" from the executable's own directory, with ENTITIES_DIR ahead of the user's PYTHONPATH. */
   @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
   {
     File exec = new File(executable);
@@ -200,6 +164,7 @@ public class LangPython extends TemplatedRemoteLang {
 
     ProcessBuilder pb = new ProcessBuilder("python3", exec.getName(), socketPath.toString());
     pb.directory(exec.getParentFile());
+    pb.environment().merge("PYTHONPATH", ENTITIES_DIR.toString(), (user, ours) -> ours + File.pathSeparator + user);
     return pb;
   }
 
