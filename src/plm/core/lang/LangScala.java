@@ -31,26 +31,20 @@ import plm.universe.Direction;
 import plm.universe.Point;
 
 /**
- * Remote execution for Scala, mirroring LangJava's architecture as closely as possible on purpose (see the class-level
- * comment there): an external "java" process is spawned per run, running compiled Scala bytecode that talks back to
- * CommandExecutor over a UNIX domain socket. Compilation now happens entirely in-process, exactly like LangJava: the
- * ancillary ".java" helper files copied alongside the student's Scala code (ValueSerializer.java, Point.java,
- * RecList.java) go through javax.tools.JavaCompiler, and the Scala 3 compiler shipped as a PLM dependency is driven
- * directly through dotty.tools.dotc.Driver -- no "java -cp ... javac/dotty.tools.dotc.Main ..." subprocess is spawned
- * for compiling anymore.
+ * Remote execution for Scala, mirroring LangJava's architecture as closely as possible on purpose (see the class-level comment
+ * there): an external "java" process is spawned per run, running compiled Scala bytecode that talks back to CommandExecutor
+ * over a UNIX domain socket. Compilation happens entirely in-process, exactly like LangJava: the ancillary ".java" helper files
+ * copied alongside the student's Scala code (ValueSerializer.java, Point.java, RecList.java) go through
+ * javax.tools.JavaCompiler, and the Scala 3 compiler shipped as a PLM dependency is driven directly through
+ * dotty.tools.dotc.Driver.
  *
- * Not yet factored with LangJava (structure kept close on purpose to make that factoring easy later); several private
- * helpers below are near-verbatim ports of LangJava's, adapted to Scala syntax where the generated code shape differs.
+ * The structure is kept close to LangJava's on purpose, even if we favor code readability and flow linearity over absolute code
+ * factorization.
  */
 public class LangScala extends JvmTemplatedLang {
-  /**
-   * Extra source files to be copied alongside the student's code
-   */
-  private static final Map<String, List<String>> remoteExtraSourceFiles = Map.of("RemoteCons", List.of("src/lessons/recursion/cons/universe/RecList.java"));
   /* Language detection logic */
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-  File tempFolder                                        = TMP_ROOT.resolve("scala").toFile();
 
   public LangScala() { super("Scala", "scala", ResourcesCache.getIcon("img/lang_scala.png")); }
   @Override public boolean isScala() { return true; }
@@ -93,26 +87,6 @@ public class LangScala extends JvmTemplatedLang {
       }
     }
     return brokenLanguageState != BrokenLanguageState.Usable;
-  }
-
-  /**
-   * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "lessons.recursion.cons.universe.RecList"
-   */
-  private static String fqcnFromSourcePath(String sourcePath)
-  {
-    String withoutSrcPrefix = sourcePath.startsWith("src/") ? sourcePath.substring("src/".length()) : sourcePath;
-    String withoutExtension = withoutSrcPrefix.replaceFirst("\\.(java|scala)$", "");
-    return withoutExtension.replace('/', '.');
-  }
-
-  /**
-   * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "RecList"
-   */
-  private static String fileNameWithoutExtension(String path)
-  {
-    String name = new File(path).getName();
-    int dot     = name.lastIndexOf('.');
-    return dot < 0 ? name : name.substring(0, dot);
   }
 
   /** Classes identifying the jars that the Scala compiler needs on its own classpath (the first four are mandatory). */
@@ -254,17 +228,6 @@ public class LangScala extends JvmTemplatedLang {
     }
   }
 
-  /**
-   * Builds a runnable jar for the compiled classes, with a Class-Path manifest entry pointing at scala-library.jar so
-   * "java -jar" alone (no external -cp needed at run time, mirroring LangJava's runEntity() as closely as possible) can
-   * run compiled Scala bytecode.
-   */
-  private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File jarFile, String mainClassDotPath,
-                                    Set<String> classFiles) throws PLMCompilerException
-  {
-    runJarTool(packageFolder, jarFile, mainClassDotPath, classFiles, diagnostic);
-  }
-
   public String getRemoteScalaFile(String remoteName)
   {
     String remoteCode         = loadRemoteFile(remoteName, "scala", ".scala");
@@ -276,15 +239,6 @@ public class LangScala extends JvmTemplatedLang {
       remoteCode = packageDeclaration + "\n" + remoteCode;
 
     return remoteCode;
-  }
-
-  private String copyFile(String path) throws IOException
-  {
-    String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
-    // Java source files copied in verbatim (e.g. RecList.java, ValueSerializer.java, Point.java) use "package x.y.z;",
-    // Scala's own generated files use "package x.y.z" (no semicolon) -- replaceFirst matches either.
-    content = content.replaceFirst("package [^;\\n]*;?", "package generated" + (path.endsWith(".java") ? ";" : ""));
-    return content;
   }
 
   @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
@@ -351,7 +305,7 @@ public class LangScala extends JvmTemplatedLang {
           File valueSerializer = new File(workspace, "ValueSerializer.java");
 
           List<String> extraSourcePaths = new ArrayList<>(List.of("src/plm/universe/Point.java"));
-          extraSourcePaths.addAll(remoteExtraSourceFiles.getOrDefault(remote, List.of()));
+          extraSourcePaths.addAll(REMOTE_EXTRA_SOURCE_FILES.getOrDefault(remote, List.of()));
 
           // See LangJava.compileExo()'s identical comment: same reasoning, same fix, applied here too.
           java.util.function.UnaryOperator<String> rewriteExtraImports = content ->
@@ -365,12 +319,12 @@ public class LangScala extends JvmTemplatedLang {
           };
 
           entityCode = rewriteExtraImports.apply(entityCode);
-          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFile("src/plm/core/ValueSerializer.java")));
+          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage("src/plm/core/ValueSerializer.java")));
 
           List<File> extraFiles = new ArrayList<>();
           for (String sourcePath : extraSourcePaths) {
             File extraFile = new File(workspace, new File(sourcePath).getName());
-            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFile(sourcePath)));
+            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage(sourcePath)));
             extraFiles.add(extraFile);
           }
 
@@ -390,12 +344,7 @@ public class LangScala extends JvmTemplatedLang {
           // Relative to workspace itself (where scalac actually wrote these under their package-name subdirectories),
           // not to its parent: this is what must end up as each entry's name inside the jar.
           // For example "plm/runtime4/Main.class" needs "-cp jarfile plm.runtime4.Main" to resolve.
-          Set<String> classFiles = new HashSet<>();
-          try (var walk = Files.walk(workspace.toPath())) {
-            walk.filter(p -> p.toString().endsWith(".class")).forEach(p -> classFiles.add(workspace.toPath().relativize(p).toString()));
-          }
-
-          createJarFile(diagnostic, workspace, jarFile, "generated.Main", classFiles);
+          runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
 
           jarPath = jarFile.toPath().toString();
 

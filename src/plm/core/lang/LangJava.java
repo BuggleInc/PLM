@@ -30,37 +30,11 @@ import plm.universe.Direction;
 import plm.universe.Point;
 
 public class LangJava extends JvmTemplatedLang {
-  /**
-   * Extra source files to be copied alongside the student's code
-   */
-  private static final Map<String, List<String>> remoteExtraSourceFiles = Map.of("RemoteCons", List.of("src/lessons/recursion/cons/universe/RecList.java"));
   /* Language detection logic */
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
-  File tempFolder                                        = TMP_ROOT.resolve("java").toFile();
 
   public LangJava() { super("Java", "java", ResourcesCache.getIcon("img/lang_java.png")); }
-
-  /**
-   * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "lessons.recursion.cons.universe.RecList"
-   */
-  private static String fqcnFromSourcePath(String sourcePath)
-  {
-    String withoutSrcPrefix = sourcePath.startsWith("src/") ? sourcePath.substring("src/".length()) : sourcePath;
-    String withoutExtension =
-        withoutSrcPrefix.endsWith(".java") ? withoutSrcPrefix.substring(0, withoutSrcPrefix.length() - ".java".length()) : withoutSrcPrefix;
-    return withoutExtension.replace('/', '.');
-  }
-
-  /**
-   * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "RecList"
-   */
-  private static String fileNameWithoutExtension(String path)
-  {
-    String name = new File(path).getName();
-    int dot     = name.lastIndexOf('.');
-    return dot < 0 ? name : name.substring(0, dot);
-  }
 
   private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, File... files) throws PLMCompilerException
   {
@@ -109,18 +83,11 @@ public class LangJava extends JvmTemplatedLang {
 
     // Every class compiles under the fixed "generated" package (see compileJavaFiles(), which sets CLASS_OUTPUT to
     // packageFolder itself), so ".class" files land nested under a "generated/" folder there, same as any normal -d
-    // compile -- walk packageFolder for them rather than deriving their location from the ".java" source files,
-    // which no longer tells us where javac put the output.
+    // compile -- walk packageFolder for them (findClassFiles()) rather than deriving their location from the ".java"
+    // source files, which no longer tells us where javac put the output.
     String mainFileDotPath = "generated." + mainFile.getName().substring(0, mainFile.getName().indexOf('.'));
 
-    List<String> classFiles;
-    try (var paths = Files.walk(packageFolder.toPath())) {
-      classFiles = paths.filter(p -> p.toString().endsWith(".class")).map(p -> packageFolder.toPath().relativize(p).toString()).toList();
-    } catch (IOException e) {
-      throw new PLMCompilerException(e.getMessage(), Set.of(), new Error(), diagnostic);
-    }
-
-    runJarTool(packageFolder, jarFile, mainFileDotPath, new HashSet<>(classFiles), diagnostic);
+    runJarTool(packageFolder, jarFile, mainFileDotPath, findClassFiles(packageFolder, diagnostic), diagnostic);
   }
 
   @Override public boolean isJava() { return true; }
@@ -146,13 +113,6 @@ public class LangJava extends JvmTemplatedLang {
       remoteCode = packageDeclaration + "\n" + remoteCode;
 
     return remoteCode;
-  }
-
-  private String copyFile(String path) throws IOException
-  {
-    String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
-    content        = content.replaceFirst("package .*;", "package generated;\n");
-    return content;
   }
 
   public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
@@ -216,7 +176,7 @@ public class LangJava extends JvmTemplatedLang {
           File valueSerializer = new File(workspace, "ValueSerializer.java");
 
           List<String> extraSourcePaths = new ArrayList<>(Arrays.asList("src/plm/universe/Point.java", "src/plm/core/ValueSerializer.java"));
-          extraSourcePaths.addAll(remoteExtraSourceFiles.getOrDefault(remote, List.of()));
+          extraSourcePaths.addAll(REMOTE_EXTRA_SOURCE_FILES.getOrDefault(remote, List.of()));
 
           // Rewrite any import of a type we're about to copy locally, in EVERY file that might reference it (the
           // student's own code, and our own runtime files like ValueSerializer.java) -- otherwise e.g.
@@ -234,12 +194,12 @@ public class LangJava extends JvmTemplatedLang {
           };
 
           entityCode = rewriteExtraImports.apply(entityCode);
-          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFile("src/plm/core/ValueSerializer.java")));
+          Files.writeString(valueSerializer.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage("src/plm/core/ValueSerializer.java")));
 
           List<File> extraFiles = new ArrayList<>();
           for (String sourcePath : extraSourcePaths) {
             File extraFile = new File(workspace, new File(sourcePath).getName());
-            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFile(sourcePath)));
+            Files.writeString(extraFile.toPath(), rewriteExtraImports.apply(copyFileRenamingPackage(sourcePath)));
             extraFiles.add(extraFile);
           }
 

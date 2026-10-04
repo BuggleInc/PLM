@@ -5,10 +5,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
@@ -27,7 +29,58 @@ import plm.universe.Point;
  */
 public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
+  /** Extra source files to be copied alongside the student's code, keyed by the RemoteXxx universe needing them. */
+  protected static final Map<String, List<String>> REMOTE_EXTRA_SOURCE_FILES =
+      Map.of("RemoteCons", List.of("src/lessons/recursion/cons/universe/RecList.java"));
+
+  /** Per-language scratch directory, nested under the shared TMP_ROOT, e.g. .../plm/java or .../plm/scala. */
+  protected final File tempFolder = TMP_ROOT.resolve(getExt()).toFile();
+
   public JvmTemplatedLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
+
+  /**
+   * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "lessons.recursion.cons.universe.RecList"
+   */
+  protected static String fqcnFromSourcePath(String sourcePath)
+  {
+    String withoutSrcPrefix = sourcePath.startsWith("src/") ? sourcePath.substring("src/".length()) : sourcePath;
+    String withoutExtension = withoutSrcPrefix.replaceFirst("\\.(java|scala)$", "");
+    return withoutExtension.replace('/', '.');
+  }
+
+  /**
+   * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "RecList"
+   */
+  protected static String fileNameWithoutExtension(String path)
+  {
+    String name = new File(path).getName();
+    int dot     = name.lastIndexOf('.');
+    return dot < 0 ? name : name.substring(0, dot);
+  }
+
+  /**
+   * Reads a source file to be copied verbatim alongside generated code (ValueSerializer.java, Point.java,
+   * RecList.java...), rewriting its package declaration to "generated". Matches both Java's "package x.y.z;" and
+   * Scala's "package x.y.z" (no trailing semicolon), and only adds the semicolon back for ".java" files.
+   */
+  protected static String copyFileRenamingPackage(String path) throws IOException
+  {
+    String content = Files.readString(new File(path).toPath(), StandardCharsets.UTF_8);
+    return content.replaceFirst("package [^;\\n]*;?", "package generated" + (path.endsWith(".java") ? ";" : ""));
+  }
+
+  /**
+   * ".class" files found under dir, as paths relative to dir itself -- e.g. "generated/Entity.class". Used to list
+   * the entries a compiled exercise's jar needs, whichever language produced them.
+   */
+  protected static Set<String> findClassFiles(File dir, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
+  {
+    try (var walk = Files.walk(dir.toPath())) {
+      return walk.filter(p -> p.toString().endsWith(".class")).map(p -> dir.toPath().relativize(p).toString()).collect(Collectors.toSet());
+    } catch (IOException e) {
+      throw new PLMCompilerException(e.getMessage(), Set.of(), new Error(), diagnostic);
+    }
+  }
 
   /**
    * Run "jar cfm &lt;jarFile&gt; &lt;manifest declaring Main-Class: mainClassDotPath&gt; &lt;classFiles...&gt;" from
