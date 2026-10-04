@@ -3,7 +3,6 @@ package plm.core.lang;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -51,34 +50,6 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
       return target;
     } catch (IOException e) {
       throw new UncheckedIOException(e);
-    }
-  }
-
-  /**
-   * Read a classloader resource at {@code path} as a UTF-8 string. Low-level primitive behind {@link #loadRemoteFile} and
-   * LangC's own resource reading.
-   */
-  protected static String readClasspathResource(String path) throws IOException { return new String(readClasspathBytes(path), StandardCharsets.UTF_8); }
-
-  /**
-   * Load the raw content of a "RemoteXxx" universe-glue file (e.g. RemoteBuggle.java/.scala/.py), shipped as a
-   * classloader resource under "resources/langages/&lt;langDir&gt;/". {@code remoteName} is normalized the same way in
-   * every caller: null/empty defaults to plain "Remote", "Remote" is prepended if missing, and {@code extension} is
-   * appended if missing. Package-declaration handling (Java/Scala only) is left to the caller, since Python has none.
-   */
-  protected static String loadRemoteFile(String remoteName, String langDir, String extension)
-  {
-    String remote = (remoteName == null || remoteName.isEmpty()) ? "Remote" + extension : remoteName;
-    if (!remote.startsWith("Remote"))
-      remote = "Remote" + remote;
-    if (!remote.endsWith(extension))
-      remote = remote + extension;
-
-    String path = "resources/langages/" + langDir + "/" + remote;
-    try {
-      return readClasspathResource(path);
-    } catch (IOException e) {
-      throw new IllegalArgumentException("Remote '" + path + "' do not exist (argument passed: '" + remoteName + "').");
     }
   }
 

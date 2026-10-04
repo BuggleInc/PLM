@@ -123,8 +123,8 @@ public class LangC extends TemplatedRemoteLang {
       String valueSerializerC = readResource("value_serializer.c");
       String remoteH          = readResource("Remote.h");
       String remoteC          = readResource("Remote.c");
-      String remoteWorldH     = loadRemoteFile(remote, "c", ".h");
-      String remoteWorldC     = loadRemoteFile(remote, "c", ".c");
+      String remoteWorldH     = readResource(remote + ".h");
+      String remoteWorldC     = readResource(remote + ".c");
 
       Path valueSerializerObj = ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), isWindows);
       Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), isWindows);
@@ -290,11 +290,19 @@ public class LangC extends TemplatedRemoteLang {
     };
   }
 
-  /**
-   * Read a classloader resource from "resources/langages/c/" as a String. Used for the fixed C sources that don't fit
-   *  loadRemoteFile()'s "Remote"-prefixed naming convention.
-   */
-  private static String readResource(String fileName) throws IOException { return readClasspathResource("resources/langages/c/" + fileName); }
+  /** Content of the C sources and headers, read once from "resources/langages/c/". */
+  private static final Map<String, String> resources = new ConcurrentHashMap<>();
+
+  private static String readResource(String fileName)
+  {
+    return resources.computeIfAbsent(fileName, name -> {
+      try {
+        return new String(readClasspathBytes("resources/langages/c/" + name), StandardCharsets.UTF_8);
+      } catch (IOException e) {
+        throw new UncheckedIOException(e);
+      }
+    });
+  }
 
   /*
    * If {@code line} is a local #include (e.g. from a correction file that also carries its own #include pointing deep
