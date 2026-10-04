@@ -7,7 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 
 /**
@@ -17,7 +21,32 @@ import plm.core.model.lesson.Exercise;
  */
 public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
 
+  /** For each compiled executable, the number of lines to subtract from the locations of the entity in the diagnostics: 0 for the correction. */
+  protected final Map<String, Integer> lineShifts = new ConcurrentHashMap<>();
+
   public TemplatedRemoteLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
+
+  /**
+   * How many lines of the generated source come before the body's own first line, so that the line number of a compiler
+   * error or of a stack trace can be translated back into the student's own editor coordinates.
+   */
+  protected static int countLinesBeforeBody(String pre) { return (int)pre.chars().filter(c -> c == '\n').count(); }
+
+  /**
+   * Translates the line numbers matched by {@code location} in {@code text} back into the editor's, by subtracting the shift of the
+   * executable. The group 1 of the pattern is the text before the number, and the group 2 is the number. Locations before the body,
+   * and all of them when debugging is enabled, are left untouched.
+   */
+  protected String shiftLines(Pattern location, String text, String executable)
+  {
+    int shift = lineShifts.getOrDefault(executable, 0);
+    if (shift == 0 || Game.getInstance().isDebugEnabled())
+      return text;
+    return location.matcher(text).replaceAll(m -> {
+      int lineNumber = Integer.parseInt(m.group(2));
+      return m.group(1) + (lineNumber > shift ? lineNumber - shift : lineNumber);
+    });
+  }
 
   /**
    * Read a classloader resource at {@code path} (relative to the classpath root) as bytes.

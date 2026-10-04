@@ -51,6 +51,9 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
       Game.getInstance().switchDebug();
   }
 
+  /** How a stack trace designates a line of the entity. */
+  protected String locationOfLine(int line) { return "(Entity." + pl.getExt() + ":" + line + ")"; }
+
   /** The frames of a stack trace are reported at their line in the editor, not in the generated source, whatever the length of the template before it. */
   @Test public void testStackTraceLineMatchesEditor() throws PLMCompilerException, InterruptedException
   {
@@ -66,7 +69,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
       System.setErr(realErr);
       setDebug(true);
     }
-    Assertions.assertTrue(capture.toString().contains("(Entity." + pl.getExt() + ":2)"), capture.toString());
+    Assertions.assertTrue(capture.toString().contains(locationOfLine(2)), capture.toString());
   }
 
   @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException

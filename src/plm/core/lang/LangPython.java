@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -39,6 +40,9 @@ public class LangPython extends TemplatedRemoteLang {
    * LangJava/LangScala, ValueSerializer.py has no external dependency of its own to drag in).
    */
   private static final Map<String, List<String>> remoteExtraModules = Map.of("RemoteCons", List.of("RecList.py"));
+
+  /** The location of a line of the entity in a traceback or a syntax error, e.g. 'Entity.py", line 42'. */
+  private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.py\", line )(\\d+)");
 
   /** Where the modules above are deployed once and for all. Python caches their bytecode in its __pycache__ on first import. */
   private static final Path ENTITIES_DIR = TMP_ROOT.resolve("python-entities");
@@ -110,7 +114,9 @@ public class LangPython extends TemplatedRemoteLang {
           String code = Indentation.expandLeadingTabs(body);
           body        = Indentation.reindent(code, Indentation.minLeadingSpaces(code), sf.getBodyIndent());
         }
-        String entityCode           = imports + "\n\n" + segments.pre() + body + " \n" + segments.post();
+        String pre        = imports + "\n\n" + segments.pre();
+        int offset        = countLinesBeforeBody(pre);
+        String entityCode = pre + body + " \n" + segments.post();
         // Expend any tabs to spaces the way python reads them to avoid mixing tabs and spaces
         entityCode = Indentation.expandLeadingTabs(entityCode);
         // Kill those damn \160 chars, which are non-breaking spaces
@@ -123,6 +129,10 @@ public class LangPython extends TemplatedRemoteLang {
         File entityFile = new File(workspace, "Entity.py");
         File mainFile   = new File(workspace, "Main.py");
 
+        String executable = mainFile.toPath().toString();
+        // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
+        lineShifts.put(executable, whatToCompile == StudentOrCorrection.STUDENT ? offset : 0);
+
         String mainContent = "import sys\n" + "from Remote import connect\n" + "from Entity import run\n" + "\n" + "connect(sys.argv[1])\n" + "run()\n";
 
         Files.writeString(entityFile.toPath(), entityCode);
@@ -134,6 +144,7 @@ public class LangPython extends TemplatedRemoteLang {
         try {
           Process proc = new ProcessBuilder("python3", "-m", "py_compile", "Entity.py").directory(workspace).redirectErrorStream(true).start();
           String output = new BufferedReader(new InputStreamReader(proc.getInputStream())).lines().collect(Collectors.joining("\n"));
+          output        = shiftLines(ENTITY_LOCATION, output, executable);
           int retcode   = proc.waitFor();
           if (retcode != 0) {
             PLMCompilerException e = new PLMCompilerException("Compiling " + entityFile.toString() + " yielded the following output:\n" + output,
@@ -147,13 +158,16 @@ public class LangPython extends TemplatedRemoteLang {
           Thread.currentThread().interrupt();
         }
 
-        mainPath = mainFile.toPath().toString();
+        mainPath = executable;
       }
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
     return mainPath;
   }
+
+  /** Locations before the body, and all of them when debugging is enabled, are left untouched. */
+  @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
 
   /** Runs "python3 &lt;executable&gt; &lt;socketPath&gt;" from the executable's own directory, with ENTITIES_DIR ahead of the user's PYTHONPATH. */
   @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException

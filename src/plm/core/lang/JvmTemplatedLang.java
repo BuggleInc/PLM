@@ -9,9 +9,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
@@ -37,22 +35,9 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /** The location of a line of the entity in a stack trace, e.g. "Entity.java:42". */
   private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.(?:java|scala):)(\\d+)");
 
-  /** For each compiled jar, the number of lines to subtract from the locations of the entity in the stack traces: 0 for the correction. */
-  protected final Map<String, Integer> lineShifts = new ConcurrentHashMap<>();
-
   public JvmTemplatedLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
-  /** Locations before the body, and all of them when debugging is enabled, are left untouched. */
-  @Override protected String shiftLocations(String line, String executable)
-  {
-    int shift = lineShifts.getOrDefault(executable, 0);
-    if (shift == 0 || Game.getInstance().isDebugEnabled())
-      return line;
-    return ENTITY_LOCATION.matcher(line).replaceAll(m -> {
-      int lineNumber = Integer.parseInt(m.group(2));
-      return m.group(1) + (lineNumber > shift ? lineNumber - shift : lineNumber);
-    });
-  }
+  @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
 
   /**
    * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "lessons.recursion.cons.universe.RecList"
@@ -73,12 +58,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     int dot     = name.lastIndexOf('.');
     return dot < 0 ? name : name.substring(0, dot);
   }
-
-  /**
-   * How many lines of the generated source come before the body's own first line, so that the line number of a compiler
-   * error or of a stack trace can be translated back into the student's own editor coordinates.
-   */
-  protected static int countLinesBeforeBody(String pre) { return (int)pre.chars().filter(c -> c == '\n').count(); }
 
   /**
    * ".class" files found under dir, as paths relative to dir itself -- e.g. "generated/Entity.class". Used to list

@@ -152,14 +152,16 @@ teacher's correction) and `post` with what its language needs:
 
 Each language does this concatenation inline in its own `compileExo()`, to keep a single linear flow instead of jumping to a
 handful of one-off helper lines elsewhere:
-  - Java/Scala first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: it is the number of lines of the generated
-    source before the body's own first line. It is used to fix (shift) the location of compilation errors so that they point to
-    the code written by the student. Diagnostics located before the body are left untouched, and so are all of them when
-    debugging is enabled, to keep the path of the generated file. Java gets them from javac's `DiagnosticCollector`, Scala from
-    dotc's `SimpleReporter`. Both languages also subtract this number from the `Entity.java:N` and `Entity.scala:N` locations
-    found in the stack traces that the student process writes on its stderr, through the `RemoteExecutionLang.shiftLocations()`
-    hook (`JvmTemplatedLang` keeps the offset of each compiled jar in `lineShifts`). Locations before the body (and all of them
-    when debugging is enabled) are left untouched in both compilation errors and stack traces.
+  - Java/Scala/Python first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: it is the number of lines of the
+    generated source before the body's own first line. It is used to fix (shift) the location of compilation errors so that they
+    point to the code written by the student. Diagnostics located before the body are left untouched, and so are all of them
+    when debugging is enabled, to keep the path of the generated file. Java gets them from javac's `DiagnosticCollector`, Scala
+    from dotc's `SimpleReporter`. All three languages also subtract this number from the `Entity.java:N`, `Entity.scala:N` and
+    `Entity.py", line N` locations found in the stack traces that the student process writes on its stderr, through the
+    `RemoteExecutionLang.shiftLocations()` hook (`JvmTemplatedLang` keeps the offset of each compiled jar in `lineShifts`).
+    Locations before the body (and all of them when debugging is enabled) are left untouched in both compilation errors and
+    stack traces.
+    - C does not need to compute the offset, as a `#line` preprocessor directive already fixes the error location.
   - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
     still parses.
   - Python fixes the indentation: change tabs to spaces in editor's content and reindent the body to fit its position in the
@@ -427,9 +429,6 @@ TODO: add to the exercice a verification of the source code, so that MethodDogHo
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
 
-TODO: fix the stack traces of Python and C runtime errors, and the compilation errors of Python and C, to match the student
-      code: only the Java/Scala compiler diagnostics and the Java/Scala stack traces shift their line numbers back to the student's
-      own editor coordinates so far.
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
