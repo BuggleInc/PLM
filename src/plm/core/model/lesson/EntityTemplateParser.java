@@ -94,7 +94,7 @@ public class EntityTemplateParser {
 
     EntityFileSegments student        = new EntityFileSegments(head, initialContent, tail);
     EntityFileSegments correctionSegs = new EntityFileSegments(correctionHead, split.correctionBody(), correctionTail);
-    return new SourceFile(name, student, correctionSegs, imports, guessRemote(correction), bodyIndent);
+    return new SourceFile(name, guessRemote(correction), imports, bodyIndent, student, correctionSegs);
   }
 
   /**
