@@ -24,6 +24,7 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -136,11 +137,10 @@ public class LangJava extends JvmTemplatedLang {
                           + "import static generated." + remote + ".*;\n" + sf.getImports())
                              .replace('\n', ' ');
 
-        String template = "package generated;\n\n" + imports + "\n\npublic class Entity {\n" +
-                          (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
-        String body       = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody();
-        int offset        = countLinesBeforeBody(template); // not used yet: wiring compiler diagnostics back to it is a follow-up
-        String entityCode = template.replace("$body", body + " \n");
+        EntityFileSegments segments = sf.getSegments(whatToCompile);
+        String pre                  = "package generated;\n\n" + imports + "\n\npublic class Entity {\n" + segments.pre();
+        int offset                  = countLinesBeforeBody(pre); // not used yet: wiring compiler diagnostics back to it is a follow-up
+        String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
         entityCode        = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");

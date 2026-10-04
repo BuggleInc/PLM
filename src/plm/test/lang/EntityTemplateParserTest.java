@@ -9,6 +9,8 @@ import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.EntityTemplateParser;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 
 /**
@@ -16,6 +18,14 @@ import plm.core.model.session.SourceFile;
  * behavior on small synthetic entity files.
  */
 public class EntityTemplateParserTest {
+
+  /** Checks what surrounds the body in the source compiled for {@code which}. */
+  private static void assertFrame(SourceFile e, StudentOrCorrection which, String pre, String post)
+  {
+    EntityFileSegments segments = e.getSegments(which);
+    Assertions.assertEquals(pre, segments.pre());
+    Assertions.assertEquals(post, segments.post());
+  }
 
   private static SourceFile parse(String content, ProgrammingLanguage lang) throws PLMCompilerException
   {
@@ -33,7 +43,7 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("a = 1\nc = 3\n", e.getBody());
     Assertions.assertEquals(2, e.getBodyIndent());
-    Assertions.assertEquals("import x\ndef run():\n$body\n  end()\n", e.getTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "import x\ndef run():\n", "\n  end()\n");
   }
 
   /** Only BEGIN/END SOLUTION: the template is empty and the tail starts right after the solution. */
@@ -43,8 +53,8 @@ public class EntityTemplateParserTest {
 
     Assertions.assertEquals("", e.getBody());
     Assertions.assertEquals(2, e.getBodyIndent()); // the indentation of the solution itself
-    Assertions.assertEquals("def run():\n$body\n  end()\n", e.getTemplate());
-    Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.getCorrectionBody());
+    assertFrame(e, StudentOrCorrection.STUDENT, "def run():\n", "\n  end()\n");
+    Assertions.assertEquals("  # BEGIN SOLUTION\n  x = 1\n  # END SOLUTION\n", e.getSegments(StudentOrCorrection.CORRECTION).body());
   }
 
   /** A second BEGIN/END SOLUTION inside the template is kept in the correction only. */
@@ -54,7 +64,7 @@ public class EntityTemplateParserTest {
     SourceFile e = parse(content, new LangPython());
 
     Assertions.assertEquals("a = 1\n", e.getBody());
-    Assertions.assertEquals("def run():\n$body\n", e.getTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "def run():\n", "\n");
   }
 
   /** Java: head keeps its own lines/comments, initial content is dedented, and the correction is a faithful copy of the file. */
@@ -65,7 +75,7 @@ public class EntityTemplateParserTest {
     SourceFile e = parse(content, new LangJava());
 
     Assertions.assertEquals("int a;\n", e.getBody());
-    Assertions.assertEquals("package foo;\npublic class FooEntity {\n  // comment\n$body\n}\n", e.getTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "package foo;\npublic class FooEntity {\n  // comment\n", "\n}\n");
   }
 
   /** C: the template is left as is (the {@code #line} directive is added later, when compiling). */
@@ -75,7 +85,7 @@ public class EntityTemplateParserTest {
         parse(lines("int x;", "/* BEGIN TEMPLATE */", "a();", "/* BEGIN SOLUTION */", "b();", "/* END SOLUTION */", "/* END TEMPLATE */"), new LangC());
 
     Assertions.assertEquals("a();\n", e.getBody());
-    Assertions.assertEquals("int x;\n$body\n", e.getTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "int x;\n", "\n");
   }
 
   /** IMPORT sections are exposed separately and removed from the head, but kept in the correction. */
@@ -86,7 +96,7 @@ public class EntityTemplateParserTest {
                          new LangJava());
 
     Assertions.assertEquals("import java.util.Stack;\n", e.getImports());
-    Assertions.assertEquals("public class FooEntity {\n$body\n}\n", e.getTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "public class FooEntity {\n", "\n}\n");
     Assertions.assertEquals("int a;\n", e.getBody());
   }
 
@@ -101,17 +111,17 @@ public class EntityTemplateParserTest {
                             () -> parse(lines("/* BEGIN IMPORT */", "/* BEGIN SOLUTION */", "/* END SOLUTION */", "/* END IMPORT */"), new LangJava()));
   }
 
-  /** REMOTE narrows head/tail down to what is written between its markers; correctionBody keeps the TEMPLATE markers. */
+  /** REMOTE narrows head/tail down to what is written between its markers; the correction body keeps the TEMPLATE markers. */
   @Test public void testRemoteNarrowsHeadAndTail() throws PLMCompilerException
   {
     SourceFile e = parse(lines("package foo;", "public class FooEntity {", "  /* BEGIN REMOTE */", "  void run() {", "    /* BEGIN TEMPLATE */", "    int a;",
                                "    /* BEGIN SOLUTION */", "    int b;", "    /* END SOLUTION */", "    /* END TEMPLATE */", "  }", "  /* END REMOTE */", "}"),
                          new LangJava());
 
-    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.getTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "  void run() {\n", "\n  }\n");
     Assertions.assertEquals("int a;\n", e.getBody());
     Assertions.assertEquals("    /* BEGIN TEMPLATE */\n    int a;\n    /* BEGIN SOLUTION */\n    int b;\n    /* END SOLUTION */\n    /* END TEMPLATE */\n",
-                            e.getCorrectionBody());
+                            e.getSegments(StudentOrCorrection.CORRECTION).body());
   }
 
   @Test public void testUnclosedRemote()
@@ -131,7 +141,7 @@ public class EntityTemplateParserTest {
     Assertions.assertThrows(RuntimeException.class, () -> parse(lines("public class FooEntity {", "}"), new LangJava()));
   }
 
-  /** SOLUTION in REMOTE but outside the template: kept in correctionTemplate only. */
+  /** SOLUTION in REMOTE but outside the template: kept in the correction frame only. */
   @Test public void testHiddenSolutionInRemoteHeadAndTail() throws PLMCompilerException
   {
     SourceFile e = parse(lines("public class FooEntity {", "  /* BEGIN REMOTE */", "  /* BEGIN SOLUTION */", "  int h;", "  /* END SOLUTION */",
@@ -139,8 +149,8 @@ public class EntityTemplateParserTest {
                                     "    check();", "    /* END SOLUTION */", "  }", "  /* END REMOTE */", "}"),
                               new LangJava());
 
-    Assertions.assertEquals("  void run() {\n$body\n  }\n", e.getTemplate());
-    Assertions.assertEquals("  int h;\n  void run() {\n$body\n    check();\n  }\n", e.getCorrectionTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "  void run() {\n", "\n  }\n");
+    assertFrame(e, StudentOrCorrection.CORRECTION, "  int h;\n  void run() {\n", "\n    check();\n  }\n");
   }
 
   /** A SOLUTION before BEGIN REMOTE or after END REMOTE would be silently dropped: rejected. */
@@ -181,8 +191,8 @@ public class EntityTemplateParserTest {
               new LangJava());
 
     Assertions.assertEquals("", e.getBody());
-    Assertions.assertEquals("$body\n", e.getTemplate());
-    Assertions.assertEquals("int h;\n$body\nint t;\n", e.getCorrectionTemplate());
+    assertFrame(e, StudentOrCorrection.STUDENT, "", "\n");
+    assertFrame(e, StudentOrCorrection.CORRECTION, "int h;\n", "\nint t;\n");
   }
 
   /** Python: the tabs of the templated region are expanded the way python reads them, to find out its indentation. */

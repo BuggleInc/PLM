@@ -21,6 +21,7 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
@@ -79,12 +80,9 @@ public class LangC extends TemplatedRemoteLang {
 
     String execPath = null;
     for (SourceFile sf : sfs) {
-      String body = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody();
-      // Make the compiler errors point at the entity's own file
-      body = "#line 1 \"" + sf.getName() + ".c\" \n" + body;
-
-      String entityCode = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate();
-      entityCode        = entityCode.replace("$body", body);
+      EntityFileSegments segments = sf.getSegments(whatToCompile);
+      // The #line directive makes the compiler errors point at the entity's own file
+      String entityCode = segments.pre() + "#line 1 \"" + sf.getName() + ".c\" \n" + segments.body() + segments.post();
 
       entityCode = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
       execPath   = compile(entityCode, sf.getRemote(), exo.getId(), exo, whatToCompile);

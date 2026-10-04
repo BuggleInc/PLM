@@ -14,6 +14,7 @@ import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.Indentation;
@@ -129,9 +130,9 @@ public class LangPython extends TemplatedRemoteLang {
           extraImports.append("from ").append(fileNameWithoutExtension(sourcePath)).append(" import *\n");
 
         String imports    = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports;
-        String template   = imports + "\n\n" + (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate());
-        String body       = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : reindent(sf.getBody(), sf.getBodyIndent());
-        String entityCode = template.replace("$body", body + " \n");
+        EntityFileSegments segments = sf.getSegments(whatToCompile);
+        String body                 = whatToCompile == StudentOrCorrection.CORRECTION ? segments.body() : reindent(segments.body(), sf.getBodyIndent());
+        String entityCode           = imports + "\n\n" + segments.pre() + body + " \n" + segments.post();
         // Expend any tabs to spaces the way python reads them to avoid mixing tabs and spaces
         entityCode = Indentation.expandLeadingTabs(entityCode);
         // Kill those damn \160 chars, which are non-breaking spaces

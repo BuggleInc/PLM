@@ -9,6 +9,7 @@ import java.util.Map;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.utils.Indentation;
 
@@ -20,12 +21,6 @@ public class EntityTemplateParser {
 
   private EntityTemplateParser() {} // not instantiable, only static helpers
 
-  /**
-   * @param content        the raw content of the entity file, as read from disk
-   * @param lang           the language this entity file is written in
-   * @param name           the name of the resulting source file
-   * @param shownFilename  the human-readable file name, only used in warning/error messages
-   */
   /**
    * The RemoteXxx universes, with the words found in the entities of that universe, in the order of the search: the first universe
    * with a matching word wins, so RemoteCons is listed before RemoteBat as some cons entities also mention the bat universe.
@@ -57,6 +52,12 @@ public class EntityTemplateParser {
     return null;
   }
 
+  /**
+   * @param content        the raw content of the entity file, as read from disk
+   * @param lang           the language this entity file is written in
+   * @param name           the name of the resulting source file
+   * @param shownFilename  the human-readable file name, only used in warning/error messages
+   */
   public static SourceFile parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
   {
     String[] lines             = content.split("\n");
@@ -77,9 +78,6 @@ public class EntityTemplateParser {
     String initialContent = text(segments, false, Kind.TEMPLATE);
     String imports        = text(segments, false, Kind.IMPORT);
 
-    String template           = head + "$body" + tail;
-    String correctionTemplate = correctionHead + "$body" + correctionTail;
-
     /* The editor starts flush left: remove the indentation shared by the whole templated region (solution included) from the initial
      * content. Python is indentation-sensitive, so LangPython.compileExo() indents the student's code back by bodyIndent: its tabs are
      * expanded as python reads them, to not mix up with spaces. Elsewhere, tabs are simply converted to spaces. */
@@ -94,7 +92,9 @@ public class EntityTemplateParser {
     int bodyIndent = minLeadingSpaces(templateRegion);
     initialContent = removeLeadingSpaces(initialContent, bodyIndent);
 
-    return new SourceFile(name, initialContent, template, correctionTemplate, split.correctionBody(), imports, guessRemote(correction), bodyIndent);
+    EntityFileSegments student        = new EntityFileSegments(head, initialContent, tail);
+    EntityFileSegments correctionSegs = new EntityFileSegments(correctionHead, split.correctionBody(), correctionTail);
+    return new SourceFile(name, student, correctionSegs, imports, guessRemote(correction), bodyIndent);
   }
 
   /**

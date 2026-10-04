@@ -70,18 +70,10 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   }
 
   /**
-   * How many lines of template come before "$body"'s own first line, so that a compiler error's line number can
-   * later be translated back into the student's own editor coordinates (not wired in yet: follow-up work).
+   * How many lines of the generated source come before the body's own first line, so that a compiler error's line
+   * number can later be translated back into the student's own editor coordinates (not wired in yet: follow-up work).
    */
-  protected static int countLinesBeforeBody(String template)
-  {
-    int bodyIndex = template.indexOf("$body");
-    int offset    = 0;
-    for (int i = 0; i < bodyIndex; i++)
-      if (template.charAt(i) == '\n')
-        offset++;
-    return offset;
-  }
+  protected static int countLinesBeforeBody(String pre) { return (int)pre.chars().filter(c -> c == '\n').count(); }
 
   /**
    * ".class" files found under dir, as paths relative to dir itself -- e.g. "generated/Entity.class". Used to list

@@ -117,43 +117,42 @@ and removed from the segments:
 Any invalid markup throws a RuntimeException (unmatched or nested markers, several `TEMPLATE`s, a `SOLUTION` straddling another
 marker, ...).
 
-What lies outside the templated region is the `head` and the `tail`. The resulting `SourceFile` holds:
-- `body`: initially the `TEMPLATE` content minus its `SOLUTION` sections, what the student sees in the editor. It is dedented by
-  `bodyIndent`, the indentation shared by the whole templated region (solutions included). For Python, leading tabs are first
-  expanded to spaces, with tab stops every 8 columns.
-- `template`: `head + "$body" + tail`, without any `SOLUTION` section. It is used to compile the student's code by substituting
-  the string "$body" with the editor's content.
-- `correctionTemplate`: same, but keeping the `SOLUTION` sections of head and tail. It is used to compile the correction.
-- `correctionBody`: the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
-  `END SOLUTION` without template. It is the `$body` value used to compile the correction.
+What lies within REMOTE but outside the templated region is the `head` and the `tail`. The resulting `SourceFile` holds:
+- `body`: the editor's current content, initially the `TEMPLATE` content minus its `SOLUTION` sections, what the student sees in
+  the editor. It is dedented by `bodyIndent`, the indentation shared by the whole templated region (solutions included). For
+  Python, leading tabs are first expanded to spaces, with tab stops every 8 columns.
+- `student`: an `EntityFileSegments(pre, body, post)` record, where `pre` is the head and `post` the tail without any `SOLUTION`
+  section, and `body` is the initial editor content described above. `pre + body + post` is the student's source, with `body`
+  replaced by the editor's current content.
+- `correction`: same record, but `pre` and `post` keep the `SOLUTION` sections of head and tail, and `body` is the raw span
+  (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to `END SOLUTION` when no template is
+  given.
 - `imports`: the content of the `IMPORT` sections.
 - `remote`: the name of the `RemoteXxx` universe, guessed by `guessRemote()` from the entity file content.
 - `bodyIndent`: see above.
 
 ### Step 2: building a compilable source (language-specific in `compileExo()`, not cached)
 
-Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correctionTemplate` for
-`StudentOrCorrection.CORRECTION` or `template` otherwise, and wraps it the way its language needs:
+Each `compileExo()` gets the `EntityFileSegments` of every `SourceFile` from `SourceFile.getSegments()`: the `correction` ones for
+`StudentOrCorrection.CORRECTION`, or the `student` ones with `body` set to the editor's current content otherwise. It then
+concatenates them with what its language needs:
 - Java/Scala wrap it in their own class/object boilerplate: `package`, their imports (all on a single line, so that the line
-  numbers of the generated code do not depend on how many there are), `class Entity {`, then the template, then a closing brace.
-- Python only prepends its own imports to the template, with no further boilerplate. As indentation matters in Python, it
+  numbers of the generated code do not depend on how many there are), `class Entity {`, then `pre`, the body, `post` and a closing brace.
+- Python only prepends its own imports, with no further boilerplate. As indentation matters in Python, it
   indents the student's code by `bodyIndent` spaces (after removing its own common indentation) before substituting it. The tabs
   found in the leading whitespace of the whole source (entity and student) are then expanded as well, so that tabs and spaces
   never get mixed up.
-- C inserts a `#line` preprocessor directive right before `$body`, so that compiler errors point at the entity's own file.
+- C inserts a `#line` preprocessor directive between `pre` and the body, so that compiler errors point at the entity's own file.
 
-The body is retrieved from the `SourceFile` (either the source's `correctionBody` or the editor's current content).
-
-Once the template is computed, each language substitutes `$body` with the actual body itself (there is no shared method for
-this: every language's own `compileExo()` does it inline, to keep a single linear flow instead of jumping to a handful of
-one-off helper lines elsewhere):
-  - Java/Scala first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: the number of lines of the template before
-    `$body`'s own first line, meant to fix the location of compilation errors so that they point to the code written by the
-    student. Nothing uses it yet, it is computed in preparation for a follow-up.
-  - `$body` is substituted with the actual body (plus a trailing space and newline, so that a body ending right before the
-    template's closing brace still parses).
+Each language does this concatenation inline in its own `compileExo()`, to keep a single linear flow instead of jumping to a
+handful of one-off helper lines elsewhere:
+  - Java/Scala first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: the number of lines of the generated source
+    before the body's own first line, meant to fix the location of compilation errors so that they point to the code written by
+    the student. Nothing uses it yet, it is computed in preparation for a follow-up.
+  - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
+    still parses.
   - Python fixes the indentation: change tabs to spaces in editor's content and reindent the body to fit its position in the
-    template.
+    source.
   - non-breaking spaces are stripped.
 - The resulting source is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
   This name derived from the exercise id and `STUDENT`/`CORRECTION`, so unrelated concurrent compiles never collide) alongside
@@ -408,7 +407,7 @@ TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
 
 TODO: fix the compilation error messages to match the student code: `JvmTemplatedLang.countLinesBeforeBody()` gives Java/Scala
-      the `$body` offset, but no caller uses it yet to shift a compiler diagnostic's line number back to the student's own
+      the body offset, but no caller uses it yet to shift a compiler diagnostic's line number back to the student's own
       editor coordinates.
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
