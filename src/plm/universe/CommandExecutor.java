@@ -7,9 +7,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import plm.core.ValueSerializer;
 import plm.core.lang.primitives.PrimitiveMethod;
@@ -50,10 +48,8 @@ public final class CommandExecutor {
       return;
     }
 
-    // The middle part (between the leading id and the trailing primitive name) contains the serialized arguments, space-separated.
-    // But a serialized String argument may itself contain spaces (e.g. "Oh Boy!"), using a simple split(" ") would ruin the parameter.
-    // Instead, tokenize the middle part while respecting quoted strings and bracketed arrays.
-    // FIXME: we should use ValueSerializer for the whole array of parameters, but this requires to implement this logic in C too
+    // The middle part (between the leading id and the trailing primitive name) is the serialized array of the arguments. It may
+    // contain spaces (e.g. in the String "Oh Boy!"), which is why the id and the name are located with the first and last spaces.
     Object[] args = (Object[])ValueSerializer.deserialize(opArgsSegment);
 
     for (int i = 0; i < args.length; i++) {
@@ -77,7 +73,6 @@ public final class CommandExecutor {
     }
 
     Method javaMethod = method.method();
-    method.parameters();
     Object returnValue;
     try {
       returnValue = javaMethod.invoke(entity, args);
@@ -106,55 +101,5 @@ public final class CommandExecutor {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-  }
-
-  /**
-   * Splits a space-separated list of serialized argument tokens, without breaking tokens that contain spaces inside a quoted
-   * string (e.g. "a b") or inside a bracketed array (e.g. [2:"a b":i3]). Respects backslash-escaping of quotes as produced by
-   * ValueSerializer.serialize (\\ and \").
-   */
-  private static String[] splitArgsRespectingQuotesAndBrackets(String argsPart)
-  {
-    if (argsPart.isEmpty())
-      return new String[0];
-
-    List<String> tokens   = new ArrayList<>();
-    StringBuilder current = new StringBuilder();
-    boolean inQuotes      = false;
-    int bracketDepth      = 0;
-
-    for (int i = 0; i < argsPart.length(); i++) {
-      char c = argsPart.charAt(i);
-
-      if (inQuotes) {
-        current.append(c);
-        if (c == '\\' && i + 1 < argsPart.length()) {
-          // Keep the escaped character glued to its backslash to differentiate an escaped quote from for the string end
-          current.append(argsPart.charAt(++i));
-        } else if (c == '"') {
-          inQuotes = false;
-        }
-        continue;
-      }
-
-      if (c == '"') {
-        inQuotes = true;
-        current.append(c);
-      } else if (c == '[') {
-        bracketDepth++;
-        current.append(c);
-      } else if (c == ']') {
-        bracketDepth--;
-        current.append(c);
-      } else if (c == ' ' && bracketDepth == 0) {
-        tokens.add(current.toString());
-        current.setLength(0);
-      } else {
-        current.append(c);
-      }
-    }
-    tokens.add(current.toString());
-
-    return tokens.toArray(new String[0]);
   }
 }
