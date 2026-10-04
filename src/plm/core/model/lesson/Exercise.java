@@ -23,7 +23,7 @@ public abstract class Exercise extends Lecture {
   public static enum WorldKind { INITIAL, CURRENT, ANSWER }
   public static enum StudentOrCorrection { STUDENT, CORRECTION }
 
-  protected String tabName = getClass().getSimpleName(); /* Name of the tab in editor -- must be a valid java identifier */
+  protected String tabName = getClass().getSimpleName(); /* Name of the tab in the editor, also the name of the entity source file and of its saved code */
 
   public String nameOfCorrectionEntity()
   { // This will be redefined by TurtleArt to reduce the amount of code

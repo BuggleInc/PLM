@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.Future;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
@@ -65,14 +63,6 @@ public abstract class ExerciseTemplated extends Exercise {
   {
     boolean foundALanguage = false;
 
-    /* Sanity check for broken lessons: the tab name is used as the compiled class name and must be valid */
-    for (String forbidden : new String[] {"'", "\""}) {
-      Matcher matcher = Pattern.compile(forbidden).matcher(tabName);
-      if (matcher.matches())
-        throw new RuntimeException(tabName + " is not a valid java identifier (forbidden char: " + forbidden + "). "
-                                   + "Your exercise uses a broken tabName.");
-    }
-
     /* Sanity check for broken lessons: every world must come with at least one entity */
     for (World w : ws)
       if (w.getEntities().isEmpty())
@@ -81,44 +71,22 @@ public abstract class ExerciseTemplated extends Exercise {
     setupWorlds(ws);
 
     for (ProgrammingLanguage lang : Game.getInstance().getProgrammingLanguageManager().langs) {
-      boolean foundThisLanguage = false;
-      String searchedName       = null;
-      for (SourceFile sf : sourceFiles.getOrDefault(lang, List.of())) { // sources added explicitly, not to be loaded from an entity file
-        if (searchedName == null) { // lazy initialization if there is any sourcefile to parse
-          Pattern p = Pattern.compile(".*?([^.]*)$");
-          Matcher m = p.matcher(nameOfCorrectionEntity());
-          if (m.matches())
-            searchedName = m.group(1);
-          p            = Pattern.compile("Entity$");
-          m            = p.matcher(searchedName);
-          searchedName = m.replaceAll("");
-        }
-        if (Game.getInstance().isDebugEnabled())
-          System.out.println("Saw " + sf.getName() + " in " + lang.getLang() + ", searched for " + searchedName + " or " + tabName +
-                             " while checking for the need of creating a new tab");
-        if (sf.getName().equals(searchedName) || sf.getName().equals(tabName))
-          foundThisLanguage = true;
-      }
-      if (!foundThisLanguage) {
-        if (FileUtils.exists(nameOfCorrectionEntity(), lang.getExt())) {
-          entityLanguages.add(lang); // the entity itself is only loaded and parsed when needed, see loadSourceFiles()
-          super.addProgLanguage(lang);
-          foundALanguage = true;
-          if (Game.getInstance().isDebugEnabled() && !Game.getInstance().isBatchExecution())
-            System.out.println("Found suitable templating entity " + nameOfCorrectionEntity() + " in " + lang);
-        } else {
-          if (lang.isPython() || lang.isScala() || lang.isJava())
-            System.out.println("No templating entity found: " + nameOfCorrectionEntity() + "." + lang.getExt());
-
-          if (getProgLanguages().contains(lang))
-            throw new RuntimeException(Game.i18n.tr("Exercise {0} is said to be compatible with language "
-                                                        + "{1}, but there is no entity for this language: {2}",
-                                                    getName(), lang, nameOfCorrectionEntity() + "." + lang.getExt()));
-          /* Ok, this language does not work for this exercise but didn't promise anything. I can deal with
-           * it */
-        }
-      } else {
+      if (FileUtils.exists(nameOfCorrectionEntity(), lang.getExt())) {
+        entityLanguages.add(lang); // the entity itself is only loaded and parsed when needed, see loadSourceFiles()
+        super.addProgLanguage(lang);
         foundALanguage = true;
+        if (Game.getInstance().isDebugEnabled() && !Game.getInstance().isBatchExecution())
+          System.out.println("Found suitable templating entity " + nameOfCorrectionEntity() + " in " + lang);
+      } else {
+        if (lang.isPython() || lang.isScala() || lang.isJava())
+          System.out.println("No templating entity found: " + nameOfCorrectionEntity() + "." + lang.getExt());
+
+        if (getProgLanguages().contains(lang))
+          throw new RuntimeException(Game.i18n.tr("Exercise {0} is said to be compatible with language "
+                                                      + "{1}, but there is no entity for this language: {2}",
+                                                  getName(), lang, nameOfCorrectionEntity() + "." + lang.getExt()));
+        /* Ok, this language does not work for this exercise but didn't promise anything. I can deal with
+         * it */
       }
     }
     if (!foundALanguage)
