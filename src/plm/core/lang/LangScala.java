@@ -265,8 +265,10 @@ public class LangScala extends JvmTemplatedLang {
 
         String template = "package generated\n\n" + imports + "\n\nobject Entity {\n" +
                           (whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionTemplate() : sf.getTemplate()) + "\n}";
-        String entityCode =
-            sf.getCompilableContent(template, whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody()).content();
+        String body       = whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionBody() : sf.getBody();
+        int offset        = countLinesBeforeBody(template); // not used yet: wiring compiler diagnostics back to it is a follow-up
+        String entityCode = template.replace("$body", body + " \n");
+        entityCode        = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
         entityCode        = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");

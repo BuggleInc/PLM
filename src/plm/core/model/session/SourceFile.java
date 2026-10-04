@@ -71,42 +71,6 @@ public class SourceFile {
   public String getRemote() { return remote; }
   public int getBodyIndent() { return bodyIndent; }
 
-  /**
-   * The result of {@link #getCompilableContent(String, String)}: the compilable source text, plus how many
-   * lines of it come before the student/correction body's own first line (see {@code offset} there).
-   */
-  public record CompilableContent(String content, int offset) {}
-
-  /**
-   * Returns the source text that we should compile, alongside the {@code $body} offset computed along the way.
-   *
-   * The returned {@code offset} is the number of lines separating the start of the generated file from {@code $body}'s own
-   * first line, so that a compiler error line number can later be translated back into the student's own editor coordinates.
-   *
-   * @param template
-   * 			the template to fill, or null to compile the body alone
-   * @param body
-   * 			what goes in place of {@code $body}: the student-provided content or the correction
-   * @return
-   */
-  public CompilableContent getCompilableContent(String template, String body)
-  {
-    String res = template != null ? template : body;
-
-    int offset = 0;
-    if (template != null) {
-      int bodyIndex = res.indexOf("$body");
-      for (int i = 0; i < bodyIndex; i++)
-        if (res.charAt(i) == '\n')
-          offset++;
-
-      res = res.replace("$body", body + " \n");
-    }
-
-    res = res.replace('\u00A0', ' '); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
-    return new CompilableContent(res, offset);
-  }
-
   public void setListener(ISourceFileListener l) { this.listener = l; }
 
   public void removeListener() { this.listener = null; }

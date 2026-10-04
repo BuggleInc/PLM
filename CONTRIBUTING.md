@@ -144,18 +144,20 @@ Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correc
 
 The body is retrieved from the `SourceFile` (either the source's `correctionBody` or the editor's current content).
 
-Once the template is computed the actual `entityCode` is computed:
-  - `offset` is computed if needed (not in C). It's the number of lines of the template before `$body`'s own first line, meant
-    to fix the location of the compilation errors so that they point to the code written by the student (no caller uses it yet).
-  - `$body` is substituted with the actual body.
+Once the template is computed, each language substitutes `$body` with the actual body itself (there is no shared method for
+this: every language's own `compileExo()` does it inline, to keep a single linear flow instead of jumping to a handful of
+one-off helper lines elsewhere):
+  - Java/Scala first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: the number of lines of the template before
+    `$body`'s own first line, meant to fix the location of compilation errors so that they point to the code written by the
+    student. Nothing uses it yet, it is computed in preparation for a follow-up.
+  - `$body` is substituted with the actual body (plus a trailing space and newline, so that a body ending right before the
+    template's closing brace still parses).
   - Python fixes the indentation: change tabs to spaces in editor's content and reindent the body to fit its position in the
     template.
   - non-breaking spaces are stripped.
-  - The method returns a `SourceFile.CompilableContent(content, offset)` record
-- The `content` is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
+- The resulting source is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
   This name derived from the exercise id and `STUDENT`/`CORRECTION`, so unrelated concurrent compiles never collide) alongside
-  the copied `RemoteXxx` glue file and any other support file the exercise needs, then compiled/run the usual way. `offset` is
-  meant to translate a compiler error's line number back into the student's own editor location but it not wired to anything yet.
+  the copied `RemoteXxx` glue file and any other support file the exercise needs, then compiled/run the usual way.
 
 ## Saving the student's work: GitSpy and friends
 
@@ -405,9 +407,9 @@ TODO: add to the exercice a verification of the source code, so that MethodDogHo
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
 
-TODO: fix the compilation error messages to match the student code: `SourceFile.getCompilableContent()` now returns the
-      `$body` offset alongside the compilable source, but no caller uses it yet to shift a compiler diagnostic's line number
-      back to the student's own editor coordinates.
+TODO: fix the compilation error messages to match the student code: `JvmTemplatedLang.countLinesBeforeBody()` gives Java/Scala
+      the `$body` offset, but no caller uses it yet to shift a compiler diagnostic's line number back to the student's own
+      editor coordinates.
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
