@@ -173,7 +173,7 @@ public class LangPython extends TemplatedRemoteLang {
           int retcode   = proc.waitFor();
           if (retcode != 0) {
             PLMCompilerException e = new PLMCompilerException("Compiling " + entityFile.toString() + " yielded the following output:\n" + output,
-                                                              Set.of(entityFile.toString()), new Error(), null);
+                                                              Set.of(entityFile.toString()), new Error());
             exo.lastResult         = RunOutcome.newCompilationError(e.getMessage());
             if (out != null)
               out.log(e.getMessage());

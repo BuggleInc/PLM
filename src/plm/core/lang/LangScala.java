@@ -149,7 +149,7 @@ public class LangScala extends JvmTemplatedLang {
 
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
     if (compiler == null)
-      throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error(), diagnostic);
+      throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error());
 
     try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
       // Same reasoning as LangJava.compileJavaFiles(): CLASS_PATH is left empty so these files (and whatever student
@@ -163,10 +163,10 @@ public class LangScala extends JvmTemplatedLang {
       // Any diagnostic, even a warning, is treated as an error, same as everywhere else in this class.
       if (!success || !diagnostic.getDiagnostics().isEmpty()) {
         String rtStderr = diagnostic.getDiagnostics().stream().map(Object::toString).collect(Collectors.joining("\n"));
-        throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error(), diagnostic);
+        throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error());
       }
     } catch (IOException e) {
-      throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error(), diagnostic);
+      throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error());
     }
   }
 
@@ -225,7 +225,7 @@ public class LangScala extends JvmTemplatedLang {
       String rtStdout = outBuf.toString(StandardCharsets.UTF_8);
       String rtStderr = errBuf.toString(StandardCharsets.UTF_8);
       String msg      = "The following Scala 3 compilation failed: " + String.join(" ", args) + "\n" + (rtStderr.isBlank() ? rtStdout : rtStderr);
-      throw new PLMCompilerException(msg, new HashSet<>(paths), new Error(), diagnostic);
+      throw new PLMCompilerException(msg, new HashSet<>(paths), new Error());
     }
   }
 

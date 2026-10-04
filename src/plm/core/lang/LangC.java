@@ -75,7 +75,7 @@ public class LangC extends TemplatedRemoteLang {
       String msg = exo.getName() + ": No source to compile";
       System.err.println(msg);
       exo.lastResult = RunOutcome.newCompilationError(msg);
-      throw new PLMCompilerException(msg, null, null);
+      throw new PLMCompilerException(msg, null);
     }
 
     String execPath = null;
@@ -152,7 +152,7 @@ public class LangC extends TemplatedRemoteLang {
 
       String errors = runShellCommand(linkCmd, compileDir.toFile(), isWindows);
       if (!errors.isEmpty()) {
-        PLMCompilerException e = new PLMCompilerException(errors, null, null);
+        PLMCompilerException e = new PLMCompilerException(errors, null);
         if (Game.getInstance().isDebugEnabled())
           System.err.println(Game.i18n.tr("Compilation error. The linking command " + linkCmd + " failed:"));
         else
@@ -167,10 +167,10 @@ public class LangC extends TemplatedRemoteLang {
 
       return exec.getAbsolutePath();
     } catch (IOException ioe) {
-      throw new PLMCompilerException(ioe.getMessage(), null, ioe, null);
+      throw new PLMCompilerException(ioe.getMessage(), null, ioe);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
-      throw new PLMCompilerException(e.getMessage(), null, e, null);
+      throw new PLMCompilerException(e.getMessage(), null, e);
     }
   }
 
@@ -217,7 +217,7 @@ public class LangC extends TemplatedRemoteLang {
         String compileCmd = "gcc -g -x c -Wall -fsanitize=address -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
         String errors     = runShellCommand(compileCmd, scratch.toFile(), isWindows);
         if (!errors.isEmpty())
-          throw new PLMCompilerException(errors, null, null);
+          throw new PLMCompilerException(errors, null);
 
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
       } finally {

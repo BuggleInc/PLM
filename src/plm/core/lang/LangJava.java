@@ -48,7 +48,7 @@ public class LangJava extends JvmTemplatedLang {
 
       String path = javaFile.toPath().toString();
       if (!path.endsWith(".java")) {
-        throw new PLMCompilerException("Trying to compile a non java file: '" + path + "'", Set.of(path), new Error(), diagnostic);
+        throw new PLMCompilerException("Trying to compile a non java file: '" + path + "'", Set.of(path), new Error());
       }
     }
 
@@ -57,7 +57,7 @@ public class LangJava extends JvmTemplatedLang {
     // Do not start an external javac process that takes time to kick in, but use javax.tools.JavaCompiler (the API "javac" itself is built on)
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
     if (compiler == null)
-      throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error(), diagnostic);
+      throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error());
 
     try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
       // set CLASS_PATH="" (empty) instead of java.class.path, so that the student code cannot see PLM's own classes.
@@ -78,10 +78,10 @@ public class LangJava extends JvmTemplatedLang {
                                 return inBody ? "Entity.java:" + (d.getLineNumber() - lineShift) + ": " + d.getMessage(null) : d.toString();
                               })
                               .collect(Collectors.joining("\n"));
-        throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error(), diagnostic);
+        throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error());
       }
     } catch (IOException e) {
-      throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error(), diagnostic);
+      throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error());
     }
   }
 
@@ -91,7 +91,7 @@ public class LangJava extends JvmTemplatedLang {
 
     if (!packageFolder.toPath().toString().startsWith(root.toPath().toString())) {
       throw new PLMCompilerException("Root folder (" + root.toPath() + ") is not above package folder (" + packageFolder.toPath() + ") in file hierarchy.",
-                                     Set.of(), new Error(), diagnostic);
+                                     Set.of(), new Error());
     }
 
     // Every class compiles under the fixed "generated" package (see compileJavaFiles(), which sets CLASS_OUTPUT to

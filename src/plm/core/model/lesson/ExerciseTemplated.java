@@ -54,7 +54,7 @@ public abstract class ExerciseTemplated extends Exercise {
     SourceFile source = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename);
     if (source.getRemote() == null)
       throw new PLMCompilerException(Game.i18n.tr("{0}: cannot guess which RemoteXxx universe this entity belongs to. Please fix your entity.", shownFilename),
-                                     null, null);
+                                     null);
     newSource(lang, source);
   }
 

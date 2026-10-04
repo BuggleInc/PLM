@@ -1,12 +1,7 @@
 package plm.core.ui;
 
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JTextArea;
-import javax.tools.Diagnostic;
-import javax.tools.DiagnosticCollector;
-import javax.tools.JavaFileObject;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.HumanLangChangesListener;
@@ -31,31 +26,6 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
   public void clear() { setText(null); }
 
   @Override public void log(String msg) { append(msg); }
-
-  @Override public void log(DiagnosticCollector<JavaFileObject> diagnostics)
-  {
-    boolean warnedJava6    = false;
-    Pattern isJava6Pattern = Pattern.compile("major version 51 is newer than 50, the highest major version supported by this compiler");
-
-    for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
-      // Only show real errors. Warnings and notes here come from PLM's own
-      // framework sources, which are recompiled in process together with the
-      // student code; they are not the student's concern and only add noise.
-      if (diagnostic.getKind() != Diagnostic.Kind.ERROR)
-        continue;
-      String source = diagnostic.getSource() == null ? "(null)" : diagnostic.getSource().getName();
-      String msg    = diagnostic.getMessage(getLocale());
-
-      Matcher isJava6Matcher = isJava6Pattern.matcher(msg);
-      if (isJava6Matcher.find()) {
-        if (!warnedJava6 && Game.getInstance().isDebugEnabled())
-          append("You are using a PLM jarfile that was compiled for Java 6, but you have a Java 7 runtime. This is believed to work.\n");
-        warnedJava6 = true;
-      } else {
-        append(source + ":" + diagnostic.getLineNumber() + ":" + msg + "\n");
-      }
-    }
-  }
 
   /**
    * Add an exception into the text area

@@ -105,7 +105,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     try (var walk = Files.walk(dir.toPath())) {
       return walk.filter(p -> p.toString().endsWith(".class")).map(p -> dir.toPath().relativize(p).toString()).collect(Collectors.toSet());
     } catch (IOException e) {
-      throw new PLMCompilerException(e.getMessage(), Set.of(), new Error(), diagnostic);
+      throw new PLMCompilerException(e.getMessage(), Set.of(), new Error());
     }
   }
 
@@ -136,7 +136,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
       String rtStderr = stdError.lines().collect(Collectors.joining("\n"));
 
       if (!rtStderr.isEmpty())
-        throw new PLMCompilerException(rtStderr, new HashSet<>(classFiles), new Error(), diagnostic);
+        throw new PLMCompilerException(rtStderr, new HashSet<>(classFiles), new Error());
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
