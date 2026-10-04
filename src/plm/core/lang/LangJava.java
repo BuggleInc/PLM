@@ -37,7 +37,12 @@ public class LangJava extends JvmTemplatedLang {
 
   public LangJava() { super("Java", "java", ResourcesCache.getIcon("img/lang_java.png")); }
 
-  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, File... files) throws PLMCompilerException
+  /**
+   * Compiles the files in-process. Unless debugging is enabled, the line numbers reported for Entity.java are decreased by
+   * {@code lineShift}, the number of lines of the generated source before the body, to match the lines of the editor.
+   */
+  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, int lineShift, File... files)
+      throws PLMCompilerException
   {
     for (File javaFile : files) {
 
@@ -65,7 +70,14 @@ public class LangJava extends JvmTemplatedLang {
 
       // Any diagnostic, even a warning, is treated as an error.
       if (!success || !diagnostic.getDiagnostics().isEmpty()) {
-        String rtStderr = diagnostic.getDiagnostics().stream().map(Object::toString).collect(Collectors.joining("\n"));
+        String rtStderr = diagnostic.getDiagnostics()
+                              .stream()
+                              .map(d -> {
+                                boolean inBody = !Game.getInstance().isDebugEnabled() && d.getSource() != null &&
+                                                 d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) && d.getLineNumber() > lineShift;
+                                return inBody ? "Entity.java:" + (d.getLineNumber() - lineShift) + ": " + d.getMessage(null) : d.toString();
+                              })
+                              .collect(Collectors.joining("\n"));
         throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error(), diagnostic);
       }
     } catch (IOException e) {
@@ -139,7 +151,7 @@ public class LangJava extends JvmTemplatedLang {
 
         EntityFileSegments segments = sf.getSegments(whatToCompile);
         String pre                  = "package generated;\n\n" + imports + "\n\npublic class Entity {\n" + segments.pre();
-        int offset                  = countLinesBeforeBody(pre); // not used yet: wiring compiler diagnostics back to it is a follow-up
+        int offset                  = countLinesBeforeBody(pre);
         String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
         entityCode        = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
         generatedSources.add(sf.getName() + ":" + entityCode);
@@ -212,12 +224,15 @@ public class LangJava extends JvmTemplatedLang {
 
           List<File> filesToCompile = new ArrayList<>(List.of(mainFile, mainRemote, entityRemote, entityFile, valueSerializer));
           filesToCompile.addAll(extraFiles);
-          compileJavaFiles(diagnostic, workspace, filesToCompile.toArray(File[] ::new));
+          // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
+          int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
+          compileJavaFiles(diagnostic, workspace, lineShift, filesToCompile.toArray(File[] ::new));
 
           File jarFile = new File(workspace, "Code.jar");
           createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
 
           jarPath = jarFile.toPath().toString();
+          lineShifts.put(jarPath, lineShift);
 
         } catch (IOException e) {
           throw new RuntimeException(e);

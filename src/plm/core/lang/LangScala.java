@@ -266,7 +266,7 @@ public class LangScala extends JvmTemplatedLang {
 
         EntityFileSegments segments = sf.getSegments(whatToCompile);
         String pre                  = "package generated\n\n" + imports + "\n\nobject Entity {\n" + segments.pre();
-        int offset                  = countLinesBeforeBody(pre); // not used yet: wiring compiler diagnostics back to it is a follow-up
+        int offset                  = countLinesBeforeBody(pre);
         String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
         entityCode        = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
         generatedSources.add(sf.getName() + ":" + entityCode);
@@ -349,6 +349,7 @@ public class LangScala extends JvmTemplatedLang {
           runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
 
           jarPath = jarFile.toPath().toString();
+          lineShifts.put(jarPath, whatToCompile == StudentOrCorrection.STUDENT ? offset : 0);
 
         } catch (IOException e) {
           throw new RuntimeException(e);

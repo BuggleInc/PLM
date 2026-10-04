@@ -63,6 +63,13 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
    */
   protected void onProcessFinished(Process process, String executable, RunOutcome progress) {}
 
+  /**
+   * Optional per-language hook, called on every line the student process writes on its stderr, before it is printed and
+   * captured. Returns the line to use instead, e.g. with the code locations of a stack trace translated back to the editor. The
+   * line is returned as is by default.
+   */
+  protected String shiftLocations(String line, String executable) { return line; }
+
   @Override public void runEntity(final Entity ent, final RunOutcome progress, final String executable)
   {
     final StringBuffer resEvaluationError = new StringBuffer();
@@ -122,6 +129,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
             try {
               String str;
               while ((str = reader.readLine()) != null) {
+                str = shiftLocations(str, executable);
                 System.err.println(str);
                 capturedStderr.append(str).append("\n");
               }

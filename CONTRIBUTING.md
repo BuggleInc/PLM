@@ -88,14 +88,15 @@ the GUI. This process can be decomposed as follows:
 
 - When the lesson is loaded, `ExerciseTemplated.setup()` only checks which languages have an entity file (`FileUtils.exists()`)
   but the files are not parsed nor even loaded in memory at this stage since we almost never need to parse all entities in all
-  language for a given PLM usage session.
+  language for a given PLM usage session. `LightBotExercise` has no entity file: it overrides `setup()` and creates its own
+  `LightBotSourceFile`.
 - When needed, the entity content is parsed (split into parts), and a `SourceFile` is created to store the result of this
   parsing. This step (detailed below) is language agnostic: it applies exactly the same for all entities of all languages.
 - When the "Run" button is hit, a compilable file content is derived from the current content of the editor and along with the
   `SourceFile` that was previously parsed. This happens for each new exercice compilation, and also to compile the correction
   entity that computes the `answerWorld`.
 
-### Entity content parsing: `EntityTemplateParser.parse()` (language agnostic -- cached)
+### Entity content parsing: `EntityTemplateParser.parse()` (language agnostic code -- cached result)
 
 The entity file is read and parsed the first time `Exercise.getSourceFilesList(lang)` is called for that language (see
 `loadSourceFiles()` and `newSourceFromFile()`). The result is cached as a `SourceFile` in `Exercise.sourceFiles`.
@@ -117,38 +118,50 @@ and removed from the segments:
 Any invalid markup throws a RuntimeException (unmatched or nested markers, several `TEMPLATE`s, a `SOLUTION` straddling another
 marker, ...).
 
-What lies within REMOTE but outside the templated region is the `head` and the `tail`. The resulting `SourceFile` holds:
-- `body`: the editor's current content, initially the `TEMPLATE` content minus its `SOLUTION` sections, what the student sees in
-  the editor. It is dedented by `bodyIndent`, the indentation shared by the whole templated region (solutions included). For
-  Python, leading tabs are first expanded to spaces, with tab stops every 8 columns.
-- `student`: an `EntityFileSegments(pre, body, post)` record, where `pre` is the head and `post` the tail without any `SOLUTION`
-  section, and `body` is the initial editor content described above. `pre + body + post` is the student's source, with `body`
-  replaced by the editor's current content.
-- `correction`: same record, but `pre` and `post` keep the `SOLUTION` sections of head and tail, and `body` is the raw span
-  (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to `END SOLUTION` when no template is
-  given.
-- `imports`: the content of the `IMPORT` sections.
-- `remote`: the name of the `RemoteXxx` universe, guessed by `guessRemote()` from the entity file content.
-- `bodyIndent`: see above.
+What lies within REMOTE but outside the templated region is the `head` and the `tail`. The tail starts with a `\n` so that
+Python sees it as a new block, even if the student left indented blank lines at the end of the body. 
 
-### Step 2: building a compilable source (language-specific in `compileExo()`, not cached)
+The resulting `SourceFile` holds:
+- `name`: the exercise's `tabName`, i.e. the label of the editor tab and the key of the saved code. The generated class is always
+  called `Entity`, whatever this name is.
+- `remote`: the name of the `RemoteXxx` universe, guessed by `guessRemote()` from the entity file content.
+- `imports`: the content of the `IMPORT` sections.
+- `bodyIndent`: the indentation shared by the whole templated region. Used to reindent the editor's content before injecting it
+  in the generated source code.
+- `student`: an `EntityFileSegments(pre, body, post)` record, where:
+   - `student.pre` is the head and `student.post` the tail without any `SOLUTION` section.
+   - `student.body` is the initial editor content. It is the full span from `BEGIN TEMPLATE` to `END TEMPLATE` (or from `BEGIN
+      SOLUTION` to `END SOLUTION` when no template is given). It dedented by `bodyIndent` and any tabs are expended in Python,
+      with tab stops every 8 columns.
+- `correction`: same record, but `pre`, `body` and `post` keep the `SOLUTION` sections of head, to generate a correction entity.
+- `body`: the editor's current content, initially the `student.body`.
+
+After the SourceFile creation, only SourceFile.body is mutable: it is synchronized with the editor's content. The rest of that
+object is immutable.
+
+### Step 2: building a compilable source (language-specific code in `compileExo()`, not cached)
 
 Each `compileExo()` gets the `EntityFileSegments` of every `SourceFile` from `SourceFile.getSegments()`: the `correction` ones for
 `StudentOrCorrection.CORRECTION`, or the `student` ones with `body` set to the editor's current content otherwise. It then
-concatenates them with what its language needs:
-- Java/Scala wrap it in their own class/object boilerplate: `package`, their imports (all on a single line, so that the line
-  numbers of the generated code do not depend on how many there are), `class Entity {`, then `pre`, the body, `post` and a closing brace.
-- Python only prepends its own imports, with no further boilerplate. As indentation matters in Python, it
-  indents the student's code by `bodyIndent` spaces (after removing its own common indentation) before substituting it. The tabs
-  found in the leading whitespace of the whole source (entity and student) are then expanded as well, so that tabs and spaces
-  never get mixed up.
+concatenates `pre`, the body and `post` with what its language needs:
+- Java/Scala wrap them in their own class/object boilerplate: `package`, their imports (all on a single line, so that the line
+  numbers of the generated code do not depend on how many there are), `class Entity {`, then `pre`, the body, `post` and a
+  closing brace.
+- Python only prepends its own imports, with no further boilerplate. As indentation matters in Python, it indents the student's
+  code by `bodyIndent` spaces (after removing its own common indentation) before concatenating it. The tabs found in the leading
+  whitespace of the whole source (entity and student) are then expanded as well, so that tabs and spaces never get mixed up.
 - C inserts a `#line` preprocessor directive between `pre` and the body, so that compiler errors point at the entity's own file.
 
 Each language does this concatenation inline in its own `compileExo()`, to keep a single linear flow instead of jumping to a
 handful of one-off helper lines elsewhere:
   - Java/Scala first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: the number of lines of the generated source
     before the body's own first line, meant to fix the location of compilation errors so that they point to the code written by
-    the student. Nothing uses it yet, it is computed in preparation for a follow-up.
+    the student. Java subtracts it from the line numbers of the compiler diagnostics reported for `Entity.java` when compiling
+    the student's code (diagnostics located before the body are left untouched, and so are all of them when debugging is
+    enabled, to keep the path of the generated file). Java and Scala also subtract it from the `Entity.java:N` and `Entity.scala:N`
+    locations found in the stack traces that the student process writes on its stderr, through the
+    `RemoteExecutionLang.shiftLocations()` hook (`JvmTemplatedLang` keeps the offset of each compiled jar in `lineShifts`;
+    locations before the body, and all of them when debugging is enabled, are left untouched).
   - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
     still parses.
   - Python fixes the indentation: change tabs to spaces in editor's content and reindent the body to fit its position in the
@@ -201,13 +214,14 @@ for/cancels help, or reads a hint:
   already keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one
   `.summary` file per lesson (a `StudentWork`-produced digest, not something `GitSpy` writes).
 - `SourceFile` (what `Exercise.newSource()` actually stores, see "From correction entity to compilable source" above) keeps the
-  original `initialContent` from step 1 above so the "revert" action (`Game.worldHasChanged()`) can restore the editor to it; this is
+  initial body from step 1 above (`student.body()`) so the "revert" action (`Game.worldHasChanged()`) can restore the editor to it; this is
   unrelated to git and only concerns the in-memory `SourceFile`.
 
 ## How tests work
 
 * `SimpleExercise` tests ensure that the compilation and templating work in every language without pulling a full universe. It
-  also tests the error catching mechanism of each language is working properly (syntax error, exception raising, etc).
+  also tests the error catching mechanism of each language is working properly (syntax error, exception raising, etc). The Java
+  ones also check that the line of a compilation error and of a stack trace frame is the one of the editor, with debugging off.
 * Integration testing driven by `ExoTest`/`LessonTest` and living in `src/plm/test/integration` (`ExoTestJavaLang`,
    `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`) run every exercise's own correction entity, in every language it
    supports, through the normal compile/run/check pipeline and assert it passes. This is a regression test suite over the
@@ -406,9 +420,9 @@ TODO: add to the exercice a verification of the source code, so that MethodDogHo
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
 
-TODO: fix the compilation error messages to match the student code: `JvmTemplatedLang.countLinesBeforeBody()` gives Java/Scala
-      the body offset, but no caller uses it yet to shift a compiler diagnostic's line number back to the student's own
-      editor coordinates.
+TODO: fix the compilation error messages of Scala, and the stack traces of Python and C runtime errors, to match the student
+      code: only the Java compiler diagnostics and the Java/Scala stack traces shift their line numbers back to the student's own
+      editor coordinates so far.
 TODO: Port the SimpleExercise tests to LangC
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
