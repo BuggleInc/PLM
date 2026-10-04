@@ -12,69 +12,60 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 ## Core concepts
 
-- **Lesson / Lecture**: a `Lesson` (e.g. `welcome`, `sort`, `recursion`) groups `Lecture`s in a pedagogical sequence. An
-  `Exercise` is a leaf `Lecture`.
-- **Exercise**: the unit of work a student solves (`plm.core.model.lesson.Exercise`). It owns three parallel sets of **worlds**:
-  `initialWorld` (the starting state, reset before every run), `currentWorld` (the current state while executing the student's
-  code), and `answerWorld` (the target state, produced by either loading a cached solution or by running the teacher's
-  correction code once). Passing == every `currentWorld` "wins" against its matching `answerWorld`.  By default
-  `World.winning()` uses equality but other winning conditions can be defined.
-- **World + Entity**: a `World` (`plm.universe.World`) is the simulated environment encoding the pedagogical problem situation.
+- **World + Entity**: a `World` (`plm.universe.World`) is the simulated environment encoding a pedagogical problem situation.
   This is a micro-world instance. It contains one or more `Entity` objects, which are the actors that execute the student's code
-  (or the teacher's correction code) against the world's primitives. `Entity`/`World` are subclassed per universe.
-- **Worlds as test cases**: an exercise typically ships **several world instances** and/or **several entities per world
-  instance.** Each is compiled/run independently and must pass for the exercise to be validated, i.e. the set of worlds *is*
-  the exercise's test suite (comparable to parametrized unit tests). Adding another world instance to an exercise, without
-  touching the student-facing code, is the standard way to catch a wider range of incorrect solutions.
-- **Universe**: a micro-world *kind*, i.e. a family of worlds/entities sharing a theme and a set of primitives (e.g. "the buggle
-  can walk, paint, pick up objects"). A given exercise uses exactly **one** universe. Universes found in `src/plm/universe` for
-  the generic ones and in `src/lessons/*/universe` for the ones specificaly tailored for a given lesson:
-  - `bugglequest`: generic grid actor (buggles), richest primitive set. It is the main PLM microworld and its implementation is
-    the reference. It is used to teach the basics about variablesand loops, and to introduce functions and problem
-    decomposition. This micro-world is also used to present various maze algorithms in a specific lesson.
-    - `turmites` is a subclass of the buggle microworld introducing [2D turing machines](https://en.wikipedia.org/wiki/Turmite).
-  - `turtles`: LOGO-style turtle graphics, used to teach recursion through the drawing of fractals.
-  - `sort`: sorting algorithms; primitives (`isSmaller`, `copy`, `swap`) observe the data accesses patterns so the student must
-    reproduce the *expected algorithm*, not just a correctly sorted array. To make this efficient, the student-facing API is
-    instrumented to count the amount of data access in read and write. We don't observe the complete operation list but only the
-    amount of reads and writes to the data array. This is not perfect as a student may manage to get the data sorted with the
-    exact same amount of operations without following the exact expected algorithm, but it's rather unlikely and a perfect
-    verification of the operations history would probably be too computationally intensive.
-  - `bat`: unit-testing style no graphical world but a textual output; a method prototype is filled in and tested against many
-    parameter values.
-  - Specific sorting microwords: `sort/baseball` ([pebble-motion](https://en.wikipedia.org/wiki/Pebble_motion_problems)),
-   `sort/pancake` ([pancake sorting](https://en.wikipedia.org/wiki/Pancake_sorting)), `sort/dutchflag` ([Dutch national flag
-    sorting](https://en.wikipedia.org/wiki/Dutch_national_flag_problem)).
-  - Specific recusion microwords: `recursion/hanoi` (comes with a rich set of exercises on recursive problem decomposition),
-    `recursion/cons` (recursive strings using the [cons](https://en.wikipedia.org/wiki/Cons) [car and
-    CDR](https://en.wikipedia.org/wiki/CAR_and_CDR) constructs of LISP). The cons micro-world is subclassed from the bat one.
-  - Recreative microworlds: `lightbot` a brain teaser for programmers, `lander` a lunar lander programming challenge. 
-- **Correction entity**: for each exercise/language pair, a source file (e.g. `MoriaEntity.java`, `MoriaEntity.py`,
-  `MoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference solution and the template shown to the
-  student. See "Adding a new exercise" below for the file layout and "From correction entity to compilable source: templating".
+  (or the teacher's correction code) against the world's primitives. 
+- **Universe**: a micro-world *kind*, i.e. a family of worlds/entities sharing a theme and a set of primitives (e.g. "a buggle
+  can walk, paint, pick up objects" or "a turtle draws on the ground as it moves"). Universes are found in `src/plm/universe`
+  for the generic ones and in `src/lessons/*/universe` for the ones specificaly tailored for a given lesson. See the
+  [pedagogical documentation](PEDAGOGICAL.md) for more information.
 
-## How an exercise executes
+- **Exercise**: the unit of work a student solves (`plm.core.model.lesson.Exercise`). An `Exercise` is a programming challenge
+  aiming at teaching or exercising a given concept. A given exercise uses exactly **one** universe. An exercise comes with a set
+  of worlds and entities that act as **test cases** for the student code. Each provided world must pass for the exercise to be
+  validated. This is thus comparable to parametrized unit tests: Adding another world instance to an exercise, without touching
+  the student-facing code, is the standard way to catch a wider range of incorrect solutions.
+- **Lesson**: a `Lesson` (e.g. `welcome`, `sort`, `recursion`) groups `Exercise`s in a pedagogical sequence. Each of them
+  constitute a progressive set of challenges taking the users through their learning path. Again, see the [pedagogical
+  documentation](PEDAGOGICAL.md) for details.
+  
+- **Templating entity**: for each exercise/language pair, a source file (e.g. `MoriaEntity.java`, `MoriaEntity.py`,
+  `MoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference correction, the template shown to the student and
+  the code harness to execute the student code. See "Code templating" below for the file layout.
 
+## How an exercise executes: the 30,000 feet overview
+
+* **Exercise setup**: Each exercise comes with a `setup()` method that creates the pedagogical settings and populates the
+  microworlds with entities. The exercise owns **three parallel sets of worlds**:
+  - `initialWorld`: the starting state, as built by `setup()`.
+  - `answerWorld`: the target state, produced by either loading a cached solution from the disk, or by running the teacher's
+    correction code on the corresponding `initialWorld`. 
+  - `currentWorld`: the current state while executing the student's code, initially equal to `initialWorld`. If the
+    `currentWorld` becomes semantically equals to `answerWorld` after executing the student code, the exercise is passed.
+
+Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
-* **Compile**: `Exercise.compile()` delegates to `ProgrammingLanguage.compileExo()` for the selected language.
-  - A source code containing the student code and the execution harness is generated (see the section on templating below).
-  - The code is then compiled to an external executable/jar if needed. Java compiles in-process to avoid the startup time of an
-    external JVM, using the same API than javac. Scala and C are stating external compilers, and Python has nothing to compile.
-    - TODO: Scala should be converted to compile in-process too, as Java. But it's a bit more difficult as its API is less
-      stable than the Java counterpart, and may introduce thread safety issues.
-  - `compileExo()` returns a textual reference to the result (the path to a jar, a binary or a script, or `null` for LightBoy
-    that don't compile at all), which the caller then passes down as-is to `runEntity()`'s `executable` parameter below.
-* **Run**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`:
-   - Java/Scala/Python/C: all four inherit the same `RemoteExecutionLang.runEntity()`. It binds a UNIX domain socket, starts
-     the student code as an external process, and relays primitive calls over that socket to `plm.universe.CommandExecutor`.
-     The only thing each language still implements on its own is `buildProcess()`, which turns the compiled/written artifact
-     into the right command line (`java -jar ...`, `python3 ...`, the compiled binary, etc).
-   - LightBot: This brain teaser is an exception, as it can only be solved using the graphical block-list rather than a real
-     programming language. Thus, `run()` *interprets* a student-authored program.
-* **Check**: `Exercise.check()` compares each `currentWorld` to its `answerWorld` via `World.winning()`. On mismatch,
-  `World.diffTo()` produces a human-readable diff shown to the student. All the universes but Lander use a structural equality
-  between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks whether the lunar lander reached
-  a pad or crashed.
+* **Templating**: The templating entity of the current language is split in parts, and a new source code is generated from the
+  execution harness and the current editor's content (see the section on templating below).
+* **Compile**: The starting point is `ProgrammingLanguage.compileExo()`.
+  - The code is then compiled to an external executable/jar if needed. Java/Scala compile in-process to avoid the startup time of an
+    external JVM. C and Python use an external compilers.
+  - `compileExo()` returns a textual reference to the result (the path to a jar, a binary, etc), which the caller then passes
+    down as-is to `runEntity()`'s `executable` parameter below.
+* **Remote execution**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`: that
+  method binds a UNIX domain socket, starts the student code as an external process, and relays primitive calls over that socket
+  to `plm.universe.CommandExecutor`. These primitives allow the student code to interact with the microworld that is located in
+  the PLM process. This is transparent to both the student and the exercise authors.
+* **Check**: when all entities are terminated, `Exercise.check()` compares each `currentWorld` to its `answerWorld` via
+  `World.winning()`. On mismatch, `World.diffTo()` produces a human-readable diff shown to the student. All the universes but
+  Lander use a structural equality between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks
+  whether the lunar lander reached a pad or crashed.
+* **Session saving**: each student attempt is saved in a local git repository along with the exercise outcome (compilation
+  error, failed objective or passed). The goal is to enable learning analytics if the student allowed the export of her
+  anonymized data to an online repository.
+
+* **Lightbot specificities**: this brain teaser can only be solved using the graphical block-list rather than a real programming
+     language. Thus, `run()` *interprets* a student-authored program and there is no templating nor remote execution.
 
 * **Dealing with infinite loops in student code**. The "Stop" action calls `LessonRunner.stopAll()`, which cooperatively
   `Thread.interrupt()`s each per-entity runner thread. Since student code is an external process, interrupting the runner thread
@@ -83,7 +74,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   behind. This mechanism is not a hard sandbox either: the process is killed, but nothing prevents it from spawning its own
   children or from being heavy enough to matter for the second or so it takes to die.
 
-## From correction entity to compilable source: templating
+## Code templating (preparing the source to compile)
 
 This section is about how the single `XxxEntity.<ext>` file described in "Adding a new exercise" below (which mixes the
 teacher's solution and the student-facing template) becomes two different compilable programs: one for the CORRECTION which is
@@ -148,9 +139,9 @@ object is immutable, except for the listener that is notified of the changes of 
 
 ### Step 2: building a compilable source (language-specific code in `compileExo()`, not cached)
 
-Each `compileExo()` gets the `EntityFileSegments` of every `SourceFile` from `SourceFile.getSegments()`: the `correction` ones for
-`StudentOrCorrection.CORRECTION`, or the `student` ones with `body` set to the editor's current content otherwise. It then
-concatenates `pre`, the body and `post` with what its language needs:
+Each `compileExo()` gets the `EntityFileSegments` using `SourceFile.getSegments(whatToCompile)`, with whatToCompile being either
+`StudentOrCorrection.CORRECTION` or `STUDENT`. It then concatenates `pre`, the body (either the editor's content or the
+teacher's correction) and `post` with what its language needs:
 - Java/Scala wrap them in their own class/object boilerplate: `package`, their imports (all on a single line, so that the line
   numbers of the generated code do not depend on how many there are), `class Entity {`, then `pre`, the body, `post` and a
   closing brace.
@@ -174,16 +165,14 @@ handful of one-off helper lines elsewhere:
   - Python fixes the indentation: change tabs to spaces in editor's content and reindent the body to fit its position in the
     source.
   - non-breaking spaces are stripped.
-- The resulting source is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
-  This name derived from the exercise id and `STUDENT`/`CORRECTION`, so unrelated concurrent compiles never collide) alongside
-  only the entity file and the generated `Main`, then compiled/run the usual way against the shared glue described below.
-- The glue that does not depend on the exercise (`Remote`, `RemoteXxx`, `ValueSerializer`, `Point`, `RecList`...) is built once and
-  shared by all compilations:
-  - Java/Scala: `CodeCreation` (run by maven at `process-classes`) generates the `RemoteXxx` sources, then compiles them in-process
-    with the helper sources into `plm-entities-java.jar` and `plm-entities-scala.jar`. The staged sources are kept in
-    `target/plm-entities/` for debugging. These jars are resources of PLM.jar, deployed to `/tmp/plm` by
-    `TemplatedRemoteLang.deployResource()` and put on the classpath of both the compilation and the run. The glue sources themselves
-    are excluded from PLM.jar by a filter of the shade plugin.
+- The resulting source is written to a per-compile directory on disk which name is unique, so unrelated concurrent compiles
+  never collide. A `Main` containing the execution harness is also generated in this directory, and both files are compiled.
+- The glue that does not depend on the exercise (`Remote`, `RemoteXxx`, `ValueSerializer`, `Point`, `RecList`...) is built once
+  and shared by all compilations:
+  - Java/Scala: `CodeCreation` (run by maven at `process-classes` stage) generates the `RemoteXxx` sources, then compiles them
+    in-process with the helper sources into `plm-entities-java.jar` and `plm-entities-scala.jar`. The staged sources are kept in
+    `target/plm-entities/` for debugging but excluded from PLM.jar by a filter of the shade plugin. The jars are resources of
+    PLM.jar, deployed to `/tmp/plm` upon compilation and put on the classpath of both the compilation and the run.
   - Python: the modules are deployed in `/tmp/plm/python-entities`, which is prepended to the `PYTHONPATH` of the run. Python caches
     their bytecode by itself.
   - C: `LangC.ensureCachedObject()` compiles each file once to an object cached in `/tmp/plm/C/objects`, which is linked with each
