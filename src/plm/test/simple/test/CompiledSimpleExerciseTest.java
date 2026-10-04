@@ -1,5 +1,7 @@
 package plm.test.simple.test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.concurrent.Future;
 import org.junit.jupiter.api.Assertions;
@@ -7,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
+import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.RunOutcome;
@@ -39,6 +42,31 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should execute properly and not throw the following error:\n" +
                       exo.lastResult.executionError);
     }
+  }
+
+  /** Debugging keeps the lines of the generated source, so it is switched off where the lines of the editor are checked. */
+  protected static void setDebug(boolean enabled)
+  {
+    if (Game.getInstance().isDebugEnabled() != enabled)
+      Game.getInstance().switchDebug();
+  }
+
+  /** The frames of a stack trace are reported at their line in the editor, not in the generated source, whatever the length of the template before it. */
+  @Test public void testStackTraceLineMatchesEditor() throws PLMCompilerException, InterruptedException
+  {
+    PrintStream realErr           = System.err;
+    ByteArrayOutputStream capture = new ByteArrayOutputStream();
+    setDebug(false);
+    System.setErr(new PrintStream(capture, true));
+    try {
+      exo.getSourceFile(pl, 0).setEditorContent(generateExceptionRaisingCode(), pl);
+      String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
+      exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    } finally {
+      System.setErr(realErr);
+      setDebug(true);
+    }
+    Assertions.assertTrue(capture.toString().contains("(Entity." + pl.getExt() + ":2)"), capture.toString());
   }
 
   @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException
