@@ -328,6 +328,15 @@ public class LangScala extends JvmTemplatedLang {
       throw new IllegalStateException("Unknown type: " + type);
     }
 
+    @Override String getReturning(Class<?> type)
+    {
+      if (type == Point.class)
+        return "getAnswerObject().asInstanceOf[Point]";
+      if (type == Point[].class)
+        return "getAnswerObject().asInstanceOf[Array[Point]]";
+      return super.getReturning(type);
+    }
+
     String getTypeDeclaration(Class<?> type)
     {
       if (type == Direction.class) {
