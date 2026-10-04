@@ -180,6 +180,49 @@ handful of one-off helper lines elsewhere:
   - C: `LangC.ensureCachedObject()` compiles each file once to an object cached in `/tmp/plm/C/objects`, which is linked with each
     exercise.
 
+## Remoting: how the student's entity talks to the PLM
+
+The student's code runs in its own process (`java -cp ... generated.Main`, `python3 Main.py`, or the C executable), while the
+world, its entities and the UI live in the PLM process. The student's code only manipulates a stub: each primitive call is
+forwarded to the real `plm.universe.Entity` of the PLM, which does the actual work on the `currentWorld`.
+
+- **Transport**: `RemoteExecutionLang.runEntity()` creates a fresh directory `/tmp/plm/<ext>-sock-*/`, binds a UNIX domain socket
+  `protocol.sock` in it, and starts the student process with the socket path as its first argument (`args[0]`, `sys.argv[1]`,
+  `argv[1]`). The generated `Main` starts by calling `connect()` from the language's `Remote` file. If nothing connects within
+  10 seconds, the process is killed and its stdout/stderr become the error message shown to the student. Once connected, both
+  sides exchange UTF-8 text, one message per line.
+- **Student-side glue**: it is made of `Remote` (the connection, `sendCommand()` and the `getAnswerXxx()` readers), a
+  `ValueSerializer`, and one generated `RemoteXxx` per universe, with one function per primitive of that universe. They are the
+  files that the templating does not compile with the exercise (see above for how they are built and shared). Every language
+  has its own implementation of this glue in `lib/resources/langages/`, plus the generator in its `ExternalPrimitiveLanguage`.
+- **Primitives**: the primitives of a universe are the methods annotated with `@Primitive(id)` in the interfaces extending
+  `EntityPrimitivesBase` (e.g. `SimpleEntityPrimitives`), which the entity implements. `PrimitiveRegistration` finds them by
+  reflection. At build time, `CodeCreation` generates the `RemoteXxx` glue of every language from them. Ids and names must be
+  unique, which `PrimitiveRegistration` checks.
+- **Commands**: calling a primitive in the student's code sends `<id> <serialized args> <name>`, e.g. `500 [1:b1] setObjectif`
+  for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first and the last
+  space of the line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue
+  then blocks on `getAnswerXxx()` until the PLM answers with one line holding the serialized result. Primitives that return
+  nothing get no answer: the student's code does not wait for the PLM.
+- **Serialization**: `ValueSerializer` writes each value with a type tag: `i` for ints, `f` for doubles, `b0`/`b1` for booleans,
+  `c` for chars, `C` for colors (ARGB int), `Px:y` for points, a quoted string with `\\` and `\"` escapes, and `Z` for null.
+  Arrays are `[n:v1:v2...]`, prefixed by the tag of their elements, and nest for multi-dimensional ones. Enums travel as their
+  ordinal. It exists in Java (`plm.core.ValueSerializer`, which is compiled in the glue jarfile), Python (`ValueSerializer.py`)
+  and C (`value_serializer.c`): the three must be kept in sync.
+- **PLM side**: the `commandReader` thread of `runEntity()` reads the commands and passes each of them to
+  `CommandExecutor.command()`. It finds the primitive by id (the name only serves as a consistency check: a mismatch is logged
+  and the command ignored), deserializes the arguments, converts the enums from their ordinals (and, for Python, the typed
+  values to the strings that the primitive expects), calls the Java method of the real entity by reflection, and writes the
+  serialized result back if the primitive has one. An exception in the primitive is reported to the student with the command
+  that triggered it. A command that cannot be parsed fails the run and kills the process.
+- **Animation**: the primitives call `Entity.stepUI()`, which sleeps for the delay of the world, or waits for the next step in
+  step mode. As this happens in the `commandReader` thread, it slows down the display but not the computations of the student
+  code, which only waits when it needs an answer.
+- **End of the run**: `runEntity()` also reads the stdout and stderr of the process, echoes them to the PLM console and keeps
+  them (stderr goes through `shiftLocations()`, see above). After the process ends, it joins its threads, lets the language
+  inspect what the process left behind (`onProcessFinished()`, used by C for the address sanitizer report), and removes the
+  socket. A non-zero exit code is reported as an execution error.
+
 ## Saving the student's work: GitSpy and friends
 
 Two independent mechanisms persist what a student does, both driven by `Game.progressSpyListeners`
