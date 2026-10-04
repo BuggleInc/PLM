@@ -9,6 +9,7 @@ public class SimpleExerciseEntity extends Entity implements SimpleEntityPrimitiv
   @Override public void setObjectif(boolean b) { ((SimpleWorld)world).setObjectif(b); }
 
   @Override
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   public void run() throws Exception
   {
@@ -17,4 +18,5 @@ public class SimpleExerciseEntity extends Entity implements SimpleEntityPrimitiv
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }

@@ -3,6 +3,7 @@ package plm.test.simple
 import plm.test.simple.SimpleWorld; // Do not optimize this away, or it will be missing when running the test
 
 class SimpleExerciseEntity extends plm.test.simple.SimpleExerciseEntity {
+  /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
   override def run(): Unit = {
     /* BEGIN SOLUTION */
@@ -10,4 +11,5 @@ class SimpleExerciseEntity extends plm.test.simple.SimpleExerciseEntity {
     /* END SOLUTION */
   }
   /* END TEMPLATE */
+  /* END REMOTE */
 }
