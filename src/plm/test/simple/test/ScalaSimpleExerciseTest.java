@@ -1,7 +1,11 @@
 package plm.test.simple.test;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import plm.core.PLMCompilerException;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
 
 public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
@@ -48,5 +52,22 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
     return "override def run(): Unit = {\n"
         + "  throw new Exception(\"easy exception\")\n"
         + "}";
+  }
+
+  /** The error of a compilation is reported at its line in the editor, not in the generated source. */
+  @Test public void testCompilationErrorLineMatchesEditor()
+  {
+    setDebug(false);
+    try {
+      exo.getSourceFile(pl, 0).setEditorContent("override def run(): Unit = {\n"
+                                                    + "  var a = 1;\n"
+                                                    + "  toto += 1;\n"
+                                                    + "}",
+                                                pl);
+      PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> exo.compile(null, StudentOrCorrection.STUDENT, pl));
+      Assertions.assertTrue(e.getMessage().contains("Entity.scala:3:"), e.getMessage());
+    } finally {
+      setDebug(true);
+    }
   }
 }

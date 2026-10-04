@@ -1,11 +1,12 @@
 package plm.core.lang;
 
 import dotty.tools.dotc.Driver;
-import dotty.tools.dotc.reporting.Reporter;
+import dotty.tools.dotc.interfaces.Diagnostic;
+import dotty.tools.dotc.interfaces.ReporterResult;
+import dotty.tools.dotc.interfaces.SourcePosition;
 import java.awt.Color;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -136,54 +137,48 @@ public class LangScala extends JvmTemplatedLang {
 
   private static String scalaRuntimeClasspath() { return classpathOf(true, SCALA_RUNTIME_CLASSES); }
 
-  /** Compiles the Scala files into packageFolder, against the Scala runtime and the precompiled entities jar. */
-  private static void compileScalaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File packageFolder, File entitiesJar, File... files)
-      throws PLMCompilerException
+  /**
+   * Compiles the Scala files into packageFolder, against the Scala runtime and the precompiled entities jar. Unless debugging is
+   * enabled, the line numbers reported for Entity.scala are decreased by {@code lineShift}, the number of lines of the generated
+   * source before the body, to match the lines of the editor.
+   */
+  private static void compileScalaFiles(File packageFolder, File entitiesJar, int lineShift, File... files) throws PLMCompilerException
   {
     List<String> paths = Arrays.stream(files).map(f -> f.toPath().toString()).toList();
-    List<String> scalacArgs =
-        new ArrayList<>(List.of("-classpath", scalaCompilerClasspath() + File.pathSeparator + entitiesJar.getAbsolutePath(), "-d",
-                                packageFolder.getAbsolutePath(), "-color:never")); // avoid ANSI escapes polluting the captured diagnostic text
+    List<String> scalacArgs = new ArrayList<>(List.of("-classpath", scalaCompilerClasspath() + File.pathSeparator + entitiesJar.getAbsolutePath(), "-d",
+                                                      packageFolder.getAbsolutePath(), "-color:never")); // no ANSI escapes in the messages
     for (File file : files)
       scalacArgs.add(file.getAbsolutePath());
-    runDotc(diagnostic, paths, scalacArgs);
+    runDotc(paths, scalacArgs, lineShift);
   }
 
   /**
-   * dotc has no DiagnosticCollector-like API as stable as javac's (see the class-level comment): with no custom
-   * Reporter passed in, Driver.process() uses its default ConsoleReporter, which prints diagnostics straight to
-   * System.out/System.err. Those are JVM-wide, so DOTC_LOCK serializes compiles, and System.out/err are swapped for
-   * capturing ByteArrayOutputStreams only for the duration of this call, then restored.
+   * Drives the Scala 3 compiler in-process (dotty.tools.dotc.Driver), mirroring LangJava's in-process javac call. The diagnostics
+   * are collected through dotc's SimpleReporter interface. Any of them, even a mere warning, fails the compile.
    */
-  private static final Object DOTC_LOCK = new Object();
-
-  /** Drives the Scala 3 compiler in-process (dotty.tools.dotc.Driver), mirroring LangJava's in-process javac call. */
-  private static void runDotc(DiagnosticCollector<JavaFileObject> diagnostic, List<String> paths, List<String> args) throws PLMCompilerException
+  private static void runDotc(List<String> paths, List<String> args, int lineShift) throws PLMCompilerException
   {
-    ByteArrayOutputStream outBuf = new ByteArrayOutputStream();
-    ByteArrayOutputStream errBuf = new ByteArrayOutputStream();
-    Reporter reporter;
+    List<String> messages = new ArrayList<>();
+    ReporterResult result = new Driver().process(args.toArray(new String[0]), diagnostic -> messages.add(render(diagnostic, lineShift)), null);
 
-    synchronized (DOTC_LOCK) {
-      PrintStream origOut = System.out;
-      PrintStream origErr = System.err;
-      System.setOut(new PrintStream(outBuf, true, StandardCharsets.UTF_8));
-      System.setErr(new PrintStream(errBuf, true, StandardCharsets.UTF_8));
-      try {
-        reporter = new Driver().process(args.toArray(new String[0]));
-      } finally {
-        System.setOut(origOut);
-        System.setErr(origErr);
-      }
-    }
+    if (result.hasErrors() || result.hasWarnings())
+      throw new PLMCompilerException(String.join("\n", messages), new HashSet<>(paths), new Error());
+  }
 
-    // Any diagnostic, even a mere warning, fails the compile.
-    if (reporter.hasErrors() || reporter.hasWarnings()) {
-      String rtStdout = outBuf.toString(StandardCharsets.UTF_8);
-      String rtStderr = errBuf.toString(StandardCharsets.UTF_8);
-      String msg      = "The following Scala 3 compilation failed: " + String.join(" ", args) + "\n" + (rtStderr.isBlank() ? rtStdout : rtStderr);
-      throw new PLMCompilerException(msg, new HashSet<>(paths), new Error());
-    }
+  /** "file:line:col: message", then the source line and a caret under the column. Positions are 0-based in dotc, 1-based here. */
+  private static String render(Diagnostic diagnostic, int lineShift)
+  {
+    if (diagnostic.position().isEmpty())
+      return diagnostic.message();
+
+    SourcePosition position = diagnostic.position().get();
+    String file             = position.source().name();
+    int line                = position.line() + 1;
+    if (file.equals("Entity.scala") && !Game.getInstance().isDebugEnabled() && line > lineShift)
+      line -= lineShift;
+
+    return file + ":" + line + ":" + (position.column() + 1) + ": " + diagnostic.message() + "\n" + position.lineContent().stripTrailing() + "\n"
+        + " ".repeat(position.column()) + "^";
   }
 
   @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
@@ -250,7 +245,9 @@ public class LangScala extends JvmTemplatedLang {
           Files.writeString(entityFile.toPath(), entityCode);
           Files.writeString(mainFile.toPath(), mainContent);
 
-          compileScalaFiles(diagnostic, workspace, entitiesJar.toFile(), mainFile, entityFile);
+          // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
+          int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
+          compileScalaFiles(workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile);
 
           // Scala compiles "object Main" to Main.class (plus a Main$.class holding the singleton); the manifest only
           // needs the former as its Main-Class entry point, exactly like a Java class with a static main().
@@ -262,7 +259,7 @@ public class LangScala extends JvmTemplatedLang {
           runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
 
           jarPath = jarFile.toPath().toString();
-          lineShifts.put(jarPath, whatToCompile == StudentOrCorrection.STUDENT ? offset : 0);
+          lineShifts.put(jarPath, lineShift);
 
         } catch (IOException e) {
           throw new RuntimeException(e);
