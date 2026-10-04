@@ -107,7 +107,7 @@ The entity file is read and parsed the first time `Exercise.getSourceFilesList(l
 and removed from the segments:
 - `BEGIN/END TEMPLATE`: the code initially shown to the student in the editor (at most one).
 - `BEGIN/END SOLUTION`: code kept for the correction but hidden from the student. With a `TEMPLATE`, there can be any number of
-  `SOLUTION`s, before, inside or after it. Without a `TEMPLATE`, there is exactly `SOLUTION`, and it plays the role of the
+  `SOLUTION`s, before, inside or after it. Without a `TEMPLATE`, there is exactly one `SOLUTION`, and it plays the role of the
   templated region: the editor is initially empty in this case. An entity without any `SOLUTION` is rejected as a likely
   mistake: if the template is meant to be the answer already, say so with an empty `SOLUTION` section.
 - `BEGIN/END IMPORT`: extra imports, kept out of the template.
@@ -126,18 +126,21 @@ The resulting `SourceFile` holds:
   called `Entity`, whatever this name is.
 - `remote`: the name of the `RemoteXxx` universe, guessed by `guessRemote()` from the entity file content.
 - `imports`: the content of the `IMPORT` sections.
-- `bodyIndent`: the indentation shared by the whole templated region. Used to reindent the editor's content before injecting it
-  in the generated source code.
+- `bodyIndent`: the indentation shared by the whole templated region. Python uses it to reindent the editor's content before
+  injecting it in the generated source code.
 - `student`: an `EntityFileSegments(pre, body, post)` record, where:
    - `student.pre` is the head and `student.post` the tail without any `SOLUTION` section.
-   - `student.body` is the initial editor content. It is the full span from `BEGIN TEMPLATE` to `END TEMPLATE` (or from `BEGIN
-      SOLUTION` to `END SOLUTION` when no template is given). It dedented by `bodyIndent` and any tabs are expended in Python,
-      with tab stops every 8 columns.
-- `correction`: same record, but `pre`, `body` and `post` keep the `SOLUTION` sections of head, to generate a correction entity.
+   - `student.body` is the initial editor content: the lines between `BEGIN TEMPLATE` and `END TEMPLATE` without the `SOLUTION`
+      sections, or an an empty string when there is no TEMPLATE marker (the SOLUTION is then the templated region). It is
+      dedented by `bodyIndent`. Leading tabs are expanded in Python, with tab stops every 8 columns, and replaced by 4 spaces in
+      the other languages.
+- `correction`: same record, to generate a correction entity, but `correction.pre` and `correction.post` keep the `SOLUTION`
+  sections of head and tail. `correction.body` is the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or
+  from `BEGIN SOLUTION` to `END SOLUTION` when no template is given.
 - `body`: the editor's current content, initially the `student.body`.
 
 After the SourceFile creation, only SourceFile.body is mutable: it is synchronized with the editor's content. The rest of that
-object is immutable.
+object is immutable, except for the listener that is notified of the changes of the body.
 
 ### Step 2: building a compilable source (language-specific code in `compileExo()`, not cached)
 

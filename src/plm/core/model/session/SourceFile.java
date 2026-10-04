@@ -7,7 +7,7 @@ import plm.core.ui.JavaEditorPanel;
 
 public class SourceFile {
 
-  protected String name;
+  private final String name;
   private final String remote;
   private final String imports;
   private final int bodyIndent;
