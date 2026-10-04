@@ -22,9 +22,6 @@ public class PancakeWorld extends World {
   /** Returns a component able of displaying the world */
   @Override public WorldView getView() { return new PancakeWorldView(this); }
   /** Returns the icon of the universe */
-  // http://omgwtflols.deviantart.com/
-  // http://fc06.deviantart.net/fs71/f/2012/118/5/7/pixel_art__pancakes_with_s236rup_b236_omgwtflols-d4xu72c.gif
-  // http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon(this, "world_pancake.png"); }
   PancakeFlipButtonPanel panel = null;
   /** Returns the panel which let the user to interact dynamically with the world */
