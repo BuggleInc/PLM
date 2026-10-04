@@ -46,7 +46,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
     CDR](https://en.wikipedia.org/wiki/CAR_and_CDR) constructs of LISP). The cons micro-world is subclassed from the bat one.
   - Recreative microworlds: `lightbot` a brain teaser for programmers, `lander` a lunar lander programming challenge. 
 - **Correction entity**: for each exercise/language pair, a source file (e.g. `MoriaEntity.java`, `MoriaEntity.py`,
-  `ScalaMoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference solution and the template shown to the
+  `MoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference solution and the template shown to the
   student. See "Adding a new exercise" below for the file layout and "From correction entity to compilable source: templating".
 
 ## How an exercise executes
@@ -127,7 +127,7 @@ What lies outside the templated region is the `head` and the `tail`. The resulti
 - `correctionBody`: the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or from `BEGIN SOLUTION` to
   `END SOLUTION` without template. It is the `$body` value used to compile the correction.
 - `imports`: the content of the `IMPORT` sections.
-- `remote`: the `RemoteXxx` universe guessed by `guessRemote()` from the entity file content.
+- `remote`: the name of the `RemoteXxx` universe, guessed by `guessRemote()` from the entity file content.
 - `bodyIndent`: see above.
 
 ### Step 2: building a compilable source (language-specific in `compileExo()`, not cached)
@@ -140,15 +140,16 @@ Each `compileExo()` reads the pieces stored in every `SourceFile`, picks `correc
   indents the student's code by `bodyIndent` spaces (after removing its own common indentation) before substituting it. The tabs
   found in the leading whitespace of the whole source (entity and student) are then expanded as well, so that tabs and spaces
   never get mixed up.
-- C inserts a `#line` preprocessor directive right before `$body`, so that compiler errors point at the entity's own file, unless the
-  head already contains one.
+- C inserts a `#line` preprocessor directive right before `$body`, so that compiler errors point at the entity's own file.
 
-It then calls `SourceFile.getCompilableContent(template, body)` that does the actual substitution:
-  - `offset` is computed. It's the number of lines of the template before `$body`'s own first line, meant to fix the location of
-    the compilation errors so that they point to the code written by the student (no caller uses it yet).
-  - `$body` is substituted with the actual body. The language retrieves it first: either the source's `correctionBody` or the
-    editor's current content. It could be generated locally, but asking it to the language gives  Python the opportunity to fix
-    the indentation.
+The body is retrieved from the `SourceFile` (either the source's `correctionBody` or the editor's current content).
+
+Once the template is computed the actual `entityCode` is computed:
+  - `offset` is computed if needed (not in C). It's the number of lines of the template before `$body`'s own first line, meant
+    to fix the location of the compilation errors so that they point to the code written by the student (no caller uses it yet).
+  - `$body` is substituted with the actual body.
+  - Python fixes the indentation: change tabs to spaces in editor's content and reindent the body to fit its position in the
+    template.
   - non-breaking spaces are stripped.
   - The method returns a `SourceFile.CompilableContent(content, offset)` record
 - The `content` is written to a per-compile directory on disk, which name is given by `TemplatedRemoteLang.packageNameForExercise()`. 
@@ -280,7 +281,7 @@ https://github.com/BuggleInc/PLM/tree/javaUI/src/lessons/welcome/summative
 
 - MoriaEntity.java: Template and solution in Java. 
 - MoriaEntity.py: Template and solution in python.
-- ScalaMoriaEntity.scala:  Template and solution in Scala.
+- MoriaEntity.scala:  Template and solution in Scala.
 - MoriaEntity.c: Template and solution in C (experimental).
 
 When the exercise is initialized, it will contain the TEMPLATE without
