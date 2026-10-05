@@ -115,7 +115,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 			} else {
 				/* allColors is too short; create the other colors randomly */
 				var newColor:Color = null
-						do {
+						while (newColor == null) {
 							newColor = new Color(
 									(Math.random()*255.0).asInstanceOf[Int] ,
 									(Math.random()*255.0).asInstanceOf[Int] ,
@@ -126,7 +126,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 									newColor = null;
 								}
 							}
-						} while (newColor == null);
+						}
 			colors(i) = newColor;
 			}
 		}

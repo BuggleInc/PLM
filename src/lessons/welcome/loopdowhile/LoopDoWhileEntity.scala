@@ -9,9 +9,11 @@ class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 	/* BEGIN REMOTE */
 	override def run(): Unit = {
 		/* BEGIN SOLUTION */
-		do {
+		var more = true;
+		while (more) {
 			stepForward();
-		} while (!isGroundWhite());
+			more = !isGroundWhite();
+		}
 		/* END SOLUTION */
 	}
 	/* END REMOTE */

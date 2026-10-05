@@ -13,9 +13,9 @@ class BubblePancakeEntity extends PancakeEntity {
 	def solve(): Unit = {
 		/* BEGIN SOLUTION */		
     val stackSize = getStackSize();
-    var swapped=false;
+    var swapped = true;
     
-    do {
+    while (swapped) {
       swapped = false; 
       
       for(rank <- 0 to getStackSize()-2) { // Check all pancakes
@@ -30,7 +30,7 @@ class BubblePancakeEntity extends PancakeEntity {
           flip(rank + 2); // Flip all the pancakes back in place
         }
       }
-    } while (swapped)
+    }
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

@@ -15,9 +15,9 @@ class IterativeHanoiEntity extends HanoiEntity {
 		/* BEGIN SOLUTION */
 		var small = initialPos
     var count = 0
-    var pos1=0
-    var pos2=0
-    do {
+    var pos1 = initialPos
+    var pos2 = initialPos
+    while (getSlotSize(pos1) != 0 || getSlotSize(pos2) != 0) {
       if (count%2 == 0) {
         val next = (if (increasing) {small+1} else {small-1+3}) % 3;
         //System.out.println("move("+small+","+next+")");
@@ -38,7 +38,7 @@ class IterativeHanoiEntity extends HanoiEntity {
       }
       
       count += 1;
-    } while (getSlotSize(pos1) != 0 || getSlotSize(pos2) != 0);
+    }
 
 		/* END SOLUTION */
 	}

@@ -13,8 +13,8 @@ class AlgCombSortEntity extends SortingEntity {
 	def combSort(): Unit = {
 		/* BEGIN SOLUTION */
 		var gap = getValueCount();
-		var swapped=false;
-		do {
+		var swapped = true;
+		while (gap>1 || swapped) {
 			if (gap>1) 
 				gap = (gap.toDouble / 1.3).toInt;
 			swapped = false;
@@ -23,7 +23,7 @@ class AlgCombSortEntity extends SortingEntity {
 					swap(i,i+gap);
 					swapped =true;
 				}	
-		} while (gap>1 || swapped);
+		}
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

@@ -12,8 +12,8 @@ class AlgCocktailSort1Entity extends SortingEntity {
 	/* BEGIN TEMPLATE */
 	def cocktailSort(): Unit = {
 		/* BEGIN SOLUTION */
-		var swapped = false;
-		do {
+		var swapped = true;
+		while (swapped) {
 			swapped = false;
 			for (i <- 0 to getValueCount()-2)
 				if (!isSmaller(i,i+1)) {
@@ -25,7 +25,7 @@ class AlgCocktailSort1Entity extends SortingEntity {
 					swap(i,i+1);
 					swapped =true;
 				}	
-		} while (swapped);
+		}
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

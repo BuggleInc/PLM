@@ -12,15 +12,15 @@ class AlgBubbleSort1Entity extends SortingEntity {
 	/* BEGIN TEMPLATE */
 	def bubbleSort(): Unit = {
 		/* BEGIN SOLUTION */
-		var swapped= false
-		do {
+		var swapped = true;
+		while (swapped) {
 			swapped = false;
 			for (i <- 0 to getValueCount()-2)
 				if (!isSmaller(i,i+1)) {
 					swap(i,i+1);
 					swapped =true;
 				}
-		} while (swapped);
+		}
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

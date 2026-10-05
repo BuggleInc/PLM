@@ -12,10 +12,10 @@ class AlgCocktailSort3Entity extends SortingEntity {
 	/* BEGIN TEMPLATE */
 	def cocktailSort3(): Unit = {
 		/* BEGIN SOLUTION */
-		var swapped=false;
+		var swapped = true;
 		var begin=0;
 		var end=getValueCount()-2;
-		do {
+		while (swapped && end-begin>1) {
 			swapped = false;
 			for (i <- begin to end)
 				if (!isSmaller(i,i+1)) {
@@ -33,7 +33,7 @@ class AlgCocktailSort3Entity extends SortingEntity {
 					swapped =true;
 				}
 			begin+=1;
-		} while (swapped && end-begin>1);
+		}
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

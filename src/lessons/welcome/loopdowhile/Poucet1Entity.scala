@@ -23,11 +23,13 @@ class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
 		while (!exitReached()) {
 			var count = 0;
 			
-			do {
+			var within = false;
+			while (!within || !crossing()) {
+				within = true;
 				stepForward();
 				if (isOverBaggle())
 					count+=1;
-			} while (! crossing());
+			}
 			
 			if (count>2)
 				left();

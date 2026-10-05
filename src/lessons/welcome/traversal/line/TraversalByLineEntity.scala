@@ -9,12 +9,12 @@ class TraversalByLineEntity extends SimpleBuggle {
 	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		var cpt=0;
-		do {
-			writeMessage(Integer.toString(cpt));
+		writeMessage(Integer.toString(cpt));
+		while (!endingPosition()) {
 			nextStep();
 			cpt+=1;
-		} while (!endingPosition());
-		writeMessage(Integer.toString(cpt));
+			writeMessage(Integer.toString(cpt));
+		}
 	}
 
 	def nextStep(): Unit = {
