@@ -286,6 +286,32 @@
         </configuration>
       </plugin>
 
+      <!-- Records the git commit of the build in resources/git.properties, which GitSpy logs: it is what it takes to replay the templating
+           of a past session. Nothing is written when not building from a git checkout. -->
+      <plugin>
+        <groupId>io.github.git-commit-id</groupId>
+        <artifactId>git-commit-id-maven-plugin</artifactId>
+        <version>9.0.1</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+          <generateGitPropertiesFilename>${project.build.outputDirectory}/resources/git.properties</generateGitPropertiesFilename>
+          <failOnNoGitDirectory>false</failOnNoGitDirectory>
+          <includeOnlyProperties>
+            <includeOnlyProperty>^git\.commit\.id\.full$</includeOnlyProperty>
+            <includeOnlyProperty>^git\.dirty$</includeOnlyProperty>
+          </includeOnlyProperties>
+        </configuration>
+      </plugin>
+
       <!-- Generation of C remote code from java primitives. -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

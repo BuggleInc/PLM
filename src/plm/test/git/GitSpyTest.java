@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -408,6 +410,18 @@ public class GitSpyTest {
           Assertions.fail(file.getAbsolutePath() + " should have been deleted...");
         }
       }
+    }
+  }
+
+  @Test public void testStartedAndLeavedMessagesTellTheGitCommitOfThePLM() throws Exception
+  {
+    Method method = GitSpy.class.getDeclaredMethod("writePLMStartedOrLeavedCommitMessage", String.class);
+    method.setAccessible(true);
+
+    for (String kind : new String[] {"started", "leaved"}) {
+      JSONObject message = (JSONObject) new JSONParser().parse((String)method.invoke(gitSpy, kind));
+      Assertions.assertEquals(kind, message.get("kind"));
+      Assertions.assertTrue(((String)message.get("plm")).matches(".*, commit ([0-9a-f]{40}(-dirty)?|unknown)"), (String)message.get("plm"));
     }
   }
 }

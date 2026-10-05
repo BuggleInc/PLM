@@ -78,8 +78,8 @@ public class FeedbackDialog extends JDialog {
         + "\n"
         + "OS: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")"
         + "\n"
-        + "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")"
-        + "\n"
+        + "PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) +
+        "), commit " + Game.getGitCommit() + "\n"
         + "Public user ID: PLM" + GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString()) + "\n" + proposedExo);
 
     FeedbackDialog.instance.title.setText(defaultTitle);

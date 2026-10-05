@@ -614,28 +614,25 @@ public class Game implements IWorldView {
       System.out.println("Disabling the session kit on disk.");
   }
 
+  /** Loads in the default properties the first of these resources that exists, if any. */
+  private static void loadDefaultProperties(String... resources)
+  {
+    for (String resource : resources) {
+      try (InputStream is = Game.class.getClassLoader().getResourceAsStream(resource)) {
+        if (is != null) {
+          Game.defaultGameProperties.load(is);
+          return;
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
   public static void loadProperties()
   {
-    InputStream is = null;
-    try {
-      is = Game.class.getClassLoader().getResourceAsStream("resources/plm.configuration.properties");
-      if (is == null) // try to find the file in the Debian package
-        is = Game.class.getClassLoader().getResourceAsStream("/etc/plm.configuration.properties");
-      Game.defaultGameProperties.load(is);
-    } catch (InvalidPropertiesFormatException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (NullPointerException e) {
-      // resources/plm.configuration.properties not found. Try plm.configuration.properties afterward
-    } finally {
-      if (is != null)
-        try {
-          is.close();
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-    }
+    loadDefaultProperties("resources/plm.configuration.properties", "/etc/plm.configuration.properties"); // the latter is for the Debian package
+    loadDefaultProperties("resources/git.properties"); // generated at build time, absent when not building from a git checkout
 
     File localPropertiesFile = new File(SAVE_DIR + File.separator + Game.LOCAL_PROPERTIES_FILENAME);
     if (localPropertiesFile.exists()) {
@@ -678,6 +675,13 @@ public class Game implements IWorldView {
   public static void setProperty(String key, String value) { Game.localGameProperties.setProperty(key, value); }
 
   public static String getProperty(String key) { return Game.getProperty(key, "", false); }
+
+  /** The git commit this PLM was built from, suffixed with "-dirty" if the working tree had changes, or "unknown" if it was not built from git. */
+  public static String getGitCommit()
+  {
+    String commit = Game.getProperty("git.commit.id.full", "unknown", false);
+    return Boolean.parseBoolean(Game.getProperty("git.dirty", "false", false)) ? commit + "-dirty" : commit;
+  }
 
   /**
    * Gets the value from either the local properties set (in ~/.plm) or the global one (in the jar file).
@@ -915,7 +919,8 @@ public class Game implements IWorldView {
         }
       }
       System.out.println("PLM version: " + Game.getProperty("plm.major.version", "internal", false) + " (" +
-                         Game.getProperty("plm.major.version", "internal", false) + "." + Game.getProperty("plm.minor.version", "", false) + ")");
+                         Game.getProperty("plm.major.version", "internal", false) + "." + Game.getProperty("plm.minor.version", "", false) + "), commit " +
+                         Game.getGitCommit());
       System.out.println("Java version: " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + " " +
                          System.getProperty("java.vm.version") + ")");
       System.out.println("System: " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") +

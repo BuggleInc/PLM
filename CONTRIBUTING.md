@@ -41,7 +41,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   - `answerWorld`: the target state, produced by either loading a cached solution from the disk, or by running the teacher's
     correction code on the corresponding `initialWorld`. 
   - `currentWorld`: the current state while executing the student's code, initially equal to `initialWorld`. If the
-    `currentWorld` becomes semantically equals to `answerWorld` after executing the student code, the exercise is passed.
+    `currentWorld` becomes semantically equal to `answerWorld` after executing the student code, the exercise is passed.
 
 Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
@@ -137,7 +137,7 @@ The resulting `SourceFile` holds:
 After the SourceFile creation, only SourceFile.editorContent is mutable: it is synchronized with the editor's content. The rest of that
 object is immutable, except for the listener that is notified of the changes of the editor content.
 
-### Step 2: building a compilable source (language-specific code in `compileExo()`, not cached)
+### Building a compilable source (language-specific code in `compileExo()`, not cached)
 
 Each `compileExo()` gets the `EntityFileSegments` using `SourceFile.getSegments(whatToCompile)`, with whatToCompile being either
 `StudentOrCorrection.CORRECTION` or `STUDENT`. It then concatenates `pre`, the body (either the editor's content or the
@@ -257,7 +257,10 @@ for/cancels help, or reads a hint:
   - Commit messages are hand-built JSON blobs (`writeCommitMessage()`/`writePLMStartedOrLeavedCommitMessage()`) carrying the
     exercise id, language, outcome, test counts, and optional feedback -- built by string surgery (dropping the JSON
     library's own leading `{`) so that a `"kind"` key always comes first and the commit list stays human-scannable
-    from the GitHub UI.
+    from the GitHub UI. The `"plm"` field of the `"started"` and `"leaved"` messages ends with the git commit of the PLM
+    (`Game.getGitCommit()`, with a `-dirty` suffix if the build had local changes, or `unknown` when not building from git),
+    which is what it takes to replay the templating of a past session. It is recorded in `resources/git.properties` at build
+    time by the `git-commit-id-maven-plugin`.
   - Pushing is rate-limited (`GitUtils.maybePushToUserBranch()`, see its own comment for the incident that motivated it):
     at most one push in flight at a time (a static `currentlyPushing` flag) and a fixed delay (currently 1 minute) before
     it actually pushes, run off the Swing EDT via a `SwingWorker`; `forcefullyPushToUserBranch()` used by `leave()` skips
