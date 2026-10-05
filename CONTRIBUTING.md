@@ -292,9 +292,9 @@ for/cancels help, or reads a hint:
     run as its own `java -cp` process like Java.
   - **Python**: an external `python3` process is spawned per run.
   - **C** compiled externally and driven over pipes.
-- Adding a new language: see
-  `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language`
-  and extend `plm.core.lang.ProgrammingLanguage`.
+- Adding a new language: see `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language` and extend
+  `plm.core.lang.ProgrammingLanguage`. Be warned that you will have to adapt the mission text of every exercise, as they contain
+  language-specific chunks.
 
 ## Build & run
 

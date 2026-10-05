@@ -3,11 +3,8 @@ package lessons.recursion.hanoi;
 import java.util.Arrays;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.recursion.hanoi.universe.HanoiWorld;
-import lessons.welcome.methods.slug.SlugHuntingEntity;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
-import plm.universe.World;
-import plm.universe.bugglequest.BuggleWorld;
 
 public class CyclicHanoi extends ExerciseTemplated {
 
