@@ -51,8 +51,8 @@ class TreeEntity extends Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		tree(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double],
-		    getParam(2).asInstanceOf[Double],getParam(3).asInstanceOf[Double]);
+		tree(getParamInt(0),getParamDouble(1),
+		    getParamDouble(2),getParamDouble(3));
 	}
 	/* END REMOTE */
 }

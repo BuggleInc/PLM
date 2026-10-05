@@ -40,7 +40,7 @@ class SquareKochEntity extends Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		snowSquare(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
+		snowSquare(getParamInt(0),getParamDouble(1));
 	}
 	/* END REMOTE */
 }

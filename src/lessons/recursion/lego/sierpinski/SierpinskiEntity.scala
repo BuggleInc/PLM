@@ -17,7 +17,7 @@ class SierpinskiEntity extends plm.universe.turtles.Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		sierpinski(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Double]);
+		sierpinski(getParamInt(0), getParamDouble(1));
 	}
 	/* END REMOTE */
 

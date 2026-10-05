@@ -26,8 +26,8 @@ class PolygonFractalEntity extends Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		polygonFractal(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Int],
-		    getParam(2).asInstanceOf[Double],getParam(3).asInstanceOf[Double]);
+		polygonFractal(getParamInt(0),getParamInt(1),
+		    getParamDouble(2),getParamDouble(3));
 	}
 	/* END REMOTE */
 }

@@ -29,7 +29,7 @@ class HexaKochEntity extends Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		drawCurve(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
+		drawCurve(getParamInt(0),getParamDouble(1));
 	}
 	/* END REMOTE */
 }

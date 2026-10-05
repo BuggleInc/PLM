@@ -35,7 +35,7 @@ class KochEntity extends Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		snowFlake(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Double]);
+		snowFlake(getParamInt(0),getParamDouble(1));
 	}
 	/* END REMOTE */
 }

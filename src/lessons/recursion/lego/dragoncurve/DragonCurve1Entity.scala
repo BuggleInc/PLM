@@ -22,8 +22,8 @@ class DragonCurve1Entity extends Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		dragon(getParam(0).asInstanceOf[Int], getParam(1).asInstanceOf[Double], getParam(2).asInstanceOf[Double], 
-		    getParam(3).asInstanceOf[Double], getParam(4).asInstanceOf[Double]);
+		dragon(getParamInt(0), getParamDouble(1), getParamDouble(2), 
+		    getParamDouble(3), getParamDouble(4));
 	}
 	/* END REMOTE */
 

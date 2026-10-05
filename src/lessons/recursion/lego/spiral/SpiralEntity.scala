@@ -18,8 +18,8 @@ class SpiralEntity extends plm.universe.turtles.Turtle {
 	/* END TEMPLATE */
 
 	override def run(): Unit = {
-		spiral(getParam(0).asInstanceOf[Int],getParam(1).asInstanceOf[Int],
-		    getParam(2).asInstanceOf[Int],getParam(3).asInstanceOf[Int]);
+		spiral(getParamInt(0),getParamInt(1),
+		    getParamInt(2),getParamInt(3));
 	}
 	/* END REMOTE */
 }
