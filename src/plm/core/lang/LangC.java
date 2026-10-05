@@ -86,8 +86,8 @@ public class LangC extends TemplatedRemoteLang {
     String execPath = null;
     for (SourceFile sf : sfs) {
       EntityFileSegments segments = sf.getSegments(whatToCompile);
-      // The #line directive makes the compiler errors point at the entity's own file
-      String entityCode = segments.pre() + "#line 1 \"" + sf.getName() + ".c\" \n" + segments.body() + segments.post();
+      // The IMPORT sections come first. The #line directive makes the compiler errors point at the entity's own file
+      String entityCode = sf.getImports() + segments.pre() + "#line 1 \"" + sf.getName() + ".c\" \n" + segments.body() + segments.post();
 
       entityCode = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
       execPath   = compile(entityCode, sf.getRemote(), exo.getId(), exo, whatToCompile);

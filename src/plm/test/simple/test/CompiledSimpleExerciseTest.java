@@ -72,6 +72,15 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
     Assertions.assertTrue(capture.toString().contains(locationOfLine(2)), capture.toString());
   }
 
+  /** Runs the given editor content, which needs what the entity declares in its IMPORT sections, and expects it to pass. */
+  protected void assertPassesThanksToImports(String code) throws PLMCompilerException, InterruptedException
+  {
+    exo.getSourceFile(pl, 0).setEditorContent(code, pl);
+    String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
+    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    Assertions.assertEquals(RunOutcome.kind.PASS, exo.lastResult.outcome, exo.lastResult.executionError);
+  }
+
   @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {

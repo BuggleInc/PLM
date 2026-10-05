@@ -66,4 +66,11 @@ public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
       setDebug(true);
     }
   }
+
+  @Test public void testImportSegmentIsHonored() throws PLMCompilerException, InterruptedException
+  {
+    assertPassesThanksToImports("def run():\n"
+                                + "  if math.floor(2.5) == 2:\n"
+                                + "    setObjectif(True)\n");
+  }
 }

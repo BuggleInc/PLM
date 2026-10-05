@@ -1,3 +1,6 @@
+# BEGIN IMPORT
+import math
+# END IMPORT
 from RemoteSimple import *
 
 # BEGIN TEMPLATE

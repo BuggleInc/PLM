@@ -145,10 +145,12 @@ teacher's correction) and `post` with what its language needs:
 - Java/Scala wrap them in their own class/object boilerplate: `package`, their imports (all on a single line, so that the line
   numbers of the generated code do not depend on how many there are), `class Entity {`, then `pre`, the body, `post` and a
   closing brace.
-- Python only prepends its own imports, with no further boilerplate. As indentation matters in Python, it indents the student's
-  code by `bodyIndent` spaces (after removing its own common indentation) before concatenating it. The tabs found in the leading
-  whitespace of the whole source (entity and student) are then expanded as well, so that tabs and spaces never get mixed up.
-- C inserts a `#line` preprocessor directive between `pre` and the body, so that compiler errors point at the entity's own file.
+- Python only prepends its own imports, followed by the `IMPORT` sections of the entity, with no further boilerplate. As
+  indentation matters in Python, it indents the student's code by `bodyIndent` spaces (after removing its own common
+  indentation) before concatenating it. The tabs found in the leading whitespace of the whole source (entity and student) are
+  then expanded as well, so that tabs and spaces never get mixed up.
+- C starts with the `IMPORT` sections of the entity, then `pre`, a `#line` preprocessor directive and the body, so that compiler
+  errors point at the entity's own file.
 
 Each language does this concatenation inline in its own `compileExo()`, to keep a single linear flow instead of jumping to a
 handful of one-off helper lines elsewhere:
@@ -274,6 +276,7 @@ for/cancels help, or reads a hint:
 * `SimpleExercise` tests ensure that the compilation and templating work in every language without pulling a full universe. It
   also tests the error catching mechanism of each language is working properly (syntax error, exception raising, etc). The Java
   ones also check that the line of a compilation error and of a stack trace frame is the one of the editor, with debugging off.
+  The Python and C entities have an `IMPORT` section, which a test checks to be honored.
 * Integration testing driven by `ExoTest`/`LessonTest` and living in `src/plm/test/integration` (`ExoTestJavaLang`,
    `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`) run every exercise's own correction entity, in every language it
    supports, through the normal compile/run/check pipeline and assert it passes. This is a regression test suite over the
@@ -472,7 +475,8 @@ TODO: add to the exercice a verification of the source code, so that MethodDogHo
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
 TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
 
-TODO: Port the SimpleExercise tests to LangC
+TODO: Test that the lines of the compilation errors and of the sanitizer reports of C are the editor's (the stack trace test of
+      SimpleExercise is disabled for C, as abort() leaves no sanitizer report)
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.

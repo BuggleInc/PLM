@@ -105,7 +105,7 @@ public class LangPython extends TemplatedRemoteLang {
         for (String module : extraModules)
           deployResource("python/" + module, ENTITIES_DIR);
 
-        String imports    = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports;
+        String imports              = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports + sf.getImports();
         EntityFileSegments segments = sf.getSegments(whatToCompile);
         String body                 = segments.body();
         if (whatToCompile == StudentOrCorrection.STUDENT) {
