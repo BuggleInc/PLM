@@ -1,39 +1,5 @@
 from RemoteBuggle import *
 def run():
-    global forward, backward
-    _forward  = forward
-    _backward = backward
-
-    colors = [Color(0,155,0), Color(50,155,0), Color(100,155,0), Color(140,155,0),
-              Color(160,155,0), Color(180,155,0), Color(200,155,0), Color(210,155,0), Color.red]
-
-    def forward(i=1):
-        if i>1:
-          errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
-        else:
-            if not haveSeenError():
-                _forward()
-            c = getGroundColor()
-            if c == Color.blue:
-                if not haveSeenError():
-                    errorMsg("You fall into water.")
-                seenError();
-            else:
-              for i in range(len(colors)-1):
-                  if colors[i] == c:
-                      if i == len(colors)-1:
-                          c = colors[i]
-                      else:
-                          c = colors[i+1]
-                      break
-              setBrushColor(c)    
-              brushDown()
-              brushUp()
-    def backward(i=1):
-        if i>1:
-          errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
-        else:
-          errorMsg("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay.")
     # BEGIN SOLUTION
     for i in range(7):
         for side in range(4):

@@ -8,7 +8,7 @@ def run():
             if isOverBaggle():
                 res = True
             forward()
-            backward(6)
+        backward(6)
         return res
         # END SOLUTION
     #END TEMPLATE

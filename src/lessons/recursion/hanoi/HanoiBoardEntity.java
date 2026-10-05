@@ -7,7 +7,7 @@ import plm.core.lang.primitives.EntityPrimitives;
 public class HanoiBoardEntity extends HanoiEntity {
 
   /* BEGIN REMOTE */
-  public void run() { solve(getParamInt(1), getParamInt(1), getParamInt(2)); }
+  public void run() { solve(getParamInt(0), getParamInt(1), getParamInt(2)); }
 
   /* BEGIN TEMPLATE */
   public void solve(int src, int other, int dst)

@@ -487,3 +487,5 @@ TODO: benchmark the tests to understand where the time goes, and optimize this o
 
 TODO: Primitive numbering should be automatic
 TODO: Find a way for the exercise to specify which primitives should be forbidden to the student in this specific exercise 
+
+TODO: remove the global state that prevent the tests from running in parallel (such as getCurrentExercise or getCurrentLanguage)
