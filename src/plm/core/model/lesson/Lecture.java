@@ -19,8 +19,9 @@ import plm.core.utils.FileUtils;
  * English today. Sorry.
  */
 public abstract class Lecture {
-  private String localId; // lecture's identifier WITHIN THE LESSON
-  private String id;      // global lecture's identifier
+  private String localId;           // lecture's identifier WITHIN THE LESSON
+  private String id;                // global lecture's identifier
+  private final String missionFile; // path of the HTML mission, relative to the source root and without extension
 
   public static final String HTMLTipHeader = "<head>\n"
                                              + "  <meta content=\"text/html; charset=UTF-8\" />\n"
@@ -41,9 +42,9 @@ public abstract class Lecture {
                                              + "              font-style: italic; }\n"
                                              + "  </style>\n"
                                              + "</head>\n";
-  private String name    = "<no name>"; /** indicate whether this Exercise was successfully done or not */
-  private String mission = "";          /** The text to display to present the lesson */
-  private Lesson lesson;                /* Container of ourselve */
+  private String name    = "<no name>"; // the title of the mission, found in its HTML file
+  private String mission = "";          // the text to display to present the lecture
+  private Lesson lesson;                // container of ourselves
 
   protected Map<String, String> tips = new HashMap<String, String>();
 
@@ -52,6 +53,7 @@ public abstract class Lecture {
     this.lesson = lesson;
     localId     = (basename != null ? basename : getClass().getSimpleName());
     id          = lesson.getId() + "." + getLocalId();
+    missionFile = (basename != null ? basename : getClass().getName()).replace('.', File.separatorChar);
     loadHTMLMission();
   }
   public String getId() { return id; }
@@ -72,23 +74,21 @@ public abstract class Lecture {
 
   public void loadHTMLMission()
   {
-    String filename = getLocalId().replace('.', File.separatorChar);
-
     StringBuffer sb = null;
     try {
-      sb = FileUtils.readContentAsText(filename, "html", true);
+      sb = FileUtils.readContentAsText(missionFile, "html", true);
     } catch (IOException ex) {
-      setMission(Game.i18n.tr("File {0}.html not found.", filename));
+      setMission(Game.i18n.tr("File {0}.html not found.", missionFile));
       return;
     }
     String str = sb.toString();
 
     /* search the mission name */
-    Pattern p = Pattern.compile("<h[123]>([^<]*)<");
-    Matcher m = p.matcher(str);
-    if (!m.find())
-      System.out.println(Game.i18n.tr("Cannot find the name of mission in {0}.html", filename));
-    setName(m.group(1));
+    Matcher m = Pattern.compile("<h[123]>([^<]*)<").matcher(str);
+    if (m.find())
+      setName(m.group(1));
+    else
+      System.err.println(Game.i18n.tr("Cannot find the name of mission in {0}.html", missionFile));
 
     /* prepare the tips, if any */
     Pattern p3 = Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\" alt=\"([^\"]+?)\">(.*?)</div>", Pattern.MULTILINE | Pattern.DOTALL);
