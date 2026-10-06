@@ -81,6 +81,10 @@ public abstract class Exercise extends Lecture {
     for (Future<?> f : new ArrayList<Future<?>>(runnerVect)) {
       try {
         f.get();
+      } catch (InterruptedException ie) {
+        /* Interrupted while waiting (e.g. test timeout): cancel the runners so that they kill their student processes. */
+        runnerVect.forEach(r -> r.cancel(true));
+        throw ie;
       } catch (CancellationException ce) {
         /* Stopped on purpose (LessonRunner.stopAll()); not a failure. */
       } catch (ExecutionException ee) {
