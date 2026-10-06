@@ -561,13 +561,8 @@ public class LangC extends TemplatedRemoteLang {
       throw new IllegalStateException("Unknown type: " + type);
     }
 
-    /** The C expression to pass to send_command() for this parameter. Itself except String, which gets quoted. */
-    String getArgumentExpression(PrimitiveParameter parameter)
-    {
-      if (parameter.type() == String.class)
-        return "escape_string(" + parameter.name() + ")";
-      return parameter.name();
-    }
+    /** The C expression to pass to send_command() for this parameter. Itself except String, which gets quoted (see getImplementation()). */
+    String getArgumentExpression(PrimitiveParameter parameter) { return parameter.type() == String.class ? "escaped_" + parameter.name() : parameter.name(); }
 
     String getImplementation(PrimitiveMethod method)
     {
@@ -587,9 +582,14 @@ public class LangC extends TemplatedRemoteLang {
       String command = "\tsend_command(\"" + id + " " + argsWire + " " + name + "\"" +
                        method.parameters().stream().map(this::getArgumentExpression).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
+      // The escaped copy of each String parameter is heap-allocated by escape_string(): it is released once the command is sent
+      List<PrimitiveParameter> strings = method.parameters().stream().filter(p -> p.type() == String.class).toList();
+      String escapes = strings.stream().map(p -> "\tchar* " + getArgumentExpression(p) + " = escape_string(" + p.name() + ");\n").collect(Collectors.joining());
+      String frees   = strings.stream().map(p -> "\tfree(" + getArgumentExpression(p) + ");\n").collect(Collectors.joining());
+
       String returning = method.hasReturn() ? "\treturn " + getReturning(method.output()) + ";" : "";
 
-      return prototype + "{\n" + command + "\n" + returning + "\n}";
+      return prototype + "{\n" + escapes + command + "\n" + frees + returning + "\n}";
     }
 
     @Override public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException
