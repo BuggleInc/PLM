@@ -9,7 +9,9 @@ void run()
     char* test          = getTest(i);
     plm_value_t* params = plm_deserialize(test);
     plm_value_t** args  = params->as.array.elements;
-    char* serialized    = plm_serialize_fmt("s", alarmClock(args[0]->as.i, args[1]->as.b));
+    char* result        = alarmClock(args[0]->as.i, args[1]->as.b);
+    char* serialized    = plm_serialize_fmt("s", result);
+    free(result);
     plm_value_free(params);
     free(test);
     setTestResult(i, serialized);
