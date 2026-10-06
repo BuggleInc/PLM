@@ -18,10 +18,11 @@ class LastEntity extends ConsEntity {
 	/* BEGIN TEMPLATE */
 	def last(l:List[Int]): Int = {
 	/* BEGIN SOLUTION */
-  l match {
-    case a::b if b==Nil => a
-    case a::b            => last(b)
-  }
+	l match {
+		case a::Nil => a
+		case _::b   => last(b)
+		case Nil    => throw new NoSuchElementException("last of an empty list")
+	}
 	/* END SOLUTION */
 	}
 	/* END TEMPLATE */

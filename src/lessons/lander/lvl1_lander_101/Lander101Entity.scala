@@ -11,8 +11,8 @@ class Lander101Entity extends LanderEntity {
 		}
 	}
 
+	/* BEGIN TEMPLATE */
 	override def step(): Unit = {
-		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
 		if (getSpeedY() < -9) {
 			setDesiredThrust(4)
@@ -20,7 +20,7 @@ class Lander101Entity extends LanderEntity {
 			setDesiredThrust(3);
 		}
 		/* END SOLUTION */
-		/* END TEMPLATE */
-		/* END REMOTE */
 	}
+	/* END TEMPLATE */
+	/* END REMOTE */
 }

@@ -17,10 +17,7 @@ class Array123Entity extends BatEntity {
 	/* BEGIN TEMPLATE */
 	def array123(nums:Array[Int]): Boolean = {
 		/* BEGIN SOLUTION */
-	  for (i <- 0 to nums.length-3)
-	    if (nums(i)==1  &&  nums(i+1)==2  &&  nums(i+2)==3)
-	      return true
-	  return false
+		(0 to nums.length-3).exists(i => nums(i)==1 && nums(i+1)==2 && nums(i+2)==3)
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

@@ -12,17 +12,17 @@ class AlgBubbleSort3Entity extends SortingEntity {
 	/* BEGIN TEMPLATE */
 	def bubbleSort3(): Unit = {
 		/* BEGIN SOLUTION */
-		for (i <- getValueCount()-1 to 0 by -1) {
-			var swapped = false;
-			for (j <- 0 to i-1) {
+		var swapped = true;
+		var i = getValueCount()-1;
+		while (swapped && i > 0) {
+			swapped = false;
+			for (j <- 0 until i) {
 				if (!isSmaller(j,j+1)) {
 					swap(j,j+1);
-					swapped=true;
+					swapped = true;
 				}
 			}
-			if (!swapped) {
-				return;	
-			}
+			i -= 1;
 		}
 		/* END SOLUTION */
 	}

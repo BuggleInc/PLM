@@ -18,10 +18,10 @@ class ButLastEntity extends ConsEntity {
 	/* BEGIN TEMPLATE */
 	def butLast(l:List[Int]): List[Int] = {
 	/* BEGIN SOLUTION */
-  l match {
-    case a::b if b==Nil => Nil
-    case a::b           => a::butLast(b)
-  }
+	l match {
+		case Nil | _::Nil => Nil
+		case a::b         => a::butLast(b)
+	}
 	/* END SOLUTION */
 	}
 	/* END TEMPLATE */

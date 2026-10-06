@@ -147,7 +147,8 @@ public class LangScala extends JvmTemplatedLang {
   {
     List<String> paths = Arrays.stream(files).map(f -> f.toPath().toString()).toList();
     List<String> scalacArgs = new ArrayList<>(List.of("-classpath", scalaCompilerClasspath() + File.pathSeparator + entitiesJar.getAbsolutePath(), "-d",
-                                                      packageFolder.getAbsolutePath(), "-color:never")); // no ANSI escapes in the messages
+                                                      packageFolder.getAbsolutePath(), "-color:never", "-no-indent",
+                                                      "-deprecation")); // no ANSI escapes; braces only (sources mix tabs and spaces); detailed warnings
     for (File file : files)
       scalacArgs.add(file.getAbsolutePath());
     runDotc(paths, scalacArgs, lineShift);

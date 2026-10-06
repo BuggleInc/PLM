@@ -17,10 +17,7 @@ class IndexOfValueEntity extends BatEntity {
 	/* BEGIN TEMPLATE */
 	def indexOfValue(nums:Array[Int] ,lookingFor:Int): Int = {
 		/* BEGIN SOLUTION */
-	  for (i <- 0 to nums.length-1)
-	    if (nums(i)==lookingFor) 
-	      return i
-	  return -1
+		nums.indexOf(lookingFor)
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

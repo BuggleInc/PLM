@@ -17,10 +17,7 @@ class ArrayFront9Entity extends BatEntity {
 	/* BEGIN TEMPLATE */
 	def arrayFront9(nums:Array[Int]): Boolean = {
 		/* BEGIN SOLUTION */
-	  for (i <- 0 to Math.min(nums.length,4)-1)
-	    if (nums(i) == 9)
-	      return true
-	  return false
+		nums.take(4).contains(9)
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
