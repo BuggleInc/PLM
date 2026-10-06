@@ -2,12 +2,6 @@
 
 Color colors[] =  {cyan,blue,magenta,orange,yellow,green,lightGray,gray,darkGray,black,red};
 int colorsLength = 11;
-void current(int v) {
-	if (v>=colorsLength || v < 0)
-		setColor(colors[colorsLength -1]);
-	setColor(colors[v]);
-}
-
 
 /* BEGIN TEMPLATE */
 void tree(int steps, double length, double angle, double shrink)	{
