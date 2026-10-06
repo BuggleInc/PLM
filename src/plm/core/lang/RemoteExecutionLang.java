@@ -237,7 +237,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       Files.deleteIfExists(socketDir);
 
       if (retcode != 0)
-        progress.setExecutionError("An issue occured in the executed code. Check the output in the log panel for more info");
+        progress.setExecutionError("An issue occured in the executed code (return code: " + retcode + "). Check the output in the log panel for more info");
 
       if (resEvaluationError.length() > 0) {
         System.err.println(resEvaluationError.toString());
