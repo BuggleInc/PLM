@@ -10,7 +10,8 @@ void run()
   int count = getTestCount();
   for (int i = 0; i < count; i++) {
     plm_value_t* params = plm_deserialize(getTest(i));
-    plm_value_t* result = recListToValue(concat(recListFromValue(&params[0]), recListFromValue(&params[1])));
+    plm_value_t** args  = params->as.array.elements;
+    plm_value_t* result = recListToValue(concat(recListFromValue(args[0]), recListFromValue(args[1])));
     setTestResult(i, plm_serialize(result));
     plm_value_free(params);
     plm_value_free(result);

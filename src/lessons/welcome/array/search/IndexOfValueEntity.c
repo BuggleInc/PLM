@@ -7,8 +7,9 @@ void run()
   int count = getTestCount();
   for (int i = 0; i < count; i++) {
     plm_value_t* params = plm_deserialize(getTest(i));
-    int* tab            = (int*)plm_to_int_array(&params[0]);
-    char* serialized    = plm_serialize_fmt("i", indexOf(tab, (int)params[0].as.array.size, params[1].as.i));
+    plm_value_t** args  = params->as.array.elements;
+    int* tab            = (int*)plm_to_int_array(args[0]);
+    char* serialized    = plm_serialize_fmt("i", indexOf(tab, (int)args[0]->as.array.size, args[1]->as.i));
     free(tab);
     plm_value_free(params);
     setTestResult(i, serialized);
