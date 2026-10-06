@@ -13,10 +13,13 @@ void run()
     plm_value_t* params = plm_deserialize(test);
     plm_value_t** args  = params->as.array.elements;
     plm_value_t* result = recListToValue(reverse(recListFromValue(args[0])));
-    setTestResult(i, plm_serialize(result));
+    char* serialized    = plm_serialize(result);
     plm_value_free(params);
     free(test);
     plm_value_free(result);
+    recListFreeAll();
+    setTestResult(i, serialized);
+    free(serialized);
   }
 }
 

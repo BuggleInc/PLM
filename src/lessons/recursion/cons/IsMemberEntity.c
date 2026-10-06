@@ -15,6 +15,7 @@ void run()
     char* serialized    = plm_serialize_fmt("b", isMember(recListFromValue(args[0]), args[1]->as.i));
     plm_value_free(params);
     free(test);
+    recListFreeAll();
     setTestResult(i, serialized);
     free(serialized);
   }

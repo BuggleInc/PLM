@@ -13,12 +13,32 @@ typedef struct RecList {
   struct RecList* tail;
 } RecList;
 
+/* A RecList cell, chained to the others so that recListFreeAll() can release them whatever the sharing between lists */
+typedef struct RecListCell {
+  RecList list;
+  struct RecListCell* next;
+} RecListCell;
+
+static RecListCell* allCells = NULL;
+
 static RecList* cons(int head, RecList* tail)
 {
-  RecList* r = malloc(sizeof(RecList));
-  r->head    = head;
-  r->tail    = tail;
-  return r;
+  RecListCell* cell = malloc(sizeof(RecListCell));
+  cell->list.head   = head;
+  cell->list.tail   = tail;
+  cell->next        = allCells;
+  allCells          = cell;
+  return &cell->list;
+}
+
+/* Frees every cell allocated by cons() so far */
+static void recListFreeAll(void)
+{
+  while (allCells != NULL) {
+    RecListCell* next = allCells->next;
+    free(allCells);
+    allCells = next;
+  }
 }
 
 /* RecList.plmInsiderLength() */
