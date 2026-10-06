@@ -64,7 +64,7 @@ char* get_answer_string()
 char get_answer_char()
 {
   get_answer_line();
-  return answer_buffer[0];
+  return answer_buffer[1]; // +1: skip the leading 'c' tag
 }
 char* escape_string(const char* s)
 {
