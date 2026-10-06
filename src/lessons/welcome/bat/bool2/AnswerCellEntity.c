@@ -7,8 +7,10 @@ void run()
   int count = getTestCount();
   for (int i = 0; i < count; i++) {
     plm_value_t* params = plm_deserialize(getTest(i));
-    setTestResult(i, plm_serialize_fmt("b", answerCell(params[0].as.b, params[1].as.b, params[2].as.b)));
+    char* serialized    = plm_serialize_fmt("b", answerCell(params[0].as.b, params[1].as.b, params[2].as.b));
     plm_value_free(params);
+    setTestResult(i, serialized);
+    free(serialized);
   }
 }
 

@@ -8,9 +8,11 @@ void run()
   for (int i = 0; i < count; i++) {
     plm_value_t* params = plm_deserialize(getTest(i));
     int* tab            = (int*)plm_to_int_array(&params[0]);
-    setTestResult(i, plm_serialize_fmt("i", occurrences(tab, (int)params[0].as.array.size, params[1].as.i)));
+    char* serialized    = plm_serialize_fmt("i", occurrences(tab, (int)params[0].as.array.size, params[1].as.i));
     free(tab);
     plm_value_free(params);
+    setTestResult(i, serialized);
+    free(serialized);
   }
 }
 
