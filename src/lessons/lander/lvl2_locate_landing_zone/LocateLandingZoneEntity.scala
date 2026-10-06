@@ -1,65 +1,41 @@
 package lessons.lander.lvl2_locate_landing_zone;
 
-import java.util.Iterator;
-import scala.collection.JavaConversions._
-import lessons.lander.universe.LanderWorld._
-
 import lessons.lander.universe._;
+import lessons.lander.universe.LanderWorld._;
 
 class LocateLandingZoneEntity extends LanderEntity {
   /* BEGIN REMOTE */
-  /* BEGIN TEMPLATE */
-  def getLandingZone():Segment = {
-    /* BEGIN SOLUTION */
-    var lastPoint:Point = getGround.get(0);
-    for (point <- getGround()) {
-      if (point != lastPoint) { // Avoid the loop when point is on the first element
-        if (point.y == lastPoint.y)
-          return new Segment(lastPoint,point)
-      }
-      lastPoint = point
-    }
-    return null;
-    /* END SOLUTION */
-  }
-  /* END TEMPLATE */
-
-  var targetStart = 0.0;
-  var targetEnd = 0.0;
-
   override def run(): Unit = {
-    initialize()
+    val landingZone = getLandingZone()
+    val targetStart = landingZone(0).x
+    val targetEnd   = landingZone(1).x
+
     while (isFlying()) {
-      step()
+      if (getX() < targetStart) {
+        setDesiredAngle(-30);
+      } else if (getX() > targetEnd) {
+        setDesiredAngle(30);
+      } else {
+        if (getSpeedX() > 5) {
+          setDesiredAngle(25);
+        } else if (getSpeedX() < -5) {
+          setDesiredAngle(-25);
+        } else {
+          setDesiredAngle(0);
+        }
+      }
+      setDesiredThrust(if (getSpeedY() < -9) 4 else 3)
       simulateStep()
     }
   }
+
+  /* BEGIN TEMPLATE */
+  def getLandingZone(): Array[Point] = {
+    /* return Array(new Point(0,0), new Point(0,0)) */
+    /* BEGIN SOLUTION */
+    getGround().sliding(2).find(pair => pair(0).y == pair(1).y).orNull
+    /* END SOLUTION */
+  }
+  /* END TEMPLATE */
   /* END REMOTE */
-
-  override def initialize(): Unit = {
-    var landingZone = getLandingZone();
-    targetStart = landingZone.start.x;
-    targetEnd = landingZone.end.x;
-  }
-
-  override def step(): Unit = {
-    if (getX() < targetStart) {
-      setDesiredAngle(-30);
-    } else if (getX() > targetEnd) {
-      setDesiredAngle(30);
-    } else {
-      if (getSpeedX() > 5) {
-        setDesiredAngle(25);
-      } else if (getSpeedX() < -5) {
-        setDesiredAngle(-25);
-      } else {
-        setDesiredAngle(0);
-      }
-    }
-    
-    if (getSpeedY() < -9)
-      setDesiredThrust(4)
-    else
-      setDesiredThrust(3)
-  }
 }
