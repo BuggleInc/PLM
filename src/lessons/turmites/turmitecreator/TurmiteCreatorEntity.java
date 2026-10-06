@@ -5,7 +5,6 @@ import lessons.turmites.universe.TurmiteEntity;
 
 public class TurmiteCreatorEntity extends TurmiteEntity {
 
-  /* Do not change these definitions */
   /* BEGIN REMOTE */
   Color[] colors;
   int state = 0;
@@ -48,6 +47,7 @@ public class TurmiteCreatorEntity extends TurmiteEntity {
   }
 
   /* BEGIN TEMPLATE */
+  /* Do not change these definitions */
   final static int STOP   = 0;
   final static int NOTURN = 1;
   final static int LEFT   = 2;

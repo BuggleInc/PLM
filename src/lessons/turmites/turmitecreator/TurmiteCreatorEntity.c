@@ -1,50 +1,14 @@
 #include "../../../../target/classes/resources/langages/c/RemoteTurmite.h"
 
-/* Do not change these definitions */
-/* BEGIN HELPER */
+/* BEGIN REMOTE */
 Color* colors;
 int colorsLength;
 int state = 0;
 
-void step()
-{
-  int currentColor = 0;
-  Color current    = getGroundColor();
-  for (int i = 0; i < colorsLength; i++)
-    if (current == colors[i])
-      currentColor = i;
-
-  setBrushColor(colors[rule[state][currentColor][NEXT_COLOR]]);
-  brushDown();
-  brushUp();
-
-  switch (rule[state][currentColor][NEXT_MOVE]) {
-    case STOP: /* nothing */
-      break;
-    case NOTURN: /* no turn */
-      stepForward();
-      break;
-    case LEFT:
-      left();
-      stepForward();
-      break;
-    case RIGHT:
-      right();
-      stepForward();
-      break;
-    case BACK:
-      back();
-      stepForward();
-      break;
-    default:
-      printf("Unknown turn command associated to i=%d: %d\n", currentColor, rule[state][currentColor][NEXT_MOVE]);
-  }
-
-  state = rule[state][currentColor][NEXT_STATE];
-}
-/* END HELPER */
+void step();
 
 /* BEGIN TEMPLATE */
+/* Do not change these definitions */
 #define STOP 0
 #define NOTURN 1
 #define LEFT 2
@@ -127,6 +91,43 @@ void init()
 }
 /* END TEMPLATE */
 
+void step()
+{
+  int currentColor = 0;
+  Color current    = getGroundColor();
+  for (int i = 0; i < colorsLength; i++)
+    if (current == colors[i])
+      currentColor = i;
+
+  setBrushColor(colors[rule[state][currentColor][NEXT_COLOR]]);
+  brushDown();
+  brushUp();
+
+  switch (rule[state][currentColor][NEXT_MOVE]) {
+    case STOP: /* nothing */
+      break;
+    case NOTURN: /* no turn */
+      stepForward();
+      break;
+    case LEFT:
+      left();
+      stepForward();
+      break;
+    case RIGHT:
+      right();
+      stepForward();
+      break;
+    case BACK:
+      back();
+      stepForward();
+      break;
+    default:
+      printf("Unknown turn command associated to i=%d: %d\n", currentColor, rule[state][currentColor][NEXT_MOVE]);
+  }
+
+  state = rule[state][currentColor][NEXT_STATE];
+}
+
 void run()
 {
   Color allColors[]  = {white, yellow, red, cyan, green, orange, blue, black, gray, magenta, darkGray, pink, lightGray};
@@ -147,3 +148,4 @@ void run()
     stepDone();
   }
 }
+/* END REMOTE */
