@@ -6,8 +6,8 @@ Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta
 
 void run(){
   int nbSteps = getParamInt(0);
-  char* rule  = (char*)malloc(sizeof(char) * 256);
-  int length  = getParamLangtonColor1(rule);
+  char* rule  = getParamString(1);
+  int length  = strlen(rule);
 
   Color* colors = (Color*)malloc(sizeof(Color) * length);
   int i;
@@ -19,6 +19,7 @@ void run(){
     step(rule, colors, length);
   }
   free(colors);
+  free(rule);
 }
 
 /* BEGIN TEMPLATE */

@@ -1,3 +1,4 @@
+#include "../../../../lib/resources/langages/c/value_serializer.h"
 #include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
 
 Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
@@ -49,19 +50,25 @@ void step(Color* colors, int colorsLength, int*** rule, int dim1, int dim2, int 
 /* END TEMPLATE */
 
 void run() {
-	int nbSteps = (int)getParam(0);
-	Color* colors;
-	int dim1,dim2,dim3;
-	int*** rule = getParamHelloTurmite1(&dim1,&dim2,&dim3);
+  int nbSteps = getParamInt(0);
+  Color* colors;
+  char* serialized   = getParamString(1);
+  plm_value_t* value = plm_deserialize(serialized);
+  int dim1           = value->as.array.size;
+  int dim2           = value->as.array.elements[0]->as.array.size;
+  int dim3           = value->as.array.elements[0]->as.array.elements[0]->as.array.size;
+  int*** rule        = (int***)plm_to_int_array_3d(value);
+  plm_value_free(value);
+  free(serialized);
 
-	colors = (Color*)malloc(sizeof(Color)*dim1);  //new Color[rule.length];
-	int i;
-	for (i=0; i<dim1; i++)
-		colors[i] = allColors[i];
+  colors = (Color*)malloc(sizeof(Color) * dim1); // new Color[rule.length];
+  int i;
+  for (i = 0; i < dim1; i++)
+    colors[i] = allColors[i];
 
-	for (i=0;i<nbSteps;i++) {
-		stepDone();
-		step(colors,dim1,rule,dim1, dim2, dim3);
-	}
+  for (i = 0; i < nbSteps; i++) {
+    stepDone();
+    step(colors, dim1, rule, dim1, dim2, dim3);
+  }
 }
 

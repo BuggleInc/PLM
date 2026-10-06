@@ -130,8 +130,8 @@ public class LangC extends TemplatedRemoteLang {
       Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), isWindows);
       Path remoteWorldObj     = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), isWindows);
 
-      // These two headers still need a real, physical presence in compileDir: the student/correction file below
-      // #include's them directly, unlike value_serializer.h which nothing outside of value_serializer.c itself needs.
+      // The student/correction file below #include's these headers directly: they need a physical presence in compileDir.
+      Files.writeString(compileDir.resolve("value_serializer.h"), valueSerializerH);
       Files.writeString(compileDir.resolve("Remote.h"), remoteH);
       Files.writeString(compileDir.resolve(remote + ".h"), remoteWorldH);
 

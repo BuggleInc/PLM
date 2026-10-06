@@ -1,0 +1,26 @@
+#include "../../../../../lib/resources/langages/c/value_serializer.h"
+#include "../../../../../target/classes/resources/langages/c/RemoteBat.h"
+
+int sortaSum(int a, int b);
+void run()
+{
+  int count = getTestCount();
+  for (int i = 0; i < count; i++) {
+    plm_value_t* params = plm_deserialize(getTest(i));
+    setTestResult(i, plm_serialize_fmt("i", sortaSum(params[0].as.i, params[1].as.i)));
+    plm_value_free(params);
+  }
+}
+
+/* BEGIN TEMPLATE */
+int sortaSum(int a, int b)
+{
+  /* BEGIN SOLUTION */
+  int sum = a + b;
+  if (sum >= 10 && sum <= 19)
+    return 20;
+  else
+    return sum;
+  /* END SOLUTION */
+}
+/* END TEMPLATE */
