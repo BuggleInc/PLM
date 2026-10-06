@@ -215,7 +215,8 @@ public class LangScala extends JvmTemplatedLang {
         entityCode        = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
         // Scala's "override" needs a real supertype member to override, but Entity is a flat `object` extending nothing
         // so we strip "override"s just as LangJava strips "@Override" there for the exact same reason.
-        entityCode = Pattern.compile("\\boverride\\b").matcher(entityCode).replaceAll("");
+        // The trailing blanks go too: Scala 3 compares the indentation of members, which a leftover space would shift.
+        entityCode = Pattern.compile("\\boverride[ \t]+").matcher(entityCode).replaceAll("");
 
         File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
         workspace.mkdirs();

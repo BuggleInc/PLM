@@ -23,7 +23,7 @@ class FlyTheLanderEntity extends LanderEntity {
   /* END SOLUTION */
   override def initialize(): Unit = {
     /* BEGIN SOLUTION */
-    var lastPoint:Point = getGround.get(0);
+    var lastPoint:Point = getGround()(0);
     for (point <- getGround()) {
       if (point != lastPoint) { // Avoid the loop when point is on the first element
         if (point.y == lastPoint.y) {

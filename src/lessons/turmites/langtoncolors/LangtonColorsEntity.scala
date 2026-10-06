@@ -12,23 +12,19 @@ class LangtonColorsEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	def step(rule:Array[Char], colors:Array[Color]): Unit = {
 		/* BEGIN SOLUTION */
-		var current = getGroundColor(); 
-		for (i <- 0 to colors.length-1) {
-			if (current == colors(i)) {
-			  rule(i) match {
-			    case 'L' => left()
-			    case 'R' => right()
-			    case _   => System.out.println("Unknown command associated to i="+i+": "+rule(i));
-			  }
-
-			  setBrushColor(colors( (i+1) % colors.length ));
-			  brushDown();
-			  brushUp();
-
-			  stepForward();
-
-			  return;
+		val i = colors.indexOf(getGroundColor());
+		if (i >= 0) {
+			rule(i) match {
+				case 'L' => left()
+				case 'R' => right()
+				case _   => System.out.println("Unknown command associated to i="+i+": "+rule(i));
 			}
+
+			setBrushColor(colors( (i+1) % colors.length ));
+			brushDown();
+			brushUp();
+
+			stepForward();
 		}
 		/* END SOLUTION */
 	}
