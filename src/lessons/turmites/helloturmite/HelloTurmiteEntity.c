@@ -1,5 +1,6 @@
 #include "../../../../lib/resources/langages/c/value_serializer.h"
 #include "../../../../target/classes/resources/langages/c/RemoteBuggle.h"
+#include <stdint.h>
 
 Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
 
@@ -70,5 +71,6 @@ void run() {
     stepDone();
     step(colors, dim1, rule, dim1, dim2, dim3);
   }
+  plm_free_int_array_3d((uint32_t***)rule, dim1, dim2);
 }
 

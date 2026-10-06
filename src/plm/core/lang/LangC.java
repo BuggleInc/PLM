@@ -474,7 +474,7 @@ public class LangC extends TemplatedRemoteLang {
       if (type == Point[].class) {
         return "PointArray get_answer_point_array()\n"
             + "{\n"
-            + "    const char* line = get_answer_raw_line(); // e.g. \"P[3:P1.0:2.0:P4.0:5.0:P7.0:8.0]\"\n"
+            + "    const char* line = get_answer_line(); // e.g. \"P[3:P1.0:2.0:P4.0:5.0:P7.0:8.0]\"\n"
             + "    PointArray result;\n"
             + "\n"
             + "    const char* p = strchr(line, '[') + 1;\n"
