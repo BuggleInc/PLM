@@ -57,19 +57,13 @@ class SelectBaseballEntity extends BaseballEntity {
 		}
 	}
 	
-	def findPlayerBase(start:Int, color:Int):Int = {
-		for (playerBase <- start+1 to getBasesAmount() -1)
-			for (pos <- 0 to getPositionsAmount()-1)
-				if (getPlayerColor(playerBase, pos) == color)
-					return playerBase;
-		throw new IllegalArgumentException("cannot find any player of color "+color+" starting at base "+start);
-	}
-	
+	def findPlayerBase(start:Int, color:Int):Int =
+		(start+1 to getBasesAmount()-1).find(base => (0 until getPositionsAmount()).exists(getPlayerColor(base, _) == color))
+			.getOrElse(throw new IllegalArgumentException("cannot find any player of color "+color+" starting at base "+start));
+
 	def findPlayerPos(base:Int, color:Int):Int = {
-		for (pos <- 0 to getPositionsAmount()-1)
-			if (getPlayerColor(base, pos) == color)
-				return pos;
-		throw new IllegalArgumentException("cannot find any player of color "+color+" within base "+base);
+		(0 until getPositionsAmount()).find(getPlayerColor(base, _) == color)
+			.getOrElse(throw new IllegalArgumentException("cannot find any player of color "+color+" within base "+base));
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

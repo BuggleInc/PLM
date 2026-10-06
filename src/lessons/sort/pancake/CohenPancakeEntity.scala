@@ -19,7 +19,7 @@ class CohenPancakeEntity extends PancakeEntity {
 			for (rank <- 0 to getStackSize()-1) {
 				if (isPancakeUpsideDown(rank))
 					System.out.print("-")
-					System.out.print(getPancakeRadius(rank)+", ");
+				System.out.print(s"${getPancakeRadius(rank)}, ");
 			}  
 			System.out.print("}  ");
 			if (nl)
@@ -107,14 +107,14 @@ class CohenPancakeEntity extends PancakeEntity {
 											p = getRankOf(radius);
 											if (p>maxPos)
 												p = -99
-												if (pPlus1 != -99 && pPlus1<p) { // we've got the larger p such that p+1 is above p and both are upsideof
-													if (debug) 
-														System.out.println("Case 2.A; p="+p+", radius="+radius+", pPlus1="+pPlus1);
-													flip(p+1);
-													if (pPlus1!=0)
-														flip(pPlus1+1);
-													found = true
-												}
+											if (pPlus1 != -99 && pPlus1<p) { // we've got the larger p such that p+1 is above p and both are upsideof
+												if (debug) 
+													System.out.println("Case 2.A; p="+p+", radius="+radius+", pPlus1="+pPlus1);
+												flip(p+1);
+												if (pPlus1!=0)
+													flip(pPlus1+1);
+												found = true
+											}
 											pPlus1 = p; // shift downward
 										}
 									}

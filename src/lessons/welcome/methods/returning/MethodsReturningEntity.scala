@@ -5,12 +5,12 @@ import plm.core.model.Game
 class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
 	/* BEGIN REMOTE */
 	override def run(): Unit = { 
-		for (i <- 1 to 7) {
-			if (haveBaggle()) 
-				return;
+		var i = 1;
+		while (i <= 7 && !haveBaggle()) {
 			right();
 			stepForward();
 			left();
+			i += 1;
 		}
 	}
 	/* BEGIN TEMPLATE */

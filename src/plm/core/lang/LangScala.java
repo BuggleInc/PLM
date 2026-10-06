@@ -26,7 +26,6 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
-import plm.core.utils.Indentation;
 import plm.universe.Direction;
 import plm.universe.Point;
 
@@ -209,8 +208,7 @@ public class LangScala extends JvmTemplatedLang {
         String pre                  = "package generated\n\n" + imports + "\n\nobject Entity {\n" + segments.pre();
         int offset                  = countLinesBeforeBody(pre);
         String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
-        entityCode        = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
-        entityCode                  = Indentation.expandLeadingTabs(entityCode); // Scala 3 rejects indentations mixing tabs and spaces
+        entityCode                  = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
         generatedSources.add(sf.getName() + ":" + entityCode);
         entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
         entityCode        = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");

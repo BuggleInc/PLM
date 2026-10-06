@@ -294,8 +294,8 @@ for/cancels help, or reads a hint:
 - **Student languages** (each implemented as a `ProgrammingLanguage` subclass in `plm.core.lang`):
   - **Java**: compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
     void main` boilerplate exposed to the student).
-  - **Scala**: `scala3-library_3`/`scala3-compiler_3` 3.9.0 (LTS); compiled in-process by driving `dotty.tools.dotc.Driver`, then
-    run as its own `java -cp` process like Java.
+  - **Scala**: `scala3-library_3`/`scala3-compiler_3` 3.9.0 (LTS); compiled in-process by driving `dotty.tools.dotc.Driver` with
+    `-no-indent` (braces only, since many entities mix tabs and spaces), then run as its own `java -cp` process like Java.
   - **Python**: an external `python3` process is spawned per run.
   - **C** compiled externally and driven over pipes.
 - Adding a new language: see `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language` and extend

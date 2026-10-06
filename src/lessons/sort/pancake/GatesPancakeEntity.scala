@@ -24,12 +24,8 @@ class GatesPancakeEntity extends PancakeEntity {
 	}
 
 	/* BEGIN SOLUTION */
-	def getRankOf(size:Int ): Int = {
-		for (rank <- 0 to getStackSize()-1)
-			if (getPancakeRadius(rank) == size)
-				return rank;
-		return -99; // Well, be robust to border cases 
-	}
+	def getRankOf(size:Int ): Int =
+		(0 until getStackSize()).find(getPancakeRadius(_) == size).getOrElse(-99) // Be robust to border cases
 	def isFree(pos:Int):Boolean = {
 		if (pos == -99)
 			return false;

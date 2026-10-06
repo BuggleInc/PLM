@@ -12,9 +12,7 @@ class BasicPancakeEntity extends PancakeEntity {
 	/* BEGIN TEMPLATE */
 	def solve(): Unit = {
 		/* BEGIN SOLUTION */		
-		for (rank <- getStackSize()-1 to 0 by -1) {
-			if (isSorted()) 
-				return;
+		for (rank <- getStackSize()-1 to 0 by -1 if !isSorted()) {
 			if ( getPancakeRadius(rank) != rank+1 ) { // Current pancake is still to be sorted
 				var indexBigPancake = -1
 				for (currentPancake <- 0 to rank)

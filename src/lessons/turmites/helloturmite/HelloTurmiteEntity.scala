@@ -53,7 +53,7 @@ class HelloTurmiteEntity extends SimpleBuggle {
 
 	override def run(): Unit = { 
 		val nbSteps = getParamInt(0);
-		val rule = deserialize(getParamString(1)).asInstanceOf[ Array[Array[Array[Int]]] ];
+		val rule = toIntArray(deserialize(getParamString(1))).asInstanceOf[ Array[Array[Array[Int]]] ];
 
 		var colors = new Array[Color] (rule.length);
 		for (i <- 0 to rule.length-1)
