@@ -1,6 +1,8 @@
 #include "../../../../lib/resources/langages/c/value_serializer.h"
 #include "../../../../target/classes/resources/langages/c/RemoteBat.h"
+/* BEGIN IMPORT */
 #include "universe/RecList.h"
+/* END IMPORT */
 
 bool isMember(RecList* seq, int val);
 void run()

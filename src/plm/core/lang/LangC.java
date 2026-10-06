@@ -135,18 +135,15 @@ public class LangC extends TemplatedRemoteLang {
       Files.writeString(compileDir.resolve("Remote.h"), remoteH);
       Files.writeString(compileDir.resolve(remote + ".h"), remoteWorldH);
 
-      // The student/correction code never declares these includes itself (it never had to, back when everything was
-      // flattened into one file where Remote.h's declarations were already visible by construction); provide them here.
-      // Some exercises' correction code *does* contain its own local #include lines, pointing at wherever that header
-      // lives in the PLM source tree (a convenience so external editors can resolve symbols outside of PLM) -- those
-      // paths mean nothing in compileDir, so: rewrite the ones referring to a header we actually placed here down to
-      // a plain local filename (harmless to include twice, thanks to their include guards), and drop any other local
-      // include we don't recognize, since we have no way to resolve it here either.
-      Set<String> knownHeaders = Set.of("Remote.h", "value_serializer.h", remote + ".h");
-      String studentCode       = Arrays.stream(code.split("\n", -1))
-                               .map(codeLine -> rewriteOrDropLocalInclude(codeLine, knownHeaders))
-                               .filter(java.util.Objects::nonNull)
-                               .collect(Collectors.joining("\n"));
+      // Most correction codes omit these includes, but some entities actually declare them as a convenience for the IDE to
+      // resolve the symbols. So rewrite the ones referring to a header we actually placed here down to a plain local filename,
+      // and drop any other local include we don't recognize, since we have no way to resolve it here either.
+      Set<String> knownHeaders = Set.of("Remote.h", "value_serializer.h", remote + ".h", "RecList.h");
+      String studentCode       = rewriteLocalIncludes(code, knownHeaders);
+
+      // RecList.h includes value_serializer.h which thus needs to be rewritten to point to the right location
+      String recListH = new String(readClasspathBytes("lessons/recursion/cons/universe/RecList.h"), StandardCharsets.UTF_8);
+      Files.writeString(compileDir.resolve("RecList.h"), rewriteLocalIncludes(recListH, knownHeaders));
 
       String studentFileName = exo.getId() + ".c";
       Files.writeString(compileDir.resolve(studentFileName), "#include \"Remote.h\"\n#include \"" + remote + ".h\"\n\n" + studentCode);
@@ -302,6 +299,15 @@ public class LangC extends TemplatedRemoteLang {
         throw new UncheckedIOException(e);
       }
     });
+  }
+
+  /** Apply {@link #rewriteOrDropLocalInclude} to every line of {@code code}. */
+  private static String rewriteLocalIncludes(String code, Set<String> knownHeaders)
+  {
+    return Arrays.stream(code.split("\n", -1))
+        .map(codeLine -> rewriteOrDropLocalInclude(codeLine, knownHeaders))
+        .filter(java.util.Objects::nonNull)
+        .collect(Collectors.joining("\n"));
   }
 
   /*
