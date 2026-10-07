@@ -679,8 +679,10 @@ public class Game implements IWorldView {
   /** The git commit this PLM was built from, suffixed with "-dirty" if the working tree had changes, or "unknown" if it was not built from git. */
   public static String getGitCommit()
   {
-    String commit = Game.getProperty("git.commit.id.full", "unknown", false);
-    return Boolean.parseBoolean(Game.getProperty("git.dirty", "false", false)) ? commit + "-dirty" : commit;
+    String commit = Game.getProperty("git.commit.id.full");
+    if (commit.isEmpty())
+      return "unknown"; // "dirty" is meaningless without a commit, e.g. in a git repository without any commit yet
+    return Boolean.parseBoolean(Game.getProperty("git.dirty")) ? commit + "-dirty" : commit;
   }
 
   /**

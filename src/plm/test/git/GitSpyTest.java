@@ -414,10 +414,11 @@ public class GitSpyTest {
     Method method = GitSpy.class.getDeclaredMethod("writePLMStartedOrLeavedCommitMessage", String.class);
     method.setAccessible(true);
 
+    Assertions.assertTrue(Game.getGitCommit().matches("[0-9a-f]{40}(-dirty)?|unknown"), Game.getGitCommit());
     for (String kind : new String[] {"started", "leaved"}) {
       JSONObject message = (JSONObject) new JSONParser().parse((String)method.invoke(gitSpy, kind));
       Assertions.assertEquals(kind, message.get("kind"));
-      Assertions.assertTrue(((String)message.get("plm")).matches(".*, commit ([0-9a-f]{40}(-dirty)?|unknown)"), (String)message.get("plm"));
+      Assertions.assertTrue(((String)message.get("plm")).endsWith(", commit " + Game.getGitCommit()), (String)message.get("plm"));
     }
   }
 }
