@@ -215,8 +215,10 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
 - **PLM side**: the `commandReader` thread of `runEntity()` reads the commands and passes each of them to
   `CommandExecutor.command()`. It finds the primitive by name, deserializes the arguments, converts the enums from their ordinals (and, for Python, the typed
   values to the strings that the primitive expects), calls the Java method of the real entity by reflection, and writes the
-  serialized result back if the primitive has one. An exception in the primitive is reported to the student with the command
-  that triggered it. A command that cannot be parsed fails the run and kills the process.
+  serialized result back if the primitive has one. A primitive that the entity forbids is refused before anything else (see
+  "Restricting or adapting the primitives" below). An exception in the primitive is reported to the student with the command that
+  triggered it, except for the `UnsupportedOperationException`, which is reported as is: the entity uses it to refuse a call on
+  purpose. A command that cannot be parsed fails the run and kills the process.
 - **Animation**: the primitives call `Entity.stepUI()`, which sleeps for the delay of the world, or waits for the next step in
   step mode. As this happens in the `commandReader` thread, it slows down the display but not the computations of the student
   code, which only waits when it needs an answer.
@@ -385,6 +387,50 @@ Since the entities are loaded lazily by the PLM, you need either to switch the p
 the maven tests) to ensure that your exercise entities are correctly formatted. If not, the student code may not compile
 properly.
 
+### Restricting or adapting the primitives
+
+Some exercises hide or alter a usual primitive for pedagogical reasons. For example:
+- In `LoopFor`, `forward(n)` is refused, so that the student writes the loop that calls `forward()` n times.
+- In the maze exercises, `setX()`, `setY()` and `setPos()` are forbidden, so that the student has to walk to the goal.
+- In `CyclicHanoi`, `move()` is replaced by a stricter version that only accepts the cyclic moves.
+
+**How to do it.** Everything goes in the exercise's Java entity, whatever the languages the exercise offers. Do not put checks
+in the Python, Scala or C entities: they would run in the student's process, where the translations are not available (and the
+entities of the non-Java languages ignore everything that precedes `BEGIN REMOTE`). Messages go through `Game.i18n.tr()` with a
+literal string, so that they get extracted for translation. There are three cases:
+
+1. *Forbidding a primitive altogether*: call `forbid(primitiveName, reason)` from the constructor of the entity. The student gets
+   "Sorry Dave, I cannot let you use <primitiveName> in this exercise. <reason>". Buggle entities can call
+   `forbidTeleportation()` to forbid `setX()`, `setY()` and `setPos()` at once.
+   ```java
+   public WallFollowerMazeEntity() { forbidTeleportation(); }
+   public MyEntity()               { forbid("brushDown", Game.i18n.tr("Your buggle must not draw in this exercise.")); }
+   ```
+   An unknown primitive name makes the construction of the entity fail, so typos get caught by the exercise tests.
+2. *Refusing some calls of a primitive*: override the Java method that the primitive ends up calling, and throw an
+   `UnsupportedOperationException`. For example, the primitive `forward(n)` of the buggles calls `stepForward()` when `n` is 1,
+   and `forward(n)` otherwise. `LoopForEntity` thus accepts `forward()` and refuses any other number of steps:
+   ```java
+   @Override public void forward(int i)
+   {
+     throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+   }
+   ```
+   `forbid()` would be too coarse here, since it forbids by primitive name, and the Python `forward()` also sends `forward`.
+3. *Replacing or extending a primitive*: override it and do what you want, as in `CyclicHanoiEntity`, whose `move()` calls
+   `cyclicMove()`, which performs the additional verifications:
+   ```java
+   public void move(int src, int dst) { cyclicMove(src, dst); }
+   ```
+
+**How it works.** The student's code only sends the name of the primitive and its arguments (see Remoting above). `CommandExecutor`
+calls the Java method of the real entity by reflection, so an override applies to every language without any glue.
+`forbid()` stores the name and the reason in the entity, after checking that the entity has a primitive of that name
+(`PrimitiveRegistration.getMinimalPrimitiveForEntity()`, which is cached). Since the worlds are copied by instantiating the
+entities again, the constructor runs for every copy. `CommandExecutor.command()` looks up the forbidden primitives right after
+parsing the name, and fails the run with the translated message. `Entity.getForbiddenPrimitives()` gives them to other
+parts of the PLM.
+
 ### World instance (map)
 
 If you want to add an exercise for the Buggle universe, you can open the map editor with:
@@ -484,7 +530,5 @@ TODO: Precompile the correction entities within the jar file so that they don't 
       load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
 TODO: benchmark the tests to understand where the time goes, and optimize this out
-
-TODO: Find a way for the exercise to specify which primitives should be forbidden to the student in this specific exercise 
 
 TODO: remove the global state that prevent the tests from running in parallel (such as getCurrentExercise or getCurrentLanguage)
