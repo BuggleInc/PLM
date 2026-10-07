@@ -1,12 +1,6 @@
 from RemoteBuggle import *
 
 def run():
-    def forward(i):
-        errorMsg("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead.")
-    
-    def backward(i):
-        errorMsg("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead.")
-    
     # BEGIN TEMPLATE
     # BEGIN SOLUTION
     def nextStep():

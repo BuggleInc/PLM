@@ -1,6 +1,5 @@
 package lessons.welcome.traversal.diagonal;
 
-import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
 class TraversalDiagonalEntity extends SimpleBuggle {
@@ -45,16 +44,4 @@ class TraversalDiagonalEntity extends SimpleBuggle {
 	/* END TEMPLATE */
 	/* END REMOTE */
 
-	override def forward(i:Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
-	}
-	override def stepForward(): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
-	}
-	override def backward(i:Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
-	}
-	override def stepBackward(): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
-	}
 }

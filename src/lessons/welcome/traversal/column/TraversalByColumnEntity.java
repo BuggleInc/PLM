@@ -42,21 +42,12 @@ public class TraversalByColumnEntity extends SimpleBuggle {
   }
   /* END TEMPLATE */
   /* END REMOTE */
-  @Override public void forward(int i)
+  public TraversalByColumnEntity()
   {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
-  }
-  @Override public void stepForward()
-  {
-    if (isInited())
-      throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead."));
-  }
-  @Override public void backward(int i)
-  {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
-  }
-  @Override public void stepBackward()
-  {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead."));
+    String reason = Game.i18n.tr("Use setPos(x,y) instead.");
+    forbid("forward", reason);
+    forbid("backward", reason);
+    forbid("stepForward", reason);
+    forbid("stepBackward", reason);
   }
 }
