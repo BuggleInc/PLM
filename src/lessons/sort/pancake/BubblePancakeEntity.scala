@@ -12,7 +12,6 @@ class BubblePancakeEntity extends PancakeEntity {
 	/* BEGIN TEMPLATE */
 	def solve(): Unit = {
 		/* BEGIN SOLUTION */		
-    val stackSize = getStackSize();
     var swapped = true;
     
     while (swapped) {
