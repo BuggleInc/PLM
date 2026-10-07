@@ -1,20 +1,5 @@
 from RemoteBuggle import *
 def run():
-    global forward, backward
-    _forward  = forward
-    _backward = backward
-
-    def forward(i=1):
-        if i==1:
-          _forward()
-        else:
-          errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
-    def backward(i=1):
-        if i==1:
-          _backward()
-        else:
-          errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
-
     # BEGIN TEMPLATE
 
     # Add your code here

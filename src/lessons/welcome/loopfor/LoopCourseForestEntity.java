@@ -6,15 +6,15 @@ import plm.core.model.Game;
 public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggle {
   @Override public void forward(int i)
   {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
   }
   @Override public void backward(int i)
   {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
+    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
   }
   @Override public void stepBackward()
   {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
+    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
   }
 
   Color[] colors = new Color[] {

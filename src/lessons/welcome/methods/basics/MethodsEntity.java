@@ -1,9 +1,9 @@
 package lessons.welcome.methods.basics;
 
 public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
-  @Override public void forward(int i) { throw new RuntimeException("I cannot let you use forward with an argument in this exercise. Use a loop instead."); }
+  @Override public void forward(int i) { throw new UnsupportedOperationException("I cannot let you use forward with an argument in this exercise. Use a loop instead."); }
 
-  @Override public void backward(int i) { throw new RuntimeException("I cannot let you use backward with an argument in this exercise. Use a loop instead."); }
+  @Override public void backward(int i) { throw new UnsupportedOperationException("I cannot let you use backward with an argument in this exercise. Use a loop instead."); }
 
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */

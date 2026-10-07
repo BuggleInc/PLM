@@ -1,17 +1,10 @@
 package lessons.welcome.loopdowhile;
 
 import java.awt.Color
-import plm.core.model.Game
 import plm.universe.GridWorld
 import plm.universe.bugglequest.BuggleWorldCell
 
 class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
-	override def forward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-	}
-	override def backward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-	}
 
 	/* BINDINGS TRANSLATION */
 	def sortieTrouvee(): Boolean = { return exitReached() }

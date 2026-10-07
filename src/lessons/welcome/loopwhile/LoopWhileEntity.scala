@@ -1,16 +1,9 @@
 package lessons.welcome.loopwhile;
 
 import plm.universe.bugglequest.SimpleBuggle;
-import plm.core.model.Game
 
 class LoopWhileEntity extends SimpleBuggle {
-	override def forward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-	}
 
-	override def backward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-	}
 
 	/* BEGIN REMOTE */
 	override def run(): Unit = { 

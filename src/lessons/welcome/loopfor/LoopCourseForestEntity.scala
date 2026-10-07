@@ -5,15 +5,6 @@ import plm.universe.bugglequest.SimpleBuggle
 import plm.core.model.Game
 
 class LoopCourseForestEntity extends SimpleBuggle {
-	override def forward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-	}
-	override def backward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-	}
-	override def stepBackward(): Unit = {
-		throw new RuntimeException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
-	}
 
 	var colors = Array(
 			new Color(0,155,0),
