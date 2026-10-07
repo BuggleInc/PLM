@@ -4,7 +4,7 @@ import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsDogHouseEntity extends SimpleBuggle {
-  @Override public void right() { throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead.")); }
+  public MethodsDogHouseEntity() { forbid("right", Game.i18n.tr("Use left() instead.")); }
 
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */

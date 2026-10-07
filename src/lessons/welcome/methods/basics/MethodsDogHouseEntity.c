@@ -17,13 +17,7 @@ void go_left(int line_count)
   }
   left();
 }
-void go_right()
-{
-  printf("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead.");
-  exit(1);
-}
 #define left() go_left(__LINE__)
-#define right() go_right()
 
 /* BEGIN TEMPLATE */
 /* BEGIN SOLUTION */

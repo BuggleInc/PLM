@@ -2,9 +2,6 @@ from RemoteBuggle import *
 def run():
     line = -1
 
-    def right():
-    	raise java.lang.RuntimeException("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead.");
-
     # does not work as Java stacktrace does not contain python function name ;(
     #def left():
     #    global line
