@@ -37,14 +37,16 @@ Segment getLandingZone()
 {
   /* BEGIN SOLUTION */
   PointArray ground = getGround();
+  Segment seg       = {{0, 0}, {0, 0}};
   for (int i = 0; i + 1 < ground.count; i++)
     if (ground.items[i].y == ground.items[i + 1].y) {
-      Segment seg = {ground.items[i], ground.items[i + 1]};
-      return seg;
+      seg.start = ground.items[i];
+      seg.end   = ground.items[i + 1];
+      break;
     }
 
-  Segment none = {{0, 0}, {0, 0}};
-  return none;
+  free(ground.items);
+  return seg;
   /* END SOLUTION */
 }
 /* END TEMPLATE */

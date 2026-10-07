@@ -71,6 +71,7 @@ void run() {
     stepDone();
     step(colors, dim1, rule, dim1, dim2, dim3);
   }
+  free(colors);
   plm_free_int_array_3d((uint32_t***)rule, dim1, dim2);
 }
 

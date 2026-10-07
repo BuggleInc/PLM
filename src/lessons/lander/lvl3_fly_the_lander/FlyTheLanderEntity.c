@@ -28,10 +28,11 @@ void initialize()
     if ((point.x != lastPoint.x || point.y != lastPoint.y) && lastPoint.y == point.y) {
       targetStart = lastPoint.x;
       targetEnd   = point.x;
-      return;
+      break;
     }
     lastPoint = point;
   }
+  free(ground.items);
   /* END SOLUTION */
 }
 
