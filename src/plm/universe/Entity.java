@@ -1,12 +1,14 @@
 package plm.universe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.Semaphore;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.model.Game;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
@@ -35,6 +37,7 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
    * which are mandatory for core mechanism. See welcome.ArrayBuggle to see how it forbids setPos(int,int)
    */
   private boolean inited                                 = false;
+  private final Map<String, String> forbiddenPrimitives = new HashMap<>(); /* primitive name -> reason shown to the student */
   private Map<ProgrammingLanguage, Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
 
   public Entity() {}
@@ -58,6 +61,20 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
    * Ideally, this should be used only from world.addEntity()
    */
   protected void setWorld(World world) { this.world = world; }
+
+  /**
+   * Forbids the student code to call the primitive of that name in this exercise. The reason (already translated) is appended to the error
+   * message. To be called from the constructor of the exercise's entity, so that every copy of the entity forbids it too.
+   */
+  protected void forbid(String primitive, String reason)
+  {
+    if (!PrimitiveRegistration.getMinimalPrimitiveForEntity(getClass()).containsKey(primitive))
+      throw new IllegalArgumentException("Cannot forbid " + primitive + ": " + getClass().getName() + " has no primitive of that name");
+    forbiddenPrimitives.put(primitive, reason);
+  }
+
+  /** The primitives that the student code cannot call, with the reason why */
+  public Map<String, String> getForbiddenPrimitives() { return Collections.unmodifiableMap(forbiddenPrimitives); }
 
   public boolean isInited() { return inited; }
 

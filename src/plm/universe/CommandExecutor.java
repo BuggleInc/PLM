@@ -7,15 +7,12 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 import plm.core.ValueSerializer;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveRegistration;
+import plm.core.model.Game;
 
 public final class CommandExecutor {
-  private static final Map<Class<? extends Entity>, Map<String, PrimitiveMethod>> getMinimalPrimitiveForEntity_Cache = new HashMap<>();
-
   private CommandExecutor() {}
 
   public synchronized static void command(Entity entity, String command, BufferedWriter out) throws InvocationTargetException, IllegalAccessException
@@ -33,10 +30,11 @@ public final class CommandExecutor {
     String opName        = command.substring(0, firstSpace);
     String opArgsSegment = command.substring(firstSpace + 1);
 
-    Map<String, PrimitiveMethod> primitiveMethodMap =
-        getMinimalPrimitiveForEntity_Cache.computeIfAbsent(entity.getClass(), PrimitiveRegistration::getMinimalPrimitiveForEntity);
+    String forbiddenReason = entity.getForbiddenPrimitives().get(opName);
+    if (forbiddenReason != null)
+      throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use {0} in this exercise. {1}", opName, forbiddenReason));
 
-    PrimitiveMethod method = primitiveMethodMap.get(opName);
+    PrimitiveMethod method = PrimitiveRegistration.getMinimalPrimitiveForEntity(entity.getClass()).get(opName);
     if (method == null) {
       throw new IllegalStateException("No primitive named " + opName + " for entity of class " + entity.getClass().getName() +
                                       ". This usually means the entity is not an instance of the exercise's real entity subclass.");
@@ -69,6 +67,9 @@ public final class CommandExecutor {
     try {
       returnValue = javaMethod.invoke(entity, args);
     } catch (InvocationTargetException e) {
+      // An entity refusing a call on purpose (e.g. an override forbidding some arguments) explains itself: its message is shown as is
+      if (e.getCause() instanceof UnsupportedOperationException refusal)
+        throw refusal;
       String reserializedArgs = serialize(args);
       String argMsg           = opArgsSegment.equals(reserializedArgs) ? opArgsSegment : opArgsSegment + " (changed to " + serialize(args) + ")";
       throw new IllegalArgumentException("Calling " + method.name() + "(" + argMsg + ") raised an exception: " + e.getCause(), e);

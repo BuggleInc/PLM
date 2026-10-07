@@ -4,20 +4,11 @@ import java.awt.Color;
 import plm.core.model.Game;
 
 public class Array1Entity extends plm.universe.bugglequest.SimpleBuggle {
-  @Override public void setX(int i)
+  public Array1Entity()
   {
-    if (isInited())
-      throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
-  }
-  @Override public void setY(int i)
-  {
-    if (isInited())
-      throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
-  }
-  @Override public void setPos(int i, int j)
-  {
-    if (isInited())
-      throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
+    forbid("setX", Game.i18n.tr("Walk to your goal instead."));
+    forbid("setY", Game.i18n.tr("Walk to your goal instead."));
+    forbid("setPos", Game.i18n.tr("Walk to your goal instead."));
   }
 
   /* BEGIN REMOTE */

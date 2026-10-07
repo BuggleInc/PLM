@@ -1,12 +1,14 @@
 package plm.core.lang.primitives;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import org.reflections.Reflections;
 import plm.universe.Entity;
 import plm.universe.EntityPrimitivesBase;
 
 public class PrimitiveRegistration {
+  private static final Map<Class<? extends Entity>, Map<String, PrimitiveMethod>> minimalCache = new ConcurrentHashMap<>();
 
   public static <T> Set<Class<? extends T>> getSubTypesOf(Class<? extends T> clazz)
   {
@@ -43,9 +45,7 @@ public class PrimitiveRegistration {
 
   public static Map<String, PrimitiveMethod> getMinimalPrimitiveForEntity(Class<? extends Entity> entity)
   {
-    List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass = getAllPrimitivesClass(entity);
-
-    return getPrimitiveForEntity(allPrimitivesClass);
+    return minimalCache.computeIfAbsent(entity, clazz -> getPrimitiveForEntity(getAllPrimitivesClass(clazz)));
   }
 
   public static Map<String, PrimitiveMethod> getMaximalPrimitiveForEntity(Class<? extends Entity> entity)
