@@ -55,7 +55,8 @@ Here are the steps of the exercise execution:
 * **Remote execution**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`: that
   method binds a UNIX domain socket, starts the student code as an external process, and relays primitive calls over that socket
   to `plm.universe.CommandExecutor`. These primitives allow the student code to interact with the microworld that is located in
-  the PLM process. This is transparent to both the student and the exercise authors.
+  the PLM process. This is transparent to both the student and the exercise authors, unless the exercise gates its API (see
+  "API gating" below).
 * **Check**: when all entities are terminated, `Exercise.check()` compares each `currentWorld` to its `answerWorld` via
   `World.winning()`. On mismatch, `World.diffTo()` produces a human-readable diff shown to the student. All the universes but
   Lander use a structural equality between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks
@@ -213,12 +214,12 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   ordinal. It exists in Java (`plm.core.ValueSerializer`, which is compiled in the glue jarfile), Python (`ValueSerializer.py`)
   and C (`value_serializer.c`): the three must be kept in sync.
 - **PLM side**: the `commandReader` thread of `runEntity()` reads the commands and passes each of them to
-  `CommandExecutor.command()`. It finds the primitive by name, deserializes the arguments, converts the enums from their ordinals (and, for Python, the typed
-  values to the strings that the primitive expects), calls the Java method of the real entity by reflection, and writes the
-  serialized result back if the primitive has one. A primitive that the entity forbids is refused before anything else (see
-  "Restricting or adapting the primitives" below). An exception in the primitive is reported to the student with the command that
-  triggered it, except for the `UnsupportedOperationException`, which is reported as is: the entity uses it to refuse a call on
-  purpose. A command that cannot be parsed fails the run and kills the process.
+  `CommandExecutor.command()`. It finds the primitive by name, deserializes the arguments, converts the enums from their
+  ordinals (and, for Python, the typed values to the strings that the primitive expects), calls the Java method of the real
+  entity by reflection, and writes the serialized result back if the primitive has one. A primitive that the entity forbids is
+  refused before anything else (see "API gating" below). An exception in the primitive is reported to the student with the
+  command that triggered it. The `UnsupportedOperationException` is an exception: it's reported as is because it's used when
+  gating a primitive on purpose. A command that cannot be parsed fails the run and kills the process.
 - **Animation**: the primitives call `Entity.stepUI()`, which sleeps for the delay of the world, or waits for the next step in
   step mode. As this happens in the `commandReader` thread, it slows down the display but not the computations of the student
   code, which only waits when it needs an answer.
@@ -387,9 +388,9 @@ Since the entities are loaded lazily by the PLM, you need either to switch the p
 the maven tests) to ensure that your exercise entities are correctly formatted. If not, the student code may not compile
 properly.
 
-### Restricting or adapting the primitives
+### API gating: restricting or adapting the primitives
 
-Some exercises hide or alter a usual primitive for pedagogical reasons. For example:
+Some exercises hide or alter a usual primitive for pedagogical reasons, which we call *API gating*. For example:
 - In `LoopFor`, `forward(n)` is refused, so that the student writes the loop that calls `forward()` n times.
 - In the maze exercises, `setX()`, `setY()` and `setPos()` are forbidden, so that the student has to walk to the goal.
 - In `CyclicHanoi`, `move()` is replaced by a stricter version that only accepts the cyclic moves.
@@ -423,8 +424,8 @@ literal string, so that they get extracted for translation. There are three case
    public void move(int src, int dst) { cyclicMove(src, dst); }
    ```
 
-**How it works.** The student's code only sends the name of the primitive and its arguments (see Remoting above). `CommandExecutor`
-calls the Java method of the real entity by reflection, so an override applies to every language without any glue.
+**How it works.** The student's code only sends the name of the primitive and its arguments (see Remoting above). `CommandExecutor`,
+which acts as the gate, calls the Java method of the real entity by reflection, so an override applies to every language without any glue.
 `forbid()` stores the name and the reason in the entity, after checking that the entity has a primitive of that name
 (`PrimitiveRegistration.getMinimalPrimitiveForEntity()`, which is cached). Since the worlds are copied by instantiating the
 entities again, the constructor runs for every copy. `CommandExecutor.command()` looks up the forbidden primitives right after
