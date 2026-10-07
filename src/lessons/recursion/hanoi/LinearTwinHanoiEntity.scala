@@ -1,16 +1,8 @@
 package lessons.recursion.hanoi;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
-import plm.core.model.Game
 
 class LinearTwinHanoiEntity extends HanoiEntity {
-  override def move(from:Int, to:Int): Unit = {
-    if ((from == 0 && to == 2) || (from == 2 && to == 0)) 
-      throw new RuntimeException(Game.i18n.tr(
-          "Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
-    super.move(from,to);
-  }
-  
 
 	/* BEGIN REMOTE */
 	override def run(): Unit = {

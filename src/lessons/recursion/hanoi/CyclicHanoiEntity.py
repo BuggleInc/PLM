@@ -1,9 +1,6 @@
 from RemoteHanoi import *
 
 def run():
-    def move(src,dst):
-        cyclicMove(src,dst)
-    
     # BEGIN TEMPLATE
     def clockwise(height, src,mid,dst):
         

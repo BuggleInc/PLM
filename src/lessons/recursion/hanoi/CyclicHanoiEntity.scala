@@ -3,8 +3,7 @@ package lessons.recursion.hanoi;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 
 class CyclicHanoiEntity extends HanoiEntity {
-  override def move(from:Int, to:Int) = cyclicMove(from, to)
-  
+
 	/* BEGIN REMOTE */
 	override def run(): Unit = {
     val src=getParamInt(0)

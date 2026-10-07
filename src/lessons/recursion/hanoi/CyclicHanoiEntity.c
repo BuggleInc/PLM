@@ -3,20 +3,13 @@
 void clockwise(int height, int src, int mid, int dst);
 void anti(int height, int src, int mid, int dst);
 
-/* move() is overridden in Java to call cyclicMove(); C has no inheritance,
- * so the solution below calls this wrapper instead of move(). */
-static void doMove(int src, int dst)
-{
-  cyclicMove(src, dst);
-}
-
 /* BEGIN TEMPLATE */
 void clockwise(int height, int src, int mid, int dst)
 {
   /* BEGIN SOLUTION */
   if (height > 0) {
     anti(height - 1, src, dst, mid);
-    doMove(src, dst);
+    move(src, dst);
     anti(height - 1, mid, src, dst);
   }
 }
@@ -24,9 +17,9 @@ void anti(int height, int src, int mid, int dst)
 {
   if (height > 0) {
     anti(height - 1, src, mid, dst);
-    doMove(src, mid);
+    move(src, mid);
     clockwise(height - 1, dst, mid, src);
-    doMove(mid, dst);
+    move(mid, dst);
     anti(height - 1, src, mid, dst);
   }
   /* END SOLUTION */
