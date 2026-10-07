@@ -544,7 +544,7 @@ public class LangC extends TemplatedRemoteLang {
       if (type == String.class)
         return "%s";
       if (type == Double.class || type == double.class)
-        return "f%lf";
+        return "f%.17g"; // same precision as plm_serialize(): round-trips any double
       if (type == Character.class || type == char.class)
         return "c%c";
       if (type == Color.class)
