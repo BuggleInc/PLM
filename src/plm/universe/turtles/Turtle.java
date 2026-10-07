@@ -2,7 +2,6 @@ package plm.universe.turtles;
 
 import java.awt.Color;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
