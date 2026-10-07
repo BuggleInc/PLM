@@ -7,7 +7,7 @@ import plm.core.lang.primitives.Primitive;
 @EntityPrimitives(lessons.welcome.methods.slug.SlugSnailEntity.class)
 public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 
-  @Primitive(215) public Color getColorIntParam() { return (Color)getParam(0); }
+  @Primitive public Color getColorIntParam() { return (Color)getParam(0); }
 
   /* BEGIN REMOTE */
   @Override public void run() { hunt(getColorIntParam()); }

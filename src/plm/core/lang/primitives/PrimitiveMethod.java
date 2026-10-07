@@ -14,11 +14,9 @@ public final class PrimitiveMethod {
   private final String location;
   private final Method method;
   private final Class<?> output;
-  public int id;
 
   public PrimitiveMethod(Primitive primitive, Method method)
   {
-    this.id         = primitive.value();
     this.name       = primitive.name().isEmpty() ? method.getName() : primitive.name();
     this.location   = method.getDeclaringClass().getSimpleName() + "::" + name();
     this.method     = method;
@@ -27,8 +25,6 @@ public final class PrimitiveMethod {
   }
 
   @Nullable public Class<?> output() { return output; }
-
-  public int id() { return id; }
 
   public String name() { return name; }
 

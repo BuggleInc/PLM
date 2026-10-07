@@ -4,7 +4,7 @@ import plm.core.lang.primitives.Primitive;
 import plm.universe.EntityPrimitivesBase;
 
 public interface BatEntityPrimitives extends EntityPrimitivesBase {
-  @Primitive(100) int getTestCount();
-  @Primitive(101) String getTest(int i);
-  @Primitive(102) void setTestResult(int i, String str);
+  @Primitive int getTestCount();
+  @Primitive String getTest(int i);
+  @Primitive void setTestResult(int i, String str);
 }

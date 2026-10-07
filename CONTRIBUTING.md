@@ -197,13 +197,14 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   `ValueSerializer`, and one generated `RemoteXxx` per universe, with one function per primitive of that universe. They are the
   files that the templating does not compile with the exercise (see above for how they are built and shared). Every language
   has its own implementation of this glue in `lib/resources/langages/`, plus the generator in its `ExternalPrimitiveLanguage`.
-- **Primitives**: the primitives of a universe are the methods annotated with `@Primitive(id)` in the interfaces extending
+- **Primitives**: the primitives of a universe are the methods annotated with `@Primitive` in the interfaces extending
   `EntityPrimitivesBase` (e.g. `SimpleEntityPrimitives`), which the entity implements. `PrimitiveRegistration` finds them by
-  reflection. At build time, `CodeCreation` generates the `RemoteXxx` glue of every language from them. Ids and names must be
-  unique, which `PrimitiveRegistration` checks.
-- **Commands**: calling a primitive in the student's code sends `<id> <serialized args> <name>`, e.g. `500 [1:b1] setObjectif`
-  for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first and the last
-  space of the line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue
+  reflection. At build time, `CodeCreation` generates the `RemoteXxx` glue of every language from them. A primitive is identified
+  by its name, which is the method name unless `@Primitive(name = ...)` says otherwise. Names must be unique, which
+  `PrimitiveRegistration` checks.
+- **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
+  for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
+  line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue
   then blocks on `getAnswerXxx()` until the PLM answers with one line holding the serialized result. Primitives that return
   nothing get no answer: the student's code does not wait for the PLM.
 - **Serialization**: `ValueSerializer` writes each value with a type tag: `i` for ints, `f` for doubles, `b0`/`b1` for booleans,
@@ -212,8 +213,7 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   ordinal. It exists in Java (`plm.core.ValueSerializer`, which is compiled in the glue jarfile), Python (`ValueSerializer.py`)
   and C (`value_serializer.c`): the three must be kept in sync.
 - **PLM side**: the `commandReader` thread of `runEntity()` reads the commands and passes each of them to
-  `CommandExecutor.command()`. It finds the primitive by id (the name only serves as a consistency check: a mismatch is logged
-  and the command ignored), deserializes the arguments, converts the enums from their ordinals (and, for Python, the typed
+  `CommandExecutor.command()`. It finds the primitive by name, deserializes the arguments, converts the enums from their ordinals (and, for Python, the typed
   values to the strings that the primitive expects), calls the Java method of the real entity by reflection, and writes the
   serialized result back if the primitive has one. An exception in the primitive is reported to the student with the command
   that triggered it. A command that cannot be parsed fails the run and kills the process.
@@ -485,7 +485,6 @@ TODO: Precompile the correction entities within the jar file so that they don't 
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
 TODO: benchmark the tests to understand where the time goes, and optimize this out
 
-TODO: Primitive numbering should be automatic
 TODO: Find a way for the exercise to specify which primitives should be forbidden to the student in this specific exercise 
 
 TODO: remove the global state that prevent the tests from running in parallel (such as getCurrentExercise or getCurrentLanguage)

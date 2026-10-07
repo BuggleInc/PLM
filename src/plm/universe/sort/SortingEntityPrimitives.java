@@ -4,19 +4,19 @@ import plm.core.lang.primitives.Primitive;
 import plm.universe.EntityPrimitivesBase;
 
 public interface SortingEntityPrimitives extends EntityPrimitivesBase {
-  @Primitive(114) void copy(int fromPos, int toPos);
+  @Primitive void copy(int fromPos, int toPos);
 
-  @Primitive(115) int getValue(int i);
+  @Primitive int getValue(int i);
 
-  @Primitive(110) int getValueCount();
+  @Primitive int getValueCount();
 
-  @Primitive(111) boolean isSmaller(int i, int j);
+  @Primitive boolean isSmaller(int i, int j);
 
-  @Primitive(112) boolean isSmallerThan(int i, int value);
+  @Primitive boolean isSmallerThan(int i, int value);
 
-  @Primitive(116) void setValue(int i, int value);
+  @Primitive void setValue(int i, int value);
 
-  @Primitive(113) void swap(int i, int j);
+  @Primitive void swap(int i, int j);
 
-  @Primitive(117) @Override boolean isSelected();
+  @Primitive @Override boolean isSelected();
 }

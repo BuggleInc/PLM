@@ -9,18 +9,18 @@ import plm.universe.Point;
  */
 public interface LanderEntityPrimitives extends EntityPrimitivesBase {
 
-  @Primitive(311) public Point[] getGround();
-  @Primitive(300) public double getX();
-  @Primitive(301) public double getY();
-  @Primitive(302) public double getSpeedX();
-  @Primitive(303) public double getSpeedY();
-  @Primitive(304) public double getAngle();
-  @Primitive(305) public int getThrust();
-  @Primitive(306) public int getFuel();
+  @Primitive public Point[] getGround();
+  @Primitive public double getX();
+  @Primitive public double getY();
+  @Primitive public double getSpeedX();
+  @Primitive public double getSpeedY();
+  @Primitive public double getAngle();
+  @Primitive public int getThrust();
+  @Primitive public int getFuel();
 
-  @Primitive(307) public void setDesiredAngle(double desiredAngle);
-  @Primitive(308) public void setDesiredThrust(int desiredThrust);
+  @Primitive public void setDesiredAngle(double desiredAngle);
+  @Primitive public void setDesiredThrust(int desiredThrust);
 
-  @Primitive(309) public boolean isFlying();
-  @Primitive(310) public void simulateStep();
+  @Primitive public boolean isFlying();
+  @Primitive public void simulateStep();
 }

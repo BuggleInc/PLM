@@ -235,11 +235,10 @@ public class LangPython extends TemplatedRemoteLang {
     {
       String prototype = getPrototype(method);
 
-      int id      = method.id();
       String name = method.name();
 
       String argsStr = getParameterNames(method).stream().map(s -> ", " + s).collect(Collectors.joining());
-      String command = "    sendCommand(" + id + ", \"" + name + "\"" + argsStr + ")";
+      String command = "    sendCommand(\"" + name + "\"" + argsStr + ")";
 
       String returning = method.hasReturn() ? "    return " + getReturning(method.output()) : "";
 

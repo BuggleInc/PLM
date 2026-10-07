@@ -16,7 +16,7 @@ public class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
     throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
   }
 
-  @Primitive(300) public boolean isOverOrange() { return getGroundColor() == Color.orange; }
+  @Primitive public boolean isOverOrange() { return getGroundColor() == Color.orange; }
   /* BINDINGS TRANSLATION */
   public boolean estSurOrange() { return isOverOrange(); }
 

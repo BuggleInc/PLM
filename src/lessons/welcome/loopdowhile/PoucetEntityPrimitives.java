@@ -4,7 +4,7 @@ import plm.core.lang.primitives.Primitive;
 import plm.universe.EntityPrimitivesBase;
 
 public interface PoucetEntityPrimitives extends EntityPrimitivesBase {
-  @Primitive(307) boolean crossing();
+  @Primitive boolean crossing();
 
-  @Primitive(306) boolean exitReached();
+  @Primitive boolean exitReached();
 }

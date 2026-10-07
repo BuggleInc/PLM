@@ -60,7 +60,7 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
   @Override public int getSlotSize(int slot) { return ((HanoiWorld)world).getSlotSize(slot); }
   /** Returns the radius of the topmost disk of the given slot */
 
-  @Primitive(307) public int getSlotRadius(int slot) { return ((HanoiWorld)world).getRadius(slot); }
+  @Primitive public int getSlotRadius(int slot) { return ((HanoiWorld)world).getRadius(slot); }
 
   /* BEGIN SOLUTION */
   @Override public String toString() { return "HanoiEntity (" + this.getClass().getName() + ")"; }

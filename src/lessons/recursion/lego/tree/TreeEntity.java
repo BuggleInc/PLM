@@ -25,7 +25,7 @@ public class TreeEntity extends Turtle {
   Color[] colors = new Color[] {Color.cyan,      Color.blue, Color.magenta,  Color.orange, Color.yellow, Color.green,
                                 Color.lightGray, Color.gray, Color.darkGray, Color.black,  Color.red};
 
-  @Primitive(308) public void current(int v)
+  @Primitive public void current(int v)
   {
     if (v >= colors.length || v < 0)
       setColor(colors[colors.length - 1]);

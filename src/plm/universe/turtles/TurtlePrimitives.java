@@ -7,51 +7,51 @@ import plm.universe.EntityPrimitivesBase;
 
 public interface TurtlePrimitives extends EntityPrimitivesBase {
 
-  @Primitive(112) void forward(double dist);
+  @Primitive void forward(double dist);
 
-  @Primitive(113) void backward(double dist);
+  @Primitive void backward(double dist);
 
-  @Primitive(120) void circle(double radius);
+  @Primitive void circle(double radius);
 
-  @Primitive(119) void moveTo(double newX, double newY);
+  @Primitive void moveTo(double newX, double newY);
 
-  @Primitive(110) void left(double angle);
+  @Primitive void left(double angle);
 
-  @Primitive(111) void right(double angle);
+  @Primitive void right(double angle);
 
-  @Primitive(129) boolean isPenDown();
+  @Primitive boolean isPenDown();
 
-  @Primitive(128) void penDown();
+  @Primitive void penDown();
 
-  @Primitive(127) void penUp();
+  @Primitive void penUp();
 
-  @Primitive(121) void hide();
+  @Primitive void hide();
 
-  @Primitive(122) void show();
+  @Primitive void show();
 
-  @Primitive(123) boolean isVisible();
+  @Primitive boolean isVisible();
 
-  @Primitive(124) void clear();
+  @Primitive void clear();
 
-  @Primitive(125) double getHeading();
+  @Primitive double getHeading();
 
-  @Primitive(126) void setHeading(double heading);
+  @Primitive void setHeading(double heading);
 
-  @Primitive(114) double getX();
+  @Primitive double getX();
 
-  @Primitive(116) void setX(double x);
+  @Primitive void setX(double x);
 
-  @Primitive(115) double getY();
+  @Primitive double getY();
 
-  @Primitive(117) void setY(double y);
+  @Primitive void setY(double y);
 
-  @Primitive(118) void setPos(double x, double y);
+  @Primitive void setPos(double x, double y);
 
-  @Primitive(130) default int color2int(Color c) { return ColorMapper.color2int(c); }
+  @Primitive default int color2int(Color c) { return ColorMapper.color2int(c); }
 
-  @Primitive(131) void setColor(Color c);
+  @Primitive void setColor(Color c);
 
-  @Primitive(132) @Override boolean isSelected();
+  @Primitive @Override boolean isSelected();
 
-  @Primitive(133) public void addSizeHint(int x1, int y1, int x2, int y2);
+  @Primitive public void addSizeHint(int x1, int y1, int x2, int y2);
 }

@@ -366,10 +366,9 @@ public class LangScala extends JvmTemplatedLang {
     {
       String prototype = getPrototype(method);
 
-      int id      = method.id();
       String name = method.name();
 
-      String command = "\tsendCommand(\"" + id + "\", \"" + name + "\"" +
+      String command = "\tsendCommand(\"" + name + "\"" +
                        method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s + ".asInstanceOf[Object]").collect(Collectors.joining()) +
                        ")";
 

@@ -98,9 +98,9 @@ public abstract class Remote {
     return deserialize(answerBuffer);
   }
 
-  public static void sendCommand(String opCode, String name, Object... args)
+  public static void sendCommand(String name, Object... args)
   {
-    String command = opCode + " " + serialize(args) + " " + name;
+    String command = name + " " + serialize(args);
 
     //      System.out.println("Student sends: " + command);
     System.out.flush();

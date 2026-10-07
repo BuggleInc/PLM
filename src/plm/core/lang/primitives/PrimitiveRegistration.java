@@ -17,7 +17,7 @@ public class PrimitiveRegistration {
     return set;
   }
 
-  public static Map<Integer, PrimitiveMethod> getPrimitiveForEntity(List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass)
+  public static Map<String, PrimitiveMethod> getPrimitiveForEntity(List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass)
   {
     List<PrimitiveMethod> primitives = allPrimitivesClass.stream()
                                            .flatMap(clazz
@@ -26,57 +26,29 @@ public class PrimitiveRegistration {
                                                            .map(method -> new PrimitiveMethod(method.getAnnotation(Primitive.class), method)))
                                            .toList();
 
-    Map<Integer, Set<PrimitiveMethod>> primitivesPerId = new HashMap<>();
+    // Declarations of the same primitive in several interfaces are equal and collapse in the set
+    Map<String, Set<PrimitiveMethod>> primitivesPerName = primitives.stream().collect(Collectors.groupingBy(PrimitiveMethod::name, Collectors.toSet()));
 
-    for (PrimitiveMethod primitive : primitives) {
-      int id = primitive.id();
-      primitivesPerId.computeIfAbsent(id, (k) -> new HashSet<>()).add(primitive);
-    }
+    String duplicates =
+        primitivesPerName.entrySet()
+            .stream()
+            .filter(entry -> entry.getValue().size() > 1)
+            .map(entry -> "\t- " + entry.getKey() + ":\n" + entry.getValue().stream().map(p -> "\t\t- " + p.location() + "\n").collect(Collectors.joining()))
+            .collect(Collectors.joining());
+    if (!duplicates.isEmpty())
+      throw new IllegalStateException("Could not collect primitives by name, the following names are assigned to multiple primitives:\n" + duplicates);
 
-    List<Map.Entry<Integer, Set<PrimitiveMethod>>> duplicatesById = primitivesPerId.entrySet().stream().filter(o -> o.getValue().size() > 1).toList();
-
-    if (!duplicatesById.isEmpty()) {
-      StringBuffer buffer = new StringBuffer();
-      for (Map.Entry<Integer, Set<PrimitiveMethod>> entry : duplicatesById) {
-        int id                       = entry.getKey();
-        List<String> methodLocations = entry.getValue().stream().map(PrimitiveMethod::location).toList();
-        buffer.append("\t- ").append(id).append(":\n");
-        methodLocations.forEach(loc -> buffer.append("\t\t- ").append(loc).append("\n"));
-      }
-      throw new IllegalStateException("Could not collect primitive by id, the following ids are assigned to multiple primitives:\n" + buffer);
-    }
-
-    Map<String, Set<PrimitiveMethod>> primitivesPerName = new HashMap<>();
-
-    for (PrimitiveMethod primitive : primitives) {
-      String name = primitive.name();
-      primitivesPerName.computeIfAbsent(name, (k) -> new HashSet<>()).add(primitive);
-    }
-
-    List<Map.Entry<String, Set<PrimitiveMethod>>> duplicatesByName = primitivesPerName.entrySet().stream().filter(o -> o.getValue().size() > 1).toList();
-
-    if (!duplicatesByName.isEmpty()) {
-      StringBuffer buffer = new StringBuffer();
-      for (Map.Entry<String, Set<PrimitiveMethod>> entry : duplicatesByName) {
-        String name                  = entry.getKey();
-        List<String> methodLocations = entry.getValue().stream().map(PrimitiveMethod::location).toList();
-        buffer.append("\t- ").append(name).append(":\n");
-        methodLocations.forEach(loc -> buffer.append("\t\t- ").append(loc).append("\n"));
-      }
-      throw new IllegalStateException("Could not collect primitive by id, the following names are assigned to multiple primitives:\n" + buffer);
-    }
-
-    return primitivesPerId.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, o -> o.getValue().iterator().next()));
+    return primitivesPerName.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().iterator().next()));
   }
 
-  public static Map<Integer, PrimitiveMethod> getMinimalPrimitiveForEntity(Class<? extends Entity> entity)
+  public static Map<String, PrimitiveMethod> getMinimalPrimitiveForEntity(Class<? extends Entity> entity)
   {
     List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass = getAllPrimitivesClass(entity);
 
     return getPrimitiveForEntity(allPrimitivesClass);
   }
 
-  public static Map<Integer, PrimitiveMethod> getMaximalPrimitiveForEntity(Class<? extends Entity> entity)
+  public static Map<String, PrimitiveMethod> getMaximalPrimitiveForEntity(Class<? extends Entity> entity)
   {
     Set<Class<? extends Entity>> subTypesOf = getSubTypesOf(entity);
     subTypesOf.add(entity); // For SimpleExerciseEntity, the entity itself carries @EntityPrimitives directly, not in a subclass

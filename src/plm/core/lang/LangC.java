@@ -569,8 +569,7 @@ public class LangC extends TemplatedRemoteLang {
       String prototype = getPrototype(method);
       prototype        = prototype.substring(0, prototype.length() - 1);
 
-      int id      = method.id();
-      String name = method.name();
+      String name    = method.name();
       int n          = method.parameters().size();
       String formats = method.parameters().stream().map(PrimitiveParameter::type).map(this::getTemplatingForType).collect(Collectors.joining(":"));
 
@@ -579,7 +578,7 @@ public class LangC extends TemplatedRemoteLang {
       // this same shape for every language uniformly.
       String argsWire = "[" + n + (formats.isEmpty() ? "" : ":" + formats) + "]";
 
-      String command = "\tsend_command(\"" + id + " " + argsWire + " " + name + "\"" +
+      String command = "\tsend_command(\"" + name + " " + argsWire + "\"" +
                        method.parameters().stream().map(this::getArgumentExpression).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
       // The escaped copy of each String parameter is heap-allocated by escape_string(): it is released once the command is sent

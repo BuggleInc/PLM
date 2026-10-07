@@ -75,8 +75,8 @@ def getAnswerObject():
   return deserialize(_answerBuffer)
 
 
-def sendCommand(opCode, name, *args):
-  command = str(opCode) + " " + serialize_args(list(args)) + " " + str(name)
+def sendCommand(name, *args):
+  command = str(name) + " " + serialize_args(list(args))
   _sockFile.write(command + "\n")
   _sockFile.flush()
 

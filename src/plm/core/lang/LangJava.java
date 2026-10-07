@@ -278,11 +278,10 @@ public class LangJava extends JvmTemplatedLang {
     {
       String prototype = getPrototype(method);
 
-      int id      = method.id();
       String name = method.name();
 
-      String command = "\tsendCommand(\"" + id + "\", \"" + name + "\"" +
-                       method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s).collect(Collectors.joining()) + ");";
+      String command =
+          "\tsendCommand(\"" + name + "\"" + method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
       String returning = method.hasReturn() ? "\treturn " + getReturning(method.output()) + ";" : "";
 

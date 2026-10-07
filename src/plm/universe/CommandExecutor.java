@@ -14,7 +14,7 @@ import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveRegistration;
 
 public final class CommandExecutor {
-  private static final Map<Class<? extends Entity>, Map<Integer, PrimitiveMethod>> getMinimalPrimitiveForEntity_Cache = new HashMap<>();
+  private static final Map<Class<? extends Entity>, Map<String, PrimitiveMethod>> getMinimalPrimitiveForEntity_Cache = new HashMap<>();
 
   private CommandExecutor() {}
 
@@ -25,31 +25,23 @@ public final class CommandExecutor {
         System.err.println(command);
       return;
     }
-    int firstSpace = command.indexOf(' ');
-    int lastSpace  = command.lastIndexOf(' ');
 
-    String opCodeSegment = command.substring(0, firstSpace);
-    String opArgsSegment = firstSpace <= lastSpace + 1 ? command.substring(firstSpace + 1, lastSpace) : "";
-    String opNameSegment = command.substring(lastSpace + 1);
+    // The command is the primitive name, then the serialized array of the arguments. This array may contain spaces (e.g. in the
+    // String "Oh Boy!"), which is why only the first space is a separator. The primitive name is a valid Java identifier so it
+    // cannot contain any space.
+    int firstSpace       = command.indexOf(' ');
+    String opName        = command.substring(0, firstSpace);
+    String opArgsSegment = command.substring(firstSpace + 1);
 
-    int opCode = Integer.parseInt(opCodeSegment);
-    Map<Integer, PrimitiveMethod> primitiveMethodMap =
+    Map<String, PrimitiveMethod> primitiveMethodMap =
         getMinimalPrimitiveForEntity_Cache.computeIfAbsent(entity.getClass(), PrimitiveRegistration::getMinimalPrimitiveForEntity);
 
-    PrimitiveMethod method = primitiveMethodMap.get(opCode);
+    PrimitiveMethod method = primitiveMethodMap.get(opName);
     if (method == null) {
-      throw new IllegalStateException("No primitive with id " + opCode + " for entity of class " + entity.getClass().getName() +
+      throw new IllegalStateException("No primitive named " + opName + " for entity of class " + entity.getClass().getName() +
                                       ". This usually means the entity is not an instance of the exercise's real entity subclass.");
     }
 
-    if (!method.name().equals(opNameSegment)) {
-      System.err.println("Primitive real name do not match provided name. "
-                         + "(expected: " + method.name() + ", provided: " + opNameSegment + ")");
-      return;
-    }
-
-    // The middle part (between the leading id and the trailing primitive name) is the serialized array of the arguments. It may
-    // contain spaces (e.g. in the String "Oh Boy!"), which is why the id and the name are located with the first and last spaces.
     Object[] args = (Object[])ValueSerializer.deserialize(opArgsSegment);
 
     for (int i = 0; i < args.length; i++) {

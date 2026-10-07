@@ -96,9 +96,9 @@ object Remote {
     deserialize(answerBuffer)
   }
 
-  def sendCommand(opCode: String, name: String, args: Object*): Unit =
+  def sendCommand(name: String, args: Object*): Unit =
   {
-    val command = opCode + " " + serialize(args.toArray) + " " + name
+    val command = name + " " + serialize(args.toArray)
 
     System.out.flush()
     protocolOut.println(command)

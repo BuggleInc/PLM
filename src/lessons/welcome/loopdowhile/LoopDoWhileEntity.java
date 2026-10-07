@@ -7,7 +7,7 @@ import plm.core.lang.primitives.Primitive;
 @EntityPrimitives(LoopDoWhileEntity.class)
 public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 
-  @Primitive(301) public boolean isGroundWhite() { return getGroundColor() == Color.white; }
+  @Primitive public boolean isGroundWhite() { return getGroundColor() == Color.white; }
   /* BINDINGS TRANSLATION */
   public boolean estSurBlanc() { return isGroundWhite(); }
 
