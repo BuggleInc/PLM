@@ -221,7 +221,6 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
-    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -248,7 +247,6 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
-    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -281,7 +279,6 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
-    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -308,7 +305,6 @@ public class GitSpyTest {
 
     Exercise exo   = Mockito.mock(Exercise.class);
     exo.lastResult = lastResult;
-    Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
