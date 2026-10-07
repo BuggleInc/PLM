@@ -1,15 +1,9 @@
 package lessons.welcome.array.basics;
 
 import java.awt.Color;
-import plm.core.model.Game;
 
 public class Array1Entity extends plm.universe.bugglequest.SimpleBuggle {
-  public Array1Entity()
-  {
-    forbid("setX", Game.i18n.tr("Walk to your goal instead."));
-    forbid("setY", Game.i18n.tr("Walk to your goal instead."));
-    forbid("setPos", Game.i18n.tr("Walk to your goal instead."));
-  }
+  public Array1Entity() { forbidTeleportation(); }
 
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */

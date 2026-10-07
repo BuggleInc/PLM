@@ -1,7 +1,6 @@
 package lessons.maze.shortestpath;
 
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
@@ -9,21 +8,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 @EntityPrimitives(ShortestPathMazeEntityPrimitives.class)
 public class ShortestPathMazeEntity extends SimpleBuggle implements ShortestPathMazeEntityPrimitives {
-  @Override public void setX(int i)
-  {
-    if (isInited())
-      throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
-  }
-  @Override public void setY(int i)
-  {
-    if (isInited())
-      throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
-  }
-  @Override public void setPos(int i, int j)
-  {
-    if (isInited())
-      throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
-  }
+  public ShortestPathMazeEntity() { forbidTeleportation(); }
 
   @Override public void setIndication(int x, int y, int i)
   {

@@ -33,6 +33,15 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 
   private boolean carryBaggle;
 
+  /** Forbids the student code to teleport the buggle. To be called from the constructor of the exercise's entity. */
+  protected void forbidTeleportation()
+  {
+    String reason = Game.i18n.tr("Walk to your goal instead.");
+    forbid("setX", reason);
+    forbid("setY", reason);
+    forbid("setPos", reason);
+  }
+
   /* used to tell the observers what was changed */
   public static final int BRUSH_STATE = 0, BRUSH_COLOR = 1, BUGGLE_COLOR = 2;
 
