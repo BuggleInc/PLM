@@ -78,7 +78,7 @@ public class ValueFormatter {
   /* --- Formatting logic --- */
   static private void openArray(StringBuilder sb, ProgrammingLanguage pl)
   {
-    if (pl.isJava()) {
+    if (pl.isJava() || pl.isC()) {
       sb.append("{");
     } else if (pl.isScala()) {
       sb.append("Array(");
@@ -90,7 +90,7 @@ public class ValueFormatter {
   }
   static private void closeArray(StringBuilder sb, ProgrammingLanguage pl)
   {
-    if (pl.isJava())
+    if (pl.isJava() || pl.isC())
       sb.append("}");
     else if (pl.isScala())
       sb.append(")");
@@ -110,6 +110,8 @@ public class ValueFormatter {
         return "None";
       else if (pl.isJava())
         return "null";
+      else if (pl.isC())
+        return "NULL";
       else
         throw new RuntimeException("Please port me to " + pl.getLang());
     }
@@ -151,7 +153,7 @@ public class ValueFormatter {
       closeArray(sb, pl);
     } else if (o instanceof Boolean) {
       Boolean b = (Boolean)o;
-      if (pl.isJava() || pl.isScala()) {
+      if (pl.isJava() || pl.isScala() || pl.isC()) {
         sb.append(b ? "true" : "false");
       } else if (pl.isPython()) {
         sb.append(b ? "True" : "False");
