@@ -36,7 +36,7 @@ void run() {
 
 void makeLine(Color colors[], int colorsLength) {
   char* msg  = readMessage();
-  int offset = (int)msg[0];
+  int offset = atoi(msg);
   free(msg);
   mark(colors[(0 + offset) % colorsLength]);
   int i;
