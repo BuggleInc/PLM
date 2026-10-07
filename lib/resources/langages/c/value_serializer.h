@@ -21,6 +21,7 @@ struct plm_value_t {
     struct {
       plm_value_t** elements;
       uint32_t size;
+      plm_value_type_t element_type; // tag of an empty array, which cannot be deduced from its elements (NULL: untyped)
     } array;
   } as;
 };

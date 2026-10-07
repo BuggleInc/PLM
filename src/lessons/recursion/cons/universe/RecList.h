@@ -62,11 +62,12 @@ static RecList* recListFromValue(plm_value_t* val)
 /* RecList.toArray(l) + serialize(int[]): turns a RecList back into a serializable value */
 __attribute__((unused)) static plm_value_t* recListToValue(RecList* seq)
 {
-  plm_value_t* val       = calloc(1, sizeof(plm_value_t));
-  val->type              = PLM_VAL_ARRAY;
-  val->as.array.size     = recListLength(seq);
-  val->as.array.elements = val->as.array.size ? malloc(val->as.array.size * sizeof(plm_value_t*)) : NULL;
-  int i                  = 0;
+  plm_value_t* val           = calloc(1, sizeof(plm_value_t));
+  val->type                  = PLM_VAL_ARRAY;
+  val->as.array.size         = recListLength(seq);
+  val->as.array.element_type = PLM_VAL_INT;
+  val->as.array.elements     = val->as.array.size ? malloc(val->as.array.size * sizeof(plm_value_t*)) : NULL;
+  int i                      = 0;
   for (RecList* ptr = seq; ptr != NULL; ptr = ptr->tail) {
     plm_value_t* e              = calloc(1, sizeof(plm_value_t));
     e->type                     = PLM_VAL_INT;

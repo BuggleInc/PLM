@@ -107,7 +107,7 @@ static void serialize_recursive(const plm_value_t* val, string_builder_t* sb)
       break;
     case PLM_VAL_ARRAY: {
       bool all_same               = true;
-      plm_value_type_t first_type = PLM_VAL_NULL;
+      plm_value_type_t first_type = val->as.array.element_type;
       if (val->as.array.size > 0) {
         first_type = val->as.array.elements[0]->type;
         for (uint32_t i = 1; i < val->as.array.size; i++) {
@@ -117,7 +117,7 @@ static void serialize_recursive(const plm_value_t* val, string_builder_t* sb)
           }
         }
       }
-      if (val->as.array.size > 0 && all_same && first_type != PLM_VAL_ARRAY && first_type != PLM_VAL_STRING && first_type != PLM_VAL_NULL) {
+      if (all_same && first_type != PLM_VAL_ARRAY && first_type != PLM_VAL_STRING && first_type != PLM_VAL_NULL) {
         if (first_type == PLM_VAL_INT)
           sb_append(sb, "i");
         else if (first_type == PLM_VAL_DOUBLE)
