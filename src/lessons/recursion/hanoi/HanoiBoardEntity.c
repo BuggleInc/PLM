@@ -1,24 +1,29 @@
 #include "../../../../target/classes/resources/langages/c/RemoteHanoi.h"
 
-void solve(int src, int dst, int other);
-void solveRec(int src, int dst, int other, int height) ;
+/* BEGIN REMOTE */
+void solve(int src, int other, int dst);
+void hanoi(int height, int src, int other, int dst);
 
-/* BEGIN TEMPLATE */
-void solve(int src, int dst, int other) {
-	solveRec(src, dst, other, getSlotSize(src));
-}
-
-void solveRec(int src, int dst, int other, int height) {
-	/* BEGIN SOLUTION */
-	if (height != 0) {
-		solveRec(src,other,dst, height-1);
-		move(src,dst);
-		solveRec(other,dst,src, height-1);
-	}
-	/* END SOLUTION */
-}
-/* END TEMPLATE */
-
-void run(){
+void run()
+{
   solve(getParamInt(0), getParamInt(1), getParamInt(2));
 }
+
+/* BEGIN TEMPLATE */
+void solve(int src, int other, int dst)
+{
+  /* BEGIN SOLUTION */
+  hanoi(getSlotSize(src), src, other, dst);
+}
+
+void hanoi(int height, int src, int other, int dst)
+{
+  if (height != 0) {
+    hanoi(height - 1, src, dst, other);
+    move(src, dst);
+    hanoi(height - 1, other, src, dst);
+  }
+  /* END SOLUTION */
+}
+/* END TEMPLATE */
+/* END REMOTE */
