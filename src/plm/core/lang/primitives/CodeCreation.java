@@ -45,6 +45,9 @@ import plm.universe.turtles.Turtle;
  */
 public class CodeCreation {
 
+  /** A glue file to generate: its name and the entity whose primitives it exposes. */
+  private record Remote(String name, Class<? extends Entity> entity) {}
+
   /** A language to generate the glue of: its folder under resources/langages, its generator and the hand-written code to splice in some remotes. */
   private record Target(String dir, ExternalPrimitiveLanguage generator, Map<String, String> extraCode) {}
 
@@ -56,16 +59,16 @@ public class CodeCreation {
   {
     File folder = new File("target/classes/resources/langages/");
 
-    Map<String, Class<? extends Entity>> remoteMap =
-        Map.ofEntries(Map.entry("RemoteBat", BatEntity.class), Map.entry("RemoteCons", ConsEntity.class), Map.entry("RemoteBuggle", AbstractBuggle.class),
-                      Map.entry("RemoteTurmite", TurmiteEntity.class), Map.entry("RemoteSort", SortingEntity.class), Map.entry("RemoteTurtle", Turtle.class),
-                      Map.entry("RemotePancake", PancakeEntity.class), Map.entry("RemoteHanoi", HanoiEntity.class),
-                      Map.entry("RemoteBaseball", BaseballEntity.class), Map.entry("RemoteDutchFlag", DutchFlagEntity.class),
-                      Map.entry("RemoteSimple", SimpleExerciseEntity.class), Map.entry("RemoteLander", LanderEntity.class));
+    List<Remote> remotes =
+        List.of(new Remote("RemoteBat", BatEntity.class), new Remote("RemoteCons", ConsEntity.class), new Remote("RemoteBuggle", AbstractBuggle.class),
+                new Remote("RemoteTurmite", TurmiteEntity.class), new Remote("RemoteSort", SortingEntity.class), new Remote("RemoteTurtle", Turtle.class),
+                new Remote("RemotePancake", PancakeEntity.class), new Remote("RemoteHanoi", HanoiEntity.class),
+                new Remote("RemoteBaseball", BaseballEntity.class), new Remote("RemoteDutchFlag", DutchFlagEntity.class),
+                new Remote("RemoteSimple", SimpleExerciseEntity.class), new Remote("RemoteLander", LanderEntity.class));
 
     Map<String, List<PrimitiveMethod>> primitives = new LinkedHashMap<>();
-    for (Map.Entry<String, Class<? extends Entity>> entry : remoteMap.entrySet())
-      primitives.put(entry.getKey(), PrimitiveRegistration.getMaximalPrimitiveForEntity(entry.getValue()).values().stream().toList());
+    for (Remote remote : remotes)
+      primitives.put(remote.name(), List.copyOf(PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()).values()));
 
     List<Target> targets =
         List.of(new Target("java", new LangJava.LangJavaExternalPrimitiveGenerator(), Map.of("RemoteCons", ConsEntity.JAVA_REMOTE_EXTRA_CODE)),

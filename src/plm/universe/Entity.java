@@ -32,11 +32,7 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
    * Right now, this is only used for LightBot because I'm not sure of how to retrieve the current point of execution in java or scripting
    */
   ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
-  private Semaphore oneStepSemaphore             = new Semaphore(0);
-  /* This is to allow exercise to forbid the use by students of some functions
-   * which are mandatory for core mechanism. See welcome.ArrayBuggle to see how it forbids setPos(int,int)
-   */
-  private boolean inited                                 = false;
+  private Semaphore oneStepSemaphore                     = new Semaphore(0);
   private final Map<String, String> forbiddenPrimitives = new HashMap<>(); /* primitive name -> reason shown to the student */
   private Map<ProgrammingLanguage, Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
 
@@ -75,10 +71,6 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
 
   /** The primitives that the student code cannot call, with the reason why */
   public Map<String, String> getForbiddenPrimitives() { return Collections.unmodifiableMap(forbiddenPrimitives); }
-
-  public boolean isInited() { return inited; }
-
-  public void initDone() { inited = true; }
 
   public void allowOneStep() { this.oneStepSemaphore.release(); }
 

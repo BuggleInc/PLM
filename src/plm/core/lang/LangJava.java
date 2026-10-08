@@ -267,9 +267,8 @@ public class LangJava extends JvmTemplatedLang {
     {
       String name                         = method.name();
       List<PrimitiveParameter> parameters = method.parameters();
-      Class<?> output                     = method.output();
 
-      final String outputString = Optional.ofNullable(output).map(this::getLanguageType).orElse("void");
+      final String outputString = getLanguageType(method.output());
 
       return "public static " + outputString + " " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
     }

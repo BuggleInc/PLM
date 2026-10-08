@@ -12,7 +12,6 @@ import java.util.Comparator;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -501,9 +500,8 @@ public class LangC extends TemplatedRemoteLang {
     {
       String name                         = method.name();
       List<PrimitiveParameter> parameters = method.parameters();
-      Class<?> output                     = method.output();
 
-      final String outputString = Optional.ofNullable(output).map(this::getLanguageType).orElse("void");
+      final String outputString = getLanguageType(method.output());
 
       return outputString + " " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ");";
     }

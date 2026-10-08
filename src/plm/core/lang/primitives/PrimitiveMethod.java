@@ -4,9 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
 public final class PrimitiveMethod {
   private final List<PrimitiveParameter> parameters;
@@ -24,7 +22,7 @@ public final class PrimitiveMethod {
     this.output     = method.getReturnType();
   }
 
-  @Nullable public Class<?> output() { return output; }
+  public Class<?> output() { return output; }
 
   public String name() { return name; }
 
@@ -32,7 +30,7 @@ public final class PrimitiveMethod {
 
   public List<PrimitiveParameter> parameters() { return parameters; }
 
-  public boolean hasReturn() { return output != null && output != void.class; }
+  public boolean hasReturn() { return output != void.class; }
 
   @Override public boolean equals(Object obj)
   {
@@ -44,12 +42,12 @@ public final class PrimitiveMethod {
     return Objects.equals(name, that.name) && Objects.equals(parameters, that.parameters);
   }
 
-  @Override public int hashCode() { return Objects.hash(location); }
+  @Override public int hashCode() { return Objects.hash(name, parameters); }
 
   @Override public String toString()
   {
     return name() + "(" + parameters.stream().map(PrimitiveParameter::toString).collect(Collectors.joining(",")) + ")"
-        + ":" + Optional.ofNullable(output).map(Class::getSimpleName).orElse("void");
+        + ":" + output.getSimpleName();
   }
 
   public Method method() { return method; }

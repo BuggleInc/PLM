@@ -7,19 +7,26 @@ import org.reflections.Reflections;
 import plm.universe.Entity;
 import plm.universe.EntityPrimitivesBase;
 
+/** Finds the primitives of the entities by reflection, indexed by name. */
 public class PrimitiveRegistration {
   private static final Map<Class<? extends Entity>, Map<String, PrimitiveMethod>> minimalCache = new ConcurrentHashMap<>();
 
-  public static <T> Set<Class<? extends T>> getSubTypesOf(Class<? extends T> clazz)
+  /** The classpath scans are slow: they are done once, when first needed. */
+  private static class ClasspathScans {
+    static final Reflections LESSONS = new Reflections("lessons");
+    static final Reflections PLM     = new Reflections("plm");
+  }
+
+  private static <T> Set<Class<? extends T>> getSubTypesOf(Class<? extends T> clazz)
   {
     HashSet<Class<? extends T>> set = new HashSet<>();
-    set.addAll(new Reflections("lessons").getSubTypesOf(clazz));
-    set.addAll(new Reflections("plm").getSubTypesOf(clazz));
+    set.addAll(ClasspathScans.LESSONS.getSubTypesOf(clazz));
+    set.addAll(ClasspathScans.PLM.getSubTypesOf(clazz));
 
     return set;
   }
 
-  public static Map<String, PrimitiveMethod> getPrimitiveForEntity(List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass)
+  private static Map<String, PrimitiveMethod> getPrimitiveForEntity(List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass)
   {
     List<PrimitiveMethod> primitives = allPrimitivesClass.stream()
                                            .flatMap(clazz
@@ -28,8 +35,9 @@ public class PrimitiveRegistration {
                                                            .map(method -> new PrimitiveMethod(method.getAnnotation(Primitive.class), method)))
                                            .toList();
 
-    // Declarations of the same primitive in several interfaces are equal and collapse in the set
-    Map<String, Set<PrimitiveMethod>> primitivesPerName = primitives.stream().collect(Collectors.groupingBy(PrimitiveMethod::name, Collectors.toSet()));
+    // Declarations of the same primitive in several interfaces are equal and collapse in the set. The names are sorted for a readable glue.
+    Map<String, Set<PrimitiveMethod>> primitivesPerName =
+        primitives.stream().collect(Collectors.groupingBy(PrimitiveMethod::name, TreeMap::new, Collectors.toSet()));
 
     String duplicates =
         primitivesPerName.entrySet()
@@ -40,7 +48,9 @@ public class PrimitiveRegistration {
     if (!duplicates.isEmpty())
       throw new IllegalStateException("Could not collect primitives by name, the following names are assigned to multiple primitives:\n" + duplicates);
 
-    return primitivesPerName.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().iterator().next()));
+    Map<String, PrimitiveMethod> result = new TreeMap<>();
+    primitivesPerName.forEach((name, declarations) -> result.put(name, declarations.iterator().next()));
+    return result;
   }
 
   public static Map<String, PrimitiveMethod> getMinimalPrimitiveForEntity(Class<? extends Entity> entity)
@@ -57,22 +67,20 @@ public class PrimitiveRegistration {
     return getPrimitiveForEntity(allPrimitivesClass);
   }
 
-  @SuppressWarnings("unchecked") public static List<Class<? extends EntityPrimitivesBase>> getAllPrimitivesClass(Class<?> clazz)
+  @SuppressWarnings("unchecked") private static List<Class<? extends EntityPrimitivesBase>> getAllPrimitivesClass(Class<?> clazz)
   {
-    if (clazz == EntityPrimitivesBase.class) return List.of((Class<? extends EntityPrimitivesBase>) clazz);
-
-    ArrayList<Class<? extends EntityPrimitivesBase>> list = new ArrayList<>();
+    List<Class<? extends EntityPrimitivesBase>> list = new ArrayList<>();
 
     if (EntityPrimitivesBase.class.isAssignableFrom(clazz)) {
-            list.add((Class<? extends EntityPrimitivesBase>) clazz);
-            if (clazz.getSuperclass() != null)
-              list.addAll(getAllPrimitivesClass(clazz.getSuperclass()));
+      list.add((Class<? extends EntityPrimitivesBase>)clazz);
+      if (clazz.getSuperclass() != null)
+        list.addAll(getAllPrimitivesClass(clazz.getSuperclass()));
     }
-    if (clazz.isAnnotationPresent(EntityPrimitives.class)) {
+    if (clazz.isAnnotationPresent(EntityPrimitives.class))
       list.add(clazz.getAnnotation(EntityPrimitives.class).value());
-    }
 
-    list.addAll(Arrays.stream(clazz.getInterfaces()).flatMap(c -> getAllPrimitivesClass(c).stream()).toList());
+    for (Class<?> implemented : clazz.getInterfaces())
+      list.addAll(getAllPrimitivesClass(implemented));
     return list;
   }
 }
