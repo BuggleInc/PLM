@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import plm.core.ValueSerializer;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveRegistration;
@@ -40,7 +39,37 @@ public final class CommandExecutor {
                                       ". This usually means the entity is not an instance of the exercise's real entity subclass.");
     }
 
-    Object[] args = (Object[])ValueSerializer.deserialize(opArgsSegment);
+    Object[] args = deserializeArguments(method, opArgsSegment);
+
+    Object returnValue;
+    try {
+      returnValue = method.method().invoke(entity, args);
+    } catch (InvocationTargetException e) {
+      // An entity refusing a call on purpose (e.g. an override forbidding some arguments) explains itself: its message is shown as is
+      if (e.getCause() instanceof UnsupportedOperationException refusal)
+        throw refusal;
+      throw new IllegalArgumentException("Calling " + method.name() + "(" + describeArguments(opArgsSegment, args) + ") raised an exception: " + e.getCause(),
+                                         e);
+    } catch (IllegalArgumentException e) {
+      throw new IllegalArgumentException("Cannot apply parameters " + describeArguments(opArgsSegment, args) + " to " + method.name() + "()", e);
+    }
+
+    if (!method.hasReturn())
+      return;
+    if (returnValue instanceof Enum<?>)
+      returnValue = ((Enum<?>)returnValue).ordinal();
+    try {
+      out.write(serialize(returnValue) + "\n");
+      out.flush();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  /** Deserializes the arguments, converting the ones that the serialization cannot type exactly: enum ordinals and atomic values given as Strings. */
+  private static Object[] deserializeArguments(PrimitiveMethod method, String serializedArgs) throws InvocationTargetException, IllegalAccessException
+  {
+    Object[] args = (Object[])ValueSerializer.deserialize(serializedArgs);
 
     for (int i = 0; i < args.length; i++) {
       Object rawArg    = args[i];
@@ -61,38 +90,13 @@ public final class CommandExecutor {
         args[i] = String.valueOf(rawArg);
       }
     }
+    return args;
+  }
 
-    Method javaMethod = method.method();
-    Object returnValue;
-    try {
-      returnValue = javaMethod.invoke(entity, args);
-    } catch (InvocationTargetException e) {
-      // An entity refusing a call on purpose (e.g. an override forbidding some arguments) explains itself: its message is shown as is
-      if (e.getCause() instanceof UnsupportedOperationException refusal)
-        throw refusal;
-      String reserializedArgs = serialize(args);
-      String argMsg           = opArgsSegment.equals(reserializedArgs) ? opArgsSegment : opArgsSegment + " (changed to " + serialize(args) + ")";
-      throw new IllegalArgumentException("Calling " + method.name() + "(" + argMsg + ") raised an exception: " + e.getCause(), e);
-    } catch (IllegalArgumentException e) {
-      String reserializedArgs = serialize(args);
-      String argMsg           = opArgsSegment.equals(reserializedArgs) ? opArgsSegment : opArgsSegment + " (changed to " + serialize(args) + ")";
-      throw new IllegalArgumentException("Cannot apply parameters " + argMsg + " to " + method.name() + "()", e);
-    }
-
-    try {
-      if (method.hasReturn()) {
-
-        if (returnValue instanceof Enum<?>) {
-          returnValue = ((Enum<?>)returnValue).ordinal();
-        }
-
-        String serialize = ValueSerializer.serialize(returnValue);
-        out.write(serialize);
-        out.write("\n");
-        out.flush();
-      }
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+  /** The arguments as sent by the student, followed by the converted ones if they differ. */
+  private static String describeArguments(String sent, Object[] args)
+  {
+    String converted = serialize(args);
+    return sent.equals(converted) ? sent : sent + " (changed to " + converted + ")";
   }
 }
