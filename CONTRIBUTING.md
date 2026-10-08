@@ -52,6 +52,9 @@ Here are the steps of the exercise execution:
     external JVM. C and Python use an external compilers.
   - `compileExo()` returns a textual reference to the result (the path to a jar, a binary, etc), which the caller then passes
     down as-is to `runEntity()`'s `executable` parameter below.
+* **Source verification**: `Exercise.compile()` then calls `Exercise.verifySource()` with the editor's content, for the
+  student's code only (not for the correction). Exercises override it to refuse a code that compiles but misses the point (see
+  "API gating" below).
 * **Remote execution**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`: that
   method binds a UNIX domain socket, starts the student code as an external process, and relays primitive calls over that socket
   to `plm.universe.CommandExecutor`. These primitives allow the student code to interact with the microworld that is located in
@@ -395,10 +398,11 @@ Some exercises hide or alter a usual primitive for pedagogical reasons, which we
 - In the maze exercises, `setX()`, `setY()` and `setPos()` are forbidden, so that the student has to walk to the goal.
 - In `CyclicHanoi`, `move()` is replaced by a stricter version that only accepts the cyclic moves.
 
-**How to do it.** Everything goes in the exercise's Java entity, whatever the languages the exercise offers. Do not put checks
-in the Python, Scala or C entities: they would run in the student's process, where the translations are not available (and the
-entities of the non-Java languages ignore everything that precedes `BEGIN REMOTE`). Messages go through `Game.i18n.tr()` with a
-literal string, so that they get extracted for translation. There are four cases:
+**How to do it.** Everything goes in the exercise's Java entity (but for case 5, which goes in the exercise class), whatever the
+languages the exercise offers. Do not put checks in the Python, Scala or C entities: they would run in the student's process,
+where the translations are not available (and the entities of the non-Java languages ignore everything that precedes `BEGIN
+REMOTE`). Messages go through `Game.i18n.tr()` with a literal string, so that they get extracted for translation. There are five
+cases:
 
 1. *Forbidding a primitive altogether*: call `forbid(primitiveName, reason)` from the constructor of the entity. The student gets
    "Sorry Dave, I cannot let you use <primitiveName> in this exercise. <reason>". Buggle entities can call
@@ -432,6 +436,18 @@ literal string, so that they get extracted for translation. There are four cases
    `penDown()` for the buggles and `brushDown()` for the turtles, are primitives whose default method throws an
    `UnsupportedOperationException` with the explanation. Being primitives, they exist in the glue of every language, so students get
    the translated message instead of a compilation error.
+
+5. *Verifying the source code*: override `Exercise.verifySource(String code)` in the exercise class (not in the entity) and throw a
+   `PLMCompilerException` to refuse the code of the editor. It is called once the student's code compiled and before it executes,
+   so it applies to every language, and the message is shown as a compilation error. `MethodsDogHouse` thus requires exactly one
+   call to `left()`, ignoring comments and strings:
+   ```java
+   @Override protected void verifySource(String code) throws PLMCompilerException
+   {
+     if (!isValid(code)) // a regex search on the code, once comments and strings are blanked out
+       throw new PLMCompilerException(Game.i18n.tr("Your code must call left() exactly once."));
+   }
+   ```
 
 **How it works.** The student's code only sends the name of the primitive and its arguments (see Remoting above). `CommandExecutor`,
 which acts as the gate, calls the Java method of the real entity by reflection, so an override applies to every language without any glue.
@@ -529,16 +545,14 @@ Preparing the next release cycle
 
 ## TODOs
 
-TODO: add to the exercice a verification of the source code, so that MethodDogHouse can verify that there is only one occurence of the left() method in the source code
-
 TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
-TODO: Kill Exercice.compile() as it does nothing more than delegating to ProgrammingLanguage
 
 TODO: Test that the lines of the compilation errors and of the sanitizer reports of C are the editor's (the stack trace test of
       SimpleExercise is disabled for C, as abort() leaves no sanitizer report)
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
-TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should include the Game singleton that encompasses the model part of the MVC thing.
+TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should
+      include the Game singleton that encompasses the model part of the MVC thing.
 TODO: benchmark the tests to understand where the time goes, and optimize this out
 
 TODO: remove the global state that prevent the tests from running in parallel (such as getCurrentExercise or getCurrentLanguage)

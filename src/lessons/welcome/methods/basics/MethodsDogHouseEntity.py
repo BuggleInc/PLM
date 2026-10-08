@@ -1,20 +1,5 @@
 from RemoteBuggle import *
 def run():
-    line = -1
-
-    # does not work as Java stacktrace does not contain python function name ;(
-    #def left():
-    #    global line
-    #    errorMsg(str(line))
-    #    for s in java.lang.Thread.currentThread().getStackTrace():
-    #        if "left" in s.getMethodName():
-    #            if line != -1 and line != s.getLineNumber():
-    #                errorMsg("Forbidden to use left() more than once in this exercise.")
-    #                # throw new RuntimeException("Forbidden to use left() more than once in this exercise.");
-    #            else:
-    #                line = s.getLineNumber()
-    #                entity.left()	
-    	
     # BEGIN SOLUTION
     def dogHouse():
         for i in range(4):

@@ -140,13 +140,29 @@ public abstract class Exercise extends Lecture {
    * @param out where to display our errors
    * @param whatToCompile either STUDENT's provided data or CORRECTION entity
    * @throws PLMCompilerException
-   *
-   * FIXME: KILLME and use the compileExo of ProgrammingLanguage directly
    */
   public String compile(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    return lang.compileExo(this, out, whatToCompile);
+    String executable = lang.compileExo(this, out, whatToCompile);
+    if (whatToCompile == StudentOrCorrection.STUDENT) {
+      try {
+        verifySource(getSourceFile(lang, 0).getEditorContent());
+      } catch (PLMCompilerException e) {
+        lastResult = RunOutcome.newCompilationError(e.getMessage());
+        if (out != null)
+          out.log(lastResult.compilationError);
+        throw e;
+      }
+    }
+    return executable;
   }
+
+  /**
+   * Extra verification of the student's code, run after a successful compilation and before the execution. Exercises override it to
+   * refuse code that compiles but misses the pedagogical point. The message of the exception is shown as a compilation error.
+   * @param code the content of the editor
+   */
+  protected void verifySource(String code) throws PLMCompilerException {}
 
   /** get the list of source files for a given language, or create (and load) it if not existent yet */
   public synchronized List<SourceFile> getSourceFilesList(ProgrammingLanguage lang)

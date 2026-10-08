@@ -7,7 +7,9 @@ import plm.test.integration.ExoTestJavaLang;
 import plm.test.integration.ExoTestPythonLang;
 import plm.test.integration.ExoTestScalaLang;
 import plm.test.integration.LessonTest;
+import plm.test.integration.MethodsDogHouseSourceCheckTest;
 
 @Suite
-@SelectClasses({LessonTest.class, ExoTestJavaLang.class, ExoTestScalaLang.class, ExoTestPythonLang.class, ExoTestCLang.class})
+@SelectClasses(
+    {LessonTest.class, ExoTestJavaLang.class, ExoTestScalaLang.class, ExoTestPythonLang.class, ExoTestCLang.class, MethodsDogHouseSourceCheckTest.class})
 public class IntegrationTests {}

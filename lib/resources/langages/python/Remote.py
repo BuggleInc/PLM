@@ -79,19 +79,3 @@ def sendCommand(name, *args):
   command = str(name) + " " + serialize_args(list(args))
   _sockFile.write(command + "\n")
   _sockFile.flush()
-
-
-def errorMsg(msg):
-  """Reports a student-facing error (e.g. misuse of a restricted function, or a wrong move detected by the
-  correction itself). Always printed to stderr. Also reported via seenError() when that primitive is available for
-  the current universe -- not every universe has it yet (only Buggle and Turmite, as of this writing), so this looks
-  it up in the caller's own module globals (populated by e.g. "from RemoteBuggle import *") rather than assuming it
-  exists; globals() here would only ever see Remote.py's own namespace, never Entity.py's, so a plain "if seenError
-  in globals()" check would never find it even when it's genuinely available.
-  """
-  print(msg, file=sys.stderr)
-  callerGlobals = sys._getframe(1).f_globals
-  if "seenError" in callerGlobals:
-    callerGlobals["seenError"](msg)
-  else:
-    sys.error.write(msg)
