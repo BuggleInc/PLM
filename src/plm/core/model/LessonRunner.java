@@ -41,13 +41,13 @@ public class LessonRunner extends Thread {
     final Exercise exo = (Exercise)lect;
     final ProgrammingLanguage lang = this.game.getProgrammingLanguage();
 
-    exo.lastResult = new RunOutcome();
+    exo.lastResult = new RunOutcome(lang);
 
     try {
       game.saveSession(); // for safety reasons;
 
       if (!game.isCreativeEnabled())
-        exo.reset();
+        exo.reset(lang);
 
       game.setState(Game.GameState.COMPILATION_STARTED);
       String executable = exo.compile(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);

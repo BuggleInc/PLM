@@ -42,7 +42,7 @@ public class LightBotExercise extends ExerciseTemplated {
   }
   @Override public void check()
   {
-    lastResult = new RunOutcome();
+    lastResult = new RunOutcome(lastResult.language);
     for (int w = 0; w < currentWorld.size(); w++) {
       LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld.get(w)).new CellIterator();
       while (ci.hasNext()) {
@@ -67,7 +67,7 @@ public class LightBotExercise extends ExerciseTemplated {
   }
   @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
-    reset();
+    reset(lang);
     runAll(WorldKind.CURRENT, runnerVect, lastResult, lang, executable);
   }
 

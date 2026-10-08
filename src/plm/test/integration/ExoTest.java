@@ -114,10 +114,10 @@ public class ExoTest {
   {
     Game.getInstance().setProgramingLanguage(lang);
 
-    exo.lastResult = new RunOutcome();
+    exo.lastResult = new RunOutcome(lang);
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
-      exo.reset();
+      exo.reset(lang);
       String executable = exo.compile(null, StudentOrCorrection.CORRECTION, lang);
       if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
         Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);

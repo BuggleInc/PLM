@@ -78,7 +78,7 @@ public class LangC extends TemplatedRemoteLang {
     if (sfs.isEmpty()) {
       String msg = exo.getName() + ": No source to compile";
       System.err.println(msg);
-      exo.lastResult = RunOutcome.newCompilationError(msg);
+      exo.lastResult = RunOutcome.newCompilationError(this, msg);
       throw new PLMCompilerException(msg, null);
     }
 
@@ -161,7 +161,7 @@ public class LangC extends TemplatedRemoteLang {
         System.err.println(e.getMessage());
         System.err.println(code);
 
-        exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
+        exo.lastResult = RunOutcome.newCompilationError(this, e.getMessage());
 
         throw e;
       }

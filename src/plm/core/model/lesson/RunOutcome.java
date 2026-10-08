@@ -2,7 +2,6 @@ package plm.core.model.lesson;
 
 import java.util.Date;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 
 /**
  * Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of
@@ -18,16 +17,18 @@ public class RunOutcome {
   public String executionError = "";
   public int passedTests, totalTests = 0;
   public Date date                    = new Date();
-  public ProgrammingLanguage language = Game.getInstance().getProgrammingLanguage();
+  public ProgrammingLanguage language;
+
+  public RunOutcome(ProgrammingLanguage language) { this.language = language; }
 
   /* The feedback from the student in the ExecisePassedDialog */
   public String feedbackDifficulty;
   public String feedbackInterest;
   public String feedback;
 
-  public static RunOutcome newCompilationError(String message)
+  public static RunOutcome newCompilationError(ProgrammingLanguage language, String message)
   {
-    RunOutcome ep = new RunOutcome();
+    RunOutcome ep = new RunOutcome(language);
 
     ep.compilationError = message;
     ep.passedTests      = -1;

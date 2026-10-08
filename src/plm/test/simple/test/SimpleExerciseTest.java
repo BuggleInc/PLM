@@ -54,7 +54,7 @@ public abstract class SimpleExerciseTest {
 
   @AfterAll public static void tearDownAfterClass() throws Exception {}
 
-  @BeforeEach public void setUp() throws Exception { exo.reset(); }
+  @BeforeEach public void setUp() throws Exception { exo.reset(pl); }
 
   @AfterEach public void tearDown() throws Exception {}
 

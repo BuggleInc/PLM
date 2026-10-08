@@ -269,7 +269,7 @@ public class LangScala extends JvmTemplatedLang {
       }
     } catch (PLMCompilerException e) {
       System.err.println(Game.i18n.tr("Compilation error:"));
-      exo.lastResult = RunOutcome.newCompilationError(e.getMessage());
+      exo.lastResult = RunOutcome.newCompilationError(this, e.getMessage());
       System.err.println(e.getMessage());
       if (out != null)
         out.log(exo.lastResult.compilationError);

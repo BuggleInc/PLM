@@ -97,7 +97,8 @@ public abstract class ExerciseTemplated extends Exercise {
 
   protected void computeAnswer()
   {
-    final String id = this.getId();
+    final String id                = this.getId();
+    final ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage(); /* captured now: the user may switch language meanwhile */
     Runnable task   = new Runnable() {
       @Override public void run()
       {
@@ -149,14 +150,13 @@ public abstract class ExerciseTemplated extends Exercise {
         }
 
         /* I/O didn't work. We have to load the files manually */
-        RunOutcome progress = new RunOutcome();
+        RunOutcome progress = new RunOutcome(lang);
 
         String path = null;
         try {
-          path = compile(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION, Game.getInstance().getProgrammingLanguage());
+          path = compile(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION, lang);
         } catch (PLMCompilerException e) {
-          System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " +
-                             Game.getInstance().getProgrammingLanguage().getLang() + ". Please go fix your PLM.");
+          System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
           e.printStackTrace();
           Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
           Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
@@ -164,7 +164,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
         for (World aw : answerWorld) {
           for (Entity ent : aw.getEntities())
-            Game.getInstance().getProgrammingLanguage().runEntity(ent, progress, path);
+            lang.runEntity(ent, progress, path);
           aw.setAnswerWorld();
         }
 
@@ -195,14 +195,14 @@ public abstract class ExerciseTemplated extends Exercise {
   @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
     if (lastResult == null)
-      lastResult = new RunOutcome();
+      lastResult = new RunOutcome(lang);
 
     runAll(WorldKind.CURRENT, runnerVect, lastResult, lang, executable);
   }
 
   @Override public void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException
   {
-    RunOutcome ignored = new RunOutcome();
+    RunOutcome ignored = new RunOutcome(lang);
 
     for (int i = 0; i < initialWorld.size(); i++) {
       answerWorld.get(i).reset(initialWorld.get(i));

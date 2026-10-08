@@ -125,9 +125,9 @@ public abstract class Exercise extends Lecture {
     }
   }
   /** Reset the current worlds to the state of the initial worlds */
-  public void reset()
+  public void reset(ProgrammingLanguage lang)
   {
-    lastResult = new RunOutcome();
+    lastResult = new RunOutcome(lang);
 
     for (int i = 0; i < initialWorld.size(); i++)
       currentWorld.get(i).reset(initialWorld.get(i));
@@ -148,7 +148,7 @@ public abstract class Exercise extends Lecture {
       try {
         verifySource(getSourceFile(lang, 0).getEditorContent());
       } catch (PLMCompilerException e) {
-        lastResult = RunOutcome.newCompilationError(e.getMessage());
+        lastResult = RunOutcome.newCompilationError(lang, e.getMessage());
         if (out != null)
           out.log(lastResult.compilationError);
         throw e;

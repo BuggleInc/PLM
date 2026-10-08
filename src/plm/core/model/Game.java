@@ -357,7 +357,7 @@ public class Game implements IWorldView {
       fireCurrentExerciseChanged(lect);
       if (lect instanceof Exercise) {
         Exercise exo = (Exercise)lect;
-        exo.reset();
+        exo.reset(getProgrammingLanguage());
         setSelectedWorld(exo.getWorld(0));
 
         ProgrammingLanguage fallback = null;
@@ -525,7 +525,7 @@ public class Game implements IWorldView {
   {
     Lecture lecture = this.currentLesson.getCurrentExercise();
     if (lecture instanceof Exercise) {
-      ((Exercise)lecture).reset();
+      ((Exercise)lecture).reset(getProgrammingLanguage());
       fireCurrentExerciseChanged(lecture);
     }
   }
@@ -879,7 +879,7 @@ public class Game implements IWorldView {
   {
     programmingLanguageManager.setCurrent(newLanguage);
     if (getCurrentLesson() != null)
-      ((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new RunOutcome();
+      ((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new RunOutcome(newLanguage);
     fireProgLangChange(newLanguage);
   }
   public ProgrammingLanguage getProgrammingLanguage() { return programmingLanguageManager.current(); }
