@@ -3,20 +3,12 @@ package lessons.welcome.loopdowhile;
 import java.awt.Color;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
-import plm.core.model.Game;
 import plm.universe.GridWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 
 @EntityPrimitives(PoucetEntityPrimitives.class)
 public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle implements PoucetEntityPrimitives {
-  @Override public void forward(int i)
-  {
-    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-  }
-  @Override public void backward(int i)
-  {
-    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-  }
+  public Poucet2Entity() { forbidMultiStep(); }
 
   // Compute the amount of free ways from the current cell
   @Override public boolean crossing()

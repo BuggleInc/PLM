@@ -3,18 +3,10 @@ package lessons.welcome.variables;
 import java.awt.Color;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
-import plm.core.model.Game;
 
 @EntityPrimitives(RunHalfEntity.class)
 public class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
-  @Override public void forward(int i)
-  {
-    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-  }
-  @Override public void backward(int i)
-  {
-    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-  }
+  public RunHalfEntity() { forbidMultiStep(); }
 
   @Primitive public boolean isOverOrange() { return getGroundColor() == Color.orange; }
   /* BINDINGS TRANSLATION */

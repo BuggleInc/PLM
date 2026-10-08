@@ -1,18 +1,10 @@
 package lessons.welcome.methods.args;
 
-import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsArgsEntity extends SimpleBuggle {
-  @Override public void forward(int i)
-  {
-    throw new UnsupportedOperationException(Game.i18n.tr("I cannot let you use forward with an argument in this exercise. Use a loop instead."));
-  }
-  @Override public void backward(int i)
-  {
-    throw new UnsupportedOperationException(Game.i18n.tr("I cannot let you use backward with an argument in this exercise. Use a loop instead."));
-  }
+  public MethodsArgsEntity() { forbidMultiStep(); }
 
   /* BEGIN REMOTE */
   @Override public void run() { move(getY(), getDirection() == Direction.NORTH); }

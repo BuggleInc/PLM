@@ -409,15 +409,19 @@ literal string, so that they get extracted for translation. There are four cases
    ```
    An unknown primitive name makes the construction of the entity fail, so typos get caught by the exercise tests.
 2. *Refusing some calls of a primitive*: override the Java method that the primitive ends up calling, and throw an
-   `UnsupportedOperationException`. For example, the primitive `forward(n)` of the buggles calls `stepForward()` when `n` is 1,
-   and `forward(n)` otherwise. `LoopForEntity` thus accepts `forward()` and refuses any other number of steps:
+   `UnsupportedOperationException`. For example, `LinearHanoiEntity` refuses the direct moves between the first and the last slot:
    ```java
-   @Override public void forward(int i)
+   public void move(int from, int to)
    {
-     throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+     if ((from == 0 && to == 2) || (from == 2 && to == 0))
+       throw new UnsupportedOperationException(Game.i18n.tr("
+            Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
+     super.move(from, to);
    }
    ```
-   `forbid()` would be too coarse here, since it forbids by primitive name, and the Python `forward()` also sends `forward`.
+   Buggle entities can call `forbidMultiStep()` from their constructor to refuse `forward(n)` and `backward(n)`, but still accept
+   `forward()` and `backward()`. This case cannot be done with `forbid()`, which forbids by primitive name: the primitive `forward(n)`
+   calls `stepForward()` when `n` is 1, and `forward(n)` otherwise, and the Python `forward()` also sends `forward`.
 3. *Replacing or extending a primitive*: override it and do what you want, as in `CyclicHanoiEntity`, whose `move()` calls
    `cyclicMove()`, which performs the additional verifications:
    ```java
