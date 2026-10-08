@@ -398,7 +398,7 @@ Some exercises hide or alter a usual primitive for pedagogical reasons, which we
 **How to do it.** Everything goes in the exercise's Java entity, whatever the languages the exercise offers. Do not put checks
 in the Python, Scala or C entities: they would run in the student's process, where the translations are not available (and the
 entities of the non-Java languages ignore everything that precedes `BEGIN REMOTE`). Messages go through `Game.i18n.tr()` with a
-literal string, so that they get extracted for translation. There are three cases:
+literal string, so that they get extracted for translation. There are four cases:
 
 1. *Forbidding a primitive altogether*: call `forbid(primitiveName, reason)` from the constructor of the entity. The student gets
    "Sorry Dave, I cannot let you use <primitiveName> in this exercise. <reason>". Buggle entities can call
@@ -423,6 +423,11 @@ literal string, so that they get extracted for translation. There are three case
    ```java
    public void move(int src, int dst) { cyclicMove(src, dst); }
    ```
+
+4. *Explaining a likely mistake*: declare a primitive that only refuses the call. `Left()` and `Right()` (wrong case), as well as
+   `penDown()` for the buggles and `brushDown()` for the turtles, are primitives whose default method throws an
+   `UnsupportedOperationException` with the explanation. Being primitives, they exist in the glue of every language, so students get
+   the translated message instead of a compilation error.
 
 **How it works.** The student's code only sends the name of the primitive and its arguments (see Remoting above). `CommandExecutor`,
 which acts as the gate, calls the Java method of the real entity by reflection, so an override applies to every language without any glue.

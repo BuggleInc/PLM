@@ -21,22 +21,6 @@ public class SimpleBuggle extends AbstractBuggle {
     // Overridden by children
   }
 
-  // Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
-  public void Left()
-  {
-    if (!haveSeenError())
-      javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."),
-                                                Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-    seenError();
-  }
-  public void Right()
-  {
-    if (!haveSeenError())
-      javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."),
-                                                Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-    seenError();
-  }
-
   /* Raise a window error when an exception is encountered */
   @Override public void stepForward()
   {

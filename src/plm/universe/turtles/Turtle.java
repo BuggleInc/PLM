@@ -201,22 +201,6 @@ public class Turtle extends Entity implements TurtlePrimitives {
   @Override public void left(double angle) { setHeadingRadian(heading - fromAngularUnit(angle)); }
   @Override public void right(double angle) { setHeadingRadian(heading + fromAngularUnit(angle)); }
 
-  // Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
-  public void Left(double angle) { throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead.")); }
-  public void Right(double angle)
-  {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
-  }
-
-  public void brushDown()
-  {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not brushes. Use penDown() instead."));
-  }
-  public void brushUp()
-  {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
-  }
-
   @Override public boolean isPenDown() { return penDown; }
 
   @Override public void penDown() { this.penDown = true; }

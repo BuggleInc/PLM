@@ -2,6 +2,7 @@ package plm.universe.bugglequest;
 
 import java.awt.*;
 import plm.core.lang.primitives.Primitive;
+import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
@@ -15,6 +16,29 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
   @Primitive void brushDown();
 
   @Primitive void brushUp();
+
+  /** Primitives that only explain to the students why their call is refused: wrong case or primitive of the turtles. */
+  @Primitive default void penDown()
+  {
+    throw new UnsupportedOperationException(
+        Game.i18n.tr("Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not pens. Use brushDown() instead."));
+  }
+
+  @Primitive default void penUp()
+  {
+    throw new UnsupportedOperationException(
+        Game.i18n.tr("Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
+  }
+
+  @Primitive default void Left()
+  {
+    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+  }
+
+  @Primitive default void Right()
+  {
+    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+  }
 
   @Primitive Color getGroundColor();
 

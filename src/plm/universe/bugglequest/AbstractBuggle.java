@@ -89,15 +89,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     this.carryBaggle     = other.carryBaggle;
   }
 
-  public void penDown()
-  {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not pens. Use brushDown() instead."));
-  }
-  public void penUp()
-  {
-    throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not pens. Use brushUp() instead."));
-  }
-
   @Override public boolean isBrushDown() { return brushDown; }
 
   @Override public void brushDown()
@@ -174,10 +165,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
       k_val = 0;
     setDirection(direction.right());
   }
-
-  // Make sure that the case issue is detected in Scala by overriding the Left() and Right() methods (see #236)
-  public void Left() { throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead.")); }
-  public void Right() { throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead.")); }
 
   @Override public void back() { setDirection(direction.opposite()); }
 
