@@ -21,7 +21,6 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
-import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
 
@@ -98,11 +97,8 @@ public class ExoTest {
     return result.stream();
   }
 
-  protected void initExerciseState(Lesson l, Exercise exo)
+  protected void initExerciseState(Exercise exo)
   {
-    Game.getInstance().setCurrentLesson(l);
-    Game.getInstance().setCurrentExercise(exo);
-
     // disable delay on world execution
     for (int worldRank = 0; worldRank < exo.getWorldCount(); worldRank++) {
       exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
@@ -112,19 +108,10 @@ public class ExoTest {
   /** Resets current world, populate it with the correction entity, and rerun it */
   protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException, InterruptedException
   {
-    Game.getInstance().setProgramingLanguage(lang);
-
     exo.lastResult = new RunOutcome(lang);
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
-      exo.reset(lang);
-      String executable = exo.compile(null, StudentOrCorrection.CORRECTION, lang);
-      if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals(""))
-        Assertions.fail(exo.getId() + ": compilation error: " + exo.lastResult.compilationError);
-
-      exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, lang, executable);
-
-      exo.check();
+      exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});
     } catch (PLMCompilerException e) {
       e.printStackTrace();
       // compileAll already setup the error message; we just needed to not run the entity in that case

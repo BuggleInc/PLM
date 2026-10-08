@@ -46,19 +46,11 @@ public class LessonRunner extends Thread {
     try {
       game.saveSession(); // for safety reasons;
 
-      if (!game.isCreativeEnabled())
-        exo.reset(lang);
-
       game.setState(Game.GameState.COMPILATION_STARTED);
-      String executable = exo.compile(this.game.getOutputWriter(), StudentOrCorrection.STUDENT, lang);
-      game.setState(Game.GameState.COMPILATION_ENDED);
-
-      game.setState(Game.GameState.EXECUTION_STARTED);
-
-      exo.run(runners, lang, executable);
-
-      if (!game.isCreativeEnabled())
-        exo.check();
+      exo.compileRunCheck(game.getOutputWriter(), StudentOrCorrection.STUDENT, lang, runners, () -> {
+        game.setState(Game.GameState.COMPILATION_ENDED);
+        game.setState(Game.GameState.EXECUTION_STARTED);
+      });
       game.setState(Game.GameState.EXECUTION_ENDED);
 
     } catch (InterruptedException e) {

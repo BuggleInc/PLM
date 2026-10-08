@@ -134,16 +134,25 @@ public abstract class Exercise extends Lecture {
   }
 
   /**
-   * Generate Java source from the user function, and return a textual reference to what got compiled (the path to a jar, a
-   * binary or a script, depending on the language -- see {@link ProgrammingLanguage#compileExo}), to be passed down to
-   * {@link ProgrammingLanguage#runEntity} later on. May be null for languages that don't compile at all (e.g. LightBot).
-   * @param out where to display our errors
-   * @param whatToCompile either STUDENT's provided data or CORRECTION entity
-   * @throws PLMCompilerException
+   * All the steps of the "Run" button, shared by the GUI and the tests: resets the worlds, compiles the code of {@code whatToCompile}, runs it
+   * on every world, then checks the result. The worlds are neither reset nor checked in creative mode. {@link #lastResult} must have been
+   * initialized by the caller.
+   * @param runners receives the entity tasks, so that another thread can stop them
+   * @param onCompiled called once the compilation succeeded, right before the execution
    */
-  public String compile(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
+  public void compileRunCheck(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang, List<Future<?>> runners, Runnable onCompiled)
+      throws PLMCompilerException, InterruptedException
   {
-    String executable = lang.compileExo(this, out, whatToCompile);
+    boolean creative = Game.getInstance().isCreativeEnabled();
+
+    /* Reset */
+    if (!creative)
+      reset(lang);
+
+    /* Compilation */
+    String executable = compile(out, whatToCompile, lang);
+
+    /* Source-level API gating */
     if (whatToCompile == StudentOrCorrection.STUDENT) {
       try {
         verifySource(getSourceFile(lang, 0).getEditorContent());
@@ -154,7 +163,28 @@ public abstract class Exercise extends Lecture {
         throw e;
       }
     }
-    return executable;
+
+    onCompiled.run(); // Change the footer message in the GUI
+
+    /* Execution */
+    run(runners, lang, executable);
+
+    /* Check */
+    if (!creative)
+      check();
+  }
+
+  /**
+   * Generate Java source from the user function, and return a textual reference to what got compiled (the path to a jar, a
+   * binary or a script, depending on the language -- see {@link ProgrammingLanguage#compileExo}), to be passed down to
+   * {@link ProgrammingLanguage#runEntity} later on. May be null for languages that don't compile at all (e.g. LightBot).
+   * @param out where to display our errors
+   * @param whatToCompile either STUDENT's provided data or CORRECTION entity
+   * @throws PLMCompilerException
+   */
+  public String compile(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang) throws PLMCompilerException
+  {
+    return lang.compileExo(this, out, whatToCompile);
   }
 
   /**

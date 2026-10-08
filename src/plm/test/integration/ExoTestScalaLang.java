@@ -13,7 +13,7 @@ public class ExoTestScalaLang extends ExoTest {
 
   @ParameterizedTest @MethodSource("exercises") public void testScalaEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
-    initExerciseState(l, e);
+    initExerciseState(e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA))
       Assertions.fail("Exercise " + e.getId() + " has no Scala entity");
     Assertions.assertTimeoutPreemptively(Duration.ofSeconds(20), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.SCALA); });

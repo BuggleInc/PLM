@@ -14,7 +14,7 @@ public class ExoTestCLang extends ExoTest {
 
   @ParameterizedTest @MethodSource("exercises") public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
-    initExerciseState(l, e);
+    initExerciseState(e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.C))
       Assertions.fail("Exercise " + e.getId() + " has no C entity");
     // Turmite exercises run tens of thousands of remote-primitive round trips, so we need to increase the timeout value.

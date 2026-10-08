@@ -14,7 +14,7 @@ public class ExoTestPythonLang extends ExoTest {
 
   @ParameterizedTest @MethodSource("exercises") public void testPythonEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
-    initExerciseState(l, e);
+    initExerciseState(e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
       Assertions.fail("Exercise " + e.getId() + " has no Python entity");
     // Turmite exercises run tens of thousands of remote-primitive round trips, so we need to increase the timeout value.

@@ -13,7 +13,7 @@ public class ExoTestJavaLang extends ExoTest {
 
   @ParameterizedTest @MethodSource("exercises") public void testJavaEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
-    initExerciseState(l, e);
+    initExerciseState(e);
     Assertions.assertTimeoutPreemptively(Duration.ofSeconds(20), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.JAVA); });
   }
 }
