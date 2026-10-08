@@ -1,7 +1,6 @@
 package plm.universe.bat;
 
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.Game;
 
 public class BatTest {
   private String funName;
@@ -43,7 +42,7 @@ public class BatTest {
 
   boolean isVisible() { return visible; }
 
-  public String stringParameter(Object o) { return ValueFormatter.format(o, Game.getInstance().getProgrammingLanguage()); }
+  public String stringParameter(Object o, ProgrammingLanguage lang) { return ValueFormatter.format(o, lang); }
   public String getName(ProgrammingLanguage lang)
   {
     if (name == null) {

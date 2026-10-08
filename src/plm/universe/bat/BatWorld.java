@@ -9,8 +9,6 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
-import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.World;
@@ -64,12 +62,8 @@ public class BatWorld extends World {
       writer.write(t.toString());
       writer.write("  ");
       writer.write(e.getTest(i));
-      writer.write(" ~> current:");
-      World current = ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.CURRENT).elementAt(0);
-      writer.write(serialize(((BatWorld)current).getTests().get(i).result));
-      writer.write(" ; correction:");
-      World correction = ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER).elementAt(0);
-      writer.write(serialize(((BatWorld)correction).getTests().get(i).result));
+      writer.write(" ~> result:");
+      writer.write(serialize(t.result));
       writer.write("\n");
       i++;
     }

@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.WorldView;
 import plm.universe.World;
@@ -34,6 +35,7 @@ public class BatWorldView extends WorldView {
     if (answerWorld == null)
       return; // Play safe when the exercise is not completely setup
 
+    ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
     for (int i = 0; i < tests.size(); i++) {
       BatTest currTest = tests.get(i);
       Object expected  = answerWorld.tests.get(i).result;
@@ -64,8 +66,8 @@ public class BatWorldView extends WorldView {
             g2.setColor(Color.white);
         }
       }
-      g2.drawString(currTest.getName(Game.getInstance().getProgrammingLanguage()) + (answered ? " gives " + actual : "") +
-                        (answered && !correct ? " instead of " + currTest.stringParameter(expected) : ""),
+      g2.drawString(currTest.getName(lang) + (answered ? " gives " + actual : "") +
+                        (answered && !correct ? " instead of " + currTest.stringParameter(expected, lang) : ""),
                     0, (i + 1) * 20);
     }
   }

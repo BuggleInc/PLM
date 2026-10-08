@@ -126,7 +126,7 @@ public abstract class Lecture {
       return dependingLectures;
     Vector<Lecture> res = new Vector<Lecture>();
     boolean found       = false;
-    for (Lecture l : Game.getInstance().getCurrentLesson().exercises()) {
+    for (Lecture l : lesson.exercises()) {
       if (found) {  // previous loop iteration found the current exo. I'm now seeing the next one
         res.add(l); // Return this next exo.
         return res;
