@@ -4,7 +4,6 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class BaggleSeekerEntity extends SimpleBuggle {
 
-
 	/* BEGIN REMOTE */
 	override def run(): Unit = { 
 		/* BEGIN SOLUTION */

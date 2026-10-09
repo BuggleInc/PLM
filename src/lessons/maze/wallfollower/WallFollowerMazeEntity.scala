@@ -1,9 +1,6 @@
 package lessons.maze.wallfollower;
 
-import plm.universe.Direction;
-
 class WallFollowerMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
-	val uselessVariableExistingJustToMakeSureThatEclipseWontRemoveTheImport:Direction=null; /* If removed, user code can't use directions easily */
 	 
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */

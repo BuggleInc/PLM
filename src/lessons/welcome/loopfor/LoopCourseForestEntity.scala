@@ -1,44 +1,8 @@
 package lessons.welcome.loopfor;
 
-import java.awt.Color;
 import plm.universe.bugglequest.SimpleBuggle
-import plm.core.model.Game
 
 class LoopCourseForestEntity extends SimpleBuggle {
-
-	var colors = Array(
-			new Color(0,155,0),
-			new Color(50,155,0),
-			new Color(100,155,0),
-			new Color(140,155,0),
-			new Color(160,155,0),
-			new Color(180,155,0),
-			new Color(200,155,0),
-			new Color(210,155,0), 
-			Color.red)
-	
-	override def stepForward(): Unit = {
-		if (!haveSeenError())
-			super.stepForward();
-		var c = getGroundColor();
-		if (c.equals(Color.blue)) {
-			if (!haveSeenError())
-				seenError(Game.i18n.tr("You fall into water."));
-		} else {
-			var nextColor:Color = null;
-			for (i <- 0 to colors.length-1)
-				if (colors(i).equals(c)) { 
-					if (i==colors.length-1)
-						nextColor = colors(i);
-					else
-						nextColor = colors(i+1);
-				}
-			setBrushColor(nextColor);
-			brushDown();
-			brushUp();
-		}
-	}
-
 	/* BEGIN REMOTE */
 	override def run(): Unit = {
 		/* BEGIN SOLUTION */

@@ -1,6 +1,5 @@
 package lessons.welcome.variables;
 
-
 class RunFourEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN REMOTE */

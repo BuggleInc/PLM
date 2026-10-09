@@ -4,7 +4,6 @@ import plm.universe.turtles.Turtle
 import java.awt.Color
 
 class TreeEntity extends Turtle {
-
 	
 	/* BEGIN REMOTE */
 	/* BEGIN TEMPLATE */

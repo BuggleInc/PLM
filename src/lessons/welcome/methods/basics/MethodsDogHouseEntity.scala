@@ -1,9 +1,6 @@
 package lessons.welcome.methods.basics;
 
 import plm.universe.bugglequest.SimpleBuggle
-import plm.core.model.Game
-import scala.collection.JavaConversions
-import plm.core.model.lesson.Exercise
 
 class MethodsDogHouseEntity extends SimpleBuggle {
 	/* BEGIN REMOTE */

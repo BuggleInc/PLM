@@ -1,7 +1,5 @@
 package plm.test.simple
 
-import plm.test.simple.SimpleWorld; // Do not optimize this away, or it will be missing when running the test
-
 class SimpleExerciseEntity extends plm.test.simple.SimpleExerciseEntity {
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */

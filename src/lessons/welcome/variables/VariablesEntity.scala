@@ -1,9 +1,6 @@
 package lessons.welcome.variables;
 
-
 class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
-
-
 
 	/* BEGIN REMOTE */
 	override def run(): Unit = {

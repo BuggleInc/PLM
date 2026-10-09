@@ -5,7 +5,6 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class MethodsArgsEntity extends SimpleBuggle {
 
-
 	/* BEGIN REMOTE */
 	override def run(): Unit = { 
 		move(getY(),getDirection() == Direction.NORTH); 

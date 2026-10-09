@@ -3,12 +3,6 @@ package lessons.welcome.methods.basics;
 import plm.core.model.Game
 
 class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
-	override def forward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("I cannot let you use forward with an argument. Use a loop instead."));
-	}
-	override def backward(i: Int): Unit = {
-		throw new RuntimeException(Game.i18n.tr("I cannot let you use backward with an argument. Use a loop instead."));
-	}
 
 	/* BEGIN REMOTE */
 	override def run(): Unit = { 
