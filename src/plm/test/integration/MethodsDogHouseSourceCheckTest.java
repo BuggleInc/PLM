@@ -31,7 +31,6 @@ public class MethodsDogHouseSourceCheckTest {
       if (l.getClass().getSimpleName().equals("MethodsDogHouse"))
         exo = (Exercise)l;
     Assertions.assertNotNull(exo, "MethodsDogHouse not found in lessons.welcome");
-    g.setCurrentExercise(exo);
   }
 
   private static ProgrammingLanguage language(String name)
@@ -57,7 +56,6 @@ public class MethodsDogHouseSourceCheckTest {
   @ParameterizedTest @ValueSource(strings = {"Java", "Python"}) public void testLeftCalls(String langName) throws Exception
   {
     ProgrammingLanguage lang = language(langName);
-    Game.getInstance().setProgramingLanguage(lang);
 
     boolean py      = lang.isPython();
     String comment  = py ? "# left()\n" : "// left()\n";
