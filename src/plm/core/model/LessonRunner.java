@@ -41,8 +41,6 @@ public class LessonRunner extends Thread {
     final Exercise exo = (Exercise)lect;
     final ProgrammingLanguage lang = this.game.getProgrammingLanguage();
 
-    exo.lastResult = new RunOutcome(lang);
-
     try {
       game.saveSession(); // for safety reasons;
 

@@ -108,7 +108,6 @@ public class ExoTest {
   /** Resets current world, populate it with the correction entity, and rerun it */
   protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException, InterruptedException
   {
-    exo.lastResult = new RunOutcome(lang);
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     try {
       exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});

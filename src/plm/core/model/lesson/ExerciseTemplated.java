@@ -194,9 +194,6 @@ public abstract class ExerciseTemplated extends Exercise {
 
   @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
-    if (lastResult == null)
-      lastResult = new RunOutcome(lang);
-
     runAll(WorldKind.CURRENT, runnerVect, lastResult, lang, executable);
   }
 
