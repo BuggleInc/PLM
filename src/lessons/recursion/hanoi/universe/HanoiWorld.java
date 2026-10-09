@@ -1,6 +1,9 @@
 package lessons.recursion.hanoi.universe;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Vector;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
@@ -8,6 +11,8 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.core.utils.FileUtils;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
@@ -221,6 +226,49 @@ public class HanoiWorld extends World {
     return slotsColor[slot].get(pos);
   }
   public void setColor(int slot, int pos, Color c) { slotsColor[slot].set(pos, c); }
+
+  @Override public boolean haveIO() { return true; }
+
+  /** Reads a world written by writeToFile() */
+  @SuppressWarnings("unchecked") @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      HanoiWorld res = new HanoiWorld(readField(reader, path, "HanoiWorld"), new Integer[0], new Integer[0], new Integer[0]);
+      res.moveCount  = Integer.parseInt(readField(reader, path, "Moves"));
+      int slotAmount = Integer.parseInt(readField(reader, path, "Slots"));
+      res.slotsVal   = new Vector[slotAmount];
+      res.slotsColor = new Vector[slotAmount];
+      for (int slot = 0; slot < slotAmount; slot++) {
+        res.slotsVal[slot]   = new Vector<Integer>();
+        res.slotsColor[slot] = new Vector<Color>();
+        for (String disk : readField(reader, path, "Slot").split(" ")) {
+          if (disk.isEmpty())
+            continue;
+          String[] parts = disk.split(":");
+          res.slotsVal[slot].add(Integer.parseInt(parts[0]));
+          res.slotsColor[slot].add(new Color(Integer.parseInt(parts[1], 16)));
+        }
+      }
+      new HanoiEntity("worker", res);
+      return res;
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+      throw new BrokenWorldFileException(path + ".map: malformed number or disk (" + e.getMessage() + ").");
+    }
+  }
+
+  /** Writes the world, one line per slot. Each disk of a slot is written as "radius:RRGGBB", from the bottom to the top. */
+  @Override public void writeToFile(BufferedWriter writer) throws IOException
+  {
+    writer.write("HanoiWorld: " + getName() + "\n");
+    writer.write("Moves: " + moveCount + "\n");
+    writer.write("Slots: " + slotsVal.length + "\n");
+    for (int slot = 0; slot < slotsVal.length; slot++) {
+      writer.write("Slot: ");
+      for (int i = 0; i < slotsVal[slot].size(); i++)
+        writer.write((i > 0 ? " " : "") + slotsVal[slot].get(i) + ":" + Integer.toHexString(slotsColor[slot].get(i).getRGB() & 0xFFFFFF));
+      writer.write("\n");
+    }
+  }
 
   /**
    * Return the panel which let the user to interact dynamically with the world
