@@ -3,6 +3,8 @@ package plm.test.integration;
 import java.time.Duration;
 import java.util.Set;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import plm.core.model.BrokenProgrammingLanguageException;
@@ -12,7 +14,10 @@ import plm.core.model.lesson.Lesson;
 
 public class ExoTestCLang extends ExoTest {
 
-  @ParameterizedTest @MethodSource("exercises") public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+  @Execution(ExecutionMode.CONCURRENT)
+  @ParameterizedTest
+  @MethodSource("exercises")
+  public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.C))

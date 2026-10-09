@@ -545,8 +545,6 @@ Preparing the next release cycle
 
 ## TODOs
 
-TODO: create an Exercise.runAll(WorldKind), to come after Exercise.compile()
-
 TODO: Test that the lines of the compilation errors and of the sanitizer reports of C are the editor's (the stack trace test of
       SimpleExercise is disabled for C, as abort() leaves no sanitizer report)
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
@@ -554,5 +552,3 @@ TODO: Precompile the correction entities within the jar file so that they don't 
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should
       include the Game singleton that encompasses the model part of the MVC thing.
 TODO: benchmark the tests to understand where the time goes, and optimize this out
-
-TODO: remove the global state that prevent the tests from running in parallel (such as getCurrentExercise or getCurrentLanguage)
