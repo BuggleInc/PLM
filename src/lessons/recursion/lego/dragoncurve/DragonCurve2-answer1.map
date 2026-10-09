@@ -1,0 +1,5 @@
+TurtleWorld: dragon(2,100.,100.,200.,200.)
+Size: 300.0x300.0
+Turtle	200.0	200.0	0.0	ff0000ff	true	true	Lee
+Line	100.0	100.0	200.0	100.0	ffff0000
+Line	200.0	100.0	200.0	200.0	ff0000ff

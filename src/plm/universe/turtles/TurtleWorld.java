@@ -1,6 +1,11 @@
 package plm.universe.turtles;
 
+import static java.lang.Double.parseDouble;
+
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,6 +17,8 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.core.utils.FileUtils;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
@@ -106,7 +113,66 @@ public class TurtleWorld extends World {
   @Override public WorldView getView() { return new TurtleWorldView(this); }
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_turtle.png"); }
 
-  // TODO implement world IO
+  @Override public boolean haveIO() { return true; }
+
+  /** Reads a world written by writeToFile() */
+  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      TurtleWorld res = new TurtleWorld(readField(reader, path, "TurtleWorld"));
+      String[] size   = readField(reader, path, "Size").split("x");
+      res.width       = parseDouble(size[0]);
+      res.height      = parseDouble(size[1]);
+
+      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+        String[] t = line.split("\t");
+        switch (t[0]) {
+          case "Turtle" -> {
+            Turtle turtle = new Turtle(res, t[7], parseDouble(t[1]), parseDouble(t[2]), 0., new Color(Integer.parseUnsignedInt(t[4], 16), true));
+            turtle.setHeadingRadian(parseDouble(t[3]));
+            if (!Boolean.parseBoolean(t[5]))
+              turtle.penUp();
+            if (!Boolean.parseBoolean(t[6]))
+              turtle.hide();
+          }
+          case "Line" ->
+            res.shapes.add(
+                new Line(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), parseDouble(t[4]), new Color(Integer.parseUnsignedInt(t[5], 16), true)));
+          case "Circle" ->
+            res.shapes.add(new Circle(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), new Color(Integer.parseUnsignedInt(t[4], 16), true)));
+          case "Hint" -> res.sizeHints.add(new SizeHint(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), parseDouble(t[4]), t[5]));
+          default -> throw new BrokenWorldFileException(path + ".map: unknown line '" + line + "'.");
+        }
+      }
+      return res;
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+      throw new BrokenWorldFileException(path + ".map: malformed number or line (" + e.getMessage() + ").");
+    }
+  }
+
+  /**
+   * Writes the world: its size, then one tab-separated line per turtle, shape and size hint, in this order.
+   * Colors are written as hexadecimal ARGB and doubles with their full precision.
+   */
+  @Override public void writeToFile(BufferedWriter writer) throws IOException
+  {
+    writer.write("TurtleWorld: " + getName() + "\n");
+    writer.write("Size: " + width + "x" + height + "\n");
+    for (Entity e : entities) {
+      Turtle t = (Turtle)e;
+      writer.write("Turtle\t" + t.getX() + "\t" + t.getY() + "\t" + t.getHeadingRadian() + "\t" + Integer.toHexString(t.getColor().getRGB()) + "\t" +
+                   t.isPenDown() + "\t" + t.isVisible() + "\t" + t.getName() + "\n");
+    }
+    synchronized (shapes) {
+      for (Shape s : shapes)
+        if (s instanceof Line l)
+          writer.write("Line\t" + l.x1 + "\t" + l.y1 + "\t" + l.x2 + "\t" + l.y2 + "\t" + Integer.toHexString(l.color.getRGB()) + "\n");
+        else if (s instanceof Circle c)
+          writer.write("Circle\t" + c.x + "\t" + c.y + "\t" + c.radius + "\t" + Integer.toHexString(c.color.getRGB()) + "\n");
+    }
+    for (SizeHint h : sizeHints)
+      writer.write("Hint\t" + h.x1 + "\t" + h.y1 + "\t" + h.x2 + "\t" + h.y2 + "\t" + h.text + "\n");
+  }
 
   @Override public String toString()
   {

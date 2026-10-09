@@ -73,6 +73,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
     super(lesson, lesson.getClass().getName() + "." + name);
 
     setName(name);
+    worldFileName = nameOfCorrectionEntity().replaceAll("Entity$", ""); // This class is shared by all exercises: each needs its own cache files
     tabName       = "Source";
     World myWorld = new TurtleWorld(name, worldWidth, worldHeight);
     Turtle t      = new Turtle(myWorld, "Hawksbill", tx, ty);

@@ -1,0 +1,4 @@
+TurtleWorld: pentaKoch(0,200)
+Size: 400.0x400.0
+Turtle	300.0	250.0	0.0	ffff0000	true	true	Hawksbill
+Line	100.0	250.0	300.0	250.0	ffff0000
