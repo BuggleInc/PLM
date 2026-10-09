@@ -43,6 +43,10 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   - `currentWorld`: the current state while executing the student's code, initially equal to `initialWorld`. If the
     `currentWorld` becomes semantically equal to `answerWorld` after executing the student code, the exercise is passed.
 
+The entry point of the whole execution is `Exercise.compileRunCheck()`. It chains the steps below, from the reset to the check, and
+is called by `LessonRunner` when the student clicks "Run" (compiling the student's code) and by the integration tests (compiling the
+correction entity).
+
 Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
 * **Templating**: The templating entity of the current language is split in parts, and a new source code is generated from the
@@ -63,7 +67,8 @@ Here are the steps of the exercise execution:
 * **Check**: when all entities are terminated, `Exercise.check()` compares each `currentWorld` to its `answerWorld` via
   `World.winning()`. On mismatch, `World.diffTo()` produces a human-readable diff shown to the student. All the universes but
   Lander use a structural equality between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks
-  whether the lunar lander reached a pad or crashed.
+  whether the lunar lander reached a pad or crashed. In creative mode (a flag of `Game`), the worlds are neither reset nor
+  checked.
 * **Session saving**: each student attempt is saved in a local git repository along with the exercise outcome (compilation
   error, failed objective or passed). The goal is to enable learning analytics if the student allowed the export of her
   anonymized data to an online repository.
@@ -288,9 +293,9 @@ for/cancels help, or reads a hint:
   The Python and C entities have an `IMPORT` section, which a test checks to be honored.
 * Integration testing driven by `ExoTest`/`LessonTest` and living in `src/plm/test/integration` (`ExoTestJavaLang`,
    `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`) run every exercise's own correction entity, in every language it
-   supports, through the normal compile/run/check pipeline and assert it passes. This is a regression test suite over the
-   pedagogical content itself: it catches broken exercises (e.g. a correction that no longer matches its `-answerN.map`) rather
-   than testing application logic in isolation.
+   supports, through `Exercise.compileRunCheck()` and assert it passes. Their test methods run in parallel (see `IntegrationTests`).
+   This is a regression test suite over the pedagogical content itself: it catches broken exercises (e.g. a correction that no
+   longer matches its `-answerN.map`) rather than testing application logic in isolation.
 * `plm.test.git.*` tests the session persistence logic.
 * `plm.test.gui.MainFrameSmokeTest` is a Swing smoke test (via AssertJ-Swing) that needs a display (`xvfb` in CI).
 
