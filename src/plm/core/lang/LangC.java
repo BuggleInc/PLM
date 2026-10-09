@@ -75,12 +75,8 @@ public class LangC extends TemplatedRemoteLang {
   {
 
     List<SourceFile> sfs = exo.getSourceFilesList(this);
-    if (sfs.isEmpty()) {
-      String msg = exo.getName() + ": No source to compile";
-      System.err.println(msg);
-      exo.lastResult = RunOutcome.newCompilationError(this, msg);
-      throw new PLMCompilerException(msg, null);
-    }
+    if (sfs.isEmpty())
+      throw new PLMCompilerException(exo.getName() + ": No source to compile", null);
 
     String execPath = null;
     for (SourceFile sf : sfs) {
@@ -158,11 +154,7 @@ public class LangC extends TemplatedRemoteLang {
           System.err.println(Game.i18n.tr("Compilation error. The linking command " + linkCmd + " failed:"));
         else
           System.err.println(Game.i18n.tr("Compilation error. The linking command failed:"));
-        System.err.println(e.getMessage());
         System.err.println(code);
-
-        exo.lastResult = RunOutcome.newCompilationError(this, e.getMessage());
-
         throw e;
       }
 

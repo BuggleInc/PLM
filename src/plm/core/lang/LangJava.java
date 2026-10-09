@@ -17,14 +17,12 @@ import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.CodeCreation;
-import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
@@ -195,12 +193,6 @@ public class LangJava extends JvmTemplatedLang {
         }
       }
     } catch (PLMCompilerException e) {
-      System.err.println(Game.i18n.tr("Compilation error:"));
-      exo.lastResult = RunOutcome.newCompilationError(this, e.getMessage());
-      System.err.println(e.getMessage());
-      if (out != null)
-        out.log(exo.lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
-
       if (Game.getInstance().isDebugEnabled())
         for (String source : generatedSources)
           System.out.println("Source file " + source);

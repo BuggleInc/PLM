@@ -14,7 +14,6 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
@@ -147,12 +146,8 @@ public class LangPython extends TemplatedRemoteLang {
           output        = shiftLines(ENTITY_LOCATION, output, executable);
           int retcode   = proc.waitFor();
           if (retcode != 0) {
-            PLMCompilerException e = new PLMCompilerException("Compiling " + entityFile.toString() + " yielded the following output:\n" + output,
-                                                              Set.of(entityFile.toString()), new Error());
-            exo.lastResult         = RunOutcome.newCompilationError(this, e.getMessage());
-            if (out != null)
-              out.log(e.getMessage());
-            throw e;
+            throw new PLMCompilerException("Compiling " + entityFile.toString() + " yielded the following output:\n" + output, Set.of(entityFile.toString()),
+                                           new Error());
           }
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt();

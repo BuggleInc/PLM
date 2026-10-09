@@ -58,18 +58,7 @@ public abstract class SimpleExerciseTest {
 
   @AfterEach public void tearDown() throws Exception {}
 
-  @Test public void testSolutionShouldCompil()
-  {
-    try {
-      pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
-    } catch (PLMCompilerException e) {
-      e.printStackTrace();
-    }
-    if (exo.lastResult.compilationError != null && !exo.lastResult.compilationError.equals("")) {
-      Assertions.fail(getClass().getName().replace("Test", "Entity") + " should compile and not throw the following error:\n" +
-                      exo.lastResult.compilationError);
-    }
-  }
+  @Test public void testSolutionShouldCompil() throws PLMCompilerException { pl.compileExo(exo, null, StudentOrCorrection.CORRECTION); }
 
   @Test public abstract void testSolutionShouldExecuteProperly() throws PLMCompilerException, InterruptedException;
 

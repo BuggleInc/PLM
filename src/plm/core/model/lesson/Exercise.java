@@ -150,19 +150,19 @@ public abstract class Exercise extends Lecture {
     else
       reset(lang);
 
-    /* Compilation */
-    String executable = lang.compileExo(this, out, whatToCompile);
-
-    /* Source-level API gating */
-    if (whatToCompile == StudentOrCorrection.STUDENT) {
-      try {
+    /* Compilation, then source-level API gating. Every compilation error is reported here, whichever language raised it */
+    String executable;
+    try {
+      executable = lang.compileExo(this, out, whatToCompile);
+      if (whatToCompile == StudentOrCorrection.STUDENT)
         verifySource(getSourceFile(lang, 0).getEditorContent());
-      } catch (PLMCompilerException e) {
-        lastResult = RunOutcome.newCompilationError(lang, e.getMessage());
-        if (out != null)
-          out.log(lastResult.compilationError);
-        throw e;
-      }
+    } catch (PLMCompilerException e) {
+      System.err.println(Game.i18n.tr("Compilation error:"));
+      System.err.println(e.getMessage());
+      lastResult = RunOutcome.newCompilationError(lang, e.getMessage());
+      if (out != null)
+        out.log(lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
+      throw e;
     }
 
     onCompiled.run(); // Change the footer message in the GUI
