@@ -112,18 +112,13 @@ public class ExoTest {
     try {
       exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});
     } catch (PLMCompilerException e) {
-      e.printStackTrace();
-      // compileAll already setup the error message; we just needed to not run the entity in that case
-    } catch (UnsupportedOperationException uoe) {
-      System.err.println("UnsupportedOperationException while executing" + exo.getId());
-      throw uoe;
-    }
-
-    if (exo.lastResult.compilationError != null) {
-      String msg = exo.getId() + ": compilation error: " + exo.lastResult.compilationError + ". Compiled file:\n" +
+      String msg = exo.getId() + ": compilation error: " + e.getMessage() + ". Compiled file:\n" +
                    ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getSegments(StudentOrCorrection.CORRECTION).body()) : "none");
       System.err.println(msg);
       Assertions.fail(msg);
+    } catch (UnsupportedOperationException uoe) {
+      System.err.println("UnsupportedOperationException while executing" + exo.getId());
+      throw uoe;
     }
 
     if (exo.lastResult.outcome != RunOutcome.kind.PASS) {

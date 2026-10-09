@@ -1,7 +1,6 @@
 package lessons.welcome.methods.basics;
 
 import java.awt.Color;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import plm.core.PLMCompilerException;
 import plm.core.model.Game;
@@ -29,10 +28,7 @@ public class MethodsDogHouse extends ExerciseTemplated {
   /** Refuses code that does not call left() exactly once, ignoring the comments and strings */
   @Override protected void verifySource(String code) throws PLMCompilerException
   {
-    Matcher m = LEFT_CALL.matcher(COMMENTS_AND_STRINGS.matcher(code).replaceAll(" "));
-    int calls = 0;
-    while (m.find())
-      calls++;
+    long calls = LEFT_CALL.matcher(COMMENTS_AND_STRINGS.matcher(code).replaceAll(" ")).results().count();
     if (calls != 1)
       throw new PLMCompilerException(Game.i18n.tr("Your code must call left() exactly once, but it contains {0} calls. Factorize it in your method.", calls));
   }
