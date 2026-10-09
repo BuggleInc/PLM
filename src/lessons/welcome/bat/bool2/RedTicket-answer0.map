@@ -1,0 +1,12 @@
+BatWorld: redTicket
+Test	true	[3:i2:i2:i2]	i10
+Test	true	[3:i2:i2:i1]	i0
+Test	true	[3:i0:i0:i0]	i5
+Test	false	[3:i2:i0:i0]	i1
+Test	false	[3:i1:i1:i1]	i5
+Test	false	[3:i1:i2:i1]	i0
+Test	false	[3:i1:i2:i0]	i1
+Test	false	[3:i0:i2:i2]	i1
+Test	false	[3:i1:i2:i2]	i1
+Test	false	[3:i0:i2:i0]	i0
+Test	false	[3:i1:i1:i2]	i0

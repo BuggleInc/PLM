@@ -12,7 +12,7 @@ public class AverageValue extends BatExercise {
     super(lesson);
 
     int[] randomTab = new int[30];
-    Random r        = new Random();
+    Random r        = new Random(0); // Fixed seed: the answer world is cached on disk
     for (int i = 0; i < randomTab.length; i++)
       randomTab[i] = r.nextInt(35);
 

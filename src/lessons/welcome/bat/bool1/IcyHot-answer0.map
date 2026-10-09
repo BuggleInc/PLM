@@ -1,0 +1,7 @@
+BatWorld: icyHot
+Test	true	[2:i120:i-1]	b1
+Test	true	[2:i-1:i120]	b1
+Test	true	[2:i2:i120]	b0
+Test	false	[2:i-1:i100]	b0
+Test	false	[2:i-2:i-2]	b0
+Test	false	[2:i120:i120]	b0

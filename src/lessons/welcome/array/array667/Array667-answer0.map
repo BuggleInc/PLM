@@ -1,0 +1,14 @@
+BatWorld: array667
+Test	true	[1:i[3:i6:i6:i2]]	i1
+Test	true	[1:i[4:i6:i6:i2:i6]]	i1
+Test	true	[1:i[4:i6:i7:i2:i6]]	i1
+Test	false	[1:i[5:i6:i6:i2:i6:i7]]	i2
+Test	false	[1:i[3:i1:i6:i3]]	i0
+Test	false	[1:i[2:i6:i1]]	i0
+Test	false	[1:i[0]]	i0
+Test	false	[1:i[4:i3:i6:i7:i6]]	i1
+Test	false	[1:i[4:i3:i6:i6:i7]]	i2
+Test	false	[1:i[4:i6:i3:i6:i6]]	i1
+Test	false	[1:i[4:i6:i7:i6:i6]]	i2
+Test	false	[1:i[5:i1:i2:i3:i5:i6]]	i0
+Test	false	[1:i[5:i1:i2:i3:i6:i6]]	i1

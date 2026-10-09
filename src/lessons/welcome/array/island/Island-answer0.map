@@ -1,0 +1,6 @@
+BatWorld: island
+Test	true	[1:i[11:i0:i1:i2:i2:i1:i0:i1:i2:i2:i1:i0]]	i4
+Test	true	[1:i[15:i0:i1:i2:i3:i4:i3:i2:i1:i2:i3:i4:i3:i2:i1:i0]]	i7
+Test	false	[1:i[21:i0:i1:i0:i1:i0:i1:i0:i1:i0:i1:i0:i1:i0:i1:i0:i1:i0:i1:i0:i1:i0]]	i10
+Test	false	[1:i[6:i0:i0:i0:i0:i0:i0]]	i0
+Test	false	[1:i[6:i0:i0:i2:i4:i0:i0]]	i2

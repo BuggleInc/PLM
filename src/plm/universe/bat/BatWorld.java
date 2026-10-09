@@ -1,7 +1,9 @@
 package plm.universe.bat;
 
+import static plm.core.ValueSerializer.deserialize;
 import static plm.core.ValueSerializer.serialize;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.List;
@@ -11,6 +13,8 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.core.utils.FileUtils;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.World;
 
 public class BatWorld extends World {
@@ -54,19 +58,41 @@ public class BatWorld extends World {
   }
   @Override public WorldView getView() { return new BatWorldView(this); }
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_bat.png"); }
+  @Override public boolean haveIO() { return true; }
+
+  /** Reads a world written by writeToFile() */
+  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      BatWorld res = new BatWorld(readField(reader, path, "BatWorld"));
+      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+        String[] fields = line.split("\t");
+        BatTest test    = new BatTest(res.getName(), Boolean.parseBoolean(fields[1]), deserialize(fields[2]));
+        test.setResult(deserialize(fields[3]));
+        res.tests.add(test);
+      }
+      return res;
+    } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) { // deserialize() throws IllegalArgumentException
+      throw new BrokenWorldFileException(path + ".map: malformed test (" + e.getMessage() + ").");
+    }
+  }
+
+  /**
+   * Writes the world, then one tab-separated line per test: its visibility, its parameters and its result.
+   * Values use the ValueSerializer format. The write fails if a value contains a tab or a line break, as they would corrupt the file.
+   * Nothing is written in that case, so that a truncated list of tests is never mistaken for a complete one when reading.
+   */
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
-    BatEntity e = (BatEntity)getEntity(0);
-    int i       = 0;
+    StringBuilder sb = new StringBuilder("BatWorld: " + getName() + "\n");
     for (BatTest t : tests) {
-      writer.write(t.toString());
-      writer.write("  ");
-      writer.write(e.getTest(i));
-      writer.write(" ~> result:");
-      writer.write(serialize(t.result));
-      writer.write("\n");
-      i++;
+      String params = serialize(t.parameters);
+      String result = serialize(t.result);
+      if ((params + result).matches("(?s).*[\t\n\r].*"))
+        throw new IOException("Cannot cache the tests of " + getName() + ": the test " + params + " contains a tab or a line break.");
+      sb.append("Test\t" + t.visible + "\t" + params + "\t" + result + "\n");
     }
+    writer.write(sb.toString());
   }
 
   /* So that the view can display them */

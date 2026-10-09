@@ -1,0 +1,11 @@
+BatWorld: indexOfValue
+Test	true	[2:i[10:i2:i-3:i1:i17:i-13:i5:i3:i1:i9:i18]:i17]	i3
+Test	true	[2:i[10:i2:i-3:i1:i17:i-13:i5:i3:i1:i9:i18]:i15]	i-1
+Test	true	[2:i[15:i-10:i8:i-11:i-13:i10:i13:i1:i-14:i19:i-6:i7:i-13:i13:i-13:i10]:i17]	i-1
+Test	true	[2:i[15:i-10:i8:i-11:i-13:i10:i13:i1:i-14:i19:i-6:i7:i-13:i13:i-13:i10]:i10]	i4
+Test	true	[2:i[20:i-1:i9:i-15:i-9:i-15:i-7:i-12:i9:i17:i-13:i15:i-2:i-3:i-13:i-2:i-15:i-5:i-13:i-8:i17]:i13]	i-1
+Test	true	[2:i[20:i-1:i9:i-15:i-9:i-15:i-7:i-12:i9:i17:i-13:i15:i-2:i-3:i-13:i-2:i-15:i-5:i-13:i-8:i17]:i9]	i1
+Test	false	[2:i[25:i2:i-5:i13:i-12:i0:i-15:i-10:i-5:i-15:i-2:i-14:i4:i6:i12:i-8:i-1:i12:i-9:i11:i17:i16:i-12:i17:i8:i-13]:i-4]	i-1
+Test	false	[2:i[25:i2:i-5:i13:i-12:i0:i-15:i-10:i-5:i-15:i-2:i-14:i4:i6:i12:i-8:i-1:i12:i-9:i11:i17:i16:i-12:i17:i8:i-13]:i8]	i23
+Test	false	[2:i[25:i-8:i18:i5:i-2:i18:i12:i-9:i18:i-12:i-12:i-12:i-8:i12:i16:i1:i5:i17:i2:i-15:i-5:i-3:i-2:i-13:i14:i-10]:i5]	i2
+Test	false	[2:i[25:i-8:i18:i5:i-2:i18:i12:i-9:i18:i-12:i-12:i-12:i-8:i12:i16:i1:i5:i17:i2:i-15:i-5:i-3:i-2:i-13:i14:i-10]:i-15]	i18

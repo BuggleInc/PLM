@@ -1,0 +1,13 @@
+BatWorld: in3050
+Test	true	[2:i30:i31]	b1
+Test	true	[2:i30:i41]	b0
+Test	true	[2:i40:i50]	b1
+Test	false	[2:i40:i51]	b0
+Test	false	[2:i39:i50]	b0
+Test	false	[2:i50:i39]	b0
+Test	false	[2:i40:i39]	b1
+Test	false	[2:i49:i48]	b1
+Test	false	[2:i50:i40]	b1
+Test	false	[2:i50:i51]	b0
+Test	false	[2:i35:i36]	b1
+Test	false	[2:i35:i45]	b0

@@ -1,0 +1,13 @@
+BatWorld: countTeen
+Test	true	[4:i13:i20:i10:i54]	i1
+Test	true	[4:i20:i19:i13:i15]	i3
+Test	true	[4:i20:i10:i13:i42]	i1
+Test	false	[4:i1:i20:i12:i54]	i0
+Test	false	[4:i19:i20:i42:i12]	i1
+Test	false	[4:i12:i16:i20:i19]	i2
+Test	false	[4:i42:i12:i9:i20]	i0
+Test	false	[4:i12:i18:i19:i14]	i3
+Test	false	[4:i14:i2:i20:i99]	i1
+Test	false	[4:i4:i11:i2:i20]	i0
+Test	false	[4:i11:i11:i11:i11]	i0
+Test	false	[4:i15:i15:i15:i15]	i4

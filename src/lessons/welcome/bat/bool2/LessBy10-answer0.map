@@ -1,0 +1,15 @@
+BatWorld: lessBy10
+Test	true	[3:i1:i7:i11]	b1
+Test	true	[3:i1:i7:i10]	b0
+Test	true	[3:i11:i1:i7]	b1
+Test	false	[3:i10:i7:i1]	b0
+Test	false	[3:i-10:i2:i2]	b1
+Test	false	[3:i2:i11:i11]	b0
+Test	false	[3:i3:i3:i30]	b1
+Test	false	[3:i3:i3:i3]	b0
+Test	false	[3:i10:i1:i11]	b1
+Test	false	[3:i10:i11:i1]	b1
+Test	false	[3:i10:i11:i2]	b0
+Test	false	[3:i3:i30:i3]	b1
+Test	false	[3:i2:i2:i-8]	b1
+Test	false	[3:i2:i8:i12]	b1

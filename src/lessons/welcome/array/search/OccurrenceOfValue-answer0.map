@@ -1,0 +1,11 @@
+BatWorld: occurrences
+Test	true	[2:i[10:i2:i-3:i1:i17:i-13:i5:i3:i1:i9:i18]:i17]	i1
+Test	true	[2:i[10:i2:i-3:i1:i17:i-13:i5:i3:i1:i9:i18]:i15]	i0
+Test	true	[2:i[15:i5:i2:i4:i2:i4:i0:i2:i1:i6:i2:i1:i2:i0:i2:i4]:i17]	i0
+Test	true	[2:i[15:i5:i2:i4:i2:i4:i0:i2:i1:i6:i2:i1:i2:i0:i2:i4]:i4]	i3
+Test	true	[2:i[20:i0:i3:i0:i6:i0:i1:i3:i3:i4:i2:i2:i6:i5:i2:i6:i0:i3:i2:i0:i4]:i13]	i0
+Test	true	[2:i[20:i0:i3:i0:i6:i0:i1:i3:i3:i4:i2:i2:i6:i5:i2:i6:i0:i3:i2:i0:i4]:i3]	i4
+Test	false	[2:i[25:i3:i3:i0:i3:i1:i0:i5:i3:i0:i6:i1:i5:i0:i6:i0:i0:i6:i6:i5:i4:i3:i3:i4:i2:i2]:i-4]	i0
+Test	false	[2:i[25:i3:i3:i0:i3:i1:i0:i5:i3:i0:i6:i1:i5:i0:i6:i0:i0:i6:i6:i5:i4:i3:i3:i4:i2:i2]:i2]	i2
+Test	false	[2:i[25:i0:i5:i6:i6:i5:i6:i6:i5:i3:i3:i3:i0:i6:i3:i2:i6:i4:i3:i0:i3:i5:i6:i2:i1:i5]:i5]	i5
+Test	false	[2:i[25:i0:i5:i6:i6:i5:i6:i6:i5:i3:i3:i3:i0:i6:i3:i2:i6:i4:i3:i0:i3:i5:i6:i2:i1:i5]:i0]	i3

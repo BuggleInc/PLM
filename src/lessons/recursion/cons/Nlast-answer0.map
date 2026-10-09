@@ -1,0 +1,9 @@
+BatWorld: nlast
+Test	true	[2:i[4:i1:i2:i3:i4]:i3]	i[3:i2:i3:i4]
+Test	true	[2:i[4:i1:i2:i3:i4]:i2]	i[2:i3:i4]
+Test	true	[2:i[3:i1:i1:i1]:i3]	i[3:i1:i1:i1]
+Test	true	[2:i[5:i1:i2:i1:i3:i2]:i0]	i[0]
+Test	false	[2:i[5:i2:i4:i6:i8:i10]:i12]	i[5:i2:i4:i6:i8:i10]
+Test	false	[2:i[1:i6]:i1]	i[1:i6]
+Test	false	[2:i[0]:i1]	i[0]
+Test	false	[2:i[0]:i0]	i[0]

@@ -1,0 +1,11 @@
+BatWorld: nearHundred
+Test	true	[1:i93]	b1
+Test	true	[1:i90]	b1
+Test	true	[1:i89]	b0
+Test	false	[1:i110]	b1
+Test	false	[1:i191]	b1
+Test	false	[1:i189]	b0
+Test	false	[1:i200]	b1
+Test	false	[1:i210]	b1
+Test	false	[1:i211]	b0
+Test	false	[1:i-100]	b0

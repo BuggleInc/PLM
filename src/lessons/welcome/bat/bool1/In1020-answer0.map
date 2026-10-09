@@ -1,0 +1,10 @@
+BatWorld: in1020
+Test	true	[2:i12:i99]	b1
+Test	true	[2:i21:i12]	b1
+Test	true	[2:i8:i99]	b0
+Test	false	[2:i99:i10]	b1
+Test	false	[2:i20:i20]	b1
+Test	false	[2:i21:i21]	b0
+Test	false	[2:i9:i9]	b0
+Test	false	[2:i10:i42]	b1
+Test	false	[2:i12:i-2]	b1

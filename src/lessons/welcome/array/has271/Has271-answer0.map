@@ -1,0 +1,14 @@
+BatWorld: has271
+Test	true	[1:i[4:i1:i2:i7:i1]]	b1
+Test	true	[1:i[4:i1:i2:i8:i1]]	b0
+Test	true	[1:i[3:i2:i7:i1]]	b1
+Test	false	[1:i[3:i3:i8:i2]]	b1
+Test	false	[1:i[3:i2:i7:i3]]	b1
+Test	false	[1:i[3:i2:i7:i4]]	b0
+Test	false	[1:i[3:i2:i7:i-1]]	b1
+Test	false	[1:i[3:i2:i7:i-2]]	b0
+Test	false	[1:i[5:i4:i5:i3:i8:i0]]	b1
+Test	false	[1:i[5:i2:i7:i5:i10:i4]]	b1
+Test	false	[1:i[6:i2:i7:i-2:i4:i9:i3]]	b1
+Test	false	[1:i[5:i2:i7:i5:i10:i1]]	b0
+Test	false	[1:i[6:i2:i7:i-2:i4:i10:i2]]	b0

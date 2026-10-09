@@ -1,0 +1,9 @@
+BatWorld: parotTrouble
+Test	true	[2:b1:i6]	b1
+Test	true	[2:b1:i7]	b0
+Test	true	[2:b0:i6]	b0
+Test	false	[2:b1:i21]	b1
+Test	false	[2:b0:i21]	b0
+Test	false	[2:b1:i23]	b1
+Test	false	[2:b0:i23]	b0
+Test	false	[2:b1:i20]	b0

@@ -1,0 +1,10 @@
+BatWorld: makes10
+Test	true	[2:i9:i10]	b1
+Test	true	[2:i9:i9]	b0
+Test	true	[2:i1:i9]	b1
+Test	false	[2:i10:i1]	b1
+Test	false	[2:i10:i10]	b1
+Test	false	[2:i8:i2]	b1
+Test	false	[2:i8:i3]	b0
+Test	false	[2:i10:i42]	b1
+Test	false	[2:i12:i-2]	b1

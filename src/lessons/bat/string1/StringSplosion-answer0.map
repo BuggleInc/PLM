@@ -1,0 +1,8 @@
+BatWorld: stringSplosion
+Test	true	[1:"Code"]	"CCoCodCode"
+Test	true	[1:"abc"]	"aababc"
+Test	true	[1:"x"]	"x"
+Test	false	[1:"There"]	"TThTheTherThere"
+Test	false	[1:"Bye"]	"BByBye"
+Test	false	[1:"Good"]	"GGoGooGood"
+Test	false	[1:"Bad"]	"BBaBad"

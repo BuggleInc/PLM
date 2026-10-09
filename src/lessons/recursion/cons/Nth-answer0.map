@@ -1,0 +1,9 @@
+BatWorld: nth
+Test	true	[2:i[4:i1:i2:i3:i4]:i1]	i1
+Test	true	[2:i[4:i1:i2:i3:i4]:i2]	i2
+Test	true	[2:i[4:i1:i2:i3:i4]:i3]	i3
+Test	true	[2:i[4:i1:i2:i3:i4]:i4]	i4
+Test	true	[2:i[3:i1:i1:i1]:i2]	i1
+Test	true	[2:i[5:i1:i2:i1:i3:i2]:i5]	i2
+Test	false	[2:i[5:i2:i4:i6:i8:i10]:i2]	i4
+Test	false	[2:i[1:i6]:i1]	i6

@@ -1,0 +1,8 @@
+BatWorld: lastDigit
+Test	true	[2:i7:i17]	b1
+Test	true	[2:i6:i17]	b0
+Test	true	[2:i3:i113]	b1
+Test	false	[2:i114:i113]	b0
+Test	false	[2:i114:i4]	b1
+Test	false	[2:i10:i0]	b1
+Test	false	[2:i11:i0]	b0

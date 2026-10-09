@@ -1,0 +1,11 @@
+BatWorld: diff21
+Test	true	[1:i2]	i19
+Test	true	[1:i11]	i10
+Test	true	[1:i0]	i21
+Test	false	[1:i19]	i2
+Test	false	[1:i10]	i11
+Test	false	[1:i21]	i0
+Test	false	[1:i22]	i2
+Test	false	[1:i25]	i8
+Test	false	[1:i30]	i18
+Test	false	[1:i-21]	i42

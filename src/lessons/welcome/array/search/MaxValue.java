@@ -10,7 +10,7 @@ public class MaxValue extends BatExercise {
   public MaxValue(Lesson lesson)
   {
     super(lesson);
-    Random r = new Random();
+    Random r = new Random(0); // Fixed seed: the answer world is cached on disk
 
     int[] tab = new int[15];
     for (int i = 0; i < tab.length; i++)

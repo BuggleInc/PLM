@@ -1,0 +1,10 @@
+BatWorld: extrema
+Test	true	[1:i[4:i1:i2:i7:i1]]	i6
+Test	true	[1:i[1:i1]]	i0
+Test	true	[1:i[2:i1:i2]]	i1
+Test	true	[1:i[3:i1:i2:i3]]	i2
+Test	true	[1:i[2:i1:i3]]	i2
+Test	false	[1:i[8:i1:i1:i1:i1:i1:i1:i1:i1]]	i0
+Test	false	[1:i[8:i1:i2:i7:i1:i7:i9:i10:i1]]	i9
+Test	false	[1:i[7:i10:i4:i1:i2:i7:i1:i0]]	i10
+Test	false	[1:i[7:i45:i-34:i0:i-42:i72:i-42:i72]]	i114

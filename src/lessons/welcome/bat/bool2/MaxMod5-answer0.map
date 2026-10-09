@@ -1,0 +1,12 @@
+BatWorld: maxMod5
+Test	true	[2:i2:i3]	i3
+Test	true	[2:i6:i2]	i6
+Test	true	[2:i3:i2]	i3
+Test	false	[2:i8:i12]	i12
+Test	false	[2:i7:i12]	i7
+Test	false	[2:i11:i6]	i6
+Test	false	[2:i2:i7]	i2
+Test	false	[2:i7:i7]	i0
+Test	false	[2:i9:i1]	i9
+Test	false	[2:i9:i14]	i9
+Test	false	[2:i1:i2]	i2

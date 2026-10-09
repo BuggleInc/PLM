@@ -1,0 +1,10 @@
+BatWorld: stringTimes
+Test	true	[2:"Hi":i2]	"HiHi"
+Test	true	[2:"Hi":i3]	"HiHiHi"
+Test	true	[2:"Hi":i1]	"Hi"
+Test	false	[2:"Hi":i0]	""
+Test	false	[2:"Oh Boy!":i2]	"Oh Boy!Oh Boy!"
+Test	false	[2:"x":i4]	"xxxx"
+Test	false	[2:"":i4]	""
+Test	false	[2:"code":i2]	"codecode"
+Test	false	[2:"code":i3]	"codecodecode"

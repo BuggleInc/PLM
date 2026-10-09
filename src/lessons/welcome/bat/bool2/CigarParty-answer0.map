@@ -1,0 +1,12 @@
+BatWorld: cigarParty
+Test	true	[2:i30:b0]	b0
+Test	true	[2:i50:b0]	b1
+Test	true	[2:i70:b1]	b1
+Test	false	[2:i30:b1]	b0
+Test	false	[2:i50:b1]	b1
+Test	false	[2:i60:b0]	b1
+Test	false	[2:i61:b0]	b0
+Test	false	[2:i40:b0]	b1
+Test	false	[2:i39:b0]	b0
+Test	false	[2:i40:b1]	b1
+Test	false	[2:i39:b1]	b0

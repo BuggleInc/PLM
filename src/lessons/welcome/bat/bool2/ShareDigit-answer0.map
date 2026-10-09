@@ -1,0 +1,11 @@
+BatWorld: shareDigit
+Test	true	[2:i12:i23]	b1
+Test	true	[2:i12:i43]	b0
+Test	true	[2:i12:i44]	b0
+Test	false	[2:i23:i12]	b1
+Test	false	[2:i23:i39]	b1
+Test	false	[2:i23:i19]	b0
+Test	false	[2:i30:i90]	b1
+Test	false	[2:i30:i91]	b0
+Test	false	[2:i55:i55]	b1
+Test	false	[2:i55:i44]	b0

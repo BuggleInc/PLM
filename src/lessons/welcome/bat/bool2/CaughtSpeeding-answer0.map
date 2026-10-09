@@ -1,0 +1,13 @@
+BatWorld: caughtSpeeding
+Test	true	[2:i60:b0]	i0
+Test	true	[2:i65:b0]	i1
+Test	true	[2:i65:b1]	i0
+Test	false	[2:i80:b0]	i1
+Test	false	[2:i85:b0]	i2
+Test	false	[2:i85:b1]	i1
+Test	false	[2:i70:b0]	i1
+Test	false	[2:i75:b0]	i1
+Test	false	[2:i75:b1]	i1
+Test	false	[2:i40:b0]	i0
+Test	false	[2:i40:b1]	i0
+Test	false	[2:i90:b0]	i2

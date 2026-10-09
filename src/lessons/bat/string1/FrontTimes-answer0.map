@@ -1,0 +1,8 @@
+BatWorld: frontTimes
+Test	true	[2:"Chocolate":i2]	"ChoCho"
+Test	true	[2:"Chocolate":i3]	"ChoChoCho"
+Test	true	[2:"Abc":i3]	"AbcAbcAbc"
+Test	false	[2:"Ab":i4]	"AbAbAbAb"
+Test	false	[2:"A":i4]	"AAAA"
+Test	false	[2:"":i4]	""
+Test	false	[2:"Abc":i0]	""

@@ -1,0 +1,14 @@
+BatWorld: posNeg
+Test	true	[3:i-1:i1:b0]	b1
+Test	true	[3:i1:i-1:b0]	b1
+Test	true	[3:i1:i1:b0]	b0
+Test	false	[3:i-1:i-1:b0]	b0
+Test	false	[3:i1:i-1:b1]	b0
+Test	false	[3:i-1:i1:b1]	b0
+Test	false	[3:i1:i1:b1]	b0
+Test	false	[3:i-1:i-1:b1]	b1
+Test	false	[3:i5:i-5:b1]	b0
+Test	false	[3:i-6:i6:b0]	b1
+Test	false	[3:i-5:i-5:b0]	b0
+Test	false	[3:i-5:i5:b1]	b0
+Test	false	[3:i-5:i-5:b1]	b1

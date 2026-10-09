@@ -1,0 +1,12 @@
+BatWorld: max1020
+Test	true	[2:i11:i19]	i19
+Test	true	[2:i19:i11]	i19
+Test	true	[2:i11:i9]	i11
+Test	false	[2:i9:i21]	i0
+Test	false	[2:i10:i21]	i10
+Test	false	[2:i21:i10]	i10
+Test	false	[2:i9:i11]	i11
+Test	false	[2:i23:i10]	i10
+Test	false	[2:i20:i10]	i20
+Test	false	[2:i7:i20]	i20
+Test	false	[2:i17:i16]	i17

@@ -1,0 +1,8 @@
+BatWorld: stringYak
+Test	true	[1:"yakpak"]	"pak"
+Test	true	[1:"pakyak"]	"pak"
+Test	true	[1:"yak123ya"]	"123ya"
+Test	false	[1:"yak"]	""
+Test	false	[1:"yakxxxyak"]	"xxx"
+Test	false	[1:"HiyakHi"]	"HiHi"
+Test	false	[1:"xxxyakyyyakzzz"]	"xxxyyzzz"

@@ -1,0 +1,13 @@
+BatWorld: greenTicket
+Test	true	[3:i1:i2:i3]	i0
+Test	true	[3:i2:i2:i2]	i20
+Test	true	[3:i1:i1:i2]	i10
+Test	false	[3:i2:i1:i1]	i10
+Test	false	[3:i1:i2:i1]	i10
+Test	false	[3:i3:i2:i1]	i0
+Test	false	[3:i0:i0:i0]	i20
+Test	false	[3:i2:i0:i0]	i10
+Test	false	[3:i0:i9:i10]	i0
+Test	false	[3:i0:i10:i0]	i10
+Test	false	[3:i9:i9:i9]	i20
+Test	false	[3:i9:i0:i9]	i10

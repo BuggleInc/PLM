@@ -1,0 +1,9 @@
+BatWorld: altPairs
+Test	true	[1:"kitten"]	"kien"
+Test	true	[1:"Chocolate"]	"Chole"
+Test	true	[1:"CodingHorror"]	"Congrr"
+Test	false	[1:"yak"]	"ya"
+Test	false	[1:"ya"]	"ya"
+Test	false	[1:"y"]	"y"
+Test	false	[1:""]	""
+Test	false	[1:"ThisThatTheOther"]	"ThThThth"

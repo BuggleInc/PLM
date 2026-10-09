@@ -1,0 +1,17 @@
+BatWorld: teenSum
+Test	true	[2:i3:i4]	i7
+Test	true	[2:i10:i13]	i19
+Test	true	[2:i13:i2]	i19
+Test	false	[2:i3:i19]	i19
+Test	false	[2:i13:i13]	i19
+Test	false	[2:i10:i10]	i20
+Test	false	[2:i6:i14]	i19
+Test	false	[2:i15:i2]	i19
+Test	false	[2:i19:i19]	i19
+Test	false	[2:i19:i20]	i19
+Test	false	[2:i2:i18]	i19
+Test	false	[2:i12:i4]	i16
+Test	false	[2:i2:i20]	i22
+Test	false	[2:i2:i17]	i19
+Test	false	[2:i2:i16]	i19
+Test	false	[2:i6:i7]	i13

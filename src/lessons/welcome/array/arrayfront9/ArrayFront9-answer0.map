@@ -1,0 +1,13 @@
+BatWorld: arrayFront9
+Test	true	[1:i[5:i1:i2:i9:i3:i4]]	b1
+Test	true	[1:i[5:i1:i2:i3:i4:i9]]	b0
+Test	true	[1:i[5:i1:i2:i3:i4:i5]]	b0
+Test	false	[1:i[3:i9:i2:i3]]	b1
+Test	false	[1:i[3:i1:i9:i9]]	b1
+Test	false	[1:i[3:i1:i2:i3]]	b0
+Test	false	[1:i[2:i1:i9]]	b1
+Test	false	[1:i[2:i5:i5]]	b0
+Test	false	[1:i[1:i2]]	b0
+Test	false	[1:i[1:i9]]	b1
+Test	false	[1:i[0]]	b0
+Test	false	[1:i[5:i3:i9:i2:i3:i3]]	b1

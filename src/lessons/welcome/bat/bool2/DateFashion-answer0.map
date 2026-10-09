@@ -1,0 +1,13 @@
+BatWorld: dateFashion
+Test	true	[2:i5:i10]	i2
+Test	true	[2:i5:i2]	i0
+Test	true	[2:i5:i5]	i1
+Test	false	[2:i3:i3]	i1
+Test	false	[2:i10:i2]	i0
+Test	false	[2:i2:i9]	i0
+Test	false	[2:i9:i9]	i2
+Test	false	[2:i10:i5]	i2
+Test	false	[2:i2:i2]	i0
+Test	false	[2:i3:i7]	i1
+Test	false	[2:i2:i7]	i0
+Test	false	[2:i6:i2]	i0

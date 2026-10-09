@@ -1,0 +1,13 @@
+BatWorld: blueTicket
+Test	true	[3:i9:i1:i0]	i10
+Test	true	[3:i9:i2:i0]	i0
+Test	true	[3:i6:i1:i4]	i10
+Test	false	[3:i6:i1:i5]	i0
+Test	false	[3:i10:i0:i0]	i10
+Test	false	[3:i15:i0:i5]	i5
+Test	false	[3:i5:i15:i5]	i10
+Test	false	[3:i4:i11:i1]	i5
+Test	false	[3:i13:i2:i3]	i5
+Test	false	[3:i8:i4:i3]	i0
+Test	false	[3:i8:i4:i2]	i10
+Test	false	[3:i8:i4:i1]	i0

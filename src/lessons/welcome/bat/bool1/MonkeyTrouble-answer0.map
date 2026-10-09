@@ -1,0 +1,5 @@
+BatWorld: monkeyTrouble
+Test	true	[2:b1:b1]	b1
+Test	true	[2:b0:b0]	b1
+Test	true	[2:b1:b0]	b0
+Test	false	[2:b0:b1]	b0

@@ -1,0 +1,7 @@
+BatWorld: answerCell
+Test	true	[3:b0:b0:b0]	b1
+Test	true	[3:b0:b0:b1]	b0
+Test	true	[3:b1:b0:b0]	b0
+Test	false	[3:b1:b1:b0]	b1
+Test	false	[3:b0:b1:b0]	b1
+Test	false	[3:b1:b1:b1]	b0

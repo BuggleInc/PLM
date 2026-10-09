@@ -1,0 +1,8 @@
+BatWorld: remove
+Test	true	[2:i[3:i1:i2:i3]:i1]	i[2:i2:i3]
+Test	true	[2:i[3:i1:i1:i2]:i1]	i[1:i2]
+Test	true	[2:i[4:i1:i2:i1:i3]:i3]	i[3:i1:i2:i1]
+Test	false	[2:i[5:i2:i4:i6:i8:i10]:i10]	i[4:i2:i4:i6:i8]
+Test	false	[2:i[3:i1:i1:i1]:i1]	i[0]
+Test	false	[2:i[0]:i1]	i[0]
+Test	false	[2:i[5:i-2:i-4:i-6:i-8:i-10]:i-4]	i[4:i-2:i-6:i-8:i-10]

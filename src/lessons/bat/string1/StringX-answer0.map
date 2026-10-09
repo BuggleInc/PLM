@@ -1,0 +1,9 @@
+BatWorld: stringX
+Test	true	[1:"xxHxix"]	"xHix"
+Test	true	[1:"abxxxcd"]	"abcd"
+Test	true	[1:"xabxxxcdx"]	"xabcdx"
+Test	false	[1:"xKittenx"]	"xKittenx"
+Test	false	[1:"Hello"]	"Hello"
+Test	false	[1:"xx"]	"xx"
+Test	false	[1:"x"]	"x"
+Test	false	[1:""]	""

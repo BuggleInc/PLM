@@ -1,0 +1,8 @@
+BatWorld: close10
+Test	true	[2:i8:i13]	i8
+Test	true	[2:i13:i8]	i8
+Test	true	[2:i13:i7]	i0
+Test	false	[2:i7:i13]	i0
+Test	false	[2:i5:i21]	i5
+Test	false	[2:i0:i20]	i0
+Test	false	[2:i10:i10]	i0

@@ -1,0 +1,10 @@
+BatWorld: alarmClock
+Test	true	[2:i1:b0]	"7:00"
+Test	true	[2:i5:b0]	"7:00"
+Test	true	[2:i0:b0]	"10:00"
+Test	false	[2:i6:b0]	"10:00"
+Test	false	[2:i0:b1]	"off"
+Test	false	[2:i6:b1]	"off"
+Test	false	[2:i1:b1]	"10:00"
+Test	false	[2:i3:b1]	"10:00"
+Test	false	[2:i5:b1]	"10:00"

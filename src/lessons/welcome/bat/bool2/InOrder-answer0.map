@@ -1,0 +1,13 @@
+BatWorld: inOrder
+Test	true	[4:i1:i2:i4:b0]	b1
+Test	true	[4:i1:i2:i1:b0]	b0
+Test	true	[4:i1:i1:i2:b1]	b1
+Test	false	[4:i3:i2:i4:b0]	b0
+Test	false	[4:i2:i3:i4:b0]	b1
+Test	false	[4:i3:i2:i4:b1]	b1
+Test	false	[4:i4:i2:i2:b1]	b0
+Test	false	[4:i4:i5:i2:b1]	b0
+Test	false	[4:i2:i4:i6:b1]	b1
+Test	false	[4:i7:i9:i10:b0]	b1
+Test	false	[4:i7:i5:i6:b1]	b1
+Test	false	[4:i7:i5:i4:b1]	b0

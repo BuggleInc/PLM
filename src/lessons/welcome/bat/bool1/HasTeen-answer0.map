@@ -1,0 +1,12 @@
+BatWorld: hasTeen
+Test	true	[3:i13:i20:i10]	b1
+Test	true	[3:i20:i19:i10]	b1
+Test	true	[3:i20:i10:i13]	b1
+Test	false	[3:i1:i20:i12]	b0
+Test	false	[3:i19:i20:i12]	b1
+Test	false	[3:i12:i20:i19]	b1
+Test	false	[3:i12:i9:i20]	b0
+Test	false	[3:i12:i18:i20]	b1
+Test	false	[3:i14:i2:i20]	b1
+Test	false	[3:i4:i2:i20]	b0
+Test	false	[3:i11:i22:i22]	b0

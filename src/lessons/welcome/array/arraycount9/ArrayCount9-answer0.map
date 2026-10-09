@@ -1,0 +1,8 @@
+BatWorld: arrayCount9
+Test	true	[1:i[3:i1:i2:i9]]	i1
+Test	true	[1:i[3:i1:i9:i9]]	i2
+Test	true	[1:i[5:i1:i9:i9:i3:i9]]	i3
+Test	false	[1:i[3:i1:i2:i3]]	i0
+Test	false	[1:i[0]]	i0
+Test	false	[1:i[5:i4:i2:i4:i3:i1]]	i0
+Test	false	[1:i[5:i9:i2:i4:i3:i1]]	i1

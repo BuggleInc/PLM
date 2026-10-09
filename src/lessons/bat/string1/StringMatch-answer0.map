@@ -1,0 +1,11 @@
+BatWorld: stringMatch
+Test	true	[2:"xxcaazz":"xxbaaz"]	i3
+Test	true	[2:"abc":"abc"]	i2
+Test	true	[2:"abc":"axc"]	i0
+Test	false	[2:"hello":"he"]	i1
+Test	false	[2:"he":"hello"]	i1
+Test	false	[2:"h":"hello"]	i0
+Test	false	[2:"":"hello"]	i0
+Test	false	[2:"aabbccdd":"abbbxxd"]	i1
+Test	false	[2:"aaxxaaxx":"iaxxai"]	i3
+Test	false	[2:"iaxxai":"aaxxaaxx"]	i3

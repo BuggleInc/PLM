@@ -1,0 +1,14 @@
+BatWorld: loneTeen
+Test	true	[2:i13:i42]	b1
+Test	true	[2:i21:i19]	b1
+Test	true	[2:i13:i13]	b0
+Test	false	[2:i14:i20]	b1
+Test	false	[2:i20:i15]	b1
+Test	false	[2:i16:i17]	b0
+Test	false	[2:i16:i9]	b1
+Test	false	[2:i16:i18]	b0
+Test	false	[2:i13:i19]	b0
+Test	false	[2:i13:i20]	b1
+Test	false	[2:i6:i18]	b1
+Test	false	[2:i42:i13]	b1
+Test	false	[2:i42:i42]	b0

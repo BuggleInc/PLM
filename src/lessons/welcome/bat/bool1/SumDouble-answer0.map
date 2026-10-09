@@ -1,0 +1,7 @@
+BatWorld: sumDouble
+Test	true	[2:i1:i2]	i3
+Test	true	[2:i3:i2]	i5
+Test	true	[2:i2:i2]	i8
+Test	false	[2:i-1:i0]	i-1
+Test	false	[2:i0:i0]	i0
+Test	false	[2:i0:i1]	i1

@@ -1,0 +1,13 @@
+BatWorld: in1To10
+Test	true	[2:i5:b0]	b1
+Test	true	[2:i11:b0]	b0
+Test	true	[2:i11:b1]	b1
+Test	false	[2:i10:b0]	b1
+Test	false	[2:i10:b1]	b1
+Test	false	[2:i9:b0]	b1
+Test	false	[2:i9:b1]	b0
+Test	false	[2:i1:b0]	b1
+Test	false	[2:i1:b1]	b1
+Test	false	[2:i0:b0]	b0
+Test	false	[2:i0:b1]	b1
+Test	false	[2:i-1:b0]	b0

@@ -1,0 +1,13 @@
+BatWorld: last2
+Test	true	[1:"hixxhi"]	i1
+Test	true	[1:"xaxxaxaxx"]	i1
+Test	true	[1:"axxxaaxx"]	i2
+Test	false	[1:"xxaxxaxxaxx"]	i3
+Test	false	[1:"xaxaxaxx"]	i0
+Test	false	[1:"13121312"]	i1
+Test	false	[1:"11212"]	i1
+Test	false	[1:"13121311"]	i0
+Test	false	[1:"1717171"]	i2
+Test	false	[1:"hi"]	i0
+Test	false	[1:"h"]	i0
+Test	false	[1:""]	i0

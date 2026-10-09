@@ -1,0 +1,6 @@
+BatWorld: stringBits
+Test	true	[1:"Hello"]	"Hlo"
+Test	true	[1:"Hi"]	"H"
+Test	true	[1:"HiHiHi"]	"HHH"
+Test	false	[1:""]	""
+Test	false	[1:"Greetings"]	"Getns"

@@ -1,0 +1,10 @@
+BatWorld: sortaSum
+Test	true	[2:i3:i4]	i7
+Test	true	[2:i9:i4]	i20
+Test	true	[2:i10:i11]	i21
+Test	false	[2:i12:i-3]	i9
+Test	false	[2:i-3:i12]	i9
+Test	false	[2:i4:i5]	i9
+Test	false	[2:i4:i6]	i20
+Test	false	[2:i14:i7]	i21
+Test	false	[2:i14:i6]	i20

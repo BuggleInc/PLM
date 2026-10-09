@@ -1,0 +1,13 @@
+BatWorld: withoutDoubles
+Test	true	[3:i2:i3:b1]	i5
+Test	true	[3:i3:i3:b1]	i7
+Test	true	[3:i3:i3:b0]	i6
+Test	false	[3:i2:i3:b0]	i5
+Test	false	[3:i5:i4:b1]	i9
+Test	false	[3:i5:i4:b0]	i9
+Test	false	[3:i5:i5:b1]	i11
+Test	false	[3:i5:i5:b0]	i10
+Test	false	[3:i6:i6:b1]	i7
+Test	false	[3:i6:i6:b0]	i12
+Test	false	[3:i1:i6:b1]	i7
+Test	false	[3:i6:i1:b0]	i7
