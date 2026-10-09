@@ -1,10 +1,18 @@
 package lessons.sort.pancake.universe;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.core.utils.FileUtils;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
@@ -62,15 +70,16 @@ public class PancakeWorld extends World {
     for (int i = 0; i < size; i++)
       pancakeStack[i] = new Pancake(i + 1);
 
-    /* Mix them */
-    wasRandom = true;
+    /* Mix them. Seeded by the name: the initial state must be reproducible to cache the answer worlds */
+    Random rng = new Random(name.hashCode());
+    wasRandom  = true;
     while (isSorted())
       for (int rank = 0; rank < size; rank++) {
-        if (Math.random() > 0.5) // Flipping time !
+        if (rng.nextBoolean()) // Flipping time !
           pancakeStack[rank].flip();
 
-        if (Math.random() > 0.5) // Swapping time !
-          swap(rank, (int)(Math.random() * size));
+        if (rng.nextBoolean()) // Swapping time !
+          swap(rank, rng.nextInt(size));
       }
 
     this.burnedWorld = burnedPancake;
@@ -92,6 +101,39 @@ public class PancakeWorld extends World {
       pancakeStack[i] = new Pancake(sizes[i]);
 
     this.burnedWorld = burnedPancake;
+  }
+
+  @Override public boolean haveIO() { return true; }
+
+  /** Reads a world written by writeToFile() */
+  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      String name      = readField(reader, path, "PancakeWorld");
+      boolean burned   = Boolean.parseBoolean(readField(reader, path, "Burned"));
+      int lastMove     = Integer.parseInt(readField(reader, path, "LastMove"));
+      int moveCount    = Integer.parseInt(readField(reader, path, "Moves"));
+      int[] sizes      = Arrays.stream(readField(reader, path, "Stack").split(" ")).mapToInt(Integer::parseInt).toArray();
+      PancakeWorld res = new PancakeWorld(name, sizes, burned);
+      res.lastMove     = lastMove;
+      res.moveCount    = moveCount;
+      new PancakeEntity("Pancake Seller", res);
+      return res;
+    } catch (NumberFormatException e) {
+      throw new BrokenWorldFileException(path + ".map: malformed number (" + e.getMessage() + ").");
+    }
+  }
+
+  /** Writes the world, one field per line. The stack gives the radius of each pancake from the top, negated if it is upside down. */
+  @Override public void writeToFile(BufferedWriter writer) throws IOException
+  {
+    writer.write("PancakeWorld: " + getName() + "\n");
+    writer.write("Burned: " + burnedWorld + "\n");
+    writer.write("LastMove: " + lastMove + "\n");
+    writer.write("Moves: " + moveCount + "\n");
+    writer.write(
+        "Stack: " + Arrays.stream(pancakeStack).map(p -> String.valueOf(p.isUpsideDown() ? -p.getRadius() : p.getRadius())).collect(Collectors.joining(" ")) +
+        "\n");
   }
 
   /** Returns a textual description of the differences between the caller and the parameter */

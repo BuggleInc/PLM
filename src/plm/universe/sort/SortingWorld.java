@@ -177,15 +177,6 @@ public class SortingWorld extends World {
     }
   }
 
-  /** Returns the value of the next line, that must be of the form "key: value" */
-  private static String readField(BufferedReader reader, String path, String key) throws IOException, BrokenWorldFileException
-  {
-    String line = reader.readLine();
-    if (line == null || !line.startsWith(key + ": "))
-      throw new BrokenWorldFileException(path + ".map: expected a line starting with '" + key + ": ' but got '" + line + "'.");
-    return line.substring(key.length() + 2);
-  }
-
   /**
    * Writes the world, one field per line, followed by one line per operation.
    *

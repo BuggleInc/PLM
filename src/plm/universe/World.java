@@ -1,5 +1,6 @@
 package plm.universe;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -234,6 +235,15 @@ public abstract class World {
   }
 
   public void writeToFile(BufferedWriter f) throws IOException {}
+
+  /** Returns the value of the next line of a .map file, that must be of the form "key: value" */
+  protected static String readField(BufferedReader reader, String path, String key) throws IOException, BrokenWorldFileException
+  {
+    String line = reader.readLine();
+    if (line == null || !line.startsWith(key + ": "))
+      throw new BrokenWorldFileException(path + ".map: expected a line starting with '" + key + ": ' but got '" + line + "'.");
+    return line.substring(key.length() + 2);
+  }
 
   public void writeToFile(File outputFile) throws IOException
   {
