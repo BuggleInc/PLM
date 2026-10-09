@@ -48,6 +48,9 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
     });
   }
 
+  /** The targets already deployed by this JVM */
+  private static final Map<Path, Path> deployed = new ConcurrentHashMap<>();
+
   /**
    * Read a classloader resource at {@code path} (relative to the classpath root) as bytes.
    */
@@ -62,24 +65,28 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
 
   /**
    * Copies the classloader resource "resources/langages/&lt;resource&gt;" to targetDir, under its own file name, unless an identical
-   * file is already there, and returns its path. The copy goes through a temporary file moved atomically, as several PLM instances
-   * may deploy it at once.
+   * file is already there, and returns its path. Each target is checked once per JVM, without blocking the other targets or the
+   * later calls. The copy goes through a temporary file moved atomically, as several PLM instances may deploy it at once.
    */
-  protected static synchronized Path deployResource(String resource, Path targetDir)
+  protected static Path deployResource(String resource, Path targetDir)
   {
-    try {
-      byte[] content = readClasspathBytes("resources/langages/" + resource);
-      Path target    = targetDir.resolve(resource.substring(resource.lastIndexOf('/') + 1));
-      if (!Files.exists(target) || !Arrays.equals(Files.readAllBytes(target), content)) {
-        Files.createDirectories(targetDir);
-        Path tmp = Files.createTempFile(targetDir, target.getFileName().toString(), ".tmp");
-        Files.write(tmp, content);
-        Files.move(tmp, target, StandardCopyOption.ATOMIC_MOVE);
+    Path target = targetDir.resolve(resource.substring(resource.lastIndexOf('/') + 1));
+    if (!Files.exists(target))
+      deployed.remove(target); // deleted since the last deployment
+    return deployed.computeIfAbsent(target, t -> {
+      try {
+        byte[] content = readClasspathBytes("resources/langages/" + resource);
+        if (!Files.exists(t) || !Arrays.equals(Files.readAllBytes(t), content)) {
+          Files.createDirectories(targetDir);
+          Path tmp = Files.createTempFile(targetDir, t.getFileName().toString(), ".tmp");
+          Files.write(tmp, content);
+          Files.move(tmp, t, StandardCopyOption.ATOMIC_MOVE);
+        }
+        return t;
+      } catch (IOException e) {
+        throw new UncheckedIOException(e);
       }
-      return target;
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    }
+    });
   }
 
   /**
