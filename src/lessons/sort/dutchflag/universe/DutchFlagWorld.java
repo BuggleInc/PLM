@@ -1,11 +1,19 @@
 package lessons.sort.dutchflag.universe;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.core.utils.FileUtils;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
@@ -35,9 +43,9 @@ public class DutchFlagWorld extends World {
     };
   }
 
-  private int initialContent[];
   /**
-   * Regular PancakeWorld constructor that creates a random flag
+   * Regular DutchFlagWorld constructor that creates a random flag.
+   * The randomness is seeded by the name: the initial state must be reproducible to cache the answer worlds.
    * @param name : the name of the world
    * @param size : the amount of elements
    */
@@ -47,21 +55,13 @@ public class DutchFlagWorld extends World {
     setDelay(size > 100 ? 20 : 200); // Delay (in ms) in default animations
     new DutchFlagEntity(this);
 
-    content        = new int[size];
-    initialContent = new int[size];
-    for (int i = 0; i < size; i++) {
-      double r = Math.random();
-      if (r < 1. / 3.)
-        content[i] = 0;
-      else if (r < 2. / 3.)
-        content[i] = 1;
-      else
-        content[i] = 2;
-
-      initialContent[i] = content[i];
-    }
+    Random rng = new Random(name.hashCode());
+    content    = new int[size];
+    for (int i = 0; i < size; i++)
+      content[i] = rng.nextInt(3);
   }
 
+  /** Same as above, but with only two colors: the one passed as colorRemoved is missing */
   public DutchFlagWorld(String name, int size, int colorRemoved)
   {
     super(name);
@@ -69,17 +69,36 @@ public class DutchFlagWorld extends World {
     new DutchFlagEntity(this);
     int[][] color = {{1, 2}, {0, 2}, {0, 1}};
 
-    content        = new int[size];
-    initialContent = new int[size];
-    for (int i = 0; i < size; i++) {
-      double r = Math.random();
-      if (r < 1. / 2.)
-        content[i] = color[colorRemoved][0];
-      else
-        content[i] = color[colorRemoved][1];
+    Random rng = new Random(name.hashCode());
+    content    = new int[size];
+    for (int i = 0; i < size; i++)
+      content[i] = color[colorRemoved][rng.nextInt(2)];
+  }
 
-      initialContent[i] = content[i];
+  @Override public boolean haveIO() { return true; }
+
+  /** Reads a world written by writeToFile() */
+  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      String name        = readField(reader, path, "DutchFlagWorld");
+      int moveCount      = Integer.parseInt(readField(reader, path, "Moves"));
+      int[] content      = Arrays.stream(readField(reader, path, "Content").split(" ")).mapToInt(Integer::parseInt).toArray();
+      DutchFlagWorld res = new DutchFlagWorld(name, content.length);
+      res.content        = content;
+      res.moveCount      = moveCount;
+      return res;
+    } catch (NumberFormatException e) {
+      throw new BrokenWorldFileException(path + ".map: malformed number (" + e.getMessage() + ").");
     }
+  }
+
+  /** Writes the world, one field per line. The content gives the color (0, 1 or 2) of each ray. */
+  @Override public void writeToFile(BufferedWriter writer) throws IOException
+  {
+    writer.write("DutchFlagWorld: " + getName() + "\n");
+    writer.write("Moves: " + moveCount + "\n");
+    writer.write("Content: " + Arrays.stream(content).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
   }
 
   /** Returns a textual description of the differences between the caller and the parameter */
