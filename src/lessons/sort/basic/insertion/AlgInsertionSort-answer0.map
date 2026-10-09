@@ -1,0 +1,26 @@
+SortingWorld: Functional test
+Values: 0 1 2 3 4 5 6 7 8 9
+InitValues: 0 1 2 4 5 3 7 6 8 9
+Reads: 24
+Writes: 12
+get 1
+set 1 1
+get 2
+set 2 2
+get 3
+set 3 4
+get 4
+set 4 5
+get 5
+copy 4 5
+copy 3 4
+set 3 3
+get 6
+set 6 7
+get 7
+copy 6 7
+set 6 6
+get 8
+set 8 8
+get 9
+set 9 9

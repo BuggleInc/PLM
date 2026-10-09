@@ -1,12 +1,20 @@
 package plm.universe.sort;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
+import plm.core.utils.FileUtils;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
@@ -39,30 +47,23 @@ public class SortingWorld extends World {
     for (int i = 0; i < this.values.length; i++)
       this.values[i] = i;
 
-    scramble();
-    // If instructed so, scramble the values until none is @home
-    if (!someoneHomeOk) {
-      boolean someoneHome;
-      do {
-        someoneHome = false;
-        for (int i = 0; i < values.length; i++)
-          if (values[i] == i)
-            someoneHome = true;
-        if (someoneHome)
-          scramble();
-      } while (!someoneHome);
-    }
+    scramble(new Random(name.hashCode())); // Seeded by the name: the initial state must be reproducible to cache the answer worlds
+    // If instructed so, move every value that is @home. Swapping such a value with any other cell never creates a new one @home.
+    if (!someoneHomeOk)
+      for (int i = 0; i < values.length; i++)
+        if (values[i] == i)
+          exchangeValues(i, (i + 1) % values.length);
     this.initValues = this.values;
     addEntity(new SortingEntity());
   }
 
-  private void scramble()
+  private void scramble(Random rng)
   {
     while (this.isSorted())
       for (int caseNumber = 0; caseNumber < this.values.length; caseNumber++)
         // Swapping time !
-        if (Math.random() > 0.5)
-          this.exchangeValues(caseNumber, (int)(Math.random() * this.values.length));
+        if (rng.nextBoolean())
+          this.exchangeValues(caseNumber, rng.nextInt(this.values.length));
   }
 
   public boolean equals(Object o)
@@ -144,6 +145,64 @@ public class SortingWorld extends World {
     sb.append("]");
     return sb.toString();
   }
+  @Override public boolean haveIO() { return true; }
+
+  /** Reads a world written by writeToFile() */
+  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      String name      = readField(reader, path, "SortingWorld");
+      int[] values     = Arrays.stream(readField(reader, path, "Values").split(" ")).mapToInt(Integer::parseInt).toArray();
+      int[] initValues = Arrays.stream(readField(reader, path, "InitValues").split(" ")).mapToInt(Integer::parseInt).toArray();
+      SortingWorld res = new SortingWorld(name, values.length);
+      res.values       = values;
+      res.initValues   = initValues;
+      res.readCount    = Integer.parseInt(readField(reader, path, "Reads"));
+      res.writeCount   = Integer.parseInt(readField(reader, path, "Writes"));
+
+      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+        String[] tokens = line.split(" ");
+        int first       = Integer.parseInt(tokens[1]);
+        res.operations.add(switch (tokens[0]) {
+          case "swap" -> new Swap(first, Integer.parseInt(tokens[2]));
+          case "copy" -> new CopyVal(first, Integer.parseInt(tokens[2]));
+          case "set" -> new SetVal(first, Integer.parseInt(tokens[2]));
+          case "get" -> new GetVal(first);
+          default -> throw new BrokenWorldFileException(path + ".map: unknown operation '" + line + "'.");
+        });
+      }
+      return res;
+    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+      throw new BrokenWorldFileException(path + ".map: malformed number or operation (" + e.getMessage() + ").");
+    }
+  }
+
+  /** Returns the value of the next line, that must be of the form "key: value" */
+  private static String readField(BufferedReader reader, String path, String key) throws IOException, BrokenWorldFileException
+  {
+    String line = reader.readLine();
+    if (line == null || !line.startsWith(key + ": "))
+      throw new BrokenWorldFileException(path + ".map: expected a line starting with '" + key + ": ' but got '" + line + "'.");
+    return line.substring(key.length() + 2);
+  }
+
+  /**
+   * Writes the world, one field per line, followed by one line per operation.
+   *
+   * The operations are serialized, and not only the final values, because the chrono view replays them:
+   * without them, a cached world could only be displayed in the spatial view.
+   */
+  @Override public void writeToFile(BufferedWriter writer) throws IOException
+  {
+    writer.write("SortingWorld: " + getName() + "\n");
+    writer.write("Values: " + Arrays.stream(values).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
+    writer.write("InitValues: " + Arrays.stream(initValues).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
+    writer.write("Reads: " + readCount + "\n");
+    writer.write("Writes: " + writeCount + "\n");
+    for (Operation o : operations)
+      writer.write(o + "\n");
+  }
+
   /**
    * Tells if the array is Sorted or not
    */

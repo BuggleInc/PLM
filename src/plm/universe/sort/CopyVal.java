@@ -14,6 +14,8 @@ public class CopyVal extends Operation {
    * @param init the values on which compute the operation
    * @return the array of values after the operation
    */
+  @Override public String toString() { return "copy " + source + " " + destination; }
+
   @Override public int[] run(int[] init)
   {
     init[destination] = init[source];

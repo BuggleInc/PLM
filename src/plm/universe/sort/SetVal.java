@@ -20,6 +20,8 @@ public class SetVal extends Operation {
    * @param init the values on which compute the operation
    * @return the array passed as parameter, once the operation is applied to it
    */
+  @Override public String toString() { return "set " + source + " " + value; }
+
   @Override public int[] run(int[] init)
   {
     init[source] = value;

@@ -14,6 +14,8 @@ public class Swap extends Operation {
    * @param init the values on which compute the operation
    * @return the array passed as parameter, once the operation has been applied to it
    */
+  @Override public String toString() { return "swap " + source + " " + destination; }
+
   @Override public int[] run(int[] init)
   {
     int src           = init[source];
