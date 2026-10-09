@@ -1,7 +1,13 @@
 package lessons.sort.baseball.universe;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Vector;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -10,6 +16,7 @@ import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
@@ -57,10 +64,11 @@ public class BaseballWorld extends World {
         setPlayerColor(base, pos, base);
     setPlayerColor(baseAmount - 1, 0, COLOR_HOLE);
 
+    Random rng = new Random(name.hashCode()); // Seeded by the name: the initial state must be reproducible to cache the answer worlds
     if (mix == MIX_RANDOM) {
       for (int base = 0; base < getBasesAmount(); base++)
         for (int pos = 0; pos < getPositionsAmount(); pos++)
-          swap(base, pos, (int)(Math.random() * getBasesAmount()), (int)(Math.random() * getPositionsAmount()));
+          swap(base, pos, rng.nextInt(getBasesAmount()), rng.nextInt(getPositionsAmount()));
 
     } else if (mix == MIX_NOBODY_HOME) {
       // Ensure that nobody's home once it's mixed.
@@ -75,9 +83,9 @@ public class BaseballWorld extends World {
               swapped = true;
               int newBase;
               do {
-                newBase = (int)(Math.random() * getBasesAmount());
+                newBase = rng.nextInt(getBasesAmount());
               } while (newBase == base);
-              int newPos = (int)(Math.random() * getPositionsAmount());
+              int newPos = rng.nextInt(getPositionsAmount());
               swap(base, pos, newBase, newPos);
             }
       } while (swapped);
@@ -97,14 +105,7 @@ public class BaseballWorld extends World {
     // Add an entity
     addEntity(new BaseballEntity());
 
-    // Cache the hole position
-    for (int base = 0; base < getBasesAmount(); base++)
-      for (int pos = 0; pos < getPositionsAmount(); pos++)
-        if (getPlayerColor(base, pos) == COLOR_HOLE) {
-          holeBase = base;
-          holePos  = pos;
-          return;
-        }
+    findHole();
   }
 
   public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values)
@@ -118,7 +119,12 @@ public class BaseballWorld extends World {
     for (int i = 0; i < field.length; i++)
       initialField[i] = field[i];
 
-    // Cache again the hole position
+    findHole();
+  }
+
+  /** Caches the position of the hole */
+  private void findHole()
+  {
     for (int base = 0; base < getBasesAmount(); base++)
       for (int pos = 0; pos < getPositionsAmount(); pos++)
         if (getPlayerColor(base, pos) == COLOR_HOLE) {
@@ -126,6 +132,44 @@ public class BaseballWorld extends World {
           holePos  = pos;
           return;
         }
+  }
+
+  @Override public boolean haveIO() { return true; }
+
+  /** Reads a world written by writeToFile(), by replaying its moves on its initial field */
+  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      String name       = readField(reader, path, "BaseballWorld");
+      String[] size     = readField(reader, path, "Size").split("x");
+      int[] initial     = Arrays.stream(readField(reader, path, "Initial").split(" ")).mapToInt(Integer::parseInt).toArray();
+      BaseballWorld res = new BaseballWorld(name, Integer.parseInt(size[0]), Integer.parseInt(size[1]), initial);
+
+      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+        String[] tokens = line.split(" ");
+        if (!tokens[0].equals("move"))
+          throw new BrokenWorldFileException(path + ".map: unknown line '" + line + "'.");
+        res.move(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
+      }
+      return res;
+    } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) { // Includes NumberFormatException and invalid moves
+      throw new BrokenWorldFileException(path + ".map: malformed number or invalid move (" + e.getMessage() + ").");
+    }
+  }
+
+  /**
+   * Writes the world as its initial field followed by one line per move (the player moved into the hole).
+   *
+   * Moves are serialized, and not only the final field, because the history view replays them.
+   * The final field, the hole and the moves objects are then rebuilt by replaying the moves when reading.
+   */
+  @Override public void writeToFile(BufferedWriter writer) throws IOException
+  {
+    writer.write("BaseballWorld: " + getName() + "\n");
+    writer.write("Size: " + baseAmount + "x" + posAmount + "\n");
+    writer.write("Initial: " + Arrays.stream(initialField).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
+    for (BaseballMove m : moves)
+      writer.write("move " + m.getBaseSrc() + " " + m.getPlayerSrc() + "\n");
   }
 
   /**
@@ -304,24 +348,18 @@ public class BaseballWorld extends World {
   public boolean isSorted()
   {
     for (int base = 0; base < baseAmount; base++)
-      for (int pos = 0; pos < posAmount; pos++)
-        if (base == baseAmount - 1) { // last base, may contain the hole
-          if (getPlayerColor(base, pos) != COLOR_HOLE && getPlayerColor(base, pos) != base)
-            return false;
-        } else if (getPlayerColor(base, pos) != base)
-          return false;
+      if (!isBaseSorted(base))
+        return false;
     return true;
   }
   /** Returns if every player of the specified base is on the right base */
   public boolean isBaseSorted(int base)
   {
-    for (int pos = 0; pos < posAmount; pos++)
-      if (base == baseAmount - 1) // last base, may contain the hole
-        if (getPlayerColor(base, pos) != COLOR_HOLE && getPlayerColor(base, pos) != base)
-          return false;
-        else if (getPlayerColor(base, pos) != base)
-          return false;
-
+    for (int pos = 0; pos < posAmount; pos++) {
+      int color = getPlayerColor(base, pos);
+      if (color != base && !(base == baseAmount - 1 && color == COLOR_HOLE)) // last base may contain the hole
+        return false;
+    }
     return true;
   }
 

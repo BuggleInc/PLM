@@ -1,0 +1,15 @@
+BaseballWorld: Field 1
+Size: 4x2
+Initial: 2 1 3 0 1 0 -1 2
+move 0 1
+move 1 0
+move 2 1
+move 3 0
+move 0 0
+move 1 0
+move 2 0
+move 3 0
+move 0 1
+move 1 1
+move 2 1
+move 3 1
