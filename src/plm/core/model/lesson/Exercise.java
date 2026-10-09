@@ -134,8 +134,9 @@ public abstract class Exercise extends Lecture {
   }
 
   /**
-   * All the steps of the "Run" button, shared by the GUI and the tests: resets the worlds, compiles the code of {@code whatToCompile}, runs it
-   * on every world, then checks the result. The worlds are neither reset nor checked in creative mode.
+   * All the steps of the "Run" button, shared by the GUI and the tests: resets the worlds, generates the template, compiles the
+   * code of {@code whatToCompile}, runs it on every world, then checks the result. The worlds are neither reset nor checked in
+   * creative mode.
    * @param runners receives the entity tasks, so that another thread can stop them
    * @param onCompiled called once the compilation succeeded, right before the execution
    */
@@ -150,7 +151,7 @@ public abstract class Exercise extends Lecture {
     else
       reset(lang);
 
-    /* Compilation, then source-level API gating. Every compilation error is reported here, whichever language raised it */
+    /* Compilation, then source-level API gating. Every compilation error is reported here. */
     String executable;
     try {
       executable = lang.compileExo(this, out, whatToCompile);

@@ -350,7 +350,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 
   @Override public boolean isCarryingBaggle() { return this.carryBaggle; }
 
-  @Deprecated public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException { pickupBaggle(); }
   @Override public void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException
   {
     if (k_seq[k_val] == 5)
