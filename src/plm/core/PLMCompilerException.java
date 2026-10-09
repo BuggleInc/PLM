@@ -15,7 +15,7 @@ public class PLMCompilerException extends Exception {
   /**
    * The fully qualified name of the class that was being compiled.
    */
-  private Set<String> classNames;
+  private Set<String> classNames = Set.of();
 
   public PLMCompilerException(String message, Set<String> qualifiedClassNames, Throwable cause)
   {

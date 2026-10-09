@@ -125,79 +125,69 @@ public class LangJava extends JvmTemplatedLang {
 
     String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
-    List<String> generatedSources = new ArrayList<>(); // kept to dump them on failure when debugging
-    try {
-      for (SourceFile sf : exo.getSourceFilesList(this)) {
-        String key = packageNameCache + "." + sf.getName();
+    for (SourceFile sf : exo.getSourceFilesList(this)) {
+      String key = packageNameCache + "." + sf.getName();
 
-        String remote = sf.getRemote();
+      String remote = sf.getRemote();
 
-        String imports = ("import static generated.ValueSerializer.*;\n"
-                          + "import java.awt.Color;\n"
-                          + "import static generated.Remote.*;\n"
-                          + "import static generated." + remote + ".*;\n" + sf.getImports())
-                             .replace('\n', ' ');
+      String imports = ("import static generated.ValueSerializer.*;\n"
+                        + "import java.awt.Color;\n"
+                        + "import static generated.Remote.*;\n"
+                        + "import static generated." + remote + ".*;\n" + sf.getImports())
+                           .replace('\n', ' ');
 
-        EntityFileSegments segments = sf.getSegments(whatToCompile);
-        String pre                  = "package generated;\n\n" + imports + "\n\npublic class Entity {\n" + segments.pre();
-        int offset                  = countLinesBeforeBody(pre);
-        String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
-        entityCode        = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
-        generatedSources.add(sf.getName() + ":" + entityCode);
-        entityCode        = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
-        entityCode        = Pattern.compile("this.").matcher(entityCode).replaceAll("");
-        entityCode        = Pattern.compile("@Override").matcher(entityCode).replaceAll("");
+      EntityFileSegments segments = sf.getSegments(whatToCompile);
+      String pre                  = "package generated;\n\n" + imports + "\n\npublic class Entity {\n" + segments.pre();
+      int offset                  = countLinesBeforeBody(pre);
+      String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
+      entityCode                  = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
+      entityCode                  = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1int$3");
+      entityCode                  = Pattern.compile("this.").matcher(entityCode).replaceAll("");
+      entityCode                  = Pattern.compile("@Override").matcher(entityCode).replaceAll("");
 
-        File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
-        // noinspection ResultOfMethodCallIgnored
-        workspace.mkdirs();
+      File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
+      // noinspection ResultOfMethodCallIgnored
+      workspace.mkdirs();
 
-        File entityFile = new File(workspace, "Entity.java");
-        File mainFile   = new File(workspace, "Main.java");
+      File entityFile = new File(workspace, "Entity.java");
+      File mainFile   = new File(workspace, "Main.java");
 
-        String mainContent = "package generated;\n"
-                             + "\n"
-                             + "public class Main {\n"
-                             + "   public static void main(String[] args) {\n"
-                             + "     try {\n"
-                             + "       Remote.connect(args[0]);\n"
-                             + "       new Entity().run();\n"
-                             + "     } catch (Exception e) {\n"
-                             + "       e.printStackTrace();\n"
-                             + "       System.exit(1);\n"
-                             + "     }\n"
-                             + "     System.exit(0);\n"
-                             + "   }\n"
-                             + "}\n";
+      String mainContent = "package generated;\n"
+                           + "\n"
+                           + "public class Main {\n"
+                           + "   public static void main(String[] args) {\n"
+                           + "     try {\n"
+                           + "       Remote.connect(args[0]);\n"
+                           + "       new Entity().run();\n"
+                           + "     } catch (Exception e) {\n"
+                           + "       e.printStackTrace();\n"
+                           + "       System.exit(1);\n"
+                           + "     }\n"
+                           + "     System.exit(0);\n"
+                           + "   }\n"
+                           + "}\n";
 
-        try {
-          // The entities jar holds the helpers (Point, ValueSerializer...) in the "generated" package: make the imports refer to them
-          for (String helper : CodeCreation.JAVA_HELPER_SOURCES)
-            entityCode = entityCode.replace("import " + fqcnFromSourcePath(helper) + ";", "import generated." + fileNameWithoutExtension(helper) + ";");
+      try {
+        // The entities jar holds the helpers (Point, ValueSerializer...) in the "generated" package: make the imports refer to them
+        for (String helper : CodeCreation.JAVA_HELPER_SOURCES)
+          entityCode = entityCode.replace("import " + fqcnFromSourcePath(helper) + ";", "import generated." + fileNameWithoutExtension(helper) + ";");
 
-          Files.writeString(entityFile.toPath(), entityCode);
-          Files.writeString(mainFile.toPath(), mainContent);
+        Files.writeString(entityFile.toPath(), entityCode);
+        Files.writeString(mainFile.toPath(), mainContent);
 
-          // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
-          int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
-          compileJavaFiles(diagnostic, workspace, lineShift, entitiesJar.toFile(), mainFile, entityFile);
+        // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
+        int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
+        compileJavaFiles(diagnostic, workspace, lineShift, entitiesJar.toFile(), mainFile, entityFile);
 
-          File jarFile = new File(workspace, "Code.jar");
-          createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
+        File jarFile = new File(workspace, "Code.jar");
+        createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
 
-          jarPath = jarFile.toPath().toString();
-          lineShifts.put(jarPath, lineShift);
+        jarPath = jarFile.toPath().toString();
+        lineShifts.put(jarPath, lineShift);
 
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
+      } catch (IOException e) {
+        throw new RuntimeException(e);
       }
-    } catch (PLMCompilerException e) {
-      if (Game.getInstance().isDebugEnabled())
-        for (String source : generatedSources)
-          System.out.println("Source file " + source);
-
-      throw e;
     }
     return jarPath;
   }
