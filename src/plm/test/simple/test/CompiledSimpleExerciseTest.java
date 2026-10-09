@@ -23,7 +23,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldPass() throws PLMCompilerException, InterruptedException
   {
-    String executable = exo.compile(null, StudentOrCorrection.CORRECTION, pl);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
 
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
 
@@ -34,7 +34,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException, InterruptedException
   {
-    String executable = exo.compile(null, StudentOrCorrection.CORRECTION, pl);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
 
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
 
@@ -63,7 +63,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
     System.setErr(new PrintStream(capture, true));
     try {
       exo.getSourceFile(pl, 0).setEditorContent(generateExceptionRaisingCode(), pl);
-      String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
+      String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
       exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
     } finally {
       System.setErr(realErr);
@@ -76,7 +76,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   protected void assertPassesThanksToImports(String code) throws PLMCompilerException, InterruptedException
   {
     exo.getSourceFile(pl, 0).setEditorContent(code, pl);
-    String executable = exo.compile(null, StudentOrCorrection.STUDENT, pl);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
     exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
     Assertions.assertEquals(RunOutcome.kind.PASS, exo.lastResult.outcome, exo.lastResult.executionError);
   }
@@ -85,7 +85,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
       exo.getSourceFile(pl, 0).setEditorContent(generateSyntaxErrorCode(), pl);
-      exo.compile(null, StudentOrCorrection.STUDENT, pl);
+      pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
     });
   }
 
@@ -93,7 +93,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
       exo.getSourceFile(pl, 0).setEditorContent(generateVariableErrorCode(), pl);
-      exo.compile(null, StudentOrCorrection.STUDENT, pl);
+      pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
     });
   }
 }

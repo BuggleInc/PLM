@@ -56,7 +56,7 @@ Here are the steps of the exercise execution:
     external JVM. C and Python use an external compilers.
   - `compileExo()` returns a textual reference to the result (the path to a jar, a binary, etc), which the caller then passes
     down as-is to `runEntity()`'s `executable` parameter below.
-* **Source verification**: `Exercise.compile()` then calls `Exercise.verifySource()` with the editor's content, for the
+* **Source verification**: `Exercise.compileRunCheck()` then calls `Exercise.verifySource()` with the editor's content, for the
   student's code only (not for the correction). Exercises override it to refuse a code that compiles but misses the point (see
   "API gating" below).
 * **Remote execution**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`: that

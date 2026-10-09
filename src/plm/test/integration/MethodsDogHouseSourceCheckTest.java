@@ -1,6 +1,8 @@
 package plm.test.integration;
 
+import java.util.ArrayList;
 import java.util.Locale;
+import java.util.concurrent.Future;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -41,11 +43,11 @@ public class MethodsDogHouseSourceCheckTest {
   }
 
   /** Sets the editor content, and returns the message of the refusal of the source, or null if the code is accepted */
-  private static String refusal(ProgrammingLanguage lang, String code)
+  private static String refusal(ProgrammingLanguage lang, String code) throws InterruptedException
   {
     exo.getSourceFile(lang, 0).setEditorContent(code, lang);
     try {
-      exo.compile(null, StudentOrCorrection.STUDENT, lang);
+      exo.compileRunCheck(null, StudentOrCorrection.STUDENT, lang, new ArrayList<Future<?>>(), () -> {});
       return null;
     } catch (PLMCompilerException e) {
       return e.getMessage();

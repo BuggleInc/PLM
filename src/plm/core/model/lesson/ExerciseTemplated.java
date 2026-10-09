@@ -154,7 +154,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
         String path = null;
         try {
-          path = compile(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION, lang);
+          path = lang.compileExo(ExerciseTemplated.this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
         } catch (PLMCompilerException e) {
           System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
           e.printStackTrace();
@@ -210,7 +210,7 @@ public abstract class ExerciseTemplated extends Exercise {
     }
     String executable;
     try {
-      executable = compile(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION, lang);
+      executable = lang.compileExo(this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
     } catch (PLMCompilerException e) {
       System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
       e.printStackTrace();
