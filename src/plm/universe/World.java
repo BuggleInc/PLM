@@ -23,6 +23,7 @@ import plm.core.utils.FileUtils;
 public abstract class World {
   private boolean isDelayed = false; // whether we display interactively or not
   private boolean isAnswer  = false;
+  private boolean randomized = false; // whether the initial state is random, so that the answer cannot be cached
   private int delay         = 100; // delay between two instruction executions of an entity.
 
   protected List<Entity> entities = new ArrayList<Entity>();
@@ -71,6 +72,7 @@ public abstract class World {
       }
     }
     this.isDelayed  = initialWorld.isDelayed;
+    this.randomized = initialWorld.randomized;
     this.delay      = initialWorld.delay;
     this.parameters = (initialWorld.parameters != null ? initialWorld.parameters.clone() : null);
     notifyEntityUpdateListeners();
@@ -122,6 +124,10 @@ public abstract class World {
   public void doneDelay() { isDelayed = false; }
   public void setAnswerWorld() { isAnswer = true; }
   public boolean isAnswerWorld() { return isAnswer; }
+  public boolean isRandomized() { return randomized; }
+
+  /** To be called by the universes when they randomize the initial state of the world */
+  protected void setRandomized() { randomized = true; }
 
   public void addEntity(Entity b)
   {
