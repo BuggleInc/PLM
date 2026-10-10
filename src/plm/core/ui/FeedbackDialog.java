@@ -54,7 +54,7 @@ public class FeedbackDialog extends JDialog {
     Exercise current       = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
     for (World w : current.getWorlds(WorldKind.ANSWER)) {
       String s = w.getDebugInfo();
-      if (s != "")
+      if (!s.isEmpty())
         worldInfo.append("World: " + s + "\n");
     }
     // The randomized worlds cannot be rebuilt by the maintainers to reproduce the problem
