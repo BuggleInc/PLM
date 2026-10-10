@@ -1,5 +1,9 @@
 package plm.universe.bat;
 
+import static plm.core.ValueSerializer.deserialize;
+import static plm.core.ValueSerializer.serialize;
+
+import java.io.IOException;
 import java.util.StringJoiner;
 import plm.core.lang.ProgrammingLanguage;
 
@@ -21,6 +25,30 @@ public class BatTest {
     } else {
       this.parameters = new Object[] {param};
     }
+  }
+
+  /**
+   * Returns the test as one line of a .map file: its visibility, parameters and result, separated by tabs.
+   * Fails if a value contains a tab or a line break, as they would corrupt the file.
+   */
+  String toMapLine() throws IOException
+  {
+    String params = serialize(parameters);
+    String result = serialize(this.result);
+    if ((params + result).matches("(?s).*[\t\n\r].*"))
+      throw new IOException("Cannot cache the test " + params + " of " + funName + ": it contains a tab or a line break.");
+    return "Test\t" + visible + "\t" + params + "\t" + result;
+  }
+
+  /** Rebuilds a test from a line written by toMapLine() */
+  static BatTest fromMapLine(String funName, String line)
+  {
+    String[] fields = line.split("\t");
+    if (!fields[0].equals("Test"))
+      throw new IllegalArgumentException("unknown line '" + line + "'");
+    BatTest test = new BatTest(funName, Boolean.parseBoolean(fields[1]), deserialize(fields[2]));
+    test.setResult(deserialize(fields[3]));
+    return test;
   }
 
   public BatTest copy() { return new BatTest(funName, visible, parameters.clone()); }

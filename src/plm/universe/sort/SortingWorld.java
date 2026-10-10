@@ -178,15 +178,7 @@ public class SortingWorld extends World {
 
     ArrayList<Operation> operations = new ArrayList<Operation>();
     for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-      String[] tokens = line.split(" ");
-      int first       = Integer.parseInt(tokens[1]);
-      operations.add(switch (tokens[0]) {
-        case "swap" -> new Swap(first, Integer.parseInt(tokens[2]));
-        case "copy" -> new CopyVal(first, Integer.parseInt(tokens[2]));
-        case "set" -> new SetVal(first, Integer.parseInt(tokens[2]));
-        case "get" -> new GetVal(first);
-        default -> throw new BrokenWorldFileException(path + ".map: unknown operation '" + line + "'.");
-      });
+      operations.add(Operation.parse(line));
     }
     return new SortingWorld(name, values, initValues, readCount, writeCount, operations);
   }

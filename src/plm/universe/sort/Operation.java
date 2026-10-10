@@ -16,6 +16,20 @@ public abstract class Operation {
     this.destination = destination;
   }
 
+  /** Rebuilds an operation from its textual form, as written by toString() in the subclasses */
+  static Operation parse(String line)
+  {
+    String[] tokens = line.split(" ");
+    int first       = Integer.parseInt(tokens[1]);
+    return switch (tokens[0]) {
+      case "swap" -> new Swap(first, Integer.parseInt(tokens[2]));
+      case "copy" -> new CopyVal(first, Integer.parseInt(tokens[2]));
+      case "set" -> new SetVal(first, Integer.parseInt(tokens[2]));
+      case "get" -> new GetVal(first);
+      default -> throw new IllegalArgumentException("unknown operation '" + line + "'");
+    };
+  }
+
   /**
    * Indicate whether some other object is "equal to" this one
    * @param o the reference object with which to compare

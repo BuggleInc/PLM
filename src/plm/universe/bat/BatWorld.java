@@ -1,8 +1,5 @@
 package plm.universe.bat;
 
-import static plm.core.ValueSerializer.deserialize;
-import static plm.core.ValueSerializer.serialize;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -63,12 +60,8 @@ public class BatWorld extends World {
   @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
     BatWorld res = new BatWorld(readField(reader, path, "BatWorld"));
-    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-      String[] fields = line.split("\t");
-      BatTest test    = new BatTest(res.getName(), Boolean.parseBoolean(fields[1]), deserialize(fields[2]));
-      test.setResult(deserialize(fields[3]));
-      res.tests.add(test);
-    }
+    for (String line = reader.readLine(); line != null; line = reader.readLine())
+      res.tests.add(BatTest.fromMapLine(res.getName(), line));
     return res;
   }
 
@@ -80,13 +73,8 @@ public class BatWorld extends World {
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
     StringBuilder sb = new StringBuilder("BatWorld: " + getName() + "\n");
-    for (BatTest t : tests) {
-      String params = serialize(t.parameters);
-      String result = serialize(t.result);
-      if ((params + result).matches("(?s).*[\t\n\r].*"))
-        throw new IOException("Cannot cache the tests of " + getName() + ": the test " + params + " contains a tab or a line break.");
-      sb.append("Test\t" + t.visible + "\t" + params + "\t" + result + "\n");
-    }
+    for (BatTest t : tests)
+      sb.append(t.toMapLine() + "\n");
     writer.write(sb.toString());
   }
 
