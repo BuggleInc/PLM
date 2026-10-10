@@ -125,7 +125,7 @@ public class PancakeWorld extends World {
     boolean burned   = Boolean.parseBoolean(readField(reader, path, "Burned"));
     int lastMove     = Integer.parseInt(readField(reader, path, "LastMove"));
     int moveCount    = Integer.parseInt(readField(reader, path, "Moves"));
-    int[] sizes      = Arrays.stream(readField(reader, path, "Stack").split(" ")).mapToInt(Integer::parseInt).toArray();
+    int[] sizes      = readInts(reader, path, "Stack");
     PancakeWorld res = new PancakeWorld(name, sizes, burned);
     res.lastMove     = lastMove;
     res.moveCount    = moveCount;
@@ -136,13 +136,12 @@ public class PancakeWorld extends World {
   /** Writes the world, one field per line. The stack gives the radius of each pancake from the top, negated if it is upside down. */
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
-    writer.write("PancakeWorld: " + getName() + "\n");
-    writer.write("Burned: " + burnedWorld + "\n");
-    writer.write("LastMove: " + lastMove + "\n");
-    writer.write("Moves: " + moveCount + "\n");
-    writer.write(
-        "Stack: " + Arrays.stream(pancakeStack).map(p -> String.valueOf(p.isUpsideDown() ? -p.getRadius() : p.getRadius())).collect(Collectors.joining(" ")) +
-        "\n");
+    writeField(writer, "PancakeWorld", getName());
+    writeField(writer, "Burned", burnedWorld);
+    writeField(writer, "LastMove", lastMove);
+    writeField(writer, "Moves", moveCount);
+    writeField(writer, "Stack",
+               Arrays.stream(pancakeStack).map(p -> String.valueOf(p.isUpsideDown() ? -p.getRadius() : p.getRadius())).collect(Collectors.joining(" ")));
   }
 
   /** Returns a textual description of the differences between the caller and the parameter */

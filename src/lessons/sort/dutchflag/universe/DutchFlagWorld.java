@@ -3,10 +3,8 @@ package lessons.sort.dutchflag.universe;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -87,7 +85,7 @@ public class DutchFlagWorld extends World {
   {
     String name        = readField(reader, path, "DutchFlagWorld");
     int moveCount      = Integer.parseInt(readField(reader, path, "Moves"));
-    int[] content      = Arrays.stream(readField(reader, path, "Content").split(" ")).mapToInt(Integer::parseInt).toArray();
+    int[] content      = readInts(reader, path, "Content");
     DutchFlagWorld res = new DutchFlagWorld(name, content.length);
     res.content        = content;
     res.moveCount      = moveCount;
@@ -97,9 +95,9 @@ public class DutchFlagWorld extends World {
   /** Writes the world, one field per line. The content gives the color (0, 1 or 2) of each ray. */
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
-    writer.write("DutchFlagWorld: " + getName() + "\n");
-    writer.write("Moves: " + moveCount + "\n");
-    writer.write("Content: " + Arrays.stream(content).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
+    writeField(writer, "DutchFlagWorld", getName());
+    writeField(writer, "Moves", moveCount);
+    writeField(writer, "Content", content);
   }
 
   /** Returns a textual description of the differences between the caller and the parameter */

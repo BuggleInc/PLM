@@ -4,10 +4,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -166,8 +164,8 @@ public class SortingWorld extends World {
   @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
     String name      = readField(reader, path, "SortingWorld");
-    int[] values     = Arrays.stream(readField(reader, path, "Values").split(" ")).mapToInt(Integer::parseInt).toArray();
-    int[] initValues = Arrays.stream(readField(reader, path, "InitValues").split(" ")).mapToInt(Integer::parseInt).toArray();
+    int[] values     = readInts(reader, path, "Values");
+    int[] initValues = readInts(reader, path, "InitValues");
     SortingWorld res = new SortingWorld(name, values.length);
     res.values       = values;
     res.initValues   = initValues;
@@ -196,11 +194,11 @@ public class SortingWorld extends World {
    */
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
-    writer.write("SortingWorld: " + getName() + "\n");
-    writer.write("Values: " + Arrays.stream(values).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
-    writer.write("InitValues: " + Arrays.stream(initValues).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
-    writer.write("Reads: " + readCount + "\n");
-    writer.write("Writes: " + writeCount + "\n");
+    writeField(writer, "SortingWorld", getName());
+    writeField(writer, "Values", values);
+    writeField(writer, "InitValues", initValues);
+    writeField(writer, "Reads", readCount);
+    writeField(writer, "Writes", writeCount);
     for (Operation o : operations)
       writer.write(o + "\n");
   }

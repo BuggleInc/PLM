@@ -152,8 +152,8 @@ public class TurtleWorld extends World {
    */
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
-    writer.write("TurtleWorld: " + getName() + "\n");
-    writer.write("Size: " + width + "x" + height + "\n");
+    writeField(writer, "TurtleWorld", getName());
+    writeField(writer, "Size", width + "x" + height);
     for (Entity e : entities) {
       Turtle t = (Turtle)e;
       writer.write("Turtle\t" + t.getX() + "\t" + t.getY() + "\t" + t.getHeadingRadian() + "\t" + Integer.toHexString(t.getColor().getRGB()) + "\t" +

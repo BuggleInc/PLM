@@ -10,9 +10,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -268,6 +270,21 @@ public abstract class World {
     if (line == null || !line.startsWith(key + ": "))
       throw new BrokenWorldFileException(path + ".map: expected a line starting with '" + key + ": ' but got '" + line + "'.");
     return line.substring(key.length() + 2);
+  }
+
+  /** Returns the integers of the next line of a .map file, that must be of the form "key: 1 2 3" */
+  protected static int[] readInts(BufferedReader reader, String path, String key) throws IOException, BrokenWorldFileException
+  {
+    return Arrays.stream(readField(reader, path, key).split(" ")).mapToInt(Integer::parseInt).toArray();
+  }
+
+  /** Writes a line of a .map file in the form "key: value" */
+  protected static void writeField(BufferedWriter writer, String key, Object value) throws IOException { writer.write(key + ": " + value + "\n"); }
+
+  /** Writes a line of a .map file in the form "key: 1 2 3" */
+  protected static void writeField(BufferedWriter writer, String key, int[] values) throws IOException
+  {
+    writeField(writer, key, Arrays.stream(values).mapToObj(String::valueOf).collect(Collectors.joining(" ")));
   }
 
   /** Writes the world into the file. The content goes to a temporary file first, so that a failure never leaves a partial file behind. */

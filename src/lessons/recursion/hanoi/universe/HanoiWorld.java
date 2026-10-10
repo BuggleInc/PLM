@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.StringJoiner;
 import java.util.Vector;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
@@ -254,14 +255,14 @@ public class HanoiWorld extends World {
   /** Writes the world, one line per slot. Each disk of a slot is written as "radius:RRGGBB", from the bottom to the top. */
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
-    writer.write("HanoiWorld: " + getName() + "\n");
-    writer.write("Moves: " + moveCount + "\n");
-    writer.write("Slots: " + slotsVal.length + "\n");
+    writeField(writer, "HanoiWorld", getName());
+    writeField(writer, "Moves", moveCount);
+    writeField(writer, "Slots", slotsVal.length);
     for (int slot = 0; slot < slotsVal.length; slot++) {
-      writer.write("Slot: ");
+      StringJoiner disks = new StringJoiner(" ");
       for (int i = 0; i < slotsVal[slot].size(); i++)
-        writer.write((i > 0 ? " " : "") + slotsVal[slot].get(i) + ":" + Integer.toHexString(slotsColor[slot].get(i).getRGB() & 0xFFFFFF));
-      writer.write("\n");
+        disks.add(slotsVal[slot].get(i) + ":" + Integer.toHexString(slotsColor[slot].get(i).getRGB() & 0xFFFFFF));
+      writeField(writer, "Slot", disks);
     }
   }
 

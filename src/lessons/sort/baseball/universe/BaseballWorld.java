@@ -3,11 +3,9 @@ package lessons.sort.baseball.universe;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Vector;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -154,7 +152,7 @@ public class BaseballWorld extends World {
   {
     String name       = readField(reader, path, "BaseballWorld");
     String[] size     = readField(reader, path, "Size").split("x");
-    int[] initial     = Arrays.stream(readField(reader, path, "Initial").split(" ")).mapToInt(Integer::parseInt).toArray();
+    int[] initial     = readInts(reader, path, "Initial");
     BaseballWorld res = new BaseballWorld(name, Integer.parseInt(size[0]), Integer.parseInt(size[1]), initial);
 
     for (String line = reader.readLine(); line != null; line = reader.readLine()) {
@@ -174,9 +172,9 @@ public class BaseballWorld extends World {
    */
   @Override public void writeToFile(BufferedWriter writer) throws IOException
   {
-    writer.write("BaseballWorld: " + getName() + "\n");
-    writer.write("Size: " + baseAmount + "x" + posAmount + "\n");
-    writer.write("Initial: " + Arrays.stream(initialField).mapToObj(String::valueOf).collect(Collectors.joining(" ")) + "\n");
+    writeField(writer, "BaseballWorld", getName());
+    writeField(writer, "Size", baseAmount + "x" + posAmount);
+    writeField(writer, "Initial", initialField);
     for (BaseballMove m : moves)
       writer.write("move " + m.getBaseSrc() + " " + m.getPlayerSrc() + "\n");
   }
