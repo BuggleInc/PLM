@@ -97,94 +97,113 @@ public abstract class ExerciseTemplated extends Exercise {
 
   protected void computeAnswer()
   {
-    final String id                = this.getId();
     final ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage(); /* captured now: the user may switch language meanwhile */
-    Runnable task   = new Runnable() {
+    Runnable task                  = new Runnable() {
       @Override public void run()
       {
         try {
-          doComputeAnswer();
+          doComputeAnswer(lang);
         } catch (PLMEntityNotFound ex) {
           getLesson().setLoadingOutcomeState(LoadingOutcome.FAIL);
           throw ex; // Game.waitInitThreads() logs it (via the Future's ExecutionException)
         }
       }
-
-      private void doComputeAnswer()
-      {
-        Game.getInstance().statusArgAdd(getClass().getSimpleName());
-        boolean haveIO   = answerWorld.get(0).haveIO();
-        boolean useCache = haveIO && Game.getProperty(Game.PROP_ANSWER_CACHE, "true", true).equalsIgnoreCase("true");
-        if (haveIO && !useCache)
-          System.out.println(
-              i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}.", worldFileName, Game.PROP_ANSWER_CACHE));
-
-        /* Load the answer worlds from the cache. The others (randomized, missing or broken) are computed below */
-        Vector<World> newAnswer   = new Vector<World>(answerWorld);
-        Vector<Integer> toCompute = new Vector<Integer>();
-        for (int rank = 0; rank < answerWorld.size(); rank++) {
-          World aw = answerWorld.get(rank);
-          if (!useCache || aw.isRandomized()) {
-            toCompute.add(rank);
-            continue;
-          }
-          String name = worldFileName + "-answer" + rank;
-          try {
-            World nw = aw.readFromFile(name);
-            nw.setAnswerWorld();
-            newAnswer.set(rank, nw);
-          } catch (BrokenWorldFileException bwfe) {
-            System.err.println(i18n.tr("World {0} is broken ({1}). Recompute it.", name, bwfe.getLocalizedMessage()));
-            toCompute.add(rank);
-          } catch (FileNotFoundException fnf) {
-            System.err.println(i18n.tr("Cache file {0} is missing. Recompute it.", name));
-            toCompute.add(rank);
-          } catch (IOException ioe) {
-            System.err.println(i18n.tr("IO exception while reading world {0} ({1}). Recompute it.", name, ioe.getLocalizedMessage()));
-            toCompute.add(rank);
-          }
-        }
-
-        if (!toCompute.isEmpty()) {
-          RunOutcome progress = new RunOutcome(lang);
-
-          String path = null;
-          try {
-            path = lang.compileExo(ExerciseTemplated.this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
-          } catch (PLMCompilerException e) {
-            System.err.println("Severe error: the correction of exercise " + id + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
-            e.printStackTrace();
-            Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
-            Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
-          }
-
-          for (int rank : toCompute) {
-            World aw = answerWorld.get(rank);
-            for (Entity ent : aw.getEntities())
-              lang.runEntity(ent, progress, path);
-            aw.setAnswerWorld();
-
-            /* Try to write the file for next time */
-            if (haveIO && !aw.isRandomized()) {
-              String name = ("src/" + worldFileName + "-answer" + rank).replaceAll("\\.", "/") + ".map";
-              if (new File(name).getParentFile().canWrite()) {
-                try {
-                  aw.writeToFile(new File(name));
-                } catch (Exception e) {
-                  System.err.println(i18n.tr("Error while writing answer world of {0}:", name));
-                  e.printStackTrace();
-                }
-              } else {
-                System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions.", name));
-              }
-            }
-          }
-        }
-        answerWorld = newAnswer;
-        Game.getInstance().statusArgRemove(getClass().getSimpleName());
-      }
     };
     Game.addInitThread(task);
+  }
+
+  /** Sets the answer worlds: loaded from the cache files when possible, computed by the correction entity otherwise */
+  private void doComputeAnswer(ProgrammingLanguage lang)
+  {
+    Game.getInstance().statusArgAdd(getClass().getSimpleName());
+
+    Vector<World> newAnswer   = new Vector<World>(answerWorld);
+    Vector<Integer> toCompute = loadCachedAnswers(newAnswer);
+    if (!toCompute.isEmpty())
+      computeAnswers(toCompute, lang);
+    answerWorld = newAnswer;
+
+    Game.getInstance().statusArgRemove(getClass().getSimpleName());
+  }
+
+  /**
+   * Replaces in answers the worlds that can be read from the cache files, and returns the ranks of the others (randomized, missing
+   * or broken), that must be computed.
+   */
+  private Vector<Integer> loadCachedAnswers(Vector<World> answers)
+  {
+    boolean haveIO   = answerWorld.get(0).haveIO();
+    boolean useCache = haveIO && Game.getProperty(Game.PROP_ANSWER_CACHE, "true", true).equalsIgnoreCase("true");
+    if (haveIO && !useCache)
+      System.out.println(
+          i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}.", worldFileName, Game.PROP_ANSWER_CACHE));
+
+    Vector<Integer> toCompute = new Vector<Integer>();
+    for (int rank = 0; rank < answerWorld.size(); rank++) {
+      World aw = answerWorld.get(rank);
+      if (!useCache || aw.isRandomized()) {
+        toCompute.add(rank);
+        continue;
+      }
+      String name = worldFileName + "-answer" + rank;
+      try {
+        World nw = aw.readFromFile(name);
+        nw.setAnswerWorld();
+        answers.set(rank, nw);
+      } catch (BrokenWorldFileException bwfe) {
+        System.err.println(i18n.tr("World {0} is broken ({1}). Recompute it.", name, bwfe.getLocalizedMessage()));
+        toCompute.add(rank);
+      } catch (FileNotFoundException fnf) {
+        System.err.println(i18n.tr("Cache file {0} is missing. Recompute it.", name));
+        toCompute.add(rank);
+      } catch (IOException ioe) {
+        System.err.println(i18n.tr("IO exception while reading world {0} ({1}). Recompute it.", name, ioe.getLocalizedMessage()));
+        toCompute.add(rank);
+      }
+    }
+    return toCompute;
+  }
+
+  /** Runs the correction entity on the answer worlds of the given ranks, and writes the cache files of the cacheable ones */
+  private void computeAnswers(Vector<Integer> ranks, ProgrammingLanguage lang)
+  {
+    RunOutcome progress = new RunOutcome(lang);
+
+    String path = null;
+    try {
+      path = lang.compileExo(ExerciseTemplated.this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+    } catch (PLMCompilerException e) {
+      System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
+      e.printStackTrace();
+      Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
+      Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
+    }
+
+    for (int rank : ranks) {
+      World aw = answerWorld.get(rank);
+      for (Entity ent : aw.getEntities())
+        lang.runEntity(ent, progress, path);
+      aw.setAnswerWorld();
+
+      if (aw.haveIO() && !aw.isRandomized())
+        writeAnswerFile(rank);
+    }
+  }
+
+  /** Writes the cache file of the answer world of that rank, for next time */
+  private void writeAnswerFile(int rank)
+  {
+    String name = ("src/" + worldFileName + "-answer" + rank).replaceAll("\\.", "/") + ".map";
+    if (!new File(name).getParentFile().canWrite()) {
+      System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions.", name));
+      return;
+    }
+    try {
+      answerWorld.get(rank).writeToFile(new File(name));
+    } catch (Exception e) {
+      System.err.println(i18n.tr("Error while writing answer world of {0}:", name));
+      e.printStackTrace();
+    }
   }
 
   @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
