@@ -69,7 +69,7 @@ public class SortingWorld extends World {
       for (int i = 0; i < values.length; i++)
         if (values[i] == i)
           exchangeValues(i, (i + 1) % values.length);
-    this.initValues = this.values;
+    this.initValues = this.values.clone();
   }
 
   private void scramble(Random rng)
