@@ -197,120 +197,68 @@ public class TurtleWorld extends World {
     return false;
   }
 
-  // Merge the lines that are lengthening each others
-  private boolean mergeLengthening(ArrayList<Shape> shapes)
+  /**
+   * Returns the shapes where each line is merged with the first line that lengthens it or covers it (see mergeLines()).
+   * A merged line may be mergeable again with the following lines, so the callers repeat this until the amount of shapes is stable.
+   */
+  private ArrayList<Shape> mergeLengthening(ArrayList<Shape> shapes)
   {
-    boolean changedSomething = false;
-
-    // FIXME: this code seems rather suboptimal, but I prefer to be safe than sorry.
-    //
-    // I think that we could do less tests, but I prefer to leave them all so that all duplicates are actually catched
-    // In practice, it seems that case 2 (L2 after L1) never occurs, so we could kill it.
-    //
-    // Since extremities are sorted for each line (so p1 < p2 in each line),
-    //  and since shapes are sorted before entering that function,
-    //  then I guess that we could have (j <- 0 to i), stopping at i instead of j, and killing the case 2 (l2 after l1).
-    //
-    // But I prefer not to do that before someone better in geometry than me thinks about it.
-
-    for (int i = 0; i < shapes.size(); i++) {
-      if (shapes.get(i) instanceof Line) {
-
-        for (int j = 0; j < shapes.size(); j++) {
-          if (i != j && shapes.get(j) instanceof Line) {
-            Line l1 = (Line)shapes.get(i);
-            Line l2 = (Line)shapes.get(j);
-            if (l1.sameSlope(l2)) { // We cannot have inverted slopes because the extremities within a line are sorted
-              if ((Line.doubleEqual(l1.x1, l2.x1) && Line.doubleEqual(l1.y1, l2.y1)) || // Same start. Keep the longer
-                  (Line.doubleEqual(l1.x2, l2.x2) && Line.doubleEqual(l1.y2, l2.y2))) { // Same end. Keep the longer
-                int rmIdx;
-                if (l1.getLength() > l2.getLength()) {
-                  rmIdx = j;
-                  //									System.out.println("1a: Kill "+shapes.get(j)+" because of
-                  //"+shapes.get(i));
-                } else {
-                  rmIdx = i;
-                  //									System.out.println("1b: Kill "+shapes.get(i)+" because of
-                  //"+shapes.get(j));
-                }
-                shapes.remove(rmIdx);
-                if (i >= rmIdx && rmIdx > 0)
-                  i--;
-                if (j >= rmIdx && rmIdx > 0)
-                  j--;
-                changedSomething = true;
-              } else if (Line.doubleEqual(l1.x1, l2.x2) && Line.doubleEqual(l1.y1, l2.y2)) {
-                // l1 and l2 are aligned, and l2 is after l1. Modify end of l1 and kill l2
-                //								System.out.print("2: "+l2+" is after "+l1+".");
-                l1.x1 = l2.x1;
-                l1.y1 = l2.y1;
-                //								System.out.println(" New l1: "+l1);
-
-                if (i >= j && i > 0)
-                  i--;
-                shapes.remove(j);
-                if (j > 0)
-                  j--;
-                changedSomething = true;
-              } else if (Line.doubleEqual(l1.x2, l2.x1) && Line.doubleEqual(l1.y2, l2.y1)) {
-                // l1 and l2 are aligned, and l1 is after l2. Modify start of l1 and kill l2
-                //								System.out.print("3: "+l2+" is before "+l1+".");
-                l1.x2 = l2.x2;
-                l1.y2 = l2.y2;
-                //								System.out.println(" New l1: "+l1);
-                if (i >= j && j > 0)
-                  i--;
-                shapes.remove(j);
-                if (j > 0)
-                  j--;
-                changedSomething = true;
-              } else if (l1.sameRoot(l2)) {
-                // The lines are parallel and on the same ray. Check if they are intersecting
-                if (Line.doubleWithin(l1.x1, l2.x1, l2.x2) && Line.doubleWithin(l1.x2, l2.x1, l2.x2) && Line.doubleWithin(l1.y1, l2.y1, l2.y2) &&
-                    Line.doubleWithin(l1.y2, l2.y1, l2.y2)) {
-                  // l1 is strictly within l2 (we don't test on y because we have the same slope & root, and extremities are sorted)
-                  if (j >= i && i > 0)
-                    j--;
-                  shapes.remove(i);
-                  if (i > 0)
-                    i--;
-                  changedSomething = true;
-                } else if (Line.doubleWithin(l2.x1, l1.x1, l1.x2) && Line.doubleWithin(l2.x2, l1.x1, l1.x2) && Line.doubleWithin(l2.y1, l1.y1, l1.y2) &&
-                           Line.doubleWithin(l2.y2, l1.y1, l1.y2)) {
-                  // l2 is strictly within l1
-                  if (i >= j && j > 0)
-                    i--;
-                  shapes.remove(j);
-                  if (j > 0)
-                    j--;
-                  changedSomething = true;
-                } /*else if (!Line.doubleWithin(l1.x1, l2.x1, l2.x2) && !Line.doubleWithin(l1.x2, l2.x1, l2.x2)) {
-                        // No point of l1 is within l2. They are disjoint, nothing to do
-                } else if (!Line.doubleWithin(l2.x1, l1.x1, l1.x2) && !Line.doubleWithin(l2.x2, l1.x1, l1.x2)) {
-                        // No point of l2 is within l1. They are disjoint, nothing to do
-                } else if (Line.doubleWithin(l1.x1, l2.x1, l2.x2) && Line.doubleWithin(l2.x1, l1.x1, l1.x2)) {
-                        // if l1=(ab) and l2=(cd), we have the points in that order a,c,b,d or c,a,d,b
-                        // FIXME: that's not sorted out yet...
-                }*/
-              }
-            } // not same slope, certainly not lenghtening each other
-          } // j is not a shape
-        } // for all j
-      } // i is not a shape
-    } // for all i
-    return changedSomething;
+    ArrayList<Shape> res = new ArrayList<Shape>();
+    for (Shape shape : shapes) {
+      boolean merged = false;
+      if (shape instanceof Line line)
+        for (int i = 0; i < res.size() && !merged; i++)
+          if (res.get(i) instanceof Line other) {
+            Line union = mergeLines(other, line);
+            if (union != null) {
+              res.set(i, union);
+              merged = true;
+            }
+          }
+      if (!merged)
+        res.add(shape);
+    }
+    return res;
   }
-  private boolean killDuplicate(ArrayList<Shape> shapes)
-  {
-    boolean changedSomething = false;
 
+  /** Returns the line that replaces both lines if they lengthen each other or if one covers the other, null if they are separate */
+  private Line mergeLines(Line a, Line b)
+  {
+    if (!a.sameSlope(b)) // We cannot have inverted slopes because the extremities within a line are sorted
+      return null;
+
+    boolean sameStart = Line.doubleEqual(a.x1, b.x1) && Line.doubleEqual(a.y1, b.y1);
+    boolean sameEnd   = Line.doubleEqual(a.x2, b.x2) && Line.doubleEqual(a.y2, b.y2);
+    if (sameStart || sameEnd) // Keep the longer
+      return a.getLength() > b.getLength() ? a : b;
+    if (Line.doubleEqual(a.x1, b.x2) && Line.doubleEqual(a.y1, b.y2)) // b ends where a starts
+      return new Line(b.x1, b.y1, a.x2, a.y2, a.color);
+    if (Line.doubleEqual(a.x2, b.x1) && Line.doubleEqual(a.y2, b.y1)) // a ends where b starts
+      return new Line(a.x1, a.y1, b.x2, b.y2, a.color);
+
+    if (a.sameRoot(b)) { // The lines are parallel and on the same ray: keep the one covering the other, if any
+      if (covers(b, a))
+        return b;
+      if (covers(a, b))
+        return a;
+    }
+    return null;
+  }
+
+  /** Returns whether the inner line is within the outer one, supposing that they have the same slope and root */
+  private boolean covers(Line outer, Line inner)
+  {
+    return Line.doubleWithin(inner.x1, outer.x1, outer.x2) && Line.doubleWithin(inner.x2, outer.x1, outer.x2) &&
+        Line.doubleWithin(inner.y1, outer.y1, outer.y2) && Line.doubleWithin(inner.y2, outer.y1, outer.y2);
+  }
+
+  private void killDuplicate(ArrayList<Shape> shapes)
+  {
     for (int i = 0; i < shapes.size() - 1; i++)
       if (shapes.get(i).equals(shapes.get(i + 1))) {
-        changedSomething = true;
         shapes.remove(i + 1);
         i--; // counters the effect of next i++ in the for loop
       }
-    return changedSomething;
   }
 
   @Override public String diffTo(World world, ProgrammingLanguage ignored)
@@ -379,20 +327,22 @@ public class TurtleWorld extends World {
   }
 
   /**
-   * Returns a sorted copy of the shapes, where duplicates and lengthening lines are merged.
+   * Returns a sorted copy of the shapes, where duplicates and lengthening lines are merged. The shapes themselves are not modified.
    * Merging lines may change the shape order while the duplicate detection needs them sorted, hence the loop.
    */
   private ArrayList<Shape> normalizedShapes(ArrayList<Shape> original)
   {
-    ArrayList<Shape> res = new ArrayList<Shape>();
+    ArrayList<Shape> res;
     synchronized (original) {
-      for (Shape s : original)
-        res.add(s.copy());
+      res = new ArrayList<Shape>(original);
     }
+    int previousSize;
     do {
+      previousSize = res.size();
       Collections.sort(res, new ShapeComparator());
       killDuplicate(res);
-    } while (mergeLengthening(res));
+      res = mergeLengthening(res);
+    } while (res.size() < previousSize);
     return res;
   }
 }
