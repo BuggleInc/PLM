@@ -36,14 +36,21 @@ public class SortingWorld extends World {
   public SortingWorld(String name, int nbValues) { this(name, nbValues, true); }
   public SortingWorld(String name, int nbValues, boolean someoneHomeOk)
   {
-    super(name);
-    if (nbValues > 100)
-      setDelay(1);
-    else
-      setDelay(50);
-    this.values        = new int[nbValues];
+    this(name, new int[nbValues], null, 0, 0, new ArrayList<Operation>(1));
     this.someoneHomeOk = someoneHomeOk;
     shuffle(new Random(name.hashCode())); // Seeded by the name: the initial state must be reproducible to cache the answer worlds
+  }
+
+  /** Constructor of a world in a given state, used when reading a file */
+  private SortingWorld(String name, int[] values, int[] initValues, int readCount, int writeCount, ArrayList<Operation> operations)
+  {
+    super(name);
+    setDelay(values.length > 100 ? 1 : 50);
+    this.values     = values;
+    this.initValues = initValues;
+    this.readCount  = readCount;
+    this.writeCount = writeCount;
+    this.operations = operations;
     addEntity(new SortingEntity());
   }
 
@@ -166,16 +173,14 @@ public class SortingWorld extends World {
     String name      = readField(reader, path, "SortingWorld");
     int[] values     = readInts(reader, path, "Values");
     int[] initValues = readInts(reader, path, "InitValues");
-    SortingWorld res = new SortingWorld(name, values.length);
-    res.values       = values;
-    res.initValues   = initValues;
-    res.readCount    = Integer.parseInt(readField(reader, path, "Reads"));
-    res.writeCount   = Integer.parseInt(readField(reader, path, "Writes"));
+    int readCount    = Integer.parseInt(readField(reader, path, "Reads"));
+    int writeCount   = Integer.parseInt(readField(reader, path, "Writes"));
 
+    ArrayList<Operation> operations = new ArrayList<Operation>();
     for (String line = reader.readLine(); line != null; line = reader.readLine()) {
       String[] tokens = line.split(" ");
       int first       = Integer.parseInt(tokens[1]);
-      res.operations.add(switch (tokens[0]) {
+      operations.add(switch (tokens[0]) {
         case "swap" -> new Swap(first, Integer.parseInt(tokens[2]));
         case "copy" -> new CopyVal(first, Integer.parseInt(tokens[2]));
         case "set" -> new SetVal(first, Integer.parseInt(tokens[2]));
@@ -183,7 +188,7 @@ public class SortingWorld extends World {
         default -> throw new BrokenWorldFileException(path + ".map: unknown operation '" + line + "'.");
       });
     }
-    return res;
+    return new SortingWorld(name, values, initValues, readCount, writeCount, operations);
   }
 
   /**

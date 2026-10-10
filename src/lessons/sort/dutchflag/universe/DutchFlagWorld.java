@@ -52,13 +52,20 @@ public class DutchFlagWorld extends World {
   /** Same as above, but with only two colors: the one passed as colorRemoved is missing */
   public DutchFlagWorld(String name, int size, int colorRemoved)
   {
+    this(name, new int[size], 0, colorRemoved);
+    fill(new Random(name.hashCode()));
+  }
+
+  /** Constructor of a world in a given state, used when reading a file */
+  private DutchFlagWorld(String name, int[] content, int moveCount, int colorRemoved)
+  {
     super(name);
-    setDelay(size > 100 ? 20 : 200); // Delay (in ms) in default animations
+    setDelay(content.length > 100 ? 20 : 200); // Delay (in ms) in default animations
     new DutchFlagEntity(this);
 
+    this.content      = content;
+    this.moveCount    = moveCount;
     this.colorRemoved = colorRemoved;
-    this.content      = new int[size];
-    fill(new Random(name.hashCode()));
   }
 
   /** Randomizes the initial state: the answer of this world cannot be cached anymore */
@@ -83,13 +90,9 @@ public class DutchFlagWorld extends World {
   /** Reads a world written by writeToFile() */
   @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    String name        = readField(reader, path, "DutchFlagWorld");
-    int moveCount      = Integer.parseInt(readField(reader, path, "Moves"));
-    int[] content      = readInts(reader, path, "Content");
-    DutchFlagWorld res = new DutchFlagWorld(name, content.length);
-    res.content        = content;
-    res.moveCount      = moveCount;
-    return res;
+    String name   = readField(reader, path, "DutchFlagWorld");
+    int moveCount = Integer.parseInt(readField(reader, path, "Moves"));
+    return new DutchFlagWorld(name, readInts(reader, path, "Content"), moveCount, -1);
   }
 
   /** Writes the world, one field per line. The content gives the color (0, 1 or 2) of each ray. */

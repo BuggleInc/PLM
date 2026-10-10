@@ -232,24 +232,34 @@ public class HanoiWorld extends World {
   /** Reads a world written by writeToFile() */
   @SuppressWarnings("unchecked") @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    HanoiWorld res = new HanoiWorld(readField(reader, path, "HanoiWorld"), new Integer[0], new Integer[0], new Integer[0]);
-    res.moveCount  = Integer.parseInt(readField(reader, path, "Moves"));
-    int slotAmount = Integer.parseInt(readField(reader, path, "Slots"));
-    res.slotsVal   = new Vector[slotAmount];
-    res.slotsColor = new Vector[slotAmount];
+    String name            = readField(reader, path, "HanoiWorld");
+    int moveCount          = Integer.parseInt(readField(reader, path, "Moves"));
+    int slotAmount         = Integer.parseInt(readField(reader, path, "Slots"));
+    Vector<Integer>[] vals = new Vector[slotAmount];
+    Vector<Color>[] colors = new Vector[slotAmount];
     for (int slot = 0; slot < slotAmount; slot++) {
-      res.slotsVal[slot]   = new Vector<Integer>();
-      res.slotsColor[slot] = new Vector<Color>();
+      vals[slot]   = new Vector<Integer>();
+      colors[slot] = new Vector<Color>();
       for (String disk : readField(reader, path, "Slot").split(" ")) {
         if (disk.isEmpty())
           continue;
         String[] parts = disk.split(":");
-        res.slotsVal[slot].add(Integer.parseInt(parts[0]));
-        res.slotsColor[slot].add(new Color(Integer.parseInt(parts[1], 16)));
+        vals[slot].add(Integer.parseInt(parts[0]));
+        colors[slot].add(new Color(Integer.parseInt(parts[1], 16)));
       }
     }
-    new HanoiEntity("worker", res);
-    return res;
+    return new HanoiWorld(name, moveCount, vals, colors);
+  }
+
+  /** Constructor of a world in a given state, used when reading a file */
+  private HanoiWorld(String name, int moveCount, Vector<Integer>[] slotsVal, Vector<Color>[] slotsColor)
+  {
+    super(name);
+    setDelay(200); /* Delay (in ms) in default animations */
+    this.moveCount  = moveCount;
+    this.slotsVal   = slotsVal;
+    this.slotsColor = slotsColor;
+    new HanoiEntity("worker", this);
   }
 
   /** Writes the world, one line per slot. Each disk of a slot is written as "radius:RRGGBB", from the bottom to the top. */
