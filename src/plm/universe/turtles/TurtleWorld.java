@@ -328,80 +328,72 @@ public class TurtleWorld extends World {
       if (!other.entities.get(i).equals(entities.get(i)))
         sb.append(((Turtle)other.entities.get(i)).diffTo(entities.get(i)));
 
-    // Compare shapes
-    synchronized (shapes) {
-      synchronized (other.shapes) {
-        ShapeComparator cmp = new ShapeComparator();
+    // Compare shapes, on normalized copies: the comparison must not change the worlds
+    ArrayList<Shape> expected = normalizedShapes(shapes);
+    ArrayList<Shape> got      = normalizedShapes(other.shapes);
 
-        // Sort shapes and kill duplicates as long as we manage to merge lengthening
-        // that's because merging lines may change the shape order, but our duplicate detection works only when they are sorted
-        //			System.out.print("Shapes available in the student's work before merging:\n");
-        //			for (int i=0;i<other.shapes.size();i++)
-        //				System.out.print("  "+other.shapes.get(i)+"\n");
-        do {
-          //				System.out.println("Merge your solution");
-          Collections.sort(other.shapes, cmp);
-          killDuplicate(other.shapes);
-        } while (mergeLengthening(other.shapes));
+    // Same amount of shapes?
+    if (expected.size() != got.size()) {
+      if (got.size() > expected.size())
+        sb.append(Game.i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n", got.size(), expected.size()));
+      else
+        sb.append(Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n", got.size(), expected.size()));
 
-        do {
-          //				System.out.println("Merge the correction");
-          Collections.sort(shapes, cmp);
-          killDuplicate(shapes);
-        } while (mergeLengthening(shapes));
-
-        // Same amount of shapes?
-        if (shapes.size() != other.shapes.size()) {
-          if (other.shapes.size() > shapes.size())
-            sb.append(Game.i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n", other.shapes.size(), shapes.size()));
-          else
-            sb.append(Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n", other.shapes.size(), shapes.size()));
-
-          if (Game.getInstance().isDebugEnabled()) {
-            sb.append("Shapes available in the student's work (after mergin' madness):\n");
-            for (int i = 0; i < other.shapes.size(); i++)
-              sb.append("  " + other.shapes.get(i) + "\n");
-            sb.append("Expected shapes:\n");
-            for (int i = 0; i < shapes.size(); i++)
-              sb.append("  " + shapes.get(i) + "\n");
-          }
-
-          Vector<Shape> studentShapes    = new Vector<Shape>();
-          Vector<Shape> correctionShapes = new Vector<Shape>();
-          for (int i = 0; i < other.shapes.size(); i++)
-            studentShapes.add(other.shapes.get(i));
-          for (int i = 0; i < shapes.size(); i++)
-            correctionShapes.add(shapes.get(i));
-
-          for (int i = 0; i < studentShapes.size(); i++) {
-            Shape s = studentShapes.get(i);
-            if (correctionShapes.contains(s)) {
-              studentShapes.remove(i);
-              i--;
-              correctionShapes.remove(s);
-            }
-          }
-          if (!studentShapes.isEmpty()) {
-            sb.append(Game.i18n.tr("Superflous shapes in your solution:\n"));
-            for (Shape s : studentShapes)
-              sb.append("   " + s + "\n");
-          }
-          if (!correctionShapes.isEmpty()) {
-            sb.append(Game.i18n.tr("Missing shapes in your solution:\n"));
-            for (Shape s : correctionShapes)
-              sb.append("   " + s + "\n");
-          }
-
-          return sb.toString();
-        }
-
-        // Same shapes?
-        for (int i = 0; i < other.shapes.size(); i++)
-          if (!other.shapes.get(i).equals(shapes.get(i)))
-            sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n", ((Shape)other.shapes.get(i)).diffTo(shapes.get(i)), other.shapes.get(i), shapes.get(i)));
+      if (Game.getInstance().isDebugEnabled()) {
+        sb.append("Shapes available in the student's work (after mergin' madness):\n");
+        for (Shape s : got)
+          sb.append("  " + s + "\n");
+        sb.append("Expected shapes:\n");
+        for (Shape s : expected)
+          sb.append("  " + s + "\n");
       }
+
+      Vector<Shape> studentShapes    = new Vector<Shape>(got);
+      Vector<Shape> correctionShapes = new Vector<Shape>(expected);
+      for (int i = 0; i < studentShapes.size(); i++) {
+        Shape s = studentShapes.get(i);
+        if (correctionShapes.contains(s)) {
+          studentShapes.remove(i);
+          i--;
+          correctionShapes.remove(s);
+        }
+      }
+      if (!studentShapes.isEmpty()) {
+        sb.append(Game.i18n.tr("Superflous shapes in your solution:\n"));
+        for (Shape s : studentShapes)
+          sb.append("   " + s + "\n");
+      }
+      if (!correctionShapes.isEmpty()) {
+        sb.append(Game.i18n.tr("Missing shapes in your solution:\n"));
+        for (Shape s : correctionShapes)
+          sb.append("   " + s + "\n");
+      }
+      return sb.toString();
     }
+
+    // Same shapes?
+    for (int i = 0; i < got.size(); i++)
+      if (!got.get(i).equals(expected.get(i)))
+        sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n", got.get(i).diffTo(expected.get(i)), got.get(i), expected.get(i)));
     return sb.toString();
+  }
+
+  /**
+   * Returns a sorted copy of the shapes, where duplicates and lengthening lines are merged.
+   * Merging lines may change the shape order while the duplicate detection needs them sorted, hence the loop.
+   */
+  private ArrayList<Shape> normalizedShapes(ArrayList<Shape> original)
+  {
+    ArrayList<Shape> res = new ArrayList<Shape>();
+    synchronized (original) {
+      for (Shape s : original)
+        res.add(s.copy());
+    }
+    do {
+      Collections.sort(res, new ShapeComparator());
+      killDuplicate(res);
+    } while (mergeLengthening(res));
+    return res;
   }
 }
 

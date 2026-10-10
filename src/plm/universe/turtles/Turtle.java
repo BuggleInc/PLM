@@ -48,26 +48,30 @@ public class Turtle extends Entity implements TurtlePrimitives {
     super();
     setName(t.getName());
     setWorld(t.getWorld());
-    this.color   = t.color;
-    this.x       = t.x;
-    this.y       = t.y;
-    this.startX  = t.startX;
-    this.startY  = t.startY;
-    this.heading = t.heading;
-    this.penDown = t.penDown;
+    this.color       = t.color;
+    this.x           = t.x;
+    this.y           = t.y;
+    this.startX      = t.startX;
+    this.startY      = t.startY;
+    this.heading     = t.heading;
+    this.penDown     = t.penDown;
+    this.angularUnit = t.angularUnit;
+    this.visible     = t.visible;
   }
 
   @Override public void copy(Entity e)
   {
     super.copy(e);
     Turtle other = (Turtle)e;
-    this.color   = other.color;
-    this.x       = other.x;
-    this.y       = other.y;
-    this.startX  = other.startX;
-    this.startY  = other.startY;
-    this.heading = other.heading;
-    this.penDown = other.penDown;
+    this.color       = other.color;
+    this.x           = other.x;
+    this.y           = other.y;
+    this.startX      = other.startX;
+    this.startY      = other.startY;
+    this.heading     = other.heading;
+    this.penDown     = other.penDown;
+    this.angularUnit = other.angularUnit;
+    this.visible     = other.visible;
   }
 
   @Override public void forward(double dist) { moveTo(x + dist * Math.cos(heading), y + dist * Math.sin(heading)); }
