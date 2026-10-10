@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
@@ -281,48 +282,50 @@ public class TurtleWorld extends World {
     ArrayList<Shape> got      = normalizedShapes(other.shapes);
 
     // Same amount of shapes?
-    if (expected.size() != got.size()) {
-      if (got.size() > expected.size())
-        sb.append(Game.i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n", got.size(), expected.size()));
-      else
-        sb.append(Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n", got.size(), expected.size()));
-
-      if (Game.getInstance().isDebugEnabled()) {
-        sb.append("Shapes available in the student's work (after mergin' madness):\n");
-        for (Shape s : got)
-          sb.append("  " + s + "\n");
-        sb.append("Expected shapes:\n");
-        for (Shape s : expected)
-          sb.append("  " + s + "\n");
-      }
-
-      Vector<Shape> studentShapes    = new Vector<Shape>(got);
-      Vector<Shape> correctionShapes = new Vector<Shape>(expected);
-      for (int i = 0; i < studentShapes.size(); i++) {
-        Shape s = studentShapes.get(i);
-        if (correctionShapes.contains(s)) {
-          studentShapes.remove(i);
-          i--;
-          correctionShapes.remove(s);
-        }
-      }
-      if (!studentShapes.isEmpty()) {
-        sb.append(Game.i18n.tr("Superflous shapes in your solution:\n"));
-        for (Shape s : studentShapes)
-          sb.append("   " + s + "\n");
-      }
-      if (!correctionShapes.isEmpty()) {
-        sb.append(Game.i18n.tr("Missing shapes in your solution:\n"));
-        for (Shape s : correctionShapes)
-          sb.append("   " + s + "\n");
-      }
-      return sb.toString();
-    }
+    if (expected.size() != got.size())
+      return sb.append(diffShapeCounts(expected, got)).toString();
 
     // Same shapes?
     for (int i = 0; i < got.size(); i++)
       if (!got.get(i).equals(expected.get(i)))
         sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n", got.get(i).diffTo(expected.get(i)), got.get(i), expected.get(i)));
+    return sb.toString();
+  }
+
+  /** Describes how the obtained shapes differ from the expected ones when their amounts differ: the amounts, then the superfluous and missing shapes */
+  private String diffShapeCounts(List<Shape> expected, List<Shape> got)
+  {
+    StringBuffer sb = new StringBuffer();
+    if (got.size() > expected.size())
+      sb.append(Game.i18n.tr("  There is {0} shapes, but only {1} shapes were expected\n", got.size(), expected.size()));
+    else
+      sb.append(Game.i18n.tr("  There is only {0} shapes, but {1} shapes were expected\n", got.size(), expected.size()));
+
+    if (Game.getInstance().isDebugEnabled()) {
+      sb.append("Shapes available in the student's work (after mergin' madness):\n");
+      for (Shape s : got)
+        sb.append("  " + s + "\n");
+      sb.append("Expected shapes:\n");
+      for (Shape s : expected)
+        sb.append("  " + s + "\n");
+    }
+
+    List<Shape> superfluous = new ArrayList<Shape>(got);
+    List<Shape> missing     = new ArrayList<Shape>(expected);
+    for (Shape s : got)
+      if (missing.remove(s))
+        superfluous.remove(s);
+
+    if (!superfluous.isEmpty()) {
+      sb.append(Game.i18n.tr("Superflous shapes in your solution:\n"));
+      for (Shape s : superfluous)
+        sb.append("   " + s + "\n");
+    }
+    if (!missing.isEmpty()) {
+      sb.append(Game.i18n.tr("Missing shapes in your solution:\n"));
+      for (Shape s : missing)
+        sb.append("   " + s + "\n");
+    }
     return sb.toString();
   }
 
