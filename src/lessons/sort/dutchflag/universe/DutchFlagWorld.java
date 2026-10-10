@@ -12,7 +12,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
@@ -84,19 +83,15 @@ public class DutchFlagWorld extends World {
   @Override public boolean haveIO() { return true; }
 
   /** Reads a world written by writeToFile() */
-  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
-      String name        = readField(reader, path, "DutchFlagWorld");
-      int moveCount      = Integer.parseInt(readField(reader, path, "Moves"));
-      int[] content      = Arrays.stream(readField(reader, path, "Content").split(" ")).mapToInt(Integer::parseInt).toArray();
-      DutchFlagWorld res = new DutchFlagWorld(name, content.length);
-      res.content        = content;
-      res.moveCount      = moveCount;
-      return res;
-    } catch (NumberFormatException e) {
-      throw new BrokenWorldFileException(path + ".map: malformed number (" + e.getMessage() + ").");
-    }
+    String name        = readField(reader, path, "DutchFlagWorld");
+    int moveCount      = Integer.parseInt(readField(reader, path, "Moves"));
+    int[] content      = Arrays.stream(readField(reader, path, "Content").split(" ")).mapToInt(Integer::parseInt).toArray();
+    DutchFlagWorld res = new DutchFlagWorld(name, content.length);
+    res.content        = content;
+    res.moveCount      = moveCount;
+    return res;
   }
 
   /** Writes the world, one field per line. The content gives the color (0, 1 or 2) of each ray. */

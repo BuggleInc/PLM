@@ -11,7 +11,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
@@ -230,30 +229,26 @@ public class HanoiWorld extends World {
   @Override public boolean haveIO() { return true; }
 
   /** Reads a world written by writeToFile() */
-  @SuppressWarnings("unchecked") @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  @SuppressWarnings("unchecked") @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
-      HanoiWorld res = new HanoiWorld(readField(reader, path, "HanoiWorld"), new Integer[0], new Integer[0], new Integer[0]);
-      res.moveCount  = Integer.parseInt(readField(reader, path, "Moves"));
-      int slotAmount = Integer.parseInt(readField(reader, path, "Slots"));
-      res.slotsVal   = new Vector[slotAmount];
-      res.slotsColor = new Vector[slotAmount];
-      for (int slot = 0; slot < slotAmount; slot++) {
-        res.slotsVal[slot]   = new Vector<Integer>();
-        res.slotsColor[slot] = new Vector<Color>();
-        for (String disk : readField(reader, path, "Slot").split(" ")) {
-          if (disk.isEmpty())
-            continue;
-          String[] parts = disk.split(":");
-          res.slotsVal[slot].add(Integer.parseInt(parts[0]));
-          res.slotsColor[slot].add(new Color(Integer.parseInt(parts[1], 16)));
-        }
+    HanoiWorld res = new HanoiWorld(readField(reader, path, "HanoiWorld"), new Integer[0], new Integer[0], new Integer[0]);
+    res.moveCount  = Integer.parseInt(readField(reader, path, "Moves"));
+    int slotAmount = Integer.parseInt(readField(reader, path, "Slots"));
+    res.slotsVal   = new Vector[slotAmount];
+    res.slotsColor = new Vector[slotAmount];
+    for (int slot = 0; slot < slotAmount; slot++) {
+      res.slotsVal[slot]   = new Vector<Integer>();
+      res.slotsColor[slot] = new Vector<Color>();
+      for (String disk : readField(reader, path, "Slot").split(" ")) {
+        if (disk.isEmpty())
+          continue;
+        String[] parts = disk.split(":");
+        res.slotsVal[slot].add(Integer.parseInt(parts[0]));
+        res.slotsColor[slot].add(new Color(Integer.parseInt(parts[1], 16)));
       }
-      new HanoiEntity("worker", res);
-      return res;
-    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-      throw new BrokenWorldFileException(path + ".map: malformed number or disk (" + e.getMessage() + ").");
     }
+    new HanoiEntity("worker", res);
+    return res;
   }
 
   /** Writes the world, one line per slot. Each disk of a slot is written as "radius:RRGGBB", from the bottom to the top. */

@@ -155,24 +155,20 @@ public class BaseballWorld extends World {
   @Override public boolean haveIO() { return true; }
 
   /** Reads a world written by writeToFile(), by replaying its moves on its initial field */
-  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
-      String name       = readField(reader, path, "BaseballWorld");
-      String[] size     = readField(reader, path, "Size").split("x");
-      int[] initial     = Arrays.stream(readField(reader, path, "Initial").split(" ")).mapToInt(Integer::parseInt).toArray();
-      BaseballWorld res = new BaseballWorld(name, Integer.parseInt(size[0]), Integer.parseInt(size[1]), initial);
+    String name       = readField(reader, path, "BaseballWorld");
+    String[] size     = readField(reader, path, "Size").split("x");
+    int[] initial     = Arrays.stream(readField(reader, path, "Initial").split(" ")).mapToInt(Integer::parseInt).toArray();
+    BaseballWorld res = new BaseballWorld(name, Integer.parseInt(size[0]), Integer.parseInt(size[1]), initial);
 
-      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-        String[] tokens = line.split(" ");
-        if (!tokens[0].equals("move"))
-          throw new BrokenWorldFileException(path + ".map: unknown line '" + line + "'.");
-        res.move(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
-      }
-      return res;
-    } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) { // Includes NumberFormatException and invalid moves
-      throw new BrokenWorldFileException(path + ".map: malformed number or invalid move (" + e.getMessage() + ").");
+    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+      String[] tokens = line.split(" ");
+      if (!tokens[0].equals("move"))
+        throw new BrokenWorldFileException(path + ".map: unknown line '" + line + "'.");
+      res.move(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));
     }
+    return res;
   }
 
   /**

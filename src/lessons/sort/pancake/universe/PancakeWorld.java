@@ -11,7 +11,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
@@ -120,22 +119,18 @@ public class PancakeWorld extends World {
   @Override public boolean haveIO() { return true; }
 
   /** Reads a world written by writeToFile() */
-  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
-      String name      = readField(reader, path, "PancakeWorld");
-      boolean burned   = Boolean.parseBoolean(readField(reader, path, "Burned"));
-      int lastMove     = Integer.parseInt(readField(reader, path, "LastMove"));
-      int moveCount    = Integer.parseInt(readField(reader, path, "Moves"));
-      int[] sizes      = Arrays.stream(readField(reader, path, "Stack").split(" ")).mapToInt(Integer::parseInt).toArray();
-      PancakeWorld res = new PancakeWorld(name, sizes, burned);
-      res.lastMove     = lastMove;
-      res.moveCount    = moveCount;
-      new PancakeEntity("Pancake Seller", res);
-      return res;
-    } catch (NumberFormatException e) {
-      throw new BrokenWorldFileException(path + ".map: malformed number (" + e.getMessage() + ").");
-    }
+    String name      = readField(reader, path, "PancakeWorld");
+    boolean burned   = Boolean.parseBoolean(readField(reader, path, "Burned"));
+    int lastMove     = Integer.parseInt(readField(reader, path, "LastMove"));
+    int moveCount    = Integer.parseInt(readField(reader, path, "Moves"));
+    int[] sizes      = Arrays.stream(readField(reader, path, "Stack").split(" ")).mapToInt(Integer::parseInt).toArray();
+    PancakeWorld res = new PancakeWorld(name, sizes, burned);
+    res.lastMove     = lastMove;
+    res.moveCount    = moveCount;
+    new PancakeEntity("Pancake Seller", res);
+    return res;
   }
 
   /** Writes the world, one field per line. The stack gives the radius of each pancake from the top, negated if it is upside down. */

@@ -13,7 +13,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
@@ -164,33 +163,29 @@ public class SortingWorld extends World {
   @Override public boolean haveIO() { return true; }
 
   /** Reads a world written by writeToFile() */
-  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
-      String name      = readField(reader, path, "SortingWorld");
-      int[] values     = Arrays.stream(readField(reader, path, "Values").split(" ")).mapToInt(Integer::parseInt).toArray();
-      int[] initValues = Arrays.stream(readField(reader, path, "InitValues").split(" ")).mapToInt(Integer::parseInt).toArray();
-      SortingWorld res = new SortingWorld(name, values.length);
-      res.values       = values;
-      res.initValues   = initValues;
-      res.readCount    = Integer.parseInt(readField(reader, path, "Reads"));
-      res.writeCount   = Integer.parseInt(readField(reader, path, "Writes"));
+    String name      = readField(reader, path, "SortingWorld");
+    int[] values     = Arrays.stream(readField(reader, path, "Values").split(" ")).mapToInt(Integer::parseInt).toArray();
+    int[] initValues = Arrays.stream(readField(reader, path, "InitValues").split(" ")).mapToInt(Integer::parseInt).toArray();
+    SortingWorld res = new SortingWorld(name, values.length);
+    res.values       = values;
+    res.initValues   = initValues;
+    res.readCount    = Integer.parseInt(readField(reader, path, "Reads"));
+    res.writeCount   = Integer.parseInt(readField(reader, path, "Writes"));
 
-      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-        String[] tokens = line.split(" ");
-        int first       = Integer.parseInt(tokens[1]);
-        res.operations.add(switch (tokens[0]) {
-          case "swap" -> new Swap(first, Integer.parseInt(tokens[2]));
-          case "copy" -> new CopyVal(first, Integer.parseInt(tokens[2]));
-          case "set" -> new SetVal(first, Integer.parseInt(tokens[2]));
-          case "get" -> new GetVal(first);
-          default -> throw new BrokenWorldFileException(path + ".map: unknown operation '" + line + "'.");
-        });
-      }
-      return res;
-    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-      throw new BrokenWorldFileException(path + ".map: malformed number or operation (" + e.getMessage() + ").");
+    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+      String[] tokens = line.split(" ");
+      int first       = Integer.parseInt(tokens[1]);
+      res.operations.add(switch (tokens[0]) {
+        case "swap" -> new Swap(first, Integer.parseInt(tokens[2]));
+        case "copy" -> new CopyVal(first, Integer.parseInt(tokens[2]));
+        case "set" -> new SetVal(first, Integer.parseInt(tokens[2]));
+        case "get" -> new GetVal(first);
+        default -> throw new BrokenWorldFileException(path + ".map: unknown operation '" + line + "'.");
+      });
     }
+    return res;
   }
 
   /**

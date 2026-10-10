@@ -235,7 +235,22 @@ public abstract class World {
   /* IO related */
   /** Returns whether this universe implements world I/O */
   public boolean haveIO() { return false; }
+
+  /**
+   * Reads a world from the .map file at path, by delegating to parse() and reporting malformed content as a BrokenWorldFileException.
+   * The universes that need another way of reading may override this method instead.
+   */
   public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      return parse(reader, path);
+    } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) { // Includes NumberFormatException
+      throw new BrokenWorldFileException(path + ".map: malformed content (" + e.getMessage() + ").");
+    }
+  }
+
+  /** Builds a world from the content of a .map file, as written by writeToFile(). The path is only used in error messages. */
+  protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
     throw new RuntimeException("This universe does not implement world I/O");
   }

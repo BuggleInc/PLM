@@ -17,7 +17,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
@@ -116,38 +115,34 @@ public class TurtleWorld extends World {
   @Override public boolean haveIO() { return true; }
 
   /** Reads a world written by writeToFile() */
-  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
-      TurtleWorld res = new TurtleWorld(readField(reader, path, "TurtleWorld"));
-      String[] size   = readField(reader, path, "Size").split("x");
-      res.width       = parseDouble(size[0]);
-      res.height      = parseDouble(size[1]);
+    TurtleWorld res = new TurtleWorld(readField(reader, path, "TurtleWorld"));
+    String[] size   = readField(reader, path, "Size").split("x");
+    res.width       = parseDouble(size[0]);
+    res.height      = parseDouble(size[1]);
 
-      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-        String[] t = line.split("\t");
-        switch (t[0]) {
-          case "Turtle" -> {
-            Turtle turtle = new Turtle(res, t[7], parseDouble(t[1]), parseDouble(t[2]), 0., new Color(Integer.parseUnsignedInt(t[4], 16), true));
-            turtle.setHeadingRadian(parseDouble(t[3]));
-            if (!Boolean.parseBoolean(t[5]))
-              turtle.penUp();
-            if (!Boolean.parseBoolean(t[6]))
-              turtle.hide();
-          }
-          case "Line" ->
-            res.shapes.add(
-                new Line(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), parseDouble(t[4]), new Color(Integer.parseUnsignedInt(t[5], 16), true)));
-          case "Circle" ->
-            res.shapes.add(new Circle(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), new Color(Integer.parseUnsignedInt(t[4], 16), true)));
-          case "Hint" -> res.sizeHints.add(new SizeHint(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), parseDouble(t[4]), t[5]));
-          default -> throw new BrokenWorldFileException(path + ".map: unknown line '" + line + "'.");
+    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+      String[] t = line.split("\t");
+      switch (t[0]) {
+        case "Turtle" -> {
+          Turtle turtle = new Turtle(res, t[7], parseDouble(t[1]), parseDouble(t[2]), 0., new Color(Integer.parseUnsignedInt(t[4], 16), true));
+          turtle.setHeadingRadian(parseDouble(t[3]));
+          if (!Boolean.parseBoolean(t[5]))
+            turtle.penUp();
+          if (!Boolean.parseBoolean(t[6]))
+            turtle.hide();
         }
+        case "Line" ->
+          res.shapes.add(
+              new Line(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), parseDouble(t[4]), new Color(Integer.parseUnsignedInt(t[5], 16), true)));
+        case "Circle" ->
+          res.shapes.add(new Circle(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), new Color(Integer.parseUnsignedInt(t[4], 16), true)));
+        case "Hint" -> res.sizeHints.add(new SizeHint(parseDouble(t[1]), parseDouble(t[2]), parseDouble(t[3]), parseDouble(t[4]), t[5]));
+        default -> throw new BrokenWorldFileException(path + ".map: unknown line '" + line + "'.");
       }
-      return res;
-    } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-      throw new BrokenWorldFileException(path + ".map: malformed number or line (" + e.getMessage() + ").");
     }
+    return res;
   }
 
   /**

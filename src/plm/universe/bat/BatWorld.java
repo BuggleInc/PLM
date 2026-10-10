@@ -13,7 +13,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.World;
 
@@ -61,20 +60,16 @@ public class BatWorld extends World {
   @Override public boolean haveIO() { return true; }
 
   /** Reads a world written by writeToFile() */
-  @Override public World readFromFile(String path) throws IOException, BrokenWorldFileException
+  @Override protected World parse(BufferedReader reader, String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
-      BatWorld res = new BatWorld(readField(reader, path, "BatWorld"));
-      for (String line = reader.readLine(); line != null; line = reader.readLine()) {
-        String[] fields = line.split("\t");
-        BatTest test    = new BatTest(res.getName(), Boolean.parseBoolean(fields[1]), deserialize(fields[2]));
-        test.setResult(deserialize(fields[3]));
-        res.tests.add(test);
-      }
-      return res;
-    } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) { // deserialize() throws IllegalArgumentException
-      throw new BrokenWorldFileException(path + ".map: malformed test (" + e.getMessage() + ").");
+    BatWorld res = new BatWorld(readField(reader, path, "BatWorld"));
+    for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+      String[] fields = line.split("\t");
+      BatTest test    = new BatTest(res.getName(), Boolean.parseBoolean(fields[1]), deserialize(fields[2]));
+      test.setResult(deserialize(fields[3]));
+      res.tests.add(test);
     }
+    return res;
   }
 
   /**
