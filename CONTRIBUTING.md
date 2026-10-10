@@ -268,7 +268,8 @@ for/cancels help, or reads a hint:
   - `leave()` (PLM shutdown): does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
     rate-limiting below, since this is the last chance to sync) then disposes the JGit handle.
   - Commit messages are hand-built JSON blobs (`writeCommitMessage()`/`writePLMStartedOrLeavedCommitMessage()`) carrying the
-    exercise id, language, outcome, test counts, and optional feedback -- built by string surgery (dropping the JSON
+    exercise id, language, outcome, test counts, the initial state of the randomized worlds (in the `.map` format, by rank, for each
+    commit to be self-contained for the learning analytics), and optional feedback -- built by string surgery (dropping the JSON
     library's own leading `{`) so that a `"kind"` key always comes first and the commit list stays human-scannable
     from the GitHub UI. The `"plm"` field of the `"started"` and `"leaved"` messages ends with the git commit of the PLM
     (`Game.getGitCommit()`, with a `-dirty` suffix if the build had local changes, or `unknown` when not building from git),
