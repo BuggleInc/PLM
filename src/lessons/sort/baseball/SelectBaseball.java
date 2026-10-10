@@ -13,7 +13,7 @@ public class SelectBaseball extends ExerciseTemplated {
     super(lesson);
 
     World[] myWorlds = {
-        new BaseballWorld("Almost", 4, 2, BaseballWorld.MIX_ALMOST_SORTED),
+        new BaseballWorld("Almost", 4, 2, BaseballWorld.Mix.ALMOST_SORTED),
         new BaseballWorld("5 bases", 5, 2),
         new BaseballWorld("6 bases", 6, 2),
         new BaseballWorld("7 bases", 7, 2),
