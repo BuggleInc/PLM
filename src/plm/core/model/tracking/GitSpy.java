@@ -271,37 +271,21 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     // create the different files
     String ext = "." + lastResult.language.getExt();
 
-    File exoFile        = new File(repoDir, exo.getId() + ext + ".code");
-    File errorFile      = new File(repoDir, exo.getId() + ext + ".error");
-    File correctionFile = new File(repoDir, exo.getId() + ext + ".correction");
-    File missionFile    = new File(repoDir, exo.getId() + ext + ".mission");
-
     try {
-      // write the code of the exercise into the file
-      FileWriter fwExo     = new FileWriter(exoFile.getAbsoluteFile());
-      BufferedWriter bwExo = new BufferedWriter(fwExo);
-      bwExo.write(exoCode == null ? "" : exoCode);
-      bwExo.close();
-
-      // write the compilation error of the exercise into the file
-      FileWriter fwError     = new FileWriter(errorFile.getAbsoluteFile());
-      BufferedWriter bwError = new BufferedWriter(fwError);
-      bwError.write(exoError == null ? "" : exoError);
-      bwError.close();
-
-      // write the correction of the exercise into the file
-      FileWriter fwCorrection     = new FileWriter(correctionFile.getAbsoluteFile());
-      BufferedWriter bwCorrection = new BufferedWriter(fwCorrection);
-      bwCorrection.write(exoCorrection == null ? "" : exoCorrection);
-      bwCorrection.close();
-
-      // write the instructions of the exercise into the file
-      FileWriter fwMission     = new FileWriter(missionFile.getAbsoluteFile());
-      BufferedWriter bwMission = new BufferedWriter(fwMission);
-      bwMission.write(exoMission == null ? "" : exoMission);
-      bwMission.close();
+      writeFile(new File(repoDir, exo.getId() + ext + ".code"), exoCode);
+      writeFile(new File(repoDir, exo.getId() + ext + ".error"), exoError);
+      writeFile(new File(repoDir, exo.getId() + ext + ".correction"), exoCorrection);
+      writeFile(new File(repoDir, exo.getId() + ext + ".mission"), exoMission);
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  /** Writes the content (empty if null) into the file, replacing what it contained */
+  private void writeFile(File file, String content) throws IOException
+  {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()))) {
+      bw.write(content == null ? "" : content);
     }
   }
 
