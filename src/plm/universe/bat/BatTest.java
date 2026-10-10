@@ -1,12 +1,12 @@
 package plm.universe.bat;
 
+import java.util.StringJoiner;
 import plm.core.lang.ProgrammingLanguage;
 
 public class BatTest {
   private String funName;
   Object[] parameters;
   Object result;
-  private String name = null;
   boolean visible;
 
   public BatTest(String funName, boolean visible, Object parameters)
@@ -45,20 +45,10 @@ public class BatTest {
   public String stringParameter(Object o, ProgrammingLanguage lang) { return ValueFormatter.format(o, lang); }
   public String getName(ProgrammingLanguage lang)
   {
-    if (name == null) {
-      StringBuffer sb = new StringBuffer(funName + "(");
-
-      for (Object o : parameters) {
-        sb.append(ValueFormatter.format(o, lang));
-        sb.append(",");
-      }
-      if (parameters.length > 0)
-        sb.deleteCharAt(sb.length() - 1);
-      sb.append(")");
-
-      name = sb.toString();
-    }
-    return name;
+    StringJoiner name = new StringJoiner(",", funName + "(", ")");
+    for (Object o : parameters)
+      name.add(ValueFormatter.format(o, lang));
+    return name.toString();
   }
 
   public String toString(ProgrammingLanguage lang) { return getName(lang); }
