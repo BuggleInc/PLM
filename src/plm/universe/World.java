@@ -275,7 +275,8 @@ public abstract class World {
   /** Returns the integers of the next line of a .map file, that must be of the form "key: 1 2 3" */
   protected static int[] readInts(BufferedReader reader, String path, String key) throws IOException, BrokenWorldFileException
   {
-    return Arrays.stream(readField(reader, path, key).split(" ")).mapToInt(Integer::parseInt).toArray();
+    String line = readField(reader, path, key);
+    return line.isEmpty() ? new int[0] : Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray();
   }
 
   /** Writes a line of a .map file in the form "key: value" */
