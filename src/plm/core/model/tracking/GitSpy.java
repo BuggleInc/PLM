@@ -4,9 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.NullProgressMonitor;
 import org.eclipse.jgit.lib.ProgressMonitor;
@@ -19,7 +19,6 @@ import plm.core.model.Users;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
-import plm.universe.World;
 
 public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
@@ -213,9 +212,10 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
       logmsg.put("totaltests", lastResult.totalTests + "");
     }
 
-    JSONObject randomized = randomizedWorlds(exoFrom);
+    // The commit must tell on its own the inputs that the student's code ran on
+    Map<Integer, String> randomized = exoFrom.serializeRandomizedWorlds();
     if (!randomized.isEmpty())
-      logmsg.put("randomizedworlds", randomized);
+      logmsg.put("randomizedworlds", new JSONObject(randomized));
 
     if (exoFrom.lastResult.feedbackDifficulty != null)
       logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
@@ -250,27 +250,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
     // Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
     return "{\"kind\":\"" + kind + "\"," + jsonObject.toString().substring(1);
-  }
-
-  /**
-   * Serializes the randomized initial worlds of the exercise, by rank, in the .map format.
-   * They are written in the commit message, so that each commit tells on its own the inputs that the student's code ran on.
-   */
-  @SuppressWarnings("unchecked") private JSONObject randomizedWorlds(Exercise exo)
-  {
-    JSONObject res     = new JSONObject();
-    List<World> worlds = exo.getWorlds(Exercise.WorldKind.INITIAL);
-    for (int rank = 0; rank < worlds.size(); rank++)
-      if (worlds.get(rank).isRandomized()) {
-        StringWriter out = new StringWriter();
-        try (BufferedWriter bw = new BufferedWriter(out)) {
-          worlds.get(rank).writeToFile(bw);
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-        res.put(String.valueOf(rank), out.toString());
-      }
-    return res;
   }
 
   private void createFiles(Exercise exo)

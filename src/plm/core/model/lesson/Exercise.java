@@ -1,11 +1,15 @@
 package plm.core.model.lesson;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.Vector;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
@@ -228,6 +232,26 @@ public abstract class Exercise extends Lecture {
   }
 
   public int getWorldCount() { return this.initialWorld.size(); }
+
+  /**
+   * Serializes the randomized initial worlds in the .map format, by rank.
+   * Reports and logs need them, as they cannot be rebuilt to reproduce what the student saw.
+   */
+  public Map<Integer, String> serializeRandomizedWorlds()
+  {
+    Map<Integer, String> res = new TreeMap<Integer, String>();
+    for (int rank = 0; rank < initialWorld.size(); rank++)
+      if (initialWorld.get(rank).isRandomized()) {
+        StringWriter out = new StringWriter();
+        try (BufferedWriter bw = new BufferedWriter(out)) {
+          initialWorld.get(rank).writeToFile(bw);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+        res.put(rank, out.toString());
+      }
+    return res;
+  }
 
   /**
    * Returns the current world number index

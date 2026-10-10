@@ -51,11 +51,14 @@ public class FeedbackDialog extends JDialog {
       FeedbackDialog.instance = new FeedbackDialog();
     }
     StringBuffer worldInfo = new StringBuffer();
-    for (World w : ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
+    Exercise current       = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
+    for (World w : current.getWorlds(WorldKind.ANSWER)) {
       String s = w.getDebugInfo();
       if (s != "")
         worldInfo.append("World: " + s + "\n");
     }
+    // The randomized worlds cannot be rebuilt by the maintainers to reproduce the problem
+    current.serializeRandomizedWorlds().forEach((rank, map) -> worldInfo.append("Randomized initial world " + rank + ":\n" + map));
 
     defaultTitle = FeedbackDialog.instance.i18n.tr("Please describe the problem in a few words");
     defaultText  = FeedbackDialog.instance.i18n.tr("Your suggestion comes here, with all necessary details.\n\n\n\n\n\n"
