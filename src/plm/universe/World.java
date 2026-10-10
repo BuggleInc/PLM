@@ -5,6 +5,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -266,20 +270,17 @@ public abstract class World {
     return line.substring(key.length() + 2);
   }
 
+  /** Writes the world into the file. The content goes to a temporary file first, so that a failure never leaves a partial file behind. */
   public void writeToFile(File outputFile) throws IOException
   {
-    BufferedWriter bw = null;
-    FileWriter fw     = null;
-    try {
-      fw = new FileWriter(outputFile);
-      bw = new BufferedWriter(fw);
-      this.writeToFile(bw);
-    } catch (IOException e) {
+    Path temporary = Paths.get(outputFile.getPath() + ".tmp");
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(temporary.toFile()))) {
+      writeToFile(bw);
+    } catch (IOException | RuntimeException e) {
+      Files.deleteIfExists(temporary);
       throw e;
-    } finally {
-      if (bw != null)
-        bw.close();
     }
+    Files.move(temporary, outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
   }
 
   /* Find my UI */
