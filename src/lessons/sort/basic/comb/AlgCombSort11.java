@@ -15,7 +15,7 @@ public class AlgCombSort11 extends ExerciseTemplated {
 
     World[] myWorlds = new SortingWorld[2];
     myWorlds[0]      = new SortingWorld("Functional test", 10);
-    myWorlds[1]      = new SortingWorld("Performance test (150 elms)", 150);
+    myWorlds[1]      = new SortingWorld("Performance test (150 elms)", 150).randomize();
 
     myWorlds = Arrays.stream(myWorlds).map(s -> s.replaceEntities(AlgCombSort11Entity::new)).toList().toArray(new World[0]);
     setup(myWorlds);

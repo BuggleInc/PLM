@@ -514,7 +514,10 @@ before shipping it in the PLM.
 * The initial worlds must be reproducible, because a cached answer is only valid for the initial world it was computed from. Do
   not use an unseeded random generator in `setup()`: seed it with something stable, such as the name of the world.
 * A world that must stay random calls `setRandomized()`, which `isRandomized()` reports. Such a world is never read from nor
-  written to disk: its answer is computed at each load, at the cost of compiling the correction entity.
+  written to disk: its answer is computed at each load, at the cost of compiling the correction entity. The sorting universes
+  provide `randomize()` for that, returning the world to be usable in the exercise's list of worlds. By convention, each of their
+  exercises randomizes its last world (or the one named "random 15 pancakes" in the pancake exercises with fixed hard cases), so
+  that the entities are also tested on unforeseen inputs.
 * `worldFileName` defaults to the name of the exercise class. Exercises sharing one class (e.g. `TurtleGraphicalExercise`) must
   set it to a distinct value, or they would overwrite each other's files.
 

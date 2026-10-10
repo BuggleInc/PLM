@@ -20,7 +20,7 @@ public class SelectBaseball extends ExerciseTemplated {
         new BaseballWorld("8 bases", 8, 2),
         new BaseballWorld("9 bases", 9, 2),
         new BaseballWorld("10 bases", 10, 2),
-        new BaseballWorld("15 bases", 15, 2),
+        new BaseballWorld("15 bases", 15, 2).randomize(),
     };
 
     myWorlds = Arrays.stream(myWorlds).map(s -> s.replaceEntities(SelectBaseballEntity::new)).toList().toArray(new World[0]);

@@ -22,6 +22,7 @@ public class DutchFlagWorld extends World {
 
   int[] content;
   int moveCount = 0;
+  private int colorRemoved; // the color missing from the flag, or -1 if there is none
 
   /** Copy constructor */
   public DutchFlagWorld(DutchFlagWorld world) { super(world); }
@@ -49,17 +50,7 @@ public class DutchFlagWorld extends World {
    * @param name : the name of the world
    * @param size : the amount of elements
    */
-  public DutchFlagWorld(String name, int size)
-  {
-    super(name);
-    setDelay(size > 100 ? 20 : 200); // Delay (in ms) in default animations
-    new DutchFlagEntity(this);
-
-    Random rng = new Random(name.hashCode());
-    content    = new int[size];
-    for (int i = 0; i < size; i++)
-      content[i] = rng.nextInt(3);
-  }
+  public DutchFlagWorld(String name, int size) { this(name, size, -1); }
 
   /** Same as above, but with only two colors: the one passed as colorRemoved is missing */
   public DutchFlagWorld(String name, int size, int colorRemoved)
@@ -67,12 +58,27 @@ public class DutchFlagWorld extends World {
     super(name);
     setDelay(size > 100 ? 20 : 200); // Delay (in ms) in default animations
     new DutchFlagEntity(this);
-    int[][] color = {{1, 2}, {0, 2}, {0, 1}};
 
-    Random rng = new Random(name.hashCode());
-    content    = new int[size];
-    for (int i = 0; i < size; i++)
-      content[i] = color[colorRemoved][rng.nextInt(2)];
+    this.colorRemoved = colorRemoved;
+    this.content      = new int[size];
+    fill(new Random(name.hashCode()));
+  }
+
+  /** Randomizes the initial state: the answer of this world cannot be cached anymore */
+  public DutchFlagWorld randomize()
+  {
+    fill(new Random());
+    setRandomized();
+    return this;
+  }
+
+  /** Gives a random color to each ray, other than colorRemoved if any */
+  private void fill(Random rng)
+  {
+    for (int i = 0; i < content.length; i++) {
+      int color  = rng.nextInt(colorRemoved < 0 ? 3 : 2);
+      content[i] = colorRemoved >= 0 && color >= colorRemoved ? color + 1 : color;
+    }
   }
 
   @Override public boolean haveIO() { return true; }

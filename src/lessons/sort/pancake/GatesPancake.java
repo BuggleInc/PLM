@@ -49,7 +49,7 @@ public class GatesPancake extends ExerciseTemplated {
                              13,
                          },
                          false), // A+ Cbis A+ D+ E+ G A- B+ E+ F- H
-        new PancakeWorld("random 15 pancakes", 15, false),
+        new PancakeWorld("random 15 pancakes", 15, false).randomize(),
         new PancakeWorld("30 pancakes",
                          new int[] {
                              1, 5, 17, 8, 24, 27, 14, 4, 11, 10, 28, 2, 29, 25, 15, 20, 3, 18, 19, 7, 21, 12, 23, 22, 16, 26, 6, 9, 13, 30,

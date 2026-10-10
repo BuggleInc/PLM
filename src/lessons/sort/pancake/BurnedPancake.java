@@ -18,7 +18,7 @@ public class BurnedPancake extends ExerciseTemplated {
     myWorlds[0]      = new PancakeWorld("5 pancakes", 5, true);
     myWorlds[1]      = new PancakeWorld("10 pancakes", 10, true);
     myWorlds[2]      = new PancakeWorld("15 pancakes", 15, true);
-    myWorlds[3]      = new PancakeWorld("30 pancakes", 30, true);
+    myWorlds[3]      = new PancakeWorld("30 pancakes", 30, true).randomize();
     for (int i = 0; i < 4; i++)
       new PancakeEntity("Pancake Seller", myWorlds[i]);
 

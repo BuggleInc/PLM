@@ -22,6 +22,7 @@ import plm.universe.World;
 public class SortingWorld extends World {
   private int[] values;       // the values as they are sorted in the array
   private int[] initValues;   // needed by the chronoview
+  private boolean someoneHomeOk; // whether a value may be in its sorted position in the initial state
   private int readCount  = 0; // the count of the read made
   private int writeCount = 0; // the count of the write made
   /*
@@ -43,18 +44,33 @@ public class SortingWorld extends World {
       setDelay(1);
     else
       setDelay(50);
-    this.values = new int[nbValues];
-    for (int i = 0; i < this.values.length; i++)
-      this.values[i] = i;
+    this.values        = new int[nbValues];
+    this.someoneHomeOk = someoneHomeOk;
+    shuffle(new Random(name.hashCode())); // Seeded by the name: the initial state must be reproducible to cache the answer worlds
+    addEntity(new SortingEntity());
+  }
 
-    scramble(new Random(name.hashCode())); // Seeded by the name: the initial state must be reproducible to cache the answer worlds
+  /** Randomizes the initial state: the answer of this world cannot be cached anymore */
+  public SortingWorld randomize()
+  {
+    shuffle(new Random());
+    setRandomized();
+    return this;
+  }
+
+  /** Sets the initial state to a scrambled version of the sorted values */
+  private void shuffle(Random rng)
+  {
+    for (int i = 0; i < values.length; i++)
+      values[i] = i;
+
+    scramble(rng);
     // If instructed so, move every value that is @home. Swapping such a value with any other cell never creates a new one @home.
     if (!someoneHomeOk)
       for (int i = 0; i < values.length; i++)
         if (values[i] == i)
           exchangeValues(i, (i + 1) % values.length);
     this.initValues = this.values;
-    addEntity(new SortingEntity());
   }
 
   private void scramble(Random rng)

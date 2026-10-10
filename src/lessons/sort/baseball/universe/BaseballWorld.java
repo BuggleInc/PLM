@@ -30,6 +30,7 @@ public class BaseballWorld extends World {
   public static final int COLOR_HOLE = -1;
 
   private int[] field;               // the bases which composed the field
+  private int mix;                   // how the initial field is mixed, one of the MIX_* constants
   private int baseAmount, posAmount; // field dimensions
   private int holeBase, holePos;     // The coordinate of the hole
   protected int[] initialField;
@@ -59,12 +60,41 @@ public class BaseballWorld extends World {
     this.posAmount  = posAmount;
 
     this.field = new int[baseAmount * posAmount];
+    this.mix   = mix;
+    sortField();
+    shuffle(new Random(name.hashCode())); // Seeded by the name: the initial state must be reproducible to cache the answer worlds
+
+    initialField = field.clone();
+
+    // Add an entity
+    addEntity(new BaseballEntity());
+
+    findHole();
+  }
+
+  /** Randomizes the initial state, as the mix parameter of the constructor asks: the answer of this world cannot be cached anymore */
+  public BaseballWorld randomize()
+  {
+    sortField();
+    shuffle(new Random());
+    initialField = field.clone();
+    findHole();
+    setRandomized();
+    return this;
+  }
+
+  /** Puts every player on its base, the hole being on the last one */
+  private void sortField()
+  {
     for (int base = 0; base < baseAmount; base++)
       for (int pos = 0; pos < posAmount; pos++)
         setPlayerColor(base, pos, base);
     setPlayerColor(baseAmount - 1, 0, COLOR_HOLE);
+  }
 
-    Random rng = new Random(name.hashCode()); // Seeded by the name: the initial state must be reproducible to cache the answer worlds
+  /** Mixes a sorted field as the mix attribute asks */
+  private void shuffle(Random rng)
+  {
     if (mix == MIX_RANDOM) {
       for (int base = 0; base < getBasesAmount(); base++)
         for (int pos = 0; pos < getPositionsAmount(); pos++)
@@ -97,15 +127,6 @@ public class BaseballWorld extends World {
     } else {
       throw new IllegalArgumentException("The mix paramter must be one of the provided constants, not " + mix);
     }
-
-    initialField = new int[field.length];
-    for (int i = 0; i < field.length; i++)
-      initialField[i] = field[i];
-
-    // Add an entity
-    addEntity(new BaseballEntity());
-
-    findHole();
   }
 
   public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values)
@@ -113,11 +134,8 @@ public class BaseballWorld extends World {
     this(name, baseAmount, positionAmount, MIX_SORTED);
     if (baseAmount * posAmount != values.length)
       throw new RuntimeException("Your values array is not of the right size");
-    field = values;
-
-    initialField = new int[field.length];
-    for (int i = 0; i < field.length; i++)
-      initialField[i] = field[i];
+    field        = values;
+    initialField = field.clone();
 
     findHole();
   }

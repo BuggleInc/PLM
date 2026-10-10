@@ -71,18 +71,32 @@ public class PancakeWorld extends World {
       pancakeStack[i] = new Pancake(i + 1);
 
     /* Mix them. Seeded by the name: the initial state must be reproducible to cache the answer worlds */
-    Random rng = new Random(name.hashCode());
-    wasRandom  = true;
-    while (isSorted())
-      for (int rank = 0; rank < size; rank++) {
+    wasRandom = true;
+    mix(new Random(name.hashCode()));
+
+    this.burnedWorld = burnedPancake;
+  }
+
+  /** Randomizes the initial state: the answer of this world cannot be cached anymore */
+  public PancakeWorld randomize()
+  {
+    mix(new Random());
+    setRandomized();
+    return this;
+  }
+
+  /** Flips and swaps the pancakes at random, until the stack is not sorted */
+  private void mix(Random rng)
+  {
+    do {
+      for (int rank = 0; rank < pancakeStack.length; rank++) {
         if (rng.nextBoolean()) // Flipping time !
           pancakeStack[rank].flip();
 
         if (rng.nextBoolean()) // Swapping time !
-          swap(rank, rng.nextInt(size));
+          swap(rank, rng.nextInt(pancakeStack.length));
       }
-
-    this.burnedWorld = burnedPancake;
+    } while (isSorted());
   }
   /**
    * Regular PancakeWorld constructor that takes the pancake sizes from the provided parameter
