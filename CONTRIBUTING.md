@@ -499,11 +499,11 @@ the buggle map editor) because all non-functional plumbing (compilation, templat
 ### World I/O and the answer cache
 
 Loading a lesson would be slow if every exercise had to compile and run its correction entity to get its `answerWorld`.
-Universes implement world I/O to avoid this: `ExerciseTemplated.doComputeAnswer()` first tries to read
-`src/<worldFileName>-answerN.map` for each world (N being the rank of the world in the exercise), and only the missing or broken
-ones are computed by the correction entity, then written back for next time. Each world is handled on its own: one missing file
-does not force recomputing the others. Nothing invalidates these files: it is up to the tests (see above) and to the
-maintainers.
+Universes implement world I/O to avoid this: `ExerciseTemplated.doComputeAnswer()` first loads the worlds that it can from
+`src/<worldFileName>-answerN.map` (`loadCachedAnswers()`, N being the rank of the world in the exercise), and only the missing
+or broken ones are computed by the correction entity (`computeAnswers()`), then written back for next time
+ (`writeAnswerFile()`). Each world is handled on its own: one missing file does not force recomputing the others. Nothing
+invalidates these files: it is up to the tests (see above) and to the maintainers.
 
 To support it, a universe overrides `haveIO()` (returning true), `parse(reader, path)` and `writeToFile(writer)` of `World`.
 Universes that do not override `haveIO()` get their answers computed at each load. You should implement IO in your universe
@@ -511,7 +511,13 @@ before shipping it in the PLM.
 
 * The format is textual and specific to the universe, for the files to stay readable, diffable, and independent of the Java
   class layout (Java serialization would break at the first refactoring).`World` provides `readField()` and `readInts()` to
-  parse the `Key: value` lines, and `writeField()` to write them.
+  parse the `Key: value` lines, and `writeField()` to write them. The textual form of a value that is not a plain field belongs to
+  the class of that value, e.g. `Operation.parse()` with the `toString()` of the sorting operations, or `BatTest.toMapLine()` and
+  `BatTest.fromMapLine()`.
+* A universe that reads files should have a private constructor taking the final state of a world, so that `parse()` does not need
+  to build a world only to overwrite it. The public constructors of the exercises can delegate to it.
+* `World.writeToFile(File)` writes a temporary `<name>.tmp` file and then moves it over the target, so that a failure never leaves
+  a partial map behind.
 * `World.readFromFile()` opens the file and calls `parse()`. A `NumberFormatException`, `ArrayIndexOutOfBoundsException` or
   `IllegalArgumentException` raised while parsing becomes a `BrokenWorldFileException`, so `parse()` only needs to throw it for
   the problems that it detects itself. A universe that needs another way of reading may override `readFromFile()` instead.
