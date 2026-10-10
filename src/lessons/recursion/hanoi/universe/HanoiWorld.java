@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.StringJoiner;
 import java.util.Vector;
 import java.util.function.Supplier;
@@ -17,7 +19,6 @@ import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
-/* BEGIN TEMPLATE */
 public class HanoiWorld extends World {
   /**
    * A copy constructor (mandatory for the internal compilation mechanism to work)
@@ -26,61 +27,24 @@ public class HanoiWorld extends World {
    */
   public HanoiWorld(HanoiWorld other) { super(other); }
 
-  /**
-   * The constructor that the exercises will use to setup the world.
-   *
-   * It must begin by super(name), and the rest is free (depending on the state describing your world).
-   * It is a good idea to use setDelay to specify the default animation delay, but this is not mandatory.
-   *
-   * You can perfectly have several such constructor.
-   *
-   * In general, you could even have none of them, but writing exercises will be harder.
-   * The metalesson, use this specific constructor, so please don't change its arguments.
-   */
-  @SuppressWarnings("unchecked") public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C)
+  /** The constructor that the exercises use: one array of disks per slot, from the bottom to the top. All the disks are yellow. */
+  @SuppressWarnings("unchecked") public HanoiWorld(String name, Integer[]... slots)
   {
-    super(name);
-    setDelay(200); /* Delay (in ms) in default animations */
-    slotsVal   = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
-    slotsColor = new Vector[] {new Vector<Color>(), new Vector<Color>(), new Vector<Color>()};
-
-    for (int i = 0; i < A.length; i++) {
-      slotsVal[0].add(A[i]);
-      slotsColor[0].add(Color.yellow);
-    }
-    for (int i = 0; i < B.length; i++) {
-      slotsVal[1].add(B[i]);
-      slotsColor[1].add(Color.yellow);
-    }
-    for (int i = 0; i < C.length; i++) {
-      slotsVal[2].add(C[i]);
-      slotsColor[2].add(Color.yellow);
+    this(name, 0, new Vector[slots.length], new Vector[slots.length]);
+    for (int slot = 0; slot < slots.length; slot++) {
+      slotsVal[slot]   = new Vector<Integer>(Arrays.asList(slots[slot]));
+      slotsColor[slot] = new Vector<Color>(Collections.nCopies(slots[slot].length, Color.yellow));
     }
   }
 
-  @SuppressWarnings("unchecked") public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C, Integer[] D)
+  /** Constructor of a world in a given state, used by the other constructors and when reading a file */
+  private HanoiWorld(String name, int moveCount, Vector<Integer>[] slotsVal, Vector<Color>[] slotsColor)
   {
     super(name);
     setDelay(200); /* Delay (in ms) in default animations */
-    slotsVal   = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
-    slotsColor = new Vector[] {new Vector<Color>(), new Vector<Color>(), new Vector<Color>(), new Vector<Color>()};
-
-    for (int i = 0; i < A.length; i++) {
-      slotsVal[0].add(A[i]);
-      slotsColor[0].add(Color.yellow);
-    }
-    for (int i = 0; i < B.length; i++) {
-      slotsVal[1].add(B[i]);
-      slotsColor[1].add(Color.yellow);
-    }
-    for (int i = 0; i < C.length; i++) {
-      slotsVal[2].add(C[i]);
-      slotsColor[2].add(Color.yellow);
-    }
-    for (int i = 0; i < D.length; i++) {
-      slotsVal[3].add(D[i]);
-      slotsColor[3].add(Color.yellow);
-    }
+    this.moveCount  = moveCount;
+    this.slotsVal   = slotsVal;
+    this.slotsColor = slotsColor;
   }
 
   /**
@@ -98,12 +62,8 @@ public class HanoiWorld extends World {
     slotsVal         = new Vector[other.slotsVal.length];
     slotsColor       = new Vector[other.slotsColor.length];
     for (int slot = 0; slot < other.slotsVal.length; slot++) {
-      slotsVal[slot]   = new Vector<Integer>();
-      slotsColor[slot] = new Vector<Color>();
-      for (int i = 0; i < other.slotsVal[slot].size(); i++) {
-        slotsVal[slot].add(other.slotsVal[slot].elementAt(i));
-        slotsColor[slot].add(other.slotsColor[slot].elementAt(i));
-      }
+      slotsVal[slot]   = new Vector<Integer>(other.slotsVal[slot]);
+      slotsColor[slot] = new Vector<Color>(other.slotsColor[slot]);
     }
     moveCount = other.moveCount;
     super.reset(w);
@@ -111,16 +71,13 @@ public class HanoiWorld extends World {
 
   @Override public HanoiWorld replaceEntities(Supplier<? extends Entity> newEntitySupplier) { return (HanoiWorld)super.replaceEntities(newEntitySupplier); }
 
-  /* BEGIN SOLUTION */
   /**
    * Returns a component able of displaying the world -- will be used in third exercise
    * You should comment this for the first exercises
    */
   @Override public WorldView getView() { return new HanoiWorldView(this); }
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_hanoi.png"); }
-  /* END SOLUTION */
 
-  /* BEGIN SOLUTION */
   @Override public String toString()
   {
     StringBuffer sb = new StringBuffer();
@@ -133,12 +90,10 @@ public class HanoiWorld extends World {
     }
     return sb.toString();
   }
-  /* END SOLUTION */
 
   /** Used to check whether the student code changed the world in the right state -- see exercise 4 */
   @Override public boolean equals(Object o)
   {
-    /* BEGIN SOLUTION */
     if (o == null || !(o instanceof HanoiWorld))
       return false;
     HanoiWorld other = (HanoiWorld)o;
@@ -150,7 +105,6 @@ public class HanoiWorld extends World {
       if (!(this.slotsVal[i].equals(other.slotsVal[i])) || !(this.slotsColor[i].equals(other.slotsColor[i])))
         return false;
     }
-    /* END SOLUTION */
     return getName().equals(other.getName());
   }
 
@@ -184,7 +138,6 @@ public class HanoiWorld extends World {
   }
 
   /* Here comes the world logic */
-  /* BEGIN SOLUTION */
   private Vector<Integer> slotsVal[];
   private Vector<Color> slotsColor[];
   public int moveCount = 0;
@@ -248,18 +201,9 @@ public class HanoiWorld extends World {
         colors[slot].add(new Color(Integer.parseInt(parts[1], 16)));
       }
     }
-    return new HanoiWorld(name, moveCount, vals, colors);
-  }
-
-  /** Constructor of a world in a given state, used when reading a file */
-  private HanoiWorld(String name, int moveCount, Vector<Integer>[] slotsVal, Vector<Color>[] slotsColor)
-  {
-    super(name);
-    setDelay(200); /* Delay (in ms) in default animations */
-    this.moveCount  = moveCount;
-    this.slotsVal   = slotsVal;
-    this.slotsColor = slotsColor;
-    new HanoiEntity("worker", this);
+    HanoiWorld res = new HanoiWorld(name, moveCount, vals, colors);
+    new HanoiEntity("worker", res);
+    return res;
   }
 
   /** Writes the world, one line per slot. Each disk of a slot is written as "radius:RRGGBB", from the bottom to the top. */
@@ -280,6 +224,4 @@ public class HanoiWorld extends World {
    * Return the panel which let the user to interact dynamically with the world
    */
   @Override public EntityControlPanel getEntityControlPanel() { return new HanoiMovePanel(); }
-  /* END SOLUTION */
 }
-/* END TEMPLATE */
