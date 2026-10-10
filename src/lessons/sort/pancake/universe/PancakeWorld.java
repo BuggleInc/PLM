@@ -69,11 +69,11 @@ public class PancakeWorld extends World {
     for (int i = 0; i < size; i++)
       pancakeStack[i] = new Pancake(i + 1);
 
+    this.burnedWorld = burnedPancake;
+
     /* Mix them. Seeded by the name: the initial state must be reproducible to cache the answer worlds */
     wasRandom = true;
     mix(new Random(name.hashCode()));
-
-    this.burnedWorld = burnedPancake;
   }
 
   /** Randomizes the initial state: the answer of this world cannot be cached anymore */
