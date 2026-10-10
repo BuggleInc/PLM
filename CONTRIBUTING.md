@@ -39,7 +39,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   microworlds with entities. The exercise owns **three parallel sets of worlds**:
   - `initialWorld`: the starting state, as built by `setup()`.
   - `answerWorld`: the target state, produced by either loading a cached solution from the disk, or by running the teacher's
-    correction code on the corresponding `initialWorld`. 
+    correction code on the corresponding `initialWorld`. See "World I/O and the answer cache" below.
   - `currentWorld`: the current state while executing the student's code, initially equal to `initialWorld`. If the
     `currentWorld` becomes semantically equal to `answerWorld` after executing the student code, the exercise is passed.
 
@@ -298,6 +298,9 @@ for/cancels help, or reads a hint:
    supports, through `Exercise.compileRunCheck()` and assert it passes. Their test methods run in parallel (see `IntegrationTests`).
    This is a regression test suite over the pedagogical content itself: it catches broken exercises (e.g. a correction that no
    longer matches its `-answerN.map`) rather than testing application logic in isolation.
+  A stale `-answerN.map` is therefore reported as a broken test, not fixed automatically: decide whether the entity or the cache is
+  wrong. In the latter case, delete the `.map` file and run the tests twice: the first run regenerates it (and passes trivially), the
+  second one checks the correction entities against it.
 * `plm.test.git.*` tests the session persistence logic.
 * `plm.test.gui.MainFrameSmokeTest` is a Swing smoke test (via AssertJ-Swing) that needs a display (`xvfb` in CI).
 
@@ -490,6 +493,30 @@ Extend, at minimum: `World` (state/data), an `Entity` subclass (ancestor of corr
 HTML file following the same convention as mission texts. Existing universes stay small (a few hundred to ~1500 lines including
 the buggle map editor) because all non-functional plumbing (compilation, templating, session handling) is factored into
 `plm.core`.
+
+### World I/O and the answer cache
+
+Loading a lesson would be slow if every exercise had to compile and run its correction entity to get its `answerWorld`. Universes
+implement world I/O to avoid this: `ExerciseTemplated.doComputeAnswer()` first tries to read `src/<worldFileName>-answerN.map`
+for each world (N being the rank of the world in the exercise), and only the missing or broken ones are computed by the correction
+entity, then written back for next time. Nothing invalidates these files: it is up to the tests (see above) and to the maintainers.
+
+To support it, a universe overrides `haveIO()` (returning true), `readFromFile(path)` and `writeToFile(writer)` of `World`.
+Universes that do not override `haveIO()` get their answers computed at each load. You should implement IO in your universe
+before shipping it in the PLM.
+
+* The format is textual and specific to the universe, for the files to stay readable, diffable, and independent of the Java
+  class layout (Java serialization would break at the first refactoring). Use `readField()` to parse the `Key: value` lines.
+* The file must hold what is needed to compare with `equals()`/`diffTo()` and to display the world, including its history if the
+  views show it (e.g. the operations of the sorting worlds). It does not need to hold what only matters when an entity runs
+  (e.g. the starting position of the turtles).
+* `readFromFile()` throws `BrokenWorldFileException` on malformed content: the world is then recomputed.
+* The initial worlds must be reproducible, because a cached answer is only valid for the initial world it was computed from. Do
+  not use an unseeded random generator in `setup()`: seed it with something stable, such as the name of the world.
+* A world that must stay random calls `setRandomized()`, which `isRandomized()` reports. Such a world is never read from nor
+  written to disk: its answer is computed at each load, at the cost of compiling the correction entity.
+* `worldFileName` defaults to the name of the exercise class. Exercises sharing one class (e.g. `TurtleGraphicalExercise`) must
+  set it to a distinct value, or they would overwrite each other's files.
 
 # Maintainer's note
 
