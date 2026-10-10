@@ -48,21 +48,18 @@ public class Turtle extends Entity implements TurtlePrimitives {
     super();
     setName(t.getName());
     setWorld(t.getWorld());
-    this.color       = t.color;
-    this.x           = t.x;
-    this.y           = t.y;
-    this.startX      = t.startX;
-    this.startY      = t.startY;
-    this.heading     = t.heading;
-    this.penDown     = t.penDown;
-    this.angularUnit = t.angularUnit;
-    this.visible     = t.visible;
+    copyFrom(t);
   }
 
   @Override public void copy(Entity e)
   {
     super.copy(e);
-    Turtle other = (Turtle)e;
+    copyFrom((Turtle)e);
+  }
+
+  /** Copies the state of the other turtle */
+  private void copyFrom(Turtle other)
+  {
     this.color       = other.color;
     this.x           = other.x;
     this.y           = other.y;
