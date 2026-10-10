@@ -498,21 +498,30 @@ the buggle map editor) because all non-functional plumbing (compilation, templat
 
 ### World I/O and the answer cache
 
-Loading a lesson would be slow if every exercise had to compile and run its correction entity to get its `answerWorld`. Universes
-implement world I/O to avoid this: `ExerciseTemplated.doComputeAnswer()` first tries to read `src/<worldFileName>-answerN.map`
-for each world (N being the rank of the world in the exercise), and only the missing or broken ones are computed by the correction
-entity, then written back for next time. Nothing invalidates these files: it is up to the tests (see above) and to the maintainers.
+Loading a lesson would be slow if every exercise had to compile and run its correction entity to get its `answerWorld`.
+Universes implement world I/O to avoid this: `ExerciseTemplated.doComputeAnswer()` first tries to read
+`src/<worldFileName>-answerN.map` for each world (N being the rank of the world in the exercise), and only the missing or broken
+ones are computed by the correction entity, then written back for next time. Each world is handled on its own: one missing file
+does not force recomputing the others. Nothing invalidates these files: it is up to the tests (see above) and to the
+maintainers.
 
-To support it, a universe overrides `haveIO()` (returning true), `readFromFile(path)` and `writeToFile(writer)` of `World`.
+To support it, a universe overrides `haveIO()` (returning true), `parse(reader, path)` and `writeToFile(writer)` of `World`.
 Universes that do not override `haveIO()` get their answers computed at each load. You should implement IO in your universe
 before shipping it in the PLM.
 
 * The format is textual and specific to the universe, for the files to stay readable, diffable, and independent of the Java
-  class layout (Java serialization would break at the first refactoring). Use `readField()` to parse the `Key: value` lines.
+  class layout (Java serialization would break at the first refactoring).`World` provides `readField()` and `readInts()` to
+  parse the `Key: value` lines, and `writeField()` to write them.
+* `World.readFromFile()` opens the file and calls `parse()`. A `NumberFormatException`, `ArrayIndexOutOfBoundsException` or
+  `IllegalArgumentException` raised while parsing becomes a `BrokenWorldFileException`, so `parse()` only needs to throw it for
+  the problems that it detects itself. A universe that needs another way of reading may override `readFromFile()` instead.
 * The file must hold what is needed to compare with `equals()`/`diffTo()` and to display the world, including its history if the
   views show it (e.g. the operations of the sorting worlds). It does not need to hold what only matters when an entity runs
   (e.g. the starting position of the turtles).
-* `readFromFile()` throws `BrokenWorldFileException` on malformed content: the world is then recomputed.
+* A malformed or missing file is reported on stderr and the world is recomputed.
+* A universe may store less than the state if the rest can be replayed: the baseball worlds store their initial field and their
+  moves, and rebuild the field by playing them. The bat worlds cannot store a string value containing a tab or a line break:
+  `writeToFile()` then fails without writing anything, and the exercise is simply not cached.
 * The initial worlds must be reproducible, because a cached answer is only valid for the initial world it was computed from. Do
   not use an unseeded random generator in `setup()`: seed it with something stable, such as the name of the world.
 * A world that must stay random calls `setRandomized()`, which `isRandomized()` reports. Such a world is never read from nor
@@ -520,8 +529,19 @@ before shipping it in the PLM.
   provide `randomize()` for that, returning the world to be usable in the exercise's list of worlds. By convention, each of their
   exercises randomizes its last world (or the one named "random 15 pancakes" in the pancake exercises with fixed hard cases), so
   that the entities are also tested on unforeseen inputs.
-* `worldFileName` defaults to the name of the exercise class. Exercises sharing one class (e.g. `TurtleGraphicalExercise`) must
-  set it to a distinct value, or they would overwrite each other's files.
+* `worldFileName` defaults to the name of the exercise class, and `answerFile(rank)` builds the name of the cache files from it.
+  Exercises sharing one class (e.g. `TurtleGraphicalExercise`) must set it to a distinct value, or they would overwrite each
+  other's files: `doComputeAnswer()` throws an `IllegalStateException` when two exercises use the same one.
+* `Exercise.serializeRandomizedWorlds()` gives the initial state of the randomized worlds in the `.map` format. It is added to the
+  commit messages of the learning analytics and to the technical information of the bug reports, as the maintainers could not
+  rebuild these worlds otherwise.
+
+### Comparing turtle worlds
+
+`TurtleWorld.diffTo()` compares the shapes on normalized copies of the lists, leaving the worlds untouched: they are sorted, the
+duplicates are removed, and the lines that lengthen each other or that cover each other are merged into one by `mergeLines()`,
+until the amount of shapes is stable. This way, drawing a line in one or several segments gives the same result. The colors are
+not compared during the merge.
 
 # Maintainer's note
 
