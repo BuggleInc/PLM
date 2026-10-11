@@ -69,7 +69,7 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
    * C has no stack trace: the address sanitizer report is the closest thing, and it is produced by the dereference of generateExceptionRaisingCode(), not by
    * abort().
    */
-  @Override protected String locationOfLine(int line) { return "Entity.c:" + line; }
+  @Override protected String locationOfLine(int line) { return exo.getName() + ".c:" + line; }
 
   /** The #line directive of the generated source makes gcc report the error at its line in the editor. */
   @Test public void testCompilationErrorLineMatchesEditor()
@@ -80,7 +80,7 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
                                                   + "}\n",
                                               pl);
     PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
-    Assertions.assertTrue(e.getMessage().contains("Entity.c:3:"), e.getMessage());
+    Assertions.assertTrue(e.getMessage().contains(exo.getName() + ".c:3:"), e.getMessage());
   }
 
   @Test public void testImportSegmentIsHonored() throws PLMCompilerException, InterruptedException
