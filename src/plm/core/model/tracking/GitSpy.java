@@ -351,11 +351,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     File exoFile        = new File(repoDir, lastExo.getId() + ext + ".code");
 
     try {
-      // write the code of the exercise into the file
-      FileWriter fwExo     = new FileWriter(exoFile.getAbsoluteFile());
-      BufferedWriter bwExo = new BufferedWriter(fwExo);
-      bwExo.write(exoCode == null ? "" : exoCode);
-      bwExo.close();
+      writeFile(exoFile, exoCode);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -383,11 +379,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
 
     try {
-      // write the instructions of the exercise into the file
-      FileWriter fwMission     = new FileWriter(missionFile.getAbsoluteFile());
-      BufferedWriter bwMission = new BufferedWriter(fwMission);
-      bwMission.write(mission == null ? "" : mission);
-      bwMission.close();
+      writeFile(missionFile, mission);
     } catch (IOException e) {
       e.printStackTrace();
     }
