@@ -637,6 +637,4 @@ Preparing the next release cycle
 
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
-TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should
-      include the Game singleton that encompasses the model part of the MVC thing.
 TODO: benchmark the tests to understand where the time goes, and optimize this out

@@ -13,9 +13,7 @@ or pedagogical, or even typos in the mission texts).
 
 Then of course, you should have a look at the known bugs and
 issues. Any help to solve them is very welcome.
-https://github.com/oster/PLM/issues  and
-https://github.com/oster/webPLM/issues.
-We have 2 bug trackers because the project is modular :)
+https://github.com/oster/PLM/issues 
   
 Another idea is to help translating the material. How to do that is
 documented here:
