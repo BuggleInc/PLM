@@ -3,6 +3,7 @@ package plm.core.model.session;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -11,41 +12,23 @@ import plm.core.model.Game;
 import plm.core.model.lesson.Lecture;
 
 public class SessionDB {
-  private Map<String, Map<ProgrammingLanguage, Map<String, String>>> body = new HashMap<String, Map<ProgrammingLanguage, Map<String, String>>>();
+  /** What the student wrote, by exercise id, language and source name. Absent while the student did not change the initial content. */
+  private final Map<String, Map<ProgrammingLanguage, Map<String, String>>> body = new ConcurrentHashMap<>(); // read by the run thread, written by the EDT
   private Map<String, Map<ProgrammingLanguage, Boolean>> passed           = new HashMap<String, Map<ProgrammingLanguage, Boolean>>();
 
   /* Per lesson summary */
   private Map<String, Map<ProgrammingLanguage, Integer>> passedExercises   = new HashMap<String, Map<ProgrammingLanguage, Integer>>();
   private Map<String, Map<ProgrammingLanguage, Integer>> possibleExercises = new HashMap<String, Map<ProgrammingLanguage, Integer>>();
 
-  public void setBody(Lecture exo, ProgrammingLanguage lang, String sourceName, String _body)
+  public void setBody(Lecture exo, ProgrammingLanguage lang, String sourceName, String content)
   {
-    if (exo == null)
-      exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo);
-    if (bodyE == null) {
-      bodyE = new HashMap<ProgrammingLanguage, Map<String, String>>();
-      body.put(exo.getId(), bodyE);
-    }
-    Map<String, String> bodyLEP = bodyE.get(lang);
-    if (bodyLEP == null) {
-      bodyLEP = new HashMap<String, String>();
-      bodyE.put(lang, bodyLEP);
-    }
-
-    bodyLEP.put(sourceName, _body);
+    body.computeIfAbsent(exo.getId(), id -> new ConcurrentHashMap<>()).computeIfAbsent(lang, l -> new ConcurrentHashMap<>()).put(sourceName, content);
   }
+
+  /** The content last set for that source, or null if none was */
   public String getBody(Lecture exo, ProgrammingLanguage lang, String sourceName)
   {
-    if (exo == null)
-      exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    Map<ProgrammingLanguage, Map<String, String>> bodyE = body.get(exo.getId());
-    if (bodyE == null)
-      return null;
-    Map<String, String> bodyEP = bodyE.get(lang);
-    if (bodyEP == null)
-      return null;
-    return bodyEP.get(sourceName);
+    return body.getOrDefault(exo.getId(), Map.of()).getOrDefault(lang, Map.of()).get(sourceName);
   }
 
   public void setPassed(Lecture exo, ProgrammingLanguage lang, boolean _passed)

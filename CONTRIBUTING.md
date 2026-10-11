@@ -328,6 +328,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
+    * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere.
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
   * *`IntegrationTests`:* the real lessons, with the test methods running in parallel.
