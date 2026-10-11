@@ -1,10 +1,7 @@
 package plm.core.model.session;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystem;
@@ -12,6 +9,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
@@ -107,31 +105,12 @@ public class GitSessionKit implements ISessionKit {
         String lessonId = file.getFileName().toString();
         lessonId        = lessonId.substring(0, lessonId.length() - ".summary".length());
 
-        //  1. Read file content in String
-        StringBuilder sb = new StringBuilder();
-        FileReader fr;
-        BufferedReader br = null;
+        // Pass the content of the file to the sessionDB
         try {
-          fr = new FileReader(file.toFile().getAbsoluteFile());
-          br = new BufferedReader(fr);
-          String line;
-          while ((line = br.readLine()) != null)
-            sb.append(line);
-        } catch (FileNotFoundException e) {
-          // If there is no summary file, then don't do nothing for that lesson
+          Game.getInstance().studentWork.lessonSummaryParse(lessonId, Files.readString(file));
         } catch (IOException e) {
           System.err.println("Error while reading the summary of lesson " + lessonId + ": " + e.getLocalizedMessage());
-        } finally {
-          if (br != null)
-            try {
-              br.close();
-            } catch (IOException e) {
-              // I don't care about not being able to close a file that I *read*
-            }
         }
-
-        // 2. Pass that string to the sessionDB
-        Game.getInstance().studentWork.lessonSummaryParse(lessonId, sb.toString());
 
         return FileVisitResult.CONTINUE;
       }
@@ -177,18 +156,9 @@ public class GitSessionKit implements ISessionKit {
           String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() +
                             "." + lang.getExt() + ".code";
           // System.out.println(fileName);
-          String line;
-          StringBuilder b = new StringBuilder();
           try {
-            FileReader fileReader = new FileReader(fileName);
-            try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-              while ((line = bufferedReader.readLine()) != null) {
-                b.append(line);
-                b.append("\n");
-              }
-            }
-            exercise.getSourceFile(lang, 0).setEditorContent(b.toString(), lang); // only loads the entity if some code was saved
-          } catch (FileNotFoundException fnf) {
+            exercise.getSourceFile(lang, 0).setEditorContent(Files.readString(Path.of(fileName)), lang); // only loads the entity if some code was saved
+          } catch (NoSuchFileException nsf) {
             /* that's fine, we never did that exercise */
           } catch (IOException ex) {
             ex.printStackTrace();
