@@ -8,9 +8,10 @@ import plm.test.git.GitUtilsTest;
 import plm.test.lang.EntityTemplateParserTest;
 import plm.test.lang.IndentationTest;
 import plm.test.simple.test.AllSimpleExerciseTests;
+import plm.test.universe.ApiGatingTest;
 import plm.universe.bat.ValueFormatterTest;
 
 @Suite
 @SelectClasses({AllSimpleExerciseTests.class, GitSpyTest.class, GitUtilsTest.class, EntityTemplateParserTest.class, IndentationTest.class,
-                ValueFormatterTest.class, ValueSerializerTest.class})
+                ValueFormatterTest.class, ValueSerializerTest.class, ApiGatingTest.class})
 public class UnitTests {}
