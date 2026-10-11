@@ -1,6 +1,5 @@
 package plm.test.integration;
 
-import java.time.Duration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
@@ -19,6 +18,6 @@ public class ExoTestJavaLang extends ExoTest {
   public void testJavaEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(e);
-    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(20), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.JAVA); });
+    Assertions.assertTimeoutPreemptively(timeout(e), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.JAVA); });
   }
 }

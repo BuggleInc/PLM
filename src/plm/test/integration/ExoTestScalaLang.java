@@ -1,6 +1,5 @@
 package plm.test.integration;
 
-import java.time.Duration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
@@ -21,6 +20,6 @@ public class ExoTestScalaLang extends ExoTest {
     initExerciseState(e);
     if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.SCALA))
       Assertions.fail("Exercise " + e.getId() + " has no Scala entity");
-    Assertions.assertTimeoutPreemptively(Duration.ofSeconds(20), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.SCALA); });
+    Assertions.assertTimeoutPreemptively(timeout(e), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.SCALA); });
   }
 }

@@ -2,6 +2,7 @@ package plm.test.integration;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -45,6 +46,12 @@ public class ExoTest {
       "lessons.bat.string1",
       "lessons.lander",
   };
+
+  /** Exercises that run for long: the turmites do tens of thousands of remote-primitive round trips, and the fractals draw very many segments */
+  private static final Set<String> SLOW_EXERCISES = Set.of("turmites.TurmiteCreator", "turmites.LangtonColors", "recursion.lego.SquareKoch",
+                                                           "recursion.lego.PentaKoch", "recursion.lego.DragonCurve1", "recursion.lego.DragonCurve2");
+
+  protected static Duration timeout(Exercise exo) { return Duration.ofSeconds(SLOW_EXERCISES.contains(exo.getId()) ? 60 : 20); }
 
   /* Generate the stream of parameters we want to run our parameterized tests on */
   static public Stream<Arguments> exercises() throws BrokenProgrammingLanguageException
