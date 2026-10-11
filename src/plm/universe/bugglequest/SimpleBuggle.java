@@ -74,7 +74,6 @@ public class SimpleBuggle extends AbstractBuggle {
     }
   }
 
-  @Deprecated @Override public void pickUpBaggle() { pickupBaggle(); }
   @Override public void pickupBaggle()
   {
     try {
