@@ -332,16 +332,14 @@ public class Game implements IWorldView {
   public void setCurrentExercise(Lecture lect)
   {
 
-    // No need to stop the execution if no lesson is currently selected
-    if (currentLesson != null) {
-      // If already executing a program, stop it
-      if (state == GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED) {
-        stopExerciseExecution();
-      }
+    // Stop the currently ongoing execution, if any
+    if (state == GameState.EXECUTION_STARTED || state == GameState.DEMO_STARTED)
+      stopExerciseExecution();
 
-      if (!isBatchExecution())
-        users.getCurrentUser().setCurrentExercise("plm://lessons." + lect.getLesson().getId() + "/" + lect.getId());
-    }
+    // Pass the information around
+    if (!isBatchExecution())
+      users.getCurrentUser().setCurrentExercise("plm://lessons." + lect.getLesson().getId() + "/" + lect.getId());
+
     try {
       saveSession();                                                                           // don't loose user changes
       this.lastExercise = (currentLesson == null ? null : currentLesson.getCurrentExercise()); // save the last viewed exercise before switching
