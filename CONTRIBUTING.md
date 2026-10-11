@@ -291,20 +291,41 @@ for/cancels help, or reads a hint:
 
 ## How tests work
 
-* `SimpleExercise` tests ensure that the compilation and templating work in every language without pulling a full universe. It
-  also tests the error catching mechanism of each language is working properly (syntax error, exception raising, etc). The Java
-  ones also check that the line of a compilation error and of a stack trace frame is the one of the editor, with debugging off.
-  The Python and C entities have an `IMPORT` section, which a test checks to be honored.
-* Integration testing driven by `ExoTest`/`LessonTest` and living in `src/plm/test/integration` (`ExoTestJavaLang`,
-   `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`) run every exercise's own correction entity, in every language it
-   supports, through `Exercise.compileRunCheck()` and assert it passes. Their test methods run in parallel (see `IntegrationTests`).
-   This is a regression test suite over the pedagogical content itself: it catches broken exercises (e.g. a correction that no
-   longer matches its `-answerN.map`) rather than testing application logic in isolation.
-  A stale `-answerN.map` is therefore reported as a broken test, not fixed automatically: decide whether the entity or the cache is
-  wrong. In the latter case, delete the `.map` file and run the tests twice: the first run regenerates it (and passes trivially), the
-  second one checks the correction entities against it.
-* `plm.test.git.*` tests the session persistence logic.
-* `plm.test.gui.MainFrameSmokeTest` is a Swing smoke test (via AssertJ-Swing) that needs a display (`xvfb` in CI).
+Tests live in `src/plm/test` and are compiled with the main code (see the surefire configuration in `pom.xml`). The unit tests of
+a few classes sit next to them. Each class runs in its own JVM (`reuseForks=false`) because of the `Game` singleton.
+
+* *`AllTests`:* the suite chaining `UnitTests` and `IntegrationTests`.
+  * *`UnitTests`:* no real lesson involved.
+    * *`AllSimpleExerciseTests`:* templating, compilation, execution and check on a minimal universe (`plm.test.simple`), once
+      per language (`JavaSimpleExerciseTest`, `ScalaSimpleExerciseTest`, `PythonSimpleExerciseTest`, `CSimpleExerciseTest`, which
+      share `SimpleExerciseTest` and `CompiledSimpleExerciseTest`). The correction compiles, runs and passes. Wrong code,
+      exceptions (out of bounds, null, custom) and a valid code followed by an error do not pass. Syntax and variable errors do
+      not compile. The line of a stack trace frame is the editor's one. Java, Scala and Python also check the line of a
+      compilation error, and Python and C check that the `IMPORT` section is honored.
+    * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
+      raised on invalid markup.
+    * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
+    * *`GitSpyTest`:* the files written and deleted by `GitSpy`, the `.DONE` marker, and the PLM commit in the messages.
+    * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
+  * *`IntegrationTests`:* the real lessons, with the test methods running in parallel.
+    * *`LessonTest`:* every lesson loads without error, in Java, Scala and Python.
+    * *`ExoTestJavaLang`, `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`:* for every exercise, `compileRunCheck()` of the
+      correction entity must pass in that language. They share `ExoTest`, which lists the lessons and their exercises. The Python
+      and C ones also fail when the exercise has no entity file in their language, and the Turmites get a longer timeout.
+    * *`MethodsDogHouseSourceCheckTest`:* `verifySource()` refuses the code unless it calls `left()` exactly once, ignoring
+      comments and strings (Java and Python).
+* *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
+* *Serialization of remote values:* `ValueSerializerTest` for the Java side and `value_serializer_test.c` for the C side, which
+  maven builds and runs. `ValueFormatterTest` covers the value comparison of the bat universe.
+
+The `ExoTest*Lang` tests are a regression suite over the pedagogical content itself: they catch broken exercises (e.g. a
+correction that no longer matches its `-answerN.map`) rather than testing application logic in isolation. Only the *correction*
+entity is compiled there. The student path (editor content injected into the template) is exercised by the `SimpleExercise` tests
+and by `MethodsDogHouseSourceCheckTest`.
+
+A stale `-answerN.map` is reported as a broken test, not fixed automatically: decide whether the entity or the cache is wrong. In
+the latter case, delete the `.map` file and run the tests twice: the first run regenerates it (and passes trivially), the second
+one checks the correction entities against it.
 
 ## Languages & runtime versions
 
