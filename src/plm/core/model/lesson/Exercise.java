@@ -143,8 +143,10 @@ public abstract class Exercise extends Lecture {
    * creative mode.
    * @param runners receives the entity tasks, so that another thread can stop them
    * @param onCompiled called once the compilation succeeded, right before the execution
+   * @return the outcome of the run
+   * @throws PLMCompilerException if the compilation, or the source-level check, failed
    */
-  public void compileRunCheck(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang, List<Future<?>> runners, Runnable onCompiled)
+  public RunOutcome compileRunCheck(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang, List<Future<?>> runners, Runnable onCompiled)
       throws PLMCompilerException, InterruptedException
   {
     boolean creative = Game.getInstance().isCreativeEnabled();
@@ -181,6 +183,7 @@ public abstract class Exercise extends Lecture {
     /* Check */
     if (!creative)
       check();
+    return lastResult;
   }
 
   /**

@@ -116,8 +116,9 @@ public class ExoTest {
   protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException, InterruptedException
   {
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
+    RunOutcome outcome = null;
     try {
-      exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});
+      outcome = exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});
     } catch (PLMCompilerException e) {
       String msg = exo.getId() + ": compilation error: " + e.getMessage() + ". Compiled file:\n" +
                    ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getSegments(StudentOrCorrection.CORRECTION).body()) : "none");
@@ -128,9 +129,8 @@ public class ExoTest {
       throw uoe;
     }
 
-    if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
-      String msg = "Test of " + exo.getId() + " failed (" + exo.lastResult.passedTests + "/" + exo.lastResult.totalTests + " passed): '" +
-                   exo.lastResult.executionError + "'";
+    if (outcome.outcome != RunOutcome.kind.PASS) {
+      String msg = "Test of " + exo.getId() + " failed (" + outcome.passedTests + "/" + outcome.totalTests + " passed): '" + outcome.executionError + "'";
       System.err.println(msg);
       for (int wnum = 0; wnum < exo.getWorldCount(); wnum++)
         try {
