@@ -340,7 +340,7 @@ public class Game implements IWorldView {
       }
 
       if (!isBatchExecution())
-        users.getCurrentUser().setCurrentExercise("plm://lessons." + currentLesson.getId() + "/" + lect.getId());
+        users.getCurrentUser().setCurrentExercise("plm://lessons." + lect.getLesson().getId() + "/" + lect.getId());
     }
     try {
       saveSession();                                                                           // don't loose user changes
