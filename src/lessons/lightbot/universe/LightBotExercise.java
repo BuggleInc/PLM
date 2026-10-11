@@ -40,35 +40,36 @@ public class LightBotExercise extends ExerciseTemplated {
       }
     }
   }
-  @Override public void check()
+  @Override public void check(RunOutcome result)
   {
-    lastResult = new RunOutcome(lastResult.language);
     for (int w = 0; w < currentWorld.size(); w++) {
       LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld.get(w)).new CellIterator();
       while (ci.hasNext()) {
         LightBotWorldCell cell = ci.next();
         if (cell.isLight()) {
-          lastResult.totalTests++;
+          result.totalTests++;
           if (cell.isLightOn())
-            lastResult.passedTests++;
+            result.passedTests++;
         }
       }
-      int stillOff = lastResult.totalTests - lastResult.passedTests;
+      int stillOff = result.totalTests - result.passedTests;
       if (stillOff == 1)
-        lastResult.executionError = Game.i18n.tr("A light is still off.");
+        result.executionError = Game.i18n.tr("A light is still off.");
       if (stillOff > 1)
-        lastResult.executionError = Game.i18n.tr("{0} lights (out of {1}) are still off.", stillOff, lastResult.totalTests);
+        result.executionError = Game.i18n.tr("{0} lights (out of {1}) are still off.", stillOff, result.totalTests);
 
       if (stillOff == 0)
-        lastResult.outcome = RunOutcome.kind.PASS;
+        result.outcome = RunOutcome.kind.PASS;
       else
-        lastResult.outcome = RunOutcome.kind.FAIL;
+        result.outcome = RunOutcome.kind.FAIL;
     }
   }
-  @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
+  @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
-    reset(lang);
-    runAll(WorldKind.CURRENT, runnerVect, lastResult, lang, executable);
+    reset();
+    RunOutcome result = new RunOutcome(lang);
+    runAll(WorldKind.CURRENT, runnerVect, result, lang, executable);
+    return result;
   }
 
   @Override

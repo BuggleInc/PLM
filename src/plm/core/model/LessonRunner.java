@@ -41,11 +41,12 @@ public class LessonRunner extends Thread {
     final Exercise exo = (Exercise)lect;
     final ProgrammingLanguage lang = this.game.getProgrammingLanguage();
 
+    RunOutcome outcome = new RunOutcome(lang);
     try {
       game.saveSession(); // for safety reasons;
 
       game.setState(Game.GameState.COMPILATION_STARTED);
-      exo.compileRunCheck(game.getOutputWriter(), StudentOrCorrection.STUDENT, lang, runners, () -> {
+      outcome = exo.compileRunCheck(game.getOutputWriter(), StudentOrCorrection.STUDENT, lang, runners, () -> {
         game.setState(Game.GameState.COMPILATION_ENDED);
         game.setState(Game.GameState.EXECUTION_STARTED);
       });
@@ -55,6 +56,7 @@ public class LessonRunner extends Thread {
       e.printStackTrace();
       game.setState(Game.GameState.EXECUTION_ENDED);
     } catch (PLMCompilerException e) {
+      outcome = RunOutcome.newCompilationError(lang, e.getMessage());
       game.setState(Game.GameState.COMPILATION_ENDED);
       game.setState(Game.GameState.EXECUTION_ENDED);
     } catch (Exception e) {
@@ -64,28 +66,29 @@ public class LessonRunner extends Thread {
     }
 
     if (!game.isCreativeEnabled()) {
+      final RunOutcome finalOutcome = outcome; // for the anonymous classes below
       try {
-        if (exo.lastResult.outcome == RunOutcome.kind.PASS) {
-          Game.getInstance().studentWork.setPassed(exo, exo.lastResult.language, true);
+        if (outcome.outcome == RunOutcome.kind.PASS) {
+          Game.getInstance().studentWork.setPassed(exo, outcome.language, true);
 
           SwingUtilities.invokeAndWait(new Runnable() {
             @Override public void run()
             {
-              new ExercisePassedDialog(exo);
+              new ExercisePassedDialog(exo, finalOutcome);
             }
           });
         } else {
           SwingUtilities.invokeAndWait(new Runnable() {
             public void run()
             {
-              new ExerciseFailedDialog(exo.lastResult);
+              new ExerciseFailedDialog(finalOutcome);
             }
           });
         }
       } catch (InvocationTargetException | InterruptedException e) {
         e.printStackTrace();
       }
-      Game.getInstance().fireProgressSpy(exo);
+      Game.getInstance().fireProgressSpy(exo, outcome);
     }
     runners.remove(this);
   }

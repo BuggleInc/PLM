@@ -20,7 +20,7 @@ import plm.core.model.lesson.RunOutcome;
 public class ExercisePassedDialog extends JDialog {
   private static final long serialVersionUID = 1L;
 
-  public ExercisePassedDialog(Exercise exo)
+  public ExercisePassedDialog(Exercise exo, RunOutcome result)
   {
     super(MainFrame.getInstance(), "Exercice passed \\o/", false);
 
@@ -41,11 +41,10 @@ public class ExercisePassedDialog extends JDialog {
     final JComboBox<Lecture> exoChooser = nextExercises.isEmpty() ? null : new JComboBox<Lecture>(nextExercises);
 
     if (nextExercises.size() == 0) {
-      if (exo.lastResult.passedTests > 1) {
-        msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>", exo.lastResult.passedTests) +
-                    exo.lastResult.executionError);
+      if (result.passedTests > 1) {
+        msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>", result.passedTests) + result.executionError);
       } else {
-        msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.</html>", exo.lastResult.passedTests) + exo.lastResult.executionError);
+        msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.</html>", result.passedTests) + result.executionError);
       }
 
       congratsPane.add(new JLabel(ResourcesCache.getIcon("img/trophy.png")));
@@ -53,9 +52,9 @@ public class ExercisePassedDialog extends JDialog {
 
     } else {
 
-      if (exo.lastResult.passedTests > 1) {
+      if (result.passedTests > 1) {
         msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br>({0} tests passed)<br><br><br>Select your next exercise:</html>",
-                                 exo.lastResult.passedTests));
+                                 result.passedTests));
       } else {
         msg.setText(Game.i18n.tr("<html>Congratulations, you passed this exercise.<br><br><br><br>Select your next exercise:</html>"));
       }
@@ -97,8 +96,7 @@ public class ExercisePassedDialog extends JDialog {
     feedbackPane.add(spComment, "push,grow 20000 20000,wrap,span");
 
     /* ------------ The close button ------------ */
-    final RunOutcome result = exo.lastResult;
-    JButton close           = new JButton(Game.i18n.tr("Close"));
+    JButton close = new JButton(Game.i18n.tr("Close"));
     close.addActionListener(new ActionListener() {
       @Override public void actionPerformed(ActionEvent e)
       {

@@ -42,8 +42,6 @@ public abstract class Exercise extends Lecture {
   protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
   protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
 
-  public RunOutcome lastResult;
-
   public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 
   public Exercise(Lesson lesson, String basename) { super(lesson, basename); }
@@ -62,7 +60,7 @@ public abstract class Exercise extends Lecture {
     }
   }
 
-  public abstract void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException;
+  public abstract RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException;
   public abstract void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException;
 
   /**
@@ -102,37 +100,35 @@ public abstract class Exercise extends Lecture {
     }
   }
 
-  public void check()
+  public void check(RunOutcome result)
   {
     boolean pass = true;
-    if (lastResult.outcome == RunOutcome.kind.PASS) {
+    if (result.outcome == RunOutcome.kind.PASS) {
       for (int i = 0; i < currentWorld.size(); i++) {
         currentWorld.get(i).notifyWorldUpdatesListeners();
 
-        lastResult.totalTests++;
+        result.totalTests++;
 
         if (!currentWorld.get(i).winning(answerWorld.get(i))) {
-          String diff = answerWorld.get(i).diffTo(currentWorld.get(i), lastResult.language);
-          lastResult.executionError += i18n.tr("The world ''{0}'' differs", currentWorld.get(i).getName());
+          String diff = answerWorld.get(i).diffTo(currentWorld.get(i), result.language);
+          result.executionError += i18n.tr("The world ''{0}'' differs", currentWorld.get(i).getName());
           if (diff != null)
-            lastResult.executionError += ":\n" + diff;
-          lastResult.executionError += "\n";
+            result.executionError += ":\n" + diff;
+          result.executionError += "\n";
           pass = false;
         } else {
-          lastResult.passedTests++;
+          result.passedTests++;
         }
       }
       if (pass)
-        lastResult.outcome = RunOutcome.kind.PASS;
+        result.outcome = RunOutcome.kind.PASS;
       else
-        lastResult.outcome = RunOutcome.kind.FAIL;
+        result.outcome = RunOutcome.kind.FAIL;
     }
   }
   /** Reset the current worlds to the state of the initial worlds */
-  public void reset(ProgrammingLanguage lang)
+  public void reset()
   {
-    lastResult = new RunOutcome(lang);
-
     for (int i = 0; i < initialWorld.size(); i++)
       currentWorld.get(i).reset(initialWorld.get(i));
   }
@@ -152,10 +148,8 @@ public abstract class Exercise extends Lecture {
     boolean creative = Game.getInstance().isCreativeEnabled();
 
     /* Reset */
-    if (creative)
-      lastResult = new RunOutcome(lang);
-    else
-      reset(lang);
+    if (!creative)
+      reset();
 
     /* Compilation, then source-level API gating. Every compilation error is reported here. */
     String executable;
@@ -169,21 +163,20 @@ public abstract class Exercise extends Lecture {
       if (Game.getInstance().isDebugEnabled())
         for (String file : e.getClassNames())
           System.out.println("File involved in the compilation: " + file);
-      lastResult = RunOutcome.newCompilationError(lang, e.getMessage());
       if (out != null)
-        out.log(lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
+        out.log(RunOutcome.newCompilationError(lang, e.getMessage()).compilationError); // display the same error as in the ExerciseFailedDialog
       throw e;
     }
 
     onCompiled.run(); // Change the footer message in the GUI
 
     /* Execution */
-    run(runners, lang, executable);
+    RunOutcome result = run(runners, lang, executable);
 
     /* Check */
     if (!creative)
-      check();
-    return lastResult;
+      check(result);
+    return result;
   }
 
   /**

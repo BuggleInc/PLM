@@ -11,7 +11,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
@@ -47,7 +46,7 @@ public abstract class SimpleExerciseTest {
     g.setLocale(new Locale("en"));
   }
 
-  @BeforeEach public void setUp() throws Exception { exo.reset(pl); }
+  @BeforeEach public void setUp() throws Exception { exo.reset(); }
 
   @Test public void testSolutionShouldCompil() throws PLMCompilerException { pl.compileExo(exo, null, StudentOrCorrection.CORRECTION); }
 
@@ -60,9 +59,9 @@ public abstract class SimpleExerciseTest {
     exo.getSourceFile(pl, 0).setEditorContent(generateOutOfBoundsErrorCode(), pl);
     String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    if (exo.lastResult.executionError == null || exo.lastResult.executionError.equals("")) {
+    if (result.executionError == null || result.executionError.equals("")) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should not execute properly but throw an error...\n");
     }
   }
@@ -72,9 +71,9 @@ public abstract class SimpleExerciseTest {
     exo.getSourceFile(pl, 0).setEditorContent(generateNullPointerErrorCode(), pl);
     String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    if (exo.lastResult.executionError == null || exo.lastResult.executionError.equals("")) {
+    if (result.executionError == null || result.executionError.equals("")) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should not execute properly but throw an error...\n");
     }
   }
@@ -83,9 +82,9 @@ public abstract class SimpleExerciseTest {
     exo.getSourceFile(pl, 0).setEditorContent(generateExceptionRaisingCode(), pl);
     String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    if (exo.lastResult.executionError == null || exo.lastResult.executionError.equals("")) {
+    if (result.executionError == null || result.executionError.equals("")) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should not execute properly but throw an exception...\n");
     }
   }
@@ -95,11 +94,11 @@ public abstract class SimpleExerciseTest {
     exo.getSourceFile(pl, 0).setEditorContent(generateWrongCode(), pl);
     String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    exo.check();
+    exo.check(result);
 
-    if (exo.lastResult.outcome == RunOutcome.kind.PASS)
+    if (result.outcome == RunOutcome.kind.PASS)
       Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this exercise..."));
   }
 
@@ -108,11 +107,11 @@ public abstract class SimpleExerciseTest {
     exo.getSourceFile(pl, 0).setEditorContent(generateSolutionFollowedByError(), pl);
     String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    exo.check();
+    exo.check(result);
 
-    if (exo.lastResult.outcome == RunOutcome.kind.PASS) {
+    if (result.outcome == RunOutcome.kind.PASS) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this "
                                                                         + "exercise..."));
     }

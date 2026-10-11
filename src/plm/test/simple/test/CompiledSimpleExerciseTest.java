@@ -11,7 +11,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.RunOutcome;
 
 /**
@@ -25,10 +24,10 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   {
     String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
 
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    if (exo.lastResult.outcome != RunOutcome.kind.PASS) {
-      Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise but the outcoume is " + exo.lastResult.outcome.toString());
+    if (result.outcome != RunOutcome.kind.PASS) {
+      Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise but the outcoume is " + result.outcome.toString());
     }
   }
 
@@ -36,11 +35,10 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   {
     String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
 
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    if (exo.lastResult.executionError != null && !exo.lastResult.executionError.equals("")) {
-      Assertions.fail(getClass().getName().replace("Test", "Entity") + " should execute properly and not throw the following error:\n" +
-                      exo.lastResult.executionError);
+    if (result.executionError != null && !result.executionError.equals("")) {
+      Assertions.fail(getClass().getName().replace("Test", "Entity") + " should execute properly and not throw the following error:\n" + result.executionError);
     }
   }
 
@@ -64,7 +62,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
     try {
       exo.getSourceFile(pl, 0).setEditorContent(generateExceptionRaisingCode(), pl);
       String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
-      exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
+      RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
     } finally {
       System.setErr(realErr);
       setDebug(true);
@@ -77,8 +75,8 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   {
     exo.getSourceFile(pl, 0).setEditorContent(code, pl);
     String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
-    exo.runAll(WorldKind.CURRENT, new ArrayList<Future<?>>(), exo.lastResult, pl, executable);
-    Assertions.assertEquals(RunOutcome.kind.PASS, exo.lastResult.outcome, exo.lastResult.executionError);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    Assertions.assertEquals(RunOutcome.kind.PASS, result.outcome, result.executionError);
   }
 
   @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.RunOutcome;
 
 /**
  * Spy that registers events in a local file
@@ -28,12 +29,12 @@ public class LocalFileSpy implements ProgressSpyListener {
     filePath = path.getAbsolutePath() + System.getProperty("file.separator") + "progress.spy";
   }
 
-  @Override public void executed(Exercise exo)
+  @Override public void executed(Exercise exo, RunOutcome outcome)
   {
-    if (Game.getInstance().studentWork.getPassed(exo, exo.lastResult.language)) {
-      write(username + " solved " + exo.getName() + " in " + exo.lastResult.language + "!");
+    if (Game.getInstance().studentWork.getPassed(exo, outcome.language)) {
+      write(username + " solved " + exo.getName() + " in " + outcome.language + "!");
     } else {
-      write(username + " failed " + exo.getName() + " in " + exo.lastResult.language + "!");
+      write(username + " failed " + exo.getName() + " in " + outcome.language + "!");
     }
   }
 

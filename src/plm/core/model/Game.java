@@ -355,7 +355,7 @@ public class Game implements IWorldView {
       fireCurrentExerciseChanged(lect);
       if (lect instanceof Exercise) {
         Exercise exo = (Exercise)lect;
-        exo.reset(getProgrammingLanguage());
+        exo.reset();
         setSelectedWorld(exo.getWorld(0));
 
         ProgrammingLanguage fallback = null;
@@ -523,7 +523,7 @@ public class Game implements IWorldView {
   {
     Lecture lecture = this.currentLesson.getCurrentExercise();
     if (lecture instanceof Exercise) {
-      ((Exercise)lecture).reset(getProgrammingLanguage());
+      ((Exercise)lecture).reset();
       fireCurrentExerciseChanged(lecture);
     }
   }
@@ -754,10 +754,10 @@ public class Game implements IWorldView {
   private ArrayList<ProgressSpyListener> progressSpyListeners = new ArrayList<ProgressSpyListener>();
   public void addProgressSpyListener(ProgressSpyListener l) { this.progressSpyListeners.add(l); }
   public void removeProgressSpyListener(ProgressSpyListener l) { this.progressSpyListeners.remove(l); }
-  public void fireProgressSpy(Exercise exo)
+  public void fireProgressSpy(Exercise exo, RunOutcome outcome)
   {
     for (ProgressSpyListener l : this.progressSpyListeners) {
-      l.executed(exo);
+      l.executed(exo, outcome);
     }
   }
 
@@ -876,8 +876,6 @@ public class Game implements IWorldView {
   public void setProgramingLanguage(ProgrammingLanguage newLanguage) throws BrokenProgrammingLanguageException
   {
     programmingLanguageManager.setCurrent(newLanguage);
-    if (getCurrentLesson() != null)
-      ((Exercise)getCurrentLesson().getCurrentExercise()).lastResult = new RunOutcome(newLanguage);
     fireProgLangChange(newLanguage);
   }
   public ProgrammingLanguage getProgrammingLanguage() { return programmingLanguageManager.current(); }

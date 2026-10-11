@@ -221,9 +221,11 @@ public abstract class ExerciseTemplated extends Exercise {
     }
   }
 
-  @Override public void run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
+  @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
-    runAll(WorldKind.CURRENT, runnerVect, lastResult, lang, executable);
+    RunOutcome result = new RunOutcome(lang);
+    runAll(WorldKind.CURRENT, runnerVect, result, lang, executable);
+    return result;
   }
 
   @Override public void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException

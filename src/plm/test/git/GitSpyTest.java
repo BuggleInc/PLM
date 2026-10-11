@@ -95,8 +95,7 @@ public class GitSpyTest {
     SourceFile sf = Mockito.mock(SourceFile.class);
     Mockito.when(sf.getEditorContent()).thenReturn(code);
 
-    Exercise exo   = Mockito.mock(Exercise.class);
-    exo.lastResult = lastResult;
+    Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     writeEntity(correction);
     Mockito.when(exo.getId()).thenReturn("exoTest");
@@ -117,9 +116,9 @@ public class GitSpyTest {
       }
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("createFiles", Exercise.class);
+    Method method = GitSpy.class.getDeclaredMethod("createFiles", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitSpy, exo, lastResult);
 
     HashMap<String, String> hm = new HashMap<>();
     for (String suffix : suffixes) {
@@ -157,8 +156,7 @@ public class GitSpyTest {
     SourceFile sf = Mockito.mock(SourceFile.class);
     Mockito.when(sf.getEditorContent()).thenReturn(code);
 
-    Exercise exo   = Mockito.mock(Exercise.class);
-    exo.lastResult = lastResult;
+    Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     writeEntity(correction);
     Mockito.when(exo.getId()).thenReturn("exoTest");
@@ -188,9 +186,9 @@ public class GitSpyTest {
       }
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("createFiles", Exercise.class);
+    Method method = GitSpy.class.getDeclaredMethod("createFiles", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitSpy, exo, lastResult);
 
     HashMap<String, String> hm = new HashMap<>();
     for (String suffix : suffixes) {
@@ -219,8 +217,7 @@ public class GitSpyTest {
     lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
     lastResult.outcome    = kind.PASS;
 
-    Exercise exo   = Mockito.mock(Exercise.class);
-    exo.lastResult = lastResult;
+    Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -228,9 +225,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should not exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitSpy, exo, lastResult);
 
     if (!(new File(fp).exists())) {
       Assertions.fail(fp + " should exist now...");
@@ -245,8 +242,7 @@ public class GitSpyTest {
     lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
     lastResult.outcome    = kind.PASS;
 
-    Exercise exo   = Mockito.mock(Exercise.class);
-    exo.lastResult = lastResult;
+    Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -260,9 +256,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitSpy, exo, lastResult);
 
     if (!(new File(fp).exists())) {
       Assertions.fail(fp + " should still exist now...");
@@ -277,8 +273,7 @@ public class GitSpyTest {
     lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
     lastResult.outcome    = kind.FAIL;
 
-    Exercise exo   = Mockito.mock(Exercise.class);
-    exo.lastResult = lastResult;
+    Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -286,9 +281,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should not exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitSpy, exo, lastResult);
 
     if (new File(fp).exists()) {
       Assertions.fail(fp + " should not have been created...");
@@ -303,8 +298,7 @@ public class GitSpyTest {
     lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
     lastResult.outcome    = kind.FAIL;
 
-    Exercise exo   = Mockito.mock(Exercise.class);
-    exo.lastResult = lastResult;
+    Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     String fp         = utils.getFilePath(repoDir, userUUID, exo, lastResult, ".DONE");
@@ -318,9 +312,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class);
+    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitSpy, exo, lastResult);
 
     if (new File(fp).exists()) {
       Assertions.fail(fp + " should have been deleted...");

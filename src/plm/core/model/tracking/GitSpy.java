@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -29,6 +30,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
   private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
   private File repoDir;
+
+  /** The outcome of the last execution of each exercise, reported by the events that are not executions */
+  private final Map<Exercise, RunOutcome> lastOutcomes = new HashMap<>();
 
   public GitSpy(File path, Users users) throws IOException, GitAPIException
   {
@@ -90,8 +94,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     }
   }
 
-  @Override public void executed(Exercise exo)
+  @Override public void executed(Exercise exo, RunOutcome outcome)
   {
+    lastOutcomes.put(exo, outcome);
     try {
 
       // checkout the branch of the current user (just in case it changed in between)
@@ -100,10 +105,10 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
       // gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser(), progress);
 
       // Change the files locally
-      createFiles(exo);
-      checkSuccess(exo);
+      createFiles(exo, outcome);
+      checkSuccess(exo, outcome);
 
-      String commitMsg  = writeCommitMessage(exo, null, "executed", new JSONObject());
+      String commitMsg  = writeCommitMessage(exo, outcome, null, "executed", new JSONObject());
       String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
       String userBranch = "PLM" + GitUtils.sha1(userUUID);
 
@@ -120,18 +125,17 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     if (lastExo == null)
       return;
 
-    if (lastExo.lastResult != null) {
-      createFiles(lastExo);
+    RunOutcome outcome = lastOutcome(lastExo);
+    createFiles(lastExo, outcome);
 
-      try {
-        String commitMsg  = writeCommitMessage(lastExo, exo, "switched", new JSONObject());
-        String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-        String userBranch = "PLM" + GitUtils.sha1(userUUID);
+    try {
+      String commitMsg  = writeCommitMessage(lastExo, outcome, exo, "switched", new JSONObject());
+      String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
+      String userBranch = "PLM" + GitUtils.sha1(userUUID);
 
-        gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
-      } catch (GitAPIException e) {
-        e.printStackTrace();
-      }
+      gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
+    } catch (GitAPIException e) {
+      e.printStackTrace();
     }
   }
 
@@ -140,7 +144,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     try {
       deleteFiles(exo);
 
-      String commitMsg  = writeCommitMessage(exo, null, "reverted", new JSONObject());
+      String commitMsg  = writeCommitMessage(exo, lastOutcome(exo), null, "reverted", new JSONObject());
       String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
       String userBranch = "PLM" + GitUtils.sha1(userUUID);
 
@@ -181,17 +185,14 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
   /**
    * Helper methods
    */
-  @SuppressWarnings("unchecked") private String writeCommitMessage(Exercise exoFrom, Exercise exoTo, String evt_type, JSONObject logmsg)
+  @SuppressWarnings("unchecked") private String writeCommitMessage(Exercise exoFrom, RunOutcome outcome, Exercise exoTo, String evt_type, JSONObject logmsg)
   {
-
-    RunOutcome lastResult = exoFrom.lastResult;
-
     // Retrieve appropriate parameters regarding the current exercise
     logmsg.put("exo", exoFrom.getId());
-    logmsg.put("lang", lastResult.language.toString());
+    logmsg.put("lang", outcome.language.toString());
 
-    if (lastResult.outcome != null) {
-      switch (lastResult.outcome) {
+    if (outcome.outcome != null) {
+      switch (outcome.outcome) {
         case COMPILE:
           logmsg.put("outcome", "compile");
           break;
@@ -207,9 +208,9 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
       }
     }
 
-    if (lastResult.totalTests > 0) {
-      logmsg.put("passedtests", lastResult.passedTests + "");
-      logmsg.put("totaltests", lastResult.totalTests + "");
+    if (outcome.totalTests > 0) {
+      logmsg.put("passedtests", outcome.passedTests + "");
+      logmsg.put("totaltests", outcome.totalTests + "");
     }
 
     // The commit must tell on its own the inputs that the student's code ran on
@@ -217,12 +218,12 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     if (!randomized.isEmpty())
       logmsg.put("randomizedworlds", new JSONObject(randomized));
 
-    if (exoFrom.lastResult.feedbackDifficulty != null)
-      logmsg.put("exoDifficulty", exoFrom.lastResult.feedbackDifficulty);
-    if (exoFrom.lastResult.feedbackInterest != null)
-      logmsg.put("exoInterest", exoFrom.lastResult.feedbackInterest);
-    if (exoFrom.lastResult.feedback != null)
-      logmsg.put("exoComment", exoFrom.lastResult.feedback);
+    if (outcome.feedbackDifficulty != null)
+      logmsg.put("exoDifficulty", outcome.feedbackDifficulty);
+    if (outcome.feedbackInterest != null)
+      logmsg.put("exoInterest", outcome.feedbackInterest);
+    if (outcome.feedback != null)
+      logmsg.put("exoComment", outcome.feedback);
 
     if (exoTo != null)
       logmsg.put("switchto", exoTo.getId());
@@ -252,24 +253,22 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     return "{\"kind\":\"" + kind + "\"," + jsonObject.toString().substring(1);
   }
 
-  private void createFiles(Exercise exo)
+  private void createFiles(Exercise exo, RunOutcome outcome)
   {
-    RunOutcome lastResult = exo.lastResult;
-
-    String exoCode  = exo.getSourceFile(lastResult.language, 0).getEditorContent(); // retrieve the code from the student
-    String exoError = lastResult.compilationError;                         // retrieve the compilation error
-    if (lastResult.compilationError == null)
-      exoError = lastResult.executionError;
+    String exoCode  = exo.getSourceFile(outcome.language, 0).getEditorContent(); // retrieve the code from the student
+    String exoError = outcome.compilationError;                                  // retrieve the compilation error
+    if (outcome.compilationError == null)
+      exoError = outcome.executionError;
     String exoCorrection = ""; // retrieve the correction: the whole entity file, if there is one in this language
     try {
-      exoCorrection = FileUtils.readContentAsText(exo.nameOfCorrectionEntity(), lastResult.language.getExt(), false).toString();
+      exoCorrection = FileUtils.readContentAsText(exo.nameOfCorrectionEntity(), outcome.language.getExt(), false).toString();
     } catch (IOException e) {
       // no entity in this language
     }
-    String exoMission = exo.getMission(lastResult.language); // retrieve the mission
+    String exoMission = exo.getMission(outcome.language); // retrieve the mission
 
     // create the different files
-    String ext = "." + lastResult.language.getExt();
+    String ext = "." + outcome.language.getExt();
 
     try {
       writeFile(new File(repoDir, exo.getId() + ext + ".code"), exoCode);
@@ -316,14 +315,13 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
    *
    * @param exo
    */
-  private void checkSuccess(Exercise exo)
+  private void checkSuccess(Exercise exo, RunOutcome outcome)
   {
-    RunOutcome lastResult = exo.lastResult;
-    String ext            = "." + exo.lastResult.language.getExt();
+    String ext = "." + outcome.language.getExt();
 
     // if exercise is done correctly
     File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
-    if (lastResult.outcome == RunOutcome.kind.PASS) {
+    if (outcome.outcome == RunOutcome.kind.PASS) {
       try {
         FileWriter fwExo     = new FileWriter(doneFile.getAbsoluteFile());
         BufferedWriter bwExo = new BufferedWriter(fwExo);
@@ -338,6 +336,14 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     }
   }
 
+  /** The outcome of the last execution of exo in the current language, or an empty one if it was not executed since */
+  private RunOutcome lastOutcome(Exercise exo)
+  {
+    ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
+    RunOutcome outcome       = lastOutcomes.get(exo);
+    return outcome != null && outcome.language == lang ? outcome : new RunOutcome(lang);
+  }
+
   @Override public void callForHelp(String studentInput) { recordHelpInGit("callForHelp", studentInput); }
 
   @Override public void cancelCallForHelp() { recordHelpInGit("cancelCallForHelp", null); }
@@ -345,7 +351,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
   @SuppressWarnings("unchecked") public void recordHelpInGit(String evt_type, String studentInput)
   {
     Exercise lastExo    = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
-    RunOutcome execProg = lastExo.lastResult;
+    RunOutcome execProg = lastOutcome(lastExo);
     String exoCode      = lastExo.getSourceFile(execProg.language, 0).getEditorContent();
     String ext          = "." + execProg.language.getExt();
     File exoFile        = new File(repoDir, lastExo.getId() + ext + ".code");
@@ -358,7 +364,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
     JSONObject msg = new JSONObject();
     msg.put("studentInput", studentInput);
-    String commitMsg  = writeCommitMessage(lastExo, null, evt_type, msg);
+    String commitMsg  = writeCommitMessage(lastExo, execProg, null, evt_type, msg);
     String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
     String userBranch = "PLM" + GitUtils.sha1(userUUID);
 
@@ -386,7 +392,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
 
     JSONObject msg = new JSONObject();
     msg.put("id", id);
-    String commitMsg  = writeCommitMessage(lastExo, null, "readTip", msg);
+    String commitMsg  = writeCommitMessage(lastExo, lastOutcome(lastExo), null, "readTip", msg);
     String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
     String userBranch = "PLM" + GitUtils.sha1(userUUID);
 
