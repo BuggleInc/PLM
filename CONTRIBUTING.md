@@ -238,7 +238,7 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   inspect what the process left behind (`onProcessFinished()`, used by C for the address sanitizer report), and removes the
   socket. A non-zero exit code is reported as an execution error.
 
-## Saving the student's work: GitSpy and friends
+## Saving the student's work: SessionDB and GitSpy
 
 Two independent mechanisms persist what a student does, both driven by `Game.progressSpyListeners`
 (`plm.core.model.tracking.ProgressSpyListener`, fired from `Game.fireProgressSpy()`/`fireCallForHelpSpy()`/
@@ -284,7 +284,25 @@ for/cancels help, or reads a hint:
   at startup, `loadLesson()` reads each exercise's `.code` file back into its `SourceFile.editorContent` and its `.DONE` file into
   `studentWork`'s pass/fail state; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy`
   already keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one
-  `.summary` file per lesson (a `StudentWork`-produced digest, not something `GitSpy` writes).
+  `.summary` file per lesson (a `SessionDB` digest, see below; not something `GitSpy` writes).
+- `SessionDB` (`plm.core.model.session`, one instance per PLM, `Game.studentWork`) is the in-memory summary of the student's
+  progress, which the UI queries all the time (the progress icons of `ResourcesCache`, the bars of `ChooseLessonDialog`,
+  `LocalFileSpy`). It stores no code (that is the job of `SourceFile`) and never touches the disk: the session kit and the
+  game fill it, and `GitSessionKit` persists what is needed. It holds two things:
+  - The *pass state* of each exercise in each language (`setPassed()`/`getPassed()`, false for an exercise never seen).
+    `GitSessionKit.loadLesson()` fills it from the `.DONE` files when a lesson loads, `LessonRunner` sets it when the exercise
+    passes, and the revert action and `Game.clearSession()` set it back to false.
+  - The *lesson counters* (`possibleExercises` and `passedExercises`, by lesson id and language): how many exercises the lesson has
+    in that language, and how many of them are passed. `setPassed()` keeps the passed counter in sync, and `Lesson` recomputes
+    both from scratch once its exercises are loaded. They exist because `ChooseLessonDialog` needs the progress of the lessons
+    that are not loaded, and loading a lesson takes seconds. Hence they survive between sessions as one `<lessonId>.summary`
+    file per lesson in the user's repository, a tiny JSON object (`possibleJava`, `passedScala`... keys, null values omitted):
+    `GitSessionKit.storeAll()` writes it from `lessonSummary()`, as part of `Game.saveSession()` (before each run, when switching
+    exercise and on exit), and `loadAll()` reads every `*.summary` found on disk at startup -- the list of lessons is empty at that
+    point -- into `lessonSummaryParse()`, which replaces the counters of that lesson (an invalid summary is ignored).
+  - `getLessonsNames()` lists the lessons whose summary is known, but only `ZipSessionKit` uses it: that kit is a legacy one, since
+    `Game` instantiates `GitSessionKit`. Likewise, `setBody()`/`getBody()` (the code by exercise, language and source name) have
+    no caller left, they come from the time when the kits kept the code in the DB.
 - `SourceFile` (what `Exercise.newSource()` actually stores, see "From correction entity to compilable source" above) keeps the
   initial body from step 1 above (`student.body()`) so the "revert" action (`Game.worldHasChanged()`) can restore the editor to it; this is
   unrelated to git and only concerns the in-memory `SourceFile`.
