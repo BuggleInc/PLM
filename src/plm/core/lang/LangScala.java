@@ -7,7 +7,6 @@ import dotty.tools.dotc.interfaces.SourcePosition;
 import java.awt.Color;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -15,15 +14,9 @@ import java.util.stream.Collectors;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
-import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
-import plm.core.model.LogWriter;
-import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Exercise.StudentOrCorrection;
-import plm.core.model.session.EntityFileSegments;
-import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Direction;
 import plm.universe.Point;
@@ -46,7 +39,7 @@ public class LangScala extends JvmTemplatedLang {
   /** The precompiled glue (Remote*, ValueSerializer, Point...), shipped as a resource and deployed in TMP_ROOT. */
   private static final String ENTITIES_JAR = "plm-entities-scala.jar";
 
-  public LangScala() { super("Scala", "scala", ResourcesCache.getIcon("img/lang_scala.png")); }
+  public LangScala() { super("Scala", "scala", ResourcesCache.getIcon("img/lang_scala.png"), ENTITIES_JAR); }
   @Override public boolean isScala() { return true; }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
@@ -181,91 +174,58 @@ public class LangScala extends JvmTemplatedLang {
         + " ".repeat(position.column()) + "^";
   }
 
-  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  @Override protected String entityHeader(String remote, String userImports)
   {
-    String packageNameCache = packageNameForExercise(exo, whatToCompile);
-
-    Path entitiesJar = deployResource(ENTITIES_JAR, TMP_ROOT);
-
-    String jarPath                                 = null;
-    DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
-    for (SourceFile sf : exo.getSourceFilesList(this)) {
-      String key = packageNameCache + "." + sf.getName();
-
-      String remote = sf.getRemote();
-
-      // All the imports go on a single line, so that the line numbers of the generated code do not depend on how many there are
-      String imports = ("import generated.ValueSerializer._; "
-                        + "import java.awt.Color; "
-                        + "import generated.Remote._; "
-                        + "import generated." + remote + "._; " + sf.getImports())
-                           .replace('\n', ' ');
-
-      EntityFileSegments segments = sf.getSegments(whatToCompile);
-      String pre                  = "package generated\n\n" + imports + "\n\nobject Entity {\n" + segments.pre();
-      int offset                  = countLinesBeforeBody(pre);
-      String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
-      entityCode                  = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
-      entityCode                  = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
-      entityCode                  = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
-      // Scala's "override" needs a real supertype member to override, but Entity is a flat `object` extending nothing
-      // so we strip "override"s just as LangJava strips "@Override" there for the exact same reason.
-      // The trailing blanks go too: Scala 3 compares the indentation of members, which a leftover space would shift.
-      entityCode = Pattern.compile("\\boverride[ \t]+").matcher(entityCode).replaceAll("");
-
-      File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
-      workspace.mkdirs();
-
-      File entityFile = new File(workspace, "Entity.scala");
-      File mainFile   = new File(workspace, "Main.scala");
-
-      String mainContent = "package generated\n"
-                           + "\n"
-                           + "object Main {\n"
-                           + "  def main(args: Array[String]): Unit = {\n"
-                           + "    try {\n"
-                           + "      Remote.connect(args(0))\n"
-                           + "      Entity.run()\n"
-                           + "    } catch {\n"
-                           + "      case e: Exception =>\n"
-                           + "        e.printStackTrace()\n"
-                           + "        System.exit(1)\n"
-                           + "    }\n"
-                           + "    System.exit(0)\n"
-                           + "  }\n"
-                           + "}\n";
-
-      try {
-        // The entities jar holds the helpers (Point, ValueSerializer...) in the "generated" package: make the imports refer to them
-        for (String helper : CodeCreation.JAVA_HELPER_SOURCES)
-          entityCode = entityCode.replace("import " + fqcnFromSourcePath(helper) + ";", "import generated." + fileNameWithoutExtension(helper) + ";");
-
-        Files.writeString(entityFile.toPath(), entityCode);
-        Files.writeString(mainFile.toPath(), mainContent);
-
-        // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
-        int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
-        compileScalaFiles(workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile);
-
-        // Scala compiles "object Main" to Main.class (plus a Main$.class holding the singleton); the manifest only
-        // needs the former as its Main-Class entry point, exactly like a Java class with a static main().
-        File jarFile = new File(workspace, "Code.jar");
-
-        // Relative to workspace itself (where scalac actually wrote these under their package-name subdirectories),
-        // not to its parent: this is what must end up as each entry's name inside the jar.
-        // For example "plm/runtime4/Main.class" needs "-cp jarfile plm.runtime4.Main" to resolve.
-        runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
-
-        jarPath = jarFile.toPath().toString();
-        lineShifts.put(jarPath, lineShift);
-
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    }
-    return jarPath;
+    // All the imports go on a single line, so that the line numbers of the generated code do not depend on how many there are
+    String imports = ("import generated.ValueSerializer._; "
+                      + "import java.awt.Color; "
+                      + "import generated.Remote._; "
+                      + "import generated." + remote + "._; " + userImports)
+                         .replace('\n', ' ');
+    return "package generated\n\n" + imports + "\n\nobject Entity {\n";
   }
 
+  @Override protected String adaptEntityCode(String entityCode)
+  {
+    entityCode = Pattern.compile("([^a-zA-Z])(Direction)([^a-zA-Z.])").matcher(entityCode).replaceAll("$1Int$3");
+    // Scala's "override" needs a real supertype member to override, but Entity is a flat `object` extending nothing
+    // so we strip "override"s just as LangJava strips "@Override" there for the exact same reason.
+    // The trailing blanks go too: Scala 3 compares the indentation of members, which a leftover space would shift.
+    return Pattern.compile("\\boverride[ \t]+").matcher(entityCode).replaceAll("");
+  }
+
+  @Override protected String mainSource()
+  {
+    return "package generated\n"
+        + "\n"
+        + "object Main {\n"
+        + "  def main(args: Array[String]): Unit = {\n"
+        + "    try {\n"
+        + "      Remote.connect(args(0))\n"
+        + "      Entity.run()\n"
+        + "    } catch {\n"
+        + "      case e: Exception =>\n"
+        + "        e.printStackTrace()\n"
+        + "        System.exit(1)\n"
+        + "    }\n"
+        + "    System.exit(0)\n"
+        + "  }\n"
+        + "}\n";
+  }
+
+  @Override
+  protected void compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
+                              File jarFile) throws PLMCompilerException
+  {
+    compileScalaFiles(workspace, entitiesJar, lineShift, mainFile, entityFile);
+
+    // Scala compiles "object Main" to Main.class (plus a Main$.class holding the singleton); the manifest only
+    // needs the former as its Main-Class entry point, exactly like a Java class with a static main().
+    // The class files are named relative to workspace itself (where scalac actually wrote these under their package-name subdirectories),
+    // not to its parent: this is what must end up as each entry's name inside the jar.
+    // For example "plm/runtime4/Main.class" needs "-cp jarfile plm.runtime4.Main" to resolve.
+    runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
+  }
   /**
    * Runs "java -cp &lt;jarPath&gt;:&lt;entities jar&gt;:&lt;scala runtime jars&gt; generated.Main &lt;socketPath&gt;", executable being the jar path
    * returned by compileExo() -- the main class is always "generated.Main". We cannot use "java -jar" alone because a jar's

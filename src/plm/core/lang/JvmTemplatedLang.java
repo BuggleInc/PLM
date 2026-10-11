@@ -16,10 +16,16 @@ import javax.swing.ImageIcon;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
+import plm.core.model.LogWriter;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.session.EntityFileSegments;
+import plm.core.model.session.SourceFile;
 import plm.universe.Direction;
 import plm.universe.Point;
 
@@ -35,7 +41,75 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /** The location of a line of the entity in a stack trace, e.g. "Entity.java:42". */
   private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.(?:java|scala):)(\\d+)");
 
-  public JvmTemplatedLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
+  /** Name of the jar holding the glue classes of the language, deployed in TMP_ROOT */
+  private final String entitiesJarName;
+
+  public JvmTemplatedLang(String lang, String ext, ImageIcon i, String entitiesJarName)
+  {
+    super(lang, ext, i);
+    this.entitiesJarName = entitiesJarName;
+  }
+
+  /** The beginning of the generated Entity file: the package, the imports (on a single line, then the ones of the entity file) and the opening of Entity */
+  protected abstract String entityHeader(String remote, String userImports);
+
+  /** Adapts the generated Entity to the language: it is a flat class, and its primitives are typed with the glue's types */
+  protected abstract String adaptEntityCode(String entityCode);
+
+  /** The content of the Main file connecting to the PLM and running the Entity */
+  protected abstract String mainSource();
+
+  /** Compiles the Entity and Main files, and packs the classes into jarFile, whose main class is generated.Main */
+  protected abstract void compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile,
+                                       File entityFile, File jarFile) throws PLMCompilerException;
+
+  /** Generates, compiles and packs the Entity of each source file of the exercise. Returns the path of the last jar. */
+  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  {
+    String packageNameCache = packageNameForExercise(exo, whatToCompile);
+    Path entitiesJar        = deployResource(entitiesJarName, TMP_ROOT);
+
+    String jarPath                                 = null;
+    DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
+    for (SourceFile sf : exo.getSourceFilesList(this)) {
+      String key = packageNameCache + "." + sf.getName();
+
+      EntityFileSegments segments = sf.getSegments(whatToCompile);
+      String pre                  = entityHeader(sf.getRemote(), sf.getImports()) + segments.pre();
+      int offset                  = countLinesBeforeBody(pre);
+      String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
+      entityCode                  = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
+      entityCode                  = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
+      entityCode                  = adaptEntityCode(entityCode);
+
+      File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
+      // noinspection ResultOfMethodCallIgnored
+      workspace.mkdirs();
+
+      File entityFile = new File(workspace, "Entity." + getExt());
+      File mainFile   = new File(workspace, "Main." + getExt());
+      File jarFile    = new File(workspace, "Code.jar");
+
+      try {
+        // The entities jar holds the helpers (Point, ValueSerializer...) in the "generated" package: make the imports refer to them
+        for (String helper : CodeCreation.JAVA_HELPER_SOURCES)
+          entityCode = entityCode.replace("import " + fqcnFromSourcePath(helper) + ";", "import generated." + fileNameWithoutExtension(helper) + ";");
+
+        Files.writeString(entityFile.toPath(), entityCode);
+        Files.writeString(mainFile.toPath(), mainSource());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+
+      // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
+      int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
+      compileToJar(diagnostic, workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile, jarFile);
+
+      jarPath = jarFile.toPath().toString();
+      lineShifts.put(jarPath, lineShift);
+    }
+    return jarPath;
+  }
 
   @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
 
