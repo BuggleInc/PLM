@@ -147,7 +147,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
   @Override public void selectedEntityHasChanged()
   { /* the code panels may want to know */
     for (int i = 1; i < getTabCount(); i++) {
-      Component c = this.getComponentAt(getTabCount() - 1);
+      Component c = this.getComponentAt(i);
       if (c instanceof IEntityStackListener)
         ((IEntityStackListener)c).tracedEntityChanged(game.getSelectedEntity());
     }
