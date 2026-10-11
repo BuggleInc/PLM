@@ -21,7 +21,6 @@ public class PancakeWorld extends World {
   protected int moveCount = 0;
   private int selected    = -1;
   private boolean burnedWorld;
-  public boolean wasRandom = false;
 
   /** Copy constructor */
   public PancakeWorld(PancakeWorld world) { super(world); }
@@ -72,7 +71,6 @@ public class PancakeWorld extends World {
     this.burnedWorld = burnedPancake;
 
     /* Mix them. Seeded by the name: the initial state must be reproducible to cache the answer worlds */
-    wasRandom = true;
     mix(new Random(name.hashCode()));
   }
 

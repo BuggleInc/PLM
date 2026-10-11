@@ -18,7 +18,7 @@ import plm.core.lang.primitives.Primitive;
 @EntityPrimitives(PancakeEntity.class)
 public class GatesPancakeEntity extends PancakeEntity {
 
-  @Primitive public boolean wasRandom() { return ((PancakeWorld)world).wasRandom; }
+  @Primitive public boolean wasRandom() { return world.isRandomized(); }
 
   /* BEGIN REMOTE */
   public void run() { solve(); }
