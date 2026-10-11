@@ -1,14 +1,13 @@
 package plm.test.simple.test;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import plm.core.PLMCompilerException;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 
-/** The entity of these tests includes stdlib.h in an IMPORT section: the codes below rely on it for NULL, malloc(), abort() and abs(). */
+/** The entity of these tests includes stdlib.h in an IMPORT section: the codes below rely on it for NULL, malloc() and abs(). */
 public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
 
   public CSimpleExerciseTest() throws BrokenProgrammingLanguageException { super(Game.getInstance().programmingLanguageManager.C); }
@@ -46,7 +45,7 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
   @Override public String generateExceptionRaisingCode()
   {
     return "void run() {\n"
-        + "  abort();\n"
+        + "  *(int *)NULL = 42;\n"
         + "}\n";
   }
 
@@ -66,8 +65,11 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
         + "}\n";
   }
 
-  /** C has no stack trace on stderr: the address sanitizer report is the closest thing, and abort() does not produce any. */
-  @Disabled @Override @Test public void testStackTraceLineMatchesEditor() {}
+  /**
+   * C has no stack trace: the address sanitizer report is the closest thing, and it is produced by the dereference of generateExceptionRaisingCode(), not by
+   * abort().
+   */
+  @Override protected String locationOfLine(int line) { return "Entity.c:" + line; }
 
   /** The #line directive of the generated source makes gcc report the error at its line in the editor. */
   @Test public void testCompilationErrorLineMatchesEditor()

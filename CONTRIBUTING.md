@@ -635,8 +635,6 @@ Preparing the next release cycle
 
 ## TODOs
 
-TODO: Test that the lines of the compilation errors and of the sanitizer reports of C are the editor's (the stack trace test of
-      SimpleExercise is disabled for C, as abort() leaves no sanitizer report)
 TODO: Precompile the correction entities within the jar file so that they don't get generated and compiled every time we 
       load the lesson
 TODO: split the UI from the compilation+exec services. The latter may be pure functions with no hidden globals. The former should
