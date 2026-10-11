@@ -292,7 +292,8 @@ for/cancels help, or reads a hint:
 ## How tests work
 
 Tests live in `src/plm/test` and are compiled with the main code (see the surefire configuration in `pom.xml`). The unit tests of
-a few classes sit next to them. Each class runs in its own JVM (`reuseForks=false`) because of the `Game` singleton.
+a few classes sit next to them. Surefire runs only `AllTests` and `MainFrameSmokeTest`, each in its own JVM (`reuseForks=false`),
+because the `Game` singleton would otherwise leak the GUI listeners of the latter into the former.
 
 * *`AllTests`:* the suite chaining `UnitTests` and `IntegrationTests`.
   * *`UnitTests`:* no real lesson involved.
@@ -307,16 +308,17 @@ a few classes sit next to them. Each class runs in its own JVM (`reuseForks=fals
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
     * *`GitSpyTest`:* the files written and deleted by `GitSpy`, the `.DONE` marker, and the PLM commit in the messages.
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
+    * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
+    * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
   * *`IntegrationTests`:* the real lessons, with the test methods running in parallel.
-    * *`LessonTest`:* every lesson loads without error, in Java, Scala and Python.
+    * *`LessonTest`:* every lesson of `ExoTest.lessonNamesToTest` loads without error, in Java, Scala and Python.
     * *`ExoTestJavaLang`, `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`:* for every exercise, `compileRunCheck()` of the
       correction entity must pass in that language. They share `ExoTest`, which lists the lessons and their exercises. The Python
       and C ones also fail when the exercise has no entity file in their language, and the Turmites get a longer timeout.
     * *`MethodsDogHouseSourceCheckTest`:* `verifySource()` refuses the code unless it calls `left()` exactly once, ignoring
       comments and strings (Java and Python).
 * *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
-* *Serialization of remote values:* `ValueSerializerTest` for the Java side and `value_serializer_test.c` for the C side, which
-  maven builds and runs. `ValueFormatterTest` covers the value comparison of the bat universe.
+* *`value_serializer_test.c`:* the C side of the value serialization, built and run by maven outside of JUnit.
 
 The `ExoTest*Lang` tests are a regression suite over the pedagogical content itself: they catch broken exercises (e.g. a
 correction that no longer matches its `-answerN.map`) rather than testing application logic in isolation. Only the *correction*

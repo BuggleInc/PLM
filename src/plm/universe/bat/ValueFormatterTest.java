@@ -11,7 +11,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 
 /** Tests for ValueFormatter */
-class ValueFormatterTest {
+public class ValueFormatterTest {
 
   // ---------------------------------------------------------------
   // equals() - scalars

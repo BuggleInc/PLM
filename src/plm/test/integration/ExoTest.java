@@ -28,7 +28,7 @@ import plm.core.utils.FileUtils;
 
 public class ExoTest {
 
-  static private String[] lessonNamesToTest = new String[] {
+  static final String[] lessonNamesToTest = new String[] {
       // WARNING, keep ChooseLessonDialog.lessons synchronized
       "lessons.welcome",
       "lessons.turmites",

@@ -471,12 +471,7 @@
           <testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
           <includes>
             <include>**/AllTests.java</include>
-            <include>**/git/GitSpyTest.java</include>
-            <include>**/git/GitUtilsTest.java</include>
-            <include>**/simple/test/JavaSimpleExerciseTest.java</include>
             <include>**/gui/MainFrameSmokeTest.java</include>
-            <include>**/universe/bat/ValueFormatterTest.java</include>
-            <include>**/core/ValueSerializer.java</include>
           </includes>
           <argLine>${argLine} -Djava.awt.headless=false</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>

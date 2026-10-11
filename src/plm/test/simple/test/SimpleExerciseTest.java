@@ -3,10 +3,7 @@ package plm.test.simple.test;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.Future;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import plm.core.PLMCompilerException;
@@ -50,13 +47,7 @@ public abstract class SimpleExerciseTest {
     g.setLocale(new Locale("en"));
   }
 
-  @BeforeAll public static void setUpBeforeClass() throws Exception {}
-
-  @AfterAll public static void tearDownAfterClass() throws Exception {}
-
   @BeforeEach public void setUp() throws Exception { exo.reset(pl); }
-
-  @AfterEach public void tearDown() throws Exception {}
 
   @Test public void testSolutionShouldCompil() throws PLMCompilerException { pl.compileExo(exo, null, StudentOrCorrection.CORRECTION); }
 
