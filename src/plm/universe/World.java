@@ -168,9 +168,6 @@ public abstract class World {
 
   public void runEntities(List<Future<?>> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl, final String executable)
   {
-    if (Game.getInstance().isDebugEnabled())
-      Logger.log("World:runEntities", "Programming language: " + pl);
-
     for (final Entity b : entities) {
       Future<?> future = Game.submitEntityTask(new Runnable() {
         public void run()
