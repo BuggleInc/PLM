@@ -301,7 +301,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       per language (`JavaSimpleExerciseTest`, `ScalaSimpleExerciseTest`, `PythonSimpleExerciseTest`, `CSimpleExerciseTest`, which
       share `SimpleExerciseTest` and `CompiledSimpleExerciseTest`). The correction compiles, runs and passes. Wrong code,
       exceptions (out of bounds, null, custom) and a valid code followed by an error do not pass. Syntax and variable errors do
-      not compile. The line of a stack trace frame is the editor's one. Java, Scala and Python also check the line of a
+      not compile. The line of a stack trace frame is the editor's one. Every language also checks the line of a
       compilation error, and Python and C check that the `IMPORT` section is honored.
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
@@ -318,7 +318,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       correction entity must pass in that language. They share `ExoTest`, which lists the lessons and their exercises. The Python
       and C ones also fail when the exercise has no entity file in their language, and the Turmites get a longer timeout.
     * *`MethodsDogHouseSourceCheckTest`:* `verifySource()` refuses the code unless it calls `left()` exactly once, ignoring
-      comments and strings (Java and Python).
+      comments and strings, in the four languages.
 * *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
 * *`value_serializer_test.c`:* the C side of the value serialization, built and run by maven outside of JUnit.
 

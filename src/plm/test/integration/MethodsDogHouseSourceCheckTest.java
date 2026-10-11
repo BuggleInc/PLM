@@ -3,10 +3,11 @@ package plm.test.integration;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.Future;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -33,13 +34,8 @@ public class MethodsDogHouseSourceCheckTest {
     Assertions.assertNotNull(exo, "MethodsDogHouse not found in lessons.welcome");
   }
 
-  private static ProgrammingLanguage language(String name)
-  {
-    for (ProgrammingLanguage lang : Game.getInstance().programmingLanguageManager.langs)
-      if (lang.getLang().equalsIgnoreCase(name))
-        return lang;
-    throw new IllegalArgumentException(name);
-  }
+  /** The languages with a DogHouse entity: all of them but LightBot */
+  static Stream<ProgrammingLanguage> languages() { return Stream.of(Game.getInstance().programmingLanguageManager.langs).filter(lang -> !lang.isLightBot()); }
 
   /** Sets the editor content, and returns the message of the refusal of the source, or null if the code is accepted */
   private static String refusal(ProgrammingLanguage lang, String code) throws InterruptedException
@@ -53,16 +49,27 @@ public class MethodsDogHouseSourceCheckTest {
     }
   }
 
-  @ParameterizedTest @ValueSource(strings = {"Java", "Python"}) public void testLeftCalls(String langName) throws Exception
+  @ParameterizedTest @MethodSource("languages") public void testLeftCalls(ProgrammingLanguage lang) throws Exception
   {
-    ProgrammingLanguage lang = language(langName);
-
-    boolean py      = lang.isPython();
-    String comment  = py ? "# left()\n" : "// left()\n";
-    String string   = py ? "s = \"left()\"\n" : "String s = \"left()\";\n";
-    String step     = py ? "forward()" : "stepForward()";
-    String oneCall  = py ? "def dogHouse():\n    for i in range(4):\n        forward()\n        forward()\n        left()\n"
-                         : "void dogHouse() {\n  for (int i = 0; i < 4; i++) {\n    stepForward();\n    stepForward();\n    left();\n  }\n}\n";
+    String oneCall = switch (lang.getLang()) {
+      case "Python" -> "def dogHouse():\n    for i in range(4):\n        forward()\n        forward()\n        left()\n";
+      case "Scala" -> "def dogHouse(): Unit = {\n  for (i <- 1 to 4) {\n    stepForward()\n    stepForward()\n    left()\n  }\n}\n";
+      case "C" -> "void dogHouse() {\n  int i;\n  for (i = 0; i < 4; i++) {\n    forward(1);\n    forward(1);\n    left();\n  }\n}\n";
+      case "Java" -> "void dogHouse() {\n  for (int i = 0; i < 4; i++) {\n    stepForward();\n    stepForward();\n    left();\n  }\n}\n";
+      default -> throw new IllegalArgumentException("No DogHouse code for " + lang);
+    };
+    String comment = lang.isPython() ? "# left()\n" : "// left()\n";
+    String string  = switch (lang.getLang()) {
+      case "Python" -> "s = \"left()\"\n";
+      case "Scala" -> "val s = \"left()\"\n";
+      case "C" -> "char *s = \"left()\";\n";
+      default -> "String s = \"left()\";\n";
+    };
+    String step = switch (lang.getLang()) {
+      case "Python" -> "forward()";
+      case "C" -> "forward(1)";
+      default -> "stepForward()";
+    };
     String twoCalls = oneCall.replace("left()", "left(); left()");
     String noCall   = oneCall.replace("left()", step);
 
