@@ -3,7 +3,7 @@ package plm.core.model.lesson;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -27,7 +27,7 @@ public abstract class ExerciseTemplated extends Exercise {
   public ExerciseTemplated(Lesson lesson, String basename) { super(lesson, basename); }
 
   /** The languages for which an entity file exists, to be loaded when first needed */
-  private final Set<ProgrammingLanguage> entityLanguages = new HashSet<>();
+  private final Set<ProgrammingLanguage> entityLanguages = new LinkedHashSet<>(); // in the order of ProgrammingLanguageManager.langs
 
   @Override protected void loadSourceFiles(ProgrammingLanguage lang)
   {
@@ -97,7 +97,21 @@ public abstract class ExerciseTemplated extends Exercise {
 
   protected void computeAnswer()
   {
-    final ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage(); /* captured now: the user may switch language meanwhile */
+    /* captured now, as the user may switch language meanwhile; falls back to the first language of this exercise if it lacks the current one */
+    ProgrammingLanguage current = Game.getInstance().getProgrammingLanguage();
+    ProgrammingLanguage java    = Game.getInstance().getProgrammingLanguageManager().JAVA;
+    final ProgrammingLanguage lang;
+    if (entityLanguages.contains(current))
+      // Prefer not to switch the language
+      lang = current;
+    else if (entityLanguages.contains(java))
+      // Prefer Java if we must switch, but only if it's possible
+      lang = java;
+    else {
+      // Use the first language of that exercise if Java is not possible
+      lang = entityLanguages.iterator().next();
+    }
+
     Runnable task                  = new Runnable() {
       @Override public void run()
       {
@@ -177,6 +191,7 @@ public abstract class ExerciseTemplated extends Exercise {
       e.printStackTrace();
       Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
       Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
+      return;
     }
 
     for (int rank : ranks) {
