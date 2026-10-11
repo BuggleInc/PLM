@@ -1,5 +1,6 @@
 package lessons.welcome.traversal.line;
 
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
@@ -11,11 +12,11 @@ public class TraversalByLineEntity extends SimpleBuggle {
     /* BEGIN SOLUTION */
     int cpt = 0;
     do {
-      writeMessage(Integer.toString(cpt));
+      writeIntMessage(cpt);
       nextStep();
       cpt++;
     } while (!endingPosition());
-    writeMessage(Integer.toString(cpt));
+    writeIntMessage(cpt);
   }
 
   public void nextStep()

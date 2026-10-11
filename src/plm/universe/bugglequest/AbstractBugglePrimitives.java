@@ -143,6 +143,7 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
   @Primitive boolean haveSeenError();
 
   @Primitive void writeMessage(String msg);
+  @Primitive void writeIntMessage(int cpt);
 
   @Primitive String readMessage();
 

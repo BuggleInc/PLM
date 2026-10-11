@@ -1,5 +1,6 @@
 package lessons.welcome.traversal.diagonal;
 
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.bugglequest.SimpleBuggle;
 
@@ -11,11 +12,11 @@ public class TraversalDiagonalEntity extends SimpleBuggle {
   {
     /* BEGIN SOLUTION */
     int cpt = 0;
-    writeMessage(Integer.toString(cpt));
+    writeIntMessage(cpt);
     while (!endingPosition()) {
       nextStep();
       cpt++;
-      writeMessage(Integer.toString(cpt));
+      writeIntMessage(cpt);
     }
   }
 

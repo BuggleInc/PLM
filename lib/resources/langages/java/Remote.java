@@ -108,12 +108,6 @@ public abstract class Remote {
     protocolOut.flush();
   }
 
-  /* BEGIN UTILS */
-
-  public static String int2str(int n) { return Integer.toString(n); }
-
-  /* END UTILS */
-
   public abstract void run();
 
   public static void main(String[] args) { throw new UnsupportedOperationException("Subclasses should provide their own main() method."); }

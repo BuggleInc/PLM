@@ -3,6 +3,7 @@ package plm.universe.bugglequest;
 import java.awt.Color;
 import java.awt.Point;
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.Entity;
@@ -385,6 +386,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   @Override public boolean isOverMessage() { return getCell().hasContent(); }
 
   @Override public void writeMessage(String msg) { getCell().addContent(msg); }
+  @Override public void writeIntMessage(int cpt) { writeMessage(Integer.toString(cpt)); }
 
   @Override public String readMessage() { return getCell().getContent(); }
 

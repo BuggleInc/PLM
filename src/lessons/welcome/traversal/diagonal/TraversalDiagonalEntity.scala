@@ -9,11 +9,11 @@ class TraversalDiagonalEntity extends SimpleBuggle {
 	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		var cpt = 0;
-		writeMessage(Integer.toString(cpt));
+		writeIntMessage(cpt);
 		while (!endingPosition()) {
 			nextStep();
 			cpt+=1;
-			writeMessage(Integer.toString(cpt));
+			writeIntMessage(cpt);
 		}
 	}
 

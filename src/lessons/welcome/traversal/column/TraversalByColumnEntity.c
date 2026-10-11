@@ -8,12 +8,12 @@ int endingPosition();
 void run() {
 	/* BEGIN SOLUTION */
     int cpt=0;
-	writeMessage(int2str(cpt));
-	while (!endingPosition()) {
-		nextStep();
-		cpt++;
-		writeMessage(int2str(cpt));
-	}
+    writeIntMessage(cpt);
+    while (!endingPosition()) {
+      nextStep();
+      cpt++;
+      writeIntMessage(cpt);
+    }
 }
 void nextStep() {
 	int x=getX();

@@ -104,10 +104,4 @@ object Remote {
     protocolOut.println(command)
     protocolOut.flush()
   }
-
-  /* BEGIN UTILS */
-
-  def int2str(n: Int): String = Integer.toString(n)
-
-  /* END UTILS */
 }

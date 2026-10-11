@@ -9,11 +9,11 @@ void run() {
 	/* BEGIN SOLUTION */
 	int cpt=0;
 	do {
-		writeMessage(int2str(cpt));
-		nextStep();
-		cpt++;
-	} while (!endingPosition());
-	writeMessage(int2str(cpt));
+          writeIntMessage(cpt);
+          nextStep();
+          cpt++;
+        } while (!endingPosition());
+        writeIntMessage(cpt);
 }
 
 void nextStep() {

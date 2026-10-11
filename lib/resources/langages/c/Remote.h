@@ -18,9 +18,6 @@ char get_answer_char();
  * argument sent from C to the PLM (the mirror of get_answer_string()'s unescaping). Caller owns the returned buffer. */
 char* escape_string(const char* s);
 
-// Returns the address of a static buffer -- don't free it
-char* int2str(int nb);
-
 void run();
 
 #endif

@@ -93,17 +93,6 @@ void send_command(char* format, ...)
   va_end(args);
 }
 
-/* BEGIN UTILS FUNCTIONS */
-
-char* int2str(int nb)
-{
-  static char str[16];
-  snprintf(str, 15, "%d", nb);
-  return str;
-}
-
-/* END UTILS FUNCTIONS */
-
 int main(int argc, char* argv[])
 {
   // Disable buffering on the new stdout so student's debug messages arrive immediately
