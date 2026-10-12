@@ -18,21 +18,10 @@ public class LightBotExercise extends ExerciseTemplated {
     addProgLanguage(Game.getInstance().programmingLanguageManager.LIGHTBOT);
     if (getProgLanguages().size() > 1)
       throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
-    getSourceFilesList(Game.getInstance().programmingLanguageManager.LIGHTBOT).add(new LightBotSourceFile("Code"));
+    getSourceFilesList(Game.getInstance().programmingLanguageManager.LIGHTBOT).add(new SourceFile("Code"));
   }
 
-  // The program of the student is edited in place in the LightBotSourceFile
-  @Override public String getEditorContent(ProgrammingLanguage lang, SourceFile sf) { return ((LightBotSourceFile)sf).getEditorContent(); }
-
-  @Override public void setEditorContent(ProgrammingLanguage lang, SourceFile sf, String content) { ((LightBotSourceFile)sf).setEditorContent(content); }
-
-  @Override public void revertEditorContents()
-  {
-    for (SourceFile sf : getLoadedSourceFiles(Game.getInstance().programmingLanguageManager.LIGHTBOT))
-      ((LightBotSourceFile)sf).setEditorContent("");
-  }
-
-  @Override public JScrollPane getEditorPanel(ProgrammingLanguage lang, SourceFile sf) { return new LightBotEditorPanel((LightBotSourceFile)sf); }
+  @Override public JScrollPane getEditorPanel(ProgrammingLanguage lang, SourceFile sf) { return new LightBotEditorPanel(this, sf, lang); }
 
   @Override protected void setup(World[] ws)
   {

@@ -1,6 +1,7 @@
 package lessons.lightbot.universe;
 
 import java.awt.Point;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.universe.Direction;
@@ -128,19 +129,20 @@ public class LightBotEntity extends Entity {
     return true;
   }
 
-  LightBotSourceFile sf;
+  LightBotProgram program;
   @Override public void run()
   {
-    sf = (LightBotSourceFile)((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise())
-             .getSourceFile(Game.getInstance().programmingLanguageManager.LIGHTBOT, 0);
+    ProgrammingLanguage lang = Game.getInstance().programmingLanguageManager.LIGHTBOT;
+    Exercise exo             = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
+    program                  = LightBotProgram.parse(exo.getEditorContent(lang, exo.getSourceFile(lang, 0)));
 
     /* Run main */
-    run("main", sf.getMain());
+    run("main", program.getMain());
     tracedStack[0] = new StackTraceElement("LightbotEntity", "main", "main", 1);
     fireStackListener();
   }
-  public void runF1() { run("func1", sf.getFunc1()); }
-  public void runF2() { run("func2", sf.getFunc2()); }
+  public void runF1() { run("func1", program.getFunc1()); }
+  public void runF2() { run("func2", program.getFunc2()); }
 
   private void run(String fileName, LightBotInstruction[] file)
   {

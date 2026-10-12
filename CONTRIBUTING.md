@@ -75,7 +75,9 @@ Here are the steps of the exercise execution:
   anonymized data to an online repository.
 
 * **Lightbot specificities**: this brain teaser can only be solved using the graphical block-list rather than a real programming
-     language. Thus, `run()` *interprets* a student-authored program and there is no templating nor remote execution.
+     language. Thus, `run()` *interprets* a student-authored program and there is no templating nor remote execution. The program is stored in the
+     `SessionDB` as any other editor content: one line per function (main, then the two others), one character per instruction.
+     `LightBotEditorPanel` rewrites it at each change of a chooser, and `LightBotEntity` parses it again when it runs.
 
 * **Dealing with infinite loops in student code**. The "Stop" action calls `LessonRunner.stopAll()`, which cooperatively
   `Thread.interrupt()`s each per-entity runner thread. Since student code is an external process, interrupting the runner thread
@@ -93,8 +95,8 @@ the GUI. This process can be decomposed as follows:
 
 - When the lesson is loaded, `ExerciseTemplated.setup()` only checks which languages have an entity file (`FileUtils.exists()`)
   but the files are not parsed nor even loaded in memory at this stage since we almost never need to parse all entities in all
-  language for a given PLM usage session. `LightBotExercise` has no entity file: it overrides `setup()` and creates its own
-  `LightBotSourceFile`.
+  language for a given PLM usage session. `LightBotExercise` has no entity file: it overrides `setup()` and creates a plain
+  `SourceFile`, whose editor content is the program of the student, as a text (see `LightBotProgram`).
 - When needed by `ProgrammingLanguage.compileExo()`, the entity content is parsed (split into parts), and a `SourceFile` is
   created to store the result of this parsing. This step (detailed below) is language agnostic: it applies exactly the same for
   all entities of all languages.
@@ -360,6 +362,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
+    * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
     * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, Python tabs are expanded,
       reverting an exercise forgets its contents only, and the editors are told of the changes.
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
