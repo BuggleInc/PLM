@@ -217,6 +217,12 @@ public abstract class Exercise extends Lecture {
     Game.getInstance().studentWork.setBody(this, lang, sf.getName(), content);
   }
 
+  /**
+   * Same as above, but it does not load the source file, which would parse the entity: the source files are named after the tab, as
+   * {@link #newSource} checks. This is how the saved code is restored at startup, for all exercises.
+   */
+  public void setEditorContent(ProgrammingLanguage lang, String content) { Game.getInstance().studentWork.setBody(this, lang, tabName, content); }
+
   /** Puts back, in every language, the editor content that the student saw the first time */
   public void revertEditorContents() { Game.getInstance().studentWork.removeBodies(this); }
 
@@ -237,6 +243,9 @@ public abstract class Exercise extends Lecture {
 
   public void newSource(ProgrammingLanguage lang, SourceFile source)
   {
+    if (!source.getName().equals(tabName))
+      throw new IllegalArgumentException("The source file of " + getId() + " is named '" + source.getName() + "' instead of '" + tabName +
+                                         "', the name of its tab");
     getSourceFilesList(lang).add(source);
   }
 

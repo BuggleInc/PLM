@@ -336,8 +336,9 @@ that delay. A push that's rejected retries once after fetching and merging the r
 ### Session kits
 
 `GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitSpy` writes: at
-startup, `loadLesson()` reads each exercise's `.code` file back into its `SourceFile.editorContent` and its `.DONE` file into
-`studentWork`'s pass/fail state; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy` already
+startup, `loadLesson()` reads each exercise's `.code` file back into the `SessionDB` and its `.DONE` file into
+`studentWork`'s pass/fail state. The code is restored with `Exercise.setEditorContent(lang, content)`, which does not load the
+source file, so the entities are still not parsed at startup: the bodies are named after the tab, which `newSource()` enforces; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy` already
 keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one `.summary` file
 per lesson (a `SessionDB` digest, see above; not something `GitSpy` writes).
 

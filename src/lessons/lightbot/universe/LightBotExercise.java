@@ -18,7 +18,7 @@ public class LightBotExercise extends ExerciseTemplated {
     addProgLanguage(Game.getInstance().programmingLanguageManager.LIGHTBOT);
     if (getProgLanguages().size() > 1)
       throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
-    getSourceFilesList(Game.getInstance().programmingLanguageManager.LIGHTBOT).add(new SourceFile("Code"));
+    newSource(Game.getInstance().programmingLanguageManager.LIGHTBOT, new SourceFile(tabName));
   }
 
   @Override public JScrollPane getEditorPanel(ProgrammingLanguage lang, SourceFile sf) { return new LightBotEditorPanel(this, sf, lang); }
