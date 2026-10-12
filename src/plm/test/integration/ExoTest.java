@@ -13,7 +13,6 @@ import java.util.concurrent.Future;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.provider.Arguments;
-import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.DemoRunner;
@@ -116,17 +115,19 @@ public class ExoTest {
   protected void testCorrectionEntity(Exercise exo, ProgrammingLanguage lang) throws BrokenProgrammingLanguageException, InterruptedException
   {
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
-    RunOutcome outcome = null;
+    RunOutcome outcome;
     try {
       outcome = exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});
-    } catch (PLMCompilerException e) {
-      String msg = exo.getId() + ": compilation error: " + e.getMessage() + ". Compiled file:\n" +
-                   ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getCorrectionSegments().body()) : "none");
-      System.err.println(msg);
-      Assertions.fail(msg);
     } catch (UnsupportedOperationException uoe) {
       System.err.println("UnsupportedOperationException while executing" + exo.getId());
       throw uoe;
+    }
+
+    if (outcome.outcome == RunOutcome.kind.COMPILE) {
+      String msg = exo.getId() + ": compilation error: " + outcome.compilationError + ". Compiled file:\n" +
+                   ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getCorrectionSegments().body()) : "none");
+      System.err.println(msg);
+      Assertions.fail(msg);
     }
 
     if (outcome.outcome != RunOutcome.kind.PASS) {

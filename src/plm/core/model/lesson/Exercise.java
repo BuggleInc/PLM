@@ -142,11 +142,10 @@ public abstract class Exercise extends Lecture {
    * creative mode.
    * @param runners receives the entity tasks, so that another thread can stop them
    * @param onCompiled called once the compilation succeeded, right before the execution
-   * @return the outcome of the run
-   * @throws PLMCompilerException if the compilation, or the source-level check, failed
+   * @return the outcome of the run, which is a compilation error if the compilation (or the source-level check) failed
    */
   public RunOutcome compileRunCheck(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang, List<Future<?>> runners, Runnable onCompiled)
-      throws PLMCompilerException, InterruptedException
+      throws InterruptedException
   {
     boolean creative = Game.getInstance().isCreativeEnabled();
 
@@ -166,9 +165,10 @@ public abstract class Exercise extends Lecture {
       if (Game.getInstance().isDebugEnabled())
         for (String file : e.getClassNames())
           System.out.println("File involved in the compilation: " + file);
+      RunOutcome error = RunOutcome.newCompilationError(lang, e.getMessage());
       if (out != null)
-        out.log(RunOutcome.newCompilationError(lang, e.getMessage()).compilationError); // display the same error as in the ExerciseFailedDialog
-      throw e;
+        out.log(error.compilationError); // display the same error as in the ExerciseFailedDialog
+      return error;
     }
 
     onCompiled.run(); // Change the footer message in the GUI

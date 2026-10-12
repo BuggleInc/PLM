@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
 
 /** MethodsDogHouse refuses, through Exercise.verifySource(), the code that does not call left() exactly once. */
@@ -41,12 +41,8 @@ public class MethodsDogHouseSourceCheckTest {
   private static String refusal(ProgrammingLanguage lang, String code) throws InterruptedException
   {
     exo.setEditorContent(lang, exo.getSourceFile(lang, 0), code);
-    try {
-      exo.compileRunCheck(null, StudentOrCorrection.STUDENT, lang, new ArrayList<Future<?>>(), () -> {});
-      return null;
-    } catch (PLMCompilerException e) {
-      return e.getMessage();
-    }
+    RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, lang, new ArrayList<Future<?>>(), () -> {});
+    return outcome.outcome == RunOutcome.kind.COMPILE ? outcome.compilationError : null;
   }
 
   @ParameterizedTest @MethodSource("languages") public void testLeftCalls(ProgrammingLanguage lang) throws Exception

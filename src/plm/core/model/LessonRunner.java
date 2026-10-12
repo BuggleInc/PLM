@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Future;
 import javax.swing.SwingUtilities;
-import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -50,14 +49,12 @@ public class LessonRunner extends Thread {
         game.setState(Game.GameState.COMPILATION_ENDED);
         game.setState(Game.GameState.EXECUTION_STARTED);
       });
+      if (outcome.outcome == RunOutcome.kind.COMPILE)
+        game.setState(Game.GameState.COMPILATION_ENDED); // the callback above was not called
       game.setState(Game.GameState.EXECUTION_ENDED);
 
     } catch (InterruptedException e) {
       e.printStackTrace();
-      game.setState(Game.GameState.EXECUTION_ENDED);
-    } catch (PLMCompilerException e) {
-      outcome = RunOutcome.newCompilationError(lang, e.getMessage());
-      game.setState(Game.GameState.COMPILATION_ENDED);
       game.setState(Game.GameState.EXECUTION_ENDED);
     } catch (Exception e) {
       e.printStackTrace();

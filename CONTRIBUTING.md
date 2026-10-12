@@ -45,9 +45,9 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 The entry point of the whole execution is `Exercise.compileRunCheck()`. It chains the steps below, from the reset to the check, and
 is called by `LessonRunner` when the student clicks "Run" (compiling the student's code) and by the integration tests (compiling the
-correction entity). It returns the `RunOutcome` of the execution. A compilation error is not returned but thrown as a
-`PLMCompilerException`, from which `LessonRunner` builds the outcome of a failed compilation. Nothing is stored in the `Exercise`:
-the outcome is passed along to the dialogs and to the progress spies.
+correction entity). It returns the `RunOutcome` of the execution. A compilation error, or a refusal by `verifySource()`, is
+returned too, as an outcome of kind `COMPILE` holding the message: the exceptions of the compilers do not go past this method.
+Nothing is stored in the `Exercise`: the outcome is passed along to the dialogs and to the progress spies.
 
 Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
