@@ -49,7 +49,6 @@ import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.tracking.GitSpy;
-import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.ui.MainFrame;
 import plm.core.utils.FileUtils;
@@ -148,7 +147,6 @@ public class Game implements IWorldView {
 
     users = new Users(SAVE_DIR);
 
-    addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
     sessionKit = new GitSessionKit(this);
 
     try {

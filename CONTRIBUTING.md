@@ -246,9 +246,7 @@ Two independent mechanisms persist what a student does, both driven by `Game.pro
 `fireCancelCallForHelpSpy()`/`fireReadTipSpy()` and from `Game.fireCurrentExerciseChanged()`/`worldHasChanged()`) whenever the
 student runs an exercise (`LessonRunner`, after showing the pass/fail dialog), switches exercise, reverts their code, asks
 for/cancels help, or reads a hint:
-- `LocalFileSpy`: appends one human-readable line per `executed()` event to a local `progress.spy` text file. Every other
-  callback is a no-op.
-- `GitSpy` (+ `GitUtils`, a thin wrapper around JGit): the interesting one, one per running PLM instance, constructed once
+- `GitSpy` (+ `GitUtils`, a thin wrapper around JGit): one per running PLM instance, constructed once
   in `Game`'s constructor and registered as a `UserSwitchesListener` too. For each PLM user, it keeps one local git
   repository under `SAVE_DIR/<userUUID>`, on a branch named `"PLM" + sha1(userUUID)`, and mirrors it to a shared server repo
   (`plm.git.server.url`) -- this is both the per-student backup/sync mechanism and the anonymized activity log the PLM
@@ -287,9 +285,9 @@ for/cancels help, or reads a hint:
   already keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one
   `.summary` file per lesson (a `SessionDB` digest, see below; not something `GitSpy` writes).
 - `SessionDB` (`plm.core.model.session`, one instance per PLM, `Game.studentWork`) is the in-memory summary of the student's
-  progress, which the UI queries all the time (the progress icons of `ResourcesCache`, the bars of `ChooseLessonDialog`,
-  `LocalFileSpy`). It never touches the disk: the session kit and the game fill it, and `GitSessionKit` persists what is
-  needed. It holds three things:
+  progress, which the UI queries all the time (the progress icons of `ResourcesCache`, the bars of `ChooseLessonDialog`). It
+  never touches the disk: the session kit and the game fill it, and `GitSessionKit` persists what is needed. It holds three
+  things:
   - The *editor contents*: what the student wrote in each source, by exercise, language and source name. It is accessed with
     `setBody()` and `getBody()`, through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. A body is absent until the
     student changes the initial content, and `Exercise.getEditorContent()` then falls back to `SourceFile.getInitialBody()`.
