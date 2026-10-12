@@ -243,6 +243,9 @@ public abstract class Exercise extends Lecture {
 
   public void newSource(ProgrammingLanguage lang, SourceFile source)
   {
+    if (!tabName.matches("[A-Za-z_][A-Za-z0-9_]*"))
+      throw new IllegalArgumentException("The tab name of " + getId() + " must be an identifier, as it names files and keys the student's code: '" + tabName +
+                                         "'");
     if (!source.getName().equals(tabName))
       throw new IllegalArgumentException("The source file of " + getId() + " is named '" + source.getName() + "' instead of '" + tabName +
                                          "', the name of its tab");
