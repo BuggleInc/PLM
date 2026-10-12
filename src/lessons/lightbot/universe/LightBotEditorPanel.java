@@ -42,14 +42,12 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel, IS
     }
 
     this.srcFile = srcFile;
-    srcFile.setListener(this);
     sourceFileContentHasChanged();
     tracedEntity = Game.getInstance().getSelectedEntity();
     tracedEntity.addStackListener(this);
   }
   @Override public void clear()
   {
-    srcFile.removeListener();
     if (tracedEntity != null)
       tracedEntity.removeStackListener(this);
   }

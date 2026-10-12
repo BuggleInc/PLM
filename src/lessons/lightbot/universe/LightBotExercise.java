@@ -2,11 +2,13 @@ package lessons.lightbot.universe;
 
 import java.util.List;
 import java.util.concurrent.Future;
+import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.session.SourceFile;
 import plm.universe.World;
 
 public class LightBotExercise extends ExerciseTemplated {
@@ -18,6 +20,19 @@ public class LightBotExercise extends ExerciseTemplated {
       throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
     getSourceFilesList(Game.getInstance().programmingLanguageManager.LIGHTBOT).add(new LightBotSourceFile("Code"));
   }
+
+  // The program of the student is edited in place in the LightBotSourceFile
+  @Override public String getEditorContent(ProgrammingLanguage lang, SourceFile sf) { return ((LightBotSourceFile)sf).getEditorContent(); }
+
+  @Override public void setEditorContent(ProgrammingLanguage lang, SourceFile sf, String content) { ((LightBotSourceFile)sf).setEditorContent(content); }
+
+  @Override public void revertEditorContents()
+  {
+    for (SourceFile sf : getLoadedSourceFiles(Game.getInstance().programmingLanguageManager.LIGHTBOT))
+      ((LightBotSourceFile)sf).setEditorContent("");
+  }
+
+  @Override public JScrollPane getEditorPanel(ProgrammingLanguage lang, SourceFile sf) { return new LightBotEditorPanel((LightBotSourceFile)sf); }
 
   @Override protected void setup(World[] ws)
   {

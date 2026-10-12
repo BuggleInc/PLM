@@ -143,11 +143,10 @@ The resulting `SourceFile` holds:
 - `correction`: same record, to generate a correction entity, but `correction.pre` and `correction.post` keep the `SOLUTION`
   sections of head and tail. `correction.body` is the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or
   from `BEGIN SOLUTION` to `END SOLUTION` when no template is given.
-- `editorContent`: the editor's current content, initially the `student.body` (also available with `getInitialBody()`). The callers
-  access it through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`.
 
-After the SourceFile creation, only SourceFile.editorContent is mutable: it is synchronized with the editor's content. The rest of that
-object is immutable, except for the listener that is notified of the changes of the editor content.
+A SourceFile is immutable after its creation. What the student wrote for a given SourceFile is stored in the `SessionDB` (see
+"Saving the student's work" below), and accessed through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. The
+initial content of the editor content is the `student.body`, also available with `SourceFile.getInitialBody()`.
 
 ### Building a compilable source (language-specific code in `compileExo()`, not cached)
 
@@ -278,10 +277,10 @@ for/cancels help, or reads a hint:
     (`Game.getGitCommit()`, with a `-dirty` suffix if the build had local changes, or `unknown` when not building from git),
     which is what it takes to replay the templating of a past session. It is recorded in `resources/git.properties` at build
     time by the `git-commit-id-maven-plugin`.
-  - Pushing is rate-limited (`GitUtils.maybePushToUserBranch()`, see its own comment for the incident that motivated it):
-    at most one push in flight at a time (a static `currentlyPushing` flag) and a fixed delay (currently 1 minute) before
-    it actually pushes, run off the Swing EDT via a `SwingWorker`; `forcefullyPushToUserBranch()` used by `leave()` skips
-    that delay. A push that's rejected retries once after fetching and merging the remote branch first.
+  - Pushing is rate-limited (`GitUtils.maybePushToUserBranch()`, see its own comment for the incident that motivated it): at
+    most one push in flight at a time (a static `currentlyPushing` flag) and a fixed delay (currently 1 minute) before it
+    actually pushes, run off the Swing Swing event thread (EDT) via a `SwingWorker`; `forcefullyPushToUserBranch()` used by
+    `leave()` skips that delay. A push that's rejected retries once after fetching and merging the remote branch first.
 - `GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitSpy` writes:
   at startup, `loadLesson()` reads each exercise's `.code` file back into its `SourceFile.editorContent` and its `.DONE` file into
   `studentWork`'s pass/fail state; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy`
@@ -289,8 +288,14 @@ for/cancels help, or reads a hint:
   `.summary` file per lesson (a `SessionDB` digest, see below; not something `GitSpy` writes).
 - `SessionDB` (`plm.core.model.session`, one instance per PLM, `Game.studentWork`) is the in-memory summary of the student's
   progress, which the UI queries all the time (the progress icons of `ResourcesCache`, the bars of `ChooseLessonDialog`,
-  `LocalFileSpy`). It stores no code (that is the job of `SourceFile`) and never touches the disk: the session kit and the
-  game fill it, and `GitSessionKit` persists what is needed. It holds two things:
+  `LocalFileSpy`). It never touches the disk: the session kit and the game fill it, and `GitSessionKit` persists what is
+  needed. It holds three things:
+  - The *editor contents*: what the student wrote in each source, by exercise, language and source name. It is accessed with
+    `setBody()` and `getBody()`, through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. A body is absent until the
+    student changes the initial content, and `Exercise.getEditorContent()` then falls back to `SourceFile.getInitialBody()`.
+    Setting a body expands the tabs in Python. The editors register with `setBodyListener()` to be told of every change, whoever
+    made it. `removeBodies()` forgets everything the student wrote for an exercise: this is the revert action. The bodies are
+    concurrent maps because the run thread reads them while the Swing event thread writes them.
   - The *pass state* of each exercise in each language (`setPassed()`/`getPassed()`, false for an exercise never seen).
     `GitSessionKit.loadLesson()` fills it from the `.DONE` files when a lesson loads, `LessonRunner` sets it when the exercise
     passes, and the revert action and `Game.clearSession()` set it back to false.
@@ -302,12 +307,11 @@ for/cancels help, or reads a hint:
     `GitSessionKit.storeAll()` writes it from `lessonSummary()`, as part of `Game.saveSession()` (before each run, when switching
     exercise and on exit), and `loadAll()` reads every `*.summary` found on disk at startup -- the list of lessons is empty at that
     point -- into `lessonSummaryParse()`, which replaces the counters of that lesson (an invalid summary is ignored).
-  - `getLessonsNames()` lists the lessons whose summary is known, but only `ZipSessionKit` uses it: that kit is a legacy one, since
-    `Game` instantiates `GitSessionKit`. Likewise, `setBody()`/`getBody()` (the code by exercise, language and source name) have
-    no caller left, they come from the time when the kits kept the code in the DB.
-- `SourceFile` (what `Exercise.newSource()` actually stores, see "From correction entity to compilable source" above) keeps the
-  initial body from step 1 above (`student.body()`) so the "revert" action (`Game.worldHasChanged()`) can restore the editor to it; this is
-  unrelated to git and only concerns the in-memory `SourceFile`.
+  - `getLessonsNames()` lists the lessons whose summary is known, but only `ZipSessionKit` uses it, for the export and import of sessions
+    from the GUI: `Game` itself instantiates `GitSessionKit`.
+- `SourceFile` (what `Exercise.newSource()` actually stores, see "From correction entity to compilable source" above) is immutable.
+  It keeps the initial body from step 1 above (`student.body()`), and the "revert" action (`Game.worldHasChanged()`) restores the
+  editor to it by forgetting what the student wrote in the `SessionDB`.
 
 ## How tests work
 
@@ -330,7 +334,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
-    * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere.
+    * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, Python tabs are expanded,
+      reverting an exercise forgets its contents only, and the editors are told of the changes.
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
   * *`IntegrationTests`:* the real lessons, with the test methods running in parallel.

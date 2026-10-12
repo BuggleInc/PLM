@@ -1,10 +1,5 @@
 package plm.core.model.session;
 
-import javax.swing.JScrollPane;
-import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.lesson.Exercise;
-import plm.core.ui.JavaEditorPanel;
-
 public class SourceFile {
 
   private final String name;
@@ -13,8 +8,6 @@ public class SourceFile {
   private final int bodyIndent;
   private final EntityFileSegments student;
   private final EntityFileSegments correction;
-  private String editorContent;
-  private ISourceFileListener listener = null;
 
   /**
    * Computed once, when the entity is first needed, by {@code EntityTemplateParser} (see CONTRIBUTING.md, "From correction entity to
@@ -30,36 +23,21 @@ public class SourceFile {
    */
   public SourceFile(String name, String remote, String imports, int bodyIndent, EntityFileSegments student, EntityFileSegments correction)
   {
-    this.name          = name;
-    this.remote        = remote;
-    this.imports       = imports;
-    this.bodyIndent    = bodyIndent;
-    this.student       = student;
-    this.correction    = correction;
-    this.editorContent = student.body();
+    this.name       = name;
+    this.remote     = remote;
+    this.imports    = imports;
+    this.bodyIndent = bodyIndent;
+    this.student    = student;
+    this.correction = correction;
   }
 
-  /** A source file that is not templated: only its editor content matters. Lightbot uses it. */
+  /** A source file that is not templated. Lightbot uses it. */
   public SourceFile(String name) { this(name, null, null, 0, new EntityFileSegments("", "", ""), null); }
 
   public String getName() { return this.name; }
 
-  public String getEditorContent() { return this.editorContent; }
-
-  public void setEditorContent(String text, ProgrammingLanguage lang)
-  {
-    if (lang.isPython())
-      editorContent = text.replaceAll("\\t", "    ");
-    else
-      editorContent = text;
-    notifyListener();
-  }
-
   /** The body the student sees in the editor the first time */
   public String getInitialBody() { return student.body(); }
-
-  /** Puts back the editor content the student saw the first time */
-  public void revert(ProgrammingLanguage lang) { setEditorContent(getInitialBody(), lang); }
 
   /** The pieces of the correction to compile */
   public EntityFileSegments getCorrectionSegments() { return correction; }
@@ -70,42 +48,4 @@ public class SourceFile {
   public String getRemote() { return remote; }
   public String getImports() { return imports; }
   public int getBodyIndent() { return bodyIndent; }
-
-  public void setListener(ISourceFileListener l) { this.listener = l; }
-
-  public void removeListener() { this.listener = null; }
-
-  public void notifyListener()
-  {
-    if (this.listener != null)
-      this.listener.sourceFileContentHasChanged();
-  }
-
-  @Override public int hashCode()
-  {
-    final int PRIME = 31;
-    int result      = 1;
-    result          = PRIME * result + ((editorContent == null) ? 0 : editorContent.hashCode());
-    result          = PRIME * result + student.body().hashCode();
-    return result;
-  }
-
-  @Override public boolean equals(Object obj)
-  {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    final SourceFile other = (SourceFile)obj;
-    if (editorContent == null) {
-      if (other.editorContent != null)
-        return false;
-    } else if (!editorContent.equals(other.editorContent))
-      return false;
-    return student.body().equals(other.student.body());
-  }
-
-  public JScrollPane getEditorPanel(Exercise exo, ProgrammingLanguage lang) { return new JavaEditorPanel(exo, this, lang); }
 }

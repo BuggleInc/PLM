@@ -10,6 +10,7 @@ import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.session.ISourceFileListener;
 import plm.core.model.session.SourceFile;
@@ -35,7 +36,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
   public void clear()
   {
     document.removeDocumentListener(this);
-    sourceFile.removeListener();
+    Game.getInstance().studentWork.removeBodyListener(exo, lang, sourceFile.getName());
     this.document   = null;
     this.sourceFile = null;
     this.exo        = null;

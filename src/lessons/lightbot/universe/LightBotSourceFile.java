@@ -1,8 +1,5 @@
 package lessons.lightbot.universe;
 
-import javax.swing.JScrollPane;
-import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.lesson.Exercise;
 import plm.core.model.session.SourceFile;
 
 public class LightBotSourceFile extends SourceFile {
@@ -15,7 +12,7 @@ public class LightBotSourceFile extends SourceFile {
     super(name);
     resetEditorContent();
   }
-  @Override public String getEditorContent()
+  public String getEditorContent()
   {
     StringBuffer sb = new StringBuffer();
     for (int i = 0; i < main.length; i++)
@@ -43,7 +40,7 @@ public class LightBotSourceFile extends SourceFile {
       func2[i] = LightBotInstruction.noop();
   }
 
-  @Override public void setEditorContent(String newContent, ProgrammingLanguage lang)
+  public void setEditorContent(String newContent)
   {
     /* reset everything to noop */
     resetEditorContent();
@@ -64,7 +61,6 @@ public class LightBotSourceFile extends SourceFile {
         func2[pos++] = new LightBotInstruction(c);
   }
 
-  @Override public JScrollPane getEditorPanel(Exercise exo, ProgrammingLanguage lang) { return new LightBotEditorPanel(this); }
   public LightBotInstruction[] getMain() { return main; }
   public LightBotInstruction[] getFunc1() { return func1; }
   public LightBotInstruction[] getFunc2() { return func2; }

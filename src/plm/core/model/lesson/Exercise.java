@@ -14,6 +14,7 @@ import java.util.Vector;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import javax.swing.JScrollPane;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.PLMCompilerException;
@@ -22,6 +23,7 @@ import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
+import plm.core.ui.JavaEditorPanel;
 import plm.universe.World;
 
 public abstract class Exercise extends Lecture {
@@ -203,18 +205,23 @@ public abstract class Exercise extends Lecture {
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
   public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
 
-  /** What the student sees in the editor of this source file */
-  public String getEditorContent(ProgrammingLanguage lang, SourceFile sf) { return sf.getEditorContent(); }
+  /** What the student sees in the editor of this source file: what they wrote, or the initial body if they did not change anything */
+  public String getEditorContent(ProgrammingLanguage lang, SourceFile sf)
+  {
+    String body = Game.getInstance().studentWork.getBody(this, lang, sf.getName());
+    return body != null ? body : sf.getInitialBody();
+  }
 
-  public void setEditorContent(ProgrammingLanguage lang, SourceFile sf, String content) { sf.setEditorContent(content, lang); }
+  public void setEditorContent(ProgrammingLanguage lang, SourceFile sf, String content)
+  {
+    Game.getInstance().studentWork.setBody(this, lang, sf.getName(), content);
+  }
 
   /** Puts back, in every language, the editor content that the student saw the first time */
-  public void revertEditorContents()
-  {
-    for (ProgrammingLanguage lang : getProgLanguages())
-      for (SourceFile sf : getLoadedSourceFiles(lang)) // the sources not loaded yet are still in their initial state
-        sf.revert(lang);
-  }
+  public void revertEditorContents() { Game.getInstance().studentWork.removeBodies(this); }
+
+  /** The editor of this source file */
+  public JScrollPane getEditorPanel(ProgrammingLanguage lang, SourceFile sf) { return new JavaEditorPanel(this, sf, lang); }
 
   /** The pieces of the program to compile: the correction's, or the student's wrapped around the current editor content */
   public EntityFileSegments getSegments(ProgrammingLanguage lang, SourceFile sf, StudentOrCorrection whatToCompile)

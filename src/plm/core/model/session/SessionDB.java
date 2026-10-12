@@ -1,6 +1,7 @@
 package plm.core.model.session;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,23 +13,52 @@ import plm.core.model.Game;
 import plm.core.model.lesson.Lecture;
 
 public class SessionDB {
-  /** What the student wrote, by exercise id, language and source name. Absent while the student did not change the initial content. */
-  private final Map<String, Map<ProgrammingLanguage, Map<String, String>>> body = new ConcurrentHashMap<>(); // read by the run thread, written by the EDT
+  /** Identifies one source of an exercise that the student edits */
+  private record BodyKey(String exoId, ProgrammingLanguage lang, String sourceName) {}
+
+  /** What the student wrote. Absent while the student did not change the initial content. Read by the run thread, written by the EDT. */
+  private final Map<BodyKey, String> bodies = new ConcurrentHashMap<>();
+  /** The editors to tell when the body of their source changes */
+  private final Map<BodyKey, ISourceFileListener> bodyListeners           = new ConcurrentHashMap<>();
   private Map<String, Map<ProgrammingLanguage, Boolean>> passed           = new HashMap<String, Map<ProgrammingLanguage, Boolean>>();
 
   /* Per lesson summary */
   private Map<String, Map<ProgrammingLanguage, Integer>> passedExercises   = new HashMap<String, Map<ProgrammingLanguage, Integer>>();
   private Map<String, Map<ProgrammingLanguage, Integer>> possibleExercises = new HashMap<String, Map<ProgrammingLanguage, Integer>>();
 
+  /** Stores what the student wrote in that source, and tells its editor */
   public void setBody(Lecture exo, ProgrammingLanguage lang, String sourceName, String content)
   {
-    body.computeIfAbsent(exo.getId(), id -> new ConcurrentHashMap<>()).computeIfAbsent(lang, l -> new ConcurrentHashMap<>()).put(sourceName, content);
+    BodyKey key = new BodyKey(exo.getId(), lang, sourceName);
+    bodies.put(key, lang.isPython() ? content.replace("\t", "    ") : content);
+    notifyBodyListener(key);
   }
 
   /** The content last set for that source, or null if none was */
-  public String getBody(Lecture exo, ProgrammingLanguage lang, String sourceName)
+  public String getBody(Lecture exo, ProgrammingLanguage lang, String sourceName) { return bodies.get(new BodyKey(exo.getId(), lang, sourceName)); }
+
+  /** Forgets what the student wrote in every source of that exercise, and tells the editors */
+  public void removeBodies(Lecture exo)
   {
-    return body.getOrDefault(exo.getId(), Map.of()).getOrDefault(lang, Map.of()).get(sourceName);
+    for (BodyKey key : List.copyOf(bodies.keySet()))
+      if (key.exoId().equals(exo.getId())) {
+        bodies.remove(key);
+        notifyBodyListener(key);
+      }
+  }
+
+  public void setBodyListener(Lecture exo, ProgrammingLanguage lang, String sourceName, ISourceFileListener l)
+  {
+    bodyListeners.put(new BodyKey(exo.getId(), lang, sourceName), l);
+  }
+
+  public void removeBodyListener(Lecture exo, ProgrammingLanguage lang, String sourceName) { bodyListeners.remove(new BodyKey(exo.getId(), lang, sourceName)); }
+
+  private void notifyBodyListener(BodyKey key)
+  {
+    ISourceFileListener listener = bodyListeners.get(key);
+    if (listener != null)
+      listener.sourceFileContentHasChanged();
   }
 
   public void setPassed(Lecture exo, ProgrammingLanguage lang, boolean _passed)
