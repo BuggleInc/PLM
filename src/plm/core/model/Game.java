@@ -568,20 +568,6 @@ public class Game implements IWorldView {
     }
   }
 
-  public void clearSession()
-  {
-    if (sessionKit == null)
-      return;
-    this.sessionKit.cleanAll(SAVE_DIR);
-    for (Lesson l : this.lessons.values())
-      for (Lecture lect : l.exercises())
-        if (lect instanceof Exercise)
-          for (ProgrammingLanguage lang : ((Exercise)lect).getProgLanguages())
-            Game.getInstance().studentWork.setPassed(lect, lang, false);
-
-    fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
-  }
-
   public void loadSession()
   {
     if (sessionKit == null)
