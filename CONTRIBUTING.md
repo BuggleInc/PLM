@@ -45,7 +45,9 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 The entry point of the whole execution is `Exercise.compileRunCheck()`. It chains the steps below, from the reset to the check, and
 is called by `LessonRunner` when the student clicks "Run" (compiling the student's code) and by the integration tests (compiling the
-correction entity).
+correction entity). It returns the `RunOutcome` of the execution. A compilation error is not returned but thrown as a
+`PLMCompilerException`, from which `LessonRunner` builds the outcome of a failed compilation. Nothing is stored in the `Exercise`:
+the outcome is passed along to the dialogs and to the progress spies.
 
 Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
@@ -65,14 +67,14 @@ Here are the steps of the exercise execution:
   to `plm.universe.CommandExecutor`. These primitives allow the student code to interact with the microworld that is located in
   the PLM process. This is transparent to both the student and the exercise authors, unless the exercise gates its API (see
   "API gating" below).
-* **Check**: when all entities are terminated, `Exercise.check()` compares each `currentWorld` to its `answerWorld` via
-  `World.winning()`. On mismatch, `World.diffTo()` produces a human-readable diff shown to the student. All the universes but
-  Lander use a structural equality between currentWorld and answerWorld to compute whether it's winning. Instead, Lander checks
-  whether the lunar lander reached a pad or crashed. In creative mode (a flag of `Game`), the worlds are neither reset nor
-  checked.
+* **Check**: when all entities are terminated, `Exercise.check(result)` compares each `currentWorld` to its `answerWorld` via
+  `World.winning()`, and fills the `RunOutcome` that `compileRunCheck()` then returns. On mismatch, `World.diffTo()` produces a
+  human-readable diff shown to the student. All the universes but Lander use a structural equality between currentWorld and
+  answerWorld to compute whether it's winning. Instead, Lander checks whether the lunar lander reached a pad or crashed. In
+  creative mode (a flag of `Game`), the worlds are neither reset nor checked.
 * **Session saving**: each student attempt is saved in a local git repository along with the exercise outcome (compilation
   error, failed objective or passed). The goal is to enable learning analytics if the student allowed the export of her
-  anonymized data to an online repository.
+  anonymized data to an online repository. The progress spies get the outcome with `executed(exo, outcome)`.
 
 * **Lightbot specificities**: this brain teaser can only be solved using the graphical block-list rather than a real programming
      language. Thus, `run()` *interprets* a student-authored program and there is no templating nor remote execution. The program is stored in the
@@ -306,15 +308,17 @@ Here is a list of the existing tracker events, and how `GitSpy` handle them:
   same branch from the server to resume a previous session (`GitUtils.mergeRemoteIntoLocalBranch()` resolves conflicts
   file-by-file by keeping whichever side's last commit on that path is more recent), commits a `"started"` marker, then asks for
   a push (rate-limited, see below).
-- `executed()`: writes/rewrites several files per exercise via `createFiles()`:
+- `executed(exo, outcome)`: writes/rewrites several files per exercise via `createFiles()`:
   - `<id>.<ext>.code`: student code
   - `<id>.<ext>.error`: the detailed outcome, either the compilation error or the `diffTo()` between the `answerWorld`s and the `currentWorld`s
   - `<id>.<ext>.correction`: the templating entity file (read again from its source)
   - `<id>.<ext>.mission`: the exercise mission test.
   - It then creates or deletes a `<id>.<ext>.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
     commit message, see below) and asks for a push.
-- `switched()`/`reverted()`: same idea for "the student navigated away from an exercise that had a result" (re-writes its
-  files before committing) and "the student clicked revert" (deletes that exercise's files instead).
+- `switched()`/`reverted()`: same idea for "the student navigated away from an exercise" (re-writes its files before committing)
+  and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitSpy` reports the
+  outcome that it remembered (`lastOutcomes`) from the last execution of that exercise, or an empty one if it was not executed
+  in the current language since.
 - `callForHelp()`/`cancelCallForHelp()`/`readTip()`: same write-then-commit-then-push pattern for those UI events.
 - `leave()` (PLM shutdown): does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
   rate-limiting, since this is the last chance to sync) then disposes the JGit handle.
@@ -336,11 +340,12 @@ that delay. A push that's rejected retries once after fetching and merging the r
 ### Session kits
 
 `GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitSpy` writes: at
-startup, `loadLesson()` reads each exercise's `.code` file back into the `SessionDB` and its `.DONE` file into
-`studentWork`'s pass/fail state. The code is restored with `Exercise.setEditorContent(lang, content)`, which does not load the
-source file, so the entities are still not parsed at startup: the bodies are named after the tab, which `newSource()` enforces; `storeLesson()` is a deliberate no-op ("Everything's done by spy"), since `GitSpy` already
-keeps those files current after every relevant event. `GitSessionKit` additionally computes and reads back one `.summary` file
-per lesson (a `SessionDB` digest, see above; not something `GitSpy` writes).
+startup, `loadLesson()` reads each exercise's `.code` file back into the `SessionDB` and its `.DONE` file into `studentWork`'s
+pass/fail state. The code is restored with `Exercise.setEditorContent(lang, content)`, which does not load the source file, so
+the entities are still not parsed at startup: the bodies are named after the tab, which `newSource()` enforces; `storeLesson()`
+is a deliberate no-op ("Everything's done by spy"), since `GitSpy` already keeps those files current after every relevant event.
+`GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see above; not
+something `GitSpy` writes).
 
 ## How tests work
 
@@ -351,11 +356,12 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
 * *`AllTests`:* the suite chaining `UnitTests` and `IntegrationTests`.
   * *`UnitTests`:* no real lesson involved.
     * *`AllSimpleExerciseTests`:* templating, compilation, execution and check on a minimal universe (`plm.test.simple`), once
-      per language (`JavaSimpleExerciseTest`, `ScalaSimpleExerciseTest`, `PythonSimpleExerciseTest`, `CSimpleExerciseTest`, which
-      share `SimpleExerciseTest` and `CompiledSimpleExerciseTest`). The correction compiles, runs and passes. Wrong code,
-      exceptions (out of bounds, null, custom) and a valid code followed by an error do not pass. Syntax and variable errors do
-      not compile. The line of a stack trace frame is the editor's one. Every language also checks the line of a
-      compilation error, and Python and C check that the `IMPORT` section is honored.
+      per language (`JavaSimpleExerciseTest`, `ScalaSimpleExerciseTest`, `PythonSimpleExerciseTest`, `CSimpleExerciseTest`,
+      which share `SimpleExerciseTest` and `CompiledSimpleExerciseTest`). The correction compiles, runs and passes. The saved
+      code can be restored into the editor without loading (so parsing) the entity. Wrong code, exceptions (out of bounds, null,
+      custom) and a valid code followed by an error do not pass. Syntax and variable errors do not compile. The line of a stack
+      trace frame is the editor's one. Every language also checks the line of a compilation error, and Python and C check that
+      the `IMPORT` section is honored.
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
