@@ -105,7 +105,7 @@ public class LangPython extends TemplatedRemoteLang {
           deployResource("python/" + module, ENTITIES_DIR);
 
         String imports              = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports + sf.getImports();
-        EntityFileSegments segments = sf.getSegments(whatToCompile);
+        EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
         String body                 = segments.body();
         if (whatToCompile == StudentOrCorrection.STUDENT) {
           // The editor content is flush left, but the body sits bodyIndent spaces deep in the template: python needs it to be indented

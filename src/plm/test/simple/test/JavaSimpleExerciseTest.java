@@ -59,11 +59,10 @@ public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
   {
     setDebug(false);
     try {
-      exo.getSourceFile(pl, 0).setEditorContent("public void run() {\n"
-                                                    + "    int a = 1;\n"
-                                                    + "    toto++;\n"
-                                                    + "}",
-                                                pl);
+      setEditorContent("public void run() {\n"
+                       + "    int a = 1;\n"
+                       + "    toto++;\n"
+                       + "}");
       PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
       Assertions.assertTrue(e.getMessage().contains("Entity.java:3: "), e.getMessage());
     } finally {

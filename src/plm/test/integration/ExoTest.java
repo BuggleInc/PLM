@@ -121,7 +121,7 @@ public class ExoTest {
       outcome = exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});
     } catch (PLMCompilerException e) {
       String msg = exo.getId() + ": compilation error: " + e.getMessage() + ". Compiled file:\n" +
-                   ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getSegments(StudentOrCorrection.CORRECTION).body()) : "none");
+                   ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getCorrectionSegments().body()) : "none");
       System.err.println(msg);
       Assertions.fail(msg);
     } catch (UnsupportedOperationException uoe) {

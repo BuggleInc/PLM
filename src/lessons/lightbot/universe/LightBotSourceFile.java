@@ -2,6 +2,7 @@ package lessons.lightbot.universe;
 
 import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.lesson.Exercise;
 import plm.core.model.session.SourceFile;
 
 public class LightBotSourceFile extends SourceFile {
@@ -63,7 +64,7 @@ public class LightBotSourceFile extends SourceFile {
         func2[pos++] = new LightBotInstruction(c);
   }
 
-  @Override public JScrollPane getEditorPanel(ProgrammingLanguage lang) { return new LightBotEditorPanel(this); }
+  @Override public JScrollPane getEditorPanel(Exercise exo, ProgrammingLanguage lang) { return new LightBotEditorPanel(this); }
   public LightBotInstruction[] getMain() { return main; }
   public LightBotInstruction[] getFunc1() { return func1; }
   public LightBotInstruction[] getFunc2() { return func2; }

@@ -2,7 +2,7 @@ package plm.core.model.session;
 
 import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
-import plm.core.model.lesson.Exercise.StudentOrCorrection;
+import plm.core.model.lesson.Exercise;
 import plm.core.ui.JavaEditorPanel;
 
 public class SourceFile {
@@ -55,14 +55,17 @@ public class SourceFile {
     notifyListener();
   }
 
-  /** Puts back the editor content the student saw the first time */
-  public void revert(ProgrammingLanguage lang) { setEditorContent(student.body(), lang); }
+  /** The body the student sees in the editor the first time */
+  public String getInitialBody() { return student.body(); }
 
-  /** The pieces of the program to compile: the correction's, or the student's wrapped around the current editor content. */
-  public EntityFileSegments getSegments(StudentOrCorrection whatToCompile)
-  {
-    return whatToCompile == StudentOrCorrection.CORRECTION ? correction : student.withBody(getEditorContent());
-  }
+  /** Puts back the editor content the student saw the first time */
+  public void revert(ProgrammingLanguage lang) { setEditorContent(getInitialBody(), lang); }
+
+  /** The pieces of the correction to compile */
+  public EntityFileSegments getCorrectionSegments() { return correction; }
+
+  /** The pieces of the student's program to compile, wrapped around {@code body} */
+  public EntityFileSegments getStudentSegments(String body) { return student.withBody(body); }
 
   public String getRemote() { return remote; }
   public String getImports() { return imports; }
@@ -104,5 +107,5 @@ public class SourceFile {
     return student.body().equals(other.student.body());
   }
 
-  public JScrollPane getEditorPanel(ProgrammingLanguage lang) { return new JavaEditorPanel(this, lang); }
+  public JScrollPane getEditorPanel(Exercise exo, ProgrammingLanguage lang) { return new JavaEditorPanel(exo, this, lang); }
 }

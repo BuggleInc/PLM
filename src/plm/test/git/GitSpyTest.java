@@ -93,7 +93,6 @@ public class GitSpyTest {
     lastResult.compilationError = error;
 
     SourceFile sf = Mockito.mock(SourceFile.class);
-    Mockito.when(sf.getEditorContent()).thenReturn(code);
 
     Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
@@ -102,6 +101,7 @@ public class GitSpyTest {
 
     Mockito.when(exo.getMission(lastResult.language)).thenReturn(mission);
     Mockito.when(exo.getSourceFile(lastResult.language, 0)).thenReturn(sf);
+    Mockito.when(exo.getEditorContent(lastResult.language, sf)).thenReturn(code);
 
     ArrayList<String> suffixes = new ArrayList<String>();
     suffixes.add(".code");
@@ -154,7 +154,6 @@ public class GitSpyTest {
     lastResult.executionError   = error;
 
     SourceFile sf = Mockito.mock(SourceFile.class);
-    Mockito.when(sf.getEditorContent()).thenReturn(code);
 
     Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
@@ -163,6 +162,7 @@ public class GitSpyTest {
 
     Mockito.when(exo.getMission(lastResult.language)).thenReturn(mission);
     Mockito.when(exo.getSourceFile(lastResult.language, 0)).thenReturn(sf);
+    Mockito.when(exo.getEditorContent(lastResult.language, sf)).thenReturn(code);
 
     ArrayList<String> suffixes = new ArrayList<String>();
     suffixes.add(".code");

@@ -20,6 +20,7 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
+import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.universe.World;
 
@@ -156,7 +157,7 @@ public abstract class Exercise extends Lecture {
     try {
       executable = lang.compileExo(this, out, whatToCompile);
       if (whatToCompile == StudentOrCorrection.STUDENT)
-        verifySource(getSourceFile(lang, 0).getEditorContent());
+        verifySource(getEditorContent(lang, getSourceFile(lang, 0)));
     } catch (PLMCompilerException e) {
       System.err.println(Game.i18n.tr("Compilation error:"));
       System.err.println(e.getMessage());
@@ -201,6 +202,25 @@ public abstract class Exercise extends Lecture {
   }
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
   public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
+
+  /** What the student sees in the editor of this source file */
+  public String getEditorContent(ProgrammingLanguage lang, SourceFile sf) { return sf.getEditorContent(); }
+
+  public void setEditorContent(ProgrammingLanguage lang, SourceFile sf, String content) { sf.setEditorContent(content, lang); }
+
+  /** Puts back, in every language, the editor content that the student saw the first time */
+  public void revertEditorContents()
+  {
+    for (ProgrammingLanguage lang : getProgLanguages())
+      for (SourceFile sf : getLoadedSourceFiles(lang)) // the sources not loaded yet are still in their initial state
+        sf.revert(lang);
+  }
+
+  /** The pieces of the program to compile: the correction's, or the student's wrapped around the current editor content */
+  public EntityFileSegments getSegments(ProgrammingLanguage lang, SourceFile sf, StudentOrCorrection whatToCompile)
+  {
+    return whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionSegments() : sf.getStudentSegments(getEditorContent(lang, sf));
+  }
 
   /** The source files of this language that were already loaded: never loads anything, unlike {@link #getSourceFilesList} */
   public synchronized List<SourceFile> getLoadedSourceFiles(ProgrammingLanguage lang) { return sourceFiles.getOrDefault(lang, List.of()); }

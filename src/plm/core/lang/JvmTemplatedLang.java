@@ -21,7 +21,6 @@ import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
-import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -75,7 +74,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     for (SourceFile sf : exo.getSourceFilesList(this)) {
       String key = packageNameCache + "." + sf.getName();
 
-      EntityFileSegments segments = sf.getSegments(whatToCompile);
+      EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
       String pre                  = entityHeader(sf.getRemote(), sf.getImports()) + segments.pre();
       int offset                  = countLinesBeforeBody(pre);
       String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";

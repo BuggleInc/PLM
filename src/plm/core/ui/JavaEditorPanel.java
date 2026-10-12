@@ -5,6 +5,7 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
 import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 import plm.universe.IEntityStackListener;
@@ -16,7 +17,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
   RSyntaxTextArea codeEditor;
   Entity tracedEntity;
 
-  public JavaEditorPanel(SourceFile srcFile, ProgrammingLanguage lang)
+  public JavaEditorPanel(Exercise exo, SourceFile srcFile, ProgrammingLanguage lang)
   {
     super();
     this.srcFile = srcFile;
@@ -55,10 +56,10 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
 
     /* Connect the synchronization element to the source file */
     srcFile.setListener(sync);
-    sync.setSourceFile(srcFile);
+    sync.setSourceFile(exo, srcFile);
     sync.setProgrammingLanguage(lang);
 
-    codeEditor.setText(srcFile.getEditorContent());
+    codeEditor.setText(exo.getEditorContent(lang, srcFile));
     codeEditor.discardAllEdits();
 
     /* Highlighting stuff, to trace entities */

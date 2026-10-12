@@ -143,15 +143,17 @@ The resulting `SourceFile` holds:
 - `correction`: same record, to generate a correction entity, but `correction.pre` and `correction.post` keep the `SOLUTION`
   sections of head and tail. `correction.body` is the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or
   from `BEGIN SOLUTION` to `END SOLUTION` when no template is given.
-- `editorContent`: the editor's current content, initially the `student.body`.
+- `editorContent`: the editor's current content, initially the `student.body` (also available with `getInitialBody()`). The callers
+  access it through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`.
 
 After the SourceFile creation, only SourceFile.editorContent is mutable: it is synchronized with the editor's content. The rest of that
 object is immutable, except for the listener that is notified of the changes of the editor content.
 
 ### Building a compilable source (language-specific code in `compileExo()`, not cached)
 
-Each `compileExo()` gets the `EntityFileSegments` using `SourceFile.getSegments(whatToCompile)`, with whatToCompile being either
-`StudentOrCorrection.CORRECTION` or `STUDENT`. It then concatenates `pre`, the body (either the editor's content or the
+Each `compileExo()` gets the `EntityFileSegments` using `Exercise.getSegments(lang, sourceFile, whatToCompile)`, with whatToCompile
+being either `StudentOrCorrection.CORRECTION` or `STUDENT`. It relies on `SourceFile.getCorrectionSegments()`, or on
+`SourceFile.getStudentSegments(body)` with the current editor content. It then concatenates `pre`, the body (either the editor's content or the
 teacher's correction) and `post` with what its language needs:
 - Java/Scala wrap them in their own class/object boilerplate: `package`, their imports (all on a single line, so that the line
   numbers of the generated code do not depend on how many there are), `class Entity {`, then `pre`, the body, `post` and a

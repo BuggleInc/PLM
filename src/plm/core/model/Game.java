@@ -48,7 +48,6 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
-import plm.core.model.session.SourceFile;
 import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
@@ -994,9 +993,7 @@ public class Game implements IWorldView {
       return;
 
     Exercise ex = (Exercise)lect;
-    for (ProgrammingLanguage lang : ex.getProgLanguages())
-      for (SourceFile sf : ex.getLoadedSourceFiles(lang)) // the sources not loaded yet are still in their initial state
-        sf.revert(lang);
+    ex.revertEditorContents();
     for (ProgrammingLanguage pl : programmingLanguageManager.langs)
       Game.getInstance().studentWork.setPassed(ex, pl, false);
     for (ProgressSpyListener l : this.progressSpyListeners) {

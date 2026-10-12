@@ -80,7 +80,7 @@ public class LangC extends TemplatedRemoteLang {
 
     String execPath = null;
     for (SourceFile sf : sfs) {
-      EntityFileSegments segments = sf.getSegments(whatToCompile);
+      EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
       // The IMPORT sections come first. The #line directive makes the compiler errors point at the entity's own file
       String entityCode = sf.getImports() + segments.pre() + "#line 1 \"" + sf.getName() + ".c\" \n" + segments.body() + segments.post();
 

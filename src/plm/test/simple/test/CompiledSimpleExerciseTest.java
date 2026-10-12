@@ -60,7 +60,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
     setDebug(false);
     System.setErr(new PrintStream(capture, true));
     try {
-      exo.getSourceFile(pl, 0).setEditorContent(generateExceptionRaisingCode(), pl);
+      setEditorContent(generateExceptionRaisingCode());
       String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
       RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
     } finally {
@@ -73,7 +73,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   /** Runs the given editor content, which needs what the entity declares in its IMPORT sections, and expects it to pass. */
   protected void assertPassesThanksToImports(String code) throws PLMCompilerException, InterruptedException
   {
-    exo.getSourceFile(pl, 0).setEditorContent(code, pl);
+    setEditorContent(code);
     String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
     Assertions.assertEquals(RunOutcome.kind.PASS, result.outcome, result.executionError);
@@ -82,7 +82,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   @Test public void testSyntaxErrorRisingCodeShouldNotCompil() throws PLMCompilerException
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
-      exo.getSourceFile(pl, 0).setEditorContent(generateSyntaxErrorCode(), pl);
+      setEditorContent(generateSyntaxErrorCode());
       pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
     });
   }
@@ -90,7 +90,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   @Test public void testVariableErrorRisingCodeShouldNotCompil() throws PLMCompilerException
   {
     Assertions.assertThrows(PLMCompilerException.class, () -> {
-      exo.getSourceFile(pl, 0).setEditorContent(generateVariableErrorCode(), pl);
+      setEditorContent(generateVariableErrorCode());
       pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
     });
   }

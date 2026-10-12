@@ -26,6 +26,7 @@ import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.IssueService;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
@@ -67,9 +68,11 @@ public class FeedbackDialog extends JDialog {
 
     Lecture exo        = Game.getInstance().getCurrentLesson().getCurrentExercise();
     String proposedExo = "";
-    if (exo instanceof Exercise)
-      proposedExo = "\n" + FeedbackDialog.instance.i18n.tr("--------------------[ my code for this exercise ]--------------------\n") +
-                    ((Exercise)exo).getSourceFile(Game.getInstance().getProgrammingLanguage(), 0).getEditorContent();
+    if (exo instanceof Exercise exercise) {
+      ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
+      proposedExo              = "\n" + FeedbackDialog.instance.i18n.tr("--------------------[ my code for this exercise ]--------------------\n") +
+                    exercise.getEditorContent(lang, exercise.getSourceFile(lang, 0));
+    }
 
     FeedbackDialog.instance.feedback.setText(
         defaultText + "Lesson: " + Game.getInstance().getCurrentLesson().getId() + "\n"

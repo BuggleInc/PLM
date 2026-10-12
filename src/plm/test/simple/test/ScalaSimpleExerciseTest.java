@@ -59,11 +59,10 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
   {
     setDebug(false);
     try {
-      exo.getSourceFile(pl, 0).setEditorContent("override def run(): Unit = {\n"
-                                                    + "  var a = 1;\n"
-                                                    + "  toto += 1;\n"
-                                                    + "}",
-                                                pl);
+      setEditorContent("override def run(): Unit = {\n"
+                       + "  var a = 1;\n"
+                       + "  toto += 1;\n"
+                       + "}");
       PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
       Assertions.assertTrue(e.getMessage().contains("Entity.scala:3:"), e.getMessage());
     } finally {

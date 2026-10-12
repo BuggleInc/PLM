@@ -214,13 +214,13 @@ public class ZipSessionKit implements ISessionKit {
               ZipEntry ze = new ZipEntry(lang + "/" + exercise.getId() + "/" + srcFile.getName());
               zos.putNextEntry(ze);
 
-              String content = srcFile.getEditorContent();
+              String content = exercise.getEditorContent(lang, srcFile);
 
               if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
                 content = content + "\n";
               }
 
-              byte[] bytes = srcFile.getEditorContent().getBytes();
+              byte[] bytes = exercise.getEditorContent(lang, srcFile).getBytes();
               zos.write(bytes);
               zos.closeEntry();
               wroteSomething = true;
@@ -309,7 +309,7 @@ public class ZipSessionKit implements ISessionKit {
 
                   for (SourceFile srcFile : exercise.getSourceFilesList(lang)) // only loads the entity if some code was saved
                     if (srcFile.getName().equals(name))
-                      srcFile.setEditorContent(b.toString(), lang);
+                      exercise.setEditorContent(lang, srcFile, b.toString());
                 } catch (IOException e) {
                   e.printStackTrace();
                 } finally {

@@ -10,6 +10,7 @@ import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.lesson.Exercise;
 import plm.core.model.session.ISourceFileListener;
 import plm.core.model.session.SourceFile;
 
@@ -21,6 +22,7 @@ import plm.core.model.session.SourceFile;
 public class SourceFileDocumentSynchronizer implements DocumentListener, ISourceFileListener {
 
   private Document document;
+  private Exercise exo;
   private SourceFile sourceFile;
   private ProgrammingLanguage lang;
   private EditorKit editorKit;
@@ -36,12 +38,17 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
     sourceFile.removeListener();
     this.document   = null;
     this.sourceFile = null;
+    this.exo        = null;
     editorKit       = null;
   }
 
   public void setDocument(Document doc) { this.document = doc; }
 
-  public void setSourceFile(SourceFile srcFile) { this.sourceFile = srcFile; }
+  public void setSourceFile(Exercise exo, SourceFile srcFile)
+  {
+    this.exo        = exo;
+    this.sourceFile = srcFile;
+  }
 
   public void setProgrammingLanguage(ProgrammingLanguage lang) { this.lang = lang; }
 
@@ -54,7 +61,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
     this.propagationInProgress = true;
     try {
-      this.sourceFile.setEditorContent(this.document.getText(0, this.document.getLength()), this.lang);
+      exo.setEditorContent(lang, sourceFile, this.document.getText(0, this.document.getLength()));
     } catch (BadLocationException e1) {
       e1.printStackTrace();
     } finally {
@@ -76,7 +83,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
     this.propagationInProgress = true;
     try {
       this.document.remove(0, this.document.getLength());
-      String editorContent = this.sourceFile.getEditorContent();
+      String editorContent = exo.getEditorContent(lang, sourceFile);
       if (editorContent == null || editorContent.equals("")) {
         return;
       }

@@ -74,11 +74,10 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
   /** The #line directive of the generated source makes gcc report the error at its line in the editor. */
   @Test public void testCompilationErrorLineMatchesEditor()
   {
-    exo.getSourceFile(pl, 0).setEditorContent("void run() {\n"
-                                                  + "  int a = 1;\n"
-                                                  + "  toto = 1;\n"
-                                                  + "}\n",
-                                              pl);
+    setEditorContent("void run() {\n"
+                     + "  int a = 1;\n"
+                     + "  toto = 1;\n"
+                     + "}\n");
     PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
     Assertions.assertTrue(e.getMessage().contains(exo.getName() + ".c:3:"), e.getMessage());
   }

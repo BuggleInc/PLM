@@ -157,7 +157,8 @@ public class GitSessionKit implements ISessionKit {
                             "." + lang.getExt() + ".code";
           // System.out.println(fileName);
           try {
-            exercise.getSourceFile(lang, 0).setEditorContent(Files.readString(Path.of(fileName)), lang); // only loads the entity if some code was saved
+            exercise.setEditorContent(lang, exercise.getSourceFile(lang, 0),
+                                      Files.readString(Path.of(fileName))); // only loads the entity if some code was saved
           } catch (NoSuchFileException nsf) {
             /* that's fine, we never did that exercise */
           } catch (IOException ex) {
