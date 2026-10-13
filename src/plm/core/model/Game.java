@@ -48,8 +48,8 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
-import plm.core.model.tracking.GitSpy;
-import plm.core.model.tracking.ProgressSpyListener;
+import plm.core.model.tracking.GitTracker;
+import plm.core.model.tracking.ProgressTrackerListener;
 import plm.core.ui.MainFrame;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
@@ -150,7 +150,7 @@ public class Game implements IWorldView {
     sessionKit = new GitSessionKit(this);
 
     try {
-      addProgressSpyListener(new GitSpy(SAVE_DIR, users));
+      addProgressTrackerListener(new GitTracker(SAVE_DIR, users));
     } catch (IOException | GitAPIException e) {
       System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
       e.printStackTrace();
@@ -556,8 +556,8 @@ public class Game implements IWorldView {
       saveSession();
 
       // report user leave on the server
-      for (ProgressSpyListener spyListener : progressSpyListeners) {
-        spyListener.leave();
+      for (ProgressTrackerListener trackerListener : progressTrackerListeners) {
+        trackerListener.leave();
       }
 
       storeProperties();
@@ -697,7 +697,7 @@ public class Game implements IWorldView {
     }
 
     if (lect instanceof Exercise) {
-      for (ProgressSpyListener p : this.progressSpyListeners) {
+      for (ProgressTrackerListener p : this.progressTrackerListeners) {
         p.switched((Exercise)lect);
       }
     }
@@ -734,19 +734,19 @@ public class Game implements IWorldView {
       l.stateChanged(status);
   }
 
-  private ArrayList<ProgressSpyListener> progressSpyListeners = new ArrayList<ProgressSpyListener>();
-  public void addProgressSpyListener(ProgressSpyListener l) { this.progressSpyListeners.add(l); }
-  public void removeProgressSpyListener(ProgressSpyListener l) { this.progressSpyListeners.remove(l); }
-  public void fireProgressSpy(Exercise exo, RunOutcome outcome)
+  private ArrayList<ProgressTrackerListener> progressTrackerListeners = new ArrayList<ProgressTrackerListener>();
+  public void addProgressTrackerListener(ProgressTrackerListener l) { this.progressTrackerListeners.add(l); }
+  public void removeProgressTrackerListener(ProgressTrackerListener l) { this.progressTrackerListeners.remove(l); }
+  public void fireProgressTracker(Exercise exo, RunOutcome outcome)
   {
-    for (ProgressSpyListener l : this.progressSpyListeners) {
+    for (ProgressTrackerListener l : this.progressTrackerListeners) {
       l.executed(exo, outcome);
     }
   }
 
-  public void fireReadTipSpy(String id, String mission, ProgrammingLanguage lang)
+  public void fireReadTipTracker(String id, String mission, ProgrammingLanguage lang)
   {
-    for (ProgressSpyListener l : this.progressSpyListeners) {
+    for (ProgressTrackerListener l : this.progressTrackerListeners) {
       l.readTip(id, mission, lang);
     }
   }
@@ -907,7 +907,7 @@ public class Game implements IWorldView {
 
   public void setUsers(Users users) { this.users = users; }
 
-  public ArrayList<ProgressSpyListener> getProgressSpyListeners() { return this.progressSpyListeners; }
+  public ArrayList<ProgressTrackerListener> getProgressTrackerListeners() { return this.progressTrackerListeners; }
 
   /* Mechanism to find where to save our data */
 
@@ -966,7 +966,7 @@ public class Game implements IWorldView {
     ex.revertEditorContents();
     for (ProgrammingLanguage pl : programmingLanguageManager.langs)
       Game.getInstance().studentWork.setPassed(ex, pl, false);
-    for (ProgressSpyListener l : this.progressSpyListeners) {
+    for (ProgressTrackerListener l : this.progressTrackerListeners) {
       l.reverted(ex);
     }
   }

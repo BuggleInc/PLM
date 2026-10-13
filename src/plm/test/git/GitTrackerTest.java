@@ -31,18 +31,18 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.lesson.RunOutcome.kind;
 import plm.core.model.session.SourceFile;
-import plm.core.model.tracking.GitSpy;
+import plm.core.model.tracking.GitTracker;
 import plm.core.utils.FileUtils;
 
 @ExtendWith(MockitoExtension.class)
-public class GitSpyTest {
+public class GitTrackerTest {
 
-  private GitSpy gitSpy;
+  private GitTracker gitTracker;
   private File repoDir;
   private String userUUID;
   private Utils utils;
 
-  public GitSpyTest() throws IOException, GitAPIException
+  public GitTrackerTest() throws IOException, GitAPIException
   {
     repoDir     = new File(System.getProperty("user.home") + System.getProperty("file.separator") + ".plm-test");
     Users users = Mockito.mock(Users.class);
@@ -54,7 +54,7 @@ public class GitSpyTest {
 
     Mockito.when(user.getUserUUIDasString()).thenReturn(userUUID);
     Mockito.when(users.getCurrentUser()).thenReturn(user);
-    gitSpy = new GitSpy(repoDir, users);
+    gitTracker = new GitTracker(repoDir, users);
 
     utils = new Utils();
 
@@ -69,9 +69,9 @@ public class GitSpyTest {
     Files.deleteIfExists(ENTITY_FILE);
   }
 
-  // GitSpy reads the correction from the entity file of the exercise
-  private static final String ENTITY    = "target.gitspytest.ExoTestEntity";
-  private static final Path ENTITY_FILE = Path.of("target/gitspytest/ExoTestEntity.java");
+  // GitTracker reads the correction from the entity file of the exercise
+  private static final String ENTITY    = "target.gittrackertest.ExoTestEntity";
+  private static final Path ENTITY_FILE = Path.of("target/gittrackertest/ExoTestEntity.java");
 
   private void writeEntity(String content) throws IOException
   {
@@ -116,9 +116,9 @@ public class GitSpyTest {
       }
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("createFiles", Exercise.class, RunOutcome.class);
+    Method method = GitTracker.class.getDeclaredMethod("createFiles", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo, lastResult);
+    method.invoke(gitTracker, exo, lastResult);
 
     HashMap<String, String> hm = new HashMap<>();
     for (String suffix : suffixes) {
@@ -186,9 +186,9 @@ public class GitSpyTest {
       }
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("createFiles", Exercise.class, RunOutcome.class);
+    Method method = GitTracker.class.getDeclaredMethod("createFiles", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo, lastResult);
+    method.invoke(gitTracker, exo, lastResult);
 
     HashMap<String, String> hm = new HashMap<>();
     for (String suffix : suffixes) {
@@ -225,9 +225,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should not exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
+    Method method = GitTracker.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo, lastResult);
+    method.invoke(gitTracker, exo, lastResult);
 
     if (!(new File(fp).exists())) {
       Assertions.fail(fp + " should exist now...");
@@ -256,9 +256,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
+    Method method = GitTracker.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo, lastResult);
+    method.invoke(gitTracker, exo, lastResult);
 
     if (!(new File(fp).exists())) {
       Assertions.fail(fp + " should still exist now...");
@@ -281,9 +281,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should not exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
+    Method method = GitTracker.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo, lastResult);
+    method.invoke(gitTracker, exo, lastResult);
 
     if (new File(fp).exists()) {
       Assertions.fail(fp + " should not have been created...");
@@ -312,9 +312,9 @@ public class GitSpyTest {
       Assertions.fail(fp + " should exist previously...");
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
+    Method method = GitTracker.class.getDeclaredMethod("checkSuccess", Exercise.class, RunOutcome.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo, lastResult);
+    method.invoke(gitTracker, exo, lastResult);
 
     if (new File(fp).exists()) {
       Assertions.fail(fp + " should have been deleted...");
@@ -345,9 +345,9 @@ public class GitSpyTest {
       }
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+    Method method = GitTracker.class.getDeclaredMethod("deleteFiles", Exercise.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitTracker, exo);
 
     for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
       String ext = "." + pl.getExt();
@@ -388,9 +388,9 @@ public class GitSpyTest {
       }
     }
 
-    Method method = GitSpy.class.getDeclaredMethod("deleteFiles", Exercise.class);
+    Method method = GitTracker.class.getDeclaredMethod("deleteFiles", Exercise.class);
     method.setAccessible(true);
-    method.invoke(gitSpy, exo);
+    method.invoke(gitTracker, exo);
 
     for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
       String ext = "." + pl.getExt();
@@ -405,12 +405,12 @@ public class GitSpyTest {
 
   @Test public void testStartedAndLeavedMessagesTellTheGitCommitOfThePLM() throws Exception
   {
-    Method method = GitSpy.class.getDeclaredMethod("writePLMStartedOrLeavedCommitMessage", String.class);
+    Method method = GitTracker.class.getDeclaredMethod("writePLMStartedOrLeavedCommitMessage", String.class);
     method.setAccessible(true);
 
     Assertions.assertTrue(Game.getGitCommit().matches("[0-9a-f]{40}(-dirty)?|unknown"), Game.getGitCommit());
     for (String kind : new String[] {"started", "leaved"}) {
-      JSONObject message = (JSONObject) new JSONParser().parse((String)method.invoke(gitSpy, kind));
+      JSONObject message = (JSONObject) new JSONParser().parse((String)method.invoke(gitTracker, kind));
       Assertions.assertEquals(kind, message.get("kind"));
       Assertions.assertTrue(((String)message.get("plm")).endsWith(", commit " + Game.getGitCommit()), (String)message.get("plm"));
     }

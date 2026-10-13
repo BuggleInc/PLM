@@ -80,7 +80,7 @@ public class GitSessionKit implements ISessionKit {
 
       File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
       if (!gitDir.exists()) {
-        // It should never happen since the session content should be created by the git spy module.
+        // It should never happen since the session content should be created by the git tracker module.
         System.out.println(Game.i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
       }
     }
@@ -130,7 +130,7 @@ public class GitSessionKit implements ISessionKit {
    * @param lesson the lesson to save
    * @throws UserAbortException
    */
-  @Override public void storeLesson(File path, Lesson lesson) throws UserAbortException { /* Everything's done by spy */ }
+  @Override public void storeLesson(File path, Lesson lesson) throws UserAbortException { /* Everything's done by tracker */ }
 
   /**
    * Load the lesson's exercises user source code

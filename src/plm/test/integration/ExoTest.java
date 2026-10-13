@@ -59,7 +59,7 @@ public class ExoTest {
 
     FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
-    g.getProgressSpyListeners().clear(); // disable all progress spies (git, etc)
+    g.getProgressTrackerListeners().clear(); // disable all progress trackers (git, etc)
     g.removeSessionKit();
     g.setBatchExecution();
 

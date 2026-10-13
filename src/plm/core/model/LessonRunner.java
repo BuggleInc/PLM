@@ -85,7 +85,7 @@ public class LessonRunner extends Thread {
       } catch (InvocationTargetException | InterruptedException e) {
         e.printStackTrace();
       }
-      Game.getInstance().fireProgressSpy(exo, outcome);
+      Game.getInstance().fireProgressTracker(exo, outcome);
     }
     runners.remove(this);
   }

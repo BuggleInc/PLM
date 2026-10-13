@@ -24,7 +24,7 @@ public class MethodsDogHouseSourceCheckTest {
   {
     FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
-    g.getProgressSpyListeners().clear();
+    g.getProgressTrackerListeners().clear();
     g.removeSessionKit();
     g.setBatchExecution();
     Assertions.assertNotNull(g.switchLesson("lessons.welcome", false));

@@ -4,7 +4,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
 
-public interface ProgressSpyListener {
+public interface ProgressTrackerListener {
   public void executed(Exercise exo, RunOutcome outcome);
 
   public void switched(Exercise exo);

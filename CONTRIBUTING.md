@@ -47,7 +47,7 @@ The entry point of the whole execution is `Exercise.compileRunCheck()`. It chain
 is called by `LessonRunner` when the student clicks "Run" (compiling the student's code) and by the integration tests (compiling the
 correction entity). It returns the `RunOutcome` of the execution. A compilation error, or a refusal by `verifySource()`, is
 returned too, as an outcome of kind `COMPILE` holding the message: the exceptions of the compilers do not go past this method.
-Nothing is stored in the `Exercise`: the outcome is passed along to the dialogs and to the progress spies.
+Nothing is stored in the `Exercise`: the outcome is passed along to the dialogs and to the progress trackers.
 
 Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
@@ -74,7 +74,7 @@ Here are the steps of the exercise execution:
   creative mode (a flag of `Game`), the worlds are neither reset nor checked.
 * **Session saving**: each student attempt is saved in a local git repository along with the exercise outcome (compilation
   error, failed objective or passed). The goal is to enable learning analytics if the student allowed the export of her
-  anonymized data to an online repository. The progress spies get the outcome with `executed(exo, outcome)`.
+  anonymized data to an online repository. The progress trackers get the outcome with `executed(exo, outcome)`.
 
 * **Lightbot specificities**: this brain teaser can only be solved using the graphical block-list rather than a real programming
      language. Thus, `run()` *interprets* a student-authored program and there is no templating nor remote execution. The program is stored in the
@@ -258,9 +258,9 @@ Persisting the student's progression on disk and in the cloud relies on three ma
 - **Session kits:** The kits save and restore the SessionDB. The `GitSessionKit` reads the session from a local git repository
   at startup, while the `ZipSessionKit` can export/import the current session to/from a zip file.
 - **Progress trackers:** The trackers react to the events such as a run attempt or switching exercises. The main tracker is
-  `GitSpy`, that commit the data to a local git repository that is optionally synchronized online. Other trackers are planned,
-  e.g. to give the teacher an overview of the class progress and tell her who needs help, or a *king of hill* mode where
-  students can compare their progress to the one of their friends.
+  `GitTracker`, that commit the data to a local git repository that is optionally synchronized online. Other trackers are
+  planned, e.g. to give the teacher an overview of the class progress and tell her who needs help, or a *king of hill* mode
+  where students can compare their progress to the one of their friends.
 
 ### Session DB
 
@@ -290,19 +290,19 @@ holds three things:
 
 ### Progress trackers
 
-The progress trackers are driven by `Game.progressSpyListeners` (`plm.core.model.tracking.ProgressSpyListener`, fired from
-`Game.fireProgressSpy()`/`fireReadTipSpy()` and from
-`Game.fireCurrentExerciseChanged()`/`worldHasChanged()`) whenever the student runs an exercise (`LessonRunner`, after showing
-the pass/fail dialog), switches exercise, reverts their code, or reads a hint.
+The progress trackers are driven by `Game.progressTrackerListeners` (`plm.core.model.tracking.ProgressTrackerListener`, fired
+from `Game.fireProgressTracker()`/`fireReadTipTracker()` and from `Game.fireCurrentExerciseChanged()`/`worldHasChanged()`)
+whenever the student runs an exercise (`LessonRunner`, after showing the pass/fail dialog), switches exercise, reverts their
+code, or reads a hint.
 
-The main tracker is `GitSpy`: one per running PLM instance, constructed once in `Game`'s constructor and registered as a
+The main tracker is `GitTracker`: one per running PLM instance, constructed once in `Game`'s constructor and registered as a
 `UserSwitchesListener` too. For each PLM user, it keeps one local git repository under `SAVE_DIR/<userUUID>` (using `GitUtils`,
 a thin wrapper around JGit), on a branch named `"PLM" + sha1(userUUID)`, and mirrors it to a shared server repo
 (`plm.git.server.url`) -- this is both the per-student backup/sync mechanism and the anonymized activity log the PLM maintainers
 use to see how students actually work through the exercises. Pushing is entirely opt-in, gated by the `plm.git.track.user`
 property (the student is asked once, see `StartExecution`); everything still happens on the *local* repo either way.
 
-Here is a list of the existing tracker events, and how `GitSpy` handle them:
+Here is a list of the existing tracker events, and how `GitTracker` handle them:
 - `userHasChanged()` (called once at startup and on every user switch): creates/reuses `repoDir`, sets the git remote config,
   creates an empty initial commit the very first time, checks out (or creates) the user's branch, tries to `fetch`+`merge` the
   same branch from the server to resume a previous session (`GitUtils.mergeRemoteIntoLocalBranch()` resolves conflicts
@@ -316,9 +316,9 @@ Here is a list of the existing tracker events, and how `GitSpy` handle them:
   - It then creates or deletes a `<id>.<ext>.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
     commit message, see below) and asks for a push.
 - `switched()`/`reverted()`: same idea for "the student navigated away from an exercise" (re-writes its files before committing)
-  and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitSpy` reports the
-  outcome that it remembered (`lastOutcomes`) from the last execution of that exercise, or an empty one if it was not executed
-  in the current language since.
+  and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitTracker` reports
+  the outcome that it remembered (`lastOutcomes`) from the last execution of that exercise, or an empty one if it was not
+  executed in the current language since.
 - `readTip()`: same write-then-commit-then-push pattern for that UI event.
 - `leave()` (PLM shutdown): does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
   rate-limiting, since this is the last chance to sync) then disposes the JGit handle.
@@ -339,13 +339,13 @@ that delay. A push that's rejected retries once after fetching and merging the r
 
 ### Session kits
 
-`GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitSpy` writes: at
+`GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitTracker` writes: at
 startup, `loadLesson()` reads each exercise's `.code` file back into the `SessionDB` and its `.DONE` file into `studentWork`'s
 pass/fail state. The code is restored with `Exercise.setEditorContent(lang, content)`, which does not load the source file, so
 the entities are still not parsed at startup: the bodies are named after the tab, which `newSource()` enforces; `storeLesson()`
-is a deliberate no-op ("Everything's done by spy"), since `GitSpy` already keeps those files current after every relevant event.
-`GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see above; not
-something `GitSpy` writes).
+is a deliberate no-op ("Everything's done by tracker"), since `GitTracker` already keeps those files current after every
+relevant event. `GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see
+above; not something `GitTracker` writes).
 
 ## How tests work
 
@@ -365,7 +365,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
-    * *`GitSpyTest`:* the files written and deleted by `GitSpy`, the `.DONE` marker, and the PLM commit in the messages.
+    * *`GitTrackerTest`:* the files written and deleted by `GitTracker`, the `.DONE` marker, and the PLM commit in the messages.
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.

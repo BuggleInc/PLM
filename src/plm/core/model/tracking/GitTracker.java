@@ -21,7 +21,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.utils.FileUtils;
 
-public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
+public class GitTracker implements ProgressTrackerListener, UserSwitchesListener {
 
   private File plmDir;
   private GitUtils gitUtils;
@@ -34,7 +34,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
   /** The outcome of the last execution of each exercise, reported by the events that are not executions */
   private final Map<Exercise, RunOutcome> lastOutcomes = new HashMap<>();
 
-  public GitSpy(File path, Users users) throws IOException, GitAPIException
+  public GitTracker(File path, Users users) throws IOException, GitAPIException
   {
     this.plmDir = path;
 
@@ -56,7 +56,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
       repoDir     = new File(plmDir.getAbsolutePath() + System.getProperty("file.separator") + userUUID);
       File gitDir = new File(repoDir.getAbsolutePath() + System.getProperty("file.separator") + ".git");
 
-      if (gitDir.exists()) { // Testing repoDir is not enough because the directory may have been created by another spy but not initialized for git
+      if (gitDir.exists()) { // Testing repoDir is not enough because the directory may have been created by another tracker but not initialized for git
         System.out.println(Game.i18n.tr("Reusing the disk session located at {0}.", repoDir));
       } else {
         System.out.println(Game.i18n.tr("Initialize a new disk session at {0}.", repoDir));
@@ -256,7 +256,7 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
   private void createFiles(Exercise exo, RunOutcome outcome)
   {
     String exoCode  = exo.getEditorContent(outcome.language, exo.getSourceFile(outcome.language, 0)); // retrieve the code from the student
-    String exoError = outcome.compilationError;                                  // retrieve the compilation error
+    String exoError = outcome.compilationError;                                                       // retrieve the compilation error
     if (outcome.compilationError == null)
       exoError = outcome.executionError;
     String exoCorrection = ""; // retrieve the correction: the whole entity file, if there is one in this language
