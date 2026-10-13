@@ -11,10 +11,6 @@ public interface ProgressTrackerListener {
 
   public void reverted(Exercise exo);
 
-  public void heartbeat();
-
-  public String join();
-
   public void leave();
 
   public void readTip(String id, String mission, ProgrammingLanguage lang);

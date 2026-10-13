@@ -156,10 +156,6 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     }
   }
 
-  @Override public void heartbeat() {}
-
-  @Override public String join() { return ""; }
-
   @Override public void leave()
   {
     System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting."));
