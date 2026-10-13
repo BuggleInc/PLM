@@ -344,40 +344,6 @@ public class GitSpy implements ProgressSpyListener, UserSwitchesListener {
     return outcome != null && outcome.language == lang ? outcome : new RunOutcome(lang);
   }
 
-  @Override public void callForHelp(String studentInput) { recordHelpInGit("callForHelp", studentInput); }
-
-  @Override public void cancelCallForHelp() { recordHelpInGit("cancelCallForHelp", null); }
-
-  @SuppressWarnings("unchecked") public void recordHelpInGit(String evt_type, String studentInput)
-  {
-    Exercise lastExo    = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
-    RunOutcome execProg = lastOutcome(lastExo);
-    String exoCode      = lastExo.getEditorContent(execProg.language, lastExo.getSourceFile(execProg.language, 0));
-    String ext          = "." + execProg.language.getExt();
-    File exoFile        = new File(repoDir, lastExo.getId() + ext + ".code");
-
-    try {
-      writeFile(exoFile, exoCode);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    JSONObject msg = new JSONObject();
-    msg.put("studentInput", studentInput);
-    String commitMsg  = writeCommitMessage(lastExo, execProg, null, evt_type, msg);
-    String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-    String userBranch = "PLM" + GitUtils.sha1(userUUID);
-
-    // push to the remote repository
-    try {
-      gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
-    } catch (GitAPIException e) {
-      System.err.println("An error occurred while pushing the fact that you called for help...\n"
-                         + "Please send a bug report with the following trace:");
-      e.printStackTrace();
-    }
-  }
-
   @Override @SuppressWarnings("unchecked") public void readTip(String id, String mission, ProgrammingLanguage lang)
   {
     Exercise lastExo = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();

@@ -291,9 +291,9 @@ holds three things:
 ### Progress trackers
 
 The progress trackers are driven by `Game.progressSpyListeners` (`plm.core.model.tracking.ProgressSpyListener`, fired from
-`Game.fireProgressSpy()`/`fireCallForHelpSpy()`/ `fireCancelCallForHelpSpy()`/`fireReadTipSpy()` and from
+`Game.fireProgressSpy()`/`fireReadTipSpy()` and from
 `Game.fireCurrentExerciseChanged()`/`worldHasChanged()`) whenever the student runs an exercise (`LessonRunner`, after showing
-the pass/fail dialog), switches exercise, reverts their code, asks for/cancels help, or reads a hint.
+the pass/fail dialog), switches exercise, reverts their code, or reads a hint.
 
 The main tracker is `GitSpy`: one per running PLM instance, constructed once in `Game`'s constructor and registered as a
 `UserSwitchesListener` too. For each PLM user, it keeps one local git repository under `SAVE_DIR/<userUUID>` (using `GitUtils`,
@@ -319,7 +319,7 @@ Here is a list of the existing tracker events, and how `GitSpy` handle them:
   and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitSpy` reports the
   outcome that it remembered (`lastOutcomes`) from the last execution of that exercise, or an empty one if it was not executed
   in the current language since.
-- `callForHelp()`/`cancelCallForHelp()`/`readTip()`: same write-then-commit-then-push pattern for those UI events.
+- `readTip()`: same write-then-commit-then-push pattern for that UI event.
 - `leave()` (PLM shutdown): does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
   rate-limiting, since this is the last chance to sync) then disposes the JGit handle.
 
