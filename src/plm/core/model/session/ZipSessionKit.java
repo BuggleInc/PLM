@@ -25,9 +25,10 @@ import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 
 /**
- * Implementation of the {@link ISessionKit} saving the student data in a zip file.
+ * Implementation of the {@link ISessionKit} saving the student data in zip files, one per lesson.
  *
- * Unless you edit the source, this is the session kit used.
+ * {@link plm.core.model.Game} does not use it as its session kit (it uses {@link GitSessionKit}): it only serves the actions
+ * exporting and importing a session in the GUI.
  */
 public class ZipSessionKit implements ISessionKit {
 

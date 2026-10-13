@@ -350,6 +350,24 @@ is a deliberate no-op ("Everything's done by tracker"), since `GitTracker` alrea
 relevant event. `GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see
 above; not something `GitTracker` writes).
 
+`ZipSessionKit` is the other implementation of `ISessionKit`. It is not used automatically, but serves the `ExportSession` and
+`ImportSession` actions of the GUI, which ask for a directory and call `storeAll()` or `loadAll()` on it. It has no history, nor
+any link with git. For each lesson, `storeLesson()` writes a `plm-<lessonId>.zip` file (that is deleted if nothing was written)
+holding:
+- `README`: a short explanation of what this file is.
+- `<exerciseId>/DONE.<ext>`: an empty marker for each exercise and language that the student passed.
+- `<Language>/<exerciseId>/<sourceName>`: the editor content of the sources that were loaded (the others were never modified).
+- `currently_selected_exercise`: the canonical class name of the current exercise of the lesson.
+
+`storeAll()` also writes an `overview.zip` file with a single `passed` entry: a JSON object `{lessonId: {Language: {"possible": n,
+"passed": m}}}` with the lesson counters of the `SessionDB`, which plays the role of the `.summary` files of `GitSessionKit`. On
+import, `loadAll()` calls `loadLesson()` for each lesson, which marks the passed exercises in the `SessionDB`, restores the code in it
+and selects the saved exercise again, then reads the overview into the lesson counters. It also reads the former layout in which the
+language is not in the path of the code (`<exerciseId>/<sourceName>`). For an exercise whose source is not loaded yet, the saved code is
+looked for under the name of the tab, but restoring it loads the source file, which parses the entity.
+
+Both methods are in a model class but they show dialogs when they fail to write or read a file (there is a FIXME about it).
+
 ## How tests work
 
 Tests live in `src/plm/test` and are compiled with the main code (see the surefire configuration in `pom.xml`). The unit tests of
