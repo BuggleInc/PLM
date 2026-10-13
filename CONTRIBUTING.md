@@ -310,9 +310,12 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
   a push (rate-limited, see below).
 - `executed(exo, outcome)`: writes/rewrites several files per exercise via `createFiles()`:
   - `<id>.<ext>.code`: student code
-  - `<id>.<ext>.error`: the detailed outcome, either the compilation error or the `diffTo()` between the `answerWorld`s and the `currentWorld`s
+  - `<id>.<ext>.error`: the error of the last execution, empty if there was none. It is the compilation error if there is one (this
+    includes a refusal by `verifySource()`). Otherwise, it is the execution error: either the failure of the student's code at run
+    time (the error of the process, the interruption by the "Stop" button...), or, for each world that differs from the expected
+    one, "The world 'name' differs" followed by the `diffTo()` between the `answerWorld` and the `currentWorld`.
   - `<id>.<ext>.correction`: the templating entity file (read again from its source)
-  - `<id>.<ext>.mission`: the exercise mission test.
+  - `<id>.<ext>.mission`: the mission text of the exercise.
   - It then creates or deletes a `<id>.<ext>.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
     commit message, see below) and asks for a push.
 - `switched()`/`reverted()`: same idea for "the student navigated away from an exercise" (re-writes its files before committing)
