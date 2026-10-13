@@ -56,13 +56,12 @@ public class SessionDBTest {
     Assertions.assertNull(db.getBody(exo, langs.SCALA, "Entity"));
   }
 
-  @Test public void testPythonTabsBecomeSpaces()
+  /** The tabs are not the business of the DB: the Python templating reads them the way python does */
+  @Test public void testBodyIsStoredAsIs()
   {
     Lecture exo = exercise("exo");
-    db.setBody(exo, langs.PYTHON, "Entity", "if x:\n\ty = 1\n");
-    Assertions.assertEquals("if x:\n    y = 1\n", db.getBody(exo, langs.PYTHON, "Entity"));
-    db.setBody(exo, langs.JAVA, "Entity", "\tx");
-    Assertions.assertEquals("\tx", db.getBody(exo, langs.JAVA, "Entity"));
+    db.setBody(exo, langs.PYTHON, "Entity", "if x:\n\ty = \"a\tb\"\n");
+    Assertions.assertEquals("if x:\n\ty = \"a\tb\"\n", db.getBody(exo, langs.PYTHON, "Entity"));
   }
 
   @Test public void testRemoveBodiesForgetsOnlyThatExercise()

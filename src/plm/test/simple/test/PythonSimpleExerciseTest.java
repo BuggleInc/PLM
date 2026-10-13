@@ -66,6 +66,14 @@ public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
     }
   }
 
+  /** The tabs of the indentation are read the way python does (tab stops every 8 columns), whatever the editor stored. */
+  @Test public void testTabsInIndentation() throws PLMCompilerException, InterruptedException
+  {
+    assertPassesThanksToImports("def run():\n"
+                                + "  \tif True:\n"            // column 8
+                                + "\t  setObjectif(True)\n"); // column 10, so inside the if
+  }
+
   @Test public void testImportSegmentIsHonored() throws PLMCompilerException, InterruptedException
   {
     assertPassesThanksToImports("def run():\n"

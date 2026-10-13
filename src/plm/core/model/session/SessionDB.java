@@ -30,7 +30,7 @@ public class SessionDB {
   public void setBody(Lecture exo, ProgrammingLanguage lang, String sourceName, String content)
   {
     BodyKey key = new BodyKey(exo.getId(), lang, sourceName);
-    bodies.put(key, lang.isPython() ? content.replace("\t", "    ") : content);
+    bodies.put(key, content);
     notifyBodyListener(key);
   }
 

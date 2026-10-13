@@ -182,8 +182,8 @@ handful of one-off helper lines elsewhere:
     - C does not need to compute the offset, as a `#line` preprocessor directive already fixes the error location.
   - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
     still parses.
-  - Python fixes the indentation: change tabs to spaces in editor's content and reindent the body to fit its position in the
-    source.
+  - Python fixes the indentation: the tabs of the leading whitespace of the editor's content are expanded (tab stops every 8
+    columns, as python reads them, whatever the editor stored) and the body is reindented to fit its position in the source.
   - non-breaking spaces are stripped.
 - The resulting source is written to a per-compile directory on disk which name is unique, so unrelated concurrent compiles
   never collide. A `Main` containing the execution harness is also generated in this directory, and both files are compiled.
@@ -271,9 +271,9 @@ holds three things:
 - The *editor contents*: what the student wrote in each source, by exercise, language and source name. It is accessed with
   `setBody()` and `getBody()`, through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. A body is absent until
   the student changes the initial content, and `Exercise.getEditorContent()` uses `SourceFile.getInitialBody()` when the body is
-  absent in the DB. Setting a body expands the tabs in Python. The editors register with `setBodyListener()` to be told of every
-  change, whoever made it. `removeBodies()` forgets everything the student wrote for an exercise: this is the revert action. The
-  bodies are concurrent maps because the run thread reads them while the Swing event thread writes them.
+  absent in the DB. The editors register with `setBodyListener()` to be told of every change, whoever made it. `removeBodies()`
+  forgets everything the student wrote for an exercise: this is the revert action. The bodies are concurrent maps because the
+  run thread reads them while the Swing event thread writes them.
 - The *pass state* of each exercise in each language (`setPassed()`/`getPassed()`, false for an exercise never seen).
   `GitSessionKit.loadLesson()` fills it from the `.DONE` files when a lesson loads, `LessonRunner` sets it when the exercise
   passes, and the revert action and `Game.clearSession()` set it back to false.
@@ -370,7 +370,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
-    * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, Python tabs are expanded,
+    * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, a body is stored as is,
       reverting an exercise forgets its contents only, and the editors are told of the changes.
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
