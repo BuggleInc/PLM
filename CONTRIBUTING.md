@@ -96,9 +96,11 @@ used to compute the demo and the `answerWorld`, and one for the student's curren
 the GUI. This process can be decomposed as follows:
 
 - When the lesson is loaded, `ExerciseTemplated.setup()` only checks which languages have an entity file (`FileUtils.exists()`)
-  but the files are not parsed nor even loaded in memory at this stage since we almost never need to parse all entities in all
-  language for a given PLM usage session. `LightBotExercise` has no entity file: it overrides `setup()` and creates a plain
-  `SourceFile`, whose editor content is the program of the student, as a text (see `LightBotProgram`).
+  but the files are not parsed nor loaded in memory at this stage since we almost never need to parse all entities in all
+  language for a given PLM usage session (the exception is the entity that `computeAnswer()` compiles and executes, i.e. the
+  exercises with a missing or broken cache on disk, and the ones with a randomized world). `LightBotExercise` has no entity
+  file: it overrides `setup()` and creates a plain `SourceFile`, whose editor content is the textual representation of the
+  student's program (see `LightBotProgram`).
 - When needed by `ProgrammingLanguage.compileExo()`, the entity content is parsed (split into parts), and a `SourceFile` is
   created to store the result of this parsing. This step (detailed below) is language agnostic: it applies exactly the same for
   all entities of all languages.
@@ -397,7 +399,7 @@ that delay. A push that's rejected retries once after fetching and merging the r
 `GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitTracker` writes: at
 startup, `loadLesson()` reads each exercise's `.code` file back into the `SessionDB` and its `.DONE` file into `studentWork`'s
 pass/fail state. The code is restored with `Exercise.setEditorContent(lang, content)`, which does not load the source file, so
-the entities are still not parsed at startup: the bodies are named after the tab, which `newSource()` enforces; `storeLesson()`
+restoring the code does not parse the entities by itself: the bodies are named after the tab, which `newSource()` enforces; `storeLesson()`
 is a deliberate no-op ("Everything's done by tracker"), since `GitTracker` already keeps those files current after every
 relevant event. `GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see
 above; not something `GitTracker` writes).
