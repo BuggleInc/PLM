@@ -40,18 +40,42 @@ public class LessonRunner extends Thread {
     final Exercise exo = (Exercise)lect;
     final ProgrammingLanguage lang = this.game.getProgrammingLanguage();
 
-    RunOutcome outcome = new RunOutcome(lang);
+    RunOutcome outcome = runExercise(exo, lang);
+
+    if (!game.isCreativeEnabled()) {
+      try {
+        if (outcome.outcome == RunOutcome.kind.PASS) {
+          Game.getInstance().studentWork.setPassed(exo, outcome.language, true);
+          SwingUtilities.invokeAndWait(() -> new ExercisePassedDialog(exo, outcome));
+        } else {
+          SwingUtilities.invokeAndWait(() -> new ExerciseFailedDialog(outcome));
+        }
+      } catch (InvocationTargetException | InterruptedException e) {
+        e.printStackTrace();
+      }
+      Game.getInstance().fireProgressTracker(exo, outcome);
+    }
+    runners.remove(this);
+  }
+
+  /**
+   * Compiles, runs and checks the exercise, going through the states of the game. The outcome is empty if something went wrong
+   * with the execution itself (for example if the student clicked "Stop").
+   */
+  public RunOutcome runExercise(Exercise exo, ProgrammingLanguage lang)
+  {
     try {
       game.saveSession(); // for safety reasons;
 
       game.setState(Game.GameState.COMPILATION_STARTED);
-      outcome = exo.compileRunCheck(game.getOutputWriter(), StudentOrCorrection.STUDENT, lang, runners, () -> {
+      RunOutcome outcome = exo.compileRunCheck(game.getOutputWriter(), StudentOrCorrection.STUDENT, lang, runners, () -> {
         game.setState(Game.GameState.COMPILATION_ENDED);
         game.setState(Game.GameState.EXECUTION_STARTED);
       });
       if (outcome.outcome == RunOutcome.kind.COMPILE)
         game.setState(Game.GameState.COMPILATION_ENDED); // the callback above was not called
       game.setState(Game.GameState.EXECUTION_ENDED);
+      return outcome;
 
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -61,33 +85,7 @@ public class LessonRunner extends Thread {
       game.setState(Game.GameState.COMPILATION_ENDED);
       game.setState(Game.GameState.EXECUTION_ENDED);
     }
-
-    if (!game.isCreativeEnabled()) {
-      final RunOutcome finalOutcome = outcome; // for the anonymous classes below
-      try {
-        if (outcome.outcome == RunOutcome.kind.PASS) {
-          Game.getInstance().studentWork.setPassed(exo, outcome.language, true);
-
-          SwingUtilities.invokeAndWait(new Runnable() {
-            @Override public void run()
-            {
-              new ExercisePassedDialog(exo, finalOutcome);
-            }
-          });
-        } else {
-          SwingUtilities.invokeAndWait(new Runnable() {
-            public void run()
-            {
-              new ExerciseFailedDialog(finalOutcome);
-            }
-          });
-        }
-      } catch (InvocationTargetException | InterruptedException e) {
-        e.printStackTrace();
-      }
-      Game.getInstance().fireProgressTracker(exo, outcome);
-    }
-    runners.remove(this);
+    return new RunOutcome(lang);
   }
 
   /**

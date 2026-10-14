@@ -444,6 +444,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
+    * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and an
+      empty one if the execution was interrupted or failed unexpectedly, going through the expected states of the game. The dialogs
+      and the tracker are not tested, as they need a display.
     * *`PancakeRandomizedTest`:* the Gates entity only reports the instances of the randomized worlds, also after the copy of a world.
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
     * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, a body is stored as is,
