@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
@@ -11,6 +12,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.json.simple.JSONObject;
@@ -24,6 +26,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguageManager;
 import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.Users;
@@ -414,5 +417,54 @@ public class GitTrackerTest {
       Assertions.assertEquals(kind, message.get("kind"));
       Assertions.assertTrue(((String)message.get("plm")).endsWith(", commit " + Game.getGitCommit()), (String)message.get("plm"));
     }
+  }
+
+  /** The outcome that the tracker reports for the events that are not executions (switched, reverted, readTip) */
+  private RunOutcome lastOutcome(Exercise exo) throws ReflectiveOperationException
+  {
+    Method method = GitTracker.class.getDeclaredMethod("lastOutcome", Exercise.class);
+    method.setAccessible(true);
+    return (RunOutcome)method.invoke(gitTracker, exo);
+  }
+
+  @SuppressWarnings("unchecked") private void remember(Exercise exo, RunOutcome outcome) throws ReflectiveOperationException
+  {
+    Field field = GitTracker.class.getDeclaredField("lastOutcomes");
+    field.setAccessible(true);
+    ((Map<Exercise, RunOutcome>)field.get(gitTracker)).put(exo, outcome);
+  }
+
+  @Test public void testLastOutcomeIsTheOneOfTheLastExecutionInTheCurrentLanguage() throws Exception
+  {
+    ProgrammingLanguageManager langs = Game.getInstance().programmingLanguageManager;
+    ProgrammingLanguage previous     = Game.getInstance().getProgrammingLanguage();
+    try {
+      Game.getInstance().setProgramingLanguage(langs.JAVA);
+      Exercise exo       = Mockito.mock(Exercise.class);
+      RunOutcome outcome = new RunOutcome(langs.JAVA);
+      outcome.outcome    = kind.FAIL;
+      remember(exo, outcome);
+
+      Assertions.assertSame(outcome, lastOutcome(exo));
+
+      // The student changed the language since: that execution does not tell anything about the new one
+      Game.getInstance().setProgramingLanguage(langs.PYTHON);
+      RunOutcome other = lastOutcome(exo);
+      Assertions.assertNotSame(outcome, other);
+      Assertions.assertSame(langs.PYTHON, other.language);
+      Assertions.assertEquals(0, other.totalTests);
+    } finally {
+      Game.getInstance().setProgramingLanguage(previous);
+    }
+  }
+
+  @Test public void testLastOutcomeOfAnExerciseThatWasNotExecutedIsEmptyInTheCurrentLanguage() throws Exception
+  {
+    Exercise exo     = Mockito.mock(Exercise.class);
+    RunOutcome empty = lastOutcome(exo);
+
+    Assertions.assertSame(Game.getInstance().getProgrammingLanguage(), empty.language);
+    Assertions.assertNull(empty.compilationError);
+    Assertions.assertEquals(0, empty.totalTests);
   }
 }

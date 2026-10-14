@@ -431,17 +431,20 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`AllSimpleExerciseTests`:* templating, compilation, execution and check on a minimal universe (`plm.test.simple`), once
       per language (`JavaSimpleExerciseTest`, `ScalaSimpleExerciseTest`, `PythonSimpleExerciseTest`, `CSimpleExerciseTest`,
       which share `SimpleExerciseTest` and `CompiledSimpleExerciseTest`). The correction compiles, runs and passes. The saved
-      code can be restored into the editor without loading (so parsing) the entity. Wrong code, exceptions (out of bounds, null,
+      code can be restored into the editor without loading (so parsing) the entity, and the name of the source files must be the one of the
+      tab. Wrong code, exceptions (out of bounds, null,
       custom) and a valid code followed by an error do not pass. Syntax and variable errors do not compile. The line of a stack
       trace frame is the editor's one. Every language also checks the line of a compilation error, and Python and C check that
       the `IMPORT` section is honored.
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
-    * *`GitTrackerTest`:* the files written and deleted by `GitTracker`, the `.DONE` marker, and the PLM commit in the messages.
+    * *`GitTrackerTest`:* the files written and deleted by `GitTracker`, the `.DONE` marker, the PLM commit in the messages, and the outcome that
+      it reports for the events that are not executions (the one of the last execution in the current language, or an empty one).
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
+    * *`PancakeRandomizedTest`:* the Gates entity only reports the instances of the randomized worlds, also after the copy of a world.
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
     * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, a body is stored as is,
       reverting an exercise forgets its contents only, the editors are told of the changes, the passed exercises are counted per

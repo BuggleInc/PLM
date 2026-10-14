@@ -10,9 +10,11 @@ import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.session.SourceFile;
 import plm.core.utils.FileUtils;
 import plm.test.simple.Main;
 import plm.test.simple.SimpleExercise;
@@ -57,6 +59,23 @@ public abstract class SimpleExerciseTest {
     fresh.setEditorContent(pl, "saved code");
     Assertions.assertTrue(fresh.getLoadedSourceFiles(pl).isEmpty());
     Assertions.assertEquals("saved code", fresh.getEditorContent(pl, fresh.getSourceFile(pl, 0)));
+  }
+
+  /** The source files are named after the tab, since the code of the student is saved under that name */
+  @Test public void testNewSourceRefusesANameThatIsNotTheTab()
+  {
+    IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> exo.newSource(pl, new SourceFile("Other")));
+    Assertions.assertTrue(e.getMessage().contains("SimpleExercise"), e.getMessage());
+  }
+
+  @Test public void testNewSourceRefusesATabThatIsNotAnIdentifier()
+  {
+    Exercise invalid = new SimpleExercise(exo.getLesson(), "Invalid") {
+      {
+        tabName = "bad name";
+      }
+    };
+    Assertions.assertThrows(IllegalArgumentException.class, () -> invalid.newSource(pl, new SourceFile("bad name")));
   }
 
   @BeforeEach public void setUp() throws Exception { exo.reset(); }
