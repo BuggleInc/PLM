@@ -1,9 +1,8 @@
 package plm.core.model.tracking;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -97,26 +96,9 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   @Override public void executed(Exercise exo, RunOutcome outcome)
   {
     lastOutcomes.put(exo, outcome);
-    try {
-
-      // checkout the branch of the current user (just in case it changed in between)
-      // if this case might happen, then you should also checkout back the current user branch...
-      // GitUtils gitUtils = new GitUtils(git);
-      // gitUtils.checkoutUserBranch(Game.getInstance().getUsers().getCurrentUser(), progress);
-
-      // Change the files locally
-      createFiles(exo, outcome);
-      checkSuccess(exo, outcome);
-
-      String commitMsg  = writeCommitMessage(exo, outcome, null, "executed", new JSONObject());
-      String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-      String userBranch = "PLM" + GitUtils.sha1(userUUID);
-
-      gitUtils.removeFiles();
-      gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
-    } catch (GitAPIException e) {
-      e.printStackTrace();
-    }
+    createFiles(exo, outcome);
+    checkSuccess(exo, outcome);
+    commitAndPush(writeCommitMessage(exo, outcome, null, "executed", new JSONObject()));
   }
 
   @Override public void switched(Exercise exo)
@@ -127,33 +109,13 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
 
     RunOutcome outcome = lastOutcome(lastExo);
     createFiles(lastExo, outcome);
-
-    try {
-      String commitMsg  = writeCommitMessage(lastExo, outcome, exo, "switched", new JSONObject());
-      String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-      String userBranch = "PLM" + GitUtils.sha1(userUUID);
-
-      gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
-    } catch (GitAPIException e) {
-      e.printStackTrace();
-    }
+    commitAndPush(writeCommitMessage(lastExo, outcome, exo, "switched", new JSONObject()));
   }
 
   @Override public void reverted(Exercise exo)
   {
-    try {
-      deleteFiles(exo);
-
-      String commitMsg  = writeCommitMessage(exo, lastOutcome(exo), null, "reverted", new JSONObject());
-      String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-      String userBranch = "PLM" + GitUtils.sha1(userUUID);
-
-      gitUtils.removeFiles();
-      gitUtils.commit(commitMsg);
-      gitUtils.maybePushToUserBranch(userBranch, progress);
-    } catch (GitAPIException e) {
-      e.printStackTrace();
-    }
+    deleteFiles(exo);
+    commitAndPush(writeCommitMessage(exo, lastOutcome(exo), null, "reverted", new JSONObject()));
   }
 
   @Override public void leave()
@@ -161,14 +123,12 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting."));
 
     // push to the remote repository
-    String commitMsg  = writePLMStartedOrLeavedCommitMessage("leaved");
-    String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-    String userBranch = "PLM" + GitUtils.sha1(userUUID);
+    String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
 
     try {
       gitUtils.addFiles();
       gitUtils.commit(commitMsg);
-      gitUtils.forcefullyPushToUserBranch(userBranch, progress);
+      gitUtils.forcefullyPushToUserBranch(currentUserBranch(), progress);
 
     } catch (GitAPIException e) {
       System.err.println("An error occurred while quitting the program, please report the following issue:");
@@ -181,6 +141,19 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   /**
    * Helper methods
    */
+  private String currentUserBranch() { return "PLM" + GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString()); }
+
+  /** Records an event: commits the files that were written or deleted, with that message, and asks for a push */
+  private void commitAndPush(String commitMsg)
+  {
+    try {
+      gitUtils.removeFiles();
+      gitUtils.seqAddFilesToPush(commitMsg, currentUserBranch(), progress);
+    } catch (GitAPIException e) {
+      e.printStackTrace();
+    }
+  }
+
   @SuppressWarnings("unchecked") private String writeCommitMessage(Exercise exoFrom, RunOutcome outcome, Exercise exoTo, String evt_type, JSONObject logmsg)
   {
     // Retrieve appropriate parameters regarding the current exercise
@@ -277,12 +250,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   }
 
   /** Writes the content (empty if null) into the file, replacing what it contained */
-  private void writeFile(File file, String content) throws IOException
-  {
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()))) {
-      bw.write(content == null ? "" : content);
-    }
-  }
+  private void writeFile(File file, String content) throws IOException { Files.writeString(file.toPath(), content == null ? "" : content); }
 
   private void deleteFiles(Exercise exo)
   {
@@ -319,10 +287,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
     if (outcome.outcome == RunOutcome.kind.PASS) {
       try {
-        FileWriter fwExo     = new FileWriter(doneFile.getAbsoluteFile());
-        BufferedWriter bwExo = new BufferedWriter(fwExo);
-        bwExo.write("");
-        bwExo.close();
+        writeFile(doneFile, "");
       } catch (IOException ex) {
         System.out.println("Failed to write on disk that the exercise is passed: " + ex.getLocalizedMessage());
       }
@@ -343,27 +308,14 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   @Override @SuppressWarnings("unchecked") public void readTip(String id, String mission, ProgrammingLanguage lang)
   {
     Exercise lastExo = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
-    String ext       = "." + lang.getExt();
-    File missionFile = new File(repoDir, lastExo.getId() + ext + ".mission");
-
     try {
-      writeFile(missionFile, mission);
+      writeFile(new File(repoDir, lastExo.getId() + "." + lang.getExt() + ".mission"), mission);
     } catch (IOException e) {
       e.printStackTrace();
     }
 
     JSONObject msg = new JSONObject();
     msg.put("id", id);
-    String commitMsg  = writeCommitMessage(lastExo, lastOutcome(lastExo), null, "readTip", msg);
-    String userUUID   = Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString();
-    String userBranch = "PLM" + GitUtils.sha1(userUUID);
-
-    try {
-      gitUtils.seqAddFilesToPush(commitMsg, userBranch, progress);
-    } catch (GitAPIException e) {
-      System.err.println("An error occurred while pushing the fact that you took a look at the hint...\n"
-                         + "Please send a bug report with the following trace:");
-      e.printStackTrace();
-    }
+    commitAndPush(writeCommitMessage(lastExo, lastOutcome(lastExo), null, "readTip", msg));
   }
 }
