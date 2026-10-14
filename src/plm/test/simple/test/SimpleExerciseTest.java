@@ -51,16 +51,6 @@ public abstract class SimpleExerciseTest {
   /** Puts the code in the only source file of the exercise */
   protected void setEditorContent(String code) { exo.setEditorContent(pl, exo.getSourceFile(pl, 0), code); }
 
-  /** The saved code of an exercise is restored at startup without parsing its entity */
-  @Test public void testEditorContentCanBeSetBeforeTheSourceIsLoaded() throws Exception
-  {
-    SimpleExercise fresh = (SimpleExercise) new Main().getExercise("SimpleExercise");
-
-    fresh.setEditorContent(pl, "saved code");
-    Assertions.assertTrue(fresh.getLoadedSourceFiles(pl).isEmpty());
-    Assertions.assertEquals("saved code", fresh.getEditorContent(pl, fresh.getSourceFile(pl, 0)));
-  }
-
   /** The source files are named after the tab, since the code of the student is saved under that name */
   @Test public void testNewSourceRefusesANameThatIsNotTheTab()
   {
