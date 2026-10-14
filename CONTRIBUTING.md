@@ -152,6 +152,12 @@ A SourceFile is immutable after its creation. What the student wrote for a given
 "Saving the student's work" below), and accessed through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. The
 initial content of the editor content is the `student.body` field, publicly available from `SourceFile.getInitialBody()`.
 
+An `Exercise` is not constant and could not be shared in memory between different users of the same PLM process. It still
+holds mutable state: its `currentWorld`, `initialWorld` and `answerWorld` vectors (the current worlds change at each run, the
+initial ones may be randomized, and the answer ones are computed lazily and cached on disk), the `sourceFiles` cache that is
+filled on demand, and its `i18n` that depends on the locale of the `Game` at the creation. The lesson also remembers its current
+exercise (`Lesson.currentExercise`).
+
 ### Building a compilable source (language-specific code in `compileExo()`, not cached)
 
 Each `compileExo()` gets the `EntityFileSegments` using `Exercise.getSegments(lang, sourceFile, whatToCompile)`, with whatToCompile
