@@ -215,14 +215,7 @@ public class ZipSessionKit implements ISessionKit {
               ZipEntry ze = new ZipEntry(lang + "/" + exercise.getId() + "/" + srcFile.getName());
               zos.putNextEntry(ze);
 
-              String content = exercise.getEditorContent(lang, srcFile);
-
-              if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
-                content = content + "\n";
-              }
-
-              byte[] bytes = exercise.getEditorContent(lang, srcFile).getBytes();
-              zos.write(bytes);
+              zos.write(exercise.getEditorContent(lang, srcFile).getBytes());
               zos.closeEntry();
               wroteSomething = true;
             }
