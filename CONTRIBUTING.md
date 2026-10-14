@@ -328,7 +328,9 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
   and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitTracker` reports
   the outcome that it remembered (`lastOutcomes`) from the last execution of that exercise, or an empty one if it was not
   executed in the current language since.
-- `readTip()`: same write-then-commit-then-push pattern for that UI event.
+- `readTip()`: same write-then-commit-then-push pattern for that UI event, that only rewrites the mission file.
+- All these events end with `commitAndPush()`: it removes the deleted files from the index, adds the others, commits with the
+  message of the event and asks for a push.
 - `leave()` (PLM shutdown): does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
   rate-limiting, since this is the last chance to sync) then disposes the JGit handle.
 
@@ -340,6 +342,50 @@ leading `{`) so that a `"kind"` key always comes first and the commit list stays
 field of the `"started"` and `"leaved"` messages ends with the git commit of the PLM (`Game.getGitCommit()`, with a `-dirty`
 suffix if the build had local changes, or `unknown` when not building from git), which is what it takes to replay the templating
 of a past session. It is recorded in `resources/git.properties` at build time by the `git-commit-id-maven-plugin`.
+
+Here are some the messages of a possible commit history.
+
+- The user first starts the PLM:
+
+    {"kind":"started","plm":"2.9.3 (20210630), commit unknown","java":"21.0.12.1 (VM: OpenJDK 64-Bit Server VM; version: 21.0.12.1+1-1-deb13u1-Debian)","os":"Linux (version: 6.10.3-amd64; arch: amd64)"}
+
+- She then switches from the Environment exercise (that was previously passed) to the Instruction exercise:
+
+    {"kind":"switched","switchto":"welcome.Instructions","lang":"Java","exo":"welcome.Environment","outcome":"pass"}
+
+- The first attempt is a compile error. The faulty code is added to the commit as `welcome.Instructions.java.code` while error
+  message (the possibly localized compilation error message) is saved as `welcome.Instructions.java.error`.
+
+    {"kind":"executed","lang":"Java","exo":"welcome.Instructions","outcome":"compile"}
+
+- The second attempt compiles but does not pass the tests. The new version of the code and the new error message (this time
+  generated from `world.diffTo()`) are added to the commit.
+
+    {"kind":"executed","passedtests":"0","totaltests":"1","lang":"Java","exo":"welcome.Instructions","outcome":"fail"}
+
+- The third attempt passes all tests of that exercise. The file `welcome.Instructions.java.error` is removed from the disk,
+  while an empty `welcome.Instructions.java.DONE` is added. The student did not rank the exercise in the interface, thus the
+  "(please choose)" as a value to the exercise interest.
+
+    {"kind":"executed","passedtests":"1","totaltests":"1","exoInterest":"(please choose)","lang":"Java","exo":"welcome.Instructions","outcome":"pass"}
+
+- Then the student switches to another exercise, and do a failed attempt in the new one. Since this world contains a randomized
+  world, the world instance is added to the commit message to make it possible to replay the student code in a future analysis.
+
+    {"kind":"executed","exo":"sort.pancake.GatesPancake","lang":"Python","outcome":"fail","passedtests":"3","totaltests":"4","randomizedworlds":{"4":"<the .map content of the world of rank 4>"}}
+
+- The student then asks for a hint in this exercise, reverts their code, and later leaves:
+
+    {"kind":"switched","exo":"welcome.Instructions","lang":"Java","outcome":"pass","switchto":"sort.pancake.GatesPancake"}
+    {"kind":"readTip","id":"2","exo":"sort.pancake.GatesPancake","lang":"Java"}
+    {"kind":"reverted","exo":"sort.pancake.GatesPancake","lang":"Java"}
+    {"kind":"leaved","plm":"2.9.3 (20210630), commit unknown","java":"21.0.12.1 (VM: OpenJDK 64-Bit Server VM; version: 21.0.12.1+1-1-deb13u1-Debian)","os":"Linux (version: 6.10.3-amd64; arch: amd64)"}
+
+Since each commit also contains the code of the student in the files that it changes, the history of the repository tells how many
+attempts were needed to pass an exercise and with which errors, how much time went by between them (the dates of the commits), which
+exercises were abandoned (a `"switched"` event whose outcome is not `"pass"`), where the hints are read, where the students revert
+their code, and how they rate the exercises. The randomized worlds and the commit of the PLM itself make it possible to replay an
+execution afterward.
 
 Pushing is rate-limited (`GitUtils.maybePushToUserBranch()`, see its own comment for the incident that motivated it): at most
 one push in flight at a time (a static `currentlyPushing` flag) and a fixed delay (currently 1 minute) before it actually
