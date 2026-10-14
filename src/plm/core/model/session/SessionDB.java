@@ -1,10 +1,10 @@
 package plm.core.model.session;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -20,11 +20,17 @@ public class SessionDB {
   private final Map<BodyKey, String> bodies = new ConcurrentHashMap<>();
   /** The editors to tell when the body of their source changes */
   private final Map<BodyKey, ISourceFileListener> bodyListeners           = new ConcurrentHashMap<>();
-  private Map<String, Map<ProgrammingLanguage, Boolean>> passed           = new HashMap<String, Map<ProgrammingLanguage, Boolean>>();
+  /** One exercise in one language */
+  private record ExerciseKey(String exoId, ProgrammingLanguage lang) {}
 
+  /** One lesson in one language */
+  private record LessonKey(String lessonId, ProgrammingLanguage lang) {}
+
+  /** The exercises that the student passed. If an exercise was never attempted, it is not there. */
+  private final Set<ExerciseKey> passed = ConcurrentHashMap.newKeySet();
   /* Per lesson summary */
-  private Map<String, Map<ProgrammingLanguage, Integer>> passedExercises   = new HashMap<String, Map<ProgrammingLanguage, Integer>>();
-  private Map<String, Map<ProgrammingLanguage, Integer>> possibleExercises = new HashMap<String, Map<ProgrammingLanguage, Integer>>();
+  private final Map<LessonKey, Integer> passedExercises   = new ConcurrentHashMap<>();
+  private final Map<LessonKey, Integer> possibleExercises = new ConcurrentHashMap<>();
 
   /** Stores what the student wrote in that source, and tells its editor */
   public void setBody(Lecture exo, ProgrammingLanguage lang, String sourceName, String content)
@@ -61,131 +67,58 @@ public class SessionDB {
       listener.sourceFileContentHasChanged();
   }
 
-  public void setPassed(Lecture exo, ProgrammingLanguage lang, boolean _passed)
+  public void setPassed(Lecture exo, ProgrammingLanguage lang, boolean isPassed)
   {
-    if (exo == null)
-      exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    if (getPassed(exo, lang) == _passed)
-      return;
-
-    setPassedExercises(exo.getLesson().getId(), lang, getPassedExercises(exo.getLesson().getId(), lang) + (_passed ? 1 : -1));
-
-    Map<ProgrammingLanguage, Boolean> passedE = passed.get(exo.getId());
-    if (passedE == null) {
-      passedE = new HashMap<ProgrammingLanguage, Boolean>();
-      passed.put(exo.getId(), passedE);
+    ExerciseKey key = new ExerciseKey(exo.getId(), lang);
+    if (isPassed ? passed.add(key) : passed.remove(key)) {
+      String lessonId = exo.getLesson().getId();
+      setPassedExercises(lessonId, lang, getPassedExercises(lessonId, lang) + (isPassed ? 1 : -1));
     }
-    passedE.put(lang, _passed);
   }
 
-  /** If the exercise was never attempted (not present in DB), it returns false */
-  public boolean getPassed(Lecture exo, ProgrammingLanguage lang)
-  {
-    if (exo == null)
-      exo = Game.getInstance().getCurrentLesson().getCurrentExercise();
-    Map<ProgrammingLanguage, Boolean> passedE = passed.get(exo.getId());
-    if (passedE == null)
-      return false;
+  public boolean getPassed(Lecture exo, ProgrammingLanguage lang) { return passed.contains(new ExerciseKey(exo.getId(), lang)); }
 
-    Boolean res = passedE.get(lang);
-    if (res == null)
-      return false;
-    return res;
-  }
-  public Integer getPossibleExercises(String lesson, ProgrammingLanguage lang)
-  {
-    if (lesson == null)
-      lesson = Game.getInstance().getCurrentLesson().getId();
-    Map<ProgrammingLanguage, Integer> passedL = possibleExercises.get(lesson);
-    if (passedL == null)
-      return 0;
+  public int getPossibleExercises(String lesson, ProgrammingLanguage lang) { return possibleExercises.getOrDefault(new LessonKey(lesson, lang), 0); }
 
-    Integer res = passedL.get(lang);
-    if (res == null)
-      return 0;
-    return res;
-  }
-  public void setPassedExercises(String lesson, ProgrammingLanguage lang, int val)
-  {
-    if (lesson == null)
-      lesson = Game.getInstance().getCurrentLesson().getId();
-    Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
-    if (passedL == null) {
-      passedL = new HashMap<ProgrammingLanguage, Integer>();
-      passedExercises.put(lesson, passedL);
-    }
+  public int getPassedExercises(String lesson, ProgrammingLanguage lang) { return passedExercises.getOrDefault(new LessonKey(lesson, lang), 0); }
 
-    passedL.put(lang, val);
-  }
-  public void setPossibleExercises(String lesson, ProgrammingLanguage lang, int val)
-  {
-    if (lesson == null)
-      lesson = Game.getInstance().getCurrentLesson().getId();
-    Map<ProgrammingLanguage, Integer> possibleL = possibleExercises.get(lesson);
-    if (possibleL == null) {
-      possibleL = new HashMap<ProgrammingLanguage, Integer>();
-      possibleExercises.put(lesson, possibleL);
-    }
+  public void setPossibleExercises(String lesson, ProgrammingLanguage lang, int val) { possibleExercises.put(new LessonKey(lesson, lang), val); }
 
-    possibleL.put(lang, val);
-  }
-  public Integer getPassedExercises(String lesson, ProgrammingLanguage lang)
-  {
-    if (lesson == null)
-      lesson = Game.getInstance().getCurrentLesson().getId();
-    Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
-    if (passedL == null)
-      return 0;
+  public void setPassedExercises(String lesson, ProgrammingLanguage lang, int val) { passedExercises.put(new LessonKey(lesson, lang), val); }
 
-    Integer res = passedL.get(lang);
-    if (res == null)
-      return 0;
-    return res;
-  }
-  public Set<String> getLessonsNames() { return possibleExercises.keySet(); }
+  /** The lessons for which the number of exercises is known */
+  public Set<String> getLessonsNames() { return possibleExercises.keySet().stream().map(LessonKey::lessonId).collect(Collectors.toSet()); }
 
+  /** A JSON object with the counters of that lesson, omitting the null ones */
   public String lessonSummary(String lesson)
   {
     JSONObject result = new JSONObject();
-
-    Map<ProgrammingLanguage, Integer> possibleL = possibleExercises.get(lesson);
-    for (ProgrammingLanguage pl : possibleL.keySet())
-      if (possibleL.get(pl) != 0)
-        result.put("possible" + pl.getLang(), possibleL.get(pl));
-
-    Map<ProgrammingLanguage, Integer> passedL = passedExercises.get(lesson);
-    for (ProgrammingLanguage pl : passedL.keySet())
-      if (passedL.get(pl) != 0)
-        result.put("passed" + pl.getLang(), passedL.get(pl));
-
+    for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
+      if (getPossibleExercises(lesson, pl) != 0)
+        result.put("possible" + pl.getLang(), getPossibleExercises(lesson, pl));
+      if (getPassedExercises(lesson, pl) != 0)
+        result.put("passed" + pl.getLang(), getPassedExercises(lesson, pl));
+    }
     return result.toJSONString();
   }
 
+  /** Replaces the counters of that lesson by the ones of a summary, or ignores the summary if it is invalid */
   public void lessonSummaryParse(String lesson, String JSONString)
   {
-    JSONParser parser = new JSONParser();
     JSONObject data;
     try {
-      data = (JSONObject)parser.parse(JSONString);
+      data = (JSONObject) new JSONParser().parse(JSONString);
     } catch (ParseException e) {
       System.out.println("Ignoring invalid lesson summary (parse error: " + e.getLocalizedMessage() + ").");
       return;
     }
-
-    Map<ProgrammingLanguage, Integer> possibleL = new HashMap<ProgrammingLanguage, Integer>();
-    possibleExercises.put(lesson, possibleL);
-    Map<ProgrammingLanguage, Integer> passedL = new HashMap<ProgrammingLanguage, Integer>();
-    passedExercises.put(lesson, passedL);
-
+    possibleExercises.keySet().removeIf(key -> key.lessonId().equals(lesson));
+    passedExercises.keySet().removeIf(key -> key.lessonId().equals(lesson));
     for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
-      if (data.containsKey("possible" + pl.getLang())) {
-        Long v = (Long)data.get("possible" + pl.getLang());
-        possibleL.put(pl, v.intValue());
-      }
-      if (data.containsKey("passed" + pl.getLang())) {
-        Long v = (Long)data.get("passed" + pl.getLang()); // damn, damn java casting madness
-        passedL.put(pl, v.intValue());
-      }
+      if (data.containsKey("possible" + pl.getLang()))
+        setPossibleExercises(lesson, pl, ((Long)data.get("possible" + pl.getLang())).intValue());
+      if (data.containsKey("passed" + pl.getLang()))
+        setPassedExercises(lesson, pl, ((Long)data.get("passed" + pl.getLang())).intValue());
     }
   }
 }

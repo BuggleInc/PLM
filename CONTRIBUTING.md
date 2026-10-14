@@ -398,7 +398,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
     * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, a body is stored as is,
-      reverting an exercise forgets its contents only, and the editors are told of the changes.
+      reverting an exercise forgets its contents only, the editors are told of the changes, the passed exercises are counted per
+      lesson and language, and the lesson summaries are written and parsed back (an invalid one is ignored).
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
   * *`IntegrationTests`:* the real lessons, with the test methods running in parallel.
