@@ -449,6 +449,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       and the tracker are not tested, as they need a display.
     * *`PancakeRandomizedTest`:* the Gates entity only reports the instances of the randomized worlds, also after the copy of a world.
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
+    * *`GitSessionKitTest`:* with a repository of a user in a temporary directory, `loadLesson()` restores the saved code and the
+      successes into the `SessionDB` without loading the entities, and `loadAll()` reads the lesson summaries.
     * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, a body is stored as is,
       reverting an exercise forgets its contents only, the editors are told of the changes, the passed exercises are counted per
       lesson and language, and the lesson summaries are written and parsed back (an invalid one is ignored).

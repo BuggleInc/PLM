@@ -8,6 +8,7 @@ import plm.test.git.GitUtilsTest;
 import plm.test.lang.EntityTemplateParserTest;
 import plm.test.lang.IndentationTest;
 import plm.test.model.LessonRunnerTest;
+import plm.test.session.GitSessionKitTest;
 import plm.test.session.SessionDBTest;
 import plm.test.simple.test.AllSimpleExerciseTests;
 import plm.test.universe.ApiGatingTest;
@@ -18,5 +19,5 @@ import plm.universe.bat.ValueFormatterTest;
 @Suite
 @SelectClasses({AllSimpleExerciseTests.class, GitTrackerTest.class, GitUtilsTest.class, EntityTemplateParserTest.class, IndentationTest.class,
                 ValueFormatterTest.class, ValueSerializerTest.class, ApiGatingTest.class, SessionDBTest.class, LightBotProgramTest.class,
-                PancakeRandomizedTest.class, LessonRunnerTest.class})
+                PancakeRandomizedTest.class, LessonRunnerTest.class, GitSessionKitTest.class})
 public class UnitTests {}
