@@ -66,18 +66,6 @@ public class GitSessionKit {
    */
   public void loadAll(final File path)
   {
-    if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
-      if (Game.getInstance().isDebugEnabled())
-        System.out.println("The user changed! switch to the right branch");
-      cachedUser = Game.getInstance().getUsers().getCurrentUser();
-
-      File gitDir = new File(Game.getSavingLocation() + System.getProperty("file.separator") + cachedUser.getUserUUIDasString());
-      if (!gitDir.exists()) {
-        // It should never happen since the session content should be created by the git tracker module.
-        System.out.println(Game.i18n.tr("Something weird happened. Your session was not created/reloaded properly. Please report this issue."));
-      }
-    }
-
     // Load bodies
     for (Lesson lesson : this.game.getLessons()) {
       loadLesson(path, lesson);
