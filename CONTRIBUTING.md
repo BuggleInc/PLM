@@ -332,6 +332,8 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
 - `exportSession()` (not a tracker event, called by the `ExportSession` action): commits the pending changes with an `"exported"`
   marker, then `SessionZip` writes the whole `repoDir`, `.git` included, in a zip file under a top-level entry named after the
   user UUID.
+- `importSession()` (not a tracker event either, called by the `ImportSession` action): commits the pending changes with an
+  `"imported"` marker, then merges the zip into the session, see "Moving a session between machines" below.
 - `readTip()`: same write-then-commit-then-push pattern for that UI event, that only rewrites the mission file.
 - All these events end with `commitAndPush()`: it removes the deleted files from the index, adds the others, commits with the
   message of the event and asks for a push.
@@ -681,9 +683,10 @@ the buggle map editor) because all non-functional plumbing (compilation, templat
 Loading a lesson would be slow if every exercise had to compile and run its correction entity to get its `answerWorld`.
 Universes implement world I/O to avoid this: `ExerciseTemplated.doComputeAnswer()` first loads the worlds that it can from
 `src/<worldFileName>-answerN.map` (`loadCachedAnswers()`, N being the rank of the world in the exercise), and only the missing
-or broken ones are computed by the correction entity (`computeAnswers()`), then written back for next time
- (`writeAnswerFile()`). Each world is handled on its own: one missing file does not force recomputing the others. Nothing
-invalidates these files: it is up to the tests (see above) and to the maintainers.
+or broken ones are computed by the correction entity (`computeAnswers()`, that compiles it with `compileCorrection()`, as
+`runDemo()` does), then written back for next time (`writeAnswerFile()`). Each world is handled on its own: one missing file
+ does not force recomputing the others. Nothing invalidates these files: it is up to the tests (see above) and to the
+maintainers.
 
 To support it, a universe overrides `haveIO()` (returning true), `parse(reader, path)` and `writeToFile(writer)` of `World`.
 Universes that do not override `haveIO()` get their answers computed at each load. You should implement IO in your universe
