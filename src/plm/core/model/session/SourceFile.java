@@ -2,7 +2,6 @@ package plm.core.model.session;
 
 public class SourceFile {
 
-  private final String name;
   private final String remote;
   private final String imports;
   private final int bodyIndent;
@@ -21,9 +20,8 @@ public class SourceFile {
    * @param correction pre/post wrapping the correction's body, which keeps the SOLUTION sections and the raw BEGIN/END
    *                   TEMPLATE span (or BEGIN/END SOLUTION when there is no template), markers included
    */
-  public SourceFile(String name, String remote, String imports, int bodyIndent, EntityFileSegments student, EntityFileSegments correction)
+  public SourceFile(String remote, String imports, int bodyIndent, EntityFileSegments student, EntityFileSegments correction)
   {
-    this.name       = name;
     this.remote     = remote;
     this.imports    = imports;
     this.bodyIndent = bodyIndent;
@@ -32,9 +30,7 @@ public class SourceFile {
   }
 
   /** A source file that is not templated. Lightbot uses it. */
-  public SourceFile(String name) { this(name, null, null, 0, new EntityFileSegments("", "", ""), null); }
-
-  public String getName() { return this.name; }
+  public SourceFile() { this(null, null, 0, new EntityFileSegments("", "", ""), null); }
 
   /** The body the student sees in the editor the first time */
   public String getInitialBody() { return student.body(); }

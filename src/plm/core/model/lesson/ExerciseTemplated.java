@@ -34,14 +34,14 @@ public abstract class ExerciseTemplated extends Exercise {
     if (!entityLanguages.contains(lang))
       return;
     try {
-      newSourceFromFile(lang, tabName, nameOfCorrectionEntity());
+      newSourceFromFile(lang, nameOfCorrectionEntity());
     } catch (NoSuchEntityException | PLMCompilerException e) {
       // Whatever the reason, this is a real authoring bug in the exercise, as the entity file did exist when the exercise got loaded
       throw new RuntimeException(Game.i18n.tr("Exercise {0} ({1}): the {2} entity is broken: {3}", getName(), getId(), lang, e.getMessage()), e);
     }
   }
 
-  public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException, PLMCompilerException
+  public void newSourceFromFile(ProgrammingLanguage lang, String filename) throws NoSuchEntityException, PLMCompilerException
   {
     String shownFilename = filename.replaceAll("\\.", "/") + "." + lang.getExt();
     StringBuffer sb      = null;
@@ -51,7 +51,7 @@ public abstract class ExerciseTemplated extends Exercise {
       throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replaceAll("\\.", "/"), lang.getExt()));
     }
 
-    SourceFile source = EntityTemplateParser.parse(sb.toString(), lang, name, shownFilename);
+    SourceFile source = EntityTemplateParser.parse(sb.toString(), lang, shownFilename);
     if (source.getRemote() == null)
       throw new PLMCompilerException(Game.i18n.tr("{0}: cannot guess which RemoteXxx universe this entity belongs to. Please fix your entity.", shownFilename),
                                      null);

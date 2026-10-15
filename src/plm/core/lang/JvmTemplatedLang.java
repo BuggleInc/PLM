@@ -72,8 +72,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     String jarPath                                 = null;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
     for (SourceFile sf : exo.getSourceFilesList(this)) {
-      String key = packageNameCache + "." + sf.getName();
-
       EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
       String pre                  = entityHeader(sf.getRemote(), sf.getImports()) + segments.pre();
       int offset                  = countLinesBeforeBody(pre);
@@ -82,7 +80,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
       entityCode                  = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
       entityCode                  = adaptEntityCode(entityCode);
 
-      File workspace = new File(tempFolder, key.substring(0, key.lastIndexOf('.')).replace('.', '/'));
+      File workspace = new File(tempFolder, packageNameCache.replace('.', '/'));
       // noinspection ResultOfMethodCallIgnored
       workspace.mkdirs();
 

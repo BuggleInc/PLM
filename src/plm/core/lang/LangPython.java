@@ -121,7 +121,7 @@ public class LangPython extends TemplatedRemoteLang {
         // Kill those damn \160 chars, which are non-breaking spaces
         entityCode = entityCode.replace('\u00A0', ' ');
 
-        File workspace = new File(tempFolder, runName + "_" + sf.getName().replaceAll("[^a-zA-Z0-9]", "_"));
+        File workspace = new File(tempFolder, runName + "_" + exo.getTabName().replaceAll("[^a-zA-Z0-9]", "_"));
         // noinspection ResultOfMethodCallIgnored
         workspace.mkdirs();
 

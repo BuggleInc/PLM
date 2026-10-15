@@ -51,13 +51,6 @@ public abstract class SimpleExerciseTest {
   /** Puts the code in the only source file of the exercise */
   protected void setEditorContent(String code) { exo.setEditorContent(pl, code); }
 
-  /** The source files are named after the tab, since the code of the student is saved under that name */
-  @Test public void testNewSourceRefusesANameThatIsNotTheTab()
-  {
-    IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> exo.newSource(pl, new SourceFile("Other")));
-    Assertions.assertTrue(e.getMessage().contains("SimpleExercise"), e.getMessage());
-  }
-
   @Test public void testNewSourceRefusesATabThatIsNotAnIdentifier()
   {
     Exercise invalid = new SimpleExercise(exo.getLesson(), "Invalid") {
@@ -65,7 +58,7 @@ public abstract class SimpleExerciseTest {
         tabName = "bad name";
       }
     };
-    Assertions.assertThrows(IllegalArgumentException.class, () -> invalid.newSource(pl, new SourceFile("bad name")));
+    Assertions.assertThrows(IllegalArgumentException.class, () -> invalid.newSource(pl, new SourceFile()));
   }
 
   @BeforeEach public void setUp() throws Exception { exo.reset(); }

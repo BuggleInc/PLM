@@ -55,10 +55,9 @@ public class EntityTemplateParser {
   /**
    * @param content        the raw content of the entity file, as read from disk
    * @param lang           the language this entity file is written in
-   * @param name           the name of the resulting source file
    * @param shownFilename  the human-readable file name, only used in warning/error messages
    */
-  public static SourceFile parse(String content, ProgrammingLanguage lang, String name, String shownFilename) throws PLMCompilerException
+  public static SourceFile parse(String content, ProgrammingLanguage lang, String shownFilename) throws PLMCompilerException
   {
     String[] lines             = content.split("\n");
     SplitResult split          = split(lines, shownFilename);
@@ -94,7 +93,7 @@ public class EntityTemplateParser {
 
     EntityFileSegments student        = new EntityFileSegments(head, initialContent, tail);
     EntityFileSegments correctionSegs = new EntityFileSegments(correctionHead, split.correctionBody(), correctionTail);
-    return new SourceFile(name, guessRemote(correction), imports, bodyIndent, student, correctionSegs);
+    return new SourceFile(guessRemote(correction), imports, bodyIndent, student, correctionSegs);
   }
 
   /**

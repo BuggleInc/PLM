@@ -29,7 +29,7 @@ public class EntityTemplateParserTest {
 
   private static SourceFile parse(String content, ProgrammingLanguage lang) throws PLMCompilerException
   {
-    return EntityTemplateParser.parse(content, lang, "Bar", "Foo");
+    return EntityTemplateParser.parse(content, lang, "Foo");
   }
 
   private static String lines(String... l) { return String.join("\n", l); }
