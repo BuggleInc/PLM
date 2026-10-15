@@ -419,7 +419,7 @@ public class GitTrackerTest {
     }
   }
 
-  /** The outcome that the tracker reports for the events that are not executions (switched, reverted, readTip) */
+  /** The outcome that the tracker reports for the events that are not executions (switched, readTip) */
   private RunOutcome lastOutcome(Exercise exo) throws ReflectiveOperationException
   {
     Method method = GitTracker.class.getDeclaredMethod("lastOutcome", Exercise.class);

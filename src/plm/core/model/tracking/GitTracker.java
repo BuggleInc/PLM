@@ -110,7 +110,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
 
     createFiles(lastExo, lastOutcome(lastExo));
 
-    /* The message tells about the navigation only: it carries no outcome */
+    /* The message tells about the navigation only, and so does the one of reverted(): they carry no outcome */
     JSONObject msg = new JSONObject();
     msg.put("switchto", exo.getId());
     commitAndPush(writeCommitMessage(lastExo, new RunOutcome(Game.getInstance().getProgrammingLanguage()), "switched", msg));
@@ -119,7 +119,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   @Override public void reverted(Exercise exo)
   {
     deleteFiles(exo);
-    commitAndPush(writeCommitMessage(exo, lastOutcome(exo), "reverted", new JSONObject()));
+    commitAndPush(writeCommitMessage(exo, new RunOutcome(Game.getInstance().getProgrammingLanguage()), "reverted", new JSONObject()));
   }
 
   @Override public void leave()
