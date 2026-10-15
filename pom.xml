@@ -23,7 +23,10 @@
     <main.class>plm.core.ui.ProgrammersLearningMachine</main.class>
     <!-- Tests run by default. The build/jar job skips their EXECUTION with
          -DskipTests (the jar does not need the plm.test.* suite); the separate
-         CI test job runs them under xvfb. -->
+         CI test job runs them under xvfb. The C unit tests (exec-maven-plugin
+         below) follow the same property, which is declared here so that it
+         always has a value. -->
+    <skipTests>false</skipTests>
     <sonar.organization>buggleinc</sonar.organization>
   </properties>
   
@@ -148,11 +151,9 @@
     <!-- junit/mockito: the test sources (plm.test.*) live under src/ and are
          joint-compiled with everything else, so junit/mockito must be on the
          COMPILE classpath. Scope=provided keeps them out of the shaded fat jar
-         (they are not needed at runtime). Surefire is still skipped
-         (skipTests), so the outdated tests do not run or block the build.
+         (they are not needed at runtime).
          NOTE: the old junit @RunWith(MockitoJUnitRunner) / runners.* API the
-         tests use was dropped in mockito 5.x; mockito 4.11 retains it. The
-         tests themselves are outdated (see FINAL NOTES) but at least compile. -->
+         tests use was dropped in mockito 5.x; mockito 4.11 retains it. -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -340,6 +341,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
+              <skip>${skipTests}</skip>
               <executable>gcc</executable>
               <arguments>
                 <argument>-Wall</argument>
@@ -359,6 +361,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
+              <skip>${skipTests}</skip>
               <executable>${project.build.directory}/c_test_suite</executable>
             </configuration>
           </execution>
