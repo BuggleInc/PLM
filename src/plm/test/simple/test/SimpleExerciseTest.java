@@ -113,7 +113,7 @@ public abstract class SimpleExerciseTest {
 
     exo.check(result);
 
-    if (result.outcome == RunOutcome.kind.PASS)
+    if (result.isPassed())
       Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this exercise..."));
   }
 
@@ -126,7 +126,7 @@ public abstract class SimpleExerciseTest {
 
     exo.check(result);
 
-    if (result.outcome == RunOutcome.kind.PASS) {
+    if (result.isPassed()) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + (" should not pass this "
                                                                         + "exercise..."));
     }

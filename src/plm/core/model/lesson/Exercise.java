@@ -106,7 +106,7 @@ public abstract class Exercise extends Lecture {
   public void check(RunOutcome result)
   {
     boolean pass = true;
-    if (result.outcome == RunOutcome.kind.PASS) {
+    if (result.isPassed()) {
       for (int i = 0; i < currentWorld.size(); i++) {
         currentWorld.get(i).notifyWorldUpdatesListeners();
 

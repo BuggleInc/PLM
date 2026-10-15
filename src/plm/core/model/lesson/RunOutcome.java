@@ -10,7 +10,6 @@ import plm.core.lang.ProgrammingLanguage;
 public class RunOutcome {
 
   public static enum kind { COMPILE, FAIL, PASS }
-  ;
   public kind outcome = kind.PASS;
 
   public String compilationError;
@@ -20,6 +19,9 @@ public class RunOutcome {
   public ProgrammingLanguage language;
 
   public RunOutcome(ProgrammingLanguage language) { this.language = language; }
+
+  public boolean isPassed() { return outcome == kind.PASS; }
+  public boolean isCompilationError() { return outcome == kind.COMPILE; }
 
   /* The feedback from the student in the ExecisePassedDialog */
   public String feedbackDifficulty;

@@ -42,7 +42,7 @@ public class MethodsDogHouseSourceCheckTest {
   {
     exo.setEditorContent(lang, code);
     RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, lang, new ArrayList<Future<?>>(), () -> {});
-    return outcome.outcome == RunOutcome.kind.COMPILE ? outcome.compilationError : null;
+    return outcome.isCompilationError() ? outcome.compilationError : null;
   }
 
   @ParameterizedTest @MethodSource("languages") public void testLeftCalls(ProgrammingLanguage lang) throws Exception

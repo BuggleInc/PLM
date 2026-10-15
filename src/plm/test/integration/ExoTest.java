@@ -123,14 +123,14 @@ public class ExoTest {
       throw uoe;
     }
 
-    if (outcome.outcome == RunOutcome.kind.COMPILE) {
+    if (outcome.isCompilationError()) {
       String msg = exo.getId() + ": compilation error: " + outcome.compilationError + ". Compiled file:\n" +
                    ((exo.getSourceFileCount(lang) > 0) ? (exo.getSourceFile(lang, 0).getCorrectionSegments().body()) : "none");
       System.err.println(msg);
       Assertions.fail(msg);
     }
 
-    if (outcome.outcome != RunOutcome.kind.PASS) {
+    if (!outcome.isPassed()) {
       String msg = "Test of " + exo.getId() + " failed (" + outcome.passedTests + "/" + outcome.totalTests + " passed): '" + outcome.executionError + "'";
       System.err.println(msg);
       for (int wnum = 0; wnum < exo.getWorldCount(); wnum++)

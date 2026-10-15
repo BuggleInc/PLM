@@ -26,7 +26,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
-    if (result.outcome != RunOutcome.kind.PASS) {
+    if (!result.isPassed()) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise but the outcoume is " + result.outcome.toString());
     }
   }

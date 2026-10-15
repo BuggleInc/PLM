@@ -339,7 +339,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
 
     // if exercise is done correctly
     File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
-    if (outcome.outcome == RunOutcome.kind.PASS) {
+    if (outcome.isPassed()) {
       try {
         writeFile(doneFile, "");
       } catch (IOException ex) {

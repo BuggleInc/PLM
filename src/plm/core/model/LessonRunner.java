@@ -44,7 +44,7 @@ public class LessonRunner extends Thread {
 
     if (!game.isCreativeEnabled()) {
       try {
-        if (outcome.outcome == RunOutcome.kind.PASS) {
+        if (outcome.isPassed()) {
           Game.getInstance().studentWork.setPassed(exo, outcome.language, true);
           SwingUtilities.invokeAndWait(() -> new ExercisePassedDialog(exo, outcome));
         } else {
@@ -72,7 +72,7 @@ public class LessonRunner extends Thread {
         game.setState(Game.GameState.COMPILATION_ENDED);
         game.setState(Game.GameState.EXECUTION_STARTED);
       });
-      if (outcome.outcome == RunOutcome.kind.COMPILE)
+      if (outcome.isCompilationError())
         game.setState(Game.GameState.COMPILATION_ENDED); // the callback above was not called
       game.setState(Game.GameState.EXECUTION_ENDED);
       return outcome;
