@@ -448,6 +448,11 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`GitTrackerTest`:* the files written and deleted by `GitTracker`, the `.DONE` marker, the PLM commit in the messages, and the outcome that
       it reports for the events that are not executions (the one of the last execution in the current language, or an empty one).
     * *`GitUtilsTest`:* branches, fetch, merge conflicts and push on local repositories.
+    * *`GitTrackerImportTest`:* with two trackers in temporary directories that stand for two disconnected machines, the initial
+      commit is the same on both, `importSession()` merges a zip into the local session, resolves a conflict in favor of the most
+      recent file, keeps the local identity or adopts the one of the zip (keeping the local work), and refuses to replace an existing user.
+    * *`SessionZipTest`:* a session directory survives the trip through a zip file, a zip that is not a session is refused, and so
+      is an entry that would leave the target directory.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and an

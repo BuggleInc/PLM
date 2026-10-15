@@ -30,6 +30,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
 
   private String repoUrl = Game.getProperty("plm.git.server.url"); // https://github.com/mquinson/PLM-data.git
   private File repoDir;
+  private final Users users;
 
   /** The outcome of the last execution of each exercise, reported by the events that are not executions */
   private final Map<Exercise, RunOutcome> lastOutcomes = new HashMap<>();
@@ -37,6 +38,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   public GitTracker(File path, Users users) throws IOException, GitAPIException
   {
     this.plmDir = path;
+    this.users  = users;
 
     gitUtils = new GitUtils();
 
@@ -161,8 +163,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
    */
   public void importSession(File zip, boolean adoptIdentity) throws Exception
   {
-    Game game   = Game.getInstance();
-    Users users = game.getUsers();
+    Game game = Game.getInstance();
     game.saveSession();
     gitUtils.addFiles();
     gitUtils.commit(writePLMStartedOrLeavedCommitMessage("imported"));
@@ -197,7 +198,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   /**
    * Helper methods
    */
-  private String currentUserBranch() { return "PLM" + GitUtils.sha1(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString()); }
+  private String currentUserBranch() { return "PLM" + GitUtils.sha1(users.getCurrentUser().getUserUUIDasString()); }
 
   /** Records an event: commits the files that were written or deleted, with that message, and asks for a push */
   private void commitAndPush(String commitMsg)
