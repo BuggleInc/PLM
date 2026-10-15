@@ -2,13 +2,14 @@ package lessons.welcome.loopfor;
 
 import java.awt.Color;
 import plm.core.model.Game;
+import plm.universe.PrimitiveRefusedException;
 
 public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggle {
   public LoopCourseForestEntity() { forbidMultiStep(); }
 
   @Override public void stepBackward()
   {
-    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
+    throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
   }
 
   Color[] colors = new Color[] {

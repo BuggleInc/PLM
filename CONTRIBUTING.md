@@ -241,7 +241,7 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   ordinals (and, for Python, the typed values to the strings that the primitive expects), calls the Java method of the real
   entity by reflection, and writes the serialized result back if the primitive has one. A primitive that the entity forbids is
   refused before anything else (see "API gating" below). An exception in the primitive is reported to the student with the
-  command that triggered it. The `UnsupportedOperationException` is an exception: it's reported as is because it's used when
+  command that triggered it. The `PrimitiveRefusedException` is an exception: it's reported as is because it's used when
   gating a primitive on purpose. A command that cannot be parsed fails the run and kills the process.
 - **Animation**: the primitives call `Entity.stepUI()`, which sleeps for the delay of the world, or waits for the next step in
   step mode. As this happens in the `commandReader` thread, it slows down the display but not the computations of the student
@@ -456,7 +456,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`SessionZipTest`:* a session directory survives the trip through a zip file, a zip that is not a session is refused, and so
       is an entry that would leave the target directory.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
-      refuses `forward(n)` and `backward(n)`, each with an explanatory `UnsupportedOperationException`.
+      refuses `forward(n)` and `backward(n)`, each with an explanatory `PrimitiveRefusedException`.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and an
       empty one if the execution was interrupted or failed unexpectedly, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
@@ -607,12 +607,12 @@ cases:
    ```
    An unknown primitive name makes the construction of the entity fail, so typos get caught by the exercise tests.
 2. *Refusing some calls of a primitive*: override the Java method that the primitive ends up calling, and throw an
-   `UnsupportedOperationException`. For example, `LinearHanoiEntity` refuses the direct moves between the first and the last slot:
+   `PrimitiveRefusedException`. For example, `LinearHanoiEntity` refuses the direct moves between the first and the last slot:
    ```java
    public void move(int from, int to)
    {
      if ((from == 0 && to == 2) || (from == 2 && to == 0))
-       throw new UnsupportedOperationException(Game.i18n.tr("
+       throw new PrimitiveRefusedException(Game.i18n.tr("
             Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use the intermediate slot in all moves."));
      super.move(from, to);
    }
@@ -628,7 +628,7 @@ cases:
 
 4. *Explaining a likely mistake*: declare a primitive that only refuses the call. `Left()` and `Right()` (wrong case), as well as
    `penDown()` for the buggles and `brushDown()` for the turtles, are primitives whose default method throws an
-   `UnsupportedOperationException` with the explanation. Being primitives, they exist in the glue of every language, so students get
+   `PrimitiveRefusedException` with the explanation. Being primitives, they exist in the glue of every language, so students get
    the translated message instead of a compilation error.
 
 5. *Verifying the source code*: override `Exercise.verifySource(String code)` in the exercise class (not in the entity) and throw a

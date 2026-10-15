@@ -12,8 +12,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.universe.CommandExecutor;
+import plm.universe.PrimitiveRefusedException;
 
-/** The primitives that an exercise forbids to the student code are refused with an UnsupportedOperationException explaining why. */
+/** The primitives that an exercise forbids to the student code are refused with an PrimitiveRefusedException explaining why. */
 public class ApiGatingTest {
 
   @BeforeAll static void initTranslations()
@@ -25,8 +26,8 @@ public class ApiGatingTest {
   /** Array1Entity calls forbidTeleportation(), so the executor refuses these primitives before even reading their arguments. */
   @ParameterizedTest @ValueSource(strings = {"setX", "setY", "setPos"}) public void testTeleportationIsRefused(String primitive)
   {
-    UnsupportedOperationException e =
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> CommandExecutor.command(new Array1Entity(), primitive + " []", null));
+    PrimitiveRefusedException e =
+        Assertions.assertThrows(PrimitiveRefusedException.class, () -> CommandExecutor.command(new Array1Entity(), primitive + " []", null));
     Assertions.assertTrue(e.getMessage().contains("Sorry Dave"), e.getMessage());
     Assertions.assertTrue(e.getMessage().contains("Walk to your goal instead."), e.getMessage());
   }
@@ -41,8 +42,8 @@ public class ApiGatingTest {
   @Test public void testMultiStepIsRefused()
   {
     LoopForEntity buggle                   = new LoopForEntity();
-    UnsupportedOperationException forward  = Assertions.assertThrows(UnsupportedOperationException.class, () -> buggle.forward(2));
-    UnsupportedOperationException backward = Assertions.assertThrows(UnsupportedOperationException.class, () -> buggle.backward(2));
+    PrimitiveRefusedException forward      = Assertions.assertThrows(PrimitiveRefusedException.class, () -> buggle.forward(2));
+    PrimitiveRefusedException backward     = Assertions.assertThrows(PrimitiveRefusedException.class, () -> buggle.backward(2));
     Assertions.assertTrue(forward.getMessage().contains("Use a loop instead."), forward.getMessage());
     Assertions.assertTrue(backward.getMessage().contains("Use a loop instead."), backward.getMessage());
   }

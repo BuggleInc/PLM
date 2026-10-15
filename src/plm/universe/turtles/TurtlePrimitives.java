@@ -5,6 +5,7 @@ import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.universe.EntityPrimitivesBase;
+import plm.universe.PrimitiveRefusedException;
 
 public interface TurtlePrimitives extends EntityPrimitivesBase {
 
@@ -29,24 +30,23 @@ public interface TurtlePrimitives extends EntityPrimitivesBase {
   /** Primitives that only explain to the students why their call is refused: wrong case or primitive of the buggles. */
   @Primitive default void Left(double angle)
   {
-    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
+    throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use Left() with an uppercase. Use left() instead."));
   }
 
   @Primitive default void Right(double angle)
   {
-    throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
+    throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
   }
 
   @Primitive default void brushDown()
   {
-    throw new UnsupportedOperationException(
+    throw new PrimitiveRefusedException(
         Game.i18n.tr("Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not brushes. Use penDown() instead."));
   }
 
   @Primitive default void brushUp()
   {
-    throw new UnsupportedOperationException(
-        Game.i18n.tr("Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
+    throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not brushes. Use penUp() instead."));
   }
 
   @Primitive void hide();

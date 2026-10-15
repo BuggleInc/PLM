@@ -8,6 +8,7 @@ import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.Entity;
 import plm.universe.GridWorld;
+import plm.universe.PrimitiveRefusedException;
 import plm.universe.World;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
@@ -271,7 +272,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   @Override public void forward(int count) throws BuggleWallException
   {
     if (multiStepForbidden)
-      throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
+      throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
     for (int i = 0; i < count; i++)
       stepForward();
   }
@@ -288,7 +289,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   @Override public void backward(int count) throws BuggleWallException
   {
     if (multiStepForbidden)
-      throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
+      throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
     for (int i = 0; i < count; i++)
       stepBackward();
   }

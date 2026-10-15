@@ -4,6 +4,7 @@ import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Entity;
+import plm.universe.PrimitiveRefusedException;
 import plm.universe.World;
 
 @EntityPrimitives(HanoiEntityPrimitives.class)
@@ -52,7 +53,7 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
   @Override public void cyclicMove(int src, int dst)
   {
     if ((src == 0 && dst != 1) || (src == 1 && dst != 2) || (src == 2 && dst != 0))
-      throw new UnsupportedOperationException(Game.i18n.tr(
+      throw new PrimitiveRefusedException(Game.i18n.tr(
           "Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, from 1 to 2 or from 2 to 0 only, not from {0} to {1}.", src, dst));
     regularMove(src, dst);
   }

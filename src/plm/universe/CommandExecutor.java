@@ -31,7 +31,7 @@ public final class CommandExecutor {
 
     String forbiddenReason = entity.getForbiddenPrimitives().get(opName);
     if (forbiddenReason != null)
-      throw new UnsupportedOperationException(Game.i18n.tr("Sorry Dave, I cannot let you use {0} in this exercise. {1}", opName, forbiddenReason));
+      throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use {0} in this exercise. {1}", opName, forbiddenReason));
 
     PrimitiveMethod method = PrimitiveRegistration.getMinimalPrimitiveForEntity(entity.getClass()).get(opName);
     if (method == null) {
@@ -46,7 +46,7 @@ public final class CommandExecutor {
       returnValue = method.method().invoke(entity, args);
     } catch (InvocationTargetException e) {
       // An entity refusing a call on purpose (e.g. an override forbidding some arguments) explains itself: its message is shown as is
-      if (e.getCause() instanceof UnsupportedOperationException refusal)
+      if (e.getCause() instanceof PrimitiveRefusedException refusal)
         throw refusal;
       throw new IllegalArgumentException("Calling " + method.name() + "(" + describeArguments(opArgsSegment, args) + ") raised an exception: " + e.getCause(),
                                          e);
