@@ -9,7 +9,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.Lesson;
 
 public class SessionDB {
   /** Identifies one source of an exercise that the student edits */
@@ -66,10 +68,8 @@ public class SessionDB {
   public void setPassed(Lecture exo, ProgrammingLanguage lang, boolean isPassed)
   {
     ExerciseKey key = new ExerciseKey(exo.getId(), lang);
-    if (isPassed ? passed.add(key) : passed.remove(key)) {
-      String lessonId = exo.getLesson().getId();
-      setPassedExercises(lessonId, lang, getPassedExercises(lessonId, lang) + (isPassed ? 1 : -1));
-    }
+    if (isPassed ? passed.add(key) : passed.remove(key))
+      passedExercises.merge(new LessonKey(exo.getLesson().getId(), lang), isPassed ? 1 : -1, Integer::sum);
   }
 
   public boolean getPassed(Lecture exo, ProgrammingLanguage lang) { return passed.contains(new ExerciseKey(exo.getId(), lang)); }
@@ -78,9 +78,23 @@ public class SessionDB {
 
   public int getPassedExercises(String lesson, ProgrammingLanguage lang) { return passedExercises.getOrDefault(new LessonKey(lesson, lang), 0); }
 
-  public void setPossibleExercises(String lesson, ProgrammingLanguage lang, int val) { possibleExercises.put(new LessonKey(lesson, lang), val); }
-
-  public void setPassedExercises(String lesson, ProgrammingLanguage lang, int val) { passedExercises.put(new LessonKey(lesson, lang), val); }
+  /** Counts the exercises of that lesson and the ones the student passed, in each language. Later, {@link #setPassed} keeps the count up to date. */
+  public void registerLesson(Lesson lesson)
+  {
+    for (ProgrammingLanguage lang : Game.getInstance().programmingLanguageManager.langs) {
+      int possible = 0;
+      int passed   = 0;
+      for (Lecture l : lesson.exercises()) {
+        if (l instanceof Exercise && ((Exercise)l).getProgLanguages().contains(lang)) {
+          possible++;
+          if (getPassed(l, lang))
+            passed++;
+        }
+      }
+      possibleExercises.put(new LessonKey(lesson.getId(), lang), possible);
+      passedExercises.put(new LessonKey(lesson.getId(), lang), passed);
+    }
+  }
 
   /** The lessons for which the number of exercises is known */
 
@@ -111,9 +125,9 @@ public class SessionDB {
     passedExercises.keySet().removeIf(key -> key.lessonId().equals(lesson));
     for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
       if (data.containsKey("possible" + pl.getLang()))
-        setPossibleExercises(lesson, pl, ((Long)data.get("possible" + pl.getLang())).intValue());
+        possibleExercises.put(new LessonKey(lesson, pl), ((Long)data.get("possible" + pl.getLang())).intValue());
       if (data.containsKey("passed" + pl.getLang()))
-        setPassedExercises(lesson, pl, ((Long)data.get("passed" + pl.getLang())).intValue());
+        passedExercises.put(new LessonKey(lesson, pl), ((Long)data.get("passed" + pl.getLang())).intValue());
     }
   }
 }

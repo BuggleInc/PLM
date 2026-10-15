@@ -1,12 +1,15 @@
 package plm.test.session;
 
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import plm.core.lang.ProgrammingLanguageManager;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.session.ISourceFileListener;
@@ -124,11 +127,32 @@ public class SessionDBTest {
     Assertions.assertEquals(1, db.getPassedExercises("lesson", langs.JAVA));
   }
 
+  @Test public void testRegisterLessonCountsTheExercisesOfEachLanguage()
+  {
+    Lesson lesson = Mockito.mock(Lesson.class);
+    Mockito.when(lesson.getId()).thenReturn("lesson");
+    Exercise exo1 = Mockito.mock(Exercise.class);
+    Exercise exo2 = Mockito.mock(Exercise.class);
+    for (Exercise exo : List.of(exo1, exo2))
+      Mockito.when(exo.getLesson()).thenReturn(lesson);
+    Mockito.when(exo1.getId()).thenReturn("exo1");
+    Mockito.when(exo1.getProgLanguages()).thenReturn(Set.of(langs.JAVA, langs.PYTHON));
+    Mockito.when(exo2.getId()).thenReturn("exo2");
+    Mockito.when(exo2.getProgLanguages()).thenReturn(Set.of(langs.JAVA));
+    Mockito.when(lesson.exercises()).thenReturn(List.of(exo1, exo2));
+    db.setPassed(exo1, langs.JAVA, true);
+
+    db.registerLesson(lesson);
+
+    Assertions.assertEquals(2, db.getPossibleExercises("lesson", langs.JAVA));
+    Assertions.assertEquals(1, db.getPassedExercises("lesson", langs.JAVA));
+    Assertions.assertEquals(1, db.getPossibleExercises("lesson", langs.PYTHON));
+    Assertions.assertEquals(0, db.getPassedExercises("lesson", langs.PYTHON));
+  }
+
   @Test public void testLessonSummaryRoundTrip()
   {
-    db.setPossibleExercises("lesson", langs.JAVA, 5);
-    db.setPassedExercises("lesson", langs.JAVA, 2);
-    db.setPossibleExercises("lesson", langs.PYTHON, 4);
+    db.lessonSummaryParse("lesson", "{\"possibleJava\":5,\"passedJava\":2,\"possiblePython\":4}");
 
     SessionDB other = new SessionDB();
     other.lessonSummaryParse("lesson", db.lessonSummary("lesson"));
@@ -143,7 +167,7 @@ public class SessionDBTest {
 
   @Test public void testInvalidSummaryIsIgnored()
   {
-    db.setPossibleExercises("lesson", langs.JAVA, 5);
+    db.lessonSummaryParse("lesson", "{\"possibleJava\":5}");
     db.lessonSummaryParse("lesson", "this is not json");
     Assertions.assertEquals(5, db.getPossibleExercises("lesson", langs.JAVA));
   }

@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import org.jruby.RubyProcess.Sys;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import plm.core.UserSwitchesListener;

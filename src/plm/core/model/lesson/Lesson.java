@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
@@ -66,22 +65,7 @@ public abstract class Lesson {
       e.printStackTrace();
     }
     /* Compute the lesson summary for the next time we start the PLM */
-    for (ProgrammingLanguage lang : Game.getInstance().programmingLanguageManager.langs) {
-      int possible = 0;
-      int passed   = 0;
-      for (Lecture l : lectures) {
-        if (l instanceof Exercise) {
-          Exercise exo = (Exercise)l;
-          if (exo.getProgLanguages().contains(lang)) {
-            possible++;
-            if (Game.getInstance().studentWork.getPassed(l, lang))
-              passed++;
-          }
-        }
-      }
-      Game.getInstance().studentWork.setPassedExercises(id, lang, passed);
-      Game.getInstance().studentWork.setPossibleExercises(id, lang, possible);
-    }
+    Game.getInstance().studentWork.registerLesson(this);
   }
   public String getId() { return id; }
 
