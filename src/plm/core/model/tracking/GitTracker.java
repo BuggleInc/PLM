@@ -131,6 +131,7 @@ public class GitTracker implements UserSwitchesListener {
     // push to the remote repository
     String commitMsg = writePLMStartedOrLeavedCommitMessage("leaved");
 
+    gitUtils.cancelPendingPush();
     try {
       gitUtils.addFiles();
       gitUtils.commit(commitMsg);

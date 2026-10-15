@@ -53,7 +53,10 @@ public class GitUtils {
   private String repoName     = Game.getProperty("plm.git.server.username");
   private String repoPassword = Game.getProperty("plm.git.server.password");
 
-  private static boolean currentlyPushing = false;
+  /** The delayed push scheduled by maybePushToUserBranch(), or null if there is none. Guarded by GitUtils.class */
+  private static SwingWorker<Void, Void> pendingPush = null;
+  /** At most one push at a time, whoever asks for it */
+  private static final Object pushLock = new Object();
 
   public GitUtils() { super(); }
 
@@ -255,35 +258,39 @@ public class GitUtils {
       return;
     }
 
-    synchronized (GitUtils.class) {
-      currentlyPushing = true;
-    }
-
     // credentials
     CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
-    // push
-    if (pushChanges(userBranchHash, progress, cp)) {
-      System.out.println(Game.i18n.tr("Your session has been successfully saved into the clouds."));
-    } else {
-      // An error occurred while pushing
-      System.out.println(Game.i18n.tr("Fetching the server's last version..."));
-      try {
-        // Try to synchronize with the remote branch before pushing again
-        if (fetchBranchFromRemoteBranch(userBranchHash)) {
-          mergeIntoLocalBranch("refs/remotes/origin/" + userBranchHash);
+    synchronized (pushLock) {
+      if (pushChanges(userBranchHash, progress, cp)) {
+        System.out.println(Game.i18n.tr("Your session has been successfully saved into the clouds."));
+      } else {
+        // An error occurred while pushing
+        System.out.println(Game.i18n.tr("Fetching the server's last version..."));
+        try {
+          // Try to synchronize with the remote branch before pushing again
+          if (fetchBranchFromRemoteBranch(userBranchHash)) {
+            mergeIntoLocalBranch("refs/remotes/origin/" + userBranchHash);
+          }
+          if (!pushChanges(userBranchHash, progress, cp)) {
+            System.out.println(Game.i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
+          }
+        } catch (Exception e) {
+          System.out.println(Game.i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
+          e.printStackTrace();
         }
-        if (!pushChanges(userBranchHash, progress, cp)) {
-          System.out.println(Game.i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
-        }
-      } catch (Exception e) {
-        System.out.println(Game.i18n.tr("A bug occurred while synchronizing your data with the server, please report the following error:"));
-        e.printStackTrace();
       }
     }
+  }
 
+  /** Forgets the delayed push, if any, so that it does not run on a disposed repository. A push already running is not interrupted. */
+  public void cancelPendingPush()
+  {
     synchronized (GitUtils.class) {
-      currentlyPushing = false;
+      if (pendingPush != null) {
+        pendingPush.cancel(true);
+        pendingPush = null;
+      }
     }
   }
 
@@ -311,27 +318,29 @@ public class GitUtils {
     }
 
     synchronized (GitUtils.class) {
-      if (currentlyPushing) // Don't try to push if we're already pushing (don't overload github)
+      if (pendingPush != null) // Don't schedule another push if one is waiting (don't overload github)
         return;
-      currentlyPushing = true;
-    }
+      pendingPush = new SwingWorker<Void, Void>() {
+        @Override protected Void doInBackground()
+        {
+          // Reduce the load on the github servers by not pushing more often that once every 20 minutes
+          try {
+            Thread.sleep(1 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
+          } catch (InterruptedException e1) {
+            return null; // cancelled by cancelPendingPush(): the client is quitting
+          }
 
-    new SwingWorker<Void, Integer>() {
-      @Override protected Void doInBackground()
-      {
-        // Reduce the load on the github servers by not pushing more often that once every 20 minutes
-        try {
-          Thread.sleep(1 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
-        } catch (InterruptedException e1) {
-          /* Ok, that's fine, what ever */
+          // Allow the next request to be scheduled, and push everything committed so far
+          synchronized (GitUtils.class) {
+            pendingPush = null;
+          }
+          forcefullyPushToUserBranch(userBranchHash, progress);
+
+          return null;
         }
-
-        // Do it now, and allow next request to occur
-        forcefullyPushToUserBranch(userBranchHash, progress);
-
-        return null;
-      }
-    }.execute();
+      };
+      pendingPush.execute();
+    }
   }
 
   // Helper methods
