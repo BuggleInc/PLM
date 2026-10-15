@@ -98,24 +98,27 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     lastOutcomes.put(exo, outcome);
     createFiles(exo, outcome);
     checkSuccess(exo, outcome);
-    commitAndPush(writeCommitMessage(exo, outcome, null, "executed", new JSONObject()));
+    commitAndPush(writeCommitMessage(exo, outcome, "executed", new JSONObject()));
   }
 
-  @Override public void switched(Exercise exo)
+  @Override @SuppressWarnings("unchecked") public void switched(Exercise exo)
   {
     Exercise lastExo = (Exercise)Game.getInstance().getLastExercise();
     if (lastExo == null)
       return;
 
-    RunOutcome outcome = lastOutcome(lastExo);
-    createFiles(lastExo, outcome);
-    commitAndPush(writeCommitMessage(lastExo, outcome, exo, "switched", new JSONObject()));
+    createFiles(lastExo, lastOutcome(lastExo));
+
+    /* The message tells about the navigation only: it carries no outcome */
+    JSONObject msg = new JSONObject();
+    msg.put("switchto", exo.getId());
+    commitAndPush(writeCommitMessage(lastExo, new RunOutcome(Game.getInstance().getProgrammingLanguage()), "switched", msg));
   }
 
   @Override public void reverted(Exercise exo)
   {
     deleteFiles(exo);
-    commitAndPush(writeCommitMessage(exo, lastOutcome(exo), null, "reverted", new JSONObject()));
+    commitAndPush(writeCommitMessage(exo, lastOutcome(exo), "reverted", new JSONObject()));
   }
 
   @Override public void leave()
@@ -154,7 +157,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     }
   }
 
-  @SuppressWarnings("unchecked") private String writeCommitMessage(Exercise exoFrom, RunOutcome outcome, Exercise exoTo, String evt_type, JSONObject logmsg)
+  @SuppressWarnings("unchecked") private String writeCommitMessage(Exercise exoFrom, RunOutcome outcome, String evt_type, JSONObject logmsg)
   {
     // Retrieve appropriate parameters regarding the current exercise
     logmsg.put("exo", exoFrom.getId());
@@ -193,9 +196,6 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
       logmsg.put("exoInterest", outcome.feedbackInterest);
     if (outcome.feedback != null)
       logmsg.put("exoComment", outcome.feedback);
-
-    if (exoTo != null)
-      logmsg.put("switchto", exoTo.getId());
 
     // Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
     return "{\"kind\":\"" + evt_type + "\"," + logmsg.toString().substring(1);
@@ -316,6 +316,6 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
 
     JSONObject msg = new JSONObject();
     msg.put("id", id);
-    commitAndPush(writeCommitMessage(lastExo, lastOutcome(lastExo), null, "readTip", msg));
+    commitAndPush(writeCommitMessage(lastExo, lastOutcome(lastExo), "readTip", msg));
   }
 }

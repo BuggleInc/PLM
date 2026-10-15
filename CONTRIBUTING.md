@@ -327,9 +327,9 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
   - It then creates or deletes a `<id>.<ext>.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
     commit message, see below) and asks for a push.
 - `switched()`/`reverted()`: same idea for "the student navigated away from an exercise" (re-writes its files before committing)
-  and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitTracker` reports
+  and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitTracker` uses
   the outcome that it remembered (`lastOutcomes`) from the last execution of that exercise, or an empty one if it was not
-  executed in the current language since.
+  executed in the current language since. The `"switched"` message only tells where the student goes: it carries no outcome.
 - `readTip()`: same write-then-commit-then-push pattern for that UI event, that only rewrites the mission file.
 - All these events end with `commitAndPush()`: it removes the deleted files from the index, adds the others, commits with the
   message of the event and asks for a push.
@@ -353,7 +353,7 @@ Here are some the messages of a possible commit history.
 
 - She then switches from the Environment exercise (that was previously passed) to the Instruction exercise:
 
-    {"kind":"switched","switchto":"welcome.Instructions","lang":"Java","exo":"welcome.Environment","outcome":"pass"}
+    {"kind":"switched","switchto":"welcome.Instructions","lang":"Java","exo":"welcome.Environment"}
 
 - The first attempt is a compile error. The faulty code is added to the commit as `welcome.Instructions.java.code` while error
   message (the possibly localized compilation error message) is saved as `welcome.Instructions.java.error`.
@@ -378,14 +378,14 @@ Here are some the messages of a possible commit history.
 
 - The student then asks for a hint in this exercise, reverts their code, and later leaves:
 
-    {"kind":"switched","exo":"welcome.Instructions","lang":"Java","outcome":"pass","switchto":"sort.pancake.GatesPancake"}
+    {"kind":"switched","exo":"welcome.Instructions","lang":"Java","switchto":"sort.pancake.GatesPancake"}
     {"kind":"readTip","id":"2","exo":"sort.pancake.GatesPancake","lang":"Java"}
     {"kind":"reverted","exo":"sort.pancake.GatesPancake","lang":"Java"}
     {"kind":"leaved","plm":"2.9.3 (20210630), commit unknown","java":"21.0.12.1 (VM: OpenJDK 64-Bit Server VM; version: 21.0.12.1+1-1-deb13u1-Debian)","os":"Linux (version: 6.10.3-amd64; arch: amd64)"}
 
 Since each commit also contains the code of the student in the files that it changes, the history of the repository tells how many
 attempts were needed to pass an exercise and with which errors, how much time went by between them (the dates of the commits), which
-exercises were abandoned (a `"switched"` event whose outcome is not `"pass"`), where the hints are read, where the students revert
+exercises were abandoned (those attempted whose last `"executed"` event is not `"pass"`, whether or not the student switched away from them), where the hints are read, where the students revert
 their code, and how they rate the exercises. The randomized worlds and the commit of the PLM itself make it possible to replay an
 execution afterward.
 
