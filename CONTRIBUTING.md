@@ -264,7 +264,7 @@ Persisting the student's progression on disk and in the cloud relies on three ma
 
 - **Session DB:** The session is the in-memory database of the student's progress. It never touches the disk nor the network.
 - **Session kits:** The kits save and restore the SessionDB. The `GitSessionKit` reads the session from a local git repository
-  at startup, while the `ZipSessionKit` can export/import the current session to/from a zip file.
+  at startup. A session can also be exported to a zip file and imported from it (see `GitTracker.exportSession()`).
 - **Progress trackers:** The trackers react to the events such as a run attempt or switching exercises. The main tracker is
   `GitTracker`, that commit the data to a local git repository that is optionally synchronized online. Other trackers are
   planned, e.g. to give the teacher an overview of the class progress and tell her who needs help, or a *king of hill* mode
@@ -293,8 +293,6 @@ holds three things:
   `GitSessionKit.storeAll()` writes it from `lessonSummary()`, as part of `Game.saveSession()` (before each run, when switching
   exercise and on exit), and `loadAll()` reads every `*.summary` found on disk at startup -- the list of lessons is empty at that
   point -- into `lessonSummaryParse()`, which replaces the counters of that lesson (an invalid summary is ignored).
-- `getLessonsNames()` lists the lessons whose summary is known, but only `ZipSessionKit` uses it, for the export and import of sessions
-  from the GUI: `Game` itself instantiates `GitSessionKit`.
 
 ### Progress trackers
 
@@ -408,23 +406,25 @@ is a deliberate no-op ("Everything's done by tracker"), since `GitTracker` alrea
 relevant event. `GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see
 above; not something `GitTracker` writes).
 
-`ZipSessionKit` is the other implementation of `ISessionKit`. It is not used automatically, but serves the `ExportSession` and
-`ImportSession` actions of the GUI, which ask for a directory and call `storeAll()` or `loadAll()` on it. It has no history, nor
-any link with git. For each lesson, `storeLesson()` writes a `plm-<lessonId>.zip` file (that is deleted if nothing was written)
-holding:
-- `README`: a short explanation of what this file is.
-- `<exerciseId>/DONE.<ext>`: an empty marker for each exercise and language that the student passed.
-- `<Language>/<exerciseId>/<sourceName>`: the editor content of the sources that were loaded (the others were never modified).
-- `currently_selected_exercise`: the canonical class name of the current exercise of the lesson.
+### Moving a session between machines
 
-`storeAll()` also writes an `overview.zip` file with a single `passed` entry: a JSON object `{lessonId: {Language: {"possible": n,
-"passed": m}}}` with the lesson counters of the `SessionDB`, which plays the role of the `.summary` files of `GitSessionKit`. On
-import, `loadAll()` calls `loadLesson()` for each lesson, which marks the passed exercises in the `SessionDB`, restores the code in it
-and selects the saved exercise again, then reads the overview into the lesson counters. It also reads the former layout in which the
-language is not in the path of the code (`<exerciseId>/<sourceName>`). For an exercise whose source is not loaded yet, the saved code is
-looked for under the name of the tab, but restoring it loads the source file, which parses the entity.
+The `ExportSession` and `ImportSession` actions of the GUI move a session between machines that are never connected, without
+losing the history. The zip file holds the whole local git repository of the user, `.git` included, under a top-level entry
+named after her UUID (`SessionZip`). The initial commit is the same on all machines (fixed author, date and message), so that
+the histories of a same user always have a common ancestor.
 
-Both methods are in a model class but they show dialogs when they fail to write or read a file (there is a FIXME about it).
+`GitTracker.importSession()` first saves and commits the current session. Then it fetches the user branch of the zip into
+`refs/imported/` and merges it with `GitUtils.mergeIntoLocalBranch()`, that is also used for the synchronization with the
+server: the conflicts are resolved file by file, keeping the side whose last commit on that file is more recent. Which identity
+survives depends on the user UUID of the zip:
+- Same UUID as the current user: the zip is merged into the current session.
+- Different UUID, and the current session holds no code (`isSessionEmpty()`): the user of the zip replaces the current one.
+- Different UUID, and the current session holds code: the user chooses in a dialog. Keeping her identity merges the zip into
+  the current session. Taking the identity of the zip moves its repository into the sessions directory as a new user, merges
+  the previous session into it and removes the previous user.
+
+A file deleted on one side only (a revert) is restored by the merge if the other side never saw the deletion, as the
+history of the zip is then older than it.
 
 ## How tests work
 

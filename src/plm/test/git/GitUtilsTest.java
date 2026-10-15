@@ -221,11 +221,11 @@ public class GitUtilsTest {
       Assertions.fail("Should have been able to fetch remote branch...");
     }
     try {
-      gitUtils.mergeRemoteIntoLocalBranch(userBranch);
+      gitUtils.mergeIntoLocalBranch("refs/remotes/origin/" + userBranch);
     } catch (Exception e) {
       System.err.println("An error occurred while merging the branches...");
       e.printStackTrace();
-      Assertions.fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
+      Assertions.fail("No exception should have been thrown by mergeIntoLocalBranch...");
     }
 
     RevCommit commit = git.log().call().iterator().next();
@@ -260,11 +260,11 @@ public class GitUtilsTest {
       Assertions.fail("Should have been able to fetch remote branch...");
     }
     try {
-      gitUtils.mergeRemoteIntoLocalBranch(userBranch);
+      gitUtils.mergeIntoLocalBranch("refs/remotes/origin/" + userBranch);
     } catch (Exception e) {
       System.err.println("An error occurred while merging the branches...");
       e.printStackTrace();
-      Assertions.fail("No exception should have been thrown by mergeRemoteIntoLocalBranch...");
+      Assertions.fail("No exception should have been thrown by mergeIntoLocalBranch...");
     }
 
     String path1 = localRepoDirectory + System.getProperty("file.separator") + "test1";

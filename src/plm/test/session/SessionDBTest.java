@@ -1,7 +1,6 @@
 package plm.test.session;
 
 import java.util.Locale;
-import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -140,7 +139,6 @@ public class SessionDBTest {
     Assertions.assertEquals(2, other.getPassedExercises("lesson", langs.JAVA));
     Assertions.assertEquals(4, other.getPossibleExercises("lesson", langs.PYTHON));
     Assertions.assertEquals(0, other.getPassedExercises("lesson", langs.PYTHON));
-    Assertions.assertEquals(Set.of("lesson"), other.getLessonsNames());
   }
 
   @Test public void testSummaryOfUnknownLessonIsEmpty() { Assertions.assertEquals("{}", db.lessonSummary("unknown")); }

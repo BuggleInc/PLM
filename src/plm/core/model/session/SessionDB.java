@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -87,7 +86,6 @@ public class SessionDB {
   public void setPassedExercises(String lesson, ProgrammingLanguage lang, int val) { passedExercises.put(new LessonKey(lesson, lang), val); }
 
   /** The lessons for which the number of exercises is known */
-  public Set<String> getLessonsNames() { return possibleExercises.keySet().stream().map(LessonKey::lessonId).collect(Collectors.toSet()); }
 
   /** A JSON object with the counters of that lesson, omitting the null ones */
   public String lessonSummary(String lesson)

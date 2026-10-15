@@ -75,7 +75,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
 
       // try to get the branch as stored remotely
       if (gitUtils.fetchBranchFromRemoteBranch(userBranch)) {
-        gitUtils.mergeRemoteIntoLocalBranch(userBranch);
+        gitUtils.mergeIntoLocalBranch("refs/remotes/origin/" + userBranch);
         System.out.println(Game.i18n.tr("Your session {0} was automatically retrieved from the servers.", userBranch));
       } else {
         // If no branch can be found remotely, create a new one.
@@ -148,6 +148,50 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     gitUtils.addFiles();
     gitUtils.commit(writePLMStartedOrLeavedCommitMessage("exported"));
     SessionZip.zip(repoDir, zip);
+  }
+
+  /** True if the current session holds no code yet */
+  public boolean isSessionEmpty() { return repoDir.list((dir, name) -> name.endsWith(".code")).length == 0; }
+
+  /**
+   * Merges the session of a zip file written by exportSession() into the current one.
+   *
+   * @param adoptIdentity if the user of the zip becomes the current user, replacing the previous one. Otherwise, the
+   *                      session of the zip is merged into the one of the current user.
+   */
+  public void importSession(File zip, boolean adoptIdentity) throws Exception
+  {
+    Game game   = Game.getInstance();
+    Users users = game.getUsers();
+    game.saveSession();
+    gitUtils.addFiles();
+    gitUtils.commit(writePLMStartedOrLeavedCommitMessage("imported"));
+
+    String zipUUID   = SessionZip.userUUID(zip);
+    String zipBranch = "PLM" + GitUtils.sha1(zipUUID);
+    File tmpDir      = Files.createTempDirectory(plmDir.toPath(), "import-").toFile(); // on the same file system as the sessions, to move from it
+    try {
+      SessionZip.unzip(zip, tmpDir);
+      File zipRepoDir = new File(tmpDir, zipUUID);
+
+      if (!adoptIdentity) {
+        gitUtils.mergeBranchFromRepository(zipRepoDir, zipBranch);
+      } else {
+        User previous         = users.getCurrentUser();
+        File previousDir      = repoDir;
+        String previousBranch = currentUserBranch();
+        boolean keepPrevious  = !isSessionEmpty();
+
+        Files.move(zipRepoDir.toPath(), new File(plmDir, zipUUID).toPath()); // fails if that session already exists here
+        users.addUser(previous.getUsername(), zipUUID);                      // switches to it: repoDir and gitUtils now are the ones of the zip
+        if (keepPrevious)
+          gitUtils.mergeBranchFromRepository(previousDir, previousBranch);
+        users.removeUser(previous);
+      }
+    } finally {
+      FileUtils.deleteRecursive(tmpDir);
+    }
+    game.loadSession();
   }
 
   /**

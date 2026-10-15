@@ -131,7 +131,15 @@ public class GitUtils {
     return success;
   }
 
-  public void mergeRemoteIntoLocalBranch(String userBranchHash) throws Exception
+  /** Merges the branch of another PLM repository into the current branch */
+  public void mergeBranchFromRepository(File otherRepoDir, String userBranchHash) throws Exception
+  {
+    git.fetch().setRemote(otherRepoDir.getAbsolutePath()).setRefSpecs(new RefSpec("+refs/heads/" + userBranchHash + ":refs/imported/" + userBranchHash)).call();
+    mergeIntoLocalBranch("refs/imported/" + userBranchHash);
+  }
+
+  /** Merges that ref into the current branch. On conflict, each file gets the version of the side that touched it last */
+  public void mergeIntoLocalBranch(String remoteRef) throws Exception
   {
     try {
       // jgit 6.x: Repository.getRef(String) was removed; exactRef() is
@@ -140,7 +148,7 @@ public class GitUtils {
                             .setCommit(true)
                             .setFastForward(MergeCommand.FastForwardMode.FF)
                             .setStrategy(MergeStrategy.RECURSIVE)
-                            .include(git.getRepository().exactRef("refs/remotes/origin/" + userBranchHash))
+                            .include(git.getRepository().exactRef(remoteRef))
                             .call();
 
       if (res.getMergeStatus() == MergeResult.MergeStatus.FAST_FORWARD) {
@@ -151,7 +159,7 @@ public class GitUtils {
         System.out.println(Game.i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
         Map<String, int[][]> allConflicts = res.getConflicts();
         for (String path : allConflicts.keySet()) {
-          ObjectId remote = git.getRepository().resolve("origin/" + userBranchHash);
+          ObjectId remote = git.getRepository().resolve(remoteRef);
 
           RevCommit lastCommitLocal  = git.log().addPath(path).setMaxCount(1).call().iterator().next();
           RevCommit lastCommitRemote = git.log().add(remote).addPath(path).setMaxCount(1).call().iterator().next();
@@ -263,7 +271,7 @@ public class GitUtils {
       try {
         // Try to synchronize with the remote branch before pushing again
         if (fetchBranchFromRemoteBranch(userBranchHash)) {
-          mergeRemoteIntoLocalBranch(userBranchHash);
+          mergeIntoLocalBranch("refs/remotes/origin/" + userBranchHash);
         }
         if (!pushChanges(userBranchHash, progress, cp)) {
           System.out.println(Game.i18n.tr("Fetching the data's last version didn't solve the issue, please report this bug."));
