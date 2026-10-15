@@ -134,8 +134,6 @@ What lies within REMOTE but outside the templated region is the `head` and the `
 Python sees it as a new block, even if the student left indented blank lines at the end of the body. 
 
 The resulting `SourceFile` holds:
-- `name`: the exercise's `tabName`, i.e. the label of the editor tab and the key of the saved code. The generated class is always
-  called `Entity`, whatever this name is.
 - `remote`: the name of the `RemoteXxx` universe, guessed by `guessRemote()` from the entity file content.
 - `imports`: the content of the `IMPORT` sections.
 - `bodyIndent`: the indentation shared by the whole templated region. Python uses it to reindent the editor's content before
@@ -150,7 +148,9 @@ The resulting `SourceFile` holds:
   sections of head and tail. `correction.body` is the raw span (markers included) from `BEGIN TEMPLATE` to `END TEMPLATE`, or
   from `BEGIN SOLUTION` to `END SOLUTION` when no template is given.
 
-A SourceFile is immutable after its creation. What the student wrote for a given SourceFile is stored in the `SessionDB` (see
+A SourceFile is immutable after its creation. There is one per exercise and language, and its editor tab is labeled with the
+exercise's `tabName`, which must be an identifier since it names the files given to the compilers (the generated class is always
+called `Entity`, whatever this name is). What the student wrote for a given exercise and language is stored in the `SessionDB` (see
 "Saving the student's work" below), and accessed through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. The
 initial content of the editor content is the `student.body` field, publicly available from `SourceFile.getInitialBody()`.
 
@@ -276,37 +276,38 @@ The `SessionDB` (`plm.core.model.session`, one instance per PLM, `Game.studentWo
 progress, which the UI queries all the time (the progress icons of `ResourcesCache`, the bars of `ChooseLessonDialog`). It never
 touches the disk nor the network: the session kits fill it in while the progress trackers persist it automatically on disk. It
 holds three things:
-- The *editor contents*: what the student wrote in each source, by exercise, language and source name. It is accessed with
-  `setBody()` and `getBody()`, through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. A body is absent until
-  the student changes the initial content, and `Exercise.getEditorContent()` uses `SourceFile.getInitialBody()` when the body is
-  absent in the DB. The editors register with `setBodyListener()` to be told of every change, whoever made it. `removeBodies()`
-  forgets everything the student wrote for an exercise: this is the revert action. The bodies are concurrent maps because the
-  run thread reads them while the Swing event thread writes them.
+- The *editor contents*: what the student wrote, by exercise and language. It is accessed with `setBody()` and `getBody()`,
+  through `Exercise.getEditorContent()` and `Exercise.setEditorContent()`. A body is absent until the student changes the
+  initial content, and `Exercise.getEditorContent()` uses `SourceFile.getInitialBody()` when the body is absent in the DB. The
+  editors register with `setBodyListener()` to be told of every change, whoever made it. `removeBodies()` forgets everything the
+  student wrote for an exercise: this is the revert action. The bodies are concurrent maps because the run thread reads them
+  while the Swing event thread writes them.
 - The *pass state* of each exercise in each language (`setPassed()`/`getPassed()`, false for an exercise never seen).
   `GitSessionKit.loadLesson()` fills it from the `.DONE` files when a lesson loads, `LessonRunner` sets it when the exercise
   passes, and the revert action and `Game.clearSession()` set it back to false.
-- The *lesson counters* (`possibleExercises` and `passedExercises`, by lesson id and language): how many exercises the lesson has
-  in that language, and how many of them are passed. `setPassed()` keeps the passed counter in sync, and `Lesson` recomputes
-  both from scratch once its exercises are loaded. They exist because `ChooseLessonDialog` needs the progress of the lessons
-  that are not loaded, and loading a lesson takes seconds. Hence they survive between sessions as one `<lessonId>.summary`
-  file per lesson in the user's repository, a tiny JSON object (`possibleJava`, `passedScala`... keys, null values omitted):
-  `GitSessionKit.storeAll()` writes it from `lessonSummary()`, as part of `Game.saveSession()` (before each run, when switching
-  exercise and on exit), and `loadAll()` reads every `*.summary` found on disk at startup -- the list of lessons is empty at that
-  point -- into `lessonSummaryParse()`, which replaces the counters of that lesson (an invalid summary is ignored).
+- The *lesson counters* (`possibleExercises` and `passedExercises`, by lesson id and language): how many exercises the lesson
+  has in that language, and how many of them are passed. `setPassed()` keeps the passed counter in sync, and `registerLesson()`,
+  called by the `Lesson` constructor once its exercises are loaded, recomputes both from scratch: `SessionDB` is the owner of
+  these counters. They exist because `ChooseLessonDialog` needs the progress of the lessons that are not loaded, and loading a
+  lesson takes seconds. Hence they survive between sessions as one `<lessonId>.summary` file per lesson in the user's
+  repository, a tiny JSON object (`possibleJava`, `passedScala`... keys, null values omitted): `GitSessionKit.storeAll()` writes
+  it from `lessonSummary()`, as part of `Game.saveSession()` (before each run, when switching exercise and on exit), and
+  `loadAll()` reads every `*.summary` found on disk at startup -- the list of lessons is empty at that point -- into
+  `lessonSummaryParse()`, which replaces the counters of that lesson (an invalid summary is ignored).
 
 ### Progress trackers
 
-The progress trackers are driven by `Game.progressTrackerListeners` (`plm.core.model.tracking.ProgressTrackerListener`, fired
-from `Game.fireProgressTracker()`/`fireReadTipTracker()` and from `Game.fireCurrentExerciseChanged()`/`worldHasChanged()`)
-whenever the student runs an exercise (`LessonRunner`, after showing the pass/fail dialog), switches exercise, reverts their
-code, or reads a hint.
+The progress tracking is driven by `Game.gitTracker`, called from `Game.fireProgressTracker()`/`fireReadTipTracker()` and from
+`Game.fireCurrentExerciseChanged()`/`worldHasChanged()` whenever the student runs an exercise (`LessonRunner`, after showing the
+pass/fail dialog), switches exercise, reverts their code, or reads a hint.
 
-The main tracker is `GitTracker`: one per running PLM instance, constructed once in `Game`'s constructor and registered as a
-`UserSwitchesListener` too. For each PLM user, it keeps one local git repository under `SAVE_DIR/<userUUID>` (using `GitUtils`,
-a thin wrapper around JGit), on a branch named `"PLM" + sha1(userUUID)`, and mirrors it to a shared server repo
-(`plm.git.server.url`) -- this is both the per-student backup/sync mechanism and the anonymized activity log the PLM maintainers
-use to see how students actually work through the exercises. Pushing is entirely opt-in, gated by the `plm.git.track.user`
-property (the student is asked once, see `StartExecution`); everything still happens on the *local* repo either way.
+The tracker is `GitTracker`: one per running PLM instance, constructed once in `Game`'s constructor (so it is never null: tests
+replace it with `Game.setGitTracker()` and a mock to disable the tracking) and registered as a `UserSwitchesListener` too. For
+each PLM user, it keeps one local git repository under `SAVE_DIR/<userUUID>` (using `GitUtils`, a thin wrapper around JGit), on
+a branch named `"PLM" + sha1(userUUID)`, and mirrors it to a shared server repo (`plm.git.server.url`) -- this is both the
+per-student backup/sync mechanism and the anonymized activity log the PLM maintainers use to see how students actually work
+through the exercises. Pushing is entirely opt-in, gated by the `plm.git.track.user` property (the student is asked once, see
+`StartExecution`); everything still happens on the *local* repo either way.
 
 Here is a list of the existing tracker events, and how `GitTracker` handle them:
 - `userHasChanged()` (called once at startup and on every user switch): creates/reuses `repoDir`, sets the git remote config,
@@ -326,8 +327,8 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
   - It then creates or deletes a `<id>.<ext>.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
     commit message, see below) and asks for a push.
 - `switched()`/`reverted()`: same idea for "the student navigated away from an exercise" (re-writes its files before committing)
-  and "the student clicked revert" (deletes that exercise's files instead). Their messages carry no outcome: `"switched"` only
-  tells where the student goes, and `"reverted"` that the exercise was reset. The files are commited, either the current state
+  and "the student clicked revert" (deletes that exercise's files instead). Their messages report an empty outcome (`fail`, as nothing
+  ran): `"switched"` only tells where the student goes, and `"reverted"` that the exercise was reset. The files are commited, either the current state
   when leaving with `"switched"` or an empty file with `"reverted"`.
 - `exportSession()` (not a tracker event, called by the `ExportSession` action): commits the pending changes with an `"exported"`
   marker, then `SessionZip` writes the whole `repoDir`, `.git` included, in a zip file under a top-level entry named after the
@@ -337,7 +338,7 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
 - `readTip()`: same write-then-commit-then-push pattern for that UI event, that only rewrites the mission file.
 - All these events end with `commitAndPush()`: it removes the deleted files from the index, adds the others, commits with the
   message of the event and asks for a push.
-- `leave()` (PLM shutdown): does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
+- `leave()` (PLM shutdown): cancels the delayed push, then does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
   rate-limiting, since this is the last chance to sync) then disposes the JGit handle.
 
 Commit messages are hand-built JSON blobs (`writeCommitMessage()`/`writePLMStartedOrLeavedCommitMessage()`) carrying the
@@ -394,9 +395,11 @@ their code, and how they rate the exercises. The randomized worlds and the commi
 execution afterward.
 
 Pushing is rate-limited (`GitUtils.maybePushToUserBranch()`, see its own comment for the incident that motivated it): at most
-one push in flight at a time (a static `currentlyPushing` flag) and a fixed delay (currently 1 minute) before it actually
-pushes, run off the Swing Swing event thread via a `SwingWorker`; `forcefullyPushToUserBranch()` used by `leave()` skips
-that delay. A push that's rejected retries once after fetching and merging the remote branch first.
+one delayed push is scheduled at a time (`GitUtils.pendingPush`), with a fixed delay (currently 1 minute) before it actually
+pushes, run off the Swing event thread via a `SwingWorker`. The pushes themselves are serialized by `GitUtils.pushLock`, whoever
+asks for them. `forcefullyPushToUserBranch()` used by `leave()` skips the delay but waits for the push already running, and
+`leave()` first cancels the delayed one with `cancelPendingPush()`, so that it never runs on a disposed repository. A push
+that's rejected retries once after fetching and merging the remote branch first.
 
 ### Session kits
 
@@ -457,16 +460,16 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       is an entry that would leave the target directory.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `PrimitiveRefusedException`.
-    * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and an
-      empty one if the execution was interrupted or failed unexpectedly, going through the expected states of the game. The dialogs
+    * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
+      failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
     * *`PancakeRandomizedTest`:* the Gates entity only reports the instances of the randomized worlds, also after the copy of a world.
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
     * *`GitSessionKitTest`:* with a repository of a user in a temporary directory, `loadLesson()` restores the saved code and the
-      successes into the `SessionDB` without loading the entities, and `loadAll()` reads the lesson summaries.
-    * *`SessionDBTest`:* the editor contents stored by exercise, language and source name do not interfere, a body is stored as is,
+      successes into the `SessionDB` without loading the entities (and without `loadAll()` having run), and `loadAll()` reads the lesson summaries.
+    * *`SessionDBTest`:* the editor contents stored by exercise and language do not interfere, a body is stored as is,
       reverting an exercise forgets its contents only, the editors are told of the changes, the passed exercises are counted per
-      lesson and language, and the lesson summaries are written and parsed back (an invalid one is ignored).
+      lesson and language (`registerLesson()` included), and the lesson summaries are written and parsed back (an invalid one is ignored).
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
   * *`IntegrationTests`:* the real lessons, with the test methods running in parallel.
