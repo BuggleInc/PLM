@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.NullProgressMonitor;
@@ -218,22 +219,7 @@ public class GitTracker implements UserSwitchesListener {
     logmsg.put("exo", exoFrom.getId());
     logmsg.put("lang", outcome.language.toString());
 
-    if (outcome.outcome != null) {
-      switch (outcome.outcome) {
-        case COMPILE:
-          logmsg.put("outcome", "compile");
-          break;
-        case FAIL:
-          logmsg.put("outcome", "fail");
-          break;
-        case PASS:
-          logmsg.put("outcome", "pass");
-          break;
-        default:
-          logmsg.put("outcome", "UNKNOWN");
-          break;
-      }
-    }
+    logmsg.put("outcome", outcome.outcome.name().toLowerCase(Locale.ROOT));
 
     if (outcome.totalTests > 0) {
       logmsg.put("passedtests", outcome.passedTests + "");
