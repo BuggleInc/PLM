@@ -51,9 +51,7 @@ public class GitSessionKitTest {
     Files.writeString(repo.resolve(exo.getId() + ".java.DONE"), "");
     Files.writeString(repo.resolve(exo.getId() + ".py.code"), "code that was never passed");
 
-    GitSessionKit kit = new GitSessionKit(Game.getInstance());
-    kit.loadAll(path.toFile()); // tells the kit which repository is the one of the user
-    kit.loadLesson(path.toFile(), lesson);
+    new GitSessionKit(Game.getInstance()).loadLesson(path.toFile(), lesson);
 
     Assertions.assertEquals("saved code", db.getBody(exo, langs.JAVA));
     Assertions.assertTrue(db.getPassed(exo, langs.JAVA));

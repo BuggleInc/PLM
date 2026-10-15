@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.PathMatcher;
-import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collection;
@@ -27,10 +26,12 @@ import plm.core.model.lesson.Lesson;
 public class GitSessionKit {
 
   private Game game;
-  private String reponame;
   private User cachedUser = null;
 
   public GitSessionKit(Game game) { this.game = game; }
+
+  /** The repository of the current user, in the given saving location */
+  private File userRepo(File path) { return new File(path, game.getUsers().getCurrentUser().getUserUUIDasString()); }
 
   /**
    * Writes the summary of every opened lesson. The source code is already written by the tracker.
@@ -40,12 +41,10 @@ public class GitSessionKit {
    */
   public void storeAll(File path) throws UserAbortException
   {
-    reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
+    File repoDir = userRepo(path);
 
     Collection<Lesson> lessons = this.game.getLessons();
     for (Lesson lesson : lessons) {
-      File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
-
       // Recompute the summaries (the bodies are written by the tracker)
       File summary = new File(repoDir, lesson.getId() + ".summary");
       try {
@@ -67,8 +66,6 @@ public class GitSessionKit {
    */
   public void loadAll(final File path)
   {
-    reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
-
     if (!Game.getInstance().getUsers().getCurrentUser().equals(cachedUser)) {
       if (Game.getInstance().isDebugEnabled())
         System.out.println("The user changed! switch to the right branch");
@@ -113,7 +110,7 @@ public class GitSessionKit {
     };
 
     try {
-      Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
+      Files.walkFileTree(userRepo(path).toPath(), matcherVisitor);
     } catch (IOException ex) {
       ex.printStackTrace();
     }
@@ -127,24 +124,17 @@ public class GitSessionKit {
    */
   public void loadLesson(File path, Lesson lesson)
   {
+    File repoDir = userRepo(path);
     for (Lecture lecture : lesson.exercises()) {
       if (lecture instanceof Exercise) {
         Exercise exercise = (Exercise)lecture;
         for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
           // check if exercise already done correctly
-          String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() +
-                            "." + lang.getExt() + ".DONE";
-          if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
-            Game.getInstance().studentWork.setPassed(exercise, lang, true);
-          } else {
-            Game.getInstance().studentWork.setPassed(exercise, lang, false);
-          }
+          String prefix = exercise.getId() + "." + lang.getExt();
+          Game.getInstance().studentWork.setPassed(exercise, lang, new File(repoDir, prefix + ".DONE").exists()); // the file exists if the exercise was correct
           // load source code
-          String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator") + exercise.getId() +
-                            "." + lang.getExt() + ".code";
-          // System.out.println(fileName);
           try {
-            exercise.setEditorContent(lang, Files.readString(Path.of(fileName))); // does not parse the entity
+            exercise.setEditorContent(lang, Files.readString(new File(repoDir, prefix + ".code").toPath())); // does not parse the entity
           } catch (NoSuchFileException nsf) {
             /* that's fine, we never did that exercise */
           } catch (IOException ex) {
