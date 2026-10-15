@@ -178,17 +178,25 @@ public abstract class ExerciseTemplated extends Exercise {
     return toCompute;
   }
 
+  /** Compiles the correction entity in that language. Reports the error and returns null if it fails */
+  private String compileCorrection(ProgrammingLanguage lang)
+  {
+    try {
+      return lang.compileExo(this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+    } catch (PLMCompilerException e) {
+      System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   /** Runs the correction entity on the answer worlds of the given ranks, and writes the cache files of the cacheable ones */
   private void computeAnswers(Vector<Integer> ranks, ProgrammingLanguage lang)
   {
     RunOutcome progress = new RunOutcome(lang);
 
-    String path = null;
-    try {
-      path = lang.compileExo(ExerciseTemplated.this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
-    } catch (PLMCompilerException e) {
-      System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
-      e.printStackTrace();
+    String path = compileCorrection(lang);
+    if (path == null) {
       Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
       Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
       return;
@@ -236,15 +244,8 @@ public abstract class ExerciseTemplated extends Exercise {
       answerWorld.get(i).reset(initialWorld.get(i));
       answerWorld.get(i).doDelay();
     }
-    String executable;
-    try {
-      executable = lang.compileExo(this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
-    } catch (PLMCompilerException e) {
-      System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
-      e.printStackTrace();
-      return;
-    }
-
-    runAll(WorldKind.ANSWER, runnerVect, ignored, lang, executable);
+    String executable = compileCorrection(lang);
+    if (executable != null)
+      runAll(WorldKind.ANSWER, runnerVect, ignored, lang, executable);
   }
 }
