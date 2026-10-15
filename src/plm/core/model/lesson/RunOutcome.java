@@ -10,7 +10,8 @@ import plm.core.lang.ProgrammingLanguage;
 public class RunOutcome {
 
   public static enum kind { COMPILE, FAIL, PASS }
-  public kind outcome = kind.PASS;
+  /** FAIL until an execution says otherwise, so that an outcome of something that did not run is never taken for a success */
+  public kind outcome = kind.FAIL;
 
   public String compilationError;
   public String executionError = "";

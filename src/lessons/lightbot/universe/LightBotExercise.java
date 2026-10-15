@@ -71,9 +71,7 @@ public class LightBotExercise extends ExerciseTemplated {
   @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
     reset();
-    RunOutcome result = new RunOutcome(lang);
-    runAll(WorldKind.CURRENT, runnerVect, result, lang, executable);
-    return result;
+    return runAll(WorldKind.CURRENT, runnerVect, lang, executable);
   }
 
   @Override

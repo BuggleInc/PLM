@@ -69,15 +69,18 @@ public abstract class Exercise extends Lecture {
   /**
    * Submit one task per entity of every world of {@code kind} to the shared bounded pool ({@link Game#submitEntityTask}),
    * add each to {@code runnerVect} (so {@code LessonRunner.stopAll()} can find and {@code cancel(true)} them from
-   * another thread while this call is still blocked below), then wait for all of them to finish.
+   * another thread while this call is still blocked below), then wait for all of them to finish. The returned outcome is a success
+   * until an execution or {@link #check} fails it.
    *
    * A cancelled task (the user clicked "Stop") is not treated as a failure. Any other exception thrown by
    * {@code runEntity()} is unwrapped from its {@link ExecutionException} wrapper and re-thrown as-is, so that a
-   * genuine bug surfaces to whoever called this (a test, or the GUI code that catches it broadly so it doesn't
-   * take down the interface).
+   * genuine bug is not hidden from whoever called this.
    */
-  public void runAll(WorldKind kind, List<Future<?>> runnerVect, RunOutcome progress, ProgrammingLanguage lang, String executable) throws InterruptedException
+  public RunOutcome runAll(WorldKind kind, List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
+    RunOutcome progress = new RunOutcome(lang);
+    progress.outcome    = RunOutcome.kind.PASS;
+
     for (World w : getWorlds(kind)) {
       w.doDelay();
       w.runEntities(runnerVect, progress, lang, executable);
@@ -101,6 +104,7 @@ public abstract class Exercise extends Lecture {
         runnerVect.remove(f);
       }
     }
+    return progress;
   }
 
   public void check(RunOutcome result)

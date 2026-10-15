@@ -231,21 +231,17 @@ public abstract class ExerciseTemplated extends Exercise {
 
   @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
   {
-    RunOutcome result = new RunOutcome(lang);
-    runAll(WorldKind.CURRENT, runnerVect, result, lang, executable);
-    return result;
+    return runAll(WorldKind.CURRENT, runnerVect, lang, executable);
   }
 
   @Override public void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException
   {
-    RunOutcome ignored = new RunOutcome(lang);
-
     for (int i = 0; i < initialWorld.size(); i++) {
       answerWorld.get(i).reset(initialWorld.get(i));
       answerWorld.get(i).doDelay();
     }
     String executable = compileCorrection(lang);
     if (executable != null)
-      runAll(WorldKind.ANSWER, runnerVect, ignored, lang, executable);
+      runAll(WorldKind.ANSWER, runnerVect, lang, executable);
   }
 }

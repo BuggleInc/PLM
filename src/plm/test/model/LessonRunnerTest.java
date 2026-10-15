@@ -74,6 +74,7 @@ public class LessonRunnerTest {
   @Test public void testOutcomeOfTheExecutionIsReturnedAsIs() throws Exception
   {
     RunOutcome passed = new RunOutcome(lang);
+    passed.outcome    = RunOutcome.kind.PASS;
 
     Assertions.assertSame(passed, new LessonRunner(game).runExercise(exerciseThat(passed), lang));
     Assertions.assertEquals(GameState.EXECUTION_ENDED, states.get(states.size() - 1));
@@ -90,22 +91,10 @@ public class LessonRunnerTest {
     RunOutcome outcome = new LessonRunner(game).runExercise(exo, lang);
 
     Assertions.assertSame(lang, outcome.language);
+    Assertions.assertFalse(outcome.isPassed());
+    Assertions.assertTrue(outcome.executionError.contains("Not run"), outcome.executionError);
     Assertions.assertNull(outcome.compilationError);
     Assertions.assertEquals(0, outcome.totalTests);
-    Assertions.assertEquals(List.of(GameState.COMPILATION_STARTED, GameState.EXECUTION_ENDED), states);
-  }
-
-  @Test public void testUnexpectedExceptionGivesAnEmptyOutcome() throws Exception
-  {
-    Exercise exo = Mockito.mock(Exercise.class);
-    Mockito
-        .when(exo.compileRunCheck(ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.<List<Future<?>>>any(),
-                                  ArgumentMatchers.any()))
-        .thenThrow(new IllegalStateException("bug"));
-
-    RunOutcome outcome = new LessonRunner(game).runExercise(exo, lang);
-
-    Assertions.assertSame(lang, outcome.language);
     Assertions.assertEquals(List.of(GameState.COMPILATION_STARTED, GameState.COMPILATION_ENDED, GameState.EXECUTION_ENDED), states);
   }
 }

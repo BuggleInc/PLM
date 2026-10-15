@@ -59,8 +59,8 @@ public class LessonRunner extends Thread {
   }
 
   /**
-   * Compiles, runs and checks the exercise, going through the states of the game. The outcome is empty if something went wrong
-   * with the execution itself (for example if the student clicked "Stop").
+   * Compiles, runs and checks the exercise, going through the states of the game. The outcome is a failure without any test if
+   * something went wrong with the execution itself (for example if the student clicked "Stop").
    */
   public RunOutcome runExercise(Exercise exo, ProgrammingLanguage lang)
   {
@@ -77,15 +77,14 @@ public class LessonRunner extends Thread {
       game.setState(Game.GameState.EXECUTION_ENDED);
       return outcome;
 
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-      game.setState(Game.GameState.EXECUTION_ENDED);
-    } catch (Exception e) {
+    } catch (InterruptedException | UserAbortException e) {
       e.printStackTrace();
       game.setState(Game.GameState.COMPILATION_ENDED);
       game.setState(Game.GameState.EXECUTION_ENDED);
     }
-    return new RunOutcome(lang);
+    RunOutcome notRun     = new RunOutcome(lang);
+    notRun.executionError = Game.i18n.tr("Not run, probably because the user interrupted the execution.");
+    return notRun;
   }
 
   /**
