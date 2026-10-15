@@ -312,7 +312,8 @@ property (the student is asked once, see `StartExecution`); everything still hap
 
 Here is a list of the existing tracker events, and how `GitTracker` handle them:
 - `userHasChanged()` (called once at startup and on every user switch): creates/reuses `repoDir`, sets the git remote config,
-  creates an empty initial commit the very first time, checks out (or creates) the user's branch, tries to `fetch`+`merge` the
+  creates the initial commit the very first time (empty, with a fixed author, date and message, so that it is the same commit on
+  every machine and the sessions of a same user share their history), checks out (or creates) the user's branch, tries to `fetch`+`merge` the
   same branch from the server to resume a previous session (`GitUtils.mergeRemoteIntoLocalBranch()` resolves conflicts
   file-by-file by keeping whichever side's last commit on that path is more recent), commits a `"started"` marker, then asks for
   a push (rate-limited, see below).
@@ -330,6 +331,9 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
   and "the student clicked revert" (deletes that exercise's files instead). Since they are not executions, `GitTracker` uses
   the outcome that it remembered (`lastOutcomes`) from the last execution of that exercise, or an empty one if it was not
   executed in the current language since. The `"switched"` message only tells where the student goes: it carries no outcome.
+- `exportSession()` (not a tracker event, called by the `ExportSession` action): commits the pending changes with an `"exported"`
+  marker, then `SessionZip` writes the whole `repoDir`, `.git` included, in a zip file under a top-level entry named after the
+  user UUID.
 - `readTip()`: same write-then-commit-then-push pattern for that UI event, that only rewrites the mission file.
 - All these events end with `commitAndPush()`: it removes the deleted files from the index, adds the others, commits with the
   message of the event and asks for a push.

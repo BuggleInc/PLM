@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TimeZone;
 import javax.swing.SwingWorker;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.MergeCommand;
@@ -95,13 +97,16 @@ public class GitUtils {
     return true;
   }
 
+  /** The initial commit is the same on all machines, so that the sessions of a same user share their history */
+  private static final PersonIdent INITIAL_IDENT = new PersonIdent("John Doe", "john.doe@plm.net", new Date(0), TimeZone.getTimeZone("UTC"));
+
   public void createInitialCommit()
       throws NoHeadException, NoMessageException, UnmergedPathsException, ConcurrentRefUpdateException, WrongRepositoryStateException, GitAPIException
   {
     git.commit()
         .setMessage("Empty initial commit")
-        .setAuthor(new PersonIdent("John Doe", "john.doe@plm.net"))
-        .setCommitter(new PersonIdent("John Doe", "john.doe@plm.net"))
+        .setAuthor(INITIAL_IDENT)
+        .setCommitter(INITIAL_IDENT)
         .setSign(false) // never sign PLM's internal progress-tracking commits
         .call();
   }

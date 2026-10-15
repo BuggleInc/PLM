@@ -118,8 +118,8 @@ public class Game implements IWorldView {
   private PrintStream errorOrig  = System.err;
 
   public SessionDB studentWork = new SessionDB();
-  // private ISessionKit sessionKit = new ZipSessionKit(this);
   private ISessionKit sessionKit;
+  private GitTracker gitTracker;
 
   private Users users;
 
@@ -150,7 +150,8 @@ public class Game implements IWorldView {
     sessionKit = new GitSessionKit(this);
 
     try {
-      addProgressTrackerListener(new GitTracker(SAVE_DIR, users));
+      gitTracker = new GitTracker(SAVE_DIR, users);
+      addProgressTrackerListener(gitTracker);
     } catch (IOException | GitAPIException e) {
       System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
       e.printStackTrace();
@@ -588,6 +589,7 @@ public class Game implements IWorldView {
   }
 
   public ISessionKit getSessionKit() { return this.sessionKit; }
+  public GitTracker getGitTracker() { return this.gitTracker; }
   public void removeSessionKit()
   {
     sessionKit = null;

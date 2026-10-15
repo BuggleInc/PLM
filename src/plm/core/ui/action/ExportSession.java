@@ -3,11 +3,14 @@ package plm.core.ui.action;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.eclipse.jgit.api.errors.GitAPIException;
 import plm.core.model.Game;
 import plm.core.model.UserAbortException;
-import plm.core.model.session.ZipSessionKit;
 
 public class ExportSession extends AbstractGameAction {
 
@@ -23,18 +26,17 @@ public class ExportSession extends AbstractGameAction {
   @Override public void actionPerformed(ActionEvent e)
   {
     JFileChooser fc = new JFileChooser();
-    fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-    fc.setAcceptAllFileFilterUsed(false);
-    int returnValue = fc.showSaveDialog(this.parent);
+    fc.setFileFilter(new FileNameExtensionFilter("PLM session (*.zip)", "zip"));
+    fc.setSelectedFile(new File("plm-session.zip"));
 
-    if (returnValue == JFileChooser.APPROVE_OPTION) {
-      File sessionFileToExportTo = fc.getSelectedFile();
-
-      ZipSessionKit kit = new ZipSessionKit(this.game);
+    if (fc.showSaveDialog(this.parent) == JFileChooser.APPROVE_OPTION) {
       try {
-        kit.storeAll(sessionFileToExportTo);
-      } catch (UserAbortException e1) {
-        e1.printStackTrace();
+        this.game.saveSession();
+        this.game.getGitTracker().exportSession(fc.getSelectedFile());
+      } catch (UserAbortException | IOException | GitAPIException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this.parent, Game.i18n.tr("Cannot export the session: {0}", ex.getLocalizedMessage()), Game.i18n.tr("Export failed"),
+                                      JOptionPane.ERROR_MESSAGE);
       }
     }
   }

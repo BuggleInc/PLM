@@ -18,6 +18,7 @@ import plm.core.model.User;
 import plm.core.model.Users;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.session.SessionZip;
 import plm.core.utils.FileUtils;
 
 public class GitTracker implements ProgressTrackerListener, UserSwitchesListener {
@@ -139,6 +140,14 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     }
 
     gitUtils.dispose();
+  }
+
+  /** Commits the pending changes, then writes the whole local repository of the current user into that zip file */
+  public void exportSession(File zip) throws IOException, GitAPIException
+  {
+    gitUtils.addFiles();
+    gitUtils.commit(writePLMStartedOrLeavedCommitMessage("exported"));
+    SessionZip.zip(repoDir, zip);
   }
 
   /**
