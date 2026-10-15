@@ -46,7 +46,6 @@ import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.GitSessionKit;
-import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.tracking.GitTracker;
 import plm.core.model.tracking.ProgressTrackerListener;
@@ -118,7 +117,7 @@ public class Game implements IWorldView {
   private PrintStream errorOrig  = System.err;
 
   public SessionDB studentWork = new SessionDB();
-  private ISessionKit sessionKit;
+  private GitSessionKit sessionKit;
   private GitTracker gitTracker;
 
   private Users users;
@@ -588,7 +587,7 @@ public class Game implements IWorldView {
     storeProperties();
   }
 
-  public ISessionKit getSessionKit() { return this.sessionKit; }
+  public GitSessionKit getSessionKit() { return this.sessionKit; }
   public GitTracker getGitTracker() { return this.gitTracker; }
   public void removeSessionKit()
   {

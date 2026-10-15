@@ -24,7 +24,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 
-public class GitSessionKit implements ISessionKit {
+public class GitSessionKit {
 
   private Game game;
   private String reponame;
@@ -33,13 +33,12 @@ public class GitSessionKit implements ISessionKit {
   public GitSessionKit(Game game) { this.game = game; }
 
   /**
-   * Store the user source code for all the opened lessons. It doesn't need to
-   * save the lesson summaries : it's compute on start
+   * Writes the summary of every opened lesson. The source code is already written by the tracker.
    *
    * @param path
    * @throws UserAbortException
    */
-  @Override public void storeAll(File path) throws UserAbortException
+  public void storeAll(File path) throws UserAbortException
   {
     reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
@@ -47,10 +46,7 @@ public class GitSessionKit implements ISessionKit {
     for (Lesson lesson : lessons) {
       File repoDir = new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame);
 
-      // First save the bodies
-      storeLesson(repoDir, lesson);
-
-      // Recompute the summaries
+      // Recompute the summaries (the bodies are written by the tracker)
       File summary = new File(repoDir, lesson.getId() + ".summary");
       try {
         FileWriter fwSummary     = new FileWriter(summary.getAbsoluteFile());
@@ -69,7 +65,7 @@ public class GitSessionKit implements ISessionKit {
    *
    * @param path
    */
-  @Override public void loadAll(final File path)
+  public void loadAll(final File path)
   {
     reponame = game.getUsers().getCurrentUser().getUserUUIDasString();
 
@@ -124,21 +120,12 @@ public class GitSessionKit implements ISessionKit {
   }
 
   /**
-   * Store the user source code for a specified lesson
-   *
-   * @param path where to save
-   * @param lesson the lesson to save
-   * @throws UserAbortException
-   */
-  @Override public void storeLesson(File path, Lesson lesson) throws UserAbortException { /* Everything's done by tracker */ }
-
-  /**
    * Load the lesson's exercises user source code
    *
    * @param path
    * @param lesson
    */
-  @Override public void loadLesson(File path, Lesson lesson)
+  public void loadLesson(File path, Lesson lesson)
   {
     for (Lecture lecture : lesson.exercises()) {
       if (lecture instanceof Exercise) {
@@ -165,36 +152,6 @@ public class GitSessionKit implements ISessionKit {
           }
         }
       }
-    }
-  }
-
-  @Override public void cleanAll(File path)
-  {
-    System.out.println("Clean all lessons. Your session is now lost.");
-    for (Lesson lesson : this.game.getLessons()) {
-      cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
-    }
-  }
-
-  @Override public void cleanLesson(File path, Lesson l)
-  {
-
-    String pattern                   = l.getId() + "*";
-    FileSystem fs                    = FileSystems.getDefault();
-    final PathMatcher matcher        = fs.getPathMatcher("glob:" + pattern);
-    FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
-      @Override public FileVisitResult visitFile(Path file, BasicFileAttributes attribs)
-      {
-        Path name = file.getFileName();
-        if (matcher.matches(name)) {
-          new File(name + "").delete(); // delete files related to the selected Lesson
-        }
-        return FileVisitResult.CONTINUE;
-      }
-    };
-    try {
-      Files.walkFileTree(Paths.get(path.getPath()), matcherVisitor);
-    } catch (IOException ex) {
     }
   }
 }

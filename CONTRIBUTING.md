@@ -398,13 +398,13 @@ that delay. A push that's rejected retries once after fetching and merging the r
 
 ### Session kits
 
-`GitSessionKit` (`plm.core.model.session`, `ISessionKit`) is the read side of the same on-disk layout `GitTracker` writes: at
+`GitSessionKit` (`plm.core.model.session`) is the read side of the same on-disk layout `GitTracker` writes: at
 startup, `loadLesson()` reads each exercise's `.code` file back into the `SessionDB` and its `.DONE` file into `studentWork`'s
 pass/fail state. The code is restored with `Exercise.setEditorContent(lang, content)`, which does not load the source file, so
-restoring the code does not parse the entities by itself: the bodies are named after the tab, which `newSource()` enforces; `storeLesson()`
-is a deliberate no-op ("Everything's done by tracker"), since `GitTracker` already keeps those files current after every
-relevant event. `GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see
-above; not something `GitTracker` writes).
+restoring the code does not parse the entities by itself: the bodies are named after the tab, which `newSource()` enforces. There is
+no counterpart writing the code, since `GitTracker` already keeps those files current after every relevant event.
+`GitSessionKit` additionally computes and reads back one `.summary` file per lesson (a `SessionDB` digest, see above; not
+something `GitTracker` writes).
 
 ### Moving a session between machines
 
