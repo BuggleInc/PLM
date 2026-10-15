@@ -327,9 +327,8 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
   - It then creates or deletes a `<id>.<ext>.DONE` marker file depending on pass/fail (`checkSuccess()`), then commits (JSON
     commit message, see below) and asks for a push.
 - `switched()`/`reverted()`: same idea for "the student navigated away from an exercise" (re-writes its files before committing)
-  and "the student clicked revert" (deletes that exercise's files instead). Their messages report an empty outcome (`fail`, as nothing
-  ran): `"switched"` only tells where the student goes, and `"reverted"` that the exercise was reset. The files are commited, either the current state
-  when leaving with `"switched"` or an empty file with `"reverted"`.
+  and "the student clicked revert" (deletes that exercise's files instead). Their messages carry no `outcome` field (nor test
+  counts or feedback): `"switched"` only tells where the student goes, and `"reverted"` that the exercise was reset.
 - `exportSession()` (not a tracker event, called by the `ExportSession` action): commits the pending changes with an `"exported"`
   marker, then `SessionZip` writes the whole `repoDir`, `.git` included, in a zip file under a top-level entry named after the
   user UUID.

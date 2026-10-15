@@ -102,7 +102,7 @@ public class GitTracker implements UserSwitchesListener {
     lastOutcomes.put(exo, outcome);
     createFiles(exo, outcome);
     checkSuccess(exo, outcome);
-    commitAndPush(writeCommitMessage(exo, outcome, "executed", new JSONObject()));
+    commitAndPush(writeCommitMessage(exo, outcome.language, outcome, "executed", new JSONObject()));
   }
 
   @SuppressWarnings("unchecked") public void switched(Exercise exo)
@@ -113,16 +113,16 @@ public class GitTracker implements UserSwitchesListener {
 
     createFiles(lastExo, lastOutcome(lastExo));
 
-    /* The message tells about the navigation only, and so does the one of reverted(): they carry no outcome */
+    /* The message tells about the navigation only, and so does the one of reverted() */
     JSONObject msg = new JSONObject();
     msg.put("switchto", exo.getId());
-    commitAndPush(writeCommitMessage(lastExo, new RunOutcome(Game.getInstance().getProgrammingLanguage()), "switched", msg));
+    commitAndPush(writeCommitMessage(lastExo, Game.getInstance().getProgrammingLanguage(), null, "switched", msg));
   }
 
   public void reverted(Exercise exo)
   {
     deleteFiles(exo);
-    commitAndPush(writeCommitMessage(exo, new RunOutcome(Game.getInstance().getProgrammingLanguage()), "reverted", new JSONObject()));
+    commitAndPush(writeCommitMessage(exo, Game.getInstance().getProgrammingLanguage(), null, "reverted", new JSONObject()));
   }
 
   public void leave()
@@ -213,30 +213,34 @@ public class GitTracker implements UserSwitchesListener {
     }
   }
 
-  @SuppressWarnings("unchecked") private String writeCommitMessage(Exercise exoFrom, RunOutcome outcome, String evt_type, JSONObject logmsg)
+  /** The outcome is null for the events that are not about an execution (switched, reverted): the message then carries no outcome */
+  @SuppressWarnings("unchecked")
+  private String writeCommitMessage(Exercise exoFrom, ProgrammingLanguage lang, RunOutcome outcome, String evt_type, JSONObject logmsg)
   {
     // Retrieve appropriate parameters regarding the current exercise
     logmsg.put("exo", exoFrom.getId());
-    logmsg.put("lang", outcome.language.toString());
+    logmsg.put("lang", lang.toString());
 
-    logmsg.put("outcome", outcome.outcome.name().toLowerCase(Locale.ROOT));
+    if (outcome != null) {
+      logmsg.put("outcome", outcome.outcome.name().toLowerCase(Locale.ROOT));
 
-    if (outcome.totalTests > 0) {
-      logmsg.put("passedtests", outcome.passedTests + "");
-      logmsg.put("totaltests", outcome.totalTests + "");
+      if (outcome.totalTests > 0) {
+        logmsg.put("passedtests", outcome.passedTests + "");
+        logmsg.put("totaltests", outcome.totalTests + "");
+      }
+
+      if (outcome.feedbackDifficulty != null)
+        logmsg.put("exoDifficulty", outcome.feedbackDifficulty);
+      if (outcome.feedbackInterest != null)
+        logmsg.put("exoInterest", outcome.feedbackInterest);
+      if (outcome.feedback != null)
+        logmsg.put("exoComment", outcome.feedback);
     }
 
     // The commit must tell on its own the inputs that the student's code ran on
     Map<Integer, String> randomized = exoFrom.serializeRandomizedWorlds();
     if (!randomized.isEmpty())
       logmsg.put("randomizedworlds", new JSONObject(randomized));
-
-    if (outcome.feedbackDifficulty != null)
-      logmsg.put("exoDifficulty", outcome.feedbackDifficulty);
-    if (outcome.feedbackInterest != null)
-      logmsg.put("exoInterest", outcome.feedbackInterest);
-    if (outcome.feedback != null)
-      logmsg.put("exoComment", outcome.feedback);
 
     // Misuses JSON to ensure that the kind is always written first so that we can read github commit lists
     return "{\"kind\":\"" + evt_type + "\"," + logmsg.toString().substring(1);
@@ -357,6 +361,6 @@ public class GitTracker implements UserSwitchesListener {
 
     JSONObject msg = new JSONObject();
     msg.put("id", id);
-    commitAndPush(writeCommitMessage(lastExo, lastOutcome(lastExo), "readTip", msg));
+    commitAndPush(writeCommitMessage(lastExo, lang, lastOutcome(lastExo), "readTip", msg));
   }
 }
