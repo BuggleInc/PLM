@@ -90,8 +90,7 @@ public class GitTrackerTest {
     String error      = utils.generateRandomString(32);
     String mission    = utils.generateRandomString(32);
 
-    RunOutcome lastResult       = Mockito.mock(RunOutcome.class);
-    lastResult.language         = Game.getInstance().programmingLanguageManager.JAVA;
+    RunOutcome lastResult       = new RunOutcome(Game.getInstance().programmingLanguageManager.JAVA);
     lastResult.compilationError = error;
 
     Exercise exo = Mockito.mock(Exercise.class);
@@ -147,8 +146,7 @@ public class GitTrackerTest {
     String error      = utils.generateRandomString(32);
     String mission    = utils.generateRandomString(32);
 
-    RunOutcome lastResult       = Mockito.mock(RunOutcome.class);
-    lastResult.language         = Game.getInstance().programmingLanguageManager.JAVA;
+    RunOutcome lastResult       = new RunOutcome(Game.getInstance().programmingLanguageManager.JAVA);
     lastResult.compilationError = null;
     lastResult.executionError   = error;
 
@@ -209,8 +207,7 @@ public class GitTrackerTest {
   public void testSuccessfulCheckSuccessWithoutPreviousSuccessShouldCreateDoneFile()
       throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
   {
-    RunOutcome lastResult = Mockito.mock(RunOutcome.class);
-    lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+    RunOutcome lastResult = new RunOutcome(Game.getInstance().programmingLanguageManager.JAVA);
     lastResult.outcome    = kind.PASS;
 
     Exercise exo = Mockito.mock(Exercise.class);
@@ -234,8 +231,7 @@ public class GitTrackerTest {
   public void testSuccessfulCheckSuccessWithPreviousSuccessShouldKeepDoneFile()
       throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException
   {
-    RunOutcome lastResult = Mockito.mock(RunOutcome.class);
-    lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+    RunOutcome lastResult = new RunOutcome(Game.getInstance().programmingLanguageManager.JAVA);
     lastResult.outcome    = kind.PASS;
 
     Exercise exo = Mockito.mock(Exercise.class);
@@ -265,8 +261,7 @@ public class GitTrackerTest {
   public void testFailedCheckSuccessWithoutPreviousSuccessShouldDoNothing()
       throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException
   {
-    RunOutcome lastResult = Mockito.mock(RunOutcome.class);
-    lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+    RunOutcome lastResult = new RunOutcome(Game.getInstance().programmingLanguageManager.JAVA);
     lastResult.outcome    = kind.FAIL;
 
     Exercise exo = Mockito.mock(Exercise.class);
@@ -290,8 +285,7 @@ public class GitTrackerTest {
   public void testFailedCheckSuccessWithPreviousSuccessShouldDeleteDoneFile()
       throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException
   {
-    RunOutcome lastResult = Mockito.mock(RunOutcome.class);
-    lastResult.language   = Game.getInstance().programmingLanguageManager.JAVA;
+    RunOutcome lastResult = new RunOutcome(Game.getInstance().programmingLanguageManager.JAVA);
     lastResult.outcome    = kind.FAIL;
 
     Exercise exo = Mockito.mock(Exercise.class);
