@@ -40,7 +40,7 @@ public class MethodsDogHouseSourceCheckTest {
   /** Sets the editor content, and returns the message of the refusal of the source, or null if the code is accepted */
   private static String refusal(ProgrammingLanguage lang, String code) throws InterruptedException
   {
-    exo.setEditorContent(lang, exo.getSourceFile(lang, 0), code);
+    exo.setEditorContent(lang, code);
     RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, lang, new ArrayList<Future<?>>(), () -> {});
     return outcome.outcome == RunOutcome.kind.COMPILE ? outcome.compilationError : null;
   }

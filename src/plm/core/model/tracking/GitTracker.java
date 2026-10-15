@@ -278,7 +278,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
 
   private void createFiles(Exercise exo, RunOutcome outcome)
   {
-    String exoCode  = exo.getEditorContent(outcome.language, exo.getSourceFile(outcome.language, 0)); // retrieve the code from the student
+    String exoCode  = exo.getEditorContent(outcome.language);                                         // retrieve the code from the student
     String exoError = outcome.compilationError;                                                       // retrieve the compilation error
     if (outcome.compilationError == null)
       exoError = outcome.executionError;

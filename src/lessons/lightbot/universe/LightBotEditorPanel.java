@@ -15,7 +15,6 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.session.ISourceFileListener;
-import plm.core.model.session.SourceFile;
 import plm.core.ui.IEditorPanel;
 import plm.core.ui.ResourcesCache;
 import plm.universe.Entity;
@@ -24,7 +23,6 @@ import plm.universe.IEntityStackListener;
 public class LightBotEditorPanel extends JScrollPane implements IEditorPanel, ISourceFileListener, IEntityStackListener {
   private static final long serialVersionUID = 1L;
   private final Exercise exo;
-  private final SourceFile srcFile;
   private final ProgrammingLanguage lang;
   private LightBotProgram program;
   private boolean editing                  = false; // the panel is the one changing the program: its choosers are already up to date
@@ -35,11 +33,10 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel, IS
   private Map<Icon, String> iconNameByIcons = new HashMap<Icon, String>();
   private Icon[] iconList;
 
-  public LightBotEditorPanel(Exercise exo, SourceFile srcFile, ProgrammingLanguage lang)
+  public LightBotEditorPanel(Exercise exo, ProgrammingLanguage lang)
   {
     super();
     this.exo     = exo;
-    this.srcFile = srcFile;
     this.lang    = lang;
 
     iconList = new Icon[LightBotInstruction.instructionNames.length];
@@ -51,14 +48,14 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel, IS
       i++;
     }
 
-    Game.getInstance().studentWork.setBodyListener(exo, lang, srcFile.getName(), this);
+    Game.getInstance().studentWork.setBodyListener(exo, lang, this);
     sourceFileContentHasChanged();
     tracedEntity = Game.getInstance().getSelectedEntity();
     tracedEntity.addStackListener(this);
   }
   @Override public void clear()
   {
-    Game.getInstance().studentWork.removeBodyListener(exo, lang, srcFile.getName());
+    Game.getInstance().studentWork.removeBodyListener(exo, lang);
     if (tracedEntity != null)
       tracedEntity.removeStackListener(this);
   }
@@ -66,7 +63,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel, IS
   {
     if (editing)
       return;
-    program = LightBotProgram.parse(exo.getEditorContent(lang, srcFile));
+    program = LightBotProgram.parse(exo.getEditorContent(lang));
     choosers.clear();
 
     /* Main function */
@@ -122,7 +119,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel, IS
           func[pos] = new LightBotInstruction(iconNameByIcons.get((Icon)InstructionChooser.this.getSelectedItem()));
           editing   = true;
           try {
-            exo.setEditorContent(lang, srcFile, program.toString());
+            exo.setEditorContent(lang, program.toString());
           } finally {
             editing = false;
           }

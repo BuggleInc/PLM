@@ -6,21 +6,18 @@ import org.fife.ui.rtextarea.RTextScrollPane;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
-import plm.core.model.session.SourceFile;
 import plm.universe.Entity;
 import plm.universe.IEntityStackListener;
 
 public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IEntityStackListener {
   private static final long serialVersionUID = 1L;
-  SourceFile srcFile;
   SourceFileDocumentSynchronizer sync;
   RSyntaxTextArea codeEditor;
   Entity tracedEntity;
 
-  public JavaEditorPanel(Exercise exo, SourceFile srcFile, ProgrammingLanguage lang)
+  public JavaEditorPanel(Exercise exo, ProgrammingLanguage lang)
   {
     super();
-    this.srcFile = srcFile;
 
     codeEditor = new RSyntaxTextArea();
     setViewportView(codeEditor);
@@ -54,12 +51,12 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     sync.setDocument(codeEditor.getDocument());
     codeEditor.getDocument().addDocumentListener(sync);
 
-    /* Connect the synchronization element to the source file */
-    Game.getInstance().studentWork.setBodyListener(exo, lang, srcFile.getName(), sync);
-    sync.setSourceFile(exo, srcFile);
+    /* Connect the synchronization element to the student's code */
+    Game.getInstance().studentWork.setBodyListener(exo, lang, sync);
+    sync.setExercise(exo);
     sync.setProgrammingLanguage(lang);
 
-    codeEditor.setText(exo.getEditorContent(lang, srcFile));
+    codeEditor.setText(exo.getEditorContent(lang));
     codeEditor.discardAllEdits();
 
     /* Highlighting stuff, to trace entities */
@@ -70,7 +67,6 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
   @Override public void clear()
   {
     sync.clear();
-    srcFile    = null;
     sync       = null;
     codeEditor = null;
     if (tracedEntity != null)

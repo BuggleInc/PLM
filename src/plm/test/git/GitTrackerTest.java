@@ -33,7 +33,6 @@ import plm.core.model.Users;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.lesson.RunOutcome.kind;
-import plm.core.model.session.SourceFile;
 import plm.core.model.tracking.GitTracker;
 import plm.core.utils.FileUtils;
 
@@ -95,16 +94,13 @@ public class GitTrackerTest {
     lastResult.language         = Game.getInstance().programmingLanguageManager.JAVA;
     lastResult.compilationError = error;
 
-    SourceFile sf = Mockito.mock(SourceFile.class);
-
     Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     writeEntity(correction);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     Mockito.when(exo.getMission(lastResult.language)).thenReturn(mission);
-    Mockito.when(exo.getSourceFile(lastResult.language, 0)).thenReturn(sf);
-    Mockito.when(exo.getEditorContent(lastResult.language, sf)).thenReturn(code);
+    Mockito.when(exo.getEditorContent(lastResult.language)).thenReturn(code);
 
     ArrayList<String> suffixes = new ArrayList<String>();
     suffixes.add(".code");
@@ -156,16 +152,13 @@ public class GitTrackerTest {
     lastResult.compilationError = null;
     lastResult.executionError   = error;
 
-    SourceFile sf = Mockito.mock(SourceFile.class);
-
     Exercise exo = Mockito.mock(Exercise.class);
     Mockito.when(exo.nameOfCorrectionEntity()).thenReturn(ENTITY);
     writeEntity(correction);
     Mockito.when(exo.getId()).thenReturn("exoTest");
 
     Mockito.when(exo.getMission(lastResult.language)).thenReturn(mission);
-    Mockito.when(exo.getSourceFile(lastResult.language, 0)).thenReturn(sf);
-    Mockito.when(exo.getEditorContent(lastResult.language, sf)).thenReturn(code);
+    Mockito.when(exo.getEditorContent(lastResult.language)).thenReturn(code);
 
     ArrayList<String> suffixes = new ArrayList<String>();
     suffixes.add(".code");

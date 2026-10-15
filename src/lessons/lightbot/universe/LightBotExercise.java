@@ -8,7 +8,6 @@ import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
-import plm.core.model.session.SourceFile;
 import plm.universe.World;
 
 public class LightBotExercise extends ExerciseTemplated {
@@ -21,7 +20,7 @@ public class LightBotExercise extends ExerciseTemplated {
     newSource(Game.getInstance().programmingLanguageManager.LIGHTBOT, new SourceFile(tabName));
   }
 
-  @Override public JScrollPane getEditorPanel(ProgrammingLanguage lang, SourceFile sf) { return new LightBotEditorPanel(this, sf, lang); }
+  @Override public JScrollPane getEditorPanel(ProgrammingLanguage lang) { return new LightBotEditorPanel(this, lang); }
 
   @Override protected void setup(World[] ws)
   {

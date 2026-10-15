@@ -49,7 +49,7 @@ public abstract class SimpleExerciseTest {
   }
 
   /** Puts the code in the only source file of the exercise */
-  protected void setEditorContent(String code) { exo.setEditorContent(pl, exo.getSourceFile(pl, 0), code); }
+  protected void setEditorContent(String code) { exo.setEditorContent(pl, code); }
 
   /** The source files are named after the tab, since the code of the student is saved under that name */
   @Test public void testNewSourceRefusesANameThatIsNotTheTab()

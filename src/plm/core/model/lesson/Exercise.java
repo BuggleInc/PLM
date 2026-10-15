@@ -158,7 +158,7 @@ public abstract class Exercise extends Lecture {
     try {
       executable = lang.compileExo(this, out, whatToCompile);
       if (whatToCompile == StudentOrCorrection.STUDENT)
-        verifySource(getEditorContent(lang, getSourceFile(lang, 0)));
+        verifySource(getEditorContent(lang));
     } catch (PLMCompilerException e) {
       System.err.println(Game.i18n.tr("Compilation error:"));
       System.err.println(e.getMessage());
@@ -205,34 +205,26 @@ public abstract class Exercise extends Lecture {
   public int getSourceFileCount(ProgrammingLanguage lang) { return getSourceFilesList(lang).size(); }
   public SourceFile getSourceFile(ProgrammingLanguage lang, int i) { return getSourceFilesList(lang).get(i); }
 
-  /** What the student sees in the editor of this source file: what they wrote, or the initial body if they did not change anything */
-  public String getEditorContent(ProgrammingLanguage lang, SourceFile sf)
+  /** What the student sees in the editor: what they wrote, or the initial body if they did not change anything */
+  public String getEditorContent(ProgrammingLanguage lang)
   {
-    String body = Game.getInstance().studentWork.getBody(this, lang, sf.getName());
-    return body != null ? body : sf.getInitialBody();
+    String body = Game.getInstance().studentWork.getBody(this, lang);
+    return body != null ? body : getSourceFile(lang, 0).getInitialBody();
   }
 
-  public void setEditorContent(ProgrammingLanguage lang, SourceFile sf, String content)
-  {
-    Game.getInstance().studentWork.setBody(this, lang, sf.getName(), content);
-  }
-
-  /**
-   * Same as above, but it does not load the source file, which would parse the entity: the source files are named after the tab, as
-   * {@link #newSource} checks. This is how the saved code is restored at startup, for all exercises.
-   */
-  public void setEditorContent(ProgrammingLanguage lang, String content) { Game.getInstance().studentWork.setBody(this, lang, tabName, content); }
+  /** Does not load the source file, which would parse the entity: this is how the saved code is restored at startup, for all exercises */
+  public void setEditorContent(ProgrammingLanguage lang, String content) { Game.getInstance().studentWork.setBody(this, lang, content); }
 
   /** Puts back, in every language, the editor content that the student saw the first time */
   public void revertEditorContents() { Game.getInstance().studentWork.removeBodies(this); }
 
-  /** The editor of this source file */
-  public JScrollPane getEditorPanel(ProgrammingLanguage lang, SourceFile sf) { return new JavaEditorPanel(this, sf, lang); }
+  /** The editor of this exercise */
+  public JScrollPane getEditorPanel(ProgrammingLanguage lang) { return new JavaEditorPanel(this, lang); }
 
   /** The pieces of the program to compile: the correction's, or the student's wrapped around the current editor content */
   public EntityFileSegments getSegments(ProgrammingLanguage lang, SourceFile sf, StudentOrCorrection whatToCompile)
   {
-    return whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionSegments() : sf.getStudentSegments(getEditorContent(lang, sf));
+    return whatToCompile == StudentOrCorrection.CORRECTION ? sf.getCorrectionSegments() : sf.getStudentSegments(getEditorContent(lang));
   }
 
   /** The source files of this language that were already loaded: never loads anything, unlike {@link #getSourceFilesList} */

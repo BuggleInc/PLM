@@ -13,18 +13,16 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.session.ISourceFileListener;
-import plm.core.model.session.SourceFile;
 
 /*
  * Responsibility: synchronize content between Document instance
- * used by a JEditorPane and the body field of a SourceFile instance.
+ * used by a JEditorPane and the student's code of an exercise.
  *
  */
 public class SourceFileDocumentSynchronizer implements DocumentListener, ISourceFileListener {
 
   private Document document;
   private Exercise exo;
-  private SourceFile sourceFile;
   private ProgrammingLanguage lang;
   private EditorKit editorKit;
   private boolean propagationInProgress = false, pendingPropagDocToSource = false, pendingPropagSourceToDoc = false;
@@ -36,20 +34,15 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
   public void clear()
   {
     document.removeDocumentListener(this);
-    Game.getInstance().studentWork.removeBodyListener(exo, lang, sourceFile.getName());
+    Game.getInstance().studentWork.removeBodyListener(exo, lang);
     this.document   = null;
-    this.sourceFile = null;
     this.exo        = null;
     editorKit       = null;
   }
 
   public void setDocument(Document doc) { this.document = doc; }
 
-  public void setSourceFile(Exercise exo, SourceFile srcFile)
-  {
-    this.exo        = exo;
-    this.sourceFile = srcFile;
-  }
+  public void setExercise(Exercise exo) { this.exo = exo; }
 
   public void setProgrammingLanguage(ProgrammingLanguage lang) { this.lang = lang; }
 
@@ -62,7 +55,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
     this.propagationInProgress = true;
     try {
-      exo.setEditorContent(lang, sourceFile, this.document.getText(0, this.document.getLength()));
+      exo.setEditorContent(lang, this.document.getText(0, this.document.getLength()));
     } catch (BadLocationException e1) {
       e1.printStackTrace();
     } finally {
@@ -84,7 +77,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
     this.propagationInProgress = true;
     try {
       this.document.remove(0, this.document.getLength());
-      String editorContent = exo.getEditorContent(lang, sourceFile);
+      String editorContent = exo.getEditorContent(lang);
       if (editorContent == null || editorContent.equals("")) {
         return;
       }

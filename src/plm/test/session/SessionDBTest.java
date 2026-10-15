@@ -31,67 +31,65 @@ public class SessionDBTest {
     return exo;
   }
 
-  @Test public void testNothingSetYet() { Assertions.assertNull(db.getBody(exercise("exo"), langs.JAVA, "Entity")); }
+  @Test public void testNothingSetYet() { Assertions.assertNull(db.getBody(exercise("exo"), langs.JAVA)); }
 
   @Test public void testSetThenGetThenOverwrite()
   {
     Lecture exo = exercise("exo");
-    db.setBody(exo, langs.JAVA, "Entity", "first");
-    Assertions.assertEquals("first", db.getBody(exo, langs.JAVA, "Entity"));
-    db.setBody(exo, langs.JAVA, "Entity", "second");
-    Assertions.assertEquals("second", db.getBody(exo, langs.JAVA, "Entity"));
+    db.setBody(exo, langs.JAVA, "first");
+    Assertions.assertEquals("first", db.getBody(exo, langs.JAVA));
+    db.setBody(exo, langs.JAVA, "second");
+    Assertions.assertEquals("second", db.getBody(exo, langs.JAVA));
   }
 
   @Test public void testBodiesAreIndependent()
   {
     Lecture exo = exercise("exo");
-    db.setBody(exo, langs.JAVA, "Entity", "java");
-    db.setBody(exo, langs.PYTHON, "Entity", "python");
-    db.setBody(exo, langs.JAVA, "Other", "other");
-    db.setBody(exercise("exo2"), langs.JAVA, "Entity", "exo2");
+    db.setBody(exo, langs.JAVA, "java");
+    db.setBody(exo, langs.PYTHON, "python");
+    db.setBody(exercise("exo2"), langs.JAVA, "exo2");
 
-    Assertions.assertEquals("java", db.getBody(exo, langs.JAVA, "Entity"));
-    Assertions.assertEquals("python", db.getBody(exo, langs.PYTHON, "Entity"));
-    Assertions.assertEquals("other", db.getBody(exo, langs.JAVA, "Other"));
-    Assertions.assertEquals("exo2", db.getBody(exercise("exo2"), langs.JAVA, "Entity"));
-    Assertions.assertNull(db.getBody(exo, langs.SCALA, "Entity"));
+    Assertions.assertEquals("java", db.getBody(exo, langs.JAVA));
+    Assertions.assertEquals("python", db.getBody(exo, langs.PYTHON));
+    Assertions.assertEquals("exo2", db.getBody(exercise("exo2"), langs.JAVA));
+    Assertions.assertNull(db.getBody(exo, langs.SCALA));
   }
 
   /** The tabs are not the business of the DB: the Python templating reads them the way python does */
   @Test public void testBodyIsStoredAsIs()
   {
     Lecture exo = exercise("exo");
-    db.setBody(exo, langs.PYTHON, "Entity", "if x:\n\ty = \"a\tb\"\n");
-    Assertions.assertEquals("if x:\n\ty = \"a\tb\"\n", db.getBody(exo, langs.PYTHON, "Entity"));
+    db.setBody(exo, langs.PYTHON, "if x:\n\ty = \"a\tb\"\n");
+    Assertions.assertEquals("if x:\n\ty = \"a\tb\"\n", db.getBody(exo, langs.PYTHON));
   }
 
   @Test public void testRemoveBodiesForgetsOnlyThatExercise()
   {
     Lecture exo = exercise("exo");
-    db.setBody(exo, langs.JAVA, "Entity", "java");
-    db.setBody(exo, langs.PYTHON, "Entity", "python");
-    db.setBody(exercise("exo2"), langs.JAVA, "Entity", "exo2");
+    db.setBody(exo, langs.JAVA, "java");
+    db.setBody(exo, langs.PYTHON, "python");
+    db.setBody(exercise("exo2"), langs.JAVA, "exo2");
 
     db.removeBodies(exo);
 
-    Assertions.assertNull(db.getBody(exo, langs.JAVA, "Entity"));
-    Assertions.assertNull(db.getBody(exo, langs.PYTHON, "Entity"));
-    Assertions.assertEquals("exo2", db.getBody(exercise("exo2"), langs.JAVA, "Entity"));
+    Assertions.assertNull(db.getBody(exo, langs.JAVA));
+    Assertions.assertNull(db.getBody(exo, langs.PYTHON));
+    Assertions.assertEquals("exo2", db.getBody(exercise("exo2"), langs.JAVA));
   }
 
   @Test public void testListenerIsToldOfSetsAndRemovals()
   {
     Lecture exo                  = exercise("exo");
     ISourceFileListener listener = Mockito.mock(ISourceFileListener.class);
-    db.setBodyListener(exo, langs.JAVA, "Entity", listener);
+    db.setBodyListener(exo, langs.JAVA, listener);
 
-    db.setBody(exo, langs.JAVA, "Entity", "code");
-    db.setBody(exo, langs.PYTHON, "Entity", "other language: not that listener");
+    db.setBody(exo, langs.JAVA, "code");
+    db.setBody(exo, langs.PYTHON, "other language: not that listener");
     db.removeBodies(exo);
     Mockito.verify(listener, Mockito.times(2)).sourceFileContentHasChanged();
 
-    db.removeBodyListener(exo, langs.JAVA, "Entity");
-    db.setBody(exo, langs.JAVA, "Entity", "code");
+    db.removeBodyListener(exo, langs.JAVA);
+    db.setBody(exo, langs.JAVA, "code");
     Mockito.verify(listener, Mockito.times(2)).sourceFileContentHasChanged();
   }
 

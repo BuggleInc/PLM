@@ -134,7 +134,7 @@ public class LightBotEntity extends Entity {
   {
     ProgrammingLanguage lang = Game.getInstance().programmingLanguageManager.LIGHTBOT;
     Exercise exo             = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
-    program                  = LightBotProgram.parse(exo.getEditorContent(lang, exo.getSourceFile(lang, 0)));
+    program                  = LightBotProgram.parse(exo.getEditorContent(lang));
 
     /* Run main */
     run("main", program.getMain());

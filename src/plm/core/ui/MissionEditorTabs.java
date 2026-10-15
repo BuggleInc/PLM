@@ -18,7 +18,6 @@ import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
-import plm.core.model.session.SourceFile;
 import plm.universe.IEntityStackListener;
 import plm.universe.World;
 
@@ -126,15 +125,10 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
     }
 
     if (currentExercise instanceof Exercise) {
-      /* Add back the right amount of tabs */
-      int publicSrcFileCount = ((Exercise)currentExercise).getSourceFileCount(newLang);
-      for (int i = 0; i < publicSrcFileCount; i++) {
-        /* Create the code editor */
-        SourceFile srcFile = ((Exercise)currentExercise).getSourceFile(newLang, i);
-
-        /* Create the tab with the code editor as content */
-        this.addTab(srcFile.getName(), null, ((Exercise)currentExercise).getEditorPanel(newLang, srcFile), i18n.tr("Type your code here"));
-      }
+      /* Add back the code editor, if there is a source file in that language */
+      Exercise exo = (Exercise)currentExercise;
+      if (exo.getSourceFileCount(newLang) > 0)
+        this.addTab(exo.getTabName(), null, exo.getEditorPanel(newLang), i18n.tr("Type your code here"));
       if (getTabCount() > tabPosition)
         setSelectedIndex(tabPosition);
     }

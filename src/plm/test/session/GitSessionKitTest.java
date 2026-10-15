@@ -55,11 +55,11 @@ public class GitSessionKitTest {
     kit.loadAll(path.toFile()); // tells the kit which repository is the one of the user
     kit.loadLesson(path.toFile(), lesson);
 
-    Assertions.assertEquals("saved code", db.getBody(exo, langs.JAVA, exo.getTabName()));
+    Assertions.assertEquals("saved code", db.getBody(exo, langs.JAVA));
     Assertions.assertTrue(db.getPassed(exo, langs.JAVA));
-    Assertions.assertEquals("code that was never passed", db.getBody(exo, langs.PYTHON, exo.getTabName()));
+    Assertions.assertEquals("code that was never passed", db.getBody(exo, langs.PYTHON));
     Assertions.assertFalse(db.getPassed(exo, langs.PYTHON));
-    Assertions.assertNull(db.getBody(exo, langs.SCALA, exo.getTabName())); // never saved
+    Assertions.assertNull(db.getBody(exo, langs.SCALA)); // never saved
     Assertions.assertTrue(exo.getLoadedSourceFiles(langs.JAVA).isEmpty(), "restoring the code must not parse the entity");
   }
 

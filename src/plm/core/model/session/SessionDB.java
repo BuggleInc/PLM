@@ -13,7 +13,7 @@ import plm.core.model.lesson.Lecture;
 
 public class SessionDB {
   /** Identifies one source of an exercise that the student edits */
-  private record BodyKey(String exoId, ProgrammingLanguage lang, String sourceName) {}
+  private record BodyKey(String exoId, ProgrammingLanguage lang) {}
 
   /** What the student wrote. Absent while the student did not change the initial content. Read by the run thread, written by the EDT. */
   private final Map<BodyKey, String> bodies = new ConcurrentHashMap<>();
@@ -31,18 +31,18 @@ public class SessionDB {
   private final Map<LessonKey, Integer> passedExercises   = new ConcurrentHashMap<>();
   private final Map<LessonKey, Integer> possibleExercises = new ConcurrentHashMap<>();
 
-  /** Stores what the student wrote in that source, and tells its editor */
-  public void setBody(Lecture exo, ProgrammingLanguage lang, String sourceName, String content)
+  /** Stores what the student wrote for that exercise and language, and tells its editor */
+  public void setBody(Lecture exo, ProgrammingLanguage lang, String content)
   {
-    BodyKey key = new BodyKey(exo.getId(), lang, sourceName);
+    BodyKey key = new BodyKey(exo.getId(), lang);
     bodies.put(key, content);
     notifyBodyListener(key);
   }
 
-  /** The content last set for that source, or null if none was */
-  public String getBody(Lecture exo, ProgrammingLanguage lang, String sourceName) { return bodies.get(new BodyKey(exo.getId(), lang, sourceName)); }
+  /** The content last set for that exercise and language, or null if none was */
+  public String getBody(Lecture exo, ProgrammingLanguage lang) { return bodies.get(new BodyKey(exo.getId(), lang)); }
 
-  /** Forgets what the student wrote in every source of that exercise, and tells the editors */
+  /** Forgets what the student wrote in every language of that exercise, and tells the editors */
   public void removeBodies(Lecture exo)
   {
     for (BodyKey key : List.copyOf(bodies.keySet()))
@@ -52,12 +52,9 @@ public class SessionDB {
       }
   }
 
-  public void setBodyListener(Lecture exo, ProgrammingLanguage lang, String sourceName, ISourceFileListener l)
-  {
-    bodyListeners.put(new BodyKey(exo.getId(), lang, sourceName), l);
-  }
+  public void setBodyListener(Lecture exo, ProgrammingLanguage lang, ISourceFileListener l) { bodyListeners.put(new BodyKey(exo.getId(), lang), l); }
 
-  public void removeBodyListener(Lecture exo, ProgrammingLanguage lang, String sourceName) { bodyListeners.remove(new BodyKey(exo.getId(), lang, sourceName)); }
+  public void removeBodyListener(Lecture exo, ProgrammingLanguage lang) { bodyListeners.remove(new BodyKey(exo.getId(), lang)); }
 
   private void notifyBodyListener(BodyKey key)
   {
