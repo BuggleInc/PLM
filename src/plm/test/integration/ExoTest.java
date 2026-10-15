@@ -13,6 +13,7 @@ import java.util.concurrent.Future;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.provider.Arguments;
+import org.mockito.Mockito;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.DemoRunner;
@@ -22,6 +23,7 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.tracking.GitTracker;
 import plm.core.utils.FileUtils;
 
 /* This ancestor class defines useful methods that are used in specific tests, that are subclasses */
@@ -59,7 +61,7 @@ public class ExoTest {
 
     FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
-    g.getProgressTrackerListeners().clear(); // disable all progress trackers (git, etc)
+    g.setGitTracker(Mockito.mock(GitTracker.class)); // disable all progress trackers (git, etc)
     g.removeSessionKit();
     g.setBatchExecution();
 

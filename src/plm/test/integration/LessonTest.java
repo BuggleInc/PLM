@@ -6,12 +6,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mockito;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.ProgrammingLanguageManager;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
+import plm.core.model.tracking.GitTracker;
 import plm.core.utils.FileUtils;
 
 /** Checks that every lesson of ExoTest.lessonNamesToTest loads in Java, Scala and Python */
@@ -32,7 +34,7 @@ public class LessonTest {
   {
     FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
-    g.getProgressTrackerListeners().clear(); // disable all progress trackers (git, etc)
+    g.setGitTracker(Mockito.mock(GitTracker.class)); // disable all progress trackers (git, etc)
     g.removeSessionKit();
     g.setBatchExecution();
 

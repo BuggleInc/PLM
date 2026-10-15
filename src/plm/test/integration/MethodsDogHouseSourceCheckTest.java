@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mockito;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.RunOutcome;
+import plm.core.model.tracking.GitTracker;
 import plm.core.utils.FileUtils;
 
 /** MethodsDogHouse refuses, through Exercise.verifySource(), the code that does not call left() exactly once. */
@@ -24,7 +26,7 @@ public class MethodsDogHouseSourceCheckTest {
   {
     FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
-    g.getProgressTrackerListeners().clear();
+    g.setGitTracker(Mockito.mock(GitTracker.class));
     g.removeSessionKit();
     g.setBatchExecution();
     Assertions.assertNotNull(g.switchLesson("lessons.welcome", false));

@@ -21,7 +21,7 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SessionZip;
 import plm.core.utils.FileUtils;
 
-public class GitTracker implements ProgressTrackerListener, UserSwitchesListener {
+public class GitTracker implements UserSwitchesListener {
 
   private File plmDir;
   private GitUtils gitUtils;
@@ -35,7 +35,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
   /** The outcome of the last execution of each exercise, reported by the events that are not executions */
   private final Map<Exercise, RunOutcome> lastOutcomes = new HashMap<>();
 
-  public GitTracker(File path, Users users) throws IOException, GitAPIException
+  public GitTracker(File path, Users users)
   {
     this.plmDir = path;
     this.users  = users;
@@ -96,7 +96,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     }
   }
 
-  @Override public void executed(Exercise exo, RunOutcome outcome)
+  public void executed(Exercise exo, RunOutcome outcome)
   {
     lastOutcomes.put(exo, outcome);
     createFiles(exo, outcome);
@@ -104,7 +104,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     commitAndPush(writeCommitMessage(exo, outcome, "executed", new JSONObject()));
   }
 
-  @Override @SuppressWarnings("unchecked") public void switched(Exercise exo)
+  @SuppressWarnings("unchecked") public void switched(Exercise exo)
   {
     Exercise lastExo = (Exercise)Game.getInstance().getLastExercise();
     if (lastExo == null)
@@ -118,13 +118,13 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     commitAndPush(writeCommitMessage(lastExo, new RunOutcome(Game.getInstance().getProgrammingLanguage()), "switched", msg));
   }
 
-  @Override public void reverted(Exercise exo)
+  public void reverted(Exercise exo)
   {
     deleteFiles(exo);
     commitAndPush(writeCommitMessage(exo, new RunOutcome(Game.getInstance().getProgrammingLanguage()), "reverted", new JSONObject()));
   }
 
-  @Override public void leave()
+  public void leave()
   {
     System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting."));
 
@@ -359,7 +359,7 @@ public class GitTracker implements ProgressTrackerListener, UserSwitchesListener
     return outcome != null && outcome.language == lang ? outcome : new RunOutcome(lang);
   }
 
-  @Override @SuppressWarnings("unchecked") public void readTip(String id, String mission, ProgrammingLanguage lang)
+  @SuppressWarnings("unchecked") public void readTip(String id, String mission, ProgrammingLanguage lang)
   {
     Exercise lastExo = (Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise();
     try {

@@ -28,7 +28,6 @@ import java.util.concurrent.Future;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import javax.swing.JOptionPane;
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
@@ -48,7 +47,6 @@ import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.tracking.GitTracker;
-import plm.core.model.tracking.ProgressTrackerListener;
 import plm.core.ui.MainFrame;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
@@ -148,13 +146,7 @@ public class Game implements IWorldView {
 
     sessionKit = new GitSessionKit(this);
 
-    try {
-      gitTracker = new GitTracker(SAVE_DIR, users);
-      addProgressTrackerListener(gitTracker);
-    } catch (IOException | GitAPIException e) {
-      System.err.println(Game.i18n.tr("You found a bug in the PLM. Please report it with all possible details (including the stacktrace below)."));
-      e.printStackTrace();
-    }
+    gitTracker = new GitTracker(SAVE_DIR, users);
   }
 
   /**
@@ -556,9 +548,7 @@ public class Game implements IWorldView {
       saveSession();
 
       // report user leave on the server
-      for (ProgressTrackerListener trackerListener : progressTrackerListeners) {
-        trackerListener.leave();
-      }
+      gitTracker.leave();
 
       storeProperties();
       System.exit(0);
@@ -589,6 +579,9 @@ public class Game implements IWorldView {
 
   public GitSessionKit getSessionKit() { return this.sessionKit; }
   public GitTracker getGitTracker() { return this.gitTracker; }
+
+  /** Replaces the tracker: tests put a mock to disable the progress tracking */
+  public void setGitTracker(GitTracker tracker) { this.gitTracker = tracker; }
   public void removeSessionKit()
   {
     sessionKit = null;
@@ -697,11 +690,8 @@ public class Game implements IWorldView {
       v.currentExerciseHasChanged(lect);
     }
 
-    if (lect instanceof Exercise) {
-      for (ProgressTrackerListener p : this.progressTrackerListeners) {
-        p.switched((Exercise)lect);
-      }
-    }
+    if (lect instanceof Exercise)
+      gitTracker.switched((Exercise)lect);
   }
 
   protected void fireSelectedWorldHasChanged(World w)
@@ -735,22 +725,9 @@ public class Game implements IWorldView {
       l.stateChanged(status);
   }
 
-  private ArrayList<ProgressTrackerListener> progressTrackerListeners = new ArrayList<ProgressTrackerListener>();
-  public void addProgressTrackerListener(ProgressTrackerListener l) { this.progressTrackerListeners.add(l); }
-  public void removeProgressTrackerListener(ProgressTrackerListener l) { this.progressTrackerListeners.remove(l); }
-  public void fireProgressTracker(Exercise exo, RunOutcome outcome)
-  {
-    for (ProgressTrackerListener l : this.progressTrackerListeners) {
-      l.executed(exo, outcome);
-    }
-  }
+  public void fireProgressTracker(Exercise exo, RunOutcome outcome) { gitTracker.executed(exo, outcome); }
 
-  public void fireReadTipTracker(String id, String mission, ProgrammingLanguage lang)
-  {
-    for (ProgressTrackerListener l : this.progressTrackerListeners) {
-      l.readTip(id, mission, lang);
-    }
-  }
+  public void fireReadTipTracker(String id, String mission, ProgrammingLanguage lang) { gitTracker.readTip(id, mission, lang); }
 
   @Override public void worldHasChanged()
   {
@@ -908,8 +885,6 @@ public class Game implements IWorldView {
 
   public void setUsers(Users users) { this.users = users; }
 
-  public ArrayList<ProgressTrackerListener> getProgressTrackerListeners() { return this.progressTrackerListeners; }
-
   /* Mechanism to find where to save our data */
 
   private static String HOME_DIR    = System.getProperty("user.home");
@@ -967,8 +942,6 @@ public class Game implements IWorldView {
     ex.revertEditorContents();
     for (ProgrammingLanguage pl : programmingLanguageManager.langs)
       Game.getInstance().studentWork.setPassed(ex, pl, false);
-    for (ProgressTrackerListener l : this.progressTrackerListeners) {
-      l.reverted(ex);
-    }
+    gitTracker.reverted(ex);
   }
 }
