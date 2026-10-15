@@ -299,7 +299,7 @@ public class GitUtils {
    *
    * We had issues with the git servers that don't like having more than 1,200 concurrent push requests
    * from the same NATed IP address, and our PLM-data repo got temporarily disabled as a result. So now,
-   * we only push at most once every 30 minutes (unless when the client quits, in which case
+   * we only push at most once every 5 minutes (unless when the client quits, in which case
    * forcefullyPushToUserBranch() is used to get the data immediately out).
    *
    * Here is my understanding of the github incident:  We had 100 students using the PLM from the same
@@ -323,9 +323,9 @@ public class GitUtils {
       pendingPush = new SwingWorker<Void, Void>() {
         @Override protected Void doInBackground()
         {
-          // Reduce the load on the github servers by not pushing more often that once every 20 minutes
+          // Reduce the load on the github servers by not pushing more often that once every 5 minutes
           try {
-            Thread.sleep(1 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
+            Thread.sleep(5 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
           } catch (InterruptedException e1) {
             return null; // cancelled by cancelPendingPush(): the client is quitting
           }
