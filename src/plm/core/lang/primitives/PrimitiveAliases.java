@@ -75,7 +75,8 @@ public class PrimitiveAliases {
       PrimitiveMethod primitive = primitives.get(name);
       if (primitive == null)
         return; // a primitive of another universe, or a stale translation
-      if (!alias.matches("[A-Za-z_][A-Za-z0-9_]*") || KEYWORDS.contains(alias))
+      // Letters may be accented (C needs gcc 10 or clang), but not decomposed: Python normalizes identifiers, unlike the other languages
+      if (!alias.matches("[\\p{L}_][\\p{L}\\p{Nd}_]*") || KEYWORDS.contains(alias))
         errors.add(locale + ": " + name + "() cannot be translated to " + alias + ", which is not a valid identifier in every language");
       else
         result.add(primitive.alias(alias));

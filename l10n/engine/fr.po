@@ -3038,6 +3038,11 @@ msgstr "recule"
 
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
+msgid "stepBack"
+msgstr "pasArrière"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
 msgid "getBodyColor"
 msgstr "getCouleurCorps"
 

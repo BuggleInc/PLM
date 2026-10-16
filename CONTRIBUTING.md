@@ -232,10 +232,11 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   `[!primitives/]` placeholder of the world's html by a table of the documented primitives of its first entity, in the current
   programming language (`ExternalPrimitiveLanguage.signature()`). The primitives forbidden by the exercise are not shown.
 - **Translated primitives**: translators may give a localized name to each documented primitive (entries of context `primitive`
-  in `l10n/engine/*.po`). `CodeCreation` adds the aliases of every locale to the glue (`PrimitiveAliases`), so that the code
-  of a student keeps working when switching the human language. An alias sends the canonical name of its primitive
+  in `l10n/engine/*.po`). `CodeCreation` adds the aliases of every locale to the glue (`PrimitiveAliases`), so that the code of
+  a student keeps working when switching the human language. An alias sends the canonical name of its primitive
   (`PrimitiveMethod.command()`): the rest of the PLM, API gating included, only knows the canonical names. The build fails if a
-  translated name is not a valid identifier in every language or designates two primitives of the same glue.
+  translated name is not a valid identifier in every language (accented letters are fine, but not decomposed ones) or designates
+  two primitives of the same glue.
 - **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
   for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
   line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue

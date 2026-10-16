@@ -27,6 +27,7 @@ public class PrimitiveAliasesTest {
   @Test public void aliasCallsTheCanonicalPrimitive()
   {
     List<PrimitiveMethod> glue    = withAliases(Map.of("fr", Map.of("setObjectif", "fixeObjectif"), "es", Map.of("setObjectif", "fixeObjectif")));
+    assertDoesNotThrow(() -> withAliases(Map.of("fr", Map.of("setObjectif", "définirObjectif"))));
     List<PrimitiveMethod> aliases = glue.stream().filter(primitive -> primitive.name().equals("fixeObjectif")).toList();
 
     assertEquals(1, aliases.size()); // the same alias in two locales
@@ -36,7 +37,7 @@ public class PrimitiveAliasesTest {
   @Test public void invalidIdentifiersAreRejected()
   {
     assertThrows(IllegalStateException.class, () -> withAliases(Map.of("fr", Map.of("setObjectif", "fixe-objectif"))));
-    assertThrows(IllegalStateException.class, () -> withAliases(Map.of("fr", Map.of("setObjectif", "définirObjectif"))));
+    assertThrows(IllegalStateException.class, () -> withAliases(Map.of("fr", Map.of("setObjectif", "de\u0301finirObjectif")))); // decomposed é
     assertThrows(IllegalStateException.class, () -> withAliases(Map.of("fr", Map.of("setObjectif", "class"))));
   }
 
