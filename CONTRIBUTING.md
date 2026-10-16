@@ -228,7 +228,8 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
 - **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
   for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
   line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue
-  then blocks on `getAnswerXxx()` until the PLM answers with one line holding the serialized result. Primitives that return
+  then blocks on `getAnswerXxx()` until the PLM answers with one line holding the serialized result. The `Answer` enum lists
+  the types that a primitive can return, and each generator maps them to the function of its glue. Primitives that return
   nothing get no answer: the student's code does not wait for the PLM.
 - **Serialization**: `ValueSerializer` writes each value with a type tag: `i` for ints, `f` for doubles, `b0`/`b1` for booleans,
   `c` for chars, `C` for colors (ARGB int), `Px:y` for points, a quoted string with `\\` and `\"` escapes, and `Z` for null.
@@ -456,9 +457,19 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       recent file, keeps the local identity or adopts the one of the zip (keeping the local work), and refuses to replace an existing user.
     * *`SessionZipTest`:* a session directory survives the trip through a zip file, a zip that is not a session is refused, and so
       is an entry that would leave the target directory.
-    * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
-      refuses `forward(n)` and `backward(n)`, each with an explanatory `PrimitiveRefusedException`.
-    * TODO: document PrimitiveRegistrationTest, CommandExecutorTest and update ApiGatingTest
+    * *`PrimitiveRegistrationTest`:* the primitives are indexed by name and sorted, inherited ones included, and cached. The same
+      declaration in two interfaces is one primitive, while the same name with another signature is rejected. The parameter
+      names are the declared ones (`forward(steps)`), which fails if `-parameters` is lost.
+    * *`CommandExecutorTest`:* a command calls the primitive and writes its result back (nothing for a void primitive). Spaces in
+      the arguments are kept, enums travel as ordinals, and atomic values are converted where a string is expected. An unknown
+      primitive or arguments of the wrong type fail the run, a forbidden primitive is refused before being called, a
+      `PrimitiveRefusedException` is reported as is, and any other exception is reported with the call that raised it.
+    * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` and `forbidMultiStep()` are refused by `CommandExecutor`
+      with an explanatory `PrimitiveRefusedException`. `forbid()` rejects an unknown primitive, the forbidden primitives are
+      read-only and forbidden again by every new instance, the likely mistakes (`Left()`, `penDown()`...) are explained, and a few
+      gated exercises refuse their forbidden calls.
+    * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
+      known languages.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
