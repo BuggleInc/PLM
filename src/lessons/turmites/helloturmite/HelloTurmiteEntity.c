@@ -19,34 +19,47 @@ Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta
 
 int state = 0;
 
-void step(Color* colors, int colorsLength, int*** rule, int dim1, int dim2, int dim3 ) {
-	int currentColor=0;
-	/* Your code comes here */
-	/* BEGIN SOLUTION */
-	Color current = getGroundColor();
-	int i;
-	for (i=0;i<colorsLength;i++)
-		if (current==colors[i])
-			currentColor = i;
+void tick(Color* colors, int colorsLength, int*** rule, int dim1, int dim2, int dim3)
+{
+  int currentColor = 0;
+  /* Your code comes here */
+  /* BEGIN SOLUTION */
+  Color current = getGroundColor();
+  int i;
+  for (i = 0; i < colorsLength; i++)
+    if (current == colors[i])
+      currentColor = i;
 
-	setBrushColor(colors[ rule[state][currentColor][NEXT_COLOR] ]);
-	brushDown();
-	brushUp();
+  setBrushColor(colors[rule[state][currentColor][NEXT_COLOR]]);
+  brushDown();
+  brushUp();
 
-	switch (rule[state][currentColor][NEXT_MOVE]) {
-	case STOP:   /* nothing */;            break;
-	case NOTURN: /* no turn */; forward(1); break;
-	case LEFT:   left();   	forward(1); break;
-	case RIGHT:  right();   forward(1); break;
-	case BACK:   back();    forward(1); break;
-	default:
-		printf("100 Unknown command associated to i=%d: %c\n",currentColor,rule[state][currentColor][NEXT_MOVE]);
-		fflush(stdout);
-	}
+  switch (rule[state][currentColor][NEXT_MOVE]) {
+    case STOP: /* nothing */;
+      break;
+    case NOTURN: /* no turn */;
+      forward(1);
+      break;
+    case LEFT:
+      left();
+      forward(1);
+      break;
+    case RIGHT:
+      right();
+      forward(1);
+      break;
+    case BACK:
+      back();
+      forward(1);
+      break;
+    default:
+      printf("100 Unknown command associated to i=%d: %c\n", currentColor, rule[state][currentColor][NEXT_MOVE]);
+      fflush(stdout);
+  }
 
-	state = rule[state][currentColor][NEXT_STATE];
+  state = rule[state][currentColor][NEXT_STATE];
 
-	/* END SOLUTION */
+  /* END SOLUTION */
 }
 /* END TEMPLATE */
 
@@ -69,7 +82,7 @@ void run() {
 
   for (i = 0; i < nbSteps; i++) {
     stepDone();
-    step(colors, dim1, rule, dim1, dim2, dim3);
+    tick(colors, dim1, rule, dim1, dim2, dim3);
   }
   free(colors);
   plm_free_int_array_3d((uint32_t***)rule, dim1, dim2);

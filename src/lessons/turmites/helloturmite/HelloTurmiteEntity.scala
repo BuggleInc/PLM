@@ -23,7 +23,7 @@ class HelloTurmiteEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	var state = 0;
 
-	def step(colors:Array[Color], rule:Array[Array[Array[Int]]] ): Unit = {
+	def tick(colors:Array[Color], rule:Array[Array[Array[Int]]] ): Unit = {
 		/* Your code comes here */
 		/* BEGIN SOLUTION */
 		var currentColor=0;
@@ -62,7 +62,7 @@ class HelloTurmiteEntity extends SimpleBuggle {
 
 		for (i <- 1 to nbSteps) {
 			stepDone();
-			step(colors,rule);
+			tick(colors,rule);
 		}
 	}
 	/* END REMOTE */

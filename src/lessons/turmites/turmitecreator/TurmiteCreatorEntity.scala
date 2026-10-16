@@ -13,7 +13,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 
 	var state = 0;
 
-	def step(colors:Array[Color]): Unit = {
+	def tick(colors:Array[Color]): Unit = {
 		var currentColor=0;
 
 		val current = getGroundColor();
@@ -133,7 +133,7 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 
 
 		for (stepIt <- 1 to nbSteps) {
-			step(colors);
+			tick(colors);
 			stepDone();
 		}
 	}

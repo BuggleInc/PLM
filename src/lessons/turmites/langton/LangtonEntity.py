@@ -2,7 +2,7 @@ from RemoteBuggle import *
 
 def run():
     # BEGIN TEMPLATE
-    def step():
+    def tick():
         # BEGIN SOLUTION
         if getGroundColor() == Color.white:
             right()
@@ -20,5 +20,5 @@ def run():
     # END TEMPLATE
             
     for i in range(getParamInt(0)):
-        step()
+        tick()
         stepDone()

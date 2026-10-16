@@ -22,7 +22,7 @@ public class HelloTurmiteEntity extends TurmiteEntity {
 
   int state = 0;
 
-  public void step(Color[] colors, int[][][] rule)
+  public void tick(Color[] colors, int[][][] rule)
   {
     int currentColor = 0;
     /* Your code comes here */
@@ -81,7 +81,7 @@ public class HelloTurmiteEntity extends TurmiteEntity {
 
     for (int i = 0; i < nbSteps; i++) {
       stepDone();
-      step(colors, rule);
+      tick(colors, rule);
     }
   }
   /* END REMOTE */

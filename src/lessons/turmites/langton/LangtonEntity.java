@@ -6,7 +6,7 @@ import lessons.turmites.universe.TurmiteEntity;
 public class LangtonEntity extends TurmiteEntity {
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
-  public void step()
+  public void tick()
   {
     /* BEGIN SOLUTION */
     if (getGroundColor() == Color.white) {
@@ -34,7 +34,7 @@ public class LangtonEntity extends TurmiteEntity {
   {
     int nbSteps = getParamInt(0);
     for (int i = 0; i < nbSteps; i++) {
-      step();
+      tick();
       stepDone();
     }
   }

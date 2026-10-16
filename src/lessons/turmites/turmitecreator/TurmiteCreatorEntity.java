@@ -9,7 +9,7 @@ public class TurmiteCreatorEntity extends TurmiteEntity {
   Color[] colors;
   int state = 0;
 
-  public void step()
+  public void tick()
   {
     int currentColor = 0;
     Color current    = getGroundColor();
@@ -143,7 +143,7 @@ public class TurmiteCreatorEntity extends TurmiteEntity {
     }
 
     for (int step = 0; step < nbSteps; step++) {
-      step();
+      tick();
       stepDone();
     }
   }

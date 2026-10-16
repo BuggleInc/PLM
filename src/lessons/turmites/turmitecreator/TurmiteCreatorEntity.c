@@ -5,7 +5,7 @@ Color* colors;
 int colorsLength;
 int state = 0;
 
-void step();
+void tick();
 
 /* BEGIN TEMPLATE */
 /* Do not change these definitions */
@@ -91,7 +91,7 @@ void init()
 }
 /* END TEMPLATE */
 
-void step()
+void tick()
 {
   int currentColor = 0;
   Color current    = getGroundColor();
@@ -144,7 +144,7 @@ void run()
     colors[i] = (Color)rand();
 
   for (int stepNb = 0; stepNb < nbSteps; stepNb++) {
-    step();
+    tick();
     stepDone();
   }
 }

@@ -1,7 +1,7 @@
 from RemoteBuggle import *
 def run():
     # BEGIN TEMPLATE
-    def step(rule, colors):
+    def tick(rule, colors):
         # BEGIN SOLUTION
         for i in range( len(colors) ):
             if getGroundColor() == colors[i]:
@@ -31,5 +31,5 @@ def run():
         colors.append(allColors[i])
     
     for i in range(getParamInt(0)):
-        step(rule,colors)
+        tick(rule,colors)
         stepDone()

@@ -10,7 +10,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray);
 
 	/* BEGIN TEMPLATE */
-	def step(rule:Array[Char], colors:Array[Color]): Unit = {
+	def tick(rule:Array[Char], colors:Array[Color]): Unit = {
 		/* BEGIN SOLUTION */
 		val i = colors.indexOf(getGroundColor());
 		if (i >= 0) {
@@ -40,7 +40,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 
 		for (i <- 1 to nbSteps) {
 			stepDone();
-			step(rule,colors);
+			tick(rule,colors);
 		}
 	}
 	/* END REMOTE */

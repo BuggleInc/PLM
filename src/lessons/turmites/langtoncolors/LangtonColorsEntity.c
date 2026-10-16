@@ -1,6 +1,6 @@
 #include "../../../../target/classes/resources/langages/c/RemoteTurmite.h"
 
-void step(char* rule, Color* colors, int length);
+void tick(char* rule, Color* colors, int length);
 
 Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
 
@@ -16,40 +16,41 @@ void run(){
 
   for (i = 0; i < nbSteps; i++) {
     stepDone();
-    step(rule, colors, length);
+    tick(rule, colors, length);
   }
   free(colors);
   free(rule);
 }
 
 /* BEGIN TEMPLATE */
-void step(char* rule, Color* colors, int length) {
-	/* BEGIN SOLUTION */
-	Color current = getGroundColor();
-	int i;
-	for (i=0;i<length;i++) {
-		if (current==colors[i]) {
-			switch (rule[i]) {
-			case 'L':
-				left();
-				break;
-			case 'R':
-				right();
-				break;
-			default:
-				printf("100 Unknown command associated to i=%d: %c\n",i,rule[i]);
-				fflush(stdout);
-				//System.out.println("Unknown command associated to i="+i+": "+rule[i]);
-			}
-			setBrushColor(colors[(i+1) % length]);
-			brushDown();
-			brushUp();
+void tick(char* rule, Color* colors, int length)
+{
+  /* BEGIN SOLUTION */
+  Color current = getGroundColor();
+  int i;
+  for (i = 0; i < length; i++) {
+    if (current == colors[i]) {
+      switch (rule[i]) {
+        case 'L':
+          left();
+          break;
+        case 'R':
+          right();
+          break;
+        default:
+          printf("100 Unknown command associated to i=%d: %c\n", i, rule[i]);
+          fflush(stdout);
+          // System.out.println("Unknown command associated to i="+i+": "+rule[i]);
+      }
+      setBrushColor(colors[(i + 1) % length]);
+      brushDown();
+      brushUp();
 
-			forward(1);
+      forward(1);
 
-			return;
-		}
-	}
-	/* END SOLUTION */
+      return;
+    }
+  }
+  /* END SOLUTION */
 }
 /* END TEMPLATE */

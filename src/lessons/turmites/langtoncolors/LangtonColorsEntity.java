@@ -7,7 +7,7 @@ public class LangtonColorsEntity extends TurmiteEntity {
 
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
-  public void step(char[] rule, Color[] colors)
+  public void tick(char[] rule, Color[] colors)
   {
     /* BEGIN SOLUTION */
     Color current = getGroundColor();
@@ -51,7 +51,7 @@ public class LangtonColorsEntity extends TurmiteEntity {
 
     for (int i = 0; i < nbSteps; i++) {
       stepDone();
-      step(rule, colors);
+      tick(rule, colors);
     }
   }
   /* END REMOTE */

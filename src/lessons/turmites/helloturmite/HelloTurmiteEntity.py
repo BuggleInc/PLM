@@ -12,10 +12,10 @@ def run():
     NEXT_MOVE  = 1
     NEXT_STATE = 2
     
-    # The step method will update this variable
+    # The tick method will update this variable
     state = 0
     
-    def step(rule, colors):
+    def tick(rule, colors):
         currentColor = 0
         nonlocal state # we use within the method that variable which lives outside. Thus the use of the nonlocal keyword. 
         # BEGIN SOLUTION
@@ -56,5 +56,5 @@ def run():
         colors.append(allColors[i])
     
     for i in range(getParamInt(0)):
-        step(rule, colors)
+        tick(rule, colors)
         stepDone()
