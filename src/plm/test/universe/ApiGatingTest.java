@@ -49,17 +49,14 @@ public class ApiGatingTest {
   @Test public void testForbiddenPrimitivesAreThoseOfTheEntity()
   {
     Assertions.assertEquals(Set.of("setX", "setY", "setPos"), new Array1Entity().getForbiddenPrimitives().keySet());
-    Assertions.assertTrue(new LoopForEntity().getForbiddenPrimitives().isEmpty());
+    Assertions.assertEquals(Set.of("forward", "backward"), new LoopForEntity().getForbiddenPrimitives().keySet());
   }
 
-  /** LoopForEntity calls forbidMultiStep(): moving by a count is refused, while step() and stepBack() remain allowed. */
-  @Test public void testMultiStepIsRefused()
+  /** LoopForEntity calls forbidMultiStep(), so moving by a count is refused while step() and stepBack() remain allowed. */
+  @ParameterizedTest @ValueSource(strings = {"forward [2]", "backward [3]"}) public void testMultiStepIsRefused(String command)
   {
-    LoopForEntity buggle                   = new LoopForEntity();
-    PrimitiveRefusedException forward      = Assertions.assertThrows(PrimitiveRefusedException.class, () -> buggle.forward(2));
-    PrimitiveRefusedException backward     = Assertions.assertThrows(PrimitiveRefusedException.class, () -> buggle.backward(2));
-    Assertions.assertTrue(forward.getMessage().contains("Use a loop instead."), forward.getMessage());
-    Assertions.assertTrue(backward.getMessage().contains("Use a loop instead."), backward.getMessage());
+    PrimitiveRefusedException e = Assertions.assertThrows(PrimitiveRefusedException.class, () -> CommandExecutor.command(new LoopForEntity(), command, null));
+    Assertions.assertTrue(e.getMessage().contains("Use a loop instead."), e.getMessage());
   }
 
   @Test public void testForbidRejectsAnUnknownPrimitive()
@@ -93,9 +90,7 @@ public class ApiGatingTest {
   /** The exercises of the lessons that gate their API, and a call that each of them refuses */
   static Stream<Arguments> refusedCallsInExercises()
   {
-    return Stream.of(Arguments.of("lessons.welcome.loopfor.LoopForEntity", command("forward", 2)),
-                     Arguments.of("lessons.welcome.loopfor.LoopForEntity", command("backward", 3)),
-                     Arguments.of("lessons.welcome.traversal.column.TraversalByColumnEntity", command("forward", 1)),
+    return Stream.of(Arguments.of("lessons.welcome.traversal.column.TraversalByColumnEntity", command("forward", 1)),
                      Arguments.of("lessons.welcome.traversal.column.TraversalByColumnEntity", command("step")),
                      Arguments.of("lessons.welcome.methods.basics.MethodsDogHouseEntity", command("right")),
                      Arguments.of("lessons.recursion.hanoi.LinearHanoiEntity", command("move", 0, 2)));

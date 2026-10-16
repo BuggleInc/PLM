@@ -591,7 +591,7 @@ properly.
 ### API gating: restricting or adapting the primitives
 
 Some exercises hide or alter a usual primitive for pedagogical reasons, which we call *API gating*. For example:
-- In `LoopFor`, `forward(n)` is refused, so that the student writes the loop that calls `forward()` n times.
+- In `LoopFor`, `forward(n)` is refused, so that the student writes the loop that calls `step()` n times.
 - In the maze exercises, `setX()`, `setY()` and `setPos()` are forbidden, so that the student has to walk to the goal.
 - In `CyclicHanoi`, `move()` is replaced by a stricter version that only accepts the cyclic moves.
 
@@ -603,7 +603,8 @@ cases:
 
 1. *Forbidding a primitive altogether*: call `forbid(primitiveName, reason)` from the constructor of the entity. The student gets
    "Sorry Dave, I cannot let you use <primitiveName> in this exercise. <reason>". Buggle entities can call
-   `forbidTeleportation()` to forbid `setX()`, `setY()` and `setPos()` at once.
+   `forbidTeleportation()` to forbid `setX()`, `setY()` and `setPos()` at once, and `forbidMultiStep()` to forbid `forward(n)` and
+   `backward(n)` while keeping `step()` and `stepBack()`.
    ```java
    public WallFollowerMazeEntity() { forbidTeleportation(); }
    public MyEntity()               { forbid("brushDown", Game.i18n.tr("Your buggle must not draw in this exercise.")); }
@@ -620,9 +621,6 @@ cases:
      super.move(from, to);
    }
    ```
-   Buggle entities can call `forbidMultiStep()` from their constructor to refuse `forward(n)` and `backward(n)`, but still accept
-   `forward()` and `backward()`. This case cannot be done with `forbid()`, which forbids by primitive name: the primitive `forward(n)`
-   calls `stepForward()` when `n` is 1, and `forward(n)` otherwise, and the Python `forward()` also sends `forward`.
 3. *Replacing or extending a primitive*: override it and do what you want, as in `CyclicHanoiEntity`, whose `move()` calls
    `cyclicMove()`, which performs the additional verifications:
    ```java

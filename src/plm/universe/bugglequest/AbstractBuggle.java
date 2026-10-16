@@ -8,7 +8,6 @@ import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.Entity;
 import plm.universe.GridWorld;
-import plm.universe.PrimitiveRefusedException;
 import plm.universe.World;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
@@ -39,7 +38,12 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
    * Forbids the student code to move several steps at once, so that it calls step() or stepBack() in a loop. To be called from the constructor of
    * the exercise's entity.
    */
-  protected void forbidMultiStep() { multiStepForbidden = true; }
+  protected void forbidMultiStep()
+  {
+    String reason = Game.i18n.tr("Use a loop instead.");
+    forbid("forward", reason);
+    forbid("backward", reason);
+  }
 
   /** Forbids the student code to teleport the buggle. To be called from the constructor of the exercise's entity. */
   protected void forbidTeleportation()
@@ -57,7 +61,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
    * candidate for exercise completion.
    */
   private boolean seenError   = false;
-  private boolean multiStepForbidden = false;
   private String seenErrorMsg = "";
   public void seenError() { this.seenError = true; }
   public void seenError(String msg)
@@ -271,8 +274,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 
   @Override public void forward(int count) throws BuggleWallException
   {
-    if (multiStepForbidden)
-      throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
     for (int i = 0; i < count; i++)
       step();
   }
@@ -288,8 +289,6 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
 
   @Override public void backward(int count) throws BuggleWallException
   {
-    if (multiStepForbidden)
-      throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
     for (int i = 0; i < count; i++)
       stepBack();
   }
