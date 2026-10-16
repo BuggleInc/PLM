@@ -31,7 +31,7 @@ public class CohenPancake extends ExerciseTemplated {
                          },
                          true),                                                      // 1C 1C 1B 1C 2B
         new PancakeWorld("9 pancakes", new int[] {4, 2, 3, 7, 9, 1, 5, 6, 8}, true), // 1C 1B 1B 1C 2B
-        new PancakeWorld("15 pancackes",
+        new PancakeWorld("15 pancakes",
                          new int[] {
                              7,
                              2,

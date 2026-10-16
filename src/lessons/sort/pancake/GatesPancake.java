@@ -15,9 +15,9 @@ public class GatesPancake extends ExerciseTemplated {
     super(lesson);
 
     World[] myWorlds = new PancakeWorld[] {
-        new PancakeWorld("5 pancakes", new int[] {2, 4, 5, 3, 1}, false),          // A+ H D-
-        new PancakeWorld("7 pancakes", new int[] {3, 6, 1, 2, 8, 5, 4, 7}, false), // C  E+ Cbis E+ Cbis
-        new PancakeWorld("8 pancakes",
+        new PancakeWorld("5 pancakes", new int[] {2, 4, 5, 3, 1}, false),                 // A+ H D-
+        new PancakeWorld("8 pancakes, first", new int[] {3, 6, 1, 2, 8, 5, 4, 7}, false), // C  E+ Cbis E+ Cbis
+        new PancakeWorld("8 pancakes, second",
                          new int[] {
                              5,
                              2,
@@ -30,7 +30,7 @@ public class GatesPancake extends ExerciseTemplated {
                          },
                          false),                                                      // A+ A+ A+ E+ A- G H
         new PancakeWorld("9 pancakes", new int[] {4, 2, 3, 7, 9, 1, 5, 6, 8}, false), // B+ Cbis A- D+ E+ H
-        new PancakeWorld("15 pancackes",
+        new PancakeWorld("15 pancakes",
                          new int[] {
                              7,
                              2,
