@@ -367,19 +367,16 @@ public abstract class World {
 
   String about = null;
 
+  /** The documentation of the world (Ctrl-H): its html file, in the current human and programming languages. */
   public String getAbout()
   {
     if (about == null) {
       String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
-      StringBuffer sb = null;
       try {
-        sb = FileUtils.readContentAsText(filename, "html", true);
+        about = FileUtils.readContentAsText(filename, "html", true).toString();
       } catch (IOException ex) {
         about = "File " + filename + ".html not found.";
-        return about;
       }
-      /* read it */
-      about = sb.toString();
     }
     String html = about.replace("[!primitives/]", getPrimitivesDoc());
     return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(html, Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
