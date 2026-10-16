@@ -1,5 +1,6 @@
 package plm.core.model.session;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -101,14 +102,14 @@ public class SessionDB {
   /** A JSON object with the counters of that lesson, omitting the null ones */
   public String lessonSummary(String lesson)
   {
-    JSONObject result = new JSONObject();
+    Map<String, Integer> result = new HashMap<>();
     for (ProgrammingLanguage pl : Game.getInstance().programmingLanguageManager.langs) {
       if (getPossibleExercises(lesson, pl) != 0)
         result.put("possible" + pl.getLang(), getPossibleExercises(lesson, pl));
       if (getPassedExercises(lesson, pl) != 0)
         result.put("passed" + pl.getLang(), getPassedExercises(lesson, pl));
     }
-    return result.toJSONString();
+    return JSONObject.toJSONString(result);
   }
 
   /** Replaces the counters of that lesson by the ones of a summary, or ignores the summary if it is invalid */

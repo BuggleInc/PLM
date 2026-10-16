@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -172,19 +173,19 @@ public class Game implements IWorldView {
         // This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
         // We manually build a call to the constructor of this object, and fire it
         // This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
-        lesson = (Lesson)Class.forName(lessonName + ".Main").newInstance();
+        lesson = (Lesson)Class.forName(lessonName + ".Main").getDeclaredConstructor().newInstance();
 
         lessons.put(lessonName, lesson); // cache the newly created object
-      } catch (InstantiationException e) {
-        e.printStackTrace();
-      } catch (IllegalAccessException e) {
-        e.printStackTrace();
+      } catch (InvocationTargetException e) {
+        throw new RuntimeException("Cannot build the lesson " + lessonName, e.getCause());
       } catch (ClassNotFoundException e) {
         if (failOnError)
           throw new RuntimeException(Game.i18n.tr("Cannot switch to lesson {0}: class Main not found.", lessonName));
         System.err.println(Game.i18n.tr("Cannot switch to lesson {0}: class Main not found.", lessonName));
         statusArgRemove(Game.i18n.tr("Load lesson {0}", lessonName));
         return getCurrentLesson();
+      } catch (ReflectiveOperationException e) { // Main has no public constructor without parameters
+        throw new RuntimeException("Cannot build the lesson " + lessonName, e);
       }
     }
     setCurrentLesson(lesson);

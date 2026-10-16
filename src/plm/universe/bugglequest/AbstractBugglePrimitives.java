@@ -112,7 +112,7 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
   @Primitive boolean isCarryingBaggle();
 
-  @Deprecated @Primitive void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException;
+  @Primitive void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException;
 
   @Primitive void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException;
 

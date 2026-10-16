@@ -71,7 +71,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 
       resource = resource.replaceAll("/", ".");
       resource = resource.substring(1);
-      Class.forName(resource).newInstance();
+      Class.forName(resource).getDeclaredConstructor().newInstance();
       return ""; // That's cool if I manage to create one such object
 
     } catch (ClassNotFoundException ce) {

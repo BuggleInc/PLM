@@ -70,7 +70,7 @@ public abstract class World {
     entities = new ArrayList<Entity>();
     for (Entity oldEntity : initialWorld.entities) {
       try {
-        Entity newEntity = oldEntity.getClass().newInstance();
+        Entity newEntity = oldEntity.getClass().getDeclaredConstructor().newInstance();
         newEntity.copy(oldEntity);
         addEntity(newEntity);
       } catch (Exception e) {
