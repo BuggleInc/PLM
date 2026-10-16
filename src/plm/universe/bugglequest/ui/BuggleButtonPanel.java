@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import plm.core.lang.primitives.PrimitivePot;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.universe.EntityControlPanel;
@@ -63,7 +64,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
       @Override public void actionPerformed(ActionEvent event)
       {
         try {
-          echo(i18n.tr("step()"));
+          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "step") + "()");
           ((AbstractBuggle)Game.getInstance().getSelectedEntity()).step();
         } catch (BuggleWallException e) {
           showWallHuggingErrorMessageDialog();
@@ -79,7 +80,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
       @Override public void actionPerformed(ActionEvent event)
       {
         try {
-          echo(i18n.tr("stepBack()"));
+          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "stepBack") + "()");
           ((AbstractBuggle)Game.getInstance().getSelectedEntity()).stepBack();
         } catch (BuggleWallException e) {
           showWallHuggingErrorMessageDialog();
@@ -94,7 +95,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
     lButton.addActionListener(new ActionListener() {
       @Override public void actionPerformed(ActionEvent event)
       {
-        echo(i18n.tr("left()"));
+        echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "left") + "()");
         ((AbstractBuggle)Game.getInstance().getSelectedEntity()).left();
       }
     });
@@ -104,7 +105,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
     rButton.addActionListener(new ActionListener() {
       @Override public void actionPerformed(ActionEvent event)
       {
-        echo(i18n.tr("right()"));
+        echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "right") + "()");
         ((AbstractBuggle)Game.getInstance().getSelectedEntity()).right();
       }
     });
@@ -116,10 +117,10 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
       {
         AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
         if (b.isBrushDown()) {
-          echo(i18n.tr("brushUp()"));
+          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "brushUp") + "()");
           b.brushUp();
         } else {
-          echo(i18n.tr("brushDown()"));
+          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "brushDown") + "()");
           b.brushDown();
         }
       }
@@ -145,7 +146,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
         JComboBox<?> cb = (JComboBox<?>)event.getSource();
         Color c         = (Color)cb.getSelectedItem();
         cb.setSelectedItem(c);
-        echo(i18n.tr("setBrushColor(Color.{0})", ColorMapper.color2name(c)));
+        echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "setBrushColor") + "(Color." + ColorMapper.color2name(c) + ")");
         ((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBrushColor(c);
       }
     });
