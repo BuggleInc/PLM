@@ -12,10 +12,12 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import plm.core.lang.primitives.Primitive;
 import plm.core.lang.primitives.PrimitiveMethod;
+import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.test.simple.SimpleExerciseEntity;
 import plm.universe.Entity;
 import plm.universe.EntityPrimitivesBase;
+import plm.universe.bugglequest.AbstractBuggle;
 
 /** Tests of {@link PrimitiveRegistration}: primitives are found by reflection and identified by their name. */
 public class PrimitiveRegistrationTest {
@@ -75,5 +77,17 @@ public class PrimitiveRegistrationTest {
   {
     assertSame(PrimitiveRegistration.getMinimalPrimitiveForEntity(SimpleExerciseEntity.class),
                PrimitiveRegistration.getMinimalPrimitiveForEntity(SimpleExerciseEntity.class));
+  }
+
+  /**
+   * The parameter names reach the student's glue, which needs the -parameters flag of javac
+   *
+   *  If this test ever breaks, this is because you removed the -parameters flag in pom.xml
+   */
+  @Test public void parameterNamesAreTheDeclaredOnes()
+  {
+    PrimitiveMethod forward = PrimitiveRegistration.getMinimalPrimitiveForEntity(AbstractBuggle.class).get("forward");
+
+    assertEquals(List.of("steps"), forward.parameters().stream().map(PrimitiveParameter::name).toList());
   }
 }
