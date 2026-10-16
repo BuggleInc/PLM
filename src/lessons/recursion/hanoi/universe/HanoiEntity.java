@@ -66,9 +66,5 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
   /* BEGIN SOLUTION */
   @Override public String toString() { return "HanoiEntity (" + this.getClass().getName() + ")"; }
   /* END SOLUTION */
-
-  /* BINDINGS TRANSLATION: French */
-  public void deplace(int src, int dst) { move(src, dst); }
-  public int getTaillePiquet(int rank) { return getSlotSize(rank); }
 }
 /* END TEMPLATE */

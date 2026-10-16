@@ -36,12 +36,4 @@ public class LanderEntity extends Entity implements LanderEntityPrimitives {
     landerWorld().simulate(0.1);
     stepUI();
   }
-
-  /* BINDINGS TRANSLATION: French */
-  public Point[] getSol() { return getGround(); }
-  public double getVitesseX() { return getSpeedX(); }
-  public double getVitesseY() { return getSpeedY(); }
-  public int getPoussee() { return getThrust(); }
-  public void setAngleDesire(double desiredAngle) { setDesiredAngle(desiredAngle); }
-  public void setPousseeDesiree(int desiredThrust) { setDesiredThrust(desiredThrust); }
 }

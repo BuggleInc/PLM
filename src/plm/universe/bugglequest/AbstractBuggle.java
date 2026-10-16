@@ -3,7 +3,6 @@ package plm.universe.bugglequest;
 import java.awt.Color;
 import java.awt.Point;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.Entity;
@@ -482,72 +481,4 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
       sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n", other.getBrushColor(), getBrushColor()));
     return sb.toString();
   }
-
-  /* FIXME: translated aliases are plain Java methods, not @Primitive: student code in any language cannot reach them (see the Python/Scala/C bindings, which
-   * are generated from the primitives only). Mirroring the step()/stepBack() renames there would need a per-language alias table, which does not exist yet. */
-  /* BINDINGS TRANSLATION: French */
-  public void gauche() { left(); }
-  public void droite() { right(); }
-  public void retourne() { back(); }
-  public void avance() throws BuggleWallException { step(); }
-  public void avance(int steps) throws BuggleWallException { forward(steps); }
-  public void recule() throws BuggleWallException { stepBack(); }
-  public void recule(int steps) throws BuggleWallException { backward(steps); }
-  public Color getCouleurCorps() { return getBodyColor(); }
-  public void setCouleurCorps(Color c) { setBodyColor(c); }
-  public boolean estFaceMur() { return isFacingWall(); }
-  public boolean estDosMur() { return isBackingWall(); }
-  public void leveCrayon() { penUp(); }
-  public void baisseCrayon() { penDown(); }
-  public void leveBrosse() { brushUp(); }
-  public void baisseBrosse() { brushDown(); }
-  public boolean estBrosseBaissee() { return isBrushDown(); }
-  public Color getCouleurBrosse() { return getBrushColor(); }
-  public void setCouleurBrosse(Color c) { setBrushColor(c); }
-  public Color getCouleurSol() { return getGroundColor(); }
-  public boolean estSurBiscuit() { return isOverBaggle(); }
-  public boolean porteBiscuit() { return isCarryingBaggle(); }
-  public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
-  public void poseBiscuit() throws AlreadyHaveBaggleException, DontHaveBaggleException { dropBaggle(); }
-  public boolean estSurMessage() { return isOverMessage(); }
-  public String litMessage() { return readMessage(); }
-  public void ecritMessage(String s) { writeMessage(s); }
-  public void effaceMessage() { clearMessage(); }
-  public int getMondeHauteur() { return getWorldHeight(); }
-  public int getMondeLargeur() { return getWorldWidth(); }
-  // get/set X/Y/Pos are not translated as they happen to be the same in French
-  public boolean estChoisi() { return isSelected(); }  // we have to document the version without e, since po4a allows for one variant only
-  public boolean estChoisie() { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
-  /* BINDINGS TRANSLATION: Brazilian Portuguese */
-  public void esquerda() { left(); }
-  public void direita() { right(); }
-  public void voltar() { back(); }
-  public void avançar() throws BuggleWallException { step(); }
-  public void avançar(int steps) throws BuggleWallException { forward(steps); }
-  public void recuar() throws BuggleWallException { stepBack(); }
-  public void recuar(int steps) throws BuggleWallException { backward(steps); }
-  public Color getCorDoCorpo() { return getBodyColor(); }
-  public void setCorDoCorpo(Color c) { setBodyColor(c); }
-  public boolean estáDeFrenteParaParede() { return isFacingWall(); }
-  public boolean estáDeCostasParaParede() { return isBackingWall(); }
-  public void levantarCaneta() { penUp(); }
-  public void abaixarCaneta() { penDown(); }
-  public void levantarPincel() { brushUp(); }
-  public void abaixarPincel() { brushDown(); }
-  public boolean pincelEstáAbaixado() { return isBrushDown(); }
-  public Color getCorDoPincel() { return getBrushColor(); }
-  public void setCorDoPincel(Color c) { setBrushColor(c); }
-  public Color getCorDoChão() { return getGroundColor(); }
-  public boolean estáSobreBaggle() { return isOverBaggle(); }
-  public boolean estáCarregandoBaggle() { return isCarryingBaggle(); }
-  public void pegarBaggle() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
-  public void soltarBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException { dropBaggle(); }
-  public boolean estáSobreMensagem() { return isOverMessage(); }
-  public String lerMensagem() { return readMessage(); }
-  public void escreverMensagem(String s) { writeMessage(s); }
-  public void limparMensagem() { clearMessage(); }
-  public int getAlturaDoMundo() { return getWorldHeight(); }
-  public int getLarguraDoMundo() { return getWorldWidth(); }
-  // get/set X/Y/Pos are not translated as they happen to be the same in Brazilian portuguese
-  public boolean estáSelecionado() { return isSelected(); }
 }

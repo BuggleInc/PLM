@@ -2,7 +2,6 @@ package lessons.welcome.loopdowhile;
 
 import java.awt.Color;
 import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 import plm.universe.GridWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 
@@ -30,9 +29,6 @@ public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle impleme
     return open > 2 || (here.hasLeftWall() != right.hasLeftWall()) || (here.hasTopWall() != below.hasTopWall());
   }
   @Override public boolean exitReached() { return getGroundColor() == Color.orange; }
-  /* BINDINGS TRANSLATION */
-  boolean sortieTrouvee() { return exitReached(); }
-  boolean croisement() { return crossing(); }
 
   @Override
   /* BEGIN REMOTE */

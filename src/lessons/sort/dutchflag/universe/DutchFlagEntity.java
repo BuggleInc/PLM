@@ -50,14 +50,4 @@ public class DutchFlagEntity extends Entity implements DutchFlagEntityPrimitives
 
   /** Returns a string representation of the world */
   public String toString() { return "DutchFlagEntity (" + this.getClass().getName() + ")"; }
-
-  /* BINDINGS TRANSLATION: French */
-  public void echange(int i, int j) { swap(i, j); }
-  public int getCouleur(int rank) { return getColor(rank); }
-  public int getTaille() { return getSize(); }
-  public boolean estTrie() { return isSorted(); }
-  public boolean estChoisi() { return isSelected(); }
-  public final static int BLEU  = BLUE;
-  public final static int BLANC = WHITE;
-  public final static int ROUGE = RED;
 }

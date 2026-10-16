@@ -10,9 +10,6 @@ public class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle impleme
   public boolean crossing() { return getX() % 5 == 1 && getY() % 5 == 1; }
 
   public boolean exitReached() { return getGroundColor() == Color.orange; }
-  /* BINDINGS TRANSLATION */
-  boolean sortieTrouvee() { return exitReached(); }
-  boolean croisement() { return crossing(); }
 
   @Override
   /* BEGIN REMOTE */

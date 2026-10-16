@@ -121,9 +121,4 @@ public class ShortestPathMazeEntity extends SimpleBuggle implements ShortestPath
   }
   /* END TEMPLATE */
   /* END REMOTE */
-
-  /* BINDINGS TRANSLATION to French: Don't translate getIndication */
-  boolean aBiscuit(int x, int y) { return hasBaggle(x, y); }
-  boolean aMurNord(int x, int y) { return hasTopWall(x, y); }
-  boolean aMurOuest(int x, int y) { return hasLeftWall(x, y); }
 }

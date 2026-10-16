@@ -58,12 +58,4 @@ public class PancakeEntity extends Entity implements PancakeEntityPrimitives {
 
   /** Returns a string representation of the world */
   public String toString() { return "PancakeEntity (" + this.getClass().getName() + ")"; }
-
-  /* BINDINGS TRANSLATION: French */
-  public void retourne(int numberOfPancakes) { flip(numberOfPancakes); }
-  public int getRayonCrepe(int rank) { return getPancakeRadius(rank); }
-  public int getTaillePile() { return getStackSize(); }
-  public boolean estCrepeRetournee(int rank) { return isPancakeUpsideDown(rank); }
-  public boolean estTriee() { return isSorted(); }
-  public boolean estChoisi() { return isSelected(); }
 }

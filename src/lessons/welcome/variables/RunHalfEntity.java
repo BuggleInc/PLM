@@ -9,8 +9,6 @@ public class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
   public RunHalfEntity() { forbidMultiStep(); }
 
   @Primitive public boolean isOverOrange() { return getGroundColor() == Color.orange; }
-  /* BINDINGS TRANSLATION */
-  public boolean estSurOrange() { return isOverOrange(); }
 
   @Override
   /* BEGIN REMOTE */

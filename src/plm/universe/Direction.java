@@ -23,10 +23,4 @@ public enum Direction {
       case WEST -> new Point(-1, 0);
     };
   }
-
-  /* BINDINGS TRANSLATION: French */
-  public static final Direction NORD  = NORTH;
-  public static final Direction EST   = EAST;
-  public static final Direction SUD   = SOUTH;
-  public static final Direction OUEST = WEST;
 }

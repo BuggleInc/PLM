@@ -363,28 +363,4 @@ public class Turtle extends Entity implements TurtlePrimitives {
   {
     // Overriden by childs
   }
-
-  /* BINDINGS TRANSLATION: French */
-  public void avance(double steps) { forward(steps); }
-  public void recule(double steps) { backward(steps); }
-  public void gauche(double angle) { left(angle); }
-  public void droite(double angle) { right(angle); }
-  public void cercle(double radius) { circle(radius); }
-  // get/set X/Y/Pos are not translated as they happen to be the same in French
-  public void allerVers(double x, double y) { moveTo(x, y); }
-  public double getCap() { return getHeading(); }
-  public void setCap(double cap) { setHeading(cap); }
-  public void leveBrosse() { brushUp(); }
-  public void baisseBrosse() { brushDown(); }
-  public void leveCrayon() { penUp(); }
-  public void baisseCrayon() { penDown(); }
-  public boolean estCrayonBaisse() { return isPenDown(); }
-  public Color getCouleur() { return getColor(); }
-  public void setCouleur(Color c) { setColor(c); }
-  public boolean estChoisi() { return isSelected(); }  // we have to document the version without e, since po4a allows for one variant only
-  public boolean estChoisie() { return isSelected(); } // But we want to have the grammatically correct form also possible (turtles are feminine)
-  public void efface() { clear(); }
-  public void cache() { hide(); }
-  public void montre() { show(); }
-  public boolean estVisible() { return isVisible(); }
 }

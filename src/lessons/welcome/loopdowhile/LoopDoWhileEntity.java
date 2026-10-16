@@ -8,8 +8,6 @@ import plm.core.lang.primitives.Primitive;
 public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 
   @Primitive public boolean isGroundWhite() { return getGroundColor() == Color.white; }
-  /* BINDINGS TRANSLATION */
-  public boolean estSurBlanc() { return isGroundWhite(); }
 
   @Override
   /* BEGIN REMOTE */

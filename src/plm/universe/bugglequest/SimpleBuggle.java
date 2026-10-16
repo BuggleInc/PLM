@@ -135,19 +135,4 @@ public class SimpleBuggle extends AbstractBuggle {
       seenError();
     }
   }
-
-  /* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
-  public void avance() { step(); }
-  public void avance(int steps) { forward(steps); }
-  public void recule() { stepBack(); }
-  public void recule(int steps) { backward(steps); }
-  public void prendBiscuit() { pickupBaggle(); }
-  public void poseBiscuit() { dropBaggle(); }
-  /* BINDINGS TRANSLATION: Brazilian Portuguese */
-  public void avançar() { step(); }
-  public void avançar(int steps) { forward(steps); }
-  public void recuar() { stepBack(); }
-  public void recuar(int steps) { backward(steps); }
-  public void pegarBaggle() { pickupBaggle(); }
-  public void soltarBaggle() { dropBaggle(); }
 }
