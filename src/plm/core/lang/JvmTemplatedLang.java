@@ -1,6 +1,5 @@
 package plm.core.lang;
 
-import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.Answer;
 import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
@@ -26,8 +26,6 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
-import plm.universe.Direction;
-import plm.universe.Point;
 
 /**
  * Ancestor of Java and Scala: both compile to a runnable jar and generate their ExternalPrimitiveLanguage glue the
@@ -202,31 +200,16 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
     String getReturning(Class<?> type)
     {
-      if (type == null)
-        return "";
-
-      if (type == String.class)
-        return "getAnswerString()";
-      if (type == Double.class || type == double.class)
-        return "getAnswerDouble()";
-      if (type == Character.class || type == char.class)
-        return "getAnswerChar()";
-      if (type == Color.class)
-        return "getAnswerColor()";
-      if (type == Direction.class)
-        return "getAnswerInt()";
-      if (type == Point.class)
-        return "(Point)getAnswerObject()";
-      if (type == Point[].class)
-        return "(Point[])getAnswerObject()";
-      if (type == Integer.class || type == int.class)
-        return "getAnswerInt()";
-      if (type == Boolean.class || type == boolean.class)
-        return "getAnswerBoolean()";
-      if (type == void.class || type == Void.class)
-        return "";
-
-      throw new IllegalStateException("Unknown type: " + type);
+      return switch (Answer.of(type)) {
+        case STRING -> "getAnswerString()";
+        case DOUBLE -> "getAnswerDouble()";
+        case CHAR -> "getAnswerChar()";
+        case COLOR -> "getAnswerColor()";
+        case INT -> "getAnswerInt()";
+        case BOOLEAN -> "getAnswerBoolean()";
+        case POINT -> "(Point)getAnswerObject()";
+        case POINT_ARRAY -> "(Point[])getAnswerObject()";
+      };
     }
 
     @Override public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException { generate(folder, name, methods, ""); }

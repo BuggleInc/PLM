@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.Answer;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -18,8 +19,6 @@ import plm.core.model.session.EntityFileSegments;
 import plm.core.model.session.SourceFile;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.Indentation;
-import plm.universe.Direction;
-import plm.universe.Point;
 
 /**
  * Remote execution for Python, mirroring LangJava's architecture as closely as possible on purpose (see the class-level
@@ -186,29 +185,16 @@ public class LangPython extends TemplatedRemoteLang {
 
     String getReturning(Class<?> type)
     {
-      if (type == null)
-        return "";
-      if (type == String.class)
-        return "getAnswerString()";
-      if (type == Double.class || type == double.class)
-        return "getAnswerDouble()";
-      if (type == Character.class || type == char.class)
-        return "getAnswerChar()";
-      if (type == java.awt.Color.class)
-        return "getAnswerColor()";
-      if (type == Direction.class)
-        return "getAnswerInt()";
-      if (type == Point.class)
-        return "getAnswerObject()";
-      if (type == Point[].class)
-        return "getAnswerObject()";
-      if (type == Integer.class || type == int.class)
-        return "getAnswerInt()";
-      if (type == Boolean.class || type == boolean.class)
-        return "getAnswerBoolean()";
-      if (type == void.class || type == Void.class)
-        return "";
-      throw new IllegalStateException("Unknown type: " + type);
+      return switch (Answer.of(type)) {
+        case STRING -> "getAnswerString()";
+        case DOUBLE -> "getAnswerDouble()";
+        case CHAR -> "getAnswerChar()";
+        case COLOR -> "getAnswerColor()";
+        case INT -> "getAnswerInt()";
+        case BOOLEAN -> "getAnswerBoolean()";
+        case POINT -> "getAnswerObject()";
+        case POINT_ARRAY -> "getAnswerObject()";
+      };
     }
 
     String getImplementation(PrimitiveMethod method)

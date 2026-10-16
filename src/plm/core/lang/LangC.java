@@ -17,6 +17,7 @@ import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.Answer;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -500,31 +501,16 @@ public class LangC extends TemplatedRemoteLang {
 
     String getReturning(Class<?> type)
     {
-      if (type == null)
-        return "";
-
-      if (type == String.class)
-        return "get_answer_string()";
-      if (type == Double.class || type == double.class)
-        return "get_answer_double()";
-      if (type == Character.class || type == char.class)
-        return "get_answer_char()";
-      if (type == Color.class)
-        return "get_answer_color()";
-      if (type == Direction.class)
-        return "get_answer_int()";
-      if (type == Point.class)
-        return "get_answer_point()";
-      if (type == Point[].class)
-        return "get_answer_point_array()";
-      if (type == Integer.class || type == int.class)
-        return "get_answer_int()";
-      if (type == Boolean.class || type == boolean.class)
-        return "get_answer_int()";
-      if (type == void.class || type == Void.class)
-        return "";
-
-      throw new IllegalStateException("Unknown type: " + type);
+      return switch (Answer.of(type)) {
+        case STRING -> "get_answer_string()";
+        case DOUBLE -> "get_answer_double()";
+        case CHAR -> "get_answer_char()";
+        case COLOR -> "get_answer_color()";
+        case INT -> "get_answer_int()";
+        case BOOLEAN -> "get_answer_int()";
+        case POINT -> "get_answer_point()";
+        case POINT_ARRAY -> "get_answer_point_array()";
+      };
     }
 
     String getTemplatingForType(Class<?> type)
