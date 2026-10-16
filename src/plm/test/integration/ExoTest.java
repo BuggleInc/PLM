@@ -22,6 +22,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.tracking.GitTracker;
 import plm.core.utils.FileUtils;
@@ -70,30 +71,20 @@ public class ExoTest {
 
     Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();
     for (String lessonName : lessonNamesToTest) {
+      Lesson lesson = null;
       try {
-        if (g.switchLesson(lessonName, false) == null) {
-          System.err.println("Warning, I tried to load " + lessonName + " but something went wrong... Please fix it before running this test again.");
-          System.exit(1);
-        }
+        lesson = g.switchLesson(lessonName, false);
       } catch (Throwable t) {
-        t.printStackTrace();
         Assertions.fail("Switching to lesson " + lessonName + " raised a " + t.getClass().getName(), t);
       }
+      Assertions.assertNotNull(lesson, "Cannot load the lesson " + lessonName);
 
       System.out.println("Lesson " + lessonName + " loaded (" + g.getCurrentLesson().getExerciseCount() + " exercises)");
-      if (g.getCurrentLesson().getExerciseCount() == 0) {
-        System.err.println("Cannot find any exercise in " + lessonName + ". Something's wrong here");
-        System.exit(1);
-      }
+      Assertions.assertNotEquals(0, g.getCurrentLesson().getExerciseCount(), "Cannot find any exercise in " + lessonName);
       for (Lecture l : g.getCurrentLesson().exercises())
         if (l instanceof Exercise) {
+          Assertions.assertTrue(alreadySeenExercises.add(l), "The exercise " + l.getName() + " is listed twice");
           result.add(Arguments.of(Game.getInstance().getCurrentLesson(), l));
-          // System.out.println("  Add exercise "+l.getName());
-          if (alreadySeenExercises.contains(l)) {
-            System.err.println("Warning, I tried to add the exercise " + l.getName() + " twice. Something's wrong here");
-            System.exit(1);
-          }
-          alreadySeenExercises.add(l);
         }
     }
     System.out.println("There is currently " + result.size() + " exercises in our database. Yes sir.");
