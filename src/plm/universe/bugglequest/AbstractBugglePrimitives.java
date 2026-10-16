@@ -48,29 +48,19 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
   @Primitive(value = "Returns the color of the brush.", group = "About the brush") Color getBrushColor();
 
-  default void primitiveSetBrushColor(String arg) throws InvalidColorNameException
-  {
-    if (arg.indexOf('/') >= 0)
-      setBrushColor(ColorMapper.name2color(arg));
-    else {
-      int nb = Integer.parseInt(arg);
-      setBrushColor(ColorMapper.int2color(nb));
-    }
-  }
-
   @Primitive(value = "Changes the color of the brush.", group = "About the brush") void setBrushColor(Color c);
 
-  @Primitive default void setBrushColorName(String name) throws InvalidColorNameException { primitiveSetBrushColor(name); }
+  /** Takes either a color name (containing a '/') or the rank of a color */
+  @Primitive default void setBrushColorName(String name) throws InvalidColorNameException
+  {
+    setBrushColor(name.indexOf('/') >= 0 ? ColorMapper.name2color(name) : ColorMapper.int2color(Integer.parseInt(name)));
+  }
 
   @Primitive(value = "Returns the color of the buggle's body.", group = "Information on the buggle") Color getBodyColor();
 
   @Primitive(value = "Changes the color of the buggle's body.", group = "Information on the buggle") void setBodyColor(Color c);
 
-  default int primitiveGetDirection() { return getDirection().ordinal(); }
-
   @Primitive(value = "Returns the heading of the buggle.", group = "Information on the buggle") Direction getDirection();
-
-  default void primitiveSetDirection(int nb) { setDirection(Direction.values()[nb]); }
 
   @Primitive(value = "Changes the heading of the buggle.", group = "Information on the buggle") void setDirection(Direction direction);
 
