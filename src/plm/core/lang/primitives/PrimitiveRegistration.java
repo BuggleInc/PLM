@@ -28,12 +28,10 @@ public class PrimitiveRegistration {
 
   private static Map<String, PrimitiveMethod> getPrimitiveForEntity(List<Class<? extends EntityPrimitivesBase>> allPrimitivesClass)
   {
-    List<PrimitiveMethod> primitives = allPrimitivesClass.stream()
-                                           .flatMap(clazz
-                                                    -> Arrays.stream(clazz.getDeclaredMethods())
-                                                           .filter(method -> method.isAnnotationPresent(Primitive.class))
-                                                           .map(method -> new PrimitiveMethod(method.getAnnotation(Primitive.class), method)))
-                                           .toList();
+    List<PrimitiveMethod> primitives =
+        allPrimitivesClass.stream()
+            .flatMap(clazz -> Arrays.stream(clazz.getDeclaredMethods()).filter(method -> method.isAnnotationPresent(Primitive.class)).map(PrimitiveMethod::new))
+            .toList();
 
     // Declarations of the same primitive in several interfaces are equal and collapse in the set. The names are sorted for a readable glue.
     Map<String, Set<PrimitiveMethod>> primitivesPerName =

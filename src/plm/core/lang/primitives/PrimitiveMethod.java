@@ -13,9 +13,9 @@ public final class PrimitiveMethod {
   private final Method method;
   private final Class<?> output;
 
-  public PrimitiveMethod(Primitive primitive, Method method)
+  public PrimitiveMethod(Method method)
   {
-    this.name       = primitive.name().isEmpty() ? method.getName() : primitive.name();
+    this.name       = method.getName();
     this.location   = method.getDeclaringClass().getSimpleName() + "::" + name();
     this.method     = method;
     this.parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();

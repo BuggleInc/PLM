@@ -224,8 +224,7 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
 - **Primitives**: the primitives of a universe are the methods annotated with `@Primitive` in the interfaces extending
   `EntityPrimitivesBase` (e.g. `SimpleEntityPrimitives`), which the entity implements. `PrimitiveRegistration` finds them by
   reflection. At build time, `CodeCreation` generates the `RemoteXxx` glue of every language from them. A primitive is identified
-  by its name, which is the method name unless `@Primitive(name = ...)` says otherwise. Names must be unique, which
-  `PrimitiveRegistration` checks.
+  by its method name, which must be unique: primitives cannot be overloaded, which `PrimitiveRegistration` checks.
 - **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
   for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
   line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue

@@ -1,7 +1,6 @@
 package plm.test.lang;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,7 +22,7 @@ public class PrimitiveRegistrationTest {
 
   public interface FooPrimitives extends EntityPrimitivesBase {
     @Primitive void foo(int x);
-    @Primitive(name = "renamed") void original();
+    @Primitive void bar();
   }
 
   /** Declares the same primitive as {@link FooPrimitives}. */
@@ -44,24 +43,16 @@ public class PrimitiveRegistrationTest {
     Map<String, PrimitiveMethod> primitives = PrimitiveRegistration.getMinimalPrimitiveForEntity(SharedDeclarationEntity.class);
     List<String> names                      = new ArrayList<>(primitives.keySet());
 
-    assertTrue(names.containsAll(List.of("foo", "renamed")), names.toString());
+    assertTrue(names.containsAll(List.of("foo", "bar")), names.toString());
     assertEquals(names.stream().sorted().toList(), names);
-  }
-
-  @Test public void explicitNameReplacesTheMethodName()
-  {
-    Map<String, PrimitiveMethod> primitives = PrimitiveRegistration.getMinimalPrimitiveForEntity(SharedDeclarationEntity.class);
-
-    assertEquals("renamed", primitives.get("renamed").name());
-    assertFalse(primitives.containsKey("original"));
   }
 
   @Test public void sameDeclarationInSeveralInterfacesIsOnePrimitive() throws NoSuchMethodException
   {
     Method foo                    = FooPrimitives.class.getMethod("foo", int.class);
     Method sameFoo                = SameFooPrimitives.class.getMethod("foo", int.class);
-    PrimitiveMethod primitive     = new PrimitiveMethod(foo.getAnnotation(Primitive.class), foo);
-    PrimitiveMethod samePrimitive = new PrimitiveMethod(sameFoo.getAnnotation(Primitive.class), sameFoo);
+    PrimitiveMethod primitive     = new PrimitiveMethod(foo);
+    PrimitiveMethod samePrimitive = new PrimitiveMethod(sameFoo);
 
     assertEquals(primitive, samePrimitive);
     assertEquals(primitive.hashCode(), samePrimitive.hashCode());
