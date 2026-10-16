@@ -510,4 +510,50 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <!-- Regenerates l10n/engine/plm.pot: mvn -Pi18n-update -DskipTests process-classes
+         The texts of the primitives are written first, then xgettext adds the strings of the code (it needs gettext installed). -->
+    <profile>
+      <id>i18n-update</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>pot-primitives</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>java</goal>
+                </goals>
+                <configuration>
+                  <mainClass>plm.core.lang.primitives.PrimitivePot</mainClass>
+                  <arguments>
+                    <argument>${project.basedir}/l10n/engine/plm.pot</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>pot-xgettext</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>sh</executable>
+                  <workingDirectory>${project.basedir}</workingDirectory>
+                  <arguments>
+                    <argument>-c</argument>
+                    <argument>find src -name '*.java' | LC_ALL=C sort | xgettext --join-existing --output=l10n/engine/plm.pot --from-code=UTF-8 --language=Java -k -ktr -ktrc:1c,2 -ktrn:1,2 -ktrnc:1c,2,3 -kmarktr --files-from=-</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

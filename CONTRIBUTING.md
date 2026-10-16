@@ -225,6 +225,9 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   `EntityPrimitivesBase` (e.g. `SimpleEntityPrimitives`), which the entity implements. `PrimitiveRegistration` finds them by
   reflection. At build time, `CodeCreation` generates the `RemoteXxx` glue of every language from them. A primitive is identified
   by its method name, which must be unique: primitives cannot be overloaded, which `PrimitiveRegistration` checks.
+  The annotation carries the English documentation of the primitive and the title of its group, e.g. `@Primitive(value = "Turns a
+  quarter to the left.", group = "Moving")`. `PrimitivePot` extracts these texts and the names of the documented primitives into
+  `l10n/engine/plm.pot`, so that they get translated on weblate.
 - **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
   for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
   line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue
@@ -771,7 +774,7 @@ allow the translators to update their work. This should be done
 regularly.
 
 - po4a po4a.conf
-- ant i18n-update
+- mvn -Pi18n-update -DskipTests process-classes (regenerates `l10n/engine/plm.pot`, see `PrimitivePot`; needs xgettext)
 - git checkout l10n/*/*.po
 - git commit -m "Update translation templates" l10n/*/*.pot
 - git push && wlc pull
