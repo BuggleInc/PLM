@@ -576,7 +576,6 @@ public class Game implements IWorldView {
     storeProperties();
   }
 
-  public GitSessionKit getSessionKit() { return this.sessionKit; }
   public GitTracker getGitTracker() { return this.gitTracker; }
 
   /** Replaces the tracker: tests put a mock to disable the progress tracking */
