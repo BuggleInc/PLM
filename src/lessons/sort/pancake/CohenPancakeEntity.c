@@ -1,357 +1,87 @@
 #include "../../../../target/classes/resources/langages/c/RemotePancake.h"
 
-int blockLength();
-int isLast(int pos);
-int isFirst(int pos);
-int isFree(int pos);
-int getRankOf(int size);
-
-int min(int a, int b){
-	if(a<b){
-		return a;
-	}else{
-		return b;
-	}
-}
-
-int max(int a, int b){
-	if(a>b){
-		return a;
-	}else{
-		return b;
-	}
-}
-
 /* BEGIN SOLUTION */
-int getRankOf(int size) {
-	int rank=0;
-	for (rank=0;rank<getStackSize();rank++)
-		if (getPancakeRadius(rank) == size)
-			return rank;
-	return -99; // Well, be robust to border cases
+int getRankOf(int radius)
+{
+  int rank;
+  for (rank = 0; rank < getStackSize(); rank++)
+    if (getPancakeRadius(rank) == radius)
+      return rank;
+  return -1;
 }
 
-int isFree(int pos) {
-	if (pos == -99)
-		return 0;
-	int radius = getPancakeRadius(pos);
-	if (pos>0) {
-		int nextRadius = getPancakeRadius(pos-1);
-		if ((nextRadius == radius-1 && isPancakeUpsideDown(pos)==0 && isPancakeUpsideDown(pos-1)==0) || (nextRadius == radius+1 && isPancakeUpsideDown(pos)==1 && isPancakeUpsideDown(pos-1)==1) )
-			return 0;
-	}
-	if (pos<getStackSize()-1) {
-		int nextRadius = getPancakeRadius(pos+1);
-		if ((nextRadius == radius-1 && isPancakeUpsideDown(pos)==1 && isPancakeUpsideDown(pos+1)==1)  || (nextRadius == radius+1 && isPancakeUpsideDown(pos)==0 && isPancakeUpsideDown(pos+1)==0 ))
-			return 0;
-	}
-	return 1;
+/* Whether the pancakes at these consecutive ranks are joined: p above p+1, or -(p+1) above -p */
+int joined(int above, int below)
+{
+  int top    = isPancakeUpsideDown(above) ? -getPancakeRadius(above) : getPancakeRadius(above);
+  int bottom = isPancakeUpsideDown(below) ? -getPancakeRadius(below) : getPancakeRadius(below);
+  return bottom == top + 1;
 }
-
-int isFirst(int pos) {
-	if (pos == -99)
-		return 0;
-	int radius = getPancakeRadius(pos);
-	if (pos>0) {
-		int nextRadius = getPancakeRadius(pos-1);
-		if ((nextRadius == radius-1 && isPancakeUpsideDown(pos)==0 && isPancakeUpsideDown(pos-1)==0)||( nextRadius == radius+1 && isPancakeUpsideDown(pos)==1 && isPancakeUpsideDown(pos-1)==1))
-			return 0;
-	}
-	if (pos<getStackSize()-1) {
-		int nextRadius = getPancakeRadius(pos+1);
-		if ((nextRadius == radius-1 && isPancakeUpsideDown(pos)==1 && isPancakeUpsideDown(pos+1)==1)||( nextRadius == radius+1&& isPancakeUpsideDown(pos)==0 && isPancakeUpsideDown(pos+1)==0))
-			return 1;
-	}
-	return 0;
-}
-
-int isLast(int pos) {
-	if (pos == -99)
-		return 0;
-	int radius = getPancakeRadius(pos);
-	if (pos<getStackSize()-1) {
-		int nextRadius = getPancakeRadius(pos+1);
-		if ((nextRadius == radius-1 && isPancakeUpsideDown(pos)==1 && isPancakeUpsideDown(pos+1)==1)|| (nextRadius == radius+1 && isPancakeUpsideDown(pos)==0 && isPancakeUpsideDown(pos+1)==0))
-			return 0;
-	}
-	if (pos>0) {
-		int nextRadius = getPancakeRadius(pos-1);
-		if ((nextRadius == radius-1 && isPancakeUpsideDown(pos)==0 && isPancakeUpsideDown(pos-1)==0)|| (nextRadius == radius+1&& isPancakeUpsideDown(pos)==1 && isPancakeUpsideDown(pos-1)==1))
-			return 1;
-	}
-	return 0;
-}
-int blockLength() {
-	int pos = 0;
-	int radius = getPancakeRadius(pos);
-	int o = getPancakeRadius(pos+1) - radius;
-
-	if (o != -1 && o != 1) {
-		printf("Asked to compute the block length, but the step o is %d instead of +1 or -1. The length is then 1, but you are violating a precondition somehow\n",o);
-		return 1;
-	}
-
-	while (pos < getStackSize()-1 && getPancakeRadius(pos+1) == radius + o && isPancakeUpsideDown(pos)==isPancakeUpsideDown(pos+1) && isPancakeUpsideDown(pos)==isPancakeUpsideDown(0)) {
-		pos++;
-		radius += o;
-	}
-	return pos+1;
-}
-int debug=0; // 0: silence; 1: which cases; 2: all details
 /* END SOLUTION */
 
 /* BEGIN TEMPLATE */
 void solve() {
 	/* BEGIN SOLUTION */
-	/* cruft to search for an instance exercising all transformations */
-	int doneA=0;
-	int doneB=0;
-	int doneC=0;
-	int doneD=0;
-	int doneE=0;
-	int doneF=0;
-	int doneG=0;
-	int doneH=0;
-	int stackSize = getStackSize();
-	int* origSizes = (int*)malloc(sizeof(int)*stackSize);
-	int i;
-	for (i=0;i<stackSize;i++)
-		origSizes[i] = getPancakeRadius(i);
-	/* end of this cruft */
-	if (debug>0) {
-		printf("{\n");
-		int rank;
-		for (rank=0; rank < stackSize; rank++){
-			printf("%d\n",getPancakeRadius(rank));
-		}
-		printf("}\n");
-	}
+        // Joined pancakes are never separated: each block of joined pancakes behaves as a single pancake.
+        // The pancakes from maxPos to the bottom are joined to the floor, and never moved again.
+        int maxPos = getStackSize();
+        while (1) {
+          while (maxPos > 0 && getPancakeRadius(maxPos - 1) == maxPos && !isPancakeUpsideDown(maxPos - 1))
+            maxPos--;
+          if (maxPos == 0)
+            return;
 
-	while (1) {
-		int tRadius = getPancakeRadius(0);
-		int posTPlus  = getRankOf(tRadius+1); // returns -99 if non-existent, that is then ignored
-		int posTMinus = getRankOf(tRadius-1);
-		int posT = 0;
+          int largestUp = -1;
+          int rank;
+          for (rank = 0; rank < maxPos; rank++)
+            if (!isPancakeUpsideDown(rank) && getPancakeRadius(rank) > largestUp)
+              largestUp = getPancakeRadius(rank);
 
-		if (debug>1) {
-			printf("t Radius: %d\n",tRadius);
-			int rank;
-			for (rank=0; rank < stackSize; rank++) {
-				printf("[%d]=%d; ",rank,getPancakeRadius(rank));
-
-				if (isFree(rank))
-					printf("free;");
-				else
-					printf("NON-free;");
-
-				if (isFirst(rank))
-					printf("first; ");
-				else
-					printf("NON-first; ");
-
-				if (isLast(rank))
-					printf("last; ");
-				else
-					printf("NON-last; ");
-
-
-				if (rank == posTPlus)
-					printf("t+1; ");
-				if (rank == posTMinus)
-					printf("t-1; ");
-				if (rank == posT)
-					printf("t;" );
-
-				printf("\n");
-			}
-		}
-
-		if (isFree(posT)) {
-			if (isFree(posTPlus)) { /* CASE A: t and t+o free */
-				if (debug>0)
-					printf("Case A+\n");
-				if(isPancakeUpsideDown(posT)){
-					if(isPancakeUpsideDown(posTPlus)){
-						flip(posTPlus+1);
-						flip(1);
-						flip(posTPlus+1);
-					}
-					flip(posTPlus);
-				}else if(!isPancakeUpsideDown(posT)){
-					if(isPancakeUpsideDown(posTPlus)){
-						flip(posTPlus+1);
-						flip(1);
-						flip(posTPlus+1);
-					}
-					flip(1);
-					flip(posTPlus);
-				}
-				doneA = 1;
-			} else if (isFree(posTMinus)) { /* CASE A: t and t-o free */
-				if (debug>0)
-					printf("Case A-\n");
-				if(isPancakeUpsideDown(posT) && isPancakeUpsideDown(posTMinus)){
-					flip(posTMinus+1);
-					flip(1);
-					flip(posTMinus);
-				}else if(isPancakeUpsideDown(posT) && !isPancakeUpsideDown(posTMinus)){
-					flip(posTMinus+1);
-					flip(posTMinus);
-				}else if(!isPancakeUpsideDown(posT) && isPancakeUpsideDown(posTMinus)){
-					flip(1);
-					flip(posTMinus+1);
-					flip(1);
-					flip(posTMinus);
-				}else if(!isPancakeUpsideDown(posT) && !isPancakeUpsideDown(posTMinus)){
-					flip(1);
-					flip(posTMinus+1);
-					flip(posTMinus);
-				}
-				doneA = 1;
-
-			} else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
-				if (debug>0)
-					printf("Case B+\n");
-				if(!isPancakeUpsideDown(posT)){
-					flip(1);
-				}
-				flip(posTPlus);
-				doneB = 1;
-			} else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
-				if (debug>0)
-					printf("Case B-\n");
-				if(isPancakeUpsideDown(posT)){
-					flip(1);
-				}
-				flip(posTMinus);
-				doneB = 1;
-
-			} else if (min(posTPlus,posTMinus) != -99) { /* CASE C: t free, but both t+o and t-o are last elements */
-				if (debug>0)
-					printf("Case C\n");
-				if((!isPancakeUpsideDown(posT) && posTMinus<posTPlus )|| (isPancakeUpsideDown(posT) && posTMinus>posTPlus)){
-					flip(1);
-				}
-				flip(min(posTPlus,posTMinus) );
-				flip(min(posTPlus,posTMinus) - 1);
-				flip(max(posTPlus,posTMinus) + 1);
-				flip(min(posTPlus,posTMinus) - 1);
-				doneC = 1;
-
-			} else {
-				if (debug>0)
-					printf("Case Cbis\n");
-				if((isPancakeUpsideDown(posT) && posTMinus==-99) ||( !isPancakeUpsideDown(posT) && posTPlus==-99)){
-					flip(1);
-				}
-				flip(max(posTPlus,posTMinus) + 1);
-				flip(max(posTPlus,posTMinus) );
-				doneC = 1;
-			}
-
-		} else { // t is in a block
-			if (blockLength() == stackSize) { // Done!
-				if (tRadius != 1) // all reverse
-					flip(stackSize);
-				if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && wasRandom()) {
-					printf("BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.\n");
-					printf("{\n");
-					int rank;
-					for (rank=0; rank < stackSize; rank++)
-						printf("%d, ",origSizes[rank]);
-					printf("}\n");
-				}
-				free(origSizes);
-				return;
-			}
-
-			if (isFree(posTPlus)){      /* CASE D: t in a block, t+1 free */
-				if (debug>0){
-					printf("Case D+\n");
-				}
-				if(isPancakeUpsideDown(posTPlus)){
-					flip(posTPlus+1);
-					flip(1);
-					flip(posTPlus+1);
-				}
-				flip(posTPlus);
-				doneD = 1;
-
-			} else if (isFree(posTMinus)) {  /* CASE D: t in a block, t-1 free */
-				if (debug>0)
-					printf("Case D-\n");
-				if(!isPancakeUpsideDown(posTMinus)){
-					flip(posTMinus+1);
-					flip(1);
-					flip(posTMinus+1);
-				}
-				flip(posTMinus);
-				doneD = 1;
-
-			} else if (isFirst(posTPlus)) {  /* CASE E: t in a block, t+1 first element */
-				if (debug>0)
-					printf("Case E+\n");
-				flip(posTPlus);
-				doneE = 1;
-
-			} else if (isFirst(posTMinus)) { /* CASE E: t in a block, t-1 first element */
-				if (debug>0)
-					printf("Case E-\n");
-				flip(posTMinus);
-				doneE = 1;
-
-			} else if (isLast(posTPlus) && posTPlus != 1) { /* CASE F+: t in a block, t+1 last element */
-				doneF = 1;
-				if (debug>0)
-					printf("Case F+\n");
-				flip(blockLength());
-				flip(posTPlus + 1);
-				int newPos = getRankOf(tRadius);
-				if (newPos>0)
-					flip(newPos);
-
-			} else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
-				doneF = 1;
-				if (debug>0)
-					printf("Case F-\n");
-				flip(blockLength());
-				flip(posTMinus + 1);
-				int newPos = getRankOf(tRadius);
-				if (newPos>0)
-					flip(newPos);
-			} else {
-				int k = blockLength()-1;
-				int o = getPancakeRadius(1) - tRadius;
-				int pos = getRankOf(tRadius+(k+1)*o);
-				if (isFree(pos) || isFirst(pos)) {
-					doneG = 1;
-					if (debug>0)
-						printf("Case G\n");
-					if((isPancakeUpsideDown(pos) && o>0) || (!isPancakeUpsideDown(pos) && o<0)){
-						flip(pos+1);
-						flip(1);
-						flip(pos+1);
-					}
-					if(k+1 != pos){
-						flip(k+1);
-						flip(pos);
-					}
-				} else {
-					doneH = 1;
-					if (debug>0)
-						printf("Case H\n");
-					flip(pos+1);
-					flip(getRankOf(tRadius+k*o));
-				}
-			}
-
-		}
-	}
-	free(origSizes);
-	/* END SOLUTION */
+          if (largestUp != -1) { // Case 1: p is the block ending with the largest rightside up pancake
+            int p = getRankOf(largestUp);
+            if (largestUp == maxPos) { // Case 1.C
+              flip(p + 1);
+              flip(maxPos);
+            } else {
+              int pPlus1 = getRankOf(largestUp + 1); // bottom of the next block, which is upside down
+              if (pPlus1 > p) {                      // Case 1.A
+                flip(pPlus1 + 1);
+                flip(pPlus1 - p);
+              } else { // Case 1.B
+                flip(p + 1);
+                flip(p - pPlus1);
+              }
+            }
+          } else { // Case 2: all pancakes are upside down
+            // Case 2.A: the largest radius such that -(radius+1) is above -radius without being joined to it
+            int radius = maxPos - 1;
+            while (radius > 0 && getRankOf(radius + 1) >= getRankOf(radius) - 1)
+              radius--;
+            if (radius > 0) {
+              flip(getRankOf(radius + 1) + 1);
+              flip(getRankOf(radius));
+            } else { // Case 2.B: the blocks form -I. Once per block, flip them all, then all but the bottom one
+              int blocks = 1;
+              for (rank = 1; rank < maxPos; rank++)
+                if (!joined(rank - 1, rank))
+                  blocks++;
+              int i;
+              for (i = 0; i < blocks; i++) {
+                flip(maxPos);
+                int bottom = maxPos - 1;
+                while (bottom > 0 && joined(bottom - 1, bottom))
+                  bottom--;
+                if (bottom > 0)
+                  flip(bottom);
+              }
+            }
+          }
+        }
+        /* END SOLUTION */
 }
 /* END TEMPLATE */
 
-void run(){
-	solve();
+void run()
+{
+  solve();
 }

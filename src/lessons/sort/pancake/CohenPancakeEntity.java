@@ -1,131 +1,89 @@
 package lessons.sort.pancake;
 
 import lessons.sort.pancake.universe.PancakeEntity;
-import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 
-@EntityPrimitives(PancakeEntity.class)
 public class CohenPancakeEntity extends PancakeEntity {
 
-  /** Lets the C correction report the randomized instances that go through every case of the algorithm */
-  @Primitive public boolean wasRandom() { return world.isRandomized(); }
-
   /* BEGIN REMOTE */
-  public void run() { this.solve(); }
+  public void run() { solve(); }
+
+  /* BEGIN SOLUTION */
+  int getRankOf(int radius)
+  {
+    for (int rank = 0; rank < getStackSize(); rank++)
+      if (getPancakeRadius(rank) == radius)
+        return rank;
+    return -1;
+  }
+
+  /** Whether the pancakes at these consecutive ranks are joined: p above p+1, or -(p+1) above -p */
+  boolean joined(int above, int below)
+  {
+    int top    = isPancakeUpsideDown(above) ? -getPancakeRadius(above) : getPancakeRadius(above);
+    int bottom = isPancakeUpsideDown(below) ? -getPancakeRadius(below) : getPancakeRadius(below);
+    return bottom == top + 1;
+  }
+  /* END SOLUTION */
 
   /* BEGIN TEMPLATE */
   public void solve()
   {
     /* BEGIN SOLUTION */
+    // Joined pancakes are never separated: each block of joined pancakes behaves as a single pancake.
+    // The pancakes from maxPos to the bottom are joined to the floor, and never moved again.
     int maxPos = getStackSize();
     while (true) {
+      while (maxPos > 0 && getPancakeRadius(maxPos - 1) == maxPos && !isPancakeUpsideDown(maxPos - 1))
+        maxPos--;
+      if (maxPos == 0)
+        return;
 
-      if (debug > 0)
-        System.out.print("maxPos:" + maxPos + " ");
-      showStack(false);
+      int largestUp = -1;
+      for (int rank = 0; rank < maxPos; rank++)
+        if (!isPancakeUpsideDown(rank) && getPancakeRadius(rank) > largestUp)
+          largestUp = getPancakeRadius(rank);
 
-      int maxupside = -1, maxupsidePos = -1;
-      boolean sorted = true;
-      for (int pos = 0; pos < getStackSize(); pos++) {
-        if (getPancakeRadius(pos) != pos + 1 || isPancakeUpsideDown(pos))
-          sorted = false;
-
-        // Search if we are in case 1 on the considered interval
-        if (pos < maxPos && !isPancakeUpsideDown(pos) && (maxupside < getPancakeRadius(pos))) {
-          maxupside    = getPancakeRadius(pos);
-          maxupsidePos = pos;
-        }
-      }
-
-      if (sorted) { // we are done, no need to continue
-        if (debug > 0)
-          System.out.println("It's sorted now. Get out of here\n");
-        break;
-      }
-
-      if (maxupside != -1) {       // Case 1.
-        if (maxupside == maxPos) { // Case 1.C
-          if (debug > 0)
-            System.out.println("Case 1.C; maxupsidePos = " + maxupsidePos + ", maxupside = " + maxupside);
-          if (maxupsidePos + 1 != maxPos) {
-            flip(maxupsidePos + 1);
-            flip(maxPos);
-          }
-          maxPos--;
+      if (largestUp != -1) { // Case 1: p is the block ending with the largest rightside up pancake
+        int p = getRankOf(largestUp);
+        if (largestUp == maxPos) { // Case 1.C
+          flip(p + 1);
+          flip(maxPos);
         } else {
-          int pPlus1 = getRankOf(maxupside + 1);
-          if (pPlus1 > maxupsidePos) {
-            if (debug > 0)
-              System.out.println("Case 1.A; maxupsidePos = " + maxupsidePos + ", maxupside = " + maxupside + ", pPlus1 = " + pPlus1);
+          int pPlus1 = getRankOf(largestUp + 1); // bottom of the next block, which is upside down
+          if (pPlus1 > p) {                      // Case 1.A
             flip(pPlus1 + 1);
-            showStack(true);
-            flip(pPlus1 - maxupsidePos);
-          } else {
-            if (debug > 0)
-              System.out.println("Case 1.B; maxupsidePos = " + maxupsidePos + ", maxupside = " + maxupside + ", pPlus1 = " + pPlus1);
-            flip(maxupsidePos + 1);
-            flip(maxupsidePos - pPlus1);
+            flip(pPlus1 - p);
+          } else { // Case 1.B
+            flip(p + 1);
+            flip(p - pPlus1);
           }
         }
-      } else { // Case 2. All pancakes are upside down.
-        boolean reverted = true;
-        for (int pos = 0; reverted && pos < maxPos; pos++)
-          if (getPancakeRadius(pos) != pos + 1)
-            reverted = false;
-
-        if (reverted) {
-          if (debug > 0)
-            System.out.println("Case 2.B");
-          for (int i = 0; i < maxPos; i++) {
+      } else { // Case 2: all pancakes are upside down
+        // Case 2.A: the largest radius such that -(radius+1) is above -radius without being joined to it
+        int radius = maxPos - 1;
+        while (radius > 0 && getRankOf(radius + 1) >= getRankOf(radius) - 1)
+          radius--;
+        if (radius > 0) {
+          flip(getRankOf(radius + 1) + 1);
+          flip(getRankOf(radius));
+        } else { // Case 2.B: the blocks form -I. Once per block, flip them all, then all but the bottom one
+          int blocks = 1;
+          for (int rank = 1; rank < maxPos; rank++)
+            if (!joined(rank - 1, rank))
+              blocks++;
+          for (int i = 0; i < blocks; i++) {
             flip(maxPos);
-            if (maxPos > 1)
-              flip(maxPos - 1);
-            showStack(true);
-          }
-        } else {
-
-          int pPlus1 = getRankOf(getStackSize() + 1);
-          int p;
-          for (int radius = maxPos; radius > 0; radius--) {
-            p = getRankOf(radius);
-            if (p > maxPos)
-              p = -99;
-            if (pPlus1 != -99 && pPlus1 < p) { // we've got the larger p such that p+1 is above p and both are upsideof
-              if (debug > 0)
-                System.out.println("Case 2.A; p=" + p + ", radius=" + radius + ", pPlus1=" + pPlus1);
-              flip(p + 1);
-              if (pPlus1 != 0)
-                flip(pPlus1 + 1);
-              radius = -1; // We're done with this iteration of the loop
-            }
-            pPlus1 = p; // shift downward
+            int bottom = maxPos - 1;
+            while (bottom > 0 && joined(bottom - 1, bottom))
+              bottom--;
+            if (bottom > 0)
+              flip(bottom);
           }
         }
       }
-    }
-  }
-
-  int getRankOf(int size)
-  {
-    for (int rank = 0; rank < getStackSize(); rank++)
-      if (getPancakeRadius(rank) == size)
-        return rank;
-    return -99; // Well, be robust to border cases
-  }
-  int debug = 0; // 0: silence; 1: all details
-  void showStack(boolean nl)
-  {
-    if (debug > 0) {
-      System.out.print("{");
-      for (int rank = 0; rank < getStackSize(); rank++)
-        System.out.print((isPancakeUpsideDown(rank) ? "-" : "") + getPancakeRadius(rank) + ", ");
-      System.out.print("}  ");
-      if (nl)
-        System.out.println();
     }
     /* END SOLUTION */
   }
-
   /* END TEMPLATE */
   /* END REMOTE */
 }

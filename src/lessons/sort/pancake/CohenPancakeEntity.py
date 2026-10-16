@@ -1,93 +1,60 @@
 from RemotePancake import *
 def run():
     # BEGIN SOLUTION
-    def getRankOf(size):
+    def getRankOf(radius):
         for rank in range(getStackSize()):
-            if getPancakeRadius(rank) == size:
+            if getPancakeRadius(rank) == radius:
                 return rank
-        return -99 # be robust to border cases
+        return -1
 
-    debug = False
-    def showStack():
-        if debug:
-            s = "maxPos:"+str(maxPos)+" {"
-            for rank in range(getStackSize()):
-                if isPancakeUpsideDown(rank):
-                    s = s + "-"
-                s = s + str(getPancakeRadius(rank)) + ", "
-            s = s + "}"
-            print(s)
+    def joined(above, below):
+        """Whether the pancakes at these consecutive ranks are joined: p above p+1, or -(p+1) above -p"""
+        top = -getPancakeRadius(above) if isPancakeUpsideDown(above) else getPancakeRadius(above)
+        bottom = -getPancakeRadius(below) if isPancakeUpsideDown(below) else getPancakeRadius(below)
+        return bottom == top + 1
 
+    # Joined pancakes are never separated: each block of joined pancakes behaves as a single pancake.
+    # The pancakes from maxPos to the bottom are joined to the floor, and never moved again.
     maxPos = getStackSize()
-    keepGoing = True
-    while keepGoing:
-        if isSelected() and debug:
-            showStack()
-            
-        maxupside = -1
-        maxupsidePos = -1
-        sorted = True
-        for pos in range(getStackSize()):
-            if getPancakeRadius(pos) != pos+1 or isPancakeUpsideDown(pos):
-                sorted = False
-                
-            # Search if we are in case 1 on the considered interval
-            if (pos<maxPos and not isPancakeUpsideDown(pos) and (maxupside < getPancakeRadius(pos))):
-                    maxupside = getPancakeRadius(pos)
-                    maxupsidePos = pos;
+    while True:
+        while maxPos > 0 and getPancakeRadius(maxPos - 1) == maxPos and not isPancakeUpsideDown(maxPos - 1):
+            maxPos -= 1
+        if maxPos == 0:
+            return
 
-        if sorted: # we are done, no need to continue
-            if debug:
-                print("It's sorted now. Get out of here\n");
-            break;
+        largestUp = -1
+        for rank in range(maxPos):
+            if not isPancakeUpsideDown(rank) and getPancakeRadius(rank) > largestUp:
+                largestUp = getPancakeRadius(rank)
 
-        if maxupside != -1: # Case 1. 
-            pPlus1 = getRankOf(maxupside+1)
-            if maxupside == maxPos: # Case 1.C
-                if debug:
-                    print("Case 1.C; maxupsidePos = "+str(maxupsidePos)+", maxupside = "+str(maxupside))
-                if maxupsidePos+1 != maxPos:
-                    flip(maxupsidePos+1);
-                    flip(maxPos);
-                maxPos -= 1
-            elif pPlus1 > maxupsidePos:
-                if debug:
-                    print("Case 1.A; maxupsidePos = "+str(maxupsidePos)+", maxupside = "+str(maxupside)+", pPlus1 = "+str(pPlus1))
-                flip(pPlus1+1)
-                flip(pPlus1-maxupsidePos);
+        if largestUp != -1: # Case 1: p is the block ending with the largest rightside up pancake
+            p = getRankOf(largestUp)
+            if largestUp == maxPos: # Case 1.C
+                flip(p + 1)
+                flip(maxPos)
             else:
-                if debug:
-                    print("Case 1.B; maxupsidePos = "+str(maxupsidePos)+", maxupside = "+str(maxupside)+", pPlus1 = "+str(pPlus1));
-                flip(maxupsidePos+1);
-                flip(maxupsidePos-pPlus1);
-        else: # Case 2. All pancakes are upside down.
-            reverted = True   
-            for pos in range(maxPos):
-                if getPancakeRadius(pos)!=pos+1:
-                    reverted = False
-                    
-            if reverted:
-                if debug:
-                    print("Case 2.B")
-                for i in range(maxPos):
+                pPlus1 = getRankOf(largestUp + 1) # bottom of the next block, which is upside down
+                if pPlus1 > p: # Case 1.A
+                    flip(pPlus1 + 1)
+                    flip(pPlus1 - p)
+                else: # Case 1.B
+                    flip(p + 1)
+                    flip(p - pPlus1)
+        else: # Case 2: all pancakes are upside down
+            # Case 2.A: the largest radius such that -(radius+1) is above -radius without being joined to it
+            radius = maxPos - 1
+            while radius > 0 and getRankOf(radius + 1) >= getRankOf(radius) - 1:
+                radius -= 1
+            if radius > 0:
+                flip(getRankOf(radius + 1) + 1)
+                flip(getRankOf(radius))
+            else: # Case 2.B: the blocks form -I. Once per block, flip them all, then all but the bottom one
+                blocks = 1 + sum(1 for rank in range(1, maxPos) if not joined(rank - 1, rank))
+                for i in range(blocks):
                     flip(maxPos)
-                    if maxPos>1:
-                        flip(maxPos-1)
-                    showStack()
-                keepGoing = False
-            else:
-                pPlus1 = getRankOf(getStackSize()+1)
-                p = 0
-                for radius in range(maxPos,0,-1):
-                    p = getRankOf(radius);
-                    if p>maxPos:
-                        p=-99
-                    if (pPlus1!=-99 and pPlus1<p): # we've got the larger p such that p+1 is above p and both are upsideof
-                        if debug:
-                            print("Case 2.A; p="+str(p)+", radius="+str(radius)+", pPlus1="+str(pPlus1))
-                        flip(p+1)
-                        if pPlus1!=0:
-                            flip(pPlus1+1)
-                        radius = -1 # We're done with this iteration of the loop
-                    pPlus1 = p # look downward
+                    bottom = maxPos - 1
+                    while bottom > 0 and joined(bottom - 1, bottom):
+                        bottom -= 1
+                    if bottom > 0:
+                        flip(bottom)
     # END SOLUTION
