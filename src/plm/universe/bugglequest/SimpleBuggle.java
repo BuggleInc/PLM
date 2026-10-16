@@ -35,17 +35,11 @@ public class SimpleBuggle extends AbstractBuggle {
     }
   }
 
+  /* Unlike the parent, does not throw BuggleWallException: step() already reports the walls */
   @Override public void forward(int steps)
   {
-    try {
-      super.forward(steps);
-    } catch (BuggleWallException e) {
-      if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
-        throw new RuntimeException(e);
-      if (!haveSeenError())
-        javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-      seenError();
-    }
+    for (int i = 0; i < steps; i++)
+      step();
   }
 
   @Override public void stepBack()
@@ -61,17 +55,11 @@ public class SimpleBuggle extends AbstractBuggle {
     }
   }
 
+  /* Unlike the parent, does not throw BuggleWallException: stepBack() already reports the walls */
   @Override public void backward(int steps)
   {
-    try {
-      super.backward(steps);
-    } catch (BuggleWallException e) {
-      if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
-        throw new RuntimeException(e);
-      if (!haveSeenError())
-        javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
-      seenError();
-    }
+    for (int i = 0; i < steps; i++)
+      stepBack();
   }
 
   @Override public void pickupBaggle()
