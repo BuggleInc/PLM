@@ -482,7 +482,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` and `forbidMultiStep()` are refused by `CommandExecutor`
       with an explanatory `PrimitiveRefusedException`. `forbid()` rejects an unknown primitive, the forbidden primitives are
       read-only and forbidden again by every new instance, the likely mistakes (`Left()`, `penDown()`...) are explained, and a few
-      gated exercises refuse their forbidden calls.
+      gated exercises refuse their forbidden calls. The documentation of the world hides the forbidden and undocumented
+      primitives, and orders the groups as declared.
     * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
       known languages.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a

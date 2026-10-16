@@ -15,6 +15,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.test.lang.CommandExecutorTest.GatedEntity;
@@ -22,6 +23,7 @@ import plm.test.lang.CommandExecutorTest.RecordingEntity;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 import plm.universe.PrimitiveRefusedException;
+import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 
 /** The primitives that an exercise forbids to the student code are refused with an PrimitiveRefusedException explaining why. */
@@ -110,5 +112,27 @@ public class ApiGatingTest {
   {
     PrimitiveRefusedException e = Assertions.assertThrows(PrimitiveRefusedException.class, () -> CommandExecutor.command(entity, command, null));
     Assertions.assertTrue(e.getMessage().contains("Sorry Dave"), e.getMessage());
+  }
+
+  /** The documentation of the world (Ctrl-H) hides the primitives forbidden by the exercise and the undocumented ones, and orders the groups. */
+  @Test public void testDocumentationHidesForbiddenPrimitives()
+  {
+    ProgrammingLanguage previous = Game.getInstance().getProgrammingLanguage();
+    try {
+      Game.getInstance().setProgramingLanguage(Game.getInstance().programmingLanguageManager.JAVA);
+      BuggleWorld world = new BuggleWorld("doc", 3, 3);
+      world.addEntity(new Array1Entity()); // forbids setX(), setY() and setPos()
+      String about = world.getAbout();
+
+      Assertions.assertTrue(about.contains("void step()"), about);
+      for (String hidden : new String[] {"setX(", "setPos(", "Left()", "penDown()"})
+        Assertions.assertFalse(about.contains(hidden), hidden + " should be hidden:\n" + about);
+
+      int moving = about.indexOf("<b>Moving</b>"), brush = about.indexOf("<b>About the brush</b>"),
+          interacting = about.indexOf("<b>Interacting with the world</b>");
+      Assertions.assertTrue(0 <= moving && moving < brush && brush < interacting, about);
+    } finally {
+      Game.getInstance().setProgramingLanguage(previous);
+    }
   }
 }
