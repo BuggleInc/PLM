@@ -1,12 +1,5 @@
 from RemoteBuggle import *
 def run():
-    # BINDINGS TRANSLATION 
-    def croisement():
-        return crossing()
-    def sortieTrouvee():
-        return exitReached()
-
-
     # BEGIN SOLUTION
     while not exitReached() :
         seen = 0

@@ -7,7 +7,10 @@ import plm.core.lang.primitives.Primitive;
 @EntityPrimitives(LoopDoWhileEntity.class)
 public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 
-  @Primitive public boolean isGroundWhite() { return getGroundColor() == Color.white; }
+  @Primitive(value = "Tells whether the ground under the buggle is white.", group = "Specific to this exercise") public boolean isGroundWhite()
+  {
+    return getGroundColor() == Color.white;
+  }
 
   @Override
   /* BEGIN REMOTE */

@@ -3,9 +3,6 @@ package lessons.welcome.variables;
 import java.awt.Color;
 
 class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
-	/* BINDINGS TRANSLATION */
-	def estSurOrange():Boolean = { return isOverOrange(); }
-
 	/* BEGIN REMOTE */
 	override def run(): Unit = {
 		/* BEGIN TEMPLATE */

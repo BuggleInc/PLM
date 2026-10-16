@@ -131,7 +131,7 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
   @Primitive default char getIndicationBdr() { return isOverMessage() ? readMessage().charAt(0) : ' '; }
 
-  @Primitive boolean hasTopWall(int x, int y);
+  @Primitive(value = "Tells whether the given cell has a wall on its top side.", group = "Interacting with the world") boolean hasTopWall(int x, int y);
 
-  @Primitive boolean hasLeftWall(int x, int y);
+  @Primitive(value = "Tells whether the given cell has a wall on its left side.", group = "Interacting with the world") boolean hasLeftWall(int x, int y);
 }

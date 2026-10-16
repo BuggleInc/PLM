@@ -6,10 +6,6 @@ import plm.universe.bugglequest.BuggleWorldCell
 
 class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
 
-	/* BINDINGS TRANSLATION */
-	def sortieTrouvee(): Boolean = { return exitReached() }
-	def croisement(): Boolean = { return crossing() }
-
 	/* BEGIN REMOTE */
 	override def run(): Unit = { 
 		/* BEGIN SOLUTION */

@@ -3145,3 +3145,38 @@ msgstr "getMondeLargeur"
 msgctxt "primitive"
 msgid "isSelected"
 msgstr "estChoisi"
+
+#: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
+msgctxt "primitive"
+msgid "crossing"
+msgstr "croisement"
+
+#: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
+msgctxt "primitive"
+msgid "exitReached"
+msgstr "sortieTrouvee"
+
+#: src/lessons/welcome/loopdowhile/LoopDoWhileEntity.java
+msgctxt "primitive"
+msgid "isGroundWhite"
+msgstr "estSurBlanc"
+
+#: src/lessons/welcome/variables/RunHalfEntity.java
+msgctxt "primitive"
+msgid "isOverOrange"
+msgstr "estSurOrange"
+
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+msgctxt "primitive"
+msgid "hasBaggle"
+msgstr "aBiscuit"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "hasTopWall"
+msgstr "aMurNord"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "hasLeftWall"
+msgstr "aMurOuest"

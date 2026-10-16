@@ -8,7 +8,10 @@ import plm.core.lang.primitives.Primitive;
 public class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
   public RunHalfEntity() { forbidMultiStep(); }
 
-  @Primitive public boolean isOverOrange() { return getGroundColor() == Color.orange; }
+  @Primitive(value = "Tells whether the ground under the buggle is orange.", group = "Specific to this exercise") public boolean isOverOrange()
+  {
+    return getGroundColor() == Color.orange;
+  }
 
   @Override
   /* BEGIN REMOTE */
