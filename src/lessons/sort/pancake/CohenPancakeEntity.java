@@ -1,8 +1,14 @@
 package lessons.sort.pancake;
 
 import lessons.sort.pancake.universe.PancakeEntity;
+import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Primitive;
 
+@EntityPrimitives(PancakeEntity.class)
 public class CohenPancakeEntity extends PancakeEntity {
+
+  /** Lets the C correction report the randomized instances that go through every case of the algorithm */
+  @Primitive public boolean wasRandom() { return world.isRandomized(); }
 
   /* BEGIN REMOTE */
   public void run() { this.solve(); }

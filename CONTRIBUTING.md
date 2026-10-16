@@ -473,7 +473,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
-    * *`PancakeRandomizedTest`:* the Gates entity only reports the instances of the randomized worlds, also after the copy of a world.
+    * *`PancakeRandomizedTest`:* a randomized pancake world is reported as such by `isRandomized()`, also after its copy.
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
     * *`GitSessionKitTest`:* with a repository of a user in a temporary directory, `loadLesson()` restores the saved code and the
       successes into the `SessionDB` without loading the entities (and without `loadAll()` having run), and `loadAll()` reads the lesson summaries.

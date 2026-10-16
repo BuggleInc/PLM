@@ -56,6 +56,8 @@ public class GatesPancake extends ExerciseTemplated {
                          },
                          false),
         // A+ A+ D+ A+ A+ A- E- A+ C E- A+ A+ A+ D+ D+ E+ D+ F+ F- C B+ F- E+ D+ F+ H E- F+ E+ => miss Cbis and G
+        new PancakeWorld("15 pancakes, every case", new int[] {7, 12, 2, 13, 4, 5, 11, 8, 3, 10, 14, 1, 9, 15, 6}, false),
+        // A+ A+ A+ D+ Cbis A+ D+ E+ B+ F+ E+ G H
     };
     for (int i = 0; i < myWorlds.length; i++)
       new PancakeEntity("Bill", myWorlds[i]);

@@ -97,20 +97,6 @@ class GatesPancakeEntity extends PancakeEntity {
 	/* BEGIN TEMPLATE */
 	def solve(): Unit = {
 		/* BEGIN SOLUTION */
-		/* cruft to search for an instance exercising all transformations */
-		var doneA=false;
-		var doneB=false;
-		var doneC=false;
-		var doneD=false;
-		var doneE=false;
-		var doneF=false;
-		var doneG=false;
-		var doneH=false;
-		val origSizes = new Array[Integer] (getStackSize());
-		for (i <- 0 to getStackSize()-1)
-			origSizes(i) = getPancakeRadius(i);
-		/* end of this cruft */
-		
 		val stackSize = getStackSize();
 		
 		if (debug>0) {
@@ -163,23 +149,19 @@ class GatesPancakeEntity extends PancakeEntity {
 					if (debug>0)
 						System.out.println("Case A+");
 					flip(posTPlus);
-					doneA = true;
 				} else if (isFree(posTMinus)) { /* CASE A: t and t-o free */
 					if (debug>0)
 						System.out.println("Case A-");
 					flip(posTMinus);
-					doneA = true;
 					
 				} else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
 					if (debug>0)
 						System.out.println("Case B+");
 					flip(posTPlus);
-					doneB = true;
 				} else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
 					if (debug>0)
 						System.out.println("Case B-");
 					flip(posTMinus);
-					doneB = true;
 
 				} else if (Math.min(posTPlus,posTMinus) != -99) { /* CASE C: t free, but both t+o and t-o are last elements */
 					if (debug>0)
@@ -188,27 +170,18 @@ class GatesPancakeEntity extends PancakeEntity {
 					flip(Math.min(posTPlus,posTMinus) - 1);
 					flip(Math.max(posTPlus,posTMinus) + 1);
 					flip(Math.min(posTPlus,posTMinus) - 1);
-					doneC = true;
 					
 				} else {
 					if (debug>0)
 						System.out.println("Case Cbis");
 					flip(Math.max(posTPlus,posTMinus) + 1);
 					flip(Math.max(posTPlus,posTMinus) );
-					doneC = true;
 				}
 				
 			} else { // t is in a block
 				if (blockLength() == stackSize) { // Done!
 					if (tRadius != 1) // all reverse 
 						flip(stackSize);
-					if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && wasRandom()) {
-						System.out.println("BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.");
-						System.out.print("{");
-						for (rank <- 0 to stackSize) 
-							System.out.print(""+origSizes(rank)+", ");
-						System.out.println("}");
-					}
 					return;
 				}
 				
@@ -216,28 +189,23 @@ class GatesPancakeEntity extends PancakeEntity {
 					if (debug>0)
 						System.out.println("Case D+");
 					flip(posTPlus);
-					doneD = true;
 
 				} else if (isFree(posTMinus)) {  /* CASE D: t in a block, t-1 free */
 					if (debug>0)
 						System.out.println("Case D-");
 					flip(posTMinus);
-					doneD = true;
 
 				} else if (isFirst(posTPlus)) {  /* CASE E: t in a block, t+1 first element */
 					if (debug>0)
 						System.out.println("Case E+");
 					flip(posTPlus);
-					doneE = true;
 
 				} else if (isFirst(posTMinus)) { /* CASE E: t in a block, t-1 first element */
 					if (debug>0)
 						System.out.println("Case E-");
 					flip(posTMinus);
-					doneE = true;
 
 				} else if (isLast(posTPlus) && posTPlus != 1) { /* CASE F+: t in a block, t+1 last element */
-					doneF = true;
 					if (debug>0)
 						System.out.println("Case F+");
 					flip(blockLength());
@@ -247,7 +215,6 @@ class GatesPancakeEntity extends PancakeEntity {
 						flip(newPos);
 					
 				} else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
-					doneF = true;
 					if (debug>0)
 						System.out.println("Case F-");
 					flip(blockLength());
@@ -260,13 +227,11 @@ class GatesPancakeEntity extends PancakeEntity {
 					val o = getPancakeRadius(1) - tRadius;
 					val pos = getRankOf(tRadius+(k+1)*o);
 					if (isFree(pos) || isFirst(pos)) {
-						doneG = true;
 						if (debug>0)
 							System.out.println("Case G");
 						flip(k+1);
 						flip(pos);
 					} else {
-						doneH = true;
 						if (debug>0)
 							System.out.println("Case H");
 						flip(pos+1);

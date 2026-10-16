@@ -2,8 +2,6 @@ package lessons.sort.pancake;
 
 import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
-import plm.core.lang.primitives.EntityPrimitives;
-import plm.core.lang.primitives.Primitive;
 
 /* This is not exactly the gates algorithm. Here is the original text:
  * <ul><li><b>Case f</b>: <code>t</code> is in a block of length k+1 (the last element is <code>t+ko</code>), <code>t-o</code>
@@ -15,10 +13,7 @@ import plm.core.lang.primitives.Primitive;
 
  */
 
-@EntityPrimitives(PancakeEntity.class)
 public class GatesPancakeEntity extends PancakeEntity {
-
-  @Primitive public boolean wasRandom() { return world.isRandomized(); }
 
   /* BEGIN REMOTE */
   public void run() { solve(); }
@@ -30,20 +25,6 @@ public class GatesPancakeEntity extends PancakeEntity {
   public void solve()
   {
     /* BEGIN SOLUTION */
-    /* cruft to search for an instance exercising all transformations */
-    boolean doneA       = false;
-    boolean doneB       = false;
-    boolean doneC       = false;
-    boolean doneD       = false;
-    boolean doneE       = false;
-    boolean doneF       = false;
-    boolean doneG       = false;
-    boolean doneH       = false;
-    Integer[] origSizes = new Integer[getStackSize()];
-    for (int i = 0; i < getStackSize(); i++)
-      origSizes[i] = getPancakeRadius(i);
-    /* end of this cruft */
-
     int stackSize = getStackSize();
 
     if (debug > 0) {
@@ -95,23 +76,19 @@ public class GatesPancakeEntity extends PancakeEntity {
           if (debug > 0)
             System.out.println("Case A+");
           flip(posTPlus);
-          doneA = true;
         } else if (isFree(posTMinus)) { /* CASE A: t and t-o free */
           if (debug > 0)
             System.out.println("Case A-");
           flip(posTMinus);
-          doneA = true;
 
         } else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
           if (debug > 0)
             System.out.println("Case B+");
           flip(posTPlus);
-          doneB = true;
         } else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
           if (debug > 0)
             System.out.println("Case B-");
           flip(posTMinus);
-          doneB = true;
 
         } else if (Math.min(posTPlus, posTMinus) != -99) { /* CASE C: t free, but both t+o and t-o are last elements */
           if (debug > 0)
@@ -120,28 +97,18 @@ public class GatesPancakeEntity extends PancakeEntity {
           flip(Math.min(posTPlus, posTMinus) - 1);
           flip(Math.max(posTPlus, posTMinus) + 1);
           flip(Math.min(posTPlus, posTMinus) - 1);
-          doneC = true;
 
         } else {
           if (debug > 0)
             System.out.println("Case Cbis");
           flip(Math.max(posTPlus, posTMinus) + 1);
           flip(Math.max(posTPlus, posTMinus));
-          doneC = true;
         }
 
       } else {                            // t is in a block
         if (blockLength() == stackSize) { // Done!
           if (tRadius != 1)               // all reverse
             flip(stackSize);
-          if (doneA && doneB && doneC && doneD && doneE && doneF && doneG && doneH && wasRandom()) {
-            System.out.println(
-                "BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.");
-            System.out.print("{");
-            for (int rank = 0; rank < stackSize; rank++)
-              System.out.print("" + origSizes[rank] + ", ");
-            System.out.println("}");
-          }
           return;
         }
 
@@ -149,28 +116,23 @@ public class GatesPancakeEntity extends PancakeEntity {
           if (debug > 0)
             System.out.println("Case D+");
           flip(posTPlus);
-          doneD = true;
 
         } else if (isFree(posTMinus)) { /* CASE D: t in a block, t-1 free */
           if (debug > 0)
             System.out.println("Case D-");
           flip(posTMinus);
-          doneD = true;
 
         } else if (isFirst(posTPlus)) { /* CASE E: t in a block, t+1 first element */
           if (debug > 0)
             System.out.println("Case E+");
           flip(posTPlus);
-          doneE = true;
 
         } else if (isFirst(posTMinus)) { /* CASE E: t in a block, t-1 first element */
           if (debug > 0)
             System.out.println("Case E-");
           flip(posTMinus);
-          doneE = true;
 
         } else if (isLast(posTPlus) && posTPlus != 1) { /* CASE F+: t in a block, t+1 last element */
-          doneF = true;
           if (debug > 0)
             System.out.println("Case F+");
           flip(blockLength());
@@ -180,7 +142,6 @@ public class GatesPancakeEntity extends PancakeEntity {
             flip(newPos);
 
         } else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
-          doneF = true;
           if (debug > 0)
             System.out.println("Case F-");
           flip(blockLength());
@@ -193,13 +154,11 @@ public class GatesPancakeEntity extends PancakeEntity {
           int o   = getPancakeRadius(1) - tRadius;
           int pos = getRankOf(tRadius + (k + 1) * o);
           if (isFree(pos) || isFirst(pos)) {
-            doneG = true;
             if (debug > 0)
               System.out.println("Case G");
             flip(k + 1);
             flip(pos);
           } else {
-            doneH = true;
             if (debug > 0)
               System.out.println("Case H");
             flip(pos + 1);

@@ -1,26 +1,18 @@
 package plm.test.universe;
 
-import lessons.sort.pancake.GatesPancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/** The Gates entity reports the instances that it sees only in the randomized worlds, since the other ones are reproducible. */
+/** A randomized world stays known as such, also once copied, so that its answer is never taken from the cache. */
 public class PancakeRandomizedTest {
 
-  private boolean wasRandom(PancakeWorld world)
+  @Test public void testRandomizedWorldIsRandomized() { Assertions.assertTrue(new PancakeWorld("random", 7, false).randomize().isRandomized()); }
+
+  @Test public void testFixedWorldIsNotRandomized() { Assertions.assertFalse(new PancakeWorld("fixed", new int[] {2, 1, 3}, false).isRandomized()); }
+
+  @Test public void testTheCopyOfARandomizedWorldIsRandomized()
   {
-    GatesPancakeEntity entity = new GatesPancakeEntity();
-    world.addEntity(entity);
-    return entity.wasRandom();
-  }
-
-  @Test public void testRandomizedWorldWasRandom() { Assertions.assertTrue(wasRandom(new PancakeWorld("random", 7, false).randomize())); }
-
-  @Test public void testFixedWorldWasNotRandom() { Assertions.assertFalse(wasRandom(new PancakeWorld("fixed", new int[] {2, 1, 3}, false))); }
-
-  @Test public void testTheCopyOfARandomizedWorldWasRandom()
-  {
-    Assertions.assertTrue(wasRandom(new PancakeWorld(new PancakeWorld("random", 7, false).randomize())));
+    Assertions.assertTrue(new PancakeWorld(new PancakeWorld("random", 7, false).randomize()).isRandomized());
   }
 }
