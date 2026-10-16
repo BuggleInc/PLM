@@ -94,11 +94,11 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
   @Primitive void step() throws BuggleWallException;
 
-  @Primitive void forward(int count) throws BuggleWallException;
+  @Primitive void forward(int steps) throws BuggleWallException;
 
   @Primitive void stepBack() throws BuggleWallException;
 
-  @Primitive void backward(int count) throws BuggleWallException;
+  @Primitive void backward(int steps) throws BuggleWallException;
 
   @Primitive boolean isFacingWall();
 

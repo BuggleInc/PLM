@@ -272,9 +272,9 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     move(direction.toPoint());
   }
 
-  @Override public void forward(int count) throws BuggleWallException
+  @Override public void forward(int steps) throws BuggleWallException
   {
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < steps; i++)
       step();
   }
 
@@ -287,9 +287,9 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     move(direction.opposite().toPoint());
   }
 
-  @Override public void backward(int count) throws BuggleWallException
+  @Override public void backward(int steps) throws BuggleWallException
   {
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < steps; i++)
       stepBack();
   }
 

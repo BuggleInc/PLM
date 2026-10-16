@@ -35,10 +35,10 @@ public class SimpleBuggle extends AbstractBuggle {
     }
   }
 
-  @Override public void forward(int count)
+  @Override public void forward(int steps)
   {
     try {
-      super.forward(count);
+      super.forward(steps);
     } catch (BuggleWallException e) {
       if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
         throw new RuntimeException(e);
@@ -61,10 +61,10 @@ public class SimpleBuggle extends AbstractBuggle {
     }
   }
 
-  @Override public void backward(int count)
+  @Override public void backward(int steps)
   {
     try {
-      super.backward(count);
+      super.backward(steps);
     } catch (BuggleWallException e) {
       if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
         throw new RuntimeException(e);

@@ -179,24 +179,9 @@ public class LangPython extends TemplatedRemoteLang {
 
   public static class LangPythonExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
 
-    /**
-     * The Python argument names to use for this primitive's parameters -- shared between getPrototype() and
-     *  getImplementation() so they can never drift apart. Reflection-derived parameter names (PrimitiveParameter.name())
-     *  are usually synthetic ("arg0" etc.) unless the project happens to be compiled with -parameters, so forward() and
-     *  backward() are special-cased to expose a readable "steps".
-     */
-    List<String> getParameterNames(PrimitiveMethod method)
-    {
-      String name = method.name();
-      if ((name.equals("forward") || name.equals("backward")) && method.parameters().size() == 1)
-        return List.of("steps");
-      return method.parameters().stream().map(PrimitiveParameter::name).toList();
-    }
-
     String getPrototype(PrimitiveMethod method)
     {
-      String name = method.name();
-      return "def " + name + "(" + String.join(", ", getParameterNames(method)) + ")";
+      return "def " + method.name() + "(" + method.parameters().stream().map(PrimitiveParameter::name).collect(Collectors.joining(", ")) + ")";
     }
 
     String getReturning(Class<?> type)
@@ -232,7 +217,7 @@ public class LangPython extends TemplatedRemoteLang {
 
       String name = method.name();
 
-      String argsStr = getParameterNames(method).stream().map(s -> ", " + s).collect(Collectors.joining());
+      String argsStr = method.parameters().stream().map(p -> ", " + p.name()).collect(Collectors.joining());
       String command = "    sendCommand(\"" + name + "\"" + argsStr + ")";
 
       String returning = method.hasReturn() ? "    return " + getReturning(method.output()) : "";
