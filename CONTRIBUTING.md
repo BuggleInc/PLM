@@ -672,18 +672,17 @@ work for more than one programming language. You can start it with:
 
 **Language-specific markup.** A single mission file serves every programming language. `PlmHtmlEditorKit.filterHTML()` keeps the
 content of a `[!<langs>]...[/!]` block when the current language is among `<langs>`, and removes the whole block otherwise.
-`<langs>` lists one to three of `java`, `python`, `scala` and `c` (lowercase), separated by `|` in any order; text meant for all
-four languages simply goes out of any block. `[!thelang]` is replaced by the name of the current language. For example:
+`<langs>` lists some of `java`, `python`, `scala` and `c` (lowercase), separated by `|` in any order; text meant for all four
+languages simply goes out of any block. `[!thelang]` is replaced by the name of the current language. For example:
 
     [!java|c]void [/!]step() or [!java|c]void [/!]forward([!java|c]int [/!]steps[!scala]:Int[/!])
 
 reads `void step() or void forward(int steps)` in Java and C, `step() or forward(steps:Int)` in Scala and `step() or
 forward(steps)` in Python.
 
-A block ends at the first `[/!]`, so blocks can only be nested when the inner block lists fewer languages than the outer one:
-the blocks of one language are processed first, then those of two languages, then those of three. For instance,
-`[!java|scala|python]forward()[!java];[/!][/!]` gives `forward();` in Java. The debug mode of the PLM displays all the blocks, with a
-color per language.
+Blocks can be nested, as they are resolved from the innermost: `[!java|scala|python]forward()[!java];[/!][/!]` gives `forward();`
+in Java, `forward()` in Scala and Python, and nothing in C. The debug mode of the PLM and the mission editor display all the
+blocks, with a color per set of languages.
 
 ### Connecting your exercise to the lesson
 

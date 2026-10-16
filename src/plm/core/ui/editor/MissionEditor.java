@@ -114,8 +114,7 @@ public class MissionEditor extends JFrame {
       {
         String ctn = "";
         if (selectorAll.isSelected()) {
-          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), true, false, null) +
-                "</body></html>";
+          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), null, true) + "</body></html>";
         } else {
           ArrayList<ProgrammingLanguage> l = new ArrayList<>();
           if (selectorC.isSelected()) {
@@ -130,12 +129,7 @@ public class MissionEditor extends JFrame {
           if (selectorPython.isSelected()) {
             l.add(Game.getInstance().programmingLanguageManager.PYTHON);
           }
-          ProgrammingLanguage array[] = new ProgrammingLanguage[l.size()];
-          for (int i = 0; i < l.size(); i++) {
-            array[i] = l.get(i);
-          }
-          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), false, true, array) +
-                "</body></html>";
+          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), l, true) + "</body></html>";
         }
 
         if (!modified) {
@@ -203,7 +197,7 @@ public class MissionEditor extends JFrame {
           modified = true;
         }
         String ctn =
-            "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), true, false, null) + "</body></html>";
+            "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), null, true) + "</body></html>";
         display.setText(ctn);
         javax.swing.text.Document doc = display.getDocument();
         int pos                       = (int)((double)doc.getLength() * editor.getCaretPosition() / editor.getDocument().getLength());
