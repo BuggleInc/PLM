@@ -2,6 +2,7 @@ package plm.universe.bugglequest;
 
 import java.awt.*;
 import plm.core.lang.primitives.Primitive;
+import plm.core.lang.primitives.PrimitiveGroups;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
@@ -10,13 +11,14 @@ import plm.universe.EntityPrimitivesBase;
 import plm.universe.PrimitiveRefusedException;
 import plm.universe.bugglequest.exception.*;
 
+@PrimitiveGroups({"Moving", "Information on the buggle", "About the brush", "Interacting with the world"})
 public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
-  @Primitive boolean isBrushDown();
+  @Primitive(value = "Tells whether the brush is down.", group = "About the brush") boolean isBrushDown();
 
-  @Primitive void brushDown();
+  @Primitive(value = "Puts the brush down: the buggle paints the cells it walks on.", group = "About the brush") void brushDown();
 
-  @Primitive void brushUp();
+  @Primitive(value = "Raises the brush: the buggle stops painting.", group = "About the brush") void brushUp();
 
   /** Primitives that only explain to the students why their call is refused: wrong case or primitive of the turtles. */
   @Primitive default void penDown()
@@ -40,11 +42,11 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
     throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use Right() with an uppercase. Use right() instead."));
   }
 
-  @Primitive Color getGroundColor();
+  @Primitive(value = "Returns the color of the ground under the buggle.", group = "Interacting with the world") Color getGroundColor();
 
   @Primitive default String getGroundColorName() { return ColorMapper.color2name(getGroundColor()); }
 
-  @Primitive Color getBrushColor();
+  @Primitive(value = "Returns the color of the brush.", group = "About the brush") Color getBrushColor();
 
   default void primitiveSetBrushColor(String arg) throws InvalidColorNameException
   {
@@ -56,80 +58,84 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
     }
   }
 
-  @Primitive void setBrushColor(Color c);
+  @Primitive(value = "Changes the color of the brush.", group = "About the brush") void setBrushColor(Color c);
 
   @Primitive default void setBrushColorName(String name) throws InvalidColorNameException { primitiveSetBrushColor(name); }
 
-  @Primitive Color getBodyColor();
+  @Primitive(value = "Returns the color of the buggle's body.", group = "Information on the buggle") Color getBodyColor();
 
-  @Primitive void setBodyColor(Color c);
+  @Primitive(value = "Changes the color of the buggle's body.", group = "Information on the buggle") void setBodyColor(Color c);
 
   default int primitiveGetDirection() { return getDirection().ordinal(); }
 
-  @Primitive Direction getDirection();
+  @Primitive(value = "Returns the heading of the buggle.", group = "Information on the buggle") Direction getDirection();
 
   default void primitiveSetDirection(int nb) { setDirection(Direction.values()[nb]); }
 
-  @Primitive void setDirection(Direction direction);
+  @Primitive(value = "Changes the heading of the buggle.", group = "Information on the buggle") void setDirection(Direction direction);
 
-  @Primitive void left();
+  @Primitive(value = "Turns a quarter to the left.", group = "Moving") void left();
 
-  @Primitive void right();
+  @Primitive(value = "Turns a quarter to the right.", group = "Moving") void right();
 
-  @Primitive void back();
+  @Primitive(value = "Turns back.", group = "Moving") void back();
 
-  @Primitive int getWorldHeight();
+  @Primitive(value = "Returns the height of the world.", group = "Interacting with the world") int getWorldHeight();
 
-  @Primitive int getWorldWidth();
+  @Primitive(value = "Returns the width of the world.", group = "Interacting with the world") int getWorldWidth();
 
-  @Primitive int getX();
+  @Primitive(value = "Returns the X coordinate of the buggle. The point (0,0) is on the top left corner.", group = "Moving") int getX();
 
-  @Primitive void setX(int x) throws BuggleInOuterSpaceException;
+  @Primitive(value = "Changes the X coordinate of the buggle.", group = "Moving") void setX(int x) throws BuggleInOuterSpaceException;
 
-  @Primitive int getY();
+  @Primitive(value = "Returns the Y coordinate of the buggle. The point (0,0) is on the top left corner.", group = "Moving") int getY();
 
-  @Primitive void setY(int y) throws BuggleInOuterSpaceException;
+  @Primitive(value = "Changes the Y coordinate of the buggle.", group = "Moving") void setY(int y) throws BuggleInOuterSpaceException;
 
-  @Primitive void setPos(int x, int y) throws BuggleInOuterSpaceException;
+  @Primitive(value = "Changes the position of the buggle.", group = "Moving") void setPos(int x, int y) throws BuggleInOuterSpaceException;
 
-  @Primitive void step() throws BuggleWallException;
+  @Primitive(value = "Moves one cell forward.", group = "Moving") void step() throws BuggleWallException;
 
-  @Primitive void forward(int steps) throws BuggleWallException;
+  @Primitive(value = "Moves the given amount of cells forward.", group = "Moving") void forward(int steps) throws BuggleWallException;
 
-  @Primitive void stepBack() throws BuggleWallException;
+  @Primitive(value = "Moves one cell backward.", group = "Moving") void stepBack() throws BuggleWallException;
 
-  @Primitive void backward(int steps) throws BuggleWallException;
+  @Primitive(value = "Moves the given amount of cells backward.", group = "Moving") void backward(int steps) throws BuggleWallException;
 
-  @Primitive boolean isFacingWall();
+  @Primitive(value = "Tells whether there is a wall in front of the buggle.", group = "Information on the buggle") boolean isFacingWall();
 
-  @Primitive boolean isBackingWall();
+  @Primitive(value = "Tells whether there is a wall behind the buggle.", group = "Information on the buggle") boolean isBackingWall();
 
   @Primitive boolean isWallOnLeft();
 
   @Primitive boolean isWallOnRight();
 
-  @Primitive boolean isOverBaggle();
+  @Primitive(value = "Tells whether there is a baggle on the ground under the buggle.", group = "Interacting with the world") boolean isOverBaggle();
 
-  @Primitive boolean isCarryingBaggle();
+  @Primitive(value = "Tells whether the buggle carries a baggle.", group = "Interacting with the world") boolean isCarryingBaggle();
 
-  @Primitive void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException;
+  @Primitive(value = "Picks up the baggle under the buggle. Fails if there is none or if the buggle already carries one.", group = "Interacting with the world")
+  void pickupBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException;
 
-  @Primitive void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException;
+  @Primitive(value = "Drops the carried baggle on the ground. Fails if the buggle carries none or if there is already one on the ground.",
+             group = "Interacting with the world")
+  void
+  dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException;
 
-  @Primitive @Override boolean isSelected();
+  @Primitive(value = "Tells whether the buggle is currently selected in the interface.", group = "Information on the buggle") @Override boolean isSelected();
 
-  @Primitive boolean isOverMessage();
+  @Primitive(value = "Tells whether there is a message on the ground under the buggle.", group = "Interacting with the world") boolean isOverMessage();
 
   @Primitive void seenError(String msg);
 
   @Primitive boolean haveSeenError();
 
-  @Primitive void writeMessage(String msg);
+  @Primitive(value = "Adds the given text to the message on the ground.", group = "Interacting with the world") void writeMessage(String msg);
   @Primitive void writeIntMessage(int cpt);
 
-  @Primitive String readMessage();
+  @Primitive(value = "Returns the message on the ground under the buggle.", group = "Interacting with the world") String readMessage();
 
-  @Primitive void clearMessage();
+  @Primitive(value = "Erases the message on the ground under the buggle.", group = "Interacting with the world") void clearMessage();
 
   @Primitive @Override int getParamCount();
 
