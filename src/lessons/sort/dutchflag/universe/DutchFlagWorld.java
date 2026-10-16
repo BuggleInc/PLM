@@ -12,7 +12,6 @@ import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
-import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class DutchFlagWorld extends World {
@@ -28,18 +27,6 @@ public class DutchFlagWorld extends World {
   @Override public WorldView getView() { return new DutchFlagWorldView(this); }
   /** Returns the icon of the universe */
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon(this, "world_dutchflag.png"); }
-  /** Returns the panel which let the user to interact dynamically with the world */
-  @Override public EntityControlPanel getEntityControlPanel()
-  {
-    return new EntityControlPanel() {
-      private static final long serialVersionUID = 1L;
-
-      @Override public void setEnabledControl(boolean enabled)
-      {
-        // TODO Auto-generated method stub
-      }
-    };
-  }
 
   /**
    * Regular DutchFlagWorld constructor that creates a random flag.

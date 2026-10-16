@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import plm.core.HumanLangChangesListener;
 import plm.core.model.Game;
 import plm.universe.EntityControlPanel;
 
@@ -16,7 +17,7 @@ import plm.universe.EntityControlPanel;
  * @see EntityControlPanel
  * @see SortingWorld
  */
-public class SortingButtonPanel extends EntityControlPanel {
+public class SortingButtonPanel extends EntityControlPanel implements HumanLangChangesListener {
 
   private static final long serialVersionUID = 1L;
   private JButton validateButton;                                         // a validate button
@@ -56,7 +57,7 @@ public class SortingButtonPanel extends EntityControlPanel {
     this.leftValueComboBox  = new JComboBox<Integer>(index);
     this.rightValueComboBox = new JComboBox<Integer>(index);
 
-    this.validateButton = new JButton(i18n.tr("go"));
+    this.validateButton = new JButton(Game.i18n.tr("go"));
     this.validateButton.addActionListener(new ActionListener() {
       @Override public void actionPerformed(ActionEvent e)
       {
@@ -66,15 +67,15 @@ public class SortingButtonPanel extends EntityControlPanel {
         SortingEntity se      = (SortingEntity)Game.getInstance().getSelectedEntity();
         switch (selectedOperation) {
           case 0:
-            echo(i18n.tr("swap({0},{1})", i, j));
+            echo(Game.i18n.tr("swap({0},{1})", i, j));
             se.swap(i, j);
             break;
           case 1:
-            echo(i18n.tr("setValue({0},{1})", i, j));
+            echo(Game.i18n.tr("setValue({0},{1})", i, j));
             se.setValue(i, j);
             break;
           case 2:
-            echo(i18n.tr("copy({0},{1})", i, j));
+            echo(Game.i18n.tr("copy({0},{1})", i, j));
             se.copy(i, j);
             break;
           default:
@@ -101,9 +102,8 @@ public class SortingButtonPanel extends EntityControlPanel {
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    super.currentHumanLanguageHasChanged(newLang);
     operationsComboBox.removeAllItems();
-    for (String s : new String[] {i18n.tr("swap"), i18n.tr("setValue"), i18n.tr("copy")})
+    for (String s : new String[] {Game.i18n.tr("swap"), Game.i18n.tr("setValue"), Game.i18n.tr("copy")})
       operationsComboBox.addItem(s);
   }
 

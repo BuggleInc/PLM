@@ -6,18 +6,18 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Locale;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.function.Consumer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import plm.core.HumanLangChangesListener;
 import plm.core.lang.primitives.PrimitivePot;
 import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
@@ -25,7 +25,7 @@ import plm.universe.EntityControlPanel;
 import plm.universe.bugglequest.AbstractBuggle;
 import plm.universe.bugglequest.exception.BuggleWallException;
 
-public class BuggleButtonPanel extends EntityControlPanel implements Observer {
+public class BuggleButtonPanel extends EntityControlPanel implements Observer, HumanLangChangesListener {
 
   private static final long serialVersionUID = 1L;
   private JButton fButton;
@@ -46,6 +46,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 
     add(createButtonsPanel());
     add(createColorsBoxes());
+    currentHumanLanguageHasChanged(null);
 
     Game that = Game.getInstance();
     that.addHumanLangListener(this);
@@ -54,79 +55,43 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
       buggle.addObserver(this);
   }
 
-  /**
-   * Initialize fButton, bButton, rButton, lButton and brushButton
-   */
+  /** Initialize fButton, bButton, rButton, lButton and brushButton */
   private void initializeButtons()
   {
-    fButton = new JButton(i18n.tr("forward"));
-    fButton.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent event)
-      {
-        try {
-          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "step") + "()");
-          ((AbstractBuggle)Game.getInstance().getSelectedEntity()).step();
-        } catch (BuggleWallException e) {
-          showWallHuggingErrorMessageDialog();
-          // e.printStackTrace();
-          // game.getOutputWriter().log(e);
-        }
-      }
-    });
-    fButton.setMnemonic(KeyEvent.VK_UP);
+    fButton = primitiveButton("step", KeyEvent.VK_UP, AbstractBuggle::step);
+    bButton = primitiveButton("stepBack", KeyEvent.VK_DOWN, AbstractBuggle::stepBack);
+    lButton = primitiveButton("left", KeyEvent.VK_LEFT, AbstractBuggle::left);
+    rButton = primitiveButton("right", KeyEvent.VK_RIGHT, AbstractBuggle::right);
 
-    bButton = new JButton(i18n.tr("backward"));
-    bButton.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent event)
-      {
-        try {
-          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "stepBack") + "()");
-          ((AbstractBuggle)Game.getInstance().getSelectedEntity()).stepBack();
-        } catch (BuggleWallException e) {
-          showWallHuggingErrorMessageDialog();
-          // e.printStackTrace();
-          // Game.getInstance().getOutputWriter().log(e);
-        }
-      }
-    });
-    bButton.setMnemonic(KeyEvent.VK_DOWN);
-
-    lButton = new JButton(i18n.tr("left"));
-    lButton.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent event)
-      {
-        echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "left") + "()");
-        ((AbstractBuggle)Game.getInstance().getSelectedEntity()).left();
-      }
-    });
-    lButton.setMnemonic(KeyEvent.VK_LEFT);
-
-    rButton = new JButton(i18n.tr("right"));
-    rButton.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent event)
-      {
-        echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "right") + "()");
-        ((AbstractBuggle)Game.getInstance().getSelectedEntity()).right();
-      }
-    });
-    rButton.setMnemonic(KeyEvent.VK_RIGHT);
-
-    brushButton = new JToggleButton(i18n.tr("mark"));
-    brushButton.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent event)
-      {
-        AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
-        if (b.isBrushDown()) {
-          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "brushUp") + "()");
-          b.brushUp();
-        } else {
-          echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "brushDown") + "()");
-          b.brushDown();
-        }
+    brushButton = new JToggleButton();
+    brushButton.addActionListener(event -> {
+      AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
+      if (b.isBrushDown()) {
+        echo(Game.i18n.trc(PrimitivePot.NAME_CONTEXT, "brushUp") + "()");
+        b.brushUp();
+      } else {
+        echo(Game.i18n.trc(PrimitivePot.NAME_CONTEXT, "brushDown") + "()");
+        b.brushDown();
       }
     });
     brushButton.setMnemonic(KeyEvent.VK_SPACE);
     brushButton.setSelected(((AbstractBuggle)(Game.getInstance().getSelectedEntity())).isBrushDown());
+  }
+
+  /** A button echoing the call of the primitive before calling it on the selected buggle. Its text is set by currentHumanLanguageHasChanged(). */
+  private JButton primitiveButton(String primitive, int mnemonic, Consumer<AbstractBuggle> call)
+  {
+    JButton button = new JButton();
+    button.addActionListener(event -> {
+      echo(Game.i18n.trc(PrimitivePot.NAME_CONTEXT, primitive) + "()");
+      try {
+        call.accept((AbstractBuggle)Game.getInstance().getSelectedEntity());
+      } catch (BuggleWallException e) {
+        showWallHuggingErrorMessageDialog();
+      }
+    });
+    button.setMnemonic(mnemonic);
+    return button;
   }
 
   /**
@@ -140,15 +105,10 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
     brushColorComboBox = new JComboBox<Color>(colors);
     brushColorComboBox.setRenderer(new BuggleColorCellRenderer());
     brushColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBrushColor());
-    brushColorComboBox.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent event)
-      {
-        JComboBox<?> cb = (JComboBox<?>)event.getSource();
-        Color c         = (Color)cb.getSelectedItem();
-        cb.setSelectedItem(c);
-        echo(i18n.trc(PrimitivePot.NAME_CONTEXT, "setBrushColor") + "(Color." + ColorMapper.color2name(c) + ")");
-        ((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBrushColor(c);
-      }
+    brushColorComboBox.addActionListener(event -> {
+      Color c = (Color)brushColorComboBox.getSelectedItem();
+      echo(Game.i18n.trc(PrimitivePot.NAME_CONTEXT, "setBrushColor") + "(Color." + ColorMapper.color2name(c) + ")");
+      ((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBrushColor(c);
     });
   }
 
@@ -205,7 +165,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
     JPanel colorsPanel = new JPanel();
     colorsPanel.setLayout(new GridLayout(4, 1));
 
-    lBrushColor = new JLabel("Brush Color");
+    lBrushColor = new JLabel();
     colorsPanel.add(lBrushColor);
     colorsPanel.add(brushColorComboBox);
 
@@ -222,25 +182,21 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
     brushColorComboBox.setEnabled(enabled);
   }
 
-  public void showWallHuggingErrorMessageDialog()
+  private void showWallHuggingErrorMessageDialog()
   {
-    String message;
-    String title = i18n.tr("Wall hugging error");
-    message      = i18n.tr("Your buggle has collided with a wall, it hurts a lot ! ='(");
-    JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(null, Game.i18n.tr("Your buggle has collided with a wall, it hurts a lot ! ='("), Game.i18n.tr("Wall hugging error"),
+                                  JOptionPane.ERROR_MESSAGE);
   }
 
+  /** Sets the texts of the controls, in the language of Game.i18n. */
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    i18n.setLocale(newLang);
-
-    bButton.setText(i18n.tr("backward"));
-    fButton.setText(i18n.tr("forward"));
-    lButton.setText(i18n.tr("left"));
-    rButton.setText(i18n.tr("right"));
-    brushButton.setText(i18n.tr("mark"));
-    lBrushColor.setText(i18n.tr("Brush Color"));
-    // lBuggleColor.setText(i18n.tr("Buggle Color"));
+    bButton.setText(Game.i18n.tr("backward"));
+    fButton.setText(Game.i18n.tr("forward"));
+    lButton.setText(Game.i18n.tr("left"));
+    rButton.setText(Game.i18n.tr("right"));
+    brushButton.setText(Game.i18n.tr("mark"));
+    lBrushColor.setText(Game.i18n.tr("Brush Color"));
   }
 
   @Override public void update(Observable o, Object arg)

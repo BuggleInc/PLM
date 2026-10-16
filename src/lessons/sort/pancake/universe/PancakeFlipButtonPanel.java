@@ -64,7 +64,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
       {
         int amount       = (Integer)pancakesAmountComboBox.getSelectedItem();
         PancakeEntity pe = (PancakeEntity)Game.getInstance().getSelectedEntity();
-        echo(i18n.tr("flip({0})", amount));
+        echo(Game.i18n.tr("flip({0})", amount));
         pe.flip(amount);
       }
     });

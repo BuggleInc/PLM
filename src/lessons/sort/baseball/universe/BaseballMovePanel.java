@@ -61,7 +61,7 @@ public class BaseballMovePanel extends EntityControlPanel {
     playerSelector = new JComboBox<Integer>(values);
 
     /* Create the button */
-    validateButton = new JButton(i18n.tr("Go"));
+    validateButton = new JButton(Game.i18n.tr("Go"));
     validateButton.addActionListener(new ActionListener() {
       @Override public void actionPerformed(ActionEvent evt)
       {
@@ -69,11 +69,12 @@ public class BaseballMovePanel extends EntityControlPanel {
         int base          = baseSelector.getSelectedIndex();
         int player        = playerSelector.getSelectedIndex();
         try {
-          echo(i18n.tr("move({0},{1})", base, player));
+          echo(Game.i18n.tr("move({0},{1})", base, player));
           be.move(base, player);
         } catch (IllegalArgumentException e) {
-          JOptionPane.showMessageDialog(null, i18n.tr("The player {0} of the base {1} cannot reach the hole that is too far from its position", player, base),
-                                        i18n.tr("Invalid move"), JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null,
+                                        Game.i18n.tr("The player {0} of the base {1} cannot reach the hole that is too far from its position", player, base),
+                                        Game.i18n.tr("Invalid move"), JOptionPane.ERROR_MESSAGE);
         }
       }
     });
