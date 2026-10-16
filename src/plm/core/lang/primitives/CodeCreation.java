@@ -46,7 +46,15 @@ import plm.universe.turtles.Turtle;
 public class CodeCreation {
 
   /** A glue file to generate: its name and the entity whose primitives it exposes. */
-  private record Remote(String name, Class<? extends Entity> entity) {}
+  public record Remote(String name, Class<? extends Entity> entity) {}
+
+  /** The glue files to generate. */
+  public static final List<Remote> REMOTES =
+      List.of(new Remote("RemoteBat", BatEntity.class), new Remote("RemoteCons", ConsEntity.class), new Remote("RemoteBuggle", AbstractBuggle.class),
+              new Remote("RemoteTurmite", TurmiteEntity.class), new Remote("RemoteSort", SortingEntity.class), new Remote("RemoteTurtle", Turtle.class),
+              new Remote("RemotePancake", PancakeEntity.class), new Remote("RemoteHanoi", HanoiEntity.class),
+              new Remote("RemoteBaseball", BaseballEntity.class), new Remote("RemoteDutchFlag", DutchFlagEntity.class),
+              new Remote("RemoteSimple", SimpleExerciseEntity.class), new Remote("RemoteLander", LanderEntity.class));
 
   /** A language to generate the glue of: its folder under resources/langages, its generator and the hand-written code to splice in some remotes. */
   private record Target(String dir, ExternalPrimitiveLanguage generator, Map<String, String> extraCode) {}
@@ -59,16 +67,9 @@ public class CodeCreation {
   {
     File folder = new File("target/classes/resources/langages/");
 
-    List<Remote> remotes =
-        List.of(new Remote("RemoteBat", BatEntity.class), new Remote("RemoteCons", ConsEntity.class), new Remote("RemoteBuggle", AbstractBuggle.class),
-                new Remote("RemoteTurmite", TurmiteEntity.class), new Remote("RemoteSort", SortingEntity.class), new Remote("RemoteTurtle", Turtle.class),
-                new Remote("RemotePancake", PancakeEntity.class), new Remote("RemoteHanoi", HanoiEntity.class),
-                new Remote("RemoteBaseball", BaseballEntity.class), new Remote("RemoteDutchFlag", DutchFlagEntity.class),
-                new Remote("RemoteSimple", SimpleExerciseEntity.class), new Remote("RemoteLander", LanderEntity.class));
-
     Map<String, Map<String, String>> aliases      = PrimitiveAliases.load(PrimitiveAliases.PO_DIRECTORY);
     Map<String, List<PrimitiveMethod>> primitives = new LinkedHashMap<>();
-    for (Remote remote : remotes)
+    for (Remote remote : REMOTES)
       primitives.put(remote.name(), PrimitiveAliases.withAliases(remote.name(), PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()), aliases));
 
     List<Target> targets =

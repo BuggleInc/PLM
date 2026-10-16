@@ -471,6 +471,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`PrimitiveRegistrationTest`:* the primitives are indexed by name and sorted, inherited ones included, and cached. The same
       declaration in two interfaces is one primitive, while the same name with another signature is rejected. The parameter
       names are the declared ones (`forward(steps)`), which fails if `-parameters` is lost.
+    * *`PrimitiveAliasesTest`:* the translated primitive names of every `l10n/engine/*.po` can be added to the glue of every
+      universe. An alias calls its canonical primitive and appears once even if several locales share it, while a name that is not
+      an identifier (decomposed accents included), a keyword, or a name designating two primitives is rejected.
     * *`CommandExecutorTest`:* a command calls the primitive and writes its result back (nothing for a void primitive). Spaces in
       the arguments are kept, enums travel as ordinals, and atomic values are converted where a string is expected. An unknown
       primitive or arguments of the wrong type fail the run, a forbidden primitive is refused before being called, a

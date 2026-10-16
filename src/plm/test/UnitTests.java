@@ -9,6 +9,7 @@ import plm.test.git.GitUtilsTest;
 import plm.test.lang.CommandExecutorTest;
 import plm.test.lang.EntityTemplateParserTest;
 import plm.test.lang.IndentationTest;
+import plm.test.lang.PrimitiveAliasesTest;
 import plm.test.lang.PrimitiveRegistrationTest;
 import plm.test.model.LessonRunnerTest;
 import plm.test.model.MissionMarkupTest;
@@ -25,5 +26,5 @@ import plm.universe.bat.ValueFormatterTest;
 @SelectClasses({GitTrackerTest.class, GitUtilsTest.class, GitTrackerImportTest.class, GitSessionKitTest.class, SessionZipTest.class,
                 AllSimpleExerciseTests.class, EntityTemplateParserTest.class, IndentationTest.class, ValueFormatterTest.class, ValueSerializerTest.class,
                 SessionDBTest.class, LightBotProgramTest.class, PancakeRandomizedTest.class, LessonRunnerTest.class, PrimitiveRegistrationTest.class,
-                CommandExecutorTest.class, ApiGatingTest.class, MissionMarkupTest.class})
+                PrimitiveAliasesTest.class, CommandExecutorTest.class, ApiGatingTest.class, MissionMarkupTest.class})
 public class UnitTests {}
