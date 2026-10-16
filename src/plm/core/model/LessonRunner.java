@@ -53,7 +53,7 @@ public class LessonRunner extends Thread {
       } catch (InvocationTargetException | InterruptedException e) {
         e.printStackTrace();
       }
-      Game.getInstance().fireProgressTracker(exo, outcome);
+      Game.getInstance().getGitTracker().executed(exo, outcome);
     }
     runners.remove(this);
   }

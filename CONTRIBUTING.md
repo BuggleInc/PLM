@@ -300,9 +300,9 @@ holds three things:
 
 ### Progress trackers
 
-The progress tracking is driven by `Game.gitTracker`, called from `Game.fireProgressTracker()`/`fireReadTipTracker()` and from
-`Game.fireCurrentExerciseChanged()`/`worldHasChanged()` whenever the student runs an exercise (`LessonRunner`, after showing the
-pass/fail dialog), switches exercise, reverts their code, or reads a hint.
+The progress tracking is driven by `Game.gitTracker`, called by `LessonRunner` once the pass/fail dialog is shown, by
+`MissionEditorTabs` when the student reads a hint, and by `Game.fireCurrentExerciseChanged()`/`worldHasChanged()` when the student
+switches exercise or reverts their code.
 
 The tracker is `GitTracker`: one per running PLM instance, constructed once in `Game`'s constructor (so it is never null: tests
 replace it with `Game.setGitTracker()` and a mock to disable the tracking) and registered as a `UserSwitchesListener` too. For

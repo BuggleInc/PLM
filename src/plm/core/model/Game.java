@@ -43,7 +43,6 @@ import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
-import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.tracking.GitTracker;
@@ -724,10 +723,6 @@ public class Game implements IWorldView {
     for (GameStateListener l : this.gameStateListeners)
       l.stateChanged(status);
   }
-
-  public void fireProgressTracker(Exercise exo, RunOutcome outcome) { gitTracker.executed(exo, outcome); }
-
-  public void fireReadTipTracker(String id, String mission, ProgrammingLanguage lang) { gitTracker.readTip(id, mission, lang); }
 
   @Override public void worldHasChanged()
   {
