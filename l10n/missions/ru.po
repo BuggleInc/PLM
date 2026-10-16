@@ -102,16 +102,18 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:15
+#: src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid ""
-"[!java|c]void [/!][!python|java|scala]forward()[/!][!c]stepForward()[/!] or "
-"[!java|c]void [/!]forward([!java|c]int [/!]steps[!scala]:Int[/!])"
+"[!java|c]void [/!]step() or [!java|c]void [/!]forward([!java|c]int "
+"[/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:16
+#: src/lessons/turmites/universe/TurmiteWorld.html:13
 msgid ""
-"[!java|c]void [/!][!python|java|scala]backward()[/!][!c]stepBackward()[/!] "
-"or [!java]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
+"[!java|c]void [/!]stepBack() or [!java|c]void [/!]backward([!java|c]int "
+"[/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -991,7 +993,7 @@ msgstr ""
 #: src/lessons/welcome/environment/Environment.html:20
 #: src/lessons/welcome/instructions/Instructions.html:53
 #, no-wrap
-msgid "[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]"
+msgid "step()[!java|c];[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1085,7 +1087,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:14
 msgid ""
-"For that, you will need <code>forward()</code>, <code>left()</code> and "
+"For that, you will need <code>step()</code>, <code>left()</code> and "
 "<code>right()</code>. Use your brush to mark the ground as you walk. Start "
 "marking the ground with <code>brushDown()</code>, and stop it with "
 "<code>brushUp()</code> afterward (e.g., to enter your house without marking "
@@ -1143,16 +1145,15 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:54
 msgid ""
-"Likewise, to achieve the same effect than the "
-"<b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> and "
-"<b>right</b> buttons, you need to use respectively:"
+"Likewise, to achieve the same effect than the <b>backward</b>, <b>left</b> "
+"and <b>right</b> buttons, you need to use respectively:"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:58
 #, no-wrap
 msgid ""
-"backward()[!java|c];[/!]\n"
+"stepBack()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
 "right()[!java|c];[/!]\n"
 msgstr ""
@@ -2184,7 +2185,7 @@ msgstr ""
 #: src/lessons/welcome/loopfor/LoopFor.html:64
 #, no-wrap
 msgid ""
-"for (; !isFacingWall() ; forward()) { \n"
+"for (; !isFacingWall() ; step()) { \n"
 "   <span class=\"comment\">/* nothing in the loop body */</span>\n"
 "}\n"
 "<span class=\"comment\">/* the buggle now faces a wall */</span>"
@@ -2441,12 +2442,11 @@ msgstr ""
 msgid ""
 "Your buggle got lost in a strange maze, and you must help it to find the "
 "exit that is represented in orange.  You cannot simply explain the path to "
-"the exit in something like "
-"<code>right();forward();forward();forward()</code> because you have to save "
-"two buggles at the same time, that are lost in similar but not identical "
-"worlds.  You can switch to the other world by using the combobox above the "
-"world representation (where it's written 'Deep Forest' right now), and "
-"selecting the other entry (that should read 'Deeper Forest')."
+"the exit in something like <code>right();step();step();step()</code> because "
+"you have to save two buggles at the same time, that are lost in similar but "
+"not identical worlds.  You can switch to the other world by using the "
+"combobox above the world representation (where it's written 'Deep Forest' "
+"right now), and selecting the other entry (that should read 'Deeper Forest')."
 msgstr ""
 
 #. type: Content of: <p>
@@ -3618,8 +3618,8 @@ msgid ""
 "to repeat this code several times, or include it in a loop. In any case, you "
 "should avoid to duplicate your code to keep it pleasant to read and easily "
 "understandable.  It would be better if the buggle could obey an "
-"<code>goAndGet()</code> order just like it understands a "
-"<code>[!c]stepForward()[/!][!scala|java|python]forward()[/!]</code> one."
+"<code>goAndGet()</code> order just like it understands a <code>step()</code> "
+"one."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -3805,17 +3805,17 @@ msgstr ""
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:8
 #, no-wrap
 msgid ""
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
-"[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
+"step()[!java|c];[/!]\n"
 "left()[!java|c];[/!]"
 msgstr ""
 
@@ -4627,7 +4627,7 @@ msgid ""
 "          left();\n"
 "else // Do not write it this way, it's misleading!\n"
 "     right(); \n"
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+"step();"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4650,7 +4650,7 @@ msgid ""
 "            left();\n"
 "        else\n"
 "            right();\n"
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+"step();"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4666,9 +4666,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR.html:55
 #, no-wrap
-msgid ""
-"if (isOverBaggle()) if (x == 5) left(); else right(); "
-"[!c]stepForward();[/!][!java|scala]forward();[/!]"
+msgid "if (isOverBaggle()) if (x == 5) left(); else right(); step();"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5092,18 +5090,15 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR2.html:16
 #, no-wrap
 msgid ""
-"if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == \"R\"[/!]) "
-"{\n"
+"if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == \"R\"[/!]) {\n"
 "  right();\n"
-"  [!c]stepForward()[/!][!java|scala]forward()[/!];\n"
-"} else if ([!java|c]getIndication() == 'L'[/!][!scala]readMessage() == "
-"\"L\"[/!]) {\n"
+"  step();\n"
+"} else if ([!java|c]getIndication() == 'L'[/!][!scala]readMessage() == \"L\"[/!]) {\n"
 "  left();\n"
-"  [!c]stepForward()[/!][!java|scala]forward()[/!];\n"
-"} else if ([!java|c]getIndication() == 'I'[/!][!scala]readMessage() == "
-"\"I\"[/!]) {\n"
+"  step();\n"
+"} else if ([!java|c]getIndication() == 'I'[/!][!scala]readMessage() == \"I\"[/!]) {\n"
 "  back();\n"
-"  [!c]stepForward()[/!][!java|scala]forward()[/!];\n"
+"  step();\n"
 "<span class=\"comment\">/* other else if */</span>\n"
 "} else {\n"
 "  finished = [!c]1[/!][!java|scala]true[/!];\n"
@@ -5172,15 +5167,15 @@ msgid ""
 "switch (getIndication()) {\n"
 "  case 'R':\n"
 "    right(); \n"
-"    [!c]stepForward()[/!][!java]forward()[/!]; \n"
+"    step(); \n"
 "    break;\n"
 "  case 'L':\n"
 "    left();\n"
-"    [!c]stepForward()[/!][!java]forward()[/!]; \n"
+"    step(); \n"
 "    break;\n"
 "  case 'I':\n"
 "    back();\n"
-"    [!c]stepForward()[/!][!java]forward()[/!];\n"
+"    step();\n"
 "    break;\n"
 "  default: \n"
 "    return;\n"
@@ -5495,12 +5490,12 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:14
 msgid ""
-"In contrary to the exercises we saw so far, we won't use the "
-"<code>forward()</code>, <code>backward()</code> and similar "
-"methods. Instead, we will compute the coordinate of the next buggle position "
-"and use the <code>setPos(x, y)</code> method to <i>teleport</i> the buggle "
-"directly to this position. For example, <code>setPos(3, 5)</code> teleports "
-"the buggle to the cell where x=3 and y=5."
+"In contrary to the exercises we saw so far, we won't use the <code>step()</"
+"code>, <code>stepBack()</code> and similar methods. Instead, we will compute "
+"the coordinate of the next buggle position and use the <code>setPos(x, y)</"
+"code> method to <i>teleport</i> the buggle directly to this position. For "
+"example, <code>setPos(3, 5)</code> teleports the buggle to the cell where "
+"x=3 and y=5."
 msgstr ""
 
 #. type: Content of: <p>
@@ -5745,11 +5740,11 @@ msgstr ""
 #: src/lessons/turmites/langton/Langton.html:15
 msgid ""
 "It's hard to come up with simpler rules isn't it? Well, let's go and code it "
-"now. You have to complete the <code>step()</code> method, which encodes the "
+"now. You have to complete the <code>tick()</code> method, which encodes the "
 "behavior of the ant at each step. You will probably use the "
 "<code>getGroundColor()</code> method to retrieve the color of the cell on "
-"which the ant is currently.  Colors of interest are simply named "
-"<code>Color.black</code> and <code>Color.white</code>."
+"which the ant is currently.  Colors of interest are simply named <code>Color."
+"black</code> and <code>Color.white</code>."
 msgstr ""
 
 #. type: Content of: <p>
@@ -5893,17 +5888,17 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:13
 msgid ""
-"Once again, you just have to write the <code>step()</code> method, in charge "
+"Once again, you just have to write the <code>tick()</code> method, in charge "
 "of doing one turmite's step. Once again, you should first find the rank of "
 "the current's cell ground color in the color sequence. But this time, the "
 "<code>rule</code> data depends both on the current color and the current "
 "state.  <code>rule</code> actually contains 3 information in each situation: "
-"the color to write, the move to do, and the next state value. For example, "
-"[!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the informations "
+"the color to write, the move to do, and the next state value. For example, [!"
+"java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the informations "
 "to use when <code>state==1</code> and <code>color==0</code>.  In other "
 "worlds, you can retrieve the information relative to your current situation "
-"by using "
-"<code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)(currentColor)[/!]</code>."
+"by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
+"(currentColor)[/!]</code>."
 msgstr ""
 
 #. type: Content of: <p>
@@ -6287,20 +6282,6 @@ msgid ""
 "This universe is very similar to the buggle one, but you will probably not "
 "use all buggles methods.  So, this page only recap the buggle methods that "
 "you will use."
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:12
-msgid ""
-"[!java|c]void [/!][!c]stepForward()[/!][!java|python|scala]forward()[/!] or "
-"[!java|c]void [/!]forward([!java|c]int [/!]steps[!scala]:Int[/!])"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:13
-msgid ""
-"[!java|c]void [/!][!c]stepBackward()[/!][!java|python|scala]backward()[/!] "
-"or [!java|c]void [/!]backward([!java|c]int [/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <h1>
