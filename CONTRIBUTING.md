@@ -459,6 +459,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       is an entry that would leave the target directory.
     * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` are refused by `CommandExecutor`, and `forbidMultiStep()`
       refuses `forward(n)` and `backward(n)`, each with an explanatory `PrimitiveRefusedException`.
+    * TODO: document PrimitiveRegistrationTest, CommandExecutorTest and update ApiGatingTest
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
