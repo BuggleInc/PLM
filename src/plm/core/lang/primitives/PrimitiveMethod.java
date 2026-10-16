@@ -12,6 +12,8 @@ public final class PrimitiveMethod {
   private final String location;
   private final Method method;
   private final Class<?> output;
+  private final String doc;
+  private final String group;
 
   public PrimitiveMethod(Method method)
   {
@@ -20,7 +22,15 @@ public final class PrimitiveMethod {
     this.method     = method;
     this.parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
     this.output     = method.getReturnType();
+    this.doc        = method.getAnnotation(Primitive.class).value();
+    this.group      = method.getAnnotation(Primitive.class).group();
   }
+
+  /** English documentation, empty if the primitive is not documented. */
+  public String doc() { return doc; }
+
+  /** English title of the group under which the primitive is documented. */
+  public String group() { return group; }
 
   public Class<?> output() { return output; }
 

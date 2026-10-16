@@ -51,6 +51,8 @@ public class LangPython extends TemplatedRemoteLang {
   File tempFolder                                    = TMP_ROOT.resolve("python").toFile();
 
   public LangPython() { super("Python", "py", ResourcesCache.getIcon("img/lang_python.png")); }
+
+  @Override public ExternalPrimitiveLanguage getPrimitiveGenerator() { return new LangPythonExternalPrimitiveGenerator(); }
   @Override public boolean isPython() { return true; }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
@@ -178,10 +180,12 @@ public class LangPython extends TemplatedRemoteLang {
 
   public static class LangPythonExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
 
-    String getPrototype(PrimitiveMethod method)
+    @Override public String signature(PrimitiveMethod method, String name)
     {
-      return "def " + method.name() + "(" + method.parameters().stream().map(PrimitiveParameter::name).collect(Collectors.joining(", ")) + ")";
+      return name + "(" + method.parameters().stream().map(PrimitiveParameter::name).collect(Collectors.joining(", ")) + ")";
     }
+
+    String getPrototype(PrimitiveMethod method) { return "def " + signature(method, method.name()); }
 
     String getReturning(Class<?> type)
     {

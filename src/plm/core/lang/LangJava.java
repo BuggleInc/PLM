@@ -15,6 +15,7 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
@@ -31,6 +32,8 @@ public class LangJava extends JvmTemplatedLang {
   private static final String ENTITIES_JAR = "plm-entities-java.jar";
 
   public LangJava() { super("Java", "java", ResourcesCache.getIcon("img/lang_java.png"), ENTITIES_JAR); }
+
+  @Override public ExternalPrimitiveLanguage getPrimitiveGenerator() { return new LangJavaExternalPrimitiveGenerator(); }
 
   /**
    * Compiles the files in-process. Unless debugging is enabled, the line numbers reported for Entity.java are decreased by
@@ -205,15 +208,12 @@ public class LangJava extends JvmTemplatedLang {
 
     String getParameter(PrimitiveParameter parameter) { return getLanguageType(parameter.type()) + " " + parameter.name(); }
 
-    String getPrototype(PrimitiveMethod method)
+    @Override public String signature(PrimitiveMethod method, String name)
     {
-      String name                         = method.name();
-      List<PrimitiveParameter> parameters = method.parameters();
-
-      final String outputString = getLanguageType(method.output());
-
-      return "public static " + outputString + " " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
+      return getLanguageType(method.output()) + " " + name + "(" + method.parameters().stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
     }
+
+    String getPrototype(PrimitiveMethod method) { return "public static " + signature(method, method.name()); }
 
     String getImplementation(PrimitiveMethod method)
     {

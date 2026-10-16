@@ -228,6 +228,9 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   The annotation carries the English documentation of the primitive and the title of its group, e.g. `@Primitive(value = "Turns a
   quarter to the left.", group = "Moving")`. `PrimitivePot` extracts these texts and the names of the documented primitives into
   `l10n/engine/plm.pot`, so that they get translated on weblate.
+  The groups are ordered by `@PrimitiveGroups` on the primitives interface (or on the entity). `World.getAbout()` replaces the
+  `[!primitives/]` placeholder of the world's html by a table of the documented primitives of its first entity, in the current
+  programming language (`ExternalPrimitiveLanguage.signature()`). The primitives forbidden by the exercise are not shown.
 - **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
   for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
   line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue

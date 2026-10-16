@@ -51,6 +51,8 @@ public class LangC extends TemplatedRemoteLang {
 
   public LangC() { super("C", "c", ResourcesCache.getIcon("img/lang_c.png")); }
 
+  @Override public ExternalPrimitiveLanguage getPrimitiveGenerator() { return new LangCExternalPrimitiveGenerator(); }
+
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
 
   @Override public boolean isBrokenLanguage()
@@ -489,15 +491,12 @@ public class LangC extends TemplatedRemoteLang {
 
     String getParameter(PrimitiveParameter parameter) { return getLanguageType(parameter.type()) + " " + parameter.name(); }
 
-    String getPrototype(PrimitiveMethod method)
+    @Override public String signature(PrimitiveMethod method, String name)
     {
-      String name                         = method.name();
-      List<PrimitiveParameter> parameters = method.parameters();
-
-      final String outputString = getLanguageType(method.output());
-
-      return outputString + " " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + ");";
+      return getLanguageType(method.output()) + " " + name + "(" + method.parameters().stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
     }
+
+    String getPrototype(PrimitiveMethod method) { return signature(method, method.name()) + ";"; }
 
     String getReturning(Class<?> type)
     {

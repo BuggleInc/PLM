@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Future;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -19,6 +21,10 @@ import javax.swing.ImageIcon;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.RemoteExecutionLang;
+import plm.core.lang.primitives.ExternalPrimitiveLanguage;
+import plm.core.lang.primitives.PrimitiveMethod;
+import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.model.Game;
 import plm.core.model.Logger;
 import plm.core.model.lesson.RunOutcome;
@@ -374,7 +380,40 @@ public abstract class World {
       /* read it */
       about = sb.toString();
     }
-    return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(about, Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
+    String html = about.replace("[!primitives/]", getPrimitivesDoc());
+    return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(html, Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
+  }
+
+  /**
+   * HTML table documenting the primitives that the first entity may use, in the current programming language. The groups are
+   * ordered as declared by @PrimitiveGroups (undeclared ones last) and the primitives by name. The undocumented and the forbidden
+   * primitives are not shown.
+   */
+  private String getPrimitivesDoc()
+  {
+    if (entities.isEmpty() || !(Game.getInstance().getProgrammingLanguage() instanceof RemoteExecutionLang lang))
+      return "";
+    Entity entity = entities.get(0);
+
+    Map<String, List<PrimitiveMethod>> groups = new LinkedHashMap<>();
+    PrimitiveRegistration.getPrimitiveGroupsForEntity(entity.getClass()).forEach(group -> groups.put(group, new ArrayList<>()));
+    for (PrimitiveMethod primitive : PrimitiveRegistration.getMinimalPrimitiveForEntity(entity.getClass()).values())
+      if (!primitive.doc().isEmpty() && !entity.getForbiddenPrimitives().containsKey(primitive.name()))
+        groups.computeIfAbsent(primitive.group(), group -> new ArrayList<>()).add(primitive);
+
+    ExternalPrimitiveLanguage generator = lang.getPrimitiveGenerator();
+    StringBuilder sb                    = new StringBuilder("<table border=1>\n");
+    groups.forEach((group, primitives) -> {
+      if (!group.isEmpty() && !primitives.isEmpty())
+        sb.append("<tr><td colspan=2 align=center><b>").append(Game.i18n.tr(group)).append("</b></td></tr>\n");
+      for (PrimitiveMethod primitive : primitives)
+        sb.append("<tr><td><code>")
+            .append(generator.signature(primitive, primitive.name()))
+            .append("</code></td><td>")
+            .append(Game.i18n.tr(primitive.doc()))
+            .append("</td></tr>\n");
+    });
+    return sb.append("</table>\n").toString();
   }
 
   /**

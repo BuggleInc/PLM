@@ -27,6 +27,9 @@ public interface ExternalPrimitiveLanguage {
     return types;
   }
 
+  /** Signature of the method in this language when called under the given name, as shown to the students (types, no keyword). */
+  String signature(PrimitiveMethod method, String name);
+
   void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException;
 
   /**

@@ -56,6 +56,18 @@ public class PrimitiveRegistration {
     return minimalCache.computeIfAbsent(entity, clazz -> getPrimitiveForEntity(getAllPrimitivesClass(clazz)));
   }
 
+  /** English titles of the groups of primitives of the entity, from the most generic primitives interface to the entity itself. */
+  public static List<String> getPrimitiveGroupsForEntity(Class<? extends Entity> entity)
+  {
+    List<Class<? extends EntityPrimitivesBase>> classes = getAllPrimitivesClass(entity);
+    Collections.reverse(classes);
+    return classes.stream()
+        .filter(clazz -> clazz.isAnnotationPresent(PrimitiveGroups.class))
+        .flatMap(clazz -> Arrays.stream(clazz.getAnnotation(PrimitiveGroups.class).value()))
+        .distinct()
+        .toList();
+  }
+
   public static Map<String, PrimitiveMethod> getMaximalPrimitiveForEntity(Class<? extends Entity> entity)
   {
     Set<Class<? extends Entity>> subTypesOf = getSubTypesOf(entity);

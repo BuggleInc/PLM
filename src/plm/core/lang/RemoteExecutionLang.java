@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import javax.swing.ImageIcon;
+import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.RunOutcome;
 import plm.universe.CommandExecutor;
@@ -46,6 +47,9 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
   protected static final Path TMP_ROOT = Path.of(System.getProperty("java.io.tmpdir"), "plm");
 
   public RemoteExecutionLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
+
+  /** The generator of the glue of this language, which also renders the signatures of the primitives. */
+  public abstract ExternalPrimitiveLanguage getPrimitiveGenerator();
 
   /**
    * Build the process that will run the student code, given the {@code executable} value {@link #runEntity} received for this

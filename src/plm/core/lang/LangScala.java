@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
 import plm.core.model.Game;
@@ -40,6 +41,8 @@ public class LangScala extends JvmTemplatedLang {
   private static final String ENTITIES_JAR = "plm-entities-scala.jar";
 
   public LangScala() { super("Scala", "scala", ResourcesCache.getIcon("img/lang_scala.png"), ENTITIES_JAR); }
+
+  @Override public ExternalPrimitiveLanguage getPrimitiveGenerator() { return new LangScalaExternalPrimitiveGenerator(); }
   @Override public boolean isScala() { return true; }
 
   @Override public String getBrokenLanguageMessage() { return brokenLanguageMessage; }
@@ -294,15 +297,12 @@ public class LangScala extends JvmTemplatedLang {
 
     String getParameter(PrimitiveParameter parameter) { return parameter.name() + ": " + getLanguageType(parameter.type()); }
 
-    String getPrototype(PrimitiveMethod method)
+    @Override public String signature(PrimitiveMethod method, String name)
     {
-      String name                         = method.name();
-      List<PrimitiveParameter> parameters = method.parameters();
-
-      final String outputString = getLanguageType(method.output());
-
-      return "def " + name + "(" + parameters.stream().map(this::getParameter).collect(Collectors.joining(", ")) + "): " + outputString;
+      return name + "(" + method.parameters().stream().map(this::getParameter).collect(Collectors.joining(", ")) + "): " + getLanguageType(method.output());
     }
+
+    String getPrototype(PrimitiveMethod method) { return "def " + signature(method, method.name()); }
 
     String getImplementation(PrimitiveMethod method)
     {
