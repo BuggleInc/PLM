@@ -30,11 +30,6 @@ public interface ExternalPrimitiveLanguage {
   /** Signature of the method in this language when called under the given name, as shown to the students (types, no keyword). */
   String signature(PrimitiveMethod method, String name);
 
-  void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException;
-
-  /**
-   * Same as {@link #generate(File, String, List)}, but with a string added verbatim to the generated class body. This is to
-   * add hand-written helpers on need.
-   */
-  default void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException { generate(folder, name, methods); }
+  /** Writes the glue file(s) of the given name in folder, exposing the methods, with extraCode (hand-written helpers) added verbatim. */
+  void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException;
 }

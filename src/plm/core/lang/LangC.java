@@ -566,7 +566,7 @@ public class LangC extends TemplatedRemoteLang {
       return prototype + "{\n" + escapes + command + "\n" + frees + returning + "\n}";
     }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException
+    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
     {
       Set<Class<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
@@ -596,7 +596,7 @@ public class LangC extends TemplatedRemoteLang {
       final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
 
       final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#include \"Remote.h\"\n#include \"" + name + ".h\"\n\n" + type_support_functions +
-                          "\n\n" + implementations;
+                          "\n\n" + implementations + (extraCode.isBlank() ? "" : "\n\n" + extraCode);
 
       Files.writeString(new File(folder, name + ".h").toPath(), header);
       Files.writeString(new File(folder, name + ".c").toPath(), code);

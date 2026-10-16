@@ -239,8 +239,6 @@ public class LangPython extends TemplatedRemoteLang {
       return sb.toString();
     }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods) throws IOException { generate(folder, name, methods, ""); }
-
     @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
     {
       final String typeDeclarations = ExternalPrimitiveLanguage.involved(methods)
