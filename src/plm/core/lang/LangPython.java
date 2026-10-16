@@ -205,7 +205,7 @@ public class LangPython extends TemplatedRemoteLang {
     {
       String prototype = getPrototype(method);
 
-      String name = method.name();
+      String name = method.command(); // the PLM only knows the canonical name of the translated aliases
 
       String argsStr = method.parameters().stream().map(p -> ", " + p.name()).collect(Collectors.joining());
       String command = "    sendCommand(\"" + name + "\"" + argsStr + ")";

@@ -544,7 +544,7 @@ public class LangC extends TemplatedRemoteLang {
       String prototype = getPrototype(method);
       prototype        = prototype.substring(0, prototype.length() - 1);
 
-      String name    = method.name();
+      String name    = method.command(); // the PLM only knows the canonical name of the translated aliases
       int n          = method.parameters().size();
       String formats = method.parameters().stream().map(PrimitiveParameter::type).map(this::getTemplatingForType).collect(Collectors.joining(":"));
 

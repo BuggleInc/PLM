@@ -24,6 +24,7 @@ import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.RemoteExecutionLang;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
+import plm.core.lang.primitives.PrimitivePot;
 import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.model.Game;
 import plm.core.model.Logger;
@@ -408,7 +409,7 @@ public abstract class World {
         sb.append("<tr><td colspan=2 align=center><b>").append(Game.i18n.tr(group)).append("</b></td></tr>\n");
       for (PrimitiveMethod primitive : primitives)
         sb.append("<tr><td><code>")
-            .append(generator.signature(primitive, primitive.name()))
+            .append(generator.signature(primitive, Game.i18n.trc(PrimitivePot.NAME_CONTEXT, primitive.name())))
             .append("</code></td><td>")
             .append(Game.i18n.tr(primitive.doc()))
             .append("</td></tr>\n");

@@ -231,6 +231,11 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   The groups are ordered by `@PrimitiveGroups` on the primitives interface (or on the entity). `World.getAbout()` replaces the
   `[!primitives/]` placeholder of the world's html by a table of the documented primitives of its first entity, in the current
   programming language (`ExternalPrimitiveLanguage.signature()`). The primitives forbidden by the exercise are not shown.
+- **Translated primitives**: translators may give a localized name to each documented primitive (entries of context `primitive`
+  in `l10n/engine/*.po`). `CodeCreation` adds the aliases of every locale to the glue (`PrimitiveAliases`), so that the code
+  of a student keeps working when switching the human language. An alias sends the canonical name of its primitive
+  (`PrimitiveMethod.command()`): the rest of the PLM, API gating included, only knows the canonical names. The build fails if a
+  translated name is not a valid identifier in every language or designates two primitives of the same glue.
 - **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
   for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
   line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue
@@ -556,7 +561,8 @@ unchanged, and generates the translated files with your change. Some pitfalls:
   content of `<pre>` is kept verbatim (these entries are flagged `no-wrap`, and their newlines are written `\n`).
 - An entry gathers all the files that contain the same text (several `#:` references). If your change makes two `msgid` identical,
   merge their entries: duplicate `msgid` are an error.
-- Some translations translate the primitive names too (e.g. `avance()` in French). Keep the translator's choice in the `msgstr`.
+- Some translations translate the primitive names too (e.g. `pas()` in French). Use the names given in the `primitive` context of
+  `l10n/engine/<lang>.po`, since they are the ones that the students can call.
 - The `[!<langs>]...[/!]` markup appears verbatim in both `msgid` and `msgstr`, and must be changed in both.
 - `msgfmt -c --statistics -o /dev/null l10n/missions/fr.po` checks a catalog. Compare its counts before and after running po4a: a
   new fuzzy or untranslated entry means that a `msgid` does not match the html anymore.

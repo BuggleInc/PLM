@@ -66,9 +66,10 @@ public class CodeCreation {
                 new Remote("RemoteBaseball", BaseballEntity.class), new Remote("RemoteDutchFlag", DutchFlagEntity.class),
                 new Remote("RemoteSimple", SimpleExerciseEntity.class), new Remote("RemoteLander", LanderEntity.class));
 
+    Map<String, Map<String, String>> aliases      = PrimitiveAliases.load(PrimitiveAliases.PO_DIRECTORY);
     Map<String, List<PrimitiveMethod>> primitives = new LinkedHashMap<>();
     for (Remote remote : remotes)
-      primitives.put(remote.name(), List.copyOf(PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()).values()));
+      primitives.put(remote.name(), PrimitiveAliases.withAliases(remote.name(), PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()), aliases));
 
     List<Target> targets =
         List.of(new Target("java", new LangJava.LangJavaExternalPrimitiveGenerator(), Map.of("RemoteCons", ConsEntity.JAVA_REMOTE_EXTRA_CODE)),

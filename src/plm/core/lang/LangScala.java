@@ -308,7 +308,7 @@ public class LangScala extends JvmTemplatedLang {
     {
       String prototype = getPrototype(method);
 
-      String name = method.name();
+      String name = method.command(); // the PLM only knows the canonical name of the translated aliases
 
       String command = "\tsendCommand(\"" + name + "\"" +
                        method.parameters().stream().map(PrimitiveParameter::name).map(s -> ", " + s + ".asInstanceOf[Object]").collect(Collectors.joining()) +

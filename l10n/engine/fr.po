@@ -3005,3 +3005,138 @@ msgstr "  {0} (trouvé {1} au lieu de {2})\n"
 #~ "\n"
 #~ "--------------------[ Informations techniques ]--------------------\n"
 #~ "(Cela peut nous aider à résoudre votre problème, ne pas effacer SVP)\n"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "left"
+msgstr "gauche"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "right"
+msgstr "droite"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "back"
+msgstr "retourne"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "step"
+msgstr "pas"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "forward"
+msgstr "avance"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "backward"
+msgstr "recule"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getBodyColor"
+msgstr "getCouleurCorps"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "setBodyColor"
+msgstr "setCouleurCorps"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isFacingWall"
+msgstr "estFaceMur"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isBackingWall"
+msgstr "estDosMur"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "brushUp"
+msgstr "leveBrosse"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "brushDown"
+msgstr "baisseBrosse"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isBrushDown"
+msgstr "estBrosseBaissee"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getBrushColor"
+msgstr "getCouleurBrosse"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "setBrushColor"
+msgstr "setCouleurBrosse"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getGroundColor"
+msgstr "getCouleurSol"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isOverBaggle"
+msgstr "estSurBiscuit"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isCarryingBaggle"
+msgstr "porteBiscuit"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "pickupBaggle"
+msgstr "prendBiscuit"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "dropBaggle"
+msgstr "poseBiscuit"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isOverMessage"
+msgstr "estSurMessage"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "readMessage"
+msgstr "litMessage"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "writeMessage"
+msgstr "ecritMessage"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "clearMessage"
+msgstr "effaceMessage"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getWorldHeight"
+msgstr "getMondeHauteur"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getWorldWidth"
+msgstr "getMondeLargeur"
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isSelected"
+msgstr "estChoisi"

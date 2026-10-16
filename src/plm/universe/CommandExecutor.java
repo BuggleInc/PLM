@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import plm.core.ValueSerializer;
 import plm.core.lang.primitives.PrimitiveMethod;
+import plm.core.lang.primitives.PrimitivePot;
 import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.model.Game;
 
@@ -31,7 +32,8 @@ public final class CommandExecutor {
 
     String forbiddenReason = entity.getForbiddenPrimitives().get(opName);
     if (forbiddenReason != null)
-      throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use {0} in this exercise. {1}", opName, forbiddenReason));
+      throw new PrimitiveRefusedException(
+          Game.i18n.tr("Sorry Dave, I cannot let you use {0} in this exercise. {1}", Game.i18n.trc(PrimitivePot.NAME_CONTEXT, opName), forbiddenReason));
 
     PrimitiveMethod method = PrimitiveRegistration.getMinimalPrimitiveForEntity(entity.getClass()).get(opName);
     if (method == null) {

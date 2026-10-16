@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public final class PrimitiveMethod {
   private final List<PrimitiveParameter> parameters;
   private final String name;
+  private final String command;
   private final String location;
   private final Method method;
   private final Class<?> output;
@@ -18,6 +19,7 @@ public final class PrimitiveMethod {
   public PrimitiveMethod(Method method)
   {
     this.name       = method.getName();
+    this.command    = name;
     this.location   = method.getDeclaringClass().getSimpleName() + "::" + name();
     this.method     = method;
     this.parameters = Arrays.stream(method.getParameters()).map(PrimitiveParameter::new).toList();
@@ -31,6 +33,24 @@ public final class PrimitiveMethod {
 
   /** English title of the group under which the primitive is documented. */
   public String group() { return group; }
+
+  private PrimitiveMethod(PrimitiveMethod primitive, String alias)
+  {
+    this.name       = alias;
+    this.command    = primitive.command;
+    this.location   = primitive.location;
+    this.method     = primitive.method;
+    this.parameters = primitive.parameters;
+    this.output     = primitive.output;
+    this.doc        = primitive.doc;
+    this.group      = primitive.group;
+  }
+
+  /** The same primitive, called under a translated name in the students' code. */
+  public PrimitiveMethod alias(String alias) { return new PrimitiveMethod(this, alias); }
+
+  /** Name under which the glue calls the primitive in the PLM: the name of the Java method, even for the aliases. */
+  public String command() { return command; }
 
   public Class<?> output() { return output; }
 
