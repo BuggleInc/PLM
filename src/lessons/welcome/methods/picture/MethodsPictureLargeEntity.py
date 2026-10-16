@@ -8,17 +8,17 @@ def run():
 
     def makeV(c):
        setBrushColor(c)
-       forward()
+       step()
        mark()
-       forward()
+       step()
        left()
-       forward()
+       step()
        mark()
-       backward()
+       stepBack()
        right()
-       forward()
+       step()
        mark()   
-       forward()
+       step()
        left()
 
     def makePattern():

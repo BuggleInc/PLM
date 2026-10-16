@@ -10,16 +10,16 @@ def run():
       
       while isOverBaggle() == False:
         cpt = cpt+1
-        forward()
+        step()
       pickupBaggle()
       for i in range(cpt):
-        backward()
+        stepBack()
       dropBaggle()
     # END SOLUTION
 
     for i in range(7):
       goAndGet()
       right()
-      forward()
+      step()
       left()
     # END TEMPLATE

@@ -54,7 +54,7 @@ public class TraversalZigZagEntity extends SimpleBuggle {
     String reason = Game.i18n.tr("Use setPos(x,y) instead.");
     forbid("forward", reason);
     forbid("backward", reason);
-    forbid("stepForward", reason);
-    forbid("stepBackward", reason);
+    forbid("step", reason);
+    forbid("stepBack", reason);
   }
 }

@@ -33,15 +33,15 @@ public class SnakeEntity extends SimpleBuggle {
     if (isFacingWall()) {
       if (getDirection() == Direction.EAST) {
         left();
-        stepForward();
+        step();
         left();
       } else {
         right();
-        stepForward();
+        step();
         right();
       }
     } else {
-      stepForward();
+      step();
     }
 
     /* END SOLUTION */

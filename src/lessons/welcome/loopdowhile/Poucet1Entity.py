@@ -14,7 +14,7 @@ def run():
         
         while not within or not crossing():
             within = True
-            forward()
+            step()
             if isOverBaggle():
                 seen += 1
         
@@ -22,5 +22,5 @@ def run():
             left()
         else:
             right()
-    forward()
+    step()
     # END SOLUTION

@@ -6,7 +6,7 @@ class EnvironmentEntity extends SimpleBuggle {
 	/* BEGIN REMOTE */
 	override def run(): Unit = { 
 		/* BEGIN SOLUTION */
-		stepForward();
+		step();
 		/* END SOLUTION */
 	}
 	/* END REMOTE */

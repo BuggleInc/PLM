@@ -12,11 +12,11 @@ public class LoopForEntity extends plm.universe.bugglequest.SimpleBuggle {
     int cpt = 0;
     while (!isOverBaggle()) {
       cpt++;
-      stepForward();
+      step();
     }
     pickupBaggle();
     for (int cpt2 = 0; cpt2 < cpt; cpt2++) {
-      stepBackward();
+      stepBack();
     }
     dropBaggle();
     /* END SOLUTION */

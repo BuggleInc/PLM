@@ -24,10 +24,10 @@ void go_left(int line_count)
 void dogHouse() {
 	int i;
 	for (i=0;i<4;i++) {
-		forward(1);
-		forward(1);
-		left();
-	}
+          step();
+          step();
+          left();
+        }
 }
 /* END SOLUTION */
 /* END TEMPLATE */

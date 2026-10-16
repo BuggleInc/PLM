@@ -9,9 +9,9 @@ public class ConditionsEntity extends SimpleBuggle {
     /* BEGIN TEMPLATE */
     /* BEGIN SOLUTION */
     if (isFacingWall())
-      stepBackward();
+      stepBack();
     else
-      stepForward();
+      step();
     /* END SOLUTION */
     /* END TEMPLATE */
   }

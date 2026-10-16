@@ -20,27 +20,60 @@ void run(){
 
 		read = getIndicationBDR();
 		switch (read) {
-			case 'R': right(); forward(1); break;
-			case 'L': left();  forward(1); break;
-			case 'I': back();  forward(1); break;
+                  case 'R':
+                    right();
+                    step();
+                    break;
+                  case 'L':
+                    left();
+                    step();
+                    break;
+                  case 'I':
+                    back();
+                    step();
+                    break;
 
-			case 'A': forward(1); break;
-			case 'B': forward(2); break;
-			case 'C': forward(3); break;
-			case 'D': forward(4); break;
-			case 'E': forward(5); break;
-			case 'F': forward(6); break;
+                  case 'A':
+                    step();
+                    break;
+                  case 'B':
+                    forward(2);
+                    break;
+                  case 'C':
+                    forward(3);
+                    break;
+                  case 'D':
+                    forward(4);
+                    break;
+                  case 'E':
+                    forward(5);
+                    break;
+                  case 'F':
+                    forward(6);
+                    break;
 
-			case 'Z': backward(1); break;
-			case 'Y': backward(2); break;
-			case 'X': backward(3); break;
-			case 'W': backward(4); break;
-			case 'V': backward(5); break;
-			case 'U': backward(6); break;
-			default : continu=0;
-		}
-
-	}
-	/* END SOLUTION */
-	/* END TEMPLATE */
+                  case 'Z':
+                    stepBack();
+                    break;
+                  case 'Y':
+                    backward(2);
+                    break;
+                  case 'X':
+                    backward(3);
+                    break;
+                  case 'W':
+                    backward(4);
+                    break;
+                  case 'V':
+                    backward(5);
+                    break;
+                  case 'U':
+                    backward(6);
+                    break;
+                  default:
+                    continu = 0;
+                }
+        }
+        /* END SOLUTION */
+        /* END TEMPLATE */
 }

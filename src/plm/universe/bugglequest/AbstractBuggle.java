@@ -36,7 +36,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   private boolean carryBaggle;
 
   /**
-   * Forbids the student code to move several steps at once, so that it calls stepForward() or stepBackward() in a loop. To be called from the constructor of
+   * Forbids the student code to move several steps at once, so that it calls step() or stepBack() in a loop. To be called from the constructor of
    * the exercise's entity.
    */
   protected void forbidMultiStep() { multiStepForbidden = true; }
@@ -260,7 +260,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     }
   }
 
-  @Override public void stepForward() throws BuggleWallException
+  @Override public void step() throws BuggleWallException
   {
     if (k_seq[k_val] == 0)
       k_val++;
@@ -274,10 +274,10 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     if (multiStepForbidden)
       throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead."));
     for (int i = 0; i < count; i++)
-      stepForward();
+      step();
   }
 
-  @Override public void stepBackward() throws BuggleWallException
+  @Override public void stepBack() throws BuggleWallException
   {
     if (k_seq[k_val] == 1)
       k_val++;
@@ -291,7 +291,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     if (multiStepForbidden)
       throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead."));
     for (int i = 0; i < count; i++)
-      stepBackward();
+      stepBack();
   }
 
   private boolean lookAtWall(Direction delta)
@@ -484,13 +484,15 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     return sb.toString();
   }
 
+  /* FIXME: translated aliases are plain Java methods, not @Primitive: student code in any language cannot reach them (see the Python/Scala/C bindings, which
+   * are generated from the primitives only). Mirroring the step()/stepBack() renames there would need a per-language alias table, which does not exist yet. */
   /* BINDINGS TRANSLATION: French */
   public void gauche() { left(); }
   public void droite() { right(); }
   public void retourne() { back(); }
-  public void avance() throws BuggleWallException { stepForward(); }
+  public void avance() throws BuggleWallException { step(); }
   public void avance(int steps) throws BuggleWallException { forward(steps); }
-  public void recule() throws BuggleWallException { stepBackward(); }
+  public void recule() throws BuggleWallException { stepBack(); }
   public void recule(int steps) throws BuggleWallException { backward(steps); }
   public Color getCouleurCorps() { return getBodyColor(); }
   public void setCouleurCorps(Color c) { setBodyColor(c); }
@@ -521,9 +523,9 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
   public void esquerda() { left(); }
   public void direita() { right(); }
   public void voltar() { back(); }
-  public void avançar() throws BuggleWallException { stepForward(); }
+  public void avançar() throws BuggleWallException { step(); }
   public void avançar(int steps) throws BuggleWallException { forward(steps); }
-  public void recuar() throws BuggleWallException { stepBackward(); }
+  public void recuar() throws BuggleWallException { stepBack(); }
   public void recuar(int steps) throws BuggleWallException { backward(steps); }
   public Color getCorDoCorpo() { return getBodyColor(); }
   public void setCorDoCorpo(Color c) { setBodyColor(c); }

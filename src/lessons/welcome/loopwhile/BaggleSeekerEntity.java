@@ -12,7 +12,7 @@ public class BaggleSeekerEntity extends SimpleBuggle {
     /* BEGIN TEMPLATE */
     /* BEGIN SOLUTION */
     while (!isOverBaggle()) {
-      stepForward();
+      step();
     }
     /* END SOLUTION */
     /* END TEMPLATE */

@@ -179,10 +179,12 @@ public class LangPython extends TemplatedRemoteLang {
 
   public static class LangPythonExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
 
-    /** The Python argument names to use for this primitive's parameters -- shared between getPrototype() and
-     *  getImplementation() so they can never drift apart (see getPrototype()'s comment on the forward()/backward()
-     *  special case). Reflection-derived parameter names (PrimitiveParameter.name()) are usually synthetic ("arg0"
-     *  etc.) unless the project happens to be compiled with -parameters, so this is the only place that matters. */
+    /**
+     * The Python argument names to use for this primitive's parameters -- shared between getPrototype() and
+     *  getImplementation() so they can never drift apart. Reflection-derived parameter names (PrimitiveParameter.name())
+     *  are usually synthetic ("arg0" etc.) unless the project happens to be compiled with -parameters, so forward() and
+     *  backward() are special-cased to expose a readable "steps".
+     */
     List<String> getParameterNames(PrimitiveMethod method)
     {
       String name = method.name();
@@ -194,9 +196,7 @@ public class LangPython extends TemplatedRemoteLang {
     String getPrototype(PrimitiveMethod method)
     {
       String name = method.name();
-      List<String> paramNames = getParameterNames(method);
-      String params = (name.equals("forward") || name.equals("backward")) ? "steps=1" : String.join(", ", paramNames);
-      return "def " + name + "(" + params + ")";
+      return "def " + name + "(" + String.join(", ", getParameterNames(method)) + ")";
     }
 
     String getReturning(Class<?> type)

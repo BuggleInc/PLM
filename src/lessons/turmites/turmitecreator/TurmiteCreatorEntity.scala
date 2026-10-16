@@ -27,10 +27,10 @@ class TurmiteCreatorEntity extends SimpleBuggle {
 
 				rule(state)(currentColor)(NEXT_MOVE) match {
 				case STOP   => /* nothing */
-				case NOTURN => /* no turn */ stepForward();
-				case LEFT   => left();   	   stepForward();
-				case RIGHT  => right();      stepForward();
-				case BACK   => back();       stepForward();
+				case NOTURN => /* no turn */ step();
+				case LEFT   => left();   	   step();
+				case RIGHT  => right();      step();
+				case BACK   => back();       step();
 				case _      => System.out.println("Unknown turn command associated to i="+currentColor+": "+rule(state)(currentColor)(NEXT_MOVE));
 				}
 

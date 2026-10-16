@@ -7,7 +7,7 @@ def run():
         for i in range(6):
             if isOverBaggle():
                 res = True
-            forward()
+            step()
         backward(6)
         return res
         # END SOLUTION
@@ -17,6 +17,6 @@ def run():
         if haveBaggle():
             break
         right()
-        forward()
+        step()
         left()
 

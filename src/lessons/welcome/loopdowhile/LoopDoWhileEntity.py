@@ -9,7 +9,7 @@ def run():
     # BEGIN SOLUTION
     more = True
     while more:
-        forward()
+        step()
         if isGroundWhite():
       	     more = False 
     # END SOLUTION

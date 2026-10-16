@@ -14,25 +14,25 @@ void hunt() {
 	while (! isOverBaggle()) {
 		if (isFacingTrail()) {
 			brushDown();
-			forward(1);
-			brushUp();
-		} else {
-			left();
-		}
-	}
-	pickupBaggle();
+                        step();
+                        brushUp();
+                } else {
+                  left();
+                }
+        }
+        pickupBaggle();
 }
 
 int isFacingTrail(){
 	if (isFacingWall())
 		return 0;
 
-	forward(1);
-	int res = getGroundColor() == green;
-	backward(1);
-	return res;
+        step();
+        int res = getGroundColor() == green;
+        stepBack();
+        return res;
 
-/* END SOLUTION */
+        /* END SOLUTION */
 }
 
 /* END TEMPLATE */

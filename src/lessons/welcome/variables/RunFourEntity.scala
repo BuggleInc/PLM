@@ -7,7 +7,7 @@ class RunFourEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */
 		var cpt = 0;
 		while (cpt != 4) {
-			stepForward();
+			step();
 			if (isOverBaggle())
 				cpt += 1
 		}

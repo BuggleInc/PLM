@@ -2,8 +2,8 @@ from RemoteBuggle import *
 def run():
     # BEGIN SOLUTION
     if isFacingWall():
-        backward()
+        stepBack()
     else:
-        forward()    
+        step()    
     # END SOLUTION
 

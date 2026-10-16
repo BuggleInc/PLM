@@ -7,9 +7,9 @@ def run():
     		return ' '
     	
     # BEGIN SOLUTION
-    def doR(): right(); forward()
-    def doL(): left();  forward()
-    def doI(): back();  forward()
+    def doR(): right(); step()
+    def doL(): left();  step()
+    def doI(): back();  step()
 
 
     finished = False
@@ -22,7 +22,7 @@ def run():
     	elif c == 'I':
     		doI()
     	elif c == 'A':
-    		forward()
+    		step()
     	elif c == 'B':
     		forward(2)
     	elif c == 'C':
@@ -34,7 +34,7 @@ def run():
     	elif c == 'F':
     		forward(6)
     	elif c == 'Z':
-    		backward()
+    		stepBack()
     	elif c == 'Y':
     		backward(2)
     	elif c == 'X':
@@ -54,14 +54,14 @@ def run():
     #  'R':doR,
     #  'L':doL,
     #  'I':doI,
-    #  'A':forward(1),
+    #  'A':step(),
     #  'B':forward(2),
     #  'C':forward(3),
     #  'D':forward(4),
     #  'E':forward(5),
     #  'F':forward(6),
     #
-    #  'Z':backward(1),
+    #  'Z':stepBack(),
     #  'Y':backward(2),
     #  'X':backward(3),
     #  'W':backward(4),

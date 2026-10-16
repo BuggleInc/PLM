@@ -10,19 +10,19 @@ class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
 			var c = readMessage()
 
 			if (c == "R") { 
-				right(); stepForward();
+				right(); step();
 			} else if (c == "L") {
-				left(); stepForward();
+				left(); step();
 			} else if (c == "I") {
-				back(); stepForward();
+				back(); step();
 			} else if (c == "A")
-				stepForward();
+				step();
 			else if (c == "B")
 				forward(2);
 			else if (c == "C")
 				forward(3);
 			else if (c == "Z")
-				stepBackward();
+				stepBack();
 			else if (c == "Y")
 				backward(2);
 			else if (c == "X")

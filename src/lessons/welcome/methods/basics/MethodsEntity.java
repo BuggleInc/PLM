@@ -11,11 +11,11 @@ public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
     int i = 0;
     while (!isOverBaggle()) {
       i++;
-      stepForward();
+      step();
     }
     pickupBaggle();
     while (i > 0) {
-      stepBackward();
+      stepBack();
       i--;
     }
     dropBaggle();
@@ -28,7 +28,7 @@ public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
     for (int i = 0; i < 7; i++) {
       goAndGet();
       right();
-      stepForward();
+      step();
       left();
     }
   }

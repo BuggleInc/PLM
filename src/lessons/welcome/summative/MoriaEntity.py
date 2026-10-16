@@ -4,18 +4,18 @@ def run():
     back()
     while not isFacingWall():
         while (not isOverBaggle()) and (not isFacingWall()):
-            forward()
+            step()
         if isOverBaggle():
             pickupBaggle()
             back()
             while not isOverBaggle():
-                forward()
-            backward()
+                step()
+            stepBack()
             dropBaggle()
             back()
-            forward()
+            step()
     right()
-    forward()
+    step()
     left()
-    forward()
+    step()
     # END SOLUTION

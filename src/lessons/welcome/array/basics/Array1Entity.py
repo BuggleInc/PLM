@@ -13,19 +13,19 @@ def run():
     # read the colors
     for i in range(getWorldHeight()):
         colors.append(getGroundColor())
-        forward()
+        step()
     
     def makeLine (colors):
         for i in range(getWorldWidth()):
             mark(colors[i])
-            forward()
+            step()
     
     # duplicate the pattern
     for i in range(getWorldWidth()-1):
         left()
-        forward()
+        step()
         right()
-        forward()
+        step()
         makeLine(colors)
     
     # END SOLUTION

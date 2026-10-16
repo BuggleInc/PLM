@@ -7,20 +7,20 @@ class LoopCourseForestEntity extends SimpleBuggle {
 	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 7;  side <- 1 to 4){
-				for (step <- 1 to 4)
-					stepForward();
+				for (k <- 1 to 4)
+					step();
 				left();
-				for (step <- 1 to 2)
-					stepForward();
+				for (k <- 1 to 2)
+					step();
 				right();
-				for (step <- 1 to 4)
-					stepForward();
+				for (k <- 1 to 4)
+					step();
 				right();
-				stepForward();
-				stepForward();
+				step();
+				step();
 				left();
-				for (step <- 1 to 4)
-					stepForward();
+				for (k <- 1 to 4)
+					step();
 				left();
 		}
 		/* END SOLUTION */

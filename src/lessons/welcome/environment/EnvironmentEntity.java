@@ -8,7 +8,7 @@ public class EnvironmentEntity extends SimpleBuggle {
   {
     /* BEGIN TEMPLATE */
     /* BEGIN SOLUTION */
-    stepForward();
+    step();
     /* END SOLUTION */
     /* END TEMPLATE */
   }

@@ -6,23 +6,23 @@ void run(){
 	back();
 	while (!isFacingWall()) {
 		while (!isOverBaggle() && !isFacingWall())
-			forward(1);
-		if (isOverBaggle()) {
-			pickupBaggle();
-			back();
-			while (!isOverBaggle())
-				forward(1);
-			backward(1);
-			dropBaggle();
-			back();
-			forward(1);
-		}
-	}
-	right();
-	forward(1);
-	left();
-	forward(1);
-	/* END SOLUTION */
+                  step();
+                if (isOverBaggle()) {
+                  pickupBaggle();
+                  back();
+                  while (!isOverBaggle())
+                    step();
+                  stepBack();
+                  dropBaggle();
+                  back();
+                  step();
+                }
+        }
+        right();
+        step();
+        left();
+        step();
+        /* END SOLUTION */
 }
 
 /* END TEMPLATE */

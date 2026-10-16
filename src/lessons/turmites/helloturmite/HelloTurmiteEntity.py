@@ -30,16 +30,16 @@ def run():
         if (rule[state][currentColor][NEXT_MOVE] == STOP):
             pass # nothing
         elif (rule[state][currentColor][NEXT_MOVE] == NOTURN):
-            forward()
+            step()
         elif (rule[state][currentColor][NEXT_MOVE] == LEFT):
             left()
-            forward()
+            step()
         elif (rule[state][currentColor][NEXT_MOVE] == RIGHT):
             right()
-            forward()
+            step()
         elif (rule[state][currentColor][NEXT_MOVE] == BACK):
             back()
-            forward()
+            step()
         else:
             log("Unknown turn command associated to i=%d: %d" % (currentColor, rule[state][currentColor][NEXT_MOVE]))
     

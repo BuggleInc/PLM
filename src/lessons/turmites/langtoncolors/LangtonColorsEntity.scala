@@ -24,7 +24,7 @@ class LangtonColorsEntity extends SimpleBuggle {
 			brushDown();
 			brushUp();
 
-			stepForward();
+			step();
 		}
 		/* END SOLUTION */
 	}

@@ -12,7 +12,7 @@ def run():
         # PRE: we have a wall on the left
         # POST: we still have the same wall on the left, are one step ahead
         while not isFacingWall():
-            forward()
+            step()
             left() # change to right to get a right follower
         right() # change to left to get a right follower
 
@@ -23,7 +23,7 @@ def run():
     while not isOverBaggle():
         if northRunner:
             while not isFacingWall():
-                forward()
+                step()
             right()
             northRunner = False
         else: # left follower mode

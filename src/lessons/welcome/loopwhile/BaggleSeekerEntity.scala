@@ -8,7 +8,7 @@ class BaggleSeekerEntity extends SimpleBuggle {
 	override def run(): Unit = { 
 		/* BEGIN SOLUTION */
 		while (!isOverBaggle()) {
-			stepForward();
+			step();
 		}
 		/* END SOLUTION */
 	}

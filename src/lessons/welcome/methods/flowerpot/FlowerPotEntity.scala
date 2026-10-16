@@ -14,11 +14,11 @@ class FlowerPotEntity extends SimpleBuggle {
 	    setBrushColor(c);
 	    brushDown();
 	    forward(2);
-	    stepBackward();
+	    stepBack();
 	    left();
-	    stepForward();
+	    step();
 	    backward(2);
-	    stepForward();
+	    step();
 	    setBrushColor(Color.YELLOW);
 	    brushUp();
 	    right();    

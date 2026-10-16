@@ -7,7 +7,7 @@ import plm.universe.PrimitiveRefusedException;
 public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
   public LoopCourseEntity() { forbidMultiStep(); }
 
-  @Override public void stepBackward()
+  @Override public void stepBack()
   {
     throw new PrimitiveRefusedException(Game.i18n.tr("Sorry Dave, you cannot run backward like this. Exercising is hard enough -- please don't overplay."));
   }
@@ -24,9 +24,9 @@ public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
                                 new Color(255, 45, 45),
                                 new Color(255, 5, 5),
                                 Color.magenta};
-  @Override public void stepForward()
+  @Override public void step()
   {
-    super.stepForward();
+    super.step();
     Color c = getGroundColor();
     for (int i = 0; i < colors.length - 1; i++)
       if (colors[i].equals(c)) {
@@ -49,8 +49,8 @@ public class LoopCourseEntity extends plm.universe.bugglequest.SimpleBuggle {
     /* BEGIN SOLUTION */
     for (int i = 0; i < 10; i++)
       for (int side = 0; side < 4; side++) {
-        for (int step = 0; step < 8; step++)
-          stepForward();
+        for (int k = 0; k < 8; k++)
+          step();
         left();
       }
     /* END SOLUTION */

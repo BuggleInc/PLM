@@ -115,7 +115,7 @@ public class ShortestPathMazeEntity extends SimpleBuggle implements ShortestPath
       else if (bottomValue <= topValue && bottomValue <= rightValue && bottomValue <= leftValue)
         setDirection(Direction.SOUTH);
 
-      stepForward();
+      step();
     }
     /* END SOLUTION */
   }

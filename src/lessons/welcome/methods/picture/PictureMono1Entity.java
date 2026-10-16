@@ -24,14 +24,14 @@ public class PictureMono1Entity extends SimpleBuggle {
     forward(2);
     mark();
 
-    stepForward();
+    step();
     left();
-    stepForward();
+    step();
     mark();
 
-    stepBackward();
+    stepBack();
     right();
-    stepForward();
+    step();
     mark();
 
     forward(2);

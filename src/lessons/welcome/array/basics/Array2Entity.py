@@ -13,7 +13,7 @@ def run():
     # read the colors
     for i in range(getWorldHeight()-1):
         colors.append(getGroundColor())
-        forward()
+        step()
     colors.append(getGroundColor())
     backward(getWorldHeight()-1)
     
@@ -21,14 +21,14 @@ def run():
         offset = int(readMessage())
         mark(colors[(0+offset)% colors.__len__()])
         for i in range(getWorldWidth()-1):
-            forward()
+            step()
             mark(colors[(i+1+offset)% colors.__len__()])
         backward(getWorldWidth()-1)
     
     # duplicate the pattern
     for i in range(getWorldWidth()-1):
         left()
-        forward()
+        step()
         right()
         makeLine(colors)
     

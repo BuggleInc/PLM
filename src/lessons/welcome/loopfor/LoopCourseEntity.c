@@ -6,8 +6,8 @@ void run()
   /* BEGIN SOLUTION */
   for (int i = 0; i < 10; i++)
     for (int side = 0; side < 4; side++) {
-      for (int step = 0; step < 8; step++)
-        forward(1);
+      for (int k = 0; k < 8; k++)
+        step();
       left();
     }
   /* END SOLUTION */

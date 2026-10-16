@@ -12,11 +12,11 @@ public class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
     int cpt = 0;
     while (!isOverBaggle()) {
       cpt++;
-      stepForward();
+      step();
     }
     pickupBaggle();
     while (cpt > 0) {
-      stepBackward();
+      stepBack();
       cpt--;
     }
     dropBaggle();

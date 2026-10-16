@@ -4,10 +4,10 @@ def run():
     cpt = 0
     while not isOverBaggle():
       cpt += 1 
-      forward()
+      step()
     pickupBaggle()
     while cpt>0:
-      backward()
+      stepBack()
       cpt -= 1
     dropBaggle()
     # END SOLUTION

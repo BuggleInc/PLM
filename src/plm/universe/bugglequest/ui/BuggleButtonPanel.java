@@ -63,8 +63,8 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
       @Override public void actionPerformed(ActionEvent event)
       {
         try {
-          echo(i18n.tr("forward()"));
-          ((AbstractBuggle)Game.getInstance().getSelectedEntity()).stepForward();
+          echo(i18n.tr("step()"));
+          ((AbstractBuggle)Game.getInstance().getSelectedEntity()).step();
         } catch (BuggleWallException e) {
           showWallHuggingErrorMessageDialog();
           // e.printStackTrace();
@@ -79,8 +79,8 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
       @Override public void actionPerformed(ActionEvent event)
       {
         try {
-          echo(i18n.tr("backward()"));
-          ((AbstractBuggle)Game.getInstance().getSelectedEntity()).stepBackward();
+          echo(i18n.tr("stepBack()"));
+          ((AbstractBuggle)Game.getInstance().getSelectedEntity()).stepBack();
         } catch (BuggleWallException e) {
           showWallHuggingErrorMessageDialog();
           // e.printStackTrace();

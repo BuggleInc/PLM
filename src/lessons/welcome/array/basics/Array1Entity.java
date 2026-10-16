@@ -15,15 +15,15 @@ public class Array1Entity extends plm.universe.bugglequest.SimpleBuggle {
     /* read the colors */
     for (int i = 0; i < getWorldHeight(); i++) {
       colors[i] = getGroundColor();
-      stepForward();
+      step();
     }
 
     /* duplicate the pattern */
     for (int i = 1; i < getWorldWidth(); i++) {
       left();
-      stepForward();
+      step();
       right();
-      stepForward();
+      step();
       makeLine(colors);
     }
   }
@@ -31,7 +31,7 @@ public class Array1Entity extends plm.universe.bugglequest.SimpleBuggle {
   {
     for (int i = 0; i < getWorldWidth(); i++) {
       mark(colors[i]);
-      stepForward();
+      step();
     }
   }
   void mark(Color c)

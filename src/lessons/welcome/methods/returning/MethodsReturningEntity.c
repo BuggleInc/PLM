@@ -8,8 +8,8 @@ int haveBaggle(){
 	for (i=0; i<6; i++) {
 		if (isOverBaggle())
 			res = 1;
-		forward(1);
-	}
+                step();
+        }
         backward(6);
 	return res;
 	/* END SOLUTION */
@@ -22,7 +22,7 @@ void run(){
 		if (haveBaggle())
 			return;
 		right();
-		forward(1);
-		left();
-	}
+                step();
+                left();
+        }
 }

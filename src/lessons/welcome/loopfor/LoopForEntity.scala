@@ -9,11 +9,11 @@ class LoopForEntity extends SimpleBuggle {
 		var cpt = 0
 		while (!isOverBaggle()) {
 			cpt+=1;
-			stepForward();
+			step();
 		}
 		pickupBaggle();
 		for (cpt2 <- 0  to cpt-1) {
-			stepBackward();
+			stepBack();
 		}
 		dropBaggle();
 		/* END SOLUTION */

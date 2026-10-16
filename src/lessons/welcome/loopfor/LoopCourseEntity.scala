@@ -9,8 +9,8 @@ class LoopCourseEntity extends SimpleBuggle {
 	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		for (i <- 1 to 10; side <- 1 to 4) {
-			for (step <- 1 to 8) {
-				stepForward()
+			for (k <- 1 to 8) {
+				step()
 			}
 			left()
 		} 

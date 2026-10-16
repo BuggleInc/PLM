@@ -9,13 +9,13 @@ void run() {
 	// Make sure we have a wall to the left
 	left();
 	while (!isFacingWall())
-		forward(1);
-	right();
+          step();
+        right();
 
-	while (!isOverBaggle())
-		stepHandOnWall();
+        while (!isOverBaggle())
+          stepHandOnWall();
 
-	pickupBaggle();
+        pickupBaggle();
 }
 
 void stepHandOnWall() {
@@ -23,11 +23,11 @@ void stepHandOnWall() {
 	// POST: we still have the same wall on the left, are one step ahead
 
 	while (!isFacingWall()) {
-		forward(1);
-		left(); // change to right to get a right follower
-	}
-	right(); // change to left to get a right follower
+          step();
+          left(); // change to right to get a right follower
+        }
+        right(); // change to left to get a right follower
 
-	/* END SOLUTION */
+        /* END SOLUTION */
 }
 /* END TEMPLATE */

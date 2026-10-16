@@ -7,9 +7,9 @@ def run():
       if isFacingWall():
          return False
       else:
-         forward()
+         step()
          res = (getGroundColor() == Color.green)
-         backward()
+         stepBack()
          return res
       # END SOLUTION
    # END TEMPLATE
@@ -19,7 +19,7 @@ def run():
          brushUp()
          if isFacingTrail():
             brushDown()
-            forward()
+            step()
             brushUp()
          else:
             left()

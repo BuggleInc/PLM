@@ -7,17 +7,17 @@ void run(){
 		int seen = 0;
 
 		do {
-			forward(1);
-			if (isOverBaggle())
-				seen++;
-		} while (! crossing());
+                  step();
+                  if (isOverBaggle())
+                    seen++;
+                } while (!crossing());
 
-		if (seen>2)
-			left();
-		else
-			right();
-	}
-	forward(1);
-	/* END SOLUTION */
-	/* END TEMPLATE */
+                if (seen > 2)
+                  left();
+                else
+                  right();
+        }
+        step();
+        /* END SOLUTION */
+        /* END TEMPLATE */
 }

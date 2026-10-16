@@ -23,7 +23,7 @@ public class Array2Entity extends SimpleBuggle {
     /* read the colors */
     colors[0] = getGroundColor();
     for (int i = 1; i < getWorldHeight(); i++) {
-      stepForward();
+      step();
       colors[i] = getGroundColor();
     }
     backward(getWorldHeight() - 1);
@@ -31,7 +31,7 @@ public class Array2Entity extends SimpleBuggle {
     /* Duplicate the pattern */
     for (int i = 1; i < getWorldWidth(); i++) {
       left();
-      stepForward();
+      step();
       right();
       makeLine(colors);
     }
@@ -42,7 +42,7 @@ public class Array2Entity extends SimpleBuggle {
     int offset = Integer.parseInt(readMessage());
     mark(colors[(0 + offset) % colors.length]);
     for (int i = 1; i < getWorldWidth(); i++) {
-      stepForward();
+      step();
       mark(colors[(i + offset) % colors.length]);
     }
     backward(getWorldHeight() - 1);

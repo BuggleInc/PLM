@@ -50,10 +50,10 @@ public class MethodsDogHouseSourceCheckTest {
   @ParameterizedTest @MethodSource("languages") public void testLeftCalls(ProgrammingLanguage lang) throws Exception
   {
     String oneCall = switch (lang.getLang()) {
-      case "Python" -> "def dogHouse():\n    for i in range(4):\n        forward()\n        forward()\n        left()\n";
-      case "Scala" -> "def dogHouse(): Unit = {\n  for (i <- 1 to 4) {\n    stepForward()\n    stepForward()\n    left()\n  }\n}\n";
-      case "C" -> "void dogHouse() {\n  int i;\n  for (i = 0; i < 4; i++) {\n    forward(1);\n    forward(1);\n    left();\n  }\n}\n";
-      case "Java" -> "void dogHouse() {\n  for (int i = 0; i < 4; i++) {\n    stepForward();\n    stepForward();\n    left();\n  }\n}\n";
+      case "Python" -> "def dogHouse():\n    for i in range(4):\n        step()\n        step()\n        left()\n";
+      case "Scala" -> "def dogHouse(): Unit = {\n  for (i <- 1 to 4) {\n    step()\n    step()\n    left()\n  }\n}\n";
+      case "C" -> "void dogHouse() {\n  int i;\n  for (i = 0; i < 4; i++) {\n    step();\n    step();\n    left();\n  }\n}\n";
+      case "Java" -> "void dogHouse() {\n  for (int i = 0; i < 4; i++) {\n    step();\n    step();\n    left();\n  }\n}\n";
       default -> throw new IllegalArgumentException("No DogHouse code for " + lang);
     };
     String comment = lang.isPython() ? "# left()\n" : "// left()\n";
@@ -63,13 +63,8 @@ public class MethodsDogHouseSourceCheckTest {
       case "C" -> "char *s = \"left()\";\n";
       default -> "String s = \"left()\";\n";
     };
-    String step = switch (lang.getLang()) {
-      case "Python" -> "forward()";
-      case "C" -> "forward(1)";
-      default -> "stepForward()";
-    };
     String twoCalls = oneCall.replace("left()", "left(); left()");
-    String noCall   = oneCall.replace("left()", step);
+    String noCall   = oneCall.replace("left()", "step()");
 
     Assertions.assertNull(refusal(lang, oneCall), "one call must be accepted");
     Assertions.assertNull(refusal(lang, comment + oneCall), "a call in a comment must be ignored");

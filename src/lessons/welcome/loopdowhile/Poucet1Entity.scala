@@ -19,7 +19,7 @@ class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
 			var within = false;
 			while (!within || !crossing()) {
 				within = true;
-				stepForward();
+				step();
 				if (isOverBaggle())
 					count+=1;
 			}
@@ -29,7 +29,7 @@ class Poucet1Entity extends plm.universe.bugglequest.SimpleBuggle {
 			else
 				right();
 		}
-		stepForward();
+		step();
 		/* END SOLUTION */
 	}
 	/* END REMOTE */

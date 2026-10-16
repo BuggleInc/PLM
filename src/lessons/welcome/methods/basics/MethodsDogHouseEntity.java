@@ -12,8 +12,8 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
   {
     /* BEGIN SOLUTION */
     for (int i = 0; i < 4; i++) {
-      stepForward();
-      stepForward();
+      step();
+      step();
       left();
     }
     /* END SOLUTION */

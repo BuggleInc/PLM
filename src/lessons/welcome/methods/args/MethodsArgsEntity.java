@@ -15,10 +15,10 @@ public class MethodsArgsEntity extends SimpleBuggle {
   {
     if (forward) {
       for (int i = 0; i < nbPas; i++)
-        stepForward();
+        step();
     } else {
       for (int i = 0; i < nbPas; i++)
-        stepBackward();
+        stepBack();
     }
   }
   /* END SOLUTION */

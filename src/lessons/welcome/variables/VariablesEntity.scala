@@ -8,11 +8,11 @@ class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 		var stepper = 0;
 		while (!isOverBaggle()) {
 			stepper += 1
-			stepForward()
+			step()
 		}
 		pickupBaggle();
 		while (stepper>0) {
-			stepBackward()
+			stepBack()
 			stepper -= 1
 		}
 		dropBaggle();

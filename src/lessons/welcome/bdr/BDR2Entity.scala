@@ -12,18 +12,18 @@ class BDR2Entity extends SimpleBuggle {
 
 		while (moreMusic) {
 			readMessage() match {
-			  case "R" => right(); stepForward();
-			  case "L" => left();  stepForward();
-			  case "I" => back();  stepForward();
+			  case "R" => right(); step();
+			  case "L" => left();  step();
+			  case "I" => back();  step();
 
-			  case "A" => forward(1);
+			  case "A" => step();
 			  case "B" => forward(2);
 			  case "C" => forward(3);
 			  case "D" => forward(4);
 			  case "E" => forward(5);
 			  case "F" => forward(6);
 
-			  case "Z" => backward(1);
+			  case "Z" => stepBack();
 			  case "Y" => backward(2);
 			  case "X" => backward(3);
 			  case "W" => backward(4);

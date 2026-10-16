@@ -5,15 +5,15 @@ def run():
     		setBrushColor(c);
     		brushDown();
     		forward(2);
-    		backward();
+    		stepBack();
     		left();
-    		forward();
+    		step();
     		backward(2);
-    		forward();
+    		step();
     		setBrushColor(Color.YELLOW);
     		brushUp();
     		right();  
-    		backward();
+    		stepBack();
 
     def line(colors, returnBack):
     		first = True

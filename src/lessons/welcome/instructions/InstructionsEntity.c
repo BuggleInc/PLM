@@ -10,10 +10,10 @@ void run(){
 		right();
 	}
 	brushUp();
-	forward(1);
-	right();
-	forward(1);
-	left();
-	/* END SOLUTION */
-	/* END TEMPLATE */
+        step();
+        right();
+        step();
+        left();
+        /* END SOLUTION */
+        /* END TEMPLATE */
 }

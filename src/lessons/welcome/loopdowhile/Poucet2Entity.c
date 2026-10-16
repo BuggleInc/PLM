@@ -8,7 +8,7 @@ void run()
     int seen = 0;
 
     do {
-      forward(1);
+      step();
       if (isOverBaggle())
         seen++;
     } while (!crossing());
@@ -18,7 +18,7 @@ void run()
     else
       right();
   }
-  forward(1);
+  step();
   /* END SOLUTION */
   /* END TEMPLATE */
 }

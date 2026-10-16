@@ -8,7 +8,7 @@ class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
 		var i = 1;
 		while (i <= 7 && !haveBaggle()) {
 			right();
-			stepForward();
+			step();
 			left();
 			i += 1;
 		}
@@ -20,7 +20,7 @@ class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
 		for (i <- 1 to 6) {
 			if (isOverBaggle()) 
 				res = true;
-			stepForward();
+			step();
 		}
 		backward(6);
 		return res;

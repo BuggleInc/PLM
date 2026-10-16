@@ -17,7 +17,7 @@ def run():
                 brushDown()
                 brushUp()
                 #log("Mark cell to %s and apply %d %s\n" %(getGroundColor(),i,rule[i]))
-                forward()
+                step()
                 return
         seenError("Cannot find current color (%s) in my table\n" %(getGroundColor()))
         # END SOLUTION

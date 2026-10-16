@@ -52,7 +52,7 @@ public class ApiGatingTest {
     Assertions.assertTrue(new LoopForEntity().getForbiddenPrimitives().isEmpty());
   }
 
-  /** LoopForEntity calls forbidMultiStep(): moving by a count is refused, while stepForward() and stepBackward() remain allowed. */
+  /** LoopForEntity calls forbidMultiStep(): moving by a count is refused, while step() and stepBack() remain allowed. */
   @Test public void testMultiStepIsRefused()
   {
     LoopForEntity buggle                   = new LoopForEntity();
@@ -96,7 +96,7 @@ public class ApiGatingTest {
     return Stream.of(Arguments.of("lessons.welcome.loopfor.LoopForEntity", command("forward", 2)),
                      Arguments.of("lessons.welcome.loopfor.LoopForEntity", command("backward", 3)),
                      Arguments.of("lessons.welcome.traversal.column.TraversalByColumnEntity", command("forward", 1)),
-                     Arguments.of("lessons.welcome.traversal.column.TraversalByColumnEntity", command("stepForward")),
+                     Arguments.of("lessons.welcome.traversal.column.TraversalByColumnEntity", command("step")),
                      Arguments.of("lessons.welcome.methods.basics.MethodsDogHouseEntity", command("right")),
                      Arguments.of("lessons.recursion.hanoi.LinearHanoiEntity", command("move", 0, 2)));
   }

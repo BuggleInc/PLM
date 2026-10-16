@@ -22,7 +22,7 @@ void tick()
     brushDown();
     brushUp();
 
-    forward(1);
+    step();
   } else {
     left();
 
@@ -30,7 +30,7 @@ void tick()
     brushDown();
     brushUp();
 
-    forward(1);
+    step();
   }
   /* END SOLUTION */
 }

@@ -32,37 +32,37 @@ void mark() {
 void squareA(Color c) {
 	setBrushColor(c);
 
-	forward(1);
-	mark();
+        step();
+        mark();
 
-	left();
-	forward(1);
+        left();
+        step();
 
-	left();
-	forward(1);
-	mark();
+        left();
+        step();
+        mark();
 
-	left();
-	forward(1);
-	left();
+        left();
+        step();
+        left();
 }
 
 void squareB(Color c) {
 	setBrushColor(c);
 	mark();
 
-	forward(1);
+        step();
 
-	left();
-	forward(1);
-	mark();
+        left();
+        step();
+        mark();
 
-	left();
-	forward(1);
+        left();
+        step();
 
-	left();
-	forward(1);
-	left();
+        left();
+        step();
+        left();
 }
 
 void bigSquare() {

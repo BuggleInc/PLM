@@ -26,18 +26,18 @@ void makeV() {
 	forward(2);
 	mark();
 
-	forward(1);
-	left();
-	forward(1);
-	mark();
+        step();
+        left();
+        step();
+        mark();
 
-	backward(1);
-	right();
-	forward(1);
-	mark();
+        stepBack();
+        right();
+        step();
+        mark();
 
-	forward(2);
-	left();
+        forward(2);
+        left();
 }
 
 void makePattern() {

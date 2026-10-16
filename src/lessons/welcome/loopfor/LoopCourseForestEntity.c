@@ -6,20 +6,20 @@ void run()
   /* BEGIN SOLUTION */
   for (int i = 0; i < 7; i++)
     for (int side = 0; side < 4; side++) {
-      for (int step = 0; step < 4; step++)
-        forward(1);
+      for (int k = 0; k < 4; k++)
+        step();
       left();
-      for (int step = 0; step < 2; step++)
-        forward(1);
+      for (int k = 0; k < 2; k++)
+        step();
       right();
-      for (int step = 0; step < 4; step++)
-        forward(1);
+      for (int k = 0; k < 4; k++)
+        step();
       right();
-      forward(1);
-      forward(1);
+      step();
+      step();
       left();
-      for (int step = 0; step < 4; step++)
-        forward(1);
+      for (int k = 0; k < 4; k++)
+        step();
       left();
     }
   /* END SOLUTION */

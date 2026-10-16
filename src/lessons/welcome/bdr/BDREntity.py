@@ -6,21 +6,21 @@ def run():
         c = readMessage()
         if c == 'R':
             right()
-            forward()
+            step()
         elif c == 'L':
             left()
-            forward()
+            step()
         elif c == 'I':
             back()
-            forward()
+            step()
         elif c == 'A':
-            forward()
+            step()
         elif c == 'B':
             forward(2)
         elif c == 'C':
             forward(3)
         elif c == 'Z':
-            backward()
+            stepBack()
         elif c == 'Y':
             backward(2)
         elif c == 'X':

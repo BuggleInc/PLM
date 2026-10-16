@@ -22,21 +22,21 @@ void run(){
 //   set_post_forward(&forward_observer);
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
-  forward(1);
-  forward(1);
-  forward(1);
-  left();
-  int i;
-  for (i = 0; i < 8; i++) {
-    forward(1);
-    right();
-    forward(1);
-    left();
-  }
+step();
+step();
+step();
+left();
+int i;
+for (i = 0; i < 8; i++) {
+  step();
   right();
-  forward(1);
-  forward(1);
-  forward(1);
+  step();
+  left();
+}
+  right();
+  step();
+  step();
+  step();
 
   /* END SOLUTION */
   /* END TEMPLATE */

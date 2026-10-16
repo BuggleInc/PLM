@@ -15,7 +15,7 @@ class RunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 		while (2 * baggle != orange + 1) {
 			//if (getName().equals("buggle2")) 
 			//	System.out.println("baggle: "+baggle+"; orange: "+orange+"; sum:"+(2*baggle-orange-1));
-			stepForward();
+			step();
 			if (isOverBaggle())
 				baggle += 1
 			if (isOverOrange())

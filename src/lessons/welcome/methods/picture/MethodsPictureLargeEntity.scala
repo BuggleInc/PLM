@@ -22,20 +22,20 @@ class MethodsPictureLargeEntity extends SimpleBuggle {
 
 	def makeV(c:Color): Unit = {
 		setBrushColor(c);
-		stepForward();
+		step();
 		mark();
 
-		stepForward();
+		step();
 		left();
-		stepForward();
+		step();
 		mark();
 
-		stepBackward();
+		stepBack();
 		right();
-		stepForward();
+		step();
 		mark();
 
-		stepForward();
+		step();
 		left();
 	}
 

@@ -9,16 +9,16 @@ def run():
     left()
     forward(4)
     left()
-    forward()
-    forward()
+    step()
+    step()
     left()
-    forward()
+    step()
     # back home 
     brushUp()
     right()
     forward(2)
     right()
-    forward()
+    step()
     left()
     # END SOLUTION
 

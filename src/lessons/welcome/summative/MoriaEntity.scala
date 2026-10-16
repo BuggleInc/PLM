@@ -10,22 +10,22 @@ class MoriaEntity extends SimpleBuggle {
 		back();
 		while (!isFacingWall()) {
 			while (!isOverBaggle() && !isFacingWall())
-				stepForward();
+				step();
 			if (isOverBaggle()) {
 				pickupBaggle();
 				back();
 				while (!isOverBaggle())
-					stepForward();
-				stepBackward();
+					step();
+				stepBack();
 				dropBaggle();
 				back();
-				stepForward();
+				step();
 			}
 		}
 		right();
-		stepForward();
+		step();
 		left();
-		stepForward();
+		step();
 		/* END SOLUTION */
 	}
 	/* END REMOTE */

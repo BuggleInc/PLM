@@ -82,7 +82,7 @@ def run():
             elif bottomValue <= topValue and bottomValue <= rightValue and bottomValue <= leftValue :
                 setDirection(Direction.SOUTH)
 
-            forward();
+            step();
 
     evaluatePaths()      # write on each case the distance to the maze exit
     followShortestPath() # make the buggle follow the shortest path

@@ -40,19 +40,19 @@ public class HelloTurmiteEntity extends TurmiteEntity {
       case STOP: /* nothing */;
         break;
       case NOTURN: /* no turn */;
-        stepForward();
+        step();
         break;
       case LEFT:
         left();
-        stepForward();
+        step();
         break;
       case RIGHT:
         right();
-        stepForward();
+        step();
         break;
       case BACK:
         back();
-        stepForward();
+        step();
         break;
       default:
         System.out.println("Unknown turn command associated to i=" + currentColor + ": " + rule[state][currentColor][NEXT_MOVE]);

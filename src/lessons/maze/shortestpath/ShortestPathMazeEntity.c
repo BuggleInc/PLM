@@ -101,8 +101,8 @@ void followShortestPath() {
 		else if (bottomValue <= topValue && bottomValue <= rightValue && bottomValue <= leftValue)
 			setDirection(SOUTH);
 
-		forward(1);
-	}
-	/* END SOLUTION */
+                step();
+        }
+        /* END SOLUTION */
 }
 /* END TEMPLATE */

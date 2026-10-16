@@ -10,7 +10,7 @@ public class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
     while (!isOverBaggle()) {
       if (isFacingTrail()) {
         brushDown();
-        stepForward();
+        step();
         brushUp();
       } else {
         left();
@@ -26,9 +26,9 @@ public class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
     /* BEGIN SOLUTION */
     if (isFacingWall())
       return false;
-    stepForward();
+    step();
     boolean res = getGroundColor().equals(Color.green);
-    stepBackward();
+    stepBack();
     return res;
     /* END SOLUTION */
   }

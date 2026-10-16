@@ -42,7 +42,7 @@ public class BDR2 extends ExerciseTemplated {
   {
     super(lesson);
     tabName = "BDR2";
-    // TODO: May we have to specify that run() method is provided ? and that 'I' is not backward()
+    // TODO: May we have to specify that run() method is provided ? and that 'I' is not stepBack()
 
     myWorld = new BuggleWorld("Dance Floor", 11, 11);
     /* please applause the dancers*/

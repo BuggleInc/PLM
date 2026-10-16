@@ -16,7 +16,7 @@ public class LangtonEntity extends TurmiteEntity {
       brushDown();
       brushUp();
 
-      stepForward();
+      step();
     } else {
       left();
 
@@ -24,7 +24,7 @@ public class LangtonEntity extends TurmiteEntity {
       brushDown();
       brushUp();
 
-      stepForward();
+      step();
     }
     /* END SOLUTION */
   }

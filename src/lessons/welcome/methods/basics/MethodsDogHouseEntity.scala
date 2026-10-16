@@ -7,8 +7,8 @@ class MethodsDogHouseEntity extends SimpleBuggle {
 	/* BEGIN SOLUTION */
 	def dogHouse(): Unit = {
 		for (i <- 1 to 4) {
-			stepForward()
-			stepForward()
+			step()
+			step()
 			left()
 		}
 	}

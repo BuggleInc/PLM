@@ -20,7 +20,7 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
     while (!isOverBaggle()) {
       if (isFacingTrail(c)) {
         brushDown();
-        stepForward();
+        step();
         brushUp();
       } else {
         left();
@@ -38,9 +38,9 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
     if (isFacingWall())
       return false;
 
-    stepForward();
+    step();
     boolean res = getGroundColor().equals(c);
-    stepBackward();
+    stepBack();
     return res;
   }
   /* END SOLUTION */

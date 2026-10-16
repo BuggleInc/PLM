@@ -31,18 +31,18 @@ class PatternPictureEntity extends SimpleBuggle {
 	def squareA(c:Color): Unit = {
 		setBrushColor(c);
 
-		stepForward();
+		step();
 		mark();
 
 		left();
-		stepForward();
+		step();
 
 		left();
-		stepForward();
+		step();
 		mark();
 
 		left();
-		stepForward();
+		step();
 		left();
 	}
 
@@ -50,17 +50,17 @@ class PatternPictureEntity extends SimpleBuggle {
 		setBrushColor(c);
 		mark();
 
-		stepForward();
+		step();
 
 		left();
-		stepForward();
+		step();
 		mark();
 
 		left();
-		stepForward();
+		step();
 
 		left();
-		stepForward();
+		step();
 		left();
 	}
 

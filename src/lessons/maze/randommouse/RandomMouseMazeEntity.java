@@ -13,7 +13,7 @@ public class RandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle
       switch (random3()) {
         case 0:
           if (!isFacingWall()) {
-            stepForward();
+            step();
           }
           break;
         case 1:

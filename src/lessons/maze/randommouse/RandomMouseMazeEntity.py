@@ -10,7 +10,7 @@ def run():
         n = random3()
         if n == 0:
             if not isFacingWall():
-                forward()
+                step()
         elif n == 1:
             left()
         else:

@@ -14,7 +14,7 @@ class IslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 			state match {
 			case 0 => // North runner mode
 				while ( !isFacingWall() )
-					stepForward();
+					step();
 				
 				right(); // make sure that we have a left wall
 				state = 1; // time to enter the Left Follower mode
@@ -31,7 +31,7 @@ class IslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	def stepHandOnWall(): Unit = {
 		while ( ! isFacingWall() )
 		{
-			stepForward();
+			step();
 			left();
 		}
 		right();

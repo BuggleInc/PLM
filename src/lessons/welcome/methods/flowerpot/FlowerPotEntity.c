@@ -15,14 +15,14 @@ void makeFlower(Color c) {
 	setBrushColor(c);
 	brushDown();
 	forward(2);
-	backward(1);
-	left();
-	forward(1);
-	backward(2);
-	forward(1);
-	setBrushColor(yellow);
-	brushUp();
-	right();
+        stepBack();
+        left();
+        step();
+        backward(2);
+        step();
+        setBrushColor(yellow);
+        brushUp();
+        right();
 }
 
 void line(Color c1, Color c2) {

@@ -27,17 +27,17 @@ void snakeStep() {
 	if (isFacingWall()) {
 		if (getDirection() == EAST) {
 			left();
-			forward(1);
-			left();
-		} else {
-			right();
-			forward(1);
-			right();
-		}
-	} else {
-		forward(1);
-	}
+                        step();
+                        left();
+                } else {
+                  right();
+                  step();
+                  right();
+                }
+        } else {
+          step();
+        }
 
-	/* END SOLUTION */
+        /* END SOLUTION */
 }
 /* END TEMPLATE */

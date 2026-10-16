@@ -23,20 +23,20 @@ public class MethodsPictureEntity extends plm.universe.bugglequest.SimpleBuggle 
   void makeV(Color c)
   {
     setBrushColor(c);
-    stepForward();
+    step();
     mark();
 
-    stepForward();
+    step();
     left();
-    stepForward();
+    step();
     mark();
 
-    stepBackward();
+    stepBack();
     right();
-    stepForward();
+    step();
     mark();
 
-    stepForward();
+    step();
     left();
   }
 

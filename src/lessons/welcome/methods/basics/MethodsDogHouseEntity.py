@@ -3,8 +3,8 @@ def run():
     # BEGIN SOLUTION
     def dogHouse():
         for i in range(4):
-            forward()
-            forward()
+            step()
+            step()
             left()
 
     # END SOLUTION

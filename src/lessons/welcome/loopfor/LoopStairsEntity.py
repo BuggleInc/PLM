@@ -9,7 +9,7 @@ def run():
     def forward(need=1):
         nonlocal inTeerNal_Steep_Count
         for i in range(need):
-          _forward()
+          _forward(1)
           if inTeerNal_Steep_Count<0 or inTeerNal_Steep_Count%2 == 1 or (inTeerNal_Steep_Count//2)>=len(colors):
               if inTeerNal_Steep_Count < 0:
                   setBrushColor(Color.lightGray)
@@ -25,13 +25,13 @@ def run():
     forward(3)
     left()
     for i in range(8): 
-        forward()   
+        step()   
         right()
-        forward()
+        step()
         left()
             
     right()
-    forward()
-    forward()
-    forward()
+    step()
+    step()
+    step()
     # END SOLUTION

@@ -38,19 +38,19 @@ void tick(Color* colors, int colorsLength, int*** rule, int dim1, int dim2, int 
     case STOP: /* nothing */;
       break;
     case NOTURN: /* no turn */;
-      forward(1);
+      step();
       break;
     case LEFT:
       left();
-      forward(1);
+      step();
       break;
     case RIGHT:
       right();
-      forward(1);
+      step();
       break;
     case BACK:
       back();
-      forward(1);
+      step();
       break;
     default:
       printf("100 Unknown command associated to i=%d: %c\n", currentColor, rule[state][currentColor][NEXT_MOVE]);

@@ -5,14 +5,14 @@ def run():
     brushDown()
 
     for i in range(4):
-        forward()
-        forward()
+        step()
+        step()
         right()
                     
     brushUp()
-    forward()
+    step()
     right()
-    forward()
+    step()
     left()
     # END SOLUTION
 

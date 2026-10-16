@@ -8,10 +8,10 @@ void move(int nbStep, int f)
   int i;
   if (f) {
     for (i = 0; i < nbStep; i++)
-      stepForward();
+      step();
   } else {
     for (i = 0; i < nbStep; i++)
-      stepBackward();
+      stepBack();
   }
 }
 /* END SOLUTION */

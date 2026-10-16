@@ -7,31 +7,31 @@ class InstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */
 		brushDown();
 		left();
-		stepForward();
-		stepForward();
-		stepForward();
-		stepForward();
+		step();
+		step();
+		step();
+		step();
 		left();
-		stepForward();
-		stepForward();
-		stepForward();
-		stepForward();
+		step();
+		step();
+		step();
+		step();
 		left();
-		stepForward();
-		stepForward();
-		stepForward();
-		stepForward();
+		step();
+		step();
+		step();
+		step();
 		left();
-		stepForward();
-		stepForward();
+		step();
+		step();
 		left();
-		stepForward();
+		step();
 		/* back home */
 		brushUp();
 		right();
 		forward(2);
 		right();
-		stepForward();
+		step();
 		left();
 		/* END SOLUTION */
 	}

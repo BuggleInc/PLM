@@ -8,28 +8,28 @@ def run():
 
     def squareA(c):
        setBrushColor(c)
-       forward()
+       step()
        mark()
        left()
-       forward()
+       step()
        left()
-       forward()
+       step()
        mark()
        left()
-       forward()
+       step()
        left()
        
     def squareB(c):
        setBrushColor(c)
        mark()
-       forward()
+       step()
        left()
-       forward()
+       step()
        mark()
        left()
-       forward()
+       step()
        left()
-       forward()
+       step()
        left()
 
     def bigSquare():

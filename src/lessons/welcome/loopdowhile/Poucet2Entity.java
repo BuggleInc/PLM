@@ -44,7 +44,7 @@ public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle impleme
       int seen = 0;
 
       do {
-        stepForward();
+        step();
         if (isOverBaggle())
           seen++;
       } while (!crossing());
@@ -54,7 +54,7 @@ public class Poucet2Entity extends plm.universe.bugglequest.SimpleBuggle impleme
       else
         right();
     }
-    stepForward();
+    step();
     /* END SOLUTION */
   }
   /* END TEMPLATE */

@@ -5,9 +5,9 @@ def run():
 
     while not isOverBaggle():
       cpt = cpt+1
-      forward()
+      step()
     pickupBaggle()
     for i in range(cpt):
-      backward()
+      stepBack()
     dropBaggle()
     # END SOLUTION

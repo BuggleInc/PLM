@@ -9,13 +9,13 @@ def run():
             setBrushColor(Color.black)
             brushDown()
             brushUp()
-            forward()
+            step()
         else:
             left()
             setBrushColor(Color.white)
             brushDown()
             brushUp()
-            forward()
+            step()
         # END SOLUTION
     # END TEMPLATE
             

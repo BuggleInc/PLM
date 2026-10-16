@@ -4,10 +4,10 @@ def run():
     def move(nbPas, doforward):
         if doforward:
             for i in range(nbPas):
-                forward()
+                step()
         else:
             for i in range(nbPas):
-                backward()
+                stepBack()
     # END SOLUTION
 
     move(getY(), getDirection() == Direction.NORTH) 

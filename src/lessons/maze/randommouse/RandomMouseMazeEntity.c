@@ -11,19 +11,19 @@ void run() {
 		switch(random3()) {
 		case 0:
 			if (!isFacingWall()){
-				forward(1);
-			}
-			break;
-		case 1:
-			left();
-			break;
-		case 2:
-			right();
-			break;
-		}
-	}
-	pickupBaggle();
-	/* END SOLUTION */
+                          step();
+                        }
+                        break;
+                case 1:
+                  left();
+                  break;
+                case 2:
+                  right();
+                  break;
+                }
+        }
+        pickupBaggle();
+        /* END SOLUTION */
 }
 /* END TEMPLATE */
 

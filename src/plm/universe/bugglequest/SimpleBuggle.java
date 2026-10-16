@@ -22,10 +22,10 @@ public class SimpleBuggle extends AbstractBuggle {
   }
 
   /* Raise a window error when an exception is encountered */
-  @Override public void stepForward()
+  @Override public void step()
   {
     try {
-      super.stepForward();
+      super.step();
     } catch (BuggleWallException e) {
       if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
         throw new RuntimeException(e);
@@ -48,10 +48,10 @@ public class SimpleBuggle extends AbstractBuggle {
     }
   }
 
-  @Override public void stepBackward()
+  @Override public void stepBack()
   {
     try {
-      super.stepBackward();
+      super.stepBack();
     } catch (BuggleWallException e) {
       if (Game.getInstance().isBatchExecution()) // Unit tests ongoing
         throw new RuntimeException(e);
@@ -149,16 +149,16 @@ public class SimpleBuggle extends AbstractBuggle {
   }
 
   /* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
-  public void avance() { stepForward(); }
+  public void avance() { step(); }
   public void avance(int steps) { forward(steps); }
-  public void recule() { stepBackward(); }
+  public void recule() { stepBack(); }
   public void recule(int steps) { backward(steps); }
   public void prendBiscuit() { pickupBaggle(); }
   public void poseBiscuit() { dropBaggle(); }
   /* BINDINGS TRANSLATION: Brazilian Portuguese */
-  public void avançar() { stepForward(); }
+  public void avançar() { step(); }
   public void avançar(int steps) { forward(steps); }
-  public void recuar() { stepBackward(); }
+  public void recuar() { stepBack(); }
   public void recuar(int steps) { backward(steps); }
   public void pegarBaggle() { pickupBaggle(); }
   public void soltarBaggle() { dropBaggle(); }

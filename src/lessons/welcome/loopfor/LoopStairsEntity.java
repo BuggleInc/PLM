@@ -6,7 +6,7 @@ public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
   @Override public void forward(int i)
   {
     for (int j = 0; j < i; j++) {
-      stepForward();
+      step();
     }
   }
 
@@ -15,9 +15,9 @@ public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
   };
 
   int inTeerNal_Steep_Count = -3;
-  @Override public void stepForward()
+  @Override public void step()
   {
-    super.stepForward();
+    super.step();
     if (inTeerNal_Steep_Count < 0 || inTeerNal_Steep_Count % 2 == 1 || (inTeerNal_Steep_Count / 2) >= colors.length) {
       if (inTeerNal_Steep_Count < 0)
         setBrushColor(Color.lightGray);
@@ -40,9 +40,9 @@ public class LoopStairsEntity extends plm.universe.bugglequest.SimpleBuggle {
     forward(3);
     left();
     for (int i = 0; i < 8; i++) {
-      stepForward();
+      step();
       right();
-      stepForward();
+      step();
       left();
     }
     right();

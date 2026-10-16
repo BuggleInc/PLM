@@ -9,7 +9,7 @@ class LoopWhileEntity extends SimpleBuggle {
 	override def run(): Unit = { 
 		/* BEGIN SOLUTION */
 		while (!isFacingWall())
-			stepForward();
+			step();
 		/* END SOLUTION */
 	}
 	/* END REMOTE */

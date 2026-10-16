@@ -11,7 +11,7 @@ class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */
 		var more = true;
 		while (more) {
-			stepForward();
+			step();
 			more = !isGroundWhite();
 		}
 		/* END SOLUTION */

@@ -10,7 +10,7 @@ def run():
     baggle = 0
     orange = 0
     while 2 * baggle != orange + 1:
-        forward()
+        step()
         if isOverBaggle():
             baggle += 1
         if isOverOrange():

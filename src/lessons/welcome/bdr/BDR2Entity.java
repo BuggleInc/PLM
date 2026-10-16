@@ -124,19 +124,19 @@ public class BDR2Entity extends SimpleBuggle {
       switch (read) {
         case 'R':
           right();
-          stepForward();
+          step();
           break;
         case 'L':
           left();
-          stepForward();
+          step();
           break;
         case 'I':
           back();
-          stepForward();
+          step();
           break;
 
         case 'A':
-          forward(1);
+          step();
           break;
         case 'B':
           forward(2);
@@ -155,7 +155,7 @@ public class BDR2Entity extends SimpleBuggle {
           break;
 
         case 'Z':
-          backward(1);
+          stepBack();
           break;
         case 'Y':
           backward(2);

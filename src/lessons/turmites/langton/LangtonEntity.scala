@@ -16,7 +16,7 @@ class LangtonEntity extends SimpleBuggle {
 			brushDown();
 			brushUp();
 
-			stepForward();
+			step();
 		} else {
 			left();
 
@@ -24,7 +24,7 @@ class LangtonEntity extends SimpleBuggle {
 			brushDown();
 			brushUp();
 
-			stepForward();
+			step();
 		}
 		/* END SOLUTION */
 	}

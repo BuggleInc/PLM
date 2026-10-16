@@ -12,7 +12,7 @@ public class LoopWhileEntity extends SimpleBuggle {
   {
     /* BEGIN SOLUTION */
     while (!isFacingWall())
-      stepForward();
+      step();
     /* END SOLUTION */
   }
   /* END TEMPLATE */

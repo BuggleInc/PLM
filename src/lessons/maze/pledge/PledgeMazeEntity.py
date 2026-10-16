@@ -5,7 +5,7 @@ def run():
     def stepHandOnWall():
         nonlocal angleSum
         while not isFacingWall():
-            forward()
+            step()
             left()
             angleSum += 1
         right()
@@ -26,7 +26,7 @@ def run():
     while not isOverBaggle():
         if northRunner:
             while not isFacingWall():
-                forward()
+                step()
             right()
             angleSum -= 1
             northRunner = False

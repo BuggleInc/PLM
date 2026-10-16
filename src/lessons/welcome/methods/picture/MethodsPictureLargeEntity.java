@@ -24,20 +24,20 @@ public class MethodsPictureLargeEntity extends SimpleBuggle {
   void makeV(Color c)
   {
     setBrushColor(c);
-    stepForward();
+    step();
     mark();
 
-    stepForward();
+    step();
     left();
-    stepForward();
+    step();
     mark();
 
-    stepBackward();
+    stepBack();
     right();
-    stepForward();
+    step();
     mark();
 
-    stepForward();
+    step();
     left();
   }
 

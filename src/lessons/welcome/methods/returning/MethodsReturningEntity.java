@@ -8,7 +8,7 @@ public class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggl
       if (haveBaggle())
         return;
       right();
-      stepForward();
+      step();
       left();
     }
   }
@@ -20,7 +20,7 @@ public class MethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggl
     for (int i = 0; i < 6; i++) {
       if (isOverBaggle())
         res = true;
-      stepForward();
+      step();
     }
     backward(6);
     return res;

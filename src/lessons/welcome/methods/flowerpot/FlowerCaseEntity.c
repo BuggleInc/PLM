@@ -16,15 +16,15 @@ void makeFlower(Color c) {
 	setBrushColor(c);
 	brushDown();
 	forward(2);
-	backward(1);
-	left();
-	forward(1);
-	backward(2);
-	forward(1);
-	setBrushColor(yellow);
-	brushUp();
-	right();
-	backward(1);
+        stepBack();
+        left();
+        step();
+        backward(2);
+        step();
+        setBrushColor(yellow);
+        brushUp();
+        right();
+        stepBack();
 }
 
 void line(Color colors[],int colorsLength, int returnBack) {

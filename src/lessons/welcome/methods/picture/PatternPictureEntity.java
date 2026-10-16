@@ -33,18 +33,18 @@ public class PatternPictureEntity extends SimpleBuggle {
   {
     setBrushColor(c);
 
-    stepForward();
+    step();
     mark();
 
     left();
-    stepForward();
+    step();
 
     left();
-    stepForward();
+    step();
     mark();
 
     left();
-    stepForward();
+    step();
     left();
   }
 
@@ -53,17 +53,17 @@ public class PatternPictureEntity extends SimpleBuggle {
     setBrushColor(c);
     mark();
 
-    stepForward();
+    step();
 
     left();
-    stepForward();
+    step();
     mark();
 
     left();
-    stepForward();
+    step();
 
     left();
-    stepForward();
+    step();
     left();
   }
 

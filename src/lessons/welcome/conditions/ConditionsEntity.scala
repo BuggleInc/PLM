@@ -7,9 +7,9 @@ class ConditionsEntity extends SimpleBuggle {
 	override def run(): Unit = { 
 		/* BEGIN SOLUTION */
 		if (isFacingWall())
-			stepBackward();
+			stepBack();
 		else
-			stepForward();
+			step();
 		/* END SOLUTION */
 	}
 	/* END REMOTE */

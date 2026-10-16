@@ -4,7 +4,7 @@ void run()
 {
   /* BEGIN TEMPLATE */
   /* BEGIN SOLUTION */
-  stepForward();
+  step();
   /* END SOLUTION */
   /* END TEMPLATE */
 }

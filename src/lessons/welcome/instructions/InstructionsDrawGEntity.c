@@ -5,32 +5,32 @@ void run(){
 	/* BEGIN SOLUTION */
 	brushDown();
 	left();
-	forward(1);
-	forward(1);
-	forward(1);
-	forward(1);
-	left();
-	forward(1);
-	forward(1);
-	forward(1);
-	forward(1);
-	left();
-	forward(1);
-	forward(1);
-	forward(1);
-	forward(1);
-	left();
-	forward(1);
-	forward(1);
-	left();
-	forward(1);
-	/* back home */
-	brushUp();
-	right();
-	forward(2);
-	right();
-	forward(1);
-	left();
-	/* END SOLUTION */
-	/* END TEMPLATE */
+        step();
+        step();
+        step();
+        step();
+        left();
+        step();
+        step();
+        step();
+        step();
+        left();
+        step();
+        step();
+        step();
+        step();
+        left();
+        step();
+        step();
+        left();
+        step();
+        /* back home */
+        brushUp();
+        right();
+        forward(2);
+        right();
+        step();
+        left();
+        /* END SOLUTION */
+        /* END TEMPLATE */
 }

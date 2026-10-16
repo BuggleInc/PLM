@@ -16,14 +16,14 @@ def run():
     	if isFacingWall():
     		if getDirection() == Direction.EAST:
     			left()
-    			forward()
+    			step()
     			left()
     		else:
     			right()
-    			forward()
+    			step()
     			right()
     	else:
-    		forward()
+    		step()
 
     brushDown()
     while not endingPosition():

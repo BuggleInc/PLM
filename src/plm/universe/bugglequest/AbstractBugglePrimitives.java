@@ -92,31 +92,13 @@ public interface AbstractBugglePrimitives extends EntityPrimitivesBase {
 
   @Primitive void setPos(int x, int y) throws BuggleInOuterSpaceException;
 
-  @Primitive(name = "forward") default void primitiveForward(int nb) throws BuggleWallException
-  {
-    if (nb == 1) {
-      stepForward();
-    } else {
-      forward(nb);
-    }
-  }
+  @Primitive void step() throws BuggleWallException;
 
-  @Primitive void stepForward() throws BuggleWallException;
+  @Primitive void forward(int count) throws BuggleWallException;
 
-  void forward(int count) throws BuggleWallException;
+  @Primitive void stepBack() throws BuggleWallException;
 
-  @Primitive(name = "backward") default void primitiveBackward(int nb) throws BuggleWallException
-  {
-    if (nb == 1) {
-      stepBackward();
-    } else {
-      backward(nb);
-    }
-  }
-
-  @Primitive void stepBackward() throws BuggleWallException;
-
-  void backward(int count) throws BuggleWallException;
+  @Primitive void backward(int count) throws BuggleWallException;
 
   @Primitive boolean isFacingWall();
 

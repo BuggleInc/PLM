@@ -46,7 +46,7 @@ void tick(char* rule, Color* colors, int length)
       brushDown();
       brushUp();
 
-      forward(1);
+      step();
 
       return;
     }

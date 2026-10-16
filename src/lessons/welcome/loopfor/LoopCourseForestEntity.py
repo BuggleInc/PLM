@@ -3,19 +3,19 @@ def run():
     # BEGIN SOLUTION
     for i in range(7):
         for side in range(4):
-            for step in range(4):
-                forward()
+            for k in range(4):
+                step()
             left();
-            for step in range(2):
-                forward()
+            for k in range(2):
+                step()
             right();
-            for step in range(4):
-                forward()
+            for k in range(4):
+                step()
             right()
-            forward()
-            forward()
+            step()
+            step()
             left()
-            for step in range(4):
-                forward()
+            for k in range(4):
+                step()
             left()
     # END SOLUTION

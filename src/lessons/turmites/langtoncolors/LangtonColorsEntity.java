@@ -28,7 +28,7 @@ public class LangtonColorsEntity extends TurmiteEntity {
         brushDown();
         brushUp();
 
-        stepForward();
+        step();
 
         return;
       }
