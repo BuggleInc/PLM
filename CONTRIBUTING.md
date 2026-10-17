@@ -492,6 +492,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`LightBotProgramTest`:* the text of a LightBot program is parsed and written back, whatever its length.
     * *`GitSessionKitTest`:* with a repository of a user in a temporary directory, `loadLesson()` restores the saved code and the
       successes into the `SessionDB` without loading the entities (and without `loadAll()` having run), and `loadAll()` reads the lesson summaries.
+      It first waits for the answer computation, which loads the entity in one language in the background.
     * *`SessionDBTest`:* the editor contents stored by exercise and language do not interfere, a body is stored as is,
       reverting an exercise forgets its contents only, the editors are told of the changes, the passed exercises are counted per
       lesson and language (`registerLesson()` included), and the lesson summaries are written and parsed back (an invalid one is ignored).

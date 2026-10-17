@@ -3,12 +3,15 @@ package plm.test.session;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Locale;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.ProgrammingLanguageManager;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
@@ -28,13 +31,14 @@ public class GitSessionKitTest {
   private SimpleExercise exo;
   private Path repo;
 
-  @BeforeEach public void setUp() throws IOException
+  @BeforeEach public void setUp() throws IOException, InterruptedException
   {
     FileUtils.setLocale(new Locale("en"));
     langs  = Game.getInstance().programmingLanguageManager;
     db     = Game.getInstance().studentWork;
     lesson = new Main();
     exo    = (SimpleExercise)((Main)lesson).getExercise("SimpleExercise");
+    Game.waitInitThreads(); // the answer is computed in the background by the correction entity, which loads its language
     repo   = Files.createDirectories(path.resolve(Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString()));
   }
 
@@ -50,6 +54,7 @@ public class GitSessionKitTest {
     Files.writeString(repo.resolve(exo.getId() + ".java.code"), "saved code");
     Files.writeString(repo.resolve(exo.getId() + ".java.DONE"), "");
     Files.writeString(repo.resolve(exo.getId() + ".py.code"), "code that was never passed");
+    List<ProgrammingLanguage> unloaded = Stream.of(langs.JAVA, langs.PYTHON).filter(lang -> exo.getLoadedSourceFiles(lang).isEmpty()).toList();
 
     new GitSessionKit(Game.getInstance()).loadLesson(path.toFile(), lesson);
 
@@ -58,7 +63,9 @@ public class GitSessionKitTest {
     Assertions.assertEquals("code that was never passed", db.getBody(exo, langs.PYTHON));
     Assertions.assertFalse(db.getPassed(exo, langs.PYTHON));
     Assertions.assertNull(db.getBody(exo, langs.SCALA)); // never saved
-    Assertions.assertTrue(exo.getLoadedSourceFiles(langs.JAVA).isEmpty(), "restoring the code must not parse the entity");
+    Assertions.assertFalse(unloaded.isEmpty());
+    for (ProgrammingLanguage lang : unloaded)
+      Assertions.assertTrue(exo.getLoadedSourceFiles(lang).isEmpty(), "restoring the code must not parse the entity in " + lang);
   }
 
   @Test public void testLoadAllReadsTheLessonSummaries() throws IOException
