@@ -1,12 +1,12 @@
 package plm.core.lang.primitives;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import plm.core.utils.PoFile;
 
 /**
  * Translated names of the primitives, given by the translators in the entries of context {@link PrimitivePot#NAME_CONTEXT} of the
@@ -38,33 +38,14 @@ public class PrimitiveAliases {
     try (Stream<Path> files = Files.list(poDirectory)) {
       for (Path po : files.filter(path -> path.toString().endsWith(".po")).sorted().toList()) {
         Map<String, String> aliases = new TreeMap<>();
-        boolean fuzzy               = false;
-        String context = null, id = null;
-        for (String line : Files.readAllLines(po, StandardCharsets.UTF_8)) {
-          if (line.isBlank()) { // end of entry: the flags of an obsolete entry (#~), which has no msgstr, must not leak to the next one
-            fuzzy   = false;
-            context = null;
-          } else if (line.startsWith("#,"))
-            fuzzy = line.contains("fuzzy");
-          else if (line.startsWith("msgctxt "))
-            context = unquote(line.substring("msgctxt ".length()));
-          else if (line.startsWith("msgid "))
-            id = unquote(line.substring("msgid ".length()));
-          else if (line.startsWith("msgstr ")) {
-            String alias = unquote(line.substring("msgstr ".length()));
-            if (PrimitivePot.NAME_CONTEXT.equals(context) && !fuzzy && !alias.isEmpty() && !alias.equals(id))
-              aliases.put(id, alias);
-            fuzzy   = false;
-            context = null;
-          }
-        }
+        for (PoFile.Entry entry : PoFile.read(po))
+          if (PrimitivePot.NAME_CONTEXT.equals(entry.context()) && !entry.fuzzy() && !entry.translation().isEmpty() && !entry.translation().equals(entry.id()))
+            aliases.put(entry.id(), entry.translation());
         result.put(po.getFileName().toString().replace(".po", ""), aliases);
       }
     }
     return result;
   }
-
-  private static String unquote(String quoted) { return quoted.substring(1, quoted.length() - 1); }
 
   /**
    * The primitives of a glue file followed by the aliases of every locale. Fails if an alias is not a portable identifier, or if a name

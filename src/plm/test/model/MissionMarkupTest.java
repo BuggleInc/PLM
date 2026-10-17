@@ -20,8 +20,8 @@ import org.junit.jupiter.params.provider.MethodSource;
  * [!thelang] and [!primitives/] placeholders are not blocks.
  */
 public class MissionMarkupTest {
-  private static final Pattern TAG       = Pattern.compile("\\[!([^\\]]*)\\]|\\[/!\\]");
-  private static final Set<String> LANGS = Set.of("java", "python", "scala", "c");
+  static final Pattern TAG       = Pattern.compile("\\[!([^\\]]*)\\]|\\[/!\\]");
+  static final Set<String> LANGS = Set.of("java", "python", "scala", "c");
 
   static List<Path> missions() throws IOException
   {

@@ -485,6 +485,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       primitives, and orders the groups as declared.
     * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
       known languages.
+    * *`MissionTranslationsTest`:* in every `l10n/missions/*.po`, even for the languages that po4a does not generate, the
+      translations keep the `[!langs]...[/!]` blocks of the English text and call each of its primitives under its English name or
+      its alias in that language. This protects the translators who are not programmers.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
