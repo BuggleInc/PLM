@@ -3223,7 +3223,7 @@ msgstr "setCouleur"
 
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
-msgid "clear"
+msgid "clearAll"
 msgstr "effaceTout"
 
 #: src/plm/universe/turtles/TurtlePrimitives.java

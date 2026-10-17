@@ -37,20 +37,24 @@ void squareSide(int levels, double length) {
 }
 /* END TEMPLATE */
 void drawHint() {
-	clear();
-	hide();
-	setColor(red);
-	setPos(100,50);setHeading(0);
-	squareSide(0,200);
+  clearAll();
+  hide();
+  setColor(red);
+  setPos(100, 50);
+  setHeading(0);
+  squareSide(0, 200);
 
-	setPos(100,150); setHeading(0);
-	squareSide(1,200);
+  setPos(100, 150);
+  setHeading(0);
+  squareSide(1, 200);
 
-	setPos(100,250); setHeading(0);
-	squareSide(2,200);
+  setPos(100, 250);
+  setHeading(0);
+  squareSide(2, 200);
 
-	setPos(100,350); setHeading(0);
-	squareSide(3,200);
+  setPos(100, 350);
+  setHeading(0);
+  squareSide(3, 200);
 }
 
 void run() {

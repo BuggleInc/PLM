@@ -15,7 +15,10 @@ import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-/** The [!langs]...[/!] blocks of every mission text, translations included, are balanced and only name known languages. */
+/**
+ * The [!langs]...[/!] blocks of every mission text, translations included, are balanced and only name known languages. The
+ * [!thelang] and [!primitives/] placeholders are not blocks.
+ */
 public class MissionMarkupTest {
   private static final Pattern TAG       = Pattern.compile("\\[!([^\\]]*)\\]|\\[/!\\]");
   private static final Set<String> LANGS = Set.of("java", "python", "scala", "c");
@@ -29,7 +32,7 @@ public class MissionMarkupTest {
 
   @ParameterizedTest @MethodSource("missions") public void markupIsWellFormed(Path mission) throws IOException
   {
-    String text = Files.readString(mission).replaceAll("\\[!thelang/?\\]", "");
+    String text = Files.readString(mission).replaceAll("\\[!(thelang/?|primitives/)\\]", "");
     int depth   = 0;
     Matcher tag = TAG.matcher(text);
     while (tag.find()) {

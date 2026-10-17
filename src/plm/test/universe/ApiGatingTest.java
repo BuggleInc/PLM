@@ -16,6 +16,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 import plm.test.lang.CommandExecutorTest.GatedEntity;
@@ -115,7 +116,7 @@ public class ApiGatingTest {
   }
 
   /** The documentation of the world (Ctrl-H) hides the primitives forbidden by the exercise and the undocumented ones, and orders the groups. */
-  @Test public void testDocumentationHidesForbiddenPrimitives()
+  @Test public void testDocumentationHidesForbiddenPrimitives() throws BrokenProgrammingLanguageException
   {
     ProgrammingLanguage previous = Game.getInstance().getProgrammingLanguage();
     try {
