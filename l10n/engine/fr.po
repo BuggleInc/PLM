@@ -3345,3 +3345,13 @@ msgstr "getCouleur"
 msgctxt "primitive"
 msgid "getSize"
 msgstr "getTaille"
+
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSlotSize"
+msgstr "getTaillePiquet"
+
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSlotRadius"
+msgstr "getRayonPiquet"
