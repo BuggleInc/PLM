@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-25 04:57+0200\n"
+"POT-Creation-Date: 2026-10-17 11:36+0200\n"
 "PO-Revision-Date: 2015-02-16 14:12+0100\n"
 "Last-Translator: Qiaoyang SU <suqiaoy@163.com>\n"
 "Language-Team: Chinese(中文)\n"
@@ -18,59 +18,1241 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/lessons/lightbot/universe/LightBotExercise.java:56
+#. Title of a group of primitives in the documentation of a world
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "About the PLM"
+msgid "About the brush"
+msgstr "关于PLM"
+
+#. Title of a group of primitives in the documentation of a world
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "About the PLM"
+msgid "About the pen"
+msgstr "关于PLM"
+
+#. Documentation of the primitive writeMessage()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Adds the given text to the message on the ground."
+msgstr ""
+
+#. Documentation of the primitive setDesiredAngle()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid ""
+"Asks for a new angle. You cannot lean more than ±90°, and the angle varies "
+"by at most ±5° per step."
+msgstr ""
+
+#. Documentation of the primitive setDesiredThrust()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid ""
+"Asks for a new thrust, between 0 and 4. The thrust varies by at most 1 per "
+"step: if it is 2 and you ask for 4, you get 3 at the next step."
+msgstr ""
+
+#. Documentation of the primitive setX()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Changes the X coordinate of the buggle."
+msgstr ""
+
+#. Documentation of the primitive setY()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Changes the Y coordinate of the buggle."
+msgstr ""
+
+#. Documentation of the primitive setBrushColor()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Changes the color of the brush."
+msgstr ""
+
+#. Documentation of the primitive setBodyColor()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Changes the color of the buggle's body."
+msgstr ""
+
+#. Documentation of the primitive setColor()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Changes the color of the pen."
+msgstr ""
+
+#. Documentation of the primitive setDirection()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Changes the heading of the buggle."
+msgstr ""
+
+#. Documentation of the primitive setHeading()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Changes the heading of the turtle (in degrees)."
+msgstr ""
+
+#. Documentation of the primitive setPos()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Changes the position of the buggle."
+msgstr ""
+
+#. Title of a group of primitives in the documentation of a world
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Changing the world"
+msgstr ""
+
+#. Documentation of the primitive copy()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid ""
+"Copies the value of cell fromPos into cell toPos. Costs one read and one "
+"write."
+msgstr ""
+
+#. Title of a group of primitives in the documentation of a world
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Dimensions of the world"
+msgstr ""
+
+#. Documentation of the primitive circle()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Draws a circle of the given radius, centered on the turtle."
+msgstr ""
+
+#. Documentation of the primitive dropBaggle()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid ""
+"Drops the carried baggle on the ground. Fails if the buggle carries none or "
+"if there is already one on the ground."
+msgstr ""
+
+#. Documentation of the primitive clearMessage()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Erases the message on the ground under the buggle."
+msgstr ""
+
+#. Documentation of the primitive flip()
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgid "Flips the given amount of pancakes, from the top of the stack."
+msgstr ""
+
+#. Documentation of the primitive hide()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Hides the turtle."
+msgstr ""
+
+#. Title of a group of primitives in the documentation of a world
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Information on the buggle"
+msgstr ""
+
+#. Title of a group of primitives in the documentation of a world
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Interacting with the world"
+msgstr ""
+
+#. Documentation of the primitive backward()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Moves backward of the given amount of steps."
+msgstr ""
+
+#. Documentation of the primitive forward()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Moves forward of the given amount of steps."
+msgstr ""
+
+#. Documentation of the primitive stepBack()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Moves one cell backward."
+msgstr ""
+
+#. Documentation of the primitive step()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Moves one cell forward."
+msgstr ""
+
+#. Documentation of the primitive backward()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Moves the given amount of cells backward."
+msgstr ""
+
+#. Documentation of the primitive forward()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Moves the given amount of cells forward."
+msgstr ""
+
+#. Documentation of the primitive move()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid ""
+"Moves the given player into the hole. Fails if the player is not next to the "
+"hole (at most one base away)."
+msgstr ""
+
+#. Documentation of the primitive penDown()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Moves the pen down: the turtle leaves a trace when it moves."
+msgstr ""
+
+#. Documentation of the primitive penUp()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Moves the pen up: the turtle stops leaving a trace when it moves."
+msgstr ""
+
+#. Documentation of the primitive move()
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+msgid ""
+"Moves the top-most disk from slot src onto slot dst. Fails on invalid moves, "
+"such as putting a disk over a smaller one."
+msgstr ""
+
+#. Documentation of the primitive moveTo()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Moves the turtle to the given position."
+msgstr ""
+
+#. Title of a group of primitives in the documentation of a world
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "Saving"
+msgid "Moving"
+msgstr "保存中"
+
+#. Title of a group of primitives in the documentation of a world
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Moving the turtle"
+msgstr ""
+
+#. Title of a group of primitives in the documentation of a world
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "File related functions"
+msgid "Other functions"
+msgstr "文件历史记录"
+
+#. Documentation of the primitive pickupBaggle()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid ""
+"Picks up the baggle under the buggle. Fails if there is none or if the "
+"buggle already carries one."
+msgstr ""
+
+#. Documentation of the primitive brushDown()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Puts the brush down: the buggle paints the cells it walks on."
+msgstr ""
+
+#. Documentation of the primitive brushUp()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Raises the brush: the buggle stops painting."
+msgstr ""
+
+#. Documentation of the primitive clearAll()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Removes every trail from the sheet."
+msgstr ""
+
+#. Documentation of the primitive getX()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid ""
+"Returns the X coordinate of the buggle. The point (0,0) is on the top left "
+"corner."
+msgstr ""
+
+#. Documentation of the primitive getX()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid ""
+"Returns the X coordinate of the turtle. The point (0,0) is on the top left "
+"corner."
+msgstr ""
+
+#. Documentation of the primitive getX()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid "Returns the X position of the lander."
+msgstr ""
+
+#. Documentation of the primitive getY()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid ""
+"Returns the Y coordinate of the buggle. The point (0,0) is on the top left "
+"corner."
+msgstr ""
+
+#. Documentation of the primitive getY()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid ""
+"Returns the Y coordinate of the turtle. The point (0,0) is on the top left "
+"corner."
+msgstr ""
+
+#. Documentation of the primitive getY()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid "Returns the Y position of the lander."
+msgstr ""
+
+#. Documentation of the primitive getBasesAmount()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Returns the amount of bases on the field."
+msgstr ""
+
+#. Documentation of the primitive getSlotSize()
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+msgid "Returns the amount of disks on the given slot."
+msgstr ""
+
+#. Documentation of the primitive getSize()
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgid "Returns the amount of lines of the flag."
+msgstr ""
+
+#. Documentation of the primitive getStackSize()
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgid "Returns the amount of pancakes in the stack."
+msgstr ""
+
+#. Documentation of the primitive getPositionsAmount()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Returns the amount of player positions per base."
+msgstr ""
+
+#. Documentation of the primitive getValueCount()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid "Returns the amount of values in the array. Costs nothing."
+msgstr ""
+
+#. Documentation of the primitive getAngle()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid ""
+"Returns the angle of the lander. At 0°, the head of the lander points up: "
+"this is the angle you must land with. A positive angle denotes a left-"
+"leaning lander, a negative one a right-leaning lander."
+msgstr ""
+
+#. Documentation of the primitive getHoleBase()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Returns the base in which the hole is."
+msgstr ""
+
+#. Documentation of the primitive getBrushColor()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Returns the color of the brush."
+msgstr ""
+
+#. Documentation of the primitive getBodyColor()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Returns the color of the buggle's body."
+msgstr ""
+
+#. Documentation of the primitive getColor()
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgid "Returns the color of the given line."
+msgstr ""
+
+#. Documentation of the primitive getGroundColor()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Returns the color of the ground under the buggle."
+msgstr ""
+
+#. Documentation of the primitive getPlayerColor()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Returns the color of the player at the given location."
+msgstr ""
+
+#. Documentation of the primitive getDirection()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Returns the heading of the buggle."
+msgstr ""
+
+#. Documentation of the primitive getHeading()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Returns the heading of the turtle (in degrees)."
+msgstr ""
+
+#. Documentation of the primitive getWorldHeight()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Returns the height of the world."
+msgstr ""
+
+#. Documentation of the primitive getSpeedX()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid "Returns the horizontal speed of the lander."
+msgstr ""
+
+#. Documentation of the primitive readMessage()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Returns the message on the ground under the buggle."
+msgstr ""
+
+#. Documentation of the primitive getIndication()
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+msgid "Returns the number written on the given cell."
+msgstr ""
+
+#. Documentation of the primitive getHolePosition()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Returns the position of the hole within its base."
+msgstr ""
+
+#. Documentation of the primitive getPancakeRadius()
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgid ""
+"Returns the radius of the given pancake. The top-most pancake is of rank 0."
+msgstr ""
+
+#. Documentation of the primitive getSlotRadius()
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java
+msgid "Returns the radius of the top-most disk of the given slot."
+msgstr ""
+
+#. Documentation of the primitive getFuel()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid ""
+"Returns the remaining fuel. At each step, the lander consumes as many fuel "
+"units as its thrust. Without fuel, you are in free fall!"
+msgstr ""
+
+#. Documentation of the primitive getThrust()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid "Returns the thrust of the lander."
+msgstr ""
+
+#. Documentation of the primitive getValue()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid "Returns the value of cell i. Costs one read."
+msgstr ""
+
+#. Documentation of the primitive getSpeedY()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid "Returns the vertical speed of the lander."
+msgstr ""
+
+#. Documentation of the primitive getGround()
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgid ""
+"Returns the vertices of the ground's profile, from left to right. [!java|"
+"scala]Get their coordinates with <code>p.x()</code> and <code>p.y()</code>."
+"[/!][!python]Each point is an array of two integers: its X and Y coordinates."
+"[/!]"
+msgstr ""
+
+#. Documentation of the primitive getWorldWidth()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Returns the width of the world."
+msgstr ""
+
+#. Documentation of the primitive setValue()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid "Sets the value of cell i. Costs one write."
+msgstr ""
+
+#. Documentation of the primitive show()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Shows the turtle back."
+msgstr ""
+
+#. Title of a group of primitives in the documentation of a world
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+#: src/lessons/welcome/loopdowhile/LoopDoWhileEntity.java
+#: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
+#: src/lessons/welcome/variables/RunHalfEntity.java
+#, fuzzy
+#| msgid "Switch to another exercise"
+msgid "Specific to this exercise"
+msgstr "换一个练习"
+
+#. Title of a group of primitives in the documentation of a world
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "State of the world"
+msgstr ""
+
+#. Documentation of the primitive swap()
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgid "Swaps the given lines."
+msgstr ""
+
+#. Documentation of the primitive swap()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid "Swaps the values of cells i and j. Costs two reads and two writes."
+msgstr ""
+
+#. Documentation of the primitive setX()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid ""
+"Teleports the turtle to the given X coordinate, without leaving any trace."
+msgstr ""
+
+#. Documentation of the primitive setY()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid ""
+"Teleports the turtle to the given Y coordinate, without leaving any trace."
+msgstr ""
+
+#. Documentation of the primitive setPos()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Teleports the turtle to the given position, without leaving any trace."
+msgstr ""
+
+#. Documentation of the primitive isSorted()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Tells whether all players of the field are at home."
+msgstr ""
+
+#. Documentation of the primitive isBaseSorted()
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgid "Tells whether all players of the given base are at home."
+msgstr ""
+
+#. Documentation of the primitive isBrushDown()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether the brush is down."
+msgstr ""
+
+#. Documentation of the primitive isCarryingBaggle()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether the buggle carries a baggle."
+msgstr ""
+
+#. Documentation of the primitive isSelected()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether the buggle is currently selected in the interface."
+msgstr ""
+
+#. Documentation of the primitive crossing()
+#: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
+msgid "Tells whether the buggle is on a crossing."
+msgstr ""
+
+#. Documentation of the primitive exitReached()
+#: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
+msgid "Tells whether the buggle reached the exit."
+msgstr ""
+
+#. Documentation of the primitive isSelected()
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgid "Tells whether the current world is selected in the interface."
+msgstr ""
+
+#. Documentation of the primitive isSelected()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid ""
+"Tells whether the current world is selected in the interface. Costs nothing."
+msgstr ""
+
+#. Documentation of the primitive isSorted()
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgid "Tells whether the flag is sorted."
+msgstr ""
+
+#. Documentation of the primitive hasLeftWall()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether the given cell has a wall on its left side."
+msgstr ""
+
+#. Documentation of the primitive hasTopWall()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether the given cell has a wall on its top side."
+msgstr ""
+
+#. Documentation of the primitive isPancakeUpsideDown()
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgid ""
+"Tells whether the given pancake is upside down, with its burned side on top. "
+"The top-most pancake is of rank 0."
+msgstr ""
+
+#. Documentation of the primitive isOverOrange()
+#: src/lessons/welcome/variables/RunHalfEntity.java
+msgid "Tells whether the ground under the buggle is orange."
+msgstr ""
+
+#. Documentation of the primitive isGroundWhite()
+#: src/lessons/welcome/loopdowhile/LoopDoWhileEntity.java
+msgid "Tells whether the ground under the buggle is white."
+msgstr ""
+
+#. Documentation of the primitive isPenDown()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Tells whether the pen is down."
+msgstr ""
+
+#. Documentation of the primitive isSorted()
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgid "Tells whether the stack is correctly sorted."
+msgstr ""
+
+#. Documentation of the primitive isSelected()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Tells whether the turtle is currently selected in the interface."
+msgstr ""
+
+#. Documentation of the primitive isVisible()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Tells whether the turtle is visible."
+msgstr ""
+
+#. Documentation of the primitive isSmallerThan()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid ""
+"Tells whether the value of cell i is strictly smaller than the given value. "
+"Costs one read."
+msgstr ""
+
+#. Documentation of the primitive isSmaller()
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgid ""
+"Tells whether the value of cell i is strictly smaller than the one of cell "
+"j. Costs two reads."
+msgstr ""
+
+#. Documentation of the primitive hasBaggle()
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+msgid "Tells whether there is a baggle on the given cell."
+msgstr ""
+
+#. Documentation of the primitive isOverBaggle()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether there is a baggle on the ground under the buggle."
+msgstr ""
+
+#. Documentation of the primitive isOverMessage()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether there is a message on the ground under the buggle."
+msgstr ""
+
+#. Documentation of the primitive isBackingWall()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether there is a wall behind the buggle."
+msgstr ""
+
+#. Documentation of the primitive isFacingWall()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Tells whether there is a wall in front of the buggle."
+msgstr ""
+
+#. Documentation of the primitive left()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Turns a quarter to the left."
+msgstr ""
+
+#. Documentation of the primitive right()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Turns a quarter to the right."
+msgstr ""
+
+#. Documentation of the primitive back()
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgid "Turns back."
+msgstr ""
+
+#. Documentation of the primitive left()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Turns left of the given angle (in degrees)."
+msgstr ""
+
+#. Documentation of the primitive right()
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgid "Turns right of the given angle (in degrees)."
+msgstr ""
+
+#. Documentation of the primitive setIndication()
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+msgid "Writes the given number on the given cell."
+msgstr ""
+
+#. Name of the primitive back() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "backward"
+msgctxt "primitive"
+msgid "back"
+msgstr "后退"
+
+#. Name of the primitive backward() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "backward"
+msgctxt "primitive"
+msgid "backward"
+msgstr "后退"
+
+#. Name of the primitive brushDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "brushDown()"
+msgctxt "primitive"
+msgid "brushDown"
+msgstr "放下刷子()"
+
+#. Name of the primitive brushUp() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "brushUp()"
+msgctxt "primitive"
+msgid "brushUp"
+msgstr "拿起刷子()"
+
+#. Name of the primitive circle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "circle"
+msgstr ""
+
+#. Name of the primitive clearAll() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "clearAll"
+msgstr ""
+
+#. Name of the primitive clearMessage() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "clearMessage"
+msgstr ""
+
+#. Name of the primitive copy() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+#, fuzzy
+#| msgid "copy"
+msgctxt "primitive"
+msgid "copy"
+msgstr "粘帖"
+
+#. Name of the primitive crossing() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
+msgctxt "primitive"
+msgid "crossing"
+msgstr ""
+
+#. Name of the primitive dropBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "Baggle?"
+msgctxt "primitive"
+msgid "dropBaggle"
+msgstr "小黄人"
+
+#. Name of the primitive exitReached() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
+msgctxt "primitive"
+msgid "exitReached"
+msgstr ""
+
+#. Name of the primitive flip() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "flip"
+msgstr ""
+
+#. Name of the primitive forward() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "forward"
+msgctxt "primitive"
+msgid "forward"
+msgstr "前进"
+
+#. Name of the primitive getAngle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getAngle"
+msgstr ""
+
+#. Name of the primitive getBasesAmount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getBasesAmount"
+msgstr ""
+
+#. Name of the primitive getBodyColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getBodyColor"
+msgstr ""
+
+#. Name of the primitive getBrushColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "Brush Color"
+msgctxt "primitive"
+msgid "getBrushColor"
+msgstr "刷子颜色"
+
+#. Name of the primitive getColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgctxt "primitive"
+msgid "getColor"
+msgstr ""
+
+#. Name of the primitive getDirection() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getDirection"
+msgstr ""
+
+#. Name of the primitive getFuel() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getFuel"
+msgstr ""
+
+#. Name of the primitive getGround() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getGround"
+msgstr ""
+
+#. Name of the primitive getGroundColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "getGroundColor"
+msgstr ""
+
+#. Name of the primitive getHeading() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "getHeading"
+msgstr ""
+
+#. Name of the primitive getHoleBase() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getHoleBase"
+msgstr ""
+
+#. Name of the primitive getHolePosition() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getHolePosition"
+msgstr ""
+
+#. Name of the primitive getIndication() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+msgctxt "primitive"
+msgid "getIndication"
+msgstr ""
+
+#. Name of the primitive getPancakeRadius() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "getPancakeRadius"
+msgstr ""
+
+#. Name of the primitive getPlayerColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getPlayerColor"
+msgstr ""
+
+#. Name of the primitive getPositionsAmount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getPositionsAmount"
+msgstr ""
+
+#. Name of the primitive getSize() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSize"
+msgstr ""
+
+#. Name of the primitive getSlotRadius() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java
+msgctxt "primitive"
+msgid "getSlotRadius"
+msgstr ""
+
+#. Name of the primitive getSlotSize() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSlotSize"
+msgstr ""
+
+#. Name of the primitive getSpeedX() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSpeedX"
+msgstr ""
+
+#. Name of the primitive getSpeedY() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSpeedY"
+msgstr ""
+
+#. Name of the primitive getStackSize() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "getStackSize"
+msgstr ""
+
+#. Name of the primitive getThrust() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getThrust"
+msgstr ""
+
+#. Name of the primitive getValue() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+#, fuzzy
+#| msgid "Value"
+msgctxt "primitive"
+msgid "getValue"
+msgstr "数值"
+
+#. Name of the primitive getValueCount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "getValueCount"
+msgstr ""
+
+#. Name of the primitive getWorldHeight() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "World height"
+msgctxt "primitive"
+msgid "getWorldHeight"
+msgstr "世界长度"
+
+#. Name of the primitive getWorldWidth() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "World width"
+msgctxt "primitive"
+msgid "getWorldWidth"
+msgstr "世界宽度"
+
+#. Name of the primitive getX() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "getX"
+msgstr ""
+
+#. Name of the primitive getY() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "getY"
+msgstr ""
+
+#. Name of the primitive hasBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+#, fuzzy
+#| msgid "Baggle?"
+msgctxt "primitive"
+msgid "hasBaggle"
+msgstr "小黄人"
+
+#. Name of the primitive hasLeftWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "Left wall?"
+msgctxt "primitive"
+msgid "hasLeftWall"
+msgstr "左壁"
+
+#. Name of the primitive hasTopWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "hasTopWall"
+msgstr ""
+
+#. Name of the primitive hide() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "hide"
+msgstr ""
+
+#. Name of the primitive isBackingWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isBackingWall"
+msgstr ""
+
+#. Name of the primitive isBaseSorted() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "isBaseSorted"
+msgstr ""
+
+#. Name of the primitive isBrushDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "brushDown()"
+msgctxt "primitive"
+msgid "isBrushDown"
+msgstr "放下刷子()"
+
+#. Name of the primitive isCarryingBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isCarryingBaggle"
+msgstr ""
+
+#. Name of the primitive isFacingWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isFacingWall"
+msgstr ""
+
+#. Name of the primitive isGroundWhite() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/welcome/loopdowhile/LoopDoWhileEntity.java
+msgctxt "primitive"
+msgid "isGroundWhite"
+msgstr ""
+
+#. Name of the primitive isOverBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "Baggle?"
+msgctxt "primitive"
+msgid "isOverBaggle"
+msgstr "小黄人"
+
+#. Name of the primitive isOverMessage() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "isOverMessage"
+msgstr ""
+
+#. Name of the primitive isOverOrange() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/welcome/variables/RunHalfEntity.java
+msgctxt "primitive"
+msgid "isOverOrange"
+msgstr ""
+
+#. Name of the primitive isPancakeUpsideDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "isPancakeUpsideDown"
+msgstr ""
+
+#. Name of the primitive isPenDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "isPenDown"
+msgstr ""
+
+#. Name of the primitive isSelected() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "Selected cell X"
+msgctxt "primitive"
+msgid "isSelected"
+msgstr "选择x坐标"
+
+#. Name of the primitive isSmaller() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "isSmaller"
+msgstr ""
+
+#. Name of the primitive isSmallerThan() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "isSmallerThan"
+msgstr ""
+
+#. Name of the primitive isSorted() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "isSorted"
+msgstr ""
+
+#. Name of the primitive isVisible() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "isVisible"
+msgstr ""
+
+#. Name of the primitive left() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "left"
+msgctxt "primitive"
+msgid "left"
+msgstr "左转"
+
+#. Name of the primitive move() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "move"
+msgstr ""
+
+#. Name of the primitive moveTo() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "moveTo"
+msgstr ""
+
+#. Name of the primitive penDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "penDown"
+msgstr ""
+
+#. Name of the primitive penUp() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "penUp"
+msgstr ""
+
+#. Name of the primitive pickupBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "Baggle?"
+msgctxt "primitive"
+msgid "pickupBaggle"
+msgstr "小黄人"
+
+#. Name of the primitive readMessage() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "readMessage"
+msgstr ""
+
+#. Name of the primitive right() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "right"
+msgctxt "primitive"
+msgid "right"
+msgstr "右转"
+
+#. Name of the primitive setBodyColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "setBodyColor"
+msgstr ""
+
+#. Name of the primitive setBrushColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#, fuzzy
+#| msgid "Brush Color"
+msgctxt "primitive"
+msgid "setBrushColor"
+msgstr "刷子颜色"
+
+#. Name of the primitive setColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+#, fuzzy
+#| msgid "Brush Color"
+msgctxt "primitive"
+msgid "setColor"
+msgstr "刷子颜色"
+
+#. Name of the primitive setDesiredAngle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "setDesiredAngle"
+msgstr ""
+
+#. Name of the primitive setDesiredThrust() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "setDesiredThrust"
+msgstr ""
+
+#. Name of the primitive setDirection() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "setDirection"
+msgstr ""
+
+#. Name of the primitive setHeading() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "setHeading"
+msgstr ""
+
+#. Name of the primitive setIndication() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
+msgctxt "primitive"
+msgid "setIndication"
+msgstr ""
+
+#. Name of the primitive setPos() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "setPos"
+msgstr ""
+
+#. Name of the primitive setValue() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+#, fuzzy
+#| msgid "Value"
+msgctxt "primitive"
+msgid "setValue"
+msgstr "数值"
+
+#. Name of the primitive setX() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "setX"
+msgstr ""
+
+#. Name of the primitive setY() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "setY"
+msgstr ""
+
+#. Name of the primitive show() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "show"
+msgstr ""
+
+#. Name of the primitive step() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "step"
+msgstr ""
+
+#. Name of the primitive stepBack() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "stepBack"
+msgstr ""
+
+#. Name of the primitive swap() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "swap"
+msgstr ""
+
+#. Name of the primitive writeMessage() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+msgctxt "primitive"
+msgid "writeMessage"
+msgstr ""
+
+#: src/lessons/lightbot/universe/LightBotExercise.java:61
 msgid "A light is still off."
 msgstr "灯仍未打开."
 
-#: src/lessons/lightbot/universe/LightBotExercise.java:58
+#: src/lessons/lightbot/universe/LightBotExercise.java:63
 #, java-format
 msgid "{0} lights (out of {1}) are still off."
 msgstr "（{1}中）有{0}个灯仍然关闭."
 
-#: src/lessons/maze/island/IslandMazeEntity.java:10
-#: src/lessons/maze/pledge/PledgeMazeEntity.java:10
-#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:9
-#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:14
-#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:12
-#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:12
-#: src/lessons/recursion/lego/tree/TreeEntity.java:12
-#: src/lessons/welcome/array/basics/Array1Entity.java:11
-#: src/lessons/welcome/array/basics/Array2Entity.java:12
-msgid ""
-"Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal "
-"instead."
-msgstr "对不起Dave，我不能让你在这个练习中使用setX(x). 请步行到你的目标."
-
-#: src/lessons/maze/island/IslandMazeEntity.java:15
-#: src/lessons/maze/pledge/PledgeMazeEntity.java:15
-#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:14
-#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:19
-#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:17
-#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:17
-#: src/lessons/recursion/lego/tree/TreeEntity.java:17
-#: src/lessons/welcome/array/basics/Array1Entity.java:16
-#: src/lessons/welcome/array/basics/Array2Entity.java:17
-msgid ""
-"Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal "
-"instead."
-msgstr "对不起Dave，我不能让你在这个练习中使用setY(y). 请步行到你的目标."
-
-#: src/lessons/maze/island/IslandMazeEntity.java:20
-#: src/lessons/maze/pledge/PledgeMazeEntity.java:20
-#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:19
-#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:24
-#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:22
-#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:22
-#: src/lessons/recursion/lego/tree/TreeEntity.java:22
-#: src/lessons/welcome/array/basics/Array1Entity.java:21
-#: src/lessons/welcome/array/basics/Array2Entity.java:22
-msgid ""
-"Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your "
-"goal instead."
-msgstr "对不起Dave，我不能让你在这个练习中使用setPos（x,y）. 请步行到你的目标."
-
-#: src/lessons/recursion/hanoi/LinearHanoiEntity.java:11
-#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:10
+#: src/lessons/recursion/hanoi/LinearHanoiEntity.java:13
+#: src/lessons/recursion/hanoi/LinearTwinHanoiEntity.java:12
 #, fuzzy
 msgid ""
 "Sorry Dave, I cannot let you move disks between slots 0 and 2 directly. Use "
@@ -78,7 +1260,7 @@ msgid ""
 msgstr ""
 "对不起戴夫，我不能让你直接0和2插槽之间移动磁盘。使用在所有运动的中间支柱。"
 
-#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:55
+#: src/lessons/recursion/hanoi/universe/HanoiEntity.java:57
 #, fuzzy, java-format
 msgid ""
 "Sorry Dave, I cannot let you move disks counterclockwise. Move from 0 to 1, "
@@ -87,72 +1269,76 @@ msgstr ""
 "对不起戴夫，我不能让你在相反的方向移动驱动器。从0到移动1，从1至2或2至0只，而"
 "不是从{0}到{1}。"
 
-#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
-#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:172
-#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:73
+#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:69
+#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:163
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:72
 #, java-format
 msgid "move({0},{1})"
 msgstr "移动({0},{1})"
 
-#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:71
-#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:176
+#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:72
+#: src/lessons/recursion/hanoi/universe/HanoiWorldView.java:167
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:77
 msgid "Invalid move"
 msgstr "无法移动"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:169
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:122
 #, java-format
 msgid "The disks were not moved the same amount of time: {0} vs. {1}.\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:129
 #, java-format
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:181
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:134
 #, java-format
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:202
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:156
 #, java-format
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:204
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:158
 #, java-format
 msgid "Cannot move from slot {0} to itself."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:206
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:160
 #, java-format
 msgid "No disc to move from slot {0}."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:211
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:163
 #, java-format
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
 "but {2} > {3}."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:229
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:176
 #, fuzzy, java-format
 #| msgid "Invalid move"
 msgid "Invalid slot: {0}."
 msgstr "无法移动"
 
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:231
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:178
 #, java-format
 msgid "Slot {0} is only {1} high; Cannot get the color of the {2}th disk."
 msgstr ""
 
-#. Create the button
-#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
-#: src/plm/core/ui/ChooseLessonDialog.java:192
+#: src/lessons/recursion/lego/tree/TreeEntity.java:11
+#: src/plm/universe/bugglequest/AbstractBuggle.java:50
+msgid "Walk to your goal instead."
+msgstr ""
+
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:64
+#: src/plm/core/ui/ChooseLessonDialog.java:190
 msgid "Go"
 msgstr "开始"
 
@@ -163,26 +1349,26 @@ msgid ""
 "its position"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:146
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:189
 msgid "This is not a baseball world :-("
 msgstr "这个不是棒球:-("
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:150
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:193
 #, java-format
 msgid "Differing amount of bases: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:153
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:196
 #, java-format
 msgid "Differing amount of players: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:159
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:202
 #, java-format
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:372
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:348
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -190,62 +1376,62 @@ msgid ""
 "Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:409
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:380
 #, java-format
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:412
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:383
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:421
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:390
 #, java-format
 msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
 "it in one move"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorldView.java:669
-#: src/plm/universe/sort/SortingWorldView.java:52
+#: src/lessons/sort/baseball/universe/BaseballWorldView.java:642
+#: src/plm/universe/sort/SortingWorldView.java:50
 msgid "Switch to time view"
 msgstr "切换到时间视图"
 
-#: src/lessons/sort/baseball/universe/BaseballWorldView.java:671
-#: src/plm/universe/sort/SortingWorldView.java:54
+#: src/lessons/sort/baseball/universe/BaseballWorldView.java:644
+#: src/plm/universe/sort/SortingWorldView.java:52
 msgid "Switch to state view"
 msgstr "切换到视图状态"
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagEntity.java:28
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntity.java:22
 msgid "Flag sorter"
 msgstr "国旗拼图"
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:102
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:97
 msgid "This world is not a dutch flag"
 msgstr "这不是荷兰国旗"
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:101
 msgid "The two worlds are of differing size"
 msgstr "这两个世界是不一样的大小"
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:111
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
 #, java-format
 msgid " Ray #{0} differs: color {1} is not color {2}\n"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:177
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:180
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:148
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:150
 #, java-format
 msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:197
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:167
 #, java-format
 msgid "Cannot get the color of line #{0} because it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:232
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:201
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -253,346 +1439,196 @@ msgid ""
 "Initial situation: {0}"
 msgstr ""
 
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:145
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:137
 #: src/plm/universe/sort/SortingButtonPanel.java:70
 #, java-format
 msgid "swap({0},{1})"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeFlipButtonPanel.java:66
+#: src/lessons/sort/pancake/universe/PancakeFlipButtonPanel.java:67
 #, java-format
 msgid "flip({0})"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:116
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:149
 #, fuzzy
 #| msgid "This is not a world of pancakes"
 msgid "This is not a world of pancakes."
 msgstr "这不是煎饼的世界"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:153
 #, fuzzy
 #| msgid "The two worlds are of differing size"
 msgid "The two worlds are of differing size."
 msgstr "这两个世界是不一样的大小"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:124
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:157
 #, java-format
 msgid "Stacks were not flipped the same amount of time: {0} vs. {1}.\n"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:128
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:161
 #, java-format
 msgid " Pancake #{0} differs: {1} vs. {2}.\n"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:206
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:213
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one."
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:208
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:216
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack."
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:242
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:246
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}."
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:261
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:263
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}."
 msgstr ""
 
-#: src/lessons/welcome/loopdowhile/Poucet1Entity.java:10
-#: src/lessons/welcome/loopdowhile/Poucet2Entity.java:12
-#: src/lessons/welcome/loopfor/LoopCourseEntity.java:10
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:10
-#: src/lessons/welcome/loopfor/LoopForEntity.java:8
-#: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:10
-#: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
-#: src/lessons/welcome/summative/MoriaEntity.java:10
-#: src/lessons/welcome/variables/RunFourEntity.java:8
-#: src/lessons/welcome/variables/RunHalfEntity.java:10
-#: src/lessons/welcome/variables/VariablesEntity.java:8
-msgid ""
-"Sorry Dave, I cannot let you use forward with an argument in this exercise. "
-"Use a loop instead."
+#: src/lessons/turmites/universe/TurmiteEntity.java:31
+msgid "Turmites don't need it."
 msgstr ""
 
-#: src/lessons/welcome/loopdowhile/Poucet1Entity.java:14
-#: src/lessons/welcome/loopdowhile/Poucet2Entity.java:16
-#: src/lessons/welcome/loopfor/LoopCourseEntity.java:14
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:14
-#: src/lessons/welcome/loopfor/LoopForEntity.java:13
-#: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:15
-#: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
-#: src/lessons/welcome/summative/MoriaEntity.java:15
-#: src/lessons/welcome/variables/RunFourEntity.java:12
-#: src/lessons/welcome/variables/RunHalfEntity.java:14
-#: src/lessons/welcome/variables/VariablesEntity.java:13
-msgid ""
-"Sorry Dave, I cannot let you use backward with an argument in this exercise. "
-"Use a loop instead."
+#: src/lessons/turmites/universe/TurmiteWorld.java:106
+#, java-format
+msgid "{0}.map: End of file reached before the step count specification."
 msgstr ""
 
-#: src/lessons/welcome/loopfor/LoopCourseEntity.java:18
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:18
+#: src/lessons/turmites/universe/TurmiteWorld.java:111
+#, java-format
+msgid "{0}.map: Expected ''Step: N'' but got ''{1}''."
+msgstr ""
+
+#: src/lessons/welcome/loopfor/LoopCourseEntity.java:12
+#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:12
 #, fuzzy
 msgid ""
 "Sorry Dave, you cannot run backward like this. Exercising is hard enough -- "
 "please don't overplay."
 msgstr "对不起Dave，你不能后退。练习已经够难的了 -- 请不要做得太过火"
 
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:39
+#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:27
 msgid "You fall into water."
 msgstr "你掉进了河里"
 
-#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:39
-#: src/plm/universe/bugglequest/SimpleBuggle.java:31
-#: src/plm/universe/bugglequest/SimpleBuggle.java:36
-#: src/plm/universe/bugglequest/SimpleBuggle.java:47
-#: src/plm/universe/bugglequest/SimpleBuggle.java:58
-#: src/plm/universe/bugglequest/SimpleBuggle.java:69
-#: src/plm/universe/bugglequest/SimpleBuggle.java:80
-#: src/plm/universe/bugglequest/SimpleBuggle.java:96
-#: src/plm/universe/bugglequest/SimpleBuggle.java:100
-#: src/plm/universe/bugglequest/SimpleBuggle.java:111
-#: src/plm/universe/bugglequest/SimpleBuggle.java:115
-#: src/plm/universe/bugglequest/SimpleBuggle.java:125
-#: src/plm/universe/bugglequest/SimpleBuggle.java:135
-#: src/plm/universe/bugglequest/SimpleBuggle.java:145
-msgid "Test failed"
-msgstr "测试失败"
-
-#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:10
-msgid ""
-"I cannot let you use forward with an argument in this exercise. Use a loop "
-"instead."
-msgstr ""
-
-#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:14
-msgid ""
-"I cannot let you use backward with an argument in this exercise. Use a loop "
-"instead."
-msgstr ""
-
-#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
-msgid ""
-"Sorry Dave, I cannot let you use right() in this exercise. Use left() "
-"instead."
-msgstr ""
-
-#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.java:33
 #, java-format
 msgid ""
-"Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
-"exercise. You can write left() only once in this exercise."
+"Your code must call left() exactly once, but it contains {0} calls. "
+"Factorize it in your method."
 msgstr ""
 
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:42
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:47
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:48
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:53
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:43
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:48
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:48
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:53
+#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:7
+msgid "Use left() instead."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:48
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:54
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:49
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:54
+msgid "Use setPos(x,y) instead."
+msgstr ""
+
+#: src/plm/core/lang/LangC.java:157
+msgid "Compilation error. The linking command "
+msgstr ""
+
+#: src/plm/core/lang/LangC.java:159
+msgid "Compilation error. The linking command failed:"
+msgstr ""
+
+#: src/plm/core/lang/LangC.java:339 src/plm/core/lang/LangJava.java:163
+#: src/plm/core/lang/LangPython.java:173 src/plm/core/lang/LangScala.java:242
+#, fuzzy, java-format
+#| msgid "Error, please recompile the exercise"
+msgid "Error, please recompile the exercise: {0} does not exist"
+msgstr "错误， 请重新编译练习"
+
+#: src/plm/core/lang/LangC.java:360
 msgid ""
-"Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
-"instead."
+"The Address Sanitizer detected an issue with the execution of your entity. "
+"You probably want to fix it.\n"
+"The exact error message contains hints about the problem. Good luck in "
+"debugging this.\n"
 msgstr ""
 
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:51
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:55
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:57
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:61
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:52
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:56
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:57
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:61
-msgid ""
-"Sorry Dave, I cannot let you use backward() in this exercise. Use "
-"setPos(x,y) instead."
-msgstr ""
-
-#: src/plm/core/lang/JVMCompiledLang.java:53
-msgid ""
-"Your entity failed to start. Did you forgot to put your code within a "
-"method?\n"
-"\n"
-"This problem often arises when the exercise expects you to put all the code "
-"within a \n"
-"method e.g. run(), but you put some statements (e.g. forward()) outside of "
-"any method.\n"
-"\n"
-"The easiest solution to sort it out is to copy all your code (Ctrl-A Ctrl-"
-"C), use the \n"
-"'Exercise/Revert' menu to reset the template, and paste (Ctrl-V) your code "
-"within the\n"
-"provided method."
-msgstr ""
-
-#: src/plm/core/lang/JVMCompiledLang.java:60
-msgid ""
-"Your entity failed to start. Your constructor seems to be broken, but I have "
-"no clue."
-msgstr ""
-
-#: src/plm/core/lang/JVMCompiledLang.java:83
-#: src/plm/core/lang/LangLightbot.java:39
+#: src/plm/core/lang/LangLightbot.java:32
 #, java-format
 msgid ""
 "The execution of your program raised a {0} exception: {1}\n"
 " Please fix your code.\n"
 msgstr ""
 
-#: src/plm/core/lang/LangC.java:188 src/plm/core/lang/LangJava.java:82
-#: src/plm/core/lang/LangScala.java:61
-msgid "Compilation error:"
-msgstr "编译错误："
-
-#: src/plm/core/lang/LangC.java:251
-msgid "Valgrind does not seem to be installed."
-msgstr ""
-
-#: src/plm/core/lang/LangC.java:260 src/plm/core/lang/LangC.java:267
-#, fuzzy
-#| msgid "Error, please recompile the exercise"
-msgid "Error, please recompile the exercise."
-msgstr "错误， 请重新编译练习"
-
-#.
-#. * FIXME: provide a way to debug
-#. * when templates are broken
-#.
-#. for (String n:classes.keySet())
-#. System.out.println("File "+n+":\n"+classes.get(n));
-#: src/plm/core/lang/LangJava.java:349
-msgid "Compilation failed."
-msgstr "编译失败."
-
-#: src/plm/core/lang/LangPython.java:49
-#, java-format
-msgid ""
-"Syntax error: {0}\n"
-"Line {1}: {2}\n"
-"In doubt, check your indentation, and that you don't mix tabs and spaces\n"
-msgstr ""
-
-#: src/plm/core/lang/LangPython.java:58
-#, java-format
-msgid ""
-"Indentation error: {0}\n"
-"line {1}: {2}\n"
-"Please, check that you did not mix tabs and spaces. Use the TAB and shift-"
-"TAB keys to clean your indentation.\n"
-msgstr ""
-
 #: src/plm/core/lang/LangPython.java:66
-msgid ""
-"You interrupted the execution, did you fall into an infinite loop ?\n"
-"Your program must stop by itself to successfully pass the exercise.\n"
+msgid "python3 exited with an error while checking its version."
 msgstr ""
 
 #: src/plm/core/lang/LangPython.java:72
-msgid ""
-"NameError raised: You seem to use a non-existent identifier; Please check "
-"for typos.\n"
+#, java-format
+msgid "Cannot run python3: {0}. Is Python 3 installed and on the PATH?"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:76
-msgid "TypeError raised: you are probably misusing a function or something.\n"
+#: src/plm/core/lang/LangScala.java:70
+#, java-format
+msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:80
-msgid ""
-"UnboundLocalError raised: you are probably using a global variable that is "
-"not declared as such.\n"
+#: src/plm/core/lang/LangScala.java:79
+#, java-format
+msgid "Unsupported Scala version. Found {0} while I need Scala 3."
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:87
-msgid "Error: there is no baggle to pickup under the buggle."
-msgstr ""
-
-#: src/plm/core/lang/LangPython.java:89
-msgid "Error: a buggle cannot carry more than one baggle at the same time."
-msgstr ""
-
-#: src/plm/core/lang/LangPython.java:91
-msgid "Error: your buggle just teleported to the outer space..."
-msgstr ""
-
-#: src/plm/core/lang/LangPython.java:93
-msgid "Error: your buggle just hit a wall. That hurts."
-msgstr ""
-
-#: src/plm/core/lang/LangPython.java:96
+#: src/plm/core/lang/ProgrammingLanguage.java:78
 #, java-format
 msgid ""
-"Unknown error (please report): {0}\n"
-"Its value is: {1}"
+"Resource {0} not found in the classpath.\n"
+"Is {1} in your classpath?"
 msgstr ""
 
-#: src/plm/core/lang/ScriptingLanguage.java:86
+#: src/plm/core/lang/ProgrammingLanguage.java:80
 #, java-format
-msgid ""
-"No ScriptEngine for {0}. Please check your classpath and similar settings."
+msgid "{0} received while searching for resource {1}: {2}"
 msgstr ""
 
-#: src/plm/core/lang/ScriptingLanguage.java:96
-#, java-format
-msgid ""
-"No {0} script source for entity {1}. Please report that bug against the PLM."
-msgstr ""
+#: src/plm/core/lang/ProgrammingLanguageManager.java:23
+#, fuzzy
+#| msgid "Please install Scala version 2.11 or higher to use it in the PLM."
+msgid "Please install Scala version 2.12 or higher to use it in the PLM."
+msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
 
-#: src/plm/core/lang/ScriptingLanguage.java:108
-#, java-format
-msgid "Received a ScriptException that does not come from the {0} language.\n"
-msgstr ""
-
-#: src/plm/core/lang/ScriptingLanguage.java:113
-#, java-format
-msgid ""
-"Script evaluation raised an exception that is not a ScriptException but a "
-"{0}.\n"
-" Please report this as a bug against the PLM, with all details allowing to "
-"reproduce it.\n"
-"Exception message: {1}\n"
-msgstr ""
-
-#: src/plm/core/model/Game.java:162
+#: src/plm/core/lang/ProgrammingLanguageManager.java:25
 msgid "Scala is usable on your machine. Congratulations."
 msgstr "Scala能正常运行。"
 
-#: src/plm/core/model/Game.java:164
-msgid "Please install Scala version 2.11 or higher to use it in the PLM."
-msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
-
-#: src/plm/core/model/Game.java:166
-msgid "Jython is usable on your machine. Congratulations."
-msgstr "Jython能正常运行"
-
-#: src/plm/core/model/Game.java:168
+#: src/plm/core/lang/ProgrammingLanguageManager.java:27
 msgid ""
 "Please install jython to use the python programming language in the PLM."
 msgstr "PLM需要安装Jython来运行python语言程序"
 
-#: src/plm/core/model/Game.java:170
-msgid "C is usable on your machine. Congratulations."
-msgstr "C语言能正常运行"
+#: src/plm/core/lang/ProgrammingLanguageManager.java:29
+msgid "Jython is usable on your machine. Congratulations."
+msgstr "Jython能正常运行"
 
-#: src/plm/core/model/Game.java:172
+#: src/plm/core/lang/ProgrammingLanguageManager.java:31
 msgid "Please install gcc to use the C programming language in the PLM."
 msgstr "PLM需要安装gcc来运行C语言程序"
 
-#: src/plm/core/model/Game.java:179
+#: src/plm/core/lang/ProgrammingLanguageManager.java:33
+msgid "C is usable on your machine. Congratulations."
+msgstr "C语言能正常运行"
+
+#: src/plm/core/lang/ProgrammingLanguageManager.java:44
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -600,85 +1636,95 @@ msgid ""
 "   This language will be used to setup the worlds, possibly leading to "
 "severe issues for the exercises that don''t expect it.\n"
 "   It is safer to change the current language, and restart the PLM before "
-"proceeding.\n"
-"   Alternatively, the property {1} can be changed in your configuration file "
-"({2}/plm.properties)."
+"proceeding."
 msgstr ""
 
-#: src/plm/core/model/Game.java:185
+#: src/plm/core/lang/ProgrammingLanguageManager.java:51
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:188
+#: src/plm/core/lang/ProgrammingLanguageManager.java:55
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:191
+#: src/plm/core/lang/ProgrammingLanguageManager.java:59
 msgid ""
 "The default programming language is C, but your C installation is not "
 "usable. Switching to Java instead.\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:209 src/plm/core/model/tracking/GitSpy.java:90
+#: src/plm/core/lang/ProgrammingLanguageManager.java:82
+msgid "Scala is missing"
+msgstr ""
+
+#: src/plm/core/lang/ProgrammingLanguageManager.java:83
+#, fuzzy
 msgid ""
-"You found a bug in the PLM. Please report it with all possible details "
-"(including the stacktrace below)."
+"Please install Scala version 2.12 or higher to use it in the PLM.\n"
+"\n"
+msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
+
+#: src/plm/core/lang/ProgrammingLanguageManager.java:87
+msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:235
-#, java-format
-msgid "Error {0} while retrieving the Scala version: {1}"
-msgstr ""
-
-#: src/plm/core/model/Game.java:244
-#, java-format
-msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
-msgstr ""
-
-#: src/plm/core/model/Game.java:269
+#: src/plm/core/lang/ProgrammingLanguageManager.java:88
+#, fuzzy, java-format
+#| msgid ""
+#| "Please install jython to use the python programming language in the PLM."
 msgid ""
-"Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
-"in the classpath?"
+"Please install jython and its dependencies to use the python programming "
+"language in the PLM.\n"
+"Error: {0}\n"
+msgstr "PLM需要安装Jython来运行python语言程序"
+
+#: src/plm/core/lang/ProgrammingLanguageManager.java:93
+msgid "C is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:308
-#, java-format
+#: src/plm/core/lang/ProgrammingLanguageManager.java:94
 msgid ""
-"Resource {0} not found in the classpath.\n"
-"Is {1} in your classpath?"
+"Please install C and its dependencies to use the C programming language in "
+"the PLM.\n"
+"\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:310
-#, java-format
-msgid "{0} received while searching for resource {1}: {2}"
+#: src/plm/core/lang/RemoteExecutionLang.java:172
+msgid "Protocol connection failed: the program never connected to the PLM."
 msgstr ""
 
-#: src/plm/core/model/Game.java:345 src/plm/core/model/Game.java:346
+#: src/plm/core/lang/RemoteExecutionLang.java:225
+msgid ""
+"You interrupted the execution, did you fall into an infinite loop ?\n"
+"Your program must stop by itself to successfully pass the exercise.\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:183 src/plm/core/model/Game.java:184
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr "无法打开课程{0}: class Main not found"
 
-#: src/plm/core/model/Game.java:347
+#: src/plm/core/model/Game.java:185
 #, java-format
 msgid "Load lesson {0}"
 msgstr "读取课程{0}"
 
-#: src/plm/core/model/Game.java:363
+#: src/plm/core/model/Game.java:206
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
 "report the issue and choose another lesson."
 msgstr ""
 
-#: src/plm/core/model/Game.java:364
+#: src/plm/core/model/Game.java:207
 msgid "Broken lesson"
 msgstr "跳出课程"
 
-#: src/plm/core/model/Game.java:500
+#: src/plm/core/model/Game.java:359
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -686,278 +1732,179 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:508
+#: src/plm/core/model/Game.java:367
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/plm/core/model/Game.java:580
+#: src/plm/core/model/Game.java:443
 #, java-format
 msgid "The lecture {0} has no world that I can select."
 msgstr ""
 
-#: src/plm/core/model/Game.java:1005
-#, fuzzy
-msgid ""
-"Please install Scala version 2.11 or higher to use it in the PLM.\n"
-"\n"
-msgstr "要使用PLM请按装Scala 2.11 或更高的版本"
-
-#: src/plm/core/model/Game.java:1006
-msgid "Scala is missing"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1010
-msgid ""
-"Please install jython and its dependencies to use the python programming "
-"language in the PLM.\n"
-"\n"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1011
-msgid "Python is missing"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1015
-msgid ""
-"Please install C and its dependencies to use the C programming language in "
-"the PLM.\n"
-"\n"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1016
-msgid "C is missing"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1021
-msgid ""
-"The C langage is currently very experimental in the PLM.\n"
-"If you go for C, you may not be able to complete some exercises that\n"
-"are still in progress in C, although some other parts are already okay.\n"
-"\n"
-"Do you want to proceed anyway?"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1025
-msgid "C is still experimental"
-msgstr ""
-
-#: src/plm/core/model/HelpServer.java:27 src/plm/core/ui/action/HelpMe.java:130
+#: src/plm/core/model/HelpServer.java:29
 msgid "Asking to the teacher for help"
 msgstr ""
 
-#: src/plm/core/model/HelpServer.java:29 src/plm/core/ui/action/HelpMe.java:133
-#: src/plm/core/ui/action/HelpMe.java:145
+#: src/plm/core/model/HelpServer.java:31
 msgid "Cancel call for help to the teacher"
 msgstr ""
 
-#: src/plm/core/model/User.java:36
+#: src/plm/core/model/LessonRunner.java:86
+msgid "Not run, probably because the user interrupted the execution."
+msgstr ""
+
+#: src/plm/core/model/User.java:35
 #, java-format
 msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
 msgstr ""
 
-#: src/plm/core/model/Users.java:88
+#: src/plm/core/model/Users.java:89
 #, java-format
 msgid "User {0} exists already; don't add it again."
 msgstr ""
 
-#: src/plm/core/model/Users.java:112
+#: src/plm/core/model/Users.java:114
 #, java-format
 msgid "Switched to user: {0}"
 msgstr ""
 
-#: src/plm/core/model/lesson/Exercise.java:80
+#: src/plm/core/model/lesson/EntityTemplateParser.java:257
+#, java-format
+msgid "{0}, line {1}: unexpected \"{2}\". Please fix your entity."
+msgstr ""
+
+#: src/plm/core/model/lesson/EntityTemplateParser.java:279
+#, java-format
+msgid ""
+"{0}: end of file reached inside a BEGIN/END block. Please fix your entity."
+msgstr ""
+
+#: src/plm/core/model/lesson/EntityTemplateParser.java:282
+#, java-format
+msgid ""
+"{0}: a BEGIN/END TEMPLATE needs at least one BEGIN/END SOLUTION (even an "
+"empty one if the template is already the answer). Please fix your entity."
+msgstr ""
+
+#: src/plm/core/model/lesson/EntityTemplateParser.java:285
+#, java-format
+msgid ""
+"{0}: neither BEGIN/END TEMPLATE nor BEGIN/END SOLUTION found. Please fix "
+"your entity."
+msgstr ""
+
+#: src/plm/core/model/lesson/Exercise.java:121
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:47
+#: src/plm/core/model/lesson/Exercise.java:167
+msgid "Compilation error:"
+msgstr "编译错误："
+
+#: src/plm/core/model/lesson/ExerciseTemplated.java:40
+#, java-format
+msgid "Exercise {0} ({1}): the {2} entity is broken: {3}"
+msgstr ""
+
+#: src/plm/core/model/lesson/ExerciseTemplated.java:51
 #, java-format
 msgid "Source file {0}.{1} not found."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:120
-#, java-format
-msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:141
+#: src/plm/core/model/lesson/ExerciseTemplated.java:56
 #, java-format
 msgid ""
-"{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
+"{0}: cannot guess which RemoteXxx universe this entity belongs to. Please "
+"fix your entity."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:159
-#: src/plm/core/model/lesson/ExerciseTemplated.java:183
-#, java-format
-msgid ""
-"{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:163
-#, java-format
-msgid ""
-"{0}: Begin solution in template tail. Change it to BEGIN SOLUTIONHELPER."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:203
-#, java-format
-msgid ""
-"Parser error in file {0}. This is a parser bug (state={1}), please report."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:208
-#, java-format
-msgid ""
-"{0}: End of file unexpected after the solution but within the template. "
-"Please fix your entity."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:210
-#, java-format
-msgid ""
-"{0}: End of file unexpected (state: {1}). Did you forget to close your "
-"template or solution? Please fix your entity."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:366
+#: src/plm/core/model/lesson/ExerciseTemplated.java:85
 #, java-format
 msgid ""
 "Exercise {0} is said to be compatible with language {1}, but there is no "
 "entity for this language: {2}"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:375
+#: src/plm/core/model/lesson/ExerciseTemplated.java:93
 #, java-format
 msgid "{0}: No entity found. You should fix your paths and settings."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:406
-#, java-format
-msgid "World {0} is broken ({1}). Recompute all answer worlds."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:410
-#, java-format
-msgid "Cache file {0} is missing. Recompute all answer worlds."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:414
-#, java-format
-msgid ""
-"IO exception while reading world {0} ({1}). Recompute all answer worlds."
-msgstr ""
-
-#: src/plm/core/model/lesson/ExerciseTemplated.java:425
+#: src/plm/core/model/lesson/ExerciseTemplated.java:153
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:465
+#: src/plm/core/model/lesson/ExerciseTemplated.java:168
 #, java-format
-msgid "Error while writing answer world of {0}:"
+msgid "World {0} is broken ({1}). Recompute it."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:469
+#: src/plm/core/model/lesson/ExerciseTemplated.java:171
+#, java-format
+msgid "Cache file {0} is missing. Recompute it."
+msgstr ""
+
+#: src/plm/core/model/lesson/ExerciseTemplated.java:174
+#, java-format
+msgid "IO exception while reading world {0} ({1}). Recompute it."
+msgstr ""
+
+#: src/plm/core/model/lesson/ExerciseTemplated.java:221
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
 
-#: src/plm/core/model/lesson/Lecture.java:90
-#: src/plm/core/model/lesson/Lesson.java:94
+#: src/plm/core/model/lesson/ExerciseTemplated.java:227
+#, java-format
+msgid "Error while writing answer world of {0}:"
+msgstr ""
+
+#: src/plm/core/model/lesson/Lecture.java:81
+#: src/plm/core/model/lesson/Lesson.java:84
 #, java-format
 msgid "File {0}.html not found."
 msgstr ""
 
-#: src/plm/core/model/lesson/Lecture.java:99
-#: src/plm/core/model/lesson/Lesson.java:104
+#: src/plm/core/model/lesson/Lecture.java:91
+#: src/plm/core/model/lesson/Lesson.java:94
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
 msgstr ""
 
-#. It should never happen since the session content should be created by the git spy module.
-#: src/plm/core/model/session/GitSessionKit.java:89
-msgid ""
-"Something weird happened. Your session was not created/reloaded properly. "
-"Please report this issue."
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:252
-msgid "Ok, quit and lose my data."
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:252
-msgid "Please stop! I'll save it myself first."
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:253
-#, java-format
-msgid ""
-"The PLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
-"\n"
-" Would you like proceed anyway? Any solution typed so far will be lost."
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:256
-msgid "Your changes are NOT saved."
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:259
-msgid "User aborted saving on system error."
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:356
-msgid "Proceed"
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:356
-msgid "Abort"
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:357
-#, java-format
-msgid ""
-"The PLM were unable to load your code for lesson {0} ({1}:{2}).\n"
-"\n"
-" Would you like proceed anyway (and lose any solution typed previously)?"
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:360
-msgid "Error while loading your session"
-msgstr ""
-
-#: src/plm/core/model/session/ZipSessionKit.java:363
-msgid "Abording on user request"
-msgstr ""
-
-#. Testing repoDir is not enough because the directory may have been created by another spy but not initialized for git
-#: src/plm/core/model/tracking/GitSpy.java:56
+#: src/plm/core/model/tracking/GitTracker.java:63
 #, java-format
 msgid "Reusing the disk session located at {0}."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:58
+#: src/plm/core/model/tracking/GitTracker.java:65
 #, java-format
 msgid "Initialize a new disk session at {0}."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:76
+#: src/plm/core/model/tracking/GitTracker.java:82
 #, java-format
 msgid "Your session {0} was automatically retrieved from the servers."
 msgstr ""
 
-#. If no branch can be found remotely, create a new one.
-#. System.out.println(Game.i18n.tr("Creating a new session locally, as no corresponding session could be retrieved from the servers.",userBranch));
-#: src/plm/core/model/tracking/GitSpy.java:81
+#: src/plm/core/model/tracking/GitTracker.java:86
 msgid "Couldn't retrieve a corresponding session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitSpy.java:168
+#: src/plm/core/model/tracking/GitTracker.java:95
+msgid ""
+"You found a bug in the PLM. Please report it with all possible details "
+"(including the stacktrace below)."
+msgstr ""
+
+#: src/plm/core/model/tracking/GitTracker.java:130
 msgid "Pushing to the remote repository before exiting."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:76
+#: src/plm/core/model/tracking/GitUtils.java:75
 msgid "An error occurred while configuring the repository..."
 msgstr ""
 
@@ -965,68 +1912,66 @@ msgstr ""
 msgid "Retrieving your session from the servers..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:119
+#: src/plm/core/model/tracking/GitUtils.java:129
 msgid "An error occurred while checking out the user's branch: "
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:132
+#: src/plm/core/model/tracking/GitUtils.java:158
 msgid "Last session data successfully retrieved."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:135
+#: src/plm/core/model/tracking/GitUtils.java:160
 msgid "Last session data successfully merged."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:138
+#: src/plm/core/model/tracking/GitUtils.java:162
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
 msgstr ""
 
-#. TODO: handle this case
-#: src/plm/core/model/tracking/GitUtils.java:166
+#: src/plm/core/model/tracking/GitUtils.java:190
 msgid "Canceled the merge operation because of the following failures:"
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:173
+#: src/plm/core/model/tracking/GitUtils.java:197
 msgid "Can't merge data retrieved from server with local session data."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:214
+#: src/plm/core/model/tracking/GitUtils.java:241
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:241
+#: src/plm/core/model/tracking/GitUtils.java:266
 msgid "Your session has been successfully saved into the clouds."
 msgstr ""
 
-#. An error occurred while pushing
-#: src/plm/core/model/tracking/GitUtils.java:245
+#: src/plm/core/model/tracking/GitUtils.java:269
 msgid "Fetching the server's last version..."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:252
+#: src/plm/core/model/tracking/GitUtils.java:276
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
 msgstr ""
 
-#: src/plm/core/model/tracking/GitUtils.java:255
+#: src/plm/core/model/tracking/GitUtils.java:279
 msgid ""
 "A bug occurred while synchronizing your data with the server, please report "
 "the following error:"
 msgstr ""
 
-#: src/plm/core/ui/AboutLessonDialog.java:20
+#: src/plm/core/ui/AboutLessonDialog.java:19
 msgid "About lesson - "
 msgstr "关于课时"
 
-#: src/plm/core/ui/AboutPLMDialog.java:37 src/plm/core/ui/MainFrame.java:397
-#: src/plm/core/ui/MainFrame.java:737
+#: src/plm/core/ui/AboutPLMDialog.java:36 src/plm/core/ui/MainFrame.java:394
+#: src/plm/core/ui/MainFrame.java:734
 msgid "About the PLM"
 msgstr "关于PLM"
 
-#: src/plm/core/ui/AboutPLMDialog.java:60
+#: src/plm/core/ui/AboutPLMDialog.java:58
 #, java-format
 msgid ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
@@ -1039,15 +1984,15 @@ msgid ""
 "></html>"
 msgstr ""
 
-#: src/plm/core/ui/AboutPLMDialog.java:81
+#: src/plm/core/ui/AboutPLMDialog.java:77
 msgid "About"
 msgstr ""
 
-#: src/plm/core/ui/AboutPLMDialog.java:118
+#: src/plm/core/ui/AboutPLMDialog.java:114
 msgid "Changes"
 msgstr ""
 
-#: src/plm/core/ui/AboutPLMDialog.java:124
+#: src/plm/core/ui/AboutPLMDialog.java:119
 msgid ""
 "<h2>The PLM is proudly Free Software</h2>\n"
 "<p>Copyright (c) 2008-2021.<br/>\n"
@@ -1069,31 +2014,30 @@ msgid ""
 "listed in the COPYING file distributed with the archive.</p>"
 msgstr ""
 
-#: src/plm/core/ui/AboutPLMDialog.java:150
+#: src/plm/core/ui/AboutPLMDialog.java:144
 msgid "Copying"
 msgstr "复制中"
 
-#: src/plm/core/ui/AboutPLMDialog.java:156
-#: src/plm/core/ui/ExerciseFailedDialog.java:43
-#: src/plm/core/ui/ExercisePassedDialog.java:100
+#: src/plm/core/ui/AboutPLMDialog.java:150
+#: src/plm/core/ui/ExerciseFailedDialog.java:41
+#: src/plm/core/ui/ExercisePassedDialog.java:99
 msgid "Close"
 msgstr "关闭"
 
-#: src/plm/core/ui/AboutWorldDialog.java:31
-#: src/plm/core/ui/AboutWorldDialog.java:50
+#: src/plm/core/ui/AboutWorldDialog.java:48
 #, java-format
 msgid "About world - {0}"
 msgstr ""
 
-#: src/plm/core/ui/ChooseLectureDialog.java:100
+#: src/plm/core/ui/ChooseLectureDialog.java:98
 msgid "Choose your next exercise"
 msgstr "选择你的下一个练习"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:46
+#: src/plm/core/ui/ChooseLessonDialog.java:44
 msgid "Choose your lesson"
 msgstr "选择课时"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:66
+#: src/plm/core/ui/ChooseLessonDialog.java:65
 msgid ""
 "<table border=\"0\" align=\"center\"><tr>\n"
 "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
@@ -1108,15 +2052,15 @@ msgid ""
 "your own pace.</font></p><br/>"
 msgstr ""
 
-#: src/plm/core/ui/ChooseLessonDialog.java:144
+#: src/plm/core/ui/ChooseLessonDialog.java:142
 msgid "PLM lesson files"
 msgstr "PLM课时文件"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:153
+#: src/plm/core/ui/ChooseLessonDialog.java:151
 msgid "Error"
 msgstr "错误"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:180
+#: src/plm/core/ui/ChooseLessonDialog.java:178
 msgid ""
 "<h1>Please pick a lesson</h1>\n"
 "<p>Please click on an icon on the left to select a lesson.</p>\n"
@@ -1124,78 +2068,78 @@ msgid ""
 "p>"
 msgstr ""
 
-#: src/plm/core/ui/ChooseLessonDialog.java:224
+#: src/plm/core/ui/ChooseLessonDialog.java:223
 #, java-format
 msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
 "found)</p>"
 msgstr ""
 
-#: src/plm/core/ui/ChooseLessonDialog.java:227
+#: src/plm/core/ui/ChooseLessonDialog.java:226
 msgid "<p><b>Your score:</b> "
 msgstr ""
 
-#: src/plm/core/ui/ChooseLessonDialog.java:235
+#: src/plm/core/ui/ChooseLessonDialog.java:234
 #, java-format
 msgid "{0} out of {1} exercises passed."
 msgstr ""
 
-#: src/plm/core/ui/ChooseLessonDialog.java:239
+#: src/plm/core/ui/ChooseLessonDialog.java:238
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
 msgstr ""
 
-#: src/plm/core/ui/ChooseLessonDialog.java:245
+#: src/plm/core/ui/ChooseLessonDialog.java:244
 msgid "You never attempted this lesson."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:27
+#: src/plm/core/ui/ExerciseFailedDialog.java:25
 msgid "<i>Practice makes perfect</i>, as they say."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:28
+#: src/plm/core/ui/ExerciseFailedDialog.java:26
 msgid "<i>To err is human</i>, as they say."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:29
+#: src/plm/core/ui/ExerciseFailedDialog.java:27
 msgid "You should keep trying until you get it right!"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:30
+#: src/plm/core/ui/ExerciseFailedDialog.java:28
 msgid "We all learn from our mistakes, so, good job!"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:31
+#: src/plm/core/ui/ExerciseFailedDialog.java:29
 msgid "We learn from failure, not from success!"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:32
+#: src/plm/core/ui/ExerciseFailedDialog.java:30
 msgid "Success comes after failure"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
+#: src/plm/core/ui/ExerciseFailedDialog.java:31
 msgid ""
 "<i>The master has failed more time than the beginner has even tried</i>,<br> "
 "as they say."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:34
+#: src/plm/core/ui/ExerciseFailedDialog.java:32
 msgid ""
 "<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
 "(Einstein)."
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:35
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid ""
 "<i>Success does not consist in never making mistakes,<br> but in never "
 "making the same one a second time.</i> (Shaw)"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:38
+#: src/plm/core/ui/ExerciseFailedDialog.java:36
 msgid "Mmm, not quite"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:56
+#: src/plm/core/ui/ExerciseFailedDialog.java:53
 #, java-format
 msgid ""
 "<html>You didn''t manage to reach your objective this time. <br>\n"
@@ -1208,7 +2152,7 @@ msgid ""
 "textual description of this difference between both worlds.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:68
+#: src/plm/core/ui/ExerciseFailedDialog.java:65
 #, java-format
 msgid ""
 "<html>Compilation error.<br>\n"
@@ -1216,94 +2160,93 @@ msgid ""
 "Please read it carefully to understand the problem, and fix your code.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:83
-#: src/plm/core/ui/ExerciseFailedDialog.java:90
+#: src/plm/core/ui/ExerciseFailedDialog.java:80
+#: src/plm/core/ui/ExerciseFailedDialog.java:87
 msgid "Details >>"
 msgstr "细节 >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:93
+#: src/plm/core/ui/ExerciseFailedDialog.java:90
 msgid "Details <<"
 msgstr "细节 <<"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:28
+#: src/plm/core/ui/ExercisePassedDialog.java:27
 msgid "Exercice passed \\o/"
 msgstr ""
 
-#: src/plm/core/ui/ExercisePassedDialog.java:37
+#: src/plm/core/ui/ExercisePassedDialog.java:36
 msgid "Congrats"
 msgstr "恭喜"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:46
+#: src/plm/core/ui/ExercisePassedDialog.java:45
 #, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExercisePassedDialog.java:49
+#: src/plm/core/ui/ExercisePassedDialog.java:47
 msgid "<html>Congratulations, you passed this exercise.</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExercisePassedDialog.java:59
+#: src/plm/core/ui/ExercisePassedDialog.java:56
 #, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
 "passed)<br><br><br>Select your next exercise:</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExercisePassedDialog.java:62
+#: src/plm/core/ui/ExercisePassedDialog.java:59
 msgid ""
 "<html>Congratulations, you passed this exercise.<br><br><br><br>Select your "
 "next exercise:</html>"
 msgstr ""
 
-#: src/plm/core/ui/ExercisePassedDialog.java:72
+#: src/plm/core/ui/ExercisePassedDialog.java:69
 msgid "Give feedback"
 msgstr "反馈"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:75
+#: src/plm/core/ui/ExercisePassedDialog.java:72
 msgid ""
 "Please help us to improve this exercise by filling this little evaluation."
 msgstr ""
 
-#: src/plm/core/ui/ExercisePassedDialog.java:77
+#: src/plm/core/ui/ExercisePassedDialog.java:74
 msgid "Difficulty:"
 msgstr "难度："
 
-#. Difficulties are the text presented to the user while difficultiesEN are the one that will be added to the report
-#: src/plm/core/ui/ExercisePassedDialog.java:80
-#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:77
+#: src/plm/core/ui/ExercisePassedDialog.java:86
 msgid "(please choose)"
 msgstr "请选择"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:80
+#: src/plm/core/ui/ExercisePassedDialog.java:77
 msgid "Too easy"
 msgstr "菜鸟"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:80
+#: src/plm/core/ui/ExercisePassedDialog.java:77
 msgid "Easy"
 msgstr "简单"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:80
+#: src/plm/core/ui/ExercisePassedDialog.java:78
 msgid "Just right"
 msgstr "一般"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:80
+#: src/plm/core/ui/ExercisePassedDialog.java:78
 msgid "Difficult"
 msgstr "困难"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:80
+#: src/plm/core/ui/ExercisePassedDialog.java:78
 msgid "Too difficult"
 msgstr "大师"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:85
+#: src/plm/core/ui/ExercisePassedDialog.java:83
 msgid "Interest:"
 msgstr "评分"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:86
 msgid "Really good"
 msgstr "很好"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:86
 msgid "Amusing"
 msgstr "有趣"
 
@@ -1319,47 +2262,47 @@ msgstr "无聊"
 msgid "Really bad"
 msgstr "很差"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:92
+#: src/plm/core/ui/ExercisePassedDialog.java:93
 msgid "Free comments on that exercise:"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseView.java:87 src/plm/core/ui/ExerciseView.java:225
+#: src/plm/core/ui/ExerciseView.java:86 src/plm/core/ui/ExerciseView.java:215
 msgid "Change the speed of execution"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseView.java:94 src/plm/core/ui/ExerciseView.java:168
-#: src/plm/core/ui/ExerciseView.java:227
+#: src/plm/core/ui/ExerciseView.java:93 src/plm/core/ui/ExerciseView.java:161
+#: src/plm/core/ui/ExerciseView.java:217
 msgid "World"
 msgstr "世界"
 
-#: src/plm/core/ui/ExerciseView.java:94 src/plm/core/ui/ExerciseView.java:168
-#: src/plm/core/ui/ExerciseView.java:228
+#: src/plm/core/ui/ExerciseView.java:93 src/plm/core/ui/ExerciseView.java:161
+#: src/plm/core/ui/ExerciseView.java:218
 msgid "The world as it is right now"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseView.java:98 src/plm/core/ui/ExerciseView.java:170
-#: src/plm/core/ui/ExerciseView.java:229
+#: src/plm/core/ui/ExerciseView.java:97 src/plm/core/ui/ExerciseView.java:163
+#: src/plm/core/ui/ExerciseView.java:219
 msgid "Objective"
 msgstr "目的"
 
-#: src/plm/core/ui/ExerciseView.java:98 src/plm/core/ui/ExerciseView.java:170
-#: src/plm/core/ui/ExerciseView.java:230
+#: src/plm/core/ui/ExerciseView.java:97 src/plm/core/ui/ExerciseView.java:163
+#: src/plm/core/ui/ExerciseView.java:220
 msgid "The world as it should be"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseView.java:224
+#: src/plm/core/ui/ExerciseView.java:214
 msgid "Switch the displayed world"
 msgstr ""
 
-#: src/plm/core/ui/ExerciseView.java:226
+#: src/plm/core/ui/ExerciseView.java:216
 msgid "Switch the entity"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:62
+#: src/plm/core/ui/FeedbackDialog.java:64
 msgid "Please describe the problem in a few words"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:64
+#: src/plm/core/ui/FeedbackDialog.java:65
 msgid ""
 "Your suggestion comes here, with all necessary details.\n"
 "\n"
@@ -1372,19 +2315,19 @@ msgid ""
 "--------------------[ Technical Information ]--------------------\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:71
+#: src/plm/core/ui/FeedbackDialog.java:74
 msgid "--------------------[ my code for this exercise ]--------------------\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:94
+#: src/plm/core/ui/FeedbackDialog.java:99
 msgid "Report your feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:102
+#: src/plm/core/ui/FeedbackDialog.java:108
 msgid "Issue title:"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:110
+#: src/plm/core/ui/FeedbackDialog.java:116
 msgid ""
 "<h1>Asking a question about the PLM</h1>\n"
 "<p>If you're stuck or unsure, you can come and discuss with us on our <a "
@@ -1408,73 +2351,71 @@ msgid ""
 "</p><br/>"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:158
-#: src/plm/core/ui/action/RevertExercise.java:20
+#: src/plm/core/ui/FeedbackDialog.java:166
+#: src/plm/core/ui/action/ImportSession.java:39
+#: src/plm/core/ui/action/RevertExercise.java:16
 msgid "Cancel"
 msgstr "取消"
 
-#: src/plm/core/ui/FeedbackDialog.java:163
+#: src/plm/core/ui/FeedbackDialog.java:170
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:164
+#: src/plm/core/ui/FeedbackDialog.java:171
 msgid "are you sure?"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:172
+#: src/plm/core/ui/FeedbackDialog.java:178
 msgid "Send feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:199
+#: src/plm/core/ui/FeedbackDialog.java:211
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
 "Follow our progress at {0}."
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:200
+#: src/plm/core/ui/FeedbackDialog.java:214
 msgid "Thanks for your suggestion"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:209
+#: src/plm/core/ui/FeedbackDialog.java:221
 msgid "Error while uploading your feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:216
+#: src/plm/core/ui/FeedbackDialog.java:226
 msgid ""
 "Your feedback needs some little changes before being send,\n"
 "please fix the following issue(s):\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:217
+#: src/plm/core/ui/FeedbackDialog.java:227
 msgid "Incorrect feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:242
+#: src/plm/core/ui/FeedbackDialog.java:252
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:246
+#: src/plm/core/ui/FeedbackDialog.java:255
 msgid "The current title is empty, please specify a relevant title.\n"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:250
+#: src/plm/core/ui/FeedbackDialog.java:259
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
 msgstr ""
 
-#: src/plm/core/ui/LoggerPanel.java:30 src/plm/core/ui/LoggerPanel.java:95
+#: src/plm/core/ui/LoggerPanel.java:21 src/plm/core/ui/LoggerPanel.java:59
 msgid "Where error and other messages get written"
 msgstr ""
 
-#. === FILE menu ===
-#. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
-#. Menus
-#: src/plm/core/ui/MainFrame.java:180 src/plm/core/ui/MainFrame.java:706
+#: src/plm/core/ui/MainFrame.java:180 src/plm/core/ui/MainFrame.java:705
 msgid "File"
 msgstr "文件"
 
@@ -1482,7 +2423,7 @@ msgstr "文件"
 msgid "File related functions"
 msgstr "文件历史记录"
 
-#: src/plm/core/ui/MainFrame.java:184 src/plm/core/ui/MainFrame.java:707
+#: src/plm/core/ui/MainFrame.java:184 src/plm/core/ui/MainFrame.java:706
 msgid "Save a picture"
 msgstr "保存图片"
 
@@ -1490,222 +2431,216 @@ msgstr "保存图片"
 msgid "PNG Image Files"
 msgstr "PNG图片文件"
 
-#: src/plm/core/ui/MainFrame.java:198
+#: src/plm/core/ui/MainFrame.java:197
 #, java-format
 msgid "Do you want to overwrite {0}?"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:199
+#: src/plm/core/ui/MainFrame.java:198
 #, java-format
 msgid "{0} exists"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:218
+#: src/plm/core/ui/MainFrame.java:217
 #, java-format
 msgid "Image saved into {0}."
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:227 src/plm/core/ui/MainFrame.java:708
+#: src/plm/core/ui/MainFrame.java:226 src/plm/core/ui/MainFrame.java:707
 msgid "Quit"
 msgstr "离开"
 
-#: src/plm/core/ui/MainFrame.java:234 src/plm/core/ui/MainFrame.java:710
+#: src/plm/core/ui/MainFrame.java:233 src/plm/core/ui/MainFrame.java:709
 msgid "Exercise"
 msgstr "练习"
 
-#: src/plm/core/ui/MainFrame.java:239 src/plm/core/ui/MainFrame.java:469
-#: src/plm/core/ui/MainFrame.java:711
+#: src/plm/core/ui/MainFrame.java:238 src/plm/core/ui/MainFrame.java:461
+#: src/plm/core/ui/MainFrame.java:710
 msgid "Switch lesson"
 msgstr "更换章节"
 
-#: src/plm/core/ui/MainFrame.java:251 src/plm/core/ui/MainFrame.java:472
-#: src/plm/core/ui/MainFrame.java:703 src/plm/core/ui/MainFrame.java:712
+#: src/plm/core/ui/MainFrame.java:250 src/plm/core/ui/MainFrame.java:464
+#: src/plm/core/ui/MainFrame.java:702 src/plm/core/ui/MainFrame.java:711
 msgid "Switch exercise"
 msgstr "更换练习"
 
-#: src/plm/core/ui/MainFrame.java:262 src/plm/core/ui/MainFrame.java:713
+#: src/plm/core/ui/MainFrame.java:261 src/plm/core/ui/MainFrame.java:712
 msgid "Revert Exercise"
 msgstr "恢复练习"
 
-#: src/plm/core/ui/MainFrame.java:266 src/plm/core/ui/MainFrame.java:714
+#: src/plm/core/ui/MainFrame.java:265 src/plm/core/ui/MainFrame.java:713
 msgid "Debug mode"
 msgstr "调试模式"
 
-#: src/plm/core/ui/MainFrame.java:278 src/plm/core/ui/MainFrame.java:715
+#: src/plm/core/ui/MainFrame.java:277 src/plm/core/ui/MainFrame.java:714
 msgid "Creative mode"
 msgstr "创建模式"
 
-#. === Session menu ===
-#: src/plm/core/ui/MainFrame.java:292 src/plm/core/ui/MainFrame.java:717
+#: src/plm/core/ui/MainFrame.java:288 src/plm/core/ui/MainFrame.java:716
 msgid "Session"
 msgstr "课题"
 
-#: src/plm/core/ui/MainFrame.java:298
+#: src/plm/core/ui/MainFrame.java:293
 msgid "Write Session to disk"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:301
+#: src/plm/core/ui/MainFrame.java:296
 msgid "Read Session from disk"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:723
-#: src/plm/core/ui/action/AddUser.java:33
+#: src/plm/core/ui/MainFrame.java:300 src/plm/core/ui/MainFrame.java:721
+#: src/plm/core/ui/action/AddUser.java:29
 msgid "Add user"
 msgstr "添加用户"
 
-#: src/plm/core/ui/MainFrame.java:309 src/plm/core/ui/MainFrame.java:724
-#: src/plm/core/ui/action/SwitchUser.java:30
+#: src/plm/core/ui/MainFrame.java:303 src/plm/core/ui/MainFrame.java:722
+#: src/plm/core/ui/action/SwitchUser.java:27
 msgid "Switch user"
 msgstr "切换用户"
 
-#: src/plm/core/ui/MainFrame.java:312 src/plm/core/ui/MainFrame.java:725
-#: src/plm/core/ui/action/RemoveUser.java:27
+#: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:723
+#: src/plm/core/ui/action/RemoveUser.java:28
 msgid "Remove user"
 msgstr "删除用户"
 
-#. === Language menu ===
-#: src/plm/core/ui/MainFrame.java:316 src/plm/core/ui/MainFrame.java:728
+#: src/plm/core/ui/MainFrame.java:310 src/plm/core/ui/MainFrame.java:725
 msgid "Language"
 msgstr "语言"
 
-#. === Programming language changing ===
-#: src/plm/core/ui/MainFrame.java:321 src/plm/core/ui/MainFrame.java:729
+#: src/plm/core/ui/MainFrame.java:315 src/plm/core/ui/MainFrame.java:726
 msgid "Human"
 msgstr "人类"
 
-#: src/plm/core/ui/MainFrame.java:335 src/plm/core/ui/MainFrame.java:730
+#: src/plm/core/ui/MainFrame.java:328 src/plm/core/ui/MainFrame.java:727
 msgid "Computer"
 msgstr "计算机"
 
-#. === Help menu ===
-#: src/plm/core/ui/MainFrame.java:339 src/plm/core/ui/MainFrame.java:732
+#: src/plm/core/ui/MainFrame.java:332 src/plm/core/ui/MainFrame.java:729
 msgid "Help"
 msgstr "帮助"
 
-#: src/plm/core/ui/MainFrame.java:343 src/plm/core/ui/MainFrame.java:733
+#: src/plm/core/ui/MainFrame.java:336 src/plm/core/ui/MainFrame.java:730
 msgid "Provide feedback"
 msgstr "反馈"
 
-#: src/plm/core/ui/MainFrame.java:353 src/plm/core/ui/MainFrame.java:734
+#: src/plm/core/ui/MainFrame.java:347 src/plm/core/ui/MainFrame.java:731
 msgid "About this lesson"
 msgstr "关于这一课"
 
-#: src/plm/core/ui/MainFrame.java:366 src/plm/core/ui/MainFrame.java:735
+#: src/plm/core/ui/MainFrame.java:361 src/plm/core/ui/MainFrame.java:732
 msgid "About this world"
 msgstr "关于这个世界"
 
-#: src/plm/core/ui/MainFrame.java:381
+#: src/plm/core/ui/MainFrame.java:377
 msgid "Show the mission in a window"
 msgstr ""
 
-#. Buttons
-#: src/plm/core/ui/MainFrame.java:433 src/plm/core/ui/MainFrame.java:698
+#: src/plm/core/ui/MainFrame.java:430 src/plm/core/ui/MainFrame.java:697
 msgid "Run"
 msgstr "运行"
 
-#: src/plm/core/ui/MainFrame.java:437 src/plm/core/ui/MainFrame.java:535
-#: src/plm/core/ui/MainFrame.java:699
+#: src/plm/core/ui/MainFrame.java:434 src/plm/core/ui/MainFrame.java:528
+#: src/plm/core/ui/MainFrame.java:698
 msgid "Step"
 msgstr "步骤"
 
-#: src/plm/core/ui/MainFrame.java:442 src/plm/core/ui/MainFrame.java:700
+#: src/plm/core/ui/MainFrame.java:438 src/plm/core/ui/MainFrame.java:699
 msgid "Stop"
 msgstr "停止"
 
-#: src/plm/core/ui/MainFrame.java:448 src/plm/core/ui/MainFrame.java:701
+#: src/plm/core/ui/MainFrame.java:443 src/plm/core/ui/MainFrame.java:700
 msgid "Reset"
 msgstr "重置"
 
-#: src/plm/core/ui/MainFrame.java:454 src/plm/core/ui/MainFrame.java:702
+#: src/plm/core/ui/MainFrame.java:448 src/plm/core/ui/MainFrame.java:701
 msgid "Demo"
 msgstr "演示"
 
-#: src/plm/core/ui/MainFrame.java:520
+#: src/plm/core/ui/MainFrame.java:513
 msgid "Next"
 msgstr "下一步"
 
-#: src/plm/core/ui/MainFrame.java:587
+#: src/plm/core/ui/MainFrame.java:580
 msgid "Please wait, while the PLM is saving your session data."
 msgstr "请等待PLM正在保存你的配置"
 
-#: src/plm/core/ui/MainFrame.java:718
+#: src/plm/core/ui/MainFrame.java:717
 msgid "Lesson related functions"
 msgstr "课时历史记录"
 
-#: src/plm/core/ui/MainFrame.java:719
+#: src/plm/core/ui/MainFrame.java:718
 msgid "Export Session Cache"
 msgstr "导出课题"
 
-#: src/plm/core/ui/MainFrame.java:720
+#: src/plm/core/ui/MainFrame.java:719
 msgid "Import Session Cache"
 msgstr "导入课题"
 
-#: src/plm/core/ui/MissionEditorTabs.java:72
+#: src/plm/core/ui/MissionEditorTabs.java:68
 msgid "Mission"
 msgstr "任务"
 
-#: src/plm/core/ui/MissionEditorTabs.java:73
+#: src/plm/core/ui/MissionEditorTabs.java:68
 msgid "Description of the work to do"
 msgstr ""
 
-#. Create the tab with the code editor as content
-#: src/plm/core/ui/MissionEditorTabs.java:142
+#: src/plm/core/ui/MissionEditorTabs.java:131
 msgid "Type your code here"
 msgstr "输入你的代码"
 
-#: src/plm/core/ui/PlmHtmlEditorKit.java:343
+#: src/plm/core/ui/PlmHtmlEditorKit.java:187
 #, java-format
 msgid "<img> tag without src attribute at offset {0}."
 msgstr ""
 
-#: src/plm/core/ui/PlmHtmlEditorKit.java:345
+#: src/plm/core/ui/PlmHtmlEditorKit.java:189
 #, java-format
 msgid "<img> tag without src attribute in exercise {0} at offset {1}"
 msgstr ""
 
-#: src/plm/core/ui/StatusBar.java:154
+#: src/plm/core/ui/StatusBar.java:158
 msgid "Saving"
 msgstr "保存中"
 
-#: src/plm/core/ui/StatusBar.java:159
+#: src/plm/core/ui/StatusBar.java:163
 msgid "Compiling"
 msgstr "编译中"
 
-#: src/plm/core/ui/StatusBar.java:175
+#: src/plm/core/ui/StatusBar.java:179
 msgid "Running "
 msgstr "运行中"
 
-#: src/plm/core/ui/StatusBar.java:180
+#: src/plm/core/ui/StatusBar.java:184
 msgid "Playing demo "
 msgstr "运行演示"
 
-#: src/plm/core/ui/StatusBar.java:185
+#: src/plm/core/ui/StatusBar.java:189
 msgid "Loading "
 msgstr "打开中"
 
-#: src/plm/core/ui/TipsDialog.java:20
+#: src/plm/core/ui/TipsDialog.java:19
 msgid "Tips"
 msgstr "提示"
 
-#: src/plm/core/ui/TipsDialog.java:21
+#: src/plm/core/ui/TipsDialog.java:20
 msgid "(no tips to display)"
 msgstr "没有任何提示"
 
-#: src/plm/core/ui/action/AddUser.java:27
+#: src/plm/core/ui/action/AddUser.java:26
 msgid ""
 "If you already have a UUID, paste it here. If not, you can use that randomly "
 "generated identifier."
 msgstr ""
 
-#: src/plm/core/ui/action/AddUser.java:29
+#: src/plm/core/ui/action/AddUser.java:27
 msgid "Username:"
 msgstr "用户名："
 
-#: src/plm/core/ui/action/AddUser.java:30
+#: src/plm/core/ui/action/AddUser.java:27
 msgid "Secret UUID:"
 msgstr "UUID密码："
 
-#: src/plm/core/ui/action/AddUser.java:38
+#: src/plm/core/ui/action/AddUser.java:33
 msgid ""
 "Your new user has been added successfully!\n"
 "You were automatically switched to that user."
@@ -1713,43 +2648,69 @@ msgstr ""
 "您的新用户已经成功创建\n"
 "此用户将被自动登录"
 
-#: src/plm/core/ui/action/AddUser.java:41
+#: src/plm/core/ui/action/AddUser.java:35
 msgid ""
 "Invalid UUID! Either paste a correct identifier or use the randomly "
 "generated one."
 msgstr ""
 
-#: src/plm/core/ui/action/HelpMe.java:69
-msgid "Please ask here your question for the teacher:"
-msgstr "有问题请问老师"
+#: src/plm/core/ui/action/ExportSession.java:38
+#, java-format
+msgid "Cannot export the session: {0}"
+msgstr ""
 
-#: src/plm/core/ui/action/HelpMe.java:70
-msgid "Call for help"
-msgstr "请求帮助"
+#: src/plm/core/ui/action/ExportSession.java:38
+#, fuzzy
+#| msgid "Test failed"
+msgid "Export failed"
+msgstr "测试失败"
 
-#: src/plm/core/ui/action/HelpMe.java:136
-#: src/plm/core/ui/action/HelpMe.java:143
-msgid "Cancel call"
-msgstr "取消请求"
+#: src/plm/core/ui/action/ImportSession.java:39
+#, fuzzy
+#| msgid "Link identity"
+msgid "Keep my identity"
+msgstr "认证链接"
 
-#: src/plm/core/ui/action/HelpMe.java:136
-#: src/plm/core/ui/action/HelpMe.java:143
-msgid "Call for Help"
-msgstr "求助"
+#: src/plm/core/ui/action/ImportSession.java:39
+msgid "Take the identity of the file"
+msgstr ""
 
-#: src/plm/core/ui/action/PlayDemo.java:27
+#: src/plm/core/ui/action/ImportSession.java:41
+msgid ""
+"This session file belongs to another user than the current one.\n"
+"Both sessions will be merged: which identity should be kept?"
+msgstr ""
+
+#: src/plm/core/ui/action/ImportSession.java:43
+#, fuzzy
+#| msgid "Import Session Cache"
+msgid "Import a session"
+msgstr "导入课题"
+
+#: src/plm/core/ui/action/ImportSession.java:53
+#, java-format
+msgid "Cannot import the session: {0}"
+msgstr ""
+
+#: src/plm/core/ui/action/ImportSession.java:53
+#, fuzzy
+#| msgid "Test failed"
+msgid "Import failed"
+msgstr "测试失败"
+
+#: src/plm/core/ui/action/PlayDemo.java:19
 msgid "Run the demo of what you should code for this exercise"
 msgstr ""
 
-#: src/plm/core/ui/action/PlayDemo.java:28
+#: src/plm/core/ui/action/PlayDemo.java:19
 msgid "Impossible to run the demo right now"
 msgstr ""
 
-#: src/plm/core/ui/action/QuitGame.java:29
+#: src/plm/core/ui/action/QuitGame.java:24
 msgid "Quit the application"
 msgstr "离开应用"
 
-#: src/plm/core/ui/action/QuitGame.java:29
+#: src/plm/core/ui/action/QuitGame.java:24
 msgid "Impossible to quit the application right now"
 msgstr ""
 
@@ -1759,7 +2720,7 @@ msgid ""
 "html>"
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:35
+#: src/plm/core/ui/action/RemoveUser.java:36
 #, java-format
 msgid ""
 "A deleted user is definitely lost if you don''t know its \n"
@@ -1767,54 +2728,67 @@ msgid ""
 "Are you sure that you want to delete the user {0}?"
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:38
+#: src/plm/core/ui/action/RemoveUser.java:40
 msgid "Confirm user deletion"
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:41
+#: src/plm/core/ui/action/RemoveUser.java:42
 #, java-format
 msgid "User {0} successfully deleted"
 msgstr ""
 
-#: src/plm/core/ui/action/RemoveUser.java:44
+#: src/plm/core/ui/action/RemoveUser.java:45
 msgid "Sorry, you can't delete the current user."
 msgstr "对不起，你不能删除当前用户"
 
-#: src/plm/core/ui/action/RemoveUser.java:44
+#: src/plm/core/ui/action/RemoveUser.java:45
 msgid "Try again"
 msgstr "重试"
 
-#: src/plm/core/ui/action/Reset.java:29
+#: src/plm/core/ui/action/Reset.java:23
 msgid "Reset your world to the initial state"
 msgstr ""
 
-#: src/plm/core/ui/action/Reset.java:29
+#: src/plm/core/ui/action/Reset.java:23
 msgid "World cannot be reset right now"
 msgstr ""
 
-#: src/plm/core/ui/action/RevertExercise.java:20
+#: src/plm/core/ui/action/RevertExercise.java:16
 msgid "OK"
 msgstr ""
 
-#: src/plm/core/ui/action/RevertExercise.java:23
+#: src/plm/core/ui/action/RevertExercise.java:18
 msgid ""
 "Reverting this exercise will erase all your work and cannot be undone.\n"
 " Are you sure that you want to proceed?"
 msgstr ""
 
-#: src/plm/core/ui/action/RevertExercise.java:24
+#: src/plm/core/ui/action/RevertExercise.java:19
 msgid "Warning"
 msgstr "警告"
 
-#: src/plm/core/ui/action/RevertExercise.java:28
+#: src/plm/core/ui/action/RevertExercise.java:21
 msgid "Revert canceled on user request -- your work was preserved."
 msgstr ""
 
-#: src/plm/core/ui/action/RevertExercise.java:39
+#: src/plm/core/ui/action/RevertExercise.java:33
 msgid "Exercise reverted"
 msgstr ""
 
-#: src/plm/core/ui/action/StartExecution.java:32
+#: src/plm/core/ui/action/SetProgLanguage.java:25
+msgid ""
+"The C langage is currently very experimental in the PLM.\n"
+"If you go for C, you may not be able to complete some exercises that\n"
+"are still in progress in C, although some other parts are already okay.\n"
+"\n"
+"Do you want to proceed anyway?"
+msgstr ""
+
+#: src/plm/core/ui/action/SetProgLanguage.java:29
+msgid "C is still experimental"
+msgstr ""
+
+#: src/plm/core/ui/action/StartExecution.java:31
 msgid ""
 "The PLM can save your data anonymously on remote servers. That way, you \n"
 "can retrieve your session from your anonymous tag from any connected "
@@ -1825,112 +2799,112 @@ msgid ""
 "to solve the challenges.\n"
 msgstr ""
 
-#: src/plm/core/ui/action/StartExecution.java:37
+#: src/plm/core/ui/action/StartExecution.java:36
 msgid "Do you want to store your data online?"
 msgstr "你想上传你的信息吗?"
 
-#: src/plm/core/ui/action/StartExecution.java:38
+#: src/plm/core/ui/action/StartExecution.java:37
 msgid "Ok, save my data online"
 msgstr "是，保存到网上"
 
-#: src/plm/core/ui/action/StartExecution.java:38
+#: src/plm/core/ui/action/StartExecution.java:37
 msgid "No, keep everything local"
 msgstr "不，本地保存"
 
-#: src/plm/core/ui/action/StartExecution.java:38
+#: src/plm/core/ui/action/StartExecution.java:37
 msgid "Let me decide later"
 msgstr "稍后再说"
 
-#: src/plm/core/ui/action/StartExecution.java:65
+#: src/plm/core/ui/action/StartExecution.java:58
 msgid "Launch the execution of your code"
 msgstr "执行你的代码"
 
-#: src/plm/core/ui/action/StartExecution.java:66
+#: src/plm/core/ui/action/StartExecution.java:59
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
 "activity with the Stop button."
 msgstr ""
 
-#: src/plm/core/ui/action/StepExecution.java:22
+#: src/plm/core/ui/action/StepExecution.java:20
 msgid "Execute one step of your code"
 msgstr "执行一步代码"
 
-#: src/plm/core/ui/action/StepExecution.java:23
+#: src/plm/core/ui/action/StepExecution.java:20
 msgid "Impossible to step your code now. Need to stop the execution first?"
 msgstr "不能运行下一步代码。需要先停止执行？"
 
-#: src/plm/core/ui/action/StopExecution.java:22
+#: src/plm/core/ui/action/StopExecution.java:18
 msgid "Stop your code"
 msgstr "停止你的代码"
 
-#: src/plm/core/ui/action/StopExecution.java:23
+#: src/plm/core/ui/action/StopExecution.java:18
 msgid "No execution to stop right now"
 msgstr "不停止执行"
 
-#: src/plm/core/ui/action/SwitchExo.java:29
+#: src/plm/core/ui/action/SwitchExo.java:22
 msgid "Switch to another exercise"
 msgstr "换一个练习"
 
-#: src/plm/core/ui/action/SwitchUser.java:29
+#: src/plm/core/ui/action/SwitchUser.java:27
 msgid "Please choose the user you want to use"
 msgstr "请选择要登录的用户名"
 
-#: src/plm/core/ui/action/SwitchUser.java:37
+#: src/plm/core/ui/action/SwitchUser.java:34
 #, java-format
 msgid "User {0} already selected."
 msgstr ""
 
-#: src/plm/core/ui/action/SwitchUser.java:41
+#: src/plm/core/ui/action/SwitchUser.java:38
 #, java-format
 msgid "User {0} now selected."
 msgstr ""
 
-#: src/plm/core/ui/action/SwitchUser.java:43
+#: src/plm/core/ui/action/SwitchUser.java:40
 msgid "Operation canceled by user request"
 msgstr ""
 
-#: src/plm/core/ui/action/SwitchUser.java:44
+#: src/plm/core/ui/action/SwitchUser.java:41
 msgid "Operation canceled as requested by user."
 msgstr ""
 
-#: src/plm/core/ui/editor/MissionEditor.java:54
+#: src/plm/core/ui/editor/MissionEditor.java:51
 msgid "PLM - Mission Editor (modified)"
 msgstr "PLM - 任务编辑器（已更改）"
 
-#: src/plm/core/ui/editor/MissionEditor.java:55
+#: src/plm/core/ui/editor/MissionEditor.java:52
 msgid "PLM - Mission Editor"
 msgstr "PLM - 任务编辑器"
 
-#: src/plm/core/ui/editor/MissionEditor.java:253
-#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:254
+#: src/plm/core/ui/editor/MissionEditor.java:241
+#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:244
 #, java-format
 msgid "Error while reading {0}"
 msgstr "读取{0}错误"
 
-#: src/plm/core/ui/editor/MissionEditor.java:260
+#: src/plm/core/ui/editor/MissionEditor.java:248
 msgid "You did not save you changes. Do you want to save it before quiting?"
 msgstr ""
 
-#: src/plm/core/ui/editor/MissionEditor.java:261
-#: src/plm/core/ui/editor/MissionEditor.java:380
+#: src/plm/core/ui/editor/MissionEditor.java:249
+#: src/plm/core/ui/editor/MissionEditor.java:360
 msgid "Save or loose your change?"
 msgstr "保存或丢失你的更改"
 
-#: src/plm/core/ui/editor/MissionEditor.java:372
+#: src/plm/core/ui/editor/MissionEditor.java:353
 msgid "Open Mission..."
 msgstr "打开任务..."
 
-#: src/plm/core/ui/editor/MissionEditor.java:379
+#: src/plm/core/ui/editor/MissionEditor.java:359
 msgid ""
 "You did not save you changes. Do you want to save it before opening another "
 "file?"
 msgstr ""
 
-#: src/plm/core/ui/editor/MissionEditor.java:397
+#: src/plm/core/ui/editor/MissionEditor.java:375
 msgid "HTML files"
 msgstr "HTML文件"
 
-#: src/plm/core/ui/editor/MissionEditor.java:405
+#: src/plm/core/ui/editor/MissionEditor.java:384
 #, java-format
 msgid ""
 "You chose a translated mission text for edition ({0}).\n"
@@ -1941,510 +2915,464 @@ msgid ""
 "Proceed anyway?"
 msgstr ""
 
-#: src/plm/core/ui/editor/MissionEditor.java:409
+#: src/plm/core/ui/editor/MissionEditor.java:389
 msgid "This is a translated mission text"
 msgstr ""
 
-#: src/plm/core/ui/editor/MissionEditor.java:426
+#: src/plm/core/ui/editor/MissionEditor.java:402
 msgid "Quit Map Editor"
 msgstr "离开地图编辑器"
 
-#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:188
+#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:184
 msgid "Create New Map"
 msgstr "创建新地图"
 
-#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:240
+#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:231
 msgid "Open Map..."
 msgstr "打开地图"
 
-#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:246
+#: src/plm/core/ui/editor/buggleeditor/MainFrame.java:236
 msgid "PLM map files"
 msgstr "PLM 地图文件"
 
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:57
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:56
 msgid "Property"
 msgstr "属性"
 
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:57
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:56
 msgid "Value"
 msgstr "数值"
 
-#. The editor for the name
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:71
 msgid "World name"
 msgstr "世界名字"
 
-#. ---------- world width ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:83
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:81
 msgid "World width"
 msgstr "世界宽度"
 
-#. ---------- world height ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:103
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:102
 msgid "World height"
 msgstr "世界长度"
 
-#. ---------- selected cell ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:123
 msgid "Selected cell X"
 msgstr "选择x坐标"
 
-#. ---------- selected cell ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:145
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:146
 msgid "Selected cell Y"
 msgstr "选择y坐标"
 
-#. ---------- Ground color ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:166
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:168
 msgid "Ground color (name or r/g/b)"
 msgstr ""
 
-#. ---------- top wall cell ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:183
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:186
 msgid "Top wall?"
 msgstr "上壁"
 
-#. ---------- left wall cell ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:205
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:209
 msgid "Left wall?"
 msgstr "左壁"
 
-#. ---------- have baggle ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:227
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:232
 msgid "Baggle?"
 msgstr "小黄人"
 
-#. ---------- Buggle name ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:258
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:264
 msgid "Buggle name"
 msgstr "buggle名字"
 
-#. ---------- Buggle direction ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:269
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:276
 msgid "Buggle direction (N|S|E|W)"
 msgstr "buggle方向 (N|S|E|W)"
 
-#. ---------- Buggle color ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:298
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:306
 msgid "Buggle color (name or r/g/b)"
 msgstr "buggle颜色 (名字 或 r/g/b)"
 
-#. ---------- Buggle color ---------------
-#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:314
+#: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:323
 msgid "Brush color (name or r/g/b)"
 msgstr "刷子颜色 (名字 或 r/g/b)"
 
-#: src/plm/core/utils/ColorMapper.java:59
+#: src/plm/core/utils/ColorMapper.java:61
 msgid "black"
 msgstr "黑"
 
-#: src/plm/core/utils/ColorMapper.java:60
+#: src/plm/core/utils/ColorMapper.java:63
 msgid "blue"
 msgstr "蓝"
 
-#: src/plm/core/utils/ColorMapper.java:61
+#: src/plm/core/utils/ColorMapper.java:65
 msgid "cyan"
 msgstr "青"
 
-#: src/plm/core/utils/ColorMapper.java:62
+#: src/plm/core/utils/ColorMapper.java:67
 msgid "dark grey"
 msgstr "深灰"
 
-#: src/plm/core/utils/ColorMapper.java:63
+#: src/plm/core/utils/ColorMapper.java:69
 msgid "grey"
 msgstr "灰"
 
-#: src/plm/core/utils/ColorMapper.java:64
+#: src/plm/core/utils/ColorMapper.java:71
 msgid "green"
 msgstr "绿"
 
-#: src/plm/core/utils/ColorMapper.java:65
+#: src/plm/core/utils/ColorMapper.java:73
 msgid "light grey"
 msgstr "淡灰"
 
-#: src/plm/core/utils/ColorMapper.java:66
+#: src/plm/core/utils/ColorMapper.java:75
 msgid "magenta"
 msgstr "品红"
 
-#: src/plm/core/utils/ColorMapper.java:67
+#: src/plm/core/utils/ColorMapper.java:77
 msgid "orange"
 msgstr "橙"
 
-#: src/plm/core/utils/ColorMapper.java:68
+#: src/plm/core/utils/ColorMapper.java:79
 msgid "pink"
 msgstr "粉"
 
-#: src/plm/core/utils/ColorMapper.java:69
+#: src/plm/core/utils/ColorMapper.java:81
 msgid "red"
 msgstr "红"
 
-#: src/plm/core/utils/ColorMapper.java:70
+#: src/plm/core/utils/ColorMapper.java:83
 msgid "white"
 msgstr "白"
 
-#: src/plm/core/utils/ColorMapper.java:71
+#: src/plm/core/utils/ColorMapper.java:85
 msgid "yellow"
 msgstr "黄"
 
-#: src/plm/universe/Direction.java:59
-msgid "NORTH"
-msgstr "北"
+#: src/plm/universe/CommandExecutor.java:36
+#, fuzzy, java-format
+#| msgid ""
+#| "Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your "
+#| "goal instead."
+msgid "Sorry Dave, I cannot let you use {0} in this exercise. {1}"
+msgstr "对不起Dave，我不能让你在这个练习中使用setX(x). 请步行到你的目标."
 
-#: src/plm/universe/Direction.java:61
-msgid "EAST"
-msgstr "东"
-
-#: src/plm/universe/Direction.java:63
-msgid "SOUTH"
-msgstr "南"
-
-#: src/plm/universe/Direction.java:65
-msgid "WEST"
-msgstr "西"
-
-#: src/plm/universe/bat/BatEntity.java:38
-#, java-format
-msgid "Exception {0}: {1}"
-msgstr "错误 {0}: {1}"
-
-#: src/plm/universe/bugglequest/AbstractBuggle.java:95
-msgid ""
-"Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
-"pens. Use brushDown() instead."
+#: src/plm/universe/bugglequest/AbstractBuggle.java:42
+msgid "Use a loop instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:99
-msgid ""
-"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
-"pens. Use brushUp() instead."
-msgstr ""
-
-#: src/plm/universe/bugglequest/AbstractBuggle.java:175
-#: src/plm/universe/bugglequest/SimpleBuggle.java:31
-#: src/plm/universe/turtles/Turtle.java:216
-msgid ""
-"Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
-"instead."
-msgstr ""
-
-#: src/plm/universe/bugglequest/AbstractBuggle.java:178
-#: src/plm/universe/bugglequest/SimpleBuggle.java:36
-#: src/plm/universe/turtles/Turtle.java:219
-msgid ""
-"Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
-"instead."
-msgstr ""
-
-#: src/plm/universe/bugglequest/AbstractBuggle.java:198
+#: src/plm/universe/bugglequest/AbstractBuggle.java:191
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:200
+#: src/plm/universe/bugglequest/AbstractBuggle.java:194
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:219
-#: src/plm/universe/bugglequest/AbstractBuggle.java:255
+#: src/plm/universe/bugglequest/AbstractBuggle.java:213
+#: src/plm/universe/bugglequest/AbstractBuggle.java:251
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:238
-#: src/plm/universe/bugglequest/AbstractBuggle.java:253
+#: src/plm/universe/bugglequest/AbstractBuggle.java:232
+#: src/plm/universe/bugglequest/AbstractBuggle.java:249
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:372
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:129
+#: src/plm/universe/bugglequest/AbstractBuggle.java:368
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:120
 msgid "There is no baggle to pick up here."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:374
+#: src/plm/universe/bugglequest/AbstractBuggle.java:370
 msgid "You are already carrying a baggle."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:465
+#: src/plm/universe/bugglequest/AbstractBuggle.java:449
 msgid "Its value is 'null', which is never good."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:472
+#: src/plm/universe/bugglequest/AbstractBuggle.java:456
 msgid "    It should not carry that baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:474
+#: src/plm/universe/bugglequest/AbstractBuggle.java:458
 msgid "    It is not carrying any baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:478
+#: src/plm/universe/bugglequest/AbstractBuggle.java:462
 #, java-format
 msgid "    Unexpected issue: {0}\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:480
+#: src/plm/universe/bugglequest/AbstractBuggle.java:464
 msgid "    It encountered an unexpected issue (such as bumping into a wall).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:484
+#: src/plm/universe/bugglequest/AbstractBuggle.java:468
 #, java-format
 msgid "    It did not encounter the expected issue: {0}\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:486
+#: src/plm/universe/bugglequest/AbstractBuggle.java:470
 msgid ""
 "    It did not encounter an issue as expected (such as bumping into a "
 "wall).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:491
+#: src/plm/universe/bugglequest/AbstractBuggle.java:475
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:493
+#: src/plm/universe/bugglequest/AbstractBuggle.java:477
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:495
+#: src/plm/universe/bugglequest/AbstractBuggle.java:479
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:497
+#: src/plm/universe/bugglequest/AbstractBuggle.java:481
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:122
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java:27
+msgid ""
+"Sorry Dave, I cannot let you use penDown() here. Buggles have brushes, not "
+"pens. Use brushDown() instead."
+msgstr ""
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java:32
+msgid ""
+"Sorry Dave, I cannot let you use penUp() here. Buggles have brushes, not "
+"pens. Use brushUp() instead."
+msgstr ""
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java:37
+#: src/plm/universe/turtles/TurtlePrimitives.java:35
+msgid ""
+"Sorry Dave, I cannot let you use Left() with an uppercase. Use left() "
+"instead."
+msgstr ""
+
+#: src/plm/universe/bugglequest/AbstractBugglePrimitives.java:42
+#: src/plm/universe/turtles/TurtlePrimitives.java:40
+msgid ""
+"Sorry Dave, I cannot let you use Right() with an uppercase. Use right() "
+"instead."
+msgstr ""
+
+#: src/plm/universe/bugglequest/BuggleWorld.java:113
 #, java-format
 msgid ""
 "{0}: The path to the map on disk should not include the .map extension (or "
 "it won''t work in jarfiles). Please fix your exercise."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:130
+#: src/plm/universe/bugglequest/BuggleWorld.java:120
 #, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty)."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:136
+#: src/plm/universe/bugglequest/BuggleWorld.java:125
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:142
+#: src/plm/universe/bugglequest/BuggleWorld.java:131
 #, java-format
 msgid "{0}.map: End of file reached before world size specification."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:147
+#: src/plm/universe/bugglequest/BuggleWorld.java:135
 #, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:173
+#: src/plm/universe/bugglequest/BuggleWorld.java:162
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:187
+#: src/plm/universe/bugglequest/BuggleWorld.java:175
 #, java-format
 msgid "Invalid buggle''s direction: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:194
-#: src/plm/universe/bugglequest/BuggleWorld.java:201
+#: src/plm/universe/bugglequest/BuggleWorld.java:181
+#: src/plm/universe/bugglequest/BuggleWorld.java:187
 #, java-format
 msgid "Invalid buggle''s color name: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:218
+#: src/plm/universe/bugglequest/BuggleWorld.java:204
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:231
+#: src/plm/universe/bugglequest/BuggleWorld.java:216
 #, java-format
 msgid "Invalid color name: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:237
+#: src/plm/universe/bugglequest/BuggleWorld.java:221
 #, java-format
 msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:241
+#: src/plm/universe/bugglequest/BuggleWorld.java:224
 #, java-format
 msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:245
+#: src/plm/universe/bugglequest/BuggleWorld.java:227
 #, java-format
 msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:255
+#: src/plm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
 msgid ""
 "The cell {0},{1} seem to be defined more than once. At least, there is two "
 "baggles here, which is not allowed."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:271
+#: src/plm/universe/bugglequest/BuggleWorld.java:252
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:576
+#: src/plm/universe/bugglequest/BuggleWorld.java:387
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:578
+#: src/plm/universe/bugglequest/BuggleWorld.java:389
 #, java-format
 msgid "  There is {0} entities where {1} were expected."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:582
+#: src/plm/universe/bugglequest/BuggleWorld.java:393
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:588
+#: src/plm/universe/bugglequest/BuggleWorld.java:399
 #, java-format
 msgid "  In ({0},{1})"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:122
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:112
 msgid "There is already a baggle here."
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:202
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:193
 msgid ", there shouldn't be this baggle"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:204
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:195
 msgid ", there should be a baggle"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:207
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:198
 #, java-format
 msgid ", the ground should not be {0}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:209
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:200
 #, java-format
 msgid ", the ground is expected to be {0}, but it is {1}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:213
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:204
 #, java-format
 msgid ", the ground reads ''{0}'' (expected: ''{1}'')"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:216
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:207
 msgid ", there shouldn't be any wall at west"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:218
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:209
 msgid ", there should be a wall at west"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:221
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:212
 msgid ", there shouldn't be any wall at north"
 msgstr ""
 
-#: src/plm/universe/bugglequest/BuggleWorldCell.java:223
+#: src/plm/universe/bugglequest/BuggleWorldCell.java:214
 msgid ", there should be a wall at north"
 msgstr ""
+
+#: src/plm/universe/bugglequest/SimpleBuggle.java:33
+#: src/plm/universe/bugglequest/SimpleBuggle.java:53
+#: src/plm/universe/bugglequest/SimpleBuggle.java:73
+#: src/plm/universe/bugglequest/SimpleBuggle.java:79
+#: src/plm/universe/bugglequest/SimpleBuggle.java:92
+#: src/plm/universe/bugglequest/SimpleBuggle.java:98
+#: src/plm/universe/bugglequest/SimpleBuggle.java:110
+#: src/plm/universe/bugglequest/SimpleBuggle.java:122
+#: src/plm/universe/bugglequest/SimpleBuggle.java:134
+msgid "Test failed"
+msgstr "测试失败"
 
 #: src/plm/universe/bugglequest/exception/BuggleWallException.java:10
 msgid "Buggles cannot traverse walls"
 msgstr "Buggles无法穿越墙壁"
 
-#: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:10
+#: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:9
 msgid "You have no baggle to drop"
 msgstr "你没有可丢弃的baggle"
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:59
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:232
-msgid "forward"
-msgstr "前进"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:64
-msgid "forward()"
-msgstr "前进()"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:75
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:231
-msgid "backward"
-msgstr "后退"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:80
-msgid "backward()"
-msgstr "后退()"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:91
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:233
-msgid "left"
-msgstr "左转"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:95
-msgid "left()"
-msgstr "左转()"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:101
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:234
-msgid "right"
-msgstr "右转"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:105
-msgid "right()"
-msgstr "右转()"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:111
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:235
-msgid "mark"
-msgstr "标记"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:117
-msgid "brushUp()"
-msgstr "拿起刷子()"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:120
-msgid "brushDown()"
-msgstr "放下刷子()"
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:146
-#, java-format
-msgid "setBrushColor(Color.{0})"
-msgstr ""
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:222
-msgid "Wall hugging error"
-msgstr ""
-
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:223
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:187
 msgid "Your buggle has collided with a wall, it hurts a lot ! ='("
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:236
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:187
+msgid "Wall hugging error"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:194
+msgid "backward"
+msgstr "后退"
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:195
+msgid "forward"
+msgstr "前进"
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:196
+msgid "left"
+msgstr "左转"
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:197
+msgid "right"
+msgstr "右转"
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:198
+msgid "mark"
+msgstr "标记"
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:199
 msgid "Brush Color"
 msgstr "刷子颜色"
 
-#: src/plm/universe/sort/SortingButtonPanel.java:59
+#: src/plm/universe/sort/SortingButtonPanel.java:60
 msgid "go"
 msgstr "开始"
 
@@ -2458,48 +3386,48 @@ msgstr ""
 msgid "copy({0},{1})"
 msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:108
+#: src/plm/universe/sort/SortingButtonPanel.java:106
 msgid "swap"
 msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:108
+#: src/plm/universe/sort/SortingButtonPanel.java:106
 msgid "setValue"
 msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:108
+#: src/plm/universe/sort/SortingButtonPanel.java:106
 msgid "copy"
 msgstr "粘帖"
 
-#: src/plm/universe/sort/SortingWorld.java:116
+#: src/plm/universe/sort/SortingWorld.java:135
 #, java-format
 msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:119
+#: src/plm/universe/sort/SortingWorld.java:138
 #, java-format
 msgid "Invalid read count. Expected: {0}; Found: {1}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:122
+#: src/plm/universe/sort/SortingWorld.java:141
 #, java-format
 msgid "Invalid write count. Expected: {0}; Found: {1}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:126
+#: src/plm/universe/sort/SortingWorld.java:145
 #, java-format
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:368
-#: src/plm/universe/sort/SortingWorld.java:369
+#: src/plm/universe/sort/SortingWorld.java:377
+#: src/plm/universe/sort/SortingWorld.java:379
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}<0"
 msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:370
-#: src/plm/universe/sort/SortingWorld.java:371
+#: src/plm/universe/sort/SortingWorld.java:381
+#: src/plm/universe/sort/SortingWorld.java:383
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
@@ -2532,61 +3460,112 @@ msgstr ""
 msgid "That's not a line (please report this bug)."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:224
+#: src/plm/universe/turtles/Turtle.java:338
+#, java-format
+msgid "The turtle {0} is not heading to the right direction."
+msgstr ""
+
+#: src/plm/universe/turtles/Turtle.java:340
+#, java-format
+msgid "The turtle {0} is at the right location."
+msgstr ""
+
+#: src/plm/universe/turtles/TurtlePrimitives.java:46
 msgid ""
 "Sorry Dave, I cannot let you use brushDown() here. Turtles have pens, not "
 "brushes. Use penDown() instead."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:228
+#: src/plm/universe/turtles/TurtlePrimitives.java:51
 msgid ""
 "Sorry Dave, I cannot let you use brushUp() here. Turtles have pens, not "
 "brushes. Use penUp() instead."
 msgstr ""
 
-#: src/plm/universe/turtles/Turtle.java:409
-#, java-format
-msgid "The turtle {0} is not heading to the right direction."
-msgstr ""
-
-#: src/plm/universe/turtles/Turtle.java:411
-#, java-format
-msgid "The turtle {0} is at the right location."
-msgstr ""
-
-#: src/plm/universe/turtles/TurtleWorld.java:359
+#: src/plm/universe/turtles/TurtleWorld.java:274
 #, java-format
 msgid "  There is {0} entities, but {1} entities were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:388
+#: src/plm/universe/turtles/TurtleWorld.java:291
+#, java-format
+msgid "  {0} (got {1} instead of {2})\n"
+msgstr ""
+
+#: src/plm/universe/turtles/TurtleWorld.java:300
 #, java-format
 msgid "  There is {0} shapes, but only {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:390
+#: src/plm/universe/turtles/TurtleWorld.java:302
 #, java-format
 msgid "  There is only {0} shapes, but {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:417
+#: src/plm/universe/turtles/TurtleWorld.java:320
 msgid "Superflous shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:422
+#: src/plm/universe/turtles/TurtleWorld.java:325
 msgid "Missing shapes in your solution:\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:433
+#~ msgid ""
+#~ "Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your "
+#~ "goal instead."
+#~ msgstr "对不起Dave，我不能让你在这个练习中使用setY(y). 请步行到你的目标."
+
+#~ msgid ""
+#~ "Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to "
+#~ "your goal instead."
+#~ msgstr ""
+#~ "对不起Dave，我不能让你在这个练习中使用setPos（x,y）. 请步行到你的目标."
+
+#~ msgid "Compilation failed."
+#~ msgstr "编译失败."
+
+#~ msgid "Please ask here your question for the teacher:"
+#~ msgstr "有问题请问老师"
+
+#~ msgid "Call for help"
+#~ msgstr "请求帮助"
+
+#~ msgid "Cancel call"
+#~ msgstr "取消请求"
+
+#~ msgid "Call for Help"
+#~ msgstr "求助"
+
+#~ msgid "NORTH"
+#~ msgstr "北"
+
+#~ msgid "EAST"
+#~ msgstr "东"
+
+#~ msgid "SOUTH"
+#~ msgstr "南"
+
+#~ msgid "WEST"
+#~ msgstr "西"
+
 #, java-format
-msgid "  {0} (got {1} instead of {2})\n"
-msgstr ""
+#~ msgid "Exception {0}: {1}"
+#~ msgstr "错误 {0}: {1}"
+
+#~ msgid "forward()"
+#~ msgstr "前进()"
+
+#~ msgid "backward()"
+#~ msgstr "后退()"
+
+#~ msgid "left()"
+#~ msgstr "左转()"
+
+#~ msgid "right()"
+#~ msgstr "右转()"
 
 #~ msgid "Load lesson"
 #~ msgstr "打开章节"
 
 #~ msgid "Choose your course"
 #~ msgstr "选择课程"
-
-#~ msgid "Link identity"
-#~ msgstr "认证链接"
