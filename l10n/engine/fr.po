@@ -3240,3 +3240,108 @@ msgstr "montre"
 msgctxt "primitive"
 msgid "isVisible"
 msgstr "estVisible"
+
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "getValueCount"
+msgstr "getNombreValeurs"
+
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "getValue"
+msgstr "getValeur"
+
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "setValue"
+msgstr "setValeur"
+
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "isSmaller"
+msgstr "plusPetit"
+
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "isSmallerThan"
+msgstr "plusPetitQue"
+
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "swap"
+msgstr "echange"
+
+#: src/plm/universe/sort/SortingEntityPrimitives.java
+msgctxt "primitive"
+msgid "copy"
+msgstr "copie"
+
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "flip"
+msgstr "retourne"
+
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "getPancakeRadius"
+msgstr "getRayonCrepe"
+
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "getStackSize"
+msgstr "getTaillePile"
+
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "isPancakeUpsideDown"
+msgstr "estCrepeRetournée"
+
+#: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
+msgctxt "primitive"
+msgid "isSorted"
+msgstr "estTrié"
+
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getBasesAmount"
+msgstr "getNombreBases"
+
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getPositionsAmount"
+msgstr "getNombrePositions"
+
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getPlayerColor"
+msgstr "getCouleurJoueur"
+
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "isBaseSorted"
+msgstr "estBaseTriée"
+
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getHoleBase"
+msgstr "getTrouBase"
+
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "getHolePosition"
+msgstr "getTrouPosition"
+
+#: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+msgctxt "primitive"
+msgid "move"
+msgstr "deplace"
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgctxt "primitive"
+msgid "getColor"
+msgstr "getCouleur"
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSize"
+msgstr "getTaille"

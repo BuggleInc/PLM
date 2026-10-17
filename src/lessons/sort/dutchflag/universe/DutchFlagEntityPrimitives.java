@@ -4,15 +4,15 @@ import plm.core.lang.primitives.Primitive;
 import plm.universe.EntityPrimitivesBase;
 
 public interface DutchFlagEntityPrimitives extends EntityPrimitivesBase {
-  @Primitive void swap(int fromLine, int toLine);
+  @Primitive(value = "Swaps the given lines.") void swap(int fromLine, int toLine);
 
-  @Primitive int getColor(int rank);
+  @Primitive(value = "Returns the color of the given line.") int getColor(int rank);
 
-  @Primitive int getSize();
+  @Primitive(value = "Returns the amount of lines of the flag.") int getSize();
 
-  @Primitive boolean isSorted();
+  @Primitive(value = "Tells whether the flag is sorted.") boolean isSorted();
 
-  @Primitive boolean isSelected();
+  @Primitive(value = "Tells whether the current world is selected in the interface.") boolean isSelected();
 
   @Primitive void assertSorted();
 }

@@ -9751,7 +9751,7 @@ msgstr "Retourne la couleur d'une ligne donnée."
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:31
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estTrie() [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estTrié() [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:23
@@ -9814,7 +9814,7 @@ msgstr ""
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:12
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isPancakeUpsideDown([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estCrepeRetournee([!java|c]int [/!]rang[!scala]:Int[/!])   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estCrepeRetournée([!java|c]int [/!]rang[!scala]:Int[/!])   [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:13
@@ -9844,7 +9844,7 @@ msgstr ""
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:18
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isSorted()   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estTriee()   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estTrié()   [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:19
@@ -10867,7 +10867,7 @@ msgstr "Retourne si tous les joueurs présents sur le terrain sont chez eux."
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:34
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isBaseSorted([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estBaseTriee([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estBaseTriée([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:35
@@ -11347,7 +11347,7 @@ msgstr ""
 "sont très simples : «tant que ce n'est pas trier, déplacer le trou vers le "
 "bas puis vers le haut. À chaque pas, c'est le plus petit des deux joueurs de "
 "la base qui descend, et le plus grand des deux qui monte (en fonction du "
-"sens de déplacement).». Après un moment, <code>estTrie()</code> devient "
+"sens de déplacement).». Après un moment, <code>estTrié()</code> devient "
 "vrai, et votre algorithme s'arrête."
 
 #. type: Content of: <p>
