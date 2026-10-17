@@ -523,6 +523,11 @@
             <artifactId>exec-maven-plugin</artifactId>
             <executions>
               <execution>
+                <!-- Unbinds CodeCreation: the glue (RemoteXxx) is not needed to extract the strings -->
+                <id>generate-resources</id>
+                <phase>none</phase>
+              </execution>
+              <execution>
                 <id>pot-primitives</id>
                 <phase>process-classes</phase>
                 <goals>
