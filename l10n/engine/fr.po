@@ -3355,3 +3355,33 @@ msgstr "getTaillePiquet"
 msgctxt "primitive"
 msgid "getSlotRadius"
 msgstr "getRayonPiquet"
+
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getGround"
+msgstr "getSol"
+
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSpeedX"
+msgstr "getVitesseX"
+
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getSpeedY"
+msgstr "getVitesseY"
+
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "getThrust"
+msgstr "getPoussée"
+
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "setDesiredAngle"
+msgstr "setAngleDesiré"
+
+#: src/lessons/lander/universe/LanderEntityPrimitives.java
+msgctxt "primitive"
+msgid "setDesiredThrust"
+msgstr "setPousséeDesirée"
