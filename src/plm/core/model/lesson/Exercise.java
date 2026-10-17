@@ -191,7 +191,7 @@ public abstract class Exercise extends Lecture {
    * refuse code that compiles but misses the pedagogical point. The message of the exception is shown as a compilation error.
    * @param code the content of the editor
    */
-  protected void verifySource(String code) throws PLMCompilerException {}
+  public void verifySource(String code) throws PLMCompilerException {}
 
   /** get the list of source files for a given language, or create (and load) it if not existent yet */
   public synchronized List<SourceFile> getSourceFilesList(ProgrammingLanguage lang)

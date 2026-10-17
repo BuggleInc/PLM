@@ -497,6 +497,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
     * *`MethodsDogHouseSourceCheckTest`:* `verifySource()` refuses the code unless it calls `left()` exactly once, ignoring
       comments and strings, in the four languages. Its alias in the current human language counts as well (`gauche()` in French).
+      The check is called directly, and only one refusal goes through `compileRunCheck()`, as compiling every case is slow.
   * *`ContentTests`:* the pedagogical material itself (lessons, exercises, mission texts and their translations) rather than
     the code, with the test methods running in parallel. They catch broken content, such as a correction that no longer matches
     its `-answerN.map` or a translation that breaks the markup.

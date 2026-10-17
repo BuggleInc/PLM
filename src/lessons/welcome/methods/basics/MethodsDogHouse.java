@@ -29,7 +29,7 @@ public class MethodsDogHouse extends ExerciseTemplated {
    * Refuses code that does not call left() exactly once, ignoring the comments and strings. The alias of left() in the current human
    * language counts too, but not the ones of the other languages.
    */
-  @Override protected void verifySource(String code) throws PLMCompilerException
+  @Override public void verifySource(String code) throws PLMCompilerException
   {
     String alias     = Game.i18n.trc(PrimitivePot.NAME_CONTEXT, "left");
     Pattern leftCall = Pattern.compile("(?<![\\w.])(?:left|" + Pattern.quote(alias) + ")\\s*\\(", Pattern.UNICODE_CHARACTER_CLASS);

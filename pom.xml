@@ -408,8 +408,14 @@
                     <path refid="maven.plugin.classpath"/>
                   </classpath>
                 </taskdef>
-                <!-- The English bundle, from the pot -->
+                <!-- The English bundle, from the pot, both as default and as Messages_en: without the latter, ResourceBundle
+                     would fall back on the bundle of the JVM's default locale when English is requested (French on a French
+                     system, even when the user chose English). -->
                 <gettext-generate-default targetBundle="org.plm.i18n.Messages"
+                                          potFile="${project.basedir}/l10n/engine/plm.pot"
+                                          poDirectory="${project.basedir}/l10n/engine"
+                                          outputDirectory="${project.build.outputDirectory}"/>
+                <gettext-generate-default targetBundle="org.plm.i18n.Messages_en"
                                           potFile="${project.basedir}/l10n/engine/plm.pot"
                                           poDirectory="${project.basedir}/l10n/engine"
                                           outputDirectory="${project.build.outputDirectory}"/>
