@@ -11,7 +11,7 @@ qualcuno tanto stupido come un computer...
 for your buggle is simply to draw a house (a box), and hide inside. Check
 the objective world to see exactly what this means.</p>
 
-<p>For that, you will need <code>forward()</code>, <code>left()</code> and
+<p>For that, you will need <code>step()</code>, <code>left()</code> and
 <code>right()</code>. Use your brush to mark the ground as you walk. Start
 marking the ground with <code>brushDown()</code>, and stop it with
 <code>brushUp()</code> afterward (e.g., to enter your house without marking
@@ -47,12 +47,11 @@ button of the interactive control panel. To achieve the same effect than the
 <b>forward</b> button (making the buggle moving one step forward), you need
 to write the following in the editor: </p>
 
-<pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
-<p>In modo simile, per ottenere lo stesso effetto dei pulsanti
-<b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> e
-<b>right</b> bisogna usare rispettivamente:</p>
+<pre>step()[!java|c];[/!]</pre>
+<p>In modo simile, per ottenere lo stesso effetto dei pulsanti <b>backward</b>,
+<b>left</b> e <b>right</b> bisogna usare rispettivamente:</p>
 <pre>
-backward()[!java|c];[/!]
+stepBack()[!java|c];[/!]
 left()[!java|c];[/!]
 right()[!java|c];[/!]
 </pre>

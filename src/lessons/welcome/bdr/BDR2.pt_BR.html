@@ -18,13 +18,13 @@ isto:</p>
 
 <pre>if ([!java|c]getIndicação() == 'R'[/!][!scala]lerMensagem() == "R"[/!]) {
   direita();
-  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+  avançarUmPasso();
 } else if ([!java|c]getIndicação() == 'L'[/!][!scala]lerMensagem() == "L"[/!]) {
   esquerda();
-  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+  avançarUmPasso();
 } else if ([!java|c]getIndicação() == 'I'[/!][!scala]lerMensagem() == "I"[/!]) {
   voltar();
-  [!c]avançarUmPasso()[/!][!java|scala]avançar()[/!];
+  avançarUmPasso();
 <span class="comment">/* other else if */</span>
 } else {
   terminou = [!c]1[/!][!java|scala]true[/!];
@@ -68,15 +68,15 @@ usando a construção <tt>switch</tt>:</p>
 <pre>switch (getIndicação()) {
   case 'R':
     direita(); 
-    [!c]avançarUmPasso()[/!][!java]avançar()[/!]; 
+    avançarUmPasso(); 
     break;
   case 'L':
     esquerda();
-    [!c]avançarUmPasso()[/!][!java]avançar()[/!]; 
+    avançarUmPasso(); 
     break;
   case 'I':
     voltar();
-    [!c]avançarUmPasso()[/!][!java]avançar()[/!];
+    avançarUmPasso();
     break;
   default: 
     return;

@@ -21,8 +21,8 @@ sera appelée[/!][!scala|java|c]code qui sera appellé[/!] tous les dixièmes
 de seconde pendant la simulation. Assurez vous que votre code ne dure pas
 trop longtemps, et évitez en particulier les boucles <code>while</code>. Il
 faut juste ajuster la poussée du moteur en utilisant la fonction
-<code>[!java]void [/!]setPousseeDesiree([!java]int
-[/!]poussee[!scala]:Integer[/!])</code> où <code>poussee</code> est un
+<code>[!java]void [/!]setPousséeDesirée([!java]int
+[/!]poussée[!scala]:Integer[/!])</code> où <code>poussee</code> est un
 entier entre 0 et 4 (représentant une poussée entre 0 m/s² et 4 m/s²). Vous
 ne pouvez incrémenter ou décrémenter la poussée que de 1 entre deux pas de
 la simulation. Ainsi, si la poussée du moteur est actuellement de 2 et que
@@ -37,7 +37,7 @@ serez probablement intéressé que par sa position verticale (accessible grâce
 verticale (accessible grâce à <code>[!java]double
 [/!]getVitesseY()[!scala]:Double[/!]</code>). Vous pouvez également demander
 la poussée actuelle du moteur (avec <code>[!java]int
-[/!]getPoussee()[!scala]:Integer[/!]</code>) si vous avez oublié ce que vous
+[/!]getPoussée()[!scala]:Integer[/!]</code>) si vous avez oublié ce que vous
 avez demandé. Rappelez vous que la gravité martienne est de 3.711 m/s², cela
 peut vous être utile.</p>
 

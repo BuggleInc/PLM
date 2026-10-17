@@ -33,7 +33,7 @@ instrução. Mas cuidado, isto torna-se perigoso se cadeiar as instruções
           left();
 else // Não escreva desta forma, é enganoso!
      right(); 
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+step();</pre>
 
 <p>Pensa que <code>right()</code> se refere ao primeiro <code>if</code> e será
 executado quando <code>isOverBaggle()</code> retorna false, mas, na verdade,
@@ -46,7 +46,7 @@ da indentação, o buggle entende o código anterior da seguinte forma:</p>
             left();
         else
             right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+step();</pre>
 
 <p>Em [!thelang] o computador conecta um ramo <tt>else</tt> ao <tt>if</tt> mais
 próximo. Se o achar ambíguo, deve adicionar mais aspas do que estritamente
@@ -54,7 +54,7 @@ necessário. Os computadores nem sequer olham para a indentação em
 [!thelang]. O código anterior pode até ser escrito da seguinte forma e levar
 ao mesmo resultado.</p>
 
-<pre>if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+<pre>if (isOverBaggle()) if (x == 5) left(); else right(); step();</pre>
 
 <p>Mas para humanos, <b>realmente é melhor indentar o seu código
 corretamente</b>. Por exemplo, se quer que um professor reveja ou mesmo

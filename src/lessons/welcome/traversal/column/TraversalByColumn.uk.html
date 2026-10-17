@@ -13,11 +13,11 @@ world. It must number the cells it walks on to show its traversal order.</p>
 </pre>
 
 <p>In contrary to the exercises we saw so far, we won't use the
-<code>forward()</code>, <code>backward()</code> and similar
-methods. Instead, we will compute the coordinate of the next buggle position
-and use the <code>setPos(x, y)</code> method to <i>teleport</i> the buggle
-directly to this position. For example, <code>setPos(3, 5)</code> teleports
-the buggle to the cell where x=3 and y=5.</p>
+<code>step()</code>, <code>stepBack()</code> and similar methods. Instead,
+we will compute the coordinate of the next buggle position and use the
+<code>setPos(x, y)</code> method to <i>teleport</i> the buggle directly to
+this position. For example, <code>setPos(3, 5)</code> teleports the buggle
+to the cell where x=3 and y=5.</p>
 
 <p>Your first task is thus to write a boolean function indicating whether the
 buggle reached the final position or not, ie if it reached the bottom right

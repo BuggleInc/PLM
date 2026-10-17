@@ -9,36 +9,7 @@ para observar o comportamento de algoritmos de ordenação. Isto ajuda a
 entender as diferenças entre cada um deles.
 
 <h2>Métodos disponíveis para algoritmos de ordenação</h2>
-<table border=1>
-<tr><td><b>Método</b></td><td>Ação</td><td>Custo</td></tr>
-<tr><td>[!java|c]int [/!]getQuantidadeDeValores() [!scala]:Int[/!]</td>
-    <td>Retorna a quantidade de valores na array</td><td>nenhum</td></tr>
-
-<tr><td>[!java]boolean [/!][!c]int [/!]éMenor([!java|c]int [/!]i[!scala]:Int[/!],
-[!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]</td>
-    <td>Retorna verdadeiro se o conteúdo da célula i é estritamente menor que o da
-célula j</td><td>duas leituras</td></tr>
-<tr><td>[!java]boolean [/!][!c]int [/!]éMenorQue([!java|c]int [/!]i[!scala]:Int[/!],
-[!java|c]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]</td>
-    <td>Retorna verdadeiro se o conteúdo da célula i é estritamente menor que
-<code>valor</code></td><td>uma leitura</td></tr>
-
-<tr><td>[!java|c]void [/!]alternar([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int
-[/!]j[!scala]:Int[/!])</td>
-     <td>Alterna ("swap") o conteúdo da célula i com o da célula j</td><td>duas escritas, duas leituras</td></tr>
-<tr><td>[!java|c]void [/!]copia([!java|c]int [/!]de[!scala]:Int[/!], [!java|c]int
-[/!]para[!scala]:Int[/!])</td>
-    <td>Copia o conteúdo da célula 'de' para a célula 'para'</td><td>uma leitura, uuma escrita</td></tr>
-
-<tr><td>[!java|c]int [/!]getValor([!java|c]int [/!]idx[!scala]:Int[/!])</td>
-    <td>Retorna o valor da célula idx</td><td>uma leitura</td></tr>
-<tr><td>[!java|c]void [/!]setValor([!java|c]int [/!]idx[!scala]:Int[/!],
-[!java|c]int [/!]valor[!scala]:Int[/!])</td>
-    <td>Coloca na célula 'idx' o <code>valor</code> </td><td>uma escrita</td></tr>
-
-<tr><td>[!java]boolean [/!][!c]int [/!]selecionado() [!scala]:Boolean[/!]</td>
-    <td>Retorna verdadeiro se o mundo atual está selecionado na interface gráfica.</td><td>nenhum</td></tr>
-</table>
+[!primitives/]
 
 <p>As always, the indices of cells range from 0 to <pre>getValueCount()-1</pre>. Accessing a cell out of this range raises an error. </p>
 

@@ -17,8 +17,17 @@ Blum. David Cohen co-fundou uns anos depois a série de TV Futurama, cheia de
 piadas matemáticas. Definitivamente, pessoas interessantes estudaram este
 singelo problema da panqueca...</p>
 
-<p>O algoritmo de Cohen é um pouco mais fácil que o algoritmo de Gates já que
-ele distingue menos casos:</p>
+<p>The Cohen's algorithm is slightly easier than the Gates' one since it
+distinguishes less cases. It relies on the notion of <b>join</b>: pancakes
+<i>p</i> and <i>p+1</i> are joined when <i>p</i> lies rightside up just
+above <i>p+1</i> rightside up, or when <i>p+1</i> lies upside down just
+above <i>p</i> upside down. Once two pancakes are joined, they are never
+separated again: they behave as a single pancake, so each join makes the
+stack one pancake shorter. Likewise, the largest pancake lying rightside up
+at the bottom of the stack is joined to the plate. The stack is sorted after
+<i>n</i> joins. The world view marks each join between two pancakes with a
+small magenta dot. In the cases below, a "pancake" is thus a block of joined
+pancakes, and no flip ever cuts a block.</p>
 
 <p><b>Caso 1:</b> pelo menos uma panqueca está de cabeça para cima na
 pilha. Seja <i>p</i> a maior destas panquecas. Observe que <i>p + 1</i> deve
@@ -62,12 +71,14 @@ maior que <i>p</i> (se existem vários destes <i>p</i>, pegue o maior).
 2.a. Já que nós precisamos alcançar n junções para ordenar a pilha, podemos
 ordenar a pilha em <i>2n</i> passos se o caso 2.b não ocorrer.</p>
 
-<p>Este caso 2.b necessita um tratamento particular já que é obviamente
-impossível juntar duas panquecas em apenas duas viradas. Mas por sorte, uma
-única configuração bem específica da pilha cai neste caso da figura. Podemos
-então utilizar o algoritmo seguinte, conhecido por tirar vantagem desta
-configuração. Este algoritmo ordena toda a pilha em exatamente <i>2n</i>
-passos.</p>
+<p>That case 2.b requires a very different handling as it is obviously not
+possible to achieve a join in only 2 flips.  But fortunately, we can
+leverage the very specific setting of the stack in that case to provide the
+following algorithm.  It sorts a stack in that exact configuration after
+exactly <i>2n</i> steps. When that configuration arises after <i>i</i>
+joins, it applies to the <i>n-i</i> remaining blocks, the top <i>(n-1)</i>
+pancakes being all the blocks but the bottom one.  The whole sort then takes
+<i>2i + 2(n-i) = 2n</i> flips.</p>
   
 <pre>
 Repita n vezes

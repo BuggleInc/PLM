@@ -17,8 +17,17 @@ Manuel Blum. Quelques années après, David Cohen lançait avec un ami la série
 Futurama, remplie de blagues mathématiques. Décidément, ce petit problème de
 crêpes a inspiré des gens intéressant...</p>
 
-<p>L'algorithme de Cohen est un peu plus simple que celui de Gates, car il
-distingue moins de cas :</p>
+<p>The Cohen's algorithm is slightly easier than the Gates' one since it
+distinguishes less cases. It relies on the notion of <b>join</b>: pancakes
+<i>p</i> and <i>p+1</i> are joined when <i>p</i> lies rightside up just
+above <i>p+1</i> rightside up, or when <i>p+1</i> lies upside down just
+above <i>p</i> upside down. Once two pancakes are joined, they are never
+separated again: they behave as a single pancake, so each join makes the
+stack one pancake shorter. Likewise, the largest pancake lying rightside up
+at the bottom of the stack is joined to the plate. The stack is sorted after
+<i>n</i> joins. The world view marks each join between two pancakes with a
+small magenta dot. In the cases below, a "pancake" is thus a block of joined
+pancakes, and no flip ever cuts a block.</p>
 
 <p><b>Cas 1 :</b> Au moins une crêpe est à l'endroit dans la pile. Soit
 <i>p</i> la plus grande des crêpes à l'endroit. Notez que <i>p + 1</i> est
@@ -65,12 +74,14 @@ suivre en deux opérations. Puisque nous devons réaliser n fusions de ce
 genre pour trier la pile, nous pouvons trier la pile en <i>2n</i> opérations
 si le cas 2.b n'arrive jamais.</p>
 
-<p>Ce cas 2.b nécessite un traitement particulier puisqu'il est impossible de
-fusionner deux crêpes qui doivent se suivre en deux étapes seulement. Fort
-heureusement, une seule configuration de pile rentre dans ce cas de
-figure. Nous pouvons alors utiliser l'algorithme suivant, conçu pour tirer
-partie de cette configuration. Cet algorithme trie alors toute la pile en
-exactement <i>2n</i> opérations.</p>
+<p>That case 2.b requires a very different handling as it is obviously not
+possible to achieve a join in only 2 flips.  But fortunately, we can
+leverage the very specific setting of the stack in that case to provide the
+following algorithm.  It sorts a stack in that exact configuration after
+exactly <i>2n</i> steps. When that configuration arises after <i>i</i>
+joins, it applies to the <i>n-i</i> remaining blocks, the top <i>(n-1)</i>
+pancakes being all the blocks but the bottom one.  The whole sort then takes
+<i>2i + 2(n-i) = 2n</i> flips.</p>
   
 <pre>
 Répéter n fois

@@ -16,13 +16,13 @@ cascading. Somewhere in your code, you certainly had something similar to:</p>
 
 <pre>if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == "R"[/!]) {
   right();
-  [!c]stepForward()[/!][!java|scala]forward()[/!];
+  step();
 } else if ([!java|c]getIndication() == 'L'[/!][!scala]readMessage() == "L"[/!]) {
   left();
-  [!c]stepForward()[/!][!java|scala]forward()[/!];
+  step();
 } else if ([!java|c]getIndication() == 'I'[/!][!scala]readMessage() == "I"[/!]) {
   back();
-  [!c]stepForward()[/!][!java|scala]forward()[/!];
+  step();
 <span class="comment">/* other else if */</span>
 } else {
   finished = [!c]1[/!][!java|scala]true[/!];
@@ -66,15 +66,15 @@ some <b>rare</b> cases where this behavior reveals helpful.</p>
 <pre>switch (getIndication()) {
   case 'R':
     right(); 
-    [!c]stepForward()[/!][!java]forward()[/!]; 
+    step(); 
     break;
   case 'L':
     left();
-    [!c]stepForward()[/!][!java]forward()[/!]; 
+    step(); 
     break;
   case 'I':
     back();
-    [!c]stepForward()[/!][!java]forward()[/!];
+    step();
     break;
   default: 
     return;

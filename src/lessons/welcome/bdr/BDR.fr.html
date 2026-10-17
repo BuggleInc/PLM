@@ -34,7 +34,7 @@ les <tt>if</tt> comme dans l'exemple suivant. </p>
           gauche();
 else // N'écrivez pas les choses ainsi, c'est trompeur
      droite();
-[!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
+pas();</pre>
 
 <p>Vous pensez que <code>droite()</code> se réfère au premier
 <code>if</code> et qu'il sera exécuté quand
@@ -49,7 +49,7 @@ précédent comme suit:</p>
             gauche();
         else
             droite();
-[!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
+pas();</pre>
 
 <p>En [!thelang], l'ordinateur connecte une branche <code>else</code> au
 <code>if</code> le plus proche. Si vous trouvez cela ambigu, n'hésitez
@@ -58,7 +58,7 @@ rendre votre code lisible. Les ordinateurs ne regardent même pas
 l'indentation en [!thelang], et le code précédent pourrait même être
 écrit de la manière suivante :</p>
 
-<pre>if (estSurBiscuit()) if (x == 5) gauche(); else droite(); [!c]avancePas();[/!][!java|scala]avance();[/!]</pre>
+<pre>if (estSurBiscuit()) if (x == 5) gauche(); else droite(); pas();</pre>
 
 <p>Mais pour les humains, <b>il est indispensable d'indenter son code
 correctement</b>. Cela vaut si vous voulez qu'un enseignant relise

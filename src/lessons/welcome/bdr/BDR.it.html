@@ -34,7 +34,7 @@ istruzioni <tt>if</tt> come in questo esempio: </p>
           left();
 else // Do not write it this way, it's misleading!
      right(); 
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+step();</pre>
 
 <p>You think that <code>right()</code> refers to the first <code>if</code> and
 get executed when <code>isOverBaggle()</code> returns false, but in fact, it
@@ -48,7 +48,7 @@ follows:</p>
             left();
         else
             right();
-[!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+step();</pre>
 
 <p>In [!thelang] the computer connects a <tt>else</tt> branch to the closest
 <tt>if</tt>. If you find it ambiguous, you should add more braces than
@@ -56,7 +56,7 @@ strictly necessary. Computers don't even look at the indentation in
 [!thelang]. The previous code could even be written as follows and lead to
 the same result.</p>
 
-<pre>if (isOverBaggle()) if (x == 5) left(); else right(); [!c]stepForward();[/!][!java|scala]forward();[/!]</pre>
+<pre>if (isOverBaggle()) if (x == 5) left(); else right(); step();</pre>
 
 <p>But for humans, <b>you really want to indent your code correctly
 correctly</b>. For example if you want a professor to review or even grade

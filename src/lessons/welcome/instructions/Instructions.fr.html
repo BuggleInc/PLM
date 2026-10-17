@@ -13,7 +13,7 @@ tellement. L'objectif de votre buggle est simplement de se dessiner une
 maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif pour
 voir exactement ce que cela veut dire.</p>
 
-<p>Pour cela, vous aurez besoin de <code>avance()</code>,
+<p>Pour cela, vous aurez besoin de <code>pas()</code>,
 <code>gauche()</code> et <code>droite()</code>. Utilisez votre brosse pour
 marquer le sol en marchant. Commencez à marquer le sol avec
 <code>baisseBrosse()</code>, et arrêtez avec <code>leveBrosse()</code> (par
@@ -52,12 +52,11 @@ méthode associée à chaque bouton du panneau de commande interactive. Pour
 faire la même chose que le bouton <b>avance</b> (faire avancer la buggle
 d'un pas), il faut écrire dans l'éditeur : </p>
 
-<pre>[!java|scala|python]avance()[!java];[/!][/!][!c]avancePas();[/!]</pre>
-<p>De même, pour faire l'équivalent des boutons
-<b>[!java|scala|python]recule[/!][!c]reculePas[/!]</b>, <b>gauche</b> et
+<pre>pas()[!java|c];[/!]</pre>
+<p>De même, pour faire l'équivalent des boutons <b>recule</b>, <b>gauche</b> et
 <b>droite</b>, il faut utiliser respectivement :</p>
 <pre>
-recule()[!java|c];[/!]
+pasArrière()[!java|c];[/!]
 gauche()[!java|c];[/!]
 droite()[!java|c];[/!]
 </pre>

@@ -7,69 +7,7 @@ numerosas possiblidades de interação com o mundo: pegar e soltar objetos,
 pintar o chão, bater em paredes, etc.
 
 <h2>Métodos que os buggles entendem</h2>
-<table border=1>
-<tr><td colspan=2 align=center><b>Se movendo</b><br/> (Veja também a nota sobre exceções, abaixo)</td></tr>
-  <tr><td><b>Virar à esquerda<br/>Virar à direita<br/>Dar meia volta<br/>Mover para a frente<br/>Mover para trás</b></td>
-      <td>[!java|c]void [/!]esquerda()<br/>
-          [!java|c]void [/!]direita()<br/>
-          [!java|c]void [/!]voltar()<br/>
-          [!java|c]void [/!][!python|java|scala]avançar()[/!][!c]avançarUmPasso()[/!]
-ou [!java|c]void [/!]avançar([!java|c]int [/!]passos[!scala]:Int[/!])<br/>
-          [!java|c]void [/!][!python|java|scala]recuar()[/!][!c]recuarUmPasso()[/!] ou
-[!java]void [/!]recuar([!java|c]int [/!]passos[!scala]:Int[/!])<br/></td></tr>
-  <tr><td><b>Obter coordenada X<br/>Obter coordenada Y<br/>Ajustar coordenada X<br/>Ajustar coordenada Y<br/>Ajustar posição</b></td>
-      <td>[!java|c]int [/!]getX()[!scala]:Int[/!]<br/>
-          [!java|c]int [/!]getY()[!scala]:Int[/!]<br/>
-          [!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])<br/>
-          [!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])<br/>
-          [!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int
-[/!]y[!scala]:Int[/!])</td></tr>
-<tr><td colspan=2>Observe que o ponto (0,0) está no canto superior esquerdo, o que é comum em
-ciência da computação.</td></tr>
-
-<tr><td colspan=2 align=center><b>Informações sobre o buggle</b></td></tr>
-  <tr><td><b>Obter a cor do corpo<br/>Ajustar a cor do corpo</b></td>
-      <td>[!java|c]Color [/!]getCorDoCorpo()[!scala]:Cor[/!]<br/>
-          [!java|c]void [/!]setCorDoCorpo([!java|c]Cor [/!]c[!scala]:Cor[/!])</td></tr>				
-  <tr><td><b>Procura por uma parede à frente<br/>Procura por uma parede atrás</b></td>
-      <td>[!java]boolean [/!][!c]int [/!]estáDeFrenteParaParede()[!scala]:Boolean[/!]<br/>
-          [!java]boolean [/!][!c]int [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]</td></tr>				
-  <tr><td><b>Obter direção<br/>Ajustar direção</b><br/></td>
-      <td>[!java|c]Direção [/!]getDireção()[!scala]:Direção[/!]<br/>
-          [!java|c]void [/!]ajustaDireção([!java|c]Direção
-[/!]dir[!scala]:Direção[/!])</td></tr>
-
-  <tr><td>Verifica se o buggle está atualmente <b>selecionado na interface</b></td>
-      <td>[!java]boolean [/!][!c]int [/!]estáSelecionado()[!scala]:Boolean[/!]</td></tr>
- 
-<tr><td colspan=2 align=center><b>Sobre o pincel</b></td></tr>
-  <tr><td><b>Abaixar pincel<br/>Levantar pincel<br/>Pegar a posição do pincel</td>
-      <td>[!java|c]void [/!]levantarPincel()<br/>
-          [!java|c]void [/!]abaixarPincel()<br/>
-          [!java]boolean [/!][!c]int [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]</td></tr>
-  <tr><td><b>Muda a cor do pincel<br/>Obtém a cor do pincel</b></td>
-      <td>[!java|c]void [/!]setCorDoPincel([!java|c]Color [/!]c[!scala]:Color[/!])<br/>
-          [!java|c]Color [/!]getCorDoPincel()[!scala]:Color[/!]</td></tr>
-
-<tr><td colspan=2 align=center><b>Interagindo com o mundo</b></td></tr>
-  <tr><td><b>Obtém a cor do chão</b></td>
-      <td>[!java|c]Color [/!]getCorDoChão()[!scala]:Color[/!]</td></tr>
-
-  <tr><td><b>Procura por um "baggle" no chão<br/>Procura por um "baggle" na bolsa<br/>Pega um "baggle"<br/>Solta um "baggle"</b><br/>
-      (veja a nota sobre exceções)</td>
-      <td>[!java]boolean [/!][!c]int [/!]estáSobreBaggle()[!scala]:Boolean[/!]<br/>
-          [!java]boolean [/!][!c]int [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]<br/>
-          [!java]void [/!]pegarBaggle()<br/>
-          [!java]void [/!]soltarBaggle()<br/>
-          &nbsp;</td></tr>
-
-  <tr><td><b>Procura por uma mensagem<br/>Adiciona uma mensagem<br/>Lê a mensagem<br/>Apaga a mensagem</b></td>
-      <td>[!java]boolean [/!][!c]int [/!]estáSobreMensagem()[!scala]:Boolean[/!]<br/>
-          [!java]void [/!]escreverMensagem([!java]String [/!][!c]char*
-[/!]msg[!scala]:String[/!])<br/>
-          [!java]String [/!][!c]char* [/!]lerMensagem()[!scala]:String[/!]<br/>
-          [!java]void [/!]limparMensagem()</td></tr>
-</table>
+[!primitives/]
 
 <table border="0">
 <tr><td valign="top">

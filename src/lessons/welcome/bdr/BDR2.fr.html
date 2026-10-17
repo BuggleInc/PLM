@@ -18,13 +18,13 @@ conditionnelles. Quelque part dans votre programme, vous avez sans doute
 
 <pre>if ([!java|c]getIndication() == 'R'[/!][!scala]litMessage() == "R"[/!]) {
   droite();
-  avance();
+  pas();
 } else if ([!java|c]getIndication() == 'L'[/!][!scala]litMessage() == "L"[/!]) {
   gauche();
-  avance();
+  pas();
 } else if ([!java|c]getIndication() == 'I'[/!][!scala]litMessage() == "I"[/!]) {
   retourne();
-  avance();
+  pas();
 <span class="comment">/* d'autre if */</span>
 } else {
   fini = true;
@@ -71,15 +71,15 @@ construction <tt>switch</tt> de la façon suivante.</p>
 <pre>switch (getIndication()) {
   case 'R':
     droite(); 
-    [!c]avancePas()[/!][!java]avance()[/!]; 
+    pas(); 
     break;
   case 'L':
     gauche();
-    [!c]avancePas()[/!][!java]avance()[/!]; 
+    pas(); 
     break;
   case 'I':
     retourne();
-    [!c]avancePas()[/!][!java]avance()[/!];
+    pas();
     break;
   default: 
     return;

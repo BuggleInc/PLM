@@ -63,7 +63,7 @@ necessidade para um corpo de loop mover um buggle para frente até alcançar a
 parede, mas funciona bem: todo o trabalho é feito nas instruções de condição
 e incremento.</p>
 
-<pre>for (; !isFacingWall() ; forward()) { 
+<pre>for (; !isFacingWall() ; step()) { 
    <span class="comment">/* nada no corpo do loop */</span>
 }
 <span class="comment">/* o buggle agora está de cara para uma parede */</span></pre>
