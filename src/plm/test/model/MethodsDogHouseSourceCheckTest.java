@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mockito;
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
@@ -74,5 +76,16 @@ public class MethodsDogHouseSourceCheckTest {
     Assertions.assertNotNull(message, "two calls must be refused");
     Assertions.assertTrue(message.contains("exactly once"), message);
     Assertions.assertNotNull(refusal(lang, noCall), "no call must be refused");
+
+    I18n english = Game.i18n;
+    try {
+      Game.i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", Locale.FRENCH, I18nFactory.FALLBACK);
+      Assertions.assertNull(refusal(lang, oneCall.replace("left()", "gauche()")), "one call to the French alias must be accepted");
+      message = refusal(lang, oneCall.replace("left()", "left(); gauche()"));
+      Assertions.assertNotNull(message, "a call and a call to the French alias must be refused");
+      Assertions.assertTrue(message.contains("gauche()"), message);
+    } finally {
+      Game.i18n = english;
+    }
   }
 }
