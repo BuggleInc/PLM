@@ -1,4 +1,4 @@
-package plm.test.integration;
+package plm.test.model;
 
 import java.util.ArrayList;
 import java.util.Locale;

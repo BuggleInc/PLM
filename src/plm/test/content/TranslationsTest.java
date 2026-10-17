@@ -1,5 +1,6 @@
-package plm.test.model;
+package plm.test.content;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import plm.core.lang.primitives.CodeCreation;
@@ -22,11 +24,12 @@ import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.utils.PoFile;
 
 /**
- * Every translation of the mission texts (l10n/missions/*.po) keeps the [!langs]...[/!] blocks of the English text with known
- * languages only, and calls each primitive of the English text under its English name or its alias in that language. Fuzzy,
+ * The work of the translators does not break the PLM. The primitive names of l10n/engine/*.po can be added to the glue of every
+ * universe. Every translation of the mission texts (l10n/missions/*.po) keeps the [!langs]...[/!] blocks of the English text with
+ * known languages only, and calls each primitive of the English text under its English name or its alias in that language. Fuzzy,
  * untranslated and outdated entries (absent from the pot) are not checked.
  */
-public class MissionTranslationsTest {
+public class TranslationsTest {
   private static final Path MISSIONS = Path.of("l10n/missions");
 
   static List<Path> catalogs() throws IOException
@@ -34,6 +37,13 @@ public class MissionTranslationsTest {
     try (Stream<Path> files = Files.list(MISSIONS)) {
       return files.filter(file -> file.toString().endsWith(".po")).sorted().toList();
     }
+  }
+
+  @Test public void primitiveNamesAreValid() throws IOException
+  {
+    Map<String, Map<String, String>> aliases = PrimitiveAliases.load(PrimitiveAliases.PO_DIRECTORY);
+    for (CodeCreation.Remote remote : CodeCreation.REMOTES)
+      assertDoesNotThrow(() -> PrimitiveAliases.withAliases(remote.name(), PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()), aliases));
   }
 
   @ParameterizedTest @MethodSource("catalogs") public void translationsKeepMarkupAndPrimitives(Path catalog) throws IOException

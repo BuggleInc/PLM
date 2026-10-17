@@ -1,4 +1,4 @@
-package plm.test.integration;
+package plm.test.content;
 
 import java.io.File;
 import java.io.IOException;

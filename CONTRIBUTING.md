@@ -448,8 +448,8 @@ Tests live in `src/plm/test` and are compiled with the main code (see the surefi
 a few classes sit next to them. Surefire runs only `AllTests` and `MainFrameSmokeTest`, each in its own JVM (`reuseForks=false`),
 because the `Game` singleton would otherwise leak the GUI listeners of the latter into the former.
 
-* *`AllTests`:* the suite chaining `UnitTests` and `IntegrationTests`.
-  * *`UnitTests`:* no real lesson involved.
+* *`AllTests`:* the suite chaining `UnitTests` and `ContentTests`.
+  * *`UnitTests`:* the code of the PLM, on a minimal universe or on a few real exercises when needed.
     * *`AllSimpleExerciseTests`:* templating, compilation, execution and check on a minimal universe (`plm.test.simple`), once
       per language (`JavaSimpleExerciseTest`, `ScalaSimpleExerciseTest`, `PythonSimpleExerciseTest`, `CSimpleExerciseTest`,
       which share `SimpleExerciseTest` and `CompiledSimpleExerciseTest`). The correction compiles, runs and passes. The saved
@@ -471,23 +471,17 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`PrimitiveRegistrationTest`:* the primitives are indexed by name and sorted, inherited ones included, and cached. The same
       declaration in two interfaces is one primitive, while the same name with another signature is rejected. The parameter
       names are the declared ones (`forward(steps)`), which fails if `-parameters` is lost.
-    * *`PrimitiveAliasesTest`:* the translated primitive names of every `l10n/engine/*.po` can be added to the glue of every
-      universe. An alias calls its canonical primitive and appears once even if several locales share it, while a name that is not
-      an identifier (decomposed accents included), a keyword, or a name designating two primitives is rejected.
+    * *`PrimitiveAliasesTest`:* the primitive names of a catalog are read (fuzzy entries ignored) and added to a glue. An alias
+      calls its canonical primitive and appears once even if several locales share it, while a name that is not an identifier
+      (decomposed accents included), a keyword, or a name designating two primitives is rejected.
     * *`CommandExecutorTest`:* a command calls the primitive and writes its result back (nothing for a void primitive). Spaces in
       the arguments are kept, enums travel as ordinals, and atomic values are converted where a string is expected. An unknown
       primitive or arguments of the wrong type fail the run, a forbidden primitive is refused before being called, a
       `PrimitiveRefusedException` is reported as is, and any other exception is reported with the call that raised it.
-    * *`ApiGatingTest`:* the primitives forbidden by `forbidTeleportation()` and `forbidMultiStep()` are refused by `CommandExecutor`
-      with an explanatory `PrimitiveRefusedException`. `forbid()` rejects an unknown primitive, the forbidden primitives are
-      read-only and forbidden again by every new instance, the likely mistakes (`Left()`, `penDown()`...) are explained, and a few
-      gated exercises refuse their forbidden calls. The documentation of the world hides the forbidden and undocumented
-      primitives, and orders the groups as declared.
-    * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
-      known languages, and no tag is malformed (such as `[/!` without its closing bracket, or `[java]` without its `!`).
-    * *`MissionTranslationsTest`:* in every `l10n/missions/*.po`, even for the languages that po4a does not generate, the
-      translations keep the well-formed `[!langs]...[/!]` blocks of the English text and call each of its primitives under its
-      English name or its alias in that language. This protects the translators who are not programmers.
+    * *`ApiGatingTest`:* on test buggles, the primitives forbidden by `forbidTeleportation()` and `forbidMultiStep()` are refused
+      by `CommandExecutor` with an explanatory `PrimitiveRefusedException`. `forbid()` rejects an unknown primitive, the forbidden
+      primitives are read-only and forbidden again by every new instance, and the likely mistakes (`Left()`, `penDown()`...) are
+      explained. The documentation of the world hides the forbidden and undocumented primitives, and orders the groups as declared.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
@@ -501,20 +495,28 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       lesson and language (`registerLesson()` included), and the lesson summaries are written and parsed back (an invalid one is ignored).
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
-  * *`IntegrationTests`:* the real lessons, with the test methods running in parallel.
+    * *`MethodsDogHouseSourceCheckTest`:* `verifySource()` refuses the code unless it calls `left()` exactly once, ignoring
+      comments and strings, in the four languages.
+  * *`ContentTests`:* the pedagogical material itself (lessons, exercises, mission texts and their translations) rather than
+    the code, with the test methods running in parallel. They catch broken content, such as a correction that no longer matches
+    its `-answerN.map` or a translation that breaks the markup.
     * *`LessonTest`:* every lesson of `ExoTest.lessonNamesToTest` loads without error, in Java, Scala and Python.
     * *`ExoTestJavaLang`, `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`:* for every exercise, `compileRunCheck()` of the
       correction entity must pass in that language. They share `ExoTest`, which lists the lessons and their exercises. The Python
       and C ones also fail when the exercise has no entity file in their language, and the Turmites get a longer timeout.
-    * *`MethodsDogHouseSourceCheckTest`:* `verifySource()` refuses the code unless it calls `left()` exactly once, ignoring
-      comments and strings, in the four languages.
+    * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
+      known languages, and no tag is malformed (such as `[/!` without its closing bracket, or `[java]` without its `!`).
+    * *`TranslationsTest`:* the work of the translators, who are not all programmers, does not break the PLM. The primitive names
+      of every `l10n/engine/*.po` can be added to the glue of every universe. In every `l10n/missions/*.po`, even for the languages
+      that po4a does not generate, the translations keep the well-formed `[!langs]...[/!]` blocks of the English text and call
+      each of its primitives under its English name or its alias in that language.
+    * *`GatedExercisesTest`:* the exercises that gate their API (`Array1`, `LoopFor`, `TraversalByColumn`, `MethodsDogHouse`,
+      `LinearHanoi`) refuse a call that would defeat their goal.
 * *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
 * *`value_serializer_test.c`:* the C side of the value serialization, built and run by maven outside of JUnit.
 
-The `ExoTest*Lang` tests are a regression suite over the pedagogical content itself: they catch broken exercises (e.g. a
-correction that no longer matches its `-answerN.map`) rather than testing application logic in isolation. Only the *correction*
-entity is compiled there. The student path (editor content injected into the template) is exercised by the `SimpleExercise` tests
-and by `MethodsDogHouseSourceCheckTest`.
+Only the *correction* entity is compiled by the `ExoTest*Lang` tests. The student path (editor content injected into the
+template) is exercised by the `SimpleExercise` tests and by `MethodsDogHouseSourceCheckTest`.
 
 A stale `-answerN.map` is reported as a broken test, not fixed automatically: decide whether the entity or the cache is wrong. In
 the latter case, delete the `.map` file and run the tests twice: the first run regenerates it (and passes trivially), the second
@@ -555,7 +557,7 @@ exercises implemented in this environment.  Even if all lessons are grouped toge
 
 The engine component also holds the names of the primitives (context `primitive`), which students can then call in your
 language. Each name must be a valid identifier and must not be the name of another primitive of the same world: the tests
-(`PrimitiveAliasesTest`) catch the mistakes. A name has a single translation, shared by all worlds (`isSorted` is translated
+(`TranslationsTest`) catch the mistakes. A name has a single translation, shared by all worlds (`isSorted` is translated
 once for pancakes and flags). Use the same names in the mission texts.
 
 Every change to the engine will automatically be included in the [versions built on

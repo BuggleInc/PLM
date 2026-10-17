@@ -1,4 +1,4 @@
-package plm.test.integration;
+package plm.test.content;
 
 import java.util.Locale;
 import java.util.stream.Stream;

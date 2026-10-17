@@ -11,21 +11,13 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.PrimitiveAliases;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.test.simple.SimpleExerciseEntity;
 
-/** The translated names of the primitives can be added to the glue of every universe, and the translation mistakes are caught. */
+/** The translated names of the primitives are read from the catalogs and added to the glue, and the translation mistakes are caught. */
 public class PrimitiveAliasesTest {
-
-  @Test public void translationsOfTheCatalogsAreValid() throws IOException
-  {
-    Map<String, Map<String, String>> aliases = PrimitiveAliases.load(PrimitiveAliases.PO_DIRECTORY);
-    for (CodeCreation.Remote remote : CodeCreation.REMOTES)
-      assertDoesNotThrow(() -> PrimitiveAliases.withAliases(remote.name(), PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()), aliases));
-  }
 
   @Test public void flagsOfObsoleteEntriesDoNotLeak(@TempDir Path dir) throws IOException
   {

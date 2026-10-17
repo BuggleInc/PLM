@@ -1,4 +1,4 @@
-package plm.test.integration;
+package plm.test.content;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.parallel.Execution;

@@ -1,4 +1,4 @@
-package plm.test.integration;
+package plm.test.content;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.parallel.Execution;
@@ -10,17 +10,16 @@ import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lesson;
 
-public class ExoTestPythonLang extends ExoTest {
+public class ExoTestCLang extends ExoTest {
 
   @Execution(ExecutionMode.CONCURRENT)
   @ParameterizedTest
   @MethodSource("exercises")
-  public void testPythonEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
+  public void testCEntity(Lesson l, Exercise e) throws BrokenProgrammingLanguageException
   {
     initExerciseState(e);
-    if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.PYTHON))
-      Assertions.fail("Exercise " + e.getId() + " has no Python entity");
-    Assertions.assertTimeoutPreemptively(
-        timeout(e), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.PYTHON); }, "Test " + e.getId() + " timeouted.");
+    if (!e.getProgLanguages().contains(Game.getInstance().programmingLanguageManager.C))
+      Assertions.fail("Exercise " + e.getId() + " has no C entity");
+    Assertions.assertTimeoutPreemptively(timeout(e), () -> { testCorrectionEntity(e, Game.getInstance().programmingLanguageManager.C); });
   }
 }
