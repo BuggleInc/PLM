@@ -1314,17 +1314,17 @@ msgid "The disks were not moved the same amount of time: {0} vs. {1}.\n"
 msgstr "வட்டுகள் ஒரே நேரத்தில் நகர்த்தப்படவில்லை: {0} vs. {1}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:129
-#, java-format
+#, java-format, fuzzy
 msgid " Disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
 msgstr " ச்லாட் #{0}} வேறுபடுகிறது: {1} vs. {2}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:134
-#, java-format
+#, java-format, fuzzy
 msgid " Color of disk #{0} of slot #{1} differs: {2} vs. {3}.\n"
 msgstr " ச்லாட் #{1 of வட்டு #{0} வேறுபடுகிறது: {1} vs. {2}.\n"
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:156
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Cannot move from slot {0} to {1}: the only existing slots are numbered from "
 "0 to {2}."
@@ -1343,7 +1343,7 @@ msgid "No disc to move from slot {0}."
 msgstr "ச்லாட்டிலிருந்து செல்ல வட்டு இல்லை {0}."
 
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.java:163
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Cannot move disc from slot {0} to {1} small disk must remain over large ones "
 "but {2} > {3}."
@@ -1410,13 +1410,13 @@ msgstr ""
 " உடற்பயிற்சி: {0}; தளங்களின் அளவு: {1}; ஆரம்ப நிலைமை: {2}"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:380
-#, java-format
+#, java-format, fuzzy
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr ""
 "0 மற்றும் {1 between க்கு இடையில் இல்லாததால் {0} அடித்தளத்திலிருந்து நகர முடியாது"
 
 #: src/lessons/sort/baseball/universe/BaseballWorld.java:383
-#, java-format
+#, java-format, fuzzy
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr "0 மற்றும் {1 between க்கு இடையில் இல்லாததால் {0} நிலையிலிருந்து நகர முடியாது)"
 
@@ -1458,14 +1458,14 @@ msgstr " கதிர் #{0} வேறுபடுகிறது: வண்ண
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:148
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:150
-#, java-format
+#, java-format, fuzzy
 msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
 msgstr ""
 "{0} மற்றும் {1} இடமாற்றம் செய்ய முடியாது, ஏனெனில் {2} 0 மற்றும் {3 between க்கு "
 "இடையில் இல்லை"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:167
-#, java-format
+#, java-format, fuzzy
 msgid "Cannot get the color of line #{0} because it''s not between 0 and {1}"
 msgstr ""
 "#{0} வரியின் நிறத்தைப் பெற முடியாது, ஏனெனில் அது 0 மற்றும் {1 between க்கு இடையில் "
@@ -1523,7 +1523,7 @@ msgid ""
 msgstr "{0} அப்பத்தை புரட்டும்படி கேட்டார், ஆனால் இந்த அடுக்கில் {1} அப்பங்கள் மட்டுமே உள்ளன."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:246
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}."
 msgstr ""
@@ -1531,7 +1531,7 @@ msgstr ""
 "இல்லை."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:263
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}."
@@ -1641,7 +1641,7 @@ msgstr ""
 "காணப்பட்டது."
 
 #: src/plm/core/lang/ProgrammingLanguage.java:78
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
@@ -1815,7 +1815,7 @@ msgid "Broken lesson"
 msgstr "உடைந்த பாடம்"
 
 #: src/plm/core/model/Game.java:359
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
 "consider contributing to this project by adapting this exercise to this "
@@ -1936,7 +1936,7 @@ msgstr ""
 "{0}: எந்த நிறுவனமும் கிடைக்கவில்லை. உங்கள் பாதைகள் மற்றும் அமைப்புகளை சரிசெய்ய வேண்டும்."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:153
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}."
@@ -1965,12 +1965,12 @@ msgstr ""
 "இணைக்கவும்."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:221
-#, java-format
+#, java-format, fuzzy
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr "{0 of இன் பதில் உலகத்தை எழுத முடியாது. அனுமதிகளை சரிபார்க்கவும்."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:227
-#, java-format
+#, java-format, fuzzy
 msgid "Error while writing answer world of {0}:"
 msgstr "{0 of இன் பதில் உலகத்தை எழுதும் போது பிழை:"
 
@@ -1987,12 +1987,12 @@ msgid "Cannot find the name of mission in {0}.html"
 msgstr "{0} .html இல் பணியின் பெயரை கண்டுபிடிக்க முடியவில்லை"
 
 #: src/plm/core/model/tracking/GitTracker.java:63
-#, java-format
+#, java-format, fuzzy
 msgid "Reusing the disk session located at {0}."
 msgstr "{0 at இல் அமைந்துள்ள வட்டு அமர்வை மீண்டும் பயன்படுத்துதல்."
 
 #: src/plm/core/model/tracking/GitTracker.java:65
-#, java-format
+#, java-format, fuzzy
 msgid "Initialize a new disk session at {0}."
 msgstr "புதிய வட்டு அமர்வை {0 at இல் துவக்கவும்."
 
@@ -2092,7 +2092,7 @@ msgid "About the PLM"
 msgstr "பி.எல்.எம் பற்றி"
 
 #: src/plm/core/ui/AboutPLMDialog.java:58
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
 "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
@@ -2243,7 +2243,7 @@ msgid "{0} out of {1} exercises passed."
 msgstr "{0} வெளியே {1} பயிற்சிகள் அனுப்பப்பட்டன."
 
 #: src/plm/core/ui/ChooseLessonDialog.java:238
-#, java-format
+#, java-format, fuzzy
 msgid "{0} out of {1} exercises passed in {2}."
 msgstr "{0} வெளியே {1} பயிற்சிகள் {2 at இல் அனுப்பப்பட்டன."
 
@@ -2325,7 +2325,7 @@ msgstr ""
 " இரு உலகங்களுக்கும் இடையிலான இந்த வேறுபாட்டின் உரை விளக்கம். </html>"
 
 #: src/plm/core/ui/ExerciseFailedDialog.java:65
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "<html>Compilation error.<br>\n"
 "You can find below the detailed error message (as given by {0}).<br>\n"
@@ -2582,7 +2582,7 @@ msgid "Send feedback"
 msgstr "கருத்துக்களை அனுப்பவும்"
 
 #: src/plm/core/ui/FeedbackDialog.java:211
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
 "Follow our progress at {0}."
@@ -2664,7 +2664,7 @@ msgid "{0} exists"
 msgstr "{0} உள்ளது"
 
 #: src/plm/core/ui/MainFrame.java:217
-#, java-format
+#, java-format, fuzzy
 msgid "Image saved into {0}."
 msgstr "படம் {0 துணுக்கு இல் சேமிக்கப்பட்டது."
 
@@ -2811,12 +2811,12 @@ msgid "Type your code here"
 msgstr "உங்கள் குறியீட்டை இங்கே தட்டச்சு செய்க"
 
 #: src/plm/core/ui/PlmHtmlEditorKit.java:187
-#, java-format
+#, java-format, fuzzy
 msgid "<img> tag without src attribute at offset {0}."
 msgstr "<myg> ஆஃப்செட் {0 at இல் எச்.ஆர்.சி பண்புக்கூறு இல்லாமல் குறிச்சொல்."
 
 #: src/plm/core/ui/PlmHtmlEditorKit.java:189
-#, java-format
+#, java-format, fuzzy
 msgid "<img> tag without src attribute in exercise {0} at offset {1}"
 msgstr "<myg> ஆஃப்செட் {0} இல் உடற்பயிற்சியில் SRC பண்புக்கூறு இல்லாமல் குறிச்சொல்"
 
@@ -3323,7 +3323,7 @@ msgid "Use a loop instead."
 msgstr ""
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:191
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
@@ -3332,7 +3332,7 @@ msgstr ""
 "{0}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:194
-#, java-format
+#, java-format, fuzzy
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
@@ -3342,13 +3342,13 @@ msgstr ""
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:213
 #: src/plm/universe/bugglequest/AbstractBuggle.java:251
-#, java-format
+#, java-format, fuzzy
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr "நீங்கள் ஃச் ஐ {0 bo ஆக அமைக்க முயற்சித்தீர்கள், ஆனால் இந்த உலகில் அதிகபட்ச ஃச் {0}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:232
 #: src/plm/universe/bugglequest/AbstractBuggle.java:249
-#, java-format
+#, java-format, fuzzy
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 "நீங்கள் ஒய் ஐ {0 பெறுநர் ஆக அமைக்க முயற்சித்தீர்கள், ஆனால் இந்த உலகில் அதிகபட்ச ஒய் {0}."
@@ -3493,13 +3493,13 @@ msgstr ""
 "ஒருங்கிணைப்பு {0}, {1} இல் ஒரு பிழையை வைக்க முடியாது: அது உலகத்திற்கு வெளியே உள்ளது."
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:175
-#, java-format
+#, java-format, fuzzy
 msgid "Invalid buggle''s direction: {0}"
 msgstr "தவறான பிழையான 'இன் திசை: {0}"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:181
 #: src/plm/universe/bugglequest/BuggleWorld.java:187
-#, java-format
+#, java-format, fuzzy
 msgid "Invalid buggle''s color name: {0}"
 msgstr "தவறான பிழையான 'இன் வண்ண பெயர்: {0}"
 
@@ -3585,12 +3585,12 @@ msgid ", there should be a baggle"
 msgstr ", ஒரு பேக்லே இருக்க வேண்டும்"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:198
-#, java-format
+#, java-format, fuzzy
 msgid ", the ground should not be {0}"
 msgstr ", தரை {0 be ஆக இருக்கக்கூடாது"
 
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:200
-#, java-format
+#, java-format, fuzzy
 msgid ", the ground is expected to be {0}, but it is {1}"
 msgstr ", தரை {0 அச் ஆக இருக்கும் என்று எதிர்பார்க்கப்படுகிறது, ஆனால் அது {0}"
 

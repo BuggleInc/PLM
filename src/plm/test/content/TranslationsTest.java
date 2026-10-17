@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,10 +33,46 @@ import plm.core.utils.PoFile;
 public class TranslationsTest {
   private static final Path MISSIONS = Path.of("l10n/missions");
 
-  static List<Path> catalogs() throws IOException
+  static List<Path> catalogs() throws IOException { return poFiles(MISSIONS); }
+
+  static List<Path> engineCatalogs() throws IOException { return poFiles(PrimitiveAliases.PO_DIRECTORY); }
+
+  private static List<Path> poFiles(Path directory) throws IOException
   {
-    try (Stream<Path> files = Files.list(MISSIONS)) {
+    try (Stream<Path> files = Files.list(directory)) {
       return files.filter(file -> file.toString().endsWith(".po")).sorted().toList();
+    }
+  }
+
+  /** The translated messages of the engine are valid MessageFormat patterns that use the same arguments as the English text. */
+  @ParameterizedTest @MethodSource("engineCatalogs") public void messageFormatsAreKept(Path catalog) throws IOException
+  {
+    List<String> errors = new ArrayList<>();
+    for (PoFile.Entry entry : PoFile.read(catalog))
+      if (!entry.fuzzy() && !entry.translation().isEmpty() && entry.id().matches("(?s).*\\{\\d.*")) {
+        Set<Integer> expected = arguments(entry.id()), found = arguments(entry.translation());
+        if (!expected.equals(found))
+          errors.add("arguments " + expected + " expected, but " + (found == null ? "invalid pattern" : found) + "\n  " + entry.id() + "\n  -> " +
+                     entry.translation());
+      }
+    assertTrue(errors.isEmpty(), () -> catalog + ": " + errors.size() + " problems:\n" + String.join("\n", errors));
+  }
+
+  /** The arguments that the MessageFormat pattern actually substitutes, or null if it is invalid */
+  private static Set<Integer> arguments(String escaped)
+  {
+    Object[] markers = new Object[10];
+    for (int i = 0; i < markers.length; i++)
+      markers[i] = "\u0001" + i + "\u0001";
+    try {
+      String formatted  = new MessageFormat(escaped.replace("\\n", "\n").replace("\\\"", "\"")).format(markers);
+      Set<Integer> used = new TreeSet<>();
+      for (int i = 0; i < markers.length; i++)
+        if (formatted.contains((String)markers[i]))
+          used.add(i);
+      return used;
+    } catch (IllegalArgumentException e) {
+      return null;
     }
   }
 

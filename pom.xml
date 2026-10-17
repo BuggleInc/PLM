@@ -368,10 +368,9 @@
         </executions>
       </plugin>
 
-      <!-- i18n: generate org.plm.i18n.Messages ResourceBundles from
-           l10n/engine/*.po so they land in the jar. Uses the gettext-commons
-           GenerateDefaultBundleTask (same task the ant build used), invoked
-           via antrun against the vendored build-only tool jar. The generated
+      <!-- i18n: generate the org.plm.i18n.Messages ResourceBundles (the default one from the pot, and one per
+           l10n/engine/*.po) so they land in the jar. Uses the GenerateDefaultBundleTask and GettextDistTask
+           of gettext-ant-tasks (as the ant build did), invoked via antrun against the vendored build-only tool jar. The generated
            classes are written into target/classes before packaging. -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -403,10 +402,20 @@
                     <path refid="maven.plugin.classpath"/>
                   </classpath>
                 </taskdef>
+                <taskdef name="gettext-dist" classname="org.xnap.commons.ant.gettext.GettextDistTask">
+                  <classpath>
+                    <pathelement location="${project.basedir}/lib/gettext-ant-tasks-0.9.3.jar"/>
+                    <path refid="maven.plugin.classpath"/>
+                  </classpath>
+                </taskdef>
+                <!-- The English bundle, from the pot -->
                 <gettext-generate-default targetBundle="org.plm.i18n.Messages"
                                           potFile="${project.basedir}/l10n/engine/plm.pot"
                                           poDirectory="${project.basedir}/l10n/engine"
                                           outputDirectory="${project.build.outputDirectory}"/>
+                <!-- One bundle per translation (Messages_fr...), from l10n/engine/*.po. This task resolves its directories
+                     against the base directory even when they are absolute, so they must be relative. -->
+                <gettext-dist targetBundle="org.plm.i18n.Messages" poDirectory="l10n/engine" outputDirectory="target/classes"/>
               </target>
             </configuration>
           </execution>

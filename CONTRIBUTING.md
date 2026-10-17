@@ -507,7 +507,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
       known languages, and no tag is malformed (such as `[/!` without its closing bracket, or `[java]` without its `!`).
     * *`TranslationsTest`:* the work of the translators, who are not all programmers, does not break the PLM. The primitive names
-      of every `l10n/engine/*.po` can be added to the glue of every universe. In every `l10n/missions/*.po`, even for the languages
+      of every `l10n/engine/*.po` can be added to the glue of every universe, and their messages remain valid `MessageFormat`
+      patterns using the same arguments as the English text. In every `l10n/missions/*.po`, even for the languages
       that po4a does not generate, the translations keep the well-formed `[!langs]...[/!]` blocks of the English text and call
       each of its primitives under its English name or its alias in that language.
     * *`GatedExercisesTest`:* the exercises that gate their API (`Array1`, `LoopFor`, `TraversalByColumn`, `MethodsDogHouse`,
