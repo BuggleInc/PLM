@@ -552,7 +552,8 @@ exercises implemented in this environment.  Even if all lessons are grouped toge
 
 The engine component also holds the names of the primitives (context `primitive`), which students can then call in your
 language. Each name must be a valid identifier and must not be the name of another primitive of the same world: the tests
-(`PrimitiveAliasesTest`) catch the mistakes. Use the same names in the mission texts.
+(`PrimitiveAliasesTest`) catch the mistakes. A name has a single translation, shared by all worlds (`isSorted` is translated
+once for pancakes and flags). Use the same names in the mission texts.
 
 Every change to the engine will automatically be included in the [versions built on
 appveyor](https://ci.appveyor.com/project/mquinson/plm) (once weblate commits your work, which may take one or two day unless
@@ -640,7 +641,8 @@ cases:
 1. *Forbidding a primitive altogether*: call `forbid(primitiveName, reason)` from the constructor of the entity. The student gets
    "Sorry Dave, I cannot let you use <primitiveName> in this exercise. <reason>". Buggle entities can call
    `forbidTeleportation()` to forbid `setX()`, `setY()` and `setPos()` at once, and `forbidMultiStep()` to forbid `forward(n)` and
-   `backward(n)` while keeping `step()` and `stepBack()`.
+   `backward(n)` while keeping `step()` and `stepBack()`. Turmites forbid every buggle primitive they don't need
+   (`TurmiteEntity.forbidBuggleExtras()`), which also cleans their documentation.
    ```java
    public WallFollowerMazeEntity() { forbidTeleportation(); }
    public MyEntity()               { forbid("brushDown", Game.i18n.tr("Your buggle must not draw in this exercise.")); }
