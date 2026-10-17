@@ -676,96 +676,80 @@ msgstr ""
 
 #. Name of the primitive back() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "backward"
 msgctxt "primitive"
 msgid "back"
-msgstr "recuar"
+msgstr "voltar"
 
 #. Name of the primitive backward() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 #: src/plm/universe/turtles/TurtlePrimitives.java
-#, fuzzy
-#| msgid "backward"
 msgctxt "primitive"
 msgid "backward"
 msgstr "recuar"
 
 #. Name of the primitive brushDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "brushDown()"
 msgctxt "primitive"
 msgid "brushDown"
-msgstr "abaixarPincel()"
+msgstr "abaixarPincel"
 
 #. Name of the primitive brushUp() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "brushUp()"
 msgctxt "primitive"
 msgid "brushUp"
-msgstr "levantarPincel()"
+msgstr "levantarPincel"
 
 #. Name of the primitive circle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "circle"
-msgstr ""
+msgstr "círculo"
 
 #. Name of the primitive clearAll() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "clearAll"
-msgstr ""
+msgstr "limpar"
 
 #. Name of the primitive clearMessage() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "clearMessage"
-msgstr ""
+msgstr "limparMensagem"
 
 #. Name of the primitive copy() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/sort/SortingEntityPrimitives.java
-#, fuzzy
-#| msgid "copy"
 msgctxt "primitive"
 msgid "copy"
-msgstr "copiar"
+msgstr "copia"
 
 #. Name of the primitive crossing() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
 msgctxt "primitive"
 msgid "crossing"
-msgstr ""
+msgstr "cruzamento"
 
 #. Name of the primitive dropBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "Baggle?"
 msgctxt "primitive"
 msgid "dropBaggle"
-msgstr "Baggle?"
+msgstr "soltarBaggle"
 
 #. Name of the primitive exitReached() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/welcome/loopdowhile/PoucetEntityPrimitives.java
 msgctxt "primitive"
 msgid "exitReached"
-msgstr ""
+msgstr "saídaAlcançada"
 
 #. Name of the primitive flip() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
-#, fuzzy
-#| msgid "flip({0})"
 msgctxt "primitive"
 msgid "flip"
-msgstr "virar({0})"
+msgstr "virar"
 
 #. Name of the primitive forward() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 #: src/plm/universe/turtles/TurtlePrimitives.java
-#, fuzzy
-#| msgid "forward"
 msgctxt "primitive"
 msgid "forward"
 msgstr "avançar"
@@ -774,75 +758,73 @@ msgstr "avançar"
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "getAngle"
-msgstr ""
+msgstr "getÂngulo"
 
 #. Name of the primitive getBasesAmount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
 msgctxt "primitive"
 msgid "getBasesAmount"
-msgstr ""
+msgstr "getQuantidadeDeBases"
 
 #. Name of the primitive getBodyColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "getBodyColor"
-msgstr ""
+msgstr "getCorDoCorpo"
 
 #. Name of the primitive getBrushColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "Brush Color"
 msgctxt "primitive"
 msgid "getBrushColor"
-msgstr "Cor do pincel"
+msgstr "getCorDoPincel"
 
 #. Name of the primitive getColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
 msgctxt "primitive"
 msgid "getColor"
-msgstr ""
+msgstr "getCor"
 
 #. Name of the primitive getDirection() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "getDirection"
-msgstr ""
+msgstr "getDireção"
 
 #. Name of the primitive getFuel() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "getFuel"
-msgstr ""
+msgstr "getCombustível"
 
 #. Name of the primitive getGround() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "getGround"
-msgstr ""
+msgstr "getSolo"
 
 #. Name of the primitive getGroundColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "getGroundColor"
-msgstr ""
+msgstr "getCorDoChão"
 
 #. Name of the primitive getHeading() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "getHeading"
-msgstr ""
+msgstr "getDireção"
 
 #. Name of the primitive getHoleBase() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
 msgctxt "primitive"
 msgid "getHoleBase"
-msgstr ""
+msgstr "getBaseDoBuraco"
 
 #. Name of the primitive getHolePosition() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
 msgctxt "primitive"
 msgid "getHolePosition"
-msgstr ""
+msgstr "getPosiçãoDoBuraco"
 
 #. Name of the primitive getIndication() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
@@ -854,93 +836,85 @@ msgstr ""
 #: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
 msgctxt "primitive"
 msgid "getPancakeRadius"
-msgstr ""
+msgstr "getRaioPanqueca"
 
 #. Name of the primitive getPlayerColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
 msgctxt "primitive"
 msgid "getPlayerColor"
-msgstr ""
+msgstr "getCorDoJogador"
 
 #. Name of the primitive getPositionsAmount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
 msgctxt "primitive"
 msgid "getPositionsAmount"
-msgstr ""
+msgstr "getQuantidadeDePosições"
 
 #. Name of the primitive getSize() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
 msgctxt "primitive"
 msgid "getSize"
-msgstr ""
+msgstr "getTamanho"
 
 #. Name of the primitive getSlotRadius() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/recursion/hanoi/universe/HanoiEntity.java
 msgctxt "primitive"
 msgid "getSlotRadius"
-msgstr ""
+msgstr "getRaioSlot"
 
 #. Name of the primitive getSlotSize() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
 msgctxt "primitive"
 msgid "getSlotSize"
-msgstr ""
+msgstr "getTamanhoSlot"
 
 #. Name of the primitive getSpeedX() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "getSpeedX"
-msgstr ""
+msgstr "getVelocidadeX"
 
 #. Name of the primitive getSpeedY() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "getSpeedY"
-msgstr ""
+msgstr "getVelocidadeY"
 
 #. Name of the primitive getStackSize() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
 msgctxt "primitive"
 msgid "getStackSize"
-msgstr ""
+msgstr "getTamanhoDaPilha"
 
 #. Name of the primitive getThrust() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "getThrust"
-msgstr ""
+msgstr "getImpulso"
 
 #. Name of the primitive getValue() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/sort/SortingEntityPrimitives.java
-#, fuzzy
-#| msgid "setValue"
 msgctxt "primitive"
 msgid "getValue"
-msgstr "setValue"
+msgstr "getValor"
 
 #. Name of the primitive getValueCount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/sort/SortingEntityPrimitives.java
-#, fuzzy
-#| msgid "setValue"
 msgctxt "primitive"
 msgid "getValueCount"
-msgstr "setValue"
+msgstr "getQuantidadeDeValores"
 
 #. Name of the primitive getWorldHeight() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "World height"
 msgctxt "primitive"
 msgid "getWorldHeight"
-msgstr "Altura do mundo"
+msgstr "getAlturaDoMundo"
 
 #. Name of the primitive getWorldWidth() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "World width"
 msgctxt "primitive"
 msgid "getWorldWidth"
-msgstr "Largura do mundo"
+msgstr "getLarguraDoMundo"
 
 #. Name of the primitive getX() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
@@ -960,101 +934,93 @@ msgstr ""
 
 #. Name of the primitive hasBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
-#, fuzzy
-#| msgid "Baggle?"
 msgctxt "primitive"
 msgid "hasBaggle"
-msgstr "Baggle?"
+msgstr "temBaggle"
 
 #. Name of the primitive hasLeftWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "Left wall?"
 msgctxt "primitive"
 msgid "hasLeftWall"
-msgstr "Parede da esquerda?"
+msgstr "temParedeÀEsquerda"
 
 #. Name of the primitive hasTopWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "hasTopWall"
-msgstr ""
+msgstr "temParedeEmCima"
 
 #. Name of the primitive hide() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "hide"
-msgstr ""
+msgstr "esconder"
 
 #. Name of the primitive isBackingWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "isBackingWall"
-msgstr ""
+msgstr "estáDeCostasParaParede"
 
 #. Name of the primitive isBaseSorted() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
 msgctxt "primitive"
 msgid "isBaseSorted"
-msgstr ""
+msgstr "baseEstáOrdenada"
 
 #. Name of the primitive isBrushDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "brushDown()"
 msgctxt "primitive"
 msgid "isBrushDown"
-msgstr "abaixarPincel()"
+msgstr "pincelEstáAbaixado"
 
 #. Name of the primitive isCarryingBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "isCarryingBaggle"
-msgstr ""
+msgstr "estáCarregandoBaggle"
 
 #. Name of the primitive isFacingWall() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "isFacingWall"
-msgstr ""
+msgstr "estáDeFrenteParaParede"
 
 #. Name of the primitive isGroundWhite() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/welcome/loopdowhile/LoopDoWhileEntity.java
 msgctxt "primitive"
 msgid "isGroundWhite"
-msgstr ""
+msgstr "chãoBranco"
 
 #. Name of the primitive isOverBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "Baggle?"
 msgctxt "primitive"
 msgid "isOverBaggle"
-msgstr "Baggle?"
+msgstr "estáSobreBaggle"
 
 #. Name of the primitive isOverMessage() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "isOverMessage"
-msgstr ""
+msgstr "estáSobreMensagem"
 
 #. Name of the primitive isOverOrange() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/welcome/variables/RunHalfEntity.java
 msgctxt "primitive"
 msgid "isOverOrange"
-msgstr ""
+msgstr "estáSobreLaranja"
 
 #. Name of the primitive isPancakeUpsideDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
 msgctxt "primitive"
 msgid "isPancakeUpsideDown"
-msgstr ""
+msgstr "panquecaEstáVirada"
 
 #. Name of the primitive isPenDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "isPenDown"
-msgstr ""
+msgstr "canetaEstáAbaixada"
 
 #. Name of the primitive isSelected() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
@@ -1064,23 +1030,21 @@ msgstr ""
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 #: src/plm/universe/sort/SortingEntityPrimitives.java
 #: src/plm/universe/turtles/TurtlePrimitives.java
-#, fuzzy
-#| msgid "Selected cell X"
 msgctxt "primitive"
 msgid "isSelected"
-msgstr "Célula X selecionada"
+msgstr "estáSelecionado"
 
 #. Name of the primitive isSmaller() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/sort/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "isSmaller"
-msgstr ""
+msgstr "éMenor"
 
 #. Name of the primitive isSmallerThan() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/sort/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "isSmallerThan"
-msgstr ""
+msgstr "éMenorQue"
 
 #. Name of the primitive isSorted() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
@@ -1088,19 +1052,17 @@ msgstr ""
 #: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
 msgctxt "primitive"
 msgid "isSorted"
-msgstr ""
+msgstr "estáOrdenado"
 
 #. Name of the primitive isVisible() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "isVisible"
-msgstr ""
+msgstr "éVisível"
 
 #. Name of the primitive left() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 #: src/plm/universe/turtles/TurtlePrimitives.java
-#, fuzzy
-#| msgid "left"
 msgctxt "primitive"
 msgid "left"
 msgstr "esquerda"
@@ -1110,45 +1072,41 @@ msgstr "esquerda"
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
 msgctxt "primitive"
 msgid "move"
-msgstr ""
+msgstr "mover"
 
 #. Name of the primitive moveTo() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "moveTo"
-msgstr ""
+msgstr "moverPara"
 
 #. Name of the primitive penDown() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "penDown"
-msgstr ""
+msgstr "abaixarCaneta"
 
 #. Name of the primitive penUp() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "penUp"
-msgstr ""
+msgstr "levantarCaneta"
 
 #. Name of the primitive pickupBaggle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "Baggle?"
 msgctxt "primitive"
 msgid "pickupBaggle"
-msgstr "Baggle?"
+msgstr "pegarBaggle"
 
 #. Name of the primitive readMessage() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "readMessage"
-msgstr ""
+msgstr "lerMensagem"
 
 #. Name of the primitive right() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 #: src/plm/universe/turtles/TurtlePrimitives.java
-#, fuzzy
-#| msgid "right"
 msgctxt "primitive"
 msgid "right"
 msgstr "direita"
@@ -1157,47 +1115,43 @@ msgstr "direita"
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "setBodyColor"
-msgstr ""
+msgstr "setCorDoCorpo"
 
 #. Name of the primitive setBrushColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#, fuzzy
-#| msgid "Brush Color"
 msgctxt "primitive"
 msgid "setBrushColor"
-msgstr "Cor do pincel"
+msgstr "setCorDoPincel"
 
 #. Name of the primitive setColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
-#, fuzzy
-#| msgid "Brush Color"
 msgctxt "primitive"
 msgid "setColor"
-msgstr "Cor do pincel"
+msgstr "setCor"
 
 #. Name of the primitive setDesiredAngle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "setDesiredAngle"
-msgstr ""
+msgstr "setÂnguloDesejado"
 
 #. Name of the primitive setDesiredThrust() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
 msgctxt "primitive"
 msgid "setDesiredThrust"
-msgstr ""
+msgstr "setImpulsoDesejado"
 
 #. Name of the primitive setDirection() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "setDirection"
-msgstr ""
+msgstr "ajustaDireção"
 
 #. Name of the primitive setHeading() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "setHeading"
-msgstr ""
+msgstr "setDireção"
 
 #. Name of the primitive setIndication() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/maze/shortestpath/ShortestPathMazeEntityPrimitives.java
@@ -1214,11 +1168,9 @@ msgstr ""
 
 #. Name of the primitive setValue() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/sort/SortingEntityPrimitives.java
-#, fuzzy
-#| msgid "setValue"
 msgctxt "primitive"
 msgid "setValue"
-msgstr "setValue"
+msgstr "setValor"
 
 #. Name of the primitive setX() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
@@ -1238,25 +1190,23 @@ msgstr ""
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "show"
-msgstr ""
+msgstr "mostrar"
 
 #. Name of the primitive step() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "step"
-msgstr ""
+msgstr "avançarUmPasso"
 
 #. Name of the primitive stepBack() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "stepBack"
-msgstr ""
+msgstr "recuarUmPasso"
 
 #. Name of the primitive swap() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
 #: src/plm/universe/sort/SortingEntityPrimitives.java
-#, fuzzy
-#| msgid "swap"
 msgctxt "primitive"
 msgid "swap"
 msgstr "alternar"
@@ -1265,7 +1215,7 @@ msgstr "alternar"
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 msgctxt "primitive"
 msgid "writeMessage"
-msgstr ""
+msgstr "escreverMensagem"
 
 #: src/lessons/lightbot/universe/LightBotExercise.java:61
 msgid "A light is still off."
