@@ -1914,9 +1914,11 @@ msgid ""
 "being equivalent[/!]).  Such variable which takes every values of a given "
 "range is often called a <b>stepper</b>."
 msgstr ""
-"ໃຫ້ສ້າງຕົວປ່ຽນເລກຖ້ວນກ່ອນເລີ່ມຂັ້ນຕອນທີ 1, ຕັ້ງຄ່າເລີ່ມຕົ້ນເປັນ 0, ແລະ ທຸກໆຄັ້ງທີ່ຍ່າງໄປທາງໜ້າໜຶ່ງກ້າວ, "
-"ໃຫ້ເພີ່ມຄ່າຂອງມັນຂຶ້ນເທື່ອລະໜຶ່ງ (<code>stepAmount = stepAmount + 1;</code>[!java|c] ຫຼື "
-"<code>stepAmount++;</code>). ຕົວປ່ຽນທີ່ເກັບຄ່າໃນລັກສະນະນີ້ ມັກຈະຖືກເອີ້ນວ່າ <b>stepper</b>."
+"ໃຫ້ສ້າງຕົວປ່ຽນເລກຖ້ວນກ່ອນເລີ່ມຂັ້ນຕອນທີ 1, ຕັ້ງຄ່າເລີ່ມຕົ້ນເປັນ 0, ແລະ "
+"ທຸກໆຄັ້ງທີ່ຍ່າງໄປທາງໜ້າໜຶ່ງກ້າວ, ໃຫ້ເພີ່ມຄ່າຂອງມັນຂຶ້ນເທື່ອລະໜຶ່ງ "
+"(<code>stepAmount = stepAmount + 1;</code>[!java|c] ຫຼື "
+"<code>stepAmount++;</code>[/!]). ຕົວປ່ຽນທີ່ເກັບຄ່າໃນລັກສະນະນີ້ "
+"ມັກຈະຖືກເອີ້ນວ່າ <b>stepper</b>."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:145
@@ -9760,11 +9762,12 @@ msgid ""
 "so trying to access these elements will result in an (unpleasant) error "
 "message."
 msgstr ""
-"ລາຍການໃດໜຶ່ງອາດຈະເປັນລາຍການຫວ່າງ (ໃຊ້ <code>[!scala]Nil[!][!java]null[/!][!"
-"python]None[/!]</code>), ຫຼື ເປັນຕົວເລກຕາມດ້ວຍລາຍການອື່ນ. ຖ້າລາຍການບໍ່ຫວ່າງ, "
-"ເຈົ້າສາມາດດຶງຕົວເລກທຳອິດໄດ້ດ້ວຍ <code>list.head</code> ແລະ ດຶງສ່ວນທີ່ເຫຼືອໄດ້ດ້ວຍ "
-"<code>list.tail</code>. ແນ່ນອນວ່າລາຍການຫວ່າງຈະບໍ່ມີ head ຫຼື tail, "
-"ດັ່ງນັ້ນການພະຍາຍາມເອີ້ນໃຊ້ຈະເຮັດໃຫ້ເກີດຂໍ້ຜິດພາດ."
+"ລາຍການໃດໜຶ່ງອາດຈະເປັນລາຍການຫວ່າງ (ໃຊ້ "
+"<code>[!scala]Nil[/!][!java]null[/!][!python]None[/!]</code>), ຫຼື "
+"ເປັນຕົວເລກຕາມດ້ວຍລາຍການອື່ນ. ຖ້າລາຍການບໍ່ຫວ່າງ, "
+"ເຈົ້າສາມາດດຶງຕົວເລກທຳອິດໄດ້ດ້ວຍ <code>list.head</code> ແລະ "
+"ດຶງສ່ວນທີ່ເຫຼືອໄດ້ດ້ວຍ <code>list.tail</code>. ແນ່ນອນວ່າລາຍການຫວ່າງຈະບໍ່ມີ "
+"head ຫຼື tail, ດັ່ງນັ້ນການພະຍາຍາມເອີ້ນໃຊ້ຈະເຮັດໃຫ້ເກີດຂໍ້ຜິດພາດ."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/universe/ConsWorld.html:20
