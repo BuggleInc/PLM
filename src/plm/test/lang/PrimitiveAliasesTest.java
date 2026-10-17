@@ -5,9 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.PrimitiveAliases;
 import plm.core.lang.primitives.PrimitiveMethod;
@@ -22,6 +25,25 @@ public class PrimitiveAliasesTest {
     Map<String, Map<String, String>> aliases = PrimitiveAliases.load(PrimitiveAliases.PO_DIRECTORY);
     for (CodeCreation.Remote remote : CodeCreation.REMOTES)
       assertDoesNotThrow(() -> PrimitiveAliases.withAliases(remote.name(), PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()), aliases));
+  }
+
+  @Test public void flagsOfObsoleteEntriesDoNotLeak(@TempDir Path dir) throws IOException
+  {
+    Files.writeString(dir.resolve("fr.po"), """
+#, fuzzy
+#~msgid "old"
+#~msgstr "ancien"
+
+msgctxt "primitive"
+msgid "left"
+msgstr "gauche"
+
+#, fuzzy
+msgctxt "primitive"
+msgid "right"
+msgstr "droite"
+""");
+    assertEquals(Map.of("fr", Map.of("left", "gauche")), PrimitiveAliases.load(dir));
   }
 
   @Test public void aliasCallsTheCanonicalPrimitive()

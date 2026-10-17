@@ -41,7 +41,10 @@ public class PrimitiveAliases {
         boolean fuzzy               = false;
         String context = null, id = null;
         for (String line : Files.readAllLines(po, StandardCharsets.UTF_8)) {
-          if (line.startsWith("#,"))
+          if (line.isBlank()) { // end of entry: the flags of an obsolete entry (#~), which has no msgstr, must not leak to the next one
+            fuzzy   = false;
+            context = null;
+          } else if (line.startsWith("#,"))
             fuzzy = line.contains("fuzzy");
           else if (line.startsWith("msgctxt "))
             context = unquote(line.substring("msgctxt ".length()));
