@@ -219,7 +219,7 @@ public class Turtle extends Entity implements TurtlePrimitives {
     stepUI();
   }
   @Override public boolean isVisible() { return this.visible; }
-  @Override public void clear() { getWorld().clear(); }
+  @Override public void clearAll() { getWorld().clear(); }
 
   private double fromAngularUnit(double angle)
   {

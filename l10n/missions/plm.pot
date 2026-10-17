@@ -8641,7 +8641,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:47
 #, no-wrap
-msgid "[!java|c]void [/!]clear()"
+msgid "[!java|c]void [/!]clearAll()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)

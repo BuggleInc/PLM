@@ -40,7 +40,7 @@ public class KochEntity extends Turtle {
 
   public void drawHint()
   {
-    clear();
+    clearAll();
     hide();
     setColor(Color.red);
     setPos(100, 50);

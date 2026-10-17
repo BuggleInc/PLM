@@ -11420,8 +11420,8 @@ msgstr "Retorna se a tartaruga é visível ou não."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:47
-#, no-wrap
-msgid "[!java|c]void [/!]clear()"
+#, no-wrap,fuzzy
+msgid "[!java|c]void [/!]clearAll()"
 msgstr "[!java|c]void [/!]limpar()"
 
 #. type: Content of: outside any tag (error?)

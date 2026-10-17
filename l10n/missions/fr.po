@@ -11537,8 +11537,8 @@ msgstr "Renvoie vrai si la tortue est actuellement visible."
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:47
 #, no-wrap
-msgid "[!java|c]void [/!]clear()"
-msgstr "[!java|c]void [/!]efface()"
+msgid "[!java|c]void [/!]clearAll()"
+msgstr "[!java|c]void [/!]effaceTout()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:48
@@ -11607,7 +11607,7 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:65
 #, no-wrap
 msgid "[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estCrayonBaisse()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!][!c]int [/!]estCrayonBaissé()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:66

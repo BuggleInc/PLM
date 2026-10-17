@@ -37,18 +37,22 @@ void run() {
 }
 
 void drawHint() {
-	clear();
-	hide();
-	setColor(red);
-	setPos(100,50);setHeading(0);
-	snowSide(0,200);
+  clearAll();
+  hide();
+  setColor(red);
+  setPos(100, 50);
+  setHeading(0);
+  snowSide(0, 200);
 
-	setPos(100,150); setHeading(0);
-	snowSide(1,200);
+  setPos(100, 150);
+  setHeading(0);
+  snowSide(1, 200);
 
-	setPos(100,250); setHeading(0);
-	snowSide(2,200);
+  setPos(100, 250);
+  setHeading(0);
+  snowSide(2, 200);
 
-	setPos(100,350); setHeading(0);
-	snowSide(3,200);
+  setPos(100, 350);
+  setHeading(0);
+  snowSide(3, 200);
 }

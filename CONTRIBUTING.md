@@ -453,11 +453,10 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`AllSimpleExerciseTests`:* templating, compilation, execution and check on a minimal universe (`plm.test.simple`), once
       per language (`JavaSimpleExerciseTest`, `ScalaSimpleExerciseTest`, `PythonSimpleExerciseTest`, `CSimpleExerciseTest`,
       which share `SimpleExerciseTest` and `CompiledSimpleExerciseTest`). The correction compiles, runs and passes. The saved
-      code can be restored into the editor without loading (so parsing) the entity, and the name of the source files must be the one of the
-      tab. Wrong code, exceptions (out of bounds, null,
-      custom) and a valid code followed by an error do not pass. Syntax and variable errors do not compile. The line of a stack
-      trace frame is the editor's one. Every language also checks the line of a compilation error, and Python and C check that
-      the `IMPORT` section is honored.
+      code can be restored into the editor without loading (so parsing) the entity, and the name of the source files must be the
+      one of the tab. Wrong code, exceptions (out of bounds, null, custom) and a valid code followed by an error do not pass.
+      Syntax and variable errors do not compile. The line of a stack trace frame is the editor's one. Every language also checks
+      the line of a compilation error, and Python and C check that the `IMPORT` section is honored.
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
@@ -519,7 +518,7 @@ one checks the correction entities against it.
 
 ## Languages & runtime versions
 
-- **Build/host**: Java 17 (`maven.compiler.release=17`), built with Maven (`pom.xml`.
+- **Build/host**: Java 17 (`maven.compiler.release=17`), built with Maven (`pom.xml`).
 - **Student languages** (each implemented as a `ProgrammingLanguage` subclass in `plm.core.lang`):
   - **Java**: compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
     void main` boilerplate exposed to the student).

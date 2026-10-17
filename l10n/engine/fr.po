@@ -3180,3 +3180,63 @@ msgstr "aMurNord"
 msgctxt "primitive"
 msgid "hasLeftWall"
 msgstr "aMurOuest"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "circle"
+msgstr "cercle"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "moveTo"
+msgstr "allerVers"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "getHeading"
+msgstr "getCap"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "setHeading"
+msgstr "setCap"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "penUp"
+msgstr "leveCrayon"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "penDown"
+msgstr "baisseCrayon"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "isPenDown"
+msgstr "estCrayonBaissé"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "setColor"
+msgstr "setCouleur"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "clear"
+msgstr "effaceTout"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "hide"
+msgstr "cache"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "show"
+msgstr "montre"
+
+#: src/plm/universe/turtles/TurtlePrimitives.java
+msgctxt "primitive"
+msgid "isVisible"
+msgstr "estVisible"

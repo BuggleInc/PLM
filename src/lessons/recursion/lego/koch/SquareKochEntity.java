@@ -42,7 +42,7 @@ public class SquareKochEntity extends Turtle {
   /* END TEMPLATE */
   public void drawHint()
   {
-    clear();
+    clearAll();
     hide();
     setColor(Color.red);
     setPos(100, 50);
