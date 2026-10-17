@@ -484,10 +484,10 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       gated exercises refuse their forbidden calls. The documentation of the world hides the forbidden and undocumented
       primitives, and orders the groups as declared.
     * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
-      known languages.
+      known languages, and no tag is malformed (such as `[/!` without its closing bracket, or `[java]` without its `!`).
     * *`MissionTranslationsTest`:* in every `l10n/missions/*.po`, even for the languages that po4a does not generate, the
-      translations keep the `[!langs]...[/!]` blocks of the English text and call each of its primitives under its English name or
-      its alias in that language. This protects the translators who are not programmers.
+      translations keep the well-formed `[!langs]...[/!]` blocks of the English text and call each of its primitives under its
+      English name or its alias in that language. This protects the translators who are not programmers.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.

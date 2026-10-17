@@ -59,6 +59,8 @@ public class MissionTranslationsTest {
       while (tag.find())
         if (tag.group(1) != null && !tag.group(1).matches("thelang/?|primitives/") && !MissionMarkupTest.LANGS.containsAll(List.of(tag.group(1).split("\\|"))))
           errors.add("unknown language in " + tag.group() + where);
+      if (MissionMarkupTest.isMalformed(translation))
+        errors.add("malformed tag, such as [/! without its closing bracket or [java] without its !" + where);
       if (depth(original) != depth(translation))
         errors.add("unbalanced [!langs]...[/!] blocks" + where);
 
