@@ -11,6 +11,7 @@ import plm.test.lang.EntityTemplateParserTest;
 import plm.test.lang.IndentationTest;
 import plm.test.lang.PrimitiveAliasesTest;
 import plm.test.lang.PrimitiveRegistrationTest;
+import plm.test.lang.ValueSerializerInteropTest;
 import plm.test.model.LessonRunnerTest;
 import plm.test.model.MethodsDogHouseSourceCheckTest;
 import plm.test.session.GitSessionKitTest;
@@ -23,8 +24,24 @@ import plm.test.universe.PancakeRandomizedTest;
 import plm.universe.bat.ValueFormatterTest;
 
 @Suite
-@SelectClasses({GitTrackerTest.class, GitUtilsTest.class, GitTrackerImportTest.class, GitSessionKitTest.class, SessionZipTest.class,
-                AllSimpleExerciseTests.class, EntityTemplateParserTest.class, IndentationTest.class, ValueFormatterTest.class, ValueSerializerTest.class,
-                SessionDBTest.class, LightBotProgramTest.class, PancakeRandomizedTest.class, LessonRunnerTest.class, PrimitiveRegistrationTest.class,
-                PrimitiveAliasesTest.class, CommandExecutorTest.class, ApiGatingTest.class, MethodsDogHouseSourceCheckTest.class})
+@SelectClasses({GitTrackerTest.class,
+                GitUtilsTest.class,
+                GitTrackerImportTest.class,
+                GitSessionKitTest.class,
+                SessionZipTest.class,
+                AllSimpleExerciseTests.class,
+                EntityTemplateParserTest.class,
+                IndentationTest.class,
+                ValueFormatterTest.class,
+                ValueSerializerTest.class,
+                ValueSerializerInteropTest.class,
+                SessionDBTest.class,
+                LightBotProgramTest.class,
+                PancakeRandomizedTest.class,
+                LessonRunnerTest.class,
+                PrimitiveRegistrationTest.class,
+                PrimitiveAliasesTest.class,
+                CommandExecutorTest.class,
+                ApiGatingTest.class,
+                MethodsDogHouseSourceCheckTest.class})
 public class UnitTests {}

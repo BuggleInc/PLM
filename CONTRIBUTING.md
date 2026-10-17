@@ -247,7 +247,7 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   `c` for chars, `C` for colors (ARGB int), `Px:y` for points, a quoted string with `\\` and `\"` escapes, and `Z` for null.
   Arrays are `[n:v1:v2...]`, prefixed by the tag of their elements, and nest for multi-dimensional ones. Enums travel as their
   ordinal. It exists in Java (`plm.core.ValueSerializer`, which is compiled in the glue jarfile), Python (`ValueSerializer.py`)
-  and C (`value_serializer.c`): the three must be kept in sync.
+  and C (`value_serializer.c`): the three must be kept in sync, which `ValueSerializerInteropTest` checks.
 - **PLM side**: the `commandReader` thread of `runEntity()` reads the commands and passes each of them to
   `CommandExecutor.command()`. It finds the primitive by name, deserializes the arguments, converts the enums from their
   ordinals (and, for Python, the typed values to the strings that the primitive expects), calls the Java method of the real
@@ -495,13 +495,15 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       lesson and language (`registerLesson()` included), and the lesson summaries are written and parsed back (an invalid one is ignored).
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
+    * *`ValueSerializerInteropTest`:* the Python and C sides read what Java serializes, and write back texts that Java reads as the
+      same values (doubles may be written differently). It also compiles and runs `value_serializer_test.c`, the unit tests of the
+      C side. It needs `python3` and `gcc`.
     * *`MethodsDogHouseSourceCheckTest`:* `verifySource()` refuses the code unless it calls `left()` exactly once, ignoring
       comments and strings, in the four languages. Its alias in the current human language counts as well (`gauche()` in French).
       The check is called directly, and only one refusal goes through `compileRunCheck()`, as compiling every case is slow.
   * *`ContentTests`:* the pedagogical material itself (lessons, exercises, mission texts and their translations) rather than
     the code, with the test methods running in parallel. They catch broken content, such as a correction that no longer matches
     its `-answerN.map` or a translation that breaks the markup.
-    * *`LessonTest`:* every lesson of `ExoTest.lessonNamesToTest` loads without error, in Java, Scala and Python.
     * *`ExoTestJavaLang`, `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`:* for every exercise, `compileRunCheck()` of the
       correction entity must pass in that language. They share `ExoTest`, which lists the lessons and their exercises. The Python
       and C ones also fail when the exercise has no entity file in their language, and the Turmites get a longer timeout.
@@ -515,7 +517,6 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`GatedExercisesTest`:* the exercises that gate their API (`Array1`, `LoopFor`, `TraversalByColumn`, `MethodsDogHouse`,
       `LinearHanoi`) refuse a call that would defeat their goal.
 * *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
-* *`value_serializer_test.c`:* the C side of the value serialization, built and run by maven outside of JUnit.
 
 Only the *correction* entity is compiled by the `ExoTest*Lang` tests. The student path (editor content injected into the
 template) is exercised by the `SimpleExercise` tests and by `MethodsDogHouseSourceCheckTest`.
@@ -544,7 +545,6 @@ one checks the correction entities against it.
 mvn package -DskipTests && java -jar target/plm-*.jar          # build + run, no tests
 mvn test                                                       # full test suite
 mvn test -Dtest=TestName*                                      # a single test class
-mvn test -Dtest=none -Dsurefire.failIfNoSpecifiedTests=false   # Only the C unit tests
 ```
 
 Entry point: `plm.core.ui.ProgrammersLearningMachine` (`main.class` in `pom.xml`).

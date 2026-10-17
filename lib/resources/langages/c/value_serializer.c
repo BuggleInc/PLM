@@ -233,14 +233,16 @@ char* plm_serialize_fmt(const char* fmt, ...)
 // --- Deserialization Logic ---
 static plm_value_t* parse_value(const char** p);
 
-static plm_value_t* parse_array(const char** p)
+/* Parses [n:v1:v2...], whose elements have the given type when the array was tagged (PLM_VAL_NULL when untagged) */
+static plm_value_t* parse_array(const char** p, plm_value_type_t element_type)
 {
   if (**p != '[')
     return NULL;
   (*p)++;
   plm_value_t* val       = calloc(1, sizeof(plm_value_t));
-  val->type              = PLM_VAL_ARRAY;
-  val->as.array.size     = strtoul(*p, (char**)p, 10);
+  val->type                  = PLM_VAL_ARRAY;
+  val->as.array.element_type = element_type;
+  val->as.array.size         = strtoul(*p, (char**)p, 10);
   val->as.array.elements = calloc(val->as.array.size, sizeof(plm_value_t*));
   for (uint32_t i = 0; i < val->as.array.size; i++) {
     if (**p != ':')
@@ -295,7 +297,7 @@ static plm_value_t* parse_value(const char** p)
     (*p)++;
     if (**p == '[') {
       free(val);
-      return parse_array(p);
+      return parse_array(p, PLM_VAL_INT);
     }
     val->type = PLM_VAL_INT;
     val->as.i = (uint32_t)strtol(*p, (char**)p, 10);
@@ -303,7 +305,7 @@ static plm_value_t* parse_value(const char** p)
     (*p)++;
     if (**p == '[') {
       free(val);
-      return parse_array(p);
+      return parse_array(p, PLM_VAL_DOUBLE);
     }
     val->type = PLM_VAL_DOUBLE;
     val->as.f = strtod(*p, (char**)p);
@@ -311,7 +313,7 @@ static plm_value_t* parse_value(const char** p)
     (*p)++;
     if (**p == '[') {
       free(val);
-      return parse_array(p);
+      return parse_array(p, PLM_VAL_BOOL);
     }
     val->type = PLM_VAL_BOOL;
     val->as.b = (**p == '1');
@@ -320,7 +322,7 @@ static plm_value_t* parse_value(const char** p)
     (*p)++;
     if (**p == '[') {
       free(val);
-      return parse_array(p);
+      return parse_array(p, PLM_VAL_CHAR);
     }
     val->type = PLM_VAL_CHAR;
     val->as.c = **p;
@@ -329,7 +331,7 @@ static plm_value_t* parse_value(const char** p)
     (*p)++;
     if (**p == '[') {
       free(val);
-      return parse_array(p);
+      return parse_array(p, PLM_VAL_COLOR);
     }
     val->type     = PLM_VAL_COLOR;
     val->as.color = (uint32_t)strtol(*p, (char**)p, 10);
@@ -342,7 +344,7 @@ static plm_value_t* parse_value(const char** p)
     }
   } else if (c == '[') {
     free(val);
-    return parse_array(p);
+    return parse_array(p, PLM_VAL_NULL);
   } else {
     free(val);
     return NULL;
