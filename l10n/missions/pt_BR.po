@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2021-06-25 04:58+0200\n"
+"POT-Creation-Date: 2026-10-17 11:46+0200\n"
 "PO-Revision-Date: 2015-11-10 21:13+0100\n"
 "Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
@@ -39,598 +39,222 @@ msgstr ""
 msgid "Methods understood by buggles"
 msgstr "Métodos que os buggles entendem"
 
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:10
-msgid "<b>Moving</b>"
-msgstr "<b>Se movendo</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:10
-msgid "(See also the note on exceptions, below)"
-msgstr "(Veja também a nota sobre exceções, abaixo)"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/turmites/universe/TurmiteWorld.html:10
-msgid "<b>Turn left"
-msgstr "<b>Virar à esquerda"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/turmites/universe/TurmiteWorld.html:10
-msgid "Turn right"
-msgstr "Virar à direita"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/turmites/universe/TurmiteWorld.html:10
-msgid "Turn back"
-msgstr "Dar meia volta"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/turmites/universe/TurmiteWorld.html:10
-msgid "Moving forward"
-msgstr "Mover para a frente"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/turmites/universe/TurmiteWorld.html:10
-msgid "Moving back</b>"
-msgstr "Mover para trás</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:12
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "[!java|c]void [/!]left()"
-msgstr "[!java|c]void [/!]esquerda()"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "[!java|c]void [/!]right()"
-msgstr "[!java|c]void [/!]direita()"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "[!java|c]void [/!]back()"
-msgstr "[!java|c]void [/!]voltar()"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:15
-#: src/lessons/turmites/universe/TurmiteWorld.html:12
-msgid ""
-"[!java|c]void [/!]step() or [!java|c]void [/!]forward([!java|c]int "
-"[/!]steps[!scala]:Int[/!])"
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/bugglequest/BuggleWorld.html:9
+#: src/lessons/turmites/universe/TurmiteWorld.html:6
+#: src/plm/universe/sort/SortingWorld.html:10
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:4
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:13
+#: src/plm/universe/turtles/TurtleWorld.html:13
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:12
+#: src/lessons/lander/universe/LanderWorld.html:10
+msgid "[!primitives/]"
 msgstr ""
-"[!java|c]void [/!]avançarUmPasso() ou [!java|c]void [/!]avançar([!java|c]int "
-"[/!]passos[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:16
-#: src/lessons/turmites/universe/TurmiteWorld.html:13
-msgid ""
-"[!java|c]void [/!]stepBack() or [!java|c]void [/!]backward([!java|c]int "
-"[/!]steps[!scala]:Int[/!])"
-msgstr ""
-"[!java|c]void [/!]recuarUmPasso() ou [!java|c]void [/!]recuar([!java|c]int "
-"[/!]passos[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:17
-msgid "<b>Get X coordinate"
-msgstr "<b>Obter coordenada X"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:17
-msgid "Get Y coordinate"
-msgstr "Obter coordenada Y"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:17
-msgid "Set X coordinate"
-msgstr "Ajustar coordenada X"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:17
-msgid "Set Y coordinate"
-msgstr "Ajustar coordenada Y"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:17
-msgid "Set position</b>"
-msgstr "Ajustar posição</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:18
-msgid "[!java|c]int [/!]getX()[!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getX()[!scala]:Int[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:19
-msgid "[!java|c]int [/!]getY()[!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getY()[!scala]:Int[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:20
-msgid "[!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:21
-msgid "[!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:22
-msgid ""
-"[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
-"[/!]y[!scala]:Int[/!])"
-msgstr ""
-"[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
-"[/!]y[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:23
-msgid ""
-"Note that the point (0,0) is on the top left corner, as it is often the case "
-"in Computer Science."
-msgstr ""
-"Observe que o ponto (0,0) está no canto superior esquerdo, o que é comum em "
-"ciência da computação."
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:25
-msgid "<b>Information on the buggle</b>"
-msgstr "<b>Informações sobre o buggle</b>"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:26
-msgid "<b>Get the color of the body"
-msgstr "<b>Obter a cor do corpo"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:26
-msgid "Set the color of the body</b>"
-msgstr "Ajustar a cor do corpo</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:27
-msgid "[!java|c]Color [/!]getBodyColor()[!scala]:Color[/!]"
-msgstr "[!java|c]Color [/!]getCorDoCorpo()[!scala]:Cor[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:28
-msgid "[!java|c]void [/!]setBodyColor([!java|c]Color [/!]c[!scala]:Color[/!])"
-msgstr "[!java|c]void [/!]setCorDoCorpo([!java|c]Cor [/!]c[!scala]:Cor[/!])"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:29
-msgid "<b>Look for a wall forward"
-msgstr "<b>Procura por uma parede à frente"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:29
-msgid "Look for a wall backward</b>"
-msgstr "Procura por uma parede atrás</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:30
-msgid "[!java]boolean [/!][!c]int [/!]isFacingWall()[!scala]:Boolean[/!]"
-msgstr ""
-"[!java]boolean [/!][!c]int [/!]estáDeFrenteParaParede()[!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
-msgid "[!java]boolean [/!][!c]int [/!]isBackingWall()[!scala]:Boolean[/!]"
-msgstr ""
-"[!java]boolean [/!][!c]int [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:32
-msgid "<b>Get heading"
-msgstr "<b>Obter direção"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:32
-msgid "Set heading</b>"
-msgstr "Ajustar direção</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:33
-msgid "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
-msgstr "[!java|c]Direção [/!]getDireção()[!scala]:Direção[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:34
-msgid ""
-"[!java|c]void [/!]setDirection([!java|c]Direction [/!]dir[!scala]:"
-"Direction[/!])"
-msgstr ""
-"[!java|c]void [/!]ajustaDireção([!java|c]Direção [/!]dir[!scala]:Direção[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:36
-msgid "Check whether the buggle is currently <b>selected in the interface</b>"
-msgstr "Verifica se o buggle está atualmente <b>selecionado na interface</b>"
-
-#. type: Content of: <pre>
-#: src/plm/universe/bugglequest/BuggleWorld.html:37
-#: src/plm/universe/turtles/TurtleWorld.html:76
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estáSelecionado()[!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:39
-msgid "<b>About the brush</b>"
-msgstr "<b>Sobre o pincel</b>"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:40
-msgid "<b>Brush down"
-msgstr "<b>Abaixar pincel"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:40
-msgid "Brush up"
-msgstr "Levantar pincel"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:40
-msgid "Get brush position</b>"
-msgstr "Pegar a posição do pincel"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:41
-msgid "[!java|c]void [/!]brushUp()"
-msgstr "[!java|c]void [/!]levantarPincel()"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:42
-msgid "[!java|c]void [/!]brushDown()"
-msgstr "[!java|c]void [/!]abaixarPincel()"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:43
-msgid "[!java]boolean [/!][!c]int [/!]isBrushDown()[!scala]:Boolean[/!]"
-msgstr ""
-"[!java]boolean [/!][!c]int [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:44
-msgid "<b>Change the brush color"
-msgstr "<b>Muda a cor do pincel"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:44
-msgid "Get the color of the brush</b>"
-msgstr "Obtém a cor do pincel</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:45
-msgid "[!java|c]void [/!]setBrushColor([!java|c]Color [/!]c[!scala]:Color[/!])"
-msgstr ""
-"[!java|c]void [/!]setCorDoPincel([!java|c]Color [/!]c[!scala]:Color[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:46
-msgid "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
-msgstr "[!java|c]Color [/!]getCorDoPincel()[!scala]:Color[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:48
-msgid "<b>Interacting with the world</b>"
-msgstr "<b>Interagindo com o mundo</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:49
-#: src/lessons/turmites/universe/TurmiteWorld.html:15
-msgid "<b>Get the color of the ground</b>"
-msgstr "<b>Obtém a cor do chão</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:50
-#: src/lessons/turmites/universe/TurmiteWorld.html:15
-msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
-msgstr "[!java|c]Color [/!]getCorDoChão()[!scala]:Color[/!]"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:52
-msgid "<b>Look for a baggle on the ground"
-msgstr "<b>Procura por um \"baggle\" no chão"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:52
-msgid "Look for a baggle in bag"
-msgstr "Procura por um \"baggle\" na bolsa"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:52
-msgid "Pickup a baggle"
-msgstr "Pega um \"baggle\""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:52
-msgid "Drop a baggle</b>"
-msgstr "Solta um \"baggle\"</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:53
-msgid "(see the note on exceptions)"
-msgstr "(veja a nota sobre exceções)"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:54
-msgid "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estáSobreBaggle()[!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:55
-msgid "[!java]boolean [/!][!c]int [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
-msgstr ""
-"[!java]boolean [/!][!c]int [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:56
-msgid "[!java]void [/!]pickupBaggle()"
-msgstr "[!java]void [/!]pegarBaggle()"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
-msgid "[!java]void [/!]dropBaggle()"
-msgstr "[!java]void [/!]soltarBaggle()"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:58
-#: src/plm/universe/bugglequest/BuggleWorld.html:72
-#: src/plm/universe/bugglequest/BuggleWorld.html:73
-#: src/plm/universe/bugglequest/BuggleWorld.html:74
-#: src/plm/universe/bugglequest/BuggleWorld.html:75
-#: src/plm/universe/bugglequest/BuggleWorld.html:76
-#: src/plm/universe/bugglequest/BuggleWorld.html:77
-#: src/plm/universe/bugglequest/BuggleWorld.html:78
-#: src/plm/universe/bugglequest/BuggleWorld.html:79
-#: src/plm/universe/bugglequest/BuggleWorld.html:80
-#: src/plm/universe/bugglequest/BuggleWorld.html:81
-#: src/plm/universe/bugglequest/BuggleWorld.html:82
-#: src/plm/universe/bugglequest/BuggleWorld.html:83
-#: src/plm/universe/bugglequest/BuggleWorld.html:84
-#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
-#: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
-#: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
-#: src/lessons/welcome/Main.html:469
-#: src/plm/universe/turtles/TurtleWorld.html:82
-#: src/plm/universe/turtles/TurtleWorld.html:83
-#: src/plm/universe/turtles/TurtleWorld.html:84
-#: src/plm/universe/turtles/TurtleWorld.html:85
-#: src/plm/universe/turtles/TurtleWorld.html:86
-#: src/plm/universe/turtles/TurtleWorld.html:87
-#: src/plm/universe/turtles/TurtleWorld.html:88
-#: src/plm/universe/turtles/TurtleWorld.html:89
-#: src/plm/universe/turtles/TurtleWorld.html:90
-#: src/plm/universe/turtles/TurtleWorld.html:91
-#: src/plm/universe/turtles/TurtleWorld.html:92
-#: src/plm/universe/turtles/TurtleWorld.html:93
-#: src/plm/universe/turtles/TurtleWorld.html:94
-msgid "&nbsp;"
-msgstr "&nbsp;"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
-msgid "<b>Look for a message"
-msgstr "<b>Procura por uma mensagem"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
-msgid "Add a message"
-msgstr "Adiciona uma mensagem"
-
-#. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
-msgid "Read the message"
-msgstr "Lê a mensagem"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
-msgid "Erase the message</b>"
-msgstr "Apaga a mensagem</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:61
-msgid "[!java]boolean [/!][!c]int [/!]isOverMessage()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estáSobreMensagem()[!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:62
-msgid ""
-"[!java]void [/!]writeMessage([!java]String [/!][!c]char* [/!]msg[!scala]:"
-"String[/!])"
-msgstr ""
-"[!java]void [/!]escreverMensagem([!java]String [/!][!c]char* [/!]msg[!scala]:"
-"String[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:63
-msgid "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
-msgstr "[!java]String [/!][!c]char* [/!]lerMensagem()[!scala]:String[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:64
-msgid "[!java]void [/!]clearMessage()"
-msgstr "[!java]void [/!]limparMensagem()"
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:69
-#: src/plm/universe/turtles/TurtleWorld.html:79
+#: src/plm/universe/bugglequest/BuggleWorld.html:13
+#: src/plm/universe/turtles/TurtleWorld.html:15
 msgid "Valid colors"
 msgstr "Cores válidas"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:71
-#: src/plm/universe/bugglequest/BuggleWorld.html:89
+#: src/plm/universe/bugglequest/BuggleWorld.html:15
+#: src/plm/universe/bugglequest/BuggleWorld.html:33
 #, fuzzy
 #| msgid "Data in [!thelang]"
 msgid "Name in [!thelang]"
 msgstr "Dados em [!thelang]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:71
-#: src/plm/universe/turtles/TurtleWorld.html:81
+#: src/plm/universe/bugglequest/BuggleWorld.html:15
+#: src/plm/universe/turtles/TurtleWorld.html:17
 msgid "Color"
 msgstr "Cor"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:72
-#: src/plm/universe/turtles/TurtleWorld.html:82
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
+#: src/plm/universe/turtles/TurtleWorld.html:18
 msgid "[!scala|java|python]Color.[/!]black"
 msgstr "[!scala|java|python]Cor.[/!]black"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:73
-#: src/plm/universe/turtles/TurtleWorld.html:83
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
+#: src/plm/universe/bugglequest/BuggleWorld.html:17
+#: src/plm/universe/bugglequest/BuggleWorld.html:18
+#: src/plm/universe/bugglequest/BuggleWorld.html:19
+#: src/plm/universe/bugglequest/BuggleWorld.html:20
+#: src/plm/universe/bugglequest/BuggleWorld.html:21
+#: src/plm/universe/bugglequest/BuggleWorld.html:22
+#: src/plm/universe/bugglequest/BuggleWorld.html:23
+#: src/plm/universe/bugglequest/BuggleWorld.html:24
+#: src/plm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
+#: src/plm/universe/bugglequest/BuggleWorld.html:27
+#: src/plm/universe/bugglequest/BuggleWorld.html:28
+#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
+#: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
+#: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
+#: src/lessons/welcome/Main.html:469
+#: src/plm/universe/turtles/TurtleWorld.html:18
+#: src/plm/universe/turtles/TurtleWorld.html:19
+#: src/plm/universe/turtles/TurtleWorld.html:20
+#: src/plm/universe/turtles/TurtleWorld.html:21
+#: src/plm/universe/turtles/TurtleWorld.html:22
+#: src/plm/universe/turtles/TurtleWorld.html:23
+#: src/plm/universe/turtles/TurtleWorld.html:24
+#: src/plm/universe/turtles/TurtleWorld.html:25
+#: src/plm/universe/turtles/TurtleWorld.html:26
+#: src/plm/universe/turtles/TurtleWorld.html:27
+#: src/plm/universe/turtles/TurtleWorld.html:28
+#: src/plm/universe/turtles/TurtleWorld.html:29
+#: src/plm/universe/turtles/TurtleWorld.html:30
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:17
+#: src/plm/universe/turtles/TurtleWorld.html:19
 msgid "[!scala|java|python]Color.[/!]blue"
 msgstr "[!scala|java|python]Cor.[/!]azul"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:74
-#: src/plm/universe/turtles/TurtleWorld.html:84
+#: src/plm/universe/bugglequest/BuggleWorld.html:18
+#: src/plm/universe/turtles/TurtleWorld.html:20
 msgid "[!scala|java|python]Color.[/!]cyan"
 msgstr "[!scala|java|python]Cor.[/!]ciano"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:75
-#: src/plm/universe/turtles/TurtleWorld.html:85
+#: src/plm/universe/bugglequest/BuggleWorld.html:19
+#: src/plm/universe/turtles/TurtleWorld.html:21
 msgid "[!scala|java|python]Color.[/!]darkGray"
 msgstr "[!scala|java|python]Cor.[/!]cinzaEscuro"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:76
-#: src/plm/universe/turtles/TurtleWorld.html:86
+#: src/plm/universe/bugglequest/BuggleWorld.html:20
+#: src/plm/universe/turtles/TurtleWorld.html:22
 msgid "[!scala|java|python]Color.[/!]gray"
 msgstr "[!scala|java|python]Cor.[/!]cinza"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:77
-#: src/plm/universe/turtles/TurtleWorld.html:87
+#: src/plm/universe/bugglequest/BuggleWorld.html:21
+#: src/plm/universe/turtles/TurtleWorld.html:23
 msgid "[!scala|java|python]Color.[/!]green"
 msgstr "[!scala|java|python]Cor.[/!]verde"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:78
-#: src/plm/universe/turtles/TurtleWorld.html:88
+#: src/plm/universe/bugglequest/BuggleWorld.html:22
+#: src/plm/universe/turtles/TurtleWorld.html:24
 msgid "[!scala|java|python]Color.[/!]lightGray"
 msgstr "[!scala|java|python]Cor.[/!]cinzaClaro"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:79
-#: src/plm/universe/turtles/TurtleWorld.html:89
+#: src/plm/universe/bugglequest/BuggleWorld.html:23
+#: src/plm/universe/turtles/TurtleWorld.html:25
 msgid "[!scala|java|python]Color.[/!]magenta"
 msgstr "[!scala|java|python]Cor.[/!]magenta"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:80
-#: src/plm/universe/turtles/TurtleWorld.html:90
+#: src/plm/universe/bugglequest/BuggleWorld.html:24
+#: src/plm/universe/turtles/TurtleWorld.html:26
 msgid "[!scala|java|python]Color.[/!]orange"
 msgstr "[!scala|java|python]Cor.[/!]laranja"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:81
-#: src/plm/universe/turtles/TurtleWorld.html:91
+#: src/plm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/turtles/TurtleWorld.html:27
 msgid "[!scala|java|python]Color.[/!]pink"
 msgstr "[!scala|java|python]Cor.[/!]rosa"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:82
-#: src/plm/universe/turtles/TurtleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
+#: src/plm/universe/turtles/TurtleWorld.html:28
 msgid "[!scala|java|python]Color.[/!]red"
 msgstr "[!scala|java|python]Cor.[/!]vermelho"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:83
-#: src/plm/universe/turtles/TurtleWorld.html:93
+#: src/plm/universe/bugglequest/BuggleWorld.html:27
+#: src/plm/universe/turtles/TurtleWorld.html:29
 msgid "[!scala|java|python]Color.[/!]white"
 msgstr "[!scala|java|python]Cor.[/!]branco"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:84
-#: src/plm/universe/turtles/TurtleWorld.html:94
+#: src/plm/universe/bugglequest/BuggleWorld.html:28
+#: src/plm/universe/turtles/TurtleWorld.html:30
 msgid "[!scala|java|python]Color.[/!]yellow"
 msgstr "[!scala|java|python]Cor.[/!]amarelo"
 
 #. type: Content of: <table><tr><td><h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:87
+#: src/plm/universe/bugglequest/BuggleWorld.html:31
 #, fuzzy
 #| msgid "valid directions are:"
 msgid "Valid directions"
 msgstr "direções válidas são:"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:89
+#: src/plm/universe/bugglequest/BuggleWorld.html:33
 #, fuzzy
 #| msgid "<b>Meaning</b>"
 msgid "Meaning"
 msgstr "<b>Meaning</b>"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:90
+#: src/plm/universe/bugglequest/BuggleWorld.html:34
 #, fuzzy
 #| msgid "[!scala|java|python]Color.[/!]red"
 msgid "[!scala|java|python]Direction.[/!]NORTH"
 msgstr "[!scala|java|python]Cor.[/!]vermelho"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:90
+#: src/plm/universe/bugglequest/BuggleWorld.html:34
 #, fuzzy
 #| msgid "Sorting Algorithms"
 msgid "Pointing North"
 msgstr "Algoritmos de Ordenação"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:91
+#: src/plm/universe/bugglequest/BuggleWorld.html:35
 #, fuzzy
 #| msgid "[!scala|java|python]Color.[/!]red"
 msgid "[!scala|java|python]Direction.[/!]EAST"
 msgstr "[!scala|java|python]Cor.[/!]vermelho"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:91
+#: src/plm/universe/bugglequest/BuggleWorld.html:35
 msgid "Pointing East"
 msgstr ""
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:36
 #, fuzzy
 #| msgid "[!scala|java|python]Color.[/!]red"
 msgid "[!scala|java|python]Direction.[/!]SOUTH"
 msgstr "[!scala|java|python]Cor.[/!]vermelho"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:92
+#: src/plm/universe/bugglequest/BuggleWorld.html:36
 msgid "Pointing South"
 msgstr ""
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:93
+#: src/plm/universe/bugglequest/BuggleWorld.html:37
 #, fuzzy
 #| msgid "[!scala|java|python]Color.[/!]red"
 msgid "[!scala|java|python]Direction.[/!]WEST"
 msgstr "[!scala|java|python]Cor.[/!]vermelho"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:93
+#: src/plm/universe/bugglequest/BuggleWorld.html:37
 msgid "Pointing West"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:97
+#: src/plm/universe/bugglequest/BuggleWorld.html:41
 msgid "Note on exceptions"
 msgstr "Nota sobre exceções"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/bugglequest/BuggleWorld.html:98
+#: src/plm/universe/bugglequest/BuggleWorld.html:42
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -649,7 +273,7 @@ msgstr ""
 "\"baggle\" quando você não tem nenhum lança uma DontHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:105
+#: src/plm/universe/bugglequest/BuggleWorld.html:49
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -3072,12 +2696,13 @@ msgid ""
 msgstr ""
 "Seu buggle se perdeu num estranho labirinto, e você deve ajudá-lo a achar a "
 "saída que está representada em laranja. Você não pode simplesmente explicar "
-"o caminho para a saída com algo do tipo <code>direita();avançarUmPasso();"
-"avançarUmPasso();avançarUmPasso()</code> por que você tem que salvar dois "
-"buggles ao mesmo tempo, que estão presos em mundos similares mas não iguais. "
-"Você pode alternar para o outro mundo usando o combobox acima da "
-"representação do mundo (onde está escrito 'Floresta Fechada' agora), e "
-"selecionar a outra entrada (que deve ler 'Floresta Mais Fechada')."
+"o caminho para a saída com algo do tipo "
+"<code>direita();avançarUmPasso();avançarUmPasso();avançarUmPasso()</code> "
+"por que você tem que salvar dois buggles ao mesmo tempo, que estão presos em "
+"mundos similares mas não iguais. Você pode alternar para o outro mundo "
+"usando o combobox acima da representação do mundo (onde está escrito "
+"'Floresta Fechada' agora), e selecionar a outra entrada (que deve ler "
+"'Floresta Mais Fechada')."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet1.html:10
@@ -3453,9 +3078,9 @@ msgstr ""
 "python]Na verdade, a função <code>len()</code> é muito mais genérica e pode "
 "ser usada para recuperar o comprimento de muitos objetos. Aplicada numa "
 "string, por exemplo, ela retorna a quantidade de caracteres na string.[/!] [!"
-"scala]Não esqueça de começar em <code>0</code> e terminar em <code>T."
-"length-1</code> ao invés de ir de <code>1</code> até <code>T.length</code>."
-"[/!]"
+"scala]Não esqueça de começar em <code>0</code> e terminar em "
+"<code>T.length-1</code> ao invés de ir de <code>1</code> até <code>T.length</"
+"code>.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:83
@@ -3997,9 +3622,9 @@ msgid ""
 "<code>str</code> into an integer by <i>reading</i> it."
 msgstr ""
 "<code>readMessage()</code> obtém a mensagem no chão como uma [!java|"
-"scala]String[/!][!python]string[/!], enquanto <code>[!java]Integer."
-"parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> "
-"transforma a string <code>str</code> em um inteiro ao <i>ler</i> ela."
+"scala]String[/!][!python]string[/!], enquanto <code>[!"
+"java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</"
+"code> transforma a string <code>str</code> em um inteiro ao <i>ler</i> ela."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:23
@@ -4306,16 +3931,16 @@ msgid ""
 "As usual, you should gather the information in only one traversal of the "
 "array.  You can assume that the second biggest value actual exists (there is "
 "at least two distinct values in the array), and that all values in the array "
-"are greater than [!python] -100000000.[/!] [!java|scala]<code>Integer."
-"MIN_VALUE</code> (which is the smallest representable integer existing in [!"
-"thelang]).[/!]"
+"are greater than [!python] -100000000.[/!] [!java|"
+"scala]<code>Integer.MIN_VALUE</code> (which is the smallest representable "
+"integer existing in [!thelang]).[/!]"
 msgstr ""
 "Como normalmente, você deve obter informações em apenas uma passagem pela "
 "array. Você pode assumir que o segundo maior valor \"actual\" existe (existe "
 "pelo menos dois valores distintos na array), e que todos os valores na array "
-"são maiores que [!python] -100000000.[/!] [!java|scala]<code>Integer."
-"MIN_VALUE</code> (que é o menor inteiro representável que existe em [!"
-"thelang]).[/!]"
+"são maiores que [!python] -100000000.[/!] [!java|"
+"scala]<code>Integer.MIN_VALUE</code> (que é o menor inteiro representável "
+"que existe em [!thelang]).[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/array123/Array123.html:2
@@ -5369,8 +4994,8 @@ msgid ""
 "As caller, you have to specify the initial value of this \"variables\" "
 "between the call's parenthesis."
 msgstr ""
-"Como o \"caller\", você deve especificar o valor inicial destas \"variáveis"
-"\" entre parêntesis na chamada."
+"Como o \"caller\", você deve especificar o valor inicial destas "
+"\"variáveis\" entre parêntesis na chamada."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:21
@@ -5483,9 +5108,9 @@ msgstr ""
 msgid ""
 "Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It "
 "works anyway because a <tt>return</tt> interrupts the method execution. If "
-"we arrive to the last line of <code>[!java]max(int,int)[/!][!scala]max(Int,"
-"Int):Int[/!]</code>, we know that <code>x&lt;=y</code> because otherwise, "
-"the <tt>return</tt> of line 2 would have stopped the execution."
+"we arrive to the last line of <code>[!java]max(int,int)[/!][!"
+"scala]max(Int,Int):Int[/!]</code>, we know that <code>x&lt;=y</code> because "
+"otherwise, the <tt>return</tt> of line 2 would have stopped the execution."
 msgstr ""
 "Observe que nós omitimos os ramos <tt>else</tt> de cada <tt>if</tt>. Isto "
 "funciona de qualquer jeito por que um <tt>return</tt> interrompe a execução "
@@ -5498,10 +5123,11 @@ msgstr ""
 #: src/lessons/welcome/methods/args/MethodsArgs.html:71
 msgid ""
 "This time, you have to write a <code> [!java|c]move(int stepCount,[!"
-"java]boolean[/!][!c]int[/!] forward)[/!] [!scala]move(stepCount: Int,"
-"forward: Boolean)[/!] [!python]move(stepCount,forward)[/!] </code> method "
-"which moves forward by <code>stepCount</code> steps if <code>forward</code> "
-"is true, and moves back of that amount of steps if the boolean is false."
+"java]boolean[/!][!c]int[/!] forward)[/!] [!scala]move(stepCount: "
+"Int,forward: Boolean)[/!] [!python]move(stepCount,forward)[/!] </code> "
+"method which moves forward by <code>stepCount</code> steps if <code>forward</"
+"code> is true, and moves back of that amount of steps if the boolean is "
+"false."
 msgstr ""
 "Agora você vai ter que escrever um método <code> [!java|c]mover(int "
 "contaPassos,[!java]boolean[/!][!c]int[/!] forward)[/!] [!"
@@ -5533,8 +5159,8 @@ msgid ""
 "it)."
 msgstr ""
 "Seu buggle decidiu plantar umas flores no pote onde vive. Você tem que "
-"ajudar ele a reproduzir o desenho dos sonhos dele (verifique a aba \"Objetivo"
-"\" para ver o sonho)."
+"ajudar ele a reproduzir o desenho dos sonhos dele (verifique a aba "
+"\"Objetivo\" para ver o sonho)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:7
@@ -5904,14 +5530,14 @@ msgstr ""
 msgid ""
 "Your tool to that end is the <code>getGroundColor()</code> that returns the "
 "color of the current cell. Just go to the cell you want to test and run that "
-"function.  [!java]You cannot test whether this color is equal to <code>Color."
-"green</code> with an <code>==</code> sign but instead you have to write "
-"something like <code>getGroundColor().equals(Color.green)</code>. This is "
-"because green is an <i>object</i> in Java, and <code>.equals()</code> is the "
-"way to go to test equality between Java objects.[/!] [!python|scala|c]So you "
-"just have to test whether the returned color is equal to the value <code>[!"
-"scala|python]Color.green[/!][!c]GREEN[/!]</code>, that represents the green "
-"color.[/!]"
+"function.  [!java]You cannot test whether this color is equal to "
+"<code>Color.green</code> with an <code>==</code> sign but instead you have "
+"to write something like <code>getGroundColor().equals(Color.green)</code>. "
+"This is because green is an <i>object</i> in Java, and <code>.equals()</"
+"code> is the way to go to test equality between Java objects.[/!] [!python|"
+"scala|c]So you just have to test whether the returned color is equal to the "
+"value <code>[!scala|python]Color.green[/!][!c]GREEN[/!]</code>, that "
+"represents the green color.[/!]"
 msgstr ""
 "Sua ferramenta para este objetivo é o <code>getCorDoChão()</code> que "
 "retorna a cor da célula atual. Simplesmente vá para a célula que você quer "
@@ -6183,9 +5809,9 @@ msgid ""
 "outside with an umbrella, some water and a flag, but simply with an "
 "umbrella. The following code is thus WRONG."
 msgstr ""
-"O armadilha é que nós queremos que pelo menos uma destas ações sejam feitas."
-"É como dizer, se está chovendo num 4 de Julho quente, não queremos que o "
-"buggle vá para fora com um guarda-chuva, água e um bandeira, mas "
+"O armadilha é que nós queremos que pelo menos uma destas ações sejam "
+"feitas.É como dizer, se está chovendo num 4 de Julho quente, não queremos "
+"que o buggle vá para fora com um guarda-chuva, água e um bandeira, mas "
 "simplesmente com um guarda-chuva. O código seguinte está, então, ERRADO."
 
 #. type: Content of: <pre>
@@ -7553,8 +7179,8 @@ msgid ""
 "now. You have to complete the <code>tick()</code> method, which encodes the "
 "behavior of the ant at each step. You will probably use the "
 "<code>getGroundColor()</code> method to retrieve the color of the cell on "
-"which the ant is currently.  Colors of interest are simply named <code>Color."
-"black</code> and <code>Color.white</code>."
+"which the ant is currently.  Colors of interest are simply named "
+"<code>Color.black</code> and <code>Color.white</code>."
 msgstr ""
 "Difícil encontrar regras mais simples, não é? Bem, vamos em frente codificar "
 "isto agora. Você precisa completar o método <code>tick()</code>, que "
@@ -8053,13 +7679,13 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:63
 msgid ""
-"Here are some 2-color turmites, extracted from http://demonstrations.wolfram."
-"com/Turmites/ [!python|scala]They are not written using the [!thelang] "
-"syntax, but converting them should be easy.[/!]"
+"Here are some 2-color turmites, extracted from http://"
+"demonstrations.wolfram.com/Turmites/ [!python|scala]They are not written "
+"using the [!thelang] syntax, but converting them should be easy.[/!]"
 msgstr ""
-"Aqui estão alguns turmites de 2 cores, extraídos de http://demonstrations."
-"wolfram.com/Turmites/ [!python|scala]Eles não foram escritos usando o "
-"sintaxe de [!thelang], mas convertê-los não deve ser difícil.[/!]"
+"Aqui estão alguns turmites de 2 cores, extraídos de http://"
+"demonstrations.wolfram.com/Turmites/ [!python|scala]Eles não foram escritos "
+"usando o sintaxe de [!thelang], mas convertê-los não deve ser difícil.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:67
@@ -8249,8 +7875,8 @@ msgid ""
 "things before stopping (busy beavers are usually classical turing machines, "
 "but the idea fits perfectly to turmites too). There is a sort of "
 "international competition where people strive to find the turmite that "
-"covers the biggest area before stopping. The web page is here: http://code."
-"google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
+"covers the biggest area before stopping. The web page is here: http://"
+"code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
 msgstr ""
 "Como você pode ver ao explorar o conjunto de turmites acima, elas não são "
 "tão coloridas quanto as formigas, mas isto pode ser por que poucas cores são "
@@ -8271,13 +7897,9 @@ msgstr "Universo dos Turmites"
 #. type: Content of: <p>
 #: src/lessons/turmites/universe/TurmiteWorld.html:4
 msgid ""
-"This universe is very similar to the buggle one, but you will probably not "
-"use all buggles methods.  So, this page only recap the buggle methods that "
-"you will use."
+"Turmites are buggles reduced to what they need: turning, stepping, reading "
+"the ground and painting it."
 msgstr ""
-"Este universo é bastante similar ao dos buggles, mas você provavelmente não "
-"vai usar nenhum método dos buggles. Então, esta página apenas repacitula os "
-"métodos do buggle que você vai usar."
 
 #. type: Content of: <h1>
 #: src/plm/universe/sort/SortingWorld.html:2
@@ -8305,188 +7927,29 @@ msgstr ""
 msgid "Methods available to sorting algorithms"
 msgstr "Métodos disponíveis para algoritmos de ordenação"
 
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:11
-msgid "<b>Method</b>"
-msgstr "<b>Método</b>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:11
-msgid "<b>Action</b>"
-msgstr "Ação"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:11
-msgid "<b>Cost</b>"
-msgstr "Custo"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:12
-msgid "[!java|c]int [/!]getValueCount() [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getQuantidadeDeValores() [!scala]:Int[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:13
-msgid "Returns the amount of values in the array"
-msgstr "Retorna a quantidade de valores na array"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:13
-#: src/plm/universe/sort/SortingWorld.html:31
-msgid "none"
-msgstr "nenhum"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:15
-msgid ""
-"[!java]boolean [/!][!c]int [/!]isSmaller([!java|c]int [/!]i[!scala]:Int[/!], "
-"[!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
-msgstr ""
-"[!java]boolean [/!][!c]int [/!]éMenor([!java|c]int [/!]i[!scala]:Int[/!], [!"
-"java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:16
-msgid ""
-"Returns true if the content of cell i is strictly smaller than the one of "
-"cell j"
-msgstr ""
-"Retorna verdadeiro se o conteúdo da célula i é estritamente menor que o da "
-"célula j"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:16
-msgid "two reads"
-msgstr "duas leituras"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:17
-msgid ""
-"[!java]boolean [/!][!c]int [/!]isSmallerThan([!java|c]int [/!]i[!scala]:"
-"Int[/!], [!java|c]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
-msgstr ""
-"[!java]boolean [/!][!c]int [/!]éMenorQue([!java|c]int [/!]i[!scala]:Int[/!], "
-"[!java|c]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:18
-msgid ""
-"Returns true if the content of cell i is strictly smaller than the "
-"<code>value</code>"
-msgstr ""
-"Retorna verdadeiro se o conteúdo da célula i é estritamente menor que "
-"<code>valor</code>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:18
-#: src/plm/universe/sort/SortingWorld.html:26
-msgid "one read"
-msgstr "uma leitura"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:20
-msgid ""
-"[!java|c]void [/!]swap([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
-"[/!]j[!scala]:Int[/!])"
-msgstr ""
-"[!java|c]void [/!]alternar([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
-"[/!]j[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:21
-msgid "Swaps the content of cell i and the one of cell j"
-msgstr "Alterna (\"swap\") o conteúdo da célula i com o da célula j"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:21
-msgid "two reads, two writes"
-msgstr "duas escritas, duas leituras"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:22
-msgid ""
-"[!java|c]void [/!]copy([!java|c]int [/!]from[!scala]:Int[/!], [!java|c]int "
-"[/!]to[!scala]:Int[/!])"
-msgstr ""
-"[!java|c]void [/!]copia([!java|c]int [/!]de[!scala]:Int[/!], [!java|c]int "
-"[/!]para[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:23
-msgid "Copy the content of cell 'from' into the cell 'to'"
-msgstr "Copia o conteúdo da célula 'de' para a célula 'para'"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:23
-msgid "one read, one write"
-msgstr "uma leitura, uuma escrita"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:25
-msgid "[!java|c]int [/!]getValue([!java|c]int [/!]idx[!scala]:Int[/!])"
-msgstr "[!java|c]int [/!]getValor([!java|c]int [/!]idx[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:26
-msgid "Returns the value of cell idx"
-msgstr "Retorna o valor da célula idx"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:27
-msgid ""
-"[!java|c]void [/!]setValue([!java|c]int [/!]idx[!scala]:Int[/!], [!java|"
-"c]int [/!]value[!scala]:Int[/!])"
-msgstr ""
-"[!java|c]void [/!]setValor([!java|c]int [/!]idx[!scala]:Int[/!], [!java|"
-"c]int [/!]valor[!scala]:Int[/!])"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:28
-msgid "Sets cell 'idx' to the <code>value</code>"
-msgstr "Coloca na célula 'idx' o <code>valor</code>"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:28
-msgid "one write"
-msgstr "uma escrita"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:30
-msgid "[!java]boolean [/!][!c]int [/!]isSelected() [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]selecionado() [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/sort/SortingWorld.html:31
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:22
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:28
-msgid ""
-"Returns whether the current world is selected in the graphical interface."
-msgstr ""
-"Retorna verdadeiro se o mundo atual está selecionado na interface gráfica."
-
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:34
+#: src/plm/universe/sort/SortingWorld.html:12
 msgid "As always, the indices of cells range from 0 to"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/plm/universe/sort/SortingWorld.html:34
+#: src/plm/universe/sort/SortingWorld.html:12
 #, no-wrap
 msgid "getValueCount()-1"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:34
+#: src/plm/universe/sort/SortingWorld.html:12
 msgid ". Accessing a cell out of this range raises an error."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/sort/SortingWorld.html:36
+#: src/plm/universe/sort/SortingWorld.html:14
 msgid "History view"
 msgstr "Visão do histórico"
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:37
+#: src/plm/universe/sort/SortingWorld.html:15
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -8503,7 +7966,7 @@ msgstr ""
 "solução esperada pode se mostrar bem difícil."
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:44
+#: src/plm/universe/sort/SortingWorld.html:22
 msgid ""
 "To help in this process, it is possible to graphically explore the history "
 "of your sorting algorithm. Switch to the Objective view and use the "
@@ -8516,7 +7979,7 @@ msgstr ""
 "para a visão do histórico."
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:49
+#: src/plm/universe/sort/SortingWorld.html:27
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
@@ -8538,7 +8001,7 @@ msgstr ""
 "vermelho e seguido de uma exclamação (!), foi escrito com setValor()."
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:58
+#: src/plm/universe/sort/SortingWorld.html:36
 msgid ""
 "This view, inspired from Aldo Cortesi, reveals very helpful understand the "
 "inner behavior of sorting algorithms."
@@ -9526,16 +8989,17 @@ msgstr ""
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:7
 msgid ""
 "If you think carefully, this can be done in linear time, where you sort a "
-"line at each iteration of the loop.  You may want to check again the <a href="
-"\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion sort</a>, "
-"of which the Dutch Flag sort is a variation. The main difference is that you "
-"have 3 insertion points, not only one..."
+"line at each iteration of the loop.  You may want to check again the <a "
+"href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion sort</"
+"a>, of which the Dutch Flag sort is a variation. The main difference is that "
+"you have 3 insertion points, not only one..."
 msgstr ""
 "Se você pensar com carinho, isto pode ser feito em tempo linear, onde você "
 "ordena uma linha a cada iteração do loop. Você pode querer dar mais uma "
-"olhada no <a href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort"
-"\">insertion sort</a>, do qual o Dutch Flag sort é uma variação. A principal "
-"diferença é que você tem 3 pontos de inserção, e não apenas um..."
+"olhada no <a href=\"plm://lessons.sort.basic/"
+"insertion.AlgInsertionSort\">insertion sort</a>, do qual o Dutch Flag sort é "
+"uma variação. A principal diferença é que você tem 3 pontos de inserção, e "
+"não apenas um..."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:11
@@ -9614,159 +9078,15 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:8
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:12
+#: src/lessons/lander/universe/LanderWorld.html:8
 msgid "Provided functions"
 msgstr "Funções fornecidas"
-
-#. type: Content of: <p>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
-msgid "This world is very simple, with only 5 provided functions."
-msgstr "Este mundo é bem simples, com apenas 5 funções fornecidas."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:13
-#, no-wrap
-msgid "[!java|c]void [/!]swap([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int [/!]y[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]alterna([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int [/!]y[!scala]:Int[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:14
-msgid "Swap the lines number <code>x</code> and <code>y</code>."
-msgstr ""
-"Troca as linhas de número <code>x</code> com a de número <code>y</code>."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:16
-#, no-wrap
-msgid "[!java|c]int [/!]getSize() [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getTamanho() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:17
-msgid "Returns the amount of lines on this flag."
-msgstr "Retorna a quantidade de linhas desta bandeira."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:19
-#, no-wrap
-msgid "[!java|c]int [/!]getColor([!java|c]int [/!]line[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getCor([!java|c]int [/!]linha[!scala]:Int[/!])  [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:20
-msgid "Returns the color of the given line."
-msgstr "Retorna a cor da linha dada."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()  [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:23
-msgid "Returns whether the flag is sorted."
-msgstr "Retorna verdadeiro se a bandeira estiver ordenada."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:37
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isSelected()  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estáSelecionado()  [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:26
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
-msgid "Returns whether the current world is selected in the interface."
-msgstr "Retorna verdadeiro se o mundo atual estiver selecionado na interface."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:2
 msgid "PancakeWorld"
 msgstr "PancakeWorld"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:4
-msgid "This universe is very simple, with only five functions provided."
-msgstr "Este universo é bastante simples, com apenas cinco funções fornecidas."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
-#, no-wrap
-msgid "[!java|c]int [/!]getStackSize()  [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getTamanhoDaPilha()  [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:7
-msgid ""
-"Returns the size of the stack, that is the amount of pancakes it contains."
-msgstr "Retorna o tamanho da pilha, ou seja, a quantidade de panquecas nela."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:9
-#, no-wrap
-msgid "[!java|c]int [/!]getPancakeRadius([!java|c]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getRaioPanqueca([!java|c]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:10
-msgid ""
-"Returns the radius of the pancake passed as argument, with the rank of the "
-"top-most pancake being 0."
-msgstr ""
-"Retorna o raio da panqueca passado como argumento, com o rank da panqueca "
-"mais acima sendo 0."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:12
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isPancakeUpsideDown([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]panquecaDeCabeçaPraBaixo([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:13
-msgid ""
-"Returns whether the pancake passed as argument upside-down, that is, if its "
-"burned side is on top. As usual, the top-most pancake is of rank 0."
-msgstr ""
-"Retorna se a panqueca passada como argumento está de cabeça para baixo, ou "
-"seja, se o lado queimado está para cima. Como sempre, a panqueca mais acima "
-"é a de rank 0."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
-#, no-wrap
-msgid "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:16
-msgid ""
-"Flips the <code>amount</code> first pancakes composing the stack, from the "
-"top of it."
-msgstr ""
-"Vira as primeiras <code>amount</code> panquecas que compõe a pilha, do topo "
-"dela."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isSorted()   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()   [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:19
-msgid "Returns whether the pancake stack is correctly sorted."
-msgstr ""
-"Retorna verdadeiro se a pilha de panquecas estiver corretamente ordenada."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:21
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isSelected()   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]selecionado()   [!scala]:Boolean[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/Main.html:2
@@ -9793,15 +9113,15 @@ msgstr ""
 msgid ""
 "This problem is now famous because Bill Gates authored (with C. "
 "Papadimitriou) his only scientific publication in 1979 on this topic, "
-"providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ (5n"
-"+5)/3</code>.  This was the only publication of Bill Gates before he "
-"invented Windows and became rich."
+"providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ (5n+5)/"
+"3</code>.  This was the only publication of Bill Gates before he invented "
+"Windows and became rich."
 msgstr ""
 "Este problema é agora famoso por que Bill Gates escreveu (com C. "
 "Papadimitriou) sua única publicação científica em 1979 neste tópico, "
-"fornecendo um algoritmo mais rápido e provando que <code>17n/16 ≤ f(n) ≤ (5n"
-"+5)/3</code>.  Este foi a única publicação de Bill Gates antes dele inventar "
-"o Windows e ficar rico."
+"fornecendo um algoritmo mais rápido e provando que <code>17n/16 ≤ f(n) ≤ "
+"(5n+5)/3</code>.  Este foi a única publicação de Bill Gates antes dele "
+"inventar o Windows e ficar rico."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:12
@@ -9821,9 +9141,9 @@ msgstr ""
 #| "An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
 #| "determining the minimal amount of flips to sort the stack is a NP-"
 #| "complete problem. Naturally, the stack sorting problem is not NP-complete "
-#| "since it can be solved in 2n-3 steps with the naive algorithm and (5n"
-#| "+5)/3 steps with the Gates algorithm.  That's determining the minimal "
-#| "amount of steps that is NP."
+#| "since it can be solved in 2n-3 steps with the naive algorithm and (5n+5)/"
+#| "3 steps with the Gates algorithm.  That's determining the minimal amount "
+#| "of steps that is NP."
 msgid ""
 "An article of 2011 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
 "determining the minimal amount of flips to sort the stack is a NP-complete "
@@ -9849,8 +9169,8 @@ msgstr ""
 #: src/lessons/sort/pancake/Main.html:23
 msgid ""
 "This activity is also integrated to CSIRL (my repository of <i>free</i> "
-"unplugged activities to introduce computer science, available at http://www."
-"loria.fr/~quinson/Mediation/SMN/), and it may be interesting to run the "
+"unplugged activities to introduce computer science, available at http://"
+"www.loria.fr/~quinson/Mediation/SMN/), and it may be interesting to run the "
 "unplugged activities before implementing these algorithms in PLM."
 msgstr ""
 "Esta atividade também é integrada ao CSIRL (meu repositório de atividades "
@@ -10140,17 +9460,17 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:25
 msgid ""
-"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t"
-"+1</code> are the last elements of blocks.  Both blocks and <code>t</code> "
-"are merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
-"<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
-"two flips are mandated."
+"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and "
+"<code>t+1</code> are the last elements of blocks.  Both blocks and <code>t</"
+"code> are merged all together in 4 flips.  Beware, if either <code>t-1</"
+"code> or <code>t+1</code> does not exist (because <code>t</code> is 0 or "
+"max), only two flips are mandated."
 msgstr ""
 "<b>Caso c</b>: <code>t</code> é livre mas tanto <code>t-1</code> quanto "
 "<code>t+1</code> são últimos elementos de blocos. Os blocos e <code>t</code> "
-"são mesclados juntos em 4 viradas. Cuidado, se <code>t-1</code> ou <code>t"
-"+1</code> não existir (pois <code>t</code> é 0 ou max), apenas duas viradas "
-"são obrigatórias."
+"são mesclados juntos em 4 viradas. Cuidado, se <code>t-1</code> ou "
+"<code>t+1</code> não existir (pois <code>t</code> é 0 ou max), apenas duas "
+"viradas são obrigatórias."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:33
@@ -10249,9 +9569,9 @@ msgstr ""
 "algoritmo por si só. Temos apenas que remover as últimas ambiquidades para "
 "garantir que você implemente exatamente o mesmo algoritmo que a correção. Se "
 "vários casos se aplicam a sua situação, então você deve usar o primeiro que "
-"foi dado. Por exemplo, se tanto o caso a quanto o caso b se  se aplicam (e."
-"g., com <code>t-1</code> no <b>a</b> e <code>t+1</code> no caso <b>b</b>), "
-"então você deve aplicar as viradas do caso <b>a</b>. Se um dado caso se "
+"foi dado. Por exemplo, se tanto o caso a quanto o caso b se  se aplicam "
+"(e.g., com <code>t-1</code> no <b>a</b> e <code>t+1</code> no caso <b>b</"
+"b>), então você deve aplicar as viradas do caso <b>a</b>. Se um dado caso se "
 "aplica tanto para <code>t+1</code> quanto para <code>t-1</code>, então você "
 "deve aplicá-lo a <code>t+1</code>."
 
@@ -10361,13 +9681,20 @@ msgstr ""
 #: src/lessons/sort/pancake/CohenPancake.html:16
 msgid ""
 "The Cohen's algorithm is slightly easier than the Gates' one since it "
-"distinguishes less cases:"
+"distinguishes less cases. It relies on the notion of <b>join</b>: pancakes "
+"<i>p</i> and <i>p+1</i> are joined when <i>p</i> lies rightside up just "
+"above <i>p+1</i> rightside up, or when <i>p+1</i> lies upside down just "
+"above <i>p</i> upside down. Once two pancakes are joined, they are never "
+"separated again: they behave as a single pancake, so each join makes the "
+"stack one pancake shorter. Likewise, the largest pancake lying rightside up "
+"at the bottom of the stack is joined to the plate. The stack is sorted after "
+"<i>n</i> joins. The world view marks each join between two pancakes with a "
+"small magenta dot. In the cases below, a \"pancake\" is thus a block of "
+"joined pancakes, and no flip ever cuts a block."
 msgstr ""
-"O algoritmo de Cohen é um pouco mais fácil que o algoritmo de Gates já que "
-"ele distingue menos casos:"
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/CohenPancake.html:18
+#: src/lessons/sort/pancake/CohenPancake.html:24
 msgid ""
 "<b>Case 1:</b> At least one pancake is rightside up in the stack. Let <i>p</"
 "i> be the largest such pancake.  Note that <i>p + 1</i> must therefore be "
@@ -10380,17 +9707,17 @@ msgstr ""
 "não existe a panqueca <i>p + 1</i>)."
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/CohenPancake.html:22
+#: src/lessons/sort/pancake/CohenPancake.html:28
 msgid "<b>Case 1.a:</b> <i>p+1</i> is lower in the stack than <i>p</i>."
 msgstr "<b>Caso 1.a:</b> <i>p+1</i> é menor que <i>p</i> na pilha."
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/CohenPancake.html:23
+#: src/lessons/sort/pancake/CohenPancake.html:29
 msgid "<b>Case 1.b:</b> <i>p+1</i> is higher in the stack than <i>p</i>."
 msgstr "<b>Caso 1.b:</b> <i>p+1</i> é maior que <i>p</i> na pilha."
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/CohenPancake.html:24
+#: src/lessons/sort/pancake/CohenPancake.html:30
 msgid ""
 "<b>Case 1.c:</b> There is no <i>p+1</i> because <i>p</i> is the largest "
 "pancake in stack, that is because <i>p = n</i>.  If pancake <i>p</i> is "
@@ -10403,7 +9730,7 @@ msgstr ""
 "pilha em duas viradas:"
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/CohenPancake.html:28
+#: src/lessons/sort/pancake/CohenPancake.html:34
 msgid ""
 "<b>The trick is that the pancake <i>p</i> should never be considered again.</"
 "b> Otherwise, you will consider that pancake again and again since it's "
@@ -10420,7 +9747,7 @@ msgstr ""
 "não mexendo nas que já estão posicionadas no fundo da pilha."
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/CohenPancake.html:36
+#: src/lessons/sort/pancake/CohenPancake.html:42
 msgid ""
 "<b>Case 2:</b> All pancakes are downside. Again, we distinguish two sub-"
 "cases."
@@ -10429,7 +9756,7 @@ msgstr ""
 "distinguimos dois sub-casos."
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/CohenPancake.html:39
+#: src/lessons/sort/pancake/CohenPancake.html:45
 msgid ""
 "<b>Case 2.a:</b> There is at least one <i>p</i> for which <i>p+1</i> is "
 "higher than <i>p</i> (if there is several such <i>p</i>, take the largest "
@@ -10439,7 +9766,7 @@ msgstr ""
 "maior que <i>p</i> (se existem vários destes <i>p</i>, pegue o maior)."
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/CohenPancake.html:43
+#: src/lessons/sort/pancake/CohenPancake.html:49
 msgid ""
 "<b>Case 2.b:</b> Any pancake <i>p</i> is lower than pancake <i>p+1</i>. In "
 "that case, we must have that setting:"
@@ -10448,24 +9775,34 @@ msgstr ""
 "i>. Neste caso, devemos ter a seguinte configuração:"
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/CohenPancake.html:48
+#: src/lessons/sort/pancake/CohenPancake.html:54
 msgid ""
 "As you can see, we achieve one join in 2 flips in the cases 1 or 2.a. Since "
 "we need to achieve n joins to sort the stack, we can sort the stack in "
 "<i>2n</i> steps if case 2.b does not occurs."
 msgstr ""
-"Como você pode ver, alcançamos um \"join\" em duas viradas nos casos 1 ou 2."
-"a. Já que nós precisamos alcançar n junções para ordenar a pilha, podemos "
+"Como você pode ver, alcançamos um \"join\" em duas viradas nos casos 1 ou "
+"2.a. Já que nós precisamos alcançar n junções para ordenar a pilha, podemos "
 "ordenar a pilha em <i>2n</i> passos se o caso 2.b não ocorrer."
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/CohenPancake.html:51
+#: src/lessons/sort/pancake/CohenPancake.html:57
+#, fuzzy
+#| msgid ""
+#| "That case 2.b requires a very different handling as it is obviously not "
+#| "possible to achieve a join in only 2 flips.  But fortunately, we can "
+#| "leverage the very specific setting of the stack in that case to provide "
+#| "the following algorithm.  It sorts a stack in that exact configuration "
+#| "after exactly <i>2n</i> steps."
 msgid ""
 "That case 2.b requires a very different handling as it is obviously not "
 "possible to achieve a join in only 2 flips.  But fortunately, we can "
 "leverage the very specific setting of the stack in that case to provide the "
 "following algorithm.  It sorts a stack in that exact configuration after "
-"exactly <i>2n</i> steps."
+"exactly <i>2n</i> steps. When that configuration arises after <i>i</i> "
+"joins, it applies to the <i>n-i</i> remaining blocks, the top <i>(n-1)</i> "
+"pancakes being all the blocks but the bottom one.  The whole sort then takes "
+"<i>2i + 2(n-i) = 2n</i> flips."
 msgstr ""
 "Este caso 2.b necessita um tratamento particular já que é obviamente "
 "impossível juntar duas panquecas em apenas duas viradas. Mas por sorte, uma "
@@ -10475,7 +9812,7 @@ msgstr ""
 "passos."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/CohenPancake.html:56
+#: src/lessons/sort/pancake/CohenPancake.html:64
 #, no-wrap
 msgid ""
 "Repeat n times\n"
@@ -10487,7 +9824,7 @@ msgstr ""
 "    Vire as (n-1) panquecas mais de cima\n"
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/CohenPancake.html:61
+#: src/lessons/sort/pancake/CohenPancake.html:69
 msgid ""
 "It may sound somehow magic, but it actually works, as depicted on an example "
 "below."
@@ -10496,7 +9833,7 @@ msgstr ""
 "abaixo."
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/CohenPancake.html:65
+#: src/lessons/sort/pancake/CohenPancake.html:73
 msgid ""
 "So, all in all, the Cohen algorithm manages to sort the stack of burnt "
 "pancakes in <i>2n</i> steps in all cases.  Quite a win over the naive "
@@ -10508,12 +9845,12 @@ msgstr ""
 "precisa de <i>3n</i> passos."
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/CohenPancake.html:68
+#: src/lessons/sort/pancake/CohenPancake.html:76
 msgid "I cannot get it right."
 msgstr "Não entendi direito."
 
 #. type: Content of: <p><div>
-#: src/lessons/sort/pancake/CohenPancake.html:69
+#: src/lessons/sort/pancake/CohenPancake.html:77
 msgid ""
 "Don't worry. This exercise is very difficult, so it's ok if it does not work "
 "right away for you.  Add some relevant logging to your code to understand "
@@ -10686,108 +10023,6 @@ msgstr ""
 "Uma vez que todos os jogadores no campo estejam em suas bases, o espaço "
 "vazio deve estar na última base, ou seja, a de rank "
 "<code>getBasesAmount()-1</code>."
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:12
-msgid "Functions to retrieve the world's dimensions"
-msgstr "FFunções para recuperar as dimensões do mundo"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:14
-#, no-wrap
-msgid "[!java|c]int [/!]getBasesAmount() [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getQuantidadeDeBases() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:15
-msgid "Returns the amount of bases on this field."
-msgstr "Retorna a quantidade de bases neste campo."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
-#, no-wrap
-msgid "[!java|c]int [/!]getPositionsAmount() [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getQuantidadeDePosições() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:18
-msgid "Returns the amount of player's positions per base on this field."
-msgstr "Retorna a quantidade de posições de jogadores por base neste campo."
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:20
-msgid "Functions to retrieve the world's state"
-msgstr "Funções para recuperar o estado do mundo"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
-#, no-wrap
-msgid "[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:23
-msgid "Returns the base in which the hole is located."
-msgstr "Retorna a base na qual o espaço vazio está localizado."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:25
-#, no-wrap
-msgid "[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:26
-msgid "Returns the hole position within its base"
-msgstr "Retorna a posição do espaço vazio na sua base"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
-#, no-wrap
-msgid "[!java|c]int [/!]getPlayerColor([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getCorDoJogador([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])  [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:29
-msgid "Returns the color of the player at a given location."
-msgstr "Retorna a cor do jogador numa dada posição."
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:32
-msgid "Returns whether all players of the field are at home."
-msgstr "Retorna se todos os jogadores em campo estão em seus \"home\"."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isBaseSorted([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]baseEstáOrdenada([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:35
-msgid "Returns whether all players of a given base are at home."
-msgstr "Retorna se todos os jogadores de uma dada base estão em \"home\"."
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:39
-msgid "Functions to change the world"
-msgstr "Funções para mudar o mundo"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:41
-#, no-wrap
-msgid "[!java|c]void [/!]move([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])"
-msgstr "[!java|c]void [/!]mover([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:42
-msgid ""
-"Moves a given player into the hole. This throws an IllegalArgumentException "
-"if the specified player is not near the hole (at most one base away)."
-msgstr ""
-"Move um dado jogador para um espaço vazio. Vai levantar uma "
-"IllegalArgumentException se o jogador especificado não estiver próximo do "
-"espaço vazio (no máximo a uma base de distância)."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/NaiveBaseball.html:2
@@ -11293,244 +10528,13 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/plm/universe/turtles/TurtleWorld.html:12
-msgid "Functions to move the turtle"
-msgstr "Funções para mover a tartaruga"
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:14
-#, no-wrap
-msgid ""
-"[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])\n"
-"[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])"
-msgstr ""
-"[!java|c]void [/!]avançar([!java|c]double [/!]passos[!scala]:Double[/!])\n"
-"[!java|c]void [/!]recuar([!java|c]double [/!]passos[!scala]:Double[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:16
-msgid "Moves forward or backward of the requested amount of steps."
-msgstr "Move para frente e para trás na quantidade de passos pedidos."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:18
-#, no-wrap
-msgid ""
-"[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])\n"
-"[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])"
-msgstr ""
-"[!java|c]void [/!]direita([!java|c]double [/!]ângulo[!scala]:Double[/!])\n"
-"[!java|c]void [/!]esquerda([!java|c]double [/!]ângulo[!scala]:Double[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:20
-msgid "Turns left or right of the given angle (in degrees)."
-msgstr "Vira à esquerda ou à direita um dado ângulo (em graus)."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:22
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:10
-#, no-wrap
-msgid ""
-"[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
-"[!java|c]double [/!]getY()[!scala]:Double[/!]"
-msgstr ""
-"[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
-"[!java|c]double [/!]getY()[!scala]:Double[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:24
-msgid ""
-"Returns the current position of the turtle.  Note that the point (0,0) is on "
-"the top left corner, as it is often the case in Computer Science."
-msgstr ""
-"Retorna a posição atual da tartaruga. Observe que o ponto (0,0) está no "
-"canto superior esquerdo, como é comum na ciência da computação."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:27
-#, no-wrap
-msgid ""
-"[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
-"[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
-"[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
-msgstr ""
-"[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
-"[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
-"[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:30
-msgid "Teleports the turtle to a new position (without leaving any trace)."
-msgstr "Teletransporta a tartaruga para uma nova posição (sem deixar rastros)."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:32
-#, no-wrap
-msgid "[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
-msgstr "[!java|c]void [/!]moverPara([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:33
-msgid "Moves the turtle to a new position."
-msgstr "Move a tartaruga para uma nova posição."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:35
-#, no-wrap
-msgid "[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])"
-msgstr "[!java|c]void [/!]círculo([!java|c]double [/!]raio[!scala]:Double[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:36
-msgid "Draw a circle of the specified radius centered on the turtle."
-msgstr "Desenha um círculo de raio especificado com o centro na tartaruga."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:38
-#, no-wrap
-msgid "[!java|c]void [/!]hide()"
-msgstr "[!java|c]void [/!]esconder()"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:39
-msgid "Hides the turtle."
-msgstr "Esconde a tartaruga."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:41
-#, no-wrap
-msgid "[!java|c]void [/!]show()"
-msgstr "[!java|c]void [/!]mostrar()"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:42
-msgid "Shows the turtle back."
-msgstr "Mostra novamente a tartaruga."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:44
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]éVisível()[!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:45
-msgid "Returns whether the turtle is currently visible."
-msgstr "Retorna se a tartaruga é visível ou não."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:47
-#, no-wrap,fuzzy
-msgid "[!java|c]void [/!]clearAll()"
-msgstr "[!java|c]void [/!]limpar()"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:48
-msgid "Removes any trail on the sheet."
-msgstr "Remove todos os rastros do papel."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:50
-#, no-wrap
-msgid "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
-msgstr "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:51
-msgid "Returns the current heading of the turtle (in degrees)."
-msgstr "Retorna a direção atual da tartaruga (em graus)."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:53
-#, no-wrap
-msgid "[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])"
-msgstr "[!java|c]void [/!]setDireção([!java|c]double [/!]ângulo[!scala]:Double[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:54
-msgid "Sets a new heading to the turtle (in degrees)."
-msgstr "Ajusta uma nova direção para a tartaruga (em graus)."
-
-#. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:56
-msgid "Functions about the pen"
-msgstr "Funções da caneta"
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:58
-#, no-wrap
-msgid "[!java|c]void [/!]penUp()"
-msgstr "[!java|c]void [/!]levantarCaneta()"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:59
-msgid ""
-"Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
-"will not leave any trace during its subsequent moves."
-msgstr ""
-"Levanta a caneta (tartarugas têm canetas, não pinceis, como os buggles). A "
-"tartaruga não vai  deixar nenhum rastro durante seus passos seguintes."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:62
-#, no-wrap
-msgid "[!java|c]void [/!]penDown()"
-msgstr "[!java|c]void [/!]abaixarCaneta()"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:63
-msgid ""
-"Moves the pen down. The turtle will leave a trace during its subsequent "
-"moves."
-msgstr ""
-"Abaixa a caneta. A tartaruga vai deixar um rastro nos próximos movimentos."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:65
-#, no-wrap
-msgid "[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!][!c]int [/!]canetaEstáAbaixada()[!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:66
-msgid "Returns the current pen position as a boolean."
-msgstr "Retorna a posição atual da caneta como um booleano."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:68
-#, no-wrap
-msgid "[!java|c]Color [/!]getColor()[!scala]:Color[/!]"
-msgstr "[!java|c]Cor [/!]getCor()[!scala]:Cor[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:69
-msgid "Returns the current pen color."
-msgstr "Retorna a cor atual da caneta."
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:71
-#, no-wrap
-msgid "[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])"
-msgstr "[!java|c]void [/!]setCor([!java|c]Cor [/!]cor[!scala]:Cor[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:72
-msgid "Changes the pen color."
-msgstr "Muda a cor da caneta."
-
-#. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:74
-msgid "Other functions"
-msgstr "Outras funções"
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:77
-msgid ""
-"Returns whether the current turtle is selected in the graphical interface."
-msgstr "Retorna se a tartaruga atual está selecionada na interface gráfica."
+#, fuzzy
+#| msgid "Methods understood by buggles"
+msgid "Functions understood by turtles"
+msgstr "Métodos que os buggles entendem"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:81
+#: src/plm/universe/turtles/TurtleWorld.html:17
 msgid "Name"
 msgstr "Nome"
 
@@ -11581,9 +10585,9 @@ msgid ""
 msgstr ""
 "Outros exercícios devem ser adicionados. Um conjunto completo de exercícios "
 "está disponível em <a href=\"http://neoparaiso.com/logo/#sect4\">http://"
-"neoparaiso.com/logo/#sect4</a> ou em <a href=\"http://billkerr2.blogspot."
-"fr/2009/08/40-maths-shapes-challenges.html.\">http://billkerr2.blogspot."
-"fr/2009/08/40-maths-shapes-challenges.html</a>."
+"neoparaiso.com/logo/#sect4</a> ou em <a href=\"http://billkerr2.blogspot.fr/"
+"2009/08/40-maths-shapes-challenges.html.\">http://billkerr2.blogspot.fr/"
+"2009/08/40-maths-shapes-challenges.html</a>."
 
 #. type: Content of: <ul><li>
 #: src/lessons/turtleart/Main.html:19
@@ -11641,10 +10645,11 @@ msgstr ""
 msgid ""
 "Any given such list is either the empty list (noted <code>[!scala]Nil[/!][!"
 "java]null[/!][!python]None[/!]</code>), or an integer followed by a list. If "
-"a list is not empty, you can retrieve its first integer with <code>list."
-"head</code> and the list containing its other parameters with <code>list."
-"tail</code>. Of course, the empty list has no head nor the tail, so trying "
-"to access these elements will result in an (unpleasant) error message."
+"a list is not empty, you can retrieve its first integer with "
+"<code>list.head</code> and the list containing its other parameters with "
+"<code>list.tail</code>. Of course, the empty list has no head nor the tail, "
+"so trying to access these elements will result in an (unpleasant) error "
+"message."
 msgstr ""
 "Qualquer lista dada é ou a lista vazia (noted <code>[!scala]Nil[/!][!"
 "java]null[/!][!python]None[/!]</code>), ou um inteiro seguido de uma lista. "
@@ -11658,9 +10663,9 @@ msgstr ""
 #: src/lessons/recursion/cons/universe/ConsWorld.html:20
 msgid ""
 "To build your own list, you need to concatenate a head and a tail as "
-"follows: [!java|python]<code>cons(head, tail)</code>[/!] [!scala]<code>head::"
-"tail</code> Note that <code>::</code> is a generic operator in Scala to "
-"build lists.[/!]"
+"follows: [!java|python]<code>cons(head, tail)</code>[/!] [!"
+"scala]<code>head::tail</code> Note that <code>::</code> is a generic "
+"operator in Scala to build lists.[/!]"
 msgstr ""
 "Para construir sua própria lista, você precisa concatenar um head e um tail "
 "como segue: [!java|python]<code>cons(head, tail)</code>[/!] [!"
@@ -12200,11 +11205,11 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:15
 msgid ""
-"The dragon curve could be explained as a L-system: http://ecademy.agnesscott."
-"edu/~lriddle/ifs/heighway/heighway.htm"
+"The dragon curve could be explained as a L-system: http://"
+"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
 msgstr ""
-"A curva do dragão pode ser explicada como um L-system: http://ecademy."
-"agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+"A curva do dragão pode ser explicada como um L-system: http://"
+"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:16
@@ -12212,8 +11217,8 @@ msgid ""
 "The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/heighway/twindragon.htm"
 msgstr ""
-"A curva do dragão2 é chamada de \"twin dragon\": http://ecademy.agnesscott."
-"edu/~lriddle/ifs/heighway/twindragon.htm"
+"A curva do dragão2 é chamada de \"twin dragon\": http://"
+"ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/lego/Main.html:17
@@ -12228,11 +11233,11 @@ msgstr ""
 #: src/lessons/recursion/lego/Main.html:19
 msgid ""
 "We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
-"helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives."
-"html"
+"helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
+"actionsrecursives.html"
 msgstr ""
-"Podemos fazer outro exercício em polígonos \"embeeded\": http://www."
-"inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
+"Podemos fazer outro exercício em polígonos \"embeeded\": http://"
+"www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
 "actionsrecursives.html"
 
 #. type: Content of: <h3>
@@ -12672,9 +11677,9 @@ msgid ""
 msgstr ""
 "Esta curva, também chamada de curva C de Lévy foi inventada em 1938 pelo "
 "matemático francês Paul Lévy in 1938. Como sempre, a página da wikipédia é "
-"bem instrutiva, além de fornecer ótimos extras: <a href=\"http://www."
-"mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c."
-"shtml</a>."
+"bem instrutiva, além de fornecer ótimos extras: <a href=\"http://"
+"www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/"
+"c.shtml</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/lego/tree/Tree.html:2
@@ -13121,13 +12126,13 @@ msgstr ""
 msgid ""
 "To make the work of each method recursiv more visible, the line painted by "
 "the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
-"line painted by the <code>dragonReverse()</code> must be blue (<code>Color."
-"blue</code>)."
+"line painted by the <code>dragonReverse()</code> must be blue "
+"(<code>Color.blue</code>)."
 msgstr ""
 "Para deixar o trabalho de cada um dos dois métodos recursivos mais visível, "
-"a linha pintada pelo <code>dragon()</code> deve ser vermelha (<code>Color."
-"red</code>) enquanto que a linha pintada pelo <code>dragonReverse()</code> "
-"deve ser azul(<code>Color.blue</code>)."
+"a linha pintada pelo <code>dragon()</code> deve ser vermelha "
+"(<code>Color.red</code>) enquanto que a linha pintada pelo "
+"<code>dragonReverse()</code> deve ser azul(<code>Color.blue</code>)."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/hanoi/Main.html:2
@@ -13159,8 +12164,8 @@ msgstr ""
 "As variações intercalada e separada vêm do seguinte artigo: \"Exploring\n"
 "Recursion with Variations on the Towers of Hanoi\", Daniel\n"
 "W. Palmer. Available at\n"
-"http://www.ccscjournal.willmitchell.info/Vol12-96/No2a/Daniel%20W%20Palmer."
-"pdf"
+"http://www.ccscjournal.willmitchell.info/Vol12-96/No2a/"
+"Daniel%20W%20Palmer.pdf"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:13
@@ -13265,8 +12270,8 @@ msgstr "Nenhum disco pode ser colocado sobre um disco menor."
 msgid ""
 "Write the core of the method: <code>[!java|c]void [/!]hanoi[!c]Rec[/!]([!"
 "java|c]int [/!]height[!scala]:Int[/!], [!java|c]int [/!]src[!scala]:Int[/!], "
-"[!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int [/!]dst[!scala]:"
-"Int[/!])</code>"
+"[!java|c]int [/!]other[!scala]:Int[/!],[!java|c]int [/!]dst[!"
+"scala]:Int[/!])</code>"
 msgstr ""
 "Escreva o núcleo do método: <code>[!java|c]void [/!]hanoi[!c]Rec[/!]([!java|"
 "c]int [/!]height[!scala]:Int[/!], [!java|c]int [/!]src[!scala]:Int[/!], [!"
@@ -14134,8 +13139,8 @@ msgstr ""
 #: src/lessons/recursion/hanoi/IterativeHanoi.html:27
 msgid ""
 "An interesting question is whether such simple iterative algorithms exist "
-"for the other variation of the problem. Some were given in the literature (e."
-"g. for the cyclic variation). I would happily integrate your solutions to "
+"for the other variation of the problem. Some were given in the literature "
+"(e.g. for the cyclic variation). I would happily integrate your solutions to "
 "the PLM, especially if you can hint (without spoiling) the solution to guide "
 "the next ones."
 msgstr ""
@@ -14165,57 +13170,6 @@ msgstr ""
 "para o mundo padrão). Existem algumas restrições extras: você pode\n"
 "mover apenas um disco por vez, e não pode colocar um disco sobre um\n"
 "menor."
-
-#. type: Content of: <p>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:12
-msgid "Only 4 functions are provided:"
-msgstr "Apenas 4 funções são fornecidas:"
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:14
-#, no-wrap
-msgid "[!java|c]void [/!]move([!java|c]int [/!]src, [!java|c]int [/!]dst)"
-msgstr "[!java|c]void [/!]mover([!java|c]int [/!]src, [!java|c]int [/!]dst)"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:16
-msgid ""
-"Moves one disk from the stick <code>src</code> onto the stick <code>dst</"
-"code>. If you try to do an invalid move (like laying a disk over a smaller "
-"one), an IllegalArgumentException is thrown."
-msgstr ""
-"Move um disco de uma vara <code>src</code> para a vara\n"
-"<code>dst</code>. Se você tentar fazer um movimento inválido (como\n"
-"colocar um disco sobre outro menor), uma IllegalArgumentException é\n"
-"levantada."
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:20
-#, no-wrap
-msgid "[!java|c]int [/!]getSlotSize([!java|c]int [/!]slot)[!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getTamanhoSlot([!java|c]int [/!]slot)[!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:21
-msgid ""
-"Returns the amount of disks placed on the specified slot. This is mainly "
-"used to initialize the recursion and set the amount of recursive call to "
-"execute."
-msgstr ""
-"Retorna a quantidade de discos colocados num ponto específico. É usado\n"
-"principalmente para inicializar a recursão e ajustar a quantidade de\n"
-"chamadas recursivas para executar."
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
-#, no-wrap
-msgid "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
-msgid "Returns the radius of the top-most disk of the specified slot."
-msgstr "Retorna o raio do disco no topo da vara especificada."
 
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:2 src/lessons/maze/short_desc.html:2
@@ -14436,9 +13390,9 @@ msgstr "Algoritmo de Pledge"
 msgid ""
 "Once again, you thought that your algorithm were good enough to escape the "
 "maze, and once again, you buggle is now in a maze where your previous "
-"algorithm fails. Just give it a try: copy/paste your code and hit the \"Run"
-"\" button and see your creation fail. The trap is shaped like an upper case "
-"\"G\". The buggle enters the trap and follows the inner border. At some "
+"algorithm fails. Just give it a try: copy/paste your code and hit the "
+"\"Run\" button and see your creation fail. The trap is shaped like an upper "
+"case \"G\". The buggle enters the trap and follows the inner border. At some "
 "point, it finds the north direction free, run into that direction, and falls "
 "again in the trap."
 msgstr ""
@@ -15915,8 +14869,8 @@ msgstr "(mais) diversão com booleanos"
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/Main.html:4
 msgid ""
-"A very good introduction to this type is available here: http://codingbat."
-"com/doc/java-if-boolean-logic.html"
+"A very good introduction to this type is available here: http://"
+"codingbat.com/doc/java-if-boolean-logic.html"
 msgstr ""
 "Uma ótima introdução a este tipo está disponível em:\n"
 "http://codingbat.com/doc/java-if-boolean-logic.html"
@@ -15983,8 +14937,8 @@ msgstr "dígitos compartilhados"
 #: src/lessons/welcome/bat/bool2/ShareDigit.html:3
 msgid ""
 "Given two ints, each in the range 10..99, return true if there is a digit "
-"that appears in both numbers, such as the 2 in 12 and 23. (Note: division, e."
-"g. n/10, gives the left digit while the % \"mod\" n%10 gives the right "
+"that appears in both numbers, such as the 2 in 12 and 23. (Note: division, "
+"e.g. n/10, gives the left digit while the % \"mod\" n%10 gives the right "
 "digit.)"
 msgstr ""
 "Sejam dois inteiros, cada um no intervalo [10,99], retorne verdadeiro\n"
@@ -16115,8 +15069,8 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:8
 msgid ""
-"A very good introduction to this type is available here: http://codingbat."
-"com/doc/java-string-introduction.html"
+"A very good introduction to this type is available here: http://"
+"codingbat.com/doc/java-string-introduction.html"
 msgstr ""
 "Uma introdução muito boa a este tipo pode ser encontrada em:\n"
 "http://codingbat.com/doc/java-string-introduction.html"
@@ -16271,8 +15225,8 @@ msgstr "StringYak"
 #: src/lessons/bat/string1/StringYak.html:3
 msgid ""
 "Suppose the string \"yak\" is unlucky. Given a string, return a version "
-"where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"
-"\" strings will not overlap."
+"where all the \"yak\" are removed, but the \"a\" can be any char. The "
+"\"yak\" strings will not overlap."
 msgstr ""
 "A string \"yak\" não tem sorte. Dada uma stringd, retorne uma versão\n"
 "onde todas as \"yak\" são suprimidas (qualquer que seja o caractere no\n"
@@ -16280,7 +15234,7 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:2
+#: src/lessons/lander/universe/LanderWorld.html:2
 msgid "Lunar Lander"
 msgstr "Módulo lunar"
 
@@ -16354,7 +15308,7 @@ msgid "This lesson assumes some basic programming and physics skills."
 msgstr "Esta lição assume algum conhecimento de física e programação básica."
 
 #. type: Content of: <p>
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:4
+#: src/lessons/lander/universe/LanderWorld.html:4
 msgid ""
 "In this universe you pilot a lunar lander. At each simulation step you're "
 "given the lander's position, speed, angle and thrust and must issue a "
@@ -16363,123 +15317,6 @@ msgstr ""
 "Neste universo você pilota um módulo lunar. Em cada passo da simulação\n"
 "você recebe a posição, velocidade, ângulo e potência do módulo e deve\n"
 "enviar um comando ajustando o ângulo e a potência."
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:12
-msgid "Get the X and Y position of the lander."
-msgstr "Obter (Get) as posições X e Y do módulo."
-
-#. type: Content of: <pre>
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:13
-#, no-wrap
-msgid ""
-"[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
-"[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
-msgstr ""
-"[!java|c]double [/!]getVelocidadeX()[!scala]:Double[/!]\n"
-"[!java|c]double [/!]getVelocidadeY()[!scala]:Double[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:15
-msgid "Get the horizontal and vertical speed of the lander."
-msgstr "Obter a velocidade horizontal e vertical do módulo."
-
-#. type: Content of: <pre>
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:17
-#, no-wrap
-msgid ""
-"[!java|c]double [/!]getAngle()[!scala]:Double[/!]\n"
-"[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:Double[/!])"
-msgstr ""
-"[!java|c]double [/!]getÂngulo()[!scala]:Double[/!]\n"
-"[!java|c]void [/!]setÂnguloDesejado([!java|c]double [/!]ÂnguloDesejado[!scala]:Double[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:19
-msgid "Get or set the angle of the lander."
-msgstr "Obter ou ajustar o ângulo do módulo."
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:20
-msgid ""
-"An angle of 0° denotes a vertical position where the \"head\" of the lander "
-"points up.  This is the angle you must land with. A positive angle denotes a "
-"left-leaning lander, a negative angle a right-leaning one. You cannot lean "
-"more than by ±90°, and the angle can vary by at most ±5° in one step."
-msgstr ""
-"Um ângulo de 0° denota uma posição vertical onde a \"cabeça\" do módulo\n"
-"aponta para cima. Este é o ângulo que você deve pousar. Um ângulo\n"
-"positivo denota inclinação para a esquerda, um ângulo negativo denota\n"
-"inclinação para a direita. Você não pode inclinar mais que ±90°, e o\n"
-"ângulo pode sofrer uma variação de no máximo ±5° em cada passo."
-
-#. type: Content of: <pre>
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:25
-#, no-wrap
-msgid ""
-"[!java|c]int [/!]getThrust()[!scala]:Int[/!]\n"
-"[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])"
-msgstr ""
-"[!java|c]int [/!]getImpulso()[!scala]:Int[/!]\n"
-"[!java|c]void [/!]setImpulsoDesejado([!java|c]int [/!]thrust[!scala]:Int[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:27
-msgid "Get or set the thrust of the lander."
-msgstr "Obter ou ajustar a potência do módulo."
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:27
-msgid ""
-"You can only increment or decrement the thrust by 1 between two simulation "
-"steps, so if the current thrust is 2 and you ask for 4, you'll only get 3 in "
-"the next step. If you ask for less than 0 (resp. more than 4), everything "
-"will be as if you had asked for 0 (resp. 4)."
-msgstr ""
-"Você só pode aumentar ou diminuir a potência de 1 a cada passo. logo,\n"
-"se a potência atual é 2 e você pede 4, ela vai mudar para 3 no próximo\n"
-"passo. Se você pedir menos que 0 (ou, respectivamente, mais que 4),\n"
-"vai ser como se você tivesse pedido 0 (ou, respectivamente, 4)."
-
-#. type: Content of: <pre>
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:33
-#, no-wrap
-msgid "[!java|c]int [/!]getFuel()[!scala]:Int[/!]"
-msgstr "[!java|c]int [/!]getCombustível()[!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:34
-msgid ""
-"Get the remaining fuel in the lander.  At each step of the simulation the "
-"lander consumes as many fuel units as the current thrust. Once you run out "
-"of fuel you're in free fall so beware!"
-msgstr ""
-"Obter o combustível restante no módulo. Em cada passo da simulação o\n"
-"módulo consome tantas unidades de combustível quanto a potência\n"
-"atual. Uma vez que você fique sem combustível você entra em queda\n"
-"livre. Portanto cuidado!"
-
-#. type: Content of: <pre>
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:38
-#, no-wrap
-msgid "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
-msgstr "[!java]List&lt;Point&gt; [/!]getChão() [!scala]:List[Point][/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/lander/universe/DelegatingLanderWorld.html:39
-msgid ""
-"Get the vertices of the ground's profile from left to right.  [!java|"
-"scala]You can retrieve the X and Y coordinates of each point with the "
-"corresponding methods of your point: <code>p.x()</code> and <code>p.y()</"
-"code>.[/!] [!python]Each point is an array of two integers denoting "
-"respectively the X and Y coordinates of that point.[/!]"
-msgstr ""
-"Obter os vértices do perfil do solo da esquerda para a direita.\n"
-"[!java|scala]Você pode recuperar as coordenada X e Y de cada ponto com\n"
-"os métodos correspondentes do seu ponto: <code>p.x()</code> e\n"
-"<code>p.y()</code>.[/!] [!python]Cada ponto é uma array de de dois\n"
-"inteiros denotando respectivamente as coordenadas X e Y de cada\n"
-"ponto.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:2
@@ -16528,9 +15365,9 @@ msgid ""
 "you should write now will be called every 0.1 second during the simulation. "
 "Make sure that your code does not last too long, with no while loop! It "
 "should only set the desired thrust of the next simulation step, by calling "
-"<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!scala]:"
-"Integer[/!])</code> where <code>desiredThrust</code> is some integer between "
-"0 and 4 (that is, a thrust between 0 m/s² and 4 m/s²). You can only "
+"<code>[!java]void [/!]setDesiredThrust([!java]int [/!]desiredThrust[!"
+"scala]:Integer[/!])</code> where <code>desiredThrust</code> is some integer "
+"between 0 and 4 (that is, a thrust between 0 m/s² and 4 m/s²). You can only "
 "increment or decrement the thrust by 1 between two simulation steps, so if "
 "the current thrust is 2 and you ask for 4, you'll only get 3 in the next "
 "step. If you ask for less than 0 (resp. more than 4), everything will be as "
@@ -16558,9 +15395,9 @@ msgid ""
 "this simulation you'll probably be interested in its vertical position: "
 "<code>[!java]double [/!]getY()[!scala]:Double[/!]</code>, and its vertical "
 "speed: <code>[!java]double [/!]getSpeedY()[!scala]:Double[/!]</code>. You "
-"can also ask for the thrust via <code>[!java]int [/!]getThrust()[!scala]:"
-"Integer[/!]</code> in case you don't remember what you asked for. Remember "
-"that Mars' gravity is 3.711 m/s², it might come in handy."
+"can also ask for the thrust via <code>[!java]int [/!]getThrust()[!"
+"scala]:Integer[/!]</code> in case you don't remember what you asked for. "
+"Remember that Mars' gravity is 3.711 m/s², it might come in handy."
 msgstr ""
 "Para tomar decisões informadas, você pode consultar o status do\n"
 "módulo. Nesta simulação você provavelmente vai estar interessado na\n"
@@ -16623,11 +15460,11 @@ msgstr ""
 msgid ""
 "A segment is composed of two <code>Point</code>s, each of them composed of "
 "two <code>double</code>s. A segment is built via the <code>Segment([!"
-"java]Point [/!]start[!scala]:Point[/!], [!java]Point [/!]end[!scala]:"
-"Point[/!])</code> constructor.  A point is built via the <code>Point([!"
-"java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:"
-"Double[/!])</code> constructor. A point's coordinates are accessible via its "
-"<code>[!java]double [/!]x()[!scala]:Double[/!]</code> and <code>[!"
+"java]Point [/!]start[!scala]:Point[/!], [!java]Point [/!]end[!"
+"scala]:Point[/!])</code> constructor.  A point is built via the "
+"<code>Point([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!"
+"scala]:Double[/!])</code> constructor. A point's coordinates are accessible "
+"via its <code>[!java]double [/!]x()[!scala]:Double[/!]</code> and <code>[!"
 "java]double [/!]y()[!scala]:Double[/!]</code> methods."
 msgstr ""
 "Um segmento é composto de dois <code>Ponto</code>s, cada um deles\n"
@@ -17013,6 +15850,832 @@ msgstr ""
 "O botão <b>Marcar</b> pede que o seu \"buggle\" deixe uma marca atrás dele "
 "depois que sair."
 
+#~ msgid "<b>Moving</b>"
+#~ msgstr "<b>Se movendo</b>"
+
+#~ msgid "(See also the note on exceptions, below)"
+#~ msgstr "(Veja também a nota sobre exceções, abaixo)"
+
+#~ msgid "<b>Turn left"
+#~ msgstr "<b>Virar à esquerda"
+
+#~ msgid "Turn right"
+#~ msgstr "Virar à direita"
+
+#~ msgid "Turn back"
+#~ msgstr "Dar meia volta"
+
+#~ msgid "Moving forward"
+#~ msgstr "Mover para a frente"
+
+#~ msgid "Moving back</b>"
+#~ msgstr "Mover para trás</b>"
+
+#~ msgid "[!java|c]void [/!]left()"
+#~ msgstr "[!java|c]void [/!]esquerda()"
+
+#~ msgid "[!java|c]void [/!]right()"
+#~ msgstr "[!java|c]void [/!]direita()"
+
+#~ msgid "[!java|c]void [/!]back()"
+#~ msgstr "[!java|c]void [/!]voltar()"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]step() or [!java|c]void [/!]forward([!java|c]int "
+#~ "[/!]steps[!scala]:Int[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]avançarUmPasso() ou [!java|c]void [/!]avançar([!java|"
+#~ "c]int [/!]passos[!scala]:Int[/!])"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]stepBack() or [!java|c]void [/!]backward([!java|c]int "
+#~ "[/!]steps[!scala]:Int[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]recuarUmPasso() ou [!java|c]void [/!]recuar([!java|"
+#~ "c]int [/!]passos[!scala]:Int[/!])"
+
+#~ msgid "<b>Get X coordinate"
+#~ msgstr "<b>Obter coordenada X"
+
+#~ msgid "Get Y coordinate"
+#~ msgstr "Obter coordenada Y"
+
+#~ msgid "Set X coordinate"
+#~ msgstr "Ajustar coordenada X"
+
+#~ msgid "Set Y coordinate"
+#~ msgstr "Ajustar coordenada Y"
+
+#~ msgid "Set position</b>"
+#~ msgstr "Ajustar posição</b>"
+
+#~ msgid "[!java|c]int [/!]getX()[!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getX()[!scala]:Int[/!]"
+
+#~ msgid "[!java|c]int [/!]getY()[!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getY()[!scala]:Int[/!]"
+
+#~ msgid "[!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])"
+#~ msgstr "[!java|c]void [/!]setX([!java|c]int [/!]x[!scala]:Int[/!])"
+
+#~ msgid "[!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])"
+#~ msgstr "[!java|c]void [/!]setY([!java|c]int [/!]y[!scala]:Int[/!])"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
+#~ "[/!]y[!scala]:Int[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]setPos([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int "
+#~ "[/!]y[!scala]:Int[/!])"
+
+#~ msgid ""
+#~ "Note that the point (0,0) is on the top left corner, as it is often the "
+#~ "case in Computer Science."
+#~ msgstr ""
+#~ "Observe que o ponto (0,0) está no canto superior esquerdo, o que é comum "
+#~ "em ciência da computação."
+
+#~ msgid "<b>Information on the buggle</b>"
+#~ msgstr "<b>Informações sobre o buggle</b>"
+
+#~ msgid "<b>Get the color of the body"
+#~ msgstr "<b>Obter a cor do corpo"
+
+#~ msgid "Set the color of the body</b>"
+#~ msgstr "Ajustar a cor do corpo</b>"
+
+#~ msgid "[!java|c]Color [/!]getBodyColor()[!scala]:Color[/!]"
+#~ msgstr "[!java|c]Color [/!]getCorDoCorpo()[!scala]:Cor[/!]"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]setBodyColor([!java|c]Color [/!]c[!scala]:Color[/!])"
+#~ msgstr "[!java|c]void [/!]setCorDoCorpo([!java|c]Cor [/!]c[!scala]:Cor[/!])"
+
+#~ msgid "<b>Look for a wall forward"
+#~ msgstr "<b>Procura por uma parede à frente"
+
+#~ msgid "Look for a wall backward</b>"
+#~ msgstr "Procura por uma parede atrás</b>"
+
+#~ msgid "[!java]boolean [/!][!c]int [/!]isFacingWall()[!scala]:Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]estáDeFrenteParaParede()[!"
+#~ "scala]:Boolean[/!]"
+
+#~ msgid "[!java]boolean [/!][!c]int [/!]isBackingWall()[!scala]:Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]estáDeCostasParaParede()[!"
+#~ "scala]:Boolean[/!]"
+
+#~ msgid "<b>Get heading"
+#~ msgstr "<b>Obter direção"
+
+#~ msgid "Set heading</b>"
+#~ msgstr "Ajustar direção</b>"
+
+#~ msgid "[!java|c]Direction [/!]getDirection()[!scala]:Direction[/!]"
+#~ msgstr "[!java|c]Direção [/!]getDireção()[!scala]:Direção[/!]"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]setDirection([!java|c]Direction [/!]dir[!"
+#~ "scala]:Direction[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]ajustaDireção([!java|c]Direção [/!]dir[!"
+#~ "scala]:Direção[/!])"
+
+#~ msgid ""
+#~ "Check whether the buggle is currently <b>selected in the interface</b>"
+#~ msgstr ""
+#~ "Verifica se o buggle está atualmente <b>selecionado na interface</b>"
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]estáSelecionado()[!scala]:Boolean[/!]"
+
+#~ msgid "<b>About the brush</b>"
+#~ msgstr "<b>Sobre o pincel</b>"
+
+#~ msgid "<b>Brush down"
+#~ msgstr "<b>Abaixar pincel"
+
+#~ msgid "Brush up"
+#~ msgstr "Levantar pincel"
+
+#~ msgid "Get brush position</b>"
+#~ msgstr "Pegar a posição do pincel"
+
+#~ msgid "[!java|c]void [/!]brushUp()"
+#~ msgstr "[!java|c]void [/!]levantarPincel()"
+
+#~ msgid "[!java|c]void [/!]brushDown()"
+#~ msgstr "[!java|c]void [/!]abaixarPincel()"
+
+#~ msgid "[!java]boolean [/!][!c]int [/!]isBrushDown()[!scala]:Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]"
+
+#~ msgid "<b>Change the brush color"
+#~ msgstr "<b>Muda a cor do pincel"
+
+#~ msgid "Get the color of the brush</b>"
+#~ msgstr "Obtém a cor do pincel</b>"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]setBrushColor([!java|c]Color [/!]c[!scala]:Color[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]setCorDoPincel([!java|c]Color [/!]c[!scala]:Color[/!])"
+
+#~ msgid "[!java|c]Color [/!]getBrushColor()[!scala]:Color[/!]"
+#~ msgstr "[!java|c]Color [/!]getCorDoPincel()[!scala]:Color[/!]"
+
+#~ msgid "<b>Interacting with the world</b>"
+#~ msgstr "<b>Interagindo com o mundo</b>"
+
+#~ msgid "<b>Get the color of the ground</b>"
+#~ msgstr "<b>Obtém a cor do chão</b>"
+
+#~ msgid "[!java|c]Color [/!]getGroundColor()[!scala]:Color[/!]"
+#~ msgstr "[!java|c]Color [/!]getCorDoChão()[!scala]:Color[/!]"
+
+#~ msgid "<b>Look for a baggle on the ground"
+#~ msgstr "<b>Procura por um \"baggle\" no chão"
+
+#~ msgid "Look for a baggle in bag"
+#~ msgstr "Procura por um \"baggle\" na bolsa"
+
+#~ msgid "Pickup a baggle"
+#~ msgstr "Pega um \"baggle\""
+
+#~ msgid "Drop a baggle</b>"
+#~ msgstr "Solta um \"baggle\"</b>"
+
+#~ msgid "(see the note on exceptions)"
+#~ msgstr "(veja a nota sobre exceções)"
+
+#~ msgid "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]estáSobreBaggle()[!scala]:Boolean[/!]"
+
+#~ msgid ""
+#~ "[!java]boolean [/!][!c]int [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]"
+
+#~ msgid "[!java]void [/!]pickupBaggle()"
+#~ msgstr "[!java]void [/!]pegarBaggle()"
+
+#~ msgid "[!java]void [/!]dropBaggle()"
+#~ msgstr "[!java]void [/!]soltarBaggle()"
+
+#~ msgid "<b>Look for a message"
+#~ msgstr "<b>Procura por uma mensagem"
+
+#~ msgid "Add a message"
+#~ msgstr "Adiciona uma mensagem"
+
+#~ msgid "Read the message"
+#~ msgstr "Lê a mensagem"
+
+#~ msgid "Erase the message</b>"
+#~ msgstr "Apaga a mensagem</b>"
+
+#~ msgid "[!java]boolean [/!][!c]int [/!]isOverMessage()[!scala]:Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]estáSobreMensagem()[!scala]:Boolean[/!]"
+
+#~ msgid ""
+#~ "[!java]void [/!]writeMessage([!java]String [/!][!c]char* [/!]msg[!"
+#~ "scala]:String[/!])"
+#~ msgstr ""
+#~ "[!java]void [/!]escreverMensagem([!java]String [/!][!c]char* [/!]msg[!"
+#~ "scala]:String[/!])"
+
+#~ msgid "[!java]String [/!][!c]char* [/!]readMessage()[!scala]:String[/!]"
+#~ msgstr "[!java]String [/!][!c]char* [/!]lerMensagem()[!scala]:String[/!]"
+
+#~ msgid "[!java]void [/!]clearMessage()"
+#~ msgstr "[!java]void [/!]limparMensagem()"
+
+#~ msgid ""
+#~ "This universe is very similar to the buggle one, but you will probably "
+#~ "not use all buggles methods.  So, this page only recap the buggle methods "
+#~ "that you will use."
+#~ msgstr ""
+#~ "Este universo é bastante similar ao dos buggles, mas você provavelmente "
+#~ "não vai usar nenhum método dos buggles. Então, esta página apenas "
+#~ "repacitula os métodos do buggle que você vai usar."
+
+#~ msgid "<b>Method</b>"
+#~ msgstr "<b>Método</b>"
+
+#~ msgid "<b>Action</b>"
+#~ msgstr "Ação"
+
+#~ msgid "<b>Cost</b>"
+#~ msgstr "Custo"
+
+#~ msgid "[!java|c]int [/!]getValueCount() [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getQuantidadeDeValores() [!scala]:Int[/!]"
+
+#~ msgid "Returns the amount of values in the array"
+#~ msgstr "Retorna a quantidade de valores na array"
+
+#~ msgid "none"
+#~ msgstr "nenhum"
+
+#~ msgid ""
+#~ "[!java]boolean [/!][!c]int [/!]isSmaller([!java|c]int [/!]i[!"
+#~ "scala]:Int[/!], [!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]éMenor([!java|c]int [/!]i[!scala]:Int[/!], "
+#~ "[!java|c]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+
+#~ msgid ""
+#~ "Returns true if the content of cell i is strictly smaller than the one of "
+#~ "cell j"
+#~ msgstr ""
+#~ "Retorna verdadeiro se o conteúdo da célula i é estritamente menor que o "
+#~ "da célula j"
+
+#~ msgid "two reads"
+#~ msgstr "duas leituras"
+
+#~ msgid ""
+#~ "[!java]boolean [/!][!c]int [/!]isSmallerThan([!java|c]int [/!]i[!"
+#~ "scala]:Int[/!], [!java|c]int [/!]value[!scala]:Int[/!])[!"
+#~ "scala] :Boolean[/!]"
+#~ msgstr ""
+#~ "[!java]boolean [/!][!c]int [/!]éMenorQue([!java|c]int [/!]i[!"
+#~ "scala]:Int[/!], [!java|c]int [/!]value[!scala]:Int[/!])[!"
+#~ "scala] :Boolean[/!]"
+
+#~ msgid ""
+#~ "Returns true if the content of cell i is strictly smaller than the "
+#~ "<code>value</code>"
+#~ msgstr ""
+#~ "Retorna verdadeiro se o conteúdo da célula i é estritamente menor que "
+#~ "<code>valor</code>"
+
+#~ msgid "one read"
+#~ msgstr "uma leitura"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]swap([!java|c]int [/!]i[!scala]:Int[/!], [!java|c]int "
+#~ "[/!]j[!scala]:Int[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]alternar([!java|c]int [/!]i[!scala]:Int[/!], [!java|"
+#~ "c]int [/!]j[!scala]:Int[/!])"
+
+#~ msgid "Swaps the content of cell i and the one of cell j"
+#~ msgstr "Alterna (\"swap\") o conteúdo da célula i com o da célula j"
+
+#~ msgid "two reads, two writes"
+#~ msgstr "duas escritas, duas leituras"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]copy([!java|c]int [/!]from[!scala]:Int[/!], [!java|"
+#~ "c]int [/!]to[!scala]:Int[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]copia([!java|c]int [/!]de[!scala]:Int[/!], [!java|c]int "
+#~ "[/!]para[!scala]:Int[/!])"
+
+#~ msgid "Copy the content of cell 'from' into the cell 'to'"
+#~ msgstr "Copia o conteúdo da célula 'de' para a célula 'para'"
+
+#~ msgid "one read, one write"
+#~ msgstr "uma leitura, uuma escrita"
+
+#~ msgid "[!java|c]int [/!]getValue([!java|c]int [/!]idx[!scala]:Int[/!])"
+#~ msgstr "[!java|c]int [/!]getValor([!java|c]int [/!]idx[!scala]:Int[/!])"
+
+#~ msgid "Returns the value of cell idx"
+#~ msgstr "Retorna o valor da célula idx"
+
+#~ msgid ""
+#~ "[!java|c]void [/!]setValue([!java|c]int [/!]idx[!scala]:Int[/!], [!java|"
+#~ "c]int [/!]value[!scala]:Int[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]setValor([!java|c]int [/!]idx[!scala]:Int[/!], [!java|"
+#~ "c]int [/!]valor[!scala]:Int[/!])"
+
+#~ msgid "Sets cell 'idx' to the <code>value</code>"
+#~ msgstr "Coloca na célula 'idx' o <code>valor</code>"
+
+#~ msgid "one write"
+#~ msgstr "uma escrita"
+
+#~ msgid "[!java]boolean [/!][!c]int [/!]isSelected() [!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]selecionado() [!scala]:Boolean[/!]"
+
+#~ msgid ""
+#~ "Returns whether the current world is selected in the graphical interface."
+#~ msgstr ""
+#~ "Retorna verdadeiro se o mundo atual está selecionado na interface gráfica."
+
+#~ msgid "This world is very simple, with only 5 provided functions."
+#~ msgstr "Este mundo é bem simples, com apenas 5 funções fornecidas."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]swap([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int [/!]y[!scala]:Int[/!])"
+#~ msgstr "[!java|c]void [/!]alterna([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int [/!]y[!scala]:Int[/!])"
+
+#~ msgid "Swap the lines number <code>x</code> and <code>y</code>."
+#~ msgstr ""
+#~ "Troca as linhas de número <code>x</code> com a de número <code>y</code>."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getSize() [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getTamanho() [!scala]:Int[/!]"
+
+#~ msgid "Returns the amount of lines on this flag."
+#~ msgstr "Retorna a quantidade de linhas desta bandeira."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getColor([!java|c]int [/!]line[!scala]:Int[/!])  [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getCor([!java|c]int [/!]linha[!scala]:Int[/!])  [!scala]:Int[/!]"
+
+#~ msgid "Returns the color of the given line."
+#~ msgstr "Retorna a cor da linha dada."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()  [!scala]:Boolean[/!]"
+
+#~ msgid "Returns whether the flag is sorted."
+#~ msgstr "Retorna verdadeiro se a bandeira estiver ordenada."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isSelected()  [!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]estáSelecionado()  [!scala]:Boolean[/!]"
+
+#~ msgid "Returns whether the current world is selected in the interface."
+#~ msgstr ""
+#~ "Retorna verdadeiro se o mundo atual estiver selecionado na interface."
+
+#~ msgid "This universe is very simple, with only five functions provided."
+#~ msgstr ""
+#~ "Este universo é bastante simples, com apenas cinco funções fornecidas."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getStackSize()  [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getTamanhoDaPilha()  [!scala]:Int[/!]"
+
+#~ msgid ""
+#~ "Returns the size of the stack, that is the amount of pancakes it contains."
+#~ msgstr ""
+#~ "Retorna o tamanho da pilha, ou seja, a quantidade de panquecas nela."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getPancakeRadius([!java|c]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getRaioPanqueca([!java|c]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
+
+#~ msgid ""
+#~ "Returns the radius of the pancake passed as argument, with the rank of "
+#~ "the top-most pancake being 0."
+#~ msgstr ""
+#~ "Retorna o raio da panqueca passado como argumento, com o rank da panqueca "
+#~ "mais acima sendo 0."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isPancakeUpsideDown([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]panquecaDeCabeçaPraBaixo([!java|c]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
+
+#~ msgid ""
+#~ "Returns whether the pancake passed as argument upside-down, that is, if "
+#~ "its burned side is on top. As usual, the top-most pancake is of rank 0."
+#~ msgstr ""
+#~ "Retorna se a panqueca passada como argumento está de cabeça para baixo, "
+#~ "ou seja, se o lado queimado está para cima. Como sempre, a panqueca mais "
+#~ "acima é a de rank 0."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
+#~ msgstr "[!java|c]void [/!]flip([!java|c]int [/!]amount[!scala]:Int[/!])"
+
+#~ msgid ""
+#~ "Flips the <code>amount</code> first pancakes composing the stack, from "
+#~ "the top of it."
+#~ msgstr ""
+#~ "Vira as primeiras <code>amount</code> panquecas que compõe a pilha, do "
+#~ "topo dela."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isSorted()   [!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]estáOrdenado()   [!scala]:Boolean[/!]"
+
+#~ msgid "Returns whether the pancake stack is correctly sorted."
+#~ msgstr ""
+#~ "Retorna verdadeiro se a pilha de panquecas estiver corretamente ordenada."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isSelected()   [!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]selecionado()   [!scala]:Boolean[/!]"
+
+#~ msgid ""
+#~ "The Cohen's algorithm is slightly easier than the Gates' one since it "
+#~ "distinguishes less cases:"
+#~ msgstr ""
+#~ "O algoritmo de Cohen é um pouco mais fácil que o algoritmo de Gates já "
+#~ "que ele distingue menos casos:"
+
+#~ msgid "Functions to retrieve the world's dimensions"
+#~ msgstr "FFunções para recuperar as dimensões do mundo"
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getBasesAmount() [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getQuantidadeDeBases() [!scala]:Int[/!]"
+
+#~ msgid "Returns the amount of bases on this field."
+#~ msgstr "Retorna a quantidade de bases neste campo."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getPositionsAmount() [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getQuantidadeDePosições() [!scala]:Int[/!]"
+
+#~ msgid "Returns the amount of player's positions per base on this field."
+#~ msgstr "Retorna a quantidade de posições de jogadores por base neste campo."
+
+#~ msgid "Functions to retrieve the world's state"
+#~ msgstr "Funções para recuperar o estado do mundo"
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]"
+
+#~ msgid "Returns the base in which the hole is located."
+#~ msgstr "Retorna a base na qual o espaço vazio está localizado."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]"
+
+#~ msgid "Returns the hole position within its base"
+#~ msgstr "Retorna a posição do espaço vazio na sua base"
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getPlayerColor([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getCorDoJogador([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])  [!scala]:Int[/!]"
+
+#~ msgid "Returns the color of the player at a given location."
+#~ msgstr "Retorna a cor do jogador numa dada posição."
+
+#~ msgid "Returns whether all players of the field are at home."
+#~ msgstr "Retorna se todos os jogadores em campo estão em seus \"home\"."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isBaseSorted([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]baseEstáOrdenada([!java|c]int [/!]base)  [!scala]:Boolean[/!]"
+
+#~ msgid "Returns whether all players of a given base are at home."
+#~ msgstr "Retorna se todos os jogadores de uma dada base estão em \"home\"."
+
+#~ msgid "Functions to change the world"
+#~ msgstr "Funções para mudar o mundo"
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]move([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])"
+#~ msgstr "[!java|c]void [/!]mover([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]posição[!scala]:Int[/!])"
+
+#~ msgid ""
+#~ "Moves a given player into the hole. This throws an "
+#~ "IllegalArgumentException if the specified player is not near the hole (at "
+#~ "most one base away)."
+#~ msgstr ""
+#~ "Move um dado jogador para um espaço vazio. Vai levantar uma "
+#~ "IllegalArgumentException se o jogador especificado não estiver próximo do "
+#~ "espaço vazio (no máximo a uma base de distância)."
+
+#~ msgid "Functions to move the turtle"
+#~ msgstr "Funções para mover a tartaruga"
+
+#, no-wrap
+#~ msgid ""
+#~ "[!java|c]void [/!]forward([!java|c]double [/!]steps[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]backward([!java|c]double [/!]steps[!scala]:Double[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]avançar([!java|c]double [/!]passos[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]recuar([!java|c]double [/!]passos[!scala]:Double[/!])"
+
+#~ msgid "Moves forward or backward of the requested amount of steps."
+#~ msgstr "Move para frente e para trás na quantidade de passos pedidos."
+
+#, no-wrap
+#~ msgid ""
+#~ "[!java|c]void [/!]right([!java|c]double [/!]angle[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]left([!java|c]double [/!]angle[!scala]:Double[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]direita([!java|c]double [/!]ângulo[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]esquerda([!java|c]double [/!]ângulo[!scala]:Double[/!])"
+
+#~ msgid "Turns left or right of the given angle (in degrees)."
+#~ msgstr "Vira à esquerda ou à direita um dado ângulo (em graus)."
+
+#, no-wrap
+#~ msgid ""
+#~ "[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
+#~ "[!java|c]double [/!]getY()[!scala]:Double[/!]"
+#~ msgstr ""
+#~ "[!java|c]double [/!]getX()[!scala]:Double[/!]\n"
+#~ "[!java|c]double [/!]getY()[!scala]:Double[/!]"
+
+#~ msgid ""
+#~ "Returns the current position of the turtle.  Note that the point (0,0) is "
+#~ "on the top left corner, as it is often the case in Computer Science."
+#~ msgstr ""
+#~ "Retorna a posição atual da tartaruga. Observe que o ponto (0,0) está no "
+#~ "canto superior esquerdo, como é comum na ciência da computação."
+
+#, no-wrap
+#~ msgid ""
+#~ "[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
+#~ msgstr ""
+#~ "[!java|c]void [/!]setX([!java|c]double [/!]x[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]setY([!java|c]double [/!]y[!scala]:Double[/!])\n"
+#~ "[!java|c]void [/!]setPos([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
+
+#~ msgid "Teleports the turtle to a new position (without leaving any trace)."
+#~ msgstr ""
+#~ "Teletransporta a tartaruga para uma nova posição (sem deixar rastros)."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]moveTo([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
+#~ msgstr "[!java|c]void [/!]moverPara([!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!])"
+
+#~ msgid "Moves the turtle to a new position."
+#~ msgstr "Move a tartaruga para uma nova posição."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]circle([!java|c]double [/!]radius[!scala]:Double[/!])"
+#~ msgstr "[!java|c]void [/!]círculo([!java|c]double [/!]raio[!scala]:Double[/!])"
+
+#~ msgid "Draw a circle of the specified radius centered on the turtle."
+#~ msgstr "Desenha um círculo de raio especificado com o centro na tartaruga."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]hide()"
+#~ msgstr "[!java|c]void [/!]esconder()"
+
+#~ msgid "Hides the turtle."
+#~ msgstr "Esconde a tartaruga."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]show()"
+#~ msgstr "[!java|c]void [/!]mostrar()"
+
+#~ msgid "Shows the turtle back."
+#~ msgstr "Mostra novamente a tartaruga."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isVisible()[!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]éVisível()[!scala]:Boolean[/!]"
+
+#~ msgid "Returns whether the turtle is currently visible."
+#~ msgstr "Retorna se a tartaruga é visível ou não."
+
+#, fuzzy, no-wrap
+#~ msgid "[!java|c]void [/!]clearAll()"
+#~ msgstr "[!java|c]void [/!]limpar()"
+
+#~ msgid "Removes any trail on the sheet."
+#~ msgstr "Remove todos os rastros do papel."
+
+#, no-wrap
+#~ msgid "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
+#~ msgstr "[!java|c]double [/!]getHeading()[!scala]:Double[/!]"
+
+#~ msgid "Returns the current heading of the turtle (in degrees)."
+#~ msgstr "Retorna a direção atual da tartaruga (em graus)."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]setHeading([!java|c]double [/!]angle[!scala]:Double[/!])"
+#~ msgstr "[!java|c]void [/!]setDireção([!java|c]double [/!]ângulo[!scala]:Double[/!])"
+
+#~ msgid "Sets a new heading to the turtle (in degrees)."
+#~ msgstr "Ajusta uma nova direção para a tartaruga (em graus)."
+
+#~ msgid "Functions about the pen"
+#~ msgstr "Funções da caneta"
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]penUp()"
+#~ msgstr "[!java|c]void [/!]levantarCaneta()"
+
+#~ msgid ""
+#~ "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
+#~ "will not leave any trace during its subsequent moves."
+#~ msgstr ""
+#~ "Levanta a caneta (tartarugas têm canetas, não pinceis, como os buggles). "
+#~ "A tartaruga não vai  deixar nenhum rastro durante seus passos seguintes."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]penDown()"
+#~ msgstr "[!java|c]void [/!]abaixarCaneta()"
+
+#~ msgid ""
+#~ "Moves the pen down. The turtle will leave a trace during its subsequent "
+#~ "moves."
+#~ msgstr ""
+#~ "Abaixa a caneta. A tartaruga vai deixar um rastro nos próximos movimentos."
+
+#, no-wrap
+#~ msgid "[!java]boolean [/!][!c]int [/!]isPenDown()[!scala]:Boolean[/!]"
+#~ msgstr "[!java]boolean [/!][!c]int [/!]canetaEstáAbaixada()[!scala]:Boolean[/!]"
+
+#~ msgid "Returns the current pen position as a boolean."
+#~ msgstr "Retorna a posição atual da caneta como um booleano."
+
+#, no-wrap
+#~ msgid "[!java|c]Color [/!]getColor()[!scala]:Color[/!]"
+#~ msgstr "[!java|c]Cor [/!]getCor()[!scala]:Cor[/!]"
+
+#~ msgid "Returns the current pen color."
+#~ msgstr "Retorna a cor atual da caneta."
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]setColor([!java|c]Color [/!]color[!scala]:Color[/!])"
+#~ msgstr "[!java|c]void [/!]setCor([!java|c]Cor [/!]cor[!scala]:Cor[/!])"
+
+#~ msgid "Changes the pen color."
+#~ msgstr "Muda a cor da caneta."
+
+#~ msgid "Other functions"
+#~ msgstr "Outras funções"
+
+#~ msgid ""
+#~ "Returns whether the current turtle is selected in the graphical interface."
+#~ msgstr "Retorna se a tartaruga atual está selecionada na interface gráfica."
+
+#~ msgid "Only 4 functions are provided:"
+#~ msgstr "Apenas 4 funções são fornecidas:"
+
+#, no-wrap
+#~ msgid "[!java|c]void [/!]move([!java|c]int [/!]src, [!java|c]int [/!]dst)"
+#~ msgstr "[!java|c]void [/!]mover([!java|c]int [/!]src, [!java|c]int [/!]dst)"
+
+#~ msgid ""
+#~ "Moves one disk from the stick <code>src</code> onto the stick <code>dst</"
+#~ "code>. If you try to do an invalid move (like laying a disk over a "
+#~ "smaller one), an IllegalArgumentException is thrown."
+#~ msgstr ""
+#~ "Move um disco de uma vara <code>src</code> para a vara\n"
+#~ "<code>dst</code>. Se você tentar fazer um movimento inválido (como\n"
+#~ "colocar um disco sobre outro menor), uma IllegalArgumentException é\n"
+#~ "levantada."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getSlotSize([!java|c]int [/!]slot)[!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getTamanhoSlot([!java|c]int [/!]slot)[!scala]:Int[/!]"
+
+#~ msgid ""
+#~ "Returns the amount of disks placed on the specified slot. This is mainly "
+#~ "used to initialize the recursion and set the amount of recursive call to "
+#~ "execute."
+#~ msgstr ""
+#~ "Retorna a quantidade de discos colocados num ponto específico. É usado\n"
+#~ "principalmente para inicializar a recursão e ajustar a quantidade de\n"
+#~ "chamadas recursivas para executar."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getSlotRadius([!java|c]int [/!]slot)[!scala]:Int[/!]"
+
+#~ msgid "Returns the radius of the top-most disk of the specified slot."
+#~ msgstr "Retorna o raio do disco no topo da vara especificada."
+
+#~ msgid "Get the X and Y position of the lander."
+#~ msgstr "Obter (Get) as posições X e Y do módulo."
+
+#, no-wrap
+#~ msgid ""
+#~ "[!java|c]double [/!]getSpeedX()[!scala]:Double[/!]\n"
+#~ "[!java|c]double [/!]getSpeedY()[!scala]:Double[/!]"
+#~ msgstr ""
+#~ "[!java|c]double [/!]getVelocidadeX()[!scala]:Double[/!]\n"
+#~ "[!java|c]double [/!]getVelocidadeY()[!scala]:Double[/!]"
+
+#~ msgid "Get the horizontal and vertical speed of the lander."
+#~ msgstr "Obter a velocidade horizontal e vertical do módulo."
+
+#, no-wrap
+#~ msgid ""
+#~ "[!java|c]double [/!]getAngle()[!scala]:Double[/!]\n"
+#~ "[!java|c]void [/!]setDesiredAngle([!java|c]double [/!]desiredAngle[!scala]:Double[/!])"
+#~ msgstr ""
+#~ "[!java|c]double [/!]getÂngulo()[!scala]:Double[/!]\n"
+#~ "[!java|c]void [/!]setÂnguloDesejado([!java|c]double [/!]ÂnguloDesejado[!scala]:Double[/!])"
+
+#~ msgid "Get or set the angle of the lander."
+#~ msgstr "Obter ou ajustar o ângulo do módulo."
+
+#~ msgid ""
+#~ "An angle of 0° denotes a vertical position where the \"head\" of the "
+#~ "lander points up.  This is the angle you must land with. A positive angle "
+#~ "denotes a left-leaning lander, a negative angle a right-leaning one. You "
+#~ "cannot lean more than by ±90°, and the angle can vary by at most ±5° in "
+#~ "one step."
+#~ msgstr ""
+#~ "Um ângulo de 0° denota uma posição vertical onde a \"cabeça\" do módulo\n"
+#~ "aponta para cima. Este é o ângulo que você deve pousar. Um ângulo\n"
+#~ "positivo denota inclinação para a esquerda, um ângulo negativo denota\n"
+#~ "inclinação para a direita. Você não pode inclinar mais que ±90°, e o\n"
+#~ "ângulo pode sofrer uma variação de no máximo ±5° em cada passo."
+
+#, no-wrap
+#~ msgid ""
+#~ "[!java|c]int [/!]getThrust()[!scala]:Int[/!]\n"
+#~ "[!java|c]void [/!]setDesiredThrust([!java|c]int [/!]thrust[!scala]:Int[/!])"
+#~ msgstr ""
+#~ "[!java|c]int [/!]getImpulso()[!scala]:Int[/!]\n"
+#~ "[!java|c]void [/!]setImpulsoDesejado([!java|c]int [/!]thrust[!scala]:Int[/!])"
+
+#~ msgid "Get or set the thrust of the lander."
+#~ msgstr "Obter ou ajustar a potência do módulo."
+
+#~ msgid ""
+#~ "You can only increment or decrement the thrust by 1 between two "
+#~ "simulation steps, so if the current thrust is 2 and you ask for 4, you'll "
+#~ "only get 3 in the next step. If you ask for less than 0 (resp. more than "
+#~ "4), everything will be as if you had asked for 0 (resp. 4)."
+#~ msgstr ""
+#~ "Você só pode aumentar ou diminuir a potência de 1 a cada passo. logo,\n"
+#~ "se a potência atual é 2 e você pede 4, ela vai mudar para 3 no próximo\n"
+#~ "passo. Se você pedir menos que 0 (ou, respectivamente, mais que 4),\n"
+#~ "vai ser como se você tivesse pedido 0 (ou, respectivamente, 4)."
+
+#, no-wrap
+#~ msgid "[!java|c]int [/!]getFuel()[!scala]:Int[/!]"
+#~ msgstr "[!java|c]int [/!]getCombustível()[!scala]:Int[/!]"
+
+#~ msgid ""
+#~ "Get the remaining fuel in the lander.  At each step of the simulation the "
+#~ "lander consumes as many fuel units as the current thrust. Once you run "
+#~ "out of fuel you're in free fall so beware!"
+#~ msgstr ""
+#~ "Obter o combustível restante no módulo. Em cada passo da simulação o\n"
+#~ "módulo consome tantas unidades de combustível quanto a potência\n"
+#~ "atual. Uma vez que você fique sem combustível você entra em queda\n"
+#~ "livre. Portanto cuidado!"
+
+#, no-wrap
+#~ msgid "[!java]List&lt;Point&gt; [/!]getGround() [!scala]:List[Point][/!]"
+#~ msgstr "[!java]List&lt;Point&gt; [/!]getChão() [!scala]:List[Point][/!]"
+
+#~ msgid ""
+#~ "Get the vertices of the ground's profile from left to right.  [!java|"
+#~ "scala]You can retrieve the X and Y coordinates of each point with the "
+#~ "corresponding methods of your point: <code>p.x()</code> and <code>p.y()</"
+#~ "code>.[/!] [!python]Each point is an array of two integers denoting "
+#~ "respectively the X and Y coordinates of that point.[/!]"
+#~ msgstr ""
+#~ "Obter os vértices do perfil do solo da esquerda para a direita.\n"
+#~ "[!java|scala]Você pode recuperar as coordenada X e Y de cada ponto com\n"
+#~ "os métodos correspondentes do seu ponto: <code>p.x()</code> e\n"
+#~ "<code>p.y()</code>.[/!] [!python]Cada ponto é uma array de de dois\n"
+#~ "inteiros denotando respectivamente as coordenadas X e Y de cada\n"
+#~ "ponto.[/!]"
+
 #, fuzzy
 #~| msgid "Valid colors"
 #~ msgid "<b>Valid colors</b>"
@@ -17284,9 +16947,9 @@ msgstr ""
 #~ "é um Mundo, mas um componente de mundo passivo. Ele é usado pelo "
 #~ "resolvedor para armazenar a melhor solução do momento e a solução de "
 #~ "trabalho. Este design deve ser suficientemente genérico e outros "
-#~ "problemas de \"backtracking\", como aqueles nas minhas aulas de \"TOP"
-#~ "\" (pyramid, recipients) devem ser implementáveis seguindo  este design. "
-#~ "É por isto que classes \"Backtracking\" derivam de genéricas: "
+#~ "problemas de \"backtracking\", como aqueles nas minhas aulas de \"TOP\" "
+#~ "(pyramid, recipients) devem ser implementáveis seguindo  este design. É "
+#~ "por isto que classes \"Backtracking\" derivam de genéricas: "
 #~ "BacktrackingEntity e BacktrackingPartialSolution. Também existe um "
 #~ "BacktrackingWorld, que universos específicos devem não precisam "
 #~ "sobreescrever, e BacktrackingExercise, lidando com esta especificidade "
@@ -17337,27 +17000,27 @@ msgstr ""
 #~ msgid ""
 #~ "Then, I tried to use the debugging infrastructure (JPDA), but never "
 #~ "managed to get it working. It seems to me that the original com.sun.jdi "
-#~ "package is somehow deprecated since com.sun.jdi.BootStrap."
-#~ "virtualMachineManager() returns null while org.eclipse.jdi.Bootstrap."
-#~ "virtualMachineManager() does not. But when I'm using the eclipse version, "
-#~ "it seem to take an endless amount of dependencies, which I'm not inclined "
-#~ "to do. The root of my problem may be that I was using a jdi.jar comming "
-#~ "from eclipse, but I didn' find any other. I just realised that the com."
-#~ "sun.jdi package is also implemented in /usr/lib/jvm/java-6-sun-1.6.0.26/"
-#~ "lib/tools.jar on my disk. It seem to be functional, I should give it "
-#~ "another spin."
+#~ "package is somehow deprecated since "
+#~ "com.sun.jdi.BootStrap.virtualMachineManager() returns null while "
+#~ "org.eclipse.jdi.Bootstrap.virtualMachineManager() does not. But when I'm "
+#~ "using the eclipse version, it seem to take an endless amount of "
+#~ "dependencies, which I'm not inclined to do. The root of my problem may be "
+#~ "that I was using a jdi.jar comming from eclipse, but I didn' find any "
+#~ "other. I just realised that the com.sun.jdi package is also implemented "
+#~ "in /usr/lib/jvm/java-6-sun-1.6.0.26/lib/tools.jar on my disk. It seem to "
+#~ "be functional, I should give it another spin."
 #~ msgstr ""
 #~ "Então, eu tentei usar a infraestrutura de depuração (JPDA), mas nunca "
 #~ "consegui fazê-la funcionar. Me parece que o pacote original com.sun.jdi "
-#~ "está de alguma forma obsoleto uma vez que com.sun.jdi.BootStrap."
-#~ "virtualMachineManager() retorna null enquanto org.eclipse.jdi.Bootstrap."
-#~ "virtualMachineManager() não. Mas quando eu estou usando a versão do "
-#~ "eclipse, ele tenta usar uma quantidade enorme de dependências, que eu não "
-#~ "estou inclinado a usar. A raíz do meu problema deve ser que eu estou "
-#~ "usando um jdi.jar que vem do eclipse, mas não encontro nenhum outro. Eu "
-#~ "notei que o pacote com.sun.jdi também está implementado em /usr/lib/jvm/"
-#~ "java-6-sun-1.6.0.26/lib/tools.jar no meu disco. Ele parece funcional, "
-#~ "devo dar a ele outro \"spin\"."
+#~ "está de alguma forma obsoleto uma vez que "
+#~ "com.sun.jdi.BootStrap.virtualMachineManager() retorna null enquanto "
+#~ "org.eclipse.jdi.Bootstrap.virtualMachineManager() não. Mas quando eu "
+#~ "estou usando a versão do eclipse, ele tenta usar uma quantidade enorme de "
+#~ "dependências, que eu não estou inclinado a usar. A raíz do meu problema "
+#~ "deve ser que eu estou usando um jdi.jar que vem do eclipse, mas não "
+#~ "encontro nenhum outro. Eu notei que o pacote com.sun.jdi também está "
+#~ "implementado em /usr/lib/jvm/java-6-sun-1.6.0.26/lib/tools.jar no meu "
+#~ "disco. Ele parece funcional, devo dar a ele outro \"spin\"."
 
 #~ msgid ""
 #~ "Afterward, I tried to reuse the debugging infrastructure of DrJava. It "
@@ -17422,8 +17085,8 @@ msgstr ""
 #~ "E aqui estou eu. A lição pode ser bastante interessante para estudantes, "
 #~ "e muito fácil de terminar uma vez que eu consiga a informação que "
 #~ "preciso, mas eu não consegui até agora, apesar dos meus esforços. Se você "
-#~ "tem alguma dica (ou patch!), por favor me mande um email martin."
-#~ "quinson#loria.fr."
+#~ "tem alguma dica (ou patch!), por favor me mande um email "
+#~ "martin.quinson#loria.fr."
 
 #~ msgid ""
 #~ "This gives me the following todo actions: * Check whether tools.jar gives "
