@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-17 11:46+0200\n"
+"POT-Creation-Date: 2026-10-18 20:37+0200\n"
 "PO-Revision-Date: 2026-05-04 11:10+0000\n"
 "Last-Translator: BoneNI <bounkirdni@gmail.com>\n"
 "Language-Team: Lao <https://hosted.weblate.org/projects/programmers-learning-"
@@ -3673,7 +3673,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool1/In1020.html:6
 #: src/lessons/welcome/bat/bool1/In3050.html:6
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:7
-#: src/lessons/welcome/bat/bool1/Main.html:12
 #: src/lessons/welcome/bat/bool1/Makes10.html:6
 #: src/lessons/welcome/bat/bool1/Max1020.html:8
 #: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8
@@ -3694,7 +3693,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/InOrder.html:9
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:9
 #: src/lessons/welcome/bat/bool2/LessBy10.html:6
-#: src/lessons/welcome/bat/bool2/Main.html:7
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:10
 #: src/lessons/welcome/bat/bool2/NearTen.html:9
 #: src/lessons/welcome/bat/bool2/RedTicket.html:10
@@ -6599,37 +6597,6 @@ msgid ""
 msgstr ""
 "ກວດເບິ່ງໜ້າ Wikipedia ທີ່ກ່ຽວຂ້ອງ ເຊິ່ງເປັນແຮງບັນດານໃຈຂອງບົດເຝິກຫັດນີ້ ສຳລັບລາຍລະອຽດເພີ່ມເຕີມ."
 
-#. type: Content of: <h3>
-#: src/lessons/turmites/Main.html:22 src/lessons/sort/basic/Main.html:15
-#: src/lessons/sort/dutchflag/Main.html:9 src/lessons/sort/pancake/Main.html:30
-#: src/lessons/sort/baseball/Main.html:28 src/lessons/turtleart/Main.html:12
-msgid "What can I do to improve this PLM universe?"
-msgstr "ຂ້ອຍສາມາດເຮັດຫຍັງໄດ້ແດ່ເພື່ອປັບປຸງຈັກກະວານ PLM ນີ້?"
-
-#. type: Content of: <p>
-#: src/lessons/turmites/Main.html:24 src/lessons/sort/basic/Main.html:17
-#: src/lessons/sort/dutchflag/Main.html:11
-#: src/lessons/sort/pancake/Main.html:32 src/lessons/sort/baseball/Main.html:30
-#: src/lessons/turtleart/Main.html:14 src/lessons/recursion/cons/Main.html:7
-msgid ""
-"As usual, there are several things that could be done in the code of this "
-"universe to improve it:"
-msgstr "ຕາມປົກກະຕິ, ມີຫຼາຍສິ່ງທີ່ສາມາດເຮັດໄດ້ໃນໂຄ້ດຂອງຈັກກະວານນີ້ເພື່ອປັບປຸງມັນ:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/turmites/Main.html:26
-msgid ""
-"We are probably missing some good exercises. The turmite creator exercise is "
-"a bit harsh: we could introduce the patterns in a more friendly manner."
-msgstr ""
-"ພວກເຮົາອາດຈະຍັງຂາດບົດເຝິກຫັດດີໆບາງອັນ. ບົດເຝິກຫັດການສ້າງເທີໄມທ໌ນັ້ນຂ້ອນຂ້າງຍາກເກີນໄປ: "
-"ພວກເຮົາສາມາດແນະນຳຮູບແບບຕ່າງໆໃນລັກສະນະທີ່ເປັນມິດກວ່າ."
-
-#. type: Content of: <ul><li>
-#: src/lessons/turmites/Main.html:28
-msgid "We may want to write an exercise on the busy beaver, maybe?"
-msgstr "ພວກເຮົາອາດຈະຢາກຂຽນບົດເຝິກຫັດກ່ຽວກັບ busy beaver ດີບໍ່?"
-
 #. type: Content of: <p>
 #: src/lessons/turmites/short_desc.html:3
 msgid "Discover the Langton's ants, that are 2D turing machines."
@@ -7440,26 +7407,6 @@ msgstr ""
 "ແຕ່ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ຂຽນໂຄ້ດ, ທ່ານກໍສາມາດໃຊ້ໂໝດສາທິດເພື່ອຈັດ \"ການແຂ່ງຂັນ\" "
 "ລະຫວ່າງອັນກໍຣິທຶມເຫຼົ່ານີ້ເພື່ອທົດລອງໃນທາງປະຕິບັດວ່າຄວາມຊັບຊ້ອນແບບອະຊິມໂຕຕິກ (asymptotical "
 "complexity) ທີ່ແຕກຕ່າງກັນນັ້ນໝາຍເຖິງຫຍັງ."
-
-#. type: Content of: <p>
-#: src/lessons/sort/basic/Main.html:11
-msgid ""
-"More exercises are planned for the future, on recursive sorting algorithms "
-"(such as QuickSort and MergeSort) or using other microworlds to apply these "
-"algorithms to other contexts."
-msgstr ""
-"ຈະມີບົດເຝິກຫັດເພີ່ມເຕີມໃນອະນາຄົດ ກ່ຽວກັບອັນກໍຣິທຶມການຈັດລຽງແບບຣີເຄີຊິບ (recursive sorting "
-"algorithms) (ເຊັ່ນ QuickSort ແລະ MergeSort) ຫຼື "
-"ການໃຊ້ໂລກຈຳລອງອື່ນໆເພື່ອປະຍຸກໃຊ້ອັນກໍຣິທຶມເຫຼົ່ານີ້ໃນສະພາບການອື່ນໆ."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/basic/Main.html:19
-msgid ""
-"Other graphical representations could be proposed, such as the ones "
-"presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
-msgstr ""
-"ການສະແດງຜົນທາງກຣາບຟິກອື່ນໆອາດຈະຖືກນຳສະເໜີ ເຊັ່ນອັນທີ່ສະແດງຢູ່ໃນ <a href=\"http://"
-"sorting.at/\">http://sorting.at/</a>."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/short_desc.html:4
@@ -8303,24 +8250,6 @@ msgstr ""
 "ຄວາມຊັບຊ້ອນຂອງມັນບໍ່ໄດ້ງ່າຍເກີນໄປ ແຕ່ກໍບໍ່ໄດ້ຍາກເກີນໄປ. ມັນສາມາດພິສູດໄດ້ຢ່າງເປັນທາງການຢ່າງງ່າຍດາຍ, "
 "ແຕ່ກໍບໍ່ໄດ້ງ່າຍດາຍທີ່ສຸດ."
 
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:13
-msgid "A temporal view could be welcomed."
-msgstr "ການມີມຸມມອງທາງດ້ານເວລາຈະເປັນເລື່ອງທີ່ດີ."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:14
-msgid ""
-"Other exercises, for example with 2 colors only or with more than 3 colors, "
-"could generalize the proposed approach."
-msgstr ""
-"ບົດເຝິກຫັດອື່ນໆ, ຕົວຢ່າງເຊັ່ນ ມີພຽງ 2 ສີ ຫຼື ຫຼາຍກວ່າ 3 ສີ, ສາມາດນຳໄປສູ່ການປະຍຸກໃຊ້ແບບທົ່ວໄປໄດ້."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:15
-msgid "This problem could be solved recursively."
-msgstr "ບັນຫານີ້ສາມາດແກ້ໄຂໄດ້ດ້ວຍວິທີຣີເຄີຊິບ (recursively)."
-
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/short_desc.html:4
 msgid ""
@@ -8514,20 +8443,6 @@ msgid ""
 msgstr ""
 "ກິດຈະກຳນີ້ຍັງຖືກລວມເຂົ້າໃນ CSIRL (ຄັງກິດຈະກຳແບບ unplugged ເພື່ອແນະນຳວິທະຍາສາດຄອມພິວເຕີ), "
 "ແລະ ມັນອາດຈະໜ້າສົນໃຈທີ່ຈະລອງເຮັດກິດຈະກຳແບບບໍ່ໃຊ້ຄອມພິວເຕີກ່ອນທີ່ຈະສ້າງອັນກໍຣິທຶມເຫຼົ່ານີ້ໃນ PLM."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:34
-msgid "A temporal view similar to the sorting universe could be helpful"
-msgstr "ມຸມມອງທາງດ້ານເວລາທີ່ຄ້າຍຄືກັບຈັກກະວານການຈັດລຽງອາດຈະມີປະໂຫຍດ"
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:35
-msgid ""
-"Other exercises, for example on the Roti sorting, with a pile of Roti that "
-"have to touch the grill on each face (see http://en.wikipedia.org/wiki/"
-"Pancake_sorting#The_identical_pancake_stack)."
-msgstr ""
-"ບົດເຝິກຫັດອື່ນໆ, ຕົວຢ່າງເຊັ່ນ ການຈັດລຽງ Roti, ໂດຍທີ່ Roti ແຕ່ລະແຜ່ນຕ້ອງສຳຜັດກັບເຕົາປີ້ງທັງສອງດ້ານ."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/pancake/short_desc.html:2
@@ -9190,21 +9105,6 @@ msgstr ""
 "ພວກເຮົາກຳລັງຊອກຫາເງື່ອນໄຂທີ່ຈະຮັບປະກັນວ່າອັນກໍຣິທຶມຈະບໍ່ວົນລູບ. ຖ້າທ່ານຄົ້ນພົບ, "
 "ກະລຸນາລາຍງານໃຫ້ພວກເຮົາຮູ້."
 
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:32
-msgid ""
-"Other graphical representations could be proposed, such as a linear one (for "
-"the existing exercises) or other ones (such as a grid or a tree, if an "
-"exercise on this kind of graph proves interesting)."
-msgstr "ການສະແດງຜົນທາງກຣາບຟິກອື່ນໆອາດຈະຖືກນຳສະເໜີ ເຊັ່ນ ແບບເສັ້ນຊື່ ຫຼື ແບບຕາຕະລາງ."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:34
-msgid ""
-"Other exercises on other algorithms on this variant, or on other variants "
-"such as the 15-puzzle."
-msgstr "ບົດເຝິກຫັດອື່ນໆກ່ຽວກັບອັນກໍຣິທຶມອື່ນໃນຮູບແບບນີ້, ຫຼື ໃນຮູບແບບອື່ນໆເຊັ່ນ 15-puzzle."
-
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/short_desc.html:2
 msgid "Rainbow baseball"
@@ -9716,29 +9616,6 @@ msgstr ""
 "ກະລຸນາສົ່ງຜົນງານທີ່ດີທີ່ສຸດຂອງເຈົ້າໃຫ້ພວກເຮົາ ເພື່ອເອົາລົງໃນຫ້ອງສະແດງຜົນງານ "
 "ເພື່ອສ້າງແຮງບັນດານໃຈໃຫ້ກັບຄົນອື່ນໆ."
 
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:16
-msgid ""
-"Other exercises should be added. A whole lot of exercises are available from "
-"<a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/"
-"#sect4</a> or from <a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-"
-"shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
-"shapes-challenges.html</a>."
-msgstr ""
-"ບົດຝຶກຫັດອື່ນໆ ຈະຖືກເພີ່ມເຂົ້າຕື່ມ. ເຈົ້າສາມາດຫາບົດຝຶກຫັດຈຳນວນຫຼາຍໄດ້ຈາກ <a href=\"http://"
-"neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/#sect4</a> ຫຼື <a "
-"href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html."
-"\">http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html</a>."
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:19
-msgid ""
-"Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
-"moving or by moving to the end of the arc."
-msgstr ""
-"ສິ່ງທີ່ຍັງຂາດ: ຟັງຊັນ arc() ແລະ arcTo() ສຳລັບແຕ້ມເສັ້ນໂຄ້ງ, ບໍ່ວ່າຈະເປັນການແຕ້ມຢູ່ກັບບ່ອນ ຫຼື "
-"ຍ້າຍໄປຫາຈຸດສິ້ນສຸດຂອງເສັ້ນໂຄ້ງ."
-
 #. type: Content of: <p>
 #: src/lessons/turtleart/short_desc.html:3
 msgid ""
@@ -9881,34 +9758,6 @@ msgid ""
 msgstr ""
 "ບົດຮຽນນີ້ລວມເອົາບົດຝຶກຫັດຄລາສສິກກ່ຽວກັບລາຍການແບບເອີ້ນຊ້ຳ. ມັນອາດຈະບໍ່ແມ່ນບົດຮຽນທີ່ມ່ວນທີ່ສຸດ, "
 "ແຕ່ຂ້ອຍຄິດວ່າມັນເປັນບົດທີ່ງ່າຍທີ່ສຸດໃນ PLM ທີ່ກ່ຽວກັບເລື່ອງການເອີ້ນຊ້ຳ (recursion)."
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/cons/Main.html:10
-msgid ""
-"New exercises could be proposed, such as http://webloria.loria.fr/~quinson/"
-"Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
-"report them as an issue."
-msgstr ""
-"ສາມາດສະເໜີບົດຝຶກຫັດໃໝ່ໆໄດ້ ເຊັ່ນ http://webloria.loria.fr/~quinson/Teaching/TOP/02-"
-"td-recursivite-enonce.pdf ຖ້າເຈົ້າຮູ້ບົດອື່ນໆ, ກະລຸນາແຈ້ງໃຫ້ພວກເຮົາຮູ້."
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/cons/Main.html:13
-msgid ""
-"It would be interesting to check the asymptotic complexity of the student's "
-"code, but that does not sound easy to do. In Python and Java (where we "
-"provide a hand-made RecList class), we could count the amount of cons per "
-"exercise, but it won't be easy to relate this to the right BatTest. For "
-"Scala, it sounds even more difficult as we use the classical :: operators of "
-"the language. That will be difficult to override to add a counting "
-"mechanism. Another solution would be to ensure that the call stack does not "
-"pass a given threshold, but that sounds very difficult too. Any idea is "
-"welcome."
-msgstr ""
-"ມັນຄືຊິໜ້າສົນໃຈຖ້າສາມາດກວດສອບຄວາມຊັບຊ້ອນ (complexity) ຂອງ Code ນັກຮຽນໄດ້, "
-"ແຕ່ມັນເຮັດໄດ້ຍາກ. ໃນ Python ແລະ Java ພວກເຮົາອາດຈະນັບຈຳນວນການໃຊ້ cons ໄດ້, ແຕ່ໃນ Scala "
-"ມັນຍາກກວ່າ ເພາະໃຊ້ຕົວດຳເນີນການ :: ຂອງພາສາເອງ. ວິທີອື່ນອາດຈະແມ່ນການກວດສອບ call stack, "
-"ແຕ່ມັນກໍຍາກຄືກັນ. ຖ້າມີໄອເດຍດີໆ ສາມາດບອກໄດ້."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Length.html:2
@@ -10266,83 +10115,6 @@ msgstr "ອັນກໍຣິທຶມແບບເອີ້ນຊ້ຳ"
 #: src/lessons/recursion/lego/Main.html:3
 msgid "This lesson allows to experiment with recursive algorithms."
 msgstr "ບົດຮຽນນີ້ຈະຊ່ວຍໃຫ້ເຈົ້າໄດ້ທົດລອງກັບອັນກໍຣິທຶມແບບເອີ້ນຊ້ຳ (recursive algorithms)."
-
-#. type: Content of: <p>
-#: src/lessons/recursion/lego/Main.html:5
-msgid ""
-"If you need more recursive algorithms, an exercise on recursive sorting "
-"algorithms (in particular QuickSort and MergeSort) is planned in the future "
-"within the sorting lesson."
-msgstr ""
-"ຖ້າເຈົ້າຕ້ອງການສຶກສາອັນກໍຣິທຶມແບບເອີ້ນຊ້ຳເພີ່ມຕື່ມ, ບົດຝຶກຫັດກ່ຽວກັບການຈັດລຽງແບບເອີ້ນຊ້ຳ (ໂດຍສະເພາະ "
-"QuickSort ແລະ MergeSort) ແມ່ນມີແຜນຈະເພີ່ມເຂົ້າໃນບົດຮຽນການຈັດລຽງຂໍ້ມູນໃນອະນາຄົດ."
-
-#. type: Content of: <h3>
-#: src/lessons/recursion/lego/Main.html:9
-msgid "What can I do to improve this lesson?"
-msgstr "ຂ້ອຍຈະຊ່ວຍປັບປຸງບົດຮຽນນີ້ໄດ້ແນວໃດ?"
-
-#. type: Content of: <p>
-#: src/lessons/recursion/lego/Main.html:11
-msgid ""
-"As usual, there are several things that could be done in this lesson to "
-"improve it further:"
-msgstr "ຄືກັບທຸກໆຄັ້ງ, ມີຫຼາຍຢ່າງທີ່ສາມາດເຮັດໄດ້ເພື່ອປັບປຸງບົດຮຽນນີ້ໃຫ້ດີຂຶ້ນ:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:13
-msgid ""
-"The Sierpinski triangle can be drawn using a simpler L-system. See http://"
-"jpvallon.free.fr/recursivite.html"
-msgstr ""
-"ສາມຫຼ່ຽມ Sierpinski ສາມາດແຕ້ມໄດ້ດ້ວຍລະບົບ L-system ທີ່ງ່າຍກວ່າ. ເບິ່ງ http://"
-"jpvallon.free.fr/recursivite.html"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:14
-msgid ""
-"The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
-"sierpinski/sierpinskitriangle.shtml"
-msgstr ""
-"ເສັ້ນໂຄ້ງຮູບຫົວລູກສອນ (arrowhead curve) ກໍໜ້າສົນໃຈ: http://www.mathcurve.com/fractals/"
-"sierpinski/sierpinskitriangle.shtml"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:15
-msgid ""
-"The dragon curve could be explained as a L-system: http://"
-"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
-msgstr ""
-"ເສັ້ນໂຄ້ງມັງກອນ (dragon curve) ສາມາດອະທິບາຍດ້ວຍ L-system ໄດ້: http://"
-"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:16
-msgid ""
-"The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
-"~lriddle/ifs/heighway/twindragon.htm"
-msgstr ""
-"ເສັ້ນໂຄ້ງ dragon2 ເອີ້ນວ່າ ມັງກອນຄູ່ (twin dragon): http://ecademy.agnesscott.edu/"
-"~lriddle/ifs/heighway/twindragon.htm"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:17
-msgid ""
-"The space filling curves could be added (Peano, Hildebert, etc).  See: "
-"http://teachout1.net/village/fill.html"
-msgstr ""
-"ສາມາດເພີ່ມເສັ້ນໂຄ້ງແບບເຕັມພື້ນທີ່ (Peano, Hildebert, ແລະ ອື່ນໆ). ເບິ່ງ: http://"
-"teachout1.net/village/fill.html"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:19
-msgid ""
-"We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
-"helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
-"actionsrecursives.html"
-msgstr ""
-"ພວກເຮົາສາມາດເພີ່ມບົດຝຶກຫັດກ່ຽວກັບຮູບຫຼາຍຫຼ່ຽມຊ້ອນກັນ: http://www.inrialpes.fr/helix/people/"
-"genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/short_desc.html:2
@@ -13294,29 +13066,6 @@ msgstr ""
 "ຄ່າ, ໃຫ້ສົ່ງຄືນ true ຖ້າມີພຽງຄ່າດຽວທີ່ເປັນ teen, ແຕ່ຫ້າມເປັນ teen ທັງສອງຄ່າ."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bat/bool1/Main.html:2
-msgid "Boolean fun"
-msgstr "ຄວາມມ່ວນຊື່ນກັບບູລີນ"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Main.html:4
-msgid ""
-"Boolean operations are one of the very basic task in programming.  As long "
-"as you cannot write a not so simple boolean test under the minute, you "
-"probably will have a very bad time writing a real program."
-msgstr ""
-"ການເຮັດວຽກກັບບູລີນ (Boolean) ແມ່ນໜຶ່ງໃນວຽກງານພື້ນຖານທີ່ສຸດໃນການຂຽນໂປຣແກຣມ. "
-"ຕາບໃດທີ່ທ່ານຍັງບໍ່ສາມາດຂຽນການກວດສອບບູລີນທີ່ບໍ່ໄດ້ງ່າຍເກີນໄປໃຫ້ແລ້ວພາຍໃນໜຶ່ງນາທີ, "
-"ທ່ານອາດຈະພົບກັບຄວາມລຳບາກໃນການຂຽນໂປຣແກຣມແທ້ໆ."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Main.html:9
-msgid ""
-"That is why this lesson provides you a bunch of such exercises, so that you "
-"can get trained in this."
-msgstr "ນັ້ນຄືເຫດຜົນທີ່ບົດຮຽນນີ້ຈັດກຽມບົດຝຶກຫັດຈຳນວນຫຼາຍມາໃຫ້ທ່ານ, ເພື່ອໃຫ້ທ່ານໄດ້ຝຶກຝົນກ່ຽວກັບເລື່ອງນີ້."
-
-#. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Makes10.html:2
 msgid "Makes 10"
 msgstr "ເຮັດໃຫ້ໄດ້ 10"
@@ -13689,20 +13438,6 @@ msgstr ""
 "ຖ້າມີຈຳນວນໃດໜຶ່ງທີ່ມີຄ່າໜ້ອຍກວ່າອີກຈຳນວນໜຶ່ງຕັ້ງແຕ່ 10 ຂຶ້ນໄປ."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bat/bool2/Main.html:2
-msgid "Boolean (even more) fun"
-msgstr "ຄວາມມ່ວນຊື່ນກັບບູລີນ (ເພີ່ມຂຶ້ນ)"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool2/Main.html:4
-msgid ""
-"A very good introduction to this type is available here: http://"
-"codingbat.com/doc/java-if-boolean-logic.html"
-msgstr ""
-"ບົດແນະນຳທີ່ດີຫຼາຍກ່ຽວກັບເລື່ອງນີ້ສາມາດເບິ່ງໄດ້ທີ່: http://codingbat.com/doc/java-if-boolean-"
-"logic.html"
-
-#. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:2
 msgid "MaxMod5"
 msgstr "ຄ່າຫຼາຍສຸດ Mod 5"
@@ -14056,46 +13791,6 @@ msgid ""
 "much the angle and thrust of the lander should change"
 msgstr ""
 "ໃນແຕ່ລະຂັ້ນຕອນຂອງການຈຳລອງ, ຜູ້ຫຼິ້ນຈະອອກຄຳສັ່ງເພື່ອຄວບຄຸມການປ່ຽນແປງຂອງມຸມ ແລະ ແຮງຂັບດັນຂອງຍານ."
-
-#. type: Content of: <p>
-#: src/lessons/lander/Main.html:10
-msgid "Ideas concerning the progression of exercises:"
-msgstr "ແນວຄິດກ່ຽວກັບລຳດັບຂອງບົດຝຶກຫັດ:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:12
-msgid ""
-"A lander in vertical position above flat ground, the player can only control "
-"thrust (done)"
-msgstr "ຍານຢູ່ໃນຕຳແໜ່ງຕັ້ງຊື່ເໜືອພື້ນພຽງ, ຜູ້ຫຼິ້ນຄວບຄຸມໄດ້ພຽງແຕ່ແຮງຂັບດັນ (ສຳເລັດແລ້ວ)"
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:14
-msgid ""
-"A lander in vertical position not above flat ground, the player control "
-"thrust and angle (done)"
-msgstr "ຍານຢູ່ໃນຕຳແໜ່ງຕັ້ງຊື່ແຕ່ບໍ່ໄດ້ຢູ່ເໜືອພື້ນພຽງ, ຜູ້ຫຼິ້ນຄວບຄຸມແຮງຂັບດັນ ແລະ ມຸມ (ສຳເລັດແລ້ວ)"
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:16
-msgid ""
-"A lander with difficult angle and speed not above flat ground, the player "
-"control thrust and angle"
-msgstr "ຍານມີມຸມ ແລະ ຄວາມໄວທີ່ຄວບຄຸມຍາກ ແລະ ບໍ່ໄດ້ຢູ່ເໜືອພື້ນພຽງ, ຜູ້ຫຼິ້ນຄວບຄຸມແຮງຂັບດັນ ແລະ ມຸມ"
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:18
-msgid ""
-"A lander with difficult angle and speed not above flat ground, with "
-"difficult ground, the player control thrust and angle"
-msgstr ""
-"ຍານມີມຸມ ແລະ ຄວາມໄວທີ່ຄວບຄຸມຍາກ, ບໍ່ໄດ້ຢູ່ເໜືອພື້ນພຽງ ແລະ ພື້ນດິນກໍມີຄວາມລຳບາກ, "
-"ຜູ້ຫຼິ້ນຄວບຄຸມແຮງຂັບດັນ ແລະ ມຸມ"
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:20
-msgid "Same with wind?"
-msgstr "ຄືກັນແຕ່ເພີ່ມລົມ?"
 
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
@@ -14583,6 +14278,234 @@ msgid ""
 "The <b>Mark</b> button requests your buggle to leave a mark behind it when "
 "it goes."
 msgstr "ປຸ່ມ <b>ໝາຍ (Mark)</b> ສັ່ງໃຫ້ buggle ປະຮອຍໝາຍໄວ້ຂ້າງຫຼັງໃນຂະນະທີ່ມັນຍ່າງໄປ."
+
+#~ msgid "What can I do to improve this PLM universe?"
+#~ msgstr "ຂ້ອຍສາມາດເຮັດຫຍັງໄດ້ແດ່ເພື່ອປັບປຸງຈັກກະວານ PLM ນີ້?"
+
+#~ msgid ""
+#~ "As usual, there are several things that could be done in the code of this "
+#~ "universe to improve it:"
+#~ msgstr "ຕາມປົກກະຕິ, ມີຫຼາຍສິ່ງທີ່ສາມາດເຮັດໄດ້ໃນໂຄ້ດຂອງຈັກກະວານນີ້ເພື່ອປັບປຸງມັນ:"
+
+#~ msgid ""
+#~ "We are probably missing some good exercises. The turmite creator exercise "
+#~ "is a bit harsh: we could introduce the patterns in a more friendly manner."
+#~ msgstr ""
+#~ "ພວກເຮົາອາດຈະຍັງຂາດບົດເຝິກຫັດດີໆບາງອັນ. ບົດເຝິກຫັດການສ້າງເທີໄມທ໌ນັ້ນຂ້ອນຂ້າງຍາກເກີນໄປ: "
+#~ "ພວກເຮົາສາມາດແນະນຳຮູບແບບຕ່າງໆໃນລັກສະນະທີ່ເປັນມິດກວ່າ."
+
+#~ msgid "We may want to write an exercise on the busy beaver, maybe?"
+#~ msgstr "ພວກເຮົາອາດຈະຢາກຂຽນບົດເຝິກຫັດກ່ຽວກັບ busy beaver ດີບໍ່?"
+
+#~ msgid ""
+#~ "More exercises are planned for the future, on recursive sorting "
+#~ "algorithms (such as QuickSort and MergeSort) or using other microworlds "
+#~ "to apply these algorithms to other contexts."
+#~ msgstr ""
+#~ "ຈະມີບົດເຝິກຫັດເພີ່ມເຕີມໃນອະນາຄົດ ກ່ຽວກັບອັນກໍຣິທຶມການຈັດລຽງແບບຣີເຄີຊິບ (recursive sorting "
+#~ "algorithms) (ເຊັ່ນ QuickSort ແລະ MergeSort) ຫຼື "
+#~ "ການໃຊ້ໂລກຈຳລອງອື່ນໆເພື່ອປະຍຸກໃຊ້ອັນກໍຣິທຶມເຫຼົ່ານີ້ໃນສະພາບການອື່ນໆ."
+
+#~ msgid ""
+#~ "Other graphical representations could be proposed, such as the ones "
+#~ "presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
+#~ msgstr ""
+#~ "ການສະແດງຜົນທາງກຣາບຟິກອື່ນໆອາດຈະຖືກນຳສະເໜີ ເຊັ່ນອັນທີ່ສະແດງຢູ່ໃນ <a href=\"http://"
+#~ "sorting.at/\">http://sorting.at/</a>."
+
+#~ msgid "A temporal view could be welcomed."
+#~ msgstr "ການມີມຸມມອງທາງດ້ານເວລາຈະເປັນເລື່ອງທີ່ດີ."
+
+#~ msgid ""
+#~ "Other exercises, for example with 2 colors only or with more than 3 "
+#~ "colors, could generalize the proposed approach."
+#~ msgstr ""
+#~ "ບົດເຝິກຫັດອື່ນໆ, ຕົວຢ່າງເຊັ່ນ ມີພຽງ 2 ສີ ຫຼື ຫຼາຍກວ່າ 3 ສີ, ສາມາດນຳໄປສູ່ການປະຍຸກໃຊ້ແບບທົ່ວໄປໄດ້."
+
+#~ msgid "This problem could be solved recursively."
+#~ msgstr "ບັນຫານີ້ສາມາດແກ້ໄຂໄດ້ດ້ວຍວິທີຣີເຄີຊິບ (recursively)."
+
+#~ msgid "A temporal view similar to the sorting universe could be helpful"
+#~ msgstr "ມຸມມອງທາງດ້ານເວລາທີ່ຄ້າຍຄືກັບຈັກກະວານການຈັດລຽງອາດຈະມີປະໂຫຍດ"
+
+#~ msgid ""
+#~ "Other exercises, for example on the Roti sorting, with a pile of Roti "
+#~ "that have to touch the grill on each face (see http://en.wikipedia.org/"
+#~ "wiki/Pancake_sorting#The_identical_pancake_stack)."
+#~ msgstr ""
+#~ "ບົດເຝິກຫັດອື່ນໆ, ຕົວຢ່າງເຊັ່ນ ການຈັດລຽງ Roti, ໂດຍທີ່ Roti "
+#~ "ແຕ່ລະແຜ່ນຕ້ອງສຳຜັດກັບເຕົາປີ້ງທັງສອງດ້ານ."
+
+#~ msgid ""
+#~ "Other graphical representations could be proposed, such as a linear one "
+#~ "(for the existing exercises) or other ones (such as a grid or a tree, if "
+#~ "an exercise on this kind of graph proves interesting)."
+#~ msgstr "ການສະແດງຜົນທາງກຣາບຟິກອື່ນໆອາດຈະຖືກນຳສະເໜີ ເຊັ່ນ ແບບເສັ້ນຊື່ ຫຼື ແບບຕາຕະລາງ."
+
+#~ msgid ""
+#~ "Other exercises on other algorithms on this variant, or on other variants "
+#~ "such as the 15-puzzle."
+#~ msgstr "ບົດເຝິກຫັດອື່ນໆກ່ຽວກັບອັນກໍຣິທຶມອື່ນໃນຮູບແບບນີ້, ຫຼື ໃນຮູບແບບອື່ນໆເຊັ່ນ 15-puzzle."
+
+#~ msgid ""
+#~ "Other exercises should be added. A whole lot of exercises are available "
+#~ "from <a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/"
+#~ "logo/#sect4</a> or from <a href=\"http://billkerr2.blogspot.fr/2009/08/40-"
+#~ "maths-shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-"
+#~ "maths-shapes-challenges.html</a>."
+#~ msgstr ""
+#~ "ບົດຝຶກຫັດອື່ນໆ ຈະຖືກເພີ່ມເຂົ້າຕື່ມ. ເຈົ້າສາມາດຫາບົດຝຶກຫັດຈຳນວນຫຼາຍໄດ້ຈາກ <a href=\"http://"
+#~ "neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/#sect4</a> ຫຼື <a "
+#~ "href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-"
+#~ "challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-shapes-"
+#~ "challenges.html</a>."
+
+#~ msgid ""
+#~ "Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
+#~ "moving or by moving to the end of the arc."
+#~ msgstr ""
+#~ "ສິ່ງທີ່ຍັງຂາດ: ຟັງຊັນ arc() ແລະ arcTo() ສຳລັບແຕ້ມເສັ້ນໂຄ້ງ, ບໍ່ວ່າຈະເປັນການແຕ້ມຢູ່ກັບບ່ອນ ຫຼື "
+#~ "ຍ້າຍໄປຫາຈຸດສິ້ນສຸດຂອງເສັ້ນໂຄ້ງ."
+
+#~ msgid ""
+#~ "New exercises could be proposed, such as http://webloria.loria.fr/"
+#~ "~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf If you know some "
+#~ "others, please report them as an issue."
+#~ msgstr ""
+#~ "ສາມາດສະເໜີບົດຝຶກຫັດໃໝ່ໆໄດ້ ເຊັ່ນ http://webloria.loria.fr/~quinson/Teaching/TOP/"
+#~ "02-td-recursivite-enonce.pdf ຖ້າເຈົ້າຮູ້ບົດອື່ນໆ, ກະລຸນາແຈ້ງໃຫ້ພວກເຮົາຮູ້."
+
+#~ msgid ""
+#~ "It would be interesting to check the asymptotic complexity of the "
+#~ "student's code, but that does not sound easy to do. In Python and Java "
+#~ "(where we provide a hand-made RecList class), we could count the amount "
+#~ "of cons per exercise, but it won't be easy to relate this to the right "
+#~ "BatTest. For Scala, it sounds even more difficult as we use the "
+#~ "classical :: operators of the language. That will be difficult to "
+#~ "override to add a counting mechanism. Another solution would be to ensure "
+#~ "that the call stack does not pass a given threshold, but that sounds very "
+#~ "difficult too. Any idea is welcome."
+#~ msgstr ""
+#~ "ມັນຄືຊິໜ້າສົນໃຈຖ້າສາມາດກວດສອບຄວາມຊັບຊ້ອນ (complexity) ຂອງ Code ນັກຮຽນໄດ້, "
+#~ "ແຕ່ມັນເຮັດໄດ້ຍາກ. ໃນ Python ແລະ Java ພວກເຮົາອາດຈະນັບຈຳນວນການໃຊ້ cons ໄດ້, ແຕ່ໃນ "
+#~ "Scala ມັນຍາກກວ່າ ເພາະໃຊ້ຕົວດຳເນີນການ :: ຂອງພາສາເອງ. ວິທີອື່ນອາດຈະແມ່ນການກວດສອບ call "
+#~ "stack, ແຕ່ມັນກໍຍາກຄືກັນ. ຖ້າມີໄອເດຍດີໆ ສາມາດບອກໄດ້."
+
+#~ msgid ""
+#~ "If you need more recursive algorithms, an exercise on recursive sorting "
+#~ "algorithms (in particular QuickSort and MergeSort) is planned in the "
+#~ "future within the sorting lesson."
+#~ msgstr ""
+#~ "ຖ້າເຈົ້າຕ້ອງການສຶກສາອັນກໍຣິທຶມແບບເອີ້ນຊ້ຳເພີ່ມຕື່ມ, ບົດຝຶກຫັດກ່ຽວກັບການຈັດລຽງແບບເອີ້ນຊ້ຳ "
+#~ "(ໂດຍສະເພາະ QuickSort ແລະ MergeSort) "
+#~ "ແມ່ນມີແຜນຈະເພີ່ມເຂົ້າໃນບົດຮຽນການຈັດລຽງຂໍ້ມູນໃນອະນາຄົດ."
+
+#~ msgid "What can I do to improve this lesson?"
+#~ msgstr "ຂ້ອຍຈະຊ່ວຍປັບປຸງບົດຮຽນນີ້ໄດ້ແນວໃດ?"
+
+#~ msgid ""
+#~ "As usual, there are several things that could be done in this lesson to "
+#~ "improve it further:"
+#~ msgstr "ຄືກັບທຸກໆຄັ້ງ, ມີຫຼາຍຢ່າງທີ່ສາມາດເຮັດໄດ້ເພື່ອປັບປຸງບົດຮຽນນີ້ໃຫ້ດີຂຶ້ນ:"
+
+#~ msgid ""
+#~ "The Sierpinski triangle can be drawn using a simpler L-system. See http://"
+#~ "jpvallon.free.fr/recursivite.html"
+#~ msgstr ""
+#~ "ສາມຫຼ່ຽມ Sierpinski ສາມາດແຕ້ມໄດ້ດ້ວຍລະບົບ L-system ທີ່ງ່າຍກວ່າ. ເບິ່ງ http://"
+#~ "jpvallon.free.fr/recursivite.html"
+
+#~ msgid ""
+#~ "The arrowhead curve is also interesting: http://www.mathcurve.com/"
+#~ "fractals/sierpinski/sierpinskitriangle.shtml"
+#~ msgstr ""
+#~ "ເສັ້ນໂຄ້ງຮູບຫົວລູກສອນ (arrowhead curve) ກໍໜ້າສົນໃຈ: http://www.mathcurve.com/"
+#~ "fractals/sierpinski/sierpinskitriangle.shtml"
+
+#~ msgid ""
+#~ "The dragon curve could be explained as a L-system: http://"
+#~ "ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+#~ msgstr ""
+#~ "ເສັ້ນໂຄ້ງມັງກອນ (dragon curve) ສາມາດອະທິບາຍດ້ວຍ L-system ໄດ້: http://"
+#~ "ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+
+#~ msgid ""
+#~ "The dragon2 curve is called the twin dragon: http://"
+#~ "ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
+#~ msgstr ""
+#~ "ເສັ້ນໂຄ້ງ dragon2 ເອີ້ນວ່າ ມັງກອນຄູ່ (twin dragon): http://ecademy.agnesscott.edu/"
+#~ "~lriddle/ifs/heighway/twindragon.htm"
+
+#~ msgid ""
+#~ "The space filling curves could be added (Peano, Hildebert, etc).  See: "
+#~ "http://teachout1.net/village/fill.html"
+#~ msgstr ""
+#~ "ສາມາດເພີ່ມເສັ້ນໂຄ້ງແບບເຕັມພື້ນທີ່ (Peano, Hildebert, ແລະ ອື່ນໆ). ເບິ່ງ: http://"
+#~ "teachout1.net/village/fill.html"
+
+#~ msgid ""
+#~ "We could do another exercise on embeeded polygons: http://"
+#~ "www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
+#~ "actionsrecursives.html"
+#~ msgstr ""
+#~ "ພວກເຮົາສາມາດເພີ່ມບົດຝຶກຫັດກ່ຽວກັບຮູບຫຼາຍຫຼ່ຽມຊ້ອນກັນ: http://www.inrialpes.fr/helix/"
+#~ "people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
+
+#~ msgid "Boolean fun"
+#~ msgstr "ຄວາມມ່ວນຊື່ນກັບບູລີນ"
+
+#~ msgid ""
+#~ "Boolean operations are one of the very basic task in programming.  As "
+#~ "long as you cannot write a not so simple boolean test under the minute, "
+#~ "you probably will have a very bad time writing a real program."
+#~ msgstr ""
+#~ "ການເຮັດວຽກກັບບູລີນ (Boolean) ແມ່ນໜຶ່ງໃນວຽກງານພື້ນຖານທີ່ສຸດໃນການຂຽນໂປຣແກຣມ. "
+#~ "ຕາບໃດທີ່ທ່ານຍັງບໍ່ສາມາດຂຽນການກວດສອບບູລີນທີ່ບໍ່ໄດ້ງ່າຍເກີນໄປໃຫ້ແລ້ວພາຍໃນໜຶ່ງນາທີ, "
+#~ "ທ່ານອາດຈະພົບກັບຄວາມລຳບາກໃນການຂຽນໂປຣແກຣມແທ້ໆ."
+
+#~ msgid ""
+#~ "That is why this lesson provides you a bunch of such exercises, so that "
+#~ "you can get trained in this."
+#~ msgstr ""
+#~ "ນັ້ນຄືເຫດຜົນທີ່ບົດຮຽນນີ້ຈັດກຽມບົດຝຶກຫັດຈຳນວນຫຼາຍມາໃຫ້ທ່ານ, ເພື່ອໃຫ້ທ່ານໄດ້ຝຶກຝົນກ່ຽວກັບເລື່ອງນີ້."
+
+#~ msgid "Boolean (even more) fun"
+#~ msgstr "ຄວາມມ່ວນຊື່ນກັບບູລີນ (ເພີ່ມຂຶ້ນ)"
+
+#~ msgid ""
+#~ "A very good introduction to this type is available here: http://"
+#~ "codingbat.com/doc/java-if-boolean-logic.html"
+#~ msgstr ""
+#~ "ບົດແນະນຳທີ່ດີຫຼາຍກ່ຽວກັບເລື່ອງນີ້ສາມາດເບິ່ງໄດ້ທີ່: http://codingbat.com/doc/java-if-"
+#~ "boolean-logic.html"
+
+#~ msgid "Ideas concerning the progression of exercises:"
+#~ msgstr "ແນວຄິດກ່ຽວກັບລຳດັບຂອງບົດຝຶກຫັດ:"
+
+#~ msgid ""
+#~ "A lander in vertical position above flat ground, the player can only "
+#~ "control thrust (done)"
+#~ msgstr "ຍານຢູ່ໃນຕຳແໜ່ງຕັ້ງຊື່ເໜືອພື້ນພຽງ, ຜູ້ຫຼິ້ນຄວບຄຸມໄດ້ພຽງແຕ່ແຮງຂັບດັນ (ສຳເລັດແລ້ວ)"
+
+#~ msgid ""
+#~ "A lander in vertical position not above flat ground, the player control "
+#~ "thrust and angle (done)"
+#~ msgstr "ຍານຢູ່ໃນຕຳແໜ່ງຕັ້ງຊື່ແຕ່ບໍ່ໄດ້ຢູ່ເໜືອພື້ນພຽງ, ຜູ້ຫຼິ້ນຄວບຄຸມແຮງຂັບດັນ ແລະ ມຸມ (ສຳເລັດແລ້ວ)"
+
+#~ msgid ""
+#~ "A lander with difficult angle and speed not above flat ground, the player "
+#~ "control thrust and angle"
+#~ msgstr "ຍານມີມຸມ ແລະ ຄວາມໄວທີ່ຄວບຄຸມຍາກ ແລະ ບໍ່ໄດ້ຢູ່ເໜືອພື້ນພຽງ, ຜູ້ຫຼິ້ນຄວບຄຸມແຮງຂັບດັນ ແລະ ມຸມ"
+
+#~ msgid ""
+#~ "A lander with difficult angle and speed not above flat ground, with "
+#~ "difficult ground, the player control thrust and angle"
+#~ msgstr ""
+#~ "ຍານມີມຸມ ແລະ ຄວາມໄວທີ່ຄວບຄຸມຍາກ, ບໍ່ໄດ້ຢູ່ເໜືອພື້ນພຽງ ແລະ ພື້ນດິນກໍມີຄວາມລຳບາກ, "
+#~ "ຜູ້ຫຼິ້ນຄວບຄຸມແຮງຂັບດັນ ແລະ ມຸມ"
+
+#~ msgid "Same with wind?"
+#~ msgstr "ຄືກັນແຕ່ເພີ່ມລົມ?"
 
 #~ msgid "<b>Moving</b>"
 #~ msgstr "<b>ການເຄື່ອນທີ່</b>"
