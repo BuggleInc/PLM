@@ -41,9 +41,15 @@
     <sonar.coverage.exclusions>src/lessons/**/*Entity.*</sonar.coverage.exclusions>
     <sonar.python.version>3.12</sonar.python.version>
     <!-- Debugging features may be enabled: an open-source project has nothing to hide -->
-    <sonar.issue.ignore.multicriteria>j1</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>j1,p1,t1</sonar.issue.ignore.multicriteria>
     <sonar.issue.ignore.multicriteria.j1.ruleKey>java:S4507</sonar.issue.ignore.multicriteria.j1.ruleKey>
     <sonar.issue.ignore.multicriteria.j1.resourceKey>src/**/*.java</sonar.issue.ignore.multicriteria.j1.resourceKey>
+    <!-- The Python entities get the primitives of their universe with a wildcard import, by design -->
+    <sonar.issue.ignore.multicriteria.p1.ruleKey>python:S2208</sonar.issue.ignore.multicriteria.p1.ruleKey>
+    <sonar.issue.ignore.multicriteria.p1.resourceKey>src/lessons/**/*Entity.py</sonar.issue.ignore.multicriteria.p1.resourceKey>
+    <!-- The suites and the abstract test classes hold no test of their own -->
+    <sonar.issue.ignore.multicriteria.t1.ruleKey>java:S2187</sonar.issue.ignore.multicriteria.t1.ruleKey>
+    <sonar.issue.ignore.multicriteria.t1.resourceKey>src/plm/test/**/*.java</sonar.issue.ignore.multicriteria.t1.resourceKey>
     <!-- Exercise corrections are expected to be somehow repetitive -->
     <sonar.cpd.exclusions>src/**/*Entity.java</sonar.cpd.exclusions>
   </properties>
