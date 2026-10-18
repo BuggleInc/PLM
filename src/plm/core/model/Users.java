@@ -1,11 +1,10 @@
 package plm.core.model;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -203,12 +202,7 @@ public class Users {
   public void flushUsersToFile()
   {
     synchronized (this) {
-      FileWriter fwUser;
-
       try {
-        fwUser                = new FileWriter(userDBFile);
-        BufferedWriter bwUser = new BufferedWriter(fwUser);
-
         StringWriter out = new StringWriter();
         out.append("[\n");
         for (int rank = 0; rank < usersList.size(); rank++) {
@@ -220,8 +214,7 @@ public class Users {
         }
         out.append("]\n");
 
-        bwUser.write(out.toString());
-        bwUser.close();
+        Files.writeString(userDBFile.toPath(), out.toString());
       } catch (IOException e) {
         e.printStackTrace();
       }

@@ -1,8 +1,6 @@
 package plm.core.model.session;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
@@ -48,10 +46,7 @@ public class GitSessionKit {
       // Recompute the summaries (the bodies are written by the tracker)
       File summary = new File(repoDir, lesson.getId() + ".summary");
       try {
-        FileWriter fwSummary     = new FileWriter(summary.getAbsoluteFile());
-        BufferedWriter bwSummary = new BufferedWriter(fwSummary);
-        bwSummary.write(Game.getInstance().studentWork.lessonSummary(lesson.getId()));
-        bwSummary.close();
+        Files.writeString(summary.toPath(), Game.getInstance().studentWork.lessonSummary(lesson.getId()));
       } catch (IOException ex) {
         System.out.println("Failed to write the lesson summary on disk: " + ex.getLocalizedMessage());
       }
