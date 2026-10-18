@@ -27,7 +27,23 @@
          below) follow the same property, which is declared here so that it
          always has a value. -->
     <skipTests>false</skipTests>
+    <!-- SonarQube settings: the Maven scanner reads them from here (sonar-project.properties is only read by the CLI scanner) -->
     <sonar.organization>buggleinc</sonar.organization>
+    <sonar.projectKey>BuggleInc_PLM</sonar.projectKey>
+    <sonar.projectName>Programmer's Learning Machine</sonar.projectName>
+    <sonar.links.homepage>https://people.irisa.fr/Martin.Quinson/Teaching/PLM/</sonar.links.homepage>
+    <sonar.links.issue>https://github.com/BuggleInc/PLM/issues</sonar.links.issue>
+    <sonar.links.scm>https://github.com/BuggleInc/PLM/</sonar.links.scm>
+    <sonar.sources>src</sonar.sources>
+    <sonar.exclusions>src/plm/test/**</sonar.exclusions>
+    <sonar.tests>src/plm/test</sonar.tests>
+    <sonar.python.version>3.12</sonar.python.version>
+    <!-- Debugging features may be enabled: an open-source project has nothing to hide -->
+    <sonar.issue.ignore.multicriteria>j1</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria.j1.ruleKey>java:S4507</sonar.issue.ignore.multicriteria.j1.ruleKey>
+    <sonar.issue.ignore.multicriteria.j1.resourceKey>src/**/*.java</sonar.issue.ignore.multicriteria.j1.resourceKey>
+    <!-- Exercise corrections are expected to be somehow repetitive -->
+    <sonar.cpd.exclusions>src/**/*Entity.java</sonar.cpd.exclusions>
   </properties>
   
   <dependencies>
@@ -488,6 +504,10 @@
             <id>report</id>
             <phase>verify</phase>
             <goals><goal>report</goal></goals>
+            <!-- The plm-entities-*.jar shipped in there duplicate classes of the main tree -->
+            <configuration>
+              <excludes><exclude>resources/langages/**</exclude></excludes>
+            </configuration>
           </execution>
         </executions>
       </plugin>

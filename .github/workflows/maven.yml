@@ -63,7 +63,7 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: xvfb-run -a mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=BuggleInc_PLM
+        run: xvfb-run -a mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
   test:
     name: test (${{ matrix.os }})
