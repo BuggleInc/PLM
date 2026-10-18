@@ -152,16 +152,7 @@ public class LangC extends TemplatedRemoteLang {
       String linkCmd    = compiler + " -g -Wall -lm -lpthread " + (isWindows ? "-lws2_32 " : "") + "-fsanitize=address -o \"" + exec + "\" " + linkInputs;
       //  -O0 -fno-omit-frame-pointer
 
-      try {
-        runCompiler(linkCmd, compileDir.toFile(), isWindows);
-      } catch (PLMCompilerException e) {
-        if (Game.getInstance().isDebugEnabled())
-          System.err.println(Game.i18n.tr("Compilation error. The linking command " + linkCmd + " failed:"));
-        else
-          System.err.println(Game.i18n.tr("Compilation error. The linking command failed:"));
-        System.err.println(code);
-        throw e;
-      }
+      runCompiler(linkCmd, compileDir.toFile(), isWindows);
 
       return exec.getAbsolutePath();
     } catch (IOException ioe) {
@@ -245,7 +236,8 @@ public class LangC extends TemplatedRemoteLang {
 
   /**
    * Run a compiler command line from workDir. Everything it prints on stdout+stderr is the message of the exception thrown if
-   * it fails, or if it emits warnings in picky mode. Otherwise, these warnings are just displayed on the console.
+   * it fails, or if it emits warnings in picky mode (the command is then displayed in debug mode). Otherwise, these warnings
+   * are just displayed on the console.
    */
   private static void runCompiler(String shellCommand, File workDir, boolean isWindows) throws IOException, InterruptedException, PLMCompilerException
   {
@@ -262,8 +254,11 @@ public class LangC extends TemplatedRemoteLang {
     stdout.join();
     stderr.join();
 
-    if (status != 0 || (Game.getInstance().isPickyEnabled() && out.length() > 0))
+    if (status != 0 || (Game.getInstance().isPickyEnabled() && out.length() > 0)) {
+      if (Game.getInstance().isDebugEnabled())
+        System.err.println(Game.i18n.tr("Compilation error. The command {0} failed.", shellCommand));
       throw new PLMCompilerException(out.toString(), null);
+    }
     System.err.print(out);
   }
 
