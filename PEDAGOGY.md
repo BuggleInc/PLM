@@ -333,8 +333,14 @@ student's solution is classified as wrong just because of rounding errors due to
 segments are merged, while dupplicated ones are removed.
 
 TODO:
-* the Sierpinski triangle with a simpler L-system, the arrowhead curve, the dragon curve as an L-system (and the twin dragon),
-  the space-filling curves (Peano, Hilbert), and nested polygons.
+* the Sierpinski triangle with a simpler L-system (http://jpvallon.free.fr/recursivite.html)
+* The Sierpinski curve (http://www.mathcurve.com/fractals/sierpinski/sierpinskitriangle.shtml)
+* (http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm)
+* The arrowhead curve
+* the dragon curve as an L-system (http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm)
+* the dragon2 exercise is called "twin dragon" (http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm)
+* the space-filling curves (Peano, Hilbert -- http://teachout1.net/village/fill.html)
+* nested polygons (http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html).
 
 ### Hanoi variations
 

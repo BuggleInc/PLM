@@ -15,13 +15,13 @@ que vamos introduzir.</p>
 <p>A parte mais difícil do código anterior é comn certeza a cascata de
 condicionais. Em algum ponto do seu código, certamente tem algo como isto:</p>
 
-<pre>if ([!java|c]getIndicação() == 'R'[/!][!scala]lerMensagem() == "R"[/!]) {
+<pre>if ([!java|c]getIndication() == 'R'[/!][!scala]lerMensagem() == "R"[/!]) {
   right();
   step();
-} else if ([!java|c]getIndicação() == 'L'[/!][!scala]lerMensagem() == "L"[/!]) {
+} else if ([!java|c]getIndication() == 'L'[/!][!scala]lerMensagem() == "L"[/!]) {
   left();
   step();
-} else if ([!java|c]getIndicação() == 'I'[/!][!scala]lerMensagem() == "I"[/!]) {
+} else if ([!java|c]getIndication() == 'I'[/!][!scala]lerMensagem() == "I"[/!]) {
   back();
   step();
 <span class="comment">/* other else if */</span>
@@ -32,7 +32,7 @@ condicionais. Em algum ponto do seu código, certamente tem algo como isto:</p>
 
 <p>Quando revisa este código, não fica claro à primeira vista que é
 simplesmente a escolha entre quatro ramos a depender do valor de
-[!java|c]getIndicação()[/!][!scala]lerMensagem()[/!]. Para melhorar ele,
+[!java|c]getIndication()[/!][!scala]lerMensagem()[/!]. Para melhorar ele,
 vamos usar uma construção [!java|c]<code>switch</code>, que na sintaxe de
 Java é o seguinte:[/!] [!scala] de busca de padrões, que é bastante poderosa
 e generaliza muito o <code>if</code>. É com certeza uma das maiores
@@ -64,7 +64,7 @@ ramo na lista depois do ramo para o qual pulou. Existem na verdade uns
 <p>É então possível reescrever o código do BDR anterior numa forma mais clara a
 usar a construção <tt>switch</tt>:</p>
 
-<pre>switch (getIndicação()) {
+<pre>switch (getIndication()) {
   case 'R':
     right(); 
     step(); 

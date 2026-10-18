@@ -2,12 +2,12 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>[!java|scala]Arrays[/!][!python]Lists[/!] e nós</h1>
 
-O objetivo deste exercício é reproduzir o padrão da primeira linha nas
-outras linhas com um deslocamento de uma célula (veja a aba Objetivo para
-detalhes). A maior diferença entre este exercício e os outros sobre padrões
-é que você tem que ler o padrão (na primeira linha) antes de
-reproduzí-lo. Você não pode fazer de outro jeito por que o mesmo código será
-executado em três mundos diferentes, cada um com seu próprio padrão.
+The goal of this exercise is to reproduce the pattern of the first column in
+the other columns with a shift of one cell (see the Objective tab for
+details). The biggest difference between this exercise and the others we had
+on patterns is that you have to read the pattern (on first column) before
+reproducing it. You cannot do otherwise because the same code will be
+executed on three different worlds, each of them having a specific pattern.
 
 <p>Uma solução é ler a próxima célula, e copiar ela na posição antes de voltar
 para ler a segunda célula. Mas já que é proibido usar os métodos de
@@ -256,18 +256,17 @@ resultado sem nenhuma complicação. Aqui está um método que retorna uma
 <h2>Objetivo deste exercício</h2>
 
 <p>Finalmente! Depois desta longa explicação, podemos voltar ao exercício.</p>
-<p>Sua missão é bastante simples na verdade. Seu código deve guardar o padrão
-de cores observado na primeira linha numa
-[!java|scala]array[/!][!python]list[/!].  [!python]O mais fácil é criar uma
-lista vazia, e então usar <code>append()</code>para adicionar as cores uma
-por uma à medida em que você for lendo elas (com
-<code>getCorDoChão()</code>).[/!] [!java|scala]Para isto, você deve declarar
-e alocar uma array de <code>Cor</code>. Mas atencção, existem vários mundos,
-de diferentes tamanhos; use <code>getAlturaDoMundo()</code> para recuperar o
-tamanho do mundo atual. Uma que a array esteja alocada, preencha ela lendo a
-cor do chão em cada um dos pontos (com <code>getCorDoChão()</code>).[/!]</p>  
+<p>Your mission is rather simple actually.  Your code should save the color
+pattern observed on the first column into [!java|scala]an
+array[/!][!python]a list[/!].  [!python]The easiest is to create an empty
+list, and then <code>append()</code> the colors one after the others as you
+read them (with <code>getGroundColor()</code>).[/!] [!java|scala]For that,
+you should declare and allocate an array of <code>Color</code>. Beware,
+there is several worlds, of differing size; use
+<code>getWorldHeight()</code> to retrieve the size of the current world.
+Once the array allocated, fill it by reading the ground color in each
+locations (with <code>getGroundColor()</code>).[/!]</p>  
 
-<p>Uma vez que você conseguiu ler e gravar o padrão na primeira linha, você tem
-que reaplicar o padrão nas outras linhas, por exemplo executando
-<code>getAlturaDoMundo()</code> vezes um método escrito especificamente para
-isto.</p> 
+<p>Once you managed to read and save the pattern on the first column, you have
+to reapply the pattern on every columns, for example by executing
+<code>getWorldWidth()</code> times a method written specifically for this.</p> 
