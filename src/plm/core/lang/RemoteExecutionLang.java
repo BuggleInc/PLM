@@ -170,29 +170,16 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       Thread commandReader = new Thread() {
         public void run()
         {
-          Exception parseError = null;
-          String str           = "";
+          String command = null;
           try {
-            while ((str = reader.readLine()) != null)
-              CommandExecutor.command(ent, str, bwriter);
+            while ((command = reader.readLine()) != null)
+              CommandExecutor.command(ent, command, bwriter);
           } catch (Exception e) {
-            parseError = e;
+            System.err.println("Error while handling the command " + command);
             e.printStackTrace();
             progress.outcome        = RunOutcome.kind.FAIL;
             progress.executionError = e.getMessage();
             process.destroyForcibly();
-          }
-          if (parseError != null) {
-            StringBuffer sb = new StringBuffer(str + "\n");
-            try {
-              while ((str = reader.readLine()) != null)
-                sb.append(str + "\n");
-            } catch (IOException ioe) {
-              System.err.println("Exception while handling the exception. Bailing out");
-              parseError.printStackTrace();
-              ioe.printStackTrace();
-            }
-            throw new RuntimeException("Error while reading the command: " + sb.toString(), parseError);
           }
         }
       };
