@@ -236,7 +236,9 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   a student keeps working when switching the human language. An alias sends the canonical name of its primitive
   (`PrimitiveMethod.command()`): the rest of the PLM, API gating included, only knows the canonical names. The build fails if a
   translated name is not a valid identifier in every language (accented letters are fine, but not decomposed ones) or designates
-  two primitives of the same glue.
+  two primitives of the same glue. The Scala, Python and C corrections of `InstructionsDrawG` call a few aliases, so that
+  `ExoTest*Lang` checks them in the glue. The Java correction cannot: the entity file is also compiled by maven as a class of
+  the PLM (extending SimpleBuggle), which only has the English names; the aliases only exist in the generated glue.
 - **Commands**: calling a primitive in the student's code sends `<name> <serialized args>`, e.g. `setObjectif [1:b1]`
   for `setObjectif(true)`. The arguments always are serialized as one array. The parsing relies on the first space of the
   line, since the serialized arguments may contain some (in strings). If the primitive returns something, the glue
@@ -680,9 +682,10 @@ cases:
 5. *Verifying the source code*: override `Exercise.verifySource(String code)` in the exercise class (not in the entity) and throw a
    `PLMCompilerException` to refuse the code of the editor. It is called once the student's code compiled and before it executes,
    so it applies to every language, and the message is shown as a compilation error. `MethodsDogHouse` thus requires exactly one
-   call to `left()`, ignoring comments and strings:
+   call to `left()`, ignoring comments and strings. Since students may call the primitives under their translated name, such a
+   check must also look for the alias of the current human language (`Game.i18n.trc("primitive", "left")`):
    ```java
-   @Override protected void verifySource(String code) throws PLMCompilerException
+   @Override public void verifySource(String code) throws PLMCompilerException
    {
      if (!isValid(code)) // a regex search on the code, once comments and strings are blanked out
        throw new PLMCompilerException(Game.i18n.tr("Your code must call left() exactly once."));

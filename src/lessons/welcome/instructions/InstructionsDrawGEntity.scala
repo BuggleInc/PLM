@@ -26,12 +26,12 @@ class InstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBuggle {
 		step();
 		left();
 		step();
-		/* back home */
-		brushUp();
-		right();
+		/* back home, with translated names to check that the glue accepts the aliases of every language */
+		leveBrosse();
+		direita();
 		forward(2);
 		right();
-		step();
+		avançarUmPasso();
 		left();
 		/* END SOLUTION */
 	}
