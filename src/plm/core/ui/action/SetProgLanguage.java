@@ -32,7 +32,7 @@ public class SetProgLanguage extends AbstractGameAction {
     }
 
     try {
-      game.setProgramingLanguage(lang);
+      game.setProgrammingLanguage(lang);
     } catch (BrokenProgrammingLanguageException ex) {
       JOptionPane.showMessageDialog(null, ex.getMessage(), ex.title, JOptionPane.ERROR_MESSAGE);
     }

@@ -360,7 +360,7 @@ public class Game implements IWorldView {
                                               + "Please consider contributing to this project by adapting this exercise "
                                               + "to this language.",
                                           lect.getName() + " (" + lect.getId() + ")", getProgrammingLanguage(), fallback.getLang()));
-        setProgramingLanguageSafe(fallback);
+        setProgrammingLanguageSafe(fallback);
       }
       MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
     } catch (UserAbortException e) {
@@ -806,16 +806,16 @@ public class Game implements IWorldView {
   }
   public Locale getLocale() { return FileUtils.getLocale(); }
 
-  public void setProgramingLanguageSafe(ProgrammingLanguage newLanguage)
+  public void setProgrammingLanguageSafe(ProgrammingLanguage newLanguage)
   {
     try {
-      setProgramingLanguage(newLanguage);
+      setProgrammingLanguage(newLanguage);
     } catch (BrokenProgrammingLanguageException ex) {
       throw new RuntimeException("Cannot set programming language to " + newLanguage.getLang(), ex);
     }
   }
 
-  public void setProgramingLanguage(ProgrammingLanguage newLanguage) throws BrokenProgrammingLanguageException
+  public void setProgrammingLanguage(ProgrammingLanguage newLanguage) throws BrokenProgrammingLanguageException
   {
     programmingLanguageManager.setCurrent(newLanguage);
     fireProgLangChange(newLanguage);

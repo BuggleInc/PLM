@@ -104,7 +104,7 @@ public class ApiGatingTest {
   {
     ProgrammingLanguage previous = Game.getInstance().getProgrammingLanguage();
     try {
-      Game.getInstance().setProgramingLanguage(Game.getInstance().programmingLanguageManager.JAVA);
+      Game.getInstance().setProgrammingLanguage(Game.getInstance().programmingLanguageManager.JAVA);
       BuggleWorld world = new BuggleWorld("doc", 3, 3);
       world.addEntity(new TeleportingBuggle()); // forbids setX(), setY() and setPos()
       String about = world.getAbout();
@@ -117,7 +117,7 @@ public class ApiGatingTest {
           interacting = about.indexOf("<b>Interacting with the world</b>");
       Assertions.assertTrue(0 <= moving && moving < brush && brush < interacting, about);
     } finally {
-      Game.getInstance().setProgramingLanguage(previous);
+      Game.getInstance().setProgrammingLanguage(previous);
     }
   }
 }

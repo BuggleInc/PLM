@@ -426,7 +426,7 @@ public class GitTrackerTest {
     ProgrammingLanguageManager langs = Game.getInstance().programmingLanguageManager;
     ProgrammingLanguage previous     = Game.getInstance().getProgrammingLanguage();
     try {
-      Game.getInstance().setProgramingLanguage(langs.JAVA);
+      Game.getInstance().setProgrammingLanguage(langs.JAVA);
       Exercise exo       = Mockito.mock(Exercise.class);
       RunOutcome outcome = new RunOutcome(langs.JAVA);
       outcome.outcome    = kind.FAIL;
@@ -435,13 +435,13 @@ public class GitTrackerTest {
       Assertions.assertSame(outcome, lastOutcome(exo));
 
       // The student changed the language since: that execution does not tell anything about the new one
-      Game.getInstance().setProgramingLanguage(langs.PYTHON);
+      Game.getInstance().setProgrammingLanguage(langs.PYTHON);
       RunOutcome other = lastOutcome(exo);
       Assertions.assertNotSame(outcome, other);
       Assertions.assertSame(langs.PYTHON, other.language);
       Assertions.assertEquals(0, other.totalTests);
     } finally {
-      Game.getInstance().setProgramingLanguage(previous);
+      Game.getInstance().setProgrammingLanguage(previous);
     }
   }
 

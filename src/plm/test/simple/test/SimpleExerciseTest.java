@@ -39,14 +39,14 @@ public abstract class SimpleExerciseTest {
     if (!g.isDebugEnabled()) {
       g.switchDebug();
     }
-    g.setProgramingLanguage(pl);
+    g.setProgrammingLanguage(pl);
 
     l   = new Main();
     exo = (SimpleExercise)l.getExercise("SimpleExercise");
 
     l.setCurrentExercise(exo);
     g.setCurrentLesson(l);
-    g.setProgramingLanguage(pl);
+    g.setProgrammingLanguage(pl);
     g.setLocale(new Locale("en"));
   }
 

@@ -54,7 +54,7 @@ public class ExoTest {
     g.setBatchExecution();
 
     /* Compute the answers with the java entities */
-    Game.getInstance().setProgramingLanguage(Game.getInstance().programmingLanguageManager.JAVA);
+    Game.getInstance().setProgrammingLanguage(Game.getInstance().programmingLanguageManager.JAVA);
 
     Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();
     for (String lessonName : lessonNamesToTest) {
