@@ -5,13 +5,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.InetSocketAddress;
-import java.net.StandardSocketOptions;
-import java.nio.channels.Channels;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import javax.swing.ImageIcon;
@@ -82,14 +79,10 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
 
       // Only on the IPv4 loopback, which no firewall filters and no other host can reach (see CONTRIBUTING.md).
       // The literal address avoids "localhost", which may resolve to ::1 on one side only.
-      ServerSocketChannel serverChannel = ServerSocketChannel.open();
-      serverChannel.bind(new InetSocketAddress("127.0.0.1", 0), 1);
-      int port = ((InetSocketAddress)serverChannel.getLocalAddress()).getPort();
-      serverChannel.configureBlocking(false);
-      Selector selector = Selector.open();
-      serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+      ServerSocket server = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"));
+      server.setSoTimeout(10000);
 
-      final Process process = buildProcess(executable, port).start();
+      final Process process = buildProcess(executable, server.getLocalPort()).start();
 
       // Captured (not just printed) so that if the process never connects at all, its stdout/stderr -- almost certainly
       // containing the actual reason (missing interpreter, exception thrown before Remote.connect() is even reached,
@@ -148,13 +141,10 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       stdoutReader.start();
       stderrReader.start();
 
-      final int ACCEPT_TIMEOUT_MS = 10000;
-      selector.select(ACCEPT_TIMEOUT_MS);
-      SocketChannel protocolChannel = serverChannel.accept();
-      selector.close();
-      serverChannel.close();
-
-      if (protocolChannel == null) {
+      final Socket protocolSocket;
+      try {
+        protocolSocket = server.accept();
+      } catch (SocketTimeoutException e) {
         process.destroyForcibly();
         // Give the reader threads a moment to drain whatever the process had already written before being killed.
         try {
@@ -169,18 +159,19 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
                                   (details.isEmpty() ? " (no output was produced by the child process at all -- check that it is on the PATH)"
                                                      : "\n\n--- child process output ---\n" + details);
         return;
+      } finally {
+        server.close();
       }
 
-      protocolChannel.setOption(StandardSocketOptions.TCP_NODELAY, true); // each command is a short request awaiting its answer
-      final SocketChannel finalProtocolChannel = protocolChannel;
-      final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(finalProtocolChannel), StandardCharsets.UTF_8));
+      protocolSocket.setTcpNoDelay(true); // each command is a short request awaiting its answer
+      final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(protocolSocket.getOutputStream(), StandardCharsets.UTF_8));
+      final BufferedReader reader  = new BufferedReader(new InputStreamReader(protocolSocket.getInputStream(), StandardCharsets.UTF_8));
 
       Thread commandReader = new Thread() {
         public void run()
         {
-          BufferedReader reader = new BufferedReader(new InputStreamReader(Channels.newInputStream(finalProtocolChannel), StandardCharsets.UTF_8));
-          Exception parseError  = null;
-          String str            = "";
+          Exception parseError = null;
+          String str           = "";
           try {
             while ((str = reader.readLine()) != null)
               CommandExecutor.command(ent, str, bwriter);
@@ -231,7 +222,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       onProcessFinished(process, executable, progress);
 
       bwriter.close();
-      finalProtocolChannel.close();
+      protocolSocket.close();
 
       if (retcode != 0)
         progress.setExecutionError("An issue occured in the executed code (return code: " + retcode + "). Check the output in the log panel for more info");
