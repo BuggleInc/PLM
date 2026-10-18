@@ -21,7 +21,8 @@ public class TreeEntity extends Turtle {
   {
     if (v >= colors.length || v < 0)
       setColor(colors[colors.length - 1]);
-    setColor(colors[v]);
+    else
+      setColor(colors[v]);
   }
 
   /* BEGIN REMOTE */
