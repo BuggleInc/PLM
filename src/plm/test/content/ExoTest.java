@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,23 +32,9 @@ import plm.core.utils.FileUtils;
 
 public class ExoTest {
 
-  static final String[] lessonNamesToTest = new String[] {
-      // WARNING, keep ChooseLessonDialog.lessons synchronized
-      "lessons.welcome",
-      "lessons.turmites",
-      "lessons.maze",
-      "lessons.turtleart",
-      "lessons.sort.basic",
-      "lessons.sort.dutchflag",
-      "lessons.sort.baseball",
-      "lessons.sort.pancake",
-      "lessons.recursion.cons",
-      "lessons.recursion.lego",
-      "lessons.recursion.hanoi",
-      // "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
-      "lessons.bat.string1",
-      "lessons.lander",
-  };
+  /** The offered lessons, but LightBot whose exercises are solved by clicking in the interface */
+  static final List<String> lessonNamesToTest =
+      Arrays.stream(Lesson.OFFERED).flatMap(Arrays::stream).filter(lesson -> !lesson.equals("lessons.lightbot")).toList();
 
   /** Exercises that run for long: the turmites do tens of thousands of remote-primitive round trips, and the fractals draw very many segments */
   private static final Set<String> SLOW_EXERCISES = Set.of("turmites.TurmiteCreator", "turmites.LangtonColors", "recursion.lego.SquareKoch",

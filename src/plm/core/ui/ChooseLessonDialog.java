@@ -29,6 +29,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LessonLoadingException;
+import plm.core.model.lesson.Lesson;
 import plm.core.utils.FileUtils;
 
 public class ChooseLessonDialog extends JFrame {
@@ -71,13 +72,7 @@ public class ChooseLessonDialog extends JFrame {
 
     LessonOverview overview = new LessonOverview(this);
 
-    LessonMatrix matrix = new LessonMatrix(overview, new String[][] {
-                                                         // WARNING, keep ExoTest.lessons synchronized
-                                                         {"lessons/welcome", "lessons/maze", "lessons/turmites", "lessons/turtleart"},
-                                                         {"lessons/sort/basic", "lessons/sort/dutchflag", "lessons/sort/baseball", "lessons/sort/pancake"},
-                                                         {"lessons/recursion/cons", "lessons/recursion/lego", "lessons/recursion/hanoi"},
-                                                         {"lessons/lightbot", "lessons/bat/string1", "lessons/lander"},
-                                                     });
+    LessonMatrix matrix = new LessonMatrix(overview, Lesson.OFFERED);
 
     add(blurb, BorderLayout.NORTH);
 
@@ -113,7 +108,7 @@ class LessonMatrix extends JPanel {
     int maxCol = 0;
     for (int row = 0; row < lessons.length; row++) {
       for (int col = 0; col < lessons[row].length; col++) {
-        LessonButton btLesson = new LessonButton(overview, lessons[row][col]);
+        LessonButton btLesson = new LessonButton(overview, lessons[row][col].replace('.', '/'));
 
         c.gridy = row;
         c.gridx = col;

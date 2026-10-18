@@ -12,6 +12,12 @@ import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 
 public abstract class Lesson {
+  /** The packages of the lessons offered to the students, by row of the lesson chooser */
+  public static final String[][] OFFERED = {{"lessons.welcome", "lessons.maze", "lessons.turmites", "lessons.turtleart"},
+                                            {"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake"},
+                                            {"lessons.recursion.cons", "lessons.recursion.lego", "lessons.recursion.hanoi"},
+                                            {"lessons.lightbot", "lessons.bat.string1", "lessons.lander"}};
+
   private String name;
   private String id;
 

@@ -509,8 +509,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     the code, with the test methods running in parallel. They catch broken content, such as a correction that no longer matches
     its `-answerN.map` or a translation that breaks the markup.
     * *`ExoTestJavaLang`, `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`:* for every exercise, `compileRunCheck()` of the
-      correction entity must pass in that language. They share `ExoTest`, which lists the lessons and their exercises. The Python
-      and C ones also fail when the exercise has no entity file in their language, and the Turmites get a longer timeout.
+      correction entity must pass in that language. They share `ExoTest`, which lists the exercises of the lessons offered to the
+      students (`Lesson.OFFERED`, also shown by the lesson chooser), but LightBot. The Python and C ones also fail when the
+      exercise has no entity file in their language, and the Turmites get a longer timeout.
     * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
       known languages, and no tag is malformed (such as `[/!` without its closing bracket, or `[java]` without its `!`).
     * *`TranslationsTest`:* the work of the translators, who are not all programmers, does not break the PLM. The primitive names
