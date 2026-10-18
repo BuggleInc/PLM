@@ -152,7 +152,8 @@ public class LangC extends TemplatedRemoteLang {
       Files.writeString(compileDir.resolve(studentFileName), "#include \"Remote.h\"\n#include \"" + remote + ".h\"\n\n" + studentCode);
 
       String linkInputs = studentFileName + " \"" + valueSerializerObj + "\" \"" + remoteObj + "\" \"" + remoteWorldObj + "\"";
-      String linkCmd    = cc + " -lm -lpthread " + (isWindows ? "-lwsock32 -lws2_32 " : "") + "-o \"" + exec + "\" " + linkInputs;
+      // The libraries come after the objects using them, as the linker only takes from a library what is needed so far
+      String linkCmd = cc + " -o \"" + exec + "\" " + linkInputs + " -lm -lpthread" + (isWindows ? " -lws2_32" : "");
 
       runCompiler(linkCmd, compileDir.toFile(), isWindows);
 
