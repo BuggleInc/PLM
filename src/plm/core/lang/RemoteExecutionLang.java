@@ -82,9 +82,13 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       // Only on the IPv4 loopback, which no firewall filters and no other host can reach (see CONTRIBUTING.md).
       // The literal address avoids "localhost", which may resolve to ::1 on one side only.
       ServerSocket server = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"));
-      server.setSoTimeout(10000);
-
-      final Process process = buildProcess(executable, server.getLocalPort()).start();
+      final Process process;
+      try {
+        process = buildProcess(executable, server.getLocalPort()).start();
+      } catch (IOException e) {
+        server.close();
+        throw e;
+      }
 
       // Captured (not just printed) so that if the process never connects at all, its stdout/stderr -- almost certainly
       // containing the actual reason (missing interpreter, exception thrown before Remote.connect() is even reached,
@@ -134,9 +138,10 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       stderrReader.start();
 
       final Socket protocolSocket;
-      try {
-        protocolSocket = server.accept();
-      } catch (SocketTimeoutException e) {
+      try (server) {
+        protocolSocket = acceptConnection(server, process);
+      }
+      if (protocolSocket == null) {
         process.destroyForcibly();
         // Give the reader threads a moment to drain whatever the process had already written before being killed.
         try {
@@ -151,8 +156,6 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
                                   (details.isEmpty() ? " (no output was produced by the child process at all -- check that it is on the PATH)"
                                                      : "\n\n--- child process output ---\n" + details);
         return;
-      } finally {
-        server.close();
       }
 
       protocolSocket.setTcpNoDelay(true); // each command is a short request awaiting its answer
@@ -230,6 +233,25 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
     } catch (Exception e) {
       resEvaluationError.append(e.getMessage());
       progress.setExecutionError(resEvaluationError.toString());
+    }
+  }
+
+  /**
+   * Waits for the process to connect to the server, for up to 10 seconds. Returns null if it does not, or if it ends before:
+   * a student program that fails at startup is reported right away.
+   */
+  private static Socket acceptConnection(ServerSocket server, Process process) throws IOException
+  {
+    server.setSoTimeout(100);
+    long deadline = System.nanoTime() + 10_000_000_000L;
+    while (true) {
+      boolean ended = !process.isAlive(); // checked before accept(), which still gets a connection made before the end
+      try {
+        return server.accept();
+      } catch (SocketTimeoutException e) {
+        if (ended || System.nanoTime() > deadline)
+          return null;
+      }
     }
   }
 }
