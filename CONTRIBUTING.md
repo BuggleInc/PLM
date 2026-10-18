@@ -5,7 +5,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
 
 * [Overall architecture](#Architecture) and concepts, to help the onboarding of prospective contributors
 * [How to translate the project](#Translating_the_PLM)
-* [How to add new exercises and design new universes](#Extending_the_PLM)
+* [How to add new lessons, exercises and universes](#Extending_the_PLM)
 * [Maintainer's notes](#Maintainers_notes): how to merge in new translation and how to release a new version of the PLM.
 
 # Architecture
@@ -590,6 +590,24 @@ unchanged, and generates the translated files with your change. Some pitfalls:
   new fuzzy or untranslated entry means that a `msgid` does not match the html anymore.
 
 # Extending the PLM
+
+## Adding a new lesson
+
+A lesson is a package under `src/lessons/` (e.g. `lessons.turmites`) containing:
+
+- `Main.java`: a subclass of `Lesson` whose `loadExercises()` lists the exercises with `addExercise(exo)`, in the order of the
+  lesson. `addExercise(exo, previous)` makes an exercise depend on a previous one in the lesson graph instead.
+- `Main.html`: the presentation of the lesson (*Help/About this lesson*). Its first `<h1>` gives the name of the lesson.
+- `short_desc.html`: the short description shown by the lesson chooser.
+- `icon.png`: the icon of the lesson in the lesson chooser.
+
+Then:
+
+- Add the lesson to `Lesson.OFFERED`, which defines the rows of the lesson chooser. The `ExoTest*Lang` tests then check all its
+  exercises.
+- Add `Main.html` and `short_desc.html` to `po4a.conf`, along with the mission texts of the exercises, so that they get
+  translated.
+- Each exercise lives in a sub-package, see below.
 
 ## Adding a new exercise
 
