@@ -79,7 +79,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
   private JMenu menuFile;
   private JMenuItem miFileSavePicture, miExoSwitch, miExoExercise, miFileQuit;
   private JMenu menuExercise;
-  private JMenuItem miExoRevert, miExoDebug, miExoCreative;
+  private JMenuItem miExoRevert, miExoDebug, miExoPicky, miExoCreative;
 
   private JMenu menuSession;
   private JMenuItem miSessionExport, miSessionImport, miAddUser, miSwitchUser, miRemoveUser;
@@ -269,6 +269,17 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
       }
     });
     menuExercise.add(miExoDebug);
+
+    miExoPicky = new JCheckBoxMenuItem(new AbstractGameAction(g, Game.i18n.tr("Picky mode (compiler warnings are errors)"), null) {
+      private static final long serialVersionUID = 1L;
+
+      @Override public void actionPerformed(ActionEvent e)
+      {
+        game.switchPicky();
+      }
+    });
+    miExoPicky.setSelected(g.isPickyEnabled());
+    menuExercise.add(miExoPicky);
 
     miExoCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, Game.i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
       private static final long serialVersionUID = 1L;
@@ -706,6 +717,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     miExoExercise.setText(Game.i18n.tr("Switch exercise"));
     miExoRevert.setText(Game.i18n.tr("Revert Exercise"));
     miExoDebug.setText(Game.i18n.tr("Debug mode"));
+    miExoPicky.setText(Game.i18n.tr("Picky mode (compiler warnings are errors)"));
     miExoCreative.setText(Game.i18n.tr("Creative mode"));
 
     menuSession.setText(Game.i18n.tr("Session"));

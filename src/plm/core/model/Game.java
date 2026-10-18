@@ -97,6 +97,7 @@ public class Game implements IWorldView {
   /* TODO: document these values elsewhere */
   public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true
   public static final String PROP_ANSWER_CACHE   = "answers.cache";  // Whether to use the cache of answers worlds on disk, defaults to true.
+  public static final String PROP_PICKY          = "compiler.picky"; // Whether the compiler warnings are errors, defaults to false.
                                                                      // Turning to false will slow down the startup process, but avoid out of date files
 
   public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
@@ -871,6 +872,10 @@ public class Game implements IWorldView {
   private boolean doBatch = false;
   public void setBatchExecution() { doBatch = true; }
   public boolean isBatchExecution() { return doBatch; }
+
+  public void switchPicky() { setProperty(PROP_PICKY, String.valueOf(!isPickyEnabled())); }
+  /** The batch executions (the robots testing the corrections) are always picky, so that no warning creeps into the corrections */
+  public boolean isPickyEnabled() { return doBatch || Boolean.parseBoolean(getProperty(PROP_PICKY, "false", true)); }
 
   private boolean doCreative = false;
   public void switchCreative() { doCreative = !doCreative; }

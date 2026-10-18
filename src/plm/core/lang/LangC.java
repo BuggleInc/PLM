@@ -37,6 +37,9 @@ public class LangC extends TemplatedRemoteLang {
   private static String brokenLanguageMessage;
   private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
+  /** The property naming the C compiler to use (a command on the PATH or a full path). Defaults to gcc */
+  public static final String PROP_COMPILER = "c.compiler";
+
   /**
    * Root directory for every temp file this language produces (compiled binaries and their generated .c source),
    * nested under the shared {@link RemoteExecutionLang#TMP_ROOT} like every other language's own tempFolder.
@@ -57,11 +60,9 @@ public class LangC extends TemplatedRemoteLang {
 
   @Override public boolean isBrokenLanguage()
   {
-    Runtime runtime = Runtime.getRuntime();
-
     if (brokenLanguageState == BrokenLanguageState.Unitialized) {
       try {
-        runtime.exec("gcc --version");
+        Runtime.getRuntime().exec(new String[] {Game.getProperty(PROP_COMPILER, "gcc", true), "--version"});
         brokenLanguageState = BrokenLanguageState.Usable;
       } catch (IOException e) {
         brokenLanguageMessage = e.getLocalizedMessage();
@@ -115,6 +116,7 @@ public class LangC extends TemplatedRemoteLang {
       Path compileDir = Files.createTempDirectory(C_ROOT, exo.getId() + "-" + whatToCompile + "-");
 
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
+      String compiler   = Game.getProperty(PROP_COMPILER, "gcc", true);
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
       String valueSerializerH = readResource("value_serializer.h");
@@ -124,9 +126,9 @@ public class LangC extends TemplatedRemoteLang {
       String remoteWorldH     = readResource(remote + ".h");
       String remoteWorldC     = readResource(remote + ".c");
 
-      Path valueSerializerObj = ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), isWindows);
-      Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), isWindows);
-      Path remoteWorldObj     = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), isWindows);
+      Path valueSerializerObj = ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), compiler, isWindows);
+      Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), compiler, isWindows);
+      Path remoteWorldObj     = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), compiler, isWindows);
 
       // The student/correction file below #include's these headers directly: they need a physical presence in compileDir.
       Files.writeString(compileDir.resolve("value_serializer.h"), valueSerializerH);
@@ -147,12 +149,12 @@ public class LangC extends TemplatedRemoteLang {
       Files.writeString(compileDir.resolve(studentFileName), "#include \"Remote.h\"\n#include \"" + remote + ".h\"\n\n" + studentCode);
 
       String linkInputs = studentFileName + " \"" + valueSerializerObj + "\" \"" + remoteObj + "\" \"" + remoteWorldObj + "\"";
-      String linkCmd    = "gcc -g -Wall -lm -lpthread " + (isWindows ? "-lws2_32 " : "") + "-fsanitize=address -o \"" + exec + "\" " + linkInputs;
+      String linkCmd    = compiler + " -g -Wall -lm -lpthread " + (isWindows ? "-lws2_32 " : "") + "-fsanitize=address -o \"" + exec + "\" " + linkInputs;
       //  -O0 -fno-omit-frame-pointer
 
-      String errors = runShellCommand(linkCmd, compileDir.toFile(), isWindows);
-      if (!errors.isEmpty()) {
-        PLMCompilerException e = new PLMCompilerException(errors, null);
+      try {
+        runCompiler(linkCmd, compileDir.toFile(), isWindows);
+      } catch (PLMCompilerException e) {
         if (Game.getInstance().isDebugEnabled())
           System.err.println(Game.i18n.tr("Compilation error. The linking command " + linkCmd + " failed:"));
         else
@@ -177,7 +179,7 @@ public class LangC extends TemplatedRemoteLang {
    * the old, now-unreferenced object is just harmless orphaned disk usage, same as the per-compile directories above.
    *
    * headers lists every header (by filename) that baseName's own "#include" needs to find alongside it while it gets
-   * compiled in isolation.
+   * compiled in isolation. The compiler is part of the hash too, as objects of different compilers may not link together.
    *
    * Two concurrent first-uses of the same not-yet-cached object are safe either way (Files.move() is atomic, so neither
    * can observe or link against a half-written object file, and both would produce byte-identical output regardless);
@@ -185,10 +187,10 @@ public class LangC extends TemplatedRemoteLang {
    */
   private static final ConcurrentHashMap<String, Object> objectLocks = new ConcurrentHashMap<>();
 
-  private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, boolean isWindows)
+  private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, String compiler, boolean isWindows)
       throws IOException, InterruptedException, PLMCompilerException
   {
-    String hash     = contentHash(sourceContent, headers);
+    String hash     = contentHash(compiler + "\n" + sourceContent, headers);
     Path objectFile = OBJECTS_DIR.resolve(baseName + "-" + hash + ".o");
     if (Files.exists(objectFile))
       return objectFile;
@@ -210,10 +212,8 @@ public class LangC extends TemplatedRemoteLang {
         // Must share -fsanitize=address with the final link step: ASan's instrumentation needs to be consistent across
         // every object file being linked together. -Wall/-g are harmless either way; -lm/-lpthread/-lws2_32 are link-only
         // flags, meaningless here since we're not linking anything yet.
-        String compileCmd = "gcc -g -x c -Wall -fsanitize=address -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
-        String errors     = runShellCommand(compileCmd, scratch.toFile(), isWindows);
-        if (!errors.isEmpty())
-          throw new PLMCompilerException(errors, null);
+        String compileCmd = compiler + " -g -x c -Wall -fsanitize=address -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
+        runCompiler(compileCmd, scratch.toFile(), isWindows);
 
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
       } finally {
@@ -244,10 +244,10 @@ public class LangC extends TemplatedRemoteLang {
   }
 
   /**
-   * Run a shell command from workDir, returning everything it printed on stdout+stderr (empty = success, by
-   *  convention of every caller here: gcc stays silent unless something went wrong).
+   * Run a compiler command line from workDir. Everything it prints on stdout+stderr is the message of the exception thrown if
+   * it fails, or if it emits warnings in picky mode. Otherwise, these warnings are just displayed on the console.
    */
-  private static String runShellCommand(String shellCommand, File workDir, boolean isWindows) throws IOException, InterruptedException
+  private static void runCompiler(String shellCommand, File workDir, boolean isWindows) throws IOException, InterruptedException, PLMCompilerException
   {
     String[] arg1 = isWindows ? new String[] {"cmd.exe", "/c", shellCommand} : new String[] {"/bin/sh", "-c", shellCommand};
 
@@ -258,11 +258,13 @@ public class LangC extends TemplatedRemoteLang {
     Thread stderr = drain(process.getErrorStream(), out);
     stdout.start();
     stderr.start();
-    process.waitFor();
+    int status = process.waitFor();
     stdout.join();
     stderr.join();
 
-    return out.toString();
+    if (status != 0 || (Game.getInstance().isPickyEnabled() && out.length() > 0))
+      throw new PLMCompilerException(out.toString(), null);
+    System.err.print(out);
   }
 
   private static Thread drain(InputStream in, StringBuffer into)
