@@ -150,9 +150,9 @@ char* plm_serialize(const plm_value_t* val)
 }
 
 // --- Varargs Object Generation ---
-plm_value_t* plm_vfrom_format(const char** fmt_ptr, va_list args)
+plm_value_t* plm_vfrom_format(const char** fmt_ptr, va_list* args)
 {
-  if (!**fmt_ptr || **fmt_ptr == '\0')
+  if (**fmt_ptr == '\0')
     return NULL;
 
   plm_value_t* val = calloc(1, sizeof(plm_value_t));
@@ -165,27 +165,27 @@ plm_value_t* plm_vfrom_format(const char** fmt_ptr, va_list args)
       break;
     case 'i':
       val->type = PLM_VAL_INT;
-      val->as.i = (uint32_t)va_arg(args, int);
+      val->as.i = (uint32_t)va_arg(*args, int);
       break;
     case 'f':
       val->type = PLM_VAL_DOUBLE;
-      val->as.f = va_arg(args, double);
+      val->as.f = va_arg(*args, double);
       break;
     case 'b':
       val->type = PLM_VAL_BOOL;
-      val->as.b = (bool)va_arg(args, int);
+      val->as.b = (bool)va_arg(*args, int);
       break;
     case 'c':
       val->type = PLM_VAL_CHAR;
-      val->as.c = (char)va_arg(args, int);
+      val->as.c = (char)va_arg(*args, int);
       break;
     case 'C':
       val->type     = PLM_VAL_COLOR;
-      val->as.color = (uint32_t)va_arg(args, uint32_t);
+      val->as.color = (uint32_t)va_arg(*args, uint32_t);
       break;
     case 's':
       val->type   = PLM_VAL_STRING;
-      val->as.str = strdup(va_arg(args, const char*));
+      val->as.str = strdup(va_arg(*args, const char*));
       break;
     case '[': {
       val->type          = PLM_VAL_ARRAY;
@@ -213,7 +213,7 @@ plm_value_t* plm_from_format(const char* fmt, ...)
   va_list args;
   va_start(args, fmt);
   const char* p    = fmt;
-  plm_value_t* val = plm_vfrom_format(&p, args);
+  plm_value_t* val = plm_vfrom_format(&p, &args);
   va_end(args);
   return val;
 }
@@ -223,7 +223,7 @@ char* plm_serialize_fmt(const char* fmt, ...)
   va_list args;
   va_start(args, fmt);
   const char* p    = fmt;
-  plm_value_t* val = plm_vfrom_format(&p, args);
+  plm_value_t* val = plm_vfrom_format(&p, &args);
   va_end(args);
   char* res = plm_serialize(val);
   plm_value_free(val);

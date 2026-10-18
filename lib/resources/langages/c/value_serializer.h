@@ -33,7 +33,8 @@ void plm_value_free(plm_value_t* val);
 
 // Format-Driven Builders (Variadic Solutions)
 plm_value_t* plm_from_format(const char* fmt, ...);
-plm_value_t* plm_vfrom_format(const char** fmt_ptr, va_list args);
+// args is a pointer so that the nested calls consume the arguments from the same position, whatever the ABI
+plm_value_t* plm_vfrom_format(const char** fmt_ptr, va_list* args);
 char* plm_serialize_fmt(const char* fmt, ...);
 
 // Native Array Conversion Helpers (abort on type mismatch)
