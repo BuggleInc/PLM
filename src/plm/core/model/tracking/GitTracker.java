@@ -125,6 +125,9 @@ public class GitTracker implements UserSwitchesListener {
     commitAndPush(writeCommitMessage(exo, Game.getInstance().getProgrammingLanguage(), null, "reverted", new JSONObject()));
   }
 
+  /** Releases the repository, whose files cannot be deleted on Windows while it is open */
+  public void close() { gitUtils.dispose(); }
+
   public void leave()
   {
     System.out.println(Game.i18n.tr("Pushing to the remote repository before exiting."));
@@ -143,7 +146,7 @@ public class GitTracker implements UserSwitchesListener {
       e.printStackTrace();
     }
 
-    gitUtils.dispose();
+    close();
   }
 
   /** Commits the pending changes, then writes the whole local repository of the current user into that zip file */

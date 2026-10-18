@@ -5,6 +5,8 @@ import java.io.OutputStream;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -12,6 +14,7 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.revwalk.RevCommit;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,9 +32,13 @@ import plm.core.utils.FileUtils;
 /** Importing the session of a zip file merges its history into the local one, without losing anything */
 public class GitTrackerImportTest {
   @TempDir Path path;
+  private final List<Machine> machines = new ArrayList<>();
 
   private static final String LOCAL = "11111111-1111-1111-1111-111111111111";
   private static final String OTHER = "22222222-2222-2222-2222-222222222222";
+
+  /** Windows cannot delete the temporary directory while the repositories in there are open */
+  @AfterEach public void closeTrackers() { machines.forEach(machine -> machine.tracker.close()); }
 
   @BeforeAll public static void setUpGame()
   {
@@ -62,6 +69,7 @@ public class GitTrackerImportTest {
       current  = new AtomicReference<>(user);
       Mockito.when(users.getCurrentUser()).thenAnswer(invocation -> current.get());
       tracker = new GitTracker(sessions.toFile(), users);
+      machines.add(this);
     }
 
     /** Makes addUser() behave like the real one: the new user becomes the current one, and the tracker switches to it */
