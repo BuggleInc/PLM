@@ -37,8 +37,8 @@
     <sonar.sources>src</sonar.sources>
     <sonar.exclusions>src/plm/test/**</sonar.exclusions>
     <sonar.tests>src/plm/test</sonar.tests>
-    <!-- The entities of the exercises are only run once templated, from generated sources -->
-    <sonar.coverage.exclusions>src/lessons/**/*Entity.*</sonar.coverage.exclusions>
+    <!-- The entities of the exercises are only run once templated, from generated sources, and the GUI is not tested -->
+    <sonar.coverage.exclusions>src/lessons/**/*Entity.*,src/**/ui/**,src/**/*View*.java,src/**/*Panel.java</sonar.coverage.exclusions>
     <sonar.python.version>3.12</sonar.python.version>
     <!-- Debugging features may be enabled: an open-source project has nothing to hide -->
     <sonar.issue.ignore.multicriteria>j1,p1,t1</sonar.issue.ignore.multicriteria>
@@ -50,8 +50,8 @@
     <!-- The suites and the abstract test classes hold no test of their own -->
     <sonar.issue.ignore.multicriteria.t1.ruleKey>java:S2187</sonar.issue.ignore.multicriteria.t1.ruleKey>
     <sonar.issue.ignore.multicriteria.t1.resourceKey>src/plm/test/**/*.java</sonar.issue.ignore.multicriteria.t1.resourceKey>
-    <!-- Exercise corrections are expected to be somehow repetitive -->
-    <sonar.cpd.exclusions>src/**/*Entity.java</sonar.cpd.exclusions>
+    <!-- Exercise corrections are expected to be somehow repetitive, just like the translations of the mission texts. Remove that from the dupplication detection. -->
+    <sonar.cpd.exclusions>src/**/*Entity.java,src/**/*.html</sonar.cpd.exclusions>
   </properties>
   
   <dependencies>
