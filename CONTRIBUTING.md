@@ -56,7 +56,7 @@ Here are the steps of the exercise execution:
   below.
 * **Compile**: The starting point is `ProgrammingLanguage.compileExo()`.
   - The code is then compiled to an external executable/jar if needed. Java/Scala compile in-process to avoid the startup time of an
-    external JVM. C and Python use an external compilers.
+    external JVM, C uses an external `gcc`, and Python is checked by `python3 -m py_compile`.
   - `compileExo()` returns a textual reference to the result (the path to a jar, a binary, etc), which the caller then passes
     down as-is to `runEntity()`'s `executable` parameter below.
 * **Source verification**: `Exercise.compileRunCheck()` then calls `Exercise.verifySource()` with the editor's content, for the
@@ -533,13 +533,15 @@ one checks the correction entities against it.
 ## Languages & runtime versions
 
 - **Build/host**: Java 17 (`maven.compiler.release=17`), built with Maven (`pom.xml`).
-- **Student languages** (each implemented as a `ProgrammingLanguage` subclass in `plm.core.lang`):
-  - **Java**: compiled with the standard JVM javac, entry point is the correction/student class directly (no `public static
-    void main` boilerplate exposed to the student).
-  - **Scala**: `scala3-library_3`/`scala3-compiler_3` 3.9.0 (LTS); compiled in-process by driving `dotty.tools.dotc.Driver` with
-    `-no-indent` (braces only, since many entities mix tabs and spaces), then run as its own `java -cp` process like Java.
-  - **Python**: an external `python3` process is spawned per run.
-  - **C** compiled externally and driven over pipes.
+- **Student languages**: each is a `ProgrammingLanguage` subclass in `plm.core.lang` (`LangJava`, `LangScala`, `LangPython`,
+  `LangC`). Whatever the language, the student's code runs in its own process and calls the primitives over a socket (see
+  "How an exercise executes" and "Remoting" above). What differs is how the code gets compiled:
+  - **Java**: compiled in-process with the JDK compiler (`javax.tools`), then run with `java -cp`.
+  - **Scala**: `scala3-library_3`/`scala3-compiler_3` 3.9.0 (LTS), compiled in-process by driving `dotty.tools.dotc.Driver`
+    with `-no-indent` (braces only, since many entities mix tabs and spaces), then run with `java -cp` like Java.
+  - **Python**: checked with `python3 -m py_compile`, so that syntax errors are reported as compilation errors before the
+    run, then run by `python3` (Python 3 must be on the PATH).
+  - **C**: compiled and linked by an external `gcc` (with AddressSanitizer), then the executable is run.
 - Adding a new language: see `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language` and extend
   `plm.core.lang.ProgrammingLanguage`. Be warned that you will have to adapt the mission text of every exercise, as they contain
   language-specific chunks.

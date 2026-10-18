@@ -26,8 +26,8 @@ import plm.core.utils.Indentation;
  * socket -- same protocol as Java/Scala/C.
  *
  * The per-compile workspace name (packageNameForExercise(), shared with Java/Scala/C in TemplatedRemoteLang) is
- * factored; the rest of the pipeline isn't yet. Substantially simpler than LangJava/LangScala in one respect: Python
- * needs no compilation step at all (just write Entity.py and Main.py and spawn "python3 Main.py <socket>"), and no
+ * factored; the rest of the pipeline isn't yet. Substantially simpler than LangJava/LangScala in one respect: compiling
+ * only checks the syntax ("python3 -m py_compile Entity.py") before "python3 Main.py <socket>" runs the code, and there is no
  * import-rewriting for its support modules (ValueSerializer.py, Remote*.py, RecList.py): they are deployed once in ENTITIES_DIR,
  * which is on the PYTHONPATH of the run. Python resolves "from X import *" by module name, not by a package-qualified name the
  * way Java/Scala do, so there is no analogue of the ClassCastException-class bug LangJava/LangScala had to work around there.
@@ -138,9 +138,8 @@ public class LangPython extends TemplatedRemoteLang {
         Files.writeString(entityFile.toPath(), entityCode);
         Files.writeString(mainFile.toPath(), mainContent);
 
-        // No compilation step for Python: syntax errors only surface when the process actually runs. Do a quick
-        // "python3 -m py_compile" pass here so compile-time errors are reported at compile time, matching the other
-        // languages' UX, instead of silently at first run.
+        // "python3 -m py_compile" reports the syntax errors at compile time, as in the other languages, instead of at the
+        // first run.
         try {
           Process proc = new ProcessBuilder("python3", "-m", "py_compile", "Entity.py").directory(workspace).redirectErrorStream(true).start();
           String output = new BufferedReader(new InputStreamReader(proc.getInputStream())).lines().collect(Collectors.joining("\n"));
