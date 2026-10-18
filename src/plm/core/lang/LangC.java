@@ -119,7 +119,7 @@ public class LangC extends TemplatedRemoteLang {
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       String compiler   = Game.getProperty(PROP_COMPILER, "gcc", true);
       // The cached objects and the final link must agree on ASan, whose instrumentation spans every linked object
-      String cc         = compiler + " -g -Wall" + (supportsAsan(compiler, isWindows) ? " -fsanitize=address" : "");
+      String cc         = compiler + " -g -Wall" + (supportsAsan() ? " -fsanitize=address" : "");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
       String valueSerializerH = readResource("value_serializer.h");
@@ -265,18 +265,21 @@ public class LangC extends TemplatedRemoteLang {
   private static final Map<String, Boolean> asanSupport = new HashMap<>();
 
   /**
-   * Whether the compiler can link a program with AddressSanitizer (MinGW cannot), probed once per compiler by building a
-   * trivial program in C_ROOT. Without it, the C programs run without memory checks.
+   * Whether the configured compiler can link a program with AddressSanitizer (MinGW cannot), probed once per compiler by
+   * building a trivial program in C_ROOT. Without it, the C programs run without memory checks.
    */
-  private static synchronized boolean supportsAsan(String compiler, boolean isWindows) throws IOException, InterruptedException
+  public static synchronized boolean supportsAsan() throws InterruptedException
   {
+    String compiler   = Game.getProperty(PROP_COMPILER, "gcc", true);
     Boolean supported = asanSupport.get(compiler);
     if (supported == null) {
-      Files.writeString(C_ROOT.resolve("asan-probe.c"), "int main(void) { return 0; }\n");
+      boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       try {
+        Files.createDirectories(C_ROOT);
+        Files.writeString(C_ROOT.resolve("asan-probe.c"), "int main(void) { return 0; }\n");
         runCompiler(compiler + " -fsanitize=address -o asan-probe asan-probe.c", C_ROOT.toFile(), isWindows);
         supported = true;
-      } catch (PLMCompilerException e) {
+      } catch (IOException | PLMCompilerException e) {
         System.err.println(Game.i18n.tr("{0} cannot link with AddressSanitizer, so the C programs run without memory checks:\n{1}", compiler, e.getMessage()));
         supported = false;
       }

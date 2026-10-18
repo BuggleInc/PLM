@@ -1,8 +1,10 @@
 package plm.test.simple.test;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 import plm.core.PLMCompilerException;
+import plm.core.lang.LangC;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -70,6 +72,20 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
    * abort().
    */
   @Override protected String locationOfLine(int line) { return exo.getName() + ".c:" + line; }
+
+  /** Without AddressSanitizer (MinGW), an out-of-bounds access goes unnoticed */
+  @Override @Test public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
+  {
+    Assumptions.assumeTrue(LangC.supportsAsan(), "the C compiler has no AddressSanitizer");
+    super.testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly();
+  }
+
+  /** Without AddressSanitizer (MinGW), a crash prints no stack trace */
+  @Override @Test public void testStackTraceLineMatchesEditor() throws PLMCompilerException, InterruptedException
+  {
+    Assumptions.assumeTrue(LangC.supportsAsan(), "the C compiler has no AddressSanitizer");
+    super.testStackTraceLineMatchesEditor();
+  }
 
   /** The #line directive of the generated source makes gcc report the error at its line in the editor. */
   @Test public void testCompilationErrorLineMatchesEditor()
