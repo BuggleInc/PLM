@@ -92,7 +92,13 @@ jobs:
         echo "$(brew --prefix gettext)/bin" >> "$GITHUB_PATH"
     - name: Install gettext (Windows)
       if: runner.os == 'Windows'
-      run: choco install gettext --yes --no-progress
+      shell: pwsh
+      run: |
+        choco install gettext --yes --no-progress
+        # choco only updates the PATH of new sessions: give the folder of msgfmt to the next steps
+        Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+        Update-SessionEnvironment
+        Split-Path (Get-Command msgfmt).Source | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
     - name: Download dependencies
       run: mvn -B dependency:go-offline
     # Linux runners are headless -> run the Swing tests under a virtual display.
