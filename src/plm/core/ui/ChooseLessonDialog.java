@@ -271,17 +271,12 @@ class LessonButton extends JButton {
       @Override public void mouseEntered(MouseEvent e)
       {
 
-        try {
-          BufferedReader buffer = FileUtils.newFileReader(filename, "html", true);
-          String line           = buffer.readLine();
-          while (!line.contains("<h3>")) {
+        try (BufferedReader buffer = FileUtils.newFileReader(filename, "html", true)) {
+          String line = buffer.readLine();
+          while (line != null && !line.contains("<h3>"))
             line = buffer.readLine();
-          }
-
-          String title = line.replaceAll("<h3>|</h3>", "");
-
-          setToolTipText(title);
-          buffer.close();
+          if (line != null)
+            setToolTipText(line.replaceAll("<h3>|</h3>", ""));
         } catch (IOException ex) {
           ex.printStackTrace();
         }
