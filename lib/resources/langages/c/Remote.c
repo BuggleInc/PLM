@@ -24,6 +24,15 @@
 static FILE* protocol_in  = NULL;
 static FILE* protocol_out = NULL;
 static char answer_buffer[1024];
+
+#ifdef _WIN32
+static SOCKET protocol_socket;
+// Windows resets the connection of the sockets still open when the process exits, which the PLM takes for an error
+static void close_protocol_socket(void)
+{
+  closesocket(protocol_socket);
+}
+#endif
 char* get_answer_line()
 {
   if (fgets(answer_buffer, sizeof(answer_buffer), protocol_in) == NULL) {
@@ -124,6 +133,8 @@ int main(int argc, char* argv[])
   int fd       = _open_osfhandle((intptr_t)sock, _O_RDWR | _O_BINARY); // binary: no CR/LF translation of the protocol
   protocol_in  = _fdopen(fd, "rb");
   protocol_out = _fdopen(fd, "wb");
+  protocol_socket = sock;
+  atexit(close_protocol_socket);
 #else
   protocol_in  = fdopen(sock, "r");
   protocol_out = fdopen(sock, "w");

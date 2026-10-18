@@ -25,6 +25,13 @@ public abstract class Remote {
     try {
       SocketChannel channel = SocketChannel.open(new InetSocketAddress("127.0.0.1", Integer.parseInt(port)));
       channel.setOption(StandardSocketOptions.TCP_NODELAY, true); // each command is a short request awaiting its answer
+      // Windows resets the connection of the sockets still open when the process exits, which the PLM takes for an error
+      Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+        try {
+          channel.close();
+        } catch (IOException ignored) {
+        }
+      }));
       protocolIn  = new BufferedReader(new InputStreamReader(Channels.newInputStream(channel), StandardCharsets.UTF_8));
       protocolOut = new PrintWriter(new OutputStreamWriter(Channels.newOutputStream(channel), StandardCharsets.UTF_8), true);
     } catch (IOException e) {
