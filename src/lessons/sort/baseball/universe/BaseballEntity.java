@@ -1,8 +1,10 @@
 package lessons.sort.baseball.universe;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.universe.Entity;
 
+@Glue("RemoteBaseball")
 @EntityPrimitives(BaseballEntityPrimitives.class)
 public class BaseballEntity extends Entity implements BaseballEntityPrimitives {
   /** Returns the amount of bases on your field */

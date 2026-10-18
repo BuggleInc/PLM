@@ -20,23 +20,14 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
-import lessons.lander.universe.LanderEntity;
 import lessons.recursion.cons.universe.ConsEntity;
-import lessons.recursion.hanoi.universe.HanoiEntity;
-import lessons.sort.baseball.universe.BaseballEntity;
-import lessons.sort.dutchflag.universe.DutchFlagEntity;
-import lessons.sort.pancake.universe.PancakeEntity;
-import lessons.turmites.universe.TurmiteEntity;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
 import plm.core.lang.LangC;
 import plm.core.lang.LangJava;
 import plm.core.lang.LangPython;
 import plm.core.lang.LangScala;
-import plm.test.simple.SimpleExerciseEntity;
 import plm.universe.Entity;
-import plm.universe.bat.BatEntity;
-import plm.universe.bugglequest.AbstractBuggle;
-import plm.universe.sort.SortingEntity;
-import plm.universe.turtles.Turtle;
 
 /**
  * Build-time generator of the RemoteXxx glue files of every language, run by maven after the compilation of the PLM. The Java and
@@ -48,13 +39,13 @@ public class CodeCreation {
   /** A glue file to generate: its name and the entity whose primitives it exposes. */
   public record Remote(String name, Class<? extends Entity> entity) {}
 
-  /** The glue files to generate. */
-  public static final List<Remote> REMOTES =
-      List.of(new Remote("RemoteBat", BatEntity.class), new Remote("RemoteCons", ConsEntity.class), new Remote("RemoteBuggle", AbstractBuggle.class),
-              new Remote("RemoteTurmite", TurmiteEntity.class), new Remote("RemoteSort", SortingEntity.class), new Remote("RemoteTurtle", Turtle.class),
-              new Remote("RemotePancake", PancakeEntity.class), new Remote("RemoteHanoi", HanoiEntity.class),
-              new Remote("RemoteBaseball", BaseballEntity.class), new Remote("RemoteDutchFlag", DutchFlagEntity.class),
-              new Remote("RemoteSimple", SimpleExerciseEntity.class), new Remote("RemoteLander", LanderEntity.class));
+  /** The glue files to generate, one per entity class annotated with @Glue, by name */
+  public static final List<Remote> REMOTES = new Reflections("plm", "lessons", Scanners.TypesAnnotated)
+                                                 .getTypesAnnotatedWith(Glue.class, true)
+                                                 .stream()
+                                                 .map(entity -> new Remote(entity.getAnnotation(Glue.class).value(), entity.asSubclass(Entity.class)))
+                                                 .sorted(Comparator.comparing(Remote::name))
+                                                 .toList();
 
   /** A language to generate the glue of: its folder under resources/langages, its generator and the hand-written code to splice in some remotes. */
   private record Target(String dir, ExternalPrimitiveLanguage generator, Map<String, String> extraCode) {}

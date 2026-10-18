@@ -2,10 +2,12 @@ package plm.universe.turtles;
 
 import java.awt.Color;
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
+@Glue("RemoteTurtle")
 @EntityPrimitives(TurtlePrimitives.class)
 public class Turtle extends Entity implements TurtlePrimitives {
 

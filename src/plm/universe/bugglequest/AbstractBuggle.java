@@ -3,6 +3,7 @@ package plm.universe.bugglequest;
 import java.awt.Color;
 import java.awt.Point;
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.Entity;
@@ -14,6 +15,7 @@ import plm.universe.bugglequest.exception.BuggleWallException;
 import plm.universe.bugglequest.exception.DontHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
+@Glue("RemoteBuggle")
 @EntityPrimitives(AbstractBugglePrimitives.class)
 public abstract class AbstractBuggle extends Entity implements AbstractBugglePrimitives {
   int k_val   = 0;

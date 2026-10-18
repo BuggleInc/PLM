@@ -1,9 +1,11 @@
 package lessons.sort.pancake.universe;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.universe.Entity;
 import plm.universe.World;
 
+@Glue("RemotePancake")
 @EntityPrimitives(PancakeEntityPrimitives.class)
 public class PancakeEntity extends Entity implements PancakeEntityPrimitives {
 

@@ -758,11 +758,11 @@ https://github.com/BuggleInc/PLM/blob/javaUI/src/lessons/welcome/Main.java#L226
 ## Designing a new universe
 
 Extend, at minimum: `World` (state/data), an `Entity` subclass (ancestor of correction entities, exposes primitives), a
-`WorldView` (graphical rendering), and usually a `WorldPanel`/`EntityControlPanel` for interactive controls. Document it with an
-HTML file following the same convention as mission texts, where `[!primitives/]` stands for the table of the primitives,
-generated from their `@Primitive` annotations (see Primitives above). Existing universes stay small (a few hundred to ~1500
-lines including the buggle map editor) because all non-functional plumbing (compilation, templating, session handling) is
-factored into `plm.core`.
+`WorldView` (graphical rendering), and usually a `WorldPanel`/`EntityControlPanel` for interactive controls. Annotate the root
+entity class with `@Glue("RemoteXxx")`: `CodeCreation` then generates that glue in every language. Document it with an HTML file
+following the same convention as mission texts, where `[!primitives/]` stands for the table of the primitives, generated from
+their `@Primitive` annotations (see Primitives above). Existing universes stay small (a few hundred to ~1500 lines including the
+buggle map editor) because all non-functional plumbing (compilation, templating, session handling) is factored into `plm.core`.
 
 ### World I/O and the answer cache
 

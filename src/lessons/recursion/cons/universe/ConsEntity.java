@@ -1,7 +1,9 @@
 package lessons.recursion.cons.universe;
 
+import plm.core.lang.primitives.Glue;
 import plm.universe.bat.BatEntity;
 
+@Glue("RemoteCons")
 public abstract class ConsEntity extends BatEntity {
 
   // Code to be injected into the generated RemoteCons (see plm.core.lang.primitives.CodeCreation) in each language

@@ -3,11 +3,13 @@ package lessons.turmites.universe;
 import java.awt.Color;
 import java.util.List;
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.SimpleBuggle;
 
+@Glue("RemoteTurmite")
 @EntityPrimitives(TurmiteEntityPrimitives.class)
 public class TurmiteEntity extends SimpleBuggle implements TurmiteEntityPrimitives {
   public TurmiteEntity(BuggleWorld buggleWorld, String name, int buggleX, int buggleY, Direction dir, Color col1, Color col2)

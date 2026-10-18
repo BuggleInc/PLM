@@ -1,9 +1,11 @@
 package lessons.lander.universe;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.universe.Entity;
 import plm.universe.Point;
 
+@Glue("RemoteLander")
 @EntityPrimitives(LanderEntityPrimitives.class)
 public class LanderEntity extends Entity implements LanderEntityPrimitives {
 

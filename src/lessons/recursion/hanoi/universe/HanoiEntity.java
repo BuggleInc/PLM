@@ -1,12 +1,14 @@
 package lessons.recursion.hanoi.universe;
 /* BEGIN TEMPLATE */
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.core.lang.primitives.Primitive;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.PrimitiveRefusedException;
 import plm.universe.World;
 
+@Glue("RemoteHanoi")
 @EntityPrimitives(HanoiEntityPrimitives.class)
 public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
   /**

@@ -1,8 +1,10 @@
 package plm.test.simple;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.universe.Entity;
 
+@Glue("RemoteSimple")
 @EntityPrimitives(SimpleEntityPrimitives.class)
 public class SimpleExerciseEntity extends Entity implements SimpleEntityPrimitives {
 

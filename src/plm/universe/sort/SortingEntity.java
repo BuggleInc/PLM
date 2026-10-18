@@ -1,8 +1,10 @@
 package plm.universe.sort;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.universe.Entity;
 
+@Glue("RemoteSort")
 @EntityPrimitives(SortingEntityPrimitives.class)
 public class SortingEntity extends Entity implements SortingEntityPrimitives {
 

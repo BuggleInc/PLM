@@ -1,10 +1,12 @@
 package lessons.sort.dutchflag.universe;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
 
+@Glue("RemoteDutchFlag")
 @EntityPrimitives(DutchFlagEntityPrimitives.class)
 public class DutchFlagEntity extends Entity implements DutchFlagEntityPrimitives {
 

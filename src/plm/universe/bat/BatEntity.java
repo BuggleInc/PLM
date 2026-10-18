@@ -3,9 +3,11 @@ package plm.universe.bat;
 import static plm.core.ValueSerializer.*;
 
 import plm.core.lang.primitives.EntityPrimitives;
+import plm.core.lang.primitives.Glue;
 import plm.universe.Entity;
 import plm.universe.World;
 
+@Glue("RemoteBat")
 @EntityPrimitives(BatEntityPrimitives.class)
 public abstract class BatEntity extends Entity implements BatEntityPrimitives {
 
