@@ -91,7 +91,6 @@ class GatesPancakeEntity extends PancakeEntity {
 		}
 		return pos+1;
 	}
-	val debug=0; // 0: silence; 1: which cases; 2: all details
 	/* END SOLUTION */
 	
 	/* BEGIN TEMPLATE */
@@ -99,81 +98,30 @@ class GatesPancakeEntity extends PancakeEntity {
 		/* BEGIN SOLUTION */
 		val stackSize = getStackSize();
 		
-		if (debug>0) {
-			System.out.print("{");
-			for (rank <- 0 to stackSize -1) 
-				System.out.print(""+getPancakeRadius(rank)+", ");
-			System.out.println("}");
-		}
-		
 		while (true) {
 			val tRadius = getPancakeRadius(0);
 			val posTPlus  = getRankOf(tRadius+1); // returns -99 if non-existent, that is then ignored
 			val posTMinus = getRankOf(tRadius-1); 
 			val posT = 0;
 			
-			if (debug>1) {
-				println("t Radius: "+tRadius);
-				for (rank <- 0 to stackSize -1) {
-					print("["+rank+"]="+getPancakeRadius(rank)+"; ");
-
-					if (isFree(rank))
-						System.out.print("free;");
-					else 
-						System.out.print("NON-free;");
-
-					if (isFirst(rank))
-						System.out.print("first; ");
-					else 
-						System.out.print("NON-first; ");
-
-					if (isLast(rank))
-						System.out.print("last; ");
-					else 
-						System.out.print("NON-last; ");
-
-
-					if (rank == posTPlus)
-						System.out.print("t+1; ");
-					if (rank == posTMinus)
-						System.out.print("t-1; ");
-					if (rank == posT)
-						System.out.print("t;" );
-
-					System.out.println();
-				}
-			}
-						
 			if (isFree(posT)) {			
 				if (isFree(posTPlus)) { /* CASE A: t and t+o free */
-					if (debug>0)
-						System.out.println("Case A+");
 					flip(posTPlus);
 				} else if (isFree(posTMinus)) { /* CASE A: t and t-o free */
-					if (debug>0)
-						System.out.println("Case A-");
 					flip(posTMinus);
 					
 				} else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
-					if (debug>0)
-						System.out.println("Case B+");
 					flip(posTPlus);
 				} else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
-					if (debug>0)
-						System.out.println("Case B-");
 					flip(posTMinus);
 
 				} else if (Math.min(posTPlus,posTMinus) != -99) { /* CASE C: t free, but both t+o and t-o are last elements */
-					if (debug>0)
-						System.out.println("Case C");
 					flip(Math.min(posTPlus,posTMinus) );
 					flip(Math.min(posTPlus,posTMinus) - 1);
 					flip(Math.max(posTPlus,posTMinus) + 1);
 					flip(Math.min(posTPlus,posTMinus) - 1);
 					
 				} else {
-					if (debug>0)
-						System.out.println("Case Cbis");
 					flip(Math.max(posTPlus,posTMinus) + 1);
 					flip(Math.max(posTPlus,posTMinus) );
 				}
@@ -186,28 +134,18 @@ class GatesPancakeEntity extends PancakeEntity {
 				}
 				
 				if (isFree(posTPlus)) {          /* CASE D: t in a block, t+1 free */
-					if (debug>0)
-						System.out.println("Case D+");
 					flip(posTPlus);
 
 				} else if (isFree(posTMinus)) {  /* CASE D: t in a block, t-1 free */
-					if (debug>0)
-						System.out.println("Case D-");
 					flip(posTMinus);
 
 				} else if (isFirst(posTPlus)) {  /* CASE E: t in a block, t+1 first element */
-					if (debug>0)
-						System.out.println("Case E+");
 					flip(posTPlus);
 
 				} else if (isFirst(posTMinus)) { /* CASE E: t in a block, t-1 first element */
-					if (debug>0)
-						System.out.println("Case E-");
 					flip(posTMinus);
 
 				} else if (isLast(posTPlus) && posTPlus != 1) { /* CASE F+: t in a block, t+1 last element */
-					if (debug>0)
-						System.out.println("Case F+");
 					flip(blockLength());
 					flip(posTPlus + 1);
 					val newPos = getRankOf(tRadius);
@@ -215,8 +153,6 @@ class GatesPancakeEntity extends PancakeEntity {
 						flip(newPos);
 					
 				} else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
-					if (debug>0)
-						System.out.println("Case F-");
 					flip(blockLength());
 					flip(posTMinus + 1);
 					val newPos = getRankOf(tRadius);
@@ -227,13 +163,9 @@ class GatesPancakeEntity extends PancakeEntity {
 					val o = getPancakeRadius(1) - tRadius;
 					val pos = getRankOf(tRadius+(k+1)*o);
 					if (isFree(pos) || isFirst(pos)) {
-						if (debug>0)
-							System.out.println("Case G");
 						flip(k+1);
 						flip(pos);
 					} else {
-						if (debug>0)
-							System.out.println("Case H");
 						flip(pos+1);
 						flip(getRankOf(tRadius+k*o));
 					}

@@ -97,7 +97,6 @@ int blockLength() {
 	}
 	return pos+1;
 }
-int debug=0; // 0: silence; 1: which cases; 2: all details
 /* END SOLUTION */
 
 /* BEGIN TEMPLATE */
@@ -105,83 +104,30 @@ void solve() {
   /* BEGIN SOLUTION */
   int stackSize = getStackSize();
 
-  if (debug > 0) {
-    printf("{\n");
-    int rank;
-    for (rank = 0; rank < stackSize; rank++) {
-      printf("%d\n", getPancakeRadius(rank));
-    }
-    printf("}\n");
-  }
-
   while (1) {
     int tRadius   = getPancakeRadius(0);
     int posTPlus  = getRankOf(tRadius + 1); // returns -99 if non-existent, that is then ignored
     int posTMinus = getRankOf(tRadius - 1);
     int posT      = 0;
 
-    if (debug > 1) {
-      printf("t Radius: %d\n", tRadius);
-      int rank;
-      for (rank = 0; rank < stackSize; rank++) {
-        printf("[%d]=%d; ", rank, getPancakeRadius(rank));
-
-        if (isFree(rank))
-          printf("free;");
-        else
-          printf("NON-free;");
-
-        if (isFirst(rank))
-          printf("first; ");
-        else
-          printf("NON-first; ");
-
-        if (isLast(rank))
-          printf("last; ");
-        else
-          printf("NON-last; ");
-
-        if (rank == posTPlus)
-          printf("t+1; ");
-        if (rank == posTMinus)
-          printf("t-1; ");
-        if (rank == posT)
-          printf("t;");
-
-        printf("\n");
-      }
-    }
-
     if (isFree(posT)) {
       if (isFree(posTPlus)) { /* CASE A: t and t+o free */
-        if (debug > 0)
-          printf("Case A+\n");
         flip(posTPlus);
       } else if (isFree(posTMinus)) { /* CASE A: t and t-o free */
-        if (debug > 0)
-          printf("Case A-\n");
         flip(posTMinus);
 
       } else if (isFirst(posTPlus)) { /* CASE B: t free, t+o first element */
-        if (debug > 0)
-          printf("Case B+\n");
         flip(posTPlus);
       } else if (isFirst(posTMinus)) { /* CASE B: t free, t-o first element */
-        if (debug > 0)
-          printf("Case B-\n");
         flip(posTMinus);
 
       } else if (min(posTPlus, posTMinus) != -99) { /* CASE C: t free, but both t+o and t-o are last elements */
-        if (debug > 0)
-          printf("Case C\n");
         flip(min(posTPlus, posTMinus));
         flip(min(posTPlus, posTMinus) - 1);
         flip(max(posTPlus, posTMinus) + 1);
         flip(min(posTPlus, posTMinus) - 1);
 
       } else {
-        if (debug > 0)
-          printf("Case Cbis\n");
         flip(max(posTPlus, posTMinus) + 1);
         flip(max(posTPlus, posTMinus));
       }
@@ -194,28 +140,18 @@ void solve() {
       }
 
       if (isFree(posTPlus)) { /* CASE D: t in a block, t+1 free */
-        if (debug > 0)
-          printf("Case D+\n");
         flip(posTPlus);
 
       } else if (isFree(posTMinus)) { /* CASE D: t in a block, t-1 free */
-        if (debug > 0)
-          printf("Case D-\n");
         flip(posTMinus);
 
       } else if (isFirst(posTPlus)) { /* CASE E: t in a block, t+1 first element */
-        if (debug > 0)
-          printf("Case E+\n");
         flip(posTPlus);
 
       } else if (isFirst(posTMinus)) { /* CASE E: t in a block, t-1 first element */
-        if (debug > 0)
-          printf("Case E-\n");
         flip(posTMinus);
 
       } else if (isLast(posTPlus) && posTPlus != 1) { /* CASE F+: t in a block, t+1 last element */
-        if (debug > 0)
-          printf("Case F+\n");
         flip(blockLength());
         flip(posTPlus + 1);
         int newPos = getRankOf(tRadius);
@@ -223,8 +159,6 @@ void solve() {
           flip(newPos);
 
       } else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
-        if (debug > 0)
-          printf("Case F-\n");
         flip(blockLength());
         flip(posTMinus + 1);
         int newPos = getRankOf(tRadius);
@@ -235,13 +169,9 @@ void solve() {
         int o   = getPancakeRadius(1) - tRadius;
         int pos = getRankOf(tRadius + (k + 1) * o);
         if (isFree(pos) || isFirst(pos)) {
-          if (debug > 0)
-            printf("Case G\n");
           flip(k + 1);
           flip(pos);
         } else {
-          if (debug > 0)
-            printf("Case H\n");
           flip(pos + 1);
           flip(getRankOf(tRadius + k * o));
         }

@@ -279,7 +279,7 @@ TODO:
 
 This lesson implements the [pancake sorting](https://en.wikipedia.org/wiki/Pancake_sorting), also known as prefix reversal
 sorting problem. It consists in sorting a stack of elements by flipping the top of the stack. This is another problem that I
-extensively use in my unplugged activities. The lesson is composed of 5 exercises, requesting 347/289/322/353 lines of either
+extensively use in my unplugged activities. The lesson is composed of 5 exercises, requesting 280/225/254/283 lines of either
 Java/Python/Scala/C: the naive algorithm to Gates' and to Cohen's algorithm on burnt pancakes. It comes with its own specific
 universe.
 
