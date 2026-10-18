@@ -45,7 +45,7 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
   @Override public String generateExceptionRaisingCode()
   {
     return "void run() {\n"
-        + "  *(int *)NULL = 42;\n"
+        + "  *(volatile int *)NULL = 42;\n"
         + "}\n";
   }
 

@@ -31,7 +31,7 @@ char* fizzBuzz(int a)
   else if (a % 3 == 0)
     strcpy(res, "Fizz");
   else
-    sprintf(res, "%d", a);
+    snprintf(res, 16, "%d", a);
   return res;
   /* END SOLUTION */
 }

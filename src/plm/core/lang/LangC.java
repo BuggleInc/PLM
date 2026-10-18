@@ -496,7 +496,12 @@ public class LangC extends TemplatedRemoteLang {
       return getLanguageType(method.output()) + " " + name + "(" + method.parameters().stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
     }
 
-    String getPrototype(PrimitiveMethod method) { return signature(method, method.name()) + ";"; }
+    /** The declarator of the C glue, without the trailing ';'. Unlike signature(), an empty parameter list is spelled (void) */
+    String getPrototype(PrimitiveMethod method)
+    {
+      String parameters = method.parameters().stream().map(this::getParameter).collect(Collectors.joining(", "));
+      return getLanguageType(method.output()) + " " + method.name() + "(" + (parameters.isEmpty() ? "void" : parameters) + ")";
+    }
 
     String getReturning(Class<?> type)
     {
@@ -541,9 +546,6 @@ public class LangC extends TemplatedRemoteLang {
 
     String getImplementation(PrimitiveMethod method)
     {
-      String prototype = getPrototype(method);
-      prototype        = prototype.substring(0, prototype.length() - 1);
-
       String name    = method.command(); // the PLM only knows the canonical name of the translated aliases
       int n          = method.parameters().size();
       String formats = method.parameters().stream().map(PrimitiveParameter::type).map(this::getTemplatingForType).collect(Collectors.joining(":"));
@@ -563,7 +565,7 @@ public class LangC extends TemplatedRemoteLang {
 
       String returning = method.hasReturn() ? "\treturn " + getReturning(method.output()) + ";" : "";
 
-      return prototype + "{\n" + escapes + command + "\n" + frees + returning + "\n}";
+      return getPrototype(method) + "{\n" + escapes + command + "\n" + frees + returning + "\n}";
     }
 
     @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
@@ -586,7 +588,7 @@ public class LangC extends TemplatedRemoteLang {
 
       final String type_declarations = sortedInvolved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
 
-      final String prototypes = methods.stream().map(this::getPrototype).collect(Collectors.joining("\n"));
+      final String prototypes = methods.stream().map(m -> getPrototype(m) + ";").collect(Collectors.joining("\n"));
 
       final String header = String.join("\n\n", header_prefix, type_declarations, prototypes, header_suffix);
 
