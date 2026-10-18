@@ -42,6 +42,7 @@ import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import org.eclipse.jgit.treewalk.TreeWalk;
 import plm.core.model.Game;
 
 public class GitUtils {
@@ -160,21 +161,20 @@ public class GitUtils {
         System.out.println(Game.i18n.tr("Last session data successfully merged."));
       } else if (res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
         System.out.println(Game.i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
-        Map<String, int[][]> allConflicts = res.getConflicts();
-        for (String path : allConflicts.keySet()) {
-          ObjectId remote = git.getRepository().resolve(remoteRef);
-
+        ObjectId remote = git.getRepository().resolve(remoteRef);
+        for (String path : res.getConflicts().keySet()) {
           RevCommit lastCommitLocal  = git.log().addPath(path).setMaxCount(1).call().iterator().next();
           RevCommit lastCommitRemote = git.log().add(remote).addPath(path).setMaxCount(1).call().iterator().next();
           long timeLocal             = lastCommitLocal.getAuthorIdent().getWhen().getTime();
           long timeRemote            = lastCommitRemote.getAuthorIdent().getWhen().getTime();
+          RevCommit winner           = timeLocal > timeRemote ? lastCommitLocal : lastCommitRemote;
 
-          if (timeLocal > timeRemote) {
-            git.checkout().setStartPoint(lastCommitLocal).addPath(path).call();
+          if (TreeWalk.forPath(git.getRepository(), path, winner.getTree()) == null) { // the winning side deleted the file
+            git.rm().addFilepattern(path).call();
           } else {
-            git.checkout().setStartPoint(lastCommitRemote).addPath(path).call();
+            git.checkout().setStartPoint(winner).addPath(path).call();
+            git.add().addFilepattern(path).call();
           }
-          git.add().addFilepattern(path).call();
         }
 
         System.out.println("All conflicts have been manually handled ;)");
