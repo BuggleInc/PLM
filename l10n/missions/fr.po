@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2026-10-17 11:46+0200\n"
+"POT-Creation-Date: 2026-10-18 20:37+0200\n"
 "PO-Revision-Date: 2021-06-21 08:54+0000\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/programmers-"
@@ -3991,7 +3991,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool1/In1020.html:6
 #: src/lessons/welcome/bat/bool1/In3050.html:6
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:7
-#: src/lessons/welcome/bat/bool1/Main.html:12
 #: src/lessons/welcome/bat/bool1/Makes10.html:6
 #: src/lessons/welcome/bat/bool1/Max1020.html:8
 #: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8
@@ -4012,7 +4011,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/InOrder.html:9
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:9
 #: src/lessons/welcome/bat/bool2/LessBy10.html:6
-#: src/lessons/welcome/bat/bool2/Main.html:7
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:10
 #: src/lessons/welcome/bat/bool2/NearTen.html:9
 #: src/lessons/welcome/bat/bool2/RedTicket.html:10
@@ -7130,42 +7128,6 @@ msgstr ""
 "Consultez la page correspondante sur Wikipedia, à partir de laquelle cet "
 "exercice est inspiré, pour d'avantages de détails."
 
-#. type: Content of: <h3>
-#: src/lessons/turmites/Main.html:22 src/lessons/sort/basic/Main.html:15
-#: src/lessons/sort/dutchflag/Main.html:9 src/lessons/sort/pancake/Main.html:30
-#: src/lessons/sort/baseball/Main.html:28 src/lessons/turtleart/Main.html:12
-msgid "What can I do to improve this PLM universe?"
-msgstr "Que puis-je faire pour améliorer cet univers de PLM?"
-
-#. type: Content of: <p>
-#: src/lessons/turmites/Main.html:24 src/lessons/sort/basic/Main.html:17
-#: src/lessons/sort/dutchflag/Main.html:11
-#: src/lessons/sort/pancake/Main.html:32 src/lessons/sort/baseball/Main.html:30
-#: src/lessons/turtleart/Main.html:14 src/lessons/recursion/cons/Main.html:7
-msgid ""
-"As usual, there are several things that could be done in the code of this "
-"universe to improve it:"
-msgstr ""
-"Comme souvent, plusieurs points pourraient être améliorés dans le code de "
-"cet univers pour l'améliorer&nbsp;:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/turmites/Main.html:26
-msgid ""
-"We are probably missing some good exercises. The turmite creator exercise is "
-"a bit harsh: we could introduce the patterns in a more friendly manner."
-msgstr ""
-"Il nous manque probablement quelques exercices progressifs. Celui sur la "
-"création de turmites est particulièrement aride. Nous devrions probablement "
-"introduire les motifs de façon plus pédagogique."
-
-#. type: Content of: <ul><li>
-#: src/lessons/turmites/Main.html:28
-msgid "We may want to write an exercise on the busy beaver, maybe?"
-msgstr ""
-"Il serait peut-être amusant d'introduire un exercice sur les castors occupés "
-"(busy beavers)?"
-
 #. type: Content of: <p>
 #: src/lessons/turmites/short_desc.html:3
 msgid "Discover the Langton's ants, that are 2D turing machines."
@@ -8098,29 +8060,6 @@ msgstr ""
 "qu'implique la différence de complexité asymptotique entre deux algorithmes."
 
 #. type: Content of: <p>
-#: src/lessons/sort/basic/Main.html:11
-msgid ""
-"More exercises are planned for the future, on recursive sorting algorithms "
-"(such as QuickSort and MergeSort) or using other microworlds to apply these "
-"algorithms to other contexts."
-msgstr ""
-"Plus d'exercices sont prévus à l'avenir. Certain porteront sur les tris\n"
-"récursifs (en particulier QuickSort et MergeSort) tandis que d'autres\n"
-"s'appuieront sur d'autres micro-mondes pour appliquer ces algorithmes à "
-"d'autres\n"
-"situations."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/basic/Main.html:19
-msgid ""
-"Other graphical representations could be proposed, such as the ones "
-"presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
-msgstr ""
-"D'autres représentations graphiques pourraient être proposées, telles que "
-"celles\n"
-"présentées sur le site <a href=\"http://sorting.at/\">http://sorting.at/</a>."
-
-#. type: Content of: <p>
 #: src/lessons/sort/basic/short_desc.html:4
 msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
@@ -9036,25 +8975,6 @@ msgstr ""
 "pédagogiques : calculer sa complexité n'est ni trop simple ni trop dur, "
 "démontrer sa correction est très accessible sans être complètement trivial."
 
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:13
-msgid "A temporal view could be welcomed."
-msgstr "Une vue temporelle serait bienvenue."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:14
-msgid ""
-"Other exercises, for example with 2 colors only or with more than 3 colors, "
-"could generalize the proposed approach."
-msgstr ""
-"D'autres exercices, par exemple avec seulement deux couleurs ou avec plus de "
-"3 couleurs, pourraient généraliser l'approche."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:15
-msgid "This problem could be solved recursively."
-msgstr "Ce problème peut être résolu récursivement."
-
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/short_desc.html:4
 msgid ""
@@ -9264,24 +9184,6 @@ msgstr ""
 "disponible à l'adresse http://www.loria.fr/~quinson/Mediation/SMN/), et il "
 "peut être intéressant de faire les activités débranchées avant d'implémenter "
 "ces algorithmes dans PLM."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:34
-msgid "A temporal view similar to the sorting universe could be helpful"
-msgstr ""
-"Une vue temporelle comme celle de l'univers des tris pourrait être pratique."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:35
-msgid ""
-"Other exercises, for example on the Roti sorting, with a pile of Roti that "
-"have to touch the grill on each face (see http://en.wikipedia.org/wiki/"
-"Pancake_sorting#The_identical_pancake_stack)."
-msgstr ""
-"D'autres exercices, comme le tri des cheese nans, avec une pile de nans qui "
-"doivent chacun toucher le grill sur les deux faces pour être bien grillés "
-"(voir  http://en.wikipedia.org/wiki/"
-"Pancake_sorting#The_identical_pancake_stack)."
 
 #. type: Content of: <h3>
 #: src/lessons/sort/pancake/short_desc.html:2
@@ -10067,26 +9969,6 @@ msgstr ""
 "encore mieux s'il était possible de vérifier le critère de tête afin que les "
 "animateurs puissent s'en servir pendant les activités débranchées."
 
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:32
-msgid ""
-"Other graphical representations could be proposed, such as a linear one (for "
-"the existing exercises) or other ones (such as a grid or a tree, if an "
-"exercise on this kind of graph proves interesting)."
-msgstr ""
-"D'autres représentations graphiques pourraient être proposées, comme une "
-"représentation linéaire (pour les exercices proposés) ou d'autres comme une "
-"grille ou un arbre, si un exercice sur ce type de graphe s'avère intéressant."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:34
-msgid ""
-"Other exercises on other algorithms on this variant, or on other variants "
-"such as the 15-puzzle."
-msgstr ""
-"D'autres exercices à propos d'autres algorithmes pour cette variante du "
-"problème, ou bien d'autres variantes comme le jeu du taquin."
-
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/short_desc.html:2
 msgid "Rainbow baseball"
@@ -10694,31 +10576,6 @@ msgstr ""
 "Envoyez nous vos plus belles contributions pour que nous les ajoutions à "
 "cette galerie afin d'inspirer les futurs utilisateurs."
 
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:16
-msgid ""
-"Other exercises should be added. A whole lot of exercises are available from "
-"<a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/"
-"#sect4</a> or from <a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-"
-"shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
-"shapes-challenges.html</a>."
-msgstr ""
-"D'autres exercises devraient être ajoutés. Une mine d'inspiration quasi "
-"inépuisable se trouve à l'adresse <a href=\"http://neoparaiso.com/logo/"
-"#sect4\">http://neoparaiso.com/logo/#sect4</a>, tandis que d'autres "
-"challenges intéressants se trouvent à l'adresse <a href=\"http://"
-"billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html.\">http://"
-"billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html</a>."
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:19
-msgid ""
-"Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
-"moving or by moving to the end of the arc."
-msgstr ""
-"Il manque des primitives arc() et arcVers() pour dessiner un arc de cercle, "
-"en restant sur place ou en bougeant jusqu'à la fin de l'arc."
-
 #. type: Content of: <p>
 #: src/lessons/turtleart/short_desc.html:3
 msgid ""
@@ -10873,43 +10730,6 @@ msgstr ""
 "récursives. Il ne s'agit certainement pas de la leçon la plus drôle de la "
 "PLM, mais il s'agit certainement de la plus simple des leçons PLM sur la "
 "récursivité."
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/cons/Main.html:10
-msgid ""
-"New exercises could be proposed, such as http://webloria.loria.fr/~quinson/"
-"Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
-"report them as an issue."
-msgstr ""
-"De nouveaux exercices pourraient être proposés, par exemple inspirés de "
-"http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf "
-"Si vous en connaissez d'autres, nous vous serions reconnaissant de nous en "
-"parler dans un rapport d'anomalie."
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/cons/Main.html:13
-msgid ""
-"It would be interesting to check the asymptotic complexity of the student's "
-"code, but that does not sound easy to do. In Python and Java (where we "
-"provide a hand-made RecList class), we could count the amount of cons per "
-"exercise, but it won't be easy to relate this to the right BatTest. For "
-"Scala, it sounds even more difficult as we use the classical :: operators of "
-"the language. That will be difficult to override to add a counting "
-"mechanism. Another solution would be to ensure that the call stack does not "
-"pass a given threshold, but that sounds very difficult too. Any idea is "
-"welcome."
-msgstr ""
-"Il serait intéressant de vérifier la complexité algorithmique du code "
-"proposé par les étudiants, mais cela semble assez difficile à faire. En "
-"Python et Java, nous proposons un type de donnée spécifique (les "
-"<code>RecList</code>) alors nous pourrions compter le nombre de cons "
-"réalisés dans chaque exercice, mais il risque d'être compliqué de trouver le "
-"test auquel rattacher chaque opération. En Scala, cela s'annonce encore plus "
-"difficile car nous utilisons directement des mots-clés du langage. Il serait "
-"probablement difficile d'y injecter un mécanisme comptant les opérations. On "
-"pourrait vouloir assurer que la pile d'appel ne dépasse pas une profondeur "
-"donnée, mais cela semble également difficile à implémenter. Si vous avez des "
-"idées, merci de nous en faire part."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/cons/Length.html:2
@@ -11294,87 +11114,6 @@ msgstr "Algorithmes récursifs"
 #: src/lessons/recursion/lego/Main.html:3
 msgid "This lesson allows to experiment with recursive algorithms."
 msgstr "Cette leçon vous permet d'expérimenter avec des algorithmes récursifs."
-
-#. type: Content of: <p>
-#: src/lessons/recursion/lego/Main.html:5
-msgid ""
-"If you need more recursive algorithms, an exercise on recursive sorting "
-"algorithms (in particular QuickSort and MergeSort) is planned in the future "
-"within the sorting lesson."
-msgstr ""
-"Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
-"récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir dans "
-"la leçon sur les tris."
-
-#. type: Content of: <h3>
-#: src/lessons/recursion/lego/Main.html:9
-msgid "What can I do to improve this lesson?"
-msgstr "Que puis-je faire pour améliorer cette leçon ?"
-
-#. type: Content of: <p>
-#: src/lessons/recursion/lego/Main.html:11
-msgid ""
-"As usual, there are several things that could be done in this lesson to "
-"improve it further:"
-msgstr ""
-"Comme souvent, plusieurs points pourraient être améliorés dans cette "
-"leçon&nbsp;:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:13
-msgid ""
-"The Sierpinski triangle can be drawn using a simpler L-system. See http://"
-"jpvallon.free.fr/recursivite.html"
-msgstr ""
-"Le triangle de Sierpinski peut être tracé de façon bien plus simple en "
-"utilisant un L-système. Voir http://jpvallon.free.fr/recursivite.html"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:14
-msgid ""
-"The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
-"sierpinski/sierpinskitriangle.shtml"
-msgstr ""
-"la courbe de Sierpinski est également intéressante: http://www.mathcurve.com/"
-"fractals/sierpinski/sierpinskitriangle.shtml"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:15
-msgid ""
-"The dragon curve could be explained as a L-system: http://"
-"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
-msgstr ""
-"La courbe du dragon pourrait être expliquée comme un L-système. http://"
-"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:16
-msgid ""
-"The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
-"~lriddle/ifs/heighway/twindragon.htm"
-msgstr ""
-"La courbe du dragon2 s'appelle la courbe des dragons jumeaux: http://"
-"ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:17
-msgid ""
-"The space filling curves could be added (Peano, Hildebert, etc).  See: "
-"http://teachout1.net/village/fill.html"
-msgstr ""
-"Les courbes remplissant l'espace (Peano, Hildebert, etc) pourraient être "
-"ajoutées. http://teachout1.net/village/fill.html"
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:19
-msgid ""
-"We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
-"helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
-"actionsrecursives.html"
-msgstr ""
-"Un exercice sur les polygones inscrits serait intéressant: http://"
-"www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
-"actionsrecursives.html"
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/lego/short_desc.html:2
@@ -14649,31 +14388,6 @@ msgstr ""
 "ado, mais pas les deux."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bat/bool1/Main.html:2
-msgid "Boolean fun"
-msgstr "Jeux booléens"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Main.html:4
-msgid ""
-"Boolean operations are one of the very basic task in programming.  As long "
-"as you cannot write a not so simple boolean test under the minute, you "
-"probably will have a very bad time writing a real program."
-msgstr ""
-"Les opérations booléennes sont l'une des fondements de la programmation. "
-"Tant que vous ne pourrez pas écrire des tests booléens (même non triviaux) "
-"en moins d'une minute, il vous sera difficile d'écrire un vrai programme."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Main.html:9
-msgid ""
-"That is why this lesson provides you a bunch of such exercises, so that you "
-"can get trained in this."
-msgstr ""
-"C'est pourquoi cette leçon vous propose une certaine quantité de tels "
-"exercices pour vous permettre de vous entraîner."
-
-#. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Makes10.html:2
 msgid "Makes 10"
 msgstr "Font 10"
@@ -15072,20 +14786,6 @@ msgstr ""
 "de 10 ou plus que l'un des autres."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bat/bool2/Main.html:2
-msgid "Boolean (even more) fun"
-msgstr "Encore des jeux booléens"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool2/Main.html:4
-msgid ""
-"A very good introduction to this type is available here: http://"
-"codingbat.com/doc/java-if-boolean-logic.html"
-msgstr ""
-"Une très bonne introduction à ce type est disponible ici : http://"
-"codingbat.com/doc/java-if-boolean-logic.html"
-
-#. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:2
 msgid "MaxMod5"
 msgstr "Maximum Mod 5"
@@ -15471,53 +15171,6 @@ msgid ""
 msgstr ""
 "À chaque pas de la simulation, le joueur donne des commandes contrôlant "
 "l'angle et la poussée du module d'alunissage."
-
-#. type: Content of: <p>
-#: src/lessons/lander/Main.html:10
-msgid "Ideas concerning the progression of exercises:"
-msgstr "Idées d'exercices à ajouter à la progression proposée :"
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:12
-msgid ""
-"A lander in vertical position above flat ground, the player can only control "
-"thrust (done)"
-msgstr ""
-"Un alunisseur en position verticale au dessus d'un sol plat. Le joueur ne "
-"peut régler que la poussée (c'est fait)."
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:14
-msgid ""
-"A lander in vertical position not above flat ground, the player control "
-"thrust and angle (done)"
-msgstr ""
-"Un alunisseur en position verticale pas au dessus d'un sol plat. Le joueur "
-"peut régler la poussée et l'angle (c'est fait)."
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:16
-msgid ""
-"A lander with difficult angle and speed not above flat ground, the player "
-"control thrust and angle"
-msgstr ""
-"Un alunisseur avec un angle et une vitesse difficile, pas au dessus d'un sol "
-"plat. Le joueur contrôle la poussée et l'angle."
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:18
-msgid ""
-"A lander with difficult angle and speed not above flat ground, with "
-"difficult ground, the player control thrust and angle"
-msgstr ""
-"Un alunisseur avec un angle et une vitesse difficile, pas au dessus d'un sol "
-"plat dans une configuration difficile. Le joueur contrôle la poussée et "
-"l'angle."
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:20
-msgid "Same with wind?"
-msgstr "La même chose avec du vent ?"
 
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
@@ -16072,6 +15725,277 @@ msgid ""
 msgstr ""
 "Le bouton <b>marquer</b> demande à votre buggle de faire un trait au sol "
 "quand elle avance."
+
+#~ msgid "What can I do to improve this PLM universe?"
+#~ msgstr "Que puis-je faire pour améliorer cet univers de PLM?"
+
+#~ msgid ""
+#~ "As usual, there are several things that could be done in the code of this "
+#~ "universe to improve it:"
+#~ msgstr ""
+#~ "Comme souvent, plusieurs points pourraient être améliorés dans le code de "
+#~ "cet univers pour l'améliorer&nbsp;:"
+
+#~ msgid ""
+#~ "We are probably missing some good exercises. The turmite creator exercise "
+#~ "is a bit harsh: we could introduce the patterns in a more friendly manner."
+#~ msgstr ""
+#~ "Il nous manque probablement quelques exercices progressifs. Celui sur la "
+#~ "création de turmites est particulièrement aride. Nous devrions "
+#~ "probablement introduire les motifs de façon plus pédagogique."
+
+#~ msgid "We may want to write an exercise on the busy beaver, maybe?"
+#~ msgstr ""
+#~ "Il serait peut-être amusant d'introduire un exercice sur les castors "
+#~ "occupés (busy beavers)?"
+
+#~ msgid ""
+#~ "More exercises are planned for the future, on recursive sorting "
+#~ "algorithms (such as QuickSort and MergeSort) or using other microworlds "
+#~ "to apply these algorithms to other contexts."
+#~ msgstr ""
+#~ "Plus d'exercices sont prévus à l'avenir. Certain porteront sur les tris\n"
+#~ "récursifs (en particulier QuickSort et MergeSort) tandis que d'autres\n"
+#~ "s'appuieront sur d'autres micro-mondes pour appliquer ces algorithmes à "
+#~ "d'autres\n"
+#~ "situations."
+
+#~ msgid ""
+#~ "Other graphical representations could be proposed, such as the ones "
+#~ "presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
+#~ msgstr ""
+#~ "D'autres représentations graphiques pourraient être proposées, telles que "
+#~ "celles\n"
+#~ "présentées sur le site <a href=\"http://sorting.at/\">http://sorting.at/</"
+#~ "a>."
+
+#~ msgid "A temporal view could be welcomed."
+#~ msgstr "Une vue temporelle serait bienvenue."
+
+#~ msgid ""
+#~ "Other exercises, for example with 2 colors only or with more than 3 "
+#~ "colors, could generalize the proposed approach."
+#~ msgstr ""
+#~ "D'autres exercices, par exemple avec seulement deux couleurs ou avec plus "
+#~ "de 3 couleurs, pourraient généraliser l'approche."
+
+#~ msgid "This problem could be solved recursively."
+#~ msgstr "Ce problème peut être résolu récursivement."
+
+#~ msgid "A temporal view similar to the sorting universe could be helpful"
+#~ msgstr ""
+#~ "Une vue temporelle comme celle de l'univers des tris pourrait être "
+#~ "pratique."
+
+#~ msgid ""
+#~ "Other exercises, for example on the Roti sorting, with a pile of Roti "
+#~ "that have to touch the grill on each face (see http://en.wikipedia.org/"
+#~ "wiki/Pancake_sorting#The_identical_pancake_stack)."
+#~ msgstr ""
+#~ "D'autres exercices, comme le tri des cheese nans, avec une pile de nans "
+#~ "qui doivent chacun toucher le grill sur les deux faces pour être bien "
+#~ "grillés (voir  http://en.wikipedia.org/wiki/"
+#~ "Pancake_sorting#The_identical_pancake_stack)."
+
+#~ msgid ""
+#~ "Other graphical representations could be proposed, such as a linear one "
+#~ "(for the existing exercises) or other ones (such as a grid or a tree, if "
+#~ "an exercise on this kind of graph proves interesting)."
+#~ msgstr ""
+#~ "D'autres représentations graphiques pourraient être proposées, comme une "
+#~ "représentation linéaire (pour les exercices proposés) ou d'autres comme "
+#~ "une grille ou un arbre, si un exercice sur ce type de graphe s'avère "
+#~ "intéressant."
+
+#~ msgid ""
+#~ "Other exercises on other algorithms on this variant, or on other variants "
+#~ "such as the 15-puzzle."
+#~ msgstr ""
+#~ "D'autres exercices à propos d'autres algorithmes pour cette variante du "
+#~ "problème, ou bien d'autres variantes comme le jeu du taquin."
+
+#~ msgid ""
+#~ "Other exercises should be added. A whole lot of exercises are available "
+#~ "from <a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/"
+#~ "logo/#sect4</a> or from <a href=\"http://billkerr2.blogspot.fr/2009/08/40-"
+#~ "maths-shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-"
+#~ "maths-shapes-challenges.html</a>."
+#~ msgstr ""
+#~ "D'autres exercises devraient être ajoutés. Une mine d'inspiration quasi "
+#~ "inépuisable se trouve à l'adresse <a href=\"http://neoparaiso.com/logo/"
+#~ "#sect4\">http://neoparaiso.com/logo/#sect4</a>, tandis que d'autres "
+#~ "challenges intéressants se trouvent à l'adresse <a href=\"http://"
+#~ "billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html.\">http://"
+#~ "billkerr2.blogspot.fr/2009/08/40-maths-shapes-challenges.html</a>."
+
+#~ msgid ""
+#~ "Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
+#~ "moving or by moving to the end of the arc."
+#~ msgstr ""
+#~ "Il manque des primitives arc() et arcVers() pour dessiner un arc de "
+#~ "cercle, en restant sur place ou en bougeant jusqu'à la fin de l'arc."
+
+#~ msgid ""
+#~ "New exercises could be proposed, such as http://webloria.loria.fr/"
+#~ "~quinson/Teaching/TOP/02-td-recursivite-enonce.pdf If you know some "
+#~ "others, please report them as an issue."
+#~ msgstr ""
+#~ "De nouveaux exercices pourraient être proposés, par exemple inspirés de "
+#~ "http://webloria.loria.fr/~quinson/Teaching/TOP/02-td-recursivite-"
+#~ "enonce.pdf Si vous en connaissez d'autres, nous vous serions "
+#~ "reconnaissant de nous en parler dans un rapport d'anomalie."
+
+#~ msgid ""
+#~ "It would be interesting to check the asymptotic complexity of the "
+#~ "student's code, but that does not sound easy to do. In Python and Java "
+#~ "(where we provide a hand-made RecList class), we could count the amount "
+#~ "of cons per exercise, but it won't be easy to relate this to the right "
+#~ "BatTest. For Scala, it sounds even more difficult as we use the "
+#~ "classical :: operators of the language. That will be difficult to "
+#~ "override to add a counting mechanism. Another solution would be to ensure "
+#~ "that the call stack does not pass a given threshold, but that sounds very "
+#~ "difficult too. Any idea is welcome."
+#~ msgstr ""
+#~ "Il serait intéressant de vérifier la complexité algorithmique du code "
+#~ "proposé par les étudiants, mais cela semble assez difficile à faire. En "
+#~ "Python et Java, nous proposons un type de donnée spécifique (les "
+#~ "<code>RecList</code>) alors nous pourrions compter le nombre de cons "
+#~ "réalisés dans chaque exercice, mais il risque d'être compliqué de trouver "
+#~ "le test auquel rattacher chaque opération. En Scala, cela s'annonce "
+#~ "encore plus difficile car nous utilisons directement des mots-clés du "
+#~ "langage. Il serait probablement difficile d'y injecter un mécanisme "
+#~ "comptant les opérations. On pourrait vouloir assurer que la pile d'appel "
+#~ "ne dépasse pas une profondeur donnée, mais cela semble également "
+#~ "difficile à implémenter. Si vous avez des idées, merci de nous en faire "
+#~ "part."
+
+#~ msgid ""
+#~ "If you need more recursive algorithms, an exercise on recursive sorting "
+#~ "algorithms (in particular QuickSort and MergeSort) is planned in the "
+#~ "future within the sorting lesson."
+#~ msgstr ""
+#~ "Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
+#~ "récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir "
+#~ "dans la leçon sur les tris."
+
+#~ msgid "What can I do to improve this lesson?"
+#~ msgstr "Que puis-je faire pour améliorer cette leçon ?"
+
+#~ msgid ""
+#~ "As usual, there are several things that could be done in this lesson to "
+#~ "improve it further:"
+#~ msgstr ""
+#~ "Comme souvent, plusieurs points pourraient être améliorés dans cette "
+#~ "leçon&nbsp;:"
+
+#~ msgid ""
+#~ "The Sierpinski triangle can be drawn using a simpler L-system. See http://"
+#~ "jpvallon.free.fr/recursivite.html"
+#~ msgstr ""
+#~ "Le triangle de Sierpinski peut être tracé de façon bien plus simple en "
+#~ "utilisant un L-système. Voir http://jpvallon.free.fr/recursivite.html"
+
+#~ msgid ""
+#~ "The arrowhead curve is also interesting: http://www.mathcurve.com/"
+#~ "fractals/sierpinski/sierpinskitriangle.shtml"
+#~ msgstr ""
+#~ "la courbe de Sierpinski est également intéressante: http://"
+#~ "www.mathcurve.com/fractals/sierpinski/sierpinskitriangle.shtml"
+
+#~ msgid ""
+#~ "The dragon curve could be explained as a L-system: http://"
+#~ "ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+#~ msgstr ""
+#~ "La courbe du dragon pourrait être expliquée comme un L-système. http://"
+#~ "ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+
+#~ msgid ""
+#~ "The dragon2 curve is called the twin dragon: http://"
+#~ "ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
+#~ msgstr ""
+#~ "La courbe du dragon2 s'appelle la courbe des dragons jumeaux: http://"
+#~ "ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
+
+#~ msgid ""
+#~ "The space filling curves could be added (Peano, Hildebert, etc).  See: "
+#~ "http://teachout1.net/village/fill.html"
+#~ msgstr ""
+#~ "Les courbes remplissant l'espace (Peano, Hildebert, etc) pourraient être "
+#~ "ajoutées. http://teachout1.net/village/fill.html"
+
+#~ msgid ""
+#~ "We could do another exercise on embeeded polygons: http://"
+#~ "www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
+#~ "actionsrecursives.html"
+#~ msgstr ""
+#~ "Un exercice sur les polygones inscrits serait intéressant: http://"
+#~ "www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
+#~ "actionsrecursives.html"
+
+#~ msgid "Boolean fun"
+#~ msgstr "Jeux booléens"
+
+#~ msgid ""
+#~ "Boolean operations are one of the very basic task in programming.  As "
+#~ "long as you cannot write a not so simple boolean test under the minute, "
+#~ "you probably will have a very bad time writing a real program."
+#~ msgstr ""
+#~ "Les opérations booléennes sont l'une des fondements de la programmation. "
+#~ "Tant que vous ne pourrez pas écrire des tests booléens (même non "
+#~ "triviaux) en moins d'une minute, il vous sera difficile d'écrire un vrai "
+#~ "programme."
+
+#~ msgid ""
+#~ "That is why this lesson provides you a bunch of such exercises, so that "
+#~ "you can get trained in this."
+#~ msgstr ""
+#~ "C'est pourquoi cette leçon vous propose une certaine quantité de tels "
+#~ "exercices pour vous permettre de vous entraîner."
+
+#~ msgid "Boolean (even more) fun"
+#~ msgstr "Encore des jeux booléens"
+
+#~ msgid ""
+#~ "A very good introduction to this type is available here: http://"
+#~ "codingbat.com/doc/java-if-boolean-logic.html"
+#~ msgstr ""
+#~ "Une très bonne introduction à ce type est disponible ici : http://"
+#~ "codingbat.com/doc/java-if-boolean-logic.html"
+
+#~ msgid "Ideas concerning the progression of exercises:"
+#~ msgstr "Idées d'exercices à ajouter à la progression proposée :"
+
+#~ msgid ""
+#~ "A lander in vertical position above flat ground, the player can only "
+#~ "control thrust (done)"
+#~ msgstr ""
+#~ "Un alunisseur en position verticale au dessus d'un sol plat. Le joueur ne "
+#~ "peut régler que la poussée (c'est fait)."
+
+#~ msgid ""
+#~ "A lander in vertical position not above flat ground, the player control "
+#~ "thrust and angle (done)"
+#~ msgstr ""
+#~ "Un alunisseur en position verticale pas au dessus d'un sol plat. Le "
+#~ "joueur peut régler la poussée et l'angle (c'est fait)."
+
+#~ msgid ""
+#~ "A lander with difficult angle and speed not above flat ground, the player "
+#~ "control thrust and angle"
+#~ msgstr ""
+#~ "Un alunisseur avec un angle et une vitesse difficile, pas au dessus d'un "
+#~ "sol plat. Le joueur contrôle la poussée et l'angle."
+
+#~ msgid ""
+#~ "A lander with difficult angle and speed not above flat ground, with "
+#~ "difficult ground, the player control thrust and angle"
+#~ msgstr ""
+#~ "Un alunisseur avec un angle et une vitesse difficile, pas au dessus d'un "
+#~ "sol plat dans une configuration difficile. Le joueur contrôle la poussée "
+#~ "et l'angle."
+
+#~ msgid "Same with wind?"
+#~ msgstr "La même chose avec du vent ?"
 
 #~ msgid "<b>Moving</b>"
 #~ msgstr "<b>Bouger</b>"
