@@ -884,7 +884,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:58
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "stepBack()[!java|c];[/!]\n"
 "left()[!java|c];[/!]\n"
@@ -905,7 +905,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:67
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "brushUp()[!java|c];[/!]\n"
 "brushDown()[!java|c];[/!]\n"
@@ -1049,7 +1049,7 @@ msgstr "[!thelang] தொடரியல் பின்வருமாறு:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:11
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>\n"
@@ -1314,7 +1314,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:97
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java|scala|c]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
@@ -1457,7 +1457,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:25
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java|scala]while (true) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
@@ -2770,7 +2770,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopdowhile/Poucet2.html:20
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "firstTime = True\n"
 "while firstTime or not crossing():\n"
@@ -2788,16 +2788,24 @@ msgstr "With that புதிய trick, your buggle should exit this maze quite
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array1.html:2
 msgid "[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting"
-msgstr ""
-"[!java|scala] வரிசைகள் [/!] [!python] பட்டியல்கள் [/!] மற்றும் முடிச்சு"
+msgstr "[!java|scala] வரிசைகள் [/!] [!python] பட்டியல்கள் [/!] மற்றும் முடிச்சு"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics/Array1.html:4
+#, fuzzy
+#| msgid ""
+#| "The goal of this exercise is to reproduce the pattern of the first row in "
+#| "the other rows with a shift of one cell (see the Objective tab for "
+#| "details). The biggest difference between this exercise and the others we "
+#| "had on patterns is that you have to read the pattern (on first row) "
+#| "before reproducing it. You cannot do otherwise because the same code will "
+#| "be executed on three different worlds, each of them having a specific "
+#| "pattern."
 msgid ""
-"The goal of this exercise is to reproduce the pattern of the first row in "
-"the other rows with a shift of one cell (see the Objective tab for details). "
-"The biggest difference between this exercise and the others we had on "
-"patterns is that you have to read the pattern (on first row) before "
+"The goal of this exercise is to reproduce the pattern of the first column in "
+"the other columns with a shift of one cell (see the Objective tab for "
+"details). The biggest difference between this exercise and the others we had "
+"on patterns is that you have to read the pattern (on first column) before "
 "reproducing it. You cannot do otherwise because the same code will be "
 "executed on three different worlds, each of them having a specific pattern."
 msgstr ""
@@ -2949,7 +2957,7 @@ msgstr "We can தேர்வு this value:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:64
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) [!scala|java]{[/!][!python]:[/!]\n"
 "    [!java|scala]//[/!][!python]#[/!] instructions...\n"
@@ -3013,7 +3021,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:84
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:[/!]\n"
 "  action()[!java];[/!]\n"
@@ -3308,8 +3316,7 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array1.html:185
 msgid "[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters"
 msgstr ""
-"[!python] பட்டியல்கள் [/!] [!scala|java] வரிசைகள் [/!] மற்றும் முறை "
-"அளவுருக்கள்"
+"[!python] பட்டியல்கள் [/!] [!scala|java] வரிசைகள் [/!] மற்றும் முறை அளவுருக்கள்"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:186
@@ -3324,7 +3331,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/array/basics/Array1.html:188
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java]boolean has42First(int[] array) {\n"
 "    return array[0] == 42;\n"
@@ -3455,12 +3462,24 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:234
+#, fuzzy
+#| msgid ""
+#| "Your mission is rather simple actually.  Your code should save the color "
+#| "pattern observed on the first row into [!java|scala]an array[/!][!"
+#| "python]a list[/!].  [!python]The easiest is to create an empty list, and "
+#| "then <code>append()</code> the colors one after the others as you read "
+#| "them (with <code>getGroundColor()</code>).[/!] [!java|scala]For that, you "
+#| "should declare and allocate an array of <code>Color</code>. Beware, there "
+#| "is several worlds, of differing size; use <code>getWorldHeight()</code> "
+#| "to retrieve the size of the current world.  Once the array allocated, "
+#| "fill it by reading the ground color in each locations (with "
+#| "<code>getGroundColor()</code>).[/!]"
 msgid ""
 "Your mission is rather simple actually.  Your code should save the color "
-"pattern observed on the first row into [!java|scala]an array[/!][!python]a "
-"list[/!].  [!python]The easiest is to create an empty list, and then "
-"<code>append()</code> the colors one after the others as you read them (with "
-"<code>getGroundColor()</code>).[/!] [!java|scala]For that, you should "
+"pattern observed on the first column into [!java|scala]an array[/!][!"
+"python]a list[/!].  [!python]The easiest is to create an empty list, and "
+"then <code>append()</code> the colors one after the others as you read them "
+"(with <code>getGroundColor()</code>).[/!] [!java|scala]For that, you should "
 "declare and allocate an array of <code>Color</code>. Beware, there is "
 "several worlds, of differing size; use <code>getWorldHeight()</code> to "
 "retrieve the size of the current world.  Once the array allocated, fill it "
@@ -3480,10 +3499,16 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:242
+#, fuzzy
+#| msgid ""
+#| "Once you managed to read and save the pattern on the first row, you have "
+#| "to reapply the pattern on every rows, for example by executing "
+#| "<code>getWorldHeight()</code> times a method written specifically for "
+#| "this."
 msgid ""
-"Once you managed to read and save the pattern on the first row, you have to "
-"reapply the pattern on every rows, for example by executing "
-"<code>getWorldHeight()</code> times a method written specifically for this."
+"Once you managed to read and save the pattern on the first column, you have "
+"to reapply the pattern on every columns, for example by executing "
+"<code>getWorldWidth()</code> times a method written specifically for this."
 msgstr ""
 "Once you managed பெறுநர் read and சேமி the pattern on the first row, you have "
 "பெறுநர் reapply the pattern on every rows, க்கு example by executing "
@@ -4196,7 +4221,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/basics/Methods.html:20
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java|c]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]\n"
 "  actions()[!java|c];[/!]\n"
@@ -4443,7 +4468,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:8
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "step()[!java|c];[/!]\n"
 "step()[!java|c];[/!]\n"
@@ -5564,7 +5589,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR.html:28
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "if (isOverBaggle())    \n"
 "     if (x == 5)\n"
@@ -5598,7 +5623,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR.html:42
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "if (isOverBaggle())    \n"
 "        if (x == 5)\n"
@@ -5631,7 +5656,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR.html:55
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid "if (isOverBaggle()) if (x == 5) left(); else right(); step();"
 msgstr "if (isoverBaggle ()) என்றால் (x == 5) இடது (); வேறு உரிமை (); ."
 
@@ -5870,8 +5895,8 @@ msgid ""
 "<code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the "
 "ground."
 msgstr ""
-"<code> [!java|c] வெற்றிடத்தை [/!] ClearMessage () </code>: தரையில் "
-"எழுதப்பட்டதை அழிக்கிறது."
+"<code> [!java|c] வெற்றிடத்தை [/!] ClearMessage () </code>: தரையில் எழுதப்பட்டதை "
+"அழிக்கிறது."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bdr/BDR.html:151
@@ -6656,9 +6681,7 @@ msgstr ""
 #: src/lessons/welcome/traversal/Snake.html:35
 #, no-wrap
 msgid "while (testingFunction() == [!c]0) {[/!][!java|scala]false) {[/!][!python]False):[/!]"
-msgstr ""
-"போது (சோதனை செயல்பாடு () == [!c] 0) {[/!] [!java|scala] பொய்) {[/!] "
-"[!python] பொய்): [/!]"
+msgstr "போது (சோதனை செயல்பாடு () == [!c] 0) {[/!] [!java|scala] பொய்) {[/!] [!python] பொய்): [/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:36
@@ -6673,7 +6696,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:38
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid "while ([!java|scala|c]![/!][!python]not [/!]testingFunction())[!java|scala|c] {[/!][!python]:[/!]"
 msgstr "([!java|scala|c]! [/!] [!"
 
@@ -7347,7 +7370,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:46
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7365,7 +7388,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:50
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
 "    left()[!java];[/!]\n"
@@ -7803,7 +7826,7 @@ msgstr "அச் always, the indices of cells வீச்சு இருந�
 
 #. type: Content of: <p><pre>
 #: src/plm/universe/sort/SortingWorld.html:12
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid "getValueCount()-1"
 msgstr "getValueCount ()-1"
 
@@ -10636,8 +10659,7 @@ msgid ""
 "length[!scala] (without using its <code>size</code> method, of course)[/!].  "
 "[!java|python]"
 msgstr ""
-"[!scala] பட்டியல் [int] [/!] [!java|python] சுழல்நிலை பட்டியல் "
-"[/!][!java|python]"
+"[!scala] பட்டியல் [int] [/!] [!java|python] சுழல்நிலை பட்டியல் [/!][!java|python]"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/cons/Length.html:5
@@ -11237,7 +11259,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/polygonfractal/PolygonFractal.html:6
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid "[!java|c]void [/!]polygonFractal ([!java|c]int [/!]levels[!scala]:Int[/!], [!java|c]int [/!]sides[!scala]:Int[/!], [!java|c]double [/!]length[!scala]:Double[/!], [!java|c]double [/!]shrink[!scala]:Double[/!])"
 msgstr "[!java|c] வெற்றிட [/!][/!] சுருக்கம் [!scala]: இரட்டை [/!])"
 
@@ -11693,7 +11715,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/spiral/Spiral.html:12
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid ""
 "spiral(5, 90, 0, 3);\n"
 "  forward(0);\n"
@@ -11849,7 +11871,7 @@ msgstr "The prototype of the method drawing the வளைவு is the following
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve1.html:19
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:23
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid "[!java|c]void [/!]dragon([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr ". [!java|c] இரட்டை [/!] டி [!scala]: இரட்டை [/!])"
 
@@ -11932,7 +11954,7 @@ msgstr "<குறியீடு> டிராகன் ரிவர்ச் <
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/lego/dragoncurve/DragonCurve2.html:32
-#, no-wrap, fuzzy
+#, fuzzy, no-wrap
 msgid "[!java|c]void [/!]dragonReverse([!java|c]int [/!]order[!scala]:Int[/!], [!java|c]double [/!]x[!scala]:Double[/!], [!java|c]double [/!]y[!scala]:Double[/!], [!java|c]double [/!]z[!scala]:Double[/!], [!java|c]double [/!]t[!scala]:Double[/!])"
 msgstr ". [!java|c] இரட்டை [/!] டி [!scala]: இரட்டை [/!])"
 
