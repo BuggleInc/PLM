@@ -10,6 +10,7 @@ public class ProgrammersLearningMachine {
 
   public static void main(String args[])
   {
+    System.setProperty("apple.laf.useScreenMenuBar", "true"); // read on macOS when AWT starts, ignored elsewhere
     FileUtils.setLocale(new JFrame().getLocale());
 
     Game.getInstance(); // make sure it's created

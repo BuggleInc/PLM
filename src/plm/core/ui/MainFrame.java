@@ -101,9 +101,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
   {
     super(frameTitle);
 
-    if (System.getProperty("os.name").startsWith("Mac"))
-      System.setProperty("apple.laf.useScreenMenuBar", "true");
-
     FileUtils.setLocale(this.getLocale());
     initComponents(Game.getInstance());
     this.keyListeners(exerciseView);
