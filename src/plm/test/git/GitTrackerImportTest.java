@@ -328,4 +328,18 @@ public class GitTrackerImportTest {
 
     Assertions.assertEquals("from the zip", local.read(LOCAL, "a.java.code"));
   }
+
+  @Test public void testModifyDeleteConflictKeepsTheDeletionOfTheZipWhenItIsMoreRecent() throws Exception
+  {
+    Machine[] machines = machinesSharingAFile();
+    Machine local = machines[0], remote = machines[1];
+    local.write(LOCAL, "a.java.code", "local change");
+    local.export(); // commits the modification now
+    Thread.sleep(1100);
+    remote.delete(LOCAL, "a.java.code");
+
+    local.tracker.importSession(remote.export().toFile(), false);
+
+    Assertions.assertFalse(local.exists(LOCAL, "a.java.code"));
+  }
 }
