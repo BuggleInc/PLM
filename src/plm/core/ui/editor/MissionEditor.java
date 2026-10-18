@@ -32,6 +32,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.MissionMarkup;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 
@@ -110,7 +111,7 @@ public class MissionEditor extends JFrame {
       {
         String ctn = "";
         if (selectorAll.isSelected()) {
-          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), null, true) + "</body></html>";
+          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + MissionMarkup.filter(editor.getText(), null, true) + "</body></html>";
         } else {
           ArrayList<ProgrammingLanguage> l = new ArrayList<>();
           if (selectorC.isSelected()) {
@@ -125,7 +126,7 @@ public class MissionEditor extends JFrame {
           if (selectorPython.isSelected()) {
             l.add(Game.getInstance().programmingLanguageManager.PYTHON);
           }
-          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), l, true) + "</body></html>";
+          ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + MissionMarkup.filter(editor.getText(), l, true) + "</body></html>";
         }
 
         if (!modified) {
@@ -192,8 +193,7 @@ public class MissionEditor extends JFrame {
           setTitle(TITLE_MODIFIED);
           modified = true;
         }
-        String ctn =
-            "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + PlmHtmlEditorKit.filterHTML(editor.getText(), null, true) + "</body></html>";
+        String ctn = "<html><head>" + PlmHtmlEditorKit.getCSS() + "</head><body>" + MissionMarkup.filter(editor.getText(), null, true) + "</body></html>";
         display.setText(ctn);
         javax.swing.text.Document doc = display.getDocument();
         int pos                       = (int)((double)doc.getLength() * editor.getCaretPosition() / editor.getDocument().getLength());

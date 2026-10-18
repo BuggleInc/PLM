@@ -6,14 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -27,22 +20,12 @@ import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
-import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.MissionMarkup;
 
 public class PlmHtmlEditorKit extends HTMLEditorKit {
   private static final long serialVersionUID = 1L;
-
-  /** Colors of the language-specific blocks, by their languages in alphabetical order */
-  private static final Map<String, String> LANG_COLORS =
-      Map.ofEntries(Map.entry("c", "00FF00"), Map.entry("java", "FF0000"), Map.entry("python", "008000"), Map.entry("scala", "0000FF"),
-                    Map.entry("c|java", "FFFF00"), Map.entry("c|python", "00AF00"), Map.entry("c|scala", "00FFFF"), Map.entry("java|python", "FF8000"),
-                    Map.entry("java|scala", "FF00FF"), Map.entry("python|scala", "0080FF"), Map.entry("c|java|python", "333333"),
-                    Map.entry("c|java|scala", "EEEEEE"), Map.entry("c|python|scala", "00AFFF"), Map.entry("java|python|scala", "FF80FF"));
-
-  /** A [!langs]...[/!] block that contains no other block */
-  private static final Pattern INNERMOST_BLOCK = Pattern.compile("(?s)\\[!([a-z|]+)\\]((?:(?!\\[![a-z|]+\\]).)*?)\\[/!\\]");
 
   /**
    * Keeps the parts of the mission text meant for the current programming language, or every part with a color per language in
@@ -50,33 +33,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
    */
   public static String filterHTML(String in, boolean debug)
   {
-    return debug ? filterHTML(in, null, true) : filterHTML(in, List.of(Game.getInstance().getProgrammingLanguage()), false);
-  }
-
-  /**
-   * Resolves the [!langs]...[/!] blocks of a mission text: a block is replaced by its content if one of its languages is shown, and
-   * removed otherwise. The blocks are resolved from the innermost, so that they can be nested. [!thelang] gives the name of the
-   * language.
-   *
-   * @param shown the languages to show, or null to show them all
-   * @param colored whether to color the content of the blocks according to their languages
-   */
-  public static String filterHTML(String in, Collection<ProgrammingLanguage> shown, boolean colored)
-  {
-    Set<String> names = shown == null ? null : shown.stream().map(lang -> lang.getLang().toLowerCase()).collect(Collectors.toSet());
-    String res        = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!][!c]C[/!]");
-    String previous;
-    do {
-      previous = res;
-      res      = INNERMOST_BLOCK.matcher(res).replaceAll(block -> {
-        List<String> langs = Arrays.stream(block.group(1).split("\\|")).sorted().toList();
-        if (names != null && langs.stream().noneMatch(names::contains))
-          return "";
-        String color = LANG_COLORS.get(String.join("|", langs));
-        return Matcher.quoteReplacement(colored && color != null ? "<font color=\"" + color + "\">" + block.group(2) + "</font>" : block.group(2));
-           });
-    } while (!res.equals(previous));
-    return res;
+    return debug ? MissionMarkup.filter(in, null, true) : MissionMarkup.filter(in, List.of(Game.getInstance().getProgrammingLanguage()), false);
   }
 
   private static boolean hideLang(String cssClass)

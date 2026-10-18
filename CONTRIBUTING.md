@@ -716,7 +716,7 @@ You can either write the text manually in html, or use the PLM mission editor, t
 work for more than one programming language. You can start it with:
   java -cp /usr/share/java/plm-*.jar plm.core.ui.editor.MissionEditorApp
 
-**Language-specific markup.** A single mission file serves every programming language. `PlmHtmlEditorKit.filterHTML()` keeps the
+**Language-specific markup.** A single mission file serves every programming language. `MissionMarkup.filter()` keeps the
 content of a `[!<langs>]...[/!]` block when the current language is among `<langs>`, and removes the whole block otherwise.
 `<langs>` lists some of `java`, `python`, `scala` and `c` (lowercase), separated by `|` in any order; text meant for all four
 languages simply goes out of any block. `[!thelang]` is replaced by the name of the current language. For example:
@@ -728,7 +728,8 @@ forward(steps)` in Python.
 
 Blocks can be nested, as they are resolved from the innermost: `[!java|scala|python]forward()[!java];[/!][/!]` gives `forward();`
 in Java, `forward()` in Scala and Python, and nothing in C. The debug mode of the PLM and the mission editor display all the
-blocks, with a color per set of languages.
+blocks, with a color per set of languages. `MissionMarkup` also lists the mistakes in the markup of a text, for the tests of the
+mission texts and of their translations.
 
 ### Connecting your exercise to the lesson
 

@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -22,6 +21,7 @@ import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.PrimitiveAliases;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveRegistration;
+import plm.core.model.lesson.MissionMarkup;
 import plm.core.utils.PoFile;
 
 /**
@@ -102,13 +102,8 @@ public class TranslationsTest {
       String original = entry.id().replace("\\n", "\n"), translation = entry.translation().replace("\\n", "\n");
       String where = "\n  " + abbreviate(entry.id()) + "\n  -> " + abbreviate(entry.translation());
 
-      Matcher tag = MissionMarkupTest.TAG.matcher(translation);
-      while (tag.find())
-        if (tag.group(1) != null && !tag.group(1).matches("thelang/?|primitives/") && !MissionMarkupTest.LANGS.containsAll(List.of(tag.group(1).split("\\|"))))
-          errors.add("unknown language in " + tag.group() + where);
-      if (MissionMarkupTest.isMalformed(translation))
-        errors.add("malformed tag, such as [/! without its closing bracket or [java] without its !" + where);
-      if (depth(original) != depth(translation))
+      MissionMarkup.mistakes(translation, false).forEach(mistake -> errors.add(mistake + where));
+      if (MissionMarkup.depth(original) != MissionMarkup.depth(translation))
         errors.add("unbalanced [!langs]...[/!] blocks" + where);
 
       for (String primitive : primitives)
@@ -116,19 +111,6 @@ public class TranslationsTest {
           errors.add(primitive + "() is missing, or called under another name than " + aliases.getOrDefault(primitive, primitive) + "()" + where);
     }
     assertTrue(errors.isEmpty(), () -> catalog + ": " + errors.size() + " problems:\n" + String.join("\n", errors));
-  }
-
-  /** Opened minus closed [!langs] blocks: a block may span several entries, as long as the translation does the same. */
-  private static int depth(String text)
-  {
-    int depth   = 0;
-    Matcher tag = MissionMarkupTest.TAG.matcher(text);
-    while (tag.find())
-      if (tag.group(1) == null)
-        depth--;
-      else if (!tag.group(1).matches("thelang/?|primitives/"))
-        depth++;
-    return depth;
   }
 
   private static boolean calls(String text, String name)
