@@ -1,10 +1,13 @@
 package plm.test.git;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.ObjectId;
@@ -13,6 +16,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.model.Game;
@@ -73,7 +78,30 @@ public class GitTrackerImportTest {
           .addUser(Mockito.any(), Mockito.anyString());
     }
 
+    /** Makes switchToUser() behave like the real one: the tracker switches to that user */
+    void stubSwitchToUser() throws Exception
+    {
+      Mockito
+          .doAnswer(invocation -> {
+            current.set(invocation.getArgument(0));
+            tracker.userHasChanged(invocation.getArgument(0));
+            return true;
+          })
+          .when(users)
+          .switchToUser(Mockito.any());
+    }
+
     void write(String uuid, String file, String content) throws IOException { Files.writeString(sessions.resolve(uuid).resolve(file), content); }
+
+    /** Deletes that file as a revert does: from the working tree and from the index */
+    void delete(String uuid, String file)throws IOException, GitAPIException
+    {
+      try (Git git = Git.open(sessions.resolve(uuid).toFile())) {
+        git.rm().addFilepattern(file).call();
+      }
+    }
+
+    boolean exists(String uuid, String file) { return Files.exists(sessions.resolve(uuid).resolve(file)); }
 
     String read(String uuid, String file) throws IOException { return Files.readString(sessions.resolve(uuid).resolve(file)); }
 
@@ -197,5 +225,107 @@ public class GitTrackerImportTest {
 
     Assertions.assertThrows(FileAlreadyExistsException.class, () -> local.tracker.importSession(zip.toFile(), true));
     Assertions.assertEquals(0, local.sessions.toFile().list((dir, name) -> name.startsWith("import-")).length, "the temporary directory is removed");
+  }
+
+  /** After a failed import, the local session is intact and nothing remains of the zip */
+  private static void assertNothingImported(Machine local) throws IOException
+  {
+    Assertions.assertEquals("from local", local.read(LOCAL, "b.java.code"));
+    Assertions.assertFalse(local.tracker.isSessionEmpty(), "the tracker still works on the local session");
+    Assertions.assertSame(local.user, local.users.getCurrentUser());
+    Assertions.assertFalse(Files.exists(local.sessions.resolve(OTHER)), "no session is created for the user of the zip");
+    Assertions.assertEquals(0, local.sessions.toFile().list((dir, name) -> name.startsWith("import-")).length, "the temporary directory is removed");
+  }
+
+  @ParameterizedTest @ValueSource(booleans = {false, true}) public void testCorruptZipIsRefused(boolean adoptIdentity) throws Exception
+  {
+    Machine local = new Machine("local", LOCAL);
+    local.write(LOCAL, "b.java.code", "from local");
+    Path zip = Files.write(path.resolve("corrupt.zip"), new byte[] {1, 2, 3, 4, 5, 6, 7, 8});
+
+    Assertions.assertThrows(IOException.class, () -> local.tracker.importSession(zip.toFile(), adoptIdentity));
+    assertNothingImported(local);
+    Mockito.verify(local.users, Mockito.never()).addUser(Mockito.any(), Mockito.anyString());
+  }
+
+  @ParameterizedTest @ValueSource(booleans = {false, true}) public void testZipWithoutGitRepositoryIsRefused(boolean adoptIdentity) throws Exception
+  {
+    Machine local = new Machine("local", LOCAL);
+    local.stubAddUser();
+    local.write(LOCAL, "b.java.code", "from local");
+    Path zip = path.resolve("nogit.zip");
+    try (OutputStream out = Files.newOutputStream(zip); ZipOutputStream zos = new ZipOutputStream(out)) {
+      zos.putNextEntry(new ZipEntry(OTHER + "/a.java.code"));
+      zos.write("from the zip".getBytes());
+      zos.closeEntry();
+    }
+
+    Assertions.assertThrows(IOException.class, () -> local.tracker.importSession(zip.toFile(), adoptIdentity));
+    assertNothingImported(local);
+    Mockito.verify(local.users, Mockito.never()).addUser(Mockito.any(), Mockito.anyString());
+  }
+
+  @Test public void testFailureAfterAdoptingTheIdentityRestoresThePreviousUser() throws Exception
+  {
+    Machine local  = new Machine("local", LOCAL);
+    Machine remote = new Machine("remote", OTHER);
+    local.stubAddUser();
+    local.stubSwitchToUser();
+    Mockito.doThrow(new IllegalStateException("disk full")).when(local.users).removeUser(local.user);
+    remote.write(OTHER, "a.java.code", "from the zip");
+    local.write(LOCAL, "b.java.code", "from local");
+
+    Assertions.assertThrows(IllegalStateException.class, () -> local.tracker.importSession(remote.export().toFile(), true));
+    assertNothingImported(local);
+    Mockito.verify(local.users).removeUser(Mockito.argThat(user -> OTHER.equals(user.getUserUUIDasString())));
+  }
+
+  /** The file exists on both machines, the local one being where it was written */
+  private Machine[] machinesSharingAFile() throws Exception
+  {
+    Machine local  = new Machine("local", LOCAL);
+    Machine remote = new Machine("remote", LOCAL);
+    local.write(LOCAL, "a.java.code", "shared");
+    remote.tracker.importSession(local.export().toFile(), false);
+    return new Machine[] {local, remote};
+  }
+
+  @Test public void testFileDeletedOnOneSideOnlyStaysDeleted() throws Exception
+  {
+    Machine[] machines = machinesSharingAFile();
+    Machine local = machines[0], remote = machines[1];
+    local.delete(LOCAL, "a.java.code");
+
+    local.tracker.importSession(remote.export().toFile(), false);
+
+    Assertions.assertFalse(local.exists(LOCAL, "a.java.code"), "the zip did not touch the file since the common history: the deletion wins");
+  }
+
+  @Test public void testModifyDeleteConflictKeepsTheDeletionWhenItIsMoreRecent() throws Exception
+  {
+    Machine[] machines = machinesSharingAFile();
+    Machine local = machines[0], remote = machines[1];
+    remote.write(LOCAL, "a.java.code", "from the zip");
+    Path zip = remote.export();
+    Thread.sleep(1100); // the time of the commits has a resolution of one second
+    local.delete(LOCAL, "a.java.code");
+
+    local.tracker.importSession(zip.toFile(), false);
+
+    Assertions.assertFalse(local.exists(LOCAL, "a.java.code"));
+  }
+
+  @Test public void testModifyDeleteConflictKeepsTheModificationWhenItIsMoreRecent() throws Exception
+  {
+    Machine[] machines = machinesSharingAFile();
+    Machine local = machines[0], remote = machines[1];
+    local.delete(LOCAL, "a.java.code");
+    local.export(); // commits the deletion now
+    Thread.sleep(1100);
+    remote.write(LOCAL, "a.java.code", "from the zip");
+
+    local.tracker.importSession(remote.export().toFile(), false);
+
+    Assertions.assertEquals("from the zip", local.read(LOCAL, "a.java.code"));
   }
 }

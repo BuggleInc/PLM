@@ -439,10 +439,12 @@ survives depends on the user UUID of the zip:
 - Different UUID, and the current session holds no code (`isSessionEmpty()`): the user of the zip replaces the current one.
 - Different UUID, and the current session holds code: the user chooses in a dialog. Keeping her identity merges the zip into
   the current session. Taking the identity of the zip moves its repository into the sessions directory as a new user, merges
-  the previous session into it and removes the previous user.
+  the previous session into it and removes the previous user. If any of these steps fails, the previous user becomes the
+  current one again and the session of the zip is removed.
 
-A file deleted on one side only (a revert) is restored by the merge if the other side never saw the deletion, as the
-history of the zip is then older than it.
+A zip that is not a session (no UUID at its top, no git repository inside) is refused before anything changes. Deletions
+follow the usual three-way merge: a file deleted on one side only (a revert) stays deleted if the other side did not touch it
+since their common history. If the other side modified it, the side whose last commit on that file is the most recent wins.
 
 ## How tests work
 
@@ -468,6 +470,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`GitTrackerImportTest`:* with two trackers in temporary directories that stand for two disconnected machines, the initial
       commit is the same on both, `importSession()` merges a zip into the local session, resolves a conflict in favor of the most
       recent file, keeps the local identity or adopts the one of the zip (keeping the local work), and refuses to replace an existing user.
+      A corrupt zip, a zip without git repository, or a failure after adopting the identity of the zip leave the local session
+      and user intact, without temporary directory nor session of the zip. A deletion on one side only survives the merge, and
+      a modify/delete conflict keeps the most recent side.
     * *`SessionZipTest`:* a session directory survives the trip through a zip file, a zip that is not a session is refused, and so
       is an entry that would leave the target directory.
     * *`PrimitiveRegistrationTest`:* the primitives are indexed by name and sorted, inherited ones included, and cached. The same

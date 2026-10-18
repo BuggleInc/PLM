@@ -176,6 +176,8 @@ public class GitTracker implements UserSwitchesListener {
     try {
       SessionZip.unzip(zip, tmpDir);
       File zipRepoDir = new File(tmpDir, zipUUID);
+      if (!new File(zipRepoDir, ".git").isDirectory())
+        throw new IOException(zip + " is not a PLM session: it holds no git repository");
 
       if (!adoptIdentity) {
         gitUtils.mergeBranchFromRepository(zipRepoDir, zipBranch);
@@ -184,12 +186,23 @@ public class GitTracker implements UserSwitchesListener {
         File previousDir      = repoDir;
         String previousBranch = currentUserBranch();
         boolean keepPrevious  = !isSessionEmpty();
+        File adoptedDir       = new File(plmDir, zipUUID);
 
-        Files.move(zipRepoDir.toPath(), new File(plmDir, zipUUID).toPath()); // fails if that session already exists here
-        users.addUser(previous.getUsername(), zipUUID);                      // switches to it: repoDir and gitUtils now are the ones of the zip
-        if (keepPrevious)
-          gitUtils.mergeBranchFromRepository(previousDir, previousBranch);
-        users.removeUser(previous);
+        Files.move(zipRepoDir.toPath(), adoptedDir.toPath()); // fails if that session already exists here
+        try {
+          users.addUser(previous.getUsername(), zipUUID); // switches to it: repoDir and gitUtils now are the ones of the zip
+          if (keepPrevious)
+            gitUtils.mergeBranchFromRepository(previousDir, previousBranch);
+          users.removeUser(previous);
+        } catch (Exception e) { // back to the previous user, without any trace of the zip
+          User adopted = users.getCurrentUser();
+          if (adopted != previous) {
+            users.switchToUser(previous);
+            users.removeUser(adopted);
+          }
+          FileUtils.deleteRecursive(adoptedDir);
+          throw e;
+        }
       }
     } finally {
       FileUtils.deleteRecursive(tmpDir);
