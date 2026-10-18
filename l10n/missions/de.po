@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-17 11:46+0200\n"
+"POT-Creation-Date: 2026-10-18 20:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2963,7 +2963,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool1/In1020.html:6
 #: src/lessons/welcome/bat/bool1/In3050.html:6
 #: src/lessons/welcome/bat/bool1/LoneTeen.html:7
-#: src/lessons/welcome/bat/bool1/Main.html:12
 #: src/lessons/welcome/bat/bool1/Makes10.html:6
 #: src/lessons/welcome/bat/bool1/Max1020.html:8
 #: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8
@@ -2984,7 +2983,6 @@ msgstr ""
 #: src/lessons/welcome/bat/bool2/InOrder.html:9
 #: src/lessons/welcome/bat/bool2/LastDigit2.html:9
 #: src/lessons/welcome/bat/bool2/LessBy10.html:6
-#: src/lessons/welcome/bat/bool2/Main.html:7
 #: src/lessons/welcome/bat/bool2/MaxMod5.html:10
 #: src/lessons/welcome/bat/bool2/NearTen.html:9
 #: src/lessons/welcome/bat/bool2/RedTicket.html:10
@@ -5230,35 +5228,6 @@ msgid ""
 "inspired, for further details."
 msgstr ""
 
-#. type: Content of: <h3>
-#: src/lessons/turmites/Main.html:22 src/lessons/sort/basic/Main.html:15
-#: src/lessons/sort/dutchflag/Main.html:9 src/lessons/sort/pancake/Main.html:30
-#: src/lessons/sort/baseball/Main.html:28 src/lessons/turtleart/Main.html:12
-msgid "What can I do to improve this PLM universe?"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/turmites/Main.html:24 src/lessons/sort/basic/Main.html:17
-#: src/lessons/sort/dutchflag/Main.html:11
-#: src/lessons/sort/pancake/Main.html:32 src/lessons/sort/baseball/Main.html:30
-#: src/lessons/turtleart/Main.html:14 src/lessons/recursion/cons/Main.html:7
-msgid ""
-"As usual, there are several things that could be done in the code of this "
-"universe to improve it:"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turmites/Main.html:26
-msgid ""
-"We are probably missing some good exercises. The turmite creator exercise is "
-"a bit harsh: we could introduce the patterns in a more friendly manner."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turmites/Main.html:28
-msgid "We may want to write an exercise on the busy beaver, maybe?"
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/turmites/short_desc.html:3
 msgid "Discover the Langton's ants, that are 2D turing machines."
@@ -5891,21 +5860,6 @@ msgid ""
 "even if you don't code the algorithms, you can use the demo mode to organize "
 "\"races\" between these algorithms to experiment in practice what the "
 "different asymptotical complexity mean."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/basic/Main.html:11
-msgid ""
-"More exercises are planned for the future, on recursive sorting algorithms "
-"(such as QuickSort and MergeSort) or using other microworlds to apply these "
-"algorithms to other contexts."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/basic/Main.html:19
-msgid ""
-"Other graphical representations could be proposed, such as the ones "
-"presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 msgstr ""
 
 #. type: Content of: <p>
@@ -6543,23 +6497,6 @@ msgid ""
 "formally proven, but it's not absolutely trivial either."
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:13
-msgid "A temporal view could be welcomed."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:14
-msgid ""
-"Other exercises, for example with 2 colors only or with more than 3 colors, "
-"could generalize the proposed approach."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/dutchflag/Main.html:15
-msgid "This problem could be solved recursively."
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/short_desc.html:4
 msgid ""
@@ -6713,19 +6650,6 @@ msgid ""
 "unplugged activities to introduce computer science, available at http://"
 "www.loria.fr/~quinson/Mediation/SMN/), and it may be interesting to run the "
 "unplugged activities before implementing these algorithms in PLM."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:34
-msgid "A temporal view similar to the sorting universe could be helpful"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:35
-msgid ""
-"Other exercises, for example on the Roti sorting, with a pile of Roti that "
-"have to touch the grill on each face (see http://en.wikipedia.org/wiki/"
-"Pancake_sorting#The_identical_pancake_stack)."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -7274,21 +7198,6 @@ msgid ""
 "use it during our unplugged activities."
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:32
-msgid ""
-"Other graphical representations could be proposed, such as a linear one (for "
-"the existing exercises) or other ones (such as a grid or a tree, if an "
-"exercise on this kind of graph proves interesting)."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:34
-msgid ""
-"Other exercises on other algorithms on this variant, or on other variants "
-"such as the 15-puzzle."
-msgstr ""
-
 #. type: Content of: <h3>
 #: src/lessons/sort/baseball/short_desc.html:2
 msgid "Rainbow baseball"
@@ -7689,23 +7598,6 @@ msgid ""
 "gallery to inspire the next ones."
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:16
-msgid ""
-"Other exercises should be added. A whole lot of exercises are available from "
-"<a href=\"http://neoparaiso.com/logo/#sect4\">http://neoparaiso.com/logo/"
-"#sect4</a> or from <a href=\"http://billkerr2.blogspot.fr/2009/08/40-maths-"
-"shapes-challenges.html.\">http://billkerr2.blogspot.fr/2009/08/40-maths-"
-"shapes-challenges.html</a>."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:19
-msgid ""
-"Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
-"moving or by moving to the end of the arc."
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/turtleart/short_desc.html:3
 msgid ""
@@ -7828,28 +7720,6 @@ msgid ""
 "This lesson contains a bunch of classical exercises on recursive lists.  It "
 "is certainly not the most pleasant lesson to do, but I think that it is the "
 "easiest of the PLM lessons dealing with recursion."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/cons/Main.html:10
-msgid ""
-"New exercises could be proposed, such as http://webloria.loria.fr/~quinson/"
-"Teaching/TOP/02-td-recursivite-enonce.pdf If you know some others, please "
-"report them as an issue."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/cons/Main.html:13
-msgid ""
-"It would be interesting to check the asymptotic complexity of the student's "
-"code, but that does not sound easy to do. In Python and Java (where we "
-"provide a hand-made RecList class), we could count the amount of cons per "
-"exercise, but it won't be easy to relate this to the right BatTest. For "
-"Scala, it sounds even more difficult as we use the classical :: operators of "
-"the language. That will be difficult to override to add a counting "
-"mechanism. Another solution would be to ensure that the call stack does not "
-"pass a given threshold, but that sounds very difficult too. Any idea is "
-"welcome."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8159,69 +8029,6 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/lego/Main.html:3
 msgid "This lesson allows to experiment with recursive algorithms."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/lego/Main.html:5
-msgid ""
-"If you need more recursive algorithms, an exercise on recursive sorting "
-"algorithms (in particular QuickSort and MergeSort) is planned in the future "
-"within the sorting lesson."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/recursion/lego/Main.html:9
-msgid "What can I do to improve this lesson?"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/lego/Main.html:11
-msgid ""
-"As usual, there are several things that could be done in this lesson to "
-"improve it further:"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:13
-msgid ""
-"The Sierpinski triangle can be drawn using a simpler L-system. See http://"
-"jpvallon.free.fr/recursivite.html"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:14
-msgid ""
-"The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
-"sierpinski/sierpinskitriangle.shtml"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:15
-msgid ""
-"The dragon curve could be explained as a L-system: http://"
-"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:16
-msgid ""
-"The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
-"~lriddle/ifs/heighway/twindragon.htm"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:17
-msgid ""
-"The space filling curves could be added (Peano, Hildebert, etc).  See: "
-"http://teachout1.net/village/fill.html"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/lego/Main.html:19
-msgid ""
-"We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
-"helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
-"actionsrecursives.html"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -10679,26 +10486,6 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bat/bool1/Main.html:2
-msgid "Boolean fun"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Main.html:4
-msgid ""
-"Boolean operations are one of the very basic task in programming.  As long "
-"as you cannot write a not so simple boolean test under the minute, you "
-"probably will have a very bad time writing a real program."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Main.html:9
-msgid ""
-"That is why this lesson provides you a bunch of such exercises, so that you "
-"can get trained in this."
-msgstr ""
-
-#. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Makes10.html:2
 msgid "Makes 10"
 msgstr ""
@@ -10998,18 +10785,6 @@ msgstr ""
 msgid ""
 "Given three ints, a b c, return true if one of them is 10 or more less than "
 "one of the others."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/bat/bool2/Main.html:2
-msgid "Boolean (even more) fun"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool2/Main.html:4
-msgid ""
-"A very good introduction to this type is available here: http://"
-"codingbat.com/doc/java-if-boolean-logic.html"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -11314,44 +11089,6 @@ msgstr ""
 msgid ""
 "At each step of the simulation, the player issues a command controlling how "
 "much the angle and thrust of the lander should change"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/lander/Main.html:10
-msgid "Ideas concerning the progression of exercises:"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:12
-msgid ""
-"A lander in vertical position above flat ground, the player can only control "
-"thrust (done)"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:14
-msgid ""
-"A lander in vertical position not above flat ground, the player control "
-"thrust and angle (done)"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:16
-msgid ""
-"A lander with difficult angle and speed not above flat ground, the player "
-"control thrust and angle"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:18
-msgid ""
-"A lander with difficult angle and speed not above flat ground, with "
-"difficult ground, the player control thrust and angle"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/lander/Main.html:20
-msgid "Same with wind?"
 msgstr ""
 
 #. type: Content of: <p>
