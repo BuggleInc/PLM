@@ -107,13 +107,19 @@ public class BuggleWorld extends GridWorld {
 
   public World readFromFile(String path, String classname, BuggleWorld res) throws IOException, BrokenWorldFileException
   {
-    String name;
     if (path.endsWith(".map"))
       System.err.println(Game.i18n.tr(
           "{0}: The path to the map on disk should not include the .map extension (or it won''t work in jarfiles). Please fix your exercise.", path));
 
-    BufferedReader reader = FileUtils.newFileReader(path, "map", false);
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+      return readFromReader(reader, path, classname, res);
+    }
+  }
 
+  /** Fills res with the content of a map file, read from reader. The path is only used in error messages */
+  private World readFromReader(BufferedReader reader, String path, String classname, BuggleWorld res) throws IOException, BrokenWorldFileException
+  {
+    String name;
     /* Get the world name from the first line */
     String line = reader.readLine();
     if (line == null)
@@ -132,7 +138,7 @@ public class BuggleWorld extends GridWorld {
     p = Pattern.compile("^Size: (\\d+)x(\\d+)$");
     m = p.matcher(line);
     if (!m.find())
-      throw new RuntimeException(Game.i18n.tr("{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''.", line));
+      throw new RuntimeException(Game.i18n.tr("{0}.map:2: Expected ''Size: NNxMM'' but got ''{1}''.", path, line));
     int width  = Integer.parseInt(m.group(1));
     int height = Integer.parseInt(m.group(2));
 

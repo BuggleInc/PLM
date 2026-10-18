@@ -2,7 +2,6 @@ package plm.core.model;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -258,8 +256,8 @@ public class Game implements IWorldView {
 
     // Load the JAR manifest file to retrieve the lesson's package name in it
     Manifest manifest;
-    try {
-      manifest = new JarFile(jar).getManifest();
+    try (JarFile jarFile = new JarFile(jar)) {
+      manifest = jarFile.getManifest();
     } catch (Exception e) {
       throw new LessonLoadingException("Invalid lesson file (Manifest not found): " + jar.getName(), e);
     }
@@ -609,24 +607,11 @@ public class Game implements IWorldView {
 
     File localPropertiesFile = new File(SAVE_DIR + File.separator + Game.LOCAL_PROPERTIES_FILENAME);
     if (localPropertiesFile.exists()) {
-      FileInputStream fi = null;
-      try {
-        fi = new FileInputStream(localPropertiesFile);
+      try (FileInputStream fi = new FileInputStream(localPropertiesFile)) {
         Game.localGameProperties.load(fi);
         Game.localGamePropertiesLoadedFile = localPropertiesFile;
-      } catch (InvalidPropertiesFormatException e) {
-        e.printStackTrace();
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
       } catch (IOException e) {
         e.printStackTrace();
-      } finally {
-        if (fi != null)
-          try {
-            fi.close();
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
       }
       System.out.println(String.format("Loading properties [%s]", localPropertiesFile));
     }
@@ -635,12 +620,8 @@ public class Game implements IWorldView {
   public static void storeProperties()
   {
     Game.localGamePropertiesLoadedFile = new File(SAVE_DIR + File.separator + Game.LOCAL_PROPERTIES_FILENAME);
-    FileOutputStream fo;
-    try {
-      fo = new FileOutputStream(Game.localGamePropertiesLoadedFile);
+    try (FileOutputStream fo = new FileOutputStream(Game.localGamePropertiesLoadedFile)) {
       Game.localGameProperties.store(fo, "Java Learning Machine properties");
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
