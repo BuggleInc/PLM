@@ -27,6 +27,7 @@ static char answer_buffer[1024];
 char* get_answer_line()
 {
   if (fgets(answer_buffer, sizeof(answer_buffer), protocol_in) == NULL) {
+    fprintf(stderr, "The PLM closed the protocol connection. Bailing out.\n");
     exit(1);
   }
   answer_buffer[strcspn(answer_buffer, "\r\n")] = 0;

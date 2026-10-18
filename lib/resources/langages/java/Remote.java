@@ -40,13 +40,12 @@ public abstract class Remote {
     try {
       answerBuffer = protocolIn.readLine();
     } catch (IOException e) {
-      answerBuffer = null;
       System.err.println("IO exception while reading the protocol (reason: " + e.getMessage() + "). Bailing out.");
       System.exit(1);
     }
-    //        System.out.println("Student receives: " + answerBuffer);
     System.out.flush();
     if (answerBuffer == null) {
+      System.err.println("The PLM closed the protocol connection. Bailing out.");
       System.exit(1);
     }
   }

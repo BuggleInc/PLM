@@ -33,8 +33,8 @@ def _getAnswerLine():
   except OSError as e:
     print("IO exception while reading the protocol (reason: %s). Bailing out." % (e,), file=sys.stderr)
     sys.exit(1)
-    return
   if line == "":
+    print("The PLM closed the protocol connection. Bailing out.", file=sys.stderr)
     sys.exit(1)
   _answerBuffer = line.rstrip("\n")
 

@@ -11,6 +11,8 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import javax.swing.ImageIcon;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.model.Game;
@@ -167,15 +169,28 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(protocolSocket.getOutputStream(), StandardCharsets.UTF_8));
       final BufferedReader reader  = new BufferedReader(new InputStreamReader(protocolSocket.getInputStream(), StandardCharsets.UTF_8));
 
+      // Tell, when the run is interrupted, whether the program was stuck or just long
+      final AtomicInteger handledCommands       = new AtomicInteger();
+      final AtomicReference<String> lastCommand = new AtomicReference<>();
+
       Thread commandReader = new Thread() {
         public void run()
         {
-          String command = null;
+          boolean handling = false;
           try {
-            while ((command = reader.readLine()) != null)
+            String command;
+            while ((command = reader.readLine()) != null) {
+              lastCommand.set(command);
+              handling = true;
               CommandExecutor.command(ent, command, bwriter);
+              handling = false;
+              handledCommands.incrementAndGet();
+            }
           } catch (Exception e) {
-            System.err.println("Error while handling the command " + command);
+            if (protocolSocket.isClosed()) // closed when interrupting the run below: not a protocol error
+              return;
+            System.err.println((handling ? "Error while handling the command " : "Error while reading the command after ") + lastCommand.get() + " (" +
+                               handledCommands.get() + " commands handled so far)");
             e.printStackTrace();
             progress.outcome        = RunOutcome.kind.FAIL;
             progress.executionError = e.getMessage();
@@ -192,10 +207,13 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       } catch (InterruptedException ie) {
         // "Stop" interrupts this runner thread (see LessonRunner.stopAll()) to break out of an infinite student
         // loop. Being unblocked from waitFor() doesn't kill the child process by itself -- do that explicitly here,
-        // the same way as the "process never connected" branch above; its reader threads see the pipes close and
-        // exit on their own (EOF/IOException).
+        // the same way as the "process never connected" branch above; its reader threads see the pipes and the
+        // socket close and exit on their own (EOF/IOException).
+        protocolSocket.close();
         process.destroyForcibly();
         Thread.currentThread().interrupt();
+        System.err.println("Run of " + executable + " interrupted after " + handledCommands.get() + " protocol commands, the last one being " +
+                           lastCommand.get());
         progress.outcome = RunOutcome.kind.FAIL;
         progress.setExecutionError(Game.i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n"
                                                 + "Your program must stop by itself to successfully pass the exercise.\n"));
