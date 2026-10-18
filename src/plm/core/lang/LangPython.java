@@ -45,8 +45,8 @@ public class LangPython extends TemplatedRemoteLang {
   /** Where the modules above are deployed once and for all. Python caches their bytecode in its __pycache__ on first import. */
   private static final Path ENTITIES_DIR = TMP_ROOT.resolve("python-entities");
 
-  private static String brokenLanguageMessage;
-  private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+  private String brokenLanguageMessage;
+  private BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
   File tempFolder                                    = TMP_ROOT.resolve("python").toFile();
 
@@ -65,14 +65,13 @@ public class LangPython extends TemplatedRemoteLang {
         if (retcode != 0) {
           brokenLanguageMessage = Game.i18n.tr("python3 exited with an error while checking its version.");
           brokenLanguageState   = BrokenLanguageState.NotUsable;
-          return false;
+        } else {
+          brokenLanguageState = BrokenLanguageState.Usable;
         }
-        brokenLanguageState = BrokenLanguageState.Usable;
       } catch (IOException | InterruptedException e) {
         brokenLanguageMessage = Game.i18n.tr("Cannot run python3: {0}. Is Python 3 installed and on the PATH?", e.getMessage());
         System.err.println(brokenLanguageMessage);
         brokenLanguageState = BrokenLanguageState.NotUsable;
-        return false;
       }
     }
     return brokenLanguageState != BrokenLanguageState.Usable;

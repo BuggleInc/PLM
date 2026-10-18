@@ -33,8 +33,8 @@ import plm.universe.Point;
  */
 public class LangScala extends JvmTemplatedLang {
   /* Language detection logic */
-  private static String brokenLanguageMessage;
-  private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+  private String brokenLanguageMessage;
+  private BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
   /** The precompiled glue (Remote*, ValueSerializer, Point...), shipped as a resource and deployed in TMP_ROOT. */
   private static final String ENTITIES_JAR = "plm-entities-scala.jar";
@@ -53,9 +53,9 @@ public class LangScala extends JvmTemplatedLang {
       for (int i = 0; i < resources.length; i++) {
         brokenLanguageMessage = canResolve(resources[i], hints[i]);
         if (!brokenLanguageMessage.isEmpty()) {
-          System.err.println(brokenLanguageState);
+          System.err.println(brokenLanguageMessage);
           brokenLanguageState = BrokenLanguageState.NotUsable;
-          return false;
+          return true;
         }
       }
 
@@ -69,7 +69,7 @@ public class LangScala extends JvmTemplatedLang {
         brokenLanguageMessage = Game.i18n.tr("Error {0} while retrieving the Scala version: {1}", e.getClass().getName(), e.getLocalizedMessage());
         System.err.println(brokenLanguageMessage);
         brokenLanguageState = BrokenLanguageState.NotUsable;
-        return false;
+        return true;
       }
 
       if (version.startsWith("3.")) {
@@ -78,7 +78,7 @@ public class LangScala extends JvmTemplatedLang {
         brokenLanguageMessage = Game.i18n.tr("Unsupported Scala version. Found {0} while I need Scala 3.", version);
         System.err.println(brokenLanguageMessage);
         brokenLanguageState = BrokenLanguageState.NotUsable;
-        return false;
+        return true;
       }
     }
     return brokenLanguageState != BrokenLanguageState.Usable;

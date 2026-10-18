@@ -35,8 +35,8 @@ import plm.universe.Point;
 
 public class LangC extends TemplatedRemoteLang {
   /* Language detection logic */
-  private static String brokenLanguageMessage;
-  private static BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
+  private String brokenLanguageMessage;
+  private BrokenLanguageState brokenLanguageState = BrokenLanguageState.Unitialized;
 
   /** The property naming the C compiler to use (a command on the PATH or a full path). Defaults to gcc */
   public static final String PROP_COMPILER = "c.compiler";
