@@ -598,6 +598,9 @@ unchanged, and generates the translated files with your change. Some pitfalls:
 
 # Extending the PLM
 
+The pedagogical guidelines for the design of lessons and exercises are given in the [pedagogical
+documentation](PEDAGOGICAL.md#Designing_exercises).
+
 ## Adding a new lesson
 
 A lesson is a package under `src/lessons/` (e.g. `lessons.turmites`) containing:
@@ -664,10 +667,8 @@ properly.
 
 ### API gating: restricting or adapting the primitives
 
-Some exercises hide or alter a usual primitive for pedagogical reasons, which we call *API gating*. For example:
-- In `LoopFor`, `forward(n)` is refused, so that the student writes the loop that calls `step()` n times.
-- In the maze exercises, `setX()`, `setY()` and `setPos()` are forbidden, so that the student has to walk to the goal.
-- In `CyclicHanoi`, `move()` is replaced by a stricter version that only accepts the cyclic moves.
+Some exercises hide or alter a usual primitive for pedagogical reasons, which we call *API gating*. See the [pedagogical
+documentation](PEDAGOGICAL.md#Designing_exercises) for its motivation and some examples.
 
 **How to do it.** Everything goes in the exercise's Java entity (but for case 5, which goes in the exercise class), whatever the
 languages the exercise offers. Do not put checks in the Python, Scala or C entities: they would run in the student's process,
