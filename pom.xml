@@ -37,6 +37,8 @@
     <sonar.sources>src</sonar.sources>
     <sonar.exclusions>src/plm/test/**</sonar.exclusions>
     <sonar.tests>src/plm/test</sonar.tests>
+    <!-- The entities of the exercises are only run once templated, from generated sources -->
+    <sonar.coverage.exclusions>src/lessons/**/*Entity.*</sonar.coverage.exclusions>
     <sonar.python.version>3.12</sonar.python.version>
     <!-- Debugging features may be enabled: an open-source project has nothing to hide -->
     <sonar.issue.ignore.multicriteria>j1</sonar.issue.ignore.multicriteria>
