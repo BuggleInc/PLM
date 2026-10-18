@@ -496,6 +496,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       reverting an exercise forgets its contents only, the editors are told of the changes, the passed exercises are counted per
       lesson and language (`registerLesson()` included), and the lesson summaries are written and parsed back (an invalid one is ignored).
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
+    * *`PoFileTest`:* `PoFile` reads the entries as gettext writes them (strings over several lines, contexts, fuzzy flags),
+      without the obsolete entries and the plural forms.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
     * *`ValueSerializerInteropTest`:* the Python and C sides read what Java serializes, and write back texts that Java reads as the
       same values (doubles may be written differently). It also compiles and runs `value_serializer_test.c`, the unit tests of the

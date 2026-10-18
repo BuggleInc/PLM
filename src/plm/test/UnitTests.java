@@ -9,6 +9,7 @@ import plm.test.git.GitUtilsTest;
 import plm.test.lang.CommandExecutorTest;
 import plm.test.lang.EntityTemplateParserTest;
 import plm.test.lang.IndentationTest;
+import plm.test.lang.PoFileTest;
 import plm.test.lang.PrimitiveAliasesTest;
 import plm.test.lang.PrimitiveRegistrationTest;
 import plm.test.lang.ValueSerializerInteropTest;
@@ -41,6 +42,7 @@ import plm.universe.bat.ValueFormatterTest;
                 LessonRunnerTest.class,
                 PrimitiveRegistrationTest.class,
                 PrimitiveAliasesTest.class,
+                PoFileTest.class,
                 CommandExecutorTest.class,
                 ApiGatingTest.class,
                 MethodsDogHouseSourceCheckTest.class})
