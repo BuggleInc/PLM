@@ -37,8 +37,9 @@ public class ExoTest {
       Arrays.stream(Lesson.OFFERED).flatMap(Arrays::stream).filter(lesson -> !lesson.equals("lessons.lightbot")).toList();
 
   /** Exercises that run for long: the turmites do tens of thousands of remote-primitive round trips, and the fractals draw very many segments */
-  private static final Set<String> SLOW_EXERCISES = Set.of("turmites.TurmiteCreator", "turmites.LangtonColors", "recursion.lego.SquareKoch",
-                                                           "recursion.lego.PentaKoch", "recursion.lego.DragonCurve1", "recursion.lego.DragonCurve2");
+  private static final Set<String> SLOW_EXERCISES =
+      Set.of("turmites.TurmiteCreator", "turmites.LangtonColors", "recursion.lego.SquareKoch", "recursion.lego.PentaKoch", "recursion.lego.DragonCurve1",
+             "recursion.lego.DragonCurve2", "maze.ShortestPathMaze");
 
   protected static Duration timeout(Exercise exo) { return Duration.ofSeconds(SLOW_EXERCISES.contains(exo.getId()) ? 60 : 20); }
 
