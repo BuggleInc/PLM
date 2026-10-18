@@ -43,12 +43,12 @@ public abstract class ExerciseTemplated extends Exercise {
 
   public void newSourceFromFile(ProgrammingLanguage lang, String filename) throws NoSuchEntityException, PLMCompilerException
   {
-    String shownFilename = filename.replaceAll("\\.", "/") + "." + lang.getExt();
+    String shownFilename = filename.replace('.', '/') + "." + lang.getExt();
     StringBuffer sb      = null;
     try {
       sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
     } catch (IOException ex) {
-      throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replaceAll("\\.", "/"), lang.getExt()));
+      throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replace('.', '/'), lang.getExt()));
     }
 
     SourceFile source = EntityTemplateParser.parse(sb.toString(), lang, shownFilename);
@@ -216,7 +216,7 @@ public abstract class ExerciseTemplated extends Exercise {
   /** Writes the cache file of the answer world of that rank, for next time */
   private void writeAnswerFile(int rank)
   {
-    String name = ("src/" + worldFileName + "-answer" + rank).replaceAll("\\.", "/") + ".map";
+    String name = ("src/" + worldFileName + "-answer" + rank).replace('.', '/') + ".map";
     if (!new File(name).getParentFile().canWrite()) {
       System.err.println(Game.i18n.tr("Cannot write answer world of {0}. Please check the permissions.", name));
       return;

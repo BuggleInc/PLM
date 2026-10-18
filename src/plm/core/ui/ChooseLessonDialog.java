@@ -181,7 +181,7 @@ class LessonOverview extends JPanel {
     btGo.addActionListener(new ActionListener() {
       @Override public void actionPerformed(ActionEvent e)
       {
-        if (Game.getInstance().switchLesson(path.replaceAll("/", "."), false) != null) {
+        if (Game.getInstance().switchLesson(path.replace('/', '.'), false) != null) {
           MainFrame.getInstance().setVisible(true);
           Game.getInstance().setCaptureOutput(true);
           lc.dispose();
@@ -214,7 +214,7 @@ class LessonOverview extends JPanel {
     }
 
     sb.append(Game.i18n.tr("<p><b>Your score:</b> "));
-    String id        = path.replaceAll("/", ".").replaceAll("^lessons\\.", "");
+    String id        = path.replace('/', '.').replaceAll("^lessons\\.", "");
     boolean foundOne = false;
     for (ProgrammingLanguage lang : Game.getInstance().programmingLanguageManager.langs) {
       int possible = Game.getInstance().studentWork.getPossibleExercises(id, lang);

@@ -85,8 +85,8 @@ public class EntityTemplateParser {
       initialContent = Indentation.expandLeadingTabs(initialContent);
       templateRegion = Indentation.expandLeadingTabs(templateRegion);
     } else {
-      initialContent = initialContent.replaceAll("\t", "    ");
-      templateRegion = templateRegion.replaceAll("\t", "    ");
+      initialContent = initialContent.replace("\t", "    ");
+      templateRegion = templateRegion.replace("\t", "    ");
     }
     int bodyIndent = Indentation.minLeadingSpaces(templateRegion);
     initialContent = Indentation.reindent(initialContent, bodyIndent, 0);

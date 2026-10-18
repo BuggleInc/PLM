@@ -68,7 +68,7 @@ public class ResourcesCache {
 
   public static ImageIcon getIcon(Object basePath, String path)
   {
-    String name = basePath.getClass().getPackage().getName().replaceAll("\\.", "/") + "/" + path;
+    String name = basePath.getClass().getPackage().getName().replace('.', '/') + "/" + path;
     return getIcon(name);
   }
 
