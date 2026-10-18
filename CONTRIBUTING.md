@@ -553,9 +553,10 @@ one checks the correction entities against it.
     with `-no-indent` (braces only, since many entities mix tabs and spaces), then run with `java -cp` like Java.
   - **Python**: checked with `python3 -m py_compile`, so that syntax errors are reported as compilation errors before the
     run, then run by `python3` (Python 3 must be on the PATH).
-  - **C**: compiled and linked by an external compiler (with AddressSanitizer), then the executable is run. The compiler is
-    given by the `c.compiler` property (`gcc` by default). Its warnings are displayed on the console, unless the picky mode
-    (`compiler.picky` property, checkbox of the Exercise menu, always on in the tests) turns them into compilation errors.
+  - **C**: compiled and linked by an external compiler (with AddressSanitizer if it supports it), then the executable is run.
+    The compiler is given by the `c.compiler` property (`gcc` by default). Its warnings are displayed on the console, unless the
+    picky mode (`compiler.picky` property, checkbox of the Exercise menu, always on in the tests) turns them into compilation
+    errors.
 - Adding a new language: see `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language` and extend
   `plm.core.lang.ProgrammingLanguage`. Be warned that you will have to adapt the mission text of every exercise, as they contain
   language-specific chunks.

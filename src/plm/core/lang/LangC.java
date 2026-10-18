@@ -9,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
@@ -117,6 +118,8 @@ public class LangC extends TemplatedRemoteLang {
 
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       String compiler   = Game.getProperty(PROP_COMPILER, "gcc", true);
+      // The cached objects and the final link must agree on ASan, whose instrumentation spans every linked object
+      String cc         = compiler + " -g -Wall" + (supportsAsan(compiler, isWindows) ? " -fsanitize=address" : "");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
       String valueSerializerH = readResource("value_serializer.h");
@@ -126,9 +129,9 @@ public class LangC extends TemplatedRemoteLang {
       String remoteWorldH     = readResource(remote + ".h");
       String remoteWorldC     = readResource(remote + ".c");
 
-      Path valueSerializerObj = ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), compiler, isWindows);
-      Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), compiler, isWindows);
-      Path remoteWorldObj     = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), compiler, isWindows);
+      Path valueSerializerObj = ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), cc, isWindows);
+      Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), cc, isWindows);
+      Path remoteWorldObj     = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), cc, isWindows);
 
       // The student/correction file below #include's these headers directly: they need a physical presence in compileDir.
       Files.writeString(compileDir.resolve("value_serializer.h"), valueSerializerH);
@@ -149,8 +152,7 @@ public class LangC extends TemplatedRemoteLang {
       Files.writeString(compileDir.resolve(studentFileName), "#include \"Remote.h\"\n#include \"" + remote + ".h\"\n\n" + studentCode);
 
       String linkInputs = studentFileName + " \"" + valueSerializerObj + "\" \"" + remoteObj + "\" \"" + remoteWorldObj + "\"";
-      String linkCmd    = compiler + " -g -Wall -lm -lpthread " + (isWindows ? "-lws2_32 " : "") + "-fsanitize=address -o \"" + exec + "\" " + linkInputs;
-      //  -O0 -fno-omit-frame-pointer
+      String linkCmd    = cc + " -lm -lpthread " + (isWindows ? "-lws2_32 " : "") + "-o \"" + exec + "\" " + linkInputs;
 
       runCompiler(linkCmd, compileDir.toFile(), isWindows);
 
@@ -170,7 +172,7 @@ public class LangC extends TemplatedRemoteLang {
    * the old, now-unreferenced object is just harmless orphaned disk usage, same as the per-compile directories above.
    *
    * headers lists every header (by filename) that baseName's own "#include" needs to find alongside it while it gets
-   * compiled in isolation. The compiler is part of the hash too, as objects of different compilers may not link together.
+   * compiled in isolation. The compiler command cc (with its flags) is part of the hash too, as objects built differently may not link together.
    *
    * Two concurrent first-uses of the same not-yet-cached object are safe either way (Files.move() is atomic, so neither
    * can observe or link against a half-written object file, and both would produce byte-identical output regardless);
@@ -178,10 +180,10 @@ public class LangC extends TemplatedRemoteLang {
    */
   private static final ConcurrentHashMap<String, Object> objectLocks = new ConcurrentHashMap<>();
 
-  private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, String compiler, boolean isWindows)
+  private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, String cc, boolean isWindows)
       throws IOException, InterruptedException, PLMCompilerException
   {
-    String hash     = contentHash(compiler + "\n" + sourceContent, headers);
+    String hash     = contentHash(cc + "\n" + sourceContent, headers);
     Path objectFile = OBJECTS_DIR.resolve(baseName + "-" + hash + ".o");
     if (Files.exists(objectFile))
       return objectFile;
@@ -200,10 +202,7 @@ public class LangC extends TemplatedRemoteLang {
         Files.writeString(sourceFile, sourceContent);
 
         Path tmpObject = scratch.resolve(baseName + ".o");
-        // Must share -fsanitize=address with the final link step: ASan's instrumentation needs to be consistent across
-        // every object file being linked together. -Wall/-g are harmless either way; -lm/-lpthread/-lws2_32 are link-only
-        // flags, meaningless here since we're not linking anything yet.
-        String compileCmd = compiler + " -g -x c -Wall -fsanitize=address -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
+        String compileCmd = cc + " -x c -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
         runCompiler(compileCmd, scratch.toFile(), isWindows);
 
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
@@ -260,6 +259,29 @@ public class LangC extends TemplatedRemoteLang {
       throw new PLMCompilerException(out.toString(), null);
     }
     System.err.print(out);
+  }
+
+  private static final Map<String, Boolean> asanSupport = new HashMap<>();
+
+  /**
+   * Whether the compiler can link a program with AddressSanitizer (MinGW cannot), probed once per compiler by building a
+   * trivial program in C_ROOT. Without it, the C programs run without memory checks.
+   */
+  private static synchronized boolean supportsAsan(String compiler, boolean isWindows) throws IOException, InterruptedException
+  {
+    Boolean supported = asanSupport.get(compiler);
+    if (supported == null) {
+      Files.writeString(C_ROOT.resolve("asan-probe.c"), "int main(void) { return 0; }\n");
+      try {
+        runCompiler(compiler + " -fsanitize=address -o asan-probe asan-probe.c", C_ROOT.toFile(), isWindows);
+        supported = true;
+      } catch (PLMCompilerException e) {
+        System.err.println(Game.i18n.tr("{0} cannot link with AddressSanitizer, so the C programs run without memory checks:\n{1}", compiler, e.getMessage()));
+        supported = false;
+      }
+      asanSupport.put(compiler, supported);
+    }
+    return supported;
   }
 
   private static Thread drain(InputStream in, StringBuffer into)
