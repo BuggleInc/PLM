@@ -2,34 +2,33 @@ import static generated.ValueSerializer.*;
 
 import java.awt.Color;
 import java.io.*;
-import java.net.StandardProtocolFamily;
-import java.net.UnixDomainSocketAddress;
+import java.net.InetSocketAddress;
+import java.net.StandardSocketOptions;
 import java.nio.channels.Channels;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Vector;
 
 public abstract class Remote {
 
   /*
-   * The protocol (commands to the PLM, answers from the PLM) travels over a UNIX domain socket whose path is passed as
-   * args[0] -- see connect() below, called from the generated Main.main().
+   * The protocol (commands to the PLM, answers from the PLM) travels over a TCP socket on 127.0.0.1, whose port is passed as
+   * args[0] -- see connect() below, called from the generated Main.main(). The PLM only listens on that address.
    */
 
   private static BufferedReader protocolIn;
   private static PrintWriter protocolOut;
 
-  public static void connect(String socketPath)
+  public static void connect(String port)
   {
     try {
-      SocketChannel channel = SocketChannel.open(StandardProtocolFamily.UNIX);
-      channel.connect(UnixDomainSocketAddress.of(Path.of(socketPath)));
+      SocketChannel channel = SocketChannel.open(new InetSocketAddress("127.0.0.1", Integer.parseInt(port)));
+      channel.setOption(StandardSocketOptions.TCP_NODELAY, true); // each command is a short request awaiting its answer
       protocolIn  = new BufferedReader(new InputStreamReader(Channels.newInputStream(channel), StandardCharsets.UTF_8));
       protocolOut = new PrintWriter(new OutputStreamWriter(Channels.newOutputStream(channel), StandardCharsets.UTF_8), true);
     } catch (IOException e) {
-      System.out.println("Cannot connect to the PLM protocol socket '" + socketPath + "': " + e.getMessage());
+      System.out.println("Cannot connect to the PLM protocol on port " + port + ": " + e.getMessage());
       System.exit(1);
     }
   }

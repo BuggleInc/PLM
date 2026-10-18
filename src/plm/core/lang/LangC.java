@@ -334,13 +334,13 @@ public class LangC extends TemplatedRemoteLang {
    * reports to a file instead of stderr so they can be told apart from the student code's own stderr output and
    * surfaced separately (see onProcessFinished() below).
    */
-  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
+  @Override protected ProcessBuilder buildProcess(String executable, int port) throws IOException
   {
     File exec = new File(executable);
     if (!exec.exists() || !exec.canExecute() || !exec.isFile())
       throw new IOException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    ProcessBuilder pb = new ProcessBuilder(executable, socketPath.toString());
+    ProcessBuilder pb = new ProcessBuilder(executable, String.valueOf(port));
     // log_path=<...>/asan_report.txt ~~> don't report to stderr but to that file (ASan appends ".$PID" itself)
     // to_syslog=0   ~~> Prevent ASan from writing also to stderr
     pb.environment().put("ASAN_OPTIONS", "log_path=" + asanReportPath(exec) + ":to_syslog=0");

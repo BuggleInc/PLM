@@ -7,18 +7,18 @@
 #include <string.h>
 #include <unistd.h>
 #ifdef _WIN32
-#include <afunix.h>
 #include <fcntl.h>
 #include <io.h>
 #include <winsock2.h>
 #else
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <sys/socket.h>
-#include <sys/un.h>
 #endif
 
 /*
- * The protocol (commands to the PLM, answers from the PLM) travels over a UNIX domain socket whose path is passed as
- * args[0] -- see connect() below, called from the generated main().
+ * The protocol (commands to the PLM, answers from the PLM) travels over a TCP socket on 127.0.0.1, whose port is passed as
+ * argv[1] -- see main() below. The PLM only listens on that address.
  */
 
 static FILE* protocol_in  = NULL;
@@ -101,19 +101,28 @@ int main(int argc, char* argv[])
 #ifdef _WIN32
   WSADATA wsaData;
   WSAStartup(MAKEWORD(2, 2), &wsaData);
+  // Unlike socket(), no WSA_FLAG_OVERLAPPED: the C runtime can only use non-overlapped sockets through a file descriptor
+  SOCKET sock = WSASocketW(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, 0);
+#else
+  int sock = socket(AF_INET, SOCK_STREAM, 0);
 #endif
+  int nodelay = 1; // each command is a short request awaiting its answer
+  setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (const char*)&nodelay, sizeof(nodelay));
 
-  int sock = socket(AF_UNIX, SOCK_STREAM, 0);
-  struct sockaddr_un addr;
+  struct sockaddr_in addr;
   memset(&addr, 0, sizeof(addr));
-  addr.sun_family = AF_UNIX;
-  strncpy(addr.sun_path, argv[1], sizeof(addr.sun_path) - 1);
-  connect(sock, (struct sockaddr*)&addr, sizeof(addr));
+  addr.sin_family      = AF_INET;
+  addr.sin_port        = htons((unsigned short)atoi(argv[1]));
+  addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+  if (connect(sock, (struct sockaddr*)&addr, sizeof(addr)) != 0) {
+    fprintf(stderr, "Cannot connect to the PLM protocol on port %s\n", argv[1]);
+    return 1;
+  }
 
 #ifdef _WIN32
-  int fd       = _open_osfhandle(sock, _O_RDWR);
-  protocol_in  = _fdopen(fd, "r");
-  protocol_out = _fdopen(fd, "w");
+  int fd       = _open_osfhandle((intptr_t)sock, _O_RDWR | _O_BINARY); // binary: no CR/LF translation of the protocol
+  protocol_in  = _fdopen(fd, "rb");
+  protocol_out = _fdopen(fd, "wb");
 #else
   protocol_in  = fdopen(sock, "r");
   protocol_out = fdopen(sock, "w");

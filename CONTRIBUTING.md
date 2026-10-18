@@ -27,7 +27,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   the student-facing code, is the standard way to catch a wider range of incorrect solutions.
 - **Lesson**: a `Lesson` (e.g. `welcome`, `sort`, `recursion`) groups `Exercise`s in a pedagogical sequence. Each of them
   constitute a progressive set of challenges taking the users through their learning path. Again, see the [pedagogical
-  documentation](PEDAGOGICAL.md) for details.
+  documentation](PEDAGOGY.md) for details.
   
 - **Templating entity**: for each exercise/language pair, a source file (e.g. `MoriaEntity.java`, `MoriaEntity.py`,
   `MoriaEntity.scala`, `MoriaEntity.c`) contains both the teacher's reference correction, the template shown to the student and
@@ -63,10 +63,10 @@ Here are the steps of the exercise execution:
   student's code only (not for the correction). Exercises override it to refuse a code that compiles but misses the point (see
   "API gating" below).
 * **Remote execution**: `World.runEntities()` spawns one thread per entity and calls `ProgrammingLanguage.runEntity()`: that
-  method binds a UNIX domain socket, starts the student code as an external process, and relays primitive calls over that socket
-  to `plm.universe.CommandExecutor`. These primitives allow the student code to interact with the microworld that is located in
-  the PLM process. This is transparent to both the student and the exercise authors, unless the exercise gates its API (see
-  "API gating" below).
+  method binds a TCP socket on 127.0.0.1, starts the student code as an external process, and relays primitive calls over that
+  socket to `plm.universe.CommandExecutor`. These primitives allow the student code to interact with the microworld that is
+  located in the PLM process. This is transparent to both the student and the exercise authors, unless the exercise gates its
+  API (see "API gating" below).
 * **Check**: when all entities are terminated, `Exercise.check(result)` compares each `currentWorld` to its `answerWorld` via
   `World.winning()`, and fills the `RunOutcome` that `compileRunCheck()` then returns. On mismatch, `World.diffTo()` produces a
   human-readable diff shown to the student. All the universes but Lander use a structural equality between currentWorld and
@@ -212,11 +212,14 @@ The student's code runs in its own process (`java -cp ... generated.Main`, `pyth
 world, its entities and the UI live in the PLM process. The student's code only manipulates a stub: each primitive call is
 forwarded to the real `plm.universe.Entity` of the PLM, which does the actual work on the `currentWorld`.
 
-- **Transport**: `RemoteExecutionLang.runEntity()` creates a fresh directory `/tmp/plm/<ext>-sock-*/`, binds a UNIX domain socket
-  `protocol.sock` in it, and starts the student process with the socket path as its first argument (`args[0]`, `sys.argv[1]`,
-  `argv[1]`). The generated `Main` starts by calling `connect()` from the language's `Remote` file. If nothing connects within
-  10 seconds, the process is killed and its stdout/stderr become the error message shown to the student. Once connected, both
-  sides exchange UTF-8 text, one message per line.
+- **Transport**: `RemoteExecutionLang.runEntity()` binds a TCP socket on a free port of `127.0.0.1`, and starts the student
+  process with that port as its first argument (`args[0]`, `sys.argv[1]`, `argv[1]`). Both sides must stick to the literal IPv4
+  loopback address: binding any other interface (or `0.0.0.0`) would expose the protocol to other hosts and trigger the firewall
+  prompts of Windows and macOS, which do not filter the loopback; `localhost` may resolve to `::1` on one side only. UNIX domain
+  sockets are not an option, as Python has no `AF_UNIX` on Windows. Both sides set `TCP_NODELAY`, since each command is a short
+  request awaiting its answer. The generated `Main` starts by calling `connect()` from the language's `Remote` file. If nothing
+  connects within 10 seconds, the process is killed and its stdout/stderr become the error message shown to the student. Once
+  connected, both sides exchange UTF-8 text, one message per line.
 - **Student-side glue**: it is made of `Remote` (the connection, `sendCommand()` and the `getAnswerXxx()` readers), a
   `ValueSerializer`, and one generated `RemoteXxx` per universe, with one function per primitive of that universe. They are the
   files that the templating does not compile with the exercise (see above for how they are built and shared). Every language

@@ -7,7 +7,6 @@ import dotty.tools.dotc.interfaces.SourcePosition;
 import java.awt.Color;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -25,7 +24,7 @@ import plm.universe.Point;
 /**
  * Remote execution for Scala, mirroring LangJava's architecture as closely as possible on purpose (see the class-level comment
  * there): an external "java" process is spawned per run, running compiled Scala bytecode that talks back to CommandExecutor
- * over a UNIX domain socket. Compilation happens entirely in-process: the Scala 3 compiler shipped as a PLM dependency is driven
+ * over a TCP socket on 127.0.0.1. Compilation happens entirely in-process: the Scala 3 compiler shipped as a PLM dependency is driven
  * directly through dotty.tools.dotc.Driver. The ancillary files (Remote*, ValueSerializer, Point, RecList) are precompiled in
  * plm-entities-scala.jar, which is on the classpath of both the compilation and the run.
  *
@@ -230,19 +229,19 @@ public class LangScala extends JvmTemplatedLang {
     runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
   }
   /**
-   * Runs "java -cp &lt;jarPath&gt;:&lt;entities jar&gt;:&lt;scala runtime jars&gt; generated.Main &lt;socketPath&gt;", executable being the jar path
+   * Runs "java -cp &lt;jarPath&gt;:&lt;entities jar&gt;:&lt;scala runtime jars&gt; generated.Main &lt;port&gt;", executable being the jar path
    * returned by compileExo() -- the main class is always "generated.Main". We cannot use "java -jar" alone because a jar's
    * Class-Path manifest attribute is only reliably resolved for relative paths, while the Scala jars' paths are probably
    * absolute, leading to silent failures at startup.
    */
-  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
+  @Override protected ProcessBuilder buildProcess(String executable, int port) throws IOException
   {
     File exec = new File(executable);
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
     return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + TMP_ROOT.resolve(ENTITIES_JAR) + File.pathSeparator + scalaRuntimeClasspath(),
-                              "generated.Main", socketPath.toString());
+                              "generated.Main", String.valueOf(port));
   }
 
   public static class LangScalaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {

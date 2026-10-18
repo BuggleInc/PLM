@@ -3,7 +3,6 @@ package plm.core.lang;
 import java.awt.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -155,14 +154,14 @@ public class LangJava extends JvmTemplatedLang {
     createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
   }
 
-  /** Runs "java -cp &lt;executable&gt;:&lt;entities jar&gt; generated.Main &lt;socketPath&gt;", the executable being the jar path produced by compileExo(). */
-  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
+  /** Runs "java -cp &lt;executable&gt;:&lt;entities jar&gt; generated.Main &lt;port&gt;", the executable being the jar path produced by compileExo(). */
+  @Override protected ProcessBuilder buildProcess(String executable, int port) throws IOException
   {
     File exec = new File(executable);
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + TMP_ROOT.resolve(ENTITIES_JAR), "generated.Main", socketPath.toString());
+    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + TMP_ROOT.resolve(ENTITIES_JAR), "generated.Main", String.valueOf(port));
   }
 
   public static class LangJavaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {

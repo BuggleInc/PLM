@@ -1,7 +1,7 @@
 """
 Python port of Remote.java (see Remote.java for the authoritative comments). The protocol (commands to the PLM, answers from the
-PLM) travels over a UNIX domain socket whose path is passed as sys.argv[1] -- see connect() below, called from the generated
-Main.py.
+PLM) travels over a TCP socket on 127.0.0.1, whose port is passed as sys.argv[1] -- see connect() below, called from the
+generated Main.py. The PLM only listens on that address.
 """
 
 import socket
@@ -12,14 +12,14 @@ from ValueSerializer import serialize, serialize_args, deserialize
 _sockFile = None
 
 
-def connect(socketPath):
+def connect(port):
   global _sockFile
   try:
-    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    sock.connect(socketPath)
+    sock = socket.create_connection(("127.0.0.1", int(port)))
+    sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)  # each command is a short request awaiting its answer
     _sockFile = sock.makefile("rw", encoding="utf-8", newline="\n")
   except OSError as e:
-    print("Cannot connect to the PLM protocol socket '%s': %s" % (socketPath, e), file=sys.stderr)
+    print("Cannot connect to the PLM protocol on port %s: %s" % (port, e), file=sys.stderr)
     sys.exit(1)
 
 

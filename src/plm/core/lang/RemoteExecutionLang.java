@@ -5,15 +5,14 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.StandardProtocolFamily;
-import java.net.UnixDomainSocketAddress;
+import java.net.InetSocketAddress;
+import java.net.StandardSocketOptions;
 import java.nio.channels.Channels;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import javax.swing.ImageIcon;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -40,9 +39,8 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
 
   /**
    * Root directory under which every subclass keeps its own temporary files -- compiled artifacts and per-exercise
-   * workspaces (see each language's own tempFolder/*_ROOT), as well as the protocol sockets bound below in
-   * {@link #runEntity} -- so that cleaning up (or just inspecting) the PLM's scratch space only ever means looking at
-   * a single "plm" directory instead of one spot per language plus a handful of unprefixed socket directories.
+   * workspaces (see each language's own tempFolder/*_ROOT) -- so that cleaning up (or just inspecting) the PLM's scratch
+   * space only ever means looking at a single "plm" directory instead of one spot per language.
    */
   protected static final Path TMP_ROOT = Path.of(System.getProperty("java.io.tmpdir"), "plm");
 
@@ -53,11 +51,11 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
 
   /**
    * Build the process that will run the student code, given the {@code executable} value {@link #runEntity} received for this
-   * language (typically a path produced by {@code compileExo}) and the path of the protocol socket that the process
-   * must connect to. Implementations are responsible for interpreting the "script" string as they see fit (a plain
-   * executable path, a "jar|mainClass" pair, etc.) and for checking that whatever it points to actually exists.
+   * language (typically a path produced by {@code compileExo}) and the TCP port on 127.0.0.1 of the protocol socket that the
+   * process must connect to. Implementations are responsible for interpreting the "script" string as they see fit (a plain
+   * path to an executable, a jarfile or a script, etc.) and for checking that whatever it points to actually exists.
    */
-  protected abstract ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException;
+  protected abstract ProcessBuilder buildProcess(String executable, int port) throws IOException;
 
   /**
    * Optional per-language hook, called once the student process has exited (right after {@code process.waitFor()}
@@ -82,16 +80,16 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       if (executable == null)
         throw new IllegalStateException("It seems that the code was not compiled. I am puzzled.");
 
-      Files.createDirectories(TMP_ROOT);
-      Path socketDir                    = Files.createTempDirectory(TMP_ROOT, getExt() + "-sock-");
-      Path socketPath                   = socketDir.resolve("protocol.sock");
-      ServerSocketChannel serverChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX);
-      serverChannel.bind(UnixDomainSocketAddress.of(socketPath));
+      // Only on the IPv4 loopback, which no firewall filters and no other host can reach (see CONTRIBUTING.md).
+      // The literal address avoids "localhost", which may resolve to ::1 on one side only.
+      ServerSocketChannel serverChannel = ServerSocketChannel.open();
+      serverChannel.bind(new InetSocketAddress("127.0.0.1", 0), 1);
+      int port = ((InetSocketAddress)serverChannel.getLocalAddress()).getPort();
       serverChannel.configureBlocking(false);
       Selector selector = Selector.open();
       serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-      final Process process = buildProcess(executable, socketPath).start();
+      final Process process = buildProcess(executable, port).start();
 
       // Captured (not just printed) so that if the process never connects at all, its stdout/stderr -- almost certainly
       // containing the actual reason (missing interpreter, exception thrown before Remote.connect() is even reached,
@@ -165,8 +163,6 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
         } catch (InterruptedException ignored) {
           Thread.currentThread().interrupt();
         }
-        Files.deleteIfExists(socketPath);
-        Files.deleteIfExists(socketDir);
         progress.outcome        = RunOutcome.kind.FAIL;
         String details          = (capturedStderr.length() > 0 ? capturedStderr.toString() : capturedStdout.toString()).strip();
         progress.executionError = Game.i18n.tr("Protocol connection failed: the program never connected to the PLM.") +
@@ -175,6 +171,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
         return;
       }
 
+      protocolChannel.setOption(StandardSocketOptions.TCP_NODELAY, true); // each command is a short request awaiting its answer
       final SocketChannel finalProtocolChannel = protocolChannel;
       final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(Channels.newOutputStream(finalProtocolChannel), StandardCharsets.UTF_8));
 
@@ -224,8 +221,6 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
         progress.outcome = RunOutcome.kind.FAIL;
         progress.setExecutionError(Game.i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n"
                                                 + "Your program must stop by itself to successfully pass the exercise.\n"));
-        Files.deleteIfExists(socketPath);
-        Files.deleteIfExists(socketDir);
         return;
       }
 
@@ -237,8 +232,6 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
 
       bwriter.close();
       finalProtocolChannel.close();
-      Files.deleteIfExists(socketPath);
-      Files.deleteIfExists(socketDir);
 
       if (retcode != 0)
         progress.setExecutionError("An issue occured in the executed code (return code: " + retcode + "). Check the output in the log panel for more info");

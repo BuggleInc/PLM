@@ -22,8 +22,8 @@ import plm.core.utils.Indentation;
 
 /**
  * Remote execution for Python, mirroring LangJava's architecture as closely as possible on purpose (see the class-level
- * comment there): an external "python3" process is spawned per run, talking back to CommandExecutor over a UNIX domain
- * socket -- same protocol as Java/Scala/C.
+ * comment there): an external "python3" process is spawned per run, talking back to CommandExecutor over a TCP
+ * socket on 127.0.0.1 -- same protocol as Java/Scala/C.
  *
  * The per-compile workspace name (packageNameForExercise(), shared with Java/Scala/C in TemplatedRemoteLang) is
  * factored; the rest of the pipeline isn't yet. Substantially simpler than LangJava/LangScala in one respect: compiling
@@ -164,14 +164,14 @@ public class LangPython extends TemplatedRemoteLang {
   /** Locations before the body, and all of them when debugging is enabled, are left untouched. */
   @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
 
-  /** Runs "python3 &lt;executable&gt; &lt;socketPath&gt;" from the executable's own directory, with ENTITIES_DIR ahead of the user's PYTHONPATH. */
-  @Override protected ProcessBuilder buildProcess(String executable, Path socketPath) throws IOException
+  /** Runs "python3 &lt;executable&gt; &lt;port&gt;" from the executable's own directory, with ENTITIES_DIR ahead of the user's PYTHONPATH. */
+  @Override protected ProcessBuilder buildProcess(String executable, int port) throws IOException
   {
     File exec = new File(executable);
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    ProcessBuilder pb = new ProcessBuilder("python3", exec.getName(), socketPath.toString());
+    ProcessBuilder pb = new ProcessBuilder("python3", exec.getName(), String.valueOf(port));
     pb.directory(exec.getParentFile());
     pb.environment().merge("PYTHONPATH", ENTITIES_DIR.toString(), (user, ours) -> ours + File.pathSeparator + user);
     return pb;
