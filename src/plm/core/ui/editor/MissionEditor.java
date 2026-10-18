@@ -8,10 +8,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.JCheckBox;
@@ -221,9 +220,8 @@ public class MissionEditor extends JFrame {
   public void loadMission(String path)
   {
     lastPathSelected = path;
-    try {
-      BufferedReader reader = FileUtils.newFileReader(path, "html", false);
-      StringBuffer content  = new StringBuffer();
+    try (BufferedReader reader = FileUtils.newFileReader(path, "html", false)) {
+      StringBuffer content = new StringBuffer();
       String line;
       while (null != (line = reader.readLine())) {
         content.append(line);
@@ -258,6 +256,19 @@ public class MissionEditor extends JFrame {
     System.exit(0);
   }
 
+  /** Writes the mission into that file, which becomes the current one */
+  private void saveMission(File file)
+  {
+    try {
+      Files.writeString(file.toPath(), editor.getText());
+      lastPathSelected = file.getPath();
+      modified         = false;
+      setTitle(TITLE_NOT_MODIFIED);
+    } catch (IOException e) {
+      JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Error while writing {0}", file), JOptionPane.ERROR_MESSAGE);
+    }
+  }
+
   class SaveMissionAction extends AbstractAction {
     private static final long serialVersionUID = 1L;
 
@@ -273,30 +284,7 @@ public class MissionEditor extends JFrame {
         act.actionPerformed(e);
         return;
       }
-      File file = new File(lastPathSelected);
-
-      BufferedWriter bw = null;
-      FileWriter fw     = null;
-      try {
-        fw = new FileWriter(file);
-        bw = new BufferedWriter(fw);
-        bw.write(editor.getText());
-        bw.close();
-        fw.close();
-      } catch (IOException ex) {
-        // TODO: error dialog
-        System.err.println(ex);
-      } finally {
-        try {
-          if (bw != null)
-            bw.close();
-        } catch (IOException e1) {
-          // TODO: error dialog
-          e1.printStackTrace();
-        }
-      }
-      setTitle(TITLE_NOT_MODIFIED);
-      modified = false;
+      saveMission(new File(lastPathSelected));
     }
   }
   class SaveAsMissionAction extends AbstractAction {
@@ -311,35 +299,8 @@ public class MissionEditor extends JFrame {
         fc = new JFileChooser(lastPathSelected);
       else
         fc = new JFileChooser();
-      int status = fc.showSaveDialog(MissionEditor.this);
-
-      if (status == JFileChooser.APPROVE_OPTION) {
-        File file = fc.getSelectedFile();
-
-        BufferedWriter bw = null;
-        FileWriter fw     = null;
-        try {
-          fw = new FileWriter(file);
-          bw = new BufferedWriter(fw);
-          bw.write(editor.getText());
-          bw.close();
-          fw.close();
-        } catch (IOException ex) {
-          // TODO: error dialog
-          System.err.println(ex);
-        } finally {
-          try {
-            if (bw != null)
-              bw.close();
-          } catch (IOException e1) {
-            // TODO: error dialog
-            e1.printStackTrace();
-          }
-        }
-      }
-
-      setTitle(TITLE_NOT_MODIFIED);
-      modified = false;
+      if (fc.showSaveDialog(MissionEditor.this) == JFileChooser.APPROVE_OPTION)
+        saveMission(fc.getSelectedFile());
     }
   }
 

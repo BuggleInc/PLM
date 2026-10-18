@@ -98,16 +98,11 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       Thread stdoutReader = new Thread() {
         public void run()
         {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null) {
-                System.out.println(str);
-                capturedStdout.append(str).append("\n");
-              }
-            } finally {
-              reader.close();
+          try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+            String str;
+            while ((str = reader.readLine()) != null) {
+              System.out.println(str);
+              capturedStdout.append(str).append("\n");
             }
           } catch (IOException ioe) {
             // Expected when process.destroyForcibly() (below, or in the accept-timeout branch) tears down the
@@ -121,17 +116,12 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       Thread stderrReader = new Thread() {
         public void run()
         {
-          try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            try {
-              String str;
-              while ((str = reader.readLine()) != null) {
-                str = shiftLocations(str, executable);
-                System.err.println(str);
-                capturedStderr.append(str).append("\n");
-              }
-            } finally {
-              reader.close();
+          try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
+            String str;
+            while ((str = reader.readLine()) != null) {
+              str = shiftLocations(str, executable);
+              System.err.println(str);
+              capturedStderr.append(str).append("\n");
             }
           } catch (IOException ioe) {
             if (process.isAlive())
