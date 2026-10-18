@@ -15,8 +15,6 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import javax.swing.JScrollPane;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
@@ -44,8 +42,6 @@ public abstract class Exercise extends Lecture {
   protected Vector<World> currentWorld; /* the one displayed */
   protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
   protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
-
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 
   public Exercise(Lesson lesson, String basename) { super(lesson, basename); }
 
@@ -118,7 +114,7 @@ public abstract class Exercise extends Lecture {
 
         if (!currentWorld.get(i).winning(answerWorld.get(i))) {
           String diff = answerWorld.get(i).diffTo(currentWorld.get(i), result.language);
-          result.executionError += i18n.tr("The world ''{0}'' differs", currentWorld.get(i).getName());
+          result.executionError += Game.i18n.tr("The world ''{0}'' differs", currentWorld.get(i).getName());
           if (diff != null)
             result.executionError += ":\n" + diff;
           result.executionError += "\n";

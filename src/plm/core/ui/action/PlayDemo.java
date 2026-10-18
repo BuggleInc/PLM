@@ -16,6 +16,6 @@ public class PlayDemo extends AbstractGameAction implements HumanLangChangesList
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    setDescription(i18n.tr("Run the demo of what you should code for this exercise"), i18n.tr("Impossible to run the demo right now"));
+    setDescription(Game.i18n.tr("Run the demo of what you should code for this exercise"), Game.i18n.tr("Impossible to run the demo right now"));
   }
 }

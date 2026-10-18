@@ -11,15 +11,6 @@ import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.model.Game;
 
-/* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
- *
- * This is because we have to pass the classname to the I18nFactory, but it seems to break
- * stuff that our code generate new package names. This later case being forced by our use
- * of the compiler, we cannot initialize an I18n stuff.
- *
- * Instead, the solution is to use the static field Game.i18n, as it is done in AbstractBuggle::diffTo().
- */
-
 @EntityPrimitives(EntityPrimitivesBase.class)
 public abstract class Entity extends Observable implements EntityPrimitivesBase {
   protected String name = "(noname)";

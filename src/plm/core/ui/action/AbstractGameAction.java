@@ -3,8 +3,6 @@ package plm.core.ui.action;
 import java.util.Locale;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.model.Game;
 
 public abstract class AbstractGameAction extends AbstractAction {
@@ -14,7 +12,6 @@ public abstract class AbstractGameAction extends AbstractAction {
 
   protected Game game;
   protected Locale locale;
-  protected I18n i18n;
 
   public AbstractGameAction(Game game, String text)
   {
@@ -26,7 +23,6 @@ public abstract class AbstractGameAction extends AbstractAction {
   {
     super(text, icon);
     this.game = game;
-    this.i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", game.getLocale(), I18nFactory.FALLBACK);
   }
 
   protected void setDescription(String descEnabled, String descDisabled)

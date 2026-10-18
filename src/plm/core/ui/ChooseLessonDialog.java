@@ -26,8 +26,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.LessonLoadingException;
@@ -35,13 +33,12 @@ import plm.core.utils.FileUtils;
 
 public class ChooseLessonDialog extends JFrame {
   private static final long serialVersionUID = 1L;
-  I18n i18n                                  = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   public ChooseLessonDialog()
   {
     super();
     Game.getInstance().setCaptureOutput(false);
-    setTitle(i18n.tr("Choose your lesson"));
+    setTitle(Game.i18n.tr("Choose your lesson"));
     FileUtils.setLocale(this.getLocale());
     initComponents(Game.getInstance());
   }
@@ -62,15 +59,15 @@ public class ChooseLessonDialog extends JFrame {
     JEditorPane blurb = new JEditorPane("text/html", "");
     blurb.setEditable(false);
     blurb.setEditorKit(new PlmHtmlEditorKit());
-    blurb.setText(i18n.tr("<table border=\"0\" align=\"center\"><tr>\n"
-                          + "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
-                          + "<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Programmer's Learning Machine</font>&nbsp;&nbsp;</td>\n"
-                          + "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
-                          + "</tr></table>\n"
-                          + "\n"
-                          + "<p><font size=\"+1\">The PLM is a Learning Management System (LMS) aiming at teaching the art of computer "
-                          + "programming through interactive exercises. It offers an extensive set of varied "
-                          + "exercises, allowing you to practice at your own pace.</font></p><br/>"));
+    blurb.setText(Game.i18n.tr("<table border=\"0\" align=\"center\"><tr>\n"
+                               + "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+                               + "<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Programmer's Learning Machine</font>&nbsp;&nbsp;</td>\n"
+                               + "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+                               + "</tr></table>\n"
+                               + "\n"
+                               + "<p><font size=\"+1\">The PLM is a Learning Management System (LMS) aiming at teaching the art of computer "
+                               + "programming through interactive exercises. It offers an extensive set of varied "
+                               + "exercises, allowing you to practice at your own pace.</font></p><br/>"));
 
     LessonOverview overview = new LessonOverview(this);
 
@@ -100,7 +97,6 @@ public class ChooseLessonDialog extends JFrame {
 }
 
 class LessonMatrix extends JPanel {
-  private I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   private static final long serialVersionUID = 1L;
 
@@ -139,7 +135,7 @@ class LessonMatrix extends JPanel {
       @Override public void actionPerformed(ActionEvent e)
       {
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PLM lesson files"), "plm"));
+        fc.setFileFilter(new FileNameExtensionFilter(Game.i18n.tr("PLM lesson files"), "plm"));
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
         fc.showOpenDialog(MainFrame.getInstance());
         File selectedFile = fc.getSelectedFile();
@@ -148,7 +144,7 @@ class LessonMatrix extends JPanel {
           if (selectedFile != null)
             Game.getInstance().loadLessonFromJAR(fc.getSelectedFile());
         } catch (LessonLoadingException lle) {
-          JOptionPane.showMessageDialog(null, lle.getMessage(), i18n.tr("Error"), JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, lle.getMessage(), Game.i18n.tr("Error"), JOptionPane.ERROR_MESSAGE);
         }
       }
     });
@@ -165,7 +161,6 @@ class LessonOverview extends JPanel {
   private JButton btGo;
   private String path;
   private JEditorPane desc;
-  private I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   public LessonOverview(final ChooseLessonDialog lc)
   {
@@ -175,9 +170,9 @@ class LessonOverview extends JPanel {
     desc = new JEditorPane("text/html", "");
     desc.setEditable(false);
     desc.setEditorKit(new PlmHtmlEditorKit());
-    desc.setText(i18n.tr("<h1>Please pick a lesson</h1>\n"
-                         + "<p>Please click on an icon on the left to select a lesson.</p>\n"
-                         + "<p>Lessons located above are generally simpler than the ones located below.</p>"));
+    desc.setText(Game.i18n.tr("<h1>Please pick a lesson</h1>\n"
+                              + "<p>Please click on an icon on the left to select a lesson.</p>\n"
+                              + "<p>Lessons located above are generally simpler than the ones located below.</p>"));
 
     JScrollPane descScrol = new JScrollPane(desc);
     JPanel descPanel      = new JPanel(new BorderLayout());
@@ -187,7 +182,7 @@ class LessonOverview extends JPanel {
     descPanel.doLayout();
     add(descPanel, BorderLayout.CENTER);
 
-    btGo = new JButton(i18n.tr("Go"));
+    btGo = new JButton(Game.i18n.tr("Go"));
     btGo.addActionListener(new ActionListener() {
       @Override public void actionPerformed(ActionEvent e)
       {
@@ -220,10 +215,10 @@ class LessonOverview extends JPanel {
       sb = FileUtils.readContentAsText(filename, "html", true);
     } catch (IOException ex) {
       filename += ".html";
-      sb = new StringBuffer(i18n.tr("<p>(unable to display the short description of this lesson: file {0} not found)</p>", filename));
+      sb = new StringBuffer(Game.i18n.tr("<p>(unable to display the short description of this lesson: file {0} not found)</p>", filename));
     }
 
-    sb.append(i18n.tr("<p><b>Your score:</b> "));
+    sb.append(Game.i18n.tr("<p><b>Your score:</b> "));
     String id        = path.replaceAll("/", ".").replaceAll("^lessons\\.", "");
     boolean foundOne = false;
     for (ProgrammingLanguage lang : Game.getInstance().programmingLanguageManager.langs) {
@@ -231,17 +226,17 @@ class LessonOverview extends JPanel {
       int passed   = Game.getInstance().studentWork.getPassedExercises(id, lang);
       if (possible > 0) {
         if (lang.isLightBot())
-          sb.append(" " + i18n.tr("{0} out of {1} exercises passed.", passed, possible));
+          sb.append(" " + Game.i18n.tr("{0} out of {1} exercises passed.", passed, possible));
         else {
           sb.append("<br/>");
           sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<img src=\"img/lang_" + lang.getLang().toLowerCase() + ".png\">&nbsp;&nbsp;");
-          sb.append(i18n.tr("{0} out of {1} exercises passed in {2}.", passed, possible, lang.getLang()));
+          sb.append(Game.i18n.tr("{0} out of {1} exercises passed in {2}.", passed, possible, lang.getLang()));
         }
         foundOne = true;
       }
     }
     if (!foundOne)
-      sb.append(i18n.tr("You never attempted this lesson."));
+      sb.append(Game.i18n.tr("You never attempted this lesson."));
     sb.append("</p>");
 
     desc.setText(sb.toString());

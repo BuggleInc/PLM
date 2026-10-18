@@ -20,8 +20,7 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
+import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
@@ -33,8 +32,6 @@ public class MainFrame extends JFrame {
   private Editor editor;
   private ButtonGroup tools;
   private String path;
-
-  private I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   public MainFrame(Editor editor)
   {
@@ -181,7 +178,7 @@ public class MainFrame extends JFrame {
   class NewMapAction extends AbstractAction {
     private static final long serialVersionUID = 1L;
 
-    public NewMapAction() { super(i18n.tr("Create New Map")); }
+    public NewMapAction() { super(Game.i18n.tr("Create New Map")); }
 
     @Override public void actionPerformed(ActionEvent e)
     {
@@ -228,12 +225,12 @@ public class MainFrame extends JFrame {
   class OpenMapAction extends AbstractAction {
     private static final long serialVersionUID = 1L;
 
-    public OpenMapAction() { super(i18n.tr("Open Map...")); }
+    public OpenMapAction() { super(Game.i18n.tr("Open Map...")); }
 
     @Override public void actionPerformed(ActionEvent e)
     {
       JFileChooser fc = new JFileChooser();
-      fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PLM map files"), "map"));
+      fc.setFileFilter(new FileNameExtensionFilter(Game.i18n.tr("PLM map files"), "map"));
       int status = fc.showOpenDialog(MainFrame.this);
 
       if (status == JFileChooser.APPROVE_OPTION) {
@@ -241,7 +238,7 @@ public class MainFrame extends JFrame {
         try {
           editor.loadMap(MainFrame.this.path);
         } catch (IOException e1) {
-          JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(), i18n.tr("Error while reading {0}", path), JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(), Game.i18n.tr("Error while reading {0}", path), JOptionPane.ERROR_MESSAGE);
         }
       }
     }

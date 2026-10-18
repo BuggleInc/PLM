@@ -4,9 +4,6 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -20,7 +17,6 @@ public class Editor {
   private String command                              = "topwall";
   private Color selectedColor                         = Color.blue;
   private int selectedColorNumber                     = 1;
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", new Locale("fr"), I18nFactory.FALLBACK); // FIXME: ugly: french is hardcoded!!!!!
 
   public Editor()
   {

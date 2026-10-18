@@ -19,5 +19,5 @@ public class SwitchExo extends AbstractGameAction implements HumanLangChangesLis
 
   @Override public void actionPerformed(ActionEvent e) { new ChooseLectureDialog(); }
 
-  @Override public void currentHumanLanguageHasChanged(Locale newLang) { setDescription(i18n.tr("Switch to another exercise"), ""); }
+  @Override public void currentHumanLanguageHasChanged(Locale newLang) { setDescription(Game.i18n.tr("Switch to another exercise"), ""); }
 }

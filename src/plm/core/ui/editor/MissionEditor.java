@@ -30,8 +30,6 @@ import javax.swing.KeyStroke;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.PlmHtmlEditorKit;
@@ -40,16 +38,14 @@ import plm.core.utils.FileUtils;
 public class MissionEditor extends JFrame {
   private static final long serialVersionUID = 1L;
 
-  private I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
-
   private JEditorPane display = new JEditorPane("text/html", "");
   private JEditorPane editor;
 
   private String lastPathSelected;
   private boolean modified = false;
 
-  private String TITLE_MODIFIED     = i18n.tr("PLM - Mission Editor (modified)");
-  private String TITLE_NOT_MODIFIED = i18n.tr("PLM - Mission Editor");
+  private String TITLE_MODIFIED     = Game.i18n.tr("PLM - Mission Editor (modified)");
+  private String TITLE_NOT_MODIFIED = Game.i18n.tr("PLM - Mission Editor");
 
   public MissionEditor()
   {
@@ -238,7 +234,7 @@ public class MissionEditor extends JFrame {
       modified = false;
       setTitle(TITLE_NOT_MODIFIED);
     } catch (IOException e1) {
-      JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(), i18n.tr("Error while reading {0}", lastPathSelected), JOptionPane.ERROR_MESSAGE);
+      JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(), Game.i18n.tr("Error while reading {0}", lastPathSelected), JOptionPane.ERROR_MESSAGE);
     }
   }
 
@@ -350,7 +346,7 @@ public class MissionEditor extends JFrame {
   class OpenMissionAction extends AbstractAction {
     private static final long serialVersionUID = 1L;
 
-    public OpenMissionAction() { super(i18n.tr("Open Mission...")); }
+    public OpenMissionAction() { super(Game.i18n.tr("Open Mission...")); }
 
     @Override public void actionPerformed(ActionEvent e)
     {
@@ -372,7 +368,7 @@ public class MissionEditor extends JFrame {
         modified = false;
       }
       JFileChooser fc = new JFileChooser(lastPathSelected);
-      fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("HTML files"), "html"));
+      fc.setFileFilter(new FileNameExtensionFilter(Game.i18n.tr("HTML files"), "html"));
       int status = fc.showOpenDialog(MissionEditor.this);
 
       if (status == JFileChooser.APPROVE_OPTION) {
@@ -399,7 +395,7 @@ public class MissionEditor extends JFrame {
   class QuitAction extends AbstractAction {
     private static final long serialVersionUID = 1L;
 
-    public QuitAction() { super(i18n.tr("Quit Map Editor")); }
+    public QuitAction() { super(Game.i18n.tr("Quit Map Editor")); }
 
     @Override public void actionPerformed(ActionEvent e) { confirmQuit(); }
   }

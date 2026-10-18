@@ -15,7 +15,10 @@ public class StopExecution extends AbstractGameAction implements HumanLangChange
     super(game, text, icon);
     game.addHumanLangListener(this);
   }
-  @Override public void currentHumanLanguageHasChanged(Locale newLang) { setDescription(i18n.tr("Stop your code"), i18n.tr("No execution to stop right now")); }
+  @Override public void currentHumanLanguageHasChanged(Locale newLang)
+  {
+    setDescription(Game.i18n.tr("Stop your code"), Game.i18n.tr("No execution to stop right now"));
+  }
 
   @Override public void actionPerformed(ActionEvent e) { this.game.stopExerciseExecution(); }
 }

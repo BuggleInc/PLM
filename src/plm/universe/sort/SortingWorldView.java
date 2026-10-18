@@ -16,8 +16,6 @@ import java.awt.geom.Rectangle2D;
 import java.util.Locale;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.HumanLangChangesListener;
 import plm.core.model.Game;
 import plm.core.ui.WorldView;
@@ -26,7 +24,6 @@ import plm.universe.World;
 class SortingViewActionListener implements ActionListener, HumanLangChangesListener {
   private JMenuItem item;
   private SortingWorldView view;
-  private I18n i18n;
 
   public SortingViewActionListener(JMenuItem i, SortingWorldView v)
   {
@@ -45,11 +42,10 @@ class SortingViewActionListener implements ActionListener, HumanLangChangesListe
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", newLang, I18nFactory.FALLBACK);
     if (view.isUseStateView()) {
-      item.setText(i18n.tr("Switch to time view"));
+      item.setText(Game.i18n.tr("Switch to time view"));
     } else {
-      item.setText(i18n.tr("Switch to state view"));
+      item.setText(Game.i18n.tr("Switch to state view"));
     }
   }
 }

@@ -33,8 +33,6 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
 import plm.core.GameStateListener;
 import plm.core.HumanLangChangesListener;
@@ -94,8 +92,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
   private MissionEditorTabs met;
 
   StatusBar statusBar;
-
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   private JSplitPane mainPanel;
 
@@ -177,17 +173,17 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
     /* === FILE menu === */
     // for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
-    menuFile = new JMenu(i18n.tr("File"));
+    menuFile = new JMenu(Game.i18n.tr("File"));
     menuFile.setMnemonic(KeyEvent.VK_F);
-    menuFile.getAccessibleContext().setAccessibleDescription(i18n.tr("File related functions"));
+    menuFile.getAccessibleContext().setAccessibleDescription(Game.i18n.tr("File related functions"));
 
-    miFileSavePicture = new JMenuItem(new AbstractGameAction(g, i18n.tr("Save a picture"), null, KeyEvent.VK_S) {
+    miFileSavePicture = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("Save a picture"), null, KeyEvent.VK_S) {
       private static final long serialVersionUID = 1L;
 
       @Override public void actionPerformed(ActionEvent e)
       {
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PNG Image Files"), "png"));
+        fc.setFileFilter(new FileNameExtensionFilter(Game.i18n.tr("PNG Image Files"), "png"));
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
         fc.showOpenDialog(MainFrame.getInstance());
         File selectedFile = fc.getSelectedFile();
@@ -223,19 +219,19 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     });
     menuFile.add(miFileSavePicture);
 
-    miFileQuit = new JMenuItem(new QuitGame(g, i18n.tr("Quit"), null, KeyEvent.VK_Q));
+    miFileQuit = new JMenuItem(new QuitGame(g, Game.i18n.tr("Quit"), null, KeyEvent.VK_Q));
     miFileQuit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
     menuFile.add(miFileQuit);
 
     menuBar.add(menuFile);
 
-    menuExercise = new JMenu(i18n.tr("Exercise"));
+    menuExercise = new JMenu(Game.i18n.tr("Exercise"));
     menuExercise.setMnemonic(KeyEvent.VK_E);
     menuBar.add(menuExercise);
     menuExercise.setEnabled(true);
 
-    miExoSwitch = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, KeyEvent.VK_L) {
+    miExoSwitch = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("Switch lesson"), null, KeyEvent.VK_L) {
       private static final long serialVersionUID = 1L;
 
       @Override public void actionPerformed(ActionEvent e)
@@ -247,7 +243,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     miExoSwitch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
     menuExercise.add(miExoSwitch);
 
-    miExoExercise = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch exercise"), null, KeyEvent.VK_E) {
+    miExoExercise = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("Switch exercise"), null, KeyEvent.VK_E) {
       private static final long serialVersionUID = 1L;
 
       @Override public void actionPerformed(ActionEvent e)
@@ -258,11 +254,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     miExoExercise.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
     menuExercise.add(miExoExercise);
 
-    miExoRevert = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"), null));
+    miExoRevert = new JMenuItem(new RevertExercise(g, Game.i18n.tr("Revert Exercise"), null));
     menuExercise.add(miExoRevert);
     menuExercise.addSeparator();
 
-    miExoDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
+    miExoDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, Game.i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
       private static final long serialVersionUID = 1L;
 
       @Override public void actionPerformed(ActionEvent e)
@@ -274,7 +270,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     });
     menuExercise.add(miExoDebug);
 
-    miExoCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
+    miExoCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, Game.i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
       private static final long serialVersionUID = 1L;
 
       @Override public void actionPerformed(ActionEvent e)
@@ -285,34 +281,34 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     menuExercise.add(miExoCreative);
 
     /* === Session menu === */
-    menuSession = new JMenu(i18n.tr("Session"));
+    menuSession = new JMenu(Game.i18n.tr("Session"));
     menuSession.setMnemonic(KeyEvent.VK_S);
     menuBar.add(menuSession);
     menuSession.setEnabled(true);
 
-    miSessionExport = new JMenuItem(new ExportSession(g, i18n.tr("Write Session to disk"), null, this));
+    miSessionExport = new JMenuItem(new ExportSession(g, Game.i18n.tr("Write Session to disk"), null, this));
     menuSession.add(miSessionExport);
 
-    miSessionImport = new JMenuItem(new ImportSession(g, i18n.tr("Read Session from disk"), null, this));
+    miSessionImport = new JMenuItem(new ImportSession(g, Game.i18n.tr("Read Session from disk"), null, this));
     menuSession.add(miSessionImport);
     menuSession.addSeparator();
 
-    miAddUser = new JMenuItem(new AddUser(g, i18n.tr("Add user"), null, this));
+    miAddUser = new JMenuItem(new AddUser(g, Game.i18n.tr("Add user"), null, this));
     menuSession.add(miAddUser);
 
-    miSwitchUser = new JMenuItem(new SwitchUser(g, i18n.tr("Switch user"), null, this));
+    miSwitchUser = new JMenuItem(new SwitchUser(g, Game.i18n.tr("Switch user"), null, this));
     menuSession.add(miSwitchUser);
 
-    miRemoveUser = new JMenuItem(new RemoveUser(g, i18n.tr("Remove user"), null, this));
+    miRemoveUser = new JMenuItem(new RemoveUser(g, Game.i18n.tr("Remove user"), null, this));
     menuSession.add(miRemoveUser);
 
     /* === Language menu === */
-    menuLanguage = new JMenu(i18n.tr("Language"));
+    menuLanguage = new JMenu(Game.i18n.tr("Language"));
     menuLanguage.setMnemonic(KeyEvent.VK_L);
     menuBar.add(menuLanguage);
 
     /* === Programming language changing === */
-    menuLangHuman = new JMenu(i18n.tr("Human"));
+    menuLangHuman = new JMenu(Game.i18n.tr("Human"));
     menuLanguage.add(menuLangHuman);
 
     ButtonGroup group = new ButtonGroup();
@@ -325,15 +321,15 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
       menuLangHuman.add(item);
     }
 
-    menuLangProg = new ProgLangSubMenu(i18n.tr("Computer"));
+    menuLangProg = new ProgLangSubMenu(Game.i18n.tr("Computer"));
     menuLanguage.add(menuLangProg);
 
     /* === Help menu === */
-    menuHelp = new JMenu(i18n.tr("Help"));
+    menuHelp = new JMenu(Game.i18n.tr("Help"));
     menuHelp.setMnemonic(KeyEvent.VK_H);
     menuBar.add(menuHelp);
 
-    miHelpFeedback = new JMenuItem(new AbstractGameAction(g, i18n.tr("Provide feedback")) {
+    miHelpFeedback = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("Provide feedback")) {
       private static final long serialVersionUID = 1L;
 
       public void actionPerformed(ActionEvent arg0)
@@ -344,7 +340,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     miHelpFeedback.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, ActionEvent.CTRL_MASK));
     menuHelp.add(miHelpFeedback);
 
-    miHelpLesson = new JMenuItem(new AbstractGameAction(g, i18n.tr("About this lesson")) {
+    miHelpLesson = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("About this lesson")) {
       private static final long serialVersionUID = 1L;
       private AbstractAboutDialog dialog         = null;
 
@@ -358,7 +354,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     });
     menuHelp.add(miHelpLesson);
 
-    miHelpWorld = new JMenuItem(new AbstractGameAction(g, i18n.tr("About this world"), null) {
+    miHelpWorld = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("About this world"), null) {
       private static final long serialVersionUID = 1L;
 
       private AbstractAboutDialog dialog = null;
@@ -374,7 +370,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     miHelpWorld.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
     menuHelp.add(miHelpWorld);
 
-    miHelpMission = new JMenuItem(new AbstractGameAction(g, i18n.tr("Show the mission in a window"), null) {
+    miHelpMission = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("Show the mission in a window"), null) {
       private static final long serialVersionUID = 1L;
 
       private AbstractAboutDialog dialog = null;
@@ -391,7 +387,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     menuHelp.add(miHelpMission);
 
     if (!System.getProperty("os.name").startsWith("Mac")) {
-      miHelpAbout = new JMenuItem(new AbstractGameAction(g, i18n.tr("About the PLM"), null) {
+      miHelpAbout = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("About the PLM"), null) {
         private static final long serialVersionUID = 1L;
 
         public void actionPerformed(ActionEvent e)
@@ -427,25 +423,25 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     toolBar.setBorder(BorderFactory.createEtchedBorder());
 
     ImageIcon ii = ResourcesCache.getIcon("img/btn-start.png");
-    startButton  = new PropagatingButton(new StartExecution(g, i18n.tr("Run"), ii));
+    startButton  = new PropagatingButton(new StartExecution(g, Game.i18n.tr("Run"), ii));
     // shortcut ctrl-r
     startButton.setMnemonic(KeyEvent.VK_R);
 
-    debugButton = new PropagatingButton(new StepExecution(g, i18n.tr("Step"), ResourcesCache.getIcon("img/btn-debug.png")));
+    debugButton = new PropagatingButton(new StepExecution(g, Game.i18n.tr("Step"), ResourcesCache.getIcon("img/btn-debug.png")));
     // shortcut ctrl-b
     debugButton.setMnemonic(KeyEvent.VK_B);
 
-    stopButton = new PropagatingButton(new StopExecution(g, i18n.tr("Stop"), ResourcesCache.getIcon("img/btn-stop.png")));
+    stopButton = new PropagatingButton(new StopExecution(g, Game.i18n.tr("Stop"), ResourcesCache.getIcon("img/btn-stop.png")));
     // shortcut ctrl-s
     stopButton.setMnemonic(KeyEvent.VK_S);
     stopButton.setEnabled(false);
 
-    resetButton = new PropagatingButton(new Reset(g, i18n.tr("Reset"), ResourcesCache.getIcon("img/btn-reset.png")));
+    resetButton = new PropagatingButton(new Reset(g, Game.i18n.tr("Reset"), ResourcesCache.getIcon("img/btn-reset.png")));
     // shortcut ctrl-z
     resetButton.setMnemonic(KeyEvent.VK_Z);
     resetButton.setEnabled(true);
 
-    demoButton = new PropagatingButton(new PlayDemo(g, i18n.tr("Demo"), ResourcesCache.getIcon("img/btn-demo.png")));
+    demoButton = new PropagatingButton(new PlayDemo(g, Game.i18n.tr("Demo"), ResourcesCache.getIcon("img/btn-demo.png")));
     // shortcut ctrl-d
     demoButton.setMnemonic(KeyEvent.VK_D);
     demoButton.setEnabled(true);
@@ -458,10 +454,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
     toolBar.addSeparator();
 
-    lessonChangeButton = new PropagatingButton(new SwitchLesson(g, i18n.tr("Switch lesson"), ResourcesCache.getIcon("img/btn-switch-lesson.png")));
+    lessonChangeButton = new PropagatingButton(new SwitchLesson(g, Game.i18n.tr("Switch lesson"), ResourcesCache.getIcon("img/btn-switch-lesson.png")));
     toolBar.add(lessonChangeButton);
 
-    exoChangeButton = new PropagatingButton(new SwitchExo(g, i18n.tr("Switch exercise"), ResourcesCache.getIcon("img/btn-switch-exo.png")));
+    exoChangeButton = new PropagatingButton(new SwitchExo(g, Game.i18n.tr("Switch exercise"), ResourcesCache.getIcon("img/btn-switch-exo.png")));
     toolBar.add(exoChangeButton);
 
     getContentPane().add(toolBar, BorderLayout.NORTH);
@@ -510,7 +506,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         if (Game.getInstance().stepModeEnabled()) {
           debugButton.setEnabled(true);
           startButton.setEnabled(true);
-          debugButton.setText(i18n.tr("Next"));
+          debugButton.setText(Game.i18n.tr("Next"));
           debugButton.setIcon(ResourcesCache.getIcon("img/btn-debug-step.png"));
         } else {
           startButton.setEnabled(false);
@@ -525,7 +521,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         stopButton.setEnabled(false);
         startButton.setEnabled(true);
         debugButton.setEnabled(true);
-        debugButton.setText(i18n.tr("Step"));
+        debugButton.setText(Game.i18n.tr("Step"));
         debugButton.setIcon(ResourcesCache.getIcon("img/btn-debug.png"));
         resetButton.setEnabled(true);
         demoButton.setEnabled(true);
@@ -577,7 +573,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     });
     t.start();
 
-    JOptionPane.showMessageDialog(this, i18n.tr("Please wait, while the PLM is saving your session data."));
+    JOptionPane.showMessageDialog(this, Game.i18n.tr("Please wait, while the PLM is saving your session data."));
   }
 
   public void about()
@@ -692,46 +688,45 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    i18n.setLocale(newLang);
     // Buttons
-    startButton.setText(i18n.tr("Run"));
-    debugButton.setText(i18n.tr("Step"));
-    stopButton.setText(i18n.tr("Stop"));
-    resetButton.setText(i18n.tr("Reset"));
-    demoButton.setText(i18n.tr("Demo"));
-    exoChangeButton.setText(i18n.tr("Switch exercise"));
+    startButton.setText(Game.i18n.tr("Run"));
+    debugButton.setText(Game.i18n.tr("Step"));
+    stopButton.setText(Game.i18n.tr("Stop"));
+    resetButton.setText(Game.i18n.tr("Reset"));
+    demoButton.setText(Game.i18n.tr("Demo"));
+    exoChangeButton.setText(Game.i18n.tr("Switch exercise"));
 
     // Menus
-    menuFile.setText(i18n.tr("File"));
-    miFileSavePicture.setText(i18n.tr("Save a picture"));
-    miFileQuit.setText(i18n.tr("Quit"));
+    menuFile.setText(Game.i18n.tr("File"));
+    miFileSavePicture.setText(Game.i18n.tr("Save a picture"));
+    miFileQuit.setText(Game.i18n.tr("Quit"));
 
-    menuExercise.setText(i18n.tr("Exercise"));
-    miExoSwitch.setText(i18n.tr("Switch lesson"));
-    miExoExercise.setText(i18n.tr("Switch exercise"));
-    miExoRevert.setText(i18n.tr("Revert Exercise"));
-    miExoDebug.setText(i18n.tr("Debug mode"));
-    miExoCreative.setText(i18n.tr("Creative mode"));
+    menuExercise.setText(Game.i18n.tr("Exercise"));
+    miExoSwitch.setText(Game.i18n.tr("Switch lesson"));
+    miExoExercise.setText(Game.i18n.tr("Switch exercise"));
+    miExoRevert.setText(Game.i18n.tr("Revert Exercise"));
+    miExoDebug.setText(Game.i18n.tr("Debug mode"));
+    miExoCreative.setText(Game.i18n.tr("Creative mode"));
 
-    menuSession.setText(i18n.tr("Session"));
-    menuSession.getAccessibleContext().setAccessibleDescription(i18n.tr("Lesson related functions"));
-    miSessionExport.setText(i18n.tr("Export Session Cache"));
-    miSessionImport.setText(i18n.tr("Import Session Cache"));
+    menuSession.setText(Game.i18n.tr("Session"));
+    menuSession.getAccessibleContext().setAccessibleDescription(Game.i18n.tr("Lesson related functions"));
+    miSessionExport.setText(Game.i18n.tr("Export Session Cache"));
+    miSessionImport.setText(Game.i18n.tr("Import Session Cache"));
 
-    miAddUser.setText(i18n.tr("Add user"));
-    miSwitchUser.setText(i18n.tr("Switch user"));
-    miRemoveUser.setText(i18n.tr("Remove user"));
+    miAddUser.setText(Game.i18n.tr("Add user"));
+    miSwitchUser.setText(Game.i18n.tr("Switch user"));
+    miRemoveUser.setText(Game.i18n.tr("Remove user"));
 
-    menuLanguage.setText(i18n.tr("Language"));
-    menuLangHuman.setText(i18n.tr("Human"));
-    menuLangProg.setText(i18n.tr("Computer"));
+    menuLanguage.setText(Game.i18n.tr("Language"));
+    menuLangHuman.setText(Game.i18n.tr("Human"));
+    menuLangProg.setText(Game.i18n.tr("Computer"));
 
-    menuHelp.setText(i18n.tr("Help"));
-    miHelpFeedback.setText(i18n.tr("Provide feedback"));
-    miHelpLesson.setText(i18n.tr("About this lesson"));
-    miHelpWorld.setText(i18n.tr("About this world"));
+    menuHelp.setText(Game.i18n.tr("Help"));
+    miHelpFeedback.setText(Game.i18n.tr("Provide feedback"));
+    miHelpLesson.setText(Game.i18n.tr("About this lesson"));
+    miHelpWorld.setText(Game.i18n.tr("About this world"));
     if (miHelpAbout != null)
-      miHelpAbout.setText(i18n.tr("About the PLM"));
+      miHelpAbout.setText(Game.i18n.tr("About the PLM"));
   }
 }
 

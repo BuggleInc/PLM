@@ -150,7 +150,7 @@ public abstract class ExerciseTemplated extends Exercise {
     boolean useCache = haveIO && Game.getProperty(Game.PROP_ANSWER_CACHE, "true", true).equalsIgnoreCase("true");
     if (haveIO && !useCache)
       System.out.println(
-          i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}.", worldFileName, Game.PROP_ANSWER_CACHE));
+          Game.i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}.", worldFileName, Game.PROP_ANSWER_CACHE));
 
     Vector<Integer> toCompute = new Vector<Integer>();
     for (int rank = 0; rank < answerWorld.size(); rank++) {
@@ -165,13 +165,13 @@ public abstract class ExerciseTemplated extends Exercise {
         nw.setAnswerWorld();
         answers.set(rank, nw);
       } catch (BrokenWorldFileException bwfe) {
-        System.err.println(i18n.tr("World {0} is broken ({1}). Recompute it.", name, bwfe.getLocalizedMessage()));
+        System.err.println(Game.i18n.tr("World {0} is broken ({1}). Recompute it.", name, bwfe.getLocalizedMessage()));
         toCompute.add(rank);
       } catch (FileNotFoundException fnf) {
-        System.err.println(i18n.tr("Cache file {0} is missing. Recompute it.", name));
+        System.err.println(Game.i18n.tr("Cache file {0} is missing. Recompute it.", name));
         toCompute.add(rank);
       } catch (IOException ioe) {
-        System.err.println(i18n.tr("IO exception while reading world {0} ({1}). Recompute it.", name, ioe.getLocalizedMessage()));
+        System.err.println(Game.i18n.tr("IO exception while reading world {0} ({1}). Recompute it.", name, ioe.getLocalizedMessage()));
         toCompute.add(rank);
       }
     }
@@ -218,13 +218,13 @@ public abstract class ExerciseTemplated extends Exercise {
   {
     String name = ("src/" + worldFileName + "-answer" + rank).replaceAll("\\.", "/") + ".map";
     if (!new File(name).getParentFile().canWrite()) {
-      System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions.", name));
+      System.err.println(Game.i18n.tr("Cannot write answer world of {0}. Please check the permissions.", name));
       return;
     }
     try {
       answerWorld.get(rank).writeToFile(new File(name));
     } catch (Exception e) {
-      System.err.println(i18n.tr("Error while writing answer world of {0}:", name));
+      System.err.println(Game.i18n.tr("Error while writing answer world of {0}:", name));
       e.printStackTrace();
     }
   }

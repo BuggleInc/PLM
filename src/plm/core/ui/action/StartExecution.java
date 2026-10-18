@@ -28,13 +28,13 @@ public class StartExecution extends AbstractGameAction implements HumanLangChang
       asked = 5; /* Ask every 5 runs */
 
       String trackUserProperty = "unknown";
-      String message           = i18n.tr("The PLM can save your data anonymously on remote servers. That way, you \n"
-                                         + "can retrieve your session from your anonymous tag from any connected computer.\n"
-                                         + "This anonymous data also helps scientists understanding how people learn \n"
-                                         + " programming. No nominative information is stored, only the source code written\n"
-                                         + "to solve the challenges.\n");
-      String title             = i18n.tr("Do you want to store your data online?");
-      Object[] options         = {i18n.tr("Ok, save my data online"), i18n.tr("No, keep everything local"), i18n.tr("Let me decide later")};
+      String message           = Game.i18n.tr("The PLM can save your data anonymously on remote servers. That way, you \n"
+                                              + "can retrieve your session from your anonymous tag from any connected computer.\n"
+                                              + "This anonymous data also helps scientists understanding how people learn \n"
+                                              + " programming. No nominative information is stored, only the source code written\n"
+                                              + "to solve the challenges.\n");
+      String title             = Game.i18n.tr("Do you want to store your data online?");
+      Object[] options         = {Game.i18n.tr("Ok, save my data online"), Game.i18n.tr("No, keep everything local"), Game.i18n.tr("Let me decide later")};
       int n = JOptionPane.showOptionDialog(MainFrame.getInstance(), message, title, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                                            options, options[0]);
       if (n == 0) {
@@ -55,7 +55,7 @@ public class StartExecution extends AbstractGameAction implements HumanLangChang
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    setDescription(i18n.tr("Launch the execution of your code"),
-                   i18n.tr("Cannot launch the execution right now. Wait a bit, or interrupt current activity with the Stop button."));
+    setDescription(Game.i18n.tr("Launch the execution of your code"),
+                   Game.i18n.tr("Cannot launch the execution right now. Wait a bit, or interrupt current activity with the Stop button."));
   }
 }

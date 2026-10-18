@@ -8,8 +8,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
 import plm.core.ProgLangChangesListener;
 import plm.core.UserSwitchesListener;
@@ -29,8 +27,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
   /* for code tabs */
   private Lecture currentExercise;
-
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   public MissionEditorTabs()
   {
@@ -65,7 +61,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
       }
     });
 
-    this.addTab(i18n.tr("Mission"), null, new JScrollPane(missionTab), i18n.tr("Description of the work to do"));
+    this.addTab(Game.i18n.tr("Mission"), null, new JScrollPane(missionTab), Game.i18n.tr("Description of the work to do"));
 
     // PlmSyntaxPane.initKits();
 
@@ -128,7 +124,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
       /* Add back the code editor, if there is a source file in that language */
       Exercise exo = (Exercise)currentExercise;
       if (exo.getSourceFileCount(newLang) > 0)
-        this.addTab(exo.getTabName(), null, exo.getEditorPanel(newLang), i18n.tr("Type your code here"));
+        this.addTab(exo.getTabName(), null, exo.getEditorPanel(newLang), Game.i18n.tr("Type your code here"));
       if (getTabCount() > tabPosition)
         setSelectedIndex(tabPosition);
     }

@@ -7,13 +7,10 @@ import java.util.Random;
 import java.util.Vector;
 import java.util.function.Supplier;
 import javax.swing.ImageIcon;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
-import plm.core.utils.FileUtils;
 import plm.universe.BrokenWorldFileException;
 import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
@@ -31,13 +28,11 @@ public class BaseballWorld extends World {
   private int holeBase, holePos;     // The coordinate of the hole
   protected int[] initialField;
   private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
-  private I18n i18n;
 
   /** Copy constructor used internally by PLM */
   public BaseballWorld(BaseballWorld other)
   {
     super(other);
-    i18n         = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
     initialField = new int[other.initialField.length];
     for (int i = 0; i < initialField.length; i++)
       initialField[i] = other.initialField[i];
@@ -49,7 +44,6 @@ public class BaseballWorld extends World {
   public BaseballWorld(String name, int baseAmount, int posAmount, Mix mix)
   {
     super(name);
-    i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
 
     // create the bases
     this.baseAmount = baseAmount;
@@ -186,20 +180,20 @@ public class BaseballWorld extends World {
   @Override public String diffTo(World o, ProgrammingLanguage ignored)
   {
     if (o == null || !(o instanceof BaseballWorld))
-      return i18n.tr("This is not a baseball world :-(");
+      return Game.i18n.tr("This is not a baseball world :-(");
 
     BaseballWorld other = (BaseballWorld)o;
     if (baseAmount != other.baseAmount)
-      return i18n.tr("Differing amount of bases: {0} vs {1}", baseAmount, other.baseAmount);
+      return Game.i18n.tr("Differing amount of bases: {0} vs {1}", baseAmount, other.baseAmount);
 
     if (posAmount != other.posAmount)
-      return i18n.tr("Differing amount of players: {0} vs {1}", posAmount, other.posAmount);
+      return Game.i18n.tr("Differing amount of players: {0} vs {1}", posAmount, other.posAmount);
 
     StringBuffer sb = new StringBuffer();
     for (int base = 0; base < baseAmount; base++)
       for (int pos = 0; pos < posAmount; pos++)
         if (getPlayerColor(base, pos) != other.getPlayerColor(base, pos))
-          sb.append(i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n", base, pos, getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
+          sb.append(Game.i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n", base, pos, getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
     return sb.toString();
   }
@@ -377,17 +371,17 @@ public class BaseballWorld extends World {
   public void move(int base, int position)
   {
     if (base >= this.baseAmount || base < 0)
-      throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}", base, (baseAmount - 1)));
+      throw new IllegalArgumentException(Game.i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}", base, (baseAmount - 1)));
 
     if (position < 0 || position > this.posAmount - 1)
-      throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})", position, (posAmount - 1)));
+      throw new IllegalArgumentException(Game.i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})", position, (posAmount - 1)));
 
     // must work only if the bases are next to each other
     if ((holeBase != base + 1) && (holeBase != base - 1) && (holeBase != 0 || base != baseAmount - 1) && (holeBase != baseAmount - 1 || base != 0) &&
         (holeBase != base))
 
       throw new IllegalArgumentException(
-          i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move", position, base, holeBase));
+          Game.i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move", position, base, holeBase));
 
     // All clear. Proceed.
     moves.add(new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position), this));

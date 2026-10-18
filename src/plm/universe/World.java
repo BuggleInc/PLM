@@ -18,8 +18,6 @@ import java.util.concurrent.Future;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.lang.RemoteExecutionLang;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
@@ -42,8 +40,6 @@ public abstract class World {
   protected List<Entity> entities = new ArrayList<Entity>();
 
   private String name;
-
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 
   public World(String name) { this.name = name; }
 

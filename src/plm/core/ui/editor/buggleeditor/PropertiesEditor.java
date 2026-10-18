@@ -11,8 +11,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
+import plm.core.model.Game;
 import plm.core.utils.ColorMapper;
 import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
@@ -25,7 +24,6 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class PropertiesEditor extends JComponent implements EditionListener {
   private static final long serialVersionUID = 3904327915735497696L;
-  private I18n i18n                          = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   private AbstractBuggle selectedBuggle;
 
@@ -53,7 +51,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
     add(new JScrollPane(table), BorderLayout.CENTER);
 
     model.setColumnCount(2);
-    model.setColumnIdentifiers(new Object[] {i18n.tr("Property"), i18n.tr("Value")});
+    model.setColumnIdentifiers(new Object[] {Game.i18n.tr("Property"), Game.i18n.tr("Value")});
     table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     repopulateTable();
     setVisible(true);
@@ -68,7 +66,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
     properties.removeAllElements();
 
     /* The editor for the name */
-                model.insertRow(0, new Object[] {i18n.tr("World name"), new PLMProperty(properties) { 
+                model.insertRow(0, new Object[] {Game.i18n.tr("World name"), new PLMProperty(properties) { 
 			@Override
 			public void setValue(String value) {
 				editor.getWorld().setName(value);
@@ -78,7 +76,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 });
 
 /*---------- world width ---------------*/
-                model.addRow(new Object[] {i18n.tr("World width"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("World width"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				return ""+editor.getWorld().getWidth();
@@ -99,7 +97,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 });
 
                 /*---------- world height ---------------*/
-                model.addRow(new Object[] {i18n.tr("World height"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("World height"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				return ""+editor.getWorld().getHeight();
@@ -120,7 +118,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 });
 
                 /*---------- selected cell ---------------*/
-                model.addRow(new Object[] {i18n.tr("Selected cell X"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("Selected cell X"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				selectedXRank = rank;
@@ -143,7 +141,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 });
 
                 /*---------- selected cell ---------------*/
-                model.addRow(new Object[] {i18n.tr("Selected cell Y"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("Selected cell Y"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				selectedYRank = rank;
@@ -165,7 +163,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 }
                 });
                 /*---------- Ground color ---------------*/
-                model.addRow(new Object[] {i18n.tr("Ground color (name or r/g/b)"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("Ground color (name or r/g/b)"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				return ColorMapper.color2name( editor.getWorld().getSelectedCell().getColor() );
@@ -183,7 +181,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 });
 
                 /*---------- top wall cell ---------------*/
-                model.addRow(new Object[] {i18n.tr("Top wall?"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("Top wall?"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				topRank = rank;
@@ -206,7 +204,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 }
                 });
                 /*---------- left wall cell ---------------*/
-                model.addRow(new Object[] {i18n.tr("Left wall?"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("Left wall?"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				leftRank = rank;
@@ -229,7 +227,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 }
                 });
                 /*---------- have baggle ---------------*/
-                model.addRow(new Object[] {i18n.tr("Baggle?"), new PLMProperty(properties) {
+                model.addRow(new Object[] {Game.i18n.tr("Baggle?"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				baggleRank = rank;
@@ -261,7 +259,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 
                 if (selectedBuggle != null) {
                   /*---------- Buggle name ---------------*/
-                        model.addRow(new Object[] {i18n.tr("Buggle name"), new PLMProperty(properties) {
+                        model.addRow(new Object[] {Game.i18n.tr("Buggle name"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					return selectedBuggle.getName();
@@ -273,7 +271,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                 }
                 });
                 /*---------- Buggle direction ---------------*/
-                        model.addRow(new Object[] {i18n.tr("Buggle direction (N|S|E|W)"), new PLMProperty(properties) {
+                        model.addRow(new Object[] {Game.i18n.tr("Buggle direction (N|S|E|W)"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					if (selectedBuggle.getDirection().equals(Direction.NORTH)) 
@@ -303,7 +301,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                         }
                         });
                         /*---------- Buggle color ---------------*/
-                        model.addRow(new Object[] {i18n.tr("Buggle color (name or r/g/b)"), new PLMProperty(properties) {
+                        model.addRow(new Object[] {Game.i18n.tr("Buggle color (name or r/g/b)"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					return ColorMapper.color2name( selectedBuggle.getBodyColor() );
@@ -320,7 +318,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
                         }
                         });
                         /*---------- Buggle color ---------------*/
-                        model.addRow(new Object[] {i18n.tr("Brush color (name or r/g/b)"), new PLMProperty(properties) {
+                        model.addRow(new Object[] {Game.i18n.tr("Brush color (name or r/g/b)"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					return ColorMapper.color2name( selectedBuggle.getBrushColor() );

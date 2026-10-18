@@ -17,7 +17,7 @@ public class StepExecution extends AbstractGameAction implements HumanLangChange
   }
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    setDescription(i18n.tr("Execute one step of your code"), i18n.tr("Impossible to step your code now. Need to stop the execution first?"));
+    setDescription(Game.i18n.tr("Execute one step of your code"), Game.i18n.tr("Impossible to step your code now. Need to stop the execution first?"));
   }
 
   @Override public void actionPerformed(ActionEvent e)

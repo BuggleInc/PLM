@@ -22,11 +22,11 @@ public class SetProgLanguage extends AbstractGameAction {
   {
     if (lang.isC()) {
       int res = JOptionPane.showConfirmDialog(null,
-                                              i18n.tr("The C langage is currently very experimental in the PLM.\n"
-                                                      + "If you go for C, you may not be able to complete some exercises that\n"
-                                                      + "are still in progress in C, although some other parts are already okay.\n\n"
-                                                      + "Do you want to proceed anyway?"),
-                                              i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
+                                              Game.i18n.tr("The C langage is currently very experimental in the PLM.\n"
+                                                           + "If you go for C, you may not be able to complete some exercises that\n"
+                                                           + "are still in progress in C, although some other parts are already okay.\n\n"
+                                                           + "Do you want to proceed anyway?"),
+                                              Game.i18n.tr("C is still experimental"), JOptionPane.OK_CANCEL_OPTION);
       if (res != JOptionPane.OK_OPTION)
         return;
     }

@@ -20,6 +20,6 @@ public class Reset extends AbstractGameAction implements HumanLangChangesListene
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    setDescription(i18n.tr("Reset your world to the initial state"), i18n.tr("World cannot be reset right now"));
+    setDescription(Game.i18n.tr("Reset your world to the initial state"), Game.i18n.tr("World cannot be reset right now"));
   }
 }

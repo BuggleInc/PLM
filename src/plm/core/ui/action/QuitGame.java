@@ -21,6 +21,6 @@ public class QuitGame extends AbstractGameAction implements HumanLangChangesList
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    setDescription(i18n.tr("Quit the application"), i18n.tr("Impossible to quit the application right now"));
+    setDescription(Game.i18n.tr("Quit the application"), Game.i18n.tr("Impossible to quit the application right now"));
   }
 }

@@ -2,8 +2,6 @@ package plm.core.ui;
 
 import java.util.Locale;
 import javax.swing.JTextArea;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.HumanLangChangesListener;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
@@ -12,13 +10,11 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
 
   private static final long serialVersionUID = 468774822833769775L;
 
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
-
   public LoggerPanel(Game game)
   {
     super();
     setEditable(false);
-    setToolTipText(i18n.tr("Where error and other messages get written"));
+    setToolTipText(Game.i18n.tr("Where error and other messages get written"));
     game.setOutputWriter(this);
     game.addHumanLangListener(this);
   }
@@ -52,10 +48,5 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
     }
   }
 
-  @Override public void currentHumanLanguageHasChanged(Locale newLang)
-  {
-    i18n.setLocale(newLang);
-
-    setToolTipText(i18n.tr("Where error and other messages get written"));
-  }
+  @Override public void currentHumanLanguageHasChanged(Locale newLang) { setToolTipText(Game.i18n.tr("Where error and other messages get written")); }
 }

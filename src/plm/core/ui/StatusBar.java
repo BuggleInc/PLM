@@ -15,8 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
 import plm.core.GameStateListener;
 import plm.core.HumanLangChangesListener;
@@ -44,8 +42,6 @@ public class StatusBar extends JPanel implements GameListener, GameStateListener
   private int busyIconIndex = 0;
 
   private Timer busyIconTimer;
-
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   private Color defaultColor, highlightColor = new Color(255, 120, 120);
 
@@ -155,12 +151,12 @@ public class StatusBar extends JPanel implements GameListener, GameStateListener
   {
     switch (type) {
       case SAVING:
-        statusMessageLabel.setText(i18n.tr("Saving"));
+        statusMessageLabel.setText(Game.i18n.tr("Saving"));
         busyIconTimer.start();
         setBackground(highlightColor);
         break;
       case COMPILATION_STARTED:
-        statusMessageLabel.setText(i18n.tr("Compiling"));
+        statusMessageLabel.setText(Game.i18n.tr("Compiling"));
         busyIconTimer.start();
         setBackground(highlightColor);
         break;
@@ -176,17 +172,17 @@ public class StatusBar extends JPanel implements GameListener, GameStateListener
         statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
         break;
       case EXECUTION_STARTED:
-        game.statusRootSet(i18n.tr("Running "));
+        game.statusRootSet(Game.i18n.tr("Running "));
         busyIconTimer.start();
         setBackground(highlightColor);
         break;
       case DEMO_STARTED:
-        game.statusRootSet(i18n.tr("Playing demo "));
+        game.statusRootSet(Game.i18n.tr("Playing demo "));
         busyIconTimer.start();
         setBackground(highlightColor);
         break;
       case LOADING:
-        game.statusRootSet(i18n.tr("Loading "));
+        game.statusRootSet(Game.i18n.tr("Loading "));
         busyIconTimer.start();
         setBackground(highlightColor);
         break;

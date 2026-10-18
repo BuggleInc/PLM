@@ -18,8 +18,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.EventListenerList;
 import net.miginfocom.swing.MigLayout;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
 import plm.core.HumanLangChangesListener;
 import plm.core.model.Game;
@@ -43,8 +41,6 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
   private JTabbedPane tabPane;
   private JPanel controlPane;
   private JSlider speedSlider;
-
-  public I18n i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
   public ExerciseView(Game game)
   {
@@ -83,18 +79,18 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
     speedSlider.setMinorTickSpacing(10);
     speedSlider.setPaintTicks(true);
     speedSlider.setPaintLabels(true);
-    speedSlider.setToolTipText(i18n.tr("Change the speed of execution"));
+    speedSlider.setToolTipText(Game.i18n.tr("Change the speed of execution"));
     upperPane.add(speedSlider, "growx");
 
     tabPane = new JTabbedPane();
     removeControlPage(tabPane);
     if (Game.getInstance().getSelectedWorld() != null) {
       worldView = Game.getInstance().getSelectedWorld().getView();
-      tabPane.addTab(i18n.tr("World"), null, worldView, i18n.tr("The world as it is right now"));
+      tabPane.addTab(Game.i18n.tr("World"), null, worldView, Game.i18n.tr("The world as it is right now"));
     }
     if (Game.getInstance().getAnswerOfSelectedWorld() != null) {
       objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-      tabPane.addTab(i18n.tr("Objective"), null, objectivesView, i18n.tr("The world as it should be"));
+      tabPane.addTab(Game.i18n.tr("Objective"), null, objectivesView, Game.i18n.tr("The world as it should be"));
     }
 
     upperPane.add(tabPane, "grow 100 100,push");
@@ -158,9 +154,9 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
       }
       tabPane.removeAll();
       worldView = Game.getInstance().getSelectedWorld().getView();
-      tabPane.addTab(i18n.tr("World"), null, worldView, i18n.tr("The world as it is right now"));
+      tabPane.addTab(Game.i18n.tr("World"), null, worldView, Game.i18n.tr("The world as it is right now"));
       objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-      tabPane.addTab(i18n.tr("Objective"), null, objectivesView, i18n.tr("The world as it should be"));
+      tabPane.addTab(Game.i18n.tr("Objective"), null, objectivesView, Game.i18n.tr("The world as it should be"));
     }
     // To refresh the controlPane in any case ( else the SortingWorldPanel is not refreshed )
     controlPane.removeAll();
@@ -209,15 +205,14 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 
   @Override public void currentHumanLanguageHasChanged(Locale newLang)
   {
-    i18n.setLocale(newLang);
 
-    worldComboBox.setToolTipText(i18n.tr("Switch the displayed world"));
-    speedSlider.setToolTipText(i18n.tr("Change the speed of execution"));
-    entityComboBox.setToolTipText(i18n.tr("Switch the entity"));
-    tabPane.setTitleAt(0, i18n.tr("World"));
-    tabPane.setToolTipTextAt(0, i18n.tr("The world as it is right now"));
-    tabPane.setTitleAt(1, i18n.tr("Objective"));
-    tabPane.setToolTipTextAt(0, i18n.tr("The world as it should be"));
+    worldComboBox.setToolTipText(Game.i18n.tr("Switch the displayed world"));
+    speedSlider.setToolTipText(Game.i18n.tr("Change the speed of execution"));
+    entityComboBox.setToolTipText(Game.i18n.tr("Switch the entity"));
+    tabPane.setTitleAt(0, Game.i18n.tr("World"));
+    tabPane.setToolTipTextAt(0, Game.i18n.tr("The world as it is right now"));
+    tabPane.setTitleAt(1, Game.i18n.tr("Objective"));
+    tabPane.setToolTipTextAt(0, Game.i18n.tr("The world as it should be"));
   }
 }
 
