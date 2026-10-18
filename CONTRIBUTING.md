@@ -225,7 +225,8 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
 - **Student-side glue**: it is made of `Remote` (the connection, `sendCommand()` and the `getAnswerXxx()` readers), a
   `ValueSerializer`, and one generated `RemoteXxx` per universe, with one function per primitive of that universe. They are the
   files that the templating does not compile with the exercise (see above for how they are built and shared). Every language
-  has its own implementation of this glue in `lib/resources/langages/`, plus the generator in its `ExternalPrimitiveLanguage`.
+  has its own implementation of this glue in `lib/resources/langages/` (except Scala, which uses the Java `Remote`), plus the
+  generator in its `ExternalPrimitiveLanguage`.
 - **Primitives**: the primitives of a universe are the methods annotated with `@Primitive` in the interfaces extending
   `EntityPrimitivesBase` (e.g. `SimpleEntityPrimitives`), which the entity implements. `PrimitiveRegistration` finds them by
   reflection. At build time, `CodeCreation` generates the `RemoteXxx` glue of every language from them. A primitive is identified

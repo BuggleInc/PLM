@@ -71,6 +71,7 @@ public class CodeCreation {
 
     for (Target target : targets) {
       File targetFolder = new File(folder, target.dir());
+      targetFolder.mkdirs(); // the Scala glue has no hand-written file, so its folder only exists once generated
       System.err.print("Generating " + target.dir() + " entities in " + targetFolder + ":");
       for (Map.Entry<String, List<PrimitiveMethod>> entry : primitives.entrySet()) {
         System.err.print(" " + entry.getKey());
@@ -84,28 +85,29 @@ public class CodeCreation {
   }
 
   /**
-   * Compiles in-process the glue of one language (Remote and the generated RemoteXxx files of langFolder, of extension ext) together with
-   * the JAVA_HELPER_SOURCES, all in the package "generated", and packs the classes in jarFile. The Scala glue is compiled against the
-   * classes of the helpers. The sources are staged in target/plm-entities/&lt;language&gt;/src to ease debugging.
+   * Compiles in-process the glue of one language (the generated RemoteXxx files of langFolder, of extension ext) together with the Java
+   * Remote and the JAVA_HELPER_SOURCES, all in the package "generated", and packs the classes in jarFile. The Scala glue is compiled
+   * against the classes of the Java sources. The sources are staged in target/plm-entities/&lt;language&gt;/src to ease debugging.
    */
   private static void buildEntitiesJar(File langFolder, String ext, File jarFile) throws IOException
   {
-    boolean isJava = ext.equals(".java");
-    Path staging   = Path.of("target/plm-entities", langFolder.getName());
-    Path sources   = staging.resolve("src");
-    Path classes   = staging.resolve("classes");
+    Path staging = Path.of("target/plm-entities", langFolder.getName());
+    Path sources = staging.resolve("src");
+    Path classes = staging.resolve("classes");
     deleteRecursively(staging);
     Files.createDirectories(sources);
     Files.createDirectories(classes);
 
-    List<File> glue = new ArrayList<>();
-    for (File remote : langFolder.listFiles((dir, name) -> name.endsWith(ext))) {
+    List<File> javaSources = new ArrayList<>(), scalaSources = new ArrayList<>();
+    List<File> glue = new ArrayList<>(List.of(langFolder.listFiles((dir, name) -> name.endsWith(ext) && !name.equals("Remote.java"))));
+    glue.add(new File(langFolder.getParentFile(), "java/Remote.java")); // the Scala glue uses it too
+    for (File remote : glue) {
       // Remote and the generated files have no package declaration
-      File staged = sources.resolve(remote.getName()).toFile();
+      boolean isJava = remote.getName().endsWith(".java");
+      File staged    = sources.resolve(remote.getName()).toFile();
       Files.writeString(staged.toPath(), "package generated" + (isJava ? ";" : "") + "\n" + Files.readString(remote.toPath(), StandardCharsets.UTF_8));
-      glue.add(staged);
+      (isJava ? javaSources : scalaSources).add(staged);
     }
-    List<File> helpers = new ArrayList<>();
     for (String helper : JAVA_HELPER_SOURCES) {
       String content = Files.readString(Path.of(helper), StandardCharsets.UTF_8).replaceFirst("package [^;]*;", "package generated;");
       // Make the helpers refer to each other's copy instead of the original, which would not be on the student's classpath
@@ -115,16 +117,12 @@ public class CodeCreation {
       }
       File staged = sources.resolve(Path.of(helper).getFileName()).toFile();
       Files.writeString(staged.toPath(), content);
-      helpers.add(staged);
+      javaSources.add(staged);
     }
 
-    if (isJava) {
-      helpers.addAll(glue);
-      compileJava(helpers, classes);
-    } else {
-      compileJava(helpers, classes);
-      compileScala(glue, classes);
-    }
+    compileJava(javaSources, classes);
+    if (!scalaSources.isEmpty())
+      compileScala(scalaSources, classes);
 
     try (JarOutputStream jar = new JarOutputStream(Files.newOutputStream(jarFile.toPath())); var walk = Files.walk(classes)) {
       for (Path classFile : walk.filter(Files::isRegularFile).sorted().toList()) {
@@ -133,7 +131,7 @@ public class CodeCreation {
         jar.closeEntry();
       }
     }
-    System.err.println("Built " + jarFile + " from " + (glue.size() + JAVA_HELPER_SOURCES.size()) + " sources.");
+    System.err.println("Built " + jarFile + " from " + (javaSources.size() + scalaSources.size()) + " sources.");
   }
 
   /** Compiles files into classes with javac. Fails on any diagnostic. */
