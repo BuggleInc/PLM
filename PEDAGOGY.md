@@ -57,7 +57,7 @@ on their own most of the time, relying on both the automated feedback and occasi
 - **Lesson**: a `Lesson` groups `Exercise`s in a pedagogical sequence. Each of them constitute a progressive set of challenges
   taking the users through their learning path.
 
-See the CONTRIBUTING.md document for more technical details.
+See the [contributor's guide](CONTRIBUTING.md#core-concepts) for more technical details.
 
 ## Universes
 
@@ -116,7 +116,7 @@ specific situations. The `MethodsDogHouse` exercise uses this to enforce that th
 
 The **templating mechanism hides the chore boilerplate** (e.g. `public static void main(String[] args)` in Java) from the
 students. That is to say that the students are asked to write a chunk of code that is then injected into an hidden templating
-text to form a compilable source code (TODO: add a link to CONTRIBUTING).
+text to form a compilable source code (see the [contributor's guide](CONTRIBUTING.md#code-templating-preparing-the-source-to-compile)).
 
 **Exercise-specific primitives** can be added to help guide the student toward a given situation. If your problem can be
 decomposed in several functions, you can ask on of them while providing the others in a given exercise, and then ask for the
@@ -381,7 +381,7 @@ iterative algorithm.
 New exercises should build upon the concepts introduced by the previous ones, and the lessons should remain doable within a few
 class sessions. An exercise should be provided in every supported programming language, so that the students are not forced to
 switch languages in the middle of their learning path. The technical aspects of writing a lesson, an exercise or a universe are
-covered in the [contributor's guide](CONTRIBUTING.md#Extending_the_PLM).
+covered in the [contributor's guide](CONTRIBUTING.md#extending-the-plm).
 
 Some exercises hide or alter a usual primitive so that the students practice the target concept instead of taking a shortcut,
 which we call *API gating*. For example:
@@ -391,4 +391,4 @@ which we call *API gating*. For example:
 - In `MethodsDogHouse`, the code must call `left()` exactly once, so that the student factors the repeated code instead of
   copying it.
 
-The [contributor's guide](CONTRIBUTING.md#API_gating_restricting_or_adapting_the_primitives) explains how to implement it.
+The [contributor's guide](CONTRIBUTING.md#api-gating-restricting-or-adapting-the-primitives) explains how to implement it.
