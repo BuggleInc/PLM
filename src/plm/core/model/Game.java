@@ -544,8 +544,6 @@ public class Game implements IWorldView {
   public void quit()
   {
     try {
-      // FIXME: this method is not called when pressing APPLE+Q on OSX
-
       saveSession();
 
       // report user leave on the server

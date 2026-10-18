@@ -1,8 +1,8 @@
 package plm.core.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -101,10 +101,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
   {
     super(frameTitle);
 
-    if (OSXAdapter.isMacOSX()) {
+    if (System.getProperty("os.name").startsWith("Mac"))
       System.setProperty("apple.laf.useScreenMenuBar", "true");
-      System.setProperty("com.apple.mrj.application.apple.menu.about.name", "PLM");
-    }
 
     FileUtils.setLocale(this.getLocale());
     initComponents(Game.getInstance());
@@ -397,7 +395,17 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     miHelpMission.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.CTRL_MASK));
     menuHelp.add(miHelpMission);
 
-    if (!System.getProperty("os.name").startsWith("Mac")) {
+    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+    if (desktop != null && desktop.isSupported(Desktop.Action.APP_ABOUT)) {
+      // The system provides an application menu (macOS), with the about and quit entries
+      desktop.setAboutHandler(e -> AboutPLMDialog.getInstance().setVisible(true));
+      if (desktop.isSupported(Desktop.Action.APP_QUIT_HANDLER))
+        desktop.setQuitHandler((e, response) -> {
+          response.cancelQuit(); // quit() saves the session and exits by itself, unless the user aborts
+          quit();
+        });
+      getRootPane().putClientProperty("apple.awt.fullscreenable", true);
+    } else {
       miHelpAbout = new JMenuItem(new AbstractGameAction(g, Game.i18n.tr("About the PLM"), null) {
         private static final long serialVersionUID = 1L;
 
@@ -407,19 +415,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         }
       });
       menuHelp.add(miHelpAbout);
-
-    } else {
-      try {
-        if (OSXAdapter.isMacOSX()) {
-          OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quit", (Class[])null));
-          OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("about", (Class[])null));
-          OSXAdapter.enableFullScreenMode(this);
-        }
-      } catch (SecurityException e) {
-        e.printStackTrace();
-      } catch (NoSuchMethodException e) {
-        e.printStackTrace();
-      }
     }
 
     setJMenuBar(menuBar);
@@ -585,21 +580,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     t.start();
 
     JOptionPane.showMessageDialog(this, Game.i18n.tr("Please wait, while the PLM is saving your session data."));
-  }
-
-  public void about()
-  {
-    EventQueue.invokeLater(new Runnable() {
-      public void run()
-      {
-        EventQueue.invokeLater(new Runnable() {
-          public void run()
-          {
-            AboutPLMDialog.getInstance().setVisible(true);
-          }
-        });
-      }
-    });
   }
 
   @Override public void currentExerciseHasChanged(Lecture lecture)
