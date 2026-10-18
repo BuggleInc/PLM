@@ -152,7 +152,7 @@ public class LangC extends TemplatedRemoteLang {
       Files.writeString(compileDir.resolve(studentFileName), "#include \"Remote.h\"\n#include \"" + remote + ".h\"\n\n" + studentCode);
 
       String linkInputs = studentFileName + " \"" + valueSerializerObj + "\" \"" + remoteObj + "\" \"" + remoteWorldObj + "\"";
-      String linkCmd    = cc + " -lm -lpthread " + (isWindows ? "-lws2_32 " : "") + "-o \"" + exec + "\" " + linkInputs;
+      String linkCmd    = cc + " -lm -lpthread " + (isWindows ? "-lwsock32 -lws2_32 " : "") + "-o \"" + exec + "\" " + linkInputs;
 
       runCompiler(linkCmd, compileDir.toFile(), isWindows);
 
