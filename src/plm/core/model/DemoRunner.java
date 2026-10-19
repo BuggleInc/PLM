@@ -45,6 +45,7 @@ public class DemoRunner extends Thread {
     try {
       runDemo(exo, this.game.getProgrammingLanguage());
     } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
       game.getOutputWriter().log(e);
     } catch (Exception e) {
       e.printStackTrace();

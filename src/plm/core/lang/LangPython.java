@@ -69,6 +69,8 @@ public class LangPython extends TemplatedRemoteLang {
           brokenLanguageState = BrokenLanguageState.Usable;
         }
       } catch (IOException | InterruptedException e) {
+        if (e instanceof InterruptedException)
+          Thread.currentThread().interrupt();
         brokenLanguageMessage = Game.i18n.tr("Cannot run python3: {0}. Is Python 3 installed and on the PATH?", e.getMessage());
         System.err.println(brokenLanguageMessage);
         brokenLanguageState = BrokenLanguageState.NotUsable;

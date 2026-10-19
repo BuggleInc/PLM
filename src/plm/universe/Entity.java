@@ -82,7 +82,7 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
           if (world.getDelay() > 0) // seems that sleep(0) takes time (yield thread?)
             Thread.sleep(world.getDelay());
         } catch (InterruptedException e) {
-          e.printStackTrace();
+          Thread.currentThread().interrupt(); // the animation is skipped, and the caller sees that it was asked to stop
         }
       }
     }

@@ -51,6 +51,8 @@ public class LessonRunner extends Thread {
           SwingUtilities.invokeAndWait(() -> new ExerciseFailedDialog(outcome));
         }
       } catch (InvocationTargetException | InterruptedException e) {
+        if (e instanceof InterruptedException)
+          Thread.currentThread().interrupt();
         e.printStackTrace();
       }
       Game.getInstance().getGitTracker().executed(exo, outcome);
@@ -77,6 +79,8 @@ public class LessonRunner extends Thread {
       return outcome;
 
     } catch (InterruptedException | UserAbortException e) {
+      if (e instanceof InterruptedException)
+        Thread.currentThread().interrupt();
       e.printStackTrace();
       game.setState(Game.GameState.COMPILATION_ENDED);
       game.setState(Game.GameState.EXECUTION_ENDED);

@@ -68,7 +68,7 @@ public abstract class Lesson {
       e.printStackTrace();
     } catch (InterruptedException e) {
       System.err.println("Interrupted while waiting for the lesson to load.");
-      e.printStackTrace();
+      Thread.currentThread().interrupt();
     }
     /* Compute the lesson summary for the next time we start the PLM */
     Game.getInstance().studentWork.registerLesson(this);

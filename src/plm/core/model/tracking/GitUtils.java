@@ -327,6 +327,7 @@ public class GitUtils {
           try {
             Thread.sleep(5 /*mn*/ * 60 /* ->sec */ * 1000 /* ->milli */);
           } catch (InterruptedException e1) {
+            Thread.currentThread().interrupt();
             return null; // cancelled by cancelPendingPush(): the client is quitting
           }
 

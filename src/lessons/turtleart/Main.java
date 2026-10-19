@@ -58,7 +58,7 @@ public class Main extends Lesson {
     try {
       Game.waitInitThreads();
     } catch (InterruptedException e) {
-      e.printStackTrace();
+      Thread.currentThread().interrupt();
     }
     for (Lecture l : exercises())
       l.loadHTMLMission();
@@ -111,7 +111,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated {
           try {
             Game.waitInitThreads();
           } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
           }
           tw = (TurtleWorld)exo.getWorlds(WorldKind.ANSWER).get(0);
         } while (!tw.isAnswerWorld());

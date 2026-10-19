@@ -196,7 +196,7 @@ public class Game implements IWorldView {
       waitInitThreads();
     } catch (InterruptedException e) {
       System.err.println("Interrupted while loading the lesson " + lesson.getName());
-      e.printStackTrace();
+      Thread.currentThread().interrupt();
     }
     // If a problem arose while setting up the lesson, don't switch
     if (lesson.getLoadingOutcomeState() == LoadingOutcome.FAIL) {
