@@ -2,6 +2,7 @@ package lessons.lightbot.universe;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.ui.ResourcesCache;
@@ -144,6 +145,8 @@ public class LightBotWorld extends plm.universe.GridWorld implements Iterable<Li
 
     @Override public LightBotWorldCell next()
     {
+      if (!hasNext())
+        throw new NoSuchElementException();
       LightBotWorldCell res = (LightBotWorldCell)LightBotWorld.this.getCell(x, y);
       if (x >= LightBotWorld.this.sizeX - 1) {
         x = 0;
