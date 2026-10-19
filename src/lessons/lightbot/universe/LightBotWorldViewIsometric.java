@@ -15,7 +15,6 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.JButton;
@@ -65,12 +64,7 @@ public class LightBotWorldViewIsometric extends WorldView {
     for (LightBotWorldCell c : ((LightBotWorld)this.world))
       cellsZOrdered.add(c);
 
-    Collections.sort(cellsZOrdered, new Comparator<LightBotWorldCell>() {
-      @Override public int compare(LightBotWorldCell c1, LightBotWorldCell c2)
-      {
-        return LightBotWorldViewIsometric.computeZOrder(c1) - LightBotWorldViewIsometric.computeZOrder(c2);
-      }
-    });
+    cellsZOrdered.sort(Comparator.comparingInt(LightBotWorldViewIsometric::computeZOrder));
   }
 
   @Override public void paintComponent(Graphics g)
