@@ -314,17 +314,8 @@ public class Turtle extends Entity implements TurtlePrimitives {
 
   @Override public String toString() { return "Turtle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Heading:" + heading + " Color:" + color; }
 
-  @Override public int hashCode()
-  {
-    final int PRIME = 31;
-    int result      = 1;
-    result          = PRIME * result + ((color == null) ? 0 : color.hashCode());
-    result          = PRIME * result + (penDown ? 1231 : 1237);
-    result          = PRIME * result + (int)heading;
-    result          = PRIME * result + (int)x;
-    result          = PRIME * result + (int)y;
-    return result;
-  }
+  /** equals() tolerates differences up to EPSILON on every field it compares, so none of them can be hashed */
+  @Override public int hashCode() { return Turtle.class.hashCode(); }
 
   public String diffTo(Object obj)
   {
@@ -339,7 +330,7 @@ public class Turtle extends Entity implements TurtlePrimitives {
     if (Math.abs(heading - other.heading) > Turtle.EPSILON)
       return Game.i18n.tr("The turtle {0} is not heading to the right direction.", getName());
     if (Math.abs(x - other.x) > Turtle.EPSILON || Math.abs(y - other.y) > Turtle.EPSILON)
-      return Game.i18n.tr("The turtle {0} is at the right location.", getName());
+      return Game.i18n.tr("The turtle {0} is not at the right location.", getName());
     return "";
   }
   @Override public boolean equals(Object obj)

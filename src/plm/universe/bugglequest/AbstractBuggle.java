@@ -2,6 +2,7 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.util.Objects;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Glue;
 import plm.core.model.Game;
@@ -402,18 +403,8 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
     return "Buggle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Direction:" + direction + " Color:" + bodyColor;
   }
 
-  @Override public int hashCode()
-  {
-    final int PRIME = 31;
-    int result      = 1;
-    result          = PRIME * result + ((brushColor == null) ? 0 : brushColor.hashCode());
-    result          = PRIME * result + (brushDown ? 1231 : 1237);
-    result          = PRIME * result + ((bodyColor == null) ? 0 : bodyColor.hashCode());
-    result          = PRIME * result + ((direction == null) ? 0 : direction.hashCode());
-    result          = PRIME * result + x;
-    result          = PRIME * result + y;
-    return result;
-  }
+  /** Only hashes the fields that equals() always compares (it may ignore the direction) */
+  @Override public int hashCode() { return Objects.hash(bodyColor, seenError, seenErrorMsg, x, y); }
 
   public void ignoreDirectionDifference() { dontIgnoreDirectionDifference = false; }
 
@@ -437,7 +428,7 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
         return false;
     } else if (dontIgnoreDirectionDifference && !direction.equals(other.direction))
       return false;
-    if (!(seenError == other.seenError && seenErrorMsg == other.seenErrorMsg))
+    if (seenError != other.seenError || !Objects.equals(seenErrorMsg, other.seenErrorMsg))
       return false;
     if (x != other.x)
       return false;
@@ -454,15 +445,15 @@ public abstract class AbstractBuggle extends Entity implements AbstractBugglePri
       sb.append(Game.i18n.tr("    It should not carry that baggle.\n"));
     if (!isCarryingBaggle() && other.isCarryingBaggle())
       sb.append(Game.i18n.tr("    It is not carrying any baggle.\n"));
-    if (!(seenError == other.seenError && seenErrorMsg == other.seenErrorMsg)) {
+    if (seenError != other.seenError || !Objects.equals(seenErrorMsg, other.seenErrorMsg)) {
       if (other.seenError) {
-        if (other.seenErrorMsg != "") {
+        if (!other.seenErrorMsg.isEmpty()) {
           sb.append(Game.i18n.tr("    Unexpected issue: {0}\n", other.seenErrorMsg));
         } else {
           sb.append(Game.i18n.tr("    It encountered an unexpected issue (such as bumping into a wall).\n"));
         }
       } else {
-        if (seenErrorMsg != "") {
+        if (!seenErrorMsg.isEmpty()) {
           sb.append(Game.i18n.tr("    It did not encounter the expected issue: {0}\n", seenErrorMsg));
         } else {
           sb.append(Game.i18n.tr("    It did not encounter an issue as expected (such as bumping into a wall).\n"));

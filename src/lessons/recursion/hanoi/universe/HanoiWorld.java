@@ -154,7 +154,7 @@ public class HanoiWorld extends World {
     if (src < 0 || src >= slotsVal.length || dst < 0 || dst >= slotsVal.length)
       throw new IllegalArgumentException(
           Game.i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are numbered from 0 to {2}.", src, dst, getSlotAmount() - 1));
-    if (src == dst)
+    if (src.equals(dst))
       throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to itself.", src));
     if (slotsVal[src].size() == 0)
       throw new IllegalArgumentException(Game.i18n.tr("No disc to move from slot {0}.", src));

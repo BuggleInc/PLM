@@ -834,7 +834,7 @@ public class Game implements IWorldView {
       if (l != null) {
         for (World w : ((Exercise)l.getCurrentExercise()).getWorlds(WorldKind.ANSWER)) {
           String s = w.getDebugInfo();
-          if (s != "")
+          if (!s.isEmpty())
             System.out.println("World: " + s);
         }
       }
