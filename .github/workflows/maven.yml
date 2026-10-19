@@ -64,6 +64,14 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: xvfb-run -a mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      - name: Upload the coverage report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: jacoco-report
+          path: |
+            target/site/jacoco/jacoco.csv
+            target/site/jacoco/jacoco.xml
 
   test:
     name: test (${{ matrix.os }})
