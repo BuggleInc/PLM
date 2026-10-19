@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.Future;
 import java.util.stream.Stream;
+import lessons.welcome.methods.basics.MethodsDogHouse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,7 @@ public class MethodsDogHouseSourceCheckTest {
     g.setBatchExecution();
     Assertions.assertNotNull(g.switchLesson("lessons.welcome", false));
     for (Lecture l : g.getCurrentLesson().exercises())
-      if (l.getClass().getSimpleName().equals("MethodsDogHouse"))
+      if (l instanceof MethodsDogHouse)
         exo = (Exercise)l;
     Assertions.assertNotNull(exo, "MethodsDogHouse not found in lessons.welcome");
   }
