@@ -488,6 +488,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`PrimitiveAliasesTest`:* the primitive names of a catalog are read (fuzzy entries ignored) and added to a glue. An alias
       calls its canonical primitive and appears once even if several locales share it, while a name that is not an identifier
       (decomposed accents included), a keyword, or a name designating two primitives is rejected.
+    * *`GlueGenerationTest`:* generating the glue of every universe in every language gives the files that the build packed.
     * *`CommandExecutorTest`:* a command calls the primitive and writes its result back (nothing for a void primitive). Spaces in
       the arguments are kept, enums travel as ordinals, and atomic values are converted where a string is expected. An unknown
       primitive or arguments of the wrong type fail the run, a forbidden primitive is refused before being called, a
@@ -508,6 +509,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       reverting an exercise forgets its contents only, the editors are told of the changes, the passed exercises are counted per
       lesson and language (`registerLesson()` included), and the lesson summaries are written and parsed back (an invalid one is ignored).
     * *`ValueFormatterTest`:* the value comparison and formatting of the bat universe.
+    * *`ColorMapperTest`:* the colors read by name or by components, numbered for the protocol, and named in the messages.
     * *`PoFileTest`:* `PoFile` reads the entries as gettext writes them (strings over several lines, contexts, fuzzy flags),
       without the obsolete entries and the plural forms.
     * *`ValueSerializerTest`:* the Java side of the serialization of values exchanged with the remote entity.
@@ -522,8 +524,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     its `-answerN.map` or a translation that breaks the markup.
     * *`ExoTestJavaLang`, `ExoTestScalaLang`, `ExoTestPythonLang`, `ExoTestCLang`:* for every exercise, `compileRunCheck()` of the
       correction entity must pass in that language. They share `ExoTest`, which lists the exercises of the lessons offered to the
-      students (`Lesson.OFFERED`, also shown by the lesson chooser), but LightBot. The Python and C ones also fail when the
-      exercise has no entity file in their language, and the Turmites get a longer timeout.
+      students (`Lesson.OFFERED`, also shown by the lesson chooser), but LightBot (see below). The Python and C ones also fail when
+      the exercise has no entity file in their language, and the Turmites get a longer timeout.
     * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
       known languages, and no tag is malformed (such as `[/!` without its closing bracket, or `[java]` without its `!`).
     * *`TranslationsTest`:* the work of the translators, who are not all programmers, does not break the PLM. The primitive names
@@ -533,6 +535,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       each of its primitives under its English name or its alias in that language.
     * *`GatedExercisesTest`:* the exercises that gate their API (`Array1`, `LoopFor`, `TraversalByColumn`, `MethodsDogHouse`,
       `LinearHanoi`) refuse a call that would defeat their goal.
+    * *`LightBotLessonTest`:* the LightBot boards are puzzles without correction: each one loads, and has lights that the
+      empty program of a new student leaves off.
 * *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
 
 Only the *correction* entity is compiled by the `ExoTest*Lang` tests. The student path (editor content injected into the

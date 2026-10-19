@@ -17,7 +17,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.mockito.Mockito;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
-import plm.core.model.DemoRunner;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -32,7 +31,7 @@ import plm.core.utils.FileUtils;
 
 public class ExoTest {
 
-  /** The offered lessons, but LightBot whose exercises are solved by clicking in the interface */
+  /** The offered lessons, but LightBot whose exercises are solved by clicking in the interface, so they have a specific test: LightBotLessonTest */
   static final List<String> lessonNamesToTest =
       Arrays.stream(Lesson.OFFERED).flatMap(Arrays::stream).filter(lesson -> !lesson.equals("lessons.lightbot")).toList();
 
