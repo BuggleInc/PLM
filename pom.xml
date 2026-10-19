@@ -35,8 +35,9 @@
     <sonar.links.issue>https://github.com/BuggleInc/PLM/issues</sonar.links.issue>
     <sonar.links.scm>https://github.com/BuggleInc/PLM/</sonar.links.scm>
     <sonar.sources>src</sonar.sources>
-    <sonar.exclusions>src/plm/test/**</sonar.exclusions>
-    <sonar.tests>src/plm/test</sonar.tests>
+    <!-- Two tests sit next to the package-private code they test -->
+    <sonar.exclusions>src/plm/test/**,src/plm/core/ValueSerializerTest.java,src/plm/universe/bat/ValueFormatterTest.java</sonar.exclusions>
+    <sonar.tests>src/plm/test,src/plm/core/ValueSerializerTest.java,src/plm/universe/bat/ValueFormatterTest.java</sonar.tests>
     <!-- The entities of the exercises are only run once templated, from generated sources, the GUI is not tested, the C code
          is only run by the student programs, and PrimitivePot is only run when updating the translation template -->
     <sonar.coverage.exclusions>src/lessons/**/*Entity.*,src/**/ui/**,src/**/*View*.java,src/**/*Panel.java,src/**/*.c,src/**/*.h,src/plm/core/lang/primitives/PrimitivePot.java</sonar.coverage.exclusions>
