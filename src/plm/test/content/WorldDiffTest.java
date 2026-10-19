@@ -11,7 +11,10 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
 
-/** The messages explaining a failure: when the initial world of an exercise differs from its answer, diffTo() says how. */
+/**
+ * The messages explaining a failure: when the initial world of an exercise differs from its answer, diffTo() says how. Only the
+ * initial worlds are copied: copy() gives a world in its initial state, so the copy of an answer loses what the correction did.
+ */
 public class WorldDiffTest {
 
   @ParameterizedTest @MethodSource("plm.test.content.ExoTest#exercises") public void differencesAreExplained(Lesson lesson, Exercise exo)
@@ -21,7 +24,7 @@ public class WorldDiffTest {
     List<World> answer       = exo.getWorlds(WorldKind.ANSWER);
     for (int i = 0; i < answer.size(); i++) {
       World expected = answer.get(i);
-      Assertions.assertEquals(expected, expected.copy(), exo.getId() + ": a copy of the answer world differs from it");
+      Assertions.assertEquals(initial.get(i), initial.get(i).copy(), exo.getId() + ": a copy of the initial world differs from it");
       if (!initial.get(i).equals(expected))
         Assertions.assertFalse(initial.get(i).diffTo(expected, java).isBlank(),
                                exo.getId() + ": the initial world differs from the answer, but diffTo() does not say how");
