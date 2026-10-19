@@ -2,6 +2,7 @@ package plm.test.content;
 
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import plm.core.lang.ProgrammingLanguage;
@@ -19,6 +20,7 @@ public class WorldDiffTest {
 
   @ParameterizedTest @MethodSource("plm.test.content.ExoTest#exercises") public void differencesAreExplained(Lesson lesson, Exercise exo)
   {
+    Assumptions.assumeFalse(exo.getId().startsWith("lander."), "The lander worlds are judged by winning(), not by equality");
     ProgrammingLanguage java = Game.getInstance().programmingLanguageManager.JAVA;
     List<World> initial      = exo.getWorlds(WorldKind.INITIAL);
     List<World> answer       = exo.getWorlds(WorldKind.ANSWER);

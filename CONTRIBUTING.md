@@ -540,7 +540,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`LightBotLessonTest`:* the LightBot boards are puzzles without correction: each one loads, and has lights that the
       empty program of a new student leaves off.
     * *`WorldDiffTest`:* for every exercise, the initial worlds equal their copy, and `diffTo()` explains how they differ from the
-      answer worlds, as it does for a failing student.
+      answer worlds, as it does for a failing student. The lander is skipped: its worlds are judged by `winning()`, not by
+      equality.
 * *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
 
 Only the *correction* entity is compiled by the `ExoTest*Lang` tests. The student path (editor content injected into the
