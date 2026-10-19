@@ -29,6 +29,7 @@ import plm.core.model.Logger;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;
+import plm.core.utils.ColorMapper;
 import plm.core.utils.FileUtils;
 
 public abstract class World {
@@ -374,7 +375,7 @@ public abstract class World {
         about = "File " + filename + ".html not found.";
       }
     }
-    String html = about.replace("[!primitives/]", getPrimitivesDoc());
+    String html = about.replace("[!primitives/]", getPrimitivesDoc()).replace("[!colors/]", ColorMapper.colorsDoc());
     return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(html, Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
   }
 

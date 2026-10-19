@@ -67,6 +67,30 @@ public class ColorMapper {
     return rank < 0 ? c.toString() : Game.i18n.tr(translatedNames[rank]);
   }
 
+  /**
+   * HTML table of the named colors: their name in the code (with markup for the current programming language), a sample, and
+   * their name in the messages to the students
+   */
+  public static String colorsDoc()
+  {
+    StringBuilder sb = new StringBuilder("<table border=1>\n<tr><td>")
+                           .append(Game.i18n.tr("Name in the code"))
+                           .append("</td><td>")
+                           .append(Game.i18n.tr("Color"))
+                           .append("</td><td>")
+                           .append(Game.i18n.tr("Name in the messages"))
+                           .append("</td></tr>\n");
+    for (int i = 0; i < colors.length; i++)
+      sb.append("<tr><td><code>[!scala|java|python]Color.[/!]")
+          .append(choices[i])
+          .append("</code></td><td bgcolor=\"#")
+          .append(String.format("%06X", colors[i].getRGB() & 0xFFFFFF))
+          .append("\">&nbsp;</td><td>")
+          .append(Game.i18n.tr(translatedNames[i]))
+          .append("</td></tr>\n");
+    return sb.append("</table>\n").toString();
+  }
+
   public static Color int2color(int c) throws InvalidColorNameException
   {
     if (c >= 0 && c < colors.length) {

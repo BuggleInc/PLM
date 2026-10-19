@@ -237,6 +237,8 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   The groups are ordered by `@PrimitiveGroups` on the primitives interface (or on the entity). `World.getAbout()` replaces the
   `[!primitives/]` placeholder of the world's html by a table of the documented primitives of its first entity, in the current
   programming language (`ExternalPrimitiveLanguage.signature()`). The primitives forbidden by the exercise are not shown.
+  Likewise, `[!colors/]` stands for the table of the named colors of `ColorMapper`: their name in the code, a sample, and their
+  translated name used in the messages to the students.
 - **Translated primitives**: translators may give a localized name to each documented primitive (entries of context `primitive`
   in `l10n/engine/*.po`). `CodeCreation` adds the aliases of every locale to the glue (`PrimitiveAliases`), so that the code of
   a student keeps working when switching the human language. An alias sends the canonical name of its primitive
@@ -785,7 +787,8 @@ Extend at minimum: `World` (state/data), an `Entity` subclass (ancestor of corre
 `WorldView` (graphical rendering), and usually a `WorldPanel`/`EntityControlPanel` for interactive controls. Annotate the root
 entity class with `@Glue("RemoteXxx")`: `CodeCreation` then generates that glue in every language. Document the universe with an
 HTML file following the same convention as mission texts, where `[!primitives/]` stands for the table of the primitives,
-generated from their `@Primitive` annotations (see [Primitives](#remoting-how-the-students-entity-talks-to-the-plm) above).
+generated from their `@Primitive` annotations (see [Primitives](#remoting-how-the-students-entity-talks-to-the-plm) above),
+and `[!colors/]` for the table of the colors.
 Existing universes remain small (a few hundred to ~1500 lines including the buggle map editor) because all non-functional
 plumbing (compilation, templating, session handling) is factored into `plm.core`.
 

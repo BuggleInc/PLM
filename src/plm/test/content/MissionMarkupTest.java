@@ -13,7 +13,7 @@ import plm.core.model.lesson.MissionMarkup;
 
 /**
  * The [!langs]...[/!] blocks of every mission text, translations included, are balanced and only name known languages, and no
- * tag is malformed. The [!thelang] and [!primitives/] placeholders are not blocks.
+ * tag is malformed. The [!thelang], [!primitives/] and [!colors/] placeholders are not blocks.
  */
 public class MissionMarkupTest {
   static List<Path> missions() throws IOException
