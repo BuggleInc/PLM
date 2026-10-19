@@ -3,8 +3,10 @@ package plm.core.lang;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.UnaryOperator;
 import javax.swing.ImageIcon;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.model.Game;
@@ -79,17 +82,6 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       if (executable == null)
         throw new IllegalStateException("It seems that the code was not compiled. I am puzzled.");
 
-      // Only on the IPv4 loopback, which no firewall filters and no other host can reach (see CONTRIBUTING.md).
-      // The literal address avoids "localhost", which may resolve to ::1 on one side only.
-      ServerSocket server = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"));
-      final Process process;
-      try {
-        process = buildProcess(executable, server.getLocalPort()).start();
-      } catch (IOException e) {
-        server.close();
-        throw e;
-      }
-
       // Captured (not just printed) so that if the process never connects at all, its stdout/stderr -- almost certainly
       // containing the actual reason (missing interpreter, exception thrown before Remote.connect() is even reached,
       // etc.) -- can be surfaced directly in the error message shown to the person, not just to the PLM server's own
@@ -98,47 +90,16 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       // read at all, discarding the one clue that explains why.
       final StringBuffer capturedStdout = new StringBuffer();
       final StringBuffer capturedStderr = new StringBuffer();
-
-      Thread stdoutReader = new Thread() {
-        public void run()
-        {
-          try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-            String str;
-            while ((str = reader.readLine()) != null) {
-              System.out.println(str);
-              capturedStdout.append(str).append("\n");
-            }
-          } catch (IOException ioe) {
-            // Expected when process.destroyForcibly() (below, or in the accept-timeout branch) tears down the
-            // process's pipes while this thread is still blocked in readLine(): not a real failure in its own right.
-            if (process.isAlive())
-              ioe.printStackTrace(); // genuinely unexpected in that case, surface it
-          }
-        }
-      };
-
-      Thread stderrReader = new Thread() {
-        public void run()
-        {
-          try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
-            String str;
-            while ((str = reader.readLine()) != null) {
-              str = shiftLocations(str, executable);
-              System.err.println(str);
-              capturedStderr.append(str).append("\n");
-            }
-          } catch (IOException ioe) {
-            if (process.isAlive())
-              ioe.printStackTrace();
-          }
-        }
-      };
-
-      stdoutReader.start();
-      stderrReader.start();
-
+      final Process process;
+      final Thread stdoutReader;
+      final Thread stderrReader;
       final Socket protocolSocket;
-      try (server) {
+      // Only on the IPv4 loopback, which no firewall filters and no other host can reach (see CONTRIBUTING.md).
+      // The literal address avoids "localhost", which may resolve to ::1 on one side only.
+      try (ServerSocket server = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"))) {
+        process        = buildProcess(executable, server.getLocalPort()).start();
+        stdoutReader   = capture(process, process.getInputStream(), System.out, capturedStdout, line -> line);
+        stderrReader   = capture(process, process.getErrorStream(), System.err, capturedStderr, line -> shiftLocations(line, executable));
         protocolSocket = acceptConnection(server, process);
       }
       if (protocolSocket == null) {
@@ -253,5 +214,26 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
           return null;
       }
     }
+  }
+
+  /** Starts a thread copying the lines of an output of the process to echo and into, after transforming them */
+  private static Thread capture(Process process, InputStream output, PrintStream echo, StringBuffer into, UnaryOperator<String> transform)
+  {
+    Thread reader = new Thread(() -> {
+      try (BufferedReader lines = new BufferedReader(new InputStreamReader(output))) {
+        String line;
+        while ((line = lines.readLine()) != null) {
+          line = transform.apply(line);
+          echo.println(line);
+          into.append(line).append("\n");
+        }
+      } catch (IOException ioe) {
+        // Expected when process.destroyForcibly() tears down the pipes while this thread is blocked in readLine()
+        if (process.isAlive())
+          ioe.printStackTrace();
+      }
+    });
+    reader.start();
+    return reader;
   }
 }
