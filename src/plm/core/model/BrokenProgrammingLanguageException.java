@@ -7,6 +7,6 @@ public class BrokenProgrammingLanguageException extends Exception {
   public BrokenProgrammingLanguageException(String title, String msg)
   {
     super(msg);
-    title = title;
+    this.title = title;
   }
 }

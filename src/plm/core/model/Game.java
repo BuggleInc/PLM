@@ -300,13 +300,7 @@ public class Game implements IWorldView {
 
   public Collection<Lesson> getLessons() { return this.lessons.values(); }
 
-  public Lesson getCurrentLesson()
-  {
-    if (this.currentLesson == null && this.lessons.size() > 0) {
-      setCurrentLesson(this.lessons.get(0));
-    }
-    return this.currentLesson;
-  }
+  public Lesson getCurrentLesson() { return this.currentLesson; }
 
   public void setCurrentLesson(Lesson lesson)
   {
