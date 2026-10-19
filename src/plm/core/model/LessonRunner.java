@@ -55,7 +55,6 @@ public class LessonRunner extends Thread {
       }
       Game.getInstance().getGitTracker().executed(exo, outcome);
     }
-    runners.remove(this);
   }
 
   /**
