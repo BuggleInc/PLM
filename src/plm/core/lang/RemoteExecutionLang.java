@@ -192,6 +192,8 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       }
 
     } catch (Exception e) {
+      if (e instanceof InterruptedException)
+        Thread.currentThread().interrupt();
       resEvaluationError.append(e.getMessage());
       progress.setExecutionError(resEvaluationError.toString());
     }
