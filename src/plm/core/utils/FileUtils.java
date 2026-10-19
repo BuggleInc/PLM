@@ -8,7 +8,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.Locale;
+import java.util.stream.Stream;
 import plm.core.model.lesson.ExerciseTemplated;
 
 /**
@@ -139,23 +143,21 @@ public class FileUtils {
     return sb;
   }
 
-  /**
-   * Recursively remove a directory. Warning, it fails to detect links so may recurse out of the tree
-   */
+  /** Recursively removes a file or a directory, without following the symbolic links. Reports what cannot be removed. */
   public static void deleteRecursive(File path)
   {
-    File[] c = path.listFiles();
-    if (c != null) {
-      for (File file : c) {
-        if (file.isDirectory()) {
-          deleteRecursive(file);
-          file.delete();
-        } else {
-          file.delete();
+    if (!path.exists())
+      return;
+    try (Stream<Path> files = Files.walk(path.toPath())) {
+      files.sorted(Comparator.reverseOrder()).forEach(file -> {
+        try {
+          Files.delete(file);
+        } catch (IOException e) {
+          System.err.println("Cannot delete " + file + ": " + e);
         }
-      }
+      });
+    } catch (IOException e) {
+      System.err.println("Cannot delete " + path + ": " + e);
     }
-
-    path.delete();
   }
 }
