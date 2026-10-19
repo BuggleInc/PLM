@@ -11,6 +11,7 @@ import plm.test.content.GatedExercisesTest;
 import plm.test.content.LightBotLessonTest;
 import plm.test.content.MissionMarkupTest;
 import plm.test.content.TranslationsTest;
+import plm.test.content.WorldDiffTest;
 
 /** Tests the pedagogical material (lessons, exercises, mission texts and their translations) rather than the PLM code. */
 @Suite
@@ -19,5 +20,5 @@ import plm.test.content.TranslationsTest;
 @ConfigurationParameter(key = "junit.jupiter.execution.parallel.config.strategy", value = "fixed")
 @ConfigurationParameter(key = "junit.jupiter.execution.parallel.config.fixed.parallelism", value = "4")
 @SelectClasses({ExoTestJavaLang.class, ExoTestScalaLang.class, ExoTestPythonLang.class, ExoTestCLang.class, MissionMarkupTest.class, TranslationsTest.class,
-                GatedExercisesTest.class, LightBotLessonTest.class})
+                GatedExercisesTest.class, LightBotLessonTest.class, WorldDiffTest.class})
 public class ContentTests {}

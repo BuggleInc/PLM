@@ -539,6 +539,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       `LinearHanoi`) refuse a call that would defeat their goal.
     * *`LightBotLessonTest`:* the LightBot boards are puzzles without correction: each one loads, and has lights that the
       empty program of a new student leaves off.
+    * *`WorldDiffTest`:* for every exercise, the answer worlds equal their copy, and `diffTo()` explains how the initial worlds
+      differ from them, as it does for a failing student.
 * *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
 
 Only the *correction* entity is compiled by the `ExoTest*Lang` tests. The student path (editor content injected into the
