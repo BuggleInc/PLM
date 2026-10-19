@@ -406,7 +406,11 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <target>
+              <target xmlns:unless="ant:unless">
+                <!-- msgfmt is slow: the bundles are only regenerated when a catalog is more recent than them -->
+                <uptodate property="i18n.bundles.uptodate" targetfile="${project.build.outputDirectory}/org/plm/i18n/Messages.class">
+                  <srcfiles dir="${project.basedir}/l10n/engine" includes="*.po,*.pot"/>
+                </uptodate>
                 <taskdef name="gettext-generate-default"
                          classname="org.xnap.commons.ant.gettext.GenerateDefaultBundleTask">
                   <classpath>
@@ -423,17 +427,17 @@
                 <!-- The English bundle, from the pot, both as default and as Messages_en: without the latter, ResourceBundle
                      would fall back on the bundle of the JVM's default locale when English is requested (French on a French
                      system, even when the user chose English). -->
-                <gettext-generate-default targetBundle="org.plm.i18n.Messages"
+                <gettext-generate-default unless:set="i18n.bundles.uptodate" targetBundle="org.plm.i18n.Messages"
                                           potFile="${project.basedir}/l10n/engine/plm.pot"
                                           poDirectory="${project.basedir}/l10n/engine"
                                           outputDirectory="${project.build.outputDirectory}"/>
-                <gettext-generate-default targetBundle="org.plm.i18n.Messages_en"
+                <gettext-generate-default unless:set="i18n.bundles.uptodate" targetBundle="org.plm.i18n.Messages_en"
                                           potFile="${project.basedir}/l10n/engine/plm.pot"
                                           poDirectory="${project.basedir}/l10n/engine"
                                           outputDirectory="${project.build.outputDirectory}"/>
                 <!-- One bundle per translation (Messages_fr...), from l10n/engine/*.po. This task resolves its directories
                      against the base directory even when they are absolute, so they must be relative. -->
-                <gettext-dist targetBundle="org.plm.i18n.Messages" poDirectory="l10n/engine" outputDirectory="target/classes"/>
+                <gettext-dist unless:set="i18n.bundles.uptodate" targetBundle="org.plm.i18n.Messages" poDirectory="l10n/engine" outputDirectory="target/classes"/>
               </target>
             </configuration>
           </execution>
