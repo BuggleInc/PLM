@@ -93,7 +93,7 @@ public class CodeCreation {
    * Remote and the JAVA_HELPER_SOURCES, all in the package "generated", and packs the classes in jarFile. The Scala glue is compiled
    * against the classes of the Java sources. The sources are staged in target/plm-entities/&lt;language&gt;/src to ease debugging.
    */
-  private static void buildEntitiesJar(File langFolder, String ext, File jarFile) throws IOException
+  public static void buildEntitiesJar(File langFolder, String ext, File jarFile) throws IOException
   {
     Path staging = Path.of("target/plm-entities", langFolder.getName());
     Path sources = staging.resolve("src");
