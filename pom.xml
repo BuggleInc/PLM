@@ -42,7 +42,7 @@
     <sonar.coverage.exclusions>src/lessons/**/*Entity.*,src/**/ui/**,src/**/*View*.java,src/**/*Panel.java,src/**/*.c,src/**/*.h,src/plm/core/lang/primitives/PrimitivePot.java</sonar.coverage.exclusions>
     <sonar.python.version>3.12</sonar.python.version>
     <!-- Debugging features may be enabled: an open-source project has nothing to hide -->
-    <sonar.issue.ignore.multicriteria>j1,p1,t1,h1,h2,h3,r1,r2</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>j1,p1,t1,h1,h2,h3,r1,r2,s1,s2</sonar.issue.ignore.multicriteria>
     <sonar.issue.ignore.multicriteria.j1.ruleKey>java:S4507</sonar.issue.ignore.multicriteria.j1.ruleKey>
     <sonar.issue.ignore.multicriteria.j1.resourceKey>src/**/*.java</sonar.issue.ignore.multicriteria.j1.resourceKey>
     <!-- The Python entities get the primitives of their universe with a wildcard import, by design -->
@@ -63,6 +63,12 @@
     <sonar.issue.ignore.multicriteria.r1.resourceKey>src/lessons/**/*</sonar.issue.ignore.multicriteria.r1.resourceKey>
     <sonar.issue.ignore.multicriteria.r2.ruleKey>python:S2245</sonar.issue.ignore.multicriteria.r2.ruleKey>
     <sonar.issue.ignore.multicriteria.r2.resourceKey>src/lessons/**/*</sonar.issue.ignore.multicriteria.r2.resourceKey>
+    <!-- The PLM runs the compilers and interpreters that the user installed: finding them in the PATH is the point -->
+    <sonar.issue.ignore.multicriteria.s1.ruleKey>java:S4036</sonar.issue.ignore.multicriteria.s1.ruleKey>
+    <sonar.issue.ignore.multicriteria.s1.resourceKey>src/plm/core/lang/*.java</sonar.issue.ignore.multicriteria.s1.resourceKey>
+    <!-- SHA-1 only names the git branches of the sessions, nothing secret depends on it -->
+    <sonar.issue.ignore.multicriteria.s2.ruleKey>java:S4790</sonar.issue.ignore.multicriteria.s2.ruleKey>
+    <sonar.issue.ignore.multicriteria.s2.resourceKey>src/plm/core/model/tracking/GitUtils.java</sonar.issue.ignore.multicriteria.s2.resourceKey>
     <!-- Exercise corrections are expected to be somehow repetitive, just like the translations of the mission texts. Remove that from the dupplication detection. -->
     <sonar.cpd.exclusions>src/**/*Entity.java,src/**/*.html</sonar.cpd.exclusions>
   </properties>
