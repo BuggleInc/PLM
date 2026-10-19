@@ -37,8 +37,9 @@
     <sonar.sources>src</sonar.sources>
     <sonar.exclusions>src/plm/test/**</sonar.exclusions>
     <sonar.tests>src/plm/test</sonar.tests>
-    <!-- The entities of the exercises are only run once templated, from generated sources, and the GUI is not tested -->
-    <sonar.coverage.exclusions>src/lessons/**/*Entity.*,src/**/ui/**,src/**/*View*.java,src/**/*Panel.java</sonar.coverage.exclusions>
+    <!-- The entities of the exercises are only run once templated, from generated sources, the GUI is not tested, the C code
+         is only run by the student programs, and PrimitivePot is only run when updating the translation template -->
+    <sonar.coverage.exclusions>src/lessons/**/*Entity.*,src/**/ui/**,src/**/*View*.java,src/**/*Panel.java,src/**/*.c,src/**/*.h,src/plm/core/lang/primitives/PrimitivePot.java</sonar.coverage.exclusions>
     <sonar.python.version>3.12</sonar.python.version>
     <!-- Debugging features may be enabled: an open-source project has nothing to hide -->
     <sonar.issue.ignore.multicriteria>j1,p1,t1,h1,h2,h3,r1,r2</sonar.issue.ignore.multicriteria>
