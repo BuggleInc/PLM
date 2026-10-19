@@ -3,12 +3,18 @@ package plm.core.utils;
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.xnap.commons.i18n.I18n;
 import plm.core.model.Game;
 
 public class ColorMapper {
   static String[] choices  = {"white", "black", "blue", "cyan", "darkGray", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "yellow"};
   static Color[] colors    = {Color.white,     Color.black,   Color.blue,   Color.cyan, Color.darkGray, Color.gray,  Color.green,
                               Color.lightGray, Color.magenta, Color.orange, Color.pink, Color.red,      Color.yellow};
+  /** The names shown to the students, in the order of colors */
+  private static final String[] translatedNames = {I18n.marktr("white"),     I18n.marktr("black"),  I18n.marktr("blue"),  I18n.marktr("cyan"),
+                                                   I18n.marktr("dark grey"), I18n.marktr("grey"),   I18n.marktr("green"), I18n.marktr("light grey"),
+                                                   I18n.marktr("magenta"),   I18n.marktr("orange"), I18n.marktr("pink"),  I18n.marktr("red"),
+                                                   I18n.marktr("yellow")};
   static Pattern colorName = Pattern.compile("(\\d+)/(\\d+)/(\\d+)");
 
   public static Color name2color(String name) throws InvalidColorNameException
@@ -57,34 +63,8 @@ public class ColorMapper {
 
   public static String color2translated(Color c)
   {
-    if (c == Color.black)
-      return Game.i18n.tr("black");
-    else if (c == Color.blue)
-      return Game.i18n.tr("blue");
-    else if (c == Color.cyan)
-      return Game.i18n.tr("cyan");
-    else if (c == Color.darkGray)
-      return Game.i18n.tr("dark grey");
-    else if (c == Color.gray)
-      return Game.i18n.tr("grey");
-    else if (c == Color.green)
-      return Game.i18n.tr("green");
-    else if (c == Color.lightGray)
-      return Game.i18n.tr("light grey");
-    else if (c == Color.magenta)
-      return Game.i18n.tr("magenta");
-    else if (c == Color.orange)
-      return Game.i18n.tr("orange");
-    else if (c == Color.pink)
-      return Game.i18n.tr("pink");
-    else if (c == Color.red)
-      return Game.i18n.tr("red");
-    else if (c == Color.white)
-      return Game.i18n.tr("white");
-    else if (c == Color.yellow)
-      return Game.i18n.tr("yellow");
-    else
-      return c.toString();
+    int rank = color2int(c);
+    return rank < 0 ? c.toString() : Game.i18n.tr(translatedNames[rank]);
   }
 
   public static Color int2color(int c) throws InvalidColorNameException

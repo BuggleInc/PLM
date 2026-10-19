@@ -14,6 +14,7 @@ import plm.test.lang.PoFileTest;
 import plm.test.lang.PrimitiveAliasesTest;
 import plm.test.lang.PrimitiveRegistrationTest;
 import plm.test.lang.ValueSerializerInteropTest;
+import plm.test.model.ColorMapperTest;
 import plm.test.model.LessonRunnerTest;
 import plm.test.model.MethodsDogHouseSourceCheckTest;
 import plm.test.session.GitSessionKitTest;
@@ -44,6 +45,7 @@ import plm.universe.bat.ValueFormatterTest;
                 PrimitiveRegistrationTest.class,
                 PrimitiveAliasesTest.class,
                 GlueGenerationTest.class,
+                ColorMapperTest.class,
                 PoFileTest.class,
                 CommandExecutorTest.class,
                 ApiGatingTest.class,
