@@ -57,7 +57,14 @@ public class CodeCreation {
   public static void main(String[] args) throws Exception
   {
     File folder = new File("target/classes/resources/langages/");
+    generateGlue(folder);
+    buildEntitiesJar(new File(folder, "java"), ".java", new File(folder, "plm-entities-java.jar"));
+    buildEntitiesJar(new File(folder, "scala"), ".scala", new File(folder, "plm-entities-scala.jar"));
+  }
 
+  /** Writes the glue of every universe (its RemoteXxx files) in every language, in the subfolder of folder named after the language */
+  public static void generateGlue(File folder) throws IOException
+  {
     Map<String, Map<String, String>> aliases      = PrimitiveAliases.load(PrimitiveAliases.PO_DIRECTORY);
     Map<String, List<PrimitiveMethod>> primitives = new LinkedHashMap<>();
     for (Remote remote : REMOTES)
@@ -79,9 +86,6 @@ public class CodeCreation {
       }
       System.err.println(".");
     }
-
-    buildEntitiesJar(new File(folder, "java"), ".java", new File(folder, "plm-entities-java.jar"));
-    buildEntitiesJar(new File(folder, "scala"), ".scala", new File(folder, "plm-entities-scala.jar"));
   }
 
   /**

@@ -8,6 +8,7 @@ import plm.test.git.GitTrackerTest;
 import plm.test.git.GitUtilsTest;
 import plm.test.lang.CommandExecutorTest;
 import plm.test.lang.EntityTemplateParserTest;
+import plm.test.lang.GlueGenerationTest;
 import plm.test.lang.IndentationTest;
 import plm.test.lang.PoFileTest;
 import plm.test.lang.PrimitiveAliasesTest;
@@ -42,6 +43,7 @@ import plm.universe.bat.ValueFormatterTest;
                 LessonRunnerTest.class,
                 PrimitiveRegistrationTest.class,
                 PrimitiveAliasesTest.class,
+                GlueGenerationTest.class,
                 PoFileTest.class,
                 CommandExecutorTest.class,
                 ApiGatingTest.class,
