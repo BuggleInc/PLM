@@ -327,9 +327,8 @@ public class GitTracker implements UserSwitchesListener {
       String ext = "." + pl.getExt();
       for (String suffix : suffixes) {
         File file = new File(repoDir, exo.getId() + ext + suffix);
-        if (file.exists()) {
-          file.delete();
-        }
+        if (file.exists() && !file.delete())
+          System.err.println("Cannot delete " + file);
       }
     }
   }
@@ -353,8 +352,8 @@ public class GitTracker implements UserSwitchesListener {
         System.out.println("Failed to write on disk that the exercise is passed: " + ex.getLocalizedMessage());
       }
     } else {
-      if (doneFile.exists())
-        doneFile.delete(); // not passed anymore. Sad thing.
+      if (doneFile.exists() && !doneFile.delete()) // not passed anymore. Sad thing.
+        System.err.println("Cannot delete " + doneFile);
     }
   }
 

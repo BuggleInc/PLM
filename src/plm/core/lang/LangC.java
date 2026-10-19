@@ -389,7 +389,8 @@ public class LangC extends TemplatedRemoteLang {
     } catch (IOException ioe) {
       ioe.printStackTrace();
     }
-    report.delete();
+    if (!report.delete())
+      System.err.println("Cannot delete " + report);
   }
 
   public static class LangCExternalPrimitiveGenerator implements ExternalPrimitiveLanguage {
