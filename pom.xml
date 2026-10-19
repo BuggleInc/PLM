@@ -41,7 +41,7 @@
     <sonar.coverage.exclusions>src/lessons/**/*Entity.*,src/**/ui/**,src/**/*View*.java,src/**/*Panel.java</sonar.coverage.exclusions>
     <sonar.python.version>3.12</sonar.python.version>
     <!-- Debugging features may be enabled: an open-source project has nothing to hide -->
-    <sonar.issue.ignore.multicriteria>j1,p1,t1</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>j1,p1,t1,h1,h2,h3,r1,r2</sonar.issue.ignore.multicriteria>
     <sonar.issue.ignore.multicriteria.j1.ruleKey>java:S4507</sonar.issue.ignore.multicriteria.j1.ruleKey>
     <sonar.issue.ignore.multicriteria.j1.resourceKey>src/**/*.java</sonar.issue.ignore.multicriteria.j1.resourceKey>
     <!-- The Python entities get the primitives of their universe with a wildcard import, by design -->
@@ -50,6 +50,18 @@
     <!-- The suites and the abstract test classes hold no test of their own -->
     <sonar.issue.ignore.multicriteria.t1.ruleKey>java:S2187</sonar.issue.ignore.multicriteria.t1.ruleKey>
     <sonar.issue.ignore.multicriteria.t1.resourceKey>src/plm/test/**/*.java</sonar.issue.ignore.multicriteria.t1.resourceKey>
+    <!-- The HTML texts are rendered by Swing, which only knows HTML 3.2: <tt> is fine and the tables only lay things out -->
+    <sonar.issue.ignore.multicriteria.h1.ruleKey>Web:UnsupportedTagsInHtml5Check</sonar.issue.ignore.multicriteria.h1.ruleKey>
+    <sonar.issue.ignore.multicriteria.h1.resourceKey>src/**/*.html</sonar.issue.ignore.multicriteria.h1.resourceKey>
+    <sonar.issue.ignore.multicriteria.h2.ruleKey>Web:S5256</sonar.issue.ignore.multicriteria.h2.ruleKey>
+    <sonar.issue.ignore.multicriteria.h2.resourceKey>src/**/*.html</sonar.issue.ignore.multicriteria.h2.resourceKey>
+    <sonar.issue.ignore.multicriteria.h3.ruleKey>Web:TableHeaderHasIdOrScopeCheck</sonar.issue.ignore.multicriteria.h3.ruleKey>
+    <sonar.issue.ignore.multicriteria.h3.resourceKey>src/**/*.html</sonar.issue.ignore.multicriteria.h3.resourceKey>
+    <!-- The exercises use randomness for the simulation, not for any security purpose -->
+    <sonar.issue.ignore.multicriteria.r1.ruleKey>c:S2245</sonar.issue.ignore.multicriteria.r1.ruleKey>
+    <sonar.issue.ignore.multicriteria.r1.resourceKey>src/lessons/**/*</sonar.issue.ignore.multicriteria.r1.resourceKey>
+    <sonar.issue.ignore.multicriteria.r2.ruleKey>python:S2245</sonar.issue.ignore.multicriteria.r2.ruleKey>
+    <sonar.issue.ignore.multicriteria.r2.resourceKey>src/lessons/**/*</sonar.issue.ignore.multicriteria.r2.resourceKey>
     <!-- Exercise corrections are expected to be somehow repetitive, just like the translations of the mission texts. Remove that from the dupplication detection. -->
     <sonar.cpd.exclusions>src/**/*Entity.java,src/**/*.html</sonar.cpd.exclusions>
   </properties>
