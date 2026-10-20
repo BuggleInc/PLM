@@ -1,5 +1,4 @@
 package lessons.recursion.hanoi.universe;
-/* BEGIN TEMPLATE */
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Glue;
 import plm.core.lang.primitives.Primitive;
@@ -15,30 +14,15 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
    * Instantiation Constructor (used by exercises to setup the world)
    * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
    */
-  public HanoiEntity(String name, World world)
-  {
-    /* BEGIN SOLUTION */
-    super(name, world);
-    /* END SOLUTION */
-  }
+  public HanoiEntity(String name, World world) { super(name, world); }
 
   /**
    * Part of the copy process
    * Must call super(name)
    */
-  public HanoiEntity(String name)
-  {
-    /* BEGIN SOLUTION */
-    super(name);
-    /* END SOLUTION */
-  }
+  public HanoiEntity(String name) { super(name); }
   /** Must exist too. Calling HanoiEntity("dummy name") is ok */
-  public HanoiEntity()
-  {
-    /* BEGIN SOLUTION */
-    this("Hanoi Entity");
-    /* END SOLUTION */
-  }
+  public HanoiEntity() { this("Hanoi Entity"); }
 
   /** Must exist so that exercises can instantiate your entity (Entity is abstract) */
   @Override public void run() {}
@@ -47,10 +31,8 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
   @Override public void move(int src, int dst) { regularMove(src, dst); }
   public void regularMove(int src, int dst)
   {
-    /* BEGIN SOLUTION */
     ((HanoiWorld)world).move(src, dst);
     stepUI();
-    /* END SOLUTION */
   }
   @Override public void cyclicMove(int src, int dst)
   {
@@ -68,8 +50,5 @@ public class HanoiEntity extends Entity implements HanoiEntityPrimitives {
     return ((HanoiWorld)world).getRadius(slot);
   }
 
-  /* BEGIN SOLUTION */
   @Override public String toString() { return "HanoiEntity (" + this.getClass().getName() + ")"; }
-  /* END SOLUTION */
 }
-/* END TEMPLATE */
