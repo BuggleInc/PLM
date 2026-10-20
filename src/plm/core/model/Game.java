@@ -27,6 +27,7 @@ import java.util.concurrent.Future;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 import plm.core.GameListener;
@@ -659,9 +660,10 @@ public class Game implements IWorldView {
     if (stepModeEnabled())
       disableStepMode();
 
-    for (GameListener v : this.listeners) {
-      v.currentExerciseHasChanged(lect);
-    }
+    onSwingThread(() -> {
+      for (GameListener v : this.listeners)
+        v.currentExerciseHasChanged(lect);
+    });
 
     if (lect instanceof Exercise)
       gitTracker.switched((Exercise)lect);
@@ -669,23 +671,38 @@ public class Game implements IWorldView {
 
   protected void fireSelectedWorldHasChanged(World w)
   {
-    for (GameListener v : this.listeners) {
-      v.selectedWorldHasChanged(w);
-    }
+    onSwingThread(() -> {
+      for (GameListener v : this.listeners)
+        v.selectedWorldHasChanged(w);
+    });
   }
 
   protected void fireSelectedWorldWasUpdated()
   {
-    for (GameListener v : this.listeners) {
-      v.selectedWorldWasUpdated();
-    }
+    onSwingThread(() -> {
+      for (GameListener v : this.listeners)
+        v.selectedWorldWasUpdated();
+    });
   }
 
   protected void fireSelectedEntityHasChanged()
   {
-    for (GameListener v : this.listeners) {
-      v.selectedEntityHasChanged();
-    }
+    onSwingThread(() -> {
+      for (GameListener v : this.listeners)
+        v.selectedEntityHasChanged();
+    });
+  }
+
+  /**
+   * Runs a notification of the listeners, which are all part of the UI, on the Swing thread: Swing must only be used from there,
+   * while the execution threads change the game too (resetting the worlds, changing the state...).
+   */
+  private static void onSwingThread(Runnable notification)
+  {
+    if (SwingUtilities.isEventDispatchThread())
+      notification.run();
+    else
+      SwingUtilities.invokeLater(notification);
   }
 
   public void addGameStateListener(GameStateListener l) { this.gameStateListeners.add(l); }
@@ -694,8 +711,10 @@ public class Game implements IWorldView {
 
   protected void fireStateChanged(GameState status)
   {
-    for (GameStateListener l : this.gameStateListeners)
-      l.stateChanged(status);
+    onSwingThread(() -> {
+      for (GameStateListener l : this.gameStateListeners)
+        l.stateChanged(status);
+    });
   }
 
   @Override public void worldHasChanged()
@@ -751,8 +770,10 @@ public class Game implements IWorldView {
     }
 
     String msg = first ? "" : sb.toString(); // remove everything if no argument at all
-    for (StatusStateListener l : this.statusStateListeners)
-      l.stateChanged(msg);
+    onSwingThread(() -> {
+      for (StatusStateListener l : this.statusStateListeners)
+        l.stateChanged(msg);
+    });
   }
   public void setLocale(Locale lang)
   {
