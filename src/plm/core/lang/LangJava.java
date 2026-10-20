@@ -176,6 +176,8 @@ public class LangJava extends JvmTemplatedLang {
         return "Point";
       if (type == Point[].class)
         return "Point[]";
+      if (type == byte[].class)
+        return "byte[]";
       if (type == Double.class || type == double.class)
         return "double";
       if (type == Integer.class || type == int.class)

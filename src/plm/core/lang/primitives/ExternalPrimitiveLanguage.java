@@ -30,6 +30,6 @@ public interface ExternalPrimitiveLanguage {
   /** Signature of the method in this language when called under the given name, as shown to the students (types, no keyword). */
   String signature(PrimitiveMethod method, String name);
 
-  /** Writes the glue file(s) of the given name in folder, exposing the methods, with extraCode (hand-written helpers) added verbatim. */
-  void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException;
+  /** Writes the glue file(s) of that remote in folder, exposing the methods, followed by its hand-written glue (if any). */
+  void generate(File folder, CodeCreation.Remote remote, List<PrimitiveMethod> methods) throws IOException;
 }

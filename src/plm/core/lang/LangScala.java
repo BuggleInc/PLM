@@ -256,6 +256,8 @@ public class LangScala extends JvmTemplatedLang {
         return "Point";
       if (type == Point[].class)
         return "Array[Point]";
+      if (type == byte[].class)
+        return "Array[Byte]";
       if (type == Double.class || type == double.class)
         return "Double";
       if (type == Integer.class || type == int.class)
@@ -278,6 +280,8 @@ public class LangScala extends JvmTemplatedLang {
         return "getAnswerObject().asInstanceOf[Point]";
       if (type == Point[].class)
         return "getAnswerObject().asInstanceOf[Array[Point]]";
+      if (type == byte[].class)
+        return "getAnswerObject().asInstanceOf[Array[Byte]]";
       return super.getReturning(type);
     }
 

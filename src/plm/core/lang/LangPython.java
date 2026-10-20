@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.Answer;
+import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -198,6 +199,7 @@ public class LangPython extends TemplatedRemoteLang {
         case BOOLEAN -> "getAnswerBoolean()";
         case POINT -> "getAnswerObject()";
         case POINT_ARRAY -> "getAnswerObject()";
+        case BYTES -> "getAnswerObject()";
       };
     }
 
@@ -239,7 +241,7 @@ public class LangPython extends TemplatedRemoteLang {
       return sb.toString();
     }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
+    @Override public void generate(File folder, CodeCreation.Remote remote, List<PrimitiveMethod> methods) throws IOException
     {
       final String typeDeclarations = ExternalPrimitiveLanguage.involved(methods)
                                            .stream()
@@ -250,13 +252,14 @@ public class LangPython extends TemplatedRemoteLang {
 
       final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n\n"));
 
-      String body = typeDeclarations.isBlank() ? implementations : typeDeclarations + "\n\n" + implementations;
-      if (!extraCode.isBlank())
-        body += "\n\n\n" + extraCode;
+      String body  = typeDeclarations.isBlank() ? implementations : typeDeclarations + "\n\n" + implementations;
+      String extra = remote.extraGlue(".py");
+      if (!extra.isBlank())
+        body += "\n\n\n" + extra;
 
       final String code = "# THIS FILE IS GENERATED. DO NOT EDIT\nfrom Remote import *\n\n\n" + body + "\n";
 
-      Files.writeString(new File(folder, name + ".py").toPath(), code);
+      Files.writeString(new File(folder, remote.name() + ".py").toPath(), code);
     }
   }
 }

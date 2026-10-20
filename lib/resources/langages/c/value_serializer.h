@@ -5,7 +5,17 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-typedef enum { PLM_VAL_NULL, PLM_VAL_INT, PLM_VAL_DOUBLE, PLM_VAL_BOOL, PLM_VAL_CHAR, PLM_VAL_COLOR, PLM_VAL_STRING, PLM_VAL_ARRAY } plm_value_type_t;
+typedef enum {
+  PLM_VAL_NULL,
+  PLM_VAL_INT,
+  PLM_VAL_DOUBLE,
+  PLM_VAL_BOOL,
+  PLM_VAL_CHAR,
+  PLM_VAL_COLOR,
+  PLM_VAL_STRING,
+  PLM_VAL_ARRAY,
+  PLM_VAL_BYTES
+} plm_value_type_t;
 
 typedef struct plm_value_t plm_value_t;
 
@@ -18,6 +28,10 @@ struct plm_value_t {
     char c;
     uint32_t color;
     char* str;
+    struct {
+      uint8_t* data;
+      uint32_t size;
+    } bytes; // serialized in hexadecimal, so they may contain any byte
     struct {
       plm_value_t** elements;
       uint32_t size;

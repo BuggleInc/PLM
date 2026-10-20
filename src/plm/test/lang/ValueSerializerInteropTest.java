@@ -27,8 +27,9 @@ public class ValueSerializerInteropTest {
   /** Values of every type and tag of the protocol, nested arrays and escaped strings included */
   private static final List<Object> VALUES = Arrays.asList(
       null, 0, 1, -1, Integer.MAX_VALUE, Integer.MIN_VALUE, 0.5, -3.25, 1e20, 1e-7, 100.0, true, false, "", "hello", "with \"quotes\" and \\backslashes\\",
-      "accents: àéïõ", "colon:bracket]", Color.RED, new Color(10, 20, 30, 40), new int[] {1, -2, 3}, new int[][] {{1, 2}, {3}}, new int[][][] {{{1}, {2, 3}}},
-      new double[] {0.5, -1.25}, new boolean[] {true, false}, new String[] {"a", "b:c"}, new Color[] {Color.BLUE}, new String[0]);
+      "accents: àéïõ", "line\nbreaks\r\n and \\n", "colon:bracket]", Color.RED, new Color(10, 20, 30, 40), new int[] {1, -2, 3}, new int[][] {{1, 2}, {3}},
+      new int[][][] {{{1}, {2, 3}}}, new double[] {0.5, -1.25}, new boolean[] {true, false}, new String[] {"a", "b:c"}, new Color[] {Color.BLUE}, new String[0],
+      new byte[0], new byte[] {0, '\n', '"', ':', ']', (byte)0xff}, new byte[][] {{1}, {}});
 
   /** Python has no char type, and its empty lists carry no element type */
   @Test public void testPython() throws Exception

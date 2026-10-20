@@ -209,21 +209,23 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
         case BOOLEAN -> "getAnswerBoolean()";
         case POINT -> "(Point)getAnswerObject()";
         case POINT_ARRAY -> "(Point[])getAnswerObject()";
+        case BYTES -> "(byte[])getAnswerObject()";
       };
     }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
+    @Override public void generate(File folder, CodeCreation.Remote remote, List<PrimitiveMethod> methods) throws IOException
     {
       Set<Class<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
       final String type_declarations = involved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
       final String implementations   = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
 
-      String body = "\n" + type_declarations + "\n" + implementations;
-      if (!extraCode.isBlank())
-        body += "\n" + extraCode;
+      String body  = "\n" + type_declarations + "\n" + implementations;
+      String extra = remote.extraGlue(fileExtension());
+      if (!extra.isBlank())
+        body += "\n" + extra;
 
-      Files.writeString(new File(folder, name + fileExtension()).toPath(), wrapCode(name, body));
+      Files.writeString(new File(folder, remote.name() + fileExtension()).toPath(), wrapCode(remote.name(), body));
     }
   }
 }

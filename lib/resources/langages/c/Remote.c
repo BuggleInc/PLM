@@ -23,7 +23,9 @@
 
 static FILE* protocol_in  = NULL;
 static FILE* protocol_out = NULL;
-static char answer_buffer[1024];
+/* The last answer line, grown as needed: some answers (e.g. byte arrays) are long */
+static char* answer_buffer;
+static size_t answer_capacity;
 
 #ifdef _WIN32
 static SOCKET protocol_socket;
@@ -35,10 +37,18 @@ static void close_protocol_socket(void)
 #endif
 char* get_answer_line()
 {
-  if (fgets(answer_buffer, sizeof(answer_buffer), protocol_in) == NULL) {
-    fprintf(stderr, "The PLM closed the protocol connection. Bailing out.\n");
-    exit(1);
-  }
+  size_t length = 0;
+  do {
+    if (answer_capacity - length < 2) {
+      answer_capacity = answer_capacity == 0 ? 1024 : 2 * answer_capacity;
+      answer_buffer   = realloc(answer_buffer, answer_capacity);
+    }
+    if (fgets(answer_buffer + length, (int)(answer_capacity - length), protocol_in) == NULL) {
+      fprintf(stderr, "The PLM closed the protocol connection. Bailing out.\n");
+      exit(1);
+    }
+    length += strlen(answer_buffer + length);
+  } while (answer_buffer[length - 1] != '\n');
   answer_buffer[strcspn(answer_buffer, "\r\n")] = 0;
   return answer_buffer;
 }
@@ -64,9 +74,12 @@ char* get_answer_string()
   char* result = malloc(strlen(src) + 1);
   char* dst    = result;
   while (*src != '\0' && *src != '"') {
-    if (*src == '\\' && *(src + 1) != '\0')
-      src++; // skip the backslash, emit the escaped character literally
-    *dst++ = *src++;
+    if (*src == '\\' && *(src + 1) != '\0') {
+      src++; // skip the backslash, emit the escaped character (a line break for n and r, itself otherwise)
+      *dst++ = *src == 'n' ? '\n' : *src == 'r' ? '\r' : *src;
+      src++;
+    } else
+      *dst++ = *src++;
   }
   *dst = '\0';
   return result;
@@ -83,9 +96,9 @@ char* escape_string(const char* s)
   char* dst    = result;
   *dst++       = '"';
   for (const char* src = s; *src != '\0'; src++) {
-    if (*src == '"' || *src == '\\')
+    if (*src == '"' || *src == '\\' || *src == '\n' || *src == '\r') // line breaks too: one value per line
       *dst++ = '\\';
-    *dst++ = *src;
+    *dst++ = *src == '\n' ? 'n' : *src == '\r' ? 'r' : *src;
   }
   *dst++ = '"';
   *dst   = '\0';

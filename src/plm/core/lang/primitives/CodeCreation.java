@@ -4,6 +4,7 @@ import dotty.tools.dotc.Driver;
 import dotty.tools.dotc.reporting.Reporter;
 import java.io.File;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +21,6 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
-import lessons.recursion.cons.universe.ConsEntity;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 import plm.core.lang.LangC;
@@ -37,7 +37,28 @@ import plm.universe.Entity;
 public class CodeCreation {
 
   /** A glue file to generate: its name and the entity whose primitives it exposes. */
-  public record Remote(String name, Class<? extends Entity> entity) {}
+  public record Remote(String name, Class<? extends Entity> entity)
+  {
+    /** Whether its hand-written glue wraps the generated functions (see Glue.wrapped()) */
+    public boolean isWrapped()
+    {
+      return entity.getAnnotation(Glue.class).wrapped();
+    }
+
+    /**
+     * Its hand-written glue for the generated file of that extension (e.g. ".h"): the content of the file &lt;name&gt;Glue&lt;extension&gt;
+     * next to the sources of its entity (e.g. RemoteConsGlue.py), or "" if there is none.
+     */
+    public String extraGlue(String extension)
+    {
+      Path file = Path.of("src", entity.getPackageName().replace('.', '/'), name + "Glue" + extension);
+      try {
+        return Files.exists(file) ? Files.readString(file, StandardCharsets.UTF_8) : "";
+      } catch (IOException e) {
+        throw new UncheckedIOException(e);
+      }
+    }
+  }
 
   /** The glue files to generate, one per entity class annotated with @Glue, by name */
   public static final List<Remote> REMOTES = new Reflections("plm", "lessons", Scanners.TypesAnnotated)
@@ -47,8 +68,8 @@ public class CodeCreation {
                                                  .sorted(Comparator.comparing(Remote::name))
                                                  .toList();
 
-  /** A language to generate the glue of: its folder under resources/langages, its generator and the hand-written code to splice in some remotes. */
-  private record Target(String dir, ExternalPrimitiveLanguage generator, Map<String, String> extraCode) {}
+  /** A language to generate the glue of: its folder under resources/langages and its generator. */
+  private record Target(String dir, ExternalPrimitiveLanguage generator) {}
 
   /** Sources shared with the PLM, compiled alongside the Java glue in the package "generated". */
   public static final List<String> JAVA_HELPER_SOURCES =
@@ -66,23 +87,22 @@ public class CodeCreation {
   public static void generateGlue(File folder) throws IOException
   {
     Map<String, Map<String, String>> aliases      = PrimitiveAliases.load(PrimitiveAliases.PO_DIRECTORY);
-    Map<String, List<PrimitiveMethod>> primitives = new LinkedHashMap<>();
+    Map<Remote, List<PrimitiveMethod>> primitives = new LinkedHashMap<>();
     for (Remote remote : REMOTES)
-      primitives.put(remote.name(), PrimitiveAliases.withAliases(remote.name(), PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()), aliases));
+      primitives.put(remote, PrimitiveAliases.withAliases(remote.name(), PrimitiveRegistration.getMaximalPrimitiveForEntity(remote.entity()), aliases));
 
     List<Target> targets =
-        List.of(new Target("java", new LangJava.LangJavaExternalPrimitiveGenerator(), Map.of("RemoteCons", ConsEntity.JAVA_REMOTE_EXTRA_CODE)),
-                new Target("scala", new LangScala.LangScalaExternalPrimitiveGenerator(), Map.of("RemoteCons", ConsEntity.SCALA_REMOTE_EXTRA_CODE)),
-                new Target("python", new LangPython.LangPythonExternalPrimitiveGenerator(), Map.of("RemoteCons", ConsEntity.PYTHON_REMOTE_EXTRA_CODE)),
-                new Target("c", new LangC.LangCExternalPrimitiveGenerator(), Map.of()));
+        List.of(new Target("java", new LangJava.LangJavaExternalPrimitiveGenerator()), new Target("scala", new LangScala.LangScalaExternalPrimitiveGenerator()),
+                new Target("python", new LangPython.LangPythonExternalPrimitiveGenerator()), new Target("c", new LangC.LangCExternalPrimitiveGenerator()));
 
     for (Target target : targets) {
       File targetFolder = new File(folder, target.dir());
       targetFolder.mkdirs(); // the Scala glue has no hand-written file, so its folder only exists once generated
       System.err.print("Generating " + target.dir() + " entities in " + targetFolder + ":");
-      for (Map.Entry<String, List<PrimitiveMethod>> entry : primitives.entrySet()) {
-        System.err.print(" " + entry.getKey());
-        target.generator().generate(targetFolder, entry.getKey(), entry.getValue(), target.extraCode().getOrDefault(entry.getKey(), ""));
+      for (Map.Entry<Remote, List<PrimitiveMethod>> entry : primitives.entrySet()) {
+        Remote remote = entry.getKey();
+        System.err.print(" " + remote.name());
+        target.generator().generate(targetFolder, remote, entry.getValue());
       }
       System.err.println(".");
     }

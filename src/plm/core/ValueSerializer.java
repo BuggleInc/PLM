@@ -39,6 +39,9 @@ public class ValueSerializer {
     if (o == null)
       return "Z";
 
+    if (o instanceof byte[] bytes)
+      return "x" + HexFormat.of().formatHex(bytes);
+
     Class<?> clazz = o.getClass();
     if (o instanceof Collection || clazz.isArray()) {
 
@@ -77,7 +80,8 @@ public class ValueSerializer {
     }
 
     if (o instanceof String value) {
-      String escaped = value.replace("\\", "\\\\").replace("\"", "\\\"");
+      // The line breaks are escaped too, since the protocol sends one value per line
+      String escaped = value.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r");
       return "\"" + escaped + "\"";
     }
 
@@ -157,6 +161,13 @@ public class ValueSerializer {
 
       if (c == '"') {
         return parseString();
+      }
+
+      if (c == 'x') {
+        int start = ++pos;
+        while (pos < text.length() && Character.digit(text.charAt(pos), 16) >= 0)
+          pos++;
+        return HexFormat.of().parseHex(text, start, pos);
       }
 
       if (c == 'i') {
@@ -375,7 +386,8 @@ public class ValueSerializer {
           if (isFinished()) {
             throw new IllegalArgumentException("Invalid escape");
           }
-          sb.append(text.charAt(pos++));
+          char escaped = text.charAt(pos++);
+          sb.append(escaped == 'n' ? '\n' : escaped == 'r' ? '\r' : escaped);
         } else if (c == '"') {
           break;
         } else {

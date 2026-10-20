@@ -263,6 +263,10 @@
           <include>**/*.svg</include>
           <include>**/*.map</include>
         </includes>
+        <excludes>
+          <!-- Hand-written glue, only read by CodeCreation at build time -->
+          <exclude>**/Remote*Glue.*</exclude>
+        </excludes>
       </resource>
       <resource>
         <directory>img</directory>
@@ -325,6 +329,10 @@
                including the EXPECTED new ones against jgit 6.x. Do not fail
                the build on them. -->
           <failOnWarning>false</failOnWarning>
+          <!-- Fragments of hand-written glue, appended to the generated one by CodeCreation -->
+          <excludes>
+            <exclude>**/Remote*Glue.java</exclude>
+          </excludes>
           <compilerArgs>
             <arg>-Xlint:none</arg>
             <arg>-parameters</arg>

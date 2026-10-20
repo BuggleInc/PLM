@@ -95,8 +95,8 @@ static void serialize_recursive(const plm_value_t* val, string_builder_t* sb)
     case PLM_VAL_STRING:
       sb_append(sb, "\"");
       for (const char* p = val->as.str; *p; p++) {
-        if (*p == '\\' || *p == '"') {
-          char esc[3] = {'\\', *p, '\0'};
+        if (*p == '\\' || *p == '"' || *p == '\n' || *p == '\r') { // line breaks too: one value per line
+          char esc[3] = {'\\', *p == '\n' ? 'n' : *p == '\r' ? 'r' : *p, '\0'};
           sb_append(sb, esc);
         } else {
           char c[2] = {*p, '\0'};
@@ -104,6 +104,13 @@ static void serialize_recursive(const plm_value_t* val, string_builder_t* sb)
         }
       }
       sb_append(sb, "\"");
+      break;
+    case PLM_VAL_BYTES:
+      sb_append(sb, "x");
+      for (uint32_t i = 0; i < val->as.bytes.size; i++) {
+        snprintf(buffer, BUFF_SIZE, "%02x", val->as.bytes.data[i]);
+        sb_append(sb, buffer);
+      }
       break;
     case PLM_VAL_ARRAY: {
       bool all_same               = true;
@@ -117,7 +124,7 @@ static void serialize_recursive(const plm_value_t* val, string_builder_t* sb)
           }
         }
       }
-      if (all_same && first_type != PLM_VAL_ARRAY && first_type != PLM_VAL_STRING && first_type != PLM_VAL_NULL) {
+      if (all_same && first_type != PLM_VAL_ARRAY && first_type != PLM_VAL_STRING && first_type != PLM_VAL_BYTES && first_type != PLM_VAL_NULL) {
         if (first_type == PLM_VAL_INT)
           sb_append(sb, "i");
         else if (first_type == PLM_VAL_DOUBLE)
@@ -267,14 +274,15 @@ static char* parse_string(const char** p)
   string_builder_t sb;
   sb_init(&sb);
   while (**p && **p != '"') {
+    char c[2] = {**p, '\0'};
     if (**p == '\\') {
       (*p)++;
       if (!**p) {
         sb_free(&sb);
         return NULL;
       }
+      c[0] = **p == 'n' ? '\n' : **p == 'r' ? '\r' : **p;
     }
-    char c[2] = {**p, '\0'};
     sb_append(&sb, c);
     (*p)++;
   }
@@ -342,6 +350,21 @@ static plm_value_t* parse_value(const char** p)
       free(val);
       return NULL;
     }
+  } else if (c == 'x') {
+    (*p)++;
+    size_t digits = strspn(*p, "0123456789abcdefABCDEF");
+    if (digits % 2 != 0) {
+      free(val);
+      return NULL;
+    }
+    val->type          = PLM_VAL_BYTES;
+    val->as.bytes.size = digits / 2;
+    val->as.bytes.data = malloc(digits / 2 + 1); // never malloc(0)
+    for (uint32_t i = 0; i < val->as.bytes.size; i++) {
+      char hex[3]           = {(*p)[2 * i], (*p)[2 * i + 1], '\0'};
+      val->as.bytes.data[i] = (uint8_t)strtol(hex, NULL, 16);
+    }
+    *p += digits;
   } else if (c == '[') {
     free(val);
     return parse_array(p, PLM_VAL_NULL);
@@ -371,6 +394,8 @@ void plm_value_free(plm_value_t* val)
     return;
   if (val->type == PLM_VAL_STRING)
     free(val->as.str);
+  else if (val->type == PLM_VAL_BYTES)
+    free(val->as.bytes.data);
   else if (val->type == PLM_VAL_ARRAY) {
     for (uint32_t i = 0; i < val->as.array.size; i++)
       plm_value_free(val->as.array.elements[i]);

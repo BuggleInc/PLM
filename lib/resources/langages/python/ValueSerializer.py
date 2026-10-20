@@ -90,7 +90,7 @@ def _type_tag(v):
     return "C"
   if isinstance(v, Point):
     return "P"
-  if isinstance(v, (str, list)):
+  if isinstance(v, (str, list, bytes, bytearray)):
     return ""
   raise ValueError("Unknown serializable type: %r" % (type(v),))
 
@@ -107,8 +107,12 @@ def serialize(o, arrayelem_tag=""):
     tag = arrayelem_tag if len(o) == 0 else _type_tag(o[0])
     return tag + "[" + str(len(o)) + "".join(":" + serialize(v) for v in o) + "]"
 
+  if isinstance(o, (bytes, bytearray)):
+    return "x" + o.hex()
+
   if isinstance(o, str):
-    escaped = o.replace("\\", "\\\\").replace('"', '\\"')
+    # The line breaks are escaped too, since the protocol sends one value per line
+    escaped = o.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n").replace("\r", "\\r")
     return '"' + escaped + '"'
 
   # bool must be checked before int: in Python, bool is a subclass of int.
@@ -180,6 +184,13 @@ class _Parser:
 
     if c == '"':
       return self._parse_string()
+
+    if c == "x":
+      self.pos += 1
+      start = self.pos
+      while not self.is_finished() and self.text[self.pos] in "0123456789abcdefABCDEF":
+        self.pos += 1
+      return bytes.fromhex(self.text[start:self.pos])
 
     if c == "i":
       self.pos += 1
@@ -284,7 +295,8 @@ class _Parser:
       if c == "\\":
         if self.is_finished():
           raise ValueError("Invalid escape")
-        chars.append(self.text[self.pos])
+        escaped = self.text[self.pos]
+        chars.append({"n": "\n", "r": "\r"}.get(escaped, escaped))
         self.pos += 1
       elif c == '"':
         break

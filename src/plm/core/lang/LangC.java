@@ -19,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.Answer;
+import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -405,6 +406,10 @@ public class LangC extends TemplatedRemoteLang {
         return "Point";
       if (type == Point[].class)
         return "PointArray";
+      if (type == byte[].class)
+        return "Bytes";
+      if (type == byte.class) // only involved as the component of byte[]
+        return "unsigned char";
       if (type == Double.class || type == double.class)
         return "double";
       if (type == Integer.class || type == int.class)
@@ -457,6 +462,12 @@ public class LangC extends TemplatedRemoteLang {
             + "    double y;\n"
             + "} Point;";
       }
+      if (type == byte[].class) {
+        return "typedef struct {\n"
+            + "    unsigned char* data; // NULL for a null value\n"
+            + "    size_t size;\n"
+            + "} Bytes;";
+      }
       if (type == Point[].class) {
         // generate() sorts type declarations by name so that "Point" comes before "PointArray"
         return "typedef struct {\n"
@@ -487,6 +498,30 @@ public class LangC extends TemplatedRemoteLang {
             + "    Point p;\n"
             + "    sscanf(line, \"P%lf:%lf\", &p.x, &p.y);\n"
             + "    return p;\n"
+            + "}";
+      }
+      if (type == byte[].class) {
+        return "Bytes get_answer_bytes()\n"
+            + "{\n"
+            + "    const char* line = get_answer_line(); // e.g. \"x48454c4c4f\", or \"Z\" for null\n"
+            + "    Bytes result     = {NULL, 0};\n"
+            + "    if (line[0] != 'x')\n"
+            + "        return result;\n"
+            + "    result.size = strlen(line + 1) / 2;\n"
+            + "    result.data = malloc(result.size + 1); // never malloc(0), which may return NULL\n"
+            + "    for (size_t i = 0; i < result.size; i++)\n"
+            + "        sscanf(line + 1 + 2 * i, \"%2hhx\", &result.data[i]);\n"
+            + "    return result;\n"
+            + "}\n"
+            + "\n"
+            + "/* The hexadecimal digits of the bytes, as sent after the 'x' tag. Caller owns the returned buffer. */\n"
+            + "char* bytes_to_hex(Bytes bytes)\n"
+            + "{\n"
+            + "    char* result = malloc(2 * bytes.size + 1);\n"
+            + "    for (size_t i = 0; i < bytes.size; i++)\n"
+            + "        sprintf(result + 2 * i, \"%02x\", bytes.data[i]);\n"
+            + "    result[2 * bytes.size] = '\\0';\n"
+            + "    return result;\n"
             + "}";
       }
       if (type == Point[].class) {
@@ -520,11 +555,11 @@ public class LangC extends TemplatedRemoteLang {
       return getLanguageType(method.output()) + " " + name + "(" + method.parameters().stream().map(this::getParameter).collect(Collectors.joining(", ")) + ")";
     }
 
-    /** The declarator of the C glue, without the trailing ';'. Unlike signature(), an empty parameter list is spelled (void) */
-    String getPrototype(PrimitiveMethod method)
+    /** The declarator of the C glue under that name, without the trailing ';'. Unlike signature(), an empty parameter list is spelled (void) */
+    String getPrototype(PrimitiveMethod method, String name)
     {
       String parameters = method.parameters().stream().map(this::getParameter).collect(Collectors.joining(", "));
-      return getLanguageType(method.output()) + " " + method.name() + "(" + (parameters.isEmpty() ? "void" : parameters) + ")";
+      return getLanguageType(method.output()) + " " + name + "(" + (parameters.isEmpty() ? "void" : parameters) + ")";
     }
 
     String getReturning(Class<?> type)
@@ -538,6 +573,7 @@ public class LangC extends TemplatedRemoteLang {
         case BOOLEAN -> "get_answer_int()";
         case POINT -> "get_answer_point()";
         case POINT_ARRAY -> "get_answer_point_array()";
+        case BYTES -> "get_answer_bytes()";
       };
     }
 
@@ -547,6 +583,8 @@ public class LangC extends TemplatedRemoteLang {
       // matching the conventions of ValueSerializer.
       if (type == String.class)
         return "%s";
+      if (type == byte[].class)
+        return "x%s";
       if (type == Double.class || type == double.class)
         return "f%.17g"; // same precision as plm_serialize(): round-trips any double
       if (type == Character.class || type == char.class)
@@ -565,10 +603,24 @@ public class LangC extends TemplatedRemoteLang {
       throw new IllegalStateException("Unknown type: " + type);
     }
 
-    /** The C expression to pass to send_command() for this parameter. Itself except String, which gets quoted (see getImplementation()). */
-    String getArgumentExpression(PrimitiveParameter parameter) { return parameter.type() == String.class ? "escaped_" + parameter.name() : parameter.name(); }
+    /** The call encoding that parameter into a heap-allocated text for send_command(), or null if it is sent as is */
+    String getEncoding(PrimitiveParameter parameter)
+    {
+      if (parameter.type() == String.class)
+        return "escape_string(" + parameter.name() + ")";
+      if (parameter.type() == byte[].class)
+        return "bytes_to_hex(" + parameter.name() + ")";
+      return null;
+    }
 
-    String getImplementation(PrimitiveMethod method)
+    /** The C expression to pass to send_command() for this parameter: itself, or its encoded copy (see getImplementation()). */
+    String getArgumentExpression(PrimitiveParameter parameter) { return getEncoding(parameter) == null ? parameter.name() : "encoded_" + parameter.name(); }
+
+    /**
+     * The function sending that primitive to the PLM. When the hand-written glue wraps the generated one, it is a static function
+     * named plm_remote_xxx, so that it does not clash with the system function that the hand-written one emulates.
+     */
+    String getImplementation(PrimitiveMethod method, boolean wrapped)
     {
       String name    = method.command(); // the PLM only knows the canonical name of the translated aliases
       int n          = method.parameters().size();
@@ -582,20 +634,24 @@ public class LangC extends TemplatedRemoteLang {
       String command = "\tsend_command(\"" + name + " " + argsWire + "\"" +
                        method.parameters().stream().map(this::getArgumentExpression).map(s -> ", " + s).collect(Collectors.joining()) + ");";
 
-      // The escaped copy of each String parameter is heap-allocated by escape_string(): it is released once the command is sent
-      List<PrimitiveParameter> strings = method.parameters().stream().filter(p -> p.type() == String.class).toList();
-      String escapes = strings.stream().map(p -> "\tchar* " + getArgumentExpression(p) + " = escape_string(" + p.name() + ");\n").collect(Collectors.joining());
-      String frees   = strings.stream().map(p -> "\tfree(" + getArgumentExpression(p) + ");\n").collect(Collectors.joining());
+      // The encoded copies of the String and byte[] parameters are heap-allocated: they are released once the command is sent
+      List<PrimitiveParameter> encoded = method.parameters().stream().filter(p -> getEncoding(p) != null).toList();
+      String encodings = encoded.stream().map(p -> "\tchar* " + getArgumentExpression(p) + " = " + getEncoding(p) + ";\n").collect(Collectors.joining());
+      String frees     = encoded.stream().map(p -> "\tfree(" + getArgumentExpression(p) + ");\n").collect(Collectors.joining());
 
       String returning = method.hasReturn() ? "\treturn " + getReturning(method.output()) + ";" : "";
 
-      return getPrototype(method) + "{\n" + escapes + command + "\n" + frees + returning + "\n}";
+      // unused: the hand-written glue may not call all of them, e.g. the translated aliases
+      String declarator =
+          wrapped ? "static __attribute__((unused)) " + getPrototype(method, "plm_remote_" + method.name()) : getPrototype(method, method.name());
+      return declarator + "{\n" + encodings + command + "\n" + frees + returning + "\n}";
     }
 
-    @Override public void generate(File folder, String name, List<PrimitiveMethod> methods, String extraCode) throws IOException
+    @Override public void generate(File folder, CodeCreation.Remote remote, List<PrimitiveMethod> methods) throws IOException
     {
       Set<Class<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
+      final String name  = remote.name();
       final String guard = name.toUpperCase() + "_H";
 
       final String header_prefix = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#ifndef " + guard + "\n"
@@ -612,17 +668,18 @@ public class LangC extends TemplatedRemoteLang {
 
       final String type_declarations = sortedInvolved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
 
-      final String prototypes = methods.stream().map(m -> getPrototype(m) + ";").collect(Collectors.joining("\n"));
+      // The functions of a wrapped glue are only called by its hand-written part, appended to the same .c file
+      final String prototypes = remote.isWrapped() ? "" : methods.stream().map(m -> getPrototype(m, m.name()) + ";").collect(Collectors.joining("\n"));
 
-      final String header = String.join("\n\n", header_prefix, type_declarations, prototypes, header_suffix);
+      final String header = String.join("\n\n", header_prefix, type_declarations, prototypes, remote.extraGlue(".h"), header_suffix);
 
       final String type_support_functions =
           sortedInvolved.stream().map(this::getTypeSupportFunctions).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
 
-      final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
+      final String implementations = methods.stream().map(m -> getImplementation(m, remote.isWrapped())).collect(Collectors.joining("\n\n"));
 
       final String code = "/* THIS FILE IS GENERATED. DO NOT EDIT */\n#include \"Remote.h\"\n#include \"" + name + ".h\"\n\n" + type_support_functions +
-                          "\n\n" + implementations + (extraCode.isBlank() ? "" : "\n\n" + extraCode);
+                          "\n\n" + implementations + "\n\n" + remote.extraGlue(".c");
 
       Files.writeString(new File(folder, name + ".h").toPath(), header);
       Files.writeString(new File(folder, name + ".c").toPath(), code);
