@@ -25,6 +25,8 @@ public class LessonRunner extends Thread {
 
   private Game game;
   private List<Future<?>> runners = new LinkedList<Future<?>>(); // entity-run tasks from this lesson, on the shared pool
+  /** Whether the execution was stopped (by the Stop button, or by switching to another exercise): its outcome means nothing */
+  private volatile boolean stopped = false;
 
   public LessonRunner(Game game)
   {
@@ -42,7 +44,7 @@ public class LessonRunner extends Thread {
 
     RunOutcome outcome = runExercise(exo, lang);
 
-    if (!game.isCreativeEnabled()) {
+    if (!game.isCreativeEnabled() && !stopped) {
       try {
         if (outcome.isPassed()) {
           Game.getInstance().studentWork.setPassed(exo, outcome.language, true);
@@ -101,6 +103,7 @@ public class LessonRunner extends Thread {
    */
   public void stopAll()
   {
+    stopped = true;
     while (runners.size() > 0) {
       Future<?> f = runners.remove(runners.size() - 1);
       f.cancel(true);
