@@ -13,6 +13,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.UnaryOperator;
@@ -163,8 +164,8 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
         // loop. Being unblocked from waitFor() doesn't kill the child process by itself -- do that explicitly here,
         // the same way as the "process never connected" branch above; its reader threads see the pipes and the
         // socket close and exit on their own (EOF/IOException).
+        process.destroyForcibly(); // before closing the socket, so that the process does not complain about it before dying
         protocolSocket.close();
-        process.destroyForcibly();
         Thread.currentThread().interrupt();
         System.err.println("Run of " + executable + " interrupted after " + handledCommands.get() + " protocol commands, the last one being " +
                            lastCommand.get());
@@ -230,9 +231,15 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
           into.append(line).append("\n");
         }
       } catch (IOException ioe) {
-        // Expected when process.destroyForcibly() tears down the pipes while this thread is blocked in readLine()
-        if (process.isAlive())
-          ioe.printStackTrace();
+        // Expected when process.destroyForcibly() tears down the pipes while this thread is blocked in readLine(). The process
+        // then ends within milliseconds, but may still be alive when the exception arrives: only report the ones that last.
+        try {
+          // Wait a bit before printing the stack. The swing thread may interrupt us if the user pressed "Stop".
+          if (!process.waitFor(1, TimeUnit.SECONDS))
+            ioe.printStackTrace();
+        } catch (InterruptedException ie) {
+          Thread.currentThread().interrupt();
+        }
       }
     });
     reader.start();
