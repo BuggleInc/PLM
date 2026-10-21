@@ -256,7 +256,7 @@ that are very hard to debug. These false negative are very frustrating for the s
 would be good, as we did for the Turtle world used in the recursion lesson, but it is still to be devised.
 
 TODO:
-* Other graphical representations, such as the ones of [sorting.at](http://sorting.at/).
+* Other graphical representations, such as [Coddy's sorting visualizations](https://coddy.tech/visualize/sorting).
 * Exercises on the recursive sorting algorithms (QuickSort, MergeSort).
 * Maybe other microworlds applying the sorting algorithms to other contexts.
 
