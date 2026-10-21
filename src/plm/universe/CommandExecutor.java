@@ -12,10 +12,30 @@ import plm.core.lang.primitives.PrimitivePot;
 import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.model.Game;
 
+/**
+ * Executes the commands sent by the student's processes, each process having its own command reader thread. The worlds of an
+ * exercise run in parallel, but the entities of the same world share it: a command locks the world of its entity, which its
+ * animation releases while waiting (see World.awaitStep()).
+ */
 public final class CommandExecutor {
   private CommandExecutor() {}
 
-  public synchronized static void command(Entity entity, String command, BufferedWriter out) throws InvocationTargetException, IllegalAccessException
+  public static void command(Entity entity, String command, BufferedWriter out) throws InvocationTargetException, IllegalAccessException
+  {
+    World world = entity.getWorld();
+    if (world == null) { // an entity tested on its own
+      execute(entity, command, out);
+      return;
+    }
+    world.lock.lock();
+    try {
+      execute(entity, command, out);
+    } finally {
+      world.lock.unlock();
+    }
+  }
+
+  private static void execute(Entity entity, String command, BufferedWriter out) throws InvocationTargetException, IllegalAccessException
   {
     if (command.contains("AddressSanitizer")) {
       if (!command.equals("AddressSanitizer:DEADLYSIGNAL"))

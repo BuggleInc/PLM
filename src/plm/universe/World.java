@@ -15,6 +15,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.Phaser;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
@@ -25,7 +28,6 @@ import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitivePot;
 import plm.core.lang.primitives.PrimitiveRegistration;
 import plm.core.model.Game;
-import plm.core.model.Logger;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;
@@ -34,6 +36,15 @@ import plm.core.utils.FileUtils;
 
 public abstract class World {
   private boolean isDelayed = false; // whether we display interactively or not
+  /** Serializes the commands of the entities of this world, which share it (see CommandExecutor) */
+  final ReentrantLock lock = new ReentrantLock();
+  /** Makes the running entities of this world do their steps together (see awaitStep()); never terminates, even without parties */
+  private final Phaser steps = new Phaser() {
+    @Override protected boolean onAdvance(int phase, int parties)
+    {
+      return false;
+    }
+  };
   private boolean isAnswer  = false;
   private boolean randomized = false; // whether the initial state is random, so that the answer cannot be cached
   private int delay         = 100; // delay between two instruction executions of an entity.
@@ -170,18 +181,51 @@ public abstract class World {
   public Entity getEntity(int i) { return entities.get(i); }
   public List<Entity> getEntities() { return entities; }
 
+  /**
+   * Runs every entity of this world, animated, so that they move together (see awaitStep()). Each of them runs on a thread of its
+   * own: a bounded pool could leave some of them waiting for a thread while the others wait for them. They also wait for each
+   * other before starting, so that they all start together.
+   */
   public void runEntities(List<Future<?>> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl, final String executable)
   {
+    steps.bulkRegister(entities.size()); // all of them, before any can arrive
     for (final Entity b : entities) {
-      Future<?> future = Game.submitEntityTask(new Runnable() {
-        public void run()
-        {
+      FutureTask<?> task = new FutureTask<>(() -> {
+        try {
+          steps.awaitAdvanceInterruptibly(steps.arrive());
           Game.getInstance().statusArgAdd(getName());
           pl.runEntity(b, progress, executable);
           Game.getInstance().statusArgRemove(getName());
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt(); // stopped before starting
+        } finally {
+          steps.arriveAndDeregister(); // the others do not wait for it anymore
         }
-      });
-      runnerVect.add(future);
+      }, null);
+      new Thread(task, "Entity " + b.getName()).start();
+      runnerVect.add(task);
+    }
+  }
+
+  /**
+   * Runs the wait of an animated entity (its delay, or the next click on the step button) without holding the lock of the world,
+   * so that the other entities do their step meanwhile. Then, while runEntities() runs them, waits for all of them to have done
+   * their step, so that they move together (the entities run otherwise, to compute the expected worlds, are not waited for).
+   */
+  void awaitStep(Runnable wait)
+  {
+    int holds = lock.getHoldCount();
+    for (int i = 0; i < holds; i++)
+      lock.unlock();
+    try {
+      wait.run();
+      if (steps.getRegisteredParties() > 0)
+        steps.awaitAdvanceInterruptibly(steps.arrive());
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt(); // stopped: the caller sees that it was asked to stop
+    } finally {
+      for (int i = 0; i < holds; i++)
+        lock.lock();
     }
   }
 

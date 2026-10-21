@@ -269,6 +269,11 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
 - **Animation**: the primitives call `Entity.stepUI()`, which sleeps for the delay of the world, or waits for the next step in
   step mode. As this happens in the `commandReader` thread, it slows down the display but not the computations of the student
   code, which only waits when it needs an answer.
+- **Concurrency**: the worlds of an exercise run in parallel, but the entities of a world share it. `CommandExecutor` thus
+  locks the world of the entity during each command, and `World.awaitStep()` releases that lock while the entity waits for its
+  animation. The entities of an animated world (run by `World.runEntities()`) also move together: they start together, and
+  each of them waits for the others after each step, using a `Phaser`. That's why they run on threads of their own: the
+  bounded pool of `Game` is only used to compute the expected worlds when loading a lesson, which are not animated.
 - **End of the run**: `runEntity()` also reads the stdout and stderr of the process, echoes them to the PLM console and keeps
   them (stderr goes through `shiftLocations()`, see above). After the process ends, it joins its threads, lets the language
   inspect what the process left behind (`onProcessFinished()`, used by C for the address sanitizer report), and removes the

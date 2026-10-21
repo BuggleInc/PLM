@@ -63,8 +63,8 @@ public abstract class Exercise extends Lecture {
   public abstract void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException;
 
   /**
-   * Submit one task per entity of every world of {@code kind} to the shared bounded pool ({@link Game#submitEntityTask}),
-   * add each to {@code runnerVect} (so {@code LessonRunner.stopAll()} can find and {@code cancel(true)} them from
+   * Run the entities of every world of {@code kind}, animated (see {@link World#runEntities}), adding their tasks to
+   * {@code runnerVect} (so {@code LessonRunner.stopAll()} can find and {@code cancel(true)} them from
    * another thread while this call is still blocked below), then wait for all of them to finish. The returned outcome is a success
    * until an execution or {@link #check} fails it.
    *

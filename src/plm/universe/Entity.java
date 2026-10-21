@@ -74,22 +74,17 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
   {
     fireStackListener();
     world.notifyWorldUpdatesListeners();
-    if (world.isDelayed()) {
-      if (Game.getInstance().stepModeEnabled()) {
+    if (world.isDelayed())
+      world.awaitStep(() -> {
         try {
-          this.oneStepSemaphore.acquire();
-        } catch (InterruptedException e) {
-          Thread.currentThread().interrupt(); // stopped while waiting for the next step: the caller sees that it was asked to stop
-        }
-      } else {
-        try {
-          if (world.getDelay() > 0) // seems that sleep(0) takes time (yield thread?)
+          if (Game.getInstance().stepModeEnabled())
+            this.oneStepSemaphore.acquire();
+          else if (world.getDelay() > 0) // seems that sleep(0) takes time (yield thread?)
             Thread.sleep(world.getDelay());
         } catch (InterruptedException e) {
-          Thread.currentThread().interrupt(); // the animation is skipped, and the caller sees that it was asked to stop
+          Thread.currentThread().interrupt(); // stopped while waiting: the caller sees that it was asked to stop
         }
-      }
-    }
+      });
   }
 
   /**
