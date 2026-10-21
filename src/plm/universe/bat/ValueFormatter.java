@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 import lessons.recursion.cons.universe.RecList;
-import org.python.core.PyInstance;
 import plm.core.lang.ProgrammingLanguage;
 
 public class ValueFormatter {
@@ -162,8 +161,6 @@ public class ValueFormatter {
       }
     } else if (o instanceof String) {
       sb.append("\"" + o + "\"");
-    } else if (o instanceof PyInstance) {
-      sb.append(((PyInstance)o).__str__());
     } else {
       sb.append(o.toString());
     }

@@ -24,9 +24,9 @@ public class ProgrammingLanguageManager {
     else
       System.err.println(Game.i18n.tr("Scala is usable on your machine. Congratulations."));
     if (PYTHON.isBrokenLanguage())
-      System.err.println(Game.i18n.tr("Please install jython to use the python programming language in the PLM."));
+      System.err.println(Game.i18n.tr("Please install python3 to use the python programming language in the PLM."));
     else
-      System.err.println(Game.i18n.tr("Jython is usable on your machine. Congratulations."));
+      System.err.println(Game.i18n.tr("Python is usable on your machine. Congratulations."));
     if (C.isBrokenLanguage())
       System.err.println(Game.i18n.tr("Please install gcc to use the C programming language in the PLM."));
     else

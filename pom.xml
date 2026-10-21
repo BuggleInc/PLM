@@ -100,51 +100,6 @@
       <version>4.2</version>
     </dependency>
 
-    <!-- Python exercises: jython-standalone bundles antlr-runtime + asm,
-         replacing the vendored jython/antlr3-runtime/asm jars. -->
-    <dependency>
-      <groupId>org.python</groupId>
-      <artifactId>jython-standalone</artifactId>
-      <version>2.7.3</version>
-    </dependency>
-
-    <!-- Ruby exercises: jruby-complete pulls jnr-constants/ffi/posix. -->
-    <dependency>
-      <groupId>org.jruby</groupId>
-      <artifactId>jruby-complete</artifactId>
-      <version>9.4.8.0</version>
-    </dependency>
-
-    <!-- Misc runtime libs -->
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>33.2.1-jre</version>
-    </dependency>
-    <!-- jline2 API is required by PLM's console; keep the 2.x line. -->
-    <dependency>
-      <groupId>jline</groupId>
-      <artifactId>jline</artifactId>
-      <version>2.14.6</version>
-    </dependency>
-
-    <!-- HTTP stack (feedback dialog / git over https) -->
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5.14</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpmime</artifactId>
-      <version>4.5.14</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-
     <!-- i18n runtime (the build-time ResourceBundle generator is invoked via
          antrun against the vendored gettext-ant-tasks jar; see below). -->
     <dependency>
@@ -184,12 +139,6 @@
       <groupId>org.eclipse.jgit</groupId>
       <artifactId>org.eclipse.jgit</artifactId>
       <version>6.10.1.202505221210-r</version>
-    </dependency>
-    <!-- SSH transport for jgit. mwiede fork is the maintained JSch. -->
-    <dependency>
-      <groupId>com.github.mwiede</groupId>
-      <artifactId>jsch</artifactId>
-      <version>0.2.18</version>
     </dependency>
 
     <!-- junit/mockito: the test sources (plm.test.*) live under src/ and are
@@ -241,6 +190,12 @@
       <artifactId>reflections</artifactId>
       <version>0.10.2</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <!-- The logger of reflections and jgit, silent: without any, SLF4J warns that it falls back to doing nothing -->
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.36</version>
     </dependency>
   </dependencies>
 
