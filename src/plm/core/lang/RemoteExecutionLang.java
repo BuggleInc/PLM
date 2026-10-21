@@ -166,6 +166,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
         // socket close and exit on their own (EOF/IOException).
         process.destroyForcibly(); // before closing the socket, so that the process does not complain about it before dying
         protocolSocket.close();
+        commandReader.interrupt(); // it may wait for the next step while holding the lock of CommandExecutor, blocking the next runs
         Thread.currentThread().interrupt();
         System.err.println("Run of " + executable + " interrupted after " + handledCommands.get() + " protocol commands, the last one being " +
                            lastCommand.get());

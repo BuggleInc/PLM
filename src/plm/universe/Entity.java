@@ -76,7 +76,11 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
     world.notifyWorldUpdatesListeners();
     if (world.isDelayed()) {
       if (Game.getInstance().stepModeEnabled()) {
-        this.oneStepSemaphore.acquireUninterruptibly();
+        try {
+          this.oneStepSemaphore.acquire();
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt(); // stopped while waiting for the next step: the caller sees that it was asked to stop
+        }
       } else {
         try {
           if (world.getDelay() > 0) // seems that sleep(0) takes time (yield thread?)
