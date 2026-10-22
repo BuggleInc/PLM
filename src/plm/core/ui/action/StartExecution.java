@@ -22,8 +22,6 @@ public class StartExecution extends AbstractGameAction implements HumanLangChang
   static private int asked = 0;
   @Override public void actionPerformed(ActionEvent e)
   {
-    System.out.println("Property: " + Game.getProperty("plm.git.track.user"));
-
     if (Game.getProperty("plm.git.track.user").equals("unknown") && (asked-- == 0)) {
       asked = 5; /* Ask every 5 runs */
 
