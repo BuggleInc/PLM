@@ -375,6 +375,11 @@ public class Game implements IWorldView {
       System.out.println("Switching to lesson: " + lessonName + ((exoName != null) ? "; exo: " + exoName : " (no exo specified)"));
 
     Lesson lesson = Game.getInstance().switchLesson(lessonName, false);
+    if (lesson == null) { // no lesson loaded yet, and this one does not exist (anymore): the default one is loaded instead
+      if (!url.equals(User.DEFAULT_EXERCISE))
+        setCurrentExercise(User.DEFAULT_EXERCISE);
+      return;
+    }
     Game.getInstance().setCurrentLesson(lesson);
     if (exoName != null && exoName.length() > 0) {
       Lecture lect = lesson.getExercise(exoName);
