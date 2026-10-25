@@ -98,6 +98,8 @@ public class LessonRunnerTest {
         .thenThrow(new InterruptedException());
 
     RunOutcome outcome = new LessonRunner(game).runExercise(exo, lang);
+    // The interruption is passed on to the caller, whose flag is cleared here before waiting for the notifications
+    Assertions.assertTrue(Thread.interrupted());
 
     Assertions.assertSame(lang, outcome.language);
     Assertions.assertFalse(outcome.isPassed());
