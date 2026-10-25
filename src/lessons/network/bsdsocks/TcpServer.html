@@ -1,10 +1,10 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>Serving a client</h1>
 
-<p>This time, your program is the server: write the function <code>server(port)</code>, where a client will connect to the given
-port of your machine, send a line of text ended by <code>'\n'</code>, and wait for your answer before closing the connection.
-Your mission is to be a doubling echo: you must send the received line twice to the client, with its <code>'\n'</code> each
-time.</p>
+<p>This time, your program is the server: write the function <code>server(port, message)</code>, where a client will connect to the
+given port of your machine and wait for a message. Send it the given message, and close the connection: the client reads until the
+end of the stream, as your client did in the previous exercise. As in that exercise, the port and the message change from one
+world to the other.</p>
 
 <p>A server takes more steps than a client, since it must first prepare a socket that waits for the connections:</p>
 <ol>
@@ -16,8 +16,7 @@ time.</p>
     machine may connect.[/!]</li>
   <li>Mark it as accepting the connections with <code>listen()</code>. Its [!c]second[/!][!python]only[/!] parameter is the
   length of the queue of the clients that wait to be accepted. After this call, the clients can connect even if your program does
-  not accept and serve them
-  yet.</li>[/!]
+  not accept and serve them yet.</li>[/!]
   [!java|scala]<li>Create a socket that waits for the connections with <code>new ServerSocket(port)</code>. This constructor does the
     first three steps of a server at once: it creates a TCP socket, attaches it to the given port with <code>bind()</code> so that
     any machine may connect, and marks it as accepting the connections with <code>listen()</code>. After that, the clients can
@@ -28,15 +27,11 @@ time.</p>
     [!c]descriptor, dedicated to this client. You can pass <code>NULL</code> as second and third parameters if the address of
     the client does not matter.[/!][!python]socket, dedicated to this client, along with the address of the client.[/!][!java|scala]
     <code>Socket</code>, dedicated to this client.[/!]</li>
-  <li>Receive the line on the new [!c]descriptor[/!][!python|java|scala]socket[/!] with [!c|python]<code>recv()</code>[/!][!java|scala]the
-    <code>read()</code> method of its <code>getInputStream[!java]()[/!]</code>[/!]. As in the previous exercise,
-    the line may arrive in several packets, so a single [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</code>[/!] may only
-    return its beginning: keep receiving until
-    you got its <code>'\n'</code>[!java|scala] (the <code>readLine()</code> method of a <code>BufferedReader</code> does so, but removes
-    the <code>'\n'</code>)[/!]. You cannot wait for the end of the stream instead, since the client waits for your answer before closing
-    the connection. Marking where a message ends, as this <code>'\n'</code> does, is called <i>framing</i>.</li>
-  <li>Send the line twice to the client with [!c]<code>send()</code>[/!][!python]<code>sendall()</code>, which sends all the
-    data[/!][!java|scala]the <code>write()</code> method of its <code>getOutputStream[!java]()[/!]</code>, which sends all the data[/!].</li>
+  <li>Send the message to the client on the new [!c]descriptor with <code>send()</code>, whose length is given by
+    <code>strlen(message)</code>[/!][!python]socket with <code>sendall()</code>, which sends all the data. It sends bytes: convert
+    the message with <code>message.encode()</code>[/!][!java|scala]socket with the <code>write()</code> method of its
+    <code>getOutputStream[!java]()[/!]</code>, which sends all the data. It sends bytes: convert the message with
+    <code>message.getBytes(StandardCharsets.UTF_8)</code>[/!].</li>
   <li>Close both [!c]descriptors[/!][!python|java|scala]sockets[/!]: the one of the client, and the one that waits for the connections.</li>
 </ol>
 

@@ -10,20 +10,16 @@ import java.nio.charset.StandardCharsets;
 public class TcpServerEntity extends plm.universe.posix.PosixEntity {
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
-  public void server(int port) throws IOException
+  public void server(int port, String message) throws IOException
   {
     /* BEGIN SOLUTION */
     try (ServerSocket master = new ServerSocket(port); Socket client = master.accept()) {
-      // The line may arrive in several packets: readLine() receives until its '\n' (or until the client closes the connection)
-      BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream(), StandardCharsets.UTF_8));
-      String line       = in.readLine();
-      if (line != null)
-        client.getOutputStream().write((line + "\n").repeat(2).getBytes(StandardCharsets.UTF_8)); // the doubling echo
+      client.getOutputStream().write(message.getBytes(StandardCharsets.UTF_8));
     }
     /* END SOLUTION */
   }
   /* END TEMPLATE */
 
-  public void run() throws Exception { server(getParamInt(0)); }
+  public void run() throws Exception { server(getParamInt(0), getParamString(1)); }
   /* END REMOTE */
 }

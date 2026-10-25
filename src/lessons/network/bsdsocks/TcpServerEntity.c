@@ -1,8 +1,9 @@
 #include "../../../../target/classes/resources/langages/c/RemotePosix.h"
+#include <stdlib.h>
 #include <string.h>
 
 /* BEGIN TEMPLATE */
-void server(int port)
+void server(int port, char* message)
 {
   /* BEGIN SOLUTION */
   int master = socket(AF_INET, SOCK_STREAM, 0);
@@ -34,23 +35,8 @@ void server(int port)
     return;
   }
 
-  /* The line may arrive in several packets: receive until its '\n' (or until the client closes the connection) */
-  char line[512];
-  size_t length    = 0;
-  ssize_t received = 1;
-  while (received > 0 && length < sizeof(line) && memchr(line, '\n', length) == NULL) {
-    received = recv(client, line + length, sizeof(line) - length, 0);
-    if (received > 0)
-      length += received;
-  }
-  if (received < 0)
-    perror("recv");
-  else
-    for (int i = 0; i < 2; i++) /* the doubling echo */
-      if (send(client, line, length, 0) < 0) {
-        perror("send");
-        break;
-      }
+  if (send(client, message, strlen(message), 0) < 0)
+    perror("send");
 
   close(client);
   close(master);
@@ -60,5 +46,7 @@ void server(int port)
 
 void run()
 {
-  server(getParamInt(0));
+  char* message = getParamString(1);
+  server(getParamInt(0), message);
+  free(message);
 }

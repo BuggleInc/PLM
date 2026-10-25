@@ -381,9 +381,9 @@ TODO:
 
 ### The networking lesson
 
-This lesson (`lessons.network`) builds upon the POSIX universe. The two exercises (requesting 32 and 49 lines of C, 16 and 15
-lines of Python, 12 and 7 lines of Java, 13 and 8 lines of Scala) ask for a function whose parameters (the address and the port
-of the server, or the port to listen on) change from one world to the other, so that hard-coded values fail.
+This lesson (`lessons.network`) builds upon the POSIX universe. The two exercises (requesting 32 and 34 lines of C, 16 and 8 lines
+of Python, 12 and 3 lines of Java, 13 and 5 lines of Scala) ask for a function whose parameters (the address and the port of the
+server, or the port to listen on and the message to send) change from one world to the other, so that hard-coded values fail.
 
 The first one, `client(server, port)`, downloads a message and displays it on the standard output. One of its worlds sends a
 `%s` to catch the programs using the received data as the format of `printf()`. Another one introduces the short reads: the
@@ -394,15 +394,15 @@ looks like an arbitrary decision of the receiving system. A last world faces a s
 retry `connect()` after a `sleep()` on `ECONNREFUSED`, with a new socket, and the PLM interrupts the busy loops retrying without
 waiting.
 
-The second one, `server(port)`, takes the server side of a connection (`bind()`, `listen()`, `accept()`). The world view shows
-that the socket returned by `accept()` shares its port with the listening one, to fight the frequent confusion between ports
-and sockets. The client sends a line ended by `'\n'` and waits for the answer (the line, twice) before closing, so the server
-cannot wait for the end of the stream: it must receive until the `'\n'`, which introduces the framing of the messages. Its
-worlds deliver the line in one packet, in two, and byte by byte.
+The second one, `server(port, message)`, takes the server side of a connection (`bind()`, `listen()`, `accept()`), and sends
+the message to a client that reads until the end of the stream, as in the first exercise. The world view shows that the socket
+returned by `accept()` shares its port with the listening one, to fight the frequent confusion between ports and sockets. One of
+its worlds has a client that connects late, so that `accept()` waits.
 
-The planned progression continues with the deadlocks of badly designed protocols, the short writes, the handling of errors,
-and a server accepting several clients. A last exercise could send an emoji, to introduce the encoding of characters once the
-system calls are mastered: only ASCII data is accepted until then.
+The planned progression continues with the framing of the messages (a client sending a line ended by `'\n'` and waiting for the
+answer, so that the server cannot wait for the end of the stream, in worlds splitting the line in packets), the deadlocks of badly
+designed protocols, the short writes, the handling of errors, and a server accepting several clients. A last exercise could send
+an emoji, to introduce the encoding of characters once the system calls are mastered: only ASCII data is accepted until then.
 
 TODO:
 * The short writes are not exercised yet: `send()` and `write()` always write everything.
