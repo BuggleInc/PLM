@@ -46,7 +46,6 @@ import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.tracking.GitTracker;
-import plm.core.ui.MainFrame;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.IWorldView;
@@ -349,7 +348,6 @@ public class Game implements IWorldView {
                                           lect.getName() + " (" + lect.getId() + ")", getProgrammingLanguage(), fallback.getLang()));
         setProgrammingLanguageSafe(fallback);
       }
-      MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
     } catch (UserAbortException e) {
       System.out.println(i18n.tr("Operation cancelled by the user"));
     }
