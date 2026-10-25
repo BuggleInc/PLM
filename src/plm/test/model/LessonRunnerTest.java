@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Future;
+import javax.swing.SwingUtilities;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -51,6 +52,13 @@ public class LessonRunnerTest {
     field.set(game, sessionKit);
   }
 
+  /** The states notified so far: Game notifies its listeners on the Swing thread, whose pending notifications are awaited first */
+  private List<GameState> notifiedStates() throws Exception
+  {
+    SwingUtilities.invokeAndWait(() -> {});
+    return states;
+  }
+
   private Exercise exerciseThat(RunOutcome outcome) throws Exception
   {
     Exercise exo = Mockito.mock(Exercise.class);
@@ -68,7 +76,7 @@ public class LessonRunnerTest {
     RunOutcome outcome = new LessonRunner(game).runExercise(exerciseThat(error), lang);
 
     Assertions.assertSame(error, outcome);
-    Assertions.assertEquals(List.of(GameState.COMPILATION_STARTED, GameState.COMPILATION_ENDED, GameState.EXECUTION_ENDED), states);
+    Assertions.assertEquals(List.of(GameState.COMPILATION_STARTED, GameState.COMPILATION_ENDED, GameState.EXECUTION_ENDED), notifiedStates());
   }
 
   @Test public void testOutcomeOfTheExecutionIsReturnedAsIs() throws Exception
@@ -77,7 +85,8 @@ public class LessonRunnerTest {
     passed.outcome    = RunOutcome.kind.PASS;
 
     Assertions.assertSame(passed, new LessonRunner(game).runExercise(exerciseThat(passed), lang));
-    Assertions.assertEquals(GameState.EXECUTION_ENDED, states.get(states.size() - 1));
+    List<GameState> notified = notifiedStates();
+    Assertions.assertEquals(GameState.EXECUTION_ENDED, notified.get(notified.size() - 1));
   }
 
   @Test public void testStopGivesAnEmptyOutcome() throws Exception
@@ -95,6 +104,6 @@ public class LessonRunnerTest {
     Assertions.assertTrue(outcome.executionError.contains("Not run"), outcome.executionError);
     Assertions.assertNull(outcome.compilationError);
     Assertions.assertEquals(0, outcome.totalTests);
-    Assertions.assertEquals(List.of(GameState.COMPILATION_STARTED, GameState.COMPILATION_ENDED, GameState.EXECUTION_ENDED), states);
+    Assertions.assertEquals(List.of(GameState.COMPILATION_STARTED, GameState.COMPILATION_ENDED, GameState.EXECUTION_ENDED), notifiedStates());
   }
 }
