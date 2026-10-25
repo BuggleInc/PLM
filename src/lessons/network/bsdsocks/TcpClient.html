@@ -35,13 +35,17 @@ of Java[!scala], which Scala programs use[/!][/!].</p>
   which returns the amount of bytes received[/!][!c]in a buffer with <code>recv()</code>, which returns the amount of bytes
   received[/!][!python]with
   <code>recv(512)</code>, which returns the bytes received (at most 512 here)[/!]. Beware that the message may be conveyed from
-  the server to you in several packets. The [!c|python]function <code>recv()</code>[/!][!java|scala]method <code>read()</code>[/!]
-  returns the available data when there is some, and it's
-  blocking when no data is available but more data could come from the network. Finally, it returns [!c]0[/!][!python]empty
-  bytes (<code>b""</code>)[/!][!java|scala]-1[/!] when no data is available and no more data could come because the other part (the server) closed
-  the connection. So you should keep reading from the network until [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</code>[/!] returns
+  the server to you in several packets. The [!c|python]function <code>recv()</code>[/!][!java|scala]method
+  <code>read()</code>[/!] returns the available data when there is some, and it's blocking when no data is available but more
+  data could come from the network. Finally, it returns [!c]0[/!][!python]empty bytes (<code>b""</code>)[/!][!java|scala]-1[/!]
+  when no data is available and no more data could come because the other part (the server) closed the connection. So you should
+  keep reading from the network until [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</code>[/!] returns
   [!c]0[/!][!python]empty bytes[/!][!java|scala]-1 (<code>transferTo()</code> does this loop for you, but write it once
-  yourself)[/!].</li>
+  yourself)[/!]. On a real network, a message sent at once arrives at once most of the time when it fits in a single packet,
+  e.g. about 1460 bytes on Ethernet. This is why a program calling
+  [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</code>[/!] only once often works with short messages, and fails
+  later with longer ones or on a slower network. Note that even below that size, TCP guarantees nothing: the worlds of this
+  exercise split short messages to show it.</li>
   <li>Write the received bytes on the standard output with [!c]<code>write()</code>, <code>printf()</code>, or
   similar[/!][!python]<code>sys.stdout.buffer.write()</code>, which writes bytes (<code>print()</code> writes text)[/!][!java|scala]
   <code>System.out.write(buffer, 0, received)</code>, which writes bytes (<code>print()</code> writes text)[/!]. If you receive the data in
