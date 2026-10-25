@@ -45,6 +45,18 @@ public class CodeCreation {
       return entity.getAnnotation(Glue.class).wrapped();
     }
 
+    /** The classes of the JDK that its hand-written Java glue replaces (see Glue.replaces()) */
+    public List<String> replaces()
+    {
+      return List.of(entity.getAnnotation(Glue.class).replaces());
+    }
+
+    /** The glue of that name, or null if there is none */
+    public static Remote named(String name)
+    {
+      return REMOTES.stream().filter(remote -> remote.name().equals(name)).findFirst().orElse(null);
+    }
+
     /**
      * Its hand-written glue for the generated file of that extension (e.g. ".h"): the content of the file &lt;name&gt;Glue&lt;extension&gt;
      * next to the sources of its entity (e.g. RemoteConsGlue.py), or "" if there is none.

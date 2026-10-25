@@ -15,9 +15,16 @@ import java.lang.annotation.Target;
 
   /**
    * Whether the hand-written glue of the universe (see CodeCreation.Remote.extraGlue()) wraps the generated functions, to offer the
-   * students a more idiomatic API than the primitives themselves (e.g. the C system calls, with their buffers and structures). The
-   * C and Python generators support it: the generated functions become private, named plm_remote_xxx in C (static) and
+   * students a more idiomatic API than the primitives themselves (e.g. the C system calls, with their buffers and structures). Every
+   * generator supports it: the generated functions become private, named plm_remote_xxx in C (static), Java and Scala, and
    * _plm_remote_xxx in Python (out of reach of "import *").
    */
   boolean wrapped() default false;
+
+  /**
+   * The classes of the JDK that the hand-written Java glue replaces with nested classes of the same simple name, such as
+   * "java.net.Socket": the generated Java entity imports the glue's ones by name, which beats the imports on demand of the entity
+   * (such as java.net.* and the implicit java.lang.*), while its single-type imports of the replaced classes are dropped.
+   */
+  String[] replaces() default {};
 }

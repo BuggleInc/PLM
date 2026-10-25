@@ -188,7 +188,8 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     abstract String getTypeDeclaration(Class<?> type);
     abstract String getParameter(PrimitiveParameter parameter);
     abstract String getPrototype(PrimitiveMethod method);
-    abstract String getImplementation(PrimitiveMethod method);
+    /** The method sending that primitive to the PLM, private and named plm_remote_xxx when the hand-written glue wraps it */
+    abstract String getImplementation(PrimitiveMethod method, boolean wrapped);
 
     /** File extension including the dot, e.g. ".java" or ".scala". */
     abstract String fileExtension();
@@ -218,7 +219,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
       Set<Class<?>> involved = ExternalPrimitiveLanguage.involved(methods);
 
       final String type_declarations = involved.stream().map(this::getTypeDeclaration).filter(o -> !o.isBlank()).collect(Collectors.joining("\n\n"));
-      final String implementations   = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n"));
+      final String implementations   = methods.stream().map(m -> getImplementation(m, remote.isWrapped())).collect(Collectors.joining("\n\n"));
 
       String body  = "\n" + type_declarations + "\n" + implementations;
       String extra = remote.extraGlue(fileExtension());

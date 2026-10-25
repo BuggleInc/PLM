@@ -920,7 +920,16 @@ documentation](PEDAGOGY.md#system-programming).
   `ConnectionRefusedError`). `sys.stdout` and `sys.stderr` write on the standard streams of the world, line by line, while the
   uncaught exceptions still reach the PLM console (`sys.excepthook`). `Remote.py` imports the real socket module as `_socket`
   and writes its own messages on `sys.__stderr__` for that reason. The glue only exports `getParamString()` and
-  `getParamInt()`, for the code of the entity. Java and Scala are not supported yet.
+  `getParamInt()`, for the code of the entity.
+* **The Java glue** (`RemotePosixGlue.java`, appended in the class of the generated methods, which are private and named
+  `plm_remote_xxx`) offers nested classes with the interface of `java.net.Socket`, `java.net.ServerSocket` (with their
+  streams) and of `Thread.sleep()`, which throw the exceptions of the JDK (such as `ConnectException`). They are listed in
+  `@Glue(replaces = ...)`: the generated entity imports them by name, which beats the imports on demand of its template
+  (`java.net.*`) and the implicit `java.lang.*`, while its single-type imports of the replaced classes are dropped. The static
+  initializer of the glue redirects `System.out` and `System.err` to the world, and the generated `Main` keeps the original
+  `System.err` to print the uncaught exceptions on the PLM console. The leading `import` lines of a Java glue are moved before
+  the generated class. As these templates use the classes of the glue, `lessons/network/**/*Entity.java` are not compiled with
+  the PLM (see the `pom.xml`). Scala is not supported yet.
 * **The display**: `PosixWorldView` draws the student's machine and the peers' ones (mirrored), with the descriptors of their
   processes, the kernel objects in violet, their queues as cells, and the network in green. `PosixTracePanel`, under
   the view, traces the system calls in the style of strace, the ongoing steps of the peers, and their remaining steps greyed.

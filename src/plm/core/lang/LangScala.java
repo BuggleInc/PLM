@@ -307,9 +307,9 @@ public class LangScala extends JvmTemplatedLang {
 
     String getPrototype(PrimitiveMethod method) { return "def " + signature(method, method.name()); }
 
-    String getImplementation(PrimitiveMethod method)
+    String getImplementation(PrimitiveMethod method, boolean wrapped)
     {
-      String prototype = getPrototype(method);
+      String prototype = wrapped ? "private def " + signature(method, "plm_remote_" + method.name()) : getPrototype(method);
 
       String name = method.command(); // the PLM only knows the canonical name of the translated aliases
 

@@ -6,7 +6,7 @@ import plm.core.lang.primitives.Glue;
 import plm.universe.Entity;
 
 /** The student's process. Its system calls are executed by the kernel of its world, which keeps the data as one char per byte. */
-@Glue(value = "RemotePosix", wrapped = true)
+@Glue(value = "RemotePosix", wrapped = true, replaces = {"java.net.Socket", "java.net.ServerSocket", "java.lang.Thread"})
 @EntityPrimitives(PosixEntityPrimitives.class)
 public class PosixEntity extends Entity implements PosixEntityPrimitives {
 

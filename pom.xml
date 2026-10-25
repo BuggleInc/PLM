@@ -287,6 +287,8 @@
           <!-- Fragments of hand-written glue, appended to the generated one by CodeCreation -->
           <excludes>
             <exclude>**/Remote*Glue.java</exclude>
+            <!-- Templates of the student's code, only compiled once templated (they use the classes of their glue) -->
+            <exclude>lessons/network/**/*Entity.java</exclude>
           </excludes>
           <compilerArgs>
             <arg>-Xlint:none</arg>

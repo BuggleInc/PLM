@@ -14,6 +14,7 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import plm.core.PLMCompilerException;
+import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -114,6 +115,12 @@ public class LangJava extends JvmTemplatedLang {
 
   @Override protected String entityHeader(String remote, String userImports)
   {
+    // The classes replaced by the glue are imported from it by name, instead of the entity's own single-type imports of them
+    CodeCreation.Remote glue = CodeCreation.Remote.named(remote);
+    for (String replaced : glue == null ? List.<String>of() : glue.replaces()) {
+      userImports = userImports.replaceAll("import\\s+" + Pattern.quote(replaced) + "\\s*;", "");
+      userImports += "\nimport generated." + remote + "." + replaced.substring(replaced.lastIndexOf('.') + 1) + ";";
+    }
     String imports = ("import static generated.ValueSerializer.*;\n"
                       + "import java.awt.Color;\n"
                       + "import static generated.Remote.*;\n"
@@ -134,11 +141,12 @@ public class LangJava extends JvmTemplatedLang {
         + "\n"
         + "public class Main {\n"
         + "   public static void main(String[] args) {\n"
+        + "     java.io.PrintStream console = System.err; // the glue of a world may redirect System.err to the world\n"
         + "     try {\n"
         + "       Remote.connect(args[0]);\n"
         + "       new Entity().run();\n"
         + "     } catch (Exception e) {\n"
-        + "       e.printStackTrace();\n"
+        + "       e.printStackTrace(console);\n"
         + "       System.exit(1);\n"
         + "     }\n"
         + "     System.exit(0);\n"
@@ -216,9 +224,9 @@ public class LangJava extends JvmTemplatedLang {
 
     String getPrototype(PrimitiveMethod method) { return "public static " + signature(method, method.name()); }
 
-    String getImplementation(PrimitiveMethod method)
+    String getImplementation(PrimitiveMethod method, boolean wrapped)
     {
-      String prototype = getPrototype(method);
+      String prototype = wrapped ? "private static " + signature(method, "plm_remote_" + method.name()) : getPrototype(method);
 
       String name = method.command(); // the PLM only knows the canonical name of the translated aliases
 
@@ -234,8 +242,11 @@ public class LangJava extends JvmTemplatedLang {
 
     String wrapCode(String name, String body)
     {
-      return "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static generated.Remote.*;\nimport java.awt.Color;\n\npublic class " + name + " {" +
-          body.replace("\n", "\n\t") + "\n}";
+      // The imports of the hand-written glue go before the class
+      String imports = body.lines().filter(line -> line.startsWith("import ")).map(line -> line + "\n").collect(Collectors.joining());
+      body           = body.lines().filter(line -> !line.startsWith("import ")).collect(Collectors.joining("\n"));
+      return "/* THIS FILE IS GENERATED. DO NOT EDIT */\nimport static generated.Remote.*;\nimport java.awt.Color;\n" + imports + "\npublic class " + name +
+          " {" + body.replace("\n", "\n\t") + "\n}";
     }
   }
 }
