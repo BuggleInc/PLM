@@ -236,7 +236,8 @@ public class ValueSerializerTest {
     assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("[1:i5"));              // Missing closing bracket
     assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("[1:iA]"));             // Invalid integer
     assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("[1:\"unterminated]")); // Missing quote
-    assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("[1:x99]"));            // Invalid type hint
+    assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("[1:q99]"));            // Invalid type hint
+    assertThrows(IllegalArgumentException.class, () -> ValueSerializer.deserialize("[1:x9]"));             // Odd number of hex digits
   }
 
   @Test void deserialize_topLevelScalar_returnsScalar() { assertEquals(5, ValueSerializer.deserialize("i5")); }
