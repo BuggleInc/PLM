@@ -40,6 +40,7 @@ public class EntityTemplateParser {
     UNIVERSES.put("RemoteHanoi", List.of("Hanoi", "RemoteHanoi"));
     UNIVERSES.put("RemoteSort", List.of("Sort", "RemoteSort"));
     UNIVERSES.put("RemoteLander", List.of("Lander", "RemoteLander"));
+    UNIVERSES.put("RemotePosix", List.of("Posix", "RemotePosix"));
   }
 
   /** Guesses which RemoteXxx universe an entity file belongs to, or null if it couldn't be guessed. */

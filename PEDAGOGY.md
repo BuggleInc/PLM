@@ -151,8 +151,13 @@ eventually teaching some things along the way.
 
 # Learning material
 
-The material is decomposed in about 15 lessons, each providing a coherent learning path. There is four groups of lessons,
-depending on their pedagogical objectives.
+The material is decomposed in about 15 lessons, each providing a coherent learning path. Lessons can be grouped depending on
+their pedagogical objectives as follows:
+- Tactical programming: basic syntax on the imperative kernel (variable, loop, method), plus application problems to get some
+  experience in programming.
+- Sort algorithms
+- Recursion
+- System programming
 
 ## Tactical programming
 
@@ -349,6 +354,50 @@ decomposition. In addition of the  classical exercise, it uses variations from t
 linear twin, tricolor and cyclic towers) to let the students decompose each new problem into calls to the solutions of the
 previous ones. The movement restrictions of the linear and cyclic variants are enforced by API gating. The lesson ends with the
 iterative algorithm.
+
+## System programming
+
+### The networking lesson
+
+This lesson (`lessons.network`) is under construction, and only works in C for now. It comes with its own POSIX universe
+(`plm.universe.posix`), where the student's process uses the POSIX system calls (with their real signatures) on a simulated
+system: regular files, and TCP connections to scripted peers.
+The world displays the descriptors of the process and the objects they designate, and compares the outcome semantically: the
+files must have the right content, the peers must have completed their script, and no descriptor may be left open, whatever
+their numbers. The time only advances when the process waits, so that each scenario has a single causal history, while the
+peers can still refuse an early connection. A call that would block forever (both sides waiting for each other) is reported
+as a deadlock instead of hanging.
+
+The two exercises (requesting 32 and 49 lines of C) ask for a function whose parameters (the address and the port of the
+server, or the port to listen on) change from one world to the other, so that hard-coded values fail.
+
+The first one, `client(server, port)`, downloads a message and displays it on the standard output. One of its worlds sends a
+`%s` to catch the programs using the received data as the format of `printf()`. Another one introduces the short reads: the
+data sent by the peers waits in their send queue until their script lets the network transmit it, in packets, which the world
+view shows travelling from one machine to the other. The programs calling `recv()` only once fail when the rest of the data is
+still on its way, while working in the first worlds: they must receive until the end of the stream. A short read thus never
+looks like an arbitrary decision of the receiving system. A last world faces a server that is not ready yet: the student must
+retry `connect()` after a `sleep()` on `ECONNREFUSED`, with a new socket, and the PLM interrupts the busy loops retrying without
+waiting.
+
+The second one, `server(port)`, takes the server side of a connection (`bind()`, `listen()`, `accept()`). The world view shows
+that the socket returned by `accept()` shares its port with the listening one, to fight the frequent confusion between ports
+and sockets. The client sends a line ended by `'\n'` and waits for the answer (the line, twice) before closing, so the server
+cannot wait for the end of the stream: it must receive until the `'\n'`, which introduces the framing of the messages. Its
+worlds deliver the line in one packet, in two, and byte by byte.
+
+The planned progression continues with the deadlocks of badly designed protocols, the short writes, the handling of errors,
+and a server accepting several clients. A last exercise could send an emoji, to introduce the encoding of characters once the
+system calls are mastered: only ASCII data is accepted until then.
+
+TODO:
+* The panel under the world view traces the system calls and the steps of the peers, with the remaining script greyed. A
+  graphical temporal view (a sequence diagram) would help further to debug the protocols.
+* The short writes are not exercised yet: `send()` and `write()` always write everything.
+* The exercises are only available in C. The other languages need their own idiomatic glue.
+* The output functions of `stdio.h` on the standard streams (`printf()`, `fprintf()`, `puts()`, `perror()`...) are intercepted by
+  the glue and unbuffered, but the other functions working on `FILE*` (`fopen()`, `fdopen()`...) are out of scope for now.
+* Pipes and forks are not supported yet.
 
 ## Recreative lessons
 

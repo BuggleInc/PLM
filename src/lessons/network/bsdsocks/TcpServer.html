@@ -1,0 +1,37 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Serving a client</h1>
+
+<p>This time, your program is the server: write the function <code>server(port)</code>, where a client will connect to the given
+port of your machine, send a line of text ended by <code>'\n'</code>, and wait for your answer before closing the connection.
+Your mission is to be a doubling echo: you must send the received line twice to the client, with its <code>'\n'</code> each
+time.</p>
+
+<p>A server takes more steps than a client, since it must first prepare a socket that waits for the connections:</p>
+<ol>
+  <li>Create a socket with <code>socket(AF_INET, SOCK_STREAM, 0)</code>.</li>
+  <li>Attach it to the given port with <code>bind()</code>. The <code>struct sockaddr_in</code> is filled as for
+    <code>connect()</code>, but the address <code>INADDR_ANY</code> (converted with <code>htonl()</code>) means that any
+    machine may connect.</li>
+  <li>Mark it as accepting the connections with <code>listen()</code>. Its second parameter is the length of the queue of the
+  clients that wait to be accepted. After this call, the clients can connect even if your program does not accept and serve them
+  yet.</li>
+  <li>Accept a client with <code>accept()</code>, which waits until a client connected and returns a <b>new</b> descriptor,
+    dedicated to this client. You can pass <code>NULL</code> as second and third parameters if the address of the client does
+    not matter.</li>
+  <li>Receive the line on the new descriptor with <code>recv()</code>. As in the previous exercise, the line may arrive in
+    several packets, so a single <code>recv()</code> may only return its beginning: keep receiving until you got its
+    <code>'\n'</code>. You cannot wait for the end of the stream instead, since the client waits for your answer before closing
+    the connection. Marking where a message ends, as this <code>'\n'</code> does, is called <i>framing</i>.</li>
+  <li>Send the line twice to the client with <code>send()</code>.</li>
+  <li>Close both descriptors: the one of the client, and the one that waits for the connections.</li>
+</ol>
+
+<p>Look at the world view while your program runs: the socket returned by <code>accept()</code> shares its port with the
+socket that waits for the connections. A port is not a socket on which external connections plug: the system dispatches the
+incoming data to the right application depending on four pieces of information: <code>{source IP, source port, destination IP,
+destination port}</code>. The <code>destination IP</code> is used to find the right machine, and then the operating system of
+that machine delivers the data using the three other pieces of information, not only the <code>destination port</code>. Doing
+otherwise would not be convenient for servers serving many incoming connections, as the number of available ports is limited to
+65535 on a given machine. If each incoming connection were given a specific port, large servers would quickly run out of
+available ports. Indeed, it is not possible to have more than 65535 ports on a given machine, because the port number is
+encoded as a 16 bit integer on the Internet.</p>

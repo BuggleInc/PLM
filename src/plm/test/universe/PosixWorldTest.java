@@ -1,0 +1,327 @@
+package plm.test.universe;
+
+import static plm.universe.posix.PosixWorld.AF_INET;
+import static plm.universe.posix.PosixWorld.O_CREAT;
+import static plm.universe.posix.PosixWorld.O_TRUNC;
+import static plm.universe.posix.PosixWorld.O_WRONLY;
+import static plm.universe.posix.PosixWorld.SOCK_STREAM;
+
+import java.nio.charset.StandardCharsets;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import plm.universe.posix.Peer;
+import plm.universe.posix.PosixEntity;
+import plm.universe.posix.PosixWorld;
+
+/** Scenarios of the POSIX world, played directly on the entity (no remoting). */
+public class PosixWorldTest {
+
+  private static byte[] b(String text) { return text.getBytes(StandardCharsets.ISO_8859_1); }
+
+  private static String s(byte[] data) { return new String(data, StandardCharsets.ISO_8859_1); }
+
+  private static PosixEntity process(PosixWorld w) { return (PosixEntity)w.getEntity(0); }
+
+  private static PosixWorld download(Peer server) { return new PosixWorld("download").addPeer(server); }
+
+  /** Downloads everything from 10.0.0.1:80 into out.txt, and closes everything */
+  private static void downloadAll(PosixEntity p)
+  {
+    int sock = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(sock, "10.0.0.1", 80));
+    int file = p.open("out.txt", O_WRONLY | O_CREAT | O_TRUNC);
+    for (String data = s(p.recv(sock, 512, 0)); !data.isEmpty(); data = s(p.recv(sock, 512, 0)))
+      Assertions.assertEquals(data.length(), p.write(file, b(data)));
+    p.close(file);
+    p.close(sock);
+  }
+
+  @Test public void testDownloadInOneChunk()
+  {
+    PosixWorld w  = download(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        send(4, "HELLO")
+        transmit(4, 5)
+        close(4)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(3, sock);
+    Assertions.assertEquals(0, p.connect(sock, "10.0.0.1", 80));
+    Assertions.assertEquals("HELLO", s(p.recv(sock, 512, 0)));
+    Assertions.assertEquals("", s(p.recv(sock, 512, 0)));
+  }
+
+  @Test public void testRecvReturnsWhatArrived()
+  {
+    PosixWorld w  = download(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        sendInPackets(4, "HELLO", 3, 1)
+        close(4)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    Assertions.assertEquals("HEL", s(p.recv(sock, 512, 0))); // the rest is still in the send queue of the server
+    Assertions.assertEquals("LO", s(p.recv(sock, 512, 0)));
+    Assertions.assertEquals("", s(p.recv(sock, 512, 0)));
+  }
+
+  @Test public void testRecvTakesSeveralPacketsAndLimitsToTheBuffer()
+  {
+    PosixWorld w  = download(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        send(4, "HELLO")
+        transmit(4, 2)
+        transmit(4, 3)
+        close(4)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    Assertions.assertEquals("HELL", s(p.recv(sock, 4, 0)));
+    Assertions.assertEquals("O", s(p.recv(sock, 512, 0)));
+  }
+
+  @Test public void testEndOfStreamWaitsForTheData()
+  {
+    PosixWorld w  = download(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        send(4, "HELLO")
+        close(4)
+        sleep(1)
+        transmit(4, 5)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    Assertions.assertEquals("HELLO", s(p.recv(sock, 512, 0))); // not the end of the stream, which travels after the data
+    Assertions.assertEquals("", s(p.recv(sock, 512, 0)));
+  }
+
+  @Test public void testSameResultWithOtherDescriptorNumbersWins()
+  {
+    Peer server     = Peer.server("10.0.0.1", 80, """
+        accept(3)
+        sendInPackets(4, "HELLO", 3, 1)
+        close(4)
+        """);
+    PosixWorld ref  = download(server);
+    PosixWorld curr = (PosixWorld)ref.copy();
+    downloadAll(process(ref));
+
+    PosixEntity p = process(curr); // Opens the file before the socket, so the descriptor numbers differ
+    int file      = p.open("out.txt", O_WRONLY | O_CREAT | O_TRUNC);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    for (String data = s(p.recv(sock, 512, 0)); !data.isEmpty(); data = s(p.recv(sock, 512, 0)))
+      p.write(file, b(data));
+    p.close(sock);
+    p.close(file);
+
+    Assertions.assertTrue(curr.winning(ref), ref.diffTo(curr, null));
+  }
+
+  @Test public void testLeakedDescriptorLoses()
+  {
+    PosixWorld ref  = download(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        send(4, "HELLO")
+        transmit(4, 5)
+        close(4)
+        """));
+    PosixWorld curr = (PosixWorld)ref.copy();
+    downloadAll(process(ref));
+
+    PosixEntity p = process(curr);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    int file = p.open("out.txt", O_WRONLY | O_CREAT | O_TRUNC);
+    p.write(file, p.recv(sock, 512, 0));
+    p.close(file); // the socket is not closed
+
+    Assertions.assertFalse(curr.winning(ref));
+    Assertions.assertTrue(ref.diffTo(curr, null).contains("Open descriptors"), ref.diffTo(curr, null));
+  }
+
+  @Test public void testConnectionRefusedUntilTheServerAccepts()
+  {
+    PosixWorld w  = download(Peer.server("10.0.0.1", 80, """
+        sleep(3)
+        accept(3)
+        send(4, "HELLO")
+        transmit(4, 5)
+        close(4)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(-1, p.connect(sock, "10.0.0.1", 80));
+    Assertions.assertEquals("ECONNREFUSED", p.lastError());
+    p.sleep(3);
+    Assertions.assertEquals(0, p.connect(sock, "10.0.0.1", 80));
+    Assertions.assertEquals("HELLO", s(p.recv(sock, 512, 0)));
+  }
+
+  @Test public void testBusyLoopIsDetected()
+  {
+    PosixWorld w  = download(Peer.server("10.0.0.1", 80, """
+        sleep(3)
+        accept(3)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertThrows(IllegalStateException.class, () -> {
+      while (p.connect(sock, "10.0.0.1", 80) < 0) {
+      }
+    });
+  }
+
+  @Test public void testDeadlockIsReported()
+  {
+    PosixWorld w  = download(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        recv(4, 5)
+        send(4, "ANSWER")
+        transmit(4, 6)
+        close(4)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    IllegalStateException e = Assertions.assertThrows(IllegalStateException.class, () -> p.recv(sock, 512, 0));
+    Assertions.assertTrue(e.getMessage().contains("RECV"), e.getMessage());
+  }
+
+  @Test public void testServerSide()
+  {
+    PosixWorld w  = new PosixWorld("server").addPeer(Peer.client("10.0.0.2", 3000, """
+        sleep(1)
+        connect(3)
+        send(3, "PING")
+        transmit(3, 4)
+        recv(3, 4)
+        close(3)
+        """));
+    PosixEntity p = process(w);
+    int master    = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.bind(master, "0.0.0.0", 3000));
+    Assertions.assertEquals(0, p.listen(master, 5));
+    int client = p.accept(master);
+    Assertions.assertEquals(4, client);
+    Assertions.assertEquals("PING", s(p.recv(client, 512, 0)));
+    Assertions.assertEquals(4, p.send(client, b("PONG"), 0));
+    Assertions.assertEquals("", s(p.recv(client, 512, 0)));
+    Assertions.assertEquals(0, p.close(client));
+    Assertions.assertEquals(0, p.close(master));
+  }
+
+  /** Starts a server on port 3000 and accepts the connection of a client peer that sends PING and expects it back */
+  private static PosixWorld acceptedPing()
+  {
+    PosixWorld w  = new PosixWorld("ping").addPeer(Peer.client("10.0.0.2", 3000, """
+        sleep(1)
+        connect(3)
+        send(3, "PING")
+        transmit(3, 4)
+        recv(3, 4)
+        close(3)
+        """));
+    PosixEntity p = process(w);
+    int master    = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.bind(master, "0.0.0.0", 3000);
+    p.listen(master, 5);
+    Assertions.assertEquals(4, p.accept(master));
+    return w;
+  }
+
+  /** Echoes the PING of the client on descriptor 4 (sending it n times), and closes everything */
+  private static void echo(PosixEntity p, int n)
+  {
+    byte[] data = p.recv(4, 512, 0);
+    for (int i = 0; i < n; i++)
+      p.send(4, data, 0);
+    p.close(4);
+    p.close(3);
+  }
+
+  @Test public void testCopyKeepsTheConnections()
+  {
+    PosixWorld w    = acceptedPing();
+    PosixWorld copy = (PosixWorld)w.copy(); // in the middle of the connection, that the copy must keep between its processes
+    echo(process(w), 1);
+    echo(process(copy), 1);
+    Assertions.assertTrue(copy.winning(w), w.diffTo(copy, null));
+  }
+
+  @Test public void testExtraDataSentToThePeerLoses()
+  {
+    PosixWorld ref  = acceptedPing();
+    PosixWorld curr = (PosixWorld)ref.copy();
+    echo(process(ref), 1);
+    echo(process(curr), 2); // the client only reads the first PING, but the second one arrived too
+    Assertions.assertFalse(curr.winning(ref));
+    Assertions.assertTrue(ref.diffTo(curr, null).contains("received 'PINGPING'"), ref.diffTo(curr, null));
+  }
+
+  @Test public void testClientConnectingBeforeListenIsRefused()
+  {
+    PosixWorld w  = new PosixWorld("early").addPeer(Peer.client("10.0.0.2", 3000, """
+        connect(3)
+        send(3, "PING")
+        transmit(3, 4)
+        """));
+    PosixEntity p = process(w);
+    int master    = p.socket(AF_INET, SOCK_STREAM, 0); // the peer connects (and is refused) at the first system call
+    p.bind(master, "0.0.0.0", 3000);
+    p.listen(master, 5);
+    Assertions.assertThrows(IllegalStateException.class, () -> p.accept(master));
+  }
+
+  @Test public void testStandardOutputCounts()
+  {
+    PosixWorld ref  = new PosixWorld("stdout");
+    PosixWorld curr = (PosixWorld)ref.copy();
+    Assertions.assertEquals(6, process(ref).write(1, b("Hello\n")));
+
+    Assertions.assertFalse(curr.winning(ref)); // nothing written
+    Assertions.assertTrue(ref.diffTo(curr, null).contains("standard output"), ref.diffTo(curr, null));
+    process(curr).write(1, b("Hello\n"));
+    Assertions.assertTrue(curr.winning(ref), ref.diffTo(curr, null));
+  }
+
+  @Test public void testStandardInput()
+  {
+    PosixEntity p = process(new PosixWorld("stdin").setStdin("ab"));
+    Assertions.assertEquals("a", s(p.read(0, 1)));
+    Assertions.assertEquals("b", s(p.read(0, 10)));
+    Assertions.assertEquals("", s(p.read(0, 10)));
+    Assertions.assertEquals(-1, p.write(0, b("x")));
+    Assertions.assertEquals("EBADF", p.lastError());
+  }
+
+  @Test public void testScriptErrorsGiveTheirLine()
+  {
+    IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.server("10.0.0.1", 80, """
+        accept(3) // comments are ignored
+        sned(4, "HELLO")
+        """));
+    Assertions.assertTrue(e.getMessage().startsWith("Line 2 of the script of the server peer: unknown call sned()"), e.getMessage());
+
+    e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.server("10.0.0.1", 80, "accept(4)"));
+    Assertions.assertTrue(e.getMessage().contains("descriptor 3, not 4"), e.getMessage());
+
+    e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.server("10.0.0.1", 80, "send(4, \"HELLO)"));
+    Assertions.assertTrue(e.getMessage().contains("unterminated"), e.getMessage());
+  }
+
+  @Test public void testUnknownFileAndBadDescriptor()
+  {
+    PosixEntity p = process(new PosixWorld("errors"));
+    Assertions.assertEquals(-1, p.open("missing.txt", 0));
+    Assertions.assertEquals("ENOENT", p.lastError());
+    Assertions.assertEquals(-1, p.close(42));
+    Assertions.assertEquals("EBADF", p.lastError());
+    Assertions.assertNull(p.recv(1, 10, 0));
+    Assertions.assertEquals("ENOTSOCK", p.lastError());
+  }
+}

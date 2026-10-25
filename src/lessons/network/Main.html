@@ -1,0 +1,14 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Network programming</h1>
+
+<p>Most programs talk to other programs over the network, such as a web browser with a web server, or a game with the server
+of the game. In this lesson, your programs connect to other programs or accept their connections, and exchange data with them
+over TCP. You will face the realities of the network on the way: the data arriving in several pieces, or a server that is not
+ready yet.</p>
+
+<p>Your programs use the system calls of UNIX (POSIX), where a network connection is designated by a file descriptor: a small
+integer that the same functions read from and write to, as for a regular file or a terminal.</p>
+
+<p>Your program runs in a simulated system: its network and its files are part of the world displayed by the PLM, and the other
+programs follow a script. This lets the PLM show you what your program does, and check that it leaves everything in order: the
+right data written on the standard output, in the files or to the other programs, and no descriptor left open.</p>

@@ -224,9 +224,16 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   connected, both sides exchange UTF-8 text, one message per line.
 - **Student-side glue**: it is made of `Remote` (the connection, `sendCommand()` and the `getAnswerXxx()` readers), a
   `ValueSerializer`, and one generated `RemoteXxx` per universe, with one function per primitive of that universe. They are the
-  files that the templating does not compile with the exercise (see above for how they are built and shared). Every language
-  has its own implementation of this glue in `lib/resources/langages/` (except Scala, which uses the Java `Remote`), plus the
-  generator in its `ExternalPrimitiveLanguage`.
+  files that the templating does not compile with the exercise (see above for how they are built and shared). Every language has
+  its own implementation of this glue in `lib/resources/langages/` (except Scala, which uses the Java `Remote`), plus the
+  generator in its `ExternalPrimitiveLanguage`. 
+  
+  A universe may complete its glue with hand-written code, in files named after the glue and the extension of the generated file
+  (e.g. `RemoteConsGlue.py`, or `RemotePosixGlue.h` and `RemotePosixGlue.c` in C), next to the sources of its entity:
+  `CodeCreation` appends them verbatim to the generated files. As they are fragments, maven does not compile the
+  `Remote*Glue.java`. With `@Glue(value = "...", wrapped = true)`, this hand-written part wraps the generated functions to offer
+  a more idiomatic API than the primitives (e.g. the C system calls with their buffers and structures). Only the C generator
+  supports it for now: its generated functions become static and named `plm_remote_xxx`, and are not declared in the header.
 - **Primitives**: the primitives of a universe are the methods annotated with `@Primitive` in the interfaces extending
   `EntityPrimitivesBase` (e.g. `SimpleEntityPrimitives`), which the entity implements. `PrimitiveRegistration` finds them by
   reflection. At build time, `CodeCreation` generates the `RemoteXxx` glue of every language from them. A primitive is identified
@@ -254,7 +261,9 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   the types that a primitive can return, and each generator maps them to the function of its glue. Primitives that return
   nothing get no answer: the student's code does not wait for the PLM.
 - **Serialization**: `ValueSerializer` writes each value with a type tag: `i` for ints, `f` for doubles, `b0`/`b1` for booleans,
-  `c` for chars, `C` for colors (ARGB int), `Px:y` for points, a quoted string with `\\` and `\"` escapes, and `Z` for null.
+  `c` for chars, `C` for colors (ARGB int), `Px:y` for points, a quoted string with `\\`, `\"`, `\n` and `\r` escapes (the
+  protocol sends one value per line), `x` followed by the hexadecimal digits for byte arrays (binary data, that may contain any
+  byte), and `Z` for null.
   Arrays are `[n:v1:v2...]`, prefixed by the tag of their elements, and nest for multi-dimensional ones. Enums travel as their
   ordinal. It exists in Java (`plm.core.ValueSerializer`, which is compiled in the glue jarfile), Python (`ValueSerializer.py`)
   and C (`value_serializer.c`): the three must be kept in sync, which `ValueSerializerInteropTest` checks.
@@ -853,6 +862,61 @@ before shipping it in the PLM.
 duplicates are removed, and the lines that lengthen each other or that cover each other are merged into one by `mergeLines()`,
 until the amount of shapes is stable. This way, drawing a line in one or several segments gives the same result. The colors are
 not compared during the merge.
+
+### The POSIX universe
+
+The `plm.universe.posix` universe, used by the networking lesson (`lessons.network`), teaches the system calls on files and
+TCP sockets, without intercepting a real system: the student's process acts on a simulated kernel (`PosixWorld`), and the other
+programs are scripted peers (`Peer`). Its pedagogical choices are described in the [pedagogical
+documentation](PEDAGOGY.md#system-programming).
+
+* **The kernel**: `PosixWorld` holds the regular files and the processes: the student's one and the ones of the peers. Each
+  `PosixProcess` has its machine address, its descriptor table and its last error. The descriptors point to open file
+  descriptions (`FileDescription`): `StandardStream` (0, 1 and 2 at first), `RegularFile` and `Socket`. The kernel executes the
+  system calls of all the processes with the same code, following the Linux semantics and constants, and returns -1 with an
+  error name (e.g. `ECONNREFUSED`) on failure. Only ASCII data is accepted for now (`PosixEntity.text()`).
+* **Time**: the world has a clock. The student's system calls take no time, but `sleep()` and the blocking calls do: when nothing
+  can progress, the clock jumps to the next wake up of a peer. Each scenario thus has a single causal history. A call that would
+  block forever raises a deadlock (listing the state of the peers), and 1000 refused `connect()` in a row without the clock moving
+  raise a busy loop error.
+* **The scripts**: each peer has a script written in a text block, with the syntax of the trace (one call per line, `//`
+  comments), whose steps are executed through the system calls of the peer's process. A server peer has its listening socket on
+  descriptor 3, which only listens once the script reaches its first `accept()` (the connections are refused before), and
+  accepts its connection on 4; a client has its connection on 3, and connects to the student's machine (`PosixWorld.STUDENT_IP`).
+  A peer only has one connection for now, so the descriptors are only checked. The errors are reported with their line when
+  the exercise is loaded:
+  ```java
+  Peer.server("10.0.0.1", 80, """
+      accept(3)
+      sleep(1)
+      sendInPackets(4, "Hello, world!", 7, 1) // send(), then transmit() 7 bytes after each pause of 1s
+      close(4)
+      """)
+  ```
+  The peers act as far as they can before and after each system call of the student (`PosixEntity`), and each of their steps
+  is animated on its own (`PosixWorld.advancePeers()`). The student writes a function whose parameters (such as the address
+  and the port of the server) are given by each world with `PosixWorld.setParameters()`, along with its peers, so that
+  hard-coded values fail.
+* **The network**: a connection is a pair of sockets pointing to each other, each with its send and receive queues, created by
+  `connect()` in the backlog of the listening socket until `accept()` takes it. A peer's `send()` only fills the send queue of
+  its socket, and `transmit(fd, n)` carries at most `n` bytes to the receive queue of the other end, in one packet. The end of
+  the stream follows the data sent before the `close()`. This way, a short read is always caused by data still on its way,
+  visible in the world view. What the student sends reaches the peer at once (`PosixProcess.scriptedNetwork`).
+  `PosixWorld.addPeer()` warns when a script leaves some sent data untransmitted.
+* **Comparing the worlds** is semantic: the standard output and error, the files, the state of the peers (their position in the
+  script, and everything that arrived on their connections, received or not) and the open descriptors are compared, but not the
+  numbers of the descriptors, so a program opening its descriptors in another order still wins.
+* **The C glue** is hand-written (`RemotePosixGlue.h` and `RemotePosixGlue.c`, with `@Glue(wrapped = true)`): it offers the real
+  POSIX signatures, renames the student's calls with macros (`#define recv plm_recv`), converts `struct sockaddr_in` and the local
+  constants to the protocol ones, copies the received bytes in the caller's buffer, and sets the real `errno` from the
+  undocumented `lastError()` primitive. It exposes `getParamString()` and `getParamInt()` to the code of the entity that calls the
+  student's function (the generated functions of a wrapped glue are private). It also intercepts the output functions of `stdio.h`
+  on the standard streams (`printf()`, `fprintf()`, `puts()`, `fputs()`, `putchar()` and `perror()`), unbuffered, as the libc
+  would otherwise write behind its back. The other languages are not supported yet.
+* **The display**: `PosixWorldView` draws the student's machine and the peers' ones (mirrored), with the descriptors of their
+  processes, the kernel objects in violet, their queues as cells, and the network in green. `PosixTracePanel`, under
+  the view, traces the system calls in the style of strace, the ongoing steps of the peers, and their remaining steps greyed.
+* **No world I/O yet**: the expected worlds are recomputed at each load.
 
 # Maintainer's note
 
