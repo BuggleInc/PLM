@@ -48,6 +48,21 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     this.entitiesJarName = entitiesJarName;
   }
 
+  /**
+   * The imports of the entity, followed by the explicit imports of the classes of the JDK that the glue replaces (see
+   * Glue.replaces()). Such an import beats the imports on demand (such as java.net.* in Java or java.net._ in Scala) and the
+   * implicit java.lang ones, while the entity's own explicit imports of the replaced classes are dropped, since they would clash.
+   */
+  protected static String withGlueClasses(String remote, String userImports)
+  {
+    CodeCreation.Remote glue = CodeCreation.Remote.named(remote);
+    for (String replaced : glue == null ? List.<String>of() : glue.replaces()) {
+      userImports = userImports.replaceAll("import\\s+" + Pattern.quote(replaced) + "\\b\\s*;?", "");
+      userImports += "\nimport generated." + remote + "." + replaced.substring(replaced.lastIndexOf('.') + 1) + ";";
+    }
+    return userImports;
+  }
+
   /** The beginning of the generated Entity file: the package, the imports (on a single line, then the ones of the entity file) and the opening of Entity */
   protected abstract String entityHeader(String remote, String userImports);
 

@@ -14,7 +14,6 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import plm.core.PLMCompilerException;
-import plm.core.lang.primitives.CodeCreation;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitiveParameter;
@@ -115,16 +114,10 @@ public class LangJava extends JvmTemplatedLang {
 
   @Override protected String entityHeader(String remote, String userImports)
   {
-    // The classes replaced by the glue are imported from it by name, instead of the entity's own single-type imports of them
-    CodeCreation.Remote glue = CodeCreation.Remote.named(remote);
-    for (String replaced : glue == null ? List.<String>of() : glue.replaces()) {
-      userImports = userImports.replaceAll("import\\s+" + Pattern.quote(replaced) + "\\s*;", "");
-      userImports += "\nimport generated." + remote + "." + replaced.substring(replaced.lastIndexOf('.') + 1) + ";";
-    }
     String imports = ("import static generated.ValueSerializer.*;\n"
                       + "import java.awt.Color;\n"
                       + "import static generated.Remote.*;\n"
-                      + "import static generated." + remote + ".*;\n" + userImports)
+                      + "import static generated." + remote + ".*;\n" + withGlueClasses(remote, userImports))
                          .replace('\n', ' ');
     return "package generated;\n\n" + imports + "\n\npublic class Entity {\n";
   }
@@ -145,7 +138,7 @@ public class LangJava extends JvmTemplatedLang {
         + "     try {\n"
         + "       Remote.connect(args[0]);\n"
         + "       new Entity().run();\n"
-        + "     } catch (Exception e) {\n"
+        + "     } catch (Throwable e) {\n"
         + "       e.printStackTrace(console);\n"
         + "       System.exit(1);\n"
         + "     }\n"

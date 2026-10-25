@@ -178,12 +178,16 @@ public class LangScala extends JvmTemplatedLang {
 
   @Override protected String entityHeader(String remote, String userImports)
   {
-    // All the imports go on a single line, so that the line numbers of the generated code do not depend on how many there are
-    String imports = ("import generated.ValueSerializer._; "
-                      + "import java.awt.Color; "
-                      + "import generated.Remote._; "
-                      + "import generated." + remote + "._; " + userImports)
-                         .replace('\n', ' ');
+    // All the imports go on a single line, so that the line numbers of the generated code do not depend on how many there are: each of
+    // them ends with a semicolon
+    String entityImports = withGlueClasses(remote, userImports)
+                               .lines()
+                               .map(String::strip)
+                               .filter(line -> !line.isEmpty())
+                               .map(line -> line.endsWith(";") ? line : line + ";")
+                               .collect(Collectors.joining(" "));
+    String imports =
+        "import generated.ValueSerializer._; import java.awt.Color; import generated.Remote._; import generated." + remote + "._; " + entityImports;
     return "package generated\n\n" + imports + "\n\nobject Entity {\n";
   }
 
@@ -202,12 +206,13 @@ public class LangScala extends JvmTemplatedLang {
         + "\n"
         + "object Main {\n"
         + "  def main(args: Array[String]): Unit = {\n"
+        + "    val console = System.err // the glue of a world may redirect System.err to the world\n"
         + "    try {\n"
         + "      Remote.connect(args(0))\n"
         + "      Entity.run()\n"
         + "    } catch {\n"
-        + "      case e: Exception =>\n"
-        + "        e.printStackTrace()\n"
+        + "      case e: Throwable =>\n"
+        + "        e.printStackTrace(console)\n"
         + "        System.exit(1)\n"
         + "    }\n"
         + "    System.exit(0)\n"

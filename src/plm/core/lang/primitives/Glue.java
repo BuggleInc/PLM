@@ -22,9 +22,10 @@ import java.lang.annotation.Target;
   boolean wrapped() default false;
 
   /**
-   * The classes of the JDK that the hand-written Java glue replaces with nested classes of the same simple name, such as
-   * "java.net.Socket": the generated Java entity imports the glue's ones by name, which beats the imports on demand of the entity
-   * (such as java.net.* and the implicit java.lang.*), while its single-type imports of the replaced classes are dropped.
+   * The classes of the JDK that the hand-written Java and Scala glues replace with nested classes of the same simple name, such as
+   * "java.net.Socket": the generated Java and Scala entities import the glue's ones by name, which beats the imports on demand of the
+   * entity (such as java.net.* or java.net._, and the implicit java.lang ones), while its own imports of the replaced classes are
+   * dropped.
    */
   String[] replaces() default {};
 }

@@ -9,8 +9,8 @@ the combo box above the world view on the right to switch the world.</p>
 
 <p>Here are the steps to follow in your code. You can find more information [!c|python]about the <code>socket()</code>,
 <code>connect()</code>, <code>recv()</code> and friends[/!] in [!c]the corresponding manpages[/!][!python]the documentation of the
-<code>socket</code> module of Python[/!][!java]the documentation of the classes <code>Socket</code> and <code>InputStream</code>
-of Java[/!].</p>
+<code>socket</code> module of Python[/!][!java|scala]the documentation of the classes <code>Socket</code> and <code>InputStream</code>
+of Java[!scala], which Scala programs use[/!][/!].</p>
 <ol>
   [!c|python]<li>[!c]Create a socket with <code>socket(AF_INET, SOCK_STREAM, 0)</code>, which returns a descriptor.[/!][!python]Import the
   <code>socket</code> module, and create a socket with <code>socket.socket(socket.AF_INET, socket.SOCK_STREAM)</code>, which
@@ -21,7 +21,7 @@ of Java[/!].</p>
   network byte order, with <code>htons()</code>, while <code>inet_pton()</code> converts the textual address.[/!][!python]The
   address of the server is simply the tuple <code>(server, port)</code>: the <code>socket</code> module converts it for the
   system.[/!]</li>[/!]
-  [!java]<li>Create a socket connected to the server with <code>new Socket(server, port)</code>, which creates a TCP socket and
+  [!java|scala]<li>Create a socket connected to the server with <code>new Socket(server, port)</code>, which creates a TCP socket and
   connects it at once. In this exercise, the server is sometimes slow to start, making this constructor throw a
   <code>ConnectException</code>. When this happens, you should wait one second with <code>Thread.sleep(1000)</code> and try
   again. The constructor closes the socket of a failed attempt by itself.</li>[/!]
@@ -31,26 +31,27 @@ of Java[/!].</p>
   <code>[!python]time.[/!]sleep(1)</code> and try again. Beware: after a failed <code>connect()</code>, the state of the
   socket is unspecified. To retry, close it and create a new one with <code>socket()</code>. Do not forget to close the sockets
   of the failed attempts, or they will remain open at the end of your program.</li>[/!]
-  <li>Receive the message [!java]from the stream returned by <code>getInputStream()</code>, with <code>read(buffer)</code>,
+  <li>Receive the message [!java|scala]from the stream returned by <code>getInputStream[!java]()[/!]</code>, with <code>read(buffer)</code>,
   which returns the amount of bytes received[/!][!c]in a buffer with <code>recv()</code>, which returns the amount of bytes
   received[/!][!python]with
   <code>recv(512)</code>, which returns the bytes received (at most 512 here)[/!]. Beware that the message may be conveyed from
-  the server to you in several packets. The [!c|python]function <code>recv()</code>[/!][!java]method <code>read()</code>[/!]
+  the server to you in several packets. The [!c|python]function <code>recv()</code>[/!][!java|scala]method <code>read()</code>[/!]
   returns the available data when there is some, and it's
   blocking when no data is available but more data could come from the network. Finally, it returns [!c]0[/!][!python]empty
-  bytes (<code>b""</code>)[/!][!java]-1[/!] when no data is available and no more data could come because the other part (the server) closed
-  the connection. So you should keep reading from the network until [!c|python]<code>recv()</code>[/!][!java]<code>read()</code>[/!] returns
-  [!c]0[/!][!python]empty bytes[/!][!java]-1 (<code>transferTo()</code> does this loop for you, but write it once
+  bytes (<code>b""</code>)[/!][!java|scala]-1[/!] when no data is available and no more data could come because the other part (the server) closed
+  the connection. So you should keep reading from the network until [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</code>[/!] returns
+  [!c]0[/!][!python]empty bytes[/!][!java|scala]-1 (<code>transferTo()</code> does this loop for you, but write it once
   yourself)[/!].</li>
   <li>Write the received bytes on the standard output with [!c]<code>write()</code>, <code>printf()</code>, or
-  similar[/!][!python]<code>sys.stdout.buffer.write()</code>, which writes bytes (<code>print()</code> writes text)[/!][!java]
+  similar[/!][!python]<code>sys.stdout.buffer.write()</code>, which writes bytes (<code>print()</code> writes text)[/!][!java|scala]
   <code>System.out.write(buffer, 0, received)</code>, which writes bytes (<code>print()</code> writes text)[/!]. If you receive the data in
-  several chunks from [!c|python]<code>recv()</code>[/!][!java]<code>read()</code>[/!], you are free to display in one or several
+  several chunks from [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</code>[/!], you are free to display in one or several
   chunks, as you prefer.[!c] Beware: the data
   received from the network is not a C string, as nothing ends it with <code>'\0'</code>, and it must never be used as the
   format of <code>printf()</code>, since an attacker could put conversions such as <code>%s</code> in it.[/!]</li>
   <li>Close your socket with <code>close()</code>[!python], or create it in a <code>with</code> block that closes it at its
-  end[/!][!java], or create it in a <code>try</code>-with-resources block that closes it at its end[/!]: the PLM checks that your
+  end[/!][!java], or create it in a <code>try</code>-with-resources block that closes it at its end[/!][!scala], or use it in
+  <code>Using.resource()</code> that closes it at its end[/!]: the PLM checks that your
   program leaves no descriptor open, except the 3
   standard ones that are already open when your process starts.</li>
 </ol>
@@ -64,6 +65,9 @@ program, and the PLM console shows where.</p>[/!]
 [!java]<p>These methods throw an <code>IOException</code> when they fail, whose subclass tells the reason of the failure (such as
 <code>ConnectException</code>). Only catch the exceptions that you expect and know how to handle, and declare the other ones with
 <code>throws</code>: they stop your program, and the PLM console shows where.</p>[/!]
+[!scala]<p>These methods throw an <code>IOException</code> when they fail, whose subclass tells the reason of the failure (such as
+<code>ConnectException</code>). Only catch the exceptions that you expect and know how to handle: the other ones stop your program,
+and the PLM console shows where.</p>[/!]
 
 <p>Your debugging messages also reach the standard output (or the standard error), where the world view shows them. Remove them
 once your program works, as the PLM compares everything your program writes.</p>

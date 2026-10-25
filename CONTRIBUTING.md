@@ -929,7 +929,12 @@ documentation](PEDAGOGY.md#system-programming).
   initializer of the glue redirects `System.out` and `System.err` to the world, and the generated `Main` keeps the original
   `System.err` to print the uncaught exceptions on the PLM console. The leading `import` lines of a Java glue are moved before
   the generated class. As these templates use the classes of the glue, `lessons/network/**/*Entity.java` are not compiled with
-  the PLM (see the `pom.xml`). Scala is not supported yet.
+  the PLM (see the `pom.xml`).
+* **The Scala glue** (`RemotePosixGlue.scala`, appended in the object of the generated methods, private and named
+  `plm_remote_xxx`) offers the same classes as the Java one, since Scala programs use those of the JDK, with the accessors of
+  Scala (`socket.getInputStream`, without parentheses). The same `@Glue(replaces = ...)` makes the generated entity import them
+  explicitly, which beats the wildcard imports (`java.net._`). It redirects `System.out` before the first use of `Console`,
+  which keeps the `System.out` of that time for `println()`. The templates are written in Scala 3 with braces.
 * **The display**: `PosixWorldView` draws the student's machine and the peers' ones (mirrored), with the descriptors of their
   processes, the kernel objects in violet, their queues as cells, and the network in green. `PosixTracePanel`, under
   the view, traces the system calls in the style of strace, the ongoing steps of the peers, and their remaining steps greyed.
