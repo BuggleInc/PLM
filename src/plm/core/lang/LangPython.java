@@ -186,8 +186,6 @@ public class LangPython extends TemplatedRemoteLang {
       return name + "(" + method.parameters().stream().map(PrimitiveParameter::name).collect(Collectors.joining(", ")) + ")";
     }
 
-    String getPrototype(PrimitiveMethod method) { return "def " + signature(method, method.name()); }
-
     String getReturning(Class<?> type)
     {
       return switch (Answer.of(type)) {
@@ -203,9 +201,13 @@ public class LangPython extends TemplatedRemoteLang {
       };
     }
 
-    String getImplementation(PrimitiveMethod method)
+    /**
+     * The function sending that primitive to the PLM. When the hand-written glue wraps the generated one, it is named _plm_remote_xxx:
+     * private to the module, it does not clash with the Python function that the hand-written one emulates.
+     */
+    String getImplementation(PrimitiveMethod method, boolean wrapped)
     {
-      String prototype = getPrototype(method);
+      String prototype = "def " + signature(method, (wrapped ? "_plm_remote_" : "") + method.name());
 
       String name = method.command(); // the PLM only knows the canonical name of the translated aliases
 
@@ -250,7 +252,7 @@ public class LangPython extends TemplatedRemoteLang {
                                            .filter(s -> !s.isBlank())
                                            .collect(Collectors.joining("\n\n"));
 
-      final String implementations = methods.stream().map(this::getImplementation).collect(Collectors.joining("\n\n\n"));
+      final String implementations = methods.stream().map(m -> getImplementation(m, remote.isWrapped())).collect(Collectors.joining("\n\n\n"));
 
       String body  = typeDeclarations.isBlank() ? implementations : typeDeclarations + "\n\n" + implementations;
       String extra = remote.extraGlue(".py");

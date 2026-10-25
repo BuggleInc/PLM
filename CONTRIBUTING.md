@@ -912,7 +912,15 @@ documentation](PEDAGOGY.md#system-programming).
   undocumented `lastError()` primitive. It exposes `getParamString()` and `getParamInt()` to the code of the entity that calls the
   student's function (the generated functions of a wrapped glue are private). It also intercepts the output functions of `stdio.h`
   on the standard streams (`printf()`, `fprintf()`, `puts()`, `fputs()`, `putchar()` and `perror()`), unbuffered, as the libc
-  would otherwise write behind its back. The other languages are not supported yet.
+  would otherwise write behind its back.
+* **The Python glue** (`RemotePosixGlue.py`, appended to the generated functions renamed `_plm_remote_xxx`) substitutes the
+  system modules at import, so that the student's code uses them as usual: `sys.modules["socket"]` becomes a module of the
+  world (`socket.socket`, `create_connection()`, `create_server()` and the constants), `os.open()`, `os.read()`, `os.write()`,
+  `os.close()` and `time.sleep()` act on the world, and the failures raise the `OSError` of the `errno` (such as
+  `ConnectionRefusedError`). `sys.stdout` and `sys.stderr` write on the standard streams of the world, line by line, while the
+  uncaught exceptions still reach the PLM console (`sys.excepthook`). `Remote.py` imports the real socket module as `_socket`
+  and writes its own messages on `sys.__stderr__` for that reason. The glue only exports `getParamString()` and
+  `getParamInt()`, for the code of the entity. Java and Scala are not supported yet.
 * **The display**: `PosixWorldView` draws the student's machine and the peers' ones (mirrored), with the descriptors of their
   processes, the kernel objects in violet, their queues as cells, and the network in green. `PosixTracePanel`, under
   the view, traces the system calls in the style of strace, the ongoing steps of the peers, and their remaining steps greyed.

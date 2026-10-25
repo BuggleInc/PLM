@@ -359,17 +359,16 @@ iterative algorithm.
 
 ### The networking lesson
 
-This lesson (`lessons.network`) is under construction, and only works in C for now. It comes with its own POSIX universe
-(`plm.universe.posix`), where the student's process uses the POSIX system calls (with their real signatures) on a simulated
-system: regular files, and TCP connections to scripted peers.
-The world displays the descriptors of the process and the objects they designate, and compares the outcome semantically: the
-files must have the right content, the peers must have completed their script, and no descriptor may be left open, whatever
-their numbers. The time only advances when the process waits, so that each scenario has a single causal history, while the
-peers can still refuse an early connection. A call that would block forever (both sides waiting for each other) is reported
-as a deadlock instead of hanging.
+This lesson (`lessons.network`) is under construction, and only works in C and Python for now. It comes with its own POSIX
+universe (`plm.universe.posix`), where the student's process uses the POSIX system calls (with their real signatures) on a
+simulated system: regular files, and TCP connections to scripted peers. The world displays the descriptors of the process and the
+objects they designate, and compares the outcome semantically: the files must have the right content, the peers must have
+completed their script, and no descriptor may be left open, whatever their numbers. The time only advances when the process waits,
+so that each scenario has a single causal history, while the peers can still refuse an early connection. A call that would block
+forever (both sides waiting for each other) is reported as a deadlock instead of hanging.
 
-The two exercises (requesting 32 and 49 lines of C) ask for a function whose parameters (the address and the port of the
-server, or the port to listen on) change from one world to the other, so that hard-coded values fail.
+The two exercises (requesting 32 and 49 lines of C, 16 and 15 lines of Python) ask for a function whose parameters (the address
+and the port of the server, or the port to listen on) change from one world to the other, so that hard-coded values fail.
 
 The first one, `client(server, port)`, downloads a message and displays it on the standard output. One of its worlds sends a
 `%s` to catch the programs using the received data as the format of `printf()`. Another one introduces the short reads: the
@@ -394,7 +393,8 @@ TODO:
 * The panel under the world view traces the system calls and the steps of the peers, with the remaining script greyed. A
   graphical temporal view (a sequence diagram) would help further to debug the protocols.
 * The short writes are not exercised yet: `send()` and `write()` always write everything.
-* The exercises are only available in C. The other languages need their own idiomatic glue.
+* The exercises are only available in C and Python. Java and Scala need their own idiomatic glue. In Python, the glue mimics
+  the `socket` module, and the errors are exceptions instead of `perror()`.
 * The output functions of `stdio.h` on the standard streams (`printf()`, `fprintf()`, `puts()`, `perror()`...) are intercepted by
   the glue and unbuffered, but the other functions working on `FILE*` (`fopen()`, `fdopen()`...) are out of scope for now.
 * Pipes and forks are not supported yet.

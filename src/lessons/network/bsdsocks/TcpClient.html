@@ -8,34 +8,47 @@ the content of its message change, so your function must use its parameters, and
 the combo box above the world view on the right to switch the world.</p>
 
 <p>Here are the steps to follow in your code. You can find more information about the <code>socket()</code>,
-<code>connect()</code>, <code>recv()</code> and friends in the corresponding manpages.</p>
+<code>connect()</code>, <code>recv()</code> and friends in [!c]the corresponding manpages[/!][!python]the documentation of the
+<code>socket</code> module of Python[/!].</p>
 <ol>
-  <li>Create a socket with <code>socket(AF_INET, SOCK_STREAM, 0)</code>, which returns a descriptor. <code>AF_INET</code> means
+  <li>[!c]Create a socket with <code>socket(AF_INET, SOCK_STREAM, 0)</code>, which returns a descriptor.[/!][!python]Import the
+  <code>socket</code> module, and create a socket with <code>socket.socket(socket.AF_INET, socket.SOCK_STREAM)</code>, which
+  returns a socket object.[/!] <code>AF_INET</code> means
   that this socket can go to the internet while <code>SOCK_STREAM</code> means that you want to use a stream of data. Together,
   these parameters give a TCP socket.</li>
-  <li>Fill a <code>struct sockaddr_in</code> with the address of the server. Do not forget that the port must be given in
-  network byte order, with <code>htons()</code>, while <code>inet_pton()</code> converts the textual address.</li>
+  <li>[!c]Fill a <code>struct sockaddr_in</code> with the address of the server. Do not forget that the port must be given in
+  network byte order, with <code>htons()</code>, while <code>inet_pton()</code> converts the textual address.[/!][!python]The
+  address of the server is simply the tuple <code>(server, port)</code>: the <code>socket</code> module converts it for the
+  system.[/!]</li>
   <li>Connect your socket to the server with <code>connect()</code>. In this exercise, the server is sometimes slow to start,
-  making <code>connect()</code> return -1 (with <code>errno</code> set to <code>ECONNREFUSED</code>). When this happens, you
-  should wait one second with <code>sleep(1)</code> and try again. Beware: after a failed <code>connect()</code>, the state of the
+  making <code>connect()</code> [!c]return -1 (with <code>errno</code> set to <code>ECONNREFUSED</code>)[/!][!python]raise a
+  <code>ConnectionRefusedError</code>[/!]. When this happens, you should wait one second with
+  <code>[!python]time.[/!]sleep(1)</code> and try again. Beware: after a failed <code>connect()</code>, the state of the
   socket is unspecified. To retry, close it and create a new one with <code>socket()</code>. Do not forget to close the sockets
   of the failed attempts, or they will remain open at the end of your program.</li>
-  <li>Receive the message in a buffer with <code>recv()</code>, which returns the amount of bytes received. Beware that the
-  message may be conveyed from the server to you in several packets. The function <code>recv()</code> returns the available data
-  when there is some, and it's blocking when no data is available but more data could come from the network. Finally, it returns
-  0 when no data is available and no more data could come because the other part (the server) closed the connection. So you
-  should keep reading from the network until <code>recv()</code> returns 0.</li>
-  <li>Write the received bytes on the standard output with <code>write()</code>, <code>printf()</code>, or similar. If you
-  receive the data in several chunks from <code>recv()</code>, you are free to display in one or several chunks, as you prefer.
-  Beware: the data received from the network is not a C string, as nothing ends it with <code>'\0'</code>, and it must never be
-  used as the format of <code>printf()</code>, since an attacker could put conversions such as <code>%s</code> in it.</li>
-  <li>Close your socket with <code>close()</code>: the PLM checks that your program leaves no descriptor open, except the 3
+  <li>Receive the message [!c]in a buffer with <code>recv()</code>, which returns the amount of bytes received[/!][!python]with
+  <code>recv(512)</code>, which returns the bytes received (at most 512 here)[/!]. Beware that the message may be conveyed from
+  the server to you in several packets. The function <code>recv()</code> returns the available data when there is some, and it's
+  blocking when no data is available but more data could come from the network. Finally, it returns [!c]0[/!][!python]empty
+  bytes (<code>b""</code>)[/!] when no data is available and no more data could come because the other part (the server) closed
+  the connection. So you should keep reading from the network until <code>recv()</code> returns [!c]0[/!][!python]empty
+  bytes[/!].</li>
+  <li>Write the received bytes on the standard output with [!c]<code>write()</code>, <code>printf()</code>, or
+  similar[/!][!python]<code>sys.stdout.buffer.write()</code>, which writes bytes (<code>print()</code> writes text)[/!]. If you receive the data in
+  several chunks from <code>recv()</code>, you are free to display in one or several chunks, as you prefer.[!c] Beware: the data
+  received from the network is not a C string, as nothing ends it with <code>'\0'</code>, and it must never be used as the
+  format of <code>printf()</code>, since an attacker could put conversions such as <code>%s</code> in it.[/!]</li>
+  <li>Close your socket with <code>close()</code>[!python], or create it in a <code>with</code> block that closes it at its
+  end[/!]: the PLM checks that your program leaves no descriptor open, except the 3
   standard ones that are already open when your process starts.</li>
 </ol>
 
-<p>These functions return -1 when they fail, and set <code>errno</code> to the reason of the failure. When this happens, use
+[!c]<p>These functions return -1 when they fail, and set <code>errno</code> to the reason of the failure. When this happens, use
 <code>perror()</code> to display the error on the standard error. Checking the returned values is a good habit, which will help
-you understand what goes wrong (and it's needed to pass this exercise).</p>
+you understand what goes wrong (and it's needed to pass this exercise).</p>[/!]
+[!python]<p>These methods raise an <code>OSError</code> when they fail, whose subclass tells the reason of the failure (such as
+<code>ConnectionRefusedError</code>). Only catch the errors that you expect and know how to handle: the other ones stop your
+program, and the PLM console shows where.</p>[/!]
 
 <p>Your debugging messages also reach the standard output (or the standard error), where the world view shows them. Remove them
 once your program works, as the PLM compares everything your program writes.</p>

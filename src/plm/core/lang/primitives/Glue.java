@@ -15,8 +15,9 @@ import java.lang.annotation.Target;
 
   /**
    * Whether the hand-written glue of the universe (see CodeCreation.Remote.extraGlue()) wraps the generated functions, to offer the
-   * students a more idiomatic API than the primitives themselves (e.g. the C system calls, with their buffers and structures). Only
-   * the C generator supports it for now: the generated functions become static and named plm_remote_xxx.
+   * students a more idiomatic API than the primitives themselves (e.g. the C system calls, with their buffers and structures). The
+   * C and Python generators support it: the generated functions become private, named plm_remote_xxx in C (static) and
+   * _plm_remote_xxx in Python (out of reach of "import *").
    */
   boolean wrapped() default false;
 }

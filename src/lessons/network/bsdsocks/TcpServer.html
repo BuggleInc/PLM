@@ -8,22 +8,25 @@ time.</p>
 
 <p>A server takes more steps than a client, since it must first prepare a socket that waits for the connections:</p>
 <ol>
-  <li>Create a socket with <code>socket(AF_INET, SOCK_STREAM, 0)</code>.</li>
-  <li>Attach it to the given port with <code>bind()</code>. The <code>struct sockaddr_in</code> is filled as for
+  <li>Create a socket with [!c]<code>socket(AF_INET, SOCK_STREAM, 0)</code>[/!][!python]<code>socket.socket(socket.AF_INET,
+    socket.SOCK_STREAM)</code>[/!].</li>
+  <li>Attach it to the given port with <code>bind()</code>. [!c]The <code>struct sockaddr_in</code> is filled as for
     <code>connect()</code>, but the address <code>INADDR_ANY</code> (converted with <code>htonl()</code>) means that any
-    machine may connect.</li>
-  <li>Mark it as accepting the connections with <code>listen()</code>. Its second parameter is the length of the queue of the
-  clients that wait to be accepted. After this call, the clients can connect even if your program does not accept and serve them
+    machine may connect.[/!][!python]Its address is the tuple <code>("", port)</code>, where the empty host means that any
+    machine may connect.[/!]</li>
+  <li>Mark it as accepting the connections with <code>listen()</code>. Its [!c]second[/!][!python]only[/!] parameter is the
+  length of the queue of the clients that wait to be accepted. After this call, the clients can connect even if your program does not accept and serve them
   yet.</li>
-  <li>Accept a client with <code>accept()</code>, which waits until a client connected and returns a <b>new</b> descriptor,
-    dedicated to this client. You can pass <code>NULL</code> as second and third parameters if the address of the client does
-    not matter.</li>
-  <li>Receive the line on the new descriptor with <code>recv()</code>. As in the previous exercise, the line may arrive in
-    several packets, so a single <code>recv()</code> may only return its beginning: keep receiving until you got its
+  <li>Accept a client with <code>accept()</code>, which waits until a client connected and returns a <b>new</b>
+    [!c]descriptor, dedicated to this client. You can pass <code>NULL</code> as second and third parameters if the address of
+    the client does not matter.[/!][!python]socket, dedicated to this client, along with the address of the client.[/!]</li>
+  <li>Receive the line on the new [!c]descriptor[/!][!python]socket[/!] with <code>recv()</code>. As in the previous exercise,
+    the line may arrive in several packets, so a single <code>recv()</code> may only return its beginning: keep receiving until you got its
     <code>'\n'</code>. You cannot wait for the end of the stream instead, since the client waits for your answer before closing
     the connection. Marking where a message ends, as this <code>'\n'</code> does, is called <i>framing</i>.</li>
-  <li>Send the line twice to the client with <code>send()</code>.</li>
-  <li>Close both descriptors: the one of the client, and the one that waits for the connections.</li>
+  <li>Send the line twice to the client with [!c]<code>send()</code>[/!][!python]<code>sendall()</code>, which sends all the
+    data[/!].</li>
+  <li>Close both [!c]descriptors[/!][!python]sockets[/!]: the one of the client, and the one that waits for the connections.</li>
 </ol>
 
 <p>Look at the world view while your program runs: the socket returned by <code>accept()</code> shares its port with the

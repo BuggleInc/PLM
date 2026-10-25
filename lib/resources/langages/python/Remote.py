@@ -1,10 +1,11 @@
 """
 Python port of Remote.java (see Remote.java for the authoritative comments). The protocol (commands to the PLM, answers from the
 PLM) travels over a TCP socket on 127.0.0.1, whose port is passed as sys.argv[1] -- see connect() below, called from the
-generated Main.py. The PLM only listens on that address.
+generated Main.py. The PLM only listens on that address. Its own messages go to the standard error of the process, which a world
+may have replaced by one of its streams (see sys.__stderr__).
 """
 
-import socket
+import socket as _socket  # not exported by "import *", which must not shadow the socket module of a world
 import sys
 
 from ValueSerializer import serialize, serialize_args, deserialize
@@ -15,11 +16,11 @@ _sockFile = None
 def connect(port):
   global _sockFile
   try:
-    sock = socket.create_connection(("127.0.0.1", int(port)))
-    sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)  # each command is a short request awaiting its answer
+    sock = _socket.create_connection(("127.0.0.1", int(port)))
+    sock.setsockopt(_socket.IPPROTO_TCP, _socket.TCP_NODELAY, 1)  # each command is a short request awaiting its answer
     _sockFile = sock.makefile("rw", encoding="utf-8", newline="\n")
   except OSError as e:
-    print("Cannot connect to the PLM protocol on port %s: %s" % (port, e), file=sys.stderr)
+    print("Cannot connect to the PLM protocol on port %s: %s" % (port, e), file=sys.__stderr__)
     sys.exit(1)
 
 
@@ -31,10 +32,10 @@ def _getAnswerLine():
   try:
     line = _sockFile.readline()
   except OSError as e:
-    print("IO exception while reading the protocol (reason: %s). Bailing out." % (e,), file=sys.stderr)
+    print("IO exception while reading the protocol (reason: %s). Bailing out." % (e,), file=sys.__stderr__)
     sys.exit(1)
   if line == "":
-    print("The PLM closed the protocol connection. Bailing out.", file=sys.stderr)
+    print("The PLM closed the protocol connection. Bailing out.", file=sys.__stderr__)
     sys.exit(1)
   _answerBuffer = line.rstrip("\n")
 
