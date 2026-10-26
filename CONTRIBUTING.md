@@ -950,7 +950,7 @@ documentation](PEDAGOGY.md#system-programming).
   would otherwise write behind its back. Its `fopen()` and `fdopen()` give real streams of the libc, buffered as usual, whose
   reads and writes call the system calls of the world (`fopencookie()` of the glibc, which `LangC` enables with
   `-D_GNU_SOURCE`, or `funopen()` on macOS): the student can use `fgets()` or `fscanf()` on a file or a socket. They fail
-  with `ENOSYS` on Windows, which has no such custom streams.
+  with `ENOSYS` on Windows, which has no such custom streams, and explain it once on the PLM console (the real standard error).
 * **The Python glue** (`RemotePosixGlue.py`, appended to the generated functions renamed `_plm_remote_xxx`) substitutes the
   system modules at import, so that the student's code uses them as usual: `sys.modules["socket"]` becomes a module of the
   world (`socket.socket` with `makefile()`, `create_connection()`, `create_server()` and the constants), `os.open()`,

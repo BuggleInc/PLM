@@ -186,7 +186,14 @@ FILE* plm_fdopen(int fd, const char* mode)
 #else
   (void)fd;
   (void)mode;
-  errno = ENOSYS; // no custom streams in the C library of this system
+  static int told = 0; // the explanation goes once to the PLM console (the real standard error, not the world's one)
+  if (!told) {
+    const char* why = "PLM: fopen() and fdopen() are not available on this system (such as Windows), whose C library cannot build streams "
+                      "on the descriptors of the world. Use open(), read(), write() and close() instead, or run the PLM on Linux or macOS.\n";
+    fwrite(why, 1, strlen(why), stderr);
+    told = 1;
+  }
+  errno = ENOSYS;
   return NULL;
 #endif
 }
