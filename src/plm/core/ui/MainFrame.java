@@ -107,6 +107,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     Game.getInstance().addHumanLangListener(this);
   }
 
+  /** The tabs of the mission and of the editors, where the worlds can show their texts (see MissionEditorTabs.showReadOnly()) */
+  public MissionEditorTabs getEditorTabs() { return met; }
+
   public static MainFrame getInstance()
   {
     if (MainFrame.instance == null)

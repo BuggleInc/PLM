@@ -1,8 +1,14 @@
 package plm.core.ui;
 
 import java.awt.Component;
+import java.awt.FlowLayout;
+import java.util.function.Supplier;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
@@ -113,10 +119,13 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
   @Override public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang)
   { /* Redo any code panel */
     int tabPosition = getSelectedIndex();
-    /* Remove every tabs, but the mission one */
+    /* Remove every tabs, but the mission one: the code editors, and the read-only tabs of the previous world */
     while (getTabCount() > 1) {
-      IEditorPanel p = (IEditorPanel)this.getComponentAt(getTabCount() - 1);
-      p.clear();
+      Component tab = this.getComponentAt(getTabCount() - 1);
+      if (tab instanceof IEditorPanel editor)
+        editor.clear();
+      else if (tab instanceof ReadOnlyTab readOnly)
+        readOnly.dispose();
       removeTabAt(getTabCount() - 1);
     }
 
@@ -132,6 +141,40 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
     missionTab.setEditorKit(new PlmHtmlEditorKit(game.getCurrentLesson().getCurrentExercise()));
     missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(newLang));
     missionTab.setCaretPosition(0);
+  }
+
+  /**
+   * Shows that text of the world in a read-only tab, which the student can close. Its title is followed by the name of the world, and
+   * by "objective" for the expected world, since the student may open the same text in several worlds. A tab already open on that
+   * text of that world is selected, and shows the given content from now on (a socket of a new execution, for example). The tab
+   * follows the changes of the world, and is closed when the exercise or the language changes.
+   */
+  public void showReadOnly(String title, World world, Supplier<String> content)
+  {
+    title += " (" + world.getName() + (world == game.getAnswerOfSelectedWorld() ? ", " + Game.i18n.tr("objective") : "") + ")";
+    for (int i = 1; i < getTabCount(); i++)
+      if (getComponentAt(i) instanceof ReadOnlyTab open && open.world == world && getTitleAt(i).equals(title)) {
+        open.show(content);
+        setSelectedIndex(i);
+        return;
+      }
+    ReadOnlyTab tab = new ReadOnlyTab(world, content);
+    addTab(title, null, tab, Game.i18n.tr("Read-only view of the world"));
+
+    JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
+    header.setOpaque(false);
+    header.add(new JLabel(title));
+    JButton close = new JButton("×");
+    close.setBorder(BorderFactory.createEmptyBorder());
+    close.setContentAreaFilled(false);
+    close.setToolTipText(Game.i18n.tr("Close this tab"));
+    close.addActionListener(event -> {
+      tab.dispose();
+      remove(tab);
+    });
+    header.add(close);
+    setTabComponentAt(indexOfComponent(tab), header);
+    setSelectedComponent(tab);
   }
 
   @Override public void selectedEntityHasChanged()

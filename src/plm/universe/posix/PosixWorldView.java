@@ -2,18 +2,22 @@ package plm.universe.posix;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
+import plm.core.ui.MainFrame;
 import plm.core.ui.WorldView;
 import plm.universe.World;
 
@@ -42,11 +46,38 @@ public class PosixWorldView extends WorldView {
   private record Tip(Rectangle area, String text) {}
   /** The boxes of the last painting whose text was cut */
   private final List<Tip> tips = new ArrayList<>();
+  /** A drawing that opens a text of the world in a read-only tab of the editor when clicked: a file, or the history of a socket */
+  private record Link(Rectangle area, String title, Supplier<String> content) {}
+  /** The links of the last painting */
+  private final List<Link> links = new ArrayList<>();
 
   public PosixWorldView(World w)
   {
     super(w);
     setToolTipText(""); // registers the view to the tooltip manager, that then asks getToolTipText(MouseEvent)
+    MouseAdapter mouse = new MouseAdapter() {
+      @Override public void mouseClicked(MouseEvent event)
+      {
+        Link link = linkAt(event);
+        if (link != null)
+          MainFrame.getInstance().getEditorTabs().showReadOnly(link.title(), world, link.content());
+      }
+
+      @Override public void mouseMoved(MouseEvent event)
+      {
+        setCursor(Cursor.getPredefinedCursor(linkAt(event) == null ? Cursor.DEFAULT_CURSOR : Cursor.HAND_CURSOR));
+      }
+    };
+    addMouseListener(mouse);
+    addMouseMotionListener(mouse);
+  }
+
+  private Link linkAt(MouseEvent event)
+  {
+    for (Link link : links)
+      if (link.area().contains(event.getPoint()))
+        return link;
+    return null;
   }
 
   @Override public String getToolTipText(MouseEvent event)
@@ -100,6 +131,7 @@ public class PosixWorldView extends WorldView {
     g2.setColor(Color.white);
     g2.fillRect(0, 0, getWidth(), getHeight());
     tips.clear();
+    links.clear();
     g2.setColor(Color.black);
     g2.drawString("t = " + w.now + "s", (getWidth() - 40) / 2, 18);
 
@@ -201,6 +233,11 @@ public class PosixWorldView extends WorldView {
       if (row.reads())
         arrowHead(g2, fdX + 6 * toObject, y, -toObject);
       box(g2, KERNEL, objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6, row.lines());
+      if (row.key() instanceof Socket s && s.remote != null) {
+        Rectangle area = new Rectangle(objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6);
+        links.add(new Link(area, title + ", socket " + row.fd(), () -> history(s)));
+        tips.add(new Tip(area, "Click to see everything that went through this socket"));
+      }
       for (int i = 0; i < row.queues().size(); i++) { // on the right of the title, one under the other, a lone queue under the title
         Queue q  = row.queues().get(i);
         int line = row.queues().size() == 1 ? 1 : i;
@@ -227,6 +264,9 @@ public class PosixWorldView extends WorldView {
     return bottom;
   }
 
+  /** Everything that went through a connected socket: what arrived on it (received or not), and what it sent (transmitted or not) */
+  private static String history(Socket s) { return "Received:\n" + s.arrived + "\n\nSent:\n" + s.remote.arrived + s.outgoing; }
+
   /** Draws a file as an icon with a folded corner: its name on top, then the first lines of its content (all of it as a tooltip) */
   private void file(Graphics2D g2, int x, int y, String name, String content)
   {
@@ -250,7 +290,9 @@ public class PosixWorldView extends WorldView {
       g2.drawString(fit(g2, line, FILE_WIDTH - 6), x + 3, y + LINE + 12 + 11 * i);
     }
     g2.setFont(font);
-    tips.add(new Tip(new Rectangle(x, y, FILE_WIDTH, FILE_HEIGHT), "<html>" + escape(name) + ":<br><pre>" + escape(content) + "</pre></html>"));
+    Rectangle area = new Rectangle(x, y, FILE_WIDTH, FILE_HEIGHT);
+    tips.add(new Tip(area, "<html>" + escape(name) + ":<br><pre>" + escape(content) + "</pre><i>Click to open it in the editor</i></html>"));
+    links.add(new Link(area, name, () -> ((PosixWorld)world).files.getOrDefault(name, "(this file does not exist anymore)")));
   }
 
   private static String escape(String text) { return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"); }
