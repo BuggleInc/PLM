@@ -13,6 +13,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.universe.posix.FileDescription;
+import plm.universe.posix.IrcServer;
 import plm.universe.posix.Peer;
 import plm.universe.posix.PosixEntity;
 import plm.universe.posix.PosixWorld;
@@ -439,6 +440,102 @@ public class PosixWorldTest {
     Assertions.assertEquals("LLO\r\n", line(process(copy), a));
     p.close(a);
     p.close(b);
+  }
+
+  /** Reads the lines (ended by \r\n) of a connection, whatever the packets carrying them */
+  private static final class Lines {
+    private final PosixEntity p;
+    private final int fd;
+    private final StringBuilder pending = new StringBuilder();
+
+    Lines(PosixEntity p, int fd)
+    {
+      this.p  = p;
+      this.fd = fd;
+    }
+
+    /** The next line, without its \r\n */
+    String next()
+    {
+      while (pending.indexOf("\r\n") < 0)
+        pending.append(s(p.recv(fd, 512, 0)));
+      String res = pending.substring(0, pending.indexOf("\r\n"));
+      pending.delete(0, res.length() + 2);
+      return res;
+    }
+
+    /** Skips the lines until one starting with that text, and returns it */
+    String until(String start)
+    {
+      String line = next();
+      while (!line.startsWith(start))
+        line = next();
+      return line;
+    }
+  }
+
+  /** A world with an IRC server on 10.0.0.1:6667 where Bob answers a precise question, sending in packets of that size if positive */
+  private static PosixWorld irc(int packetSize)
+  {
+    return new PosixWorld("irc").addPeer(new IrcServer("10.0.0.1", 6667)
+                                             .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
+                                             .say(2, "#welcome", "Alice", "Has anyone seen my brush? I left it near the wall.")
+                                             .answer("Bob", "Hi Bob!", "Hi! The doc is /doc.txt", "Sorry, I did not get it")
+                                             .packets(packetSize));
+  }
+
+  /** Registers as student, and joins #welcome */
+  private static Lines joined(PosixEntity p)
+  {
+    int sock = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(sock, "10.0.0.1", 6667));
+    Lines lines = new Lines(p, sock);
+    p.send(sock, b("NICK student\r\nUSER student 0 * :A student\r\n"), 0);
+    Assertions.assertEquals(":irc.buggleinc.com 001 student :Welcome to the BuggleInc IRC Network student!student@10.0.0.10", lines.next());
+    lines.until(":irc.buggleinc.com 376 ");
+    p.send(sock, b("JOIN #welcome\r\n"), 0);
+    Assertions.assertEquals(":student!student@10.0.0.10 JOIN #welcome", lines.next());
+    Assertions.assertEquals(":irc.buggleinc.com 332 student #welcome :Welcome, little buggles!", lines.next());
+    Assertions.assertEquals(":irc.buggleinc.com 353 student = #welcome :Alice Bob student", lines.next());
+    Assertions.assertEquals(":irc.buggleinc.com 366 student #welcome :End of /NAMES list.", lines.next());
+    return lines;
+  }
+
+  @Test public void testIrcServer()
+  {
+    for (int packetSize : new int[] {0, 7}) {
+      PosixEntity p = process(irc(packetSize));
+      Lines lines   = joined(p);
+      p.send(3, b("PRIVMSG Bob :Hello\r\n"), 0);
+      Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Sorry, I did not get it", lines.next());
+      p.send(3, b("privmsg Bob :Hi Bob!\n"), 0); // case-insensitive commands, and a bare \n
+      if (packetSize == 0)                       // at t=2, Alice speaks before Bob answers (the packets are so slow that she spoke before the JOIN)
+        Assertions.assertEquals(":Alice!alice@buggleinc.com PRIVMSG #welcome :Has anyone seen my brush? I left it near the wall.", lines.next());
+      Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Hi! The doc is /doc.txt", lines.next());
+      p.send(3, b("QUIT\r\n"), 0);
+      Assertions.assertEquals("ERROR :Closing Link: 10.0.0.10 (Client Quit)", lines.next());
+      Assertions.assertEquals("", s(p.recv(3, 10, 0)));
+      p.close(3);
+    }
+  }
+
+  @Test public void testIrcServerErrors()
+  {
+    PosixEntity p = process(irc(0));
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 6667);
+    Lines lines = new Lines(p, sock);
+    p.send(sock, b("JOIN #welcome\r\n"), 0);
+    Assertions.assertEquals(":irc.buggleinc.com 451 * :You have not registered", lines.next());
+    p.send(sock, b("NICK Bob\r\n"), 0);
+    Assertions.assertEquals(":irc.buggleinc.com 433 * Bob :Nickname is already in use", lines.next());
+    p.send(sock, b("NICK student\r\nUSER student\r\n"), 0);
+    Assertions.assertEquals(":irc.buggleinc.com 461 student USER :Not enough parameters", lines.next());
+    p.send(sock, b("USER student 0 * :A student\r\nHELLO\r\n"), 0);
+    Assertions.assertEquals(":irc.buggleinc.com 421 student HELLO :Unknown command", lines.until(":irc.buggleinc.com 421"));
+    p.send(sock, b("PRIVMSG Carol :Hi\r\n"), 0);
+    Assertions.assertEquals(":irc.buggleinc.com 401 student Carol :No such nick/channel", lines.next());
+    p.close(sock);
   }
 
   @Test public void testUnknownFileAndBadDescriptor()
