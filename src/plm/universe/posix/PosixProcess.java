@@ -107,23 +107,23 @@ final class PosixProcess {
 
   @Override public int hashCode() { return stdout.data.hashCode() * 31 + stderr.data.hashCode(); }
 
-  /** How other differs from this expected process, one line per difference */
-  String diffTo(PosixProcess other)
+  /** How other differs from this expected process, one line per difference, on its output and on its open descriptors if asked */
+  String diffTo(PosixProcess other, boolean output, boolean descriptors)
   {
     StringBuilder sb = new StringBuilder();
-    if (!stdout.data.equals(other.stdout.data))
+    if (output && !stdout.data.equals(other.stdout.data))
       sb.append("The standard output contains '")
           .append(PosixWorld.visible(other.stdout.data))
           .append("' instead of '")
           .append(PosixWorld.visible(stdout.data))
           .append("'\n");
-    if (!stderr.data.equals(other.stderr.data))
+    if (output && !stderr.data.equals(other.stderr.data))
       sb.append("The standard error contains '")
           .append(PosixWorld.visible(other.stderr.data))
           .append("' instead of '")
           .append(PosixWorld.visible(stderr.data))
           .append("'\n");
-    if (!openDescriptions().equals(other.openDescriptions()))
+    if (descriptors && !openDescriptions().equals(other.openDescriptions()))
       sb.append("Open descriptors: ").append(other.openDescriptions()).append(" instead of ").append(openDescriptions()).append("\n");
     return sb.toString();
   }

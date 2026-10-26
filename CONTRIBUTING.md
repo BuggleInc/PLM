@@ -922,7 +922,10 @@ documentation](PEDAGOGY.md#system-programming).
   `PosixWorld.addPeer()` warns when a script leaves some sent data untransmitted.
 * **Comparing the worlds** is semantic: the standard output and error, the files, the state of the peers (their position in the
   script, and everything that arrived on their connections, received or not) and the open descriptors are compared, but not the
-  numbers of the descriptors, so a program opening its descriptors in another order still wins.
+  numbers of the descriptors, so a program opening its descriptors in another order still wins. An exercise can restrict the
+  comparison to some aspects with `PosixWorld.comparing()`, for example to the output and the descriptors when the student may
+  talk with a server in several ways: `winning()` and `diffTo()` then ignore the rest, while `equals()` still compares
+  everything.
 * **The C glue** is hand-written (`RemotePosixGlue.h` and `RemotePosixGlue.c`, with `@Glue(wrapped = true)`): it offers the real
   POSIX signatures, renames the student's calls with macros (`#define recv plm_recv`), converts `struct sockaddr_in` and the local
   constants to the protocol ones, copies the received bytes in the caller's buffer, and sets the real `errno` from the

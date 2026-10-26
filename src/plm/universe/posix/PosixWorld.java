@@ -1,9 +1,11 @@
 package plm.universe.posix;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BooleanSupplier;
@@ -36,6 +38,18 @@ public class PosixWorld extends World {
   /** The address of the student's machine, to which the client peers connect */
   public static final String STUDENT_IP = "10.0.0.10";
 
+  /** What the comparison of the worlds can check (see comparing()) */
+  public enum Aspect {
+    /** The standard output and error of the student's process */
+    OUTPUT,
+    /** The descriptors left open by the student's process, whatever their numbers */
+    DESCRIPTORS,
+    /** The regular files */
+    FILES,
+    /** The peers: the progress of their script, everything that arrived on their connections, and their open descriptors */
+    PEERS
+  }
+
   Map<String, String> files = new TreeMap<>();
   List<Peer> peers          = new ArrayList<>();
   /** The kernel side of the student's process */
@@ -46,6 +60,8 @@ public class PosixWorld extends World {
   List<String> trace = new CopyOnWriteArrayList<>();
   /** The amount of refused connect() since the clock last advanced, to detect the busy loops */
   private int refusedInARow;
+  /** What the comparison of the worlds checks */
+  private Set<Aspect> compared = EnumSet.allOf(Aspect.class);
 
   public PosixWorld(String name)
   {
@@ -70,6 +86,17 @@ public class PosixWorld extends World {
   public PosixWorld setParameters(Object... parameters)
   {
     setParameter(parameters);
+    return this;
+  }
+
+  /**
+   * Only compares these aspects of the worlds, when the exercise does not check the rest: for example only the output and the
+   * descriptors, when the student may talk with a server in several ways (such as choosing a nickname on IRC).
+   */
+  public PosixWorld comparing(Aspect... aspects)
+  {
+    compared = EnumSet.noneOf(Aspect.class);
+    compared.addAll(List.of(aspects));
     return this;
   }
 
@@ -101,8 +128,9 @@ public class PosixWorld extends World {
     for (Peer p : other.peers)
       peers.add(p.copy(copies));
     student = new PosixProcess(other.student, copies);
-    now     = other.now;
-    trace   = new CopyOnWriteArrayList<>(other.trace);
+    now      = other.now;
+    trace    = new CopyOnWriteArrayList<>(other.trace);
+    compared = EnumSet.copyOf(other.compared);
     super.reset(initialWorld);
   }
 
@@ -396,11 +424,15 @@ public class PosixWorld extends World {
 
   @Override public int hashCode() { return (student.hashCode() * 31 + files.hashCode()) * 31 + peers.hashCode(); }
 
+  /** Whether this world matches the expected one on the compared aspects (see comparing()), while equals() compares everything */
+  @Override public boolean winning(World standard) { return standard.diffTo(this, null).isEmpty(); }
+
+  /** How world differs from this expected one on the compared aspects, one line per difference */
   @Override public String diffTo(World world, ProgrammingLanguage lang)
   {
     PosixWorld other = (PosixWorld)world;
-    StringBuilder sb = new StringBuilder(student.diffTo(other.student));
-    for (String path : files.keySet())
+    StringBuilder sb = new StringBuilder(student.diffTo(other.student, compared.contains(Aspect.OUTPUT), compared.contains(Aspect.DESCRIPTORS)));
+    for (String path : compared.contains(Aspect.FILES) ? files.keySet() : Set.<String>of())
       if (!files.get(path).equals(other.files.get(path)))
         sb.append("File '")
             .append(path)
@@ -409,10 +441,10 @@ public class PosixWorld extends World {
             .append("' instead of '")
             .append(visible(files.get(path)))
             .append("'\n");
-    for (String path : other.files.keySet())
+    for (String path : compared.contains(Aspect.FILES) ? other.files.keySet() : Set.<String>of())
       if (!files.containsKey(path))
         sb.append("File '").append(path).append("' should not exist\n");
-    for (int i = 0; i < peers.size(); i++)
+    for (int i = 0; compared.contains(Aspect.PEERS) && i < peers.size(); i++)
       if (!peers.get(i).equals(other.peers.get(i)))
         sb.append("The peer is ").append(other.peers.get(i).describe()).append(" instead of ").append(peers.get(i).describe()).append("\n");
     return sb.toString();

@@ -537,6 +537,23 @@ public class PosixWorldTest {
     p.close(sock);
   }
 
+  @Test public void testComparingOnlySomeAspects()
+  {
+    PosixWorld ref  = new PosixWorld("aspects").comparing(PosixWorld.Aspect.OUTPUT).addPeer(Peer.server("10.0.0.1", 80, "accept(3) recv(4, 2) close(4)"));
+    PosixWorld curr = (PosixWorld)ref.copy();
+    for (PosixWorld w : List.of(ref, curr)) {
+      PosixEntity p = process(w);
+      int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+      p.connect(sock, "10.0.0.1", 80);
+      p.send(sock, b(w == ref ? "hi" : "yo"), 0); // the server receives something else, and the socket stays open
+      p.write(1, b("done"));
+    }
+    Assertions.assertFalse(curr.equals(ref));
+    Assertions.assertTrue(curr.winning(ref), ref.diffTo(curr, null));
+    process(curr).write(1, b("!"));
+    Assertions.assertFalse(curr.winning(ref));
+  }
+
   @Test public void testUnknownFileAndBadDescriptor()
   {
     PosixEntity p = process(new PosixWorld("errors"));
