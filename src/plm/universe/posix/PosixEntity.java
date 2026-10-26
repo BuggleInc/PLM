@@ -64,6 +64,8 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
     return step("write", fd + ", " + quoted(data) + ", " + data.length, kernel().write(process(), fd, text(data)));
   }
   @Override public int close(int fd) { return step("close", String.valueOf(fd), kernel().close(process(), fd)); }
+
+  @Override public int unlink(String path) { return step("unlink", PosixWorld.quoted(path), kernel().unlink(process(), path)); }
   @Override public int sleep(int seconds) { return step("sleep", String.valueOf(seconds), kernel().sleep(seconds)); }
   @Override public String lastError() { return process().errno; }
 

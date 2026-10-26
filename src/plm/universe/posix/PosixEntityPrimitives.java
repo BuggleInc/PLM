@@ -43,6 +43,8 @@ public interface PosixEntityPrimitives extends EntityPrimitivesBase {
 
   @Primitive(value = "Closes the descriptor.", group = "Files") int close(int fd);
 
+  @Primitive(value = "Removes the file.", group = "Files") int unlink(String path);
+
   @Primitive(value = "Waits for the given amount of seconds.", group = "Others") int sleep(int seconds);
 
   /** The name of the last error (e.g. "ECONNREFUSED"), used by the glue to set errno */

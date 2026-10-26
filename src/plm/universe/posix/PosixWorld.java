@@ -360,7 +360,7 @@ public class PosixWorld extends World {
       proc.fail("EBADF");
       return null;
     }
-    String content = files.get(f.path);
+    String content = files.getOrDefault(f.path, ""); // an unlinked file reads as empty
     int end        = Math.min(content.length(), f.offset + Math.max(len, 0));
     String res     = f.offset < end ? content.substring(f.offset, end) : "";
     f.offset += res.length();
@@ -378,6 +378,8 @@ public class PosixWorld extends World {
     }
     if (!(o instanceof RegularFile f) || !f.writable)
       return proc.fail("EBADF");
+    if (!files.containsKey(f.path)) // an unlinked file, which nobody can read anymore
+      return data.length();
     String content = files.get(f.path);
     if (f.append)
       f.offset = content.length();
@@ -386,6 +388,9 @@ public class PosixWorld extends World {
     f.offset += data.length();
     return data.length();
   }
+
+  /** Removes the file. Its open descriptors stay usable, but read it as empty and write in nothing (no inode is modelled). */
+  int unlink(PosixProcess proc, String path) { return files.remove(path) == null ? proc.fail("ENOENT") : 0; }
 
   int close(PosixProcess proc, int fd)
   {

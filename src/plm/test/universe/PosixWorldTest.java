@@ -677,6 +677,20 @@ public class PosixWorldTest {
     }
   }
 
+  @Test public void testUnlink()
+  {
+    PosixWorld w  = new PosixWorld("unlink").addFile("notes.txt", "draft");
+    PosixEntity p = process(w);
+    int fd        = p.open("notes.txt", 0);
+    Assertions.assertEquals(0, p.unlink("notes.txt"));
+    Assertions.assertEquals(-1, p.open("notes.txt", 0));
+    Assertions.assertEquals("ENOENT", p.lastError());
+    Assertions.assertEquals(-1, p.unlink("notes.txt"));
+    Assertions.assertEquals("", s(p.read(fd, 10))); // the descriptor stays usable
+    p.close(fd);
+    Assertions.assertTrue(w.winning(new PosixWorld("unlink")), new PosixWorld("unlink").diffTo(w, null));
+  }
+
   @Test public void testUnknownFileAndBadDescriptor()
   {
     PosixEntity p = process(new PosixWorld("errors"));
