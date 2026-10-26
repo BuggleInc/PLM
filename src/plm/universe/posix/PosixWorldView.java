@@ -109,8 +109,7 @@ public class PosixWorldView extends WorldView {
     machine(g2, 10, machineWidth, 25, "Your machine (" + PosixWorld.STUDENT_IP + ")", rows(w.student), w.files, false, ports);
     int top = 25;
     for (Peer p : w.peers) {
-      String title = p.process.ip + (p.isServer ? " (server)" : " (client)");
-      top          = machine(g2, getWidth() - 10 - machineWidth, machineWidth, top, title, rows(p.process), Map.of(), true, ports) + 20;
+      top = machine(g2, getWidth() - 10 - machineWidth, machineWidth, top, p.title(), rows(p.process), Map.of(), true, ports) + 20;
     }
 
     // The connections between the ports, dashed while waiting in a backlog

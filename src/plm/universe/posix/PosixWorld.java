@@ -83,12 +83,7 @@ public class PosixWorld extends World {
   /** Adds a peer, warning the author if its script leaves sent data that the network never transmits */
   public PosixWorld addPeer(Peer peer)
   {
-    int pending = 0;
-    for (Peer.Step step : peer.script)
-      if (step.kind() == Peer.Kind.SEND)
-        pending += step.data().length();
-      else if (step.kind() == Peer.Kind.TRANSMIT)
-        pending = Math.max(0, pending - step.amount());
+    int pending = peer instanceof ScriptedPeer scripted ? scripted.untransmitted() : 0;
     if (pending > 0)
       System.err.println("Warning: in world " + getName() + ", the script of the " + peer.name() + " never transmits the last " + pending +
                          " bytes that it sends. Add some transmit() to its script.");
@@ -104,7 +99,7 @@ public class PosixWorld extends World {
     // Shared by the processes, whose descriptions may be shared or point to each other
     Map<FileDescription, FileDescription> copies = new IdentityHashMap<>();
     for (Peer p : other.peers)
-      peers.add(new Peer(p, copies));
+      peers.add(p.copy(copies));
     student = new PosixProcess(other.student, copies);
     now     = other.now;
     trace   = new CopyOnWriteArrayList<>(other.trace);
@@ -151,8 +146,8 @@ public class PosixWorld extends World {
   {
     int res = -1;
     for (Peer p : peers)
-      if (p.wakeAt >= 0 && (res < 0 || p.wakeAt < res))
-        res = p.wakeAt;
+      if (p.wakeUp() >= 0 && (res < 0 || p.wakeUp() < res))
+        res = p.wakeUp();
     return res;
   }
 

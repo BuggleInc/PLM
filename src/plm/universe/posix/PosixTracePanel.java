@@ -38,18 +38,14 @@ public class PosixTracePanel extends EntityControlPanel implements IWorldView {
     StringBuilder html = new StringBuilder("<html><body style='font-family:monospace'>");
     for (String event : world.trace)
       html.append(escape(event)).append("<br>");
-    for (Peer p : world.peers) // the peers act as far as they can, so their current step is one they wait in
-      if (!p.refused && p.next < p.script.size()) {
-        String until   = p.wakeAt >= 0 ? " until t=" + p.wakeAt : ""; // a sleep in progress knows its end
-        Peer.Step step = p.script.get(p.next);
-        html.append(escape("[t=" + p.since + "…] " + p.actor(step) + ": " + p.call(step) + until + " (ongoing)")).append("<br>");
-      }
+    for (Peer p : world.peers) // the peers act as far as they can, so what they do now is waiting
+      if (p.ongoing() != null)
+        html.append(escape("[t=" + p.since + "…] " + p.ongoing() + " (ongoing)")).append("<br>");
     html.append("<span style='color:gray'>");
     String blank = "&nbsp;".repeat(("[t=" + world.now + "] ").length()); // the place of the timestamp in the monospace font
     for (Peer p : world.peers)
-      if (!p.refused)
-        for (int i = p.next + 1; i < p.script.size(); i++)
-          html.append(blank).append(escape(p.actor(p.script.get(i)) + ": " + p.call(p.script.get(i)))).append("<br>");
+      for (String step : p.upcoming())
+        html.append(blank).append(escape(step)).append("<br>");
     text.setText(html.append("</span></body></html>").toString());
     text.setCaretPosition(currentPoint(world.trace.size()));
   }

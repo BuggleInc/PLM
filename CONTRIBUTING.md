@@ -867,7 +867,7 @@ not compared during the merge.
 
 The `plm.universe.posix` universe, used by the networking lesson (`lessons.network`), teaches the system calls on files and
 TCP sockets, without intercepting a real system: the student's process acts on a simulated kernel (`PosixWorld`), and the other
-programs are scripted peers (`Peer`). Its pedagogical choices are described in the [pedagogical
+programs are peers (`Peer`), following a script or written in Java. Its pedagogical choices are described in the [pedagogical
 documentation](PEDAGOGY.md#system-programming).
 
 * **The kernel**: `PosixWorld` holds the regular files and the processes: the student's one and the ones of the peers. Each
@@ -898,6 +898,14 @@ documentation](PEDAGOGY.md#system-programming).
   is animated on its own (`PosixWorld.advancePeers()`). The student writes a function whose parameters (such as the address
   and the port of the server) are given by each world with `PosixWorld.setParameters()`, along with its peers, so that
   hard-coded values fail.
+* **The programmed peers**: the servers of real protocols (answering each request as it deserves) are Java programs extending
+  `ProgramPeer`, written as event loops: `start()` typically listens on their ports, and each call to `act()` does at most one
+  action and tells whether it did one. Their helpers (`listen()`, `accept()`, `receive(fd, delimiter)`, `ended()`, `send()`,
+  `sendInPackets()`, `close()`) call the kernel and trace these calls as the student's ones, without blocking: `accept()`
+  returns -1 when no connection waits, and `receive()` returns null until the delimiter arrived. The data of `send()` reaches the
+  student at once, while `sendInPackets()` lets the network carry it in packets after pauses, to make the framing matter. Their
+  state is in the fields of their class, which their copy constructor copies (after the one of `ProgramPeer`), and `waiting()`
+  tells the trace what they wait for. `PosixWorldTest.ShoutServer` is a small example.
 * **The network**: a connection is a pair of sockets pointing to each other, each with its send and receive queues, created by
   `connect()` in the backlog of the listening socket until `accept()` takes it. A peer's `send()` only fills the send queue of
   its socket, and `transmit(fd, n)` carries at most `n` bytes to the receive queue of the other end, in one packet. The end of

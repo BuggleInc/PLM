@@ -6,7 +6,7 @@ import java.util.Map;
  * What a descriptor points to: an open file description in POSIX terms (struct file in Linux), that is a regular file, a socket
  * or a standard stream with the state of its opening. Several descriptors, possibly of several processes, may share one.
  */
-abstract class FileDescription {
+public abstract class FileDescription {
   /**
    * The copy of this description in copies, made if needed: the descriptions shared by several descriptors or processes, or
    * pointing to each other, stay so in the copies. The copy has the class of this description.

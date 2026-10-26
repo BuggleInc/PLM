@@ -7,11 +7,16 @@ import static plm.universe.posix.PosixWorld.O_WRONLY;
 import static plm.universe.posix.PosixWorld.SOCK_STREAM;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import plm.universe.posix.FileDescription;
 import plm.universe.posix.Peer;
 import plm.universe.posix.PosixEntity;
 import plm.universe.posix.PosixWorld;
+import plm.universe.posix.ProgramPeer;
 
 /** Scenarios of the POSIX world, played directly on the entity (no remoting). */
 public class PosixWorldTest {
@@ -364,6 +369,76 @@ public class PosixWorldTest {
     p.close(a);
     p.close(b);
     p.close(master);
+  }
+
+  /** A server of the tests on port 7, answering each line ended by \r\n in upper case, in packets of 2 bytes, and closing on QUIT */
+  private static final class ShoutServer extends ProgramPeer {
+    private int master;
+    private final List<Integer> clients = new ArrayList<>();
+
+    ShoutServer() { super("10.0.0.1", "shout server"); }
+
+    private ShoutServer(ShoutServer other, Map<FileDescription, FileDescription> copies)
+    {
+      super(other, copies);
+      master = other.master;
+      clients.addAll(other.clients);
+    }
+
+    @Override protected ShoutServer copy(Map<FileDescription, FileDescription> copies) { return new ShoutServer(this, copies); }
+
+    @Override protected void start() { master = listen(7); }
+
+    @Override protected boolean act()
+    {
+      int client = accept(master);
+      if (client >= 0)
+        return clients.add(client);
+      for (int fd : clients) {
+        String line = receive(fd, "\r\n");
+        if ("QUIT".equals(line) || (line == null && ended(fd))) {
+          close(fd);
+          return clients.remove((Integer)fd);
+        }
+        if (line != null) {
+          sendInPackets(fd, line.toUpperCase() + "\r\n", 2, 1);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    @Override protected String waiting() { return "waiting for a line"; }
+  }
+
+  /** Receives on that descriptor until the end of a line */
+  private static String line(PosixEntity p, int fd)
+  {
+    StringBuilder res = new StringBuilder();
+    while (!res.toString().endsWith("\r\n"))
+      res.append(s(p.recv(fd, 100, 0)));
+    return res.toString();
+  }
+
+  @Test public void testProgramPeerServesSeveralClients()
+  {
+    PosixWorld w  = new PosixWorld("shout").addPeer(new ShoutServer());
+    PosixEntity p = process(w);
+    int a         = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(a, "10.0.0.1", 7));
+    int b = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(b, "10.0.0.1", 7));
+    p.send(a, b("hel"), 0); // a line in two parts
+    p.send(a, b("lo\r\n"), 0);
+    p.send(b, b("QUIT\r\n"), 0);
+    Assertions.assertEquals("", s(p.recv(b, 10, 0)));
+    Assertions.assertEquals("HE", s(p.recv(a, 10, 0))); // the first packet only
+
+    PosixWorld copy = (PosixWorld)w.copy(); // in the middle of the answer, whose packets the copy must keep
+    Assertions.assertEquals("LLO\r\n", line(p, a));
+    Assertions.assertEquals("LLO\r\n", line(process(copy), a));
+    p.close(a);
+    p.close(b);
   }
 
   @Test public void testUnknownFileAndBadDescriptor()
