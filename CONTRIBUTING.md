@@ -963,7 +963,10 @@ documentation](PEDAGOGY.md#system-programming).
   `getParamInt()`, for the code of the entity.
 * **The Java glue** (`RemotePosixGlue.java`, appended in the class of the generated methods, which are private and named
   `plm_remote_xxx`) offers nested classes with the interface of `java.net.Socket`, `java.net.ServerSocket` (with their
-  streams) and of `Thread.sleep()`, which throw the exceptions of the JDK (such as `ConnectException`). They are listed in
+  streams), of `Thread.sleep()`, of the file streams (`FileInputStream`, `FileOutputStream`, `FileReader`, `FileWriter`, and
+  `PrintWriter` whose constructor taking a file name opens it in the world) and of the usual methods of `java.nio.file.Files`
+  (`readString()`, `readAllBytes()`, `readAllLines()`, `writeString()`, `write()`, `delete()`, `deleteIfExists()`), which
+  throw the exceptions of the JDK (such as `ConnectException` or `FileNotFoundException`). They are listed in
   `@Glue(replaces = ...)`: the generated entity imports them by name, which beats the imports on demand of its template
   (`java.net.*`) and the implicit `java.lang.*`, while its single-type imports of the replaced classes are dropped. The static
   initializer of the glue redirects `System.out` and `System.err` to the world, and the generated `Main` keeps the original
@@ -975,6 +978,8 @@ documentation](PEDAGOGY.md#system-programming).
   Scala (`socket.getInputStream`, without parentheses). The same `@Glue(replaces = ...)` makes the generated entity import them
   explicitly, which beats the wildcard imports (`java.net._`). It redirects `System.out` before the first use of `Console`,
   which keeps the `System.out` of that time for `println()`. The templates are written in Scala 3 with braces.
+  `scala.io.Source.fromFile()` is not replaced, since `replaces` is shared with Java, which has no such class: the students
+  read the files with the classes above.
 * **The display**: `PosixWorldView` draws the student's machine and the peers' ones (mirrored), with the descriptors of their
   processes, the kernel objects in violet, their queues as cells, and the network in green. `PosixTracePanel`, under
   the view, traces the system calls in the style of strace, the ongoing steps of the peers, and their remaining steps greyed.

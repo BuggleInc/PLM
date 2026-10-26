@@ -1,24 +1,35 @@
 import java.io.Closeable;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.io.Writer;
 import java.net.BindException;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.IntUnaryOperator;
 
 /*
- * The network API of the world, in place of the one of the JDK: Socket, ServerSocket and Thread.sleep() act on the world of the
+ * The network and file API of the world, in place of the one of the JDK: Socket, ServerSocket, Thread.sleep(), the file streams
+ * (FileInputStream, FileOutputStream, FileReader, FileWriter, PrintWriter) and the usual methods of Files act on the world of the
  * exercise, and System.out and System.err write on its standard streams. The generated entity imports these classes by name (see
- * Glue.replaces()), so that the student's code uses them as the ones of java.net and java.lang.
+ * Glue.replaces()), so that the student's code uses them as the ones of java.net, java.io, java.nio.file and java.lang.
  */
 
 private static final int AF_INET = 2, SOCK_STREAM = 1, SHUT_RD = 0, SHUT_WR = 1;
+private static final int O_RDONLY = 0, O_WRONLY = 1, O_CREAT = 0100, O_TRUNC = 01000, O_APPEND = 02000;
 
 static
 {
@@ -225,4 +236,141 @@ public static final class Thread {
   private Thread() {}
 
   public static void sleep(long millis) throws InterruptedException { plm_remote_sleep((int)((millis + 999) / 1000)); }
+}
+
+/** Opens a file of the world, and returns its descriptor, or throws the FileNotFoundException of the JDK */
+private static int opened(String path, int flags) throws FileNotFoundException
+{
+  int fd = plm_remote_open(path, flags);
+  if (fd < 0) {
+    String error = plm_remote_lastError();
+    throw new FileNotFoundException(path + " (" + (error.equals("ENOENT") ? "No such file or directory" : error) + ")");
+  }
+  return fd;
+}
+
+/** A file of the world opened for reading, with the interface of java.io.FileInputStream */
+public static class FileInputStream extends InputStream {
+  private final int fd;
+  private boolean closed;
+
+  public FileInputStream(String name) throws FileNotFoundException { fd = opened(name, O_RDONLY); }
+
+  @Override public int read() throws IOException
+  {
+    byte[] b = new byte[1];
+    return read(b, 0, 1) < 0 ? -1 : b[0] & 0xff;
+  }
+
+  @Override public int read(byte[] b, int off, int len) throws IOException
+  {
+    if (len == 0)
+      return 0;
+    byte[] data = plm_remote_read(fd, len);
+    if (data == null)
+      throw failure();
+    if (data.length == 0)
+      return -1;
+    System.arraycopy(data, 0, b, off, data.length);
+    return data.length;
+  }
+
+  @Override public void close() throws IOException
+  {
+    if (!closed) {
+      closed = true;
+      checked(plm_remote_close(fd));
+    }
+  }
+}
+
+/** A file of the world opened for writing, with the interface of java.io.FileOutputStream */
+public static class FileOutputStream extends OutputStream {
+  private final int fd;
+  private boolean closed;
+
+  public FileOutputStream(String name) throws FileNotFoundException { this(name, false); }
+
+  public FileOutputStream(String name, boolean append) throws FileNotFoundException { fd = opened(name, O_WRONLY | O_CREAT | (append ? O_APPEND : O_TRUNC)); }
+
+  @Override public void write(int b) throws IOException { write(new byte[] {(byte)b}, 0, 1); }
+
+  @Override public void write(byte[] b, int off, int len) throws IOException
+  {
+    while (len > 0) {
+      int written = checked(plm_remote_write(fd, Arrays.copyOfRange(b, off, off + len)));
+      off += written;
+      len -= written;
+    }
+  }
+
+  @Override public void close() throws IOException
+  {
+    if (!closed) {
+      closed = true;
+      checked(plm_remote_close(fd));
+    }
+  }
+}
+
+/** A text file of the world opened for reading, with the interface of java.io.FileReader (in UTF-8) */
+public static class FileReader extends InputStreamReader {
+  public FileReader(String name) throws FileNotFoundException { super(new FileInputStream(name), StandardCharsets.UTF_8); }
+}
+
+/** A text file of the world opened for writing, with the interface of java.io.FileWriter (in UTF-8) */
+public static class FileWriter extends OutputStreamWriter {
+  public FileWriter(String name) throws IOException { this(name, false); }
+
+  public FileWriter(String name, boolean append) throws IOException { super(new FileOutputStream(name, append), StandardCharsets.UTF_8); }
+}
+
+/** The java.io.PrintWriter of the JDK, whose constructor taking a file name opens it in the world */
+public static class PrintWriter extends java.io.PrintWriter {
+  public PrintWriter(Writer out) { super(out); }
+
+  public PrintWriter(Writer out, boolean autoFlush) { super(out, autoFlush); }
+
+  public PrintWriter(OutputStream out) { super(out); }
+
+  public PrintWriter(OutputStream out, boolean autoFlush) { super(out, autoFlush); }
+
+  public PrintWriter(String fileName) throws FileNotFoundException { super(new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8)); }
+}
+
+/** The usual static methods of java.nio.file.Files, on the files of the world (the options of writing can only be APPEND) */
+public static final class Files {
+  private Files() {}
+
+  public static byte[] readAllBytes(Path path) throws IOException
+  {
+    try (InputStream in = new FileInputStream(path.toString())) {
+      return in.readAllBytes();
+    }
+  }
+
+  public static String readString(Path path) throws IOException { return new String(readAllBytes(path), StandardCharsets.UTF_8); }
+
+  public static List<String> readAllLines(Path path) throws IOException { return readString(path).lines().toList(); }
+
+  public static Path write(Path path, byte[] bytes, OpenOption... options) throws IOException
+  {
+    try (OutputStream out = new FileOutputStream(path.toString(), List.of(options).contains(StandardOpenOption.APPEND))) {
+      out.write(bytes);
+    }
+    return path;
+  }
+
+  public static Path writeString(Path path, CharSequence text, OpenOption... options) throws IOException
+  {
+    return write(path, text.toString().getBytes(StandardCharsets.UTF_8), options);
+  }
+
+  public static void delete(Path path)throws IOException
+  {
+    if (!deleteIfExists(path))
+      throw new NoSuchFileException(path.toString());
+  }
+
+  public static boolean deleteIfExists(Path path) { return plm_remote_unlink(path.toString()) == 0; }
 }

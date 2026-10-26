@@ -1,19 +1,26 @@
-import java.io.{Closeable, IOException, InputStream, OutputStream, PrintStream}
+import java.io.{Closeable, FileNotFoundException, IOException, InputStream, InputStreamReader, OutputStream, OutputStreamWriter, PrintStream, Writer}
 import java.net.{BindException, ConnectException, InetSocketAddress, SocketAddress, SocketException}
 import java.nio.charset.StandardCharsets
+import java.nio.file.{NoSuchFileException, OpenOption, Path, StandardOpenOption}
 import java.util.Arrays
 
 /*
- * The network API of the world, in place of the one of the JDK, which Scala programs use: Socket, ServerSocket and Thread.sleep()
- * act on the world of the exercise, and System.out and System.err (thus println()) write on its standard streams. The generated
- * entity imports these classes by name (see Glue.replaces()), so that the student's code uses them as the ones of java.net and
- * java.lang. As in Scala, their accessors have no parentheses (socket.getInputStream).
+ * The network and file API of the world, in place of the one of the JDK, which Scala programs use: Socket, ServerSocket,
+ * Thread.sleep(), the file streams (FileInputStream, FileOutputStream, FileReader, FileWriter, PrintWriter) and the usual methods
+ * of Files act on the world of the exercise, and System.out and System.err (thus println()) write on its standard streams. The
+ * generated entity imports these classes by name (see Glue.replaces()), so that the student's code uses them as the ones of the
+ * JDK. As in Scala, their accessors have no parentheses (socket.getInputStream). scala.io.Source.fromFile() is not replaced.
  */
 
 private val AF_INET     = 2
 private val SOCK_STREAM = 1
 private val SHUT_RD     = 0
 private val SHUT_WR     = 1
+private val O_RDONLY    = 0
+private val O_WRONLY    = 1
+private val O_CREAT     = 0x40
+private val O_TRUNC     = 0x200
+private val O_APPEND    = 0x400
 
 // Before the first use of Console, which keeps the System.out of that time
 System.setOut(new PrintStream(new Descriptor(1), true, StandardCharsets.UTF_8))
@@ -174,4 +181,110 @@ class ServerSocket() extends SocketBase {
 /** The sleep() of java.lang.Thread, in the world, which counts whole seconds */
 object Thread {
   def sleep(millis: Long): Unit = plm_remote_sleep(((millis + 999) / 1000).toInt)
+}
+
+/** Opens a file of the world, and returns its descriptor, or throws the FileNotFoundException of the JDK */
+private def opened(path: String, flags: Int): Int = {
+  val fd = plm_remote_open(path, flags)
+  if (fd < 0) {
+    val error = plm_remote_lastError()
+    throw new FileNotFoundException(path + " (" + (if (error == "ENOENT") "No such file or directory" else error) + ")")
+  }
+  fd
+}
+
+/** A file of the world opened for reading, with the interface of java.io.FileInputStream */
+class FileInputStream(name: String) extends InputStream {
+  private val fd     = opened(name, O_RDONLY)
+  private var closed = false
+
+  override def read(): Int = {
+    val b = new Array[Byte](1)
+    if (read(b, 0, 1) < 0) -1 else b(0) & 0xff
+  }
+
+  override def read(b: Array[Byte], off: Int, len: Int): Int =
+    if (len == 0) 0
+    else {
+      val data = plm_remote_read(fd, len)
+      if (data == null)
+        throw failure()
+      System.arraycopy(data, 0, b, off, data.length)
+      if (data.isEmpty) -1 else data.length
+    }
+
+  override def close(): Unit =
+    if (!closed) {
+      closed = true
+      checked(plm_remote_close(fd))
+    }
+}
+
+/** A file of the world opened for writing, with the interface of java.io.FileOutputStream */
+class FileOutputStream(name: String, append: Boolean) extends OutputStream {
+  private val fd     = opened(name, O_WRONLY | O_CREAT | (if (append) O_APPEND else O_TRUNC))
+  private var closed = false
+
+  def this(name: String) = this(name, false)
+
+  override def write(b: Int): Unit = write(Array(b.toByte), 0, 1)
+
+  override def write(b: Array[Byte], off: Int, len: Int): Unit = {
+    var written = 0
+    while (written < len)
+      written += checked(plm_remote_write(fd, Arrays.copyOfRange(b, off + written, off + len)))
+  }
+
+  override def close(): Unit =
+    if (!closed) {
+      closed = true
+      checked(plm_remote_close(fd))
+    }
+}
+
+/** A text file of the world opened for reading, with the interface of java.io.FileReader (in UTF-8) */
+class FileReader(name: String) extends InputStreamReader(new FileInputStream(name), StandardCharsets.UTF_8)
+
+/** A text file of the world opened for writing, with the interface of java.io.FileWriter (in UTF-8) */
+class FileWriter(name: String, append: Boolean) extends OutputStreamWriter(new FileOutputStream(name, append), StandardCharsets.UTF_8) {
+  def this(name: String) = this(name, false)
+}
+
+/** The java.io.PrintWriter of the JDK, whose constructor taking a file name opens it in the world */
+class PrintWriter(out: Writer, autoFlush: Boolean) extends java.io.PrintWriter(out, autoFlush) {
+  def this(out: Writer) = this(out, false)
+
+  def this(out: OutputStream, autoFlush: Boolean) = this(new OutputStreamWriter(out), autoFlush)
+
+  def this(out: OutputStream) = this(out, false)
+
+  def this(fileName: String) = this(new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8), false)
+}
+
+/** The usual static methods of java.nio.file.Files, on the files of the world (the options of writing can only be APPEND) */
+object Files {
+  def readAllBytes(path: Path): Array[Byte] = {
+    val in = new FileInputStream(path.toString)
+    try in.readAllBytes()
+    finally in.close()
+  }
+
+  def readString(path: Path): String = new String(readAllBytes(path), StandardCharsets.UTF_8)
+
+  def readAllLines(path: Path): java.util.List[String] = readString(path).lines().toList
+
+  def write(path: Path, bytes: Array[Byte], options: OpenOption*): Path = {
+    val out = new FileOutputStream(path.toString, options.contains(StandardOpenOption.APPEND))
+    try out.write(bytes)
+    finally out.close()
+    path
+  }
+
+  def writeString(path: Path, text: CharSequence, options: OpenOption*): Path = write(path, text.toString.getBytes(StandardCharsets.UTF_8), options*)
+
+  def delete(path: Path): Unit =
+    if (!deleteIfExists(path))
+      throw new NoSuchFileException(path.toString)
+
+  def deleteIfExists(path: Path): Boolean = plm_remote_unlink(path.toString) == 0
 }
