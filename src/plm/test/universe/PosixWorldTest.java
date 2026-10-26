@@ -13,6 +13,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.universe.posix.FileDescription;
+import plm.universe.posix.HttpServer;
 import plm.universe.posix.IrcServer;
 import plm.universe.posix.Peer;
 import plm.universe.posix.PosixEntity;
@@ -552,6 +553,59 @@ public class PosixWorldTest {
     Assertions.assertTrue(curr.winning(ref), ref.diffTo(curr, null));
     process(curr).write(1, b("!"));
     Assertions.assertFalse(curr.winning(ref));
+  }
+
+  /** A world with an HTTP server on 10.0.0.1:80 serving /doc.txt, sending in packets of that size if positive */
+  private static PosixWorld http(int packetSize)
+  {
+    return new PosixWorld("http").addPeer(new HttpServer("10.0.0.1", 80).file("/doc.txt", "Use RETR.\n").packets(packetSize));
+  }
+
+  /** Receives on that descriptor until the data has that length */
+  private static String data(PosixEntity p, int fd, int length)
+  {
+    StringBuilder res = new StringBuilder();
+    while (res.length() < length)
+      res.append(s(p.recv(fd, length - res.length(), 0)));
+    return res.toString();
+  }
+
+  private static final String HEADERS = "HTTP/1.1 200 OK\r\nServer: plm-httpd/1.0\r\nDate: Mon, 01 Jan 2024 00:00:00 GMT\r\n"
+                                        + "Content-Type: text/plain\r\nContent-Length: 10\r\n";
+
+  @Test public void testHttpServerKeepsTheConnection()
+  {
+    for (int packetSize : new int[] {0, 16}) {
+      PosixWorld w  = http(packetSize);
+      PosixEntity p = process(w);
+      int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+      Assertions.assertEquals(0, p.connect(sock, "10.0.0.1", 80));
+      p.send(sock, b("GET /doc.txt HTTP/1.1\r\nHost: 10.0.0.1\r\n\r\n"), 0);
+      String response = HEADERS + "Connection: keep-alive\r\n\r\nUse RETR.\n";
+      Assertions.assertEquals(response, data(p, sock, response.length()).replaceFirst("Date: [^\r]*", "Date: Mon, 01 Jan 2024 00:00:00 GMT"));
+      p.send(sock, b("HEAD /missing HTTP/1.1\nhost: x\n\n"), 0); // on the same connection, with lines ended by \n alone
+      Assertions.assertTrue(data(p, sock, 12).equals("HTTP/1.1 404"));
+      p.close(sock);
+    }
+  }
+
+  @Test public void testHttpServerClosesAfterTheResponse()
+  {
+    PosixEntity p = process(http(0));
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    p.send(sock, b("GET /doc.txt HTTP/1.0\r\n\r\n"), 0);
+    StringBuilder response = new StringBuilder();
+    for (String chunk = s(p.recv(sock, 512, 0)); !chunk.isEmpty(); chunk = s(p.recv(sock, 512, 0)))
+      response.append(chunk);
+    Assertions.assertEquals(HEADERS + "Connection: close\r\n\r\nUse RETR.\n", response.toString());
+    p.close(sock);
+
+    sock = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    p.send(sock, b("GET /doc.txt HTTP/1.1\r\n\r\n"), 0); // without Host
+    Assertions.assertEquals("HTTP/1.1 400 Bad Request\r\n", data(p, sock, 26));
+    p.close(sock);
   }
 
   @Test public void testUnknownFileAndBadDescriptor()

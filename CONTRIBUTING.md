@@ -900,9 +900,10 @@ documentation](PEDAGOGY.md#system-programming).
   hard-coded values fail.
 * **The programmed peers**: the servers of real protocols (answering each request as it deserves) are Java programs extending
   `ProgramPeer`, written as event loops: `start()` typically listens on their ports, and each call to `act()` does at most one
-  action and tells whether it did one. Their helpers (`listen()`, `accept()`, `receive(fd, delimiter)`, `ended()`, `send()`,
-  `sendInPackets()`, `close()`) call the kernel and trace these calls as the student's ones, without blocking: `accept()`
-  returns -1 when no connection waits, and `receive()` returns null until the delimiter arrived. The data of `send()` reaches the
+  action and tells whether it did one. Their helpers (`listen()`, `accept()`, `peek()`, `receive(fd, length)`, `receive(fd, delimiter)`,
+  `ended()`, `send()`, `sendInPackets()`, `close()`, `ascii()`) call the kernel and trace these calls as the student's ones,
+  without blocking: `accept()` returns -1 when no connection waits, `peek()` shows what arrived without receiving it, and
+  `receive(fd, delimiter)` returns null until the delimiter arrived. The data of `send()` reaches the
   student at once, while `sendInPackets()` lets the network carry it in packets after pauses, to make the framing matter. Their
   state is in the fields of their class, which their copy constructor copies (after the one of `ProgramPeer`), and `waiting()`
   tells the trace what they wait for. `PosixWorldTest.ShoutServer` is a small example.
@@ -914,6 +915,13 @@ documentation](PEDAGOGY.md#system-programming).
   their case and accents) and to the other ones (`answer()`), and possibly the size of the packets cutting the lines of the
   members, one per second (`packets()`). The texts, which may be translated, lose their accents since the world only accepts
   ASCII for now.
+* **The HTTP server** (`HttpServer`, software `plm-httpd/1.0`) serves static files (`file()`) with `GET` and `HEAD`, exact to the
+  byte as the usual servers: its responses give `Content-Length`, the connections persist in HTTP/1.1 (unless `Connection:
+  close`) and close after the response in HTTP/1.0 (unless `Connection: keep-alive`), and the errors are 400 (also for an
+  HTTP/1.1 request without `Host`), 404, 405 and 505, with a small HTML page. It accepts the lines ended by `\n` alone. Its
+  `Date` starts on 2024-01-01 and follows the clock of the world. The idle connections stay open unless `keepAlive()` gives a
+  timeout, so that a client waiting for the end of the stream instead of reading `Content-Length` ends in a deadlock, which
+  tells it. `packets()` cuts the responses as the one of the IRC server.
 * **The network**: a connection is a pair of sockets pointing to each other, each with its send and receive queues, created by
   `connect()` in the backlog of the listening socket until `accept()` takes it. A peer's `send()` only fills the send queue of
   its socket, and `transmit(fd, n)` carries at most `n` bytes to the receive queue of the other end, in one packet. The end of

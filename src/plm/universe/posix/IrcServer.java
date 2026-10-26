@@ -1,6 +1,5 @@
 package plm.universe.posix;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -114,13 +113,6 @@ public class IrcServer extends ProgramPeer {
   {
     packetSize = size;
     return this;
-  }
-
-  /** The text in ASCII: the accents are removed, and the other characters become ? */
-  private static String ascii(String text)
-  {
-    String res = Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{M}", "");
-    return res.replaceAll("[^\\x00-\\x7F]", "?");
   }
 
   // ---------------------------------------------------------------- the event loop

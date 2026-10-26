@@ -1,5 +1,6 @@
 package plm.universe.posix;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -105,6 +106,13 @@ public abstract class ProgramPeer extends Peer {
 
   // ---------------------------------------------------------------- helpers for act(), tracing their system calls
 
+  /** The text in ASCII, which the world only accepts for now: the accents are removed (of a translated text), and the other characters become ? */
+  protected static String ascii(String text)
+  {
+    String res = Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{M}", "");
+    return res.replaceAll("[^\\x00-\\x7F]", "?");
+  }
+
   /** The time in the world */
   protected int now() { return world.now; }
 
@@ -134,24 +142,25 @@ public abstract class ProgramPeer extends Peer {
     return res;
   }
 
+  /** The data that arrived on that connection and was not received yet, without receiving it */
+  protected String peek(int fd) { return String.join("", ((Socket)process.get(fd)).incoming); }
+
+  /** Receives exactly that many bytes of that connection, which must have arrived (see peek()) */
+  protected String receive(int fd, int length)
+  {
+    String data = world.recv(process, fd, length, 0);
+    return traced("recv(" + fd + ", " + PosixWorld.filled(data) + ", " + length + ")", data);
+  }
+
   /** Receives the data of that connection up to the delimiter, and returns it without the delimiter, or null if it did not arrive yet */
   protected String receive(int fd, String delimiter)
   {
-    int end = String.join("", ((Socket)process.get(fd)).incoming).indexOf(delimiter);
-    if (end < 0)
-      return null;
-    int len     = end + delimiter.length();
-    String data = world.recv(process, fd, len, 0);
-    traced("recv(" + fd + ", " + PosixWorld.filled(data) + ", " + len + ")", data);
-    return data.substring(0, end);
+    int end = peek(fd).indexOf(delimiter);
+    return end < 0 ? null : receive(fd, end + delimiter.length()).substring(0, end);
   }
 
-  /** Whether the other side closed that connection, and all its data was received */
-  protected boolean ended(int fd)
-  {
-    Socket socket = (Socket)process.get(fd);
-    return socket.eofArrived() && socket.incoming.isEmpty();
-  }
+  /** Whether the other side closed that connection (the data that arrived before can still be received) */
+  protected boolean ended(int fd) { return ((Socket)process.get(fd)).eofArrived(); }
 
   /** Sends the data on that connection, which the network transmits at once */
   protected void send(int fd, String data)
