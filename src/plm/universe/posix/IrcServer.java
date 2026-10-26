@@ -14,21 +14,21 @@ import java.util.TreeMap;
  * are the usual numeric replies (421 unknown command, 451 not registered, 433 nickname in use, 461 not enough parameters...). As
  * most servers, it splits the lines on \n and ignores a \r before it, and the commands are case-insensitive.
  *
- * The other members of the channels are simulated: they say their lines at given times (only the clients in the channel at that
- * time receive them, as on a real server), and answer one exact private message after a second, or answer something else to any
- * other message. The texts are converted to ASCII, which the world only accepts for now (the translated texts lose their
- * accents). Everything the server sends can be cut in packets, so that the framing of the lines matters.
+ * The other members of the channels are simulated: they say their lines at given times after a client joined the channel (each
+ * client receives the whole chat, whenever it joins), and answer a private message after a second, depending on whether it
+ * contains some words. The texts are converted to ASCII, which the world only accepts for now (the translated texts lose their
+ * accents). The lines of the members can be cut in packets, so that the framing of the lines matters.
  */
 public class IrcServer extends ProgramPeer {
   public static final String NAME     = "irc.buggleinc.com";
   private static final String VERSION = "plm-ircd-1.0";
 
-  /** A line said on a channel by a simulated member, at a given time */
-  private record Said(int at, String channel, String nick, String text) {}
-  /** The answers of a simulated member to private messages: to the exact question, and to anything else */
-  private record Answers(String question, String answer, String otherwise) {}
-  /** A private message of a simulated member to a client, waiting for its time */
-  private record Reply(int at, int fd, String nick, String text) {}
+  /** A line said on a channel by a simulated member, some seconds after a client joined */
+  private record Said(int delay, String channel, String nick, String text) {}
+  /** The answers of a simulated member to the private messages containing all the words, and to the other ones */
+  private record Answers(List<String> words, String answer, String otherwise) {}
+  /** A line of a simulated member to a client, waiting for its time: what it says on a channel, or tells in private */
+  private record Pending(int at, int fd, String line) {}
 
   /** A connected client, by descriptor */
   private static final class Client {
@@ -57,7 +57,7 @@ public class IrcServer extends ProgramPeer {
   private final Map<String, List<String>> members = new LinkedHashMap<>();
   private final List<Said> said                   = new ArrayList<>();
   private final Map<String, Answers> answers      = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-  private final List<Reply> replies               = new ArrayList<>();
+  private final List<Pending> pending             = new ArrayList<>();
   private final Map<Integer, Client> clients      = new TreeMap<>();
 
   public IrcServer(String ip, int port)
@@ -76,7 +76,7 @@ public class IrcServer extends ProgramPeer {
     other.members.forEach((channel, nicks) -> members.put(channel, new ArrayList<>(nicks)));
     said.addAll(other.said);
     answers.putAll(other.answers);
-    replies.addAll(other.replies);
+    pending.addAll(other.pending);
     other.clients.forEach((fd, client) -> clients.put(fd, new Client(client)));
   }
 
@@ -92,22 +92,24 @@ public class IrcServer extends ProgramPeer {
     return this;
   }
 
-  /** Makes a simulated member say a line on a channel at that time (in seconds) */
-  public IrcServer say(int at, String channel, String nick, String text)
+  /** Makes a simulated member say a line on a channel, that many seconds after a client joined it */
+  public IrcServer say(int delay, String channel, String nick, String text)
   {
-    said.add(new Said(at, channel, nick, ascii(text)));
-    said.sort((a, b) -> Integer.compare(a.at(), b.at()));
+    said.add(new Said(delay, channel, nick, ascii(text)));
     return this;
   }
 
-  /** Makes a simulated member answer the exact question in private one second later, and answer otherwise to anything else */
-  public IrcServer answer(String nick, String question, String answer, String otherwise)
+  /**
+   * Makes a simulated member answer in private one second later: answer to the messages containing all the words (whatever their
+   * case and accents, so that they can be translated), and otherwise to the other ones
+   */
+  public IrcServer answer(String nick, List<String> words, String answer, String otherwise)
   {
-    answers.put(nick, new Answers(question, ascii(answer), ascii(otherwise)));
+    answers.put(nick, new Answers(words.stream().map(word -> ascii(word).toLowerCase(Locale.ROOT)).toList(), ascii(answer), ascii(otherwise)));
     return this;
   }
 
-  /** Cuts everything the server sends in packets of that size, one per second */
+  /** Cuts the lines of the simulated members in packets of that size, one per second */
   public IrcServer packets(int size)
   {
     packetSize = size;
@@ -144,46 +146,29 @@ public class IrcServer extends ProgramPeer {
         return true;
       }
     }
-    if (!said.isEmpty() && said.get(0).at() <= now()) {
-      Said line = said.remove(0);
-      clients.forEach((client, c) -> {
-        if (c.channels.contains(line.channel()))
-          out(client, ":" + member(line.nick()) + " PRIVMSG " + line.channel() + " :" + line.text());
-      });
-      return true;
-    }
-    for (Reply reply : replies)
-      if (reply.at() <= now()) {
-        replies.remove(reply);
-        if (clients.containsKey(reply.fd()))
-          out(reply.fd(), ":" + member(reply.nick()) + " PRIVMSG " + clients.get(reply.fd()).nick + " :" + reply.text());
+    for (Pending line : pending) // in the order they were planned
+      if (line.at() <= now()) {
+        pending.remove(line);
+        if (clients.containsKey(line.fd())) {
+          if (packetSize > 0)
+            sendInPackets(line.fd(), line.line() + "\r\n", packetSize, 1);
+          else
+            send(line.fd(), line.line() + "\r\n");
+        }
         return true;
       }
     return false;
   }
 
-  @Override protected int timer()
-  {
-    int res = said.isEmpty() ? -1 : said.get(0).at();
-    for (Reply reply : replies)
-      if (res < 0 || reply.at() < res)
-        res = reply.at();
-    return res;
-  }
+  @Override protected int timer() { return pending.stream().mapToInt(Pending::at).min().orElse(-1); }
 
   @Override protected String waiting() { return clients.isEmpty() ? "waiting for a connection" : "waiting for a command"; }
 
   /** The prefix of a simulated member */
   private static String member(String nick) { return nick + "!" + nick.toLowerCase(Locale.ROOT) + "@buggleinc.com"; }
 
-  /** Sends one or several lines (separated by \r\n) to a client, cut in packets if asked */
-  private void out(int fd, String lines)
-  {
-    if (packetSize > 0)
-      sendInPackets(fd, lines + "\r\n", packetSize, 1);
-    else
-      send(fd, lines + "\r\n");
-  }
+  /** Sends one or several lines (separated by \r\n) of the server to a client */
+  private void out(int fd, String lines) { send(fd, lines + "\r\n"); }
 
   /** Sends a numeric reply of the server, whose target is the nick of the client (or * before it has one) */
   private void numeric(int fd, Client client, String code, String text)
@@ -328,6 +313,10 @@ public class IrcServer extends ProgramPeer {
       if (topics.get(channel) != null)
         numeric(fd, client, "332", channel + " :" + topics.get(channel));
       names(fd, client, channel);
+      for (Said line : said) // the chat of the members, for this client
+        if (line.channel().equals(channel))
+          pending.add(new Pending(now() + line.delay(), fd, ":" + member(line.nick()) + " PRIVMSG " + channel + " :" + line.text()));
+      pending.sort((a, b) -> Integer.compare(a.at(), b.at()));
     }
   }
 
@@ -380,8 +369,11 @@ public class IrcServer extends ProgramPeer {
     }
     Answers answer = answers.get(target);
     if (answer != null) {
-      String nick = members.values().stream().flatMap(List::stream).filter(target::equalsIgnoreCase).findFirst().get();
-      replies.add(new Reply(now() + 1, fd, nick, params.get(1).equals(answer.question()) ? answer.answer() : answer.otherwise()));
+      String nick     = members.values().stream().flatMap(List::stream).filter(target::equalsIgnoreCase).findFirst().get();
+      String message  = ascii(params.get(1)).toLowerCase(Locale.ROOT);
+      boolean matches = answer.words().stream().allMatch(message::contains);
+      pending.add(new Pending(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + client.nick + " :" + (matches ? answer.answer() : answer.otherwise())));
+      pending.sort((a, b) -> Integer.compare(a.at(), b.at()));
     }
   }
 

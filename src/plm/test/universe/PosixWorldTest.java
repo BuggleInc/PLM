@@ -474,13 +474,13 @@ public class PosixWorldTest {
     }
   }
 
-  /** A world with an IRC server on 10.0.0.1:6667 where Bob answers a precise question, sending in packets of that size if positive */
+  /** A world with an IRC server on 10.0.0.1:6667 where Bob answers a polite question, sending in packets of that size if positive */
   private static PosixWorld irc(int packetSize)
   {
     return new PosixWorld("irc").addPeer(new IrcServer("10.0.0.1", 6667)
                                              .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
                                              .say(2, "#welcome", "Alice", "Has anyone seen my brush? I left it near the wall.")
-                                             .answer("Bob", "Hi Bob!", "Hi! The doc is /doc.txt", "Sorry, I did not get it")
+                                             .answer("Bob", List.of("please", "documentation", "baggle"), "Thanks! It is /doc.txt", "Sorry, I did not get it")
                                              .packets(packetSize));
   }
 
@@ -508,10 +508,9 @@ public class PosixWorldTest {
       Lines lines   = joined(p);
       p.send(3, b("PRIVMSG Bob :Hello\r\n"), 0);
       Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Sorry, I did not get it", lines.next());
-      p.send(3, b("privmsg Bob :Hi Bob!\n"), 0); // case-insensitive commands, and a bare \n
-      if (packetSize == 0)                       // at t=2, Alice speaks before Bob answers (the packets are so slow that she spoke before the JOIN)
-        Assertions.assertEquals(":Alice!alice@buggleinc.com PRIVMSG #welcome :Has anyone seen my brush? I left it near the wall.", lines.next());
-      Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Hi! The doc is /doc.txt", lines.next());
+      p.send(3, b("privmsg Bob :Please Bob, where is the Documentation? I have a baggle for you.\n"), 0); // any case, and a bare \n
+      Assertions.assertEquals(":Alice!alice@buggleinc.com PRIVMSG #welcome :Has anyone seen my brush? I left it near the wall.", lines.next());
+      Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Thanks! It is /doc.txt", lines.next());
       p.send(3, b("QUIT\r\n"), 0);
       Assertions.assertEquals("ERROR :Closing Link: 10.0.0.10 (Client Quit)", lines.next());
       Assertions.assertEquals("", s(p.recv(3, 10, 0)));

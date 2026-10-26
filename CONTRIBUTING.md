@@ -909,10 +909,11 @@ documentation](PEDAGOGY.md#system-programming).
 * **The IRC server** (`IrcServer`, named `irc.buggleinc.com`) is exact to the byte as the usual servers (RFC 2812): registration
   with `NICK` and `USER` and its welcome burst, `JOIN`, `PART`, `PRIVMSG`, `NAMES`, `PING` and `QUIT`, and the usual numeric
   errors. It splits the lines on `\n`, ignoring a `\r` before it. The exercise gives its channels with their topic and their
-  simulated members (`channel()`), the lines these members say at given times (`say()`, received only by the clients in the
-  channel at that time), the private answer of a member to an exact question and to anything else (`answer()`), and possibly
-  the size of the packets cutting everything the server sends, one per second (`packets()`). The texts, which may be
-  translated, lose their accents since the world only accepts ASCII for now.
+  simulated members (`channel()`), the lines these members say some seconds after a client joined the channel (`say()`, so
+  that each client receives the whole chat), the private answer of a member to the messages containing some words (whatever
+  their case and accents) and to the other ones (`answer()`), and possibly the size of the packets cutting the lines of the
+  members, one per second (`packets()`). The texts, which may be translated, lose their accents since the world only accepts
+  ASCII for now.
 * **The network**: a connection is a pair of sockets pointing to each other, each with its send and receive queues, created by
   `connect()` in the backlog of the listening socket until `accept()` takes it. A peer's `send()` only fills the send queue of
   its socket, and `transmit(fd, n)` carries at most `n` bytes to the receive queue of the other end, in one packet. The end of
