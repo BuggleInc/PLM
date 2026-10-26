@@ -1,6 +1,7 @@
-# The POSIX API of the world, in place of the system one: the socket module, the descriptor functions of os, time.sleep() and the
-# standard output and error act on the world of the exercise. They are substituted at import, so that the student's code imports
-# and uses them as usual.
+# The POSIX API of the world, in place of the system one: the socket module, the descriptor and file functions of os, open(),
+# time.sleep() and the standard output and error act on the world of the exercise. They are substituted at import, so that the
+# student's code imports and uses them as usual.
+import builtins
 import errno
 import io
 import os
@@ -52,25 +53,61 @@ def _close(fd):
     _checked(_plm_remote_close(fd))
 
 
+def _unlink(path):
+    _checked(_plm_remote_unlink(os.fspath(path)))
+
+
 def _sleep(seconds):
     _plm_remote_sleep(int(seconds))  # the world counts whole seconds
 
 
 class _Descriptor(io.RawIOBase):
-    """A descriptor of the world, as the binary stream under a standard stream"""
+    """A descriptor of the world as a raw binary stream, under the standard streams and the files given by open()"""
 
-    def __init__(self, fd):
+    def __init__(self, fd, readable=False, writable=True, closefd=False):
         super().__init__()
-        self._fd = fd
+        self._fd, self._readable, self._writable, self._closefd = fd, readable, writable, closefd
 
     def fileno(self):
         return self._fd
 
+    def readable(self):
+        return self._readable
+
     def writable(self):
-        return True
+        return self._writable
+
+    def readinto(self, buffer):
+        data = _read(self._fd, len(buffer))
+        buffer[:len(data)] = data
+        return len(data)
 
     def write(self, data):
         return _write(self._fd, data)
+
+    def close(self):
+        if not self.closed and self._closefd:
+            _close(self._fd)
+        super().close()
+
+
+def _file(file, mode="r", buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None):
+    """open() on the world: the file at that path (or that descriptor), as a binary or text stream buffered as usual"""
+    modes = set(mode)
+    readable, writable = "r" in modes or "+" in modes, bool(modes & set("wax+"))
+    if isinstance(file, int):
+        fd = file
+    else:
+        flags = os.O_RDWR if readable and writable else os.O_WRONLY if writable else os.O_RDONLY
+        flags |= (os.O_CREAT | os.O_TRUNC if "w" in modes else 0) | (os.O_CREAT | os.O_APPEND if "a" in modes else 0)
+        fd = _open(file, flags | (os.O_CREAT if "x" in modes else 0))
+    raw = _Descriptor(fd, readable, writable, closefd)
+    if buffering == 0:
+        return raw
+    stream = io.BufferedRWPair(raw, raw) if readable and writable else io.BufferedReader(raw) if readable else io.BufferedWriter(raw)
+    if "b" in modes:
+        return stream
+    return io.TextIOWrapper(stream, encoding or "utf-8", errors, newline, line_buffering=buffering == 1)
 
 
 class socket:
@@ -117,6 +154,10 @@ class socket:
     def shutdown(self, how):
         _checked(_plm_remote_shutdown(self._fd, how))
 
+    def makefile(self, mode="r", buffering=None, *, encoding=None, errors=None, newline=None):
+        """A file on the socket (such as makefile("rb"), whose readline() frames the lines). Closing it leaves the socket open."""
+        return _file(self._fd, mode, -1 if buffering is None else buffering, encoding, errors, newline, closefd=False)
+
     def close(self):
         # As in Python, closing a closed socket does nothing
         if self._fd >= 0:
@@ -151,7 +192,8 @@ _socket_module = types.ModuleType("socket", "The sockets of the world")
 _socket_module.__dict__.update(socket=socket, create_connection=create_connection, create_server=create_server, error=OSError, AF_INET=AF_INET,
                                SOCK_STREAM=SOCK_STREAM, IPPROTO_TCP=IPPROTO_TCP, SHUT_RD=SHUT_RD, SHUT_WR=SHUT_WR, SHUT_RDWR=SHUT_RDWR)
 sys.modules["socket"] = _socket_module
-os.open, os.read, os.write, os.close, time.sleep = _open, _read, _write, _close, _sleep
+os.open, os.read, os.write, os.close, os.unlink, os.remove, os.fdopen, time.sleep = _open, _read, _write, _close, _unlink, _unlink, _file, _sleep
+builtins.open = io.open = _file  # pathlib uses io.open, while the modules imported before (such as tokenize) keep the real one
 
 # The standard streams of the world write each line at once, as on a terminal, and their binary buffer is not buffered. Their line
 # breaks are not translated. The uncaught exceptions still reach the PLM console, through the standard error of the process.

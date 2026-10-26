@@ -947,12 +947,17 @@ documentation](PEDAGOGY.md#system-programming).
   undocumented `lastError()` primitive. It exposes `getParamString()` and `getParamInt()` to the code of the entity that calls the
   student's function (the generated functions of a wrapped glue are private). It also intercepts the output functions of `stdio.h`
   on the standard streams (`printf()`, `fprintf()`, `puts()`, `fputs()`, `putchar()` and `perror()`), unbuffered, as the libc
-  would otherwise write behind its back.
+  would otherwise write behind its back. Its `fopen()` and `fdopen()` give real streams of the libc, buffered as usual, whose
+  reads and writes call the system calls of the world (`fopencookie()` of the glibc, which `LangC` enables with
+  `-D_GNU_SOURCE`, or `funopen()` on macOS): the student can use `fgets()` or `fscanf()` on a file or a socket. They fail
+  with `ENOSYS` on Windows, which has no such custom streams.
 * **The Python glue** (`RemotePosixGlue.py`, appended to the generated functions renamed `_plm_remote_xxx`) substitutes the
   system modules at import, so that the student's code uses them as usual: `sys.modules["socket"]` becomes a module of the
-  world (`socket.socket`, `create_connection()`, `create_server()` and the constants), `os.open()`, `os.read()`, `os.write()`,
-  `os.close()` and `time.sleep()` act on the world, and the failures raise the `OSError` of the `errno` (such as
-  `ConnectionRefusedError`). `sys.stdout` and `sys.stderr` write on the standard streams of the world, line by line, while the
+  world (`socket.socket` with `makefile()`, `create_connection()`, `create_server()` and the constants), `os.open()`,
+  `os.read()`, `os.write()`, `os.close()`, `os.unlink()`, `os.remove()`, `os.fdopen()`, `open()` (also as `io.open()`, used by
+  `pathlib`) and `time.sleep()` act on the world, and the failures raise the `OSError` of the `errno` (such as
+  `ConnectionRefusedError`). The files given by `open()` are the usual buffered binary or text streams of `io`, on a raw stream
+  calling the system calls of the world. `sys.stdout` and `sys.stderr` write on the standard streams of the world, line by line, while the
   uncaught exceptions still reach the PLM console (`sys.excepthook`). `Remote.py` imports the real socket module as `_socket`
   and writes its own messages on `sys.__stderr__` for that reason. The glue only exports `getParamString()` and
   `getParamInt()`, for the code of the entity.
