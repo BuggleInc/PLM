@@ -386,13 +386,12 @@ of Python, 12 and 3 lines of Java, 13 and 5 lines of Scala) ask for a function w
 server, or the port to listen on and the message to send) change from one world to the other, so that hard-coded values fail.
 
 The first one, `client(server, port)`, downloads a message and displays it on the standard output. One of its worlds sends a
-`%s` to catch the programs using the received data as the format of `printf()`. Another one introduces the short reads: the
-data sent by the peers waits in their send queue until their script lets the network transmit it, in packets, which the world
-view shows travelling from one machine to the other. The programs calling `recv()` only once fail when the rest of the data is
-still on its way, while working in the first worlds: they must receive until the end of the stream. A short read thus never
-looks like an arbitrary decision of the receiving system. A last world faces a server that is not ready yet: the student must
-retry `connect()` after a `sleep()` on `ECONNREFUSED`, with a new socket, and the PLM interrupts the busy loops retrying without
-waiting.
+`%s` to catch the programs using the received data as the format of `printf()`. Another one introduces the short reads: the data
+sent by the peers waits in their send queue until their script lets the network transmit it, in packets, which the world view
+shows travelling from one machine to the other. The programs calling `recv()` only once fail when the rest of the data is still
+on its way, while working in the first worlds: they must receive until the end of the stream. A last world faces a server that
+is not ready yet: the student must retry `connect()` after a `sleep()` on `ECONNREFUSED`, with a new socket, and the PLM
+interrupts the busy loops retrying without waiting.
 
 The second one, `server(port, message)`, takes the server side of a connection (`bind()`, `listen()`, `accept()`), and sends
 the message to a client that reads until the end of the stream, as in the first exercise. The world view shows that the socket

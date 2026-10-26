@@ -882,9 +882,10 @@ documentation](PEDAGOGY.md#system-programming).
 * **The scripts**: each peer has a script written in a text block, with the syntax of the trace (one call per line, `//`
   comments), whose steps are executed through the system calls of the peer's process. A server peer has its listening socket on
   descriptor 3, which only listens once the script reaches its first `accept()` (the connections are refused before), and
-  accepts its connection on 4; a client has its connection on 3, and connects to the student's machine (`PosixWorld.STUDENT_IP`).
-  A peer only has one connection for now, so the descriptors are only checked. The errors are reported with their line when
-  the exercise is loaded:
+  accepts its connections on the lowest free descriptors (4, then 5...); a client has an unconnected socket on 3, can create
+  more with `socket()`, and connects them to the student's machine (`PosixWorld.STUDENT_IP`). The parsing follows the
+  descriptors as the kernel allocates them, so the errors (such as sending on a descriptor that is not a connection) are reported
+  with their line when the exercise is loaded:
   ```java
   Peer.server("10.0.0.1", 80, """
       accept(3)

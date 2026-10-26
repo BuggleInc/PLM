@@ -308,10 +308,62 @@ public class PosixWorldTest {
     Assertions.assertTrue(e.getMessage().startsWith("Line 2 of the script of the server peer: unknown call sned()"), e.getMessage());
 
     e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.server("10.0.0.1", 80, "accept(4)"));
-    Assertions.assertTrue(e.getMessage().contains("descriptor 3, not 4"), e.getMessage());
+    Assertions.assertTrue(e.getMessage().contains("Descriptor 4 is not the listening socket"), e.getMessage());
+
+    e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.server("10.0.0.1", 80, "accept(3) close(4) send(4, \"HELLO\")"));
+    Assertions.assertTrue(e.getMessage().startsWith("Line 1") && e.getMessage().contains("Descriptor 4 is not a connection"), e.getMessage());
 
     e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.server("10.0.0.1", 80, "send(4, \"HELLO)"));
     Assertions.assertTrue(e.getMessage().contains("unterminated"), e.getMessage());
+  }
+
+  @Test public void testServerPeerWithSeveralConnections()
+  {
+    PosixWorld w  = new PosixWorld("two connections").addPeer(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        accept(3)
+        send(5, "second")
+        transmit(5, 6)
+        send(4, "first")
+        transmit(4, 5)
+        close(4)
+        close(5)
+        """));
+    PosixEntity p = process(w);
+    int first     = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(first, "10.0.0.1", 80));
+    int second = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(second, "10.0.0.1", 80));
+    Assertions.assertEquals("first", s(p.recv(first, 10, 0)));
+    Assertions.assertEquals("second", s(p.recv(second, 10, 0)));
+    Assertions.assertEquals("", s(p.recv(first, 10, 0)));
+    p.close(first);
+    p.close(second);
+  }
+
+  @Test public void testClientPeerWithSeveralConnections()
+  {
+    PosixWorld w  = new PosixWorld("two connections").addPeer(Peer.client("10.0.0.2", 3000, """
+        sleep(1)
+        connect(3)
+        socket()
+        connect(4)
+        send(4, "B")
+        transmit(4, 1)
+        close(3)
+        close(4)
+        """));
+    PosixEntity p = process(w);
+    int master    = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.bind(master, "0.0.0.0", 3000);
+    p.listen(master, 5);
+    int a = p.accept(master);
+    int b = p.accept(master);
+    Assertions.assertEquals("B", s(p.recv(b, 10, 0)));
+    Assertions.assertEquals("", s(p.recv(a, 10, 0)));
+    p.close(a);
+    p.close(b);
+    p.close(master);
   }
 
   @Test public void testUnknownFileAndBadDescriptor()

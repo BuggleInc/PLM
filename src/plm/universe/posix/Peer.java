@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
@@ -28,12 +29,14 @@ import java.util.stream.Collectors;
  * transmit(4, 5)            // or sendInPackets(4, "Hello", 2, 1), sending in packets of 2 bytes, each after a pause of 1s
  * close(4)
  * </pre>
- * The steps take the descriptors of the peer's sockets, as the system calls: a server has its listening socket on 3 and accepts
- * its connection on 4, while a client has its connection on 3 (see connectionFd()). A peer only has one connection for now, so
- * the descriptors are only checked. The errors in a script are reported when the exercise is loaded.
+ * The steps take the descriptors of the peer's sockets, as the system calls: a server has its listening socket on 3, and gets its
+ * connections from accept(3) on the lowest free descriptors (4, then 5...), while a client has an unconnected socket on 3 to
+ * connect(), and can create more with socket(). The parsing follows the descriptors as the kernel allocates them, so that the
+ * errors in a script (such as sending on a descriptor that is not a connection) are reported with their line when the exercise
+ * is loaded.
  */
 public class Peer {
-  public enum Kind { ACCEPT, CONNECT, SLEEP, SEND, TRANSMIT, RECV, CLOSE }
+  public enum Kind { ACCEPT, SOCKET, CONNECT, SLEEP, SEND, TRANSMIT, RECV, CLOSE }
   /** A step of a script, on the descriptor fd (-1 for SLEEP) */
   public record Step(Kind kind, int fd, int amount, String data) {}
 
@@ -51,8 +54,14 @@ public class Peer {
   boolean refused;
   /** The process of this peer, on its machine, whose socket on descriptor 3 exists from the start, bound to its port for a server */
   final PosixProcess process;
-  /** The connections of this peer by descriptor, kept after close() since the network may still carry their data */
-  final Map<Integer, Socket> connections = new TreeMap<>();
+  /** The connections of this peer, in the order they were established */
+  final List<Socket> connections = new ArrayList<>();
+  /** The last connection of each descriptor, kept after close() since the network may still carry its data */
+  final Map<Integer, Socket> sockets = new TreeMap<>();
+
+  /** While parsing: the open descriptors of the peer's process above 2, by kind of socket, and the connections closed since */
+  private final Map<Integer, Kind> openAtParse = new TreeMap<>();
+  private final TreeSet<Integer> closedAtParse = new TreeSet<>();
 
   private Peer(boolean isServer, String ip, int port)
   {
@@ -63,6 +72,7 @@ public class Peer {
     if (isServer)
       socket.port = port;
     process.allocate(socket);
+    openAtParse.put(3, isServer ? Kind.ACCEPT : Kind.SOCKET);
   }
 
   /** A peer on ip:port, to which the student connects (its script should accept() the connection) */
@@ -143,6 +153,7 @@ public class Peer {
   private void call(String name, List<Object> args)
   {
     int expected = switch (name) {
+      case "socket" -> 0;
       case "accept", "connect", "sleep", "close" -> 1;
       case "send", "transmit", "recv" -> 2;
       case "sendInPackets" -> 4;
@@ -151,6 +162,7 @@ public class Peer {
     if (args.size() != expected)
       throw new IllegalArgumentException(name + "() takes " + expected + " arguments, not " + args.size());
     switch (name) {
+      case "socket" -> socket();
       case "accept" -> accept((Integer)args.get(0));
       case "connect" -> connect((Integer)args.get(0));
       case "sleep" -> sleep((Integer)args.get(0));
@@ -162,29 +174,40 @@ public class Peer {
     }
   }
 
-  /** Waits for the student to connect, on the listening socket fd (of a server) */
+  /** Waits for the student to connect, on the listening socket fd (of a server), and gets the connection on a new descriptor */
   private Peer accept(int fd)
   {
-    checkFd(fd, isServer ? 3 : -1);
+    check(fd, Kind.ACCEPT, "the listening socket");
+    opened(Kind.CONNECT);
     return add(Kind.ACCEPT, fd, 0, null);
   }
-  /** Connects the socket fd (of a client) to the student's process, or is refused if it does not listen */
+  /** Creates a new unconnected socket (of a client), on the lowest free descriptor */
+  private Peer socket()
+  {
+    if (isServer)
+      throw new IllegalArgumentException("A server peer cannot create sockets");
+    opened(Kind.SOCKET);
+    return add(Kind.SOCKET, -1, 0, null);
+  }
+  /** Connects the unconnected socket fd (of a client) to the student's process, or is refused if it does not listen */
   private Peer connect(int fd)
   {
-    checkFd(fd, isServer ? -1 : 3);
+    check(fd, Kind.SOCKET, "an unconnected socket");
+    openAtParse.put(fd, Kind.CONNECT);
     return add(Kind.CONNECT, fd, 0, null);
   }
   private Peer sleep(int seconds) { return add(Kind.SLEEP, -1, seconds, null); }
   /** Puts the data in the send queue of the connection fd, where it waits for the network (see transmit()) */
   private Peer send(int fd, String data)
   {
-    checkFd(fd, connectionFd());
+    check(fd, Kind.CONNECT, "a connection");
     return add(Kind.SEND, fd, 0, data);
   }
   /** Lets the network carry at most that many bytes of the send queue of the connection fd to the student, in one packet */
   private Peer transmit(int fd, int bytes)
   {
-    checkFd(fd, connectionFd());
+    if (!closedAtParse.contains(fd)) // the network still carries the data of a closed connection
+      check(fd, Kind.CONNECT, "a connection");
     return add(Kind.TRANSMIT, fd, bytes, null);
   }
   /** Sends the data, and lets the network carry it from the connection fd in packets of that size, each after the given pause */
@@ -198,22 +221,33 @@ public class Peer {
   /** Waits until the student sent that many bytes on the connection fd (or closed the stream) */
   private Peer recv(int fd, int length)
   {
-    checkFd(fd, connectionFd());
+    check(fd, Kind.CONNECT, "a connection");
     return add(Kind.RECV, fd, length, null);
   }
   private Peer close(int fd)
   {
-    checkFd(fd, connectionFd());
+    if (!openAtParse.containsKey(fd))
+      throw new IllegalArgumentException("Descriptor " + fd + " is not open at that step");
+    if (openAtParse.remove(fd) == Kind.CONNECT)
+      closedAtParse.add(fd);
     return add(Kind.CLOSE, fd, 0, null);
   }
 
-  /** Checks that a step uses the expected descriptor (-1 if that kind of peer cannot do that step) */
-  private void checkFd(int fd, int expected)
+  /** Checks that the descriptor is open at that step of the script, on that kind of socket */
+  private void check(int fd, Kind kind, String what)
   {
-    if (expected < 0)
-      throw new IllegalArgumentException("A " + name() + " peer cannot do that");
-    if (fd != expected)
-      throw new IllegalArgumentException("This step of a " + name() + " peer is on descriptor " + expected + ", not " + fd);
+    if (openAtParse.get(fd) != kind)
+      throw new IllegalArgumentException("Descriptor " + fd + " is not " + what + " at that step");
+  }
+
+  /** Allocates the lowest free descriptor to a new socket of that kind, as the kernel will do */
+  private void opened(Kind kind)
+  {
+    int fd = 3;
+    while (openAtParse.containsKey(fd))
+      fd++;
+    openAtParse.put(fd, kind);
+    closedAtParse.remove(fd);
   }
 
   private Peer add(Kind kind, int fd, int amount, String data)
@@ -233,7 +267,9 @@ public class Peer {
     since   = other.since;
     refused = other.refused;
     process = new PosixProcess(other.process, copies);
-    other.connections.forEach((fd, socket) -> connections.put(fd, socket.copy(copies)));
+    for (Socket socket : other.connections)
+      connections.add(socket.copy(copies));
+    other.sockets.forEach((fd, socket) -> sockets.put(fd, socket.copy(copies)));
   }
 
   /** Executes the next step through the system calls of the world if it can complete, and returns whether it did */
@@ -251,9 +287,10 @@ public class Peer {
         if (listening.backlog.isEmpty())
           return false;
         int fd = world.accept(process, step.fd());
-        connections.put(fd, (Socket)process.get(fd));
+        connected(fd);
         event = call(step) + " = " + process.shown(fd);
       }
+      case SOCKET -> event = call(step) + " = " + process.shown(world.socket(process, PosixWorld.AF_INET, PosixWorld.SOCK_STREAM, 0));
       case CONNECT -> {
         int result = world.connect(process, step.fd(), PosixWorld.STUDENT_IP, port);
         if (result < 0) {
@@ -261,7 +298,7 @@ public class Peer {
           world.log(name(), call(step) + " = " + process.shown(result));
           return false;
         }
-        connections.put(step.fd(), (Socket)process.get(step.fd()));
+        connected(step.fd());
         event = call(step) + " = " + process.shown(result);
       }
       case SLEEP -> {
@@ -276,9 +313,9 @@ public class Peer {
         world.send(process, step.fd(), step.data(), 0);
         event = call(step);
       }
-      case TRANSMIT -> event = connections.get(step.fd()).transmit(step.amount()).length() + " bytes";
+      case TRANSMIT -> event = sockets.get(step.fd()).transmit(step.amount()).length() + " bytes";
       case RECV -> {
-        Socket socket = connections.get(step.fd());
+        Socket socket = sockets.get(step.fd());
         if (socket.available() < step.amount() && !socket.eofArrived())
           return false;
         String data = world.recv(process, step.fd(), step.amount(), 0);
@@ -294,26 +331,29 @@ public class Peer {
     return true;
   }
 
+  /** Records the connection established on that descriptor */
+  private void connected(int fd)
+  {
+    Socket socket = (Socket)process.get(fd);
+    connections.add(socket);
+    sockets.put(fd, socket);
+  }
+
   /** The name of this peer in the trace */
   String name() { return isServer ? "server" : "client"; }
 
   /** Everything that arrived on the connections of this peer, received by its script or not */
-  String received() { return connections.values().stream().map(socket -> socket.arrived.toString()).collect(Collectors.joining()); }
+  String received() { return connections.stream().map(socket -> socket.arrived.toString()).collect(Collectors.joining()); }
 
   /** Who does that step in the trace: the network transmits (in a given direction), the peer does the rest */
   String actor(Step step) { return step.kind() == Kind.TRANSMIT ? "network (" + name() + " → you)" : name(); }
-
-  /**
-   * The descriptor of the connection in the peer's process: after 0, 1 and 2, a server has its listening socket (3) and then the
-   * accepted one (4), while a client has its connected socket (3).
-   */
-  int connectionFd() { return isServer ? 4 : 3; }
 
   /** A step of the script as a system call, in the style of strace but without its result */
   String call(Step step)
   {
     return switch (step.kind()) {
       case ACCEPT -> "accept(" + step.fd() + ")";
+      case SOCKET -> "socket(AF_INET, SOCK_STREAM, 0)";
       case CONNECT -> "connect(" + step.fd() + ", " + PosixWorld.STUDENT_IP + ":" + port + ")";
       case SLEEP -> "sleep(" + step.amount() + ")";
       case SEND -> "send(" + step.fd() + ", " + PosixWorld.quoted(step.data()) + ", " + step.data().length() + ")";
