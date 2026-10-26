@@ -117,7 +117,8 @@ final class ScriptedPeer extends Peer {
         for (pos++; text.charAt(pos) != '"'; pos++) {
           if (text.charAt(pos) == '\\') {
             pos++;
-            sb.append(text.charAt(pos) == 'n' ? '\n' : text.charAt(pos));
+            char escaped = text.charAt(pos); // \n, \r and \t, or the escaped char itself (such as \" or \\)
+            sb.append(escaped == 'n' ? '\n' : escaped == 'r' ? '\r' : escaped == 't' ? '\t' : escaped);
           } else
             sb.append(text.charAt(pos));
         }

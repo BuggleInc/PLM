@@ -880,12 +880,12 @@ documentation](PEDAGOGY.md#system-programming).
   block forever raises a deadlock (listing the state of the peers), and 1000 refused `connect()` in a row without the clock moving
   raise a busy loop error.
 * **The scripts**: each peer has a script written in a text block, with the syntax of the trace (one call per line, `//`
-  comments), whose steps are executed through the system calls of the peer's process. A server peer has its listening socket on
-  descriptor 3, which only listens once the script reaches its first `accept()` (the connections are refused before), and
-  accepts its connections on the lowest free descriptors (4, then 5...); a client has an unconnected socket on 3, can create
-  more with `socket()`, and connects them to the student's machine (`PosixWorld.STUDENT_IP`). The parsing follows the
-  descriptors as the kernel allocates them, so the errors (such as sending on a descriptor that is not a connection) are reported
-  with their line when the exercise is loaded:
+  comments, strings with the escapes `\n`, `\r`, `\t`, `\"` and `\\`), whose steps are executed through the system calls of the
+  peer's process. A server peer has its listening socket on descriptor 3, which only listens once the script reaches its first
+  `accept()` (the connections are refused before), and accepts its connections on the lowest free descriptors (4, then 5...); a
+  client has an unconnected socket on 3, can create more with `socket()`, and connects them to the student's machine
+  (`PosixWorld.STUDENT_IP`). The parsing follows the descriptors as the kernel allocates them, so the errors (such as sending on
+  a descriptor that is not a connection) are reported with their line when the exercise is loaded:
   ```java
   Peer.server("10.0.0.1", 80, """
       accept(3)

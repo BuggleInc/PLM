@@ -691,6 +691,21 @@ public class PosixWorldTest {
     Assertions.assertTrue(w.winning(new PosixWorld("unlink")), new PosixWorld("unlink").diffTo(w, null));
   }
 
+  @Test public void testScriptEscapes()
+  {
+    PosixWorld w  = new PosixWorld("escapes").addPeer(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        send(4, "a\\r\\n\\t\\"\\\\")
+        transmit(4, 6)
+        close(4)
+        """));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    Assertions.assertEquals("a\r\n\t\"\\", s(p.recv(sock, 10, 0)));
+    p.close(sock);
+  }
+
   @Test public void testUnknownFileAndBadDescriptor()
   {
     PosixEntity p = process(new PosixWorld("errors"));
