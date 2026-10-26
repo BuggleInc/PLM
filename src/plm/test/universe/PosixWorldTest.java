@@ -13,6 +13,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.universe.posix.FileDescription;
+import plm.universe.posix.FtpServer;
 import plm.universe.posix.HttpServer;
 import plm.universe.posix.IrcServer;
 import plm.universe.posix.Peer;
@@ -606,6 +607,74 @@ public class PosixWorldTest {
     p.send(sock, b("GET /doc.txt HTTP/1.1\r\n\r\n"), 0); // without Host
     Assertions.assertEquals("HTTP/1.1 400 Bad Request\r\n", data(p, sock, 26));
     p.close(sock);
+  }
+
+  /** A world with an FTP server on 10.0.0.1:21 serving /pub/secret.txt, sending in packets of that size if positive */
+  private static PosixWorld ftp(int packetSize)
+  {
+    return new PosixWorld("ftp").addPeer(new FtpServer("10.0.0.1", 21).file("/pub/secret.txt", "Baggles!\n").packets(packetSize));
+  }
+
+  /** Receives everything until the end of the stream on that descriptor */
+  private static String all(PosixEntity p, int fd)
+  {
+    StringBuilder res = new StringBuilder();
+    for (String chunk = s(p.recv(fd, 512, 0)); !chunk.isEmpty(); chunk = s(p.recv(fd, 512, 0)))
+      res.append(chunk);
+    return res.toString();
+  }
+
+  /** Opens a data connection to the port of a 227 reply */
+  private static int dataConnection(PosixEntity p, String reply)
+  {
+    String[] numbers = reply.substring(reply.indexOf('(') + 1, reply.indexOf(')')).split(",");
+    int sock         = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(sock, "10.0.0.1", Integer.parseInt(numbers[4]) * 256 + Integer.parseInt(numbers[5])));
+    return sock;
+  }
+
+  @Test public void testFtpServer()
+  {
+    for (int packetSize : new int[] {0, 9}) {
+      PosixEntity p = process(ftp(packetSize));
+      int control   = p.socket(AF_INET, SOCK_STREAM, 0);
+      Assertions.assertEquals(0, p.connect(control, "10.0.0.1", 21));
+      Lines lines = new Lines(p, control);
+      Assertions.assertEquals("220-Welcome to the BuggleInc FTP server.", lines.next());
+      Assertions.assertEquals("220 plm-ftpd 1.0 ready.", lines.next());
+      p.send(control, b("RETR secret.txt\r\n"), 0);
+      Assertions.assertEquals("530 Please login with USER and PASS.", lines.next());
+      p.send(control, b("USER anonymous\r\n"), 0);
+      Assertions.assertEquals("331 Please specify the password.", lines.next());
+      p.send(control, b("PASS buggle@\r\n"), 0);
+      Assertions.assertEquals("230 Login successful.", lines.next());
+      p.send(control, b("RETR /pub/secret.txt\r\n"), 0);
+      Assertions.assertEquals("425 Use PORT or PASV first.", lines.next());
+      p.send(control, b("CWD pub\r\nPASV\r\n"), 0);
+      Assertions.assertEquals("250 Directory successfully changed.", lines.next());
+      String reply = lines.next();
+      Assertions.assertEquals("227 Entering Passive Mode (10,0,0,1,156,64).", reply);
+      int data = dataConnection(p, reply);
+      p.send(control, b("RETR secret.txt\r\n"), 0);
+      Assertions.assertEquals("150 Opening ASCII mode data connection for secret.txt (9 bytes).", lines.next());
+      Assertions.assertEquals("Baggles!\n", all(p, data));
+      Assertions.assertEquals("226 Transfer complete.", lines.next());
+      p.close(data);
+
+      p.send(control, b("pasv\n"), 0); // any case, with \n alone
+      reply = lines.next();
+      p.send(control, b("LIST /\r\n"), 0); // before connecting the data connection
+      data = dataConnection(p, reply);
+      Assertions.assertEquals("150 Here comes the directory listing.", lines.next());
+      Assertions.assertEquals("drwxr-xr-x    1 ftp      ftp          4096 Jan 01  2024 pub\r\n", all(p, data));
+      Assertions.assertEquals("226 Directory send OK.", lines.next());
+      p.close(data);
+      p.send(control, b("RETR missing.txt\r\nQUIT\r\n"), 0);
+      Assertions.assertEquals("425 Use PORT or PASV first.", lines.next());
+      Assertions.assertEquals("221 Goodbye.", lines.next());
+      Assertions.assertEquals("", s(p.recv(control, 10, 0)));
+      p.close(control);
+    }
   }
 
   @Test public void testUnknownFileAndBadDescriptor()

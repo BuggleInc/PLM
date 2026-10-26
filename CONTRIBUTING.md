@@ -922,6 +922,13 @@ documentation](PEDAGOGY.md#system-programming).
   `Date` starts on 2024-01-01 and follows the clock of the world. The idle connections stay open unless `keepAlive()` gives a
   timeout, so that a client waiting for the end of the stream instead of reading `Content-Length` ends in a deadlock, which
   tells it. `packets()` cuts the responses as the one of the IRC server.
+* **The FTP server** (`FtpServer`, software `plm-ftpd 1.0`) serves files (`file()`, whose directories exist then) in passive
+  mode, exact to the byte as vsftpd: anonymous login (`USER anonymous`, then `PASS` with anything), `PASV` (227, the port being
+  p1*256+p2) or `EPSV` (229) opening a listening socket on a new port (40000, then 40001...) for each transfer, `RETR` and `LIST`
+  sending the data on the data connection and closing it before confirming with 226, `SYST`, `TYPE`, `PWD`, `CWD`, `QUIT`, and
+  the usual errors (500, 530, 550, 425...). A transfer asked before the client connected the data connection waits for it. Its
+  welcome spans several lines (`220-` then `220 `), which `welcome()` can change. `packets()` cuts everything it sends, the
+  replies and the data.
 * **The network**: a connection is a pair of sockets pointing to each other, each with its send and receive queues, created by
   `connect()` in the backlog of the listening socket until `accept()` takes it. A peer's `send()` only fills the send queue of
   its socket, and `transmit(fd, n)` carries at most `n` bytes to the receive queue of the other end, in one packet. The end of
