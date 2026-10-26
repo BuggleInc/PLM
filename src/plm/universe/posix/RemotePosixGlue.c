@@ -141,6 +141,87 @@ int plm_close(int fd)
   return checked(plm_remote_close(fd));
 }
 
+int plm_unlink(const char* path)
+{
+  return checked(plm_remote_unlink((char*)path));
+}
+
+/* The functions of the streams on the descriptors of the world, the descriptor being their cookie */
+#if defined(__GLIBC__)
+static ssize_t cookie_read(void* cookie, char* buf, size_t size)
+{
+  return plm_read((int)(intptr_t)cookie, buf, size);
+}
+
+static ssize_t cookie_write(void* cookie, const char* buf, size_t size)
+{
+  return plm_write((int)(intptr_t)cookie, buf, size);
+}
+#elif defined(__APPLE__) || defined(__FreeBSD__)
+static int cookie_read(void* cookie, char* buf, int size)
+{
+  return (int)plm_read((int)(intptr_t)cookie, buf, (size_t)size);
+}
+
+static int cookie_write(void* cookie, const char* buf, int size)
+{
+  return (int)plm_write((int)(intptr_t)cookie, buf, (size_t)size);
+}
+#endif
+
+static int cookie_close(void* cookie)
+{
+  return plm_close((int)(intptr_t)cookie);
+}
+
+FILE* plm_fdopen(int fd, const char* mode)
+{
+  (void)cookie_close; // unused where the streams are not supported
+#if defined(__GLIBC__)
+  cookie_io_functions_t functions = {cookie_read, cookie_write, NULL, cookie_close};
+  return fopencookie((void*)(intptr_t)fd, mode, functions);
+#elif defined(__APPLE__) || defined(__FreeBSD__)
+  (void)mode;
+  return funopen((void*)(intptr_t)fd, cookie_read, cookie_write, NULL, cookie_close);
+#else
+  (void)fd;
+  (void)mode;
+  errno = ENOSYS; // no custom streams in the C library of this system
+  return NULL;
+#endif
+}
+
+FILE* plm_fopen(const char* path, const char* mode)
+{
+  int flags;
+  switch (mode[0]) {
+    case 'r':
+      flags = O_RDONLY;
+      break;
+    case 'w':
+      flags = O_WRONLY | O_CREAT | O_TRUNC;
+      break;
+    case 'a':
+      flags = O_WRONLY | O_CREAT | O_APPEND;
+      break;
+    default:
+      errno = EINVAL;
+      return NULL;
+  }
+  if (strchr(mode, '+') != NULL)
+    flags = (flags & ~O_WRONLY) | O_RDWR;
+  int fd = plm_open(path, flags);
+  if (fd < 0)
+    return NULL;
+  FILE* res = plm_fdopen(fd, mode);
+  if (res == NULL) {
+    int error = errno;
+    plm_close(fd);
+    errno = error;
+  }
+  return res;
+}
+
 char* getParamString(int i)
 {
   return plm_remote_getParamString(i);

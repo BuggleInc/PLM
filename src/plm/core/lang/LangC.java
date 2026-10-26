@@ -119,8 +119,9 @@ public class LangC extends TemplatedRemoteLang {
 
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       String compiler   = Game.getProperty(PROP_COMPILER, "gcc", true);
-      // The cached objects and the final link must agree on ASan, whose instrumentation spans every linked object
-      String cc         = compiler + " -g -Wall" + (supportsAsan() ? " -fsanitize=address" : "");
+      // The cached objects and the final link must agree on ASan, whose instrumentation spans every linked object. _GNU_SOURCE
+      // gives fopencookie() to the glues building streams of the C library on their own descriptors (see the POSIX universe).
+      String cc         = compiler + " -g -Wall -D_GNU_SOURCE" + (supportsAsan() ? " -fsanitize=address" : "");
       File exec         = new File(compileDir.toFile(), executable + (isWindows ? ".exe" : ""));
 
       String valueSerializerH = readResource("value_serializer.h");

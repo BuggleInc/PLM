@@ -1,5 +1,6 @@
 /* The POSIX API of the world: the same functions as the system ones, acting on the world of the exercise instead, plus the
- * output functions of stdio.h on the standard streams, unbuffered. The system headers come first, so that the renaming below
+ * output functions of stdio.h on the standard streams, unbuffered, and fopen() and fdopen() giving real streams of the C
+ * library (buffered as usual) on the descriptors of the world. The system headers come first, so that the renaming below
  * only applies to the code that follows (the student's one). */
 #ifdef _WIN32
 #include <fcntl.h>
@@ -20,6 +21,7 @@
 #include <unistd.h>
 #endif
 #include <errno.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <sys/types.h>
 
@@ -35,6 +37,9 @@ int plm_open(const char* path, int flags, ...);
 ssize_t plm_read(int fd, void* buf, size_t count);
 ssize_t plm_write(int fd, const void* buf, size_t count);
 int plm_close(int fd);
+int plm_unlink(const char* path);
+FILE* plm_fopen(const char* path, const char* mode);
+FILE* plm_fdopen(int fd, const char* mode);
 unsigned int plm_sleep(unsigned int seconds);
 int plm_printf(const char* format, ...);
 int plm_fprintf(FILE* stream, const char* format, ...);
@@ -58,6 +63,9 @@ int getParamInt(int i);
 #define read plm_read
 #define write plm_write
 #define close plm_close
+#define unlink plm_unlink
+#define fopen plm_fopen
+#define fdopen plm_fdopen
 #define sleep plm_sleep
 #define printf plm_printf
 #define fprintf plm_fprintf
