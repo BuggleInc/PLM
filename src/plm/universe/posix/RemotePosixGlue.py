@@ -7,6 +7,7 @@ import io
 import os
 import sys
 import time
+import tokenize  # before the substitution of open(), so that the tracebacks read the source of the entity from the real disk
 import traceback
 import types
 
@@ -193,7 +194,7 @@ _socket_module.__dict__.update(socket=socket, create_connection=create_connectio
                                SOCK_STREAM=SOCK_STREAM, IPPROTO_TCP=IPPROTO_TCP, SHUT_RD=SHUT_RD, SHUT_WR=SHUT_WR, SHUT_RDWR=SHUT_RDWR)
 sys.modules["socket"] = _socket_module
 os.open, os.read, os.write, os.close, os.unlink, os.remove, os.fdopen, time.sleep = _open, _read, _write, _close, _unlink, _unlink, _file, _sleep
-builtins.open = io.open = _file  # pathlib uses io.open, while the modules imported before (such as tokenize) keep the real one
+builtins.open = io.open = _file  # pathlib uses io.open, while the modules imported above (such as tokenize) keep the real one
 
 # The standard streams of the world write each line at once, as on a terminal, and their binary buffer is not buffered. Their line
 # breaks are not translated. The uncaught exceptions still reach the PLM console, through the standard error of the process.
