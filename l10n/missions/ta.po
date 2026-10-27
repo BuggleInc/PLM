@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-18 20:37+0200\n"
+"POT-Creation-Date: 2026-10-28 00:43+0100\n"
 "PO-Revision-Date: 2025-07-21 16:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/programmers-"
@@ -60,187 +60,74 @@ msgstr ""
 msgid "Valid colors"
 msgstr "செல்லுபடியாகும் வண்ணங்கள்"
 
-#. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:15
-#: src/plm/universe/bugglequest/BuggleWorld.html:33
-msgid "Name in [!thelang]"
-msgstr "பெயர் in [!thelang]"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:15
-#: src/plm/universe/turtles/TurtleWorld.html:17
-msgid "Color"
-msgstr "நிறம்"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:16
-#: src/plm/universe/turtles/TurtleWorld.html:18
-msgid "[!scala|java|python]Color.[/!]black"
-msgstr "[!scala|java|python] நிறம். [/!] கருப்பு"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:16
-#: src/plm/universe/bugglequest/BuggleWorld.html:17
-#: src/plm/universe/bugglequest/BuggleWorld.html:18
-#: src/plm/universe/bugglequest/BuggleWorld.html:19
-#: src/plm/universe/bugglequest/BuggleWorld.html:20
-#: src/plm/universe/bugglequest/BuggleWorld.html:21
-#: src/plm/universe/bugglequest/BuggleWorld.html:22
-#: src/plm/universe/bugglequest/BuggleWorld.html:23
-#: src/plm/universe/bugglequest/BuggleWorld.html:24
-#: src/plm/universe/bugglequest/BuggleWorld.html:25
-#: src/plm/universe/bugglequest/BuggleWorld.html:26
-#: src/plm/universe/bugglequest/BuggleWorld.html:27
-#: src/plm/universe/bugglequest/BuggleWorld.html:28
-#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
-#: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
-#: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
-#: src/lessons/welcome/Main.html:469
-#: src/plm/universe/turtles/TurtleWorld.html:18
-#: src/plm/universe/turtles/TurtleWorld.html:19
-#: src/plm/universe/turtles/TurtleWorld.html:20
-#: src/plm/universe/turtles/TurtleWorld.html:21
-#: src/plm/universe/turtles/TurtleWorld.html:22
-#: src/plm/universe/turtles/TurtleWorld.html:23
-#: src/plm/universe/turtles/TurtleWorld.html:24
-#: src/plm/universe/turtles/TurtleWorld.html:25
-#: src/plm/universe/turtles/TurtleWorld.html:26
-#: src/plm/universe/turtles/TurtleWorld.html:27
-#: src/plm/universe/turtles/TurtleWorld.html:28
-#: src/plm/universe/turtles/TurtleWorld.html:29
-#: src/plm/universe/turtles/TurtleWorld.html:30
-msgid "&nbsp;"
-msgstr "&nbsp;"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:17
-#: src/plm/universe/turtles/TurtleWorld.html:19
-msgid "[!scala|java|python]Color.[/!]blue"
-msgstr "[!scala|java|python] நிறம். [/!] நீலம்"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:18
-#: src/plm/universe/turtles/TurtleWorld.html:20
-msgid "[!scala|java|python]Color.[/!]cyan"
-msgstr "[!scala|java|python] நிறம். [/!] சியான்"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:19
-#: src/plm/universe/turtles/TurtleWorld.html:21
-msgid "[!scala|java|python]Color.[/!]darkGray"
-msgstr "[!scala|java|python] நிறம். [/!] டார்க் கிரே"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:20
-#: src/plm/universe/turtles/TurtleWorld.html:22
-msgid "[!scala|java|python]Color.[/!]gray"
-msgstr "[!scala|java|python] நிறம். [/!] சாம்பல்"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:21
-#: src/plm/universe/turtles/TurtleWorld.html:23
-msgid "[!scala|java|python]Color.[/!]green"
-msgstr "[!scala|java|python] நிறம். [/!] பச்சை"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:22
-#: src/plm/universe/turtles/TurtleWorld.html:24
-msgid "[!scala|java|python]Color.[/!]lightGray"
-msgstr "[!scala|java|python] நிறம். [/!] லைட் கிரே"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:23
-#: src/plm/universe/turtles/TurtleWorld.html:25
-msgid "[!scala|java|python]Color.[/!]magenta"
-msgstr "[!scala|java|python] நிறம். [/!] மெசந்தா"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:24
-#: src/plm/universe/turtles/TurtleWorld.html:26
-msgid "[!scala|java|python]Color.[/!]orange"
-msgstr "[!scala|java|python] நிறம். [/!] ஆரஞ்சு"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:25
-#: src/plm/universe/turtles/TurtleWorld.html:27
-msgid "[!scala|java|python]Color.[/!]pink"
-msgstr "[!scala|java|python] நிறம். [/!] இளஞ்சிவப்பு"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:26
-#: src/plm/universe/turtles/TurtleWorld.html:28
-msgid "[!scala|java|python]Color.[/!]red"
-msgstr "[!scala|java|python] நிறம். [/!] சிவப்பு"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:27
-#: src/plm/universe/turtles/TurtleWorld.html:29
-msgid "[!scala|java|python]Color.[/!]white"
-msgstr "[!scala|java|python] நிறம். [/!] வெள்ளை"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:28
-#: src/plm/universe/turtles/TurtleWorld.html:30
-msgid "[!scala|java|python]Color.[/!]yellow"
-msgstr "[!scala|java|python] நிறம். [/!] மஞ்சள்"
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/bugglequest/BuggleWorld.html:14
+#: src/plm/universe/turtles/TurtleWorld.html:16
+msgid "[!colors/]"
+msgstr ""
 
 #. type: Content of: <table><tr><td><h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
 msgid "Valid directions"
 msgstr "சரியான திசைகள்"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:33
+#: src/plm/universe/bugglequest/BuggleWorld.html:18
+msgid "Name in [!thelang]"
+msgstr "பெயர் in [!thelang]"
+
+#. type: Content of: <table><tr><td><table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:18
 msgid "Meaning"
 msgstr "பொருள்"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:34
+#: src/plm/universe/bugglequest/BuggleWorld.html:19
 msgid "[!scala|java|python]Direction.[/!]NORTH"
 msgstr "[!scala|java|python] திசை. [/!] வடக்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:34
+#: src/plm/universe/bugglequest/BuggleWorld.html:19
 msgid "Pointing North"
 msgstr "Pointing வடக்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:35
+#: src/plm/universe/bugglequest/BuggleWorld.html:20
 msgid "[!scala|java|python]Direction.[/!]EAST"
 msgstr "[!scala|java|python] திசை. [/!] கிழக்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:35
+#: src/plm/universe/bugglequest/BuggleWorld.html:20
 msgid "Pointing East"
 msgstr "Pointing கிழக்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:36
+#: src/plm/universe/bugglequest/BuggleWorld.html:21
 msgid "[!scala|java|python]Direction.[/!]SOUTH"
 msgstr "[!scala|java|python] திசை. [/!] தெற்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:36
+#: src/plm/universe/bugglequest/BuggleWorld.html:21
 msgid "Pointing South"
 msgstr "Pointing தெற்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:37
+#: src/plm/universe/bugglequest/BuggleWorld.html:22
 msgid "[!scala|java|python]Direction.[/!]WEST"
 msgstr "[!scala|java|python] திசை. [/!] மேற்கு"
 
 #. type: Content of: <table><tr><td><table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:37
+#: src/plm/universe/bugglequest/BuggleWorld.html:22
 msgid "Pointing West"
 msgstr "Pointing மேற்கு"
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:41
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "Note on exceptions"
 msgstr "குறிப்பு on exceptions"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/bugglequest/BuggleWorld.html:42
+#: src/plm/universe/bugglequest/BuggleWorld.html:27
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -259,7 +146,7 @@ msgstr ""
 "எதுவுமில்லை throws a DontHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:49
+#: src/plm/universe/bugglequest/BuggleWorld.html:34
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -318,6 +205,1509 @@ msgstr ""
 "documentation, which contains க்கு example a very useful ஆவணப்படுத்துதல் on "
 "boolean operators: http://codingbat.com/doc/ifboolean.html"
 
+#. type: Content of: <h2>
+#: src/plm/universe/posix/PosixWorld.html:2
+msgid "POSIX world"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/PosixWorld.html:4
+msgid ""
+"In this universe, your program runs in a simulated system. Its regular files "
+"and its network connections are simulated within the PLM as parts of the "
+"world, and the other programs follow a script, or are servers of real "
+"protocols. [!c]Your program uses them through file descriptors, as on a real "
+"UNIX system: the descriptors 0, 1 and 2 designate the standard input, output "
+"and error (<code>STDIN_FILENO</code>, <code>STDOUT_FILENO</code> and "
+"<code>STDERR_FILENO</code>), and each new descriptor is the smallest free "
+"number.[/!][!python|java|scala]Your program uses them as on a real system, "
+"while the world shows the file descriptors behind them: the descriptors 0, 1 "
+"and 2 designate the standard input, output and error, and each new "
+"descriptor is the smallest free number.[/!] Only IPv4 TCP connections are "
+"supported."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/PosixWorld.html:13
+msgid ""
+"The time of the world only advances when your program waits, for example for "
+"data that did not arrive yet. If your program and the other programs all "
+"wait for each other, the world stops your program and reports this deadlock, "
+"instead of letting it wait forever."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/posix/PosixWorld.html:17
+#: src/lessons/network/bsdsocks/TcpClient.html:63
+msgid "[!c]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/PosixWorld.html:18
+msgid ""
+"The system functions behave as their real counterparts, with the same "
+"signatures. They return -1 on failure, and set <code>errno</code> to the "
+"reason of the failure. The output functions of <code>stdio.h</code> on the "
+"standard streams (<code>printf()</code>, <code>fprintf()</code> on "
+"<code>stdout</code> or <code>stderr</code>, <code>puts()</code>, "
+"<code>fputs()</code>, <code>putchar()</code> and <code>perror()</code>) "
+"write on the standard output and error of the world, without buffering."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/posix/PosixWorld.html:24
+#: src/plm/universe/posix/PosixWorld.html:56
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:12
+#: src/lessons/lander/universe/LanderWorld.html:8
+msgid "Provided functions"
+msgstr "Provided செயல்பாடுகள்"
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:27
+msgid ""
+"<code>int socket(int domain, int type, int protocol)</code>: creates a "
+"socket (<code>AF_INET</code> and <code>SOCK_STREAM</code> only)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:29
+msgid ""
+"<code>int bind(int fd, const struct sockaddr* addr, socklen_t len)</code>: "
+"binds the socket to a local port."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:30
+msgid ""
+"<code>int listen(int fd, int backlog)</code>: accepts the incoming "
+"connections on the bound socket."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:31
+msgid ""
+"<code>int accept(int fd, struct sockaddr* addr, socklen_t* len)</code>: "
+"waits for an incoming connection, and returns a new descriptor for it."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:33
+msgid ""
+"<code>int connect(int fd, const struct sockaddr* addr, socklen_t len)</"
+"code>: connects the socket to a server."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:34
+msgid ""
+"<code>ssize_t send(int fd, const void* buf, size_t len, int flags)</code> "
+"and <code>ssize_t recv(int fd, void* buf, size_t len, int flags)</code>: "
+"send and receive data on a connected socket."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:36
+msgid ""
+"<code>int shutdown(int fd, int how)</code>: closes one direction of the "
+"connection, or both."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:37
+msgid ""
+"<code>int open(const char* path, int flags, ...)</code>: opens a file "
+"(<code>O_RDONLY</code>, <code>O_WRONLY</code> or <code>O_RDWR</code>, "
+"combined with <code>O_CREAT</code>, <code>O_TRUNC</code> or <code>O_APPEND</"
+"code>)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:39
+msgid ""
+"<code>ssize_t read(int fd, void* buf, size_t count)</code> and <code>ssize_t "
+"write(int fd, const void* buf, size_t count)</code>: read and write data on "
+"any descriptor."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:41
+msgid "<code>int close(int fd)</code>: closes the descriptor."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:42
+msgid "<code>int unlink(const char* path)</code>: removes the file."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:43
+msgid ""
+"<code>FILE* fopen(const char* path, const char* mode)</code> and <code>FILE* "
+"fdopen(int fd, const char* mode)</code>: give a stream of <code>stdio.h</"
+"code> on a file or on any descriptor, such as a socket, buffered as usual, "
+"to use it with <code>fgets()</code>, <code>fscanf()</code>, <code>fprintf()</"
+"code> or <code>fflush()</code>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:46
+msgid ""
+"<code>unsigned int sleep(unsigned int seconds)</code>: waits for the given "
+"amount of seconds."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/posix/PosixWorld.html:48
+#: src/lessons/welcome/variables/Variables.html:35
+#: src/lessons/welcome/variables/Variables.html:69
+#: src/lessons/network/bsdsocks/TcpClient.html:65
+msgid "[/!] [!python]"
+msgstr "[/!] [!python]"
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/PosixWorld.html:51
+msgid ""
+"The usual modules act on the world: <code>socket</code>, the file functions "
+"of <code>os</code>, <code>open()</code> and <code>time.sleep()</code>. The "
+"failures raise the usual exceptions, such as <code>ConnectionRefusedError</"
+"code> or <code>FileNotFoundError</code>. <code>print()</code> writes on the "
+"standard output of the world, and <code>sys.stderr</code> on its standard "
+"error."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:59
+msgid ""
+"<code>socket.socket()</code>: creates an IPv4 TCP socket. A <code>with</"
+"code> block closes it at its end."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:60
+msgid ""
+"<code>sock.connect((host, port))</code>: connects the socket to a server."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:61
+msgid ""
+"<code>sock.bind((host, port))</code>: binds the socket to a local port (the "
+"empty host <code>\"\"</code> standing for every interface), and "
+"<code>sock.listen()</code> accepts the incoming connections on it."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:63
+msgid ""
+"<code>sock.accept()</code>: waits for an incoming connection, and returns a "
+"pair whose first element is a new socket for it."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:65
+msgid ""
+"<code>sock.send(data)</code>, <code>sock.sendall(data)</code> and "
+"<code>sock.recv(size)</code>: send and receive bytes on a connected socket. "
+"<code>recv()</code> returns <code>b\"\"</code> at the end of the stream."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:67
+msgid ""
+"<code>sock.makefile(mode)</code>: gives a file on the socket, buffered as "
+"usual, such as <code>sock.makefile(\"rb\")</code> whose <code>readline()</"
+"code> returns the next line."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:69
+msgid ""
+"<code>sock.shutdown(how)</code>: closes one direction of the connection "
+"(<code>socket.SHUT_RD</code> or <code>socket.SHUT_WR</code>), or both "
+"(<code>socket.SHUT_RDWR</code>), and <code>sock.close()</code> closes the "
+"socket."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:72
+msgid ""
+"<code>socket.create_connection((host, port))</code> and "
+"<code>socket.create_server((host, port))</code>: give a socket connected to "
+"a server, or listening on a local port."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:74
+msgid ""
+"<code>open(path, mode)</code>: opens a file of the world, in binary or text "
+"mode."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:75
+msgid ""
+"<code>os.open(path, flags)</code>, <code>os.read(fd, size)</code>, "
+"<code>os.write(fd, data)</code>, <code>os.close(fd)</code> and "
+"<code>os.fdopen(fd, mode)</code>: work on the descriptors, as their C "
+"counterparts."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:77
+msgid ""
+"<code>os.unlink(path)</code> or <code>os.remove(path)</code>: removes the "
+"file."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:78
+msgid ""
+"<code>time.sleep(seconds)</code>: waits for the given amount of whole "
+"seconds."
+msgstr ""
+
+#. type: Content of: <ol>
+#: src/plm/universe/posix/PosixWorld.html:80
+#: src/lessons/welcome/array/basics/Array1.html:116
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:61
+#: src/lessons/network/bsdsocks/TcpClient.html:23
+#: src/lessons/network/bsdsocks/TcpServer.html:19
+msgid "[/!] [!java|scala]"
+msgstr "[/!] [!java|scala]"
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/PosixWorld.html:83
+msgid ""
+"The usual classes act on the world, with the interface of the JDK: "
+"<code>Socket</code>, <code>ServerSocket</code>, <code>Thread.sleep()</code> "
+"and the classes reading and writing files. The failures throw the usual "
+"exceptions, such as <code>ConnectException</code> or "
+"<code>FileNotFoundException</code>. [!java]<code>System.out</code>[/!][!"
+"scala]<code>println()</code>[/!] writes on the standard output of the world, "
+"and <code>System.err</code> on its standard error."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/posix/PosixWorld.html:88
+#, fuzzy
+#| msgid "Provided values"
+msgid "Provided classes"
+msgstr "வழங்கப்பட்ட மதிப்புகள்"
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:91
+msgid ""
+"<code>new Socket(host, port)</code>: creates a socket connected to a server "
+"(or <code>new Socket()</code>, then <code>connect(new "
+"InetSocketAddress(host, port))</code>)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:93
+msgid ""
+"<code>socket.getInputStream[!java]()[/!]</code> and "
+"<code>socket.getOutputStream[!java]()[/!]</code>: give the streams to "
+"receive and send bytes on a connected socket, to wrap for example in a "
+"<code>BufferedReader</code> or a <code>PrintWriter</code>. The input stream "
+"returns -1 at the end of the stream."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:96
+msgid ""
+"<code>socket.shutdownInput()</code> and <code>socket.shutdownOutput()</"
+"code>: close one direction of the connection, and <code>socket.close()</"
+"code> closes the socket."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:98
+msgid ""
+"<code>new ServerSocket(port)</code>: creates a socket listening on a local "
+"port (or <code>new ServerSocket()</code>, then <code>bind(new "
+"InetSocketAddress(port))</code>), whose <code>accept()</code> waits for an "
+"incoming connection and returns a new <code>Socket</code> for it."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:101
+msgid ""
+"<code>new FileInputStream(path)</code>, <code>new FileOutputStream(path, "
+"append)</code>, <code>new FileReader(path)</code>, <code>new "
+"FileWriter(path, append)</code> and <code>new PrintWriter(path)</code>: open "
+"a file of the world."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:103
+msgid ""
+"<code>Files.readString(path)</code>, <code>Files.readAllBytes(path)</code>, "
+"<code>Files.readAllLines(path)</code>, <code>Files.writeString(path, text)</"
+"code>, <code>Files.write(path, bytes)</code>, <code>Files.delete(path)</"
+"code> and <code>Files.deleteIfExists(path)</code>: read, write or remove a "
+"whole file, designated by <code>Path.of(name)</code>."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/PosixWorld.html:106
+msgid ""
+"<code>Thread.sleep(milliseconds)</code>: waits for the given amount of "
+"milliseconds, rounded up to whole seconds."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/posix/PosixWorld.html:108
+#, fuzzy
+#| msgid "[/!] [!python]"
+msgid "[/!] [!protocols/]"
+msgstr "[/!] [!python]"
+
+#. type: Content of: <h3>
+#: src/plm/universe/posix/IrcServer.html:2
+msgid "The IRC protocol"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:4
+msgid ""
+"The IRC server of this world, named <code>irc.buggleinc.com</code>, follows "
+"the RFC 2812 as the usual servers. Its clients register with a nickname, "
+"join channels and talk there or in private with the other members."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/IrcServer.html:7
+#: src/plm/universe/posix/HttpServer.html:7
+#: src/plm/universe/posix/FtpServer.html:8
+msgid "Framing"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:9
+msgid ""
+"Every message is a line ended by the two bytes <code>\\r\\n</code> (CR and "
+"LF, 13 and 10). The server sends its lines with <code>\\r\\n</code>, and "
+"accepts the lines of the client ended by <code>\\n</code> alone. The network "
+"does not keep the limits of the lines: a single <code>recv()</code> may "
+"return several lines, or only the beginning of a line whose end is still on "
+"its way.  The client must thus keep what it received until a <code>\\r\\n</"
+"code> ends the line."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:14
+msgid ""
+"A line is made of an optional prefix starting with <code>:</code>, which "
+"tells who sends it (the lines of the server always have one: the name of the "
+"server, or <code>nick!user@host</code> for a member), then of a command (a "
+"word, or the three digits of a numeric reply), then of its parameters "
+"separated by spaces. The last parameter may start with <code>:</code>, to "
+"contain spaces up to the end of the line. The commands are case-insensitive."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/IrcServer.html:19
+#: src/plm/universe/posix/FtpServer.html:24
+#, fuzzy
+#| msgid "Comments"
+msgid "Commands"
+msgstr "கருத்துகள்"
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:22
+msgid "<code>NICK nickname</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:22
+msgid ""
+"Gives the nickname of the client: up to 30 letters, digits, dashes or "
+"characters among <code>[]\\`_^{|}</code>, not starting with a digit nor a "
+"dash. Once registered, the server confirms a change with <code>:old!"
+"user@host NICK :new</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:25
+msgid "<code>USER username mode unused :real name</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:25
+msgid ""
+"Gives the user name of the client (the first parameter), with three other "
+"parameters that the server ignores, such as <code>USER bob 0 * :Bob the "
+"buggle</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:27
+msgid "<code>JOIN #channel</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:27
+msgid ""
+"Joins a channel (several ones separated by commas). The server confirms with "
+"<code>:nick!user@host JOIN #channel</code>, then gives the topic (332) and "
+"the members of the channel (353 and 366). Joining an unknown channel creates "
+"it, without topic."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:30
+msgid "<code>PART #channel :reason</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:30
+msgid ""
+"Leaves a channel, confirmed with <code>:nick!user@host PART #channel</code> "
+"(followed by the reason, if any)."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:32
+msgid "<code>PRIVMSG target :text</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:32
+msgid ""
+"Sends a text to a joined channel, or to a member in private. The server does "
+"not send back the texts of the client. A text holding spaces must start with "
+"<code>:</code>, or the server refuses the message with a notice telling how "
+"to write it (a real server would only send its first word)."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:35
+msgid "<code>NAMES #channel</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:35
+msgid "Lists the members of a channel (353 and 366)."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:36
+msgid "<code>PING token</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:36
+msgid ""
+"Asks the server to answer <code>:irc.buggleinc.com PONG "
+"irc.buggleinc.com :token</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:38
+msgid "<code>QUIT :reason</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:38
+msgid ""
+"Leaves the server, which answers <code>ERROR :Closing Link: 10.0.0.10 "
+"(Client Quit)</code> (or <code>(Quit: reason)</code>) and closes the "
+"connection."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:42
+msgid ""
+"As soon as the client connects, the server greets it with a notice telling "
+"how to register, such as <code>:irc.buggleinc.com NOTICE * :*** Welcome! "
+"Please register with the NICK and USER commands (see the world documentation "
+"for details).</code> The client registers by sending <code>NICK</code> and "
+"<code>USER</code>, in any order. Once both are given, the server sends its "
+"welcome: the replies 001 to 004, then the message of the day (375, 372 and "
+"376). Before that, the server only accepts <code>NICK</code>, <code>USER</"
+"code>, <code>PING</code> and <code>QUIT</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:48
+msgid ""
+"The other members speak in the lines that the server sends to the client, "
+"such as <code>:Alice!alice@buggleinc.com PRIVMSG #welcome :Hello!</code> on "
+"a channel, or <code>:Alice!alice@buggleinc.com PRIVMSG yournick :Hello!</"
+"code> in private. They start talking on a channel once the client joined it, "
+"and may answer after a while the messages sent to them in private, or "
+"addressed to them on a channel by starting with their nickname and a colon, "
+"such as <code>PRIVMSG #welcome :Alice: Hello!</code>"
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/IrcServer.html:53
+msgid "Replies and errors"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:55
+msgid ""
+"The numeric replies have the form <code>:irc.buggleinc.com code target "
+"parameters</code>, where the target is the nickname of the client, or "
+"<code>*</code> before it has one. The errors do not close the connection."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:59
+msgid "401"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:59
+msgid "<code>target :No such nick/channel</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:59
+msgid "The target of <code>PRIVMSG</code> does not exist."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:61
+msgid "403"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:61
+msgid "<code>#channel :No such channel</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:61
+msgid ""
+"The name of the channel is invalid (it must start with <code>#</code>, "
+"without spaces nor commas), or <code>PART</code> names an unknown channel."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:63
+msgid "404"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:63
+msgid "<code>#channel :Cannot send to channel</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:63
+msgid "The client did not join the channel it talks to."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:65
+msgid "409"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:65
+msgid "<code>:No origin specified</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:65
+msgid "<code>PING</code> without token."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:66
+msgid "411"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:66
+msgid "<code>:No recipient given (PRIVMSG)</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:66
+msgid "<code>PRIVMSG</code> without target."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:67
+msgid "412"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:67
+msgid "<code>:No text to send</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:67
+msgid "<code>PRIVMSG</code> without text."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:68
+msgid "421"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:68
+msgid "<code>COMMAND :Unknown command</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:68
+msgid "The command (given in upper case) does not exist."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:70
+msgid "431"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:70
+msgid "<code>:No nickname given</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:70
+msgid "<code>NICK</code> without nickname."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:71
+msgid "432"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:71
+msgid "<code>nickname :Erroneous Nickname</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:71
+msgid "The nickname contains forbidden characters, or is too long."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:73
+msgid "433"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:73
+msgid "<code>nickname :Nickname is already in use</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:73
+msgid "Someone else has that nickname, whatever its case."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:75
+msgid "442"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:75
+msgid "<code>#channel :You're not on that channel</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:75
+msgid "<code>PART</code> of a channel that the client did not join."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:77
+msgid "451"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:77
+msgid "<code>:You have not registered</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:77
+msgid "A command that needs the client to be registered."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:78
+msgid "461"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:78
+msgid "<code>COMMAND :Not enough parameters</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:78
+msgid ""
+"<code>USER</code>, <code>JOIN</code> or <code>PART</code> lacks parameters."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:80
+msgid "462"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:80
+msgid "<code>:You may not reregister</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/IrcServer.html:80
+msgid "<code>USER</code> after the registration."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/IrcServer.html:83
+#: src/plm/universe/posix/HttpServer.html:61
+#: src/plm/universe/posix/FtpServer.html:78
+msgid "Example session"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:85
+msgid ""
+"In this session, the channel <code>#lobby</code> has the topic \"Say hello!"
+"\" and Alice as only member, who speaks two seconds after the client joined. "
+"The lines starting with <code>C:</code> are sent by the client, and those "
+"starting with <code>S:</code> by the server. These prefixes are not part of "
+"the data, and <code>\\r\\n</code> stands for the two bytes ending each line."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/posix/IrcServer.html:91
+#, no-wrap
+msgid ""
+"S: :irc.buggleinc.com NOTICE * :*** Welcome! Please register with the NICK and USER commands (see the world documentation for details).\\r\\n\n"
+"C: NICK student\\r\\n\n"
+"C: USER student 0 * :A student\\r\\n\n"
+"S: :irc.buggleinc.com 001 student :Welcome to the BuggleInc IRC Network student!student@10.0.0.10\\r\\n\n"
+"S: :irc.buggleinc.com 002 student :Your host is irc.buggleinc.com, running version plm-ircd-1.0\\r\\n\n"
+"S: :irc.buggleinc.com 003 student :This server was created Mon Jan 1 2024 at 00:00:00 UTC\\r\\n\n"
+"S: :irc.buggleinc.com 004 student irc.buggleinc.com plm-ircd-1.0 io ntk\\r\\n\n"
+"S: :irc.buggleinc.com 375 student :- irc.buggleinc.com Message of the day - \\r\\n\n"
+"S: :irc.buggleinc.com 372 student :- Be nice with the other buggles, and enjoy your stay!\\r\\n\n"
+"S: :irc.buggleinc.com 376 student :End of /MOTD command.\\r\\n\n"
+"C: JOIN #lobby\\r\\n\n"
+"S: :student!student@10.0.0.10 JOIN #lobby\\r\\n\n"
+"S: :irc.buggleinc.com 332 student #lobby :Say hello!\\r\\n\n"
+"S: :irc.buggleinc.com 353 student = #lobby :Alice student\\r\\n\n"
+"S: :irc.buggleinc.com 366 student #lobby :End of /NAMES list.\\r\\n\n"
+"S: :Alice!alice@buggleinc.com PRIVMSG #lobby :Hello everybody!\\r\\n\n"
+"C: PRIVMSG #lobby :Hello Alice!\\r\\n\n"
+"C: QUIT\\r\\n\n"
+"S: ERROR :Closing Link: 10.0.0.10 (Client Quit)\\r\\n\n"
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/IrcServer.html:112
+#, fuzzy
+#| msgid "Goal of this exercise"
+msgid "Realism of this server"
+msgstr "இந்த பயிற்சியின் குறிக்கோள்"
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/IrcServer.html:114
+msgid ""
+"This server behaves as the real ones in everything described above, but it "
+"is simpler on the following points. A client written for this world would "
+"mostly work on real networks, with only some adaptations."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:118
+msgid ""
+"The message of the day is always sent after the welcome. It is optional on a "
+"real server, which replies <code>422 :MOTD File is missing</code> instead. A "
+"client waiting for the reply 376 to start would then wait forever, while "
+"waiting for the reply 001 works everywhere."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:121
+msgid ""
+"The nicknames are checked for their syntax and their uniqueness, but anyone "
+"can take any free nickname. On a real network, the users register their "
+"nickname with a service (usually NickServ), and must then identify "
+"themselves with a password, either with a message to this service or with "
+"SASL during the registration, or they are renamed after a while."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:125
+msgid ""
+"The server listens on the port 194 without encryption. This port is the one "
+"assigned to IRC, but the real servers rather use the port 6667 in clear "
+"text, and nowadays the port 6697 with TLS (RFC 7194). Many networks refuse "
+"the connections that are not encrypted, which a client cannot handle with "
+"the system calls of this world alone."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:128
+msgid ""
+"The modern clients start by negotiating the extensions of the protocol "
+"(IRCv3) with <code>CAP LS 302</code>, before registering. This server "
+"answers <code>451</code> to <code>CAP</code>, and does not send the reply "
+"005 (ISUPPORT), which tells the limits of a real server (the length of the "
+"nicknames, the kinds of channels...) after the reply 004."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:131
+msgid ""
+"This server never sends <code>PING</code>. A real server regularly checks "
+"that its clients are still there with <code>PING :token</code>, and closes "
+"the connection (<code>Ping timeout</code>) of those who do not answer "
+"<code>PONG :token</code> in time. Some servers even send such a <code>PING</"
+"code> before the reply 001, and only complete the registration once the "
+"client answered it."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:135
+msgid ""
+"A real server usually sends several notices on connection, while it looks up "
+"the name of the client's machine, and its prefixes show this name (often "
+"hidden behind a mask) rather than the address of the client."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:137
+msgid ""
+"The lines are not limited in length, and the client may send them as fast as "
+"it wishes. A real server limits each line to 512 bytes with its "
+"<code>\\r\\n</code>, and closes the connection of the clients that send too "
+"fast (<code>Excess Flood</code>)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/IrcServer.html:140
+msgid ""
+"The other members of the channels follow a script, and many commands are "
+"missing, such as <code>MODE</code>, <code>WHO</code>, <code>WHOIS</code> or "
+"<code>TOPIC</code> (answered by <code>421</code>). The texts are limited to "
+"ASCII, while the real networks mostly carry UTF-8."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/plm/universe/posix/HttpServer.html:2
+msgid "The HTTP protocol"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:4
+msgid ""
+"The HTTP server of this world, named <code>plm-httpd/1.0</code>, serves "
+"static files in HTTP/1.1 (RFC 9112) as the usual servers. The client sends a "
+"request naming a file, and the server answers with a response holding its "
+"content."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:9
+msgid ""
+"A request starts with a line giving the method, the path of the file and the "
+"version of the protocol, such as <code>GET /index.html HTTP/1.1</code>. "
+"Header lines of the form <code>Name: value</code> follow, then an empty line "
+"ending the request.  Each line ends with the two bytes <code>\\r\\n</code> "
+"(CR and LF, 13 and 10), but the server also accepts <code>\\n</code> alone.  "
+"The names of the headers are case-insensitive. A request may have a body, "
+"whose size in bytes is given by its <code>Content-Length</code> header, "
+"after the empty line."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:15
+msgid ""
+"A response has the same structure: a status line (such as <code>HTTP/1.1 200 "
+"OK</code>), header lines and an empty line, all ended by <code>\\r\\n</"
+"code>, then the body: the content of the file, or a small HTML page "
+"describing the error. The headers of the response are always the same, in "
+"this order:"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:20
+msgid "<code>Server: plm-httpd/1.0</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:20
+msgid "The name of the server."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:21
+msgid "<code>Date: Mon, 01 Jan 2024 00:00:00 GMT</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:21
+msgid ""
+"The date of the response. The clock of the world starts on January 1st, 2024 "
+"at midnight."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:23
+msgid "<code>Content-Type: text/plain</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:23
+msgid ""
+"<code>text/html</code> for the files whose name ends with <code>.html</code> "
+"and for the error pages, <code>text/plain</code> for the other files."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:25
+msgid "<code>Content-Length: 14</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:25
+msgid "The size of the body in bytes."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:26
+msgid "<code>Allow: GET, HEAD</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:26
+msgid "The methods that the server accepts, only in the 405 responses."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:27
+msgid "<code>Connection: keep-alive</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:27
+msgid ""
+"<code>keep-alive</code> if the server waits for another request on the "
+"connection, <code>close</code> if it closes the connection after the "
+"response."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:31
+msgid ""
+"The body of the response is not followed by any marker: the client knows "
+"where it ends from <code>Content-Length</code>, or from the end of the "
+"stream when the server closes the connection after the response."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/HttpServer.html:34
+msgid "Requests"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:36
+msgid ""
+"The server accepts two methods: <code>GET</code> asks for the file, and "
+"<code>HEAD</code> asks for the same response without its body (with the "
+"<code>Content-Length</code> that the body would have). The path designates a "
+"file of the server, without directory listing nor index page: <code>/</code> "
+"alone is not found. What follows a <code>?</code> in the path is ignored."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:41
+msgid ""
+"The server accepts the versions <code>HTTP/1.1</code> and <code>HTTP/1.0</"
+"code>, and always answers in HTTP/1.1. In HTTP/1.1, the request must have a "
+"<code>Host</code> header, giving the name or the address of the server (such "
+"as <code>Host: 10.0.0.1</code>). The connection persists after the response: "
+"the server waits for the next request on the same connection, unless the "
+"request has the header <code>Connection: close</code>. In HTTP/1.0, the "
+"server closes the connection after the response, unless the request has the "
+"header <code>Connection: keep-alive</code>."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/HttpServer.html:47
+msgid "Status codes"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:50
+msgid "<code>200 OK</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:50
+#, fuzzy
+#| msgid "Get or set the angle of the lander."
+msgid "The body is the content of the file."
+msgstr "Get or கணம் the angle of the lander."
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:51
+msgid "<code>400 Bad Request</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:51
+msgid ""
+"The request is malformed (its first line is not made of three words "
+"separated by single spaces, its path does not start with <code>/</code>, its "
+"version does not start with <code>HTTP/</code>, or its <code>Content-Length</"
+"code> is not a number), or it lacks the <code>Host</code> header in HTTP/"
+"1.1. The server closes the connection after the response."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:55
+msgid "<code>404 Not Found</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:55
+msgid "The file does not exist."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:56
+msgid "<code>405 Not Allowed</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:56
+#, fuzzy
+#| msgid "Swap the lines number <code>x</code> and <code>y</code>."
+msgid "The method is neither <code>GET</code> nor <code>HEAD</code>."
+msgstr "Swap the வரிகள் எண் <code>x</code> and <code>y</code>."
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:57
+msgid "<code>505 HTTP Version Not Supported</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/HttpServer.html:57
+msgid ""
+"The version is neither <code>HTTP/1.1</code> nor <code>HTTP/1.0</code>. The "
+"server closes the connection after the response."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:63
+msgid ""
+"In this session, the server holds the file <code>/doc/hello.txt</code>, "
+"containing the line <code>Hello, world!</code> (14 bytes with its <code>\\n</"
+"code>). The client asks for it, then asks on the same connection for the "
+"headers of a missing file, and for the closing of the connection. The lines "
+"starting with <code>C:</code> are sent by the client, and those starting "
+"with <code>S:</code> by the server. These prefixes are not part of the data, "
+"and <code>\\r</code> and <code>\\n</code> stand for the bytes CR and LF."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/posix/HttpServer.html:70
+#, no-wrap
+msgid ""
+"C: GET /doc/hello.txt HTTP/1.1\\r\\n\n"
+"C: Host: 10.0.0.1\\r\\n\n"
+"C: \\r\\n\n"
+"S: HTTP/1.1 200 OK\\r\\n\n"
+"S: Server: plm-httpd/1.0\\r\\n\n"
+"S: Date: Mon, 01 Jan 2024 00:00:00 GMT\\r\\n\n"
+"S: Content-Type: text/plain\\r\\n\n"
+"S: Content-Length: 14\\r\\n\n"
+"S: Connection: keep-alive\\r\\n\n"
+"S: \\r\\n\n"
+"S: Hello, world!\\n\n"
+"C: HEAD /missing.html HTTP/1.1\\r\\n\n"
+"C: Host: 10.0.0.1\\r\\n\n"
+"C: Connection: close\\r\\n\n"
+"C: \\r\\n\n"
+"S: HTTP/1.1 404 Not Found\\r\\n\n"
+"S: Server: plm-httpd/1.0\\r\\n\n"
+"S: Date: Mon, 01 Jan 2024 00:00:00 GMT\\r\\n\n"
+"S: Content-Type: text/html\\r\\n\n"
+"S: Content-Length: 154\\r\\n\n"
+"S: Connection: close\\r\\n\n"
+"S: \\r\\n\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/HttpServer.html:94
+#, fuzzy
+#| msgid "(see the note on exceptions)"
+msgid "The server then closes the connection."
+msgstr "(see the குறிப்பு on exceptions)"
+
+#. type: Content of: <h3>
+#: src/plm/universe/posix/FtpServer.html:2
+msgid "The FTP protocol"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:4
+msgid ""
+"The FTP server of this world, named <code>plm-ftpd 1.0</code>, serves files "
+"in passive mode (RFC 959) as the usual servers.  The client sends its "
+"commands on a first connection, called the control connection, and each file "
+"or listing comes on a connection of its own, called a data connection, which "
+"the client opens on a port given by the server."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:10
+msgid ""
+"On the control connection, each command is a line ended by the two bytes "
+"<code>\\r\\n</code> (CR and LF, 13 and 10), made of a word followed by an "
+"argument, such as <code>CWD pub</code>. The server also accepts <code>\\n</"
+"code> alone, and the commands are case-insensitive. Each reply of the server "
+"starts with a code of three digits, followed by a space and a text, such as "
+"<code>230 Login successful.</code>, and ends with <code>\\r\\n</code>. The "
+"first digit of the code tells the kind of reply: 1 for a preliminary reply "
+"(another reply follows when the action completes), 2 for a success, 3 when "
+"the server waits for another command, 4 and 5 for an error."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:17
+msgid ""
+"A reply may span several lines: its first lines start with the code followed "
+"by a dash (<code>220-</code>), and its last line with the code followed by a "
+"space (<code>220 </code>). The client must read the lines until the one with "
+"a space after the code. Only the welcome of the server spans several lines, "
+"whose first ones may change from one world to another."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:21
+msgid ""
+"On a data connection, the server sends the data as it is, without any "
+"marker: the end of the data is the end of the stream, when the server closes "
+"the data connection."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:27
+msgid "<code>USER anonymous</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:27
+msgid ""
+"Starts the login. The server only accepts the anonymous users, named "
+"<code>anonymous</code> or <code>ftp</code>, and answers <code>331 Please "
+"specify the password.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:29
+msgid "<code>PASS password</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:29
+msgid ""
+"Ends the login, with any password (usually an email address), answered by "
+"<code>230 Login successful.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:31
+msgid "<code>SYST</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:31
+msgid "Asks for the system of the server: <code>215 UNIX Type: L8</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:32
+msgid "<code>TYPE I</code> or <code>TYPE A</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:32
+msgid ""
+"Switches to the binary or the ASCII mode: <code>200 Switching to Binary mode."
+"</code> or <code>200 Switching to ASCII mode.</code> The data is sent "
+"unchanged in both modes."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:34
+msgid "<code>PWD</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:34
+msgid ""
+"Asks for the current directory: <code>257 \"/pub\" is the current directory</"
+"code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:35
+msgid "<code>CWD directory</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:35
+msgid ""
+"Changes the current directory: <code>250 Directory successfully changed.</"
+"code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:37
+msgid "<code>PASV</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:37
+msgid ""
+"Prepares a data connection: the server answers <code>227 Entering Passive "
+"Mode (h1,h2,h3,h4,p1,p2).</code> The client then connects to the address "
+"h1.h2.h3.h4, on the port p1*256+p2."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:39
+msgid "<code>EPSV</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:39
+msgid ""
+"Prepares a data connection as <code>PASV</code>, giving only the port: "
+"<code>229 Entering Extended Passive Mode (|||port|)</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:41
+msgid "<code>RETR file</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:41
+#, fuzzy
+#| msgid "Returns the color of the player at a given location."
+msgid "Sends the file on the data connection."
+msgstr "கொடுக்கப்பட்ட இடத்தில் பிளேயரின் நிறத்தை வழங்குகிறது."
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:42
+msgid "<code>LIST directory</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:42
+msgid ""
+"Sends the content of the directory (by default the current one) on the data "
+"connection, one line per entry in the format of <code>ls -l</code>, ended by "
+"<code>\\r\\n</code> (see the example below)."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:45
+msgid "<code>QUIT</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:45
+msgid ""
+"Ends the session: the server answers <code>221 Goodbye.</code> and closes "
+"the connection."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:49
+msgid ""
+"The paths are relative to the current directory, unless they start with "
+"<code>/</code>, and <code>..</code> designates the parent directory. The "
+"current directory is <code>/</code> after the login."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/FtpServer.html:52
+msgid "Transfers"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:54
+msgid ""
+"Each transfer needs a new data connection: the client sends <code>PASV</"
+"code> (or <code>EPSV</code>), connects a new socket to the given port, which "
+"changes at each <code>PASV</code>, and sends <code>RETR</code> or "
+"<code>LIST</code>, before or after connecting. The server then answers a "
+"preliminary reply on the control connection, sends the data on the data "
+"connection and closes it, and confirms the end of the transfer on the "
+"control connection: <code>150 Opening ASCII mode data connection for file "
+"(size bytes).</code> (or <code>BINARY</code>) then <code>226 Transfer "
+"complete.</code> for <code>RETR</code>, <code>150 Here comes the directory "
+"listing.</code> then <code>226 Directory send OK.</code> for <code>LIST</"
+"code>."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/FtpServer.html:61
+msgid "Errors"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:63
+msgid "The errors do not close the connection."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:66
+msgid "<code>425 Use PORT or PASV first.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:66
+msgid ""
+"<code>RETR</code> or <code>LIST</code> without a data connection prepared by "
+"<code>PASV</code> or <code>EPSV</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:68
+msgid "<code>500 Unknown command.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:68
+msgid "The command does not exist."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:69
+msgid "<code>500 Unrecognised TYPE command.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:69
+#, fuzzy
+#| msgid "Swap the lines number <code>x</code> and <code>y</code>."
+msgid "Another type than <code>I</code> or <code>A</code>."
+msgstr "Swap the வரிகள் எண் <code>x</code> and <code>y</code>."
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:70
+msgid "<code>503 Login with USER first.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:70
+msgid "<code>PASS</code> before <code>USER</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:71
+msgid "<code>530 Please login with USER and PASS.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:71
+msgid "A command that needs the client to be logged in."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:72
+msgid "<code>530 This FTP server is anonymous only.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:72
+msgid ""
+"<code>USER</code> with another name than <code>anonymous</code> or "
+"<code>ftp</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:74
+msgid "<code>550 Failed to open file.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:74
+msgid "<code>RETR</code> of a missing file."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:75
+msgid "<code>550 Failed to change directory.</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/FtpServer.html:75
+msgid "<code>CWD</code> to a missing directory."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:80
+msgid ""
+"In this session, the server 10.0.0.1 holds the file <code>/pub/hello.txt</"
+"code>, containing the line <code>Hello, world!</code> (14 bytes with its "
+"<code>\\n</code>). The lines starting with <code>C:</code> are sent by the "
+"client on the control connection, those starting with <code>S:</code> by the "
+"server on the control connection, and those starting with <code>D:</code> by "
+"the server on the data connection. These prefixes are not part of the data, "
+"and <code>\\r</code> and <code>\\n</code> stand for the bytes CR and LF."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/posix/FtpServer.html:87
+#, no-wrap
+msgid ""
+"S: 220-Welcome to the BuggleInc FTP server.\\r\\n\n"
+"S: 220 plm-ftpd 1.0 ready.\\r\\n\n"
+"C: USER anonymous\\r\\n\n"
+"S: 331 Please specify the password.\\r\\n\n"
+"C: PASS buggle@\\r\\n\n"
+"S: 230 Login successful.\\r\\n\n"
+"C: CWD pub\\r\\n\n"
+"S: 250 Directory successfully changed.\\r\\n\n"
+"C: PASV\\r\\n\n"
+"S: 227 Entering Passive Mode (10,0,0,1,156,64).\\r\\n\n"
+"C: RETR hello.txt\\r\\n\n"
+"S: 150 Opening ASCII mode data connection for hello.txt (14 bytes).\\r\\n\n"
+"D: Hello, world!\\n\n"
+"S: 226 Transfer complete.\\r\\n\n"
+"C: PASV\\r\\n\n"
+"S: 227 Entering Passive Mode (10,0,0,1,156,65).\\r\\n\n"
+"C: LIST\\r\\n\n"
+"S: 150 Here comes the directory listing.\\r\\n\n"
+"D: -rw-r--r--    1 ftp      ftp            14 Jan 01  2024 hello.txt\\r\\n\n"
+"S: 226 Directory send OK.\\r\\n\n"
+"C: QUIT\\r\\n\n"
+"S: 221 Goodbye.\\r\\n\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/FtpServer.html:111
+msgid ""
+"After each reply to <code>PASV</code>, the client connects a new socket to "
+"10.0.0.1, on the port 156*256+64 = 40000 for the file, then 156*256+65 = "
+"40001 for the listing. The server closes each data connection after sending "
+"its data, and the control connection after its reply to <code>QUIT</code>."
+msgstr ""
+
 #. type: Content of: <h3>
 #: src/lessons/welcome/Main.html:2 src/lessons/welcome/short_desc.html:2
 msgid "First steps"
@@ -331,6 +1721,14 @@ msgid ""
 msgstr ""
 "This first பாடம் will ஈயம் your first படிகள் in programming. It is intended க்கு "
 "beginners. பட்டியல் of seen notions per exercise:"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
+#: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
+#: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
+#: src/lessons/welcome/Main.html:469
+msgid "&nbsp;"
+msgstr "&nbsp;"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93
@@ -695,7 +2093,7 @@ msgstr ""
 "instruction is வீச்சலகு (yes, computers அரே so dumb that they cannot <i>guess</"
 "i> obvious stuff like this)."
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ol>
 #: src/lessons/welcome/environment/Environment.html:23
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
@@ -716,6 +2114,9 @@ msgstr ""
 #: src/lessons/recursion/lego/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
+#: src/lessons/network/bsdsocks/TcpClient.html:33
+#: src/lessons/network/bsdsocks/TcpClient.html:74
+#: src/lessons/network/bsdsocks/TcpServer.html:25
 msgid "[/!]"
 msgstr "[/!]"
 
@@ -1640,12 +3041,6 @@ msgstr ""
 msgid "int x=5;"
 msgstr "int ஃச் = 5;"
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:35
-#: src/lessons/welcome/variables/Variables.html:69
-msgid "[/!] [!python]"
-msgstr "[/!] [!python]"
-
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:38
 msgid ""
@@ -1661,11 +3056,12 @@ msgstr ""
 msgid "x = 5"
 msgstr "ஃச் = 5"
 
-#. type: Content of: <ul><li>
+#. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
+#: src/lessons/network/bsdsocks/TcpClient.html:71
 msgid "[/!] [!scala]"
 msgstr "[/!] [!scala]"
 
@@ -3110,12 +4506,6 @@ msgstr ""
 "L2.append(7)\n"
 "L2.append(9) \n"
 "<span class=\"comment\"># Its content is now the same அச் L previously</span>"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/basics/Array1.html:116
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:61
-msgid "[/!] [!java|scala]"
-msgstr "[/!] [!java|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array1.html:119
@@ -8882,13 +10272,6 @@ msgstr ""
 "The colors அரே represented through the following constants: BLUE, வெள்ளை and "
 "RED.  You can use them directly in your code."
 
-#. type: Content of: <h2>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:12
-#: src/lessons/lander/universe/LanderWorld.html:8
-msgid "Provided functions"
-msgstr "Provided செயல்பாடுகள்"
-
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:2
 msgid "PancakeWorld"
@@ -10284,11 +11667,6 @@ msgstr ""
 #| msgid "Methods understood by buggles"
 msgid "Functions understood by turtles"
 msgstr "முறைகள் understood by buggles"
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:17
-msgid "Name"
-msgstr "பெயர்"
 
 #. type: Content of: <h3>
 #: src/lessons/turtleart/Main.html:2 src/lessons/turtleart/short_desc.html:2
@@ -15071,6 +16449,370 @@ msgstr ""
 msgid "Good luck, try not to crash!"
 msgstr "Good luck, try not பெறுநர் crash!"
 
+#. type: Content of: <h3>
+#: src/lessons/network/Main.html:2 src/lessons/network/short_desc.html:2
+msgid "Network programming"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/Main.html:4
+msgid ""
+"Most programs talk to other programs over the network, such as a web browser "
+"with a web server, or a game with the server of the game. In this lesson, "
+"your programs connect to other programs or accept their connections, and "
+"exchange data with them over TCP. You will face the realities of the network "
+"on the way: the data arriving in several pieces, or a server that is not "
+"ready yet."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/Main.html:9
+msgid ""
+"Your programs use the system calls of UNIX (POSIX), where a network "
+"connection is designated by a file descriptor: a small integer that the same "
+"functions read from and write to, as for a regular file or a terminal."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/Main.html:12
+msgid ""
+"Your program runs in a simulated system: its network and its files are part "
+"of the world displayed by the PLM, and the other programs follow a script. "
+"This lets the PLM show you what your program does, and check that it leaves "
+"everything in order: the right data written on the standard output, in the "
+"files or to the other programs, and no descriptor left open."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/short_desc.html:4
+msgid ""
+"In this lesson, your programs exchange data with other programs over the "
+"network, through TCP sockets."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/short_desc.html:6
+msgid "This lesson assumes that you are already fluent with the C language."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/network/bsdsocks/TcpClient.html:2
+#, fuzzy
+#| msgid "Add a message"
+msgid "Downloading a message"
+msgstr "கூட்டு a செய்தி"
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:4
+msgid ""
+"In this first exercise about networking, you shall write the function "
+"<code>client(server, port)</code>, which connects using TCP to the given "
+"server (its IPv4 address as text, such as <code>\"10.0.0.1\"</code>) on the "
+"given port, reads all the data sent by the server, and writes it on its "
+"standard output. Your code will be tested on several situations in which the "
+"server and the content of its message change, so your function must use its "
+"parameters, and display what it received, whatever it is. Use the combo box "
+"above the world view on the right to switch the world."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:10
+msgid ""
+"Here are the steps to follow in your code. You can find more information [!c|"
+"python]about the <code>socket()</code>, <code>connect()</code>, "
+"<code>recv()</code> and friends[/!] in [!c]the corresponding manpages[/!][!"
+"python]the documentation of the <code>socket</code> module of Python[/!][!"
+"java|scala]the documentation of the classes <code>Socket</code> and "
+"<code>InputStream</code> of Java[!scala], which Scala programs use[/!][/!]."
+msgstr ""
+
+#. type: Content of: <ol>
+#: src/lessons/network/bsdsocks/TcpClient.html:15
+#: src/lessons/network/bsdsocks/TcpServer.html:11
+#, fuzzy
+#| msgid "[!python]"
+msgid "[!c|python]"
+msgstr "[!python]"
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpClient.html:15
+msgid ""
+"[!c]Create a socket with <code>socket(AF_INET, SOCK_STREAM, 0)</code>, which "
+"returns a descriptor.[/!][!python]Import the <code>socket</code> module, and "
+"create a socket with <code>socket.socket(socket.AF_INET, "
+"socket.SOCK_STREAM)</code>, which returns a socket object.[/!] "
+"<code>AF_INET</code> means that this socket can go to the internet while "
+"<code>SOCK_STREAM</code> means that you want to use a stream of data. "
+"Together, these parameters give a TCP socket."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpClient.html:20
+msgid ""
+"[!c]Fill a <code>struct sockaddr_in</code> with the address of the server. "
+"Do not forget that the port must be given in network byte order, with "
+"<code>htons()</code>, while <code>inet_pton()</code> converts the textual "
+"address.[/!][!python]The address of the server is simply the tuple "
+"<code>(server, port)</code>: the <code>socket</code> module converts it for "
+"the system.[/!]"
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpClient.html:24
+msgid ""
+"Create a socket connected to the server with <code>new Socket(server, port)</"
+"code>, which creates a TCP socket and connects it at once. In this exercise, "
+"the server is sometimes slow to start, making this constructor throw a "
+"<code>ConnectException</code>. When this happens, you should wait one second "
+"with <code>Thread.sleep(1000)</code> and try again. The constructor closes "
+"the socket of a failed attempt by itself."
+msgstr ""
+
+#. type: Content of: <ol>
+#: src/lessons/network/bsdsocks/TcpClient.html:27
+#, fuzzy
+#| msgid "[/!] [!python]"
+msgid "[/!] [!c|python]"
+msgstr "[/!] [!python]"
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpClient.html:28
+msgid ""
+"Connect your socket to the server with <code>connect()</code>. In this "
+"exercise, the server is sometimes slow to start, making <code>connect()</"
+"code> [!c]return -1 (with <code>errno</code> set to <code>ECONNREFUSED</"
+"code>)[/!][!python]raise a <code>ConnectionRefusedError</code>[/!]. When "
+"this happens, you should wait one second with <code>[!python]time."
+"[/!]sleep(1)</code> and try again. Beware: after a failed <code>connect()</"
+"code>, the state of the socket is unspecified. To retry, close it and create "
+"a new one with <code>socket()</code>. Do not forget to close the sockets of "
+"the failed attempts, or they will remain open at the end of your program."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpClient.html:34
+msgid ""
+"Receive the message [!java|scala]from the stream returned by "
+"<code>getInputStream[!java]()[/!]</code>, with <code>read(buffer)</code>, "
+"which returns the amount of bytes received[/!][!c]in a buffer with "
+"<code>recv()</code>, which returns the amount of bytes received[/!][!"
+"python]with <code>recv(512)</code>, which returns the bytes received (at "
+"most 512 here)[/!]. Beware that the message may be conveyed from the server "
+"to you in several packets. The [!c|python]function <code>recv()</code>[/!][!"
+"java|scala]method <code>read()</code>[/!] returns the available data when "
+"there is some, and it's blocking when no data is available but more data "
+"could come from the network. Finally, it returns [!c]0[/!][!python]empty "
+"bytes (<code>b\"\"</code>)[/!][!java|scala]-1[/!] when no data is available "
+"and no more data could come because the other part (the server) closed the "
+"connection. So you should keep reading from the network until [!c|"
+"python]<code>recv()</code>[/!][!java|scala]<code>read()</code>[/!] returns [!"
+"c]0[/!][!python]empty bytes[/!][!java|scala]-1 (<code>transferTo()</code> "
+"does this loop for you, but write it once yourself)[/!]. On a real network, "
+"a message sent at once arrives at once most of the time when it fits in a "
+"single packet, e.g. about 1460 bytes on Ethernet. This is why a program "
+"calling [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</"
+"code>[/!] only once often works with short messages, and fails later with "
+"longer ones or on a slower network. Note that even below that size, TCP "
+"guarantees nothing: the worlds of this exercise split short messages to show "
+"it."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpClient.html:49
+msgid ""
+"Write the received bytes on the standard output with [!c]<code>write()</"
+"code>, <code>printf()</code>, or similar[/!][!"
+"python]<code>sys.stdout.buffer.write()</code>, which writes bytes "
+"(<code>print()</code> writes text)[/!][!java|scala] "
+"<code>System.out.write(buffer, 0, received)</code>, which writes bytes "
+"(<code>print()</code> writes text)[/!]. If you receive the data in several "
+"chunks from [!c|python]<code>recv()</code>[/!][!java|scala]<code>read()</"
+"code>[/!], you are free to display in one or several chunks, as you prefer.[!"
+"c] Beware: the data received from the network is not a C string, as nothing "
+"ends it with <code>'\\0'</code>, and it must never be used as the format of "
+"<code>printf()</code>, since an attacker could put conversions such as "
+"<code>%s</code> in it.[/!]"
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpClient.html:56
+msgid ""
+"Close your socket with <code>close()</code>[!python], or create it in a "
+"<code>with</code> block that closes it at its end[/!][!java], or create it "
+"in a <code>try</code>-with-resources block that closes it at its end[/!][!"
+"scala], or use it in <code>Using.resource()</code> that closes it at its "
+"end[/!]: the PLM checks that your program leaves no descriptor open, except "
+"the 3 standard ones that are already open when your process starts."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:63
+msgid ""
+"These functions return -1 when they fail, and set <code>errno</code> to the "
+"reason of the failure. When this happens, use <code>perror()</code> to "
+"display the error on the standard error. Checking the returned values is a "
+"good habit, which will help you understand what goes wrong (and it's needed "
+"to pass this exercise)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:66
+msgid ""
+"These methods raise an <code>OSError</code> when they fail, whose subclass "
+"tells the reason of the failure (such as <code>ConnectionRefusedError</"
+"code>). Only catch the errors that you expect and know how to handle: the "
+"other ones stop your program, and the PLM console shows where."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/network/bsdsocks/TcpClient.html:68
+#, fuzzy
+#| msgid "[/!] [!java|c]"
+msgid "[/!] [!java]"
+msgstr "[/!] [!java|c]"
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:69
+msgid ""
+"These methods throw an <code>IOException</code> when they fail, whose "
+"subclass tells the reason of the failure (such as <code>ConnectException</"
+"code>). Only catch the exceptions that you expect and know how to handle, "
+"and declare the other ones with <code>throws</code>: they stop your program, "
+"and the PLM console shows where."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:72
+msgid ""
+"These methods throw an <code>IOException</code> when they fail, whose "
+"subclass tells the reason of the failure (such as <code>ConnectException</"
+"code>). Only catch the exceptions that you expect and know how to handle: "
+"the other ones stop your program, and the PLM console shows where."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:76
+msgid ""
+"Your debugging messages also reach the standard output (or the standard "
+"error), where the world view shows them. Remove them once your program "
+"works, as the PLM compares everything your program writes."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/network/bsdsocks/TcpServer.html:2
+msgid "Serving a client"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpServer.html:4
+msgid ""
+"This time, your program is the server: write the function <code>server(port, "
+"message)</code>, where a client will connect to the given port of your "
+"machine and wait for a message. Send it the given message, and close the "
+"connection: the client reads until the end of the stream, as your client did "
+"in the previous exercise. As in that exercise, the port and the message "
+"change from one world to the other."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpServer.html:9
+msgid ""
+"A server takes more steps than a client, since it must first prepare a "
+"socket that waits for the connections:"
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpServer.html:11
+msgid ""
+"Create a socket with [!c]<code>socket(AF_INET, SOCK_STREAM, 0)</code>[/!][!"
+"python]<code>socket.socket(socket.AF_INET, socket.SOCK_STREAM)</code>[/!]."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpServer.html:13
+msgid ""
+"Attach it to the given port with <code>bind()</code>. [!c]The <code>struct "
+"sockaddr_in</code> is filled as for <code>connect()</code>, but the address "
+"<code>INADDR_ANY</code> (converted with <code>htonl()</code>) means that any "
+"machine may connect.[/!][!python]Its address is the tuple <code>(\"\", "
+"port)</code>, where the empty host means that any machine may connect.[/!]"
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpServer.html:17
+msgid ""
+"Mark it as accepting the connections with <code>listen()</code>. Its [!"
+"c]second[/!][!python]only[/!] parameter is the length of the queue of the "
+"clients that wait to be accepted. After this call, the clients can connect "
+"even if your program does not accept and serve them yet."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpServer.html:20
+msgid ""
+"Create a socket that waits for the connections with <code>new "
+"ServerSocket(port)</code>. This constructor does the first three steps of a "
+"server at once: it creates a TCP socket, attaches it to the given port with "
+"<code>bind()</code> so that any machine may connect, and marks it as "
+"accepting the connections with <code>listen()</code>. After that, the "
+"clients can connect even if your program does not accept and serve them yet. "
+"To do these steps one by one, create the <code>ServerSocket</code> without "
+"parameter, and call its method <code>bind(new InetSocketAddress(port), "
+"backlog)</code>, whose second parameter is the length of the queue of the "
+"clients that wait to be accepted."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpServer.html:26
+msgid ""
+"Accept a client with <code>accept()</code>, which waits until a client "
+"connected and returns a <b>new</b> [!c]descriptor, dedicated to this client. "
+"You can pass <code>NULL</code> as second and third parameters if the address "
+"of the client does not matter.[/!][!python]socket, dedicated to this client, "
+"along with the address of the client.[/!][!java|scala] <code>Socket</code>, "
+"dedicated to this client.[/!]"
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpServer.html:30
+msgid ""
+"Send the message to the client on the new [!c]descriptor with <code>send()</"
+"code>, whose length is given by <code>strlen(message)</code>[/!][!"
+"python]socket with <code>sendall()</code>, which sends all the data. It "
+"sends bytes: convert the message with <code>message.encode()</code>[/!][!"
+"java|scala]socket with the <code>write()</code> method of its "
+"<code>getOutputStream[!java]()[/!]</code>, which sends all the data. It "
+"sends bytes: convert the message with "
+"<code>message.getBytes(StandardCharsets.UTF_8)</code>[/!]."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/TcpServer.html:35
+msgid ""
+"Close both [!c]descriptors[/!][!python|java|scala]sockets[/!]: the one of "
+"the client, and the one that waits for the connections."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpServer.html:38
+msgid ""
+"Look at the world view while your program runs: the socket returned by "
+"<code>accept()</code> shares its port with the socket that waits for the "
+"connections. A port is not a socket on which external connections plug: the "
+"system dispatches the incoming data to the right application depending on "
+"four pieces of information: <code>{source IP, source port, destination IP, "
+"destination port}</code>. The <code>destination IP</code> is used to find "
+"the right machine, and then the operating system of that machine delivers "
+"the data using the three other pieces of information, not only the "
+"<code>destination port</code>. Doing otherwise would not be convenient for "
+"servers serving many incoming connections, as the number of available ports "
+"is limited to 65535 on a given machine. If each incoming connection were "
+"given a specific port, large servers would quickly run out of available "
+"ports. Indeed, it is not possible to have more than 65535 ports on a given "
+"machine, because the port number is encoded as a 16 bit integer on the "
+"Internet."
+msgstr ""
+
 #. type: Content of: <h2>
 #: lib/doc/MainWindow.html:1
 msgid "The PLM Main Window"
@@ -15308,6 +17050,51 @@ msgid ""
 msgstr ""
 "The <b>Mark</b> button requests your buggle பெறுநர் leave a mark behind it "
 "when it goes."
+
+#~ msgid "Color"
+#~ msgstr "நிறம்"
+
+#~ msgid "[!scala|java|python]Color.[/!]black"
+#~ msgstr "[!scala|java|python] நிறம். [/!] கருப்பு"
+
+#~ msgid "[!scala|java|python]Color.[/!]blue"
+#~ msgstr "[!scala|java|python] நிறம். [/!] நீலம்"
+
+#~ msgid "[!scala|java|python]Color.[/!]cyan"
+#~ msgstr "[!scala|java|python] நிறம். [/!] சியான்"
+
+#~ msgid "[!scala|java|python]Color.[/!]darkGray"
+#~ msgstr "[!scala|java|python] நிறம். [/!] டார்க் கிரே"
+
+#~ msgid "[!scala|java|python]Color.[/!]gray"
+#~ msgstr "[!scala|java|python] நிறம். [/!] சாம்பல்"
+
+#~ msgid "[!scala|java|python]Color.[/!]green"
+#~ msgstr "[!scala|java|python] நிறம். [/!] பச்சை"
+
+#~ msgid "[!scala|java|python]Color.[/!]lightGray"
+#~ msgstr "[!scala|java|python] நிறம். [/!] லைட் கிரே"
+
+#~ msgid "[!scala|java|python]Color.[/!]magenta"
+#~ msgstr "[!scala|java|python] நிறம். [/!] மெசந்தா"
+
+#~ msgid "[!scala|java|python]Color.[/!]orange"
+#~ msgstr "[!scala|java|python] நிறம். [/!] ஆரஞ்சு"
+
+#~ msgid "[!scala|java|python]Color.[/!]pink"
+#~ msgstr "[!scala|java|python] நிறம். [/!] இளஞ்சிவப்பு"
+
+#~ msgid "[!scala|java|python]Color.[/!]red"
+#~ msgstr "[!scala|java|python] நிறம். [/!] சிவப்பு"
+
+#~ msgid "[!scala|java|python]Color.[/!]white"
+#~ msgstr "[!scala|java|python] நிறம். [/!] வெள்ளை"
+
+#~ msgid "[!scala|java|python]Color.[/!]yellow"
+#~ msgstr "[!scala|java|python] நிறம். [/!] மஞ்சள்"
+
+#~ msgid "Name"
+#~ msgstr "பெயர்"
 
 #~ msgid "What can I do to improve this PLM universe?"
 #~ msgstr "What can I do பெறுநர் improve this PLM universe?"
@@ -15759,9 +17546,6 @@ msgstr ""
 #~ msgid "Drop a baggle</b>"
 #~ msgstr "ஒரு பேக்லியை விடுங்கள் </b>"
 
-#~ msgid "(see the note on exceptions)"
-#~ msgstr "(see the குறிப்பு on exceptions)"
-
 #~ msgid "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
 #~ msgstr "[!java]boolean [/!][!c]int [/!]isOverBaggle()[!scala]:Boolean[/!]"
 
@@ -15778,9 +17562,6 @@ msgstr ""
 
 #~ msgid "<b>Look for a message"
 #~ msgstr "<b>Look க்கு a செய்தி"
-
-#~ msgid "Add a message"
-#~ msgstr "கூட்டு a செய்தி"
 
 #~ msgid "Read the message"
 #~ msgstr "Read the செய்தி"
@@ -15928,9 +17709,6 @@ msgstr ""
 #~ msgid "[!java|c]void [/!]swap([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int [/!]y[!scala]:Int[/!])"
 #~ msgstr "[!java|c]void [/!]swap([!java|c]int [/!]x[!scala]:Int[/!], [!java|c]int [/!]y[!scala]:Int[/!])"
 
-#~ msgid "Swap the lines number <code>x</code> and <code>y</code>."
-#~ msgstr "Swap the வரிகள் எண் <code>x</code> and <code>y</code>."
-
 #, no-wrap
 #~ msgid "[!java|c]int [/!]getSize() [!scala]:Int[/!]"
 #~ msgstr "[!java|c]int [/!]getSize() [!scala]:Int[/!]"
@@ -16061,9 +17839,6 @@ msgstr ""
 #, no-wrap
 #~ msgid "[!java|c]int [/!]getPlayerColor([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
 #~ msgstr "[!java|c]int [/!]getPlayerColor([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
-
-#~ msgid "Returns the color of the player at a given location."
-#~ msgstr "கொடுக்கப்பட்ட இடத்தில் பிளேயரின் நிறத்தை வழங்குகிறது."
 
 #~ msgid "Returns whether all players of the field are at home."
 #~ msgstr "Returns whether அனைத்தும் players of the புலம் அரே at home."
@@ -16314,9 +18089,6 @@ msgstr ""
 #~ msgstr ""
 #~ "[! சாவா | சி] இரட்டை [/! \n"
 #~ "."
-
-#~ msgid "Get or set the angle of the lander."
-#~ msgstr "Get or கணம் the angle of the lander."
 
 #~ msgid ""
 #~ "An angle of 0° denotes a vertical position where the \"head\" of the "
