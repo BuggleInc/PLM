@@ -25,7 +25,7 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
     return kernel;
   }
 
-  @Override public void run() { /* To be overwritten */ }
+  @Override public void run() throws Exception { /* To be overwritten */ }
 
   @Override public int socket(int domain, int socket_type, int protocol)
   {
