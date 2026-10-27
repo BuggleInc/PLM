@@ -606,6 +606,13 @@ public class PosixWorldTest {
     p.close(sock);
   }
 
+  @Test public void testWorldsWithOtherNamesDiffer()
+  {
+    // as in the exercises, whose worlds start alike: the combo box selecting a world needs them to differ
+    Assertions.assertNotEquals(new PosixWorld("Buggles").addPeer(new IrcServer("10.0.0.1", 194)),
+                               new PosixWorld("Turtles").addPeer(new IrcServer("10.0.0.1", 194)));
+  }
+
   @Test public void testComparingOnlySomeAspects()
   {
     PosixWorld ref  = new PosixWorld("aspects").comparing(PosixWorld.Aspect.OUTPUT).addPeer(Peer.server("10.0.0.1", 80, "accept(3) recv(4, 2) close(4)"));

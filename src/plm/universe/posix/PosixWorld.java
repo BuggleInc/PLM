@@ -443,9 +443,16 @@ public class PosixWorld extends World {
 
   // ---------------------------------------------------------------- comparison
 
-  @Override public boolean equals(Object o) { return o instanceof PosixWorld w && student.equals(w.student) && files.equals(w.files) && peers.equals(w.peers); }
+  /**
+   * Compares the names too, as World.equals() does: the worlds of an exercise often start alike (their peers differ by their
+   * scenario, which is not compared), and the combo box selecting a world picks the first one equal to the chosen one
+   */
+  @Override public boolean equals(Object o)
+  {
+    return o instanceof PosixWorld w && getName().equals(w.getName()) && student.equals(w.student) && files.equals(w.files) && peers.equals(w.peers);
+  }
 
-  @Override public int hashCode() { return (student.hashCode() * 31 + files.hashCode()) * 31 + peers.hashCode(); }
+  @Override public int hashCode() { return ((getName().hashCode() * 31 + student.hashCode()) * 31 + files.hashCode()) * 31 + peers.hashCode(); }
 
   /** Whether this world matches the expected one on the compared aspects (see comparing()), while equals() compares everything */
   @Override public boolean winning(World standard) { return standard.diffTo(this, null).isEmpty(); }
