@@ -43,6 +43,9 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     codeEditor.setBracketMatchingEnabled(true);
     codeEditor.setCloseCurlyBraces(true);
     codeEditor.setCodeFoldingEnabled(true);
+    // The tab key inserts 4 spaces, as tabulations display differently elsewhere and Python refuses to mix them with spaces
+    codeEditor.setTabSize(4);
+    codeEditor.setTabsEmulated(true);
 
     codeEditor.setCaretPosition(0);
 
@@ -57,6 +60,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     sync.setProgrammingLanguage(lang);
 
     codeEditor.setText(exo.getEditorContent(lang));
+    codeEditor.convertTabsToSpaces(); // the code saved or given with tabulations
     codeEditor.discardAllEdits();
 
     /* Highlighting stuff, to trace entities */
