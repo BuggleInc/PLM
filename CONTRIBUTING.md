@@ -961,15 +961,17 @@ documentation](PEDAGOGY.md#system-programming).
   talk with a server in several ways: `winning()` and `diffTo()` then ignore the rest, while `equals()` still compares
   everything.
 * **The C glue** is hand-written (`RemotePosixGlue.h` and `RemotePosixGlue.c`, with `@Glue(wrapped = true)`): it offers the real
-  POSIX signatures, renames the student's calls with macros (`#define recv plm_recv`), converts `struct sockaddr_in` and the local
-  constants to the protocol ones, copies the received bytes in the caller's buffer, and sets the real `errno` from the
-  undocumented `lastError()` primitive. It exposes `getParamString()` and `getParamInt()` to the code of the entity that calls the
-  student's function (the generated functions of a wrapped glue are private). It also intercepts the output functions of `stdio.h`
-  on the standard streams (`printf()`, `fprintf()`, `puts()`, `fputs()`, `putchar()` and `perror()`), unbuffered, as the libc
-  would otherwise write behind its back. Its `fopen()` and `fdopen()` give real streams of the libc, buffered as usual, whose
-  reads and writes call the system calls of the world (`fopencookie()` of the glibc, which `LangC` enables with
-  `-D_GNU_SOURCE`, or `funopen()` on macOS): the student can use `fgets()` or `fscanf()` on a file or a socket. They fail
-  with `ENOSYS` on Windows, which has no such custom streams, and explain it once on the PLM console (the real standard error).
+  POSIX signatures, renames the student's calls with macros (`#define recv plm_recv`, which `LangC.withRealNames()` hides from
+  the compiler messages, along with `-ftrack-macro-expansion=0` if the compiler accepts it, so that the errors are located where
+  the student called the function), converts `struct sockaddr_in` and the local constants to the protocol ones, copies the
+  received bytes in the caller's buffer, and sets the real `errno` from the undocumented `lastError()` primitive. It exposes
+  `getParamString()` and `getParamInt()` to the code of the entity that calls the student's function (the generated functions of
+  a wrapped glue are private). It also intercepts the output functions of `stdio.h` on the standard streams (`printf()`,
+  `fprintf()`, `puts()`, `fputs()`, `putchar()` and `perror()`), unbuffered, as the libc would otherwise write behind its back.
+  Its `fopen()` and `fdopen()` give real streams of the libc, buffered as usual, whose reads and writes call the system calls of
+  the world (`fopencookie()` of the glibc, which `LangC` enables with `-D_GNU_SOURCE`, or `funopen()` on macOS): the student can
+  use `fgets()` or `fscanf()` on a file or a socket. They fail with `ENOSYS` on Windows, which has no such custom streams, and
+  explain it once on the PLM console (the real standard error).
 * **The Python glue** (`RemotePosixGlue.py`, appended to the generated functions renamed `_plm_remote_xxx`) substitutes the
   system modules at import, so that the student's code uses them as usual: `sys.modules["socket"]` becomes a module of the
   world (`socket.socket` with `makefile()`, `create_connection()`, `create_server()` and the constants), `os.open()`,

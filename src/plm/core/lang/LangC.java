@@ -13,9 +13,14 @@ import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.UnaryOperator;
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.Answer;
@@ -154,10 +159,12 @@ public class LangC extends TemplatedRemoteLang {
       Files.writeString(compileDir.resolve(studentFileName), "#include \"Remote.h\"\n#include \"" + remote + ".h\"\n\n" + studentCode);
 
       String linkInputs = studentFileName + " \"" + valueSerializerObj + "\" \"" + remoteObj + "\" \"" + remoteWorldObj + "\"";
-      // The libraries come after the objects using them, as the linker only takes from a library what is needed so far
-      String linkCmd = cc + " -o \"" + exec + "\" " + linkInputs + " -lm -lpthread" + (isWindows ? " -lws2_32" : "");
+      // The libraries come after the objects using them, as the linker only takes from a library what is needed so far. The
+      // errors in the macros renaming the functions of the universe are located where the student called them, if possible.
+      String untracked = "".equals(probe("-ftrack-macro-expansion=0", null)) ? " -ftrack-macro-expansion=0" : "";
+      String linkCmd   = cc + untracked + " -o \"" + exec + "\" " + linkInputs + " -lm -lpthread" + (isWindows ? " -lws2_32" : "");
 
-      runCompiler(linkCmd, compileDir.toFile(), isWindows);
+      runCompiler(linkCmd, compileDir.toFile(), isWindows, messages -> withRealNames(messages, remoteWorldH));
 
       return exec.getAbsolutePath();
     } catch (IOException ioe) {
@@ -206,7 +213,7 @@ public class LangC extends TemplatedRemoteLang {
 
         Path tmpObject = scratch.resolve(baseName + ".o");
         String compileCmd = cc + " -x c -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
-        runCompiler(compileCmd, scratch.toFile(), isWindows);
+        runCompiler(compileCmd, scratch.toFile(), isWindows, UnaryOperator.identity());
 
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
       } finally {
@@ -237,11 +244,12 @@ public class LangC extends TemplatedRemoteLang {
   }
 
   /**
-   * Run a compiler command line from workDir. Everything it prints on stdout+stderr is the message of the exception thrown if
-   * it fails, or if it emits warnings in picky mode (the command is then displayed in debug mode). Otherwise, these warnings
-   * are just displayed on the console.
+   * Run a compiler command line from workDir. Everything it prints on stdout+stderr, rewritten by messages, is the message of
+   * the exception thrown if it fails, or if it emits warnings in picky mode (the command is then displayed in debug mode).
+   * Otherwise, these warnings are displayed on the console, and returned.
    */
-  private static void runCompiler(String shellCommand, File workDir, boolean isWindows) throws IOException, InterruptedException, PLMCompilerException
+  private static String runCompiler(String shellCommand, File workDir, boolean isWindows, UnaryOperator<String> messages)
+      throws IOException, InterruptedException, PLMCompilerException
   {
     String[] arg1 = isWindows ? new String[] {"cmd.exe", "/c", shellCommand} : new String[] {"/bin/sh", "-c", shellCommand};
 
@@ -256,38 +264,85 @@ public class LangC extends TemplatedRemoteLang {
     stdout.join();
     stderr.join();
 
-    if (status != 0 || (Game.getInstance().isPickyEnabled() && out.length() > 0)) {
+    String said = messages.apply(out.toString());
+    if (status != 0 || (Game.getInstance().isPickyEnabled() && !said.isEmpty())) {
       if (Game.getInstance().isDebugEnabled())
         System.err.println(Game.i18n.tr("Compilation error. The command {0} failed.", shellCommand));
-      throw new PLMCompilerException(out.toString(), null);
+      throw new PLMCompilerException(said, null);
     }
-    System.err.print(out);
+    System.err.print(said);
+    return said;
   }
 
-  private static final Map<String, Boolean> asanSupport = new HashMap<>();
+  private static final Map<String, Optional<String>> probes = new HashMap<>();
 
   /**
-   * Whether the configured compiler can link a program with AddressSanitizer (MinGW cannot), probed once per compiler by
-   * building a trivial program in C_ROOT. Without it, the C programs run without memory checks.
+   * What the configured compiler says (empty if nothing) when building a trivial program in C_ROOT with these flags, probed once
+   * per compiler and flags, or null if it fails. The failure is then explained on the console if a message is given, whose {0}
+   * is the compiler and {1} what it said.
    */
-  public static synchronized boolean supportsAsan() throws InterruptedException
+  private static synchronized String probe(String flags, String failure) throws InterruptedException
   {
-    String compiler   = Game.getProperty(PROP_COMPILER, "gcc", true);
-    Boolean supported = asanSupport.get(compiler);
-    if (supported == null) {
+    String compiler        = Game.getProperty(PROP_COMPILER, "gcc", true);
+    Optional<String> found = probes.get(compiler + " " + flags);
+    if (found == null) {
       boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
       try {
         Files.createDirectories(C_ROOT);
-        Files.writeString(C_ROOT.resolve("asan-probe.c"), "int main(void) { return 0; }\n");
-        runCompiler(compiler + " -fsanitize=address -o asan-probe asan-probe.c", C_ROOT.toFile(), isWindows);
-        supported = true;
+        Files.writeString(C_ROOT.resolve("probe.c"), "int main(void) { return 0; }\n");
+        found = Optional.of(runCompiler(compiler + " " + flags + " -o probe probe.c", C_ROOT.toFile(), isWindows, UnaryOperator.identity()));
       } catch (IOException | PLMCompilerException e) {
-        System.err.println(Game.i18n.tr("{0} cannot link with AddressSanitizer, so the C programs run without memory checks:\n{1}", compiler, e.getMessage()));
-        supported = false;
+        if (failure != null)
+          System.err.println(java.text.MessageFormat.format(failure, compiler, e.getMessage()));
+        found = Optional.empty();
       }
-      asanSupport.put(compiler, supported);
+      probes.put(compiler + " " + flags, found);
     }
-    return supported;
+    return found.orElse(null);
+  }
+
+  /** Whether the configured compiler can link a program with AddressSanitizer (MinGW cannot). Otherwise, the C programs run without memory checks. */
+  public static boolean supportsAsan() throws InterruptedException
+  {
+    return probe("-fsanitize=address", Game.i18n.tr("{0} cannot link with AddressSanitizer, so the C programs run without memory checks:\n{1}")) != null;
+  }
+
+  /** A function renamed by the header of a universe, as in "#define send plm_send" */
+  private static final Pattern RENAMING = Pattern.compile("^#define (\\w+) plm_\\1\\b", Pattern.MULTILINE);
+  /** A line of the compiler marking the code that it just quoted (with ^~~~ under it, after a | for gcc) */
+  private static final Pattern MARKS = Pattern.compile("\\s*\\|.*|[\\s^~]+");
+
+  /**
+   * The compiler messages as if the student's code called the functions that the header of its universe renames with macros: the
+   * names lose their prefix (plm_send becomes send), also in the code quoted by the compiler, whose marks below are shifted to
+   * stay aligned with it.
+   */
+  public static String withRealNames(String messages, String header)
+  {
+    Matcher renaming   = RENAMING.matcher(header);
+    List<String> names = renaming.results().map(result -> result.group(1)).toList();
+    if (names.isEmpty())
+      return messages;
+    Pattern renamed    = Pattern.compile("\\bplm_(" + String.join("|", names) + ")\\b");
+    StringBuilder res  = new StringBuilder();
+    List<Integer> cuts = List.of(); // where the last quoted line lost a prefix, from the right
+    for (String line : messages.split("\n", -1)) {
+      if (!cuts.isEmpty() && MARKS.matcher(line).matches()) {
+        for (int cut : cuts)
+          if (cut < line.length()) {
+            boolean caret = line.substring(cut, Math.min(cut + 4, line.length())).contains("^");
+            line          = line.substring(0, cut) + line.substring(Math.min(cut + 4, line.length()));
+            if (caret)
+              line = line.substring(0, cut) + "^" + (cut + 1 < line.length() ? line.substring(cut + 1) : "");
+          }
+      } else {
+        Matcher found = renamed.matcher(line);
+        cuts          = found.results().map(MatchResult::start).sorted(Comparator.reverseOrder()).toList();
+        line          = found.replaceAll("$1");
+      }
+      res.append(line).append('\n');
+    }
+    return res.substring(0, res.length() - 1);
   }
 
   private static Thread drain(InputStream in, StringBuffer into)
