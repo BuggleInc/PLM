@@ -39,6 +39,13 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /** The location of a line of the entity in a stack trace, e.g. "Entity.java:42". */
   private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.(?:java|scala):)(\\d+)");
 
+  /**
+   * The option giving \n as line separator to the JVM running the student's code, whatever the system: println() and the like
+   * then write the same bytes everywhere, as the outputs are compared with the ones of the correction. It must be given at launch,
+   * since the JVM reads it once at startup.
+   */
+  protected static final String UNIX_LINES = "-Dline.separator=\n";
+
   /** Name of the jar holding the glue classes of the language, deployed in TMP_ROOT */
   private final String entitiesJarName;
 

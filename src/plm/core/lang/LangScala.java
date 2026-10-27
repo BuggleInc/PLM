@@ -245,8 +245,8 @@ public class LangScala extends JvmTemplatedLang {
     if (!exec.exists())
       throw new RuntimeException(Game.i18n.tr("Error, please recompile the exercise: {0} does not exist", exec.getName()));
 
-    return new ProcessBuilder("java", "-cp", executable + File.pathSeparator + TMP_ROOT.resolve(ENTITIES_JAR) + File.pathSeparator + scalaRuntimeClasspath(),
-                              "generated.Main", String.valueOf(port));
+    String classpath = executable + File.pathSeparator + TMP_ROOT.resolve(ENTITIES_JAR) + File.pathSeparator + scalaRuntimeClasspath();
+    return new ProcessBuilder("java", UNIX_LINES, "-cp", classpath, "generated.Main", String.valueOf(port));
   }
 
   public static class LangScalaExternalPrimitiveGenerator extends JvmExternalPrimitiveGenerator {

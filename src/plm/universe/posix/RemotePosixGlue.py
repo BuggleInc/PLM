@@ -117,6 +117,8 @@ def _file(file, mode="r", buffering=-1, encoding=None, errors=None, newline=None
     stream = io.BufferedRWPair(raw, raw) if readable and writable else io.BufferedReader(raw) if readable else io.BufferedWriter(raw)
     if "b" in modes:
         return stream
+    if newline is None and writable:
+        newline = "\n"  # the world is a Unix system: \n is written as is, even on Windows
     return io.TextIOWrapper(stream, encoding or "utf-8", errors, newline, line_buffering=buffering == 1)
 
 
