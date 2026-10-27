@@ -480,11 +480,12 @@ public class PosixWorldTest {
   /** A world with an IRC server on 10.0.0.1:6667 where Bob answers a polite question, sending in packets of that size if positive */
   private static PosixWorld irc(int packetSize)
   {
-    return new PosixWorld("irc").addPeer(new IrcServer("10.0.0.1", 6667)
-                                             .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
-                                             .say(2, "#welcome", "Alice", "Has anyone seen my brush? I left it near the wall.")
-                                             .answer("Bob", List.of("please", "documentation", "baggle"), "Thanks! It is /doc.txt", "Sorry, I did not get it")
-                                             .packets(packetSize));
+    return new PosixWorld("irc").addPeer(
+        new IrcServer("10.0.0.1", 6667)
+            .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
+            .say(2, "#welcome", "Alice", "Has anyone seen my brush? I left it near the wall.")
+            .answer("Bob", List.of(List.of("please"), List.of("documentation", "docs"), List.of("baggle")), "Thanks! It is /doc.txt", "Sorry, I did not get it")
+            .packets(packetSize));
   }
 
   /** The NOTICE greeting each new client of the IRC server */
@@ -532,7 +533,7 @@ public class PosixWorldTest {
     return new PosixWorld("hints").addPeer(new IrcServer("10.0.0.1", 6667)
                                                .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
                                                .address(2, "#welcome", "Bob", "{0}: are you looking for something?")
-                                               .answer("Bob", List.of("please", "baggle"), "Thanks!", "What?")
+                                               .answer("Bob", List.of(List.of("please"), List.of("baggle", "gift")), "Thanks!", "What?")
                                                .hints("#welcome", "Alice", "Bob", "{0}: be polite", "{0}: say {1} and give a {2}"));
   }
 
@@ -558,7 +559,7 @@ public class PosixWorldTest {
     p.send(3, b("PRIVMSG #welcome :Hello everybody\r\nPRIVMSG #welcome :Bob: Hello\r\n"), 0); // only the second one is for Bob
     Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG #welcome :student: What?", lines.next());
     Assertions.assertEquals(":Alice!alice@buggleinc.com PRIVMSG #welcome :student: be polite", lines.next()); // and Bob does not call
-    p.send(3, b("PRIVMSG #welcome :bob, please, a baggle\r\n"), 0);
+    p.send(3, b("PRIVMSG #welcome :bob, please, a gift\r\n"), 0);                                             // any form of each word
     Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG #welcome :student: Thanks!", lines.next());
     Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0));
   }

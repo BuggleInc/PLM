@@ -924,16 +924,16 @@ documentation](PEDAGOGY.md#system-programming).
   `NOTICE` greeting each new client (so that a client receiving before sending gets a hint instead of a deadlock), registration
   with `NICK` and `USER` and its welcome burst, `JOIN`, `PART`, `PRIVMSG`, `NAMES`, `PING` and `QUIT`, and the usual numeric
   errors. It splits the lines on `\n`, ignoring a `\r` before it. The exercise gives its channels with their topic and their
-  simulated members (`channel()`), the lines these members say some seconds after a client joined the channel (`say()`, so
-  that each client receives the whole chat), the answer of a member to the messages containing some words (whatever
-  their case and accents) and to the other ones (`answer()`), a line addressed to the client who did not write to that member
-  yet (`address()`), the hints of a member to the client who wrote to another one without getting its answer, one more after
-  each failure (`hints()`), and possibly the size of the packets cutting the lines of the members, one per second
-  (`packets()`). The addressed lines and the hints are `MessageFormat` patterns, whose `{0}` is the nickname of the client, and
-  whose `{1}`, `{2}`... are the words expected by the other member (for the hints), so that a hint can give an exact sentence
-  that stays consistent with the translated words. The texts, which may be translated, lose their accents since the world only
-  accepts ASCII for now. A `PRIVMSG` whose text holds spaces without its `:` is refused with a notice telling how to write
-  it, where a real server would only send its first word.
+  simulated members (`channel()`), the lines these members say some seconds after a client joined the channel (`say()`, so that
+  each client receives the whole chat), the answer of a member to the messages containing some words (each in one of its forms,
+  such as its translation and the English word, whatever their case and accents) and to the other ones (`answer()`), a line
+  addressed to the client who did not write to that member yet (`address()`), the hints of a member to the client who wrote to
+  another one without getting its answer, one more after each failure (`hints()`), and possibly the size of the packets cutting
+  the lines of the members, one per second (`packets()`). The addressed lines and the hints are `MessageFormat` patterns, whose
+  `{0}` is the nickname of the client, and whose `{1}`, `{2}`... are the words expected by the other member (for the hints), so
+  that a hint can give an exact sentence that stays consistent with the translated words. The texts, which may be translated,
+  lose their accents since the world only accepts ASCII for now. A `PRIVMSG` whose text holds spaces without its `:` is refused
+  with a notice telling how to write it, where a real server would only send its first word.
 * **The HTTP server** (`HttpServer`, software `plm-httpd/1.0`) serves static files (`file()`) with `GET` and `HEAD`, exact to the
   byte as the usual servers: its responses give `Content-Length`, the connections persist in HTTP/1.1 (unless `Connection:
   close`) and close after the response in HTTP/1.0 (unless `Connection: keep-alive`), and the errors are 400 (also for an

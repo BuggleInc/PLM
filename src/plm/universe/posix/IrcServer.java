@@ -39,8 +39,8 @@ public class IrcServer extends ProgramPeer {
   private record Said(int delay, String channel, String nick, String text, boolean addressed) {}
   /** The hints given on a channel by a simulated member, about how to get the answer of another member */
   private record Hints(String channel, String nick, List<String> texts) {}
-  /** The answers of a simulated member to the private messages containing all the words, and to the other ones */
-  private record Answers(List<String> words, String answer, String otherwise) {}
+  /** The answers of a simulated member to the messages containing all the words (each in one of its forms), and to the other ones */
+  private record Answers(List<List<String>> words, String answer, String otherwise) {}
   /**
    * A line of a simulated member to a client, waiting for its time (what it says on a channel, or tells in private), said if the
    * client is then in the condition
@@ -139,7 +139,8 @@ public class IrcServer extends ProgramPeer {
    * Makes a simulated member give hints on a channel to the client who wrote in private to another member without getting its
    * answer: the next hint after each failure, two seconds after the reply, the last one being repeated, and none once the answer
    * was given. The hints are MessageFormat patterns, whose {0} is the nickname of the client, and {1}, {2}... the words that the
-   * other member expects (see answer()), so that a hint can tell an exact sentence, consistent with the translated words.
+   * other member expects (in their first form, see answer()), so that a hint can tell an exact sentence, consistent with the
+   * translated words.
    */
   public IrcServer hints(String channel, String nick, String about, String... texts)
   {
@@ -148,13 +149,15 @@ public class IrcServer extends ProgramPeer {
   }
 
   /**
-   * Makes a simulated member answer one second later: answer to the messages containing all the words (whatever their case and
-   * accents, so that they can be translated), and otherwise to the other ones. It answers in private to the private messages, and
-   * on the channel to the messages addressed to it there (as in "Bob: hello"), addressing the client in turn
+   * Makes a simulated member answer one second later: answer to the messages containing all the words, and otherwise to the other
+   * ones. Each word is given with its accepted forms (such as its translation and the English word), whatever their case and
+   * accents. It answers in private to the private messages, and on the channel to the messages addressed to it there (as in "Bob:
+   * hello"), addressing the client in turn
    */
-  public IrcServer answer(String nick, List<String> words, String answer, String otherwise)
+  public IrcServer answer(String nick, List<List<String>> words, String answer, String otherwise)
   {
-    answers.put(nick, new Answers(words.stream().map(word -> ascii(word).toLowerCase(Locale.ROOT)).toList(), ascii(answer), ascii(otherwise)));
+    List<List<String>> forms = words.stream().map(word -> word.stream().map(form -> ascii(form).toLowerCase(Locale.ROOT)).toList()).toList();
+    answers.put(nick, new Answers(forms, ascii(answer), ascii(otherwise)));
     return this;
   }
 
@@ -450,7 +453,8 @@ public class IrcServer extends ProgramPeer {
     Answers answer = answers.get(nick);
     if (answer == null)
       return;
-    boolean matches = answer.words().stream().allMatch(ascii(message).toLowerCase(Locale.ROOT)::contains);
+    String normalized = ascii(message).toLowerCase(Locale.ROOT);
+    boolean matches   = answer.words().stream().allMatch(forms -> forms.stream().anyMatch(normalized::contains));
     String reply    = (to.startsWith("#") ? client.nick + ": " : "") + (matches ? answer.answer() : answer.otherwise());
     plan(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + to + " :" + reply, c -> true);
     if (matches) {
@@ -458,7 +462,7 @@ public class IrcServer extends ProgramPeer {
       return;
     }
     int failures   = client.failures.merge(nick, 1, Integer::sum);
-    Object[] words = Stream.concat(Stream.of(client.nick), answer.words().stream()).toArray();
+    Object[] words = Stream.concat(Stream.of(client.nick), answer.words().stream().map(forms -> forms.get(0))).toArray();
     for (Hints hint : hints.getOrDefault(nick, List.of())) {
       String text = MessageFormat.format(hint.texts().get(Math.min(failures, hint.texts().size()) - 1), words);
       plan(now() + 3, fd, ":" + member(hint.nick()) + " PRIVMSG " + hint.channel() + " :" + text, // two seconds after the reply
