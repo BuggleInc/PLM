@@ -38,7 +38,9 @@ spaces up to the end of the line. The commands are case-insensitive.</p>
   Quit)</code> (or <code>(Quit: reason)</code>) and closes the connection.</td></tr>
 </table>
 
-<p>The client registers by sending <code>NICK</code> and <code>USER</code>, in any order. Once both are given, the server sends
+<p>As soon as the client connects, the server greets it with a notice telling how to register, such as
+<code>:irc.buggleinc.com NOTICE * :*** Welcome! Please register with the NICK and USER commands (see the world documentation for
+details).</code> The client registers by sending <code>NICK</code> and <code>USER</code>, in any order. Once both are given, the server sends
 its welcome: the replies 001 to 004, then the message of the day (375, 372 and 376). Before that, the server only accepts
 <code>NICK</code>, <code>USER</code>, <code>PING</code> and <code>QUIT</code>.</p>
 
@@ -84,6 +86,7 @@ seconds after the client joined. The lines starting with <code>C:</code> are sen
 each line.</p>
 
 <pre>
+S: :irc.buggleinc.com NOTICE * :*** Welcome! Please register with the NICK and USER commands (see the world documentation for details).\r\n
 C: NICK student\r\n
 C: USER student 0 * :A student\r\n
 S: :irc.buggleinc.com 001 student :Welcome to the BuggleInc IRC Network student!student@10.0.0.10\r\n

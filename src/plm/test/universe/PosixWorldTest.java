@@ -487,12 +487,17 @@ public class PosixWorldTest {
                                              .packets(packetSize));
   }
 
+  /** The NOTICE greeting each new client of the IRC server */
+  private static final String IRC_GREETING =
+      ":irc.buggleinc.com NOTICE * :*** Welcome! Please register with the NICK and USER commands (see the world documentation for details).";
+
   /** Registers as student, and joins #welcome */
   private static Lines joined(PosixEntity p)
   {
     int sock = p.socket(AF_INET, SOCK_STREAM, 0);
     Assertions.assertEquals(0, p.connect(sock, "10.0.0.1", 6667));
     Lines lines = new Lines(p, sock);
+    Assertions.assertEquals(IRC_GREETING, lines.next()); // before the client sends anything
     p.send(sock, b("NICK student\r\nUSER student 0 * :A student\r\n"), 0);
     Assertions.assertEquals(":irc.buggleinc.com 001 student :Welcome to the BuggleInc IRC Network student!student@10.0.0.10", lines.next());
     lines.until(":irc.buggleinc.com 376 ");
@@ -527,6 +532,7 @@ public class PosixWorldTest {
     int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
     p.connect(sock, "10.0.0.1", 6667);
     Lines lines = new Lines(p, sock);
+    Assertions.assertEquals(IRC_GREETING, lines.next());
     p.send(sock, b("JOIN #welcome\r\n"), 0);
     Assertions.assertEquals(":irc.buggleinc.com 451 * :You have not registered", lines.next());
     p.send(sock, b("NICK Bob\r\n"), 0);

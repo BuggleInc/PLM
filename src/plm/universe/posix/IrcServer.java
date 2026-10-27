@@ -6,10 +6,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
+import plm.core.model.Game;
 
 /**
- * An IRC server (RFC 2812), exact to the byte as the usual servers: after registering with NICK and USER, the clients can JOIN
- * and PART channels, send PRIVMSG to a channel or to someone, ask the NAMES of a channel, PING the server and QUIT. The errors
+ * An IRC server (RFC 2812), exact to the byte as the usual servers. It greets each new client with a NOTICE telling how to
+ * register, as many servers do (so that a client receiving first gets something). After registering with NICK and USER, the
+ * clients can JOIN and PART channels, send PRIVMSG to a channel or to someone, ask the NAMES of a channel, PING the server and QUIT. The errors
  * are the usual numeric replies (421 unknown command, 451 not registered, 433 nickname in use, 461 not enough parameters...). As
  * most servers, it splits the lines on \n and ignores a \r before it, and the commands are case-insensitive.
  *
@@ -124,6 +126,8 @@ public class IrcServer extends ProgramPeer {
     int fd = accept(master);
     if (fd >= 0) {
       clients.put(fd, new Client());
+      String greeting = Game.i18n.tr("Welcome! Please register with the NICK and USER commands (see the world documentation for details).");
+      out(fd, ":" + NAME + " NOTICE * :*** " + ascii(greeting));
       return true;
     }
     for (Map.Entry<Integer, Client> entry : clients.entrySet()) {

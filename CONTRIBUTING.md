@@ -919,7 +919,8 @@ documentation](PEDAGOGY.md#system-programming).
   the replies and the errors, and an example session to the byte. The section is absent from the worlds without such peers. A
   new server should come with its reference, listed in `po4a.conf`, which describes the protocol without revealing the scenario
   of an exercise (such as the words that a member of an IRC channel expects).
-* **The IRC server** (`IrcServer`, named `irc.buggleinc.com`) is exact to the byte as the usual servers (RFC 2812): registration
+* **The IRC server** (`IrcServer`, named `irc.buggleinc.com`) is exact to the byte as the usual servers (RFC 2812): a translated
+  `NOTICE` greeting each new client (so that a client receiving before sending gets a hint instead of a deadlock), registration
   with `NICK` and `USER` and its welcome burst, `JOIN`, `PART`, `PRIVMSG`, `NAMES`, `PING` and `QUIT`, and the usual numeric
   errors. It splits the lines on `\n`, ignoring a `\r` before it. The exercise gives its channels with their topic and their
   simulated members (`channel()`), the lines these members say some seconds after a client joined the channel (`say()`, so
