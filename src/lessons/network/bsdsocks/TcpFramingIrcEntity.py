@@ -26,8 +26,8 @@ def run():
     reader = lines(sock)
     data = next(reader)
     
-    sock.sendall(b"NICK mquinson\r\n")
-    sock.sendall(b"USER mquinson 0 * :Moi-meme.\r\n")
+    sock.sendall(b"NICK student\r\n")
+    sock.sendall(b"USER student 0 * :myself.\r\n")
     while "001" not in data:
     	data = next(reader)
 

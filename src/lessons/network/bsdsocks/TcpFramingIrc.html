@@ -102,7 +102,7 @@ def lines(sock):
           # iterate in the loop to get a line
 </pre>
 
- <div class="tip" id="tip-1" alt="Give me the complete code of that generator">
+ <div class="tip" id="tip-python" alt="Give me the complete code of that generator">
 <pre>
 def lines(sock):
     buffer = b""
@@ -130,4 +130,35 @@ data = next(reader, None)              # None at the end of the stream instead o
 <p>Beware! this generator does not give strings but binary buffers. You can either encode your strings with 
 <code>b"some content"</code> before searching the string in the received data, or decode the data with 
 <code>data.decode("ascii")</code> before searching the strings in it.</p>
+[/!]
+
+[!c]
+<p>A simple solution in C is to use the <code>fgets()</code> function, that fills the provided buffer up to the next '\n' in 
+the input stream and adds the '\0' after the last received char. The only thing is that this function takes a <code>FILE*</code> 
+so you should first use 
+<code>fdopen()</code> to build it from the socket that  <code>connect()</code> gives. Usually, <code>fgets()</code> 
+is annoying because it fails if the used buffer is too small, but this is not a problem with IRC, where messages are limited to 
+512 chars. A buffer of 513 chars will thus never overflow. Refer to the manpages of these two functions for more information.</p>
+
+ <div class="tip" id="tip-c" alt="Give me the complete code example using fdopen() and fgets()">
+<pre>
+FILE* in = fdopen(sock, "r");
+char line[513];                                    /* 512 bytes of IRC, plus the final \0 */
+while (fgets(line, sizeof line, in) != NULL) {     /* NULL at the end of the stream */
+ ...
+}
+</pre>
+</div>
+
+<p>Some of the following functions may reveal useful, even if you don't need all of them.</p>
+<ul>
+  <li><code>char* strstr(const char* haystack, const char* needle)</code>: returns the first occurence of the substring 
+     <code>needle</code> in the string <code>haystack</code>, or NULL if the substring is not part of the string.</li>
+  <li><code>char* strchr(const char* str, int c)</code>: returns the <i>first</i> occurence of the char <code>c</code> in the string 
+     <code>str</code>.</li>
+  <li><code>char* strrchr(const char* str, int c)</code>: returns the <i>last</i> occurence of the char <code>c</code> in the string 
+     <code>str</code>.</li>
+  <li><code>char* strtok(char* str, const char* delim)</code>: tokenize the string around the provided delimiters. This is useful to 
+     split a string on spaces, if you need it. Check the manpage for details and for an example of use.</li> 
+</ul>
 [/!]
