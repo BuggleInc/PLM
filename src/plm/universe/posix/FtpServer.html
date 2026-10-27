@@ -1,0 +1,113 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h3>The FTP protocol</h3>
+
+<p>The FTP server of this world, named <code>plm-ftpd 1.0</code>, serves files in passive mode (RFC 959) as the usual servers.
+The client sends its commands on a first connection, called the control connection, and each file or listing comes on a
+connection of its own, called a data connection, which the client opens on a port given by the server.</p>
+
+<h4>Framing</h4>
+
+<p>On the control connection, each command is a line ended by the two bytes <code>\r\n</code> (CR and LF, 13 and 10), made of
+a word followed by an argument, such as <code>CWD pub</code>. The server also accepts <code>\n</code> alone, and the commands
+are case-insensitive. Each reply of the server starts with a code of three digits, followed by a space and a text, such as
+<code>230 Login successful.</code>, and ends with <code>\r\n</code>. The first digit of the code tells the kind of reply: 1 for
+a preliminary reply (another reply follows when the action completes), 2 for a success, 3 when the server waits for another
+command, 4 and 5 for an error.</p>
+
+<p>A reply may span several lines: its first lines start with the code followed by a dash (<code>220-</code>), and its last
+line with the code followed by a space (<code>220 </code>). The client must read the lines until the one with a space after
+the code. Only the welcome of the server spans several lines, whose first ones may change from one world to another.</p>
+
+<p>On a data connection, the server sends the data as it is, without any marker: the end of the data is the end of the stream,
+when the server closes the data connection.</p>
+
+<h4>Commands</h4>
+
+<table border=1>
+<tr><td><code>USER anonymous</code></td><td>Starts the login. The server only accepts the anonymous users, named
+  <code>anonymous</code> or <code>ftp</code>, and answers <code>331 Please specify the password.</code></td></tr>
+<tr><td><code>PASS password</code></td><td>Ends the login, with any password (usually an email address), answered by
+  <code>230 Login successful.</code></td></tr>
+<tr><td><code>SYST</code></td><td>Asks for the system of the server: <code>215 UNIX Type: L8</code></td></tr>
+<tr><td><code>TYPE I</code> or <code>TYPE A</code></td><td>Switches to the binary or the ASCII mode: <code>200 Switching to
+  Binary mode.</code> or <code>200 Switching to ASCII mode.</code> The data is sent unchanged in both modes.</td></tr>
+<tr><td><code>PWD</code></td><td>Asks for the current directory: <code>257 "/pub" is the current directory</code></td></tr>
+<tr><td><code>CWD directory</code></td><td>Changes the current directory: <code>250 Directory successfully
+  changed.</code></td></tr>
+<tr><td><code>PASV</code></td><td>Prepares a data connection: the server answers <code>227 Entering Passive Mode
+  (h1,h2,h3,h4,p1,p2).</code> The client then connects to the address h1.h2.h3.h4, on the port p1*256+p2.</td></tr>
+<tr><td><code>EPSV</code></td><td>Prepares a data connection as <code>PASV</code>, giving only the port: <code>229 Entering
+  Extended Passive Mode (|||port|)</code></td></tr>
+<tr><td><code>RETR file</code></td><td>Sends the file on the data connection.</td></tr>
+<tr><td><code>LIST directory</code></td><td>Sends the content of the directory (by default the current one) on the data
+  connection, one line per entry in the format of <code>ls -l</code>, ended by <code>\r\n</code> (see the example
+  below).</td></tr>
+<tr><td><code>QUIT</code></td><td>Ends the session: the server answers <code>221 Goodbye.</code> and closes the
+  connection.</td></tr>
+</table>
+
+<p>The paths are relative to the current directory, unless they start with <code>/</code>, and <code>..</code> designates the
+parent directory. The current directory is <code>/</code> after the login.</p>
+
+<h4>Transfers</h4>
+
+<p>Each transfer needs a new data connection: the client sends <code>PASV</code> (or <code>EPSV</code>), connects a new socket
+to the given port, which changes at each <code>PASV</code>, and sends <code>RETR</code> or <code>LIST</code>, before or after
+connecting. The server then answers a preliminary reply on the control connection, sends the data on the data connection and
+closes it, and confirms the end of the transfer on the control connection: <code>150 Opening ASCII mode data connection for
+file (size bytes).</code> (or <code>BINARY</code>) then <code>226 Transfer complete.</code> for <code>RETR</code>, <code>150
+Here comes the directory listing.</code> then <code>226 Directory send OK.</code> for <code>LIST</code>.</p>
+
+<h4>Errors</h4>
+
+<p>The errors do not close the connection.</p>
+
+<table border=1>
+<tr><td><code>425 Use PORT or PASV first.</code></td><td><code>RETR</code> or <code>LIST</code> without a data connection
+  prepared by <code>PASV</code> or <code>EPSV</code>.</td></tr>
+<tr><td><code>500 Unknown command.</code></td><td>The command does not exist.</td></tr>
+<tr><td><code>500 Unrecognised TYPE command.</code></td><td>Another type than <code>I</code> or <code>A</code>.</td></tr>
+<tr><td><code>503 Login with USER first.</code></td><td><code>PASS</code> before <code>USER</code>.</td></tr>
+<tr><td><code>530 Please login with USER and PASS.</code></td><td>A command that needs the client to be logged in.</td></tr>
+<tr><td><code>530 This FTP server is anonymous only.</code></td><td><code>USER</code> with another name than
+  <code>anonymous</code> or <code>ftp</code>.</td></tr>
+<tr><td><code>550 Failed to open file.</code></td><td><code>RETR</code> of a missing file.</td></tr>
+<tr><td><code>550 Failed to change directory.</code></td><td><code>CWD</code> to a missing directory.</td></tr>
+</table>
+
+<h4>Example session</h4>
+
+<p>In this session, the server 10.0.0.1 holds the file <code>/pub/hello.txt</code>, containing the line <code>Hello,
+world!</code> (14 bytes with its <code>\n</code>). The lines starting with <code>C:</code> are sent by the client on the
+control connection, those starting with <code>S:</code> by the server on the control connection, and those starting with
+<code>D:</code> by the server on the data connection. These prefixes are not part of the data, and <code>\r</code> and
+<code>\n</code> stand for the bytes CR and LF.</p>
+
+<pre>
+S: 220-Welcome to the BuggleInc FTP server.\r\n
+S: 220 plm-ftpd 1.0 ready.\r\n
+C: USER anonymous\r\n
+S: 331 Please specify the password.\r\n
+C: PASS buggle@\r\n
+S: 230 Login successful.\r\n
+C: CWD pub\r\n
+S: 250 Directory successfully changed.\r\n
+C: PASV\r\n
+S: 227 Entering Passive Mode (10,0,0,1,156,64).\r\n
+C: RETR hello.txt\r\n
+S: 150 Opening ASCII mode data connection for hello.txt (14 bytes).\r\n
+D: Hello, world!\n
+S: 226 Transfer complete.\r\n
+C: PASV\r\n
+S: 227 Entering Passive Mode (10,0,0,1,156,65).\r\n
+C: LIST\r\n
+S: 150 Here comes the directory listing.\r\n
+D: -rw-r--r--    1 ftp      ftp            14 Jan 01  2024 hello.txt\r\n
+S: 226 Directory send OK.\r\n
+C: QUIT\r\n
+S: 221 Goodbye.\r\n
+</pre>
+
+<p>After each reply to <code>PASV</code>, the client connects a new socket to 10.0.0.1, on the port 156*256+64 = 40000 for the
+file, then 156*256+65 = 40001 for the listing. The server closes each data connection after sending its data, and the control
+connection after its reply to <code>QUIT</code>.</p>

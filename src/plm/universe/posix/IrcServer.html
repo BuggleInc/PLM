@@ -1,0 +1,105 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h3>The IRC protocol</h3>
+
+<p>The IRC server of this world, named <code>irc.buggleinc.com</code>, follows the RFC 2812 as the usual servers. Its clients
+register with a nickname, join channels and talk there or in private with the other members.</p>
+
+<h4>Framing</h4>
+
+<p>Every message is a line ended by the two bytes <code>\r\n</code> (CR and LF, 13 and 10). The server sends its lines with
+<code>\r\n</code>, and accepts the lines of the client ended by <code>\n</code> alone. The network does not keep the limits of
+the lines: a single <code>recv()</code> may return several lines, or only the beginning of a line whose end is still on its way.
+The client must thus keep what it received until a <code>\r\n</code> ends the line.</p>
+
+<p>A line is made of an optional prefix starting with <code>:</code>, which tells who sends it (the lines of the server always
+have one: the name of the server, or <code>nick!user@host</code> for a member), then of a command (a word, or the three digits of
+a numeric reply), then of its parameters separated by spaces. The last parameter may start with <code>:</code>, to contain
+spaces up to the end of the line. The commands are case-insensitive.</p>
+
+<h4>Commands</h4>
+
+<table border=1>
+<tr><td><code>NICK nickname</code></td><td>Gives the nickname of the client: up to 30 letters, digits, dashes or characters
+  among <code>[]\`_^{|}</code>, not starting with a digit nor a dash. Once registered, the server confirms a change with
+  <code>:old!user@host NICK :new</code>.</td></tr>
+<tr><td><code>USER username mode unused :real name</code></td><td>Gives the user name of the client (the first parameter),
+  with three other parameters that the server ignores, such as <code>USER bob 0 * :Bob the buggle</code>.</td></tr>
+<tr><td><code>JOIN #channel</code></td><td>Joins a channel (several ones separated by commas). The server confirms with
+  <code>:nick!user@host JOIN #channel</code>, then gives the topic (332) and the members of the channel (353 and 366). Joining
+  an unknown channel creates it, without topic.</td></tr>
+<tr><td><code>PART #channel :reason</code></td><td>Leaves a channel, confirmed with <code>:nick!user@host PART #channel</code>
+  (followed by the reason, if any).</td></tr>
+<tr><td><code>PRIVMSG target :text</code></td><td>Sends a text to a joined channel, or to a member in private. The server does
+  not send back the texts of the client.</td></tr>
+<tr><td><code>NAMES #channel</code></td><td>Lists the members of a channel (353 and 366).</td></tr>
+<tr><td><code>PING token</code></td><td>Asks the server to answer <code>:irc.buggleinc.com PONG irc.buggleinc.com
+  :token</code>.</td></tr>
+<tr><td><code>QUIT :reason</code></td><td>Leaves the server, which answers <code>ERROR :Closing Link: 10.0.0.10 (Client
+  Quit)</code> (or <code>(Quit: reason)</code>) and closes the connection.</td></tr>
+</table>
+
+<p>The client registers by sending <code>NICK</code> and <code>USER</code>, in any order. Once both are given, the server sends
+its welcome: the replies 001 to 004, then the message of the day (375, 372 and 376). Before that, the server only accepts
+<code>NICK</code>, <code>USER</code>, <code>PING</code> and <code>QUIT</code>.</p>
+
+<p>The other members speak in the lines that the server sends to the client, such as <code>:Alice!alice@buggleinc.com PRIVMSG
+#welcome :Hello!</code> on a channel, or <code>:Alice!alice@buggleinc.com PRIVMSG yournick :Hello!</code> in private. They start
+talking on a channel once the client joined it, and may answer a private message after a while.</p>
+
+<h4>Replies and errors</h4>
+
+<p>The numeric replies have the form <code>:irc.buggleinc.com code target parameters</code>, where the target is the nickname of
+the client, or <code>*</code> before it has one. The errors do not close the connection.</p>
+
+<table border=1>
+<tr><td>401</td><td><code>target :No such nick/channel</code></td><td>The target of <code>PRIVMSG</code> does not
+  exist.</td></tr>
+<tr><td>403</td><td><code>#channel :No such channel</code></td><td>The name of the channel is invalid (it must start with
+  <code>#</code>, without spaces nor commas), or <code>PART</code> names an unknown channel.</td></tr>
+<tr><td>404</td><td><code>#channel :Cannot send to channel</code></td><td>The client did not join the channel it talks
+  to.</td></tr>
+<tr><td>409</td><td><code>:No origin specified</code></td><td><code>PING</code> without token.</td></tr>
+<tr><td>411</td><td><code>:No recipient given (PRIVMSG)</code></td><td><code>PRIVMSG</code> without target.</td></tr>
+<tr><td>412</td><td><code>:No text to send</code></td><td><code>PRIVMSG</code> without text.</td></tr>
+<tr><td>421</td><td><code>COMMAND :Unknown command</code></td><td>The command (given in upper case) does not
+  exist.</td></tr>
+<tr><td>431</td><td><code>:No nickname given</code></td><td><code>NICK</code> without nickname.</td></tr>
+<tr><td>432</td><td><code>nickname :Erroneous Nickname</code></td><td>The nickname contains forbidden characters, or is too
+  long.</td></tr>
+<tr><td>433</td><td><code>nickname :Nickname is already in use</code></td><td>Someone else has that nickname, whatever its
+  case.</td></tr>
+<tr><td>442</td><td><code>#channel :You're not on that channel</code></td><td><code>PART</code> of a channel that the client
+  did not join.</td></tr>
+<tr><td>451</td><td><code>:You have not registered</code></td><td>A command that needs the client to be registered.</td></tr>
+<tr><td>461</td><td><code>COMMAND :Not enough parameters</code></td><td><code>USER</code>, <code>JOIN</code> or
+  <code>PART</code> lacks parameters.</td></tr>
+<tr><td>462</td><td><code>:You may not reregister</code></td><td><code>USER</code> after the registration.</td></tr>
+</table>
+
+<h4>Example session</h4>
+
+<p>In this session, the channel <code>#lobby</code> has the topic "Say hello!" and Alice as only member, who speaks two
+seconds after the client joined. The lines starting with <code>C:</code> are sent by the client, and those starting with
+<code>S:</code> by the server. These prefixes are not part of the data, and <code>\r\n</code> stands for the two bytes ending
+each line.</p>
+
+<pre>
+C: NICK student\r\n
+C: USER student 0 * :A student\r\n
+S: :irc.buggleinc.com 001 student :Welcome to the BuggleInc IRC Network student!student@10.0.0.10\r\n
+S: :irc.buggleinc.com 002 student :Your host is irc.buggleinc.com, running version plm-ircd-1.0\r\n
+S: :irc.buggleinc.com 003 student :This server was created Mon Jan 1 2024 at 00:00:00 UTC\r\n
+S: :irc.buggleinc.com 004 student irc.buggleinc.com plm-ircd-1.0 io ntk\r\n
+S: :irc.buggleinc.com 375 student :- irc.buggleinc.com Message of the day - \r\n
+S: :irc.buggleinc.com 372 student :- Be nice with the other buggles, and enjoy your stay!\r\n
+S: :irc.buggleinc.com 376 student :End of /MOTD command.\r\n
+C: JOIN #lobby\r\n
+S: :student!student@10.0.0.10 JOIN #lobby\r\n
+S: :irc.buggleinc.com 332 student #lobby :Say hello!\r\n
+S: :irc.buggleinc.com 353 student = #lobby :Alice student\r\n
+S: :irc.buggleinc.com 366 student #lobby :End of /NAMES list.\r\n
+S: :Alice!alice@buggleinc.com PRIVMSG #lobby :Hello everybody!\r\n
+C: PRIVMSG #lobby :Hello Alice!\r\n
+C: QUIT\r\n
+S: ERROR :Closing Link: 10.0.0.10 (Client Quit)\r\n
+</pre>

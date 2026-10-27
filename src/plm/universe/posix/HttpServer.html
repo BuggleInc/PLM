@@ -1,0 +1,94 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h3>The HTTP protocol</h3>
+
+<p>The HTTP server of this world, named <code>plm-httpd/1.0</code>, serves static files in HTTP/1.1 (RFC 9112) as the usual
+servers. The client sends a request naming a file, and the server answers with a response holding its content.</p>
+
+<h4>Framing</h4>
+
+<p>A request starts with a line giving the method, the path of the file and the version of the protocol, such as <code>GET
+/index.html HTTP/1.1</code>. Header lines of the form <code>Name: value</code> follow, then an empty line ending the request.
+Each line ends with the two bytes <code>\r\n</code> (CR and LF, 13 and 10), but the server also accepts <code>\n</code> alone.
+The names of the headers are case-insensitive. A request may have a body, whose size in bytes is given by its
+<code>Content-Length</code> header, after the empty line.</p>
+
+<p>A response has the same structure: a status line (such as <code>HTTP/1.1 200 OK</code>), header lines and an empty line, all
+ended by <code>\r\n</code>, then the body: the content of the file, or a small HTML page describing the error. The headers of
+the response are always the same, in this order:</p>
+
+<table border=1>
+<tr><td><code>Server: plm-httpd/1.0</code></td><td>The name of the server.</td></tr>
+<tr><td><code>Date: Mon, 01 Jan 2024 00:00:00 GMT</code></td><td>The date of the response. The clock of the world starts on
+  January 1st, 2024 at midnight.</td></tr>
+<tr><td><code>Content-Type: text/plain</code></td><td><code>text/html</code> for the files whose name ends with
+  <code>.html</code> and for the error pages, <code>text/plain</code> for the other files.</td></tr>
+<tr><td><code>Content-Length: 14</code></td><td>The size of the body in bytes.</td></tr>
+<tr><td><code>Allow: GET, HEAD</code></td><td>The methods that the server accepts, only in the 405 responses.</td></tr>
+<tr><td><code>Connection: keep-alive</code></td><td><code>keep-alive</code> if the server waits for another request on the
+  connection, <code>close</code> if it closes the connection after the response.</td></tr>
+</table>
+
+<p>The body of the response is not followed by any marker: the client knows where it ends from <code>Content-Length</code>, or
+from the end of the stream when the server closes the connection after the response.</p>
+
+<h4>Requests</h4>
+
+<p>The server accepts two methods: <code>GET</code> asks for the file, and <code>HEAD</code> asks for the same response without
+its body (with the <code>Content-Length</code> that the body would have). The path designates a file of the server, without
+directory listing nor index page: <code>/</code> alone is not found. What follows a <code>?</code> in the path is
+ignored.</p>
+
+<p>The server accepts the versions <code>HTTP/1.1</code> and <code>HTTP/1.0</code>, and always answers in HTTP/1.1. In
+HTTP/1.1, the request must have a <code>Host</code> header, giving the name or the address of the server (such as <code>Host:
+10.0.0.1</code>). The connection persists after the response: the server waits for the next request on the same connection,
+unless the request has the header <code>Connection: close</code>. In HTTP/1.0, the server
+closes the connection after the response, unless the request has the header <code>Connection: keep-alive</code>.</p>
+
+<h4>Status codes</h4>
+
+<table border=1>
+<tr><td><code>200 OK</code></td><td>The body is the content of the file.</td></tr>
+<tr><td><code>400 Bad Request</code></td><td>The request is malformed (its first line is not made of three words separated by
+  single spaces, its path does not start with <code>/</code>, its version does not start with <code>HTTP/</code>, or its
+  <code>Content-Length</code> is not a number), or it lacks
+  the <code>Host</code> header in HTTP/1.1. The server closes the connection after the response.</td></tr>
+<tr><td><code>404 Not Found</code></td><td>The file does not exist.</td></tr>
+<tr><td><code>405 Not Allowed</code></td><td>The method is neither <code>GET</code> nor <code>HEAD</code>.</td></tr>
+<tr><td><code>505 HTTP Version Not Supported</code></td><td>The version is neither <code>HTTP/1.1</code> nor
+  <code>HTTP/1.0</code>. The server closes the connection after the response.</td></tr>
+</table>
+
+<h4>Example session</h4>
+
+<p>In this session, the server holds the file <code>/doc/hello.txt</code>, containing the line <code>Hello, world!</code> (14
+bytes with its <code>\n</code>). The client asks for it, then asks on the same connection for the headers of a missing file,
+and for the closing of the connection. The lines starting with <code>C:</code> are sent by the client, and those starting with
+<code>S:</code> by the server. These prefixes are not part of the data, and <code>\r</code> and <code>\n</code> stand for the
+bytes CR and LF.</p>
+
+<pre>
+C: GET /doc/hello.txt HTTP/1.1\r\n
+C: Host: 10.0.0.1\r\n
+C: \r\n
+S: HTTP/1.1 200 OK\r\n
+S: Server: plm-httpd/1.0\r\n
+S: Date: Mon, 01 Jan 2024 00:00:00 GMT\r\n
+S: Content-Type: text/plain\r\n
+S: Content-Length: 14\r\n
+S: Connection: keep-alive\r\n
+S: \r\n
+S: Hello, world!\n
+C: HEAD /missing.html HTTP/1.1\r\n
+C: Host: 10.0.0.1\r\n
+C: Connection: close\r\n
+C: \r\n
+S: HTTP/1.1 404 Not Found\r\n
+S: Server: plm-httpd/1.0\r\n
+S: Date: Mon, 01 Jan 2024 00:00:00 GMT\r\n
+S: Content-Type: text/html\r\n
+S: Content-Length: 154\r\n
+S: Connection: close\r\n
+S: \r\n
+</pre>
+
+<p>The server then closes the connection.</p>

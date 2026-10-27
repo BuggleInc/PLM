@@ -403,6 +403,11 @@ answer, so that the server cannot wait for the end of the stream, in worlds spli
 designed protocols, the short writes, the handling of errors, and a server accepting several clients. A last exercise could send
 an emoji, to introduce the encoding of characters once the system calls are mastered: only ASCII data is accepted until then.
 
+The servers of real protocols (IRC, HTTP and FTP) describe their protocol in the documentation of the world (Ctrl-H), as a
+summary of their RFC: the framing of the messages, the commands, the replies and the errors, and an example session to the byte.
+The missions can thus focus on the framing and refer to these references, so that the students practice reading a
+specification instead of copying the exchanges given by the mission. The references never reveal the scenario of the exercises.
+
 TODO:
 * The short writes are not exercised yet: `send()` and `write()` always write everything.
 

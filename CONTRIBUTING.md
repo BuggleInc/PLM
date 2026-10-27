@@ -804,8 +804,12 @@ Extend at minimum: `World` (state/data), an `Entity` subclass (ancestor of corre
 `WorldView` (graphical rendering), and usually a `WorldPanel`/`EntityControlPanel` for interactive controls. Annotate the root
 entity class with `@Glue("RemoteXxx")`: `CodeCreation` then generates that glue in every language. Document the universe with an
 HTML file following the same convention as mission texts, where `[!primitives/]` stands for the table of the primitives,
-generated from their `@Primitive` annotations (see [Primitives](#remoting-how-the-students-entity-talks-to-the-plm) above),
-and `[!colors/]` for the table of the colors.
+generated from their `@Primitive` annotations (see [Primitives](#remoting-how-the-students-entity-talks-to-the-plm) above), and
+`[!colors/]` for the table of the colors. A universe can offer its own placeholders by overriding `World.expandPlaceholders()`,
+which runs before the `[!langs]` blocks are resolved (so that the generated content may hold some), and load the html file next
+to any class with `World.documentation()`, translated as the one of the world. The placeholders must also be listed in
+`MissionMarkup`, which otherwise takes them for blocks. `PosixWorld` uses it for the `[!protocols/]` documentation.
+
 Existing universes remain small (a few hundred to ~1500 lines including the buggle map editor) because all non-functional
 plumbing (compilation, templating, session handling) is factored into `plm.core`.
 
@@ -907,6 +911,12 @@ documentation](PEDAGOGY.md#system-programming).
   student at once, while `sendInPackets()` lets the network carry it in packets after pauses, to make the framing matter. Their
   state is in the fields of their class, which their copy constructor copies (after the one of `ProgramPeer`), and `waiting()`
   tells the trace what they wait for. `PosixWorldTest.ShoutServer` is a small example.
+* **The documentation of the protocols**: `[!protocols/]` in `PosixWorld.html` stands for a section "The servers of this world"
+  holding, once per class of `ProgramPeer` among the peers of the world (in their order), the html file next to that class
+  (`IrcServer.html`, `HttpServer.html`, `FtpServer.html`): its heading (such as "The IRC protocol"), the framing, the commands,
+  the replies and the errors, and an example session to the byte. The section is absent from the worlds without such peers. A
+  new server should come with its reference, listed in `po4a.conf`, which describes the protocol without revealing the scenario
+  of an exercise (such as the words that a member of an IRC channel expects).
 * **The IRC server** (`IrcServer`, named `irc.buggleinc.com`) is exact to the byte as the usual servers (RFC 2812): registration
   with `NICK` and `USER` and its welcome burst, `JOIN`, `PART`, `PRIVMSG`, `NAMES`, `PING` and `QUIT`, and the usual numeric
   errors. It splits the lines on `\n`, ignoring a `\r` before it. The exercise gives its channels with their topic and their

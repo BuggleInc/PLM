@@ -13,13 +13,13 @@ import plm.core.lang.ProgrammingLanguage;
 
 /**
  * The pseudo-markup of the mission texts: the [!java|c]...[/!] blocks only shown for some programming languages, which can nest, and
- * the [!thelang], [!primitives/] and [!colors/] placeholders.
+ * the [!thelang], [!primitives/], [!colors/] and [!protocols/] placeholders.
  */
 public final class MissionMarkup {
   public static final Set<String> LANGS = Set.of("java", "python", "scala", "c");
 
   private static final Pattern TAG         = Pattern.compile("\\[!([^\\]]*)\\]|\\[/!\\]");
-  private static final String PLACEHOLDERS = "thelang/?|primitives/|colors/";
+  private static final String PLACEHOLDERS = "thelang/?|primitives/|colors/|protocols/";
   /** A tag left once the well-formed ones are removed: a [! or [/! without its closing bracket, or a [java|c] without its ! */
   private static final Pattern MALFORMED = Pattern.compile("\\[/?!|\\[(java|python|scala|c)(\\|(java|python|scala|c))*\\]");
   /** A [!langs]...[/!] block that contains no other block */

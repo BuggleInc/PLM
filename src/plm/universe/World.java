@@ -411,17 +411,28 @@ public abstract class World {
   /** The documentation of the world (Ctrl-H): its html file, in the current human and programming languages. */
   public String getAbout()
   {
-    if (about == null) {
-      String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
-      try {
-        about = FileUtils.readContentAsText(filename, "html", true).toString();
-      } catch (IOException ex) {
-        about = "File " + filename + ".html not found.";
-      }
-    }
-    String html = about.replace("[!primitives/]", getPrimitivesDoc()).replace("[!colors/]", ColorMapper.colorsDoc());
+    if (about == null)
+      about = documentation(getClass());
+    String html = expandPlaceholders(about);
     return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(html, Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
   }
+
+  /** The html file documenting that class (next to it), in the current human language, or a message if it is missing */
+  protected static String documentation(Class<?> type)
+  {
+    String filename = type.getCanonicalName().replace('.', File.separatorChar);
+    try {
+      return FileUtils.readContentAsText(filename, "html", true).toString();
+    } catch (IOException ex) {
+      return "File " + filename + ".html not found.";
+    }
+  }
+
+  /**
+   * Replaces the placeholders of the documentation by their generated content: [!primitives/] and [!colors/] here, more in the
+   * universes that need them. This happens before the [!langs] blocks are resolved, so that the generated content may hold some.
+   */
+  protected String expandPlaceholders(String html) { return html.replace("[!primitives/]", getPrimitivesDoc()).replace("[!colors/]", ColorMapper.colorsDoc()); }
 
   /**
    * HTML table documenting the primitives that the first entity may use, in the current programming language. The groups are

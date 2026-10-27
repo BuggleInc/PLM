@@ -677,6 +677,25 @@ public class PosixWorldTest {
     }
   }
 
+  /** The documentation of the world gives the protocol of each kind of program peer once, and nothing for the scripted peers */
+  @Test public void testProtocolsDocumentation()
+  {
+    String about = new PosixWorld("servers")
+                       .addPeer(new IrcServer("10.0.0.1", 194))
+                       .addPeer(new HttpServer("10.0.0.1", 80))
+                       .addPeer(new HttpServer("10.0.0.2", 80))
+                       .getAbout();
+    Assertions.assertTrue(about.contains("The servers of this world"), about);
+    int irc = about.indexOf("The IRC protocol"), http = about.indexOf("The HTTP protocol");
+    Assertions.assertTrue(0 <= irc && irc < http, about); // in the order of the peers
+    Assertions.assertEquals(1, about.split("The HTTP protocol", -1).length - 1, about);
+    Assertions.assertFalse(about.contains("The FTP protocol"), about);
+
+    String scripted = new PosixWorld("scripted").addPeer(Peer.server("10.0.0.1", 80, "accept(3)")).getAbout();
+    Assertions.assertFalse(scripted.contains("The servers of this world"), scripted);
+    Assertions.assertFalse(scripted.contains("[!protocols/]"), scripted);
+  }
+
   @Test public void testUnlink()
   {
     PosixWorld w  = new PosixWorld("unlink").addFile("notes.txt", "draft");

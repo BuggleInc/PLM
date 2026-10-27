@@ -11,6 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BooleanSupplier;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.EntityControlPanel;
@@ -139,6 +140,16 @@ public class PosixWorld extends World {
   @Override public WorldView getView() { return new PosixWorldView(this); }
 
   @Override public EntityControlPanel getEntityControlPanel() { return new PosixTracePanel(this); }
+
+  /** Expands [!protocols/] into the documentation of the protocol of each class of program peer (once per class), under a heading if any */
+  @Override protected String expandPlaceholders(String html)
+  {
+    StringBuilder protocols = new StringBuilder();
+    peers.stream().filter(ProgramPeer.class ::isInstance).map(Object::getClass).distinct().forEach(server -> protocols.append(documentation(server)));
+    if (!protocols.isEmpty())
+      protocols.insert(0, "<h2>" + Game.i18n.tr("The servers of this world") + "</h2>\n");
+    return super.expandPlaceholders(html).replace("[!protocols/]", protocols);
+  }
 
   /** Adds an event to the trace, stamped with the clock */
   void log(String who, String what) { trace.add("[t=" + now + "] " + who + ": " + what); }
