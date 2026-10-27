@@ -1,0 +1,133 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Framing messages: IRC</h1>
+
+<p>One of the biggest difficulties when exchanging data over the Internet is to determine whether all bits of an incoming
+message have been received already, or whether more data is incoming. Since the data travels over the network in packets, the
+data received so far could be only the first bits of the intended message, while the rest is still in transit. The only case
+where TCP tells you for sure that you received all emitted data is when the other side closes its socket, but this makes it
+difficult to pursue a dialog in several steps.</p>
+
+<p>This problem is known as <b>message framing</b>. Since TCP does not provide any help here, solutions must be devised at the
+application level: the client and the server must agree beforehand on how to frame the different messages of their protocol. The
+easiest solution is indeed to close the socket once all data is sent, as we did in the previous exercises. This is also used in
+real protocols such as FTP (File Transfer Protocol), where the server opens a new connection each time it wants to send a file,
+and closes it once the whole file is sent. It works, but it is not very efficient because opening a new connection each time you
+want to send a piece of data takes time.</p>
+
+<p>Another solution is to agree on a specific marker that can be used to separate the messages. The IRC protocol (used for
+instant messaging) decides for example that any message ends with the classical line ending markers, i.e. with the two chars
+<code>\r\n</code>, which are called CR for 'carriage return' and LF for 'line feed'. The SMTP and POP3 protocols (involved in
+mail exchanges) end the mail with a dot alone on its line (i.e. with the sequence of five chars <code>\r\n.\r\n</code>).</p>
+
+<p>Extra difficulties may arise when the data can include the marker that was intended to mark the content end. When the user
+sends several lines in IRC, they are simply received as separate messages, leading to the line flooding that plagues IRC
+channels. But the mail server should not crash when receiving a mail in which a human wrote the <code>\r\n.\r\n</code>
+sequence on their own. This is why many protocols escape the markers when they are found in the input data. SMTP and POP3 double
+every dot starting a line in the input data (this mechanism is sometimes called "dot-stuffing"). Another protocol which would
+use '\n' as a marker could prefix every '\n' char of the input data with a backslash (the '\' char), and double every backslash
+of the input data. Reading the data from its start, the receiver then tells the markers from the '\n' of the data without any
+ambiguity. No backslash (or only escaped backslashes) preceed the '\n' markers.</p>
+
+<p>Another classical solution to frame the messages is to prefix the message by its size. The DNS over TCP protocol for example
+sends the data size as a 16-bit integer (in network byte order) before the data itself. The receiver knows that it needs at
+least these two bytes of information, which then give the size of the complete message. On the other hand, this protocol does
+not allow messages that are larger than 65535 bytes.</p>
+
+<p>HTTP is interesting with regard to message framing, because it uses several mechanisms together. Within each HTTP response
+(from the server to the client), a list of headers is separated from the data itself with two consecutive line ends (i.e. with
+the sequence <code>\r\n\r\n</code>). The list can be decomposed because each header field comes under the form
+<code>header-name: header-value</code> alone on its line. One of these headers is named <code>Content-Length</code> and its
+value is the size of the data, after the headers. So you have a framing between the header list and the data, another framing
+within that list and finally the data size is prefixed to the data itself.</p>
+
+<h2>The protocols serie</h2>
+
+<p>The <i>protocols serie</i> contains several exercises that will let you explore several classical protocols: IRC, HTTP and then 
+FTP. In this first exercise you have to connect to an IRC server, join a channel, get an information from a (simulated) participant, 
+disconnect from the server and display the information on your command line. The server you will connected to is a
+simulation that runs within the PLM, but it's realistic and implements the exact protocol of real servers on the Internet. You can 
+find its documentation in the world documentation by pressing Ctrl-H.</p>
+
+<p>To inspect the protocols, run your code step by step and clic on any socket or file descriptor to open the socket content in 
+a new editor tab.</p>
+
+<h2>What to do</h2>
+
+<p>The IRC server listens on port 194 of the machine whose IP address  is 10.0.0.1. You should first open a socket to that port,
+and display any information sent by the server. The greetings message will give you an hint of how to proceed.</p>
+
+<p>The next step is to register to the server by sending a nickname with <code>"NICK student"</code>, then your user name 
+and your real name with <code>"USER student 0 * :Your Name"</code>, each followed by the command delimiter
+<code>\r\n</code>. The server welcomes you with several lines, the first one starting with your nickname after the code
+<code>001</code>, such as <code>":irc.example.org 001 student :Welcome to the network student"</code>. You can pass
+any line from the server that does not contain this <code>001</code> code, but you probably want to display these messages
+when your program fails to trigger a <code>001</code> from the server.</p>
+
+<p>Once registered, join the <code>#welcome</code> channel on the server (see the world documentation for details on the 
+join command). The server confirms with a line such as
+<code>":student!student@10.0.0.10 JOIN #welcome"</code>, then gives the list of the members of that channel in lines with the
+code <code>353</code>, ended with a line with the code <code>366</code> such as <code>":irc.example.org 366 student #welcome
+:End of /NAMES list."</code>, each line ending with the delimiter. The code <code>366</code> in a line says that you successfuly 
+joined the channel and that the server is ready.</p>
+
+<p>Once on the channel, you can wait a bit, displaying what the other (simulated) participants of the discussion have to say,
+but the exercise requests you to ask Bob about the documentation file that you should retrieve from the server in the next exercise.
+Send a message to Bob about it, but please be polite: Bob is a bit grumpy, but he's a good guy. If you're stuck, more hints
+may come from the other people on the channel, so keep reading the conversation to learn more.</p>
+
+<p>Once you know the name of the file that contains the documentation, simply print it to your standard output.</p>
+
+<p>Good luck!</p>
+
+<h2>Some help on framing messages in [!thelang]</h2>
+
+<p>The main technical difficulty is to get the framing right: you want a solution to get the lines received from the server one 
+after the other, each with its <code>\r\n</code> separator. This is exactly the point of this exercise.</p>
+
+[!python]
+<p>A simple solution in Python is to write a little generator as follows. You should try to write it from this description before 
+opening the hint that gives the complete code for that generator.</p>
+
+<pre>
+def lines(sock):
+    buffer = b""
+    while True:
+        # if buffer already contains the b"\r\n" sequence --- test it using buffer.find()
+           # split the buffer up to that sequence  -- split it using indices, e.g. buffer[:end] for the first half
+           # remove the split part from the buffer -- using indices
+           # yield the split part
+        # in the other case (if the buffer does not contain the sequence)
+          # receive up to 4096 bytes from the socket and append it to the buffer
+          # if the socket got closed on the other side, deal with it
+          # iterate in the loop to get a line
+</pre>
+
+ <div class="tip" id="tip-1" alt="Give me the complete code of that generator">
+<pre>
+def lines(sock):
+    buffer = b""
+    while True:
+        end = buffer.find(b"\r\n")
+        if end >= 0:
+            line, buffer = buffer[:end], buffer[end + 2:]
+            yield line
+        else:
+            data = sock.recv(4096)
+            if not data:             # end of the stream
+                return
+            buffer += data
+</pre>
+ </div>
+
+<p>Once you have the generator, your code can use it as follows.</p>
+<pre>
+reader = lines(sock)
+data = next(reader)                        # the next line encoded as binary buffer (ie b"" ...), or the value StopIteration at the end
+line = next(reader).decode("ascii") # the next line encoded as a sstring, or StopIteration at the end
+data = next(reader, None)              # None at the end of the stream instead of an exception
+</pre>
+
+<p>Beware! this generator does not give strings but binary buffers. You can either encode your strings with 
+<code>b"some content"</code> before searching the string in the received data, or decode the data with 
+<code>data.decode("ascii")</code> before searching the strings in it.</p>
+[/!]

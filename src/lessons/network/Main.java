@@ -1,6 +1,7 @@
 package lessons.network;
 
 import lessons.network.bsdsocks.TcpClient;
+import lessons.network.bsdsocks.TcpFramingIrc;
 import lessons.network.bsdsocks.TcpServer;
 import plm.core.model.lesson.Lesson;
 
@@ -9,5 +10,6 @@ public class Main extends Lesson {
   {
     addExercise(new TcpClient(this));
     addExercise(new TcpServer(this));
+    addExercise(new TcpFramingIrc(this));
   }
 }
