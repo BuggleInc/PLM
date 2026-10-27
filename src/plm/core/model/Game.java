@@ -880,21 +880,30 @@ public class Game implements IWorldView {
   private static String HOME_DIR    = System.getProperty("user.home");
   private static String APPDATA_DIR = System.getenv("APPDATA");
 
-  /* These names are tested one after the other, searching for one that exist or that we can create */
-  static String[] rootDirNames = new String[] {
-      APPDATA_DIR + File.separator + "plm",                                 /* preferred on windows, won't work elsewhere */
-      HOME_DIR + File.separator + ".plm",                                   /* preferred, default directory name */
-      HOME_DIR + File.separator + "_plm",                                   /* Some paranoid administrator refuse directories which name starts with a dot */
-      HOME_DIR + File.separator + "plm",                                    /* one day, hidden directories with make trouble... */
-      "h:" + File.separator + "_plm",                                       /* windows-preferred directory name */
-      "h:" + File.separator + "plm",        "z:" + File.separator + "_plm", /* windows-preferred directory name */
-      "z:" + File.separator + "plm",
-  };
+  /**
+   * The directories tested one after the other, searching for one that exists or that we can create. APPDATA and the drives h:
+   * and z: only exist on Windows: elsewhere, they would give relative paths such as "null/plm", saving the data in whatever
+   * directory the PLM was started from.
+   */
+  static List<String> rootDirNames()
+  {
+    List<String> res = new ArrayList<>();
+    if (APPDATA_DIR != null)
+      res.add(APPDATA_DIR + File.separator + "plm"); /* preferred on windows */
+    res.add(HOME_DIR + File.separator + ".plm");     /* preferred, default directory name */
+    res.add(HOME_DIR + File.separator + "_plm");     /* Some paranoid administrator refuse directories which name starts with a dot */
+    res.add(HOME_DIR + File.separator + "plm");      /* one day, hidden directories with make trouble... */
+    if (File.separatorChar == '\\')
+      for (String drive : new String[] {"h:", "z:"}) /* windows-preferred directory names */
+        for (String name : new String[] {"_plm", "plm"})
+          res.add(drive + File.separator + name);
+    return res;
+  }
   private static File SAVE_DIR = initializeSaveDir();
   private static File initializeSaveDir()
   {
     StringBuffer sb = new StringBuffer();
-    for (String path : rootDirNames) {
+    for (String path : rootDirNames()) {
       File res = new File(path);
       sb.append(path);
       sb.append(", ");
