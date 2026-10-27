@@ -12,6 +12,7 @@ import plm.core.lang.primitives.Primitive;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 import plm.universe.EntityPrimitivesBase;
+import plm.universe.ExplainedException;
 import plm.universe.PrimitiveRefusedException;
 
 /** Tests of {@link CommandExecutor}: the commands are "<primitive name> <serialized arguments>". */
@@ -25,6 +26,7 @@ public class CommandExecutorTest {
     @Primitive String greet(String name);
     @Primitive Mode flip(Mode mode);
     @Primitive void refuse();
+    @Primitive void deadlock();
     @Primitive void unsupported();
     @Primitive void crash();
   }
@@ -46,6 +48,7 @@ public class CommandExecutorTest {
     @Override public String greet(String name) { return "Hello " + name; }
     @Override public Mode flip(Mode mode) { return mode == Mode.LOW ? Mode.HIGH : Mode.LOW; }
     @Override public void refuse() { throw new PrimitiveRefusedException("Not in this exercise"); }
+    @Override public void deadlock() { throw new ExplainedException("Deadlock: you wait forever"); }
     @Override public void unsupported() { throw new UnsupportedOperationException("Not implemented"); }
     @Override public void crash() { throw new IllegalStateException("oops"); }
     @Override public void run() {}
@@ -119,6 +122,13 @@ public class CommandExecutorTest {
     PrimitiveRefusedException e = assertThrows(PrimitiveRefusedException.class, () -> execute(new RecordingEntity(), command("refuse")));
 
     assertEquals("Not in this exercise", e.getMessage());
+  }
+
+  @Test public void explainedErrorIsReportedAsIs()
+  {
+    ExplainedException e = assertThrows(ExplainedException.class, () -> execute(new RecordingEntity(), command("deadlock")));
+
+    assertEquals("Deadlock: you wait forever", e.getMessage());
   }
 
   @Test public void unsupportedOperationIsNotARefusal()

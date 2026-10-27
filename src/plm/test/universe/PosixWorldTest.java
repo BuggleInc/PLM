@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import plm.universe.ExplainedException;
 import plm.universe.posix.FileDescription;
 import plm.universe.posix.FtpServer;
 import plm.universe.posix.HttpServer;
@@ -178,7 +179,7 @@ public class PosixWorldTest {
         """));
     PosixEntity p = process(w);
     int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
-    Assertions.assertThrows(IllegalStateException.class, () -> {
+    Assertions.assertThrows(ExplainedException.class, () -> {
       while (p.connect(sock, "10.0.0.1", 80) < 0) {
       }
     });
@@ -196,7 +197,7 @@ public class PosixWorldTest {
     PosixEntity p = process(w);
     int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
     p.connect(sock, "10.0.0.1", 80);
-    IllegalStateException e = Assertions.assertThrows(IllegalStateException.class, () -> p.recv(sock, 512, 0));
+    ExplainedException e = Assertions.assertThrows(ExplainedException.class, () -> p.recv(sock, 512, 0));
     Assertions.assertTrue(e.getMessage().contains("RECV"), e.getMessage());
   }
 
@@ -282,7 +283,7 @@ public class PosixWorldTest {
     int master    = p.socket(AF_INET, SOCK_STREAM, 0); // the peer connects (and is refused) at the first system call
     p.bind(master, "0.0.0.0", 3000);
     p.listen(master, 5);
-    Assertions.assertThrows(IllegalStateException.class, () -> p.accept(master));
+    Assertions.assertThrows(ExplainedException.class, () -> p.accept(master)); // a deadlock
   }
 
   @Test public void testStandardOutputCounts()

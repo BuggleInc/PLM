@@ -15,6 +15,7 @@ import plm.core.model.Game;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.EntityControlPanel;
+import plm.universe.ExplainedException;
 import plm.universe.World;
 
 /**
@@ -211,10 +212,10 @@ public class PosixWorld extends World {
         continue;
       int wake = nextWakeUp();
       if (wake < 0) {
-        StringBuilder sb = new StringBuilder("Deadlock: your process waits forever in " + call + ", while the other processes are:");
+        StringBuilder sb = new StringBuilder(Game.i18n.tr("Deadlock: your process waits forever in {0}, while the other processes are:", call));
         for (Peer p : peers)
           sb.append("\n  ").append(p.describe());
-        throw new IllegalStateException(sb.toString());
+        throw new ExplainedException(sb.toString());
       }
       advanceClockTo(wake);
     }
@@ -297,7 +298,7 @@ public class PosixWorld extends World {
     Socket server = listener(ip, port);
     if (server == null) {
       if (++refusedInARow > 1000)
-        throw new IllegalStateException("Your process retries connect() in a busy loop: wait with sleep() before retrying.");
+        throw new ExplainedException(Game.i18n.tr("Your process retries connect() in a busy loop: wait with sleep() before retrying."));
       return proc.fail("ECONNREFUSED");
     }
     Socket accepted = new Socket(server.ip); // the connection is established in the backlog, before accept() returns it

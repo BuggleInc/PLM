@@ -3,7 +3,9 @@ package plm.universe.posix;
 import java.nio.charset.StandardCharsets;
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Glue;
+import plm.core.model.Game;
 import plm.universe.Entity;
+import plm.universe.ExplainedException;
 
 /** The student's process. Its system calls are executed by the kernel of its world, which keeps the data as one char per byte. */
 @Glue(value = "RemotePosix", wrapped = true,
@@ -76,7 +78,7 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
   {
     for (byte b : data)
       if (b < 0) // a byte above 127
-        throw new IllegalArgumentException("This world only accepts ASCII data, without accented letters nor other special characters.");
+        throw new ExplainedException(Game.i18n.tr("This world only accepts ASCII data, without accented letters nor other special characters."));
     return new String(data, StandardCharsets.US_ASCII);
   }
 

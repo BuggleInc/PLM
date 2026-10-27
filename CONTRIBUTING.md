@@ -272,8 +272,9 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   ordinals (and, for Python, the typed values to the strings that the primitive expects), calls the Java method of the real
   entity by reflection, and writes the serialized result back if the primitive has one. A primitive that the entity forbids is
   refused before anything else (see [API gating](#api-gating-restricting-or-adapting-the-primitives) below). An exception in the
-  primitive is reported to the student with the command that triggered it. The `PrimitiveRefusedException` is an exception: it's
-  reported as is because it's used when gating a primitive on purpose. A command that cannot be parsed fails the run and kills
+  primitive is reported to the student with the command that triggered it, except an `ExplainedException`, whose message explains
+  the error to the student and is reported as is: a `PrimitiveRefusedException` when gating a primitive on purpose, or an error of
+  the program detected by the world (such as a deadlock in the POSIX universe). A command that cannot be parsed fails the run and kills
   the process.
 - **Animation**: the primitives call `Entity.stepUI()`, which sleeps for the delay of the world, or waits for the next step in
   step mode. As this happens in the `commandReader` thread, it slows down the display but not the computations of the student
@@ -508,7 +509,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`CommandExecutorTest`:* a command calls the primitive and writes its result back (nothing for a void primitive). Spaces in
       the arguments are kept, enums travel as ordinals, and atomic values are converted where a string is expected. An unknown
       primitive or arguments of the wrong type fail the run, a forbidden primitive is refused before being called, a
-      `PrimitiveRefusedException` is reported as is, and any other exception is reported with the call that raised it.
+      `PrimitiveRefusedException` or another `ExplainedException` is reported as is, and any other exception is reported with
+      the call that raised it.
     * *`ApiGatingTest`:* on test buggles, the primitives forbidden by `forbidTeleportation()` and `forbidMultiStep()` are refused
       by `CommandExecutor` with an explanatory `PrimitiveRefusedException`. `forbid()` rejects an unknown primitive, the forbidden
       primitives are read-only and forbidden again by every new instance, and the likely mistakes (`Left()`, `penDown()`...) are
@@ -882,7 +884,7 @@ documentation](PEDAGOGY.md#system-programming).
 * **Time**: the world has a clock. The student's system calls take no time, but `sleep()` and the blocking calls do: when nothing
   can progress, the clock jumps to the next wake up of a peer. Each scenario thus has a single causal history. A call that would
   block forever raises a deadlock (listing the state of the peers), and 1000 refused `connect()` in a row without the clock moving
-  raise a busy loop error.
+  raise a busy loop error. Both are `ExplainedException`, shown to the student without the call that raised them.
 * **The scripts**: each peer has a script written in a text block, with the syntax of the trace (one call per line, `//`
   comments, strings with the escapes `\n`, `\r`, `\t`, `\"` and `\\`), whose steps are executed through the system calls of the
   peer's process. A server peer has its listening socket on descriptor 3, which only listens once the script reaches its first

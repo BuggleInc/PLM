@@ -67,9 +67,9 @@ public final class CommandExecutor {
     try {
       returnValue = method.method().invoke(entity, args);
     } catch (InvocationTargetException e) {
-      // An entity refusing a call on purpose (e.g. an override forbidding some arguments) explains itself: its message is shown as is
-      if (e.getCause() instanceof PrimitiveRefusedException refusal)
-        throw refusal;
+      // An error explained to the student (e.g. a refused call or a deadlock) is shown as is
+      if (e.getCause() instanceof ExplainedException explained)
+        throw explained;
       throw new IllegalArgumentException("Calling " + method.name() + "(" + describeArguments(opArgsSegment, args) + ") raised an exception: " + e.getCause(),
                                          e);
     } catch (IllegalArgumentException e) {
