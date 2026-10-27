@@ -1,11 +1,16 @@
 package plm.universe.posix;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import plm.core.model.Game;
 
 /**
@@ -17,25 +22,35 @@ import plm.core.model.Game;
  *
  * The other members of the channels are simulated: they say their lines at given times after a client joined the channel (each
  * client receives the whole chat, whenever it joins), and answer a private message after a second, depending on whether it
- * contains some words. The texts are converted to ASCII, which the world only accepts for now (the translated texts lose their
+ * contains some words. A member may also address the client who did not write to it yet, or give hints to the client who wrote
+ * to another member without getting its answer. The texts are converted to ASCII, which the world only accepts for now (the translated texts lose their
  * accents). The lines of the members can be cut in packets, so that the framing of the lines matters.
  */
 public class IrcServer extends ProgramPeer {
   public static final String NAME     = "irc.buggleinc.com";
   private static final String VERSION = "plm-ircd-1.0";
 
-  /** A line said on a channel by a simulated member, some seconds after a client joined */
-  private record Said(int delay, String channel, String nick, String text) {}
+  /** A line said on a channel by a simulated member, some seconds after a client joined, to this client if addressed */
+  private record Said(int delay, String channel, String nick, String text, boolean addressed) {}
+  /** The hints given on a channel by a simulated member, about how to get the answer of another member */
+  private record Hints(String channel, String nick, List<String> texts) {}
   /** The answers of a simulated member to the private messages containing all the words, and to the other ones */
   private record Answers(List<String> words, String answer, String otherwise) {}
-  /** A line of a simulated member to a client, waiting for its time: what it says on a channel, or tells in private */
-  private record Pending(int at, int fd, String line) {}
+  /**
+   * A line of a simulated member to a client, waiting for its time (what it says on a channel, or tells in private), said if the
+   * client is then in the condition
+   */
+  private record Pending(int at, int fd, String line, Predicate<Client> condition) {}
 
   /** A connected client, by descriptor */
   private static final class Client {
     String nick, user;
     boolean registered;
     final List<String> channels = new ArrayList<>();
+    /** The simulated members to which the client wrote in private, those who gave it their answer, and its failures with each */
+    final Set<String> told              = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+    final Set<String> answered          = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+    final Map<String, Integer> failures = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     Client() {}
 
@@ -45,6 +60,9 @@ public class IrcServer extends ProgramPeer {
       user       = other.user;
       registered = other.registered;
       channels.addAll(other.channels);
+      told.addAll(other.told);
+      answered.addAll(other.answered);
+      failures.putAll(other.failures);
     }
 
     String prefix() { return nick + "!" + user + "@" + PosixWorld.STUDENT_IP; }
@@ -58,6 +76,7 @@ public class IrcServer extends ProgramPeer {
   private final Map<String, List<String>> members = new LinkedHashMap<>();
   private final List<Said> said                   = new ArrayList<>();
   private final Map<String, Answers> answers      = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+  private final Map<String, List<Hints>> hints    = new TreeMap<>(String.CASE_INSENSITIVE_ORDER); // by the member they are about
   private final List<Pending> pending             = new ArrayList<>();
   private final Map<Integer, Client> clients      = new TreeMap<>();
 
@@ -77,6 +96,7 @@ public class IrcServer extends ProgramPeer {
     other.members.forEach((channel, nicks) -> members.put(channel, new ArrayList<>(nicks)));
     said.addAll(other.said);
     answers.putAll(other.answers);
+    hints.putAll(other.hints); // the lists are never changed once the scenario is given
     pending.addAll(other.pending);
     other.clients.forEach((fd, client) -> clients.put(fd, new Client(client)));
   }
@@ -96,7 +116,29 @@ public class IrcServer extends ProgramPeer {
   /** Makes a simulated member say a line on a channel, that many seconds after a client joined it */
   public IrcServer say(int delay, String channel, String nick, String text)
   {
-    said.add(new Said(delay, channel, nick, ascii(text)));
+    said.add(new Said(delay, channel, nick, ascii(text), false));
+    return this;
+  }
+
+  /**
+   * Makes a simulated member address the client on a channel, that many seconds after it joined, unless the client wrote to this
+   * member in private before. The text is a MessageFormat pattern, whose {0} is the nickname of the client.
+   */
+  public IrcServer address(int delay, String channel, String nick, String text)
+  {
+    said.add(new Said(delay, channel, nick, ascii(text), true));
+    return this;
+  }
+
+  /**
+   * Makes a simulated member give hints on a channel to the client who wrote in private to another member without getting its
+   * answer: the next hint after each failure, two seconds after the reply, the last one being repeated, and none once the answer
+   * was given. The hints are MessageFormat patterns, whose {0} is the nickname of the client, and {1}, {2}... the words that the
+   * other member expects (see answer()), so that a hint can tell an exact sentence, consistent with the translated words.
+   */
+  public IrcServer hints(String channel, String nick, String about, String... texts)
+  {
+    hints.computeIfAbsent(about, member -> new ArrayList<>()).add(new Hints(channel, nick, Stream.of(texts).map(ProgramPeer::ascii).toList()));
     return this;
   }
 
@@ -145,7 +187,7 @@ public class IrcServer extends ProgramPeer {
     for (Pending line : pending) // in the order they were planned
       if (line.at() <= now()) {
         pending.remove(line);
-        if (clients.containsKey(line.fd())) {
+        if (clients.containsKey(line.fd()) && line.condition().test(clients.get(line.fd()))) {
           if (packetSize > 0)
             sendInPackets(line.fd(), line.line() + "\r\n", packetSize, 1);
           else
@@ -310,10 +352,19 @@ public class IrcServer extends ProgramPeer {
         numeric(fd, client, "332", channel + " :" + topics.get(channel));
       names(fd, client, channel);
       for (Said line : said) // the chat of the members, for this client
-        if (line.channel().equals(channel))
-          pending.add(new Pending(now() + line.delay(), fd, ":" + member(line.nick()) + " PRIVMSG " + channel + " :" + line.text()));
-      pending.sort((a, b) -> Integer.compare(a.at(), b.at()));
+        if (line.channel().equals(channel)) {
+          String text = line.addressed() ? MessageFormat.format(line.text(), client.nick) : line.text();
+          plan(now() + line.delay(), fd, ":" + member(line.nick()) + " PRIVMSG " + channel + " :" + text,
+               line.addressed() ? c -> !c.told.contains(line.nick()) : c -> true);
+        }
     }
+  }
+
+  /** Plans a line of a simulated member to a client, said at that time if the client is then in the condition */
+  private void plan(int at, int fd, String line, Predicate<Client> condition)
+  {
+    pending.add(new Pending(at, fd, line, condition));
+    pending.sort((a, b) -> Integer.compare(a.at(), b.at()));
   }
 
   private void names(int fd, Client client, String channel)
@@ -371,13 +422,24 @@ public class IrcServer extends ProgramPeer {
       numeric(fd, client, "401", target + " :No such nick/channel");
       return;
     }
-    Answers answer = answers.get(target);
-    if (answer != null) {
-      String nick     = members.values().stream().flatMap(List::stream).filter(target::equalsIgnoreCase).findFirst().get();
-      String message  = ascii(params.get(1)).toLowerCase(Locale.ROOT);
-      boolean matches = answer.words().stream().allMatch(message::contains);
-      pending.add(new Pending(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + client.nick + " :" + (matches ? answer.answer() : answer.otherwise())));
-      pending.sort((a, b) -> Integer.compare(a.at(), b.at()));
+    String nick = members.values().stream().flatMap(List::stream).filter(target::equalsIgnoreCase).findFirst().get();
+    client.told.add(nick);
+    Answers answer = answers.get(nick);
+    if (answer == null)
+      return;
+    String message  = ascii(params.get(1)).toLowerCase(Locale.ROOT);
+    boolean matches = answer.words().stream().allMatch(message::contains);
+    plan(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + client.nick + " :" + (matches ? answer.answer() : answer.otherwise()), c -> true);
+    if (matches) {
+      client.answered.add(nick);
+      return;
+    }
+    int failures   = client.failures.merge(nick, 1, Integer::sum);
+    Object[] words = Stream.concat(Stream.of(client.nick), answer.words().stream()).toArray();
+    for (Hints hint : hints.getOrDefault(nick, List.of())) {
+      String text = MessageFormat.format(hint.texts().get(Math.min(failures, hint.texts().size()) - 1), words);
+      plan(now() + 3, fd, ":" + member(hint.nick()) + " PRIVMSG " + hint.channel() + " :" + text, // two seconds after the reply
+           c -> c.channels.contains(hint.channel()) && !c.answered.contains(nick));
     }
   }
 

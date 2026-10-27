@@ -526,6 +526,42 @@ public class PosixWorldTest {
     }
   }
 
+  /** A world where Bob calls the client who did not talk to him, and Alice helps the client who failed to get his answer */
+  private static PosixWorld ircWithHints()
+  {
+    return new PosixWorld("hints").addPeer(new IrcServer("10.0.0.1", 6667)
+                                               .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
+                                               .address(2, "#welcome", "Bob", "{0}: are you looking for something?")
+                                               .answer("Bob", List.of("please", "baggle"), "Thanks!", "What?")
+                                               .hints("#welcome", "Alice", "Bob", "{0}: be polite", "{0}: say {1} and give a {2}"));
+  }
+
+  @Test public void testIrcMembersCallAndHelp()
+  {
+    PosixEntity p = process(ircWithHints());
+    Lines lines   = joined(p);
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG #welcome :student: are you looking for something?", lines.next());
+    for (String hint : List.of("student: be polite", "student: say please and give a baggle", "student: say please and give a baggle")) {
+      p.send(3, b("PRIVMSG Bob :Hello\r\n"), 0);
+      Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :What?", lines.next());
+      Assertions.assertEquals(":Alice!alice@buggleinc.com PRIVMSG #welcome :" + hint, lines.next()); // the last hint is repeated
+    }
+    p.send(3, b("PRIVMSG Bob :please, a baggle\r\n"), 0);
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Thanks!", lines.next());
+    Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0)); // no more hints: a deadlock
+  }
+
+  @Test public void testIrcMembersStayQuietOnceTold()
+  {
+    PosixEntity p = process(ircWithHints());
+    Lines lines   = joined(p);
+    p.send(3, b("PRIVMSG Bob :Hello\r\n"), 0); // before Bob calls the client, which he will not do anymore
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :What?", lines.next());
+    p.send(3, b("PRIVMSG Bob :please, a baggle\r\n"), 0); // before the hint of Alice, which she will not give anymore
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Thanks!", lines.next());
+    Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0));
+  }
+
   @Test public void testIrcServerRefusesTextWithoutColon()
   {
     PosixEntity p = process(irc(0));
