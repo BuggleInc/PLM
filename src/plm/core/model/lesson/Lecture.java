@@ -90,15 +90,15 @@ public abstract class Lecture {
     else
       System.err.println(Game.i18n.tr("Cannot find the name of mission in {0}.html", missionFile));
 
-    /* prepare the tips, if any */
-    Pattern p3 = Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\" alt=\"([^\"]+?)\">(.*?)</div>", Pattern.MULTILINE | Pattern.DOTALL);
+    /* prepare the tips, if any: their ids start with tip-, such as tip-1 or tip-python */
+    Pattern p3 = Pattern.compile("<div class=\"tip\" id=\"(tip-[\\w-]+?)\" alt=\"([^\"]+?)\">(.*?)</div>", Pattern.MULTILINE | Pattern.DOTALL);
     Matcher m3 = p3.matcher(str);
     while (m3.find()) {
       tips.put("#" + m3.group(1), m3.group(3));
     }
     str = m3.replaceAll("<a href=\"#$1\">$2</a>");
 
-    Pattern p4 = Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\">(.*?)</div>", Pattern.MULTILINE | Pattern.DOTALL);
+    Pattern p4 = Pattern.compile("<div class=\"tip\" id=\"(tip-[\\w-]+?)\">(.*?)</div>", Pattern.MULTILINE | Pattern.DOTALL);
     Matcher m4 = p4.matcher(str);
     while (m4.find()) {
       tips.put("#" + m4.group(1), m4.group(2));

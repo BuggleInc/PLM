@@ -372,7 +372,8 @@ Here is a list of the existing tracker events, and how `GitTracker` handle them:
   user UUID.
 - `importSession()` (not a tracker event either, called by the `ImportSession` action): commits the pending changes with an
   `"imported"` marker, then merges the zip into the session, see [Moving a session between machines](#moving-a-session-between-machines) below.
-- `readTip()`: same write-then-commit-then-push pattern for that UI event, that only rewrites the mission file.
+- `readTip()`: same write-then-commit-then-push pattern for that UI event (see the tips in [Mission text](#mission-text)), that
+  only rewrites the mission file. Its message holds the `href` of the tip, such as `#tip-2` or `#tip-python`.
 - All these events end with `commitAndPush()`: it removes the deleted files from the index, adds the others, commits with the
   message of the event and asks for a push.
 - `leave()` (PLM shutdown): cancels the delayed push, then does one final `addFiles()`+`commit()`+`forcefullyPushToUserBranch()` (bypassing the
@@ -421,7 +422,7 @@ Here are some the messages of a possible commit history.
 - The student then asks for a hint in this exercise, reverts their code, and later leaves:
 
     {"kind":"switched","exo":"welcome.Instructions","lang":"Java","switchto":"sort.pancake.GatesPancake"}
-    {"kind":"readTip","id":"2","exo":"sort.pancake.GatesPancake","lang":"Java"}
+    {"kind":"readTip","id":"#tip-2","exo":"sort.pancake.GatesPancake","lang":"Java"}
     {"kind":"reverted","exo":"sort.pancake.GatesPancake","lang":"Java"}
     {"kind":"leaved","plm":"2.9.3 (20210630), commit unknown","java":"21.0.12.1 (VM: OpenJDK 64-Bit Server VM; version: 21.0.12.1+1-1-deb13u1-Debian)","os":"Linux (version: 6.10.3-amd64; arch: amd64)"}
 
@@ -795,6 +796,25 @@ Blocks can be nested, as they are resolved from the innermost: `[!java|scala|pyt
 in Java, `forward()` in Scala and Python, and nothing in C. The debug mode of the PLM and the mission editor display all the
 blocks, with a color per set of languages. `MissionMarkup` also lists the mistakes in the markup of a text, for the tests of the
 mission texts and of their translations.
+
+**Tips.** A mission can hide some help behind a link, that the student opens on demand (see the [pedagogical
+considerations](PEDAGOGY.md#scafolding-tools)):
+
+    <div class="tip" id="tip-python" alt="Give me the complete code of that generator">
+    <pre>def lines(sock): ...</pre>
+    </div>
+
+When loading the mission, `Lecture` extracts each such `div` into a map indexed by `#` and its id, and replaces it with a link
+`<a href="#tip-python">` whose text is the `alt` attribute (or "Show Tip" without it). A click on a link starting with `#tip-`
+(`MissionEditorTabs`) shows the tip in a `TipsDialog`, after resolving its `[!lang]` blocks, and records the event in the
+student's history (`GitTracker.readTip()`, see [Progress trackers](#progress-trackers)). The rules follow from this mechanism:
+- The id starts with `tip-`, followed by letters, digits, `_` or `-` (such as `tip-1` or `tip-python`). It must be unique in the
+  mission, as two tips with the same id overwrite each other, and it must stay the same in the translations. The student never
+  sees it, but it ends up in the tracking data: a meaningful name tells which tip was read without opening the mission.
+- The `div` must hold no other `div`, since the tip ends at the first `</div>`, and its attributes must be written exactly in
+  this order, with double quotes, or the `div` stays in the text as is.
+- A tip placed in a `[!lang]` block only appears in these languages, with its link. Its content may also hold `[!lang]` blocks.
+- The `alt` text is translated with the rest of the mission, while "Show Tip" is not: always give an `alt`.
 
 ### Connecting your exercise to the lesson
 

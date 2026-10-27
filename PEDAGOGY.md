@@ -122,6 +122,24 @@ text to form a compilable source code (see the [contributor's guide](CONTRIBUTIN
 decomposed in several functions, you can ask on of them while providing the others in a given exercise, and then ask for the
 other functions in subsequent exercises.
 
+**Tips** hide some help behind a link of the mission, that the students open only when they need it (see the [contributor's
+guide](CONTRIBUTING.md#mission-text) for the markup). The mission first describes the approach, and the tips give a more
+concrete help, up to a complete piece of code, so that each student chooses how much help to get instead of being handed the
+answer. For example, `WallFollowerMaze` details the cases of each step of the algorithm in a tip, with pictures, while
+`TcpFramingIrc` describes how to read a line in the mission and gives the complete code of the line reader in a tip, for each
+language. A mission can give several tips of increasing precision, with link texts telling what each reveals ("Show an
+additional tip", "Give me the complete code"), so that the students can stop as soon as they are unstuck. The tips are not a
+substitute for a clear mission: if most students open the same tip, its content probably belongs to the mission itself.
+
+Each opened tip is recorded in the history of the student, along with their attempts (see the [progress
+trackers](CONTRIBUTING.md#progress-trackers)). The teachers can thus see which exercises need help, which tips are read before
+any attempt (a sign of discouragement or of a mission too terse) and which after many failed ones, and whether reading a tip
+leads to a success. Naming the tips after their content (such as `tip-python` or `tip-algorithm`) makes this data readable
+without opening the missions.
+
+Some universes also give hints inside the world itself, as part of the situation: in the networking lesson, a member of the
+IRC channel suggests how to talk to Bob after each failed attempt, up to the exact sentence to write.
+
 ## Why should I learn programming when I can vibe-code?
 
 I teach programming in various languages since 1999. It's now over 25 years that I'm told that programmers are soon obsolete and
