@@ -33,7 +33,8 @@ class TcpFramingIrcEntity extends plm.universe.posix.PosixEntity {
     val line = waitline(in, "/docs/")
 
     val path = line.substring(line.indexOf('/'))
-    print(path.substring(0, path.indexOf(' ')))
+    println(path.substring(0, path.indexOf(' ')))
+    socket.close() // disconnect from the server
     /* END SOLUTION */
   }
   /* END TEMPLATE */

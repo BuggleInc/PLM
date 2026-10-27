@@ -44,7 +44,8 @@ public class TcpClientEntity extends plm.universe.posix.PosixEntity {
     line      = line.substring(begin);
     line      = line.substring(0, line.indexOf(' '));
 
-    System.out.print(line);
+    System.out.println(line);
+    socket.close(); // disconnect from the server
     /* END SOLUTION */
   }
   /* END TEMPLATE */

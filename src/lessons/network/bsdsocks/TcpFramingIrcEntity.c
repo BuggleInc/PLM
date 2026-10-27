@@ -72,7 +72,7 @@ void run()
   char* begin = strchr(buffer, '/');
   char* end   = strchr(begin, ' ');
   *end        = '\0';
-  printf("%s", begin);
+  printf("%s\n", begin);
 
   /* display the rest for debugging, but this hangs once the end is reached */
   // while ((line = fgets(buffer, (sizeof buffer)-1, in)) != NULL) { }
