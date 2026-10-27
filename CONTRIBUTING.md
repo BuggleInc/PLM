@@ -999,6 +999,8 @@ documentation](PEDAGOGY.md#system-programming).
   to the world until the student closes them, or until the exercise or the language changes. Their title gives the name of the
   world (and "objective" for the expected one), and clicking again on a text shows its current content in the same tab.
 * **No world I/O yet**: the expected worlds are recomputed at each load.
+* **TODO**: `HttpServer.html` describes the persistent connections without the timeout of `HttpServer.keepAlive()`, which no
+  world uses yet. A world using it should tell its timeout to the students, in the reference or in the mission.
 
 # Maintainer's note
 

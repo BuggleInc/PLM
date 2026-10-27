@@ -144,11 +144,18 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
           } catch (Exception e) {
             if (protocolSocket.isClosed()) // closed when interrupting the run below: not a protocol error
               return;
-            System.err.println((handling ? "Error while handling the command " : "Error while reading the command after ") + lastCommand.get() + " (" +
-                               handledCommands.get() + " commands handled so far)");
-            e.printStackTrace();
-            progress.outcome        = RunOutcome.kind.FAIL;
-            progress.executionError = e.getMessage();
+            // The worlds run in parallel: each one names itself, and their errors add up
+            String world = ent.getWorld() == null ? null : ent.getWorld().getName();
+            synchronized (System.err) {
+              System.err.println((handling ? "Error while handling the command " : "Error while reading the command after ") + lastCommand.get() +
+                                 (world == null ? "" : " in world '" + world + "'") + " (" + handledCommands.get() + " commands handled so far)");
+              e.printStackTrace();
+            }
+            String error = world == null ? e.getMessage() : Game.i18n.tr("In the world ''{0}'': {1}", world, e.getMessage());
+            synchronized (progress) {
+              progress.outcome        = RunOutcome.kind.FAIL;
+              progress.executionError = progress.executionError.isEmpty() ? error : progress.executionError + "\n" + error;
+            }
             process.destroyForcibly();
           }
         }
