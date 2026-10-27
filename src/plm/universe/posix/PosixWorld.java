@@ -155,11 +155,17 @@ public class PosixWorld extends World {
   /** Adds an event to the trace, stamped with the clock */
   void log(String who, String what) { trace.add("[t=" + now + "] " + who + ": " + what); }
 
-  /** The data between double quotes and with its quotes escaped, as displayed by strace */
+  /** The data longer than this is cut in the trace, as strace does (see its option -s) */
+  static final int SHOWN_DATA = 50;
+
+  /** The string between double quotes and with its quotes escaped, as displayed by strace (whole, as for a path) */
   static String quoted(String data) { return "\"" + visible(data.replace("\\", "\\\\").replace("\"", "\\\"")) + "\""; }
 
+  /** The data of a call as displayed by strace: quoted, and cut after SHOWN_DATA characters with ... after the quotes */
+  static String excerpt(String data) { return data.length() <= SHOWN_DATA ? quoted(data) : quoted(data.substring(0, SHOWN_DATA)) + "..."; }
+
   /** The data written by a call in the buffer of the caller, marked as a side effect (or ... if the call failed and left it unchanged) */
-  static String filled(String data) { return data == null ? "..." : "← " + quoted(data); }
+  static String filled(String data) { return data == null ? "..." : "← " + excerpt(data); }
 
   /** The data with its line breaks and tabulations escaped, to display it on a single line */
   static String visible(String data) { return data.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t"); }

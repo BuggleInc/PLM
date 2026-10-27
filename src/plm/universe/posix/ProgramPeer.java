@@ -165,14 +165,14 @@ public abstract class ProgramPeer extends Peer {
   /** Sends the data on that connection, which the network transmits at once */
   protected void send(int fd, String data)
   {
-    traced("send(" + fd + ", " + PosixWorld.quoted(data) + ", " + data.length() + ")", world.send(process, fd, data, 0));
+    traced("send(" + fd + ", " + PosixWorld.excerpt(data) + ", " + data.length() + ")", world.send(process, fd, data, 0));
     ((Socket)process.get(fd)).transmit(data.length());
   }
 
   /** Sends the data on that connection, which the network transmits in packets of that size, each after the given pause */
   protected void sendInPackets(int fd, String data, int packetSize, int pause)
   {
-    traced("send(" + fd + ", " + PosixWorld.quoted(data) + ", " + data.length() + ")", world.send(process, fd, data, 0));
+    traced("send(" + fd + ", " + PosixWorld.excerpt(data) + ", " + data.length() + ")", world.send(process, fd, data, 0));
     for (int sent = 0, at = world.now + pause; sent < data.length(); sent += packetSize, at += pause)
       packets.add(new Packet(at, (Socket)process.get(fd), packetSize));
   }

@@ -39,7 +39,7 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
   @Override public int connect(int fd, String ip, int port) { return step("connect", fd + ", " + ip + ":" + port, kernel().connect(process(), fd, ip, port)); }
   @Override public int send(int fd, byte[] data, int flags)
   {
-    return step("send", fd + ", " + quoted(data) + ", " + data.length + ", " + flags, kernel().send(process(), fd, text(data), flags));
+    return step("send", fd + ", " + excerpt(data) + ", " + data.length + ", " + flags, kernel().send(process(), fd, text(data), flags));
   }
   @Override public byte[] recv(int fd, int len, int flags)
   {
@@ -65,7 +65,7 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
   }
   @Override public int write(int fd, byte[] data)
   {
-    return step("write", fd + ", " + quoted(data) + ", " + data.length, kernel().write(process(), fd, text(data)));
+    return step("write", fd + ", " + excerpt(data) + ", " + data.length, kernel().write(process(), fd, text(data)));
   }
   @Override public int close(int fd) { return step("close", String.valueOf(fd), kernel().close(process(), fd)); }
 
@@ -86,7 +86,7 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
   private static byte[] bytes(String data) { return data == null ? null : data.getBytes(StandardCharsets.ISO_8859_1); }
 
   /** The data in a buffer, as displayed by strace (or ... if the call failed and left it unchanged) */
-  private static String quoted(byte[] data) { return data == null ? "..." : PosixWorld.quoted(new String(data, StandardCharsets.ISO_8859_1)); }
+  private static String excerpt(byte[] data) { return data == null ? "..." : PosixWorld.excerpt(new String(data, StandardCharsets.ISO_8859_1)); }
 
   /** Animates a step of the other processes or of the network, which happens while this process runs or waits */
   void animate() { stepUI(); }

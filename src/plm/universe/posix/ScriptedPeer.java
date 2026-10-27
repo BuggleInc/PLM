@@ -368,7 +368,7 @@ final class ScriptedPeer extends Peer {
       case SOCKET -> "socket(AF_INET, SOCK_STREAM, 0)";
       case CONNECT -> "connect(" + step.fd() + ", " + PosixWorld.STUDENT_IP + ":" + port + ")";
       case SLEEP -> "sleep(" + step.amount() + ")";
-      case SEND -> "send(" + step.fd() + ", " + PosixWorld.quoted(step.data()) + ", " + step.data().length() + ")";
+      case SEND -> "send(" + step.fd() + ", " + PosixWorld.excerpt(step.data()) + ", " + step.data().length() + ")";
       case TRANSMIT -> "up to " + step.amount() + " bytes";
       case RECV -> "recv(" + step.fd() + ", ..., " + step.amount() + ")";
       case CLOSE -> "close(" + step.fd() + ")";

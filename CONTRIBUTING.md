@@ -590,6 +590,7 @@ one checks the correction entities against it.
 
 ```
 mvn package -DskipTests && java -jar target/plm-*.jar          # build + run, no tests
+mvn package -DskipTests && java -cp  target/plm-*.jar plm.core.ui.editor.MissionEditorApp  # HTML editor
 mvn test                                                       # full test suite
 mvn test -Dtest=TestName*                                      # a single test class
 ```
@@ -995,7 +996,8 @@ documentation](PEDAGOGY.md#system-programming).
   read the files with the classes above.
 * **The display**: `PosixWorldView` draws the student's machine and the peers' ones (mirrored), with the descriptors of their
   processes, the kernel objects in violet, their queues as cells, and the network in green. `PosixTracePanel`, under
-  the view, traces the system calls in the style of strace, the ongoing steps of the peers, and their remaining steps greyed.
+  the view, traces the system calls in the style of strace (with the data cut after 50 characters, but the paths whole), the
+  ongoing steps of the peers, and their remaining steps greyed.
   A click on a file, on the box of a connected socket (showing everything it received and sent), or on the `stdout` or `stderr`
   of the student's process (showing everything written on it), opens it in a read-only tab of the editor, which follows the
   changes of the world. This uses `MissionEditorTabs.showReadOnly(title, world, content)`
