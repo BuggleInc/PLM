@@ -124,6 +124,9 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
   @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
 
+  /** The first line of the stack trace printed by the generated Main, such as "java.net.ConnectException: Connection refused" */
+  @Override protected String failureCause(String stderr) { return stderr.strip().lines().findFirst().orElse(null); }
+
   /**
    * e.g. "src/lessons/recursion/cons/universe/RecList.java" -> "lessons.recursion.cons.universe.RecList"
    */

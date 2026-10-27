@@ -166,6 +166,9 @@ public class LangPython extends TemplatedRemoteLang {
   /** Locations before the body, and all of them when debugging is enabled, are left untouched. */
   @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
 
+  /** The last line of the traceback, such as "TypeError: a bytes-like object is required, not 'str'" */
+  @Override protected String failureCause(String stderr) { return stderr.strip().lines().reduce((previous, line) -> line).orElse(null); }
+
   /** Runs "python3 &lt;executable&gt; &lt;port&gt;" from the executable's own directory, with ENTITIES_DIR ahead of the user's PYTHONPATH. */
   @Override protected ProcessBuilder buildProcess(String executable, int port) throws IOException
   {

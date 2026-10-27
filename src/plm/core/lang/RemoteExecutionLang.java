@@ -70,6 +70,12 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
   protected void onProcessFinished(Process process, String executable, RunOutcome progress) {}
 
   /**
+   * Optional per-language hook: the line of the error output of a failed process telling the cause of the failure (such as the
+   * last line of a Python traceback), shown to the student, or null to only refer to the console. Null by default.
+   */
+  protected String failureCause(String stderr) { return null; }
+
+  /**
    * Optional per-language hook, called on every line the student process writes on its stderr, before it is printed and
    * captured. Returns the line to use instead, e.g. with the code locations of a stack trace translated back to the editor. The
    * line is returned as is by default.
@@ -196,8 +202,13 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       bwriter.close();
       protocolSocket.close();
 
-      if (retcode != 0)
-        progress.setExecutionError("An issue occured in the executed code (return code: " + retcode + "). Check the output in the log panel for more info");
+      if (retcode != 0 && !killed.get()) { // a process killed after an error keeps the message of this error (such as a deadlock)
+        String cause = failureCause(capturedStderr.toString());
+        if (cause == null)
+          progress.setExecutionError("An issue occured in the executed code (return code: " + retcode + "). Check the output in the log panel for more info");
+        else
+          progress.setExecutionError(Game.i18n.tr("Your program stopped on this error: {0}\nSee the console for the whole message.", cause));
+      }
 
       if (resEvaluationError.length() > 0) {
         System.err.println(resEvaluationError.toString());
