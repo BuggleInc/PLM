@@ -88,6 +88,14 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
   /** The data in a buffer, as displayed by strace (or ... if the call failed and left it unchanged) */
   private static String excerpt(byte[] data) { return data == null ? "..." : PosixWorld.excerpt(new String(data, StandardCharsets.ISO_8859_1)); }
 
+  /** Ends the trace as strace does, with the exit code of the process, or the signal killing it */
+  @Override public void processEnded(Integer exitCode)
+  {
+    PosixWorld kernel = (PosixWorld)getWorld(); // without letting the peers act, as the process cannot see them anymore
+    kernel.log("you", exitCode == null ? "+++ killed by SIGKILL +++" : "+++ exited with " + exitCode + " +++");
+    kernel.notifyWorldUpdatesListeners();
+  }
+
   /** Animates a step of the other processes or of the network, which happens while this process runs or waits */
   void animate() { stepUI(); }
 

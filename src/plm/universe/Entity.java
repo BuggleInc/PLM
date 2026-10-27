@@ -130,6 +130,12 @@ public abstract class Entity extends Observable implements EntityPrimitivesBase 
    */
   public abstract void run() throws Exception;
 
+  /**
+   * Called once the process running this entity in another language ended, with its exit code, or null if the PLM killed it
+   * (after an error such as a deadlock). Nothing by default.
+   */
+  public void processEnded(Integer exitCode) {}
+
   public void setScriptOffset(ProgrammingLanguage lang, int offset) { scriptOffset.put(lang, offset); }
 
   public Integer getScriptOffset(ProgrammingLanguage lang)

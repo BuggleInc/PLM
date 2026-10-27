@@ -14,6 +14,7 @@ import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.UnaryOperator;
@@ -127,6 +128,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       // Tell, when the run is interrupted, whether the program was stuck or just long
       final AtomicInteger handledCommands       = new AtomicInteger();
       final AtomicReference<String> lastCommand = new AtomicReference<>();
+      final AtomicBoolean killed                = new AtomicBoolean(); // by the command reader, after an error
 
       Thread commandReader = new Thread() {
         public void run()
@@ -156,6 +158,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
               progress.outcome        = RunOutcome.kind.FAIL;
               progress.executionError = progress.executionError.isEmpty() ? error : progress.executionError + "\n" + error;
             }
+            killed.set(true);
             process.destroyForcibly();
           }
         }
@@ -186,6 +189,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       stdoutReader.join();
       stderrReader.join();
       commandReader.join();
+      ent.processEnded(killed.get() ? null : retcode); // once all the commands are handled
 
       onProcessFinished(process, executable, progress);
 
