@@ -54,12 +54,12 @@ a new editor tab.</p>
 <h2>What to do</h2>
 
 <p>The IRC server listens on port 194 of the machine whose IP address  is 10.0.0.1. You should first open a socket to that port,
-and display any information sent by the server. The greetings message will give you an hint of how to proceed.</p>
+and display any information sent by the server. The greetings message will give you a hint of how to proceed.</p>
 
 <p>The next step is to register to the server by sending a nickname with <code>"NICK student"</code>, then your user name 
 and your real name with <code>"USER student 0 * :Your Name"</code>, each followed by the command delimiter
 <code>\r\n</code>. The server welcomes you with several lines, the first one starting with your nickname after the code
-<code>001</code>, such as <code>":irc.example.org 001 student :Welcome to the network student"</code>. You can pass
+<code>001</code>, such as <code>":irc.example.org 001 student :Welcome to the network student"</code>. You can skip
 any line from the server that does not contain this <code>001</code> code, but you probably want to display these messages
 when your program fails to trigger a <code>001</code> from the server.</p>
 
