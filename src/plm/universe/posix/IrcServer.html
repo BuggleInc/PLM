@@ -30,7 +30,8 @@ spaces up to the end of the line. The commands are case-insensitive.</p>
 <tr><td><code>PART #channel :reason</code></td><td>Leaves a channel, confirmed with <code>:nick!user@host PART #channel</code>
   (followed by the reason, if any).</td></tr>
 <tr><td><code>PRIVMSG target :text</code></td><td>Sends a text to a joined channel, or to a member in private. The server does
-  not send back the texts of the client.</td></tr>
+  not send back the texts of the client. A text holding spaces must start with <code>:</code>, or the server refuses the message
+  with a notice telling how to write it (a real server would only send its first word).</td></tr>
 <tr><td><code>NAMES #channel</code></td><td>Lists the members of a channel (353 and 366).</td></tr>
 <tr><td><code>PING token</code></td><td>Asks the server to answer <code>:irc.buggleinc.com PONG irc.buggleinc.com
   :token</code>.</td></tr>

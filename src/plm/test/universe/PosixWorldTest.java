@@ -526,6 +526,17 @@ public class PosixWorldTest {
     }
   }
 
+  @Test public void testIrcServerRefusesTextWithoutColon()
+  {
+    PosixEntity p = process(irc(0));
+    Lines lines   = joined(p);
+    p.send(3, b("PRIVMSG #welcome Hello my friends\r\n"), 0);
+    Assertions.assertEquals(":irc.buggleinc.com NOTICE student :*** Your message was not sent: a text holding spaces must start with a colon, as in "
+                                + "PRIVMSG #welcome :Hello my friends (a real server would only send Hello).",
+                            lines.next());
+    p.close(3);
+  }
+
   @Test public void testIrcServerErrors()
   {
     PosixEntity p = process(irc(0));

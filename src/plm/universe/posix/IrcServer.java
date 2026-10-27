@@ -350,6 +350,14 @@ public class IrcServer extends ProgramPeer {
       numeric(fd, client, "412", ":No text to send");
       return;
     }
+    if (params.size() > 2) { // a text with spaces but without its colon, of which a real server would only send the first word
+      String text   = String.join(" ", params.subList(1, params.size()));
+      String advice = Game.i18n.tr("Your message was not sent: a text holding spaces must start with a colon, as in PRIVMSG {0} :{1} "
+                                       + "(a real server would only send {2}).",
+                                   params.get(0), text, params.get(1));
+      out(fd, ":" + NAME + " NOTICE " + client.nick + " :*** " + ascii(advice));
+      return;
+    }
     String target = params.get(0);
     if (target.startsWith("#")) {
       if (!members.containsKey(target))

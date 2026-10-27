@@ -928,7 +928,8 @@ documentation](PEDAGOGY.md#system-programming).
   that each client receives the whole chat), the private answer of a member to the messages containing some words (whatever
   their case and accents) and to the other ones (`answer()`), and possibly the size of the packets cutting the lines of the
   members, one per second (`packets()`). The texts, which may be translated, lose their accents since the world only accepts
-  ASCII for now.
+  ASCII for now. A `PRIVMSG` whose text holds spaces without its `:` is refused with a notice telling how to write
+  it, where a real server would only send its first word.
 * **The HTTP server** (`HttpServer`, software `plm-httpd/1.0`) serves static files (`file()`) with `GET` and `HEAD`, exact to the
   byte as the usual servers: its responses give `Content-Length`, the connections persist in HTTP/1.1 (unless `Connection:
   close`) and close after the response in HTTP/1.0 (unless `Connection: keep-alive`), and the errors are 400 (also for an
@@ -996,8 +997,9 @@ documentation](PEDAGOGY.md#system-programming).
   read the files with the classes above.
 * **The display**: `PosixWorldView` draws the student's machine and the peers' ones (mirrored), with the descriptors of their
   processes, the kernel objects in violet, their queues as cells, and the network in green. `PosixTracePanel`, under
-  the view, traces the system calls in the style of strace (with the data cut after 50 characters, but the paths whole), the
-  ongoing steps of the peers, and their remaining steps greyed.
+  the view, traces the system calls in the style of strace (with the data cut after 50 characters, but the paths whole) and the
+  end of the process (`+++ exited with 0 +++`, from `Entity.processEnded()` that `RemoteExecutionLang` calls), the ongoing steps
+  of the peers, and their remaining steps greyed.
   A click on a file, on the box of a connected socket (showing everything it received and sent), or on the `stdout` or `stderr`
   of the student's process (showing everything written on it), opens it in a read-only tab of the editor, which follows the
   changes of the world. This uses `MissionEditorTabs.showReadOnly(title, world, content)`
