@@ -46,7 +46,10 @@ public class PosixWorldView extends WorldView {
   private record Tip(Rectangle area, String text) {}
   /** The boxes of the last painting whose text was cut */
   private final List<Tip> tips = new ArrayList<>();
-  /** A drawing that opens a text of the world in a read-only tab of the editor when clicked: a file, or the history of a socket */
+  /**
+   * A drawing that opens a text of the world in a read-only tab of the editor when clicked: a file, the history of a socket, or a
+   * standard output of the student's process
+   */
   private record Link(Rectangle area, String title, Supplier<String> content) {}
   /** The links of the last painting */
   private final List<Link> links = new ArrayList<>();
@@ -118,7 +121,7 @@ public class PosixWorldView extends WorldView {
     String role   = stream.input ? "Standard input: its data waits here until this process reads it"
                                  : "Standard " + output + ": everything this process wrote on it, displayed in the console";
     Queue queue   = new Queue(stream.data.isEmpty() ? List.of() : List.of(stream.data), stream.input, !stream.input, 0, role);
-    return new Row(fd, new String[] {stream.name}, List.of(queue), stream.input, !stream.input, null, null);
+    return new Row(fd, new String[] {stream.name}, List.of(queue), stream.input, !stream.input, null, stream);
   }
 
   @Override public void paintComponent(Graphics g)
@@ -221,6 +224,7 @@ public class PosixWorldView extends WorldView {
     box(g2, PROCESS, processLeft, rowsTop - 5, processWidth, rows.size() * ROW, "Process");
 
     Map<String, Integer> portRows = new HashMap<>(); // the row of the first socket using each numbered port
+    PosixProcess student          = ((PosixWorld)world).student;
     for (Row row : rows) {
       int y = rowCenter(rowsTop, row.fd());
       descriptor(g2, fdX, y, row.fd(), row.lines() != null, mirrored);
@@ -233,10 +237,13 @@ public class PosixWorldView extends WorldView {
       if (row.reads())
         arrowHead(g2, fdX + 6 * toObject, y, -toObject);
       box(g2, KERNEL, objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6, row.lines());
+      Rectangle area = new Rectangle(objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6);
       if (row.key() instanceof Socket s && s.remote != null) {
-        Rectangle area = new Rectangle(objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6);
         links.add(new Link(area, title + ", socket " + row.fd(), () -> history(s)));
         tips.add(new Tip(area, "Click to see everything that went through this socket"));
+      } else if (row.key() instanceof StandardStream stream && (stream == student.stdout || stream == student.stderr)) {
+        links.add(new Link(area, title + ", " + stream.name, () -> written(stream.name)));
+        tips.add(new Tip(area, "Click to see everything that your process wrote on it"));
       }
       for (int i = 0; i < row.queues().size(); i++) { // on the right of the title, one under the other, a lone queue under the title
         Queue q  = row.queues().get(i);
@@ -262,6 +269,13 @@ public class PosixWorldView extends WorldView {
       x += FILE_WIDTH + 10;
     }
     return bottom;
+  }
+
+  /** What the student's process wrote so far on stdout or stderr, read in the world at each refresh to follow its resets */
+  private String written(String name)
+  {
+    PosixProcess student = ((PosixWorld)world).student;
+    return (name.equals("stdout") ? student.stdout : student.stderr).data;
   }
 
   /** Everything that went through a connected socket: what arrived on it (received or not), and what it sent (transmitted or not) */
