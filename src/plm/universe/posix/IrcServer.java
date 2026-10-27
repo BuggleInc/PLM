@@ -10,6 +10,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import plm.core.model.Game;
 
@@ -22,12 +24,15 @@ import plm.core.model.Game;
  *
  * The other members of the channels are simulated: they say their lines at given times after a client joined the channel (each
  * client receives the whole chat, whenever it joins), and answer a private message after a second, depending on whether it
- * contains some words. A member may also address the client who did not write to it yet, or give hints to the client who wrote
- * to another member without getting its answer. The texts are converted to ASCII, which the world only accepts for now (the translated texts lose their
+ * contains some words. They also answer on a channel the messages addressed to them, as in "Bob: hello". A member may also
+ * address the client who did not write to it yet, or give hints to the client who wrote to another member without getting its
+ * answer. The texts are converted to ASCII, which the world only accepts for now (the translated texts lose their
  * accents). The lines of the members can be cut in packets, so that the framing of the lines matters.
  */
 public class IrcServer extends ProgramPeer {
   public static final String NAME     = "irc.buggleinc.com";
+  /** A message on a channel addressed to someone, as in "Bob: hello" or "Bob, hello" */
+  private static final Pattern ADDRESSED = Pattern.compile("\\s*([^\\s:,]+)\\s*[:,]\\s*(.*)");
   private static final String VERSION = "plm-ircd-1.0";
 
   /** A line said on a channel by a simulated member, some seconds after a client joined, to this client if addressed */
@@ -143,8 +148,9 @@ public class IrcServer extends ProgramPeer {
   }
 
   /**
-   * Makes a simulated member answer in private one second later: answer to the messages containing all the words (whatever their
-   * case and accents, so that they can be translated), and otherwise to the other ones
+   * Makes a simulated member answer one second later: answer to the messages containing all the words (whatever their case and
+   * accents, so that they can be translated), and otherwise to the other ones. It answers in private to the private messages, and
+   * on the channel to the messages addressed to it there (as in "Bob: hello"), addressing the client in turn
    */
   public IrcServer answer(String nick, List<String> words, String answer, String otherwise)
   {
@@ -415,21 +421,38 @@ public class IrcServer extends ProgramPeer {
         numeric(fd, client, "401", target + " :No such nick/channel");
       else if (!client.channels.contains(target))
         numeric(fd, client, "404", target + " :Cannot send to channel");
-      return; // the message reaches the other members, but not its sender
-    }
-    boolean known = members.values().stream().anyMatch(nicks -> nicks.stream().anyMatch(target::equalsIgnoreCase));
-    if (!known) {
-      numeric(fd, client, "401", target + " :No such nick/channel");
+      else { // the message reaches the other members (but not its sender), and the one it is addressed to reacts
+        Matcher addressed = ADDRESSED.matcher(params.get(1));
+        if (addressed.matches())
+          members.get(target)
+              .stream()
+              .filter(addressed.group(1)::equalsIgnoreCase)
+              .findFirst()
+              .ifPresent(nick -> ask(fd, client, nick, addressed.group(2), target));
+      }
       return;
     }
-    String nick = members.values().stream().flatMap(List::stream).filter(target::equalsIgnoreCase).findFirst().get();
+    members.values()
+        .stream()
+        .flatMap(List::stream)
+        .filter(target::equalsIgnoreCase)
+        .findFirst()
+        .ifPresentOrElse(nick -> ask(fd, client, nick, params.get(1), client.nick), () -> numeric(fd, client, "401", target + " :No such nick/channel"));
+  }
+
+  /**
+   * Makes a simulated member react to a message of the client: sent to it in private (to being the nickname of the client), or
+   * addressed to it on a channel (to being this channel, where the member addresses the client in turn)
+   */
+  private void ask(int fd, Client client, String nick, String message, String to)
+  {
     client.told.add(nick);
     Answers answer = answers.get(nick);
     if (answer == null)
       return;
-    String message  = ascii(params.get(1)).toLowerCase(Locale.ROOT);
-    boolean matches = answer.words().stream().allMatch(message::contains);
-    plan(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + client.nick + " :" + (matches ? answer.answer() : answer.otherwise()), c -> true);
+    boolean matches = answer.words().stream().allMatch(ascii(message).toLowerCase(Locale.ROOT)::contains);
+    String reply    = (to.startsWith("#") ? client.nick + ": " : "") + (matches ? answer.answer() : answer.otherwise());
+    plan(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + to + " :" + reply, c -> true);
     if (matches) {
       client.answered.add(nick);
       return;

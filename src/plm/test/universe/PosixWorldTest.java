@@ -551,6 +551,18 @@ public class PosixWorldTest {
     Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0)); // no more hints: a deadlock
   }
 
+  @Test public void testIrcMembersAnswerOnTheChannel()
+  {
+    PosixEntity p = process(ircWithHints());
+    Lines lines   = joined(p);
+    p.send(3, b("PRIVMSG #welcome :Hello everybody\r\nPRIVMSG #welcome :Bob: Hello\r\n"), 0); // only the second one is for Bob
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG #welcome :student: What?", lines.next());
+    Assertions.assertEquals(":Alice!alice@buggleinc.com PRIVMSG #welcome :student: be polite", lines.next()); // and Bob does not call
+    p.send(3, b("PRIVMSG #welcome :bob, please, a baggle\r\n"), 0);
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG #welcome :student: Thanks!", lines.next());
+    Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0));
+  }
+
   @Test public void testIrcMembersStayQuietOnceTold()
   {
     PosixEntity p = process(ircWithHints());

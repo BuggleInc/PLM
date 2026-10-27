@@ -925,7 +925,7 @@ documentation](PEDAGOGY.md#system-programming).
   with `NICK` and `USER` and its welcome burst, `JOIN`, `PART`, `PRIVMSG`, `NAMES`, `PING` and `QUIT`, and the usual numeric
   errors. It splits the lines on `\n`, ignoring a `\r` before it. The exercise gives its channels with their topic and their
   simulated members (`channel()`), the lines these members say some seconds after a client joined the channel (`say()`, so
-  that each client receives the whole chat), the private answer of a member to the messages containing some words (whatever
+  that each client receives the whole chat), the answer of a member to the messages containing some words (whatever
   their case and accents) and to the other ones (`answer()`), a line addressed to the client who did not write to that member
   yet (`address()`), the hints of a member to the client who wrote to another one without getting its answer, one more after
   each failure (`hints()`), and possibly the size of the packets cutting the lines of the members, one per second
