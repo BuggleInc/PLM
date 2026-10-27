@@ -1,16 +1,25 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>POSIX world</h2>
 
-<p>In this universe, your program runs in a simulated system. Its regular files and its network connections are part of the
-world, and the other programs follow a script. Your program uses them through file descriptors, as on a real UNIX system: the
-descriptors 0, 1 and 2 designate the standard input, output and error (<code>STDIN_FILENO</code>, <code>STDOUT_FILENO</code> and
-<code>STDERR_FILENO</code>), and each new descriptor is the smallest free number.</p>
+<p>In this universe, your program runs in a simulated system. Its regular files and its network connections are simulated within
+the PLM as parts of the
+world, and the other programs follow a script, or are servers of real protocols. [!c]Your program uses them through file
+descriptors, as on a real UNIX system: the descriptors 0, 1 and 2 designate the standard input, output and error
+(<code>STDIN_FILENO</code>, <code>STDOUT_FILENO</code> and <code>STDERR_FILENO</code>), and each new descriptor is the smallest
+free number.[/!][!python|java|scala]Your program uses them as on a real system, while the world shows the file descriptors behind
+them: the descriptors 0, 1 and 2 designate the standard input, output and error, and each new descriptor is the smallest free
+number.[/!] Only IPv4 TCP connections are supported.</p>
 
+<p>The time of the world only advances when your program waits, for example for data that did not arrive yet. If your program
+and the other programs all wait for each other, the world stops your program and reports this deadlock, instead of letting it
+wait forever.</p>
+
+[!c]
 <p>The system functions behave as their real counterparts, with the same signatures. They return -1 on failure, and set
-<code>errno</code> to the reason of the failure. Only IPv4 TCP sockets are supported. The output functions of
-<code>stdio.h</code> on the standard streams (<code>printf()</code>, <code>fprintf()</code> on <code>stdout</code> or
-<code>stderr</code>, <code>puts()</code>, <code>fputs()</code>, <code>putchar()</code> and <code>perror()</code>) write on the
-standard output and error of the world, without buffering.</p>
+<code>errno</code> to the reason of the failure. The output functions of <code>stdio.h</code> on the standard streams
+(<code>printf()</code>, <code>fprintf()</code> on <code>stdout</code> or <code>stderr</code>, <code>puts()</code>,
+<code>fputs()</code>, <code>putchar()</code> and <code>perror()</code>) write on the standard output and error of the world,
+without buffering.</p>
 
 <h2>Provided functions</h2>
 
@@ -30,7 +39,72 @@ standard output and error of the world, without buffering.</p>
   <li><code>ssize_t read(int fd, void* buf, size_t count)</code> and <code>ssize_t write(int fd, const void* buf, size_t
     count)</code>: read and write data on any descriptor.</li>
   <li><code>int close(int fd)</code>: closes the descriptor.</li>
+  <li><code>int unlink(const char* path)</code>: removes the file.</li>
+  <li><code>FILE* fopen(const char* path, const char* mode)</code> and <code>FILE* fdopen(int fd, const char* mode)</code>: give
+    a stream of <code>stdio.h</code> on a file or on any descriptor, such as a socket, buffered as usual, to use it with
+    <code>fgets()</code>, <code>fscanf()</code>, <code>fprintf()</code> or <code>fflush()</code>.</li>
   <li><code>unsigned int sleep(unsigned int seconds)</code>: waits for the given amount of seconds.</li>
 </ul>
+[/!]
+
+[!python]
+<p>The usual modules act on the world: <code>socket</code>, the file functions of <code>os</code>, <code>open()</code> and
+<code>time.sleep()</code>. The failures raise the usual exceptions, such as <code>ConnectionRefusedError</code> or
+<code>FileNotFoundError</code>. <code>print()</code> writes on the standard output of the world, and <code>sys.stderr</code> on
+its standard error.</p>
+
+<h2>Provided functions</h2>
+
+<ul>
+  <li><code>socket.socket()</code>: creates an IPv4 TCP socket. A <code>with</code> block closes it at its end.</li>
+  <li><code>sock.connect((host, port))</code>: connects the socket to a server.</li>
+  <li><code>sock.bind((host, port))</code>: binds the socket to a local port (the empty host <code>""</code> standing for every
+    interface), and <code>sock.listen()</code> accepts the incoming connections on it.</li>
+  <li><code>sock.accept()</code>: waits for an incoming connection, and returns a pair whose first element is a new socket for
+    it.</li>
+  <li><code>sock.send(data)</code>, <code>sock.sendall(data)</code> and <code>sock.recv(size)</code>: send and receive bytes on a
+    connected socket. <code>recv()</code> returns <code>b""</code> at the end of the stream.</li>
+  <li><code>sock.makefile(mode)</code>: gives a file on the socket, buffered as usual, such as <code>sock.makefile("rb")</code>
+    whose <code>readline()</code> returns the next line.</li>
+  <li><code>sock.shutdown(how)</code>: closes one direction of the connection (<code>socket.SHUT_RD</code> or
+    <code>socket.SHUT_WR</code>), or both (<code>socket.SHUT_RDWR</code>), and <code>sock.close()</code> closes the
+    socket.</li>
+  <li><code>socket.create_connection((host, port))</code> and <code>socket.create_server((host, port))</code>: give a socket
+    connected to a server, or listening on a local port.</li>
+  <li><code>open(path, mode)</code>: opens a file of the world, in binary or text mode.</li>
+  <li><code>os.open(path, flags)</code>, <code>os.read(fd, size)</code>, <code>os.write(fd, data)</code>,
+    <code>os.close(fd)</code> and <code>os.fdopen(fd, mode)</code>: work on the descriptors, as their C counterparts.</li>
+  <li><code>os.unlink(path)</code> or <code>os.remove(path)</code>: removes the file.</li>
+  <li><code>time.sleep(seconds)</code>: waits for the given amount of whole seconds.</li>
+</ul>
+[/!]
+
+[!java|scala]
+<p>The usual classes act on the world, with the interface of the JDK: <code>Socket</code>, <code>ServerSocket</code>,
+<code>Thread.sleep()</code> and the classes reading and writing files. The failures throw the usual exceptions, such as
+<code>ConnectException</code> or <code>FileNotFoundException</code>. [!java]<code>System.out</code>[/!][!scala]<code>println()</code>[/!]
+writes on the standard output of the world, and <code>System.err</code> on its standard error.</p>
+
+<h2>Provided classes</h2>
+
+<ul>
+  <li><code>new Socket(host, port)</code>: creates a socket connected to a server (or <code>new Socket()</code>, then
+    <code>connect(new InetSocketAddress(host, port))</code>).</li>
+  <li><code>socket.getInputStream[!java]()[/!]</code> and <code>socket.getOutputStream[!java]()[/!]</code>: give the streams to
+    receive and send bytes on a connected socket, to wrap for example in a <code>BufferedReader</code> or a
+    <code>PrintWriter</code>. The input stream returns -1 at the end of the stream.</li>
+  <li><code>socket.shutdownInput()</code> and <code>socket.shutdownOutput()</code>: close one direction of the connection, and
+    <code>socket.close()</code> closes the socket.</li>
+  <li><code>new ServerSocket(port)</code>: creates a socket listening on a local port (or <code>new ServerSocket()</code>, then
+    <code>bind(new InetSocketAddress(port))</code>), whose <code>accept()</code> waits for an incoming connection and returns a
+    new <code>Socket</code> for it.</li>
+  <li><code>new FileInputStream(path)</code>, <code>new FileOutputStream(path, append)</code>, <code>new FileReader(path)</code>,
+    <code>new FileWriter(path, append)</code> and <code>new PrintWriter(path)</code>: open a file of the world.</li>
+  <li><code>Files.readString(path)</code>, <code>Files.readAllBytes(path)</code>, <code>Files.readAllLines(path)</code>,
+    <code>Files.writeString(path, text)</code>, <code>Files.write(path, bytes)</code>, <code>Files.delete(path)</code> and
+    <code>Files.deleteIfExists(path)</code>: read, write or remove a whole file, designated by <code>Path.of(name)</code>.</li>
+  <li><code>Thread.sleep(milliseconds)</code>: waits for the given amount of milliseconds, rounded up to whole seconds.</li>
+</ul>
+[/!]
 
 [!protocols/]
