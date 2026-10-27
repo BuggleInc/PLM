@@ -372,7 +372,8 @@ public class IrcServer extends ProgramPeer {
   @Override String describe()
   {
     StringBuilder sb = new StringBuilder(super.describe());
-    clients.values().forEach(client -> sb.append(", client ").append(client.nick).append(client.registered ? "" : " (not registered)"));
+    for (Client client : clients.values())
+      sb.append(", client ").append(client.nick == null ? "without nickname" : client.nick).append(client.registered ? "" : " (not registered)");
     return sb.toString();
   }
 }
