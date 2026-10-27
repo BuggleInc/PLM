@@ -106,3 +106,36 @@ C: PRIVMSG #lobby :Hello Alice!\r\n
 C: QUIT\r\n
 S: ERROR :Closing Link: 10.0.0.10 (Client Quit)\r\n
 </pre>
+
+<h4>Realism of this server</h4>
+
+<p>This server behaves as the real ones in everything described above, but it is simpler on the following points. A client
+written for this world would mostly work on real networks, with only some adaptations.</p>
+
+<ul>
+  <li>The message of the day is always sent after the welcome. It is optional on a real server, which replies <code>422 :MOTD
+    File is missing</code> instead. A client waiting for the reply 376 to start would then wait forever, while waiting for the
+    reply 001 works everywhere.</li>
+  <li>The nicknames are checked for their syntax and their uniqueness, but anyone can take any free nickname. On a real
+    network, the users register their nickname with a service (usually NickServ), and must then identify themselves with a
+    password, either with a message to this service or with SASL during the registration, or they are renamed after a
+    while.</li>
+  <li>The server listens on the port 194 without encryption. This port is the one assigned to IRC, but the real servers rather
+    use the port 6667 in clear text, and nowadays the port 6697 with TLS (RFC 7194). Many networks refuse the connections that
+    are not encrypted, which a client cannot handle with the system calls of this world alone.</li>
+  <li>The modern clients start by negotiating the extensions of the protocol (IRCv3) with <code>CAP LS 302</code>, before
+    registering. This server answers <code>451</code> to <code>CAP</code>, and does not send the reply 005 (ISUPPORT), which
+    tells the limits of a real server (the length of the nicknames, the kinds of channels...) after the reply 004.</li>
+  <li>This server never sends <code>PING</code>. A real server regularly checks that its clients are still there with
+    <code>PING :token</code>, and closes the connection (<code>Ping timeout</code>) of those who do not answer <code>PONG
+    :token</code> in time. Some servers even send such a <code>PING</code> before the reply 001, and only complete the
+    registration once the client answered it.</li>
+  <li>A real server usually sends several notices on connection, while it looks up the name of the client's machine, and its
+    prefixes show this name (often hidden behind a mask) rather than the address of the client.</li>
+  <li>The lines are not limited in length, and the client may send them as fast as it wishes. A real server limits each line to
+    512 bytes with its <code>\r\n</code>, and closes the connection of the clients that send too fast (<code>Excess
+    Flood</code>).</li>
+  <li>The other members of the channels follow a script, and many commands are missing, such as <code>MODE</code>,
+    <code>WHO</code>, <code>WHOIS</code> or <code>TOPIC</code> (answered by <code>421</code>). The texts are limited to ASCII,
+    while the real networks mostly carry UTF-8.</li>
+</ul>
