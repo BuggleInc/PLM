@@ -46,8 +46,17 @@ def _read(fd, n):
     return _checked(_plm_remote_read(fd, n))
 
 
+def _bytes(data):
+    """The data to send or write, which must be bytes-like as in Python (a text must be encoded first)"""
+    try:
+        return bytes(memoryview(data))
+    except TypeError:
+        hint = " (encode the text first with its encode() method, or write b\"...\" instead of \"...\")" if isinstance(data, str) else ""
+        raise TypeError(f"a bytes-like object is required, not '{type(data).__name__}'{hint}") from None
+
+
 def _write(fd, data):
-    return _checked(_plm_remote_write(fd, bytes(memoryview(data))))
+    return _checked(_plm_remote_write(fd, _bytes(data)))
 
 
 def _close(fd):
@@ -142,10 +151,10 @@ class socket:
         _checked(_plm_remote_connect(self._fd, *_ip_and_port(address)))
 
     def send(self, data, flags=0):
-        return _checked(_plm_remote_send(self._fd, bytes(memoryview(data)), flags))
+        return _checked(_plm_remote_send(self._fd, _bytes(data), flags))
 
     def sendall(self, data, flags=0):
-        data = bytes(memoryview(data))
+        data = _bytes(data)
         while data:
             data = data[self.send(data, flags):]
 
