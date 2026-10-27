@@ -163,14 +163,14 @@ while (fgets(line, sizeof line, in) != NULL) {     /* NULL at the end of the str
 </ul>
 [/!]
 
-[!java]
-<p>The easiest solution in Java is to build a <code>BufferReader in</code> from the socket and then use <code>in.readLine()</code> 
+[!java|scala]
+<p>The easiest solution in [!thelang] is to build a <code>BufferedReader in</code> from the socket and then use <code>in.readLine()</code>
 to get the next line, or <code>null</code> if the socket was closed on the other side. <code>String.contains()</code>,
 <code>String.indexOf()</code> and <code>String.substring()</code> are then useful to parse the server answers.</p>
 
  <div class="tip" id="tip-java" alt="Give me the complete code example reading all lines">
 <pre>
-Socket socket = new Socket("10.0.0.1", 194);
+[!java]Socket socket = new Socket("10.0.0.1", 194);
 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 OutputStream out  = socket.getOutputStream();
 
@@ -179,9 +179,22 @@ while ((line = in.readLine()) != null) {      // without its \r\n
   System.out.println(line);
 }
 socket.close();                              // closes the streams too
-</pre>
-</div>
+[/!][!scala]val socket = new Socket("10.0.0.1", 194)
+val in     = new BufferedReader(new InputStreamReader(socket.getInputStream, StandardCharsets.UTF_8))
+val out    = socket.getOutputStream
 
+var line = in.readLine()
+while (line != null) {                       // without its \r\n
+  println(line)
+  line = in.readLine()
+}
+socket.close()                               // closes the streams too
+[/!]</pre>
+</div>
+[!scala]
+<p>The loop above is written as in Java. A more idiomatic Scala gives the lines as an iterator, which stops at the end of
+the stream: <code>Iterator.continually(in.readLine()).takeWhile(_ != null)</code>.</p>
+[/!]
 <p>Remember that everything which is sent to the socket must be encoded with the method
  <code>String.getBytes(StandardCharsets.UTF_8)</code>.</p>
 [/!]
