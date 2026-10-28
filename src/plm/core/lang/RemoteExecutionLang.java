@@ -76,6 +76,13 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
   protected String failureCause(String stderr) { return null; }
 
   /**
+   * Optional per-language hook: whether the process, once its standard input is closed, prints where it is on its error output
+   * (such as its stacks) and exits. The interruption of a run then waits a bit for this report before killing the process. False
+   * by default.
+   */
+  protected boolean reportsWhereItIs() { return false; }
+
+  /**
    * Optional per-language hook, called on every line the student process writes on its stderr, before it is printed and
    * captured. Returns the line to use instead, e.g. with the code locations of a stack trace translated back to the editor. The
    * line is returned as is by default.
@@ -135,18 +142,18 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       final AtomicInteger handledCommands       = new AtomicInteger();
       final AtomicReference<String> lastCommand = new AtomicReference<>();
       final AtomicBoolean killed                = new AtomicBoolean(); // by the command reader, after an error
+      final AtomicBoolean handling              = new AtomicBoolean(); // a command, by the command reader
 
       Thread commandReader = new Thread() {
         public void run()
         {
-          boolean handling = false;
           try {
             String command;
             while ((command = reader.readLine()) != null) {
               lastCommand.set(command);
-              handling = true;
+              handling.set(true);
               CommandExecutor.command(ent, command, bwriter);
-              handling = false;
+              handling.set(false);
               handledCommands.incrementAndGet();
             }
           } catch (Exception e) {
@@ -155,7 +162,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
             // The worlds run in parallel: each one names itself, and their errors add up
             String world = ent.getWorld() == null ? null : ent.getWorld().getName();
             synchronized (System.err) {
-              System.err.println((handling ? "Error while handling the command " : "Error while reading the command after ") + lastCommand.get() +
+              System.err.println((handling.get() ? "Error while handling the command " : "Error while reading the command after ") + lastCommand.get() +
                                  (world == null ? "" : " in world '" + world + "'") + " (" + handledCommands.get() + " commands handled so far)");
               e.printStackTrace();
             }
@@ -180,12 +187,22 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
         // loop. Being unblocked from waitFor() doesn't kill the child process by itself -- do that explicitly here,
         // the same way as the "process never connected" branch above; its reader threads see the pipes and the
         // socket close and exit on their own (EOF/IOException).
+        // Tell where it was stuck: in the program (which may report where), at its end, or in the PLM handling a command
+        boolean ended                  = !process.isAlive();
+        StackTraceElement[] handlingAt = handling.get() ? commandReader.getStackTrace() : null;
+        if (!ended && reportsWhereItIs())
+          awaitReport(process, stderrReader);
         process.destroyForcibly(); // before closing the socket, so that the process does not complain about it before dying
         protocolSocket.close();
         commandReader.interrupt(); // it may wait for the next step forever
         Thread.currentThread().interrupt();
-        System.err.println("Run of " + executable + " interrupted after " + handledCommands.get() + " protocol commands, the last one being " +
-                           lastCommand.get());
+        synchronized (System.err) {
+          System.err.println("Run of " + executable + " interrupted after " + handledCommands.get() + " protocol commands, the last one being " +
+                             lastCommand.get() + (ended ? ", once the program had ended" : "") + (handlingAt != null ? ", still handled at:" : ""));
+          if (handlingAt != null)
+            for (StackTraceElement frame : handlingAt)
+              System.err.println("\tat " + frame);
+        }
         progress.outcome = RunOutcome.kind.FAIL;
         progress.setExecutionError(Game.i18n.tr("You interrupted the execution, did you fall into an infinite loop ?\n"
                                                 + "Your program must stop by itself to successfully pass the exercise.\n"));
@@ -239,6 +256,18 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
         if (ended || System.nanoTime() > deadline)
           return null;
       }
+    }
+  }
+
+  /** Closes the standard input of the process, and waits a bit for the report that it then prints before exiting */
+  private static void awaitReport(Process process, Thread stderrReader)
+  {
+    try {
+      process.getOutputStream().close();
+      if (process.waitFor(2, TimeUnit.SECONDS))
+        stderrReader.join(1000);
+    } catch (IOException | InterruptedException e) {
+      // stopped again, or already gone: no report
     }
   }
 

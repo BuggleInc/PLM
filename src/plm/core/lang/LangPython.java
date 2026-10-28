@@ -135,7 +135,28 @@ public class LangPython extends TemplatedRemoteLang {
         // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
         lineShifts.put(executable, whatToCompile == StudentOrCorrection.STUDENT ? offset : 0);
 
-        String mainContent = "import sys\n" + "from Remote import connect\n" + "from Entity import run\n" + "\n" + "connect(sys.argv[1])\n" + "run()\n";
+        // The PLM closes the standard input to interrupt the run: the stacks of the other threads then go to the PLM console. The
+        // real os.read() is kept, as the glue of some universes replaces it.
+        String mainContent = """
+            import os, sys, threading, traceback
+
+            def report(read=os.read):
+                while read(0, 4096):
+                    pass
+                for thread, frame in sys._current_frames().items():
+                    if thread != threading.get_ident():
+                        print("Interrupted here (most recent call last):", file=sys.__stderr__)
+                        traceback.print_stack(frame, file=sys.__stderr__)
+                sys.__stderr__.flush()
+                os._exit(1)
+
+            threading.Thread(target=report, daemon=True).start()
+            from Remote import connect
+            from Entity import run
+
+            connect(sys.argv[1])
+            run()
+            """;
 
         Files.writeString(entityFile.toPath(), entityCode);
         Files.writeString(mainFile.toPath(), mainContent);
@@ -165,6 +186,9 @@ public class LangPython extends TemplatedRemoteLang {
 
   /** Locations before the body, and all of them when debugging is enabled, are left untouched. */
   @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
+
+  /** Main.py prints the stacks of the program and exits once its standard input is closed */
+  @Override protected boolean reportsWhereItIs() { return true; }
 
   /** The last line of the traceback, such as "TypeError: a bytes-like object is required, not 'str'" */
   @Override protected String failureCause(String stderr) { return stderr.strip().lines().reduce((previous, line) -> line).orElse(null); }
