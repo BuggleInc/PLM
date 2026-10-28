@@ -151,6 +151,7 @@ public class FileUtils {
     try (Stream<Path> files = Files.walk(path.toPath())) {
       files.sorted(Comparator.reverseOrder()).forEach(file -> {
         try {
+          file.toFile().setWritable(true); // Windows refuses to delete the read-only files, as the objects written by git
           Files.delete(file);
         } catch (IOException e) {
           System.err.println("Cannot delete " + file + ": " + e);
