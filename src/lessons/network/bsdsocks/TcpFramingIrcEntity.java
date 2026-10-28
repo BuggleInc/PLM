@@ -7,7 +7,7 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 /* END IMPORT */
 
-public class TcpClientEntity extends plm.universe.posix.PosixEntity {
+public class TcpFramingIrcEntity extends plm.universe.posix.PosixEntity {
   /* BEGIN REMOTE */
   /* BEGIN TEMPLATE */
 
