@@ -29,6 +29,8 @@ import org.eclipse.jgit.api.errors.TransportException;
 import org.eclipse.jgit.api.errors.UnmergedPathsException;
 import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
 import org.eclipse.jgit.errors.NoWorkTreeException;
+import org.eclipse.jgit.lib.AnyObjectId;
+import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
@@ -37,12 +39,16 @@ import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.merge.ResolveMerger.MergeFailureReason;
 import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.revwalk.RevWalk;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.eclipse.jgit.treewalk.TreeWalk;
+import org.eclipse.jgit.treewalk.filter.AndTreeFilter;
+import org.eclipse.jgit.treewalk.filter.PathFilterGroup;
+import org.eclipse.jgit.treewalk.filter.TreeFilter;
 import plm.core.model.Game;
 
 public class GitUtils {
@@ -161,10 +167,11 @@ public class GitUtils {
         System.out.println(Game.i18n.tr("Last session data successfully merged."));
       } else if (res.getMergeStatus() == MergeResult.MergeStatus.CONFLICTING) {
         System.out.println(Game.i18n.tr("Conflicts have been detected while synchronizing with last session data, trying to resolve it..."));
+        ObjectId local  = git.getRepository().resolve(Constants.HEAD);
         ObjectId remote = git.getRepository().resolve(remoteRef);
         for (String path : res.getConflicts().keySet()) {
-          RevCommit lastCommitLocal  = git.log().addPath(path).setMaxCount(1).call().iterator().next();
-          RevCommit lastCommitRemote = git.log().add(remote).addPath(path).setMaxCount(1).call().iterator().next();
+          RevCommit lastCommitLocal  = lastCommit(local, path);
+          RevCommit lastCommitRemote = lastCommit(remote, path);
           long timeLocal             = lastCommitLocal.getAuthorIdent().getWhen().getTime();
           long timeRemote            = lastCommitRemote.getAuthorIdent().getWhen().getTime();
           RevCommit winner           = timeLocal > timeRemote ? lastCommitLocal : lastCommitRemote;
@@ -196,6 +203,16 @@ public class GitUtils {
     } catch (Exception ex) {
       System.err.println(Game.i18n.tr("Can't merge data retrieved from server with local session data."));
       throw ex;
+    }
+  }
+
+  /** The last commit touching that path in the history of start. The walk is closed, releasing what it holds of the repository. */
+  private RevCommit lastCommit(AnyObjectId start, String path) throws IOException
+  {
+    try (RevWalk walk = new RevWalk(git.getRepository())) {
+      walk.setTreeFilter(AndTreeFilter.create(PathFilterGroup.createFromStrings(path), TreeFilter.ANY_DIFF));
+      walk.markStart(walk.parseCommit(start));
+      return walk.next();
     }
   }
 
