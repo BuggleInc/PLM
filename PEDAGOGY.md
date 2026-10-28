@@ -220,6 +220,10 @@ The lesson is split in several chapters, as follows:
     moving primitives are forbidden, so that the students compute the coordinates of each cell and teleport with `setPos()`.
   * *Moria (1 exercise, 21/17/19/19 lines):* a summative exercise where the buggle clears its way out of a mine.
 
+TODO:
+* Replace the bat exercises with a new universe: BuggleBrain, inspired from Braitenberg. You code boolean expression that encode
+  the motor answer to what you get on your sensors. This could be rendered in a way that is close to Robot Odyssey,
+  https://en.wikipedia.org/wiki/Robot_Odyssey
 
 ### The maze lesson
 
