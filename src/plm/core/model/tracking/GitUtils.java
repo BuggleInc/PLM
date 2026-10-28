@@ -40,6 +40,7 @@ import org.eclipse.jgit.merge.MergeStrategy;
 import org.eclipse.jgit.merge.ResolveMerger.MergeFailureReason;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.eclipse.jgit.storage.file.WindowCacheConfig;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
@@ -426,6 +427,12 @@ public class GitUtils {
     commit(commitMsg);
     maybePushToUserBranch(userBranch, progress);
   }
+
+  /**
+   * Closes the pack files that the window cache of JGit keeps open, as Windows cannot delete them while they are open. Closing a
+   * repository releases its packs only asynchronously: the cache is replaced by an empty one instead.
+   */
+  public static void releasePacks() { new WindowCacheConfig().install(); }
 
   public void dispose()
   {

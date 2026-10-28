@@ -14,7 +14,6 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.revwalk.RevCommit;
-import org.eclipse.jgit.storage.file.WindowCacheConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -28,6 +27,7 @@ import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.Users;
 import plm.core.model.tracking.GitTracker;
+import plm.core.model.tracking.GitUtils;
 import plm.core.utils.FileUtils;
 
 /** Importing the session of a zip file merges its history into the local one, without losing anything */
@@ -38,14 +38,11 @@ public class GitTrackerImportTest {
   private static final String LOCAL = "11111111-1111-1111-1111-111111111111";
   private static final String OTHER = "22222222-2222-2222-2222-222222222222";
 
-  /**
-   * Windows cannot delete the temporary directory while the repositories in there are open. Closing them releases their packs
-   * asynchronously, so the window cache of JGit, which keeps them open, is also replaced by an empty one.
-   */
+  /** Windows cannot delete the temporary directory while the repositories in there are open */
   @AfterEach public void closeTrackers()
   {
     machines.forEach(machine -> machine.tracker.close());
-    new WindowCacheConfig().install();
+    GitUtils.releasePacks();
   }
 
   @BeforeAll public static void setUpGame()

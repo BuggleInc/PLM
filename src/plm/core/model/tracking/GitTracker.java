@@ -203,6 +203,7 @@ public class GitTracker implements UserSwitchesListener {
             users.switchToUser(previous);
             users.removeUser(adopted);
           }
+          GitUtils.releasePacks();
           FileUtils.deleteRecursive(adoptedDir);
           throw e;
         }
