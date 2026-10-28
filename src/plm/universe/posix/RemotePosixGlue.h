@@ -1,7 +1,8 @@
 /* The POSIX API of the world: the same functions as the system ones, acting on the world of the exercise instead, plus the
- * output functions of stdio.h on the standard streams, unbuffered, and fopen() and fdopen() giving real streams of the C
- * library (buffered as usual) on the descriptors of the world. The system headers come first, so that the renaming below
- * only applies to the code that follows (the student's one). */
+ * output functions of stdio.h on the standard streams, unbuffered, and fopen() and fdopen() giving streams (buffered as usual)
+ * on the descriptors of the world: real streams of the C library where it has custom streams, or else streams of the glue,
+ * handled by the functions of stdio.h renamed below. The system headers come first, so that the renaming below only applies
+ * to the code that follows (the student's one). */
 #ifdef _WIN32
 #include <fcntl.h>
 #include <io.h>
@@ -43,6 +44,7 @@ FILE* plm_fdopen(int fd, const char* mode);
 unsigned int plm_sleep(unsigned int seconds);
 int plm_printf(const char* format, ...);
 int plm_fprintf(FILE* stream, const char* format, ...);
+int plm_vfprintf(FILE* stream, const char* format, va_list args);
 int plm_puts(const char* s);
 int plm_fputs(const char* s, FILE* stream);
 int plm_putchar(int c);
@@ -69,7 +71,53 @@ int getParamInt(int i);
 #define sleep plm_sleep
 #define printf plm_printf
 #define fprintf plm_fprintf
+#define vfprintf plm_vfprintf
 #define puts plm_puts
 #define fputs plm_fputs
 #define putchar plm_putchar
 #define perror plm_perror
+
+#if !defined(__GLIBC__) && !defined(__APPLE__) && !defined(__FreeBSD__)
+/* No custom streams in the C library (as on Windows): the streams of fopen() and fdopen() are the glue's ones, that these
+ * functions handle, passing the other streams to the C library. fscanf() is not available on them. */
+#define PLM_OWN_STREAMS
+int plm_fgetc(FILE* stream);
+int plm_getc(FILE* stream);
+int plm_ungetc(int c, FILE* stream);
+char* plm_fgets(char* buf, int size, FILE* stream);
+size_t plm_fread(void* buf, size_t size, size_t count, FILE* stream);
+size_t plm_fwrite(const void* buf, size_t size, size_t count, FILE* stream);
+int plm_fputc(int c, FILE* stream);
+int plm_putc(int c, FILE* stream);
+int plm_fscanf(FILE* stream, const char* format, ...);
+int plm_fflush(FILE* stream);
+int plm_fclose(FILE* stream);
+int plm_feof(FILE* stream);
+int plm_ferror(FILE* stream);
+void plm_clearerr(FILE* stream);
+int plm_fileno(FILE* stream);
+int plm_setvbuf(FILE* stream, char* buf, int mode, size_t size);
+void plm_setbuf(FILE* stream, char* buf);
+
+/* Some of them may be macros of the C library */
+#undef getc
+#undef putc
+#undef fileno
+#define fgetc plm_fgetc
+#define getc plm_getc
+#define ungetc plm_ungetc
+#define fgets plm_fgets
+#define fread plm_fread
+#define fwrite plm_fwrite
+#define fputc plm_fputc
+#define putc plm_putc
+#define fscanf plm_fscanf
+#define fflush plm_fflush
+#define fclose plm_fclose
+#define feof plm_feof
+#define ferror plm_ferror
+#define clearerr plm_clearerr
+#define fileno plm_fileno
+#define setvbuf plm_setvbuf
+#define setbuf plm_setbuf
+#endif

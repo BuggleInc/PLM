@@ -42,7 +42,8 @@ without buffering.</p>
   <li><code>int unlink(const char* path)</code>: removes the file.</li>
   <li><code>FILE* fopen(const char* path, const char* mode)</code> and <code>FILE* fdopen(int fd, const char* mode)</code>: give
     a stream of <code>stdio.h</code> on a file or on any descriptor, such as a socket, buffered as usual, to use it with
-    <code>fgets()</code>, <code>fscanf()</code>, <code>fprintf()</code> or <code>fflush()</code>.</li>
+    <code>fgets()</code>, <code>fscanf()</code>, <code>fprintf()</code> or <code>fflush()</code> (<code>fscanf()</code> is not
+    available on these streams under Windows).</li>
   <li><code>unsigned int sleep(unsigned int seconds)</code>: waits for the given amount of seconds.</li>
 </ul>
 [/!]

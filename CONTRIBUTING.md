@@ -994,8 +994,12 @@ documentation](PEDAGOGY.md#system-programming).
   `fprintf()`, `puts()`, `fputs()`, `putchar()` and `perror()`), unbuffered, as the libc would otherwise write behind its back.
   Its `fopen()` and `fdopen()` give real streams of the libc, buffered as usual, whose reads and writes call the system calls of
   the world (`fopencookie()` of the glibc, which `LangC` enables with `-D_GNU_SOURCE`, or `funopen()` on macOS): the student can
-  use `fgets()` or `fscanf()` on a file or a socket. They fail with `ENOSYS` on Windows, which has no such custom streams, and
-  explain it once on the PLM console (the real standard error).
+  use `fgets()` or `fscanf()` on a file or a socket. The C library of Windows has no such custom streams: the glue gives its own
+  streams there (`PLM_OWN_STREAMS`), whose address is passed as a `FILE*`, and renames the functions of `stdio.h` working on
+  streams (`fgets()`, `fread()`, `fwrite()`, `fflush()`, `fclose()`, `setvbuf()`...) to handle them, passing the other streams to
+  the C library. `fscanf()` is not available on these streams, which it explains once on the PLM console (the real standard
+  error). `vfprintf()` is intercepted everywhere, as `fprintf()`.
+  TODO: fseek(), ftell() and rewind() are not renamed, so the unintercepted version may crash when used on our own FILE*.
 * **The Python glue** (`RemotePosixGlue.py`, appended to the generated functions renamed `_plm_remote_xxx`) substitutes the
   system modules at import, so that the student's code uses them as usual: `sys.modules["socket"]` becomes a module of the world
   (`socket.socket` with `makefile()`, `create_connection()`, `create_server()` and the constants), `os.open()`, `os.read()`,
