@@ -5,6 +5,7 @@ generated Main.py. The PLM only listens on that address. Its own messages go to 
 may have replaced by one of its streams (see sys.__stderr__).
 """
 
+import atexit as _atexit  # private as _socket below
 import socket as _socket  # not exported by "import *", which must not shadow the socket module of a world
 import sys
 
@@ -19,6 +20,9 @@ def connect(port):
     sock = _socket.create_connection(("127.0.0.1", int(port)))
     sock.setsockopt(_socket.IPPROTO_TCP, _socket.TCP_NODELAY, 1)  # each command is a short request awaiting its answer
     _sockFile = sock.makefile("rw", encoding="utf-8", newline="\n")
+    sock.close()  # the connection stays open until the file is closed
+    # Windows resets the connections still open when the process exits, which the PLM takes for an error
+    _atexit.register(_sockFile.close)
   except OSError as e:
     print("Cannot connect to the PLM protocol on port %s: %s" % (port, e), file=sys.__stderr__)
     sys.exit(1)
