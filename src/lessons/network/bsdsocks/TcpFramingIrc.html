@@ -42,11 +42,11 @@ within that list and finally the data size is prefixed to the data itself.</p>
 
 <h2>The protocols serie</h2>
 
-<p>The <i>protocols serie</i> contains several exercises that will let you explore several classical protocols: IRC, HTTP and then 
-FTP. In this first exercise you have to connect to an IRC server, join a channel, get an information from a (simulated) participant, 
-disconnect from the server and display the information on your command line. The server you will connected to is a
-simulation that runs within the PLM, but it's realistic and implements the exact protocol of real servers on the Internet. You can 
-find its documentation in the world documentation by pressing Ctrl-H.</p>
+<p>The <i>protocols serie</i> contains several exercises that will let you explore several classical protocols: IRC, DNS, XMPP,
+HTTP and finally FTP. In this first exercise you have to connect to an IRC server, join a channel, get an information from a
+(simulated) participant, disconnect from the server and display the information on your command line. The server you will
+connected to is a simulation that runs within the PLM, but it's realistic and implements the exact protocol of real servers on
+the Internet. You can find its documentation in the world documentation by pressing Ctrl-H.</p>
 
 <p>To inspect the protocols, run your code step by step and clic on any socket or file descriptor to open the socket content in 
 a new editor tab.</p>
@@ -71,11 +71,12 @@ code <code>353</code>, ended with a line with the code <code>366</code> such as 
 joined the channel and that the server is ready.</p>
 
 <p>Once on the channel, you can wait a bit, displaying what the other (simulated) participants of the discussion have to say,
-but the exercise requests you to ask Bob about the documentation file that you should retrieve from the server in the next exercise.
-Send a message to Bob about it, but please be polite: Bob is a bit grumpy, but he's a good guy. If you're stuck, more hints
-may come from the other people on the channel, so keep reading the conversation to learn more.</p>
+but the exercise requests you to ask Bob about the treasure trove he keeps talking about. Send a message to Bob to know more,
+but please be polite: Bob is a bit grumpy, but he's a good guy. If you're stuck, more hints may come from the other people on
+the channel, so keep reading the conversation for more information.</p>
 
-<p>Once you know the name of the file that contains the documentation, simply print it to your standard output.</p>
+<p>Once you got the information from Bob, simply print the obtained URL to your standard output to not forget, and proceed to
+the next exercise.</p>
 
 <p>Good luck!</p>
 
@@ -166,7 +167,8 @@ while (fgets(line, sizeof line, in) != NULL) {     /* NULL at the end of the str
 [!java|scala]
 <p>The easiest solution in [!thelang] is to build a <code>BufferedReader in</code> from the socket and then use <code>in.readLine()</code>
 to get the next line, or <code>null</code> if the socket was closed on the other side. <code>String.contains()</code>,
-<code>String.indexOf()</code> and <code>String.substring()</code> are then useful to parse the server answers.</p>
+<code>String.indexOf()</code>, <code>String.lastIndexOf()</code> and <code>String.substring()</code> are then useful to parse
+the server answers.</p>
 
  <div class="tip" id="tip-java" alt="Give me the complete code example reading all lines">
 <pre>

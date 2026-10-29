@@ -65,13 +65,12 @@ void run()
   waitline(in, "366");
 
   /* Talk to Bob */
-  sendall(sock, "PRIVMSG #welcome :Bob: Please tell me where the documentation is.\r\n");
-  waitline(in, "/docs/");
+  sendall(sock, "PRIVMSG #welcome :Bob: Please show me the way to the treasure trove.\r\n");
+  waitline(in, "xmpp:");
 
-  /* Extract the file from what Bob said */
-  char* begin = strchr(buffer, '/');
-  char* end   = strchr(begin, ' ');
-  *end        = '\0';
+  /* Extract the URL from what Bob said, between < and > */
+  char* begin         = strstr(buffer, "xmpp:");
+  *strchr(begin, '>') = '\0';
   printf("%s\n", begin);
 
   /* display the rest for debugging, but this hangs once the end is reached */

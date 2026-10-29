@@ -37,14 +37,11 @@ public class TcpFramingIrcEntity extends plm.universe.posix.PosixEntity {
 
     waitline(in, "366");
 
-    out.write("PRIVMSG #welcome :Bob: Please tell me where the documentation is.\r\n".getBytes(StandardCharsets.UTF_8));
-    String line = waitline(in, "/docs/");
+    out.write("PRIVMSG #welcome :Bob: Please show me the way to the treasure trove.\r\n".getBytes(StandardCharsets.UTF_8));
+    String line = waitline(in, "xmpp:");
 
-    int begin = line.indexOf('/');
-    line      = line.substring(begin);
-    line      = line.substring(0, line.indexOf(' '));
-
-    System.out.println(line);
+    int begin = line.indexOf("xmpp:"); // the URL, between < and >
+    System.out.println(line.substring(begin, line.indexOf('>', begin)));
     socket.close(); // disconnect from the server
     /* END SOLUTION */
   }

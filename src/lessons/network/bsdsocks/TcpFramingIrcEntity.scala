@@ -29,11 +29,11 @@ class TcpFramingIrcEntity extends plm.universe.posix.PosixEntity {
     out.write("JOIN #welcome\r\n".getBytes(StandardCharsets.UTF_8))
     waitline(in, "366")
 
-    out.write("PRIVMSG #welcome :Bob: Please tell me where the documentation is.\r\n".getBytes(StandardCharsets.UTF_8))
-    val line = waitline(in, "/docs/")
+    out.write("PRIVMSG #welcome :Bob: Please show me the way to the treasure trove.\r\n".getBytes(StandardCharsets.UTF_8))
+    val line = waitline(in, "xmpp:")
 
-    val path = line.substring(line.indexOf('/'))
-    println(path.substring(0, path.indexOf(' ')))
+    val begin = line.indexOf("xmpp:") // the URL, between < and >
+    println(line.substring(begin, line.indexOf('>', begin)))
     socket.close() // disconnect from the server
     /* END SOLUTION */
   }

@@ -36,15 +36,12 @@ def run():
     	data = next(reader)
 
     data=""
-    sock.sendall(b"PRIVMSG #welcome :Bob: Please tell me where the documentation is.\r\n")
-    while "/docs/" not in data:
+    sock.sendall(b"PRIVMSG #welcome :Bob: Please show me the way to the treasure trove.\r\n")
+    while "xmpp:" not in data:
     	data = next(reader)
     	
-    end = data.find("/")
-    data = data[end:]
-    end = data.find(" ")
-    data = data[:end]
-    print(data)
+    begin = data.find("xmpp:")  # the URL, between < and >
+    print(data[begin:data.find(">", begin)])
 
     sock.close()
 # END SOLUTION
