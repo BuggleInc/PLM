@@ -26,8 +26,8 @@ import plm.core.model.Game;
  * client receives the whole chat, whenever it joins), and answer a private message after a second, depending on whether it
  * contains some words. They also answer on a channel the messages addressed to them, as in "Bob: hello". A member may also
  * address the client who did not write to it yet, or give hints to the client who wrote to another member without getting its
- * answer. The texts are converted to ASCII, which the world only accepts for now (the translated texts lose their
- * accents). The lines of the members can be cut in packets, so that the framing of the lines matters.
+ * answer. The texts are converted to ASCII, as the servers send their texts (the translated texts lose their accents). The
+ * lines of the members can be cut in packets, so that the framing of the lines matters.
  */
 public class IrcServer extends ProgramPeer {
   public static final String NAME     = "irc.buggleinc.com";

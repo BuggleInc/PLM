@@ -275,14 +275,14 @@ public class PosixWorldView extends WorldView {
   private String written(String name)
   {
     PosixProcess student = ((PosixWorld)world).student;
-    return (name.equals("stdout") ? student.stdout : student.stderr).data;
+    return PosixWorld.text((name.equals("stdout") ? student.stdout : student.stderr).data);
   }
 
   /** Everything that went through a connected socket: what arrived on it (received or not), and what it sent (transmitted or not) */
-  private static String history(Socket s) { return "Received:\n" + s.arrived + "\n\nSent:\n" + s.remote.arrived + s.outgoing; }
+  private static String history(Socket s) { return PosixWorld.text("Received:\n" + s.arrived + "\n\nSent:\n" + s.remote.arrived + s.outgoing); }
 
   /** Draws a file as an icon with a folded corner: its name on top, then the first lines of its content (all of it as a tooltip) */
-  private void file(Graphics2D g2, int x, int y, String name, String content)
+  private void file(Graphics2D g2, int x, int y, String name, String data)
   {
     int fold = 10;
     int[] xs = {x, x + FILE_WIDTH - fold, x + FILE_WIDTH, x + FILE_WIDTH, x};
@@ -297,7 +297,7 @@ public class PosixWorldView extends WorldView {
 
     Font font = g2.getFont();
     g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 10));
-    String[] lines = content.split("\n", -1);
+    String[] lines = data.split("\n", -1);
     int shown      = Math.min(lines.length, (FILE_HEIGHT - LINE - 4) / 11);
     for (int i = 0; i < shown; i++) {
       String line = i == shown - 1 && shown < lines.length ? "…" : PosixWorld.visible(lines[i]);
@@ -305,8 +305,11 @@ public class PosixWorldView extends WorldView {
     }
     g2.setFont(font);
     Rectangle area = new Rectangle(x, y, FILE_WIDTH, FILE_HEIGHT);
-    tips.add(new Tip(area, "<html>" + escape(name) + ":<br><pre>" + escape(content) + "</pre><i>Click to open it in the editor</i></html>"));
-    links.add(new Link(area, name, () -> ((PosixWorld)world).files.getOrDefault(name, "(this file does not exist anymore)")));
+    tips.add(new Tip(area, "<html>" + escape(name) + ":<br><pre>" + escape(PosixWorld.text(data)) + "</pre><i>Click to open it in the editor</i></html>"));
+    links.add(new Link(area, name, () -> {
+      String current = ((PosixWorld)world).files.get(name);
+      return current == null ? "(this file does not exist anymore)" : PosixWorld.text(current);
+    }));
   }
 
   private static String escape(String text) { return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"); }
@@ -334,7 +337,7 @@ public class PosixWorldView extends WorldView {
     for (String chunk : q.chunks()) {
       starts.add(cells.size());
       for (char c : chunk.toCharArray())
-        cells.add(c == '\n' ? "⏎" : c == '\r' ? "↵" : c == '\t' ? "⇥" : String.valueOf(c));
+        cells.add(c == '\n' ? "⏎" : c == '\r' ? "↵" : c == '\t' ? "⇥" : c < ' ' || c >= 0x7F ? "·" : String.valueOf(c)); // the bytes in the tooltip
     }
     int used = cells.size();
     while (cells.size() < q.capacity())
@@ -350,7 +353,7 @@ public class PosixWorldView extends WorldView {
       StringBuilder all = new StringBuilder();
       for (String chunk : q.chunks())
         all.append(chunk);
-      tips.add(new Tip(new Rectangle(x, y, width, CELL), "'" + PosixWorld.visible(all.toString()) + "'" + (q.eof() ? " then EOF" : "")));
+      tips.add(new Tip(new Rectangle(x, y, width, CELL), "'" + PosixWorld.bytes(all.toString()) + "'" + (q.eof() ? " then EOF" : "")));
     }
     int cellsWidth = cells.isEmpty() ? CELL // the place of an empty queue
                                      : cells.stream().mapToInt(c -> "EOF".equals(c) ? 2 * CELL : CELL).sum() + (hidden > 0 ? 2 * CELL : 0);

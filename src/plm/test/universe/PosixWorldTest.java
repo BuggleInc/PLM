@@ -272,6 +272,23 @@ public class PosixWorldTest {
     Assertions.assertTrue(ref.diffTo(curr, null).contains("received 'PINGPING'"), ref.diffTo(curr, null));
   }
 
+  @Test public void testBinaryDataIsKeptAndShownInOctal()
+  {
+    PosixWorld ref  = acceptedPing();
+    PosixWorld curr = (PosixWorld)ref.copy();
+    process(ref).write(1, "café\n".getBytes(StandardCharsets.UTF_8));
+    process(curr).write(1, "cafe\n".getBytes(StandardCharsets.UTF_8));
+    Assertions.assertTrue(ref.diffTo(curr, null).contains("instead of 'café\\n'"), ref.diffTo(curr, null)); // decoded from UTF-8
+
+    int file = process(ref).open("data.bin", O_WRONLY | O_CREAT | O_TRUNC);
+    process(ref).write(file, new byte[] {0, 1, -1, '7'});
+    process(ref).send(4, new byte[] {0, -1, '7'}, 0); // on the connection accepted by acceptedPing()
+    curr = (PosixWorld)ref.copy();
+    Assertions.assertTrue(curr.winning(ref), ref.diffTo(curr, null)); // the bytes are kept as they are
+    process(curr).send(4, new byte[] {1}, 0);
+    Assertions.assertTrue(ref.diffTo(curr, null).contains("received '\\0\\3777\\1'"), ref.diffTo(curr, null)); // as strace shows them
+  }
+
   @Test public void testClientConnectingBeforeListenIsRefused()
   {
     PosixWorld w  = new PosixWorld("early").addPeer(Peer.client("10.0.0.2", 3000, """

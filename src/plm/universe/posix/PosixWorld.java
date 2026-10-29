@@ -1,5 +1,6 @@
 package plm.universe.posix;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.IdentityHashMap;
@@ -158,8 +159,8 @@ public class PosixWorld extends World {
   /** The data longer than this is cut in the trace, as strace does (see its option -s) */
   static final int SHOWN_DATA = 50;
 
-  /** The string between double quotes and with its quotes escaped, as displayed by strace (whole, as for a path) */
-  static String quoted(String data) { return "\"" + visible(data.replace("\\", "\\\\").replace("\"", "\\\"")) + "\""; }
+  /** The bytes between double quotes and with their quotes escaped, as displayed by strace (whole, as for a path) */
+  static String quoted(String data) { return "\"" + escaped(data.replace("\\", "\\\\").replace("\"", "\\\""), true) + "\""; }
 
   /** The data of a call as displayed by strace: quoted, and cut after SHOWN_DATA characters with ... after the quotes */
   static String excerpt(String data) { return data.length() <= SHOWN_DATA ? quoted(data) : quoted(data.substring(0, SHOWN_DATA)) + "..."; }
@@ -167,8 +168,32 @@ public class PosixWorld extends World {
   /** The data written by a call in the buffer of the caller, marked as a side effect (or ... if the call failed and left it unchanged) */
   static String filled(String data) { return data == null ? "..." : "← " + excerpt(data); }
 
-  /** The data with its line breaks and tabulations escaped, to display it on a single line */
-  static String visible(String data) { return data.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t"); }
+  /** The text written by a program, decoded from UTF-8 to display it */
+  static String text(String data) { return new String(data.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8); }
+
+  /** The text written by a program, decoded and on a single line, with its line breaks and other control characters escaped */
+  static String visible(String data) { return escaped(text(data), false); }
+
+  /** The bytes on a single line, as displayed by strace: the line breaks and tabulations escaped, and the other unprintable bytes in octal */
+  static String bytes(String data) { return escaped(data, true); }
+
+  /** The characters with \\n, \\r and \\t escaped, and the other control characters (and the non-ASCII ones if asked) in octal */
+  private static String escaped(String data, boolean nonAscii)
+  {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < data.length(); i++) {
+      char c = data.charAt(i);
+      if (c == '\n' || c == '\r' || c == '\t')
+        sb.append(c == '\n' ? "\\n" : c == '\r' ? "\\r" : "\\t");
+      else if (c >= ' ' && c != 0x7F && (c < 0x7F || !nonAscii))
+        sb.append(c);
+      else { // on three digits when an octal digit follows, as strace does, to not read it as part of the number
+        boolean digit = i + 1 < data.length() && data.charAt(i + 1) >= '0' && data.charAt(i + 1) <= '7';
+        sb.append('\\').append(digit ? String.format("%03o", (int)c) : Integer.toOctalString(c));
+      }
+    }
+    return sb.toString();
+  }
 
   // ---------------------------------------------------------------- kernel internals
 

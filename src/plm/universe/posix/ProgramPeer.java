@@ -101,12 +101,12 @@ public abstract class ProgramPeer extends Peer {
 
   @Override String describe()
   {
-    return name + " " + process.ip + (waiting() == null ? "" : " (" + waiting() + ")") + ", received '" + PosixWorld.visible(received()) + "'";
+    return name + " " + process.ip + (waiting() == null ? "" : " (" + waiting() + ")") + ", received '" + PosixWorld.bytes(received()) + "'";
   }
 
   // ---------------------------------------------------------------- helpers for act(), tracing their system calls
 
-  /** The text in ASCII, which the world only accepts for now: the accents are removed (of a translated text), and the other characters become ? */
+  /** The text in ASCII, as the servers send their texts: the accents are removed (of a translated text), and the other characters become ? */
   protected static String ascii(String text)
   {
     String res = Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{M}", "");

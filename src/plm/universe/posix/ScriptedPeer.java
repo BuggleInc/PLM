@@ -379,7 +379,7 @@ final class ScriptedPeer extends Peer {
   {
     String state = refused ? " (connection refused)" : next < script.size() ? " (waiting in " + script.get(next).kind() + ")" : "";
     return (isServer ? "server " : "client of ") + process.ip + ":" + port + ", at step " + next + "/" + script.size() + state + ", received '" +
-        PosixWorld.visible(received()) + "'";
+        PosixWorld.bytes(received()) + "'";
   }
 
   @Override public boolean equals(Object o)

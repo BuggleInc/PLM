@@ -905,7 +905,8 @@ documentation](PEDAGOGY.md#system-programming).
   `PosixProcess` has its machine address, its descriptor table and its last error. The descriptors point to open file
   descriptions (`FileDescription`): `StandardStream` (0, 1 and 2 at first), `RegularFile` and `Socket`. The kernel executes the
   system calls of all the processes with the same code, following the Linux semantics and constants, and returns -1 with an
-  error name (e.g. `ECONNREFUSED`) on failure. Only ASCII data is accepted for now (`PosixEntity.text()`).
+  error name (e.g. `ECONNREFUSED`) on failure. The data is kept as bytes, one `char` per byte (ISO-8859-1): the trace shows it
+  as strace does (unprintable bytes in octal), and the view decodes the files and the outputs from UTF-8.
 * **Time**: the world has a clock. The student's system calls take no time, but `sleep()` and the blocking calls do: when nothing
   can progress, the clock jumps to the next wake up of a peer. Each scenario thus has a single causal history. A call that would
   block forever raises a deadlock (listing the state of the peers), and 1000 refused `connect()` in a row without the clock moving
@@ -956,8 +957,8 @@ documentation](PEDAGOGY.md#system-programming).
   the lines of the members, one per second (`packets()`). The addressed lines and the hints are `MessageFormat` patterns, whose
   `{0}` is the nickname of the client, and whose `{1}`, `{2}`... are the words expected by the other member (for the hints), so
   that a hint can give an exact sentence that stays consistent with the translated words. The texts, which may be translated,
-  lose their accents since the world only accepts ASCII for now. A `PRIVMSG` whose text holds spaces without its `:` is refused
-  with a notice telling how to write it, where a real server would only send its first word.
+  lose their accents since the servers send them in ASCII (`ProgramPeer.ascii()`). A `PRIVMSG` whose text holds spaces without
+  its `:` is refused with a notice telling how to write it, where a real server would only send its first word.
 * **The HTTP server** (`HttpServer`, software `plm-httpd/1.0`) serves static files (`file()`) with `GET` and `HEAD`, exact to the
   byte as the usual servers: its responses give `Content-Length`, the connections persist in HTTP/1.1 (unless `Connection:
   close`) and close after the response in HTTP/1.0 (unless `Connection: keep-alive`), and the errors are 400 (also for an
