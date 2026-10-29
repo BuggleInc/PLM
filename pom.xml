@@ -551,7 +551,7 @@
                   <workingDirectory>${project.basedir}</workingDirectory>
                   <arguments>
                     <argument>-c</argument>
-                    <argument>find src -name '*.java' | LC_ALL=C sort | xgettext --join-existing --output=l10n/engine/plm.pot --from-code=UTF-8 --language=Java -k -ktr -ktrc:1c,2 -ktrn:1,2 -ktrnc:1c,2,3 -kmarktr --files-from=-</argument>
+                    <argument>find src -name '*.java' | LC_ALL=C sort | xgettext --join-existing --output=l10n/engine/plm.pot --from-code=UTF-8 --language=Java -k -ktr -ktrc:1c,2 -ktrn:1,2 -ktrnc:1c,2,3 -kmarktr --add-comments=Translator: --files-from=-</argument>
                   </arguments>
                 </configuration>
               </execution>

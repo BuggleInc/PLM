@@ -1053,7 +1053,8 @@ allow the translators to update their work. This should be done
 regularly.
 
 - po4a po4a.conf
-- mvn -Pi18n-update -DskipTests process-classes (regenerates `l10n/engine/plm.pot`, see `PrimitivePot`; needs xgettext)
+- mvn -Pi18n-update -DskipTests process-classes (regenerates `l10n/engine/plm.pot`, see `PrimitivePot`; needs xgettext). A
+  comment starting with `// Translator:` on the lines just before a `Game.i18n.tr()` reaches the translators with its message.
 - git checkout l10n/*/*.po
 - git commit -m "Update translation templates" l10n/*/*.pot
 - git push && wlc pull
