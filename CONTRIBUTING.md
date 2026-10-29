@@ -1003,7 +1003,9 @@ documentation](PEDAGOGY.md#system-programming).
   streams there (`PLM_OWN_STREAMS`), whose address is passed as a `FILE*`, and renames the functions of `stdio.h` working on
   streams (`fgets()`, `fread()`, `fwrite()`, `fflush()`, `fclose()`, `setvbuf()`...) to handle them, passing the other streams to
   the C library. `fscanf()` is not available on these streams, which it explains once on the PLM console (the real standard
-  error). `vfprintf()` is intercepted everywhere, as `fprintf()`.
+  error, through `explain()`). `vfprintf()` is intercepted everywhere, as `fprintf()`. `explain()` also tells the usual mistakes
+  in filling a `struct sockaddr_in` (`sin_family` forgotten or converted with `htons()`, size of a pointer, address 0.0.0.0 or
+  port 0), which the `errno` alone hardly tells.
   TODO: fseek(), ftell() and rewind() are not renamed, so the unintercepted version may crash when used on our own FILE*.
 * **The Python glue** (`RemotePosixGlue.py`, appended to the generated functions renamed `_plm_remote_xxx`) substitutes the
   system modules at import, so that the student's code uses them as usual: `sys.modules["socket"]` becomes a module of the world
@@ -1013,8 +1015,9 @@ documentation](PEDAGOGY.md#system-programming).
   files given by `open()` are the usual buffered binary or text streams of `io`, on a raw stream calling the system calls of the
   world, writing `\n` as is even on Windows. `sys.stdout` and `sys.stderr` write on the standard streams of the world, line by
   line, while the uncaught exceptions still reach the PLM console (`sys.excepthook`). `Remote.py` imports the real socket module
-  as `_socket` and writes its own messages on `sys.__stderr__` for that reason. The glue only exports `getParamString()` and
-  `getParamInt()`, for the code of the entity.
+  as `_socket` and writes its own messages on `sys.__stderr__` for that reason. The usual mistakes (`str` given to `send()`,
+  malformed address) raise the exception of Python with a hint. The glue only exports `getParamString()` and `getParamInt()`,
+  for the code of the entity.
 * **The Java glue** (`RemotePosixGlue.java`, appended in the class of the generated methods, which are private and named
   `plm_remote_xxx`) offers nested classes with the interface of `java.net.Socket`, `java.net.ServerSocket` (with their
   streams), `java.net.DatagramSocket` (using the `DatagramPacket` of the JDK), of `Thread.sleep()`, of the file streams

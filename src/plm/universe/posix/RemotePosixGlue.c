@@ -34,20 +34,63 @@ static int checked(int result)
   return result < 0 ? failed() : result;
 }
 
-/* Reads the IPv4 address and the port (in host byte order) of a struct sockaddr_in, or returns -1 with errno set */
-static int address_of(const struct sockaddr* addr, socklen_t len, char ip[INET_ADDRSTRLEN], int* port)
+/* Explains a probable mistake of the student on the PLM console (the real standard error, not the world's one), once per flag */
+static void explain(int* told, const char* format, ...)
 {
-  if (addr == NULL || len < (socklen_t)sizeof(struct sockaddr_in)) {
+  if (*told)
+    return;
+  *told = 1;
+  char why[512];
+  va_list args;
+  va_start(args, format);
+  vsnprintf(why, sizeof why, format, args);
+  va_end(args);
+  fwrite("PLM: ", 1, 5, stderr);
+  fwrite(why, 1, strlen(why), stderr);
+  fwrite("\n", 1, 1, stderr);
+}
+
+/*
+ * Reads the IPv4 address and the port (in host byte order) of a struct sockaddr_in given to call, or returns -1 with errno set.
+ * The usual mistakes in filling the structure are explained on the console, as the error alone hardly tells them.
+ */
+static int address_of(const char* call, const struct sockaddr* addr, socklen_t len, char ip[INET_ADDRSTRLEN], int* port)
+{
+  static int told_null, told_len, told_family, told_ip, told_port;
+  if (addr == NULL) {
+    explain(&told_null, "%s() received NULL as address: give the address of your structure, as (struct sockaddr*)&addr.", call);
+    errno = EINVAL;
+    return -1;
+  }
+  if (len < (socklen_t)sizeof(struct sockaddr_in)) {
+    explain(&told_len,
+            "%s() received an address length of %d bytes, while a struct sockaddr_in takes %d bytes. Pass sizeof(addr) where "
+            "addr is the structure itself: the size of a pointer to it is not the size of the structure.",
+            call, (int)len, (int)sizeof(struct sockaddr_in));
     errno = EINVAL;
     return -1;
   }
   if (addr->sa_family != AF_INET) {
+    if (addr->sa_family == 0)
+      explain(&told_family, "the address given to %s() has the family 0: set its field sin_family to AF_INET (memset() sets it to 0).", call);
+    else if (addr->sa_family == htons(AF_INET))
+      explain(&told_family,
+              "the address given to %s() has the family %d, which is htons(AF_INET): unlike the port and the address, the field "
+              "sin_family is in the byte order of the machine. Write addr.sin_family = AF_INET.",
+              call, addr->sa_family);
+    else
+      explain(&told_family, "the address given to %s() has the family %d, while only AF_INET (%d) is supported: set its field sin_family to AF_INET.", call,
+              addr->sa_family, AF_INET);
     errno = EAFNOSUPPORT;
     return -1;
   }
   const struct sockaddr_in* in = (const struct sockaddr_in*)addr;
   inet_ntop(AF_INET, &in->sin_addr, ip, INET_ADDRSTRLEN);
   *port = ntohs(in->sin_port); // a forgotten htons() gives the wrong port in the world, as on a real system
+  if (strcmp(call, "bind") != 0 && in->sin_addr.s_addr == htonl(INADDR_ANY))
+    explain(&told_ip, "%s() to the address 0.0.0.0, which designates no machine: did you fill sin_addr with inet_pton(), and did it return 1?", call);
+  if (*port == 0)
+    explain(&told_port, "%s() with the port 0: did you fill sin_port with htons()?", call);
   return 0;
 }
 
@@ -90,7 +133,7 @@ int plm_bind(int fd, const struct sockaddr* addr, socklen_t len)
 {
   char ip[INET_ADDRSTRLEN];
   int port;
-  if (address_of(addr, len, ip, &port) < 0)
+  if (address_of("bind", addr, len, ip, &port) < 0)
     return -1;
   return checked(plm_remote_bind(fd, ip, port));
 }
@@ -112,7 +155,7 @@ int plm_connect(int fd, const struct sockaddr* addr, socklen_t len)
 {
   char ip[INET_ADDRSTRLEN];
   int port;
-  if (address_of(addr, len, ip, &port) < 0)
+  if (address_of("connect", addr, len, ip, &port) < 0)
     return -1;
   return checked(plm_remote_connect(fd, ip, port));
 }
@@ -134,7 +177,7 @@ ssize_t plm_sendto(int fd, const void* buf, size_t len, int flags, const struct 
     return plm_send(fd, buf, len, flags);
   char ip[INET_ADDRSTRLEN];
   int port;
-  if (address_of(addr, addrlen, ip, &port) < 0)
+  if (address_of("sendto", addr, addrlen, ip, &port) < 0)
     return -1;
   Bytes data = {(unsigned char*)buf, len};
   return checked(plm_remote_sendto(fd, data, flags, ip, port));
@@ -408,13 +451,9 @@ int plm_fscanf(FILE* stream, const char* format, ...)
     res = vfscanf(stream, format, args);
     va_end(args);
   } else {
-    static int told = 0; // the explanation goes once to the PLM console (the real standard error, not the world's one)
-    if (!told) {
-      const char* why = "PLM: fscanf() is not available on the streams of fopen() and fdopen() on this system (such as Windows). "
-                        "Use fgets() and sscanf() instead, or run the PLM on Linux or macOS.\n";
-      fwrite(why, 1, strlen(why), stderr);
-      told = 1;
-    }
+    static int told = 0;
+    explain(&told, "fscanf() is not available on the streams of fopen() and fdopen() on this system (such as Windows). "
+                   "Use fgets() and sscanf() instead, or run the PLM on Linux or macOS.");
     errno = ENOSYS;
   }
   return res;

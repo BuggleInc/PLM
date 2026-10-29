@@ -30,8 +30,20 @@ def _checked(result):
 
 
 def _ip_and_port(address):
-    """The IP and the port of an address (host, port), where the empty host stands for any interface"""
+    """The IP and the port of an address (host, port), where the empty host stands for any interface. The errors are the ones of
+    Python, with a hint on the usual mistakes."""
+    if not isinstance(address, tuple) or len(address) != 2:
+        raise TypeError(f"AF_INET address must be a pair (host, port), not {type(address).__name__}"
+                        + (" (put the host and the port between parentheses: (host, port))" if isinstance(address, str) else ""))
     host, port = address
+    if isinstance(host, (bytes, bytearray)):
+        host = host.decode()
+    if not isinstance(host, str):
+        raise TypeError(f"str, bytes or bytearray expected, not {type(host).__name__} (the host is a text, such as \"10.0.0.1\")")
+    if not isinstance(port, int):
+        raise TypeError(f"'{type(port).__name__}' object cannot be interpreted as an integer (the port is a number, such as 80, not \"80\")")
+    if not 0 <= port <= 65535:
+        raise OverflowError("port must be 0-65535.")
     return host or "0.0.0.0", port
 
 
