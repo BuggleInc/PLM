@@ -938,7 +938,9 @@ documentation](PEDAGOGY.md#system-programming).
   `ended()`, `send()`, `sendInPackets()`, `close()`, `ascii()`) call the kernel and trace these calls as the student's ones,
   without blocking: `accept()` returns -1 when no connection waits, `peek()` shows what arrived without receiving it, and
   `receive(fd, delimiter)` returns null until the delimiter arrived. The data of `send()` reaches the
-  student at once, while `sendInPackets()` lets the network carry it in packets after pauses, to make the framing matter. Their
+  student at once, while `sendInPackets()` lets the network carry it in packets after pauses, to make the framing matter. Over
+  UDP, `bindDatagrams()` binds a datagram socket, `receiveDatagram()` returns the next datagram with its sender (or null), and
+  `sendDatagram()` sends one, which arrives at once. Their
   state is in the fields of their class, which their copy constructor copies (after the one of `ProgramPeer`), and `waiting()`
   tells the trace what they wait for. `PosixWorldTest.ShoutServer` is a small example.
 * **The documentation of the protocols**: `[!protocols/]` in `PosixWorld.html` stands for a section "The servers of this world"

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A peer written as a Java program, reacting to what it receives: a server of a real protocol (such as IRC or HTTP), serving
+ * A peer written as a Java program, reacting to what it receives: a server of a real protocol (such as IRC, HTTP or DNS), serving
  * several clients and answering each request as it deserves. It is written as an event loop: start() prepares it (typically
  * listening on its ports), and each call to act() does at most one action through the helpers below, which trace their system
  * calls as the student's ones, and returns whether it did one. The world thus animates each action on its own. The state of the
@@ -175,6 +175,31 @@ public abstract class ProgramPeer extends Peer {
     traced("send(" + fd + ", " + PosixWorld.excerpt(data) + ", " + data.length() + ")", world.send(process, fd, data, 0));
     for (int sent = 0, at = world.now + pause; sent < data.length(); sent += packetSize, at += pause)
       packets.add(new Packet(at, (Socket)process.get(fd), packetSize));
+  }
+
+  /** Creates a datagram socket bound to that port of all the interfaces, and returns its descriptor */
+  protected int bindDatagrams(int port)
+  {
+    int fd = traced("socket(AF_INET, SOCK_DGRAM, 0)", world.socket(process, PosixWorld.AF_INET, PosixWorld.SOCK_DGRAM, 0));
+    traced("bind(" + fd + ", 0.0.0.0:" + port + ")", world.bind(process, fd, "0.0.0.0", port));
+    return fd;
+  }
+
+  /** Receives the next datagram that arrived on that socket, whole, or returns null if none arrived */
+  protected Datagram receiveDatagram(int fd)
+  {
+    if (((DatagramSocket)process.get(fd)).incoming.isEmpty())
+      return null;
+    Datagram res = world.recvfrom(process, fd, PosixWorld.MAX_DATAGRAM, 0);
+    traced("recvfrom(" + fd + ", " + PosixWorld.filled(res.data()) + ", " + PosixWorld.MAX_DATAGRAM + ", ← " + res.ip() + ":" + res.port() + ")", res.data());
+    return res;
+  }
+
+  /** Sends the data in one datagram to ip:port, which arrives at once (or is lost if no socket is bound there) */
+  protected void sendDatagram(int fd, String data, String ip, int port)
+  {
+    traced("sendto(" + fd + ", " + PosixWorld.excerpt(data) + ", " + data.length() + ", " + ip + ":" + port + ")",
+           world.sendto(process, fd, data, 0, ip, port));
   }
 
   /** Closes that descriptor. The data sent before still reaches the student, in its packets. */

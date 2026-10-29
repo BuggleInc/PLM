@@ -14,6 +14,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.universe.ExplainedException;
+import plm.universe.posix.Datagram;
 import plm.universe.posix.FileDescription;
 import plm.universe.posix.FtpServer;
 import plm.universe.posix.HttpServer;
@@ -461,6 +462,50 @@ public class PosixWorldTest {
     }
 
     @Override protected String waiting() { return "waiting for a line"; }
+  }
+
+  /** A server of the tests on UDP port 7, answering each datagram with the same in upper case */
+  private static final class UdpShoutServer extends ProgramPeer {
+    private int fd;
+
+    UdpShoutServer() { super("10.0.0.1", "UDP shout server"); }
+
+    private UdpShoutServer(UdpShoutServer other, Map<FileDescription, FileDescription> copies)
+    {
+      super(other, copies);
+      fd = other.fd;
+    }
+
+    @Override protected UdpShoutServer copy(Map<FileDescription, FileDescription> copies) { return new UdpShoutServer(this, copies); }
+
+    @Override protected void start() { fd = bindDatagrams(7); }
+
+    @Override protected boolean act()
+    {
+      Datagram query = receiveDatagram(fd);
+      if (query != null)
+        sendDatagram(fd, query.data().toUpperCase(), query.ip(), query.port());
+      return query != null;
+    }
+
+    @Override protected String waiting() { return "waiting for a datagram"; }
+  }
+
+  @Test public void testProgramPeerAnswersDatagrams()
+  {
+    PosixWorld ref  = new PosixWorld("udp shout").addPeer(new UdpShoutServer());
+    PosixWorld curr = (PosixWorld)ref.copy();
+    PosixEntity p   = process(ref);
+    int sock        = p.socket(AF_INET, SOCK_DGRAM, 0);
+    Assertions.assertEquals(5, p.sendto(sock, b("hello"), 0, "10.0.0.1", 7));
+    Assertions.assertEquals("HEL", s(p.recvfrom(sock, 3, 0)));
+    Assertions.assertEquals("10.0.0.1:7", p.lastSender());
+    p.close(sock);
+
+    int other = process(curr).socket(AF_INET, SOCK_DGRAM, 0);
+    process(curr).sendto(other, b("hullo"), 0, "10.0.0.1", 7);
+    process(curr).close(other);
+    Assertions.assertTrue(ref.diffTo(curr, null).contains("received 'hullo'"), ref.diffTo(curr, null)); // the datagrams are compared
   }
 
   /** Receives on that descriptor until the end of a line */
