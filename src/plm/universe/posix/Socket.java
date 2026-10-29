@@ -5,15 +5,12 @@ import java.util.Deque;
 import java.util.Map;
 
 /**
- * A TCP socket: unconnected, listening (with its backlog of connections waiting for accept()) or connected to its remote socket.
+ * A TCP socket (SOCK_STREAM): unconnected, listening (with its backlog of connections waiting for accept()) or connected to its remote socket.
  * A connected socket has a send queue, holding the data that the network did not transmit yet, and a receive queue, holding the
  * packets that arrived and were not received yet. The end of the stream reaches the remote socket once this one stopped writing
  * and its send queue is empty.
  */
-final class Socket extends FileDescription {
-  /** The address of the machine of the socket */
-  final String ip;
-  int port = -1;
+final class Socket extends InetSocket {
   boolean listening;
   int backlogMax;
   /** The connections waiting for accept(), as the sockets that it will return */
@@ -21,22 +18,19 @@ final class Socket extends FileDescription {
   Socket remote;
   final StringBuilder outgoing = new StringBuilder();
   final Deque<String> incoming = new ArrayDeque<>();
-  /** Everything that arrived on this socket, received or not, which the comparison of the worlds checks */
-  final StringBuilder arrived = new StringBuilder();
   /** Whether this side stopped writing, with close() or shutdown() */
   boolean writeClosed;
 
-  Socket(String ip) { this.ip = ip; }
+  Socket(String ip) { super(ip); }
 
   @Override Socket duplicate()
   {
-    Socket res     = new Socket(ip);
-    res.port       = port;
+    Socket res = new Socket(ip);
+    res.copyState(this);
     res.listening  = listening;
     res.backlogMax = backlogMax;
     res.outgoing.append(outgoing);
     res.incoming.addAll(incoming);
-    res.arrived.append(arrived);
     res.writeClosed = writeClosed;
     return res;
   }

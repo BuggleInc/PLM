@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * A remote process, talking TCP with the student's process. It is a process of the world (see PosixProcess) whose system calls
@@ -68,6 +69,10 @@ public abstract class Peer {
   /** Who transmits the data of this peer in the trace */
   String network() { return "network (" + name() + " → you)"; }
 
-  /** Everything that arrived on the connections of this peer, received by it or not */
-  String received() { return connections.stream().map(socket -> socket.arrived.toString()).collect(Collectors.joining()); }
+  /** Everything that arrived on the connections and the datagram sockets of this peer, received by it or not */
+  String received()
+  {
+    Stream<InetSocket> datagramSockets = process.fds.stream().filter(DatagramSocket.class ::isInstance).map(DatagramSocket.class ::cast);
+    return Stream.concat(connections.stream(), datagramSockets).map(socket -> socket.arrived.toString()).collect(Collectors.joining());
+  }
 }

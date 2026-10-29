@@ -9,10 +9,13 @@ import java.util.Map;
  * standard streams and its last error. The system calls of PosixWorld act on the process that calls them.
  */
 final class PosixProcess {
-  private static final Map<String, String> STRERROR = Map.of(
-      "EBADF", "Bad file descriptor", "ENOENT", "No such file or directory", "EINVAL", "Invalid argument", "ENOTSOCK", "Socket operation on non-socket",
-      "ENOTCONN", "Transport endpoint is not connected", "ECONNREFUSED", "Connection refused", "EADDRINUSE", "Address already in use", "EISCONN",
-      "Transport endpoint is already connected", "EAFNOSUPPORT", "Address family not supported by protocol", "EPROTONOSUPPORT", "Protocol not supported");
+  private static final Map<String, String> STRERROR =
+      Map.ofEntries(Map.entry("EBADF", "Bad file descriptor"), Map.entry("ENOENT", "No such file or directory"), Map.entry("EINVAL", "Invalid argument"),
+                    Map.entry("ENOTSOCK", "Socket operation on non-socket"), Map.entry("ENOTCONN", "Transport endpoint is not connected"),
+                    Map.entry("ECONNREFUSED", "Connection refused"), Map.entry("EADDRINUSE", "Address already in use"),
+                    Map.entry("EISCONN", "Transport endpoint is already connected"), Map.entry("EAFNOSUPPORT", "Address family not supported by protocol"),
+                    Map.entry("EPROTONOSUPPORT", "Protocol not supported"), Map.entry("EOPNOTSUPP", "Operation not supported"),
+                    Map.entry("EDESTADDRREQ", "Destination address required"), Map.entry("EMSGSIZE", "Message too long"));
 
   /** The address of the machine of the process */
   final String ip;
@@ -71,14 +74,27 @@ final class PosixProcess {
   /** The object of a descriptor, or null if it is not open */
   FileDescription get(int fd) { return fd >= 0 && fd < fds.size() ? fds.get(fd) : null; }
 
-  /** The socket of a descriptor, or null after recording the error if the descriptor is not open or not a socket */
-  Socket socket(int fd)
+  /** The socket of a descriptor if it is of that kind, or null after recording the error (not open, not a socket, or another kind) */
+  <T extends InetSocket> T socket(int fd, Class<T> kind)
   {
-    if (get(fd) instanceof Socket s)
-      return s;
-    fail(get(fd) == null ? "EBADF" : "ENOTSOCK");
+    FileDescription o = get(fd);
+    if (kind.isInstance(o))
+      return kind.cast(o);
+    fail(o == null ? "EBADF" : o instanceof InetSocket ? "EOPNOTSUPP" : "ENOTSOCK");
     return null;
   }
+
+  /** The lowest free port of the ephemeral range of this machine, on which the kernel binds the datagram sockets used before bind() */
+  int ephemeralPort()
+  {
+    int port = 32768;
+    while (bound(DatagramSocket.class, port))
+      port++;
+    return port;
+  }
+
+  /** Whether a socket of that kind is bound to that port in this process */
+  boolean bound(Class<? extends InetSocket> kind, int port) { return fds.stream().anyMatch(o -> kind.isInstance(o) && ((InetSocket)o).port == port); }
 
   /** The result of a system call of this process as strace shows it: the length of the returned data, the value, or -1 with the error */
   String shown(Object result)

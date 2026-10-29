@@ -35,7 +35,9 @@ import plm.universe.World;
  * does it around each call of the student, and the blocking calls let them act until the call can complete.
  */
 public class PosixWorld extends World {
-  public static final int AF_INET = 2, SOCK_STREAM = 1;
+  public static final int AF_INET = 2, SOCK_STREAM = 1, SOCK_DGRAM = 2;
+  /** The largest datagram that UDP carries over IPv4 */
+  public static final int MAX_DATAGRAM = 65507;
   public static final int O_RDONLY = 0, O_WRONLY = 1, O_RDWR = 2, O_CREAT = 0100, O_TRUNC = 01000, O_APPEND = 02000;
   public static final int SHUT_RD = 0, SHUT_WR = 1, SHUT_RDWR = 2;
   /** The address of the student's machine, to which the client peers connect */
@@ -261,6 +263,16 @@ public class PosixWorld extends World {
     return res;
   }
 
+  /** The datagram socket bound to ip:port in any process, or null */
+  private DatagramSocket datagramSocket(String ip, int port)
+  {
+    for (PosixProcess proc : processes())
+      for (FileDescription o : proc.fds)
+        if (o instanceof DatagramSocket s && s.ip.equals(ip) && s.port == port)
+          return s;
+    return null;
+  }
+
   /** The socket listening on ip:port with room in its backlog, in any process, or null */
   private Socket listener(String ip, int port)
   {
@@ -277,28 +289,28 @@ public class PosixWorld extends World {
   {
     if (domain != AF_INET)
       return proc.fail("EAFNOSUPPORT");
-    if (socket_type != SOCK_STREAM || protocol != 0)
+    if (socket_type != SOCK_STREAM && socket_type != SOCK_DGRAM || protocol != 0)
       return proc.fail("EPROTONOSUPPORT");
-    return proc.allocate(new Socket(proc.ip));
+    return proc.allocate(socket_type == SOCK_STREAM ? new Socket(proc.ip) : new DatagramSocket(proc.ip));
   }
 
+  /** Binds the socket to the port, which a socket of the other kind (TCP or UDP) may use too */
   int bind(PosixProcess proc, int fd, String ip, int port)
   {
-    Socket s = proc.socket(fd);
+    InetSocket s = proc.socket(fd, InetSocket.class);
     if (s == null)
       return -1;
     if (s.port >= 0)
       return proc.fail("EINVAL");
-    for (FileDescription o : proc.fds)
-      if (o instanceof Socket other && other.port == port)
-        return proc.fail("EADDRINUSE");
+    if (proc.bound(s.getClass(), port))
+      return proc.fail("EADDRINUSE");
     s.port = port;
     return 0;
   }
 
   int listen(PosixProcess proc, int fd, int backlog)
   {
-    Socket s = proc.socket(fd);
+    Socket s = proc.socket(fd, Socket.class);
     if (s == null)
       return -1;
     if (s.port < 0 || s.remote != null) // Linux binds an unbound socket to a random port instead, which makes no sense here
@@ -310,7 +322,7 @@ public class PosixWorld extends World {
 
   int accept(PosixProcess proc, int fd)
   {
-    Socket s = proc.socket(fd);
+    Socket s = proc.socket(fd, Socket.class);
     if (s == null)
       return -1;
     if (!s.listening)
@@ -319,9 +331,17 @@ public class PosixWorld extends World {
     return proc.allocate(s.backlog.poll());
   }
 
+  /** Connects a stream socket to the listening one, or sets the default destination of a datagram socket */
   int connect(PosixProcess proc, int fd, String ip, int port)
   {
-    Socket s = proc.socket(fd);
+    if (proc.get(fd) instanceof DatagramSocket d) {
+      if (d.port < 0)
+        d.port = proc.ephemeralPort();
+      d.remoteIp   = ip;
+      d.remotePort = port;
+      return 0;
+    }
+    Socket s = proc.socket(fd, Socket.class);
     if (s == null)
       return -1;
     if (s.remote != null || s.listening)
@@ -342,7 +362,9 @@ public class PosixWorld extends World {
 
   int send(PosixProcess proc, int fd, String data, int flags)
   {
-    Socket s = proc.socket(fd);
+    if (proc.get(fd) instanceof DatagramSocket d)
+      return d.remoteIp == null ? proc.fail("EDESTADDRREQ") : sendto(proc, fd, data, flags, d.remoteIp, d.remotePort);
+    Socket s = proc.socket(fd, Socket.class);
     if (s == null)
       return -1;
     if (s.remote == null || s.writeClosed)
@@ -356,7 +378,11 @@ public class PosixWorld extends World {
   /** Returns at most len bytes of the packets that arrived, or the empty string at the end of the stream */
   String recv(PosixProcess proc, int fd, int len, int flags)
   {
-    Socket s = proc.socket(fd);
+    if (proc.get(fd) instanceof DatagramSocket) {
+      Datagram datagram = recvfrom(proc, fd, len, flags);
+      return datagram == null ? null : datagram.data();
+    }
+    Socket s = proc.socket(fd, Socket.class);
     if (s == null)
       return null;
     if (s.remote == null) {
@@ -375,6 +401,48 @@ public class PosixWorld extends World {
     return res.toString();
   }
 
+  /**
+   * Sends a datagram to ip:port, which arrives at once if a socket is bound there, and is lost otherwise. On a stream socket, the
+   * address is ignored, as Linux does.
+   */
+  int sendto(PosixProcess proc, int fd, String data, int flags, String ip, int port)
+  {
+    if (proc.get(fd) instanceof Socket)
+      return send(proc, fd, data, flags);
+    DatagramSocket s = proc.socket(fd, DatagramSocket.class);
+    if (s == null)
+      return -1;
+    if (data.length() > MAX_DATAGRAM)
+      return proc.fail("EMSGSIZE");
+    if (s.port < 0)
+      s.port = proc.ephemeralPort();
+    DatagramSocket target = datagramSocket(ip, port);
+    if (target != null && target.accepts(proc.ip, s.port))
+      target.deliver(new Datagram(proc.ip, s.port, data));
+    else
+      log("network", "datagram from " + proc.ip + ":" + s.port + " lost, as no socket waits for it on " + ip + ":" + port);
+    return data.length();
+  }
+
+  /**
+   * Waits for the next datagram and returns it, cut to len bytes (the rest of it is lost). On a stream socket, returns what recv()
+   * does, with the address of the remote socket.
+   */
+  Datagram recvfrom(PosixProcess proc, int fd, int len, int flags)
+  {
+    if (proc.get(fd) instanceof Socket stream) {
+      String data = recv(proc, fd, len, flags);
+      return data == null ? null : new Datagram(stream.remote.ip, stream.remote.port, data);
+    }
+    DatagramSocket s = proc.socket(fd, DatagramSocket.class);
+    if (s == null)
+      return null;
+    waitUntil(() -> !s.incoming.isEmpty(), "recvfrom(" + fd + ")");
+    Datagram datagram = s.incoming.poll();
+    int kept          = Math.min(datagram.data().length(), Math.max(len, 0));
+    return new Datagram(datagram.ip(), datagram.port(), datagram.data().substring(0, kept));
+  }
+
   int open(PosixProcess proc, String path, int flags)
   {
     int mode = flags & 3;
@@ -391,7 +459,7 @@ public class PosixWorld extends World {
   String read(PosixProcess proc, int fd, int len)
   {
     FileDescription o = proc.get(fd);
-    if (o instanceof Socket)
+    if (o instanceof InetSocket)
       return recv(proc, fd, len, 0);
     if (o instanceof StandardStream in && in.input) {
       int end    = Math.min(Math.max(len, 0), in.data.length());
@@ -413,7 +481,7 @@ public class PosixWorld extends World {
   int write(PosixProcess proc, int fd, String data)
   {
     FileDescription o = proc.get(fd);
-    if (o instanceof Socket)
+    if (o instanceof InetSocket)
       return send(proc, fd, data, 0);
     if (o instanceof StandardStream out && !out.input) { // kept in the stream, whose data the view shows
       out.data += data;
@@ -448,7 +516,9 @@ public class PosixWorld extends World {
 
   int shutdown(PosixProcess proc, int fd, int how)
   {
-    Socket s = proc.socket(fd);
+    if (proc.get(fd) instanceof DatagramSocket d) // nothing to close on a connected datagram socket
+      return d.remoteIp == null ? proc.fail("ENOTCONN") : 0;
+    Socket s = proc.socket(fd, Socket.class);
     if (s == null)
       return -1;
     if (how < SHUT_RD || how > SHUT_RDWR)
