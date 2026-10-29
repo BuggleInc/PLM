@@ -11,9 +11,9 @@ world to the other.</p>
   [!c|python]<li>Create a socket with [!c]<code>socket(AF_INET, SOCK_STREAM, 0)</code>[/!][!python]<code>socket.socket(socket.AF_INET,
     socket.SOCK_STREAM)</code>[/!].</li>
   <li>Attach it to the given port with <code>bind()</code>. [!c]The <code>struct sockaddr_in</code> is filled as for
-    <code>connect()</code>, but the address <code>INADDR_ANY</code> (converted with <code>htonl()</code>) means that any
-    machine may connect.[/!][!python]Its address is the tuple <code>("", port)</code>, where the empty host means that any
-    machine may connect.[/!]</li>
+    <code>connect()</code>, but the address <code>INADDR_ANY</code> (converted with <code>htonl()</code>) means that any machine
+    may connect. See the relevant manpages for more information.[/!][!python]Its address is the tuple <code>("", port)</code>,
+    where the empty host means that any machine may connect.[/!]</li>
   <li>Mark it as accepting the connections with <code>listen()</code>. Its [!c]second[/!][!python]only[/!] parameter is the
   length of the queue of the clients that wait to be accepted. After this call, the clients can connect even if your program does
   not accept and serve them yet.</li>[/!]
@@ -25,8 +25,8 @@ world to the other.</p>
     whose second parameter is the length of the queue of the clients that wait to be accepted.</li>[/!]
   <li>Accept a client with <code>accept()</code>, which waits until a client connected and returns a <b>new</b>
     [!c]descriptor, dedicated to this client. You can pass <code>NULL</code> as second and third parameters if the address of
-    the client does not matter.[/!][!python]socket, dedicated to this client, along with the address of the client.[/!][!java|scala]
-    <code>Socket</code>, dedicated to this client.[/!]</li>
+    the client does not matter.[/!][!python]tuple of both the socket (dedicated to this client) and the address of the
+    client.[/!][!java|scala] <code>Socket</code>, dedicated to this client.[/!]</li>
   <li>Send the message to the client on the new [!c]descriptor with <code>send()</code>, whose length is given by
     <code>strlen(message)</code>[/!][!python]socket with <code>sendall()</code>, which sends all the data. It sends bytes: convert
     the message with <code>message.encode()</code>[/!][!java|scala]socket with the <code>write()</code> method of its
