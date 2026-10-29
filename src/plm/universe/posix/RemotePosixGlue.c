@@ -1,5 +1,5 @@
 /* The constants of the protocol, which are the Linux ones whatever the system of the student */
-enum { PLM_AF_INET = 2, PLM_SOCK_STREAM = 1, PLM_O_CREAT = 0100, PLM_O_TRUNC = 01000, PLM_O_APPEND = 02000 };
+enum { PLM_AF_INET = 2, PLM_SOCK_STREAM = 1, PLM_SOCK_DGRAM = 2, PLM_O_CREAT = 0100, PLM_O_TRUNC = 01000, PLM_O_APPEND = 02000 };
 
 /* Sets errno from the name of the last error in the world, and returns -1 */
 static int failed(void)
@@ -16,7 +16,10 @@ static int failed(void)
                 {"EADDRINUSE", EADDRINUSE},
                 {"EISCONN", EISCONN},
                 {"EAFNOSUPPORT", EAFNOSUPPORT},
-                {"EPROTONOSUPPORT", EPROTONOSUPPORT}};
+                {"EPROTONOSUPPORT", EPROTONOSUPPORT},
+                {"EOPNOTSUPP", EOPNOTSUPP},
+                {"EDESTADDRREQ", EDESTADDRREQ},
+                {"EMSGSIZE", EMSGSIZE}};
   char* name = plm_remote_lastError();
   errno      = EINVAL;
   for (size_t i = 0; i < sizeof(errors) / sizeof(errors[0]); i++)
@@ -48,6 +51,22 @@ static int address_of(const struct sockaddr* addr, socklen_t len, char ip[INET_A
   return 0;
 }
 
+/* Fills addr with the address ip:port (only its family if ip is NULL), cut to *len bytes, and sets *len to its full size */
+static void set_address(struct sockaddr* addr, socklen_t* len, const char* ip, int port)
+{
+  if (addr == NULL || len == NULL)
+    return;
+  struct sockaddr_in in;
+  memset(&in, 0, sizeof(in));
+  in.sin_family = AF_INET;
+  if (ip != NULL) {
+    inet_pton(AF_INET, ip, &in.sin_addr);
+    in.sin_port = htons((uint16_t)port);
+  }
+  memcpy(addr, &in, *len < (socklen_t)sizeof(in) ? (size_t)*len : sizeof(in));
+  *len = sizeof(in);
+}
+
 /* Copies the received bytes into buf (at most len of them), and returns their amount, or -1 with errno set */
 static ssize_t received(Bytes data, void* buf, size_t len)
 {
@@ -61,8 +80,10 @@ static ssize_t received(Bytes data, void* buf, size_t len)
 
 int plm_socket(int domain, int type, int protocol)
 {
-  // IPPROTO_TCP is the default protocol of SOCK_STREAM
-  return checked(plm_remote_socket(domain == AF_INET ? PLM_AF_INET : -1, type == SOCK_STREAM ? PLM_SOCK_STREAM : -1, protocol == IPPROTO_TCP ? 0 : protocol));
+  // IPPROTO_TCP and IPPROTO_UDP are the default protocols of SOCK_STREAM and SOCK_DGRAM
+  int default_protocol = type == SOCK_STREAM ? IPPROTO_TCP : IPPROTO_UDP;
+  int protocol_type    = type == SOCK_STREAM ? PLM_SOCK_STREAM : type == SOCK_DGRAM ? PLM_SOCK_DGRAM : -1;
+  return checked(plm_remote_socket(domain == AF_INET ? PLM_AF_INET : -1, protocol_type, protocol == default_protocol ? 0 : protocol));
 }
 
 int plm_bind(int fd, const struct sockaddr* addr, socklen_t len)
@@ -82,14 +103,8 @@ int plm_listen(int fd, int backlog)
 int plm_accept(int fd, struct sockaddr* addr, socklen_t* len)
 {
   int res = plm_remote_accept(fd);
-  if (res >= 0 && addr != NULL && len != NULL) {
-    // The world does not tell the address of the peer: only its family is filled
-    struct sockaddr_in in;
-    memset(&in, 0, sizeof(in));
-    in.sin_family = AF_INET;
-    memcpy(addr, &in, *len < (socklen_t)sizeof(in) ? (size_t)*len : sizeof(in));
-    *len = sizeof(in);
-  }
+  if (res >= 0)
+    set_address(addr, len, NULL, 0); // the world does not tell the address of the peer: only its family is filled
   return checked(res);
 }
 
@@ -111,6 +126,31 @@ ssize_t plm_send(int fd, const void* buf, size_t len, int flags)
 ssize_t plm_recv(int fd, void* buf, size_t len, int flags)
 {
   return received(plm_remote_recv(fd, (int)len, flags), buf, len);
+}
+
+ssize_t plm_sendto(int fd, const void* buf, size_t len, int flags, const struct sockaddr* addr, socklen_t addrlen)
+{
+  if (addr == NULL) // to the destination given by connect()
+    return plm_send(fd, buf, len, flags);
+  char ip[INET_ADDRSTRLEN];
+  int port;
+  if (address_of(addr, addrlen, ip, &port) < 0)
+    return -1;
+  Bytes data = {(unsigned char*)buf, len};
+  return checked(plm_remote_sendto(fd, data, flags, ip, port));
+}
+
+ssize_t plm_recvfrom(int fd, void* buf, size_t len, int flags, struct sockaddr* addr, socklen_t* addrlen)
+{
+  ssize_t res = received(plm_remote_recvfrom(fd, (int)len, flags), buf, len);
+  if (res >= 0 && addr != NULL) {
+    char* sender = plm_remote_lastSender(); // as ip:port
+    char* colon  = strrchr(sender, ':');
+    *colon       = '\0';
+    set_address(addr, addrlen, sender, atoi(colon + 1));
+    free(sender);
+  }
+  return res;
 }
 
 int plm_shutdown(int fd, int how)

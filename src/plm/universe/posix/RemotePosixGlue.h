@@ -33,6 +33,8 @@ int plm_accept(int fd, struct sockaddr* addr, socklen_t* len);
 int plm_connect(int fd, const struct sockaddr* addr, socklen_t len);
 ssize_t plm_send(int fd, const void* buf, size_t len, int flags);
 ssize_t plm_recv(int fd, void* buf, size_t len, int flags);
+ssize_t plm_sendto(int fd, const void* buf, size_t len, int flags, const struct sockaddr* addr, socklen_t addrlen);
+ssize_t plm_recvfrom(int fd, void* buf, size_t len, int flags, struct sockaddr* addr, socklen_t* addrlen);
 int plm_shutdown(int fd, int how);
 int plm_open(const char* path, int flags, ...);
 ssize_t plm_read(int fd, void* buf, size_t count);
@@ -60,6 +62,8 @@ int getParamInt(int i);
 #define connect plm_connect
 #define send plm_send
 #define recv plm_recv
+#define sendto plm_sendto
+#define recvfrom plm_recvfrom
 #define shutdown plm_shutdown
 #define open plm_open
 #define read plm_read

@@ -8,7 +8,7 @@ descriptors, as on a real UNIX system: the descriptors 0, 1 and 2 designate the 
 (<code>STDIN_FILENO</code>, <code>STDOUT_FILENO</code> and <code>STDERR_FILENO</code>), and each new descriptor is the smallest
 free number.[/!][!python|java|scala]Your program uses them as on a real system, while the world shows the file descriptors behind
 them: the descriptors 0, 1 and 2 designate the standard input, output and error, and each new descriptor is the smallest free
-number.[/!] Only IPv4 TCP connections are supported.</p>
+number.[/!] Only IPv4 is supported, with TCP connections and UDP datagrams.</p>
 
 <p>The time of the world only advances when your program waits, for example for data that did not arrive yet. If your program
 and the other programs all wait for each other, the world stops your program and reports this deadlock, instead of letting it
@@ -24,8 +24,8 @@ without buffering.</p>
 <h2>Provided functions</h2>
 
 <ul>
-  <li><code>int socket(int domain, int type, int protocol)</code>: creates a socket (<code>AF_INET</code> and
-    <code>SOCK_STREAM</code> only).</li>
+  <li><code>int socket(int domain, int type, int protocol)</code>: creates a socket (<code>AF_INET</code> only, with
+    <code>SOCK_STREAM</code> for TCP or <code>SOCK_DGRAM</code> for UDP).</li>
   <li><code>int bind(int fd, const struct sockaddr* addr, socklen_t len)</code>: binds the socket to a local port.</li>
   <li><code>int listen(int fd, int backlog)</code>: accepts the incoming connections on the bound socket.</li>
   <li><code>int accept(int fd, struct sockaddr* addr, socklen_t* len)</code>: waits for an incoming connection, and returns a
@@ -33,6 +33,10 @@ without buffering.</p>
   <li><code>int connect(int fd, const struct sockaddr* addr, socklen_t len)</code>: connects the socket to a server.</li>
   <li><code>ssize_t send(int fd, const void* buf, size_t len, int flags)</code> and <code>ssize_t recv(int fd, void* buf, size_t
     len, int flags)</code>: send and receive data on a connected socket.</li>
+  <li><code>ssize_t sendto(int fd, const void* buf, size_t len, int flags, const struct sockaddr* addr, socklen_t addrlen)</code>
+    and <code>ssize_t recvfrom(int fd, void* buf, size_t len, int flags, struct sockaddr* addr, socklen_t* addrlen)</code>: send
+    a datagram to an address, and receive one with the address of its sender. A datagram is received whole: the bytes that do
+    not fit in the buffer are lost.</li>
   <li><code>int shutdown(int fd, int how)</code>: closes one direction of the connection, or both.</li>
   <li><code>int open(const char* path, int flags, ...)</code>: opens a file (<code>O_RDONLY</code>, <code>O_WRONLY</code> or
     <code>O_RDWR</code>, combined with <code>O_CREAT</code>, <code>O_TRUNC</code> or <code>O_APPEND</code>).</li>
