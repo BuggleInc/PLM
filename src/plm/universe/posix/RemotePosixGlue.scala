@@ -1,19 +1,21 @@
 import java.io.{Closeable, FileNotFoundException, IOException, InputStream, InputStreamReader, OutputStream, OutputStreamWriter, PrintStream, Writer}
-import java.net.{BindException, ConnectException, InetSocketAddress, SocketAddress, SocketException}
+import java.net.{BindException, ConnectException, DatagramPacket, InetAddress, InetSocketAddress, SocketAddress, SocketException}
 import java.nio.charset.StandardCharsets
 import java.nio.file.{NoSuchFileException, OpenOption, Path, StandardOpenOption}
 import java.util.Arrays
 
 /*
  * The network and file API of the world, in place of the one of the JDK, which Scala programs use: Socket, ServerSocket,
- * Thread.sleep(), the file streams (FileInputStream, FileOutputStream, FileReader, FileWriter, PrintWriter) and the usual methods
- * of Files act on the world of the exercise, and System.out and System.err (thus println()) write on its standard streams. The
- * generated entity imports these classes by name (see Glue.replaces()), so that the student's code uses them as the ones of the
- * JDK. As in Scala, their accessors have no parentheses (socket.getInputStream). scala.io.Source.fromFile() is not replaced.
+ * DatagramSocket (with the DatagramPacket of the JDK), Thread.sleep(), the file streams (FileInputStream, FileOutputStream,
+ * FileReader, FileWriter, PrintWriter) and the usual methods of Files act on the world of the exercise, and System.out and
+ * System.err (thus println()) write on its standard streams. The generated entity imports these classes by name (see
+ * Glue.replaces()), so that the student's code uses them as the ones of the JDK. As in Scala, their accessors have no
+ * parentheses (socket.getInputStream). scala.io.Source.fromFile() is not replaced.
  */
 
 private val AF_INET     = 2
 private val SOCK_STREAM = 1
+private val SOCK_DGRAM  = 2
 private val SHUT_RD     = 0
 private val SHUT_WR     = 1
 private val O_RDONLY    = 0
@@ -32,9 +34,10 @@ def getParamString(i: Int): String = plm_remote_getParamString(i)
 def getParamInt(i: Int): Int = plm_remote_getParamInt(i)
 
 /** The exception of the last failure in the world, as the JDK would throw it */
-private def failure(): IOException = plm_remote_lastError() match {
+private def failure(): SocketException = plm_remote_lastError() match {
   case "ECONNREFUSED" => new ConnectException("Connection refused")
   case "EADDRINUSE"   => new BindException("Address already in use")
+  case "EMSGSIZE"     => new SocketException("Message too long")
   case error          => new SocketException(error)
 }
 
@@ -47,21 +50,21 @@ private class Descriptor(fd: Int) extends OutputStream {
   override def write(b: Array[Byte], off: Int, len: Int): Unit = plm_remote_write(fd, Arrays.copyOfRange(b, off, off + len))
 }
 
-/** What Socket and ServerSocket share: their descriptor in the world, once their socket is open */
+/** What Socket, ServerSocket and DatagramSocket share: their descriptor in the world, once their socket is open */
 abstract class SocketBase extends Closeable {
   protected var fd    = -1
   private var closed  = false
 
   /**
-   * Opens the socket in the world, and prepares it with setup (connect, or bind and listen), which returns -1 when it fails. As in
-   * the JDK, this socket is then closed.
+   * Opens a socket of that type in the world, and prepares it with setup (connect, or bind and listen), which returns -1 when it
+   * fails. As in the JDK, this socket is then closed.
    */
-  protected def open(setup: Int => Int, alreadyOpen: String): Unit = {
+  protected def open(socketType: Int, setup: Int => Int, alreadyOpen: String): Unit = {
     if (closed)
       throw new SocketException("Socket is closed")
     if (fd >= 0)
       throw new SocketException(alreadyOpen)
-    val socket = checked(plm_remote_socket(AF_INET, SOCK_STREAM, 0))
+    val socket = checked(plm_remote_socket(AF_INET, socketType, 0))
     if (setup(socket) < 0) {
       val e = failure()
       plm_remote_close(socket)
@@ -105,7 +108,7 @@ class Socket private[RemotePosix] (connected: Int) extends SocketBase {
   /** Connects to the endpoint, a resolved InetSocketAddress */
   def connect(endpoint: SocketAddress): Unit = {
     val address = endpoint.asInstanceOf[InetSocketAddress]
-    open(socket => plm_remote_connect(socket, address.getHostString, address.getPort), "Already connected")
+    open(SOCK_STREAM, socket => plm_remote_connect(socket, address.getHostString, address.getPort), "Already connected")
   }
 
   def isConnected: Boolean = fd >= 0
@@ -168,14 +171,58 @@ class ServerSocket() extends SocketBase {
   /** Binds to the endpoint, a resolved InetSocketAddress, and listens with that backlog (50 as in the JDK if it is not positive) */
   def bind(endpoint: SocketAddress, backlog: Int = 50): Unit = {
     val address = endpoint.asInstanceOf[InetSocketAddress]
-    open(socket => if (plm_remote_bind(socket, address.getHostString, address.getPort) < 0) -1 else plm_remote_listen(socket, if (backlog > 0) backlog else 50),
-         "Already bound")
+    val listening = (socket: Int) =>
+      if (plm_remote_bind(socket, address.getHostString, address.getPort) < 0) -1 else plm_remote_listen(socket, if (backlog > 0) backlog else 50)
+    open(SOCK_STREAM, listening, "Already bound")
   }
 
   def isBound: Boolean = fd >= 0
 
   /** Waits for a connection, and returns its socket */
   def accept(): Socket = new Socket(checked(plm_remote_accept(descriptor("Socket is not bound yet"))))
+}
+
+/**
+ * A UDP socket of the world, with the interface of java.net.DatagramSocket. The world binds it to an ephemeral port when it first
+ * sends, unless it was created on a port.
+ */
+class DatagramSocket(port: Int) extends SocketBase {
+  open(SOCK_DGRAM, socket => if (port < 0) 0 else plm_remote_bind(socket, "0.0.0.0", port), "Already bound")
+
+  def this() = this(-1)
+
+  private def socket: Int = descriptor("Socket is not bound")
+
+  /** Sends only to that address, and receives only from it */
+  def connect(endpoint: SocketAddress): Unit = {
+    val address = endpoint.asInstanceOf[InetSocketAddress]
+    checked(plm_remote_connect(socket, address.getHostString, address.getPort))
+  }
+
+  def connect(address: InetAddress, port: Int): Unit = connect(new InetSocketAddress(address, port))
+
+  /** Sends the data of the packet in one datagram, to its address, or to the connected one if it has none */
+  def send(packet: DatagramPacket): Unit = {
+    val data = Arrays.copyOfRange(packet.getData, packet.getOffset, packet.getOffset + packet.getLength)
+    val to   = packet.getAddress
+    checked(if (to == null) plm_remote_send(socket, data, 0) else plm_remote_sendto(socket, data, 0, to.getHostAddress, packet.getPort))
+  }
+
+  /**
+   * Waits for a datagram, and puts it in the packet with the address of its sender. As in the JDK, the bytes beyond the length of
+   * the packet are lost, and its length becomes the one of the datagram received.
+   */
+  def receive(packet: DatagramPacket): Unit = {
+    val data = plm_remote_recvfrom(socket, packet.getLength, 0)
+    if (data == null)
+      throw failure()
+    System.arraycopy(data, 0, packet.getData, packet.getOffset, data.length)
+    packet.setLength(data.length)
+    val sender = plm_remote_lastSender() // as ip:port
+    val colon  = sender.lastIndexOf(':')
+    packet.setAddress(InetAddress.getByName(sender.substring(0, colon)))
+    packet.setPort(sender.substring(colon + 1).toInt)
+  }
 }
 
 /** The sleep() of java.lang.Thread, in the world, which counts whole seconds */
