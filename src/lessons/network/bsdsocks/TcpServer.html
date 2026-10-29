@@ -35,6 +35,9 @@ world to the other.</p>
   <li>Close both [!c]descriptors[/!][!python|java|scala]sockets[/!]: the one of the client, and the one that waits for the connections.</li>
 </ol>
 
+<p>Use the timeline of the Objective world to get an overview of the calls involved in a typical TCP client/server
+connexion.</p>
+
 <p>Look at the world view while your program runs: the socket returned by <code>accept()</code> shares its port with the
 socket that waits for the connections. A port is not a socket on which external connections plug: the system dispatches the
 incoming data to the right application depending on four pieces of information: <code>{source IP, source port, destination IP,

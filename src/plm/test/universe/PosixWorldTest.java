@@ -323,9 +323,11 @@ public class PosixWorldTest {
 
   @Test public void testScriptedUdpServerAnswersTheSender()
   {
-    String script = "" "
-        recvfrom(3) sendto(3, "Sunny") close(3) "" ";
-        PosixWorld ref = new PosixWorld("udp server").addPeer(Peer.udpServer("10.0.0.1", 9001, script));
+    String script      = """
+        recvfrom(3) 
+        sendto(3, "Sunny")
+        close(3) """;
+    PosixWorld ref     = new PosixWorld("udp server").addPeer(Peer.udpServer("10.0.0.1", 9001, script));
     PosixWorld curr    = (PosixWorld)ref.copy();
     PosixEntity p      = process(ref);
     int sock           = p.socket(AF_INET, SOCK_DGRAM, 0);
@@ -344,9 +346,12 @@ public class PosixWorldTest {
 
   @Test public void testScriptedUdpClientWaitsForTheAnswer()
   {
-    String script = "" "
-        sleep(1) sendto(3, "Hello?") recvfrom(3) close(3) "" ";
-        PosixEntity p = process(new PosixWorld("udp client").addPeer(Peer.udpClient("10.0.0.2", 3000, script)));
+    String script     = """
+        sleep(1) 
+        sendto(3, "Hello?") 
+        recvfrom(3) 
+        close(3) """;
+    PosixEntity p     = process(new PosixWorld("udp client").addPeer(Peer.udpClient("10.0.0.2", 3000, script)));
     int sock          = p.socket(AF_INET, SOCK_DGRAM, 0);
     p.bind(sock, "0.0.0.0", 3000);
     Assertions.assertEquals("Hello?", s(p.recvfrom(sock, 512, 0)));

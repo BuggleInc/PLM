@@ -394,10 +394,15 @@ errors are exceptions. In C, the functions have exactly the same syntax and (hop
 output functions (of `stdio.h` on the standard streams such as `printf()` or `perror()` in C, using System.out in Java/Scala,
 etc) are intercepted by the glue and unbuffered.
 
+The panel under the world view traces the system calls and the steps of the peers, with the remaining script greyed. The world
+view can also show a **timeline**: the successive states of the world, linked by arrows labelled by the system call (or the
+transmission of the network) that led from one to the next, the machines that did not act being dimmed. The students can thus
+see the effect of each call on the descriptors, the queues and the connections, and compare the timeline of their world with
+the one of the objective to find the first state where they differ, which is where their protocol goes wrong. Hiding the
+standard streams makes the states shorter, and showing all the events (rather than the system calls only) shows the data
+travelling in packets.
+
 TODO:
-* The panel under the world view traces the system calls and the steps of the peers, with the remaining script greyed. A
-  graphical temporal view (a sequence diagram) would help further to debug the protocols.
-* Also intercept the C functions working on `FILE*` (`fopen()`, `fdopen()`...).
 * Pipes and forks are not supported yet.
 
 

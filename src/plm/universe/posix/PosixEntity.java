@@ -100,7 +100,7 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
   @Override public void processEnded(Integer exitCode)
   {
     PosixWorld kernel = (PosixWorld)getWorld(); // without letting the peers act, as the process cannot see them anymore
-    kernel.log("you", exitCode == null ? "+++ killed by SIGKILL +++" : "+++ exited with " + exitCode + " +++");
+    kernel.log(process(), "you", exitCode == null ? "+++ killed by SIGKILL +++" : "+++ exited with " + exitCode + " +++");
     kernel.notifyWorldUpdatesListeners();
   }
 
@@ -111,7 +111,7 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
   private <T> T step(String call, String arguments, T result)
   {
     PosixWorld kernel = (PosixWorld)getWorld();
-    kernel.log("you", call + "(" + arguments + ") = " + process().shown(result));
+    kernel.log(process(), "you", call + "(" + arguments + ") = " + process().shown(result));
     stepUI();
     kernel.advancePeers();
     return result;

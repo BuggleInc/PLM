@@ -63,6 +63,9 @@ public class PosixWorld extends World {
   int now;
   /** What happened so far, one event per line (a system call of the student's process, or a step of a peer), read by the UI */
   List<String> trace = new CopyOnWriteArrayList<>();
+  /** The states of the world, the initial one and then one after each event of the trace (at most MAX_SCENES), read by the view */
+  List<Scene> history         = new CopyOnWriteArrayList<>();
+  static final int MAX_SCENES = 1000;
   /** The amount of refused connect() since the clock last advanced, to detect the busy loops */
   private int refusedInARow;
   /** What the comparison of the worlds checks */
@@ -135,8 +138,11 @@ public class PosixWorld extends World {
     student = new PosixProcess(other.student, copies);
     now      = other.now;
     trace    = new CopyOnWriteArrayList<>(other.trace);
+    history  = new CopyOnWriteArrayList<>(other.history); // the scenes are never modified, so they can be shared
     compared = EnumSet.copyOf(other.compared);
     super.reset(initialWorld);
+    if (history.isEmpty())
+      history.add(Scene.after(this, null, null, -1));
   }
 
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_buggle.png"); }
@@ -155,8 +161,13 @@ public class PosixWorld extends World {
     return super.expandPlaceholders(html).replace("[!protocols/]", protocols);
   }
 
-  /** Adds an event to the trace, stamped with the clock */
-  void log(String who, String what) { trace.add("[t=" + now + "] " + who + ": " + what); }
+  /** Adds an event of that process (null for the network) to the trace, stamped with the clock, and keeps the state it leads to */
+  void log(PosixProcess actor, String who, String what)
+  {
+    trace.add("[t=" + now + "] " + who + ": " + what);
+    if (history.size() < MAX_SCENES)
+      history.add(Scene.after(this, who, what, processes().indexOf(actor)));
+  }
 
   /** The data longer than this is cut in the trace, as strace does (see its option -s) */
   static final int SHOWN_DATA = 50;
@@ -420,7 +431,7 @@ public class PosixWorld extends World {
     if (target != null && target.accepts(proc.ip, s.port))
       target.deliver(new Datagram(proc.ip, s.port, data));
     else
-      log("network", "datagram from " + proc.ip + ":" + s.port + " lost, as no socket waits for it on " + ip + ":" + port);
+      log(null, "network", "datagram from " + proc.ip + ":" + s.port + " lost, as no socket waits for it on " + ip + ":" + port);
     return data.length();
   }
 

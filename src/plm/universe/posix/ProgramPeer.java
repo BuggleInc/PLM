@@ -78,7 +78,7 @@ public abstract class ProgramPeer extends Peer {
     for (Packet packet : packets)
       if (packet.at() <= world.now) {
         packets.remove(packet);
-        world.log(network(), packet.socket().transmit(packet.bytes()).length() + " bytes");
+        world.log(null, network(), packet.socket().transmit(packet.bytes()).length() + " bytes");
         return true;
       }
     return false;
@@ -119,7 +119,7 @@ public abstract class ProgramPeer extends Peer {
   /** Traces a system call with its result, and returns the result */
   private <T> T traced(String call, T result)
   {
-    world.log(name, call + " = " + process.shown(result));
+    world.log(process, name, call + " = " + process.shown(result));
     return result;
   }
 

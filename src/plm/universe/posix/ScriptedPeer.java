@@ -336,7 +336,7 @@ final class ScriptedPeer extends Peer {
         int result = world.connect(process, step.fd(), PosixWorld.STUDENT_IP, port);
         if (result < 0) {
           refused = true;
-          world.log(name(), call(step) + " = " + process.shown(result));
+          world.log(process, name(), call(step) + " = " + process.shown(result));
           return false;
         }
         connected(step.fd());
@@ -376,7 +376,7 @@ final class ScriptedPeer extends Peer {
         event = call(step) + " = " + process.shown(world.close(process, step.fd()));
       }
     }
-    world.log(actor(step), event);
+    world.log(step.kind() == Kind.TRANSMIT ? null : process, actor(step), event);
     next++;
     since = world.now;
     return true;

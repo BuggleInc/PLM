@@ -1,8 +1,13 @@
 package plm.universe.posix;
 
+import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,7 +21,17 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Supplier;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+import javax.swing.Scrollable;
+import javax.swing.SwingUtilities;
+import plm.core.model.Game;
 import plm.core.ui.MainFrame;
 import plm.core.ui.WorldView;
 import plm.universe.World;
@@ -29,6 +44,12 @@ import plm.universe.World;
  * and its object follows the data: towards the process for stdin and the files open for reading, towards the object for stdout,
  * stderr and the files open for writing, both ways for the sockets and the files open for both. The text cut to fit in a box is
  * shown entirely as a tooltip.
+ *
+ * The timeline mode draws the successive states of the world instead (see PosixWorld.history), one under the other, linked by
+ * arrows labelled by the event that led from one to the next: under the machine whose process made the call, which is the only
+ * one drawn plainly, or between the machines for the network. It shows either the system calls only, or all the events. The
+ * standard streams can be hidden in both modes. These options, set by the controls above the drawing, are shared by all the
+ * views (such as the current world and the objective).
  */
 public class PosixWorldView extends WorldView {
   private static final long serialVersionUID = 1L;
@@ -54,25 +75,81 @@ public class PosixWorldView extends WorldView {
   /** The links of the last painting */
   private final List<Link> links = new ArrayList<>();
 
+  private static final int GAP      = 34;   // room between two states of the timeline, for the arrow of the event
+  private static final float DIMMED = 0.5f; // opacity of the machines that did not act in a state of the timeline
+
+  /** The options of the views, shared by all of them */
+  private static boolean showStd = true, timeline = false, allEvents = false;
+  /** The views to update when the options change */
+  private static final List<PosixWorldView> views = new CopyOnWriteArrayList<>();
+
+  private final Canvas canvas                = new Canvas();
+  private final JScrollPane scroll           = new JScrollPane(canvas);
+  private final JCheckBox stdBox             = new JCheckBox(Game.i18n.tr("Standard streams"));
+  private final JCheckBox timelineBox        = new JCheckBox(Game.i18n.tr("Timeline"));
+  private final JComboBox<String> detailsBox = new JComboBox<>(new String[] {Game.i18n.tr("System calls only"), Game.i18n.tr("All events")});
+
   public PosixWorldView(World w)
   {
     super(w);
-    setToolTipText(""); // registers the view to the tooltip manager, that then asks getToolTipText(MouseEvent)
-    MouseAdapter mouse = new MouseAdapter() {
-      @Override public void mouseClicked(MouseEvent event)
-      {
-        Link link = linkAt(event);
-        if (link != null)
-          MainFrame.getInstance().getEditorTabs().showReadOnly(link.title(), world, link.content());
-      }
+    setLayout(new BorderLayout());
+    JPanel controls = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 2));
+    controls.add(stdBox);
+    controls.add(timelineBox);
+    controls.add(detailsBox);
+    stdBox.setToolTipText(Game.i18n.tr("Show the standard input, output and error of the processes"));
+    timelineBox.setToolTipText(Game.i18n.tr("Show the successive states of the world, from the beginning"));
+    add(controls, BorderLayout.NORTH);
+    scroll.setBorder(null);
+    scroll.getVerticalScrollBar().setUnitIncrement(ROW);
+    add(scroll, BorderLayout.CENTER);
+    stdBox.addActionListener(e -> setOptions(stdBox.isSelected(), timeline, allEvents));
+    timelineBox.addActionListener(e -> setOptions(showStd, timelineBox.isSelected(), allEvents));
+    detailsBox.addActionListener(e -> setOptions(showStd, timeline, detailsBox.getSelectedIndex() == 1));
+    showOptions();
+    views.add(this);
+  }
 
-      @Override public void mouseMoved(MouseEvent event)
-      {
-        setCursor(Cursor.getPredefinedCursor(linkAt(event) == null ? Cursor.DEFAULT_CURSOR : Cursor.HAND_CURSOR));
-      }
-    };
-    addMouseListener(mouse);
-    addMouseMotionListener(mouse);
+  @Override public void dispose()
+  {
+    views.remove(this);
+    super.dispose();
+  }
+
+  /** Changes the options of all the views */
+  private static void setOptions(boolean std, boolean time, boolean all)
+  {
+    showStd   = std;
+    timeline  = time;
+    allEvents = all;
+    for (PosixWorldView view : views) {
+      view.showOptions();
+      view.refresh(time);
+    }
+  }
+
+  /** Shows the current options in the controls (which only call setOptions() again when a value changes) */
+  private void showOptions()
+  {
+    stdBox.setSelected(showStd);
+    timelineBox.setSelected(timeline);
+    detailsBox.setSelectedIndex(allEvents ? 1 : 0);
+    detailsBox.setEnabled(timeline);
+  }
+
+  @Override public void worldHasMoved() { SwingUtilities.invokeLater(() -> refresh(false)); } // the execution threads move the world
+
+  /** Redraws the world, following the end of the timeline if it was shown (or if asked) */
+  private void refresh(boolean toEnd)
+  {
+    if (world == null)
+      return;
+    JViewport viewport = scroll.getViewport();
+    boolean atEnd      = viewport.getViewPosition().y + viewport.getHeight() >= canvas.getHeight() - 5;
+    canvas.revalidate();
+    canvas.repaint();
+    if (timeline && (atEnd || toEnd))
+      SwingUtilities.invokeLater(() -> canvas.scrollRectToVisible(new Rectangle(0, canvas.getPreferredSize().height - 1, 1, 1)));
   }
 
   private Link linkAt(MouseEvent event)
@@ -83,12 +160,179 @@ public class PosixWorldView extends WorldView {
     return null;
   }
 
-  @Override public String getToolTipText(MouseEvent event)
+  /** A state of the timeline, placed at that height */
+  private record Placed(Scene scene, int top) {}
+
+  /** The states shown by the timeline with their place: the first, the events asked, and the last one */
+  private List<Placed> timelineLayout()
   {
-    for (int i = tips.size() - 1; i >= 0; i--) // the last drawn is on top, as a cell over the queue that contains it
-      if (tips.get(i).area().contains(event.getPoint()))
-        return tips.get(i).text();
-    return null;
+    List<Scene> history = ((PosixWorld)world).history;
+    List<Placed> res    = new ArrayList<>();
+    int top             = 5;
+    for (int i = 0; i < history.size(); i++) {
+      Scene scene = history.get(i);
+      if (i > 0 && !scene.syscall() && !allEvents && i < history.size() - 1)
+        continue;
+      if (i > 0)
+        top += GAP;
+      res.add(new Placed(scene, top));
+      top += sceneHeight(scene);
+    }
+    return res;
+  }
+
+  /** The drawing of the world, in the scroll pane: its current state, or its timeline */
+  private class Canvas extends JComponent implements Scrollable {
+    private static final long serialVersionUID = 1L;
+
+    Canvas()
+    {
+      setToolTipText(""); // registers the canvas to the tooltip manager, that then asks getToolTipText(MouseEvent)
+      MouseAdapter mouse = new MouseAdapter() {
+        @Override public void mouseClicked(MouseEvent event)
+        {
+          Link link = linkAt(event);
+          if (link != null)
+            MainFrame.getInstance().getEditorTabs().showReadOnly(link.title(), world, link.content());
+        }
+
+        @Override public void mouseMoved(MouseEvent event)
+        {
+          setCursor(Cursor.getPredefinedCursor(linkAt(event) == null ? Cursor.DEFAULT_CURSOR : Cursor.HAND_CURSOR));
+        }
+      };
+      addMouseListener(mouse);
+      addMouseMotionListener(mouse);
+    }
+
+    @Override public String getToolTipText(MouseEvent event)
+    {
+      for (int i = tips.size() - 1; i >= 0; i--) // the last drawn is on top, as a cell over the queue that contains it
+        if (tips.get(i).area().contains(event.getPoint()))
+          return tips.get(i).text();
+      return null;
+    }
+
+    @Override public Dimension getPreferredSize()
+    {
+      if (world == null)
+        return new Dimension(0, 0);
+      if (!timeline)
+        return new Dimension(0, 10 + sceneHeight(Scene.live((PosixWorld)world)));
+      List<Placed> placed = timelineLayout();
+      Placed last         = placed.get(placed.size() - 1);
+      return new Dimension(0, last.top() + sceneHeight(last.scene()) + 25);
+    }
+
+    @Override public Dimension getPreferredScrollableViewportSize() { return getPreferredSize(); }
+    @Override public int getScrollableUnitIncrement(Rectangle visible, int orientation, int direction) { return ROW; }
+    @Override public int getScrollableBlockIncrement(Rectangle visible, int orientation, int direction) { return visible.height - ROW; }
+    @Override public boolean getScrollableTracksViewportWidth() { return true; }
+    @Override public boolean getScrollableTracksViewportHeight() { return getParent().getHeight() > getPreferredSize().height; }
+
+    @Override public void paintComponent(Graphics g)
+    {
+      super.paintComponent(g);
+      Graphics2D g2 = (Graphics2D)g;
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+      g2.setColor(Color.white);
+      g2.fillRect(0, 0, getWidth(), getHeight());
+      tips.clear();
+      links.clear();
+      if (world == null)
+        return;
+      PosixWorld w = (PosixWorld)world;
+      g2.setColor(Color.black);
+      if (!timeline) {
+        g2.drawString("t = " + w.now + "s", (getWidth() - 40) / 2, 18);
+        scene(g2, 10, Scene.live(w), true);
+        return;
+      }
+      Rectangle clip = g2.getClipBounds();
+      int previous   = -1; // the bottom of the previous state
+      for (Placed p : timelineLayout()) {
+        int bottom = p.top() + sceneHeight(p.scene());
+        if (previous >= 0 && p.top() >= clip.y && previous <= clip.y + clip.height)
+          event(g2, previous, p.top(), p.scene());
+        if (bottom >= clip.y && p.top() <= clip.y + clip.height)
+          scene(g2, p.top(), p.scene(), false);
+        previous = bottom;
+      }
+      if (w.history.size() >= PosixWorld.MAX_SCENES) {
+        g2.setColor(Color.gray);
+        g2.drawString(Game.i18n.tr("The timeline stops after {0} events.", PosixWorld.MAX_SCENES), 10, previous + 18);
+      }
+    }
+  }
+
+  /** The height of the drawing of a state: the machine of the student's process, or the ones of the peers under each other */
+  private int sceneHeight(Scene scene)
+  {
+    int student = machineHeight(rows(scene.processes().get(0)).size(), !scene.files().isEmpty());
+    int peers   = -20;
+    for (PosixProcess process : scene.processes().subList(1, scene.processes().size()))
+      peers += machineHeight(rows(process).size(), false) + 20;
+    return 15 + Math.max(student, peers);
+  }
+
+  /** The height of a machine, whose process keeps the room of a row even without any (when the standard streams are hidden) */
+  private static int machineHeight(int rows, boolean files) { return 25 + Math.max(rows, 1) * ROW + (files ? FILE_HEIGHT + 10 : 0); }
+
+  /**
+   * Draws a state of the world from top: the machine of the student's process on the left, and the ones of the peers on the
+   * right, mirrored, then the connections between their ports. In the timeline, the machines that did not act are dimmed. The
+   * current state links its texts to the editor.
+   */
+  private void scene(Graphics2D g2, int top, Scene scene, boolean live)
+  {
+    Map<Object, Point> ports = new HashMap<>();
+    int machineWidth         = canvas.getWidth() * 45 / 100;
+    int peersTop             = top + 15;
+    Composite plain          = g2.getComposite();
+    for (int i = 0; i < scene.processes().size(); i++) {
+      if (!live && scene.actor() >= 0 && scene.actor() != i)
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, DIMMED));
+      PosixProcess process = scene.processes().get(i);
+      if (i == 0)
+        machine(g2, 10, machineWidth, top + 15, scene.titles().get(0), process, scene.files(), false, live, ports);
+      else
+        peersTop = machine(g2, canvas.getWidth() - 10 - machineWidth, machineWidth, peersTop, scene.titles().get(i), process, Map.of(), true, live, ports) + 20;
+      g2.setComposite(plain);
+    }
+
+    // The connections between the ports, dashed while waiting in a backlog
+    g2.setColor(NETWORK);
+    for (PosixProcess process : scene.processes())
+      for (FileDescription o : process.fds)
+        if (o instanceof Socket s) {
+          if (s.remote != null)
+            wire(g2, ports.get(s), ports.get(s.remote), false);
+          for (Socket pending : s.backlog)
+            wire(g2, ports.get(s), ports.get(pending.remote), true);
+        }
+  }
+
+  /**
+   * Draws the arrow of the event leading to a state of the timeline, between the bottom of the previous state and the top of this
+   * one: under the machine of the process that made the call, or between the machines for the network
+   */
+  private void event(Graphics2D g2, int from, int to, Scene scene)
+  {
+    int machineWidth = canvas.getWidth() * 45 / 100;
+    int x            = scene.actor() < 0 ? canvas.getWidth() / 2 : scene.actor() == 0 ? 10 + machineWidth / 3 : canvas.getWidth() - 10 - machineWidth * 2 / 3;
+    g2.setColor(Color.darkGray);
+    g2.drawLine(x, from + 4, x, to - 4);
+    g2.fillPolygon(new int[] {x, x - 4, x + 4}, new int[] {to - 1, to - 9, to - 9}, 3);
+    String label = scene.actor() == 0 ? scene.what() : scene.who() + ": " + scene.what();
+    Font font    = g2.getFont();
+    g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 11));
+    int y = (from + to) / 2 + 4;
+    g2.setColor(Color.gray);
+    g2.drawString("t=" + scene.now(), 10, y);
+    g2.setColor(Color.black);
+    g2.drawString(fit(g2, label, canvas.getWidth() - x - 18), x + 8, y);
+    g2.setFont(font);
   }
 
   /**
@@ -126,46 +370,11 @@ public class PosixWorldView extends WorldView {
     return new Row(fd, new String[] {stream.name}, List.of(queue), stream.input, !stream.input, null, stream);
   }
 
-  @Override public void paintComponent(Graphics g)
-  {
-    super.paintComponent(g);
-    PosixWorld w  = (PosixWorld)world;
-    Graphics2D g2 = (Graphics2D)g;
-    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g2.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
-    g2.setColor(Color.white);
-    g2.fillRect(0, 0, getWidth(), getHeight());
-    tips.clear();
-    links.clear();
-    g2.setColor(Color.black);
-    g2.drawString("t = " + w.now + "s", (getWidth() - 40) / 2, 18);
-
-    // The student's machine on the left, and the peers' machines on the right, mirrored
-    Map<Object, Point> ports = new HashMap<>();
-    int machineWidth         = getWidth() * 45 / 100;
-    machine(g2, 10, machineWidth, 25, "Your machine (" + PosixWorld.STUDENT_IP + ")", rows(w.student), w.files, false, ports);
-    int top = 25;
-    for (Peer p : w.peers) {
-      top = machine(g2, getWidth() - 10 - machineWidth, machineWidth, top, p.title(), rows(p.process), Map.of(), true, ports) + 20;
-    }
-
-    // The connections between the ports, dashed while waiting in a backlog
-    g2.setColor(NETWORK);
-    for (PosixProcess process : w.processes())
-      for (FileDescription o : process.fds)
-        if (o instanceof Socket s) {
-          if (s.remote != null)
-            wire(g2, ports.get(s), ports.get(s.remote), false);
-          for (Socket pending : s.backlog)
-            wire(g2, ports.get(s), ports.get(pending.remote), true);
-        }
-  }
-
-  /** The rows of the descriptors of a process */
+  /** The rows of the descriptors of a process, without its standard streams if they are hidden */
   private static List<Row> rows(PosixProcess process)
   {
     List<Row> rows = new ArrayList<>();
-    for (int fd = 0; fd < process.fds.size(); fd++)
+    for (int fd = showStd ? 0 : 3; fd < process.fds.size(); fd++)
       rows.add(row(fd, process.fds.get(fd)));
     return rows;
   }
@@ -206,13 +415,14 @@ public class PosixWorldView extends WorldView {
   /**
    * Draws a machine: its process with one row per descriptor, the objects of the descriptors, and the ports on its edge (on the
    * right, or on the left if mirrored), followed by its files (name and content). Stores the position of the port of each keyed
-   * row in ports, and returns the bottom of the drawing.
+   * row in ports, and returns the bottom of the drawing. The machine of the current state links its texts to the editor.
    */
-  private int machine(Graphics2D g2, int left, int width, int top, String title, List<Row> rows, Map<String, String> files, boolean mirrored,
-                      Map<Object, Point> ports)
+  private int machine(Graphics2D g2, int left, int width, int top, String title, PosixProcess process, Map<String, String> files, boolean mirrored,
+                      boolean live, Map<Object, Point> ports)
   {
-    int rowsTop = top + 15;
-    int bottom  = rowsTop + rows.size() * ROW + (files.isEmpty() ? 0 : FILE_HEIGHT + 10) + 10;
+    List<Row> rows = rows(process);
+    int rowsTop    = top + 15;
+    int bottom     = top + machineHeight(rows.size(), !files.isEmpty());
     g2.setColor(Color.black);
     g2.drawString(title, left + 5, top - 7);
     g2.drawRoundRect(left, top, width, bottom - top, 15, 15);
@@ -227,12 +437,12 @@ public class PosixWorldView extends WorldView {
     int objectFar    = mirrored ? objectLeft : objectLeft + objectWidth;
     int edge         = mirrored ? left : left + width;
     int toObject     = mirrored ? -1 : 1; // the direction from the process to the objects
-    box(g2, PROCESS, processLeft, rowsTop - 5, processWidth, rows.size() * ROW, "Process");
+    box(g2, PROCESS, processLeft, rowsTop - 5, processWidth, Math.max(rows.size(), 1) * ROW, "Process");
 
     Map<String, Integer> portRows = new HashMap<>(); // the row of the first socket using each numbered port
-    PosixProcess student          = ((PosixWorld)world).student;
-    for (Row row : rows) {
-      int y = rowCenter(rowsTop, row.fd());
+    for (int index = 0; index < rows.size(); index++) {
+      Row row = rows.get(index);
+      int y   = rowCenter(rowsTop, index);
       descriptor(g2, fdX, y, row.fd(), row.lines() != null, mirrored);
       if (row.lines() == null)
         continue;
@@ -244,10 +454,10 @@ public class PosixWorldView extends WorldView {
         arrowHead(g2, fdX + 6 * toObject, y, -toObject);
       box(g2, KERNEL, objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6, row.lines());
       Rectangle area = new Rectangle(objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6);
-      if (row.key() instanceof Socket s && s.remote != null) {
+      if (live && row.key() instanceof Socket s && s.remote != null) {
         links.add(new Link(area, title + ", socket " + row.fd(), () -> history(s)));
         tips.add(new Tip(area, "Click to see everything that went through this socket"));
-      } else if (row.key() instanceof StandardStream stream && (stream == student.stdout || stream == student.stderr)) {
+      } else if (live && row.key() instanceof StandardStream stream && !mirrored && (stream == process.stdout || stream == process.stderr)) {
         links.add(new Link(area, title + ", " + stream.name, () -> written(stream.name)));
         tips.add(new Tip(area, "Click to see everything that your process wrote on it"));
       }
@@ -258,7 +468,8 @@ public class PosixWorldView extends WorldView {
       }
       if (row.port() == null)
         continue;
-      int portY = row.port().isEmpty() ? y : rowCenter(rowsTop, portRows.computeIfAbsent(row.port(), number -> row.fd()));
+      int first = index;
+      int portY = row.port().isEmpty() ? y : rowCenter(rowsTop, portRows.computeIfAbsent(row.port(), number -> first));
       g2.setColor(NETWORK);
       g2.drawLine(objectFar, y, edge - 6 * toObject, portY);
       port(g2, edge, portY, row.port(), mirrored);
@@ -271,7 +482,7 @@ public class PosixWorldView extends WorldView {
 
     int x = left + 10;
     for (Map.Entry<String, String> file : files.entrySet()) {
-      file(g2, x, rowsTop + rows.size() * ROW + 5, file.getKey(), file.getValue());
+      file(g2, x, rowsTop + Math.max(rows.size(), 1) * ROW + 5, file.getKey(), file.getValue(), live);
       x += FILE_WIDTH + 10;
     }
     return bottom;
@@ -288,7 +499,7 @@ public class PosixWorldView extends WorldView {
   private static String history(Socket s) { return PosixWorld.text("Received:\n" + s.arrived + "\n\nSent:\n" + s.remote.arrived + s.outgoing); }
 
   /** Draws a file as an icon with a folded corner: its name on top, then the first lines of its content (all of it as a tooltip) */
-  private void file(Graphics2D g2, int x, int y, String name, String data)
+  private void file(Graphics2D g2, int x, int y, String name, String data, boolean live)
   {
     int fold = 10;
     int[] xs = {x, x + FILE_WIDTH - fold, x + FILE_WIDTH, x + FILE_WIDTH, x};
@@ -311,16 +522,19 @@ public class PosixWorldView extends WorldView {
     }
     g2.setFont(font);
     Rectangle area = new Rectangle(x, y, FILE_WIDTH, FILE_HEIGHT);
-    tips.add(new Tip(area, "<html>" + escape(name) + ":<br><pre>" + escape(PosixWorld.text(data)) + "</pre><i>Click to open it in the editor</i></html>"));
-    links.add(new Link(area, name, () -> {
-      String current = ((PosixWorld)world).files.get(name);
-      return current == null ? "(this file does not exist anymore)" : PosixWorld.text(current);
-    }));
+    String click   = live ? "<i>Click to open it in the editor</i>" : "";
+    tips.add(new Tip(area, "<html>" + escape(name) + ":<br><pre>" + escape(PosixWorld.text(data)) + "</pre>" + click + "</html>"));
+    if (live)
+      links.add(new Link(area, name, () -> {
+        String current = ((PosixWorld)world).files.get(name);
+        return current == null ? "(this file does not exist anymore)" : PosixWorld.text(current);
+      }));
   }
 
   private static String escape(String text) { return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"); }
 
-  private static int rowCenter(int top, int fd) { return top + fd * ROW + ROW / 2 - 5; }
+  /** The vertical center of the row at that index among the rows drawn */
+  private static int rowCenter(int top, int index) { return top + index * ROW + ROW / 2 - 5; }
 
   private void descriptor(Graphics2D g2, int x, int y, int fd, boolean used, boolean mirrored)
   {

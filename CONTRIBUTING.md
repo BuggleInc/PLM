@@ -1052,6 +1052,21 @@ documentation](PEDAGOGY.md#system-programming).
   (reached with `MainFrame.getInstance().getEditorTabs()`), which any universe can use: the tabs are `ReadOnlyTab`, listening
   to the world until the student closes them, or until the exercise or the language changes. Their title gives the name of the
   world (and "objective" for the expected one), and clicking again on a text shows its current content in the same tab.
+* **The timeline**: the controls above `PosixWorldView` switch it to a timeline, drawing the successive states of the world one
+  under the other, linked by arrows labelled by the event that led from one to the next. Each arrow hangs under the machine of
+  the process that made the call (or between the machines for the network), and the machines that did not act are dimmed.
+  The combo box shows either the system calls only, the transmissions of the network being merged into the next state shown
+  (the last state is always shown), or all the events. A checkbox hides the standard streams, in both modes. These options are
+  static, shared by all the views (such as the current world and the objective), and not saved between sessions.
+  - The states come from `PosixWorld.history`: `log(actor, who, what)`, which adds every event to the trace, also keeps a
+    `Scene` of the world after it, i.e. copies of the processes (the student's first, then the peers' ones, copied with a
+    shared map so that the connections between them are kept) and of the files, with the index of the acting process (-1 for
+    the network). The initial state is added by `reset()`, and the history stops after `MAX_SCENES` (1000) events, which the
+    timeline then tells. A new kind of event must thus go through `log()` with its process, to appear in the timeline.
+  - A change made without an event of the trace appears in the next state without an arrow of its own: for example, a scripted
+    server starts listening when its script reaches `accept()`.
+  - The timeline only draws the states that are visible, follows the end of the history during a run if it was shown, and does
+    not open the editor on a click (only the current state does, its tabs following the world).
 * **No world I/O yet**: the expected worlds are recomputed at each load.
 * **TODO**: `HttpServer.html` describes the persistent connections without the timeout of `HttpServer.keepAlive()`, which no
   world uses yet. A world using it should tell its timeout to the students, in the reference or in the mission.
