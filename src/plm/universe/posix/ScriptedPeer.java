@@ -19,6 +19,10 @@ import java.util.TreeSet;
  * visible. The end of the stream reaches the student once all the data sent before the CLOSE was transmitted. In the other
  * direction, what the student sends reaches the peer at once.
  *
+ * A UDP peer (see Peer.udpServer() and Peer.udpClient()) has a datagram socket on 3, bound to its port for a server. Its
+ * RECVFROM waits for a datagram and receives it whole, and its SENDTO sends one at once: to the student's port for a client, and
+ * to the sender of the last datagram received for a server, as a server answers its clients.
+ *
  * The script is written with the syntax of the trace, one call per line, possibly commented with //:
  * <pre>
  * accept(3)
@@ -27,6 +31,11 @@ import java.util.TreeSet;
  * transmit(4, 5)            // or sendInPackets(4, "Hello", 2, 1), sending in packets of 2 bytes, each after a pause of 1s
  * close(4)
  * </pre>
+ * or for a UDP server:
+ * <pre>
+ * recvfrom(3)
+ * sendto(3, "Hello")
+ * </pre>
  * The steps take the descriptors of the peer's sockets, as the system calls: a server has its listening socket on 3, and gets its
  * connections from accept(3) on the lowest free descriptors (4, then 5...), while a client has an unconnected socket on 3 to
  * connect(), and can create more with socket(). The parsing follows the descriptors as the kernel allocates them, so that the
@@ -34,12 +43,15 @@ import java.util.TreeSet;
  * is loaded.
  */
 final class ScriptedPeer extends Peer {
-  enum Kind { ACCEPT, SOCKET, CONNECT, SLEEP, SEND, TRANSMIT, RECV, CLOSE }
+  /** The kinds of steps, ACCEPT, SOCKET and CONNECT also telling the kind of a descriptor while parsing, as DATAGRAM (never a step) */
+  enum Kind { ACCEPT, SOCKET, CONNECT, SLEEP, SEND, TRANSMIT, RECV, SENDTO, RECVFROM, CLOSE, DATAGRAM }
   /** A step of a script, on the descriptor fd (-1 for SLEEP) */
   record Step(Kind kind, int fd, int amount, String data) {}
 
   /** Whether the student connects to this peer, or this peer connects to the student */
   final boolean isServer;
+  /** Whether this peer talks UDP rather than TCP */
+  final boolean datagram;
   /** The port of a server peer, or the one of the student's machine to which a client peer connects */
   final int port;
   final List<Step> script = new ArrayList<>();
@@ -47,24 +59,32 @@ final class ScriptedPeer extends Peer {
   /** End of the current SLEEP step, or -1 when not sleeping */
   int wakeAt = -1;
   boolean refused;
+  /** The sender of the last datagram received, to which a UDP server answers */
+  String replyIp;
+  int replyPort;
   /** The last connection of each descriptor, kept after close() since the network may still carry its data */
   final Map<Integer, Socket> sockets = new TreeMap<>();
 
   /** While parsing: the open descriptors of the peer's process above 2, by kind of socket, and the connections closed since */
   private final Map<Integer, Kind> openAtParse = new TreeMap<>();
   private final TreeSet<Integer> closedAtParse = new TreeSet<>();
+  /** While parsing: whether a UDP server received a datagram, so that it knows where to answer */
+  private boolean receivedAtParse;
 
-  /** A peer whose process has a socket on descriptor 3 from the start, bound to its port for a server */
-  ScriptedPeer(boolean isServer, String ip, int port, String script)
+  /** A peer whose process has a socket on descriptor 3 from the start (of datagrams for UDP), bound to its port for a server */
+  ScriptedPeer(boolean isServer, boolean datagram, String ip, int port, String script)
   {
     super(ip);
-    this.isServer = isServer;
-    this.port     = port;
-    Socket socket = new Socket(ip);
+    this.isServer     = isServer;
+    this.datagram     = datagram;
+    this.port         = port;
+    InetSocket socket = datagram ? new DatagramSocket(ip) : new Socket(ip);
     if (isServer)
       socket.port = port;
     process.allocate(socket);
-    openAtParse.put(3, isServer ? Kind.ACCEPT : Kind.SOCKET);
+    if (datagram)
+      endpoints.add(socket);
+    openAtParse.put(3, datagram ? Kind.DATAGRAM : isServer ? Kind.ACCEPT : Kind.SOCKET);
     parse(script);
   }
 
@@ -140,8 +160,8 @@ final class ScriptedPeer extends Peer {
   {
     int expected = switch (name) {
       case "socket" -> 0;
-      case "accept", "connect", "sleep", "close" -> 1;
-      case "send", "transmit", "recv" -> 2;
+      case "accept", "connect", "sleep", "close", "recvfrom" -> 1;
+      case "send", "transmit", "recv", "sendto" -> 2;
       case "sendInPackets" -> 4;
       default -> throw new IllegalArgumentException("unknown call " + name + "()");
     };
@@ -156,6 +176,8 @@ final class ScriptedPeer extends Peer {
       case "send" -> send((Integer)args.get(0), (String)args.get(1));
       case "transmit" -> transmit((Integer)args.get(0), (Integer)args.get(1));
       case "recv" -> recv((Integer)args.get(0), (Integer)args.get(1));
+      case "sendto" -> sendto((Integer)args.get(0), (String)args.get(1));
+      case "recvfrom" -> recvfrom((Integer)args.get(0));
       default -> sendInPackets((Integer)args.get(0), (String)args.get(1), (Integer)args.get(2), (Integer)args.get(3));
     }
   }
@@ -167,12 +189,12 @@ final class ScriptedPeer extends Peer {
     opened(Kind.CONNECT);
     return add(Kind.ACCEPT, fd, 0, null);
   }
-  /** Creates a new unconnected socket (of a client), on the lowest free descriptor */
+  /** Creates a new unconnected socket (of a client, of datagrams for UDP), on the lowest free descriptor */
   private ScriptedPeer socket()
   {
     if (isServer)
       throw new IllegalArgumentException("A server peer cannot create sockets");
-    opened(Kind.SOCKET);
+    opened(datagram ? Kind.DATAGRAM : Kind.SOCKET);
     return add(Kind.SOCKET, -1, 0, null);
   }
   /** Connects the unconnected socket fd (of a client) to the student's process, or is refused if it does not listen */
@@ -210,6 +232,21 @@ final class ScriptedPeer extends Peer {
     check(fd, Kind.CONNECT, "a connection");
     return add(Kind.RECV, fd, length, null);
   }
+  /** Sends the data in one datagram from the socket fd: to the student's port for a client, to the last sender for a server */
+  private ScriptedPeer sendto(int fd, String data)
+  {
+    check(fd, Kind.DATAGRAM, "a datagram socket");
+    if (isServer && !receivedAtParse)
+      throw new IllegalArgumentException("A UDP server must recvfrom() a datagram before answering with sendto()");
+    return add(Kind.SENDTO, fd, 0, data);
+  }
+  /** Waits for a datagram on the socket fd, and receives it whole */
+  private ScriptedPeer recvfrom(int fd)
+  {
+    check(fd, Kind.DATAGRAM, "a datagram socket");
+    receivedAtParse = true;
+    return add(Kind.RECVFROM, fd, 0, null);
+  }
   private ScriptedPeer close(int fd)
   {
     if (!openAtParse.containsKey(fd))
@@ -245,8 +282,11 @@ final class ScriptedPeer extends Peer {
   private ScriptedPeer(ScriptedPeer other, Map<FileDescription, FileDescription> copies)
   {
     super(other, copies);
-    isServer = other.isServer;
-    port     = other.port;
+    isServer  = other.isServer;
+    datagram  = other.datagram;
+    port      = other.port;
+    replyIp   = other.replyIp;
+    replyPort = other.replyPort;
     script.addAll(other.script);
     next    = other.next;
     wakeAt  = other.wakeAt;
@@ -286,7 +326,12 @@ final class ScriptedPeer extends Peer {
         connected(fd);
         event = call(step) + " = " + process.shown(fd);
       }
-      case SOCKET -> event = call(step) + " = " + process.shown(world.socket(process, PosixWorld.AF_INET, PosixWorld.SOCK_STREAM, 0));
+      case SOCKET -> {
+        int fd = world.socket(process, PosixWorld.AF_INET, datagram ? PosixWorld.SOCK_DGRAM : PosixWorld.SOCK_STREAM, 0);
+        if (datagram)
+          endpoints.add((DatagramSocket)process.get(fd));
+        event = call(step) + " = " + process.shown(fd);
+      }
       case CONNECT -> {
         int result = world.connect(process, step.fd(), PosixWorld.STUDENT_IP, port);
         if (result < 0) {
@@ -317,6 +362,16 @@ final class ScriptedPeer extends Peer {
         String data = world.recv(process, step.fd(), step.amount(), 0);
         event       = "recv(" + step.fd() + ", " + PosixWorld.filled(data) + ", " + step.amount() + ") = " + process.shown(data);
       }
+      case SENDTO -> event = call(step) + " = " + process.shown(world.sendto(process, step.fd(), step.data(), 0, destinationIp(), destinationPort()));
+      case RECVFROM -> {
+        if (((DatagramSocket)process.get(step.fd())).incoming.isEmpty())
+          return false;
+        Datagram received = world.recvfrom(process, step.fd(), PosixWorld.MAX_DATAGRAM, 0);
+        replyIp           = received.ip();
+        replyPort         = received.port();
+        event = "recvfrom(" + step.fd() + ", " + PosixWorld.filled(received.data()) + ", " + PosixWorld.MAX_DATAGRAM + ", ← " + replyIp + ":" + replyPort +
+                ") = " + process.shown(received.data());
+      }
       default -> { // CLOSE
         event = call(step) + " = " + process.shown(world.close(process, step.fd()));
       }
@@ -331,9 +386,13 @@ final class ScriptedPeer extends Peer {
   private void connected(int fd)
   {
     Socket socket = (Socket)process.get(fd);
-    connections.add(socket);
+    endpoints.add(socket);
     sockets.put(fd, socket);
   }
+
+  /** Where SENDTO sends: to the sender of the last datagram received for a server, to the student's port for a client */
+  private String destinationIp() { return isServer ? replyIp : PosixWorld.STUDENT_IP; }
+  private int destinationPort() { return isServer ? replyPort : port; }
 
   @Override int wakeUp() { return wakeAt; }
 
@@ -365,12 +424,17 @@ final class ScriptedPeer extends Peer {
   {
     return switch (step.kind()) {
       case ACCEPT -> "accept(" + step.fd() + ")";
-      case SOCKET -> "socket(AF_INET, SOCK_STREAM, 0)";
+      case SOCKET -> datagram ? "socket(AF_INET, SOCK_DGRAM, 0)" : "socket(AF_INET, SOCK_STREAM, 0)";
       case CONNECT -> "connect(" + step.fd() + ", " + PosixWorld.STUDENT_IP + ":" + port + ")";
       case SLEEP -> "sleep(" + step.amount() + ")";
       case SEND -> "send(" + step.fd() + ", " + PosixWorld.excerpt(step.data()) + ", " + step.data().length() + ")";
       case TRANSMIT -> "up to " + step.amount() + " bytes";
       case RECV -> "recv(" + step.fd() + ", ..., " + step.amount() + ")";
+      case SENDTO ->
+        "sendto(" + step.fd() + ", " + PosixWorld.excerpt(step.data()) + ", " + step.data().length() + ", " +
+            (isServer && replyIp == null ? "the sender" : destinationIp() + ":" + destinationPort()) + ")";
+      case RECVFROM -> "recvfrom(" + step.fd() + ", ..., " + PosixWorld.MAX_DATAGRAM + ")";
+      case DATAGRAM -> throw new IllegalStateException("DATAGRAM is not a step");
       case CLOSE -> "close(" + step.fd() + ")";
     };
   }
@@ -378,14 +442,14 @@ final class ScriptedPeer extends Peer {
   @Override String describe()
   {
     String state = refused ? " (connection refused)" : next < script.size() ? " (waiting in " + script.get(next).kind() + ")" : "";
-    return (isServer ? "server " : "client of ") + process.ip + ":" + port + ", at step " + next + "/" + script.size() + state + ", received '" +
-        PosixWorld.bytes(received()) + "'";
+    return (datagram ? "UDP " : "") + (isServer ? "server " : "client of ") + process.ip + ":" + port + ", at step " + next + "/" + script.size() + state +
+        ", received '" + PosixWorld.bytes(received()) + "'";
   }
 
   @Override public boolean equals(Object o)
   {
-    return o instanceof ScriptedPeer p && isServer == p.isServer && process.ip.equals(p.process.ip) && port == p.port && script.equals(p.script) &&
-        next == p.next && refused == p.refused && received().equals(p.received()) && process.equals(p.process);
+    return o instanceof ScriptedPeer p && isServer == p.isServer && datagram == p.datagram && process.ip.equals(p.process.ip) && port == p.port &&
+        script.equals(p.script) && next == p.next && refused == p.refused && received().equals(p.received()) && process.equals(p.process);
   }
 
   @Override public int hashCode() { return Objects.hash(process.ip, port, next, received()); }

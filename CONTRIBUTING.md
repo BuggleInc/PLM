@@ -928,6 +928,9 @@ documentation](PEDAGOGY.md#system-programming).
       close(4)
       """)
   ```
+  `Peer.udpServer()` and `Peer.udpClient()` give the same over UDP: their datagram socket is on 3 (bound to its port for a
+  server), `recvfrom(3)` waits for a datagram and receives it whole, and `sendto(3, "...")` sends one at once, to the student's
+  port for a client, or to the sender of the last datagram received for a server.
   The peers act as far as they can before and after each system call of the student (`PosixEntity`), and each of their steps
   is animated on its own (`PosixWorld.advancePeers()`). The student writes a function whose parameters (such as the address
   and the port of the server) are given by each world with `PosixWorld.setParameters()`, along with its peers, so that

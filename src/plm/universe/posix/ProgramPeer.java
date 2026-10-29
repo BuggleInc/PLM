@@ -138,7 +138,7 @@ public abstract class ProgramPeer extends Peer {
     if (((Socket)process.get(fd)).backlog.isEmpty())
       return -1;
     int res = traced("accept(" + fd + ")", world.accept(process, fd));
-    connections.add((Socket)process.get(res));
+    endpoints.add((Socket)process.get(res));
     return res;
   }
 
@@ -182,6 +182,7 @@ public abstract class ProgramPeer extends Peer {
   {
     int fd = traced("socket(AF_INET, SOCK_DGRAM, 0)", world.socket(process, PosixWorld.AF_INET, PosixWorld.SOCK_DGRAM, 0));
     traced("bind(" + fd + ", 0.0.0.0:" + port + ")", world.bind(process, fd, "0.0.0.0", port));
+    endpoints.add((DatagramSocket)process.get(fd));
     return fd;
   }
 

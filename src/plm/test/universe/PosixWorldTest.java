@@ -321,6 +321,55 @@ public class PosixWorldTest {
     Assertions.assertEquals("EOPNOTSUPP", p.lastError());
   }
 
+  @Test public void testScriptedUdpServerAnswersTheSender()
+  {
+    String script = "" "
+        recvfrom(3) sendto(3, "Sunny") close(3) "" ";
+        PosixWorld ref = new PosixWorld("udp server").addPeer(Peer.udpServer("10.0.0.1", 9001, script));
+    PosixWorld curr    = (PosixWorld)ref.copy();
+    PosixEntity p      = process(ref);
+    int sock           = p.socket(AF_INET, SOCK_DGRAM, 0);
+    Assertions.assertEquals(8, p.sendto(sock, b("weather?"), 0, "10.0.0.1", 9001));
+    Assertions.assertEquals("Sunny", s(p.recvfrom(sock, 512, 0)));
+    Assertions.assertEquals("10.0.0.1:9001", p.lastSender());
+    p.close(sock);
+
+    PosixEntity other = process(curr);
+    int mine          = other.socket(AF_INET, SOCK_DGRAM, 0);
+    other.sendto(mine, b("weather"), 0, "10.0.0.1", 9001);
+    Assertions.assertEquals("Sunny", s(other.recvfrom(mine, 512, 0)));
+    other.close(mine);
+    Assertions.assertTrue(ref.diffTo(curr, null).contains("received 'weather'"), ref.diffTo(curr, null)); // what the peer received
+  }
+
+  @Test public void testScriptedUdpClientWaitsForTheAnswer()
+  {
+    String script = "" "
+        sleep(1) sendto(3, "Hello?") recvfrom(3) close(3) "" ";
+        PosixEntity p = process(new PosixWorld("udp client").addPeer(Peer.udpClient("10.0.0.2", 3000, script)));
+    int sock          = p.socket(AF_INET, SOCK_DGRAM, 0);
+    p.bind(sock, "0.0.0.0", 3000);
+    Assertions.assertEquals("Hello?", s(p.recvfrom(sock, 512, 0)));
+    String[] sender = p.lastSender().split(":");
+    Assertions.assertEquals("10.0.0.2", sender[0]);
+    Assertions.assertEquals(7, p.sendto(sock, b("Welcome"), 0, sender[0], Integer.parseInt(sender[1])));
+    p.close(sock);
+
+    PosixEntity q = process(new PosixWorld("udp client").addPeer(Peer.udpClient("10.0.0.2", 3000, script)));
+    int other     = q.socket(AF_INET, SOCK_DGRAM, 0);
+    q.bind(other, "0.0.0.0", 3000);
+    q.recvfrom(other, 512, 0);
+    q.sendto(other, b("Welcome"), 0, "10.0.0.2", 3000);                                 // to the port of the server instead of the client's one: lost
+    Assertions.assertThrows(ExplainedException.class, () -> q.recvfrom(other, 512, 0)); // both wait forever
+  }
+
+  @Test public void testUdpScriptErrors()
+  {
+    IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.udpServer("10.0.0.1", 53, "sendto(3, \"x\")"));
+    Assertions.assertTrue(e.getMessage().contains("recvfrom()"), e.getMessage());
+    Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.udpServer("10.0.0.1", 53, "accept(3)"));
+  }
+
   @Test public void testClientConnectingBeforeListenIsRefused()
   {
     PosixWorld w  = new PosixWorld("early").addPeer(Peer.client("10.0.0.2", 3000, """
