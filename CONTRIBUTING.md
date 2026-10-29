@@ -1017,8 +1017,9 @@ documentation](PEDAGOGY.md#system-programming).
   `getParamInt()`, for the code of the entity.
 * **The Java glue** (`RemotePosixGlue.java`, appended in the class of the generated methods, which are private and named
   `plm_remote_xxx`) offers nested classes with the interface of `java.net.Socket`, `java.net.ServerSocket` (with their
-  streams), of `Thread.sleep()`, of the file streams (`FileInputStream`, `FileOutputStream`, `FileReader`, `FileWriter`, and
-  `PrintWriter` whose constructor taking a file name opens it in the world) and of the usual methods of `java.nio.file.Files`
+  streams), `java.net.DatagramSocket` (using the `DatagramPacket` of the JDK), of `Thread.sleep()`, of the file streams
+  (`FileInputStream`, `FileOutputStream`, `FileReader`, `FileWriter`, and `PrintWriter` whose constructor taking a file name
+  opens it in the world) and of the usual methods of `java.nio.file.Files`
   (`readString()`, `readAllBytes()`, `readAllLines()`, `writeString()`, `write()`, `delete()`, `deleteIfExists()`), which
   throw the exceptions of the JDK (such as `ConnectException` or `FileNotFoundException`). They are listed in
   `@Glue(replaces = ...)`: the generated entity imports them by name, which beats the imports on demand of its template

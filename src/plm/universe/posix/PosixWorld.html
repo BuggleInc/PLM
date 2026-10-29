@@ -107,6 +107,10 @@ writes on the standard output of the world, and <code>System.err</code> on its s
   <li><code>new ServerSocket(port)</code>: creates a socket listening on a local port (or <code>new ServerSocket()</code>, then
     <code>bind(new InetSocketAddress(port))</code>), whose <code>accept()</code> waits for an incoming connection and returns a
     new <code>Socket</code> for it.</li>
+  <li><code>new DatagramSocket()</code> (or <code>new DatagramSocket(port)</code> on a local port): creates a UDP socket, whose
+    <code>send(packet)</code> sends a <code>DatagramPacket</code> to its address, and whose <code>receive(packet)</code> waits
+    for a datagram and puts it in the packet with the address of its sender. A datagram is received whole: the bytes beyond the
+    length of the packet are lost, and its length becomes the one of the datagram received.</li>
   <li><code>new FileInputStream(path)</code>, <code>new FileOutputStream(path, append)</code>, <code>new FileReader(path)</code>,
     <code>new FileWriter(path, append)</code> and <code>new PrintWriter(path)</code>: open a file of the world.</li>
   <li><code>Files.readString(path)</code>, <code>Files.readAllBytes(path)</code>, <code>Files.readAllLines(path)</code>,

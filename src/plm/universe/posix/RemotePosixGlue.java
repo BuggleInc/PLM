@@ -9,6 +9,8 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.net.BindException;
 import java.net.ConnectException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.net.SocketException;
@@ -22,13 +24,14 @@ import java.util.List;
 import java.util.function.IntUnaryOperator;
 
 /*
- * The network and file API of the world, in place of the one of the JDK: Socket, ServerSocket, Thread.sleep(), the file streams
+ * The network and file API of the world, in place of the one of the JDK: Socket, ServerSocket, DatagramSocket (with the
+ * DatagramPacket of the JDK), Thread.sleep(), the file streams
  * (FileInputStream, FileOutputStream, FileReader, FileWriter, PrintWriter) and the usual methods of Files act on the world of the
  * exercise, and System.out and System.err write on its standard streams. The generated entity imports these classes by name (see
  * Glue.replaces()), so that the student's code uses them as the ones of java.net, java.io, java.nio.file and java.lang.
  */
 
-private static final int AF_INET = 2, SOCK_STREAM = 1, SHUT_RD = 0, SHUT_WR = 1;
+private static final int AF_INET = 2, SOCK_STREAM = 1, SOCK_DGRAM = 2, SHUT_RD = 0, SHUT_WR = 1;
 private static final int O_RDONLY = 0, O_WRONLY = 1, O_CREAT = 0100, O_TRUNC = 01000, O_APPEND = 02000;
 
 static
@@ -49,17 +52,18 @@ public static int getParamInt(int i)
 }
 
 /** The exception of the last failure in the world, as the JDK would throw it */
-private static IOException failure()
+private static SocketException failure()
 {
   String error = plm_remote_lastError();
   return switch (error) {
     case "ECONNREFUSED" -> new ConnectException("Connection refused");
     case "EADDRINUSE" -> new BindException("Address already in use");
+    case "EMSGSIZE" -> new SocketException("Message too long");
     default -> new SocketException(error);
   };
 }
 
-private static int checked(int result) throws IOException
+private static int checked(int result) throws SocketException
 {
   if (result < 0)
     throw failure();
@@ -77,24 +81,24 @@ private static final class Descriptor extends OutputStream {
   @Override public void write(byte[] b, int off, int len) { plm_remote_write(fd, Arrays.copyOfRange(b, off, off + len)); }
 }
 
-/** What Socket and ServerSocket share: their descriptor in the world, once their socket is open */
+/** What Socket, ServerSocket and DatagramSocket share: their descriptor in the world, once their socket is open */
 private abstract static class SocketBase implements Closeable {
   int fd = -1;
   private boolean closed;
 
   /**
-   * Opens the socket in the world, and prepares it with setup (connect, or bind and listen), which returns -1 when it fails. As in
-   * the JDK, this socket is then closed.
+   * Opens a socket of that type in the world, and prepares it with setup (connect, or bind and listen), which returns -1 when it
+   * fails. As in the JDK, this socket is then closed.
    */
-  void open(IntUnaryOperator setup, String alreadyOpen) throws IOException
+  void open(int type, IntUnaryOperator setup, String alreadyOpen) throws SocketException
   {
     if (closed)
       throw new SocketException("Socket is closed");
     if (fd >= 0)
       throw new SocketException(alreadyOpen);
-    int socket = checked(plm_remote_socket(AF_INET, SOCK_STREAM, 0));
+    int socket = checked(plm_remote_socket(AF_INET, type, 0));
     if (setup.applyAsInt(socket) < 0) {
-      IOException e = failure();
+      SocketException e = failure();
       plm_remote_close(socket);
       closed = true;
       throw e;
@@ -137,7 +141,7 @@ public static class Socket extends SocketBase {
   public void connect(SocketAddress endpoint) throws IOException
   {
     InetSocketAddress address = (InetSocketAddress)endpoint;
-    open(socket -> plm_remote_connect(socket, address.getHostString(), address.getPort()), "Already connected");
+    open(SOCK_STREAM, socket -> plm_remote_connect(socket, address.getHostString(), address.getPort()), "Already connected");
   }
 
   public boolean isConnected() { return fd >= 0; }
@@ -220,7 +224,8 @@ public static class ServerSocket extends SocketBase {
   public void bind(SocketAddress endpoint, int backlog) throws IOException
   {
     InetSocketAddress address = (InetSocketAddress)endpoint;
-    open(socket
+    open(SOCK_STREAM,
+         socket
          -> plm_remote_bind(socket, address.getHostString(), address.getPort()) < 0 ? -1 : plm_remote_listen(socket, backlog > 0 ? backlog : 50),
          "Already bound");
   }
@@ -229,6 +234,62 @@ public static class ServerSocket extends SocketBase {
 
   /** Waits for a connection, and returns its socket */
   public Socket accept() throws IOException { return new Socket(checked(plm_remote_accept(descriptor("Socket is not bound yet")))); }
+}
+
+/**
+ * A UDP socket of the world, with the interface of java.net.DatagramSocket. The world binds it to an ephemeral port when it first
+ * sends, unless it was created on a port.
+ */
+public static class DatagramSocket extends SocketBase {
+  public DatagramSocket() throws SocketException { open(SOCK_DGRAM, socket -> 0, "Already bound"); }
+
+  public DatagramSocket(int port) throws SocketException { open(SOCK_DGRAM, socket -> plm_remote_bind(socket, "0.0.0.0", port), "Already bound"); }
+
+  private int socket() throws SocketException { return descriptor("Socket is not bound"); }
+
+  /** Sends only to that address, and receives only from it */
+  public void connect(SocketAddress endpoint) throws SocketException
+  {
+    InetSocketAddress address = (InetSocketAddress)endpoint;
+    checked(plm_remote_connect(socket(), address.getHostString(), address.getPort()));
+  }
+
+  public void connect(InetAddress address, int port) throws SocketException { connect(new InetSocketAddress(address, port)); }
+
+  /** Sends the data of the packet in one datagram, to its address, or to the connected one if it has none */
+  public void send(DatagramPacket packet) throws IOException
+  {
+    byte[] data    = Arrays.copyOfRange(packet.getData(), packet.getOffset(), packet.getOffset() + packet.getLength());
+    InetAddress to = packet.getAddress();
+    checked(to == null ? plm_remote_send(socket(), data, 0) : plm_remote_sendto(socket(), data, 0, to.getHostAddress(), packet.getPort()));
+  }
+
+  /**
+   * Waits for a datagram, and puts it in the packet with the address of its sender. As in the JDK, the bytes beyond the length of
+   * the packet are lost, and its length becomes the one of the datagram received.
+   */
+  public void receive(DatagramPacket packet) throws IOException
+  {
+    byte[] data = plm_remote_recvfrom(socket(), packet.getLength(), 0);
+    if (data == null)
+      throw failure();
+    System.arraycopy(data, 0, packet.getData(), packet.getOffset(), data.length);
+    packet.setLength(data.length);
+    String sender = plm_remote_lastSender(); // as ip:port
+    int colon     = sender.lastIndexOf(':');
+    packet.setAddress(InetAddress.getByName(sender.substring(0, colon)));
+    packet.setPort(Integer.parseInt(sender.substring(colon + 1)));
+  }
+
+  /** As in the JDK, closing a datagram socket throws nothing */
+  @Override public void close()
+  {
+    try {
+      super.close();
+    } catch (IOException e) {
+      // the world only fails to close a descriptor that is not open
+    }
+  }
 }
 
 /** The sleep() of java.lang.Thread, in the world, which counts whole seconds */

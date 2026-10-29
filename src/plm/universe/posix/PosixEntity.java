@@ -7,8 +7,8 @@ import plm.universe.Entity;
 
 /** The student's process. Its system calls are executed by the kernel of its world, which keeps the data as one char per byte. */
 @Glue(value = "RemotePosix", wrapped = true,
-      replaces = {"java.net.Socket", "java.net.ServerSocket", "java.lang.Thread", "java.io.FileInputStream", "java.io.FileOutputStream", "java.io.FileReader",
-                  "java.io.FileWriter", "java.io.PrintWriter", "java.nio.file.Files"})
+      replaces = {"java.net.Socket", "java.net.ServerSocket", "java.net.DatagramSocket", "java.lang.Thread", "java.io.FileInputStream",
+                  "java.io.FileOutputStream", "java.io.FileReader", "java.io.FileWriter", "java.io.PrintWriter", "java.nio.file.Files"})
 @EntityPrimitives(PosixEntityPrimitives.class)
 public class PosixEntity extends Entity implements PosixEntityPrimitives {
 
