@@ -453,7 +453,7 @@ public class IrcServer extends ProgramPeer {
     Answers answer = answers.get(nick);
     if (answer == null)
       return;
-    String normalized = ascii(message).toLowerCase(Locale.ROOT);
+    String normalized = ascii(PosixWorld.text(message)).toLowerCase(Locale.ROOT); // the accents of the client's UTF-8 removed too
     boolean matches   = answer.words().stream().allMatch(forms -> forms.stream().anyMatch(normalized::contains));
     String reply    = (to.startsWith("#") ? client.nick + ": " : "") + (matches ? answer.answer() : answer.otherwise());
     plan(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + to + " :" + reply, c -> true);

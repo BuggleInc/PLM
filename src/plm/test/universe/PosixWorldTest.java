@@ -575,6 +575,17 @@ public class PosixWorldTest {
     Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0));
   }
 
+  @Test public void testIrcMembersUnderstandAccents()
+  {
+    PosixWorld w  = new PosixWorld("accents").addPeer(new IrcServer("10.0.0.1", 6667)
+                                                          .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
+                                                          .answer("Bob", List.of(List.of("s'il vous plaît"), List.of("trésor")), "Merci !", "Quoi ?"));
+    PosixEntity p = process(w);
+    Lines lines   = joined(p);
+    p.send(3, "PRIVMSG Bob :Le trésor, s'il vous plait\r\n".getBytes(StandardCharsets.UTF_8), 0); // with or without the accents
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Merci !", lines.next());
+  }
+
   @Test public void testIrcServerRefusesTextWithoutColon()
   {
     PosixEntity p = process(irc(0));
