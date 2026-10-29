@@ -61,7 +61,8 @@ its standard error.</p>
 <h2>Provided functions</h2>
 
 <ul>
-  <li><code>socket.socket()</code>: creates an IPv4 TCP socket. A <code>with</code> block closes it at its end.</li>
+  <li><code>socket.socket()</code>: creates an IPv4 TCP socket, or a UDP one with <code>socket.socket(socket.AF_INET,
+    socket.SOCK_DGRAM)</code>. A <code>with</code> block closes it at its end.</li>
   <li><code>sock.connect((host, port))</code>: connects the socket to a server.</li>
   <li><code>sock.bind((host, port))</code>: binds the socket to a local port (the empty host <code>""</code> standing for every
     interface), and <code>sock.listen()</code> accepts the incoming connections on it.</li>
@@ -69,6 +70,9 @@ its standard error.</p>
     it.</li>
   <li><code>sock.send(data)</code>, <code>sock.sendall(data)</code> and <code>sock.recv(size)</code>: send and receive bytes on a
     connected socket. <code>recv()</code> returns <code>b""</code> at the end of the stream.</li>
+  <li><code>sock.sendto(data, (host, port))</code> and <code>sock.recvfrom(size)</code>: send a datagram to an address, and
+    receive one, as a pair of its bytes and of the address of its sender. A datagram is received whole: the bytes beyond
+    <code>size</code> are lost.</li>
   <li><code>sock.makefile(mode)</code>: gives a file on the socket, buffered as usual, such as <code>sock.makefile("rb")</code>
     whose <code>readline()</code> returns the next line.</li>
   <li><code>sock.shutdown(how)</code>: closes one direction of the connection (<code>socket.SHUT_RD</code> or

@@ -13,7 +13,7 @@ import types
 
 __all__ = ["getParamString", "getParamInt"]  # for the code that calls the student's function, who imports the usual modules
 
-AF_INET, SOCK_STREAM, IPPROTO_TCP = 2, 1, 6
+AF_INET, SOCK_STREAM, SOCK_DGRAM, IPPROTO_TCP, IPPROTO_UDP = 2, 1, 2, 6, 17
 SHUT_RD, SHUT_WR, SHUT_RDWR = 0, 1, 2
 _PLM_O_CREAT, _PLM_O_TRUNC, _PLM_O_APPEND = 0o100, 0o1000, 0o2000
 
@@ -126,8 +126,9 @@ class socket:
     """A socket of the world, with the interface of socket.socket"""
 
     def __init__(self, family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None):
-        if fileno is None:
-            fileno = _checked(_plm_remote_socket(family, type, 0 if proto == IPPROTO_TCP else proto))
+        if fileno is None:  # IPPROTO_TCP and IPPROTO_UDP are the default protocols of SOCK_STREAM and SOCK_DGRAM
+            default = IPPROTO_TCP if type == SOCK_STREAM else IPPROTO_UDP
+            fileno = _checked(_plm_remote_socket(family, type, 0 if proto == default else proto))
         self._fd = fileno
 
     def __enter__(self):
@@ -162,6 +163,17 @@ class socket:
 
     def recv(self, bufsize, flags=0):
         return _checked(_plm_remote_recv(self._fd, bufsize, flags))
+
+    def sendto(self, data, flags_or_address, address=None):
+        """Sends the data in one datagram to the address, as sendto(data, address) or sendto(data, flags, address)"""
+        flags, address = (0, flags_or_address) if address is None else (flags_or_address, address)
+        return _checked(_plm_remote_sendto(self._fd, _bytes(data), flags, *_ip_and_port(address)))
+
+    def recvfrom(self, bufsize, flags=0):
+        """The next datagram (at most bufsize bytes of it, the rest being lost) and the address (host, port) of its sender"""
+        data = _checked(_plm_remote_recvfrom(self._fd, bufsize, flags))
+        host, port = _plm_remote_lastSender().rsplit(":", 1)
+        return data, (host, int(port))
 
     def shutdown(self, how):
         _checked(_plm_remote_shutdown(self._fd, how))
@@ -202,7 +214,8 @@ def create_server(address, *, backlog=128):
 
 _socket_module = types.ModuleType("socket", "The sockets of the world")
 _socket_module.__dict__.update(socket=socket, create_connection=create_connection, create_server=create_server, error=OSError, AF_INET=AF_INET,
-                               SOCK_STREAM=SOCK_STREAM, IPPROTO_TCP=IPPROTO_TCP, SHUT_RD=SHUT_RD, SHUT_WR=SHUT_WR, SHUT_RDWR=SHUT_RDWR)
+                               SOCK_STREAM=SOCK_STREAM, SOCK_DGRAM=SOCK_DGRAM, IPPROTO_TCP=IPPROTO_TCP, IPPROTO_UDP=IPPROTO_UDP, SHUT_RD=SHUT_RD,
+                               SHUT_WR=SHUT_WR, SHUT_RDWR=SHUT_RDWR)
 sys.modules["socket"] = _socket_module
 os.open, os.read, os.write, os.close, os.unlink, os.remove, os.fdopen, time.sleep = _open, _read, _write, _close, _unlink, _unlink, _file, _sleep
 builtins.open = io.open = _file  # pathlib uses io.open, while the modules imported above (such as tokenize) keep the real one
