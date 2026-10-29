@@ -113,6 +113,8 @@ public class PosixWorldView extends WorldView {
   private static final String SEND    = "Send queue: the data sent by this process waits here before travelling to the peer";
   private static final String RECEIVE = "Receive queue: the data from the peer waits here until this process receives it";
   private static final String BACKLOG = "Backlog: the connected clients wait here until accept() takes them";
+  private static final String DATAGRAMS =
+      "Receive queue: each datagram waits here, whole, until this process receives it (the bytes beyond the buffer of recvfrom() are lost)";
 
   /** The row of a standard stream: its single queue holds what waits on the input, or what was written on the outputs */
   private static Row stream(int fd, StandardStream stream)
@@ -187,6 +189,10 @@ public class PosixWorldView extends WorldView {
         return new Row(fd, new String[] {"socket"}, List.of(backlog), true, true, port, s);
       }
       return new Row(fd, new String[] {"socket", s.port >= 0 ? "bound" : "unconnected"}, List.of(), true, true, port, s);
+    }
+    if (o instanceof DatagramSocket s) { // the datagrams leave at once, so only the received ones wait, one chunk each
+      Queue received = new Queue(s.incoming.stream().map(Datagram::data).toList(), false, false, 0, DATAGRAMS);
+      return new Row(fd, new String[] {"UDP socket"}, List.of(received), true, true, s.port >= 0 ? String.valueOf(s.port) : null, s);
     }
     return new Row(fd, null, false, false);
   }

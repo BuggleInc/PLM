@@ -4,6 +4,7 @@ import static plm.universe.posix.PosixWorld.AF_INET;
 import static plm.universe.posix.PosixWorld.O_CREAT;
 import static plm.universe.posix.PosixWorld.O_TRUNC;
 import static plm.universe.posix.PosixWorld.O_WRONLY;
+import static plm.universe.posix.PosixWorld.SOCK_DGRAM;
 import static plm.universe.posix.PosixWorld.SOCK_STREAM;
 
 import java.nio.charset.StandardCharsets;
@@ -287,6 +288,36 @@ public class PosixWorldTest {
     Assertions.assertTrue(curr.winning(ref), ref.diffTo(curr, null)); // the bytes are kept as they are
     process(curr).send(4, new byte[] {1}, 0);
     Assertions.assertTrue(ref.diffTo(curr, null).contains("received '\\0\\3777\\1'"), ref.diffTo(curr, null)); // as strace shows them
+  }
+
+  @Test public void testDatagramsArriveWholeAndAreTruncated()
+  {
+    PosixEntity p = process(new PosixWorld("udp"));
+    int server    = p.socket(AF_INET, SOCK_DGRAM, 0);
+    Assertions.assertEquals(0, p.bind(server, "0.0.0.0", 5000));
+    int client = p.socket(AF_INET, SOCK_DGRAM, 0);
+    Assertions.assertEquals(5, p.sendto(client, b("Hello"), 0, PosixWorld.STUDENT_IP, 5000));
+    Assertions.assertEquals(5, p.sendto(client, b("World"), 0, PosixWorld.STUDENT_IP, 5000));
+    Assertions.assertEquals("Hel", s(p.recvfrom(server, 3, 0)));                 // the rest of the datagram is lost
+    Assertions.assertEquals(PosixWorld.STUDENT_IP + ":32768", p.lastSender()); // the ephemeral port bound by sendto()
+    Assertions.assertEquals("World", s(p.recv(server, 512, 0)));
+    Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(server, 512, 0)); // a deadlock
+  }
+
+  @Test public void testDatagramsWithoutReceiverAreLost()
+  {
+    PosixEntity p = process(new PosixWorld("udp"));
+    int server    = p.socket(AF_INET, SOCK_DGRAM, 0);
+    p.bind(server, "0.0.0.0", 5000);
+    Assertions.assertEquals(0, p.connect(server, PosixWorld.STUDENT_IP, 6000)); // only receives from that port now
+    int client = p.socket(AF_INET, SOCK_DGRAM, 0);
+    Assertions.assertEquals(-1, p.send(client, b("PING"), 0));
+    Assertions.assertEquals("EDESTADDRREQ", p.lastError());
+    Assertions.assertEquals(4, p.sendto(client, b("PING"), 0, PosixWorld.STUDENT_IP, 5000)); // lost, as from another port
+    Assertions.assertEquals(4, p.sendto(client, b("PING"), 0, "10.0.0.1", 53));              // lost, as nobody listens there
+    Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(server, 512, 0));
+    Assertions.assertEquals(-1, p.listen(client, 5));
+    Assertions.assertEquals("EOPNOTSUPP", p.lastError());
   }
 
   @Test public void testClientConnectingBeforeListenIsRefused()

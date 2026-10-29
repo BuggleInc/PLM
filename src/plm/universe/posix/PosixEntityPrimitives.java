@@ -12,7 +12,8 @@ import plm.universe.EntityPrimitivesBase;
 @PrimitiveGroups({"Sockets", "Files", "Others"})
 public interface PosixEntityPrimitives extends EntityPrimitivesBase {
 
-  @Primitive(value = "Creates a socket and returns its descriptor. Only AF_INET and SOCK_STREAM are supported, with protocol 0.", group = "Sockets")
+  @Primitive(value = "Creates a socket and returns its descriptor. Only AF_INET is supported, with SOCK_STREAM or SOCK_DGRAM and protocol 0.",
+             group = "Sockets")
   int socket(int domain, int socket_type, int protocol);
 
   @Primitive(value = "Binds the socket to the given local port.", group = "Sockets") int bind(int fd, String ip, int port);
@@ -29,6 +30,15 @@ public interface PosixEntityPrimitives extends EntityPrimitivesBase {
 
   @Primitive(value = "Waits for data on the connected socket and returns at most len bytes of it, or nothing at the end of the stream.", group = "Sockets")
   byte[] recv(int fd, int len, int flags);
+
+  @Primitive(value = "Sends the data in one datagram to the given address, and returns the amount of bytes sent.", group = "Sockets")
+  int sendto(int fd, byte[] data, int flags, String ip, int port);
+
+  @Primitive(value = "Waits for a datagram and returns at most len bytes of it, the rest being lost. Its sender is given by lastSender().", group = "Sockets")
+  byte[] recvfrom(int fd, int len, int flags);
+
+  /** The address of the sender of the datagram received by the last recvfrom(), as ip:port, used by the glue to fill the address */
+  @Primitive String lastSender();
 
   @Primitive(value = "Closes one or both directions of the connected socket (SHUT_RD, SHUT_WR or SHUT_RDWR).", group = "Sockets") int shutdown(int fd, int how);
 

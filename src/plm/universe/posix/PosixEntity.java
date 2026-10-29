@@ -12,6 +12,9 @@ import plm.universe.Entity;
 @EntityPrimitives(PosixEntityPrimitives.class)
 public class PosixEntity extends Entity implements PosixEntityPrimitives {
 
+  /** The address of the sender of the last datagram received, as ip:port */
+  private String sender = "";
+
   /** The kernel side of this process */
   private PosixProcess process() { return ((PosixWorld)getWorld()).student; }
 
@@ -27,8 +30,8 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
 
   @Override public int socket(int domain, int socket_type, int protocol)
   {
-    String arguments =
-        (domain == PosixWorld.AF_INET ? "AF_INET" : domain) + ", " + (socket_type == PosixWorld.SOCK_STREAM ? "SOCK_STREAM" : socket_type) + ", " + protocol;
+    String type = socket_type == PosixWorld.SOCK_STREAM ? "SOCK_STREAM" : socket_type == PosixWorld.SOCK_DGRAM ? "SOCK_DGRAM" : String.valueOf(socket_type);
+    String arguments = (domain == PosixWorld.AF_INET ? "AF_INET" : domain) + ", " + type + ", " + protocol;
     return step("socket", arguments, kernel().socket(process(), domain, socket_type, protocol));
   }
   @Override public int bind(int fd, String ip, int port) { return step("bind", fd + ", " + ip + ":" + port, kernel().bind(process(), fd, ip, port)); }
@@ -44,6 +47,19 @@ public class PosixEntity extends Entity implements PosixEntityPrimitives {
     String data = kernel().recv(process(), fd, len, flags);
     return bytes(step("recv", fd + ", " + PosixWorld.filled(data) + ", " + len + ", " + flags, data));
   }
+  @Override public int sendto(int fd, byte[] data, int flags, String ip, int port)
+  {
+    String arguments = fd + ", " + excerpt(data) + ", " + data.length + ", " + flags + ", " + ip + ":" + port;
+    return step("sendto", arguments, kernel().sendto(process(), fd, text(data), flags, ip, port));
+  }
+  @Override public byte[] recvfrom(int fd, int len, int flags)
+  {
+    Datagram datagram = kernel().recvfrom(process(), fd, len, flags);
+    String data       = datagram == null ? null : datagram.data();
+    sender            = datagram == null ? "" : datagram.ip() + ":" + datagram.port();
+    return bytes(step("recvfrom", fd + ", " + PosixWorld.filled(data) + ", " + len + ", " + flags + (datagram == null ? "" : ", ← " + sender), data));
+  }
+  @Override public String lastSender() { return sender; }
   @Override public int shutdown(int fd, int how)
   {
     String shown = how >= PosixWorld.SHUT_RD && how <= PosixWorld.SHUT_RDWR ? new String[] {"SHUT_RD", "SHUT_WR", "SHUT_RDWR"}[how] : String.valueOf(how);
