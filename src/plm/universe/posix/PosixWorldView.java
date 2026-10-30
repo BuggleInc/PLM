@@ -350,13 +350,18 @@ public class PosixWorldView extends WorldView {
 
   /**
    * A queue of a socket: its chunks (of data, or of pending connections), whether the end of the stream follows them, whether it
-   * flows towards the network (or towards the process), and its capacity (0 if unbounded) whose free places are drawn empty.
+   * flows towards the network (or towards the process), its capacity (0 if unbounded) whose free places are drawn empty, and what
+   * each chunk is (such as "Datagram from 10.0.0.2:3000"), shown in its tooltip, or null if the chunks need no tooltip.
    */
-  private record Queue(List<String> chunks, boolean eof, boolean outgoing, int capacity, String role) {}
+  private record Queue(List<String> chunks, boolean eof, boolean outgoing, int capacity, String role, List<String> labels) {
+    Queue(List<String> chunks, boolean eof, boolean outgoing, int capacity, String role) { this(chunks, eof, outgoing, capacity, role, null); }
+  }
 
   private static final String SEND    = "Send queue: the data sent by this process waits here before travelling to the peer";
   private static final String RECEIVE = "Receive queue: the data from the peer waits here until this process receives it";
   private static final String BACKLOG = "Backlog: the connected clients wait here until accept() takes them";
+  /** The cell ending a chunk shortened to its share of a queue */
+  private static final String ELLIPSIS = "…";
   private static final String DATAGRAMS =
       "Receive queue: each datagram waits here, whole, until this process receives it (the bytes beyond the buffer of recvfrom() are lost)";
 
@@ -400,7 +405,8 @@ public class PosixWorldView extends WorldView {
       return new Row(fd, new String[] {"socket", s.port >= 0 ? "bound" : "unconnected"}, List.of(), true, true, port, s);
     }
     if (o instanceof DatagramSocket s) { // the datagrams leave at once, so only the received ones wait, one chunk each
-      Queue received = new Queue(s.incoming.stream().map(Datagram::data).toList(), false, false, 0, DATAGRAMS);
+      List<String> senders = s.incoming.stream().map(d -> "Datagram from " + d.ip() + ":" + d.port()).toList();
+      Queue received       = new Queue(s.incoming.stream().map(Datagram::data).toList(), false, false, 0, DATAGRAMS, senders);
       return new Row(fd, new String[] {"UDP socket"}, List.of(received), true, true, s.port >= 0 ? String.valueOf(s.port) : null, s);
     }
     return new Row(fd, null, false, false);
@@ -409,7 +415,8 @@ public class PosixWorldView extends WorldView {
   /** The queues of a connected socket: the sending one, and the receiving one, each followed by the end of the stream if needed */
   private static List<Queue> connection(List<String> sent, boolean sentEof, List<String> received, boolean receivedEof)
   {
-    return List.of(new Queue(sent, sentEof, true, 0, SEND), new Queue(received, receivedEof, false, 0, RECEIVE));
+    List<String> packets = Collections.nCopies(received.size(), "Packet");
+    return List.of(new Queue(sent, sentEof, true, 0, SEND), new Queue(received, receivedEof, false, 0, RECEIVE, packets));
   }
 
   /**
@@ -547,17 +554,26 @@ public class PosixWorldView extends WorldView {
 
   /**
    * Draws a queue as cells of one byte each (or one connection), the chunks separated by thicker lines, followed by EOF if needed.
-   * The cells keep the reading order, and stick to the side where they leave, which an arrow shows. A queue too long for its
-   * width is cut, with its full content in a tooltip.
+   * The cells keep the reading order, and stick to the side where they leave, which an arrow shows. When the bytes do not fit,
+   * each chunk of several gets its share of the width, ended by "…" if cut, so that their boundaries stay visible; a queue still
+   * too long is cut, with the number of hidden bytes, and its full content in a tooltip. Labelled chunks show theirs as tooltip.
    */
   private void queue(Graphics2D g2, int x, int y, int width, Queue q, boolean leavesRight)
   {
+    int fit              = Math.max(1, (width - 10) / CELL);
+    int bytes            = q.chunks().stream().mapToInt(String::length).sum();
+    int share            = q.chunks().size() > 1 && bytes > fit ? Math.max(2, fit / q.chunks().size()) : Integer.MAX_VALUE;
     List<String> cells   = new ArrayList<>();
-    List<Integer> starts = new ArrayList<>(); // the cells starting a new chunk
-    for (String chunk : q.chunks()) {
-      starts.add(cells.size());
-      for (char c : chunk.toCharArray())
+    List<Integer> chunks = new ArrayList<>(); // the chunk of each cell of data
+    for (int k = 0; k < q.chunks().size(); k++) {
+      String chunk = q.chunks().get(k);
+      int kept     = chunk.length() > share ? share - 1 : chunk.length();
+      for (char c : chunk.substring(0, kept).toCharArray())
         cells.add(c == '\n' ? "⏎" : c == '\r' ? "↵" : c == '\t' ? "⇥" : c < ' ' || c >= 0x7F ? "·" : String.valueOf(c)); // the bytes in the tooltip
+      if (kept < chunk.length())
+        cells.add(ELLIPSIS);
+      while (chunks.size() < cells.size())
+        chunks.add(k);
     }
     int used = cells.size();
     while (cells.size() < q.capacity())
@@ -565,15 +581,17 @@ public class PosixWorldView extends WorldView {
     if (q.eof())
       cells.add("EOF");
 
-    int fit    = Math.max(1, (width - 10) / CELL);
     int hidden = 0;
     if (cells.size() > fit) {
-      hidden            = cells.size() - fit + 1;
       cells             = cells.subList(0, fit - 1);
-      StringBuilder all = new StringBuilder();
-      for (String chunk : q.chunks())
-        all.append(chunk);
-      tips.add(new Tip(new Rectangle(x, y, width, CELL), "'" + PosixWorld.bytes(all.toString()) + "'" + (q.eof() ? " then EOF" : "")));
+      hidden            = bytes - (int)cells.stream().limit(used).filter(c -> c != null && !ELLIPSIS.equals(c)).count();
+      StringBuilder all = new StringBuilder("<html>");
+      for (int k = 0; k < q.chunks().size(); k++) { // one chunk per line if they are labelled
+        if (q.labels() != null)
+          all.append(k > 0 ? "<br>" : "").append(escape(q.labels().get(k))).append(": ");
+        all.append(escape("'" + PosixWorld.bytes(q.chunks().get(k)) + "'"));
+      }
+      tips.add(new Tip(new Rectangle(x, y, width, CELL), all.append(q.eof() ? " then EOF" : "").append("</html>").toString()));
     }
     int cellsWidth = cells.isEmpty() ? CELL // the place of an empty queue
                                      : cells.stream().mapToInt(c -> "EOF".equals(c) ? 2 * CELL : CELL).sum() + (hidden > 0 ? 2 * CELL : 0);
@@ -584,6 +602,7 @@ public class PosixWorldView extends WorldView {
     tips.add(new Tip(new Rectangle(leavesRight ? x + width - 9 : x - 1, y, 10, CELL), q.role()));
     Font font = g2.getFont();
     g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 10));
+    int chunkStart = cx;
     for (int i = 0; i < cells.size(); i++) {
       String cell = cells.get(i);
       int w       = "EOF".equals(cell) ? 2 * CELL : CELL;
@@ -591,8 +610,15 @@ public class PosixWorldView extends WorldView {
       g2.fillRect(cx, y, w, CELL);
       g2.setColor(Color.black);
       g2.drawRect(cx, y, w, CELL);
-      if (starts.contains(i) && i > 0)
+      if (i > 0 && i < used && !chunks.get(i).equals(chunks.get(i - 1))) {
         g2.fillRect(cx - 1, y, 3, CELL + 1); // a chunk boundary: recv() never returns more than one chunk
+        chunkStart = cx;
+      }
+      if (q.labels() != null && i < used && (i + 1 == Math.min(used, cells.size()) || !chunks.get(i + 1).equals(chunks.get(i)))) { // the end of a chunk
+        String chunk = q.chunks().get(chunks.get(i));
+        tips.add(new Tip(new Rectangle(chunkStart, y, cx + w - chunkStart, CELL),
+                         q.labels().get(chunks.get(i)) + ", " + chunk.length() + " bytes: '" + PosixWorld.bytes(chunk) + "'"));
+      }
       if (cell != null)
         g2.drawString(cell, cx + (w - g2.getFontMetrics().stringWidth(cell)) / 2, y + CELL - 2);
       String meaning = null;
