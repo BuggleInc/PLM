@@ -555,6 +555,21 @@
                   </arguments>
                 </configuration>
               </execution>
+              <execution>
+                <!-- Fails if some "// Translator:" comments are lost (too far from their string); same keywords as above -->
+                <id>pot-comments</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>sh</executable>
+                  <workingDirectory>${project.basedir}</workingDirectory>
+                  <arguments>
+                    <argument>l10n/check-translator-comments.sh</argument>
+                  </arguments>
+                </configuration>
+              </execution>
             </executions>
           </plugin>
         </plugins>

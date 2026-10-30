@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -28,7 +29,8 @@ import plm.core.utils.PoFile;
  * The work of the translators does not break the PLM. The primitive names of l10n/engine/*.po can be added to the glue of every
  * universe. Every translation of the mission texts (l10n/missions/*.po) keeps the [!langs]...[/!] blocks of the English text with
  * known languages only, and calls each primitive of the English text under its English name or its alias in that language. Fuzzy,
- * untranslated and outdated entries (absent from the pot) are not checked.
+ * untranslated and outdated entries (absent from the pot) are not checked. The translations of the engine keep the texts that the
+ * comments for the translators ask to keep, and the English messages with arguments double their apostrophes.
  */
 public class TranslationsTest {
   private static final Path MISSIONS = Path.of("l10n/missions");
@@ -56,6 +58,58 @@ public class TranslationsTest {
                      entry.translation());
       }
     assertTrue(errors.isEmpty(), () -> catalog + ": " + errors.size() + " problems:\n" + String.join("\n", errors));
+  }
+
+  /**
+   * A text that a comment for the translators asks to keep unchanged, as the URL that the programs of the students extract in
+   * TcpFramingIrc: // Translator: please keep this string unchanged (without the quotes): "<xmpp:robots@conference.buggleinc.lan>"
+   */
+  private static final Pattern KEPT = Pattern.compile("keep this string unchanged \\(without the quotes\\): \"([^\"]+)\"", Pattern.CASE_INSENSITIVE);
+
+  /** The texts to keep in the translation of each English message of the engine that has some, as its comments ask */
+  private static Map<String, List<String>> keptTexts() throws IOException
+  {
+    Map<String, List<String>> res = new TreeMap<>();
+    for (PoFile.Entry entry : PoFile.read(PrimitiveAliases.PO_DIRECTORY.resolve("plm.pot"))) {
+      List<String> kept = KEPT.matcher(entry.comments()).results().map(match -> match.group(1)).toList();
+      if (!kept.isEmpty())
+        res.put(entry.id(), kept);
+    }
+    return res;
+  }
+
+  /** The texts to keep are in their English message, so that their comments are not outdated */
+  @Test public void keptTextsAreInTheirMessage() throws IOException
+  {
+    List<String> errors = new ArrayList<>();
+    keptTexts().forEach((id, kept) -> kept.stream().filter(text -> !id.contains(text)).forEach(text -> errors.add(text + " is not in " + id)));
+    assertTrue(errors.isEmpty(), () -> String.join("\n", errors));
+  }
+
+  /** The translated messages of the engine keep the texts that their comments ask to keep */
+  @ParameterizedTest @MethodSource("engineCatalogs") public void keptTextsAreKept(Path catalog) throws IOException
+  {
+    Map<String, List<String>> kept = keptTexts();
+    List<String> errors            = new ArrayList<>();
+    for (PoFile.Entry entry : PoFile.read(catalog))
+      if (!entry.fuzzy() && !entry.translation().isEmpty())
+        for (String text : kept.getOrDefault(entry.id(), List.of()))
+          if (!entry.translation().contains(text))
+            errors.add(text + " must be kept\n  " + entry.id() + "\n  -> " + entry.translation());
+    assertTrue(errors.isEmpty(), () -> catalog + ": " + errors.size() + " problems:\n" + String.join("\n", errors));
+  }
+
+  /**
+   * The English messages of the engine taking arguments are MessageFormat patterns, whose single apostrophes would quote the rest
+   * of the text (removing the apostrophe, and showing the arguments as {0}): they must be doubled.
+   */
+  @Test public void englishMessageFormatsDoubleTheirApostrophes() throws IOException
+  {
+    List<String> errors = new ArrayList<>();
+    for (PoFile.Entry entry : PoFile.read(PrimitiveAliases.PO_DIRECTORY.resolve("plm.pot")))
+      if (entry.id().matches("(?s).*\\{\\d.*") && entry.id().replace("''", "").contains("'"))
+        errors.add(entry.id());
+    assertTrue(errors.isEmpty(), () -> "single apostrophes in patterns:\n" + String.join("\n", errors));
   }
 
   /** The arguments that the MessageFormat pattern actually substitutes, or null if it is invalid */

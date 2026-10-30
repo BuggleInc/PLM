@@ -30,9 +30,9 @@ public class TcpFramingIrc extends ExerciseTemplated {
             .say(11, "#welcome", "Dave", Game.i18n.tr("In a maze, I keep a paw on the wall at my right. It always works."))
             .say(13, "#welcome", "Alice", Game.i18n.tr("Not when the maze has islands, Dave! Then you must count your turns."))
             .say(15, "#welcome", "Carol", Game.i18n.tr("My turmite drew a square spiral, then got lost in a maze of its own."))
-            // Translator: please do not change the URL <xmpp:robots@conference.buggleinc.lan>
             .answer("Bob", polite,
                     Game.i18n.tr(
+                        // Translator: please keep this string unchanged (without the quotes): "<xmpp:robots@conference.buggleinc.lan>"
                         "Hold on, pal. We should not speak on an open IRC channel. Go see my old friend Karel on this channel: "
                         + "<xmpp:robots@conference.buggleinc.lan> Use the BuggleInc DNS server to find it, and pay attention to the details while doing so."),
                     Game.i18n.tr("Hmm? Buggles who want to know things ask nicely, with the right words."))
@@ -51,9 +51,9 @@ public class TcpFramingIrc extends ExerciseTemplated {
             .say(11, "#welcome", "Dave", Game.i18n.tr("I tried, but I forgot to stop when the branches get too small. I am still drawing."))
             .say(13, "#welcome", "Alice", Game.i18n.tr("My Koch snowflake has four levels now. The fifth one will take all afternoon."))
             .say(15, "#welcome", "Carol", Game.i18n.tr("Recursion is just like us: it is turtles all the way down."))
-            // Translator: please do not change the URL <xmpp:lsystem@conference.buggleinc.lan>
             .answer("Bob", polite,
                     Game.i18n.tr(
+                        // Translator: please keep this string unchanged (without the quotes): "<xmpp:lsystem@conference.buggleinc.lan>"
                         "Not so quick, my friend. We should not speak on an open IRC channel. Go see my old friend Karol on this channel: "
                         + "<xmpp:lsystem@conference.buggleinc.lan> Use the BuggleInc DNS server to find it, and pay attention to the details while doing so."),
                     Game.i18n.tr("Turtles take their time, but they like polite requests."))

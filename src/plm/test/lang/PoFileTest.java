@@ -11,7 +11,7 @@ import org.junit.jupiter.api.io.TempDir;
 import plm.core.utils.PoFile;
 import plm.core.utils.PoFile.Entry;
 
-/** PoFile reads the entries as gettext writes them, without the obsolete ones and the plural forms. */
+/** PoFile reads the entries as gettext writes them, with their comments for the translators, without the obsolete ones and the plural forms. */
 public class PoFileTest {
 
   @Test public void testEntries(@TempDir Path dir) throws IOException
@@ -23,6 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\\n"
 
 #. A comment for the translators
+#. on two lines
 #: src/Foo.java:12
 msgid ""
 "A long text written "
@@ -48,10 +49,11 @@ msgctxt "primitive"
 msgid "left"
 msgstr "gauche\"""");
 
-    assertEquals(List.of(new Entry(null, "", "Content-Type: text/plain; charset=UTF-8\\n", false),
-                         new Entry(null, "A long text written over several lines", "Un long texte écrit sur plusieurs lignes", false),
-                         new Entry(null, "Hello {0}", "Bonjour {0}", true), new Entry(null, "One file", "", false),
-                         new Entry("primitive", "left", "gauche", false)),
+    assertEquals(List.of(new Entry(null, "", "Content-Type: text/plain; charset=UTF-8\\n", false, ""),
+                         new Entry(null, "A long text written over several lines", "Un long texte écrit sur plusieurs lignes", false,
+                                   "A comment for the translators\non two lines"),
+                         new Entry(null, "Hello {0}", "Bonjour {0}", true, ""), new Entry(null, "One file", "", false, ""),
+                         new Entry("primitive", "left", "gauche", false, "")),
                  PoFile.read(po));
   }
 }

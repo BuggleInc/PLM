@@ -10,6 +10,7 @@ import plm.test.lang.CommandExecutorTest;
 import plm.test.lang.EntityTemplateParserTest;
 import plm.test.lang.GlueGenerationTest;
 import plm.test.lang.IndentationTest;
+import plm.test.lang.LangCMessagesTest;
 import plm.test.lang.PoFileTest;
 import plm.test.lang.PrimitiveAliasesTest;
 import plm.test.lang.PrimitiveRegistrationTest;
@@ -24,6 +25,7 @@ import plm.test.simple.test.AllSimpleExerciseTests;
 import plm.test.universe.ApiGatingTest;
 import plm.test.universe.LightBotProgramTest;
 import plm.test.universe.PancakeRandomizedTest;
+import plm.test.universe.PosixWorldTest;
 import plm.universe.bat.ValueFormatterTest;
 
 @Suite
@@ -49,5 +51,7 @@ import plm.universe.bat.ValueFormatterTest;
                 PoFileTest.class,
                 CommandExecutorTest.class,
                 ApiGatingTest.class,
+                PosixWorldTest.class,
+                LangCMessagesTest.class,
                 MethodsDogHouseSourceCheckTest.class})
 public class UnitTests {}

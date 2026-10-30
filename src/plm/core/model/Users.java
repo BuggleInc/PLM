@@ -85,7 +85,7 @@ public class Users {
         e.printStackTrace();
       }
     } else {
-      System.err.println(Game.i18n.tr("User {0} exists already; don't add it again.", uuid));
+      System.err.println(Game.i18n.tr("User {0} exists already; don''t add it again.", uuid));
     }
     flushUsersToFile();
   }

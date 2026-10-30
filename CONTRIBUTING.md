@@ -516,6 +516,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       by `CommandExecutor` with an explanatory `PrimitiveRefusedException`. `forbid()` rejects an unknown primitive, the forbidden
       primitives are read-only and forbidden again by every new instance, and the likely mistakes (`Left()`, `penDown()`...) are
       explained. The documentation of the world hides the forbidden and undocumented primitives, and orders the groups as declared.
+    * *`PosixWorldTest`:* the kernel of the POSIX universe (files, TCP and UDP sockets, deadlocks, binary data), its scripted and
+      program peers (IRC server included), and the comparison of its worlds, by calling the primitives of the student's process.
+    * *`LangCMessagesTest`:* the compiler messages show the real names of the functions that a C glue renames with macros.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
@@ -551,7 +554,10 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       of every `l10n/engine/*.po` can be added to the glue of every universe, and their messages remain valid `MessageFormat`
       patterns using the same arguments as the English text. In every `l10n/missions/*.po`, even for the languages
       that po4a does not generate, the translations keep the well-formed `[!langs]...[/!]` blocks of the English text and call
-      each of its primitives under its English name or its alias in that language.
+      each of its primitives under its English name or its alias in that language. The translations of the engine keep the texts
+      that their comments for the translators ask to keep unchanged (such as the URLs that Bob gives in `TcpFramingIrc`), which
+      must be in their English message, and the English messages taking arguments double their apostrophes, as `MessageFormat`
+      requires.
     * *`GatedExercisesTest`:* the exercises that gate their API (`Array1`, `LoopFor`, `TraversalByColumn`, `MethodsDogHouse`,
       `LinearHanoi`) refuse a call that would defeat their goal.
     * *`LightBotLessonTest`:* the LightBot boards are puzzles without correction: each one loads, and has lights that the
@@ -1081,7 +1087,12 @@ regularly.
 
 - po4a po4a.conf
 - mvn -Pi18n-update -DskipTests process-classes (regenerates `l10n/engine/plm.pot`, see `PrimitivePot`; needs xgettext). A
-  comment starting with `// Translator:` on the lines just before a `Game.i18n.tr()` reaches the translators with its message.
+  comment starting with `// Translator:` reaches the translators with its message, with the following lines of the same
+  comment, if it is on the lines just before the one where the string starts (inside the parentheses of `Game.i18n.tr(` when
+  the string goes to the next line, as clang-format may do). This update fails if a comment is lost
+  (`l10n/check-translator-comments.sh`). When the code depends on a piece of a translated text (such as a URL that the
+  programs of the students extract), such a comment can say `please keep this string unchanged (without the quotes): "..."`,
+  which `TranslationsTest` then checks in every translation.
 - git checkout l10n/*/*.po
 - git commit -m "Update translation templates" l10n/*/*.pot
 - git push && wlc pull
