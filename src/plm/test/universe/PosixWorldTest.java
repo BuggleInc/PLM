@@ -368,6 +368,63 @@ public class PosixWorldTest {
     Assertions.assertThrows(ExplainedException.class, () -> q.recvfrom(other, 512, 0)); // both wait forever
   }
 
+  /** Two UDP clients on their own machines, sending at the same time to the port 3000 of the student */
+  private static PosixWorld twoUdpClients()
+  {
+    String script = """
+        sleep(1)
+        sendto(3, "Hello?")
+        recvfrom(3)
+        close(3)
+        """;
+    return new PosixWorld("udp clients").addPeer(Peer.udpClient("10.0.0.2", 3000, script)).addPeer(Peer.udpClient("10.0.0.3", 3000, script));
+  }
+
+  @Test public void testUdpServerAnswersEachSender()
+  {
+    PosixWorld ref  = twoUdpClients();
+    PosixWorld curr = (PosixWorld)ref.copy();
+    PosixEntity p   = process(ref);
+    int sock        = p.socket(AF_INET, SOCK_DGRAM, 0);
+    p.bind(sock, "0.0.0.0", 3000);
+    List<String> senders = new ArrayList<>();
+    for (int i = 0; i < 2; i++) {
+      Assertions.assertEquals("Hello?", s(p.recvfrom(sock, 512, 0)));
+      senders.add(p.lastSender());
+      String[] sender = p.lastSender().split(":");
+      p.sendto(sock, b("Welcome"), 0, sender[0], Integer.parseInt(sender[1]));
+    }
+    p.close(sock);
+    Assertions.assertTrue(senders.get(0).startsWith("10.0.0.2:"), senders.toString()); // the peers act in their order
+    Assertions.assertTrue(senders.get(1).startsWith("10.0.0.3:"), senders.toString());
+    Assertions.assertNotEquals(senders.get(0).split(":")[1], senders.get(1).split(":")[1]); // their ephemeral ports differ
+
+    // Answering both to the address of the first client: the second one never gets its answer
+    PosixEntity q = process(curr);
+    int other     = q.socket(AF_INET, SOCK_DGRAM, 0);
+    q.bind(other, "0.0.0.0", 3000);
+    String[] first = senders.get(0).split(":");
+    for (int i = 0; i < 2; i++) {
+      q.recvfrom(other, 512, 0);
+      q.sendto(other, b("Welcome"), 0, first[0], Integer.parseInt(first[1]));
+    }
+    q.close(other);
+    Assertions.assertFalse(curr.winning(ref), ref.diffTo(curr, null));
+  }
+
+  @Test public void testDatagramSentBeforeBindIsLost()
+  {
+    PosixEntity p = process(new PosixWorld("early client").addPeer(Peer.udpClient("10.0.0.2", 3000, """
+        sendto(3, "Hello?")
+        recvfrom(3)
+        close(3)
+        """)));
+    int sock      = p.socket(AF_INET, SOCK_DGRAM, 0); // the client sent before this call, while nothing was bound on 3000
+    p.bind(sock, "0.0.0.0", 3000);
+    ExplainedException e = Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(sock, 512, 0));
+    Assertions.assertTrue(e.getMessage().contains("recvfrom"), e.getMessage()); // both wait forever
+  }
+
   @Test public void testUdpScriptErrors()
   {
     IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class, () -> Peer.udpServer("10.0.0.1", 53, "sendto(3, \"x\")"));
