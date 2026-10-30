@@ -911,7 +911,8 @@ documentation](PEDAGOGY.md#system-programming).
   `PosixProcess` has its machine address, its descriptor table and its last error. The descriptors point to open file
   descriptions (`FileDescription`): `StandardStream` (0, 1 and 2 at first), `RegularFile`, and the sockets (`InetSocket`) of
   TCP (`Socket`) and UDP (`DatagramSocket`, whose datagrams arrive whole and are lost when no socket waits for them, or truncated
-  when the buffer of `recvfrom()` is too small). The kernel executes the
+  when the buffer of `recvfrom()` is too small; one used before `bind()` gets an ephemeral port, from a start that depends on
+  the machine's address, so that it differs between the machines). The kernel executes the
   system calls of all the processes with the same code, following the Linux semantics and constants, and returns -1 with an
   error name (e.g. `ECONNREFUSED`) on failure. The data is kept as bytes, one `char` per byte (ISO-8859-1): the trace shows it
   as strace does (unprintable bytes in octal), and the view decodes the files and the outputs from UTF-8.

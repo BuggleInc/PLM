@@ -300,7 +300,7 @@ public class PosixWorldTest {
     Assertions.assertEquals(5, p.sendto(client, b("Hello"), 0, PosixWorld.STUDENT_IP, 5000));
     Assertions.assertEquals(5, p.sendto(client, b("World"), 0, PosixWorld.STUDENT_IP, 5000));
     Assertions.assertEquals("Hel", s(p.recvfrom(server, 3, 0)));                 // the rest of the datagram is lost
-    Assertions.assertEquals(PosixWorld.STUDENT_IP + ":32768", p.lastSender()); // the ephemeral port bound by sendto()
+    Assertions.assertEquals(PosixWorld.STUDENT_IP + ":57346", p.lastSender()); // the ephemeral port bound by sendto()
     Assertions.assertEquals("World", s(p.recv(server, 512, 0)));
     Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(server, 512, 0)); // a deadlock
   }

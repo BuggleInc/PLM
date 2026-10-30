@@ -284,6 +284,19 @@ public class PosixWorld extends World {
     return null;
   }
 
+  /**
+   * The port on which the kernel binds a datagram socket used before bind(): the first free one of the machine from a start in
+   * 32768-60999 that depends on its address, as Linux picks it at random in that range. A student answering a fixed port instead
+   * of the sender's one thus fails in the worlds whose clients are on other machines.
+   */
+  private int ephemeralPort(String ip)
+  {
+    int port = 32768 + Math.floorMod(ip.hashCode() * 0x9E3779B9, 28232);
+    while (datagramSocket(ip, port) != null)
+      port++;
+    return port;
+  }
+
   /** The socket listening on ip:port with room in its backlog, in any process, or null */
   private Socket listener(String ip, int port)
   {
@@ -347,7 +360,7 @@ public class PosixWorld extends World {
   {
     if (proc.get(fd) instanceof DatagramSocket d) {
       if (d.port < 0)
-        d.port = proc.ephemeralPort();
+        d.port = ephemeralPort(proc.ip);
       d.remoteIp   = ip;
       d.remotePort = port;
       return 0;
@@ -426,7 +439,7 @@ public class PosixWorld extends World {
     if (data.length() > MAX_DATAGRAM)
       return proc.fail("EMSGSIZE");
     if (s.port < 0)
-      s.port = proc.ephemeralPort();
+      s.port = ephemeralPort(proc.ip);
     DatagramSocket target = datagramSocket(ip, port);
     if (target != null && target.accepts(proc.ip, s.port))
       target.deliver(new Datagram(proc.ip, s.port, data));

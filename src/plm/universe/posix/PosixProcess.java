@@ -84,15 +84,6 @@ final class PosixProcess {
     return null;
   }
 
-  /** The lowest free port of the ephemeral range of this machine, on which the kernel binds the datagram sockets used before bind() */
-  int ephemeralPort()
-  {
-    int port = 32768;
-    while (bound(DatagramSocket.class, port))
-      port++;
-    return port;
-  }
-
   /** Whether a socket of that kind is bound to that port in this process */
   boolean bound(Class<? extends InetSocket> kind, int port) { return fds.stream().anyMatch(o -> kind.isInstance(o) && ((InetSocket)o).port == port); }
 
