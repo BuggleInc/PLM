@@ -1,0 +1,135 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h3>The DNS protocol</h3>
+
+<p>The DNS server of this world follows the RFC 1035 as the usual servers. It is authoritative for one zone (all the names
+ending with <code>buggleinc.lan</code>): it answers the queries about these names, and does not ask the other servers about
+the other names. It listens on the UDP port 53.</p>
+
+<h4>Framing</h4>
+
+<p>Each message (query or answer) travels in a single UDP datagram: the client sends a query with <code>sendto()</code>, and
+receives the answer with <code>recvfrom()</code>. Over UDP, an answer has at most 512 bytes, so a buffer of 512 bytes is
+enough. The messages are binary: all the numbers are written in <i>network byte order</i>, the most significant byte first
+(1 is written <code>00 01</code> on two bytes, as <code>htons()</code> gives it).</p>
+
+<p>A message is made of a header of 12 bytes, then of four sections: the questions, the answers, the authority records and the
+additional records. The header tells how many entries each section holds.</p>
+
+<h4>Header</h4>
+
+<table border=1>
+<tr><th>Bytes</th><th>Field</th><th>Content</th></tr>
+<tr><td>0-1</td><td>ID</td><td>Chosen by the client, and copied in the answer, so that the client can match the answers with
+  its queries.</td></tr>
+<tr><td>2-3</td><td>Flags</td><td>16 bits, from the most significant one: QR (0 for a query, 1 for an answer), opcode on 4
+  bits (0 for a standard query), AA (the answer comes from an authoritative server), TC (the answer was truncated), RD (the
+  client desires recursion), RA (the server does recursion), 3 bits set to 0, and the response code (RCODE) on 4 bits. A
+  query usually has the flags <code>01 00</code> (only RD set).</td></tr>
+<tr><td>4-5</td><td>QDCOUNT</td><td>The number of questions: 1 in a query.</td></tr>
+<tr><td>6-7</td><td>ANCOUNT</td><td>The number of answer records (0 in a query).</td></tr>
+<tr><td>8-9</td><td>NSCOUNT</td><td>The number of authority records (0 in a query).</td></tr>
+<tr><td>10-11</td><td>ARCOUNT</td><td>The number of additional records (0 in a query).</td></tr>
+</table>
+
+<h4>Names</h4>
+
+<p>A name such as <code>www.buggleinc.lan</code> is made of <i>labels</i> separated by dots (<code>www</code>,
+<code>buggleinc</code> and <code>lan</code>). In a message, each label is written preceded by a byte giving its length (at most
+63), and the name ends with a zero byte, which is the empty label of the root. The dots are not written:
+<code>www.buggleinc.lan</code> becomes the 19 bytes <code>03 "www" 09 "buggleinc" 03 "lan" 00</code>, where <code>"www"</code>
+stands for the ASCII bytes of these letters. A name has at most 255 bytes, and the case of its letters does not matter.</p>
+
+<h4>Question</h4>
+
+<p>A question is a name, followed by its type on 2 bytes (the kind of record asked) and its class on 2 bytes (always 1, IN, for
+Internet). The types known by this server are:</p>
+
+<table border=1>
+<tr><th>Type</th><th>Value</th><th>Data of the record</th></tr>
+<tr><td>A</td><td>1</td><td>An IPv4 address, on 4 bytes: <code>0a 00 00 01</code> for 10.0.0.1.</td></tr>
+<tr><td>TXT</td><td>16</td><td>A free text, as one or several strings, each preceded by a byte giving its length.</td></tr>
+<tr><td>SRV</td><td>33</td><td>Where to find a service (RFC 2782): its priority, its weight and its port on 2 bytes each, then
+  the name of the target machine. The clients try the targets of lowest priority first, and among them, choose at random with
+  a probability proportional to the weight.</td></tr>
+<tr><td>ANY</td><td>255</td><td>Only in a question: asks for all the records of the name.</td></tr>
+</table>
+
+<p>The name of a SRV record tells the service and its transport, with labels starting with an underscore:
+<code>_service._proto.domain</code>. For example, <code>_imap._tcp.buggleinc.lan</code> would give the IMAP server of the
+domain <code>buggleinc.lan</code>.</p>
+
+<h4>Records</h4>
+
+<p>Each record of the answer and additional sections is made of its name, its type (2 bytes), its class (2 bytes), its time to
+live in seconds (TTL, on 4 bytes, telling how long the clients may keep it in a cache), the length of its data (2 bytes), and
+its data, whose content depends on the type. The answer starts with a copy of the question of the query, before the
+records.</p>
+
+<p>A name may be written in a shorter form in the answers of a real server, which this server never uses (see below): a
+<i>compression pointer</i>, on two bytes whose two highest bits are set, telling at which offset of the message the rest of the
+name was written before.</p>
+
+<h4>Response codes</h4>
+
+<table border=1>
+<tr><th>RCODE</th><th>Name</th><th>Meaning</th></tr>
+<tr><td>0</td><td>NOERROR</td><td>The name exists. The answer section holds its records of the asked type, and is empty if it
+  has none of that type.</td></tr>
+<tr><td>1</td><td>FORMERR</td><td>The query is malformed.</td></tr>
+<tr><td>3</td><td>NXDOMAIN</td><td>The name does not exist.</td></tr>
+<tr><td>4</td><td>NOTIMP</td><td>This kind of query (opcode) is not implemented.</td></tr>
+<tr><td>5</td><td>REFUSED</td><td>The server refuses to answer, here because the name is not in its zone.</td></tr>
+</table>
+
+<h4>Answers of this server</h4>
+
+<p>Besides the answer section, the answers about a name hold its TXT records in their additional section, where the
+administrators of this zone leave notes. A datagram that is not a query (shorter than a header, or with the QR bit set) is
+ignored, as real servers do: the client then waits forever. The trace shows how the server read each query and what it
+answered, decoded, and explains why a query is malformed.</p>
+
+<h4>Example exchange</h4>
+
+<p>A client asks the address of <code>printer.buggleinc.lan</code>, a name given here as an example (C for the client, S for
+the server, in hexadecimal, the text between quotes standing for its ASCII bytes):</p>
+
+<pre>
+C: 12 34  01 00  00 01  00 00  00 00  00 00       header: ID, flags (RD), 1 question
+C: 07 "printer" 09 "buggleinc" 03 "lan" 00        the name
+C: 00 01  00 01                                   type A, class IN
+S: 12 34  85 00  00 01  00 01  00 00  00 00       header: same ID, flags (QR, AA, RD, NOERROR), 1 question, 1 answer
+S: 07 "printer" 09 "buggleinc" 03 "lan" 00        the question, copied
+S: 00 01  00 01
+S: 07 "printer" 09 "buggleinc" 03 "lan" 00        the answer: its name,
+S: 00 01  00 01  00 00 0e 10  00 04               type A, class IN, TTL 3600 s, 4 bytes of data
+S: 0a 00 00 2a                                    10.0.0.42
+</pre>
+
+<h4>Realism of this server</h4>
+
+<p>This server behaves as the real ones in everything described above, but it is simpler on the following points. A client
+written for this world would mostly work on real networks, with some adaptations.</p>
+
+<ul>
+  <li>The names of the answers are always written in full. The real servers compress them: a name already written in the
+    message is replaced by a pointer of two bytes (<code>c0 0c</code> for the name of the question, at offset 12). A client
+    reading the answers of a real server must follow these pointers, or it gets lost in the message.</li>
+  <li>The NXDOMAIN answers, and the NOERROR ones without records of the asked type, have no authority record. A real server
+    adds the SOA record of its zone there, which tells how long the clients may keep this negative answer in a cache. Its
+    zone also has SOA and NS records at its top, which this one does not have.</li>
+  <li>The additional section only holds the TXT records of the asked name. A real server rather puts there the addresses of
+    the names given by its answers (such as the targets of the SRV records), to save the client another query, and never
+    puts unrequested TXT records there.</li>
+  <li>The TXT records hold ASCII text. Real ones may hold any bytes, often UTF-8 text.</li>
+  <li>This server does not implement EDNS (RFC 6891), which lets the client announce a larger buffer with an additional OPT
+    record, so that the answers may exceed 512 bytes. It ignores the additional records of the queries, while a real server
+    without EDNS answers FORMERR to such queries. A longer answer is truncated (TC bit), and the client should then ask again
+    over TCP, where each message is preceded by its length on two bytes, which this server does not offer.</li>
+  <li>A real server limits the rate of its answers to each client, and its queries usually come from a resolver (the one of
+    the C library, or a server of the network) rather than from the applications themselves. Real clients also choose a
+    random ID and a random source port for each query, and check them in the answer, to resist spoofed answers.</li>
+  <li>As any server answering everybody, it uses <code>recvfrom()</code> and <code>sendto()</code> on an unconnected socket.
+    Its clients may either do the same, or <code>connect()</code> their socket to the server first and use <code>send()</code>
+    and <code>recv()</code>, as the resolver of the GNU C library does: the server answers from the address on which it
+    received the query, so both work.</li>
+</ul>

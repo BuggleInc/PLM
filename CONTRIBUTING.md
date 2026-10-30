@@ -945,17 +945,18 @@ documentation](PEDAGOGY.md#system-programming).
 * **The programmed peers**: the servers of real protocols (answering each request as it deserves) are Java programs extending
   `ProgramPeer`, written as event loops: `start()` typically listens on their ports, and each call to `act()` does at most one
   action and tells whether it did one. Their helpers (`listen()`, `accept()`, `peek()`, `receive(fd, length)`, `receive(fd, delimiter)`,
-  `ended()`, `send()`, `sendInPackets()`, `close()`, `ascii()`) call the kernel and trace these calls as the student's ones,
+  `ended()`, `send()`, `sendInPackets()`, `close()`, `ascii()`, `note()`) call the kernel and trace these calls as the student's ones,
   without blocking: `accept()` returns -1 when no connection waits, `peek()` shows what arrived without receiving it, and
   `receive(fd, delimiter)` returns null until the delimiter arrived. The data of `send()` reaches the
   student at once, while `sendInPackets()` lets the network carry it in packets after pauses, to make the framing matter. Over
   UDP, `bindDatagrams()` binds a datagram socket, `receiveDatagram()` returns the next datagram with its sender (or null), and
-  `sendDatagram()` sends one, which arrives at once. Their
+  `sendDatagram()` sends one, which arrives at once. `note()` adds a line of the program to the trace, such as what it understood
+  of a binary request. Their
   state is in the fields of their class, which their copy constructor copies (after the one of `ProgramPeer`), and `waiting()`
   tells the trace what they wait for. `PosixWorldTest.ShoutServer` is a small example.
 * **The documentation of the protocols**: `[!protocols/]` in `PosixWorld.html` stands for a section "The servers of this world"
   holding, once per class of `ProgramPeer` among the peers of the world (in their order), the html file next to that class
-  (`IrcServer.html`, `HttpServer.html`, `FtpServer.html`): its heading (such as "The IRC protocol"), the framing, the commands,
+  (`IrcServer.html`, `HttpServer.html`, `FtpServer.html`, `DnsServer.html`): its heading (such as "The IRC protocol"), the framing, the commands,
   the replies and the errors, and an example session to the byte. The section is absent from the worlds without such peers. A
   new server should come with its reference, listed in `po4a.conf`, which describes the protocol without revealing the scenario
   of an exercise (such as the words that a member of an IRC channel expects).
@@ -987,6 +988,14 @@ documentation](PEDAGOGY.md#system-programming).
   the usual errors (500, 530, 550, 425...). A transfer asked before the client connected the data connection waits for it. Its
   welcome spans several lines (`220-` then `220 `), which `welcome()` can change. `packets()` cuts everything it sends, the
   replies and the data.
+* **The DNS server** (`DnsServer`) is authoritative for one zone over UDP (RFC 1035), without recursion. The exercise gives its
+  records (`a()`, `txt()`, `srv()`); it answers the asked type (or all the records for ANY), NOERROR without answer for an
+  existing name without such records (including the names that only have descendants), NXDOMAIN for a missing name, and REFUSED
+  outside its zone. The TXT records of the asked name come in the additional section of the other answers about it, so that the
+  hints of a scenario are found without guessing their type. It never compresses the names. It notes each query and answer
+  decoded in the trace (`note()`), and explains the malformed queries, answered FORMERR (numbers in the wrong byte order, a name
+  written as text or without its final zero byte, bytes after the question...). A datagram that is not a query is ignored, with a
+  note, as real servers do.
 * **The network**: a connection is a pair of sockets pointing to each other, each with its send and receive queues, created by
   `connect()` in the backlog of the listening socket until `accept()` takes it. A peer's `send()` only fills the send queue of
   its socket, and `transmit(fd, n)` carries at most `n` bytes to the receive queue of the other end, in one packet. The end of

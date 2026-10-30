@@ -7,6 +7,7 @@ import static plm.universe.posix.PosixWorld.O_WRONLY;
 import static plm.universe.posix.PosixWorld.SOCK_DGRAM;
 import static plm.universe.posix.PosixWorld.SOCK_STREAM;
 
+import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.universe.ExplainedException;
 import plm.universe.posix.Datagram;
+import plm.universe.posix.DnsServer;
 import plm.universe.posix.FileDescription;
 import plm.universe.posix.FtpServer;
 import plm.universe.posix.HttpServer;
@@ -819,6 +821,124 @@ public class PosixWorldTest {
     p.send(sock, b("PRIVMSG Carol :Hi\r\n"), 0);
     Assertions.assertEquals(":irc.buggleinc.com 401 student Carol :No such nick/channel", lines.next());
     p.close(sock);
+  }
+
+  /** A world with the DNS server of buggleinc.lan on 10.0.0.53:53 */
+  private static PosixWorld dns()
+  {
+    return new PosixWorld("dns").addPeer(new DnsServer("10.0.0.53", 53, "buggleinc.lan")
+                                             .txt("conference.buggleinc.lan", "Hint 1")
+                                             .srv("_xmpp-client._tcp.buggleinc.lan", 10, 5, 6666, "xmpp1.buggleinc.lan")
+                                             .srv("_xmpp-client._tcp.buggleinc.lan", 0, 5, 6666, "xmpp2.buggleinc.lan")
+                                             .txt("_xmpp-client._tcp.buggleinc.lan", "Hint 2")
+                                             .a("xmpp1.buggleinc.lan", "10.0.0.6")
+                                             .a("xmpp2.buggleinc.lan", "10.0.200.5"));
+  }
+
+  /** The name in the wire format of DNS: each label preceded by its length, then a zero byte */
+  private static byte[] dnsName(String name)
+  {
+    ByteArrayOutputStream res = new ByteArrayOutputStream();
+    for (String label : name.split("\\."))
+      res.writeBytes(b((char)label.length() + label));
+    res.write(0);
+    return res.toByteArray();
+  }
+
+  /** A query with that id (and the RD flag) asking that type of record of the name, as written by dnsName() */
+  private static byte[] dnsQuery(int id, int type, byte[] name)
+  {
+    ByteArrayOutputStream res = new ByteArrayOutputStream();
+    res.writeBytes(new byte[] {(byte)(id >> 8), (byte)id, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0});
+    res.writeBytes(name);
+    res.writeBytes(new byte[] {(byte)(type >> 8), (byte)type, 0, 1});
+    return res.toByteArray();
+  }
+
+  /** Sends the query to the DNS server, and returns its answer */
+  private static byte[] ask(PosixEntity p, int sock, byte[] query)
+  {
+    Assertions.assertEquals(query.length, p.sendto(sock, query, 0, "10.0.0.53", 53));
+    return p.recvfrom(sock, 512, 0);
+  }
+
+  /** The flags (with the response code) of a DNS answer, and its counts of questions, answers, authority and additional records */
+  private static List<Integer> dnsHeader(byte[] answer)
+  {
+    List<Integer> res = new ArrayList<>();
+    for (int i = 2; i < 12; i += 2)
+      res.add((answer[i] & 0xFF) << 8 | answer[i + 1] & 0xFF);
+    return res;
+  }
+
+  @Test public void testDnsServerAnswersToTheByte()
+  {
+    PosixWorld w                   = dns();
+    PosixEntity p                  = process(w);
+    int sock                       = p.socket(AF_INET, SOCK_DGRAM, 0);
+    byte[] query                   = dnsQuery(0x1234, DnsServer.SRV, dnsName("_xmpp-client._tcp.buggleinc.lan"));
+    byte[] answer                  = ask(p, sock, query);
+    ByteArrayOutputStream expected = new ByteArrayOutputStream();
+    expected.writeBytes(new byte[] {0x12, 0x34, (byte)0x85, 0, 0, 1, 0, 2, 0, 0, 0, 1}); // the TXT record comes as additional
+    expected.write(query, 12, query.length - 12);
+    byte[] owner = dnsName("_xmpp-client._tcp.buggleinc.lan");
+    for (String record : List.of("\0\41\0\1\0\0\16\20\0\33\0\12\0\5\32\12" + s(dnsName("xmpp1.buggleinc.lan")),
+                                 "\0\41\0\1\0\0\16\20\0\33\0\0\0\5\32\12" + s(dnsName("xmpp2.buggleinc.lan")), "\0\20\0\1\0\0\16\20\0\7\6Hint 2")) {
+      expected.writeBytes(owner);
+      expected.writeBytes(b(record));
+    }
+    Assertions.assertEquals(s(expected.toByteArray()), s(answer));
+    Assertions.assertTrue(traced(w, "answer NOERROR: SRV 10 5 6666 xmpp1.buggleinc.lan., SRV 0 5 6666 xmpp2.buggleinc.lan.; additional: TXT \"Hint 2\""),
+                          w.getTrace().toString());
+
+    answer = ask(p, sock, dnsQuery(7, DnsServer.A, dnsName("xmpp2.buggleinc.lan")));
+    Assertions.assertEquals(List.of(0x8500, 1, 1, 0, 0), dnsHeader(answer));
+    Assertions.assertEquals("\12\0\310\5", s(answer).substring(answer.length - 4)); // 10.0.200.5
+  }
+
+  @Test public void testDnsServerResponseCodes()
+  {
+    PosixEntity p = process(dns());
+    int sock      = p.socket(AF_INET, SOCK_DGRAM, 0);
+    // A name with records of other types only: no answer, but its TXT records as additional
+    Assertions.assertEquals(List.of(0x8500, 1, 0, 0, 1), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.A, dnsName("conference.buggleinc.lan")))));
+    Assertions.assertEquals(List.of(0x8500, 1, 1, 0, 0), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.TXT, dnsName("CONFERENCE.buggleinc.lan")))));
+    Assertions.assertEquals(List.of(0x8500, 1, 3, 0, 0), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.ANY, dnsName("_xmpp-client._tcp.buggleinc.lan")))));
+    // The names above some records exist, without records (RFC 8020)
+    Assertions.assertEquals(List.of(0x8500, 1, 0, 0, 0), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.A, dnsName("_tcp.buggleinc.lan")))));
+    Assertions.assertEquals(List.of(0x8500, 1, 0, 0, 0), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.A, dnsName("buggleinc.lan")))));
+    Assertions.assertEquals(List.of(0x8503, 1, 0, 0, 0), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.A, dnsName("xmpp3.buggleinc.lan")))));
+    Assertions.assertEquals(List.of(0x8105, 1, 0, 0, 0), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.A, dnsName("www.google.com")))));
+    // A single label holding the dots is outside the zone
+    Assertions.assertEquals(List.of(0x8105, 1, 0, 0, 0), dnsHeader(ask(p, sock, dnsQuery(1, DnsServer.A, b("\23xmpp1.buggleinc.lan\0")))));
+  }
+
+  /** Whether a line of the trace contains the text */
+  private static boolean traced(PosixWorld w, String text) { return w.getTrace().stream().anyMatch(line -> line.contains(text)); }
+
+  @Test public void testDnsServerExplainsTheMalformedQueries()
+  {
+    PosixWorld w  = dns();
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_DGRAM, 0);
+    byte[] query  = dnsQuery(1, DnsServer.A, dnsName("xmpp1.buggleinc.lan"));
+    query[5]      = 0; // one question written least significant byte first
+    query[4]      = 1;
+    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 0), dnsHeader(ask(p, sock, query)));
+    Assertions.assertTrue(traced(w, "network byte order"), w.getTrace().toString());
+
+    byte[] text = dnsQuery(1, DnsServer.A, b("xmpp1.buggleinc.lan\0")); // the name written as text
+    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 0), dnsHeader(ask(p, sock, text)));
+    Assertions.assertTrue(traced(w, "The dots of the name are not written"), w.getTrace().toString());
+
+    byte[] padded = new byte[512]; // a whole buffer sent after the query
+    query         = dnsQuery(1, DnsServer.A, dnsName("xmpp1.buggleinc.lan"));
+    System.arraycopy(query, 0, padded, 0, query.length);
+    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 0), dnsHeader(ask(p, sock, padded)));
+    Assertions.assertTrue(traced(w, (512 - query.length) + " bytes follow the question"), w.getTrace().toString());
+
+    Assertions.assertEquals(5, p.sendto(sock, b("hello"), 0, "10.0.0.53", 53)); // too short: ignored, so the student waits forever
+    Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(sock, 512, 0));
   }
 
   @Test public void testWorldsWithOtherNamesDiffer()

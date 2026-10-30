@@ -116,6 +116,9 @@ public abstract class ProgramPeer extends Peer {
   /** The time in the world */
   protected int now() { return world.now; }
 
+  /** Adds a line of this program to the trace, such as what it understood of a request */
+  protected void note(String text) { world.log(process, name, text); }
+
   /** Traces a system call with its result, and returns the result */
   private <T> T traced(String call, T result)
   {

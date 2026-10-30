@@ -108,6 +108,9 @@ public class PosixWorld extends World {
     return this;
   }
 
+  /** What happened so far, one event per line */
+  public List<String> getTrace() { return List.copyOf(trace); }
+
   /** Sets the data that the process finds on its standard input */
   public PosixWorld setStdin(String data)
   {
