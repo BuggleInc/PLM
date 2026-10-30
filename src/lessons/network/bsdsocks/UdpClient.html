@@ -1,0 +1,81 @@
+<h1>UDP client</h1>
+
+<p>So, Bob refused to speak over an open IRC channel and asked us to join on an XMPP server. But he only gave the text URL and
+not the IP address to which we should connect. The DNS (Domain Name System) is the way to go to convert such textual addresses
+to IP addresses, and this is usually done with a specific API. But Bob specified that we cannot use the usual network of DNS
+servers, because the address we are looking for is handled by a specific server that is not connected to the others. We have to
+talk to the BuggleInc DNS server directly by sending manual requests, rather than leveraging the usual DNS API. This poses an
+extra difficulty, as DNS servers use UDP rather than TCP as a transport protocol.</p>
+
+<p>UDP is another way to send data over the Internet, much closer to the underlying network. It's not trying to mimic the file
+interface by connecting a local socket to the remote server, but rather lets you send packets directly. This exercise gives you
+the opportunity to learn about exchanging UDP packets as a client, while the next exercise lets you discover the server side of
+such communication before we can proceed to interact with the BuggleInc DNS server.</p>
+
+<p>As with TCP, you have to open a socket before exchanging data. The difference is that no connection is required before
+exchanging data. You can use <code>[!c|python]sendto[/!][!java|scala]send[/!]</code> to send a packet to the peer specified in
+parameters, and <code>[!c|python]recvfrom[/!][!java|scala]receive[/!]</code> to receive data from any peer. The identity of the
+sending peer is indicated by this function. It is still possible to use <code>connect</code> in UDP, to specify a default
+[!c]<code>struct sockaddr</code>[/!][!python|java|scala]address[/!] to be used in each case, but it's an advanced feature that we
+won't use here.</p>
+
+[!c]
+<p>Here is the prototype of the main functions to send data over UDP. Check the manpages for more info.</p>
+<ol>
+    <li><code>int socket(int domain, int type, int protocol)</code>: you want to use it with <code>AF_INET, SOCK_DGRAM, 0</code>
+    to get a UDP socket.</li>
+
+    <li><code>ssize_t sendto(int sockfd, const void* buf, size_t len, int flags, const struct sockaddr *dest_addr, socklen_t
+    addrlen)</code> lets you send a packet to the specified peer. The data must be short enough to fit in a single UDP datagram
+    (65507 bytes). If the data does not fit, <code>sendto</code> fails with the <code>EMSGSIZE</code> code.</li>
+
+    <li><code>ssize_t recvfrom(int sockfd, void* buf, size_t len, int flags, struct sockaddr * src_addr, socklen_t *
+    addrlen);</code> blocks until the reception of the next datagram from the network. If <code>src_addr</code> is not NULL, the
+    kernel fills it with the address of the sender (<code>addrlen</code> must then be a pointer to a variable that initially
+    holds the size of the <code>struct sockaddr</code> passed as <code>src_addr</code>). If the provided buffer is too short to
+    hold the data contained in the packet, any exceeding data is lost.</li>
+</ol>
+
+<p>If you get a <code>stack-buffer-overflow</code> error from AddressSanitizer, it may be because you (or the recvfrom call)
+write after the end of the buffer.</p>
+[/!]
+
+[!python]
+<p>Here are the main methods of the <code>socket</code> module to exchange datagrams. Check its documentation for more info.</p>
+<ol>
+    <li><code>socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</code> creates a UDP socket.</li>
+
+    <li><code>sock.sendto(data, address)</code> sends the bytes <code>data</code> in one datagram to <code>address</code>, a tuple
+    <code>(host, port)</code>. The data must be short enough to fit in a single UDP datagram (65507 bytes). If the data does not
+    fit, <code>sendto</code> raises an <code>OSError</code>.</li>
+
+    <li><code>sock.recvfrom(bufsize)</code> blocks until the reception of the next datagram from the network, and returns a tuple
+    of its data and of the address of the sender. If the datagram is longer than <code>bufsize</code>, any exceeding data is
+    lost.</li>
+</ol>
+[/!]
+
+[!java|scala]
+<p>Here are the main classes of <code>java.net</code> to exchange datagrams[!scala], which Scala programs use[/!]. Check their
+documentation for more info.</p>
+<ol>
+    <li><code>new DatagramSocket()</code> creates a UDP socket.</li>
+
+    <li>A <code>DatagramPacket</code> holds a datagram: its data in an array of bytes, the length of this data
+    (<code>getLength()</code>), and the address of the other side. <code>new DatagramPacket(byte[] buf, int length, InetAddress
+    address, int port)</code> prepares a datagram to send, where <code>InetAddress.getByName(host)</code> gives the address of a
+    host. <code>new DatagramPacket(byte[] buf, int length)</code> prepares a datagram to receive, in the given array.</li>
+
+    <li><code>socket.send(packet)</code> sends the packet to its address. The data must be short enough to fit in a single UDP
+    datagram (65507 bytes). If the data does not fit, <code>send</code> throws a <code>SocketException</code>.</li>
+
+    <li><code>socket.receive(packet)</code> blocks until the reception of the next datagram from the network, and puts it in the
+    packet, with the address of its sender. If the array of the packet is too short to hold the data, any exceeding data is lost.
+    The length of the packet becomes the one of the data received.</li>
+</ol>
+[/!]
+
+<h2>What to do</h2>
+<p>Open a UDP socket, and send the content of the <code>request</code> parameter to the <code>host:port</code> specified by the
+parameters. Then, retrieve the packet that the server will send back and display its content on the standard output (with no
+additional new line nor anything) before closing the socket.</p>
