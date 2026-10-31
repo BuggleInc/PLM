@@ -12,6 +12,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import lessons.network.bsdsocks.UdpEcho;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.universe.ExplainedException;
@@ -425,6 +428,75 @@ public class PosixWorldTest {
     p.bind(sock, "0.0.0.0", 3000);
     ExplainedException e = Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(sock, 512, 0));
     Assertions.assertTrue(e.getMessage().contains("recvfrom"), e.getMessage()); // both wait forever
+  }
+
+  /** The form of Bob's line in UdpEcho, holding the port of the XMPP server */
+  private static final String BOB_PORT = "PORT <([0-9]+)>";
+
+  /**
+   * Echoes the datagrams arriving on the port 6666 of UdpEcho, received in that buffer, to their sender (or always to the first
+   * one), until one matches the pattern (echoed or not), then prints its first group and returns it
+   */
+  private static String echoUntil(PosixEntity p, int buffer, String pattern, boolean echoTheLast, boolean toTheFirstSender)
+  {
+    int sock     = p.socket(AF_INET, SOCK_DGRAM, 0);
+    String first = null;
+    p.bind(sock, "0.0.0.0", 6666);
+    while (true) {
+      String data = s(p.recvfrom(sock, buffer, 0));
+      first       = first == null || !toTheFirstSender ? p.lastSender() : first;
+      Matcher m   = Pattern.compile(pattern).matcher(data);
+      if (!m.find() || echoTheLast)
+        p.sendto(sock, b(data), 0, first.split(":")[0], Integer.parseInt(first.split(":")[1]));
+      if (m.find(0)) {
+        p.write(1, b(m.group(1) + "\n"));
+        p.close(sock);
+        return m.group(1);
+      }
+    }
+  }
+
+  @Test public void testUdpEchoStopsOnBobsPort()
+  {
+    PosixWorld[] worlds = UdpEcho.worlds();
+    Assertions.assertEquals("52220", echoUntil(process(worlds[0]), PosixWorld.MAX_DATAGRAM, BOB_PORT, true, false));
+    Assertions.assertEquals("15222", echoUntil(process(worlds[1]), PosixWorld.MAX_DATAGRAM, BOB_PORT, true, false));
+
+    // Going on after Bob's line: the late line, then Bob asks whether his line arrived, and then everybody is done
+    for (PosixWorld w : UdpEcho.worlds()) {
+      ExplainedException e = Assertions.assertThrows(ExplainedException.class, () -> echoUntil(process(w), PosixWorld.MAX_DATAGRAM, "(never)", true, false));
+      Assertions.assertTrue(traced(w, "Bob: Did you receive my previous message?"), String.join("\n", w.getTrace()));
+      Assertions.assertFalse(e.getMessage().contains("waiting in"), e.getMessage());
+    }
+  }
+
+  @Test public void testUdpEchoCatchesTheMistakes()
+  {
+    for (int i = 0; i < 2; i++) {
+      PosixWorld expected = UdpEcho.worlds()[i];
+      echoUntil(process(expected), PosixWorld.MAX_DATAGRAM, BOB_PORT, true, false);
+      PosixWorld w = UdpEcho.worlds()[i];
+      echoUntil(process(w), PosixWorld.MAX_DATAGRAM, BOB_PORT, true, false);
+      Assertions.assertTrue(w.winning(expected), expected.diffTo(w, null));
+
+      w = UdpEcho.worlds()[i];
+      echoUntil(process(w), PosixWorld.MAX_DATAGRAM, "PORT <?([0-9]+)", true, false);
+      Assertions.assertFalse(w.winning(expected), "the port without its chevrons");
+      w = UdpEcho.worlds()[i];
+      echoUntil(process(w), PosixWorld.MAX_DATAGRAM, "PORT <([^>]*)>", true, false);
+      Assertions.assertFalse(w.winning(expected), "a port that is not a number");
+      w = UdpEcho.worlds()[i];
+      echoUntil(process(w), PosixWorld.MAX_DATAGRAM, BOB_PORT, false, false);
+      Assertions.assertFalse(w.winning(expected), "Bob's line without its echo");
+      // All the echoes to the first sender: Bob waits for the echo of his first line, and never gives the port
+      PosixEntity p = process(UdpEcho.worlds()[i]);
+      Assertions.assertThrows(ExplainedException.class, () -> echoUntil(p, PosixWorld.MAX_DATAGRAM, BOB_PORT, true, true));
+
+      // Only the Turtles have a line longer than a buffer of 1024 bytes
+      w = UdpEcho.worlds()[i];
+      echoUntil(process(w), 1024, BOB_PORT, true, false);
+      Assertions.assertEquals(i == 0, w.winning(expected), "a buffer of 1024 bytes");
+    }
   }
 
   @Test public void testUdpScriptErrors()
