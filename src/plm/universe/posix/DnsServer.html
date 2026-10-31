@@ -48,7 +48,8 @@ the asked name (never sent by this server).</td></tr>
   <td align=center>1: recursion<br>desired</td><td align=center>1: recursion<br>available</td>
   <td align=center colspan=3>always 0</td><td align=center colspan=4>response code<br>(see below)</td></tr>
 </table>
-All two bytes integers must be in network order. Don't forget to use <code>htons()</code>.
+
+<p>As all the numbers of DNS, the ID and the counts are written in network byte order (see the framing above).</p>
 
 
 <p>For example, here is the header of a query of ID 42 holding a single question (in hexadecimal):</p>
@@ -151,10 +152,12 @@ name was written before.</p>
 <tr><th>RCODE</th><th>Name</th><th>Meaning</th></tr>
 <tr><td>0</td><td>NOERROR</td><td>The name exists. The answer section holds its records of the asked type, and is empty if it
   has none of that type.</td></tr>
-<tr><td>1</td><td>FORMERR</td><td>The query is malformed.</td></tr>
+<tr><td>1</td><td>FORMERR</td><td>The query is malformed. The answer is then only a header, with no copy of the
+  question.</td></tr>
 <tr><td>3</td><td>NXDOMAIN</td><td>The name does not exist.</td></tr>
 <tr><td>4</td><td>NOTIMP</td><td>This kind of query (opcode) is not implemented.</td></tr>
-<tr><td>5</td><td>REFUSED</td><td>The server refuses to answer, here because the name is not in its zone.</td></tr>
+<tr><td>5</td><td>REFUSED</td><td>The server refuses to answer, here because the name is not in its zone, or because the
+  class is not IN.</td></tr>
 </table>
 
 <h4>Answers of this server</h4>

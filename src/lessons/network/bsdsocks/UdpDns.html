@@ -1,0 +1,234 @@
+<h1>DNS over UDP</h1>
+
+<p>Now that you know how to exchange datagrams, it is time to talk to the BuggleInc DNS server, which listens on the UDP port
+53 of the machine 10.0.0.53. The URL given by Bob is not in the usual DNS: you have to talk to this server directly, by
+writing your queries yourself. Bob said to be careful: the DNS server may tell you more than what you ask, so pay attention to
+everything it sends back.</p>
+
+<p>The DNS messages are binary: the numbers are written on several bytes, the most significant one first, and the names are
+not written as text. The world documentation (in the section <i>The servers of this world</i>) describes the format of the
+queries and of the answers, the kinds of records, and the meaning of the response codes. The trace of the world shows how the
+server understood each of your queries and what it answered, and explains why it rejects a malformed one.</p>
+
+[!c]
+<p>Here are the main tools to build and read binary messages in C.</p>
+<ol>
+    <li>An array of <code>unsigned char</code> holds the bytes of a message. Use <code>unsigned char</code> rather than
+    <code>char</code>, whose values above 127 are negative.</li>
+
+    <li><code>uint16_t htons(uint16_t n)</code> and <code>uint16_t ntohs(uint16_t n)</code> convert a number of 2 bytes between
+    the byte order of your machine and the network byte order (<code>htonl()</code> and <code>ntohl()</code> do the same on 4
+    bytes). <code>memcpy()</code> copies such a number in the message, or out of it.</li>
+
+    <li><code>sendto()</code> sends exactly the number of bytes that you give, and <code>recvfrom()</code> returns the number of
+    bytes received.</li>
+</ol>
+[/!]
+
+[!python]
+<p>Here are the main tools to build and read binary messages in Python.</p>
+<ol>
+    <li>A message is a <code>bytes</code> value. <code>bytes([3, 65])</code> builds bytes from their values,
+    <code>"text".encode("ascii")</code> gives the bytes of a text, and <code>+</code> puts bytes one after the other.
+    <code>data[i]</code> is the value of a byte, and <code>data[i:j]</code> the bytes from <code>i</code> to <code>j</code>
+    (excluded).</li>
+
+    <li><code>struct.pack("!HH", a, b)</code> writes the numbers <code>a</code> and <code>b</code> on 2 bytes each, in network
+    byte order (<code>"!"</code>). <code>"I"</code> stands for a number on 4 bytes. <code>struct.unpack("!HH", data)</code>
+    reads them back, as a tuple.</li>
+</ol>
+[/!]
+
+[!java|scala]
+<p>Here are the main tools to build and read binary messages[!scala] in Scala, which uses the classes of Java[/!].</p>
+<ol>
+    <li>A message is an array of <code>byte</code>. <code>new ByteArrayOutputStream()</code> collects bytes:
+    <code>write(b)</code> adds one byte, <code>writeBytes(array)</code> adds an array, and <code>toByteArray()</code> gives the
+    result.
+    <code>text.getBytes(StandardCharsets.US_ASCII)</code> gives the bytes of a text.</li>
+
+    <li><code>ByteBuffer.wrap(array)</code> reads and writes numbers in an array, in network byte order:
+    <code>getShort(i)</code> and <code>putShort(i, n)</code> on 2 bytes, <code>getInt(i)</code> and <code>putInt(i, n)</code>
+    on 4 bytes, and <code>get(i)</code> for a single byte.</li>
+</ol>
+[/!]
+
+<h2>What to do</h2>
+
+<p>Find the IP address of the XMPP server hosting the chat room given by Bob, and print it on the standard output (such as
+<code>10.0.0.1</code>, followed by a new line), before closing your socket. Your program must work in both worlds: the
+BuggleInc zone is not exactly the same in each of them. While exploring, you will certainly print what the server answers,
+but your output is compared to the expected one: in the end, print only the address, and remove your other messages.</p>
+
+<p>The first step is certainly to ask the <code>TXT</code> records of the name <code>buggleinc.lan</code>, where the
+administrators of the zone leave notes, and to read all the records of the answer. They will probably give you more hints,
+and so may the <code>TXT</code> records coming in the additional section of the next answers.</p>
+
+<h2>Additional hints</h2>
+<ul>
+<li><div class="tip" id="tip-txt-query" alt="How exactly should I format such a TXT query, and read its answer?">
+<p>Please refer to the world's documentation for more info about the DNS wire protocol.</p>
+
+<p>Your <code>TXT</code> query should contain a 12-byte header, formatted as follows:</p>
+<ol>
+    <li>2 bytes representing the query ID. The server will reuse the exact same ID in its answer. Pick the value you
+    want.</li>
+    <li>2 bytes representing the flags. <code>01 00</code> are the usual flags of a query: only RD (recursion desired) is
+    set. The BuggleInc server never goes recursive, so this will be ignored.</li>
+    <li>2 bytes representing the number of questions in this message, in network byte order. <code>00 01</code> for one
+    question.</li>
+    <li>2 bytes representing the number of answers in this message, in network byte order. <code>00 00</code> for zero
+    answer.</li>
+    <li>2 bytes representing the number of authority records in this message, in network byte order. <code>00 00</code> for
+    no such record.</li>
+    <li>2 bytes representing the number of additional records in this message, in network byte order. <code>00 00</code>
+    for no such record.</li>
+</ol>
+<p>Then comes the question: the name about which you are looking for something, plus the code of the <code>TXT</code> type,
+plus the class IN (Internet).</p>
+<pre>
+0x09 "buggleinc" 0x03 "lan"   # the name, each label prefixed by its length and encoded in ASCII
+0x00                          # this zero ends the name
+0x00 0x10                     # 0x00 0x10 in hexadecimal is 16 in decimal, which stands for TXT
+0x00 0x01                     # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)
+</pre>
+<p>In hexadecimal, the text between quotes standing for its ASCII bytes. The query thus has 31 bytes: 12 for the header, 12
+ASCII chars for the name without the dots, 2 bytes for the length of each label, the final zero byte ending the name, and
+2 bytes for the query type and 2 bytes for the Internet class.</p>
+
+<p>The answer starts with a header of 12 bytes as well: the same ID, the flags (whose last 4 bits are the response code, 0
+when everything went well), and the numbers of questions, answers, authority records and additional records. For example,
+if your query had the ID <code>0x12 0x34</code>:</p>
+<pre>
+0x12 0x34  0x85 0x00                 # your ID, and the flags of an answer (response code 0: NOERROR)
+0x00 0x01  0x00 0x01                 # 1 question and 1 answer...
+0x00 0x00  0x00 0x00                 # ...but no authority nor additional record
+0x09 "buggleinc" 0x03 "lan" 0x00     # the question, copied from your query: skip it
+0x00 0x10  0x00 0x01
+0x09 "buggleinc" 0x03 "lan" 0x00     # the answer record: its name,
+0x00 0x10  0x00 0x01                 # its type (TXT) and its class (IN),
+0x00 0x00 0x0e 0x10                  # its time to live (3600 seconds), that you can ignore,
+0xLL 0xLL                            # the length of its data, on 2 bytes,
+0xNN "..."                           # and its data: for a TXT record, the length of the text on 1 byte, then the text
+</pre>
+<p>To read it, skip the header and the question (the name up to its zero byte, then 4 bytes), then read each record in
+turn: its name up to its zero byte, its type, its class, its time to live and the length of its data, and finally its data.
+The length of the data tells you where the next record starts. Make sure to inspect every record of the answer, in
+particular the <code>TXT</code> records in the additional records of the other answers.</p>
+</div></li>
+
+<li><div class="tip" id="tip-txt-code" alt="I still don't get how to send a TXT query to the server">
+<p>Here is the code sending the query for the <code>TXT</code> records of <code>buggleinc.lan</code>, with the ID 42:</p>
+<pre>
+[!c]int sock = socket(AF_INET, SOCK_DGRAM, 0);
+unsigned char query[] = {
+  0x00, 0x2a, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, /* the header */
+  9, 'b', 'u', 'g', 'g', 'l', 'e', 'i', 'n', 'c', 3, 'l', 'a', 'n', 0,   /* the name */
+  0x00, 0x10, 0x00, 0x01                                                 /* the type TXT and the class IN */
+};
+struct sockaddr_in server;
+memset(&server, 0, sizeof server);
+server.sin_family = AF_INET;
+server.sin_port   = htons(53);
+inet_pton(AF_INET, "10.0.0.53", &server.sin_addr);
+sendto(sock, query, sizeof query, 0, (struct sockaddr*)&server, sizeof server);[/!]
+[!python]sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+query = (struct.pack("!HHHHHH", 42, 0x0100, 1, 0, 0, 0)        # the header
+         + bytes([9]) + b"buggleinc" + bytes([3]) + b"lan" + bytes([0])  # the name
+         + struct.pack("!HH", 16, 1))                             # the type TXT and the class IN
+sock.sendto(query, ("10.0.0.53", 53))[/!]
+[!java]DatagramSocket socket = new DatagramSocket();
+ByteArrayOutputStream query = new ByteArrayOutputStream();
+query.writeBytes(new byte[] {0x00, 0x2a, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}); // the header
+query.write(9);                                                    // the name, each label preceded by its length
+query.writeBytes("buggleinc".getBytes(StandardCharsets.US_ASCII));
+query.write(3);
+query.writeBytes("lan".getBytes(StandardCharsets.US_ASCII));
+query.write(0);                                                    // the zero byte ending the name
+query.writeBytes(new byte[] {0x00, 0x10, 0x00, 0x01});             // the type TXT and the class IN
+byte[] data = query.toByteArray();
+socket.send(new DatagramPacket(data, data.length, InetAddress.getByName("10.0.0.53"), 53));[/!]
+[!scala]val socket = new DatagramSocket()
+val query  = new ByteArrayOutputStream()
+query.writeBytes(Array[Byte](0x00, 0x2a, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)) // the header
+query.write(9)                                                     // the name, each label preceded by its length
+query.writeBytes("buggleinc".getBytes(StandardCharsets.US_ASCII))
+query.write(3)
+query.writeBytes("lan".getBytes(StandardCharsets.US_ASCII))
+query.write(0)                                                     // the zero byte ending the name
+query.writeBytes(Array[Byte](0x00, 0x10, 0x00, 0x01))              // the type TXT and the class IN
+val data = query.toByteArray()
+socket.send(new DatagramPacket(data, data.length, InetAddress.getByName("10.0.0.53"), 53))[/!]
+</pre>
+<p>Then receive the answer with [!c|python]<code>recvfrom()</code>[/!][!java|scala]<code>socket.receive()</code>[/!],
+in a buffer of 512 bytes, and read it as explained in the previous tip.</p>
+</div></li>
+
+<li><div class="tip" id="tip-srv-query" alt="What if I need to run a SRV query on the service aze.buggleinc.lan?">
+<p>Please refer to the world's documentation for more info about the DNS wire protocol.</p>
+
+<p>Your <code>SRV</code> query should contain a 12-byte header, formatted as follows:</p>
+<ol>
+    <li>2 bytes representing the query ID. The server will reuse the exact same ID in its answer. Pick the value you
+    want.</li>
+    <li>2 bytes representing the flags. <code>01 00</code> are the usual flags of a query: only RD (recursion desired) is
+    set. The BuggleInc server never goes recursive, so this will be ignored.</li>
+    <li>2 bytes representing the number of questions in this message, in network byte order. <code>00 01</code> for one
+    question.</li>
+    <li>2 bytes representing the number of answers in this message, in network byte order. <code>00 00</code> for zero
+    answer.</li>
+    <li>2 bytes representing the number of authority records in this message, in network byte order. <code>00 00</code> for
+    no such record.</li>
+    <li>2 bytes representing the number of additional records in this message, in network byte order. <code>00 00</code>
+    for no such record.</li>
+</ol>
+<p>Then comes the question: the name about which you are looking for something, plus the code of the <code>SRV</code> type,
+plus the class IN (Internet).</p>
+<pre>
+0x03 "aze" 0x09 "buggleinc" 0x03 "com"   # the name, each label prefixed by its length and encoded in ASCII
+0x00                                     # this zero ends the name
+0x00 0x21                                # 0x00 0x21 in hexadecimal is 33 in decimal, which stands for SRV
+0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)
+</pre>
+<p>In hexadecimal, the text between quotes standing for its ASCII bytes. The query thus has 35 bytes: 12 for the header, 15
+ASCII chars for the name without the dots, 3 bytes for the length of each label, the final zero byte ending the name, and
+2 bytes for the query type and 2 bytes for the Internet class.</p>
+<p>Make sure to inspect every record of the answer, in particular the <code>TXT</code> records in the additional
+records.</p>
+</div></li>
+
+<li><div class="tip" id="tip-srv-answer" alt="How do I read the data of a SRV record?">
+<p>A <code>SRV</code> record is read as any other record (see the first hint): its name, its type, its class, its time to
+live and the length of its data, then its data. For example, here is a record of the answer to a <code>SRV</code> query on
+<code>aze.buggleinc.lan</code>:</p>
+<pre>
+0x03 "aze" 0x09 "buggleinc" 0x03 "lan" 0x00            # the name of the record
+0x00 0x21  0x00 0x01                                   # its type (SRV) and its class (IN)
+0x00 0x00 0x0e 0x10                                    # its time to live (3600 seconds), that you can ignore
+0x00 0x1a                                              # the length of its data: 26 bytes
+0x00 0x0a                                              # the priority of the target: 10
+0x00 0x05                                              # its weight: 5
+0x10 0x92                                              # its port: 4242
+0x04 "srv1" 0x09 "buggleinc" 0x03 "lan" 0x00           # its name, written as all the names
+</pre>
+<p>The data holds 6 bytes of numbers, and 20 bytes of name. An answer may hold several such records, one after the other:
+the world documentation tells which target a client should use.</p>
+</div></li>
+
+<li><div class="tip" id="tip-a-query" alt="What if I need the IP address of the server www.buggleinc.lan?">
+<p>Please refer to the world's documentation for more info about the DNS wire protocol.</p>
+
+<p>The IP address of a machine is given by its <code>A</code> record. Your query starts with the same 12-byte header as the
+other queries (an ID of your choice, the flags <code>01 00</code>, one question, and no other record), then comes the
+question: the name of the machine, plus the code of the <code>A</code> type, plus the class IN (Internet).</p>
+<pre>
+0x03 "www" 0x09 "buggleinc" 0x03 "com"   # the name, each label prefixed by its length and encoded in ASCII
+0x00                                     # this zero ends the name
+0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for A
+0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)
+</pre>
+<p>The query thus has 35 bytes, as the one of a name of the same length for any other type. In the answer, the data of an
+<code>A</code> record is 4 bytes long: these are the 4 numbers of the address, in order. The bytes <code>0x0a 0x00 0x00
+0x2a</code> stand for the address <code>10.0.0.42</code>, each byte being printed in decimal, between 0 and 255.</p>
+</div></li>
+</ul>
