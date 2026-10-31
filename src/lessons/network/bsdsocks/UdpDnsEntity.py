@@ -3,14 +3,16 @@ from RemotePosix import *
 # BEGIN TEMPLATE
 import socket
 import struct
-import sys
 # BEGIN SOLUTION
 SERVER = ("10.0.0.53", 53)
-A, SRV = 1, 33
+A, TXT, SRV = 1, 16, 33
 
 def encode_name(name):
     """The name in the wire format: each label preceded by its length, then a zero byte"""
-    return b"".join(bytes([len(label)]) + label.encode("ascii") for label in name.split(".")) + b"\0"
+    result = b""
+    for label in name.split("."):
+        result += bytes([len(label)]) + label.encode("ascii")
+    return result + b"\0"
 
 def read_name(data, offset):
     """The name written at that offset (never compressed by this server), and the offset after it"""
@@ -23,13 +25,17 @@ def read_name(data, offset):
 
 def query(sock, name, qtype):
     """Asks the records of that type of the name, and returns the data of each record of the answer section"""
-    sock.sendto(struct.pack("!HHHHHH", 1, 0x0100, 1, 0, 0, 0) + encode_name(name) + struct.pack("!HH", qtype, 1), SERVER)
+    header = struct.pack("!HHHHHH", 1, 0x0100, 1, 0, 0, 0)       # ID 1, RD, one question
+    question = encode_name(name) + struct.pack("!HH", qtype, 1)  # class IN
+    sock.sendto(header + question, SERVER)
+
     data, sender = sock.recvfrom(512)
     answers = struct.unpack("!H", data[6:8])[0]
-    offset = read_name(data, 12)[1] + 4  # after the copy of the question, with its type and class
+    _, offset = read_name(data, 12)
+    offset += 4  # after the copy of the question, with its type and class
     records = []
     for i in range(answers):
-        offset = read_name(data, offset)[1]
+        _, offset = read_name(data, offset)
         rtype, rclass, ttl, length = struct.unpack("!HHIH", data[offset:offset + 10])
         offset += 10
         if rtype == qtype:
@@ -40,10 +46,21 @@ def query(sock, name, qtype):
 def run():
     # BEGIN SOLUTION
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
-        # The XMPP servers of buggleinc.lan, the lowest priority first
-        targets = sorted((struct.unpack("!H", record[:2])[0], read_name(record, 6)[0])
-                         for record in query(sock, "_xmpp-client._tcp.buggleinc.lan", SRV))
-        address = query(sock, targets[0][1], A)[0]
-        print(".".join(str(byte) for byte in address))
+        # The hints followed while exploring, which this program does not need to read: the notes of the zone lead to
+        # conference.buggleinc.lan, whose notes lead to the SRV record of the XMPP service
+        query(sock, "buggleinc.lan", TXT)
+        query(sock, "conference.buggleinc.lan", TXT)
+
+        # The XMPP server of buggleinc.lan with the lowest priority
+        best_priority = None
+        best_target = None
+        for record in query(sock, "_xmpp-client._tcp.buggleinc.lan", SRV):
+            priority = struct.unpack("!H", record[0:2])[0]
+            if best_priority is None or priority < best_priority:
+                best_priority = priority
+                best_target, _ = read_name(record, 6)
+
+        address = query(sock, best_target, A)[0]
+        print(f"{address[0]}.{address[1]}.{address[2]}.{address[3]}")
     # END SOLUTION
 # END TEMPLATE

@@ -65,6 +65,8 @@ administrators of the zone leave notes, and to read all the records of the answe
 and so may the <code>TXT</code> records coming in the additional section of the next answers.</p>
 
 <h2>Additional hints</h2>
+<p>Accessing a DNS server directly on the wire is not an easy task, but don't worry. This exercise provides several hints to
+help you in this task. Some of these hints are given below, while others come with the answers of the server.</p>
 <ul>
 <li><div class="tip" id="tip-txt-query" alt="How exactly should I format such a TXT query, and read its answer?">
 <p>Please refer to the world's documentation for more info about the DNS wire protocol.</p>
@@ -211,8 +213,9 @@ live and the length of its data, then its data. For example, here is a record of
 0x10 0x92                                              # its port: 4242
 0x04 "srv1" 0x09 "buggleinc" 0x03 "lan" 0x00           # its name, written as all the names
 </pre>
-<p>The data holds 6 bytes of numbers, and 20 bytes of name. An answer may hold several such records, one after the other:
-the world documentation tells which target a client should use.</p>
+<p>The data holds 6 bytes of numbers, and 20 bytes of name. An answer may hold several such records, one after the other: the
+world documentation tells which target a client should use. Once you got the exact name of the host, you need another query to
+retrieve its IP address. This is what you need to write on your standard output to pass the exercise.</p>
 </div></li>
 
 <li><div class="tip" id="tip-a-query" alt="What if I need the IP address of the server www.buggleinc.lan?">
