@@ -826,6 +826,11 @@ student's history (`GitTracker.readTip()`, see [Progress trackers](#progress-tra
 - A tip placed in a `[!lang]` block only appears in these languages, with its link. Its content may also hold `[!lang]` blocks.
 - The `alt` text is translated with the rest of the mission, while "Show Tip" is not: always give an `alt`.
 
+**Searching the texts.** Ctrl-F (Cmd-F on macOS) searches the text under focus, else the one under the mouse, else the largest
+one of the window: the mission, the tips, the documentation of the world, the trace of a world, the code editor... `FindBar`
+installs it for every window as the PLM starts, so that a new text component is searchable without any code. Its bar floats
+over the top right corner of the text, highlights the matches (ignoring the case), and follows the changes of the text.
+
 ### Connecting your exercise to the lesson
 
 The lesson is defined as a Java file:

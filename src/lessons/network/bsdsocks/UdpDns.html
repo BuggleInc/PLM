@@ -164,6 +164,10 @@ socket.send(new DatagramPacket(data, data.length, InetAddress.getByName("10.0.0.
 </pre>
 <p>Then receive the answer with [!c|python]<code>recvfrom()</code>[/!][!java|scala]<code>socket.receive()</code>[/!],
 in a buffer of 512 bytes, and read it as explained in the previous tip.</p>
+
+[!c]<p>To prepare the buffer, you may want to create a set of procedures called <code>pack_unsigned_char()</code>,
+<code>pack_short()</code>, <code>pack_string()</code>, <code>pack_name()</code> that all operate over a static buffer and a
+pointer indicating the offset at which the next data should be packed.</p>[/!]
 </div></li>
 
 <li><div class="tip" id="tip-srv-query" alt="What if I need to run a SRV query on the service aze.buggleinc.lan?">

@@ -21,6 +21,7 @@ public class ProgrammersLearningMachine {
         User user = Game.getInstance().getUsers().getCurrentUser();
         Game.getInstance().setCurrentExercise(user.getCurrentExercise());
 
+        FindBar.install(); // Ctrl-F in every text of every window
         MainFrame.getInstance().setVisible(true);
         Game.getInstance().setCaptureOutput(true);
       }
