@@ -2179,8 +2179,9 @@ msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
 msgstr "ຜູ້ໃຊ້ PLM ໃໝ່ຖືກສ້າງຂຶ້ນແລ້ວ: {0}. ໂຟນເດີເກັບຂໍ້ມູນ: {1}"
 
 #: src/plm/core/model/Users.java:88
-#, java-format
-msgid "User {0} exists already; don't add it again."
+#, fuzzy, java-format
+#| msgid "User {0} exists already; don't add it again."
+msgid "User {0} exists already; don''t add it again."
 msgstr "ຜູ້ໃຊ້ {0} ມີຢູ່ແລ້ວ; ຢ່າເພີ່ມຊ້ຳ."
 
 #: src/plm/core/model/Users.java:113
