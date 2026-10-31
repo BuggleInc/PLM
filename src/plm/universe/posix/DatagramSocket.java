@@ -1,7 +1,9 @@
 package plm.universe.posix;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 /**
  * A UDP socket, bound to its port by bind(), or on an ephemeral port by its first sendto() or connect(). Each datagram arrives
@@ -13,6 +15,11 @@ final class DatagramSocket extends InetSocket {
   String remoteIp;
   int remotePort;
   final Deque<Datagram> incoming = new ArrayDeque<>();
+  /** Every datagram that went through this socket, in order, for the view */
+  final List<Passage> passages = new ArrayList<>();
+
+  /** A datagram that went through this socket, with what happened to it (such as "Received from 10.0.0.1:53, 12 bytes") */
+  record Passage(String what, String data) {}
 
   DatagramSocket(String ip) { super(ip); }
 
@@ -23,6 +30,7 @@ final class DatagramSocket extends InetSocket {
     res.remoteIp   = remoteIp;
     res.remotePort = remotePort;
     res.incoming.addAll(incoming);
+    res.passages.addAll(passages);
     return res;
   }
 
@@ -34,6 +42,7 @@ final class DatagramSocket extends InetSocket {
   {
     incoming.add(datagram);
     arrived.append(datagram.data());
+    passages.add(new Passage("Received from " + datagram.ip() + ":" + datagram.port() + ", " + datagram.data().length() + " bytes", datagram.data()));
   }
 
   @Override String describe() { return "datagram socket" + (remoteIp == null ? "" : " connected to " + remoteIp + ":" + remotePort); }

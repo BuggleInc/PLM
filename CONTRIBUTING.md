@@ -1062,9 +1062,10 @@ documentation](PEDAGOGY.md#system-programming).
   the view, traces the system calls in the style of strace (with the data cut after 50 characters, but the paths whole) and the
   end of the process (`+++ exited with 0 +++`, from `Entity.processEnded()` that `RemoteExecutionLang` calls), the ongoing steps
   of the peers, and their remaining steps greyed.
-  A click on a file, on the box of a connected socket (showing everything it received and sent), or on the `stdout` or `stderr`
-  of the student's process (showing everything written on it), opens it in a read-only tab of the editor, which follows the
-  changes of the world. This uses `MissionEditorTabs.showReadOnly(title, world, content)`
+  A click on a file, on the box of a connected socket (showing everything it received and sent), of a bound datagram socket
+  (showing each datagram it received or sent, with its address and its bytes as `hexdump -C` shows them), or on the `stdout`
+  or `stderr` of the student's process (showing everything written on it), opens it in a read-only tab of the editor, which
+  follows the changes of the world. This uses `MissionEditorTabs.showReadOnly(title, world, content)`
   (reached with `MainFrame.getInstance().getEditorTabs()`), which any universe can use: the tabs are `ReadOnlyTab`, listening
   to the world until the student closes them, or until the exercise or the language changes. Their title gives the name of the
   world (and "objective" for the expected one), and clicking again on a text shows its current content in the same tab.

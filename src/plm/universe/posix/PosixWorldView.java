@@ -464,6 +464,9 @@ public class PosixWorldView extends WorldView {
       if (live && row.key() instanceof Socket s && s.remote != null) {
         links.add(new Link(area, title + ", socket " + row.fd(), () -> history(s)));
         tips.add(new Tip(area, "Click to see everything that went through this socket"));
+      } else if (live && row.key() instanceof DatagramSocket d && d.port >= 0) {
+        links.add(new Link(area, title + ", socket " + row.fd(), () -> history(d)));
+        tips.add(new Tip(area, "Click to see every datagram that went through this socket"));
       } else if (live && row.key() instanceof StandardStream stream && !mirrored && (stream == process.stdout || stream == process.stderr)) {
         links.add(new Link(area, title + ", " + stream.name, () -> written(stream.name)));
         tips.add(new Tip(area, "Click to see everything that your process wrote on it"));
@@ -504,6 +507,31 @@ public class PosixWorldView extends WorldView {
 
   /** Everything that went through a connected socket: what arrived on it (received or not), and what it sent (transmitted or not) */
   private static String history(Socket s) { return PosixWorld.text("Received:\n" + s.arrived + "\n\nSent:\n" + s.remote.arrived + s.outgoing); }
+
+  /**
+   * Every datagram that went through a socket, in order: where it came from or went, then its bytes as hexdump -C shows them, 16
+   * per line with their offset, and as text on the right (a dot for the bytes that are not printable).
+   */
+  private static String history(DatagramSocket s)
+  {
+    StringBuilder res = new StringBuilder();
+    for (DatagramSocket.Passage passage : s.passages) {
+      String data = passage.data();
+      res.append(passage.what()).append(":\n");
+      for (int line = 0; line < data.length(); line += 16) {
+        String bytes = data.substring(line, Math.min(line + 16, data.length()));
+        res.append(String.format("%04x ", line));
+        for (int i = 0; i < 16; i++)
+          res.append(i == 8 ? "  " : " ").append(i < bytes.length() ? String.format("%02x", (int)bytes.charAt(i)) : "  ");
+        res.append("  |");
+        for (char c : bytes.toCharArray())
+          res.append(c >= ' ' && c < 0x7F ? c : '.');
+        res.append("|\n");
+      }
+      res.append('\n');
+    }
+    return res.isEmpty() ? "No datagram went through this socket yet." : res.toString();
+  }
 
   /** Draws a file as an icon with a folded corner: its name on top, then the first lines of its content (all of it as a tooltip) */
   private void file(Graphics2D g2, int x, int y, String name, String data, boolean live)

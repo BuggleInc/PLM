@@ -444,7 +444,10 @@ public class PosixWorld extends World {
     if (s.port < 0)
       s.port = ephemeralPort(proc.ip);
     DatagramSocket target = datagramSocket(ip, port);
-    if (target != null && target.accepts(proc.ip, s.port))
+    boolean arrives       = target != null && target.accepts(proc.ip, s.port);
+    String what           = "Sent to " + ip + ":" + port + ", " + data.length() + " bytes" + (arrives ? "" : ", lost as no socket waits for it there");
+    s.passages.add(new DatagramSocket.Passage(what, data));
+    if (arrives)
       target.deliver(new Datagram(proc.ip, s.port, data));
     else
       log(null, "network", "datagram from " + proc.ip + ":" + s.port + " lost, as no socket waits for it on " + ip + ":" + port);
