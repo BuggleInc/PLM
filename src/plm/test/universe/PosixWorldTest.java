@@ -1054,17 +1054,22 @@ public class PosixWorldTest {
     byte[] query  = dnsQuery(1, DnsServer.A, dnsName("xmpp1.buggleinc.lan"));
     query[5]      = 0; // one question written least significant byte first
     query[4]      = 1;
-    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 0), dnsHeader(ask(p, sock, query)));
+    byte[] answer = ask(p, sock, query);
+    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 1), dnsHeader(answer)); // the explanation as additional record
     Assertions.assertTrue(traced(w, "network byte order"), w.getTrace().toString());
+    String explanation = "FORMERR: The header announces 256 questions (01 00), where a query has exactly one (00 01): "
+                         + "the numbers of DNS are written in network byte order, the most significant byte first.";
+    // The root name, the type TXT, the class IN, the TTL 3600 and the length of the data, then the length of its single string
+    Assertions.assertEquals("\0\0\20\0\1\0\0\16\20\0" + (char)(explanation.length() + 1) + (char)explanation.length() + explanation, s(answer).substring(12));
 
     byte[] text = dnsQuery(1, DnsServer.A, b("xmpp1.buggleinc.lan\0")); // the name written as text
-    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 0), dnsHeader(ask(p, sock, text)));
+    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 1), dnsHeader(ask(p, sock, text)));
     Assertions.assertTrue(traced(w, "The dots of the name are not written"), w.getTrace().toString());
 
     byte[] padded = new byte[512]; // a whole buffer sent after the query
     query         = dnsQuery(1, DnsServer.A, dnsName("xmpp1.buggleinc.lan"));
     System.arraycopy(query, 0, padded, 0, query.length);
-    Assertions.assertEquals(List.of(0x8101, 0, 0, 0, 0), dnsHeader(ask(p, sock, padded)));
+    Assertions.assertTrue(s(ask(p, sock, padded)).contains((512 - query.length) + " bytes follow the question"));
     Assertions.assertTrue(traced(w, (512 - query.length) + " bytes follow the question"), w.getTrace().toString());
 
     Assertions.assertEquals(5, p.sendto(sock, b("hello"), 0, "10.0.0.53", 53)); // too short: ignored, so the student waits forever

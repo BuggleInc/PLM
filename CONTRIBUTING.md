@@ -1002,8 +1002,9 @@ documentation](PEDAGOGY.md#system-programming).
   outside its zone. The TXT records of the asked name come in the additional section of the other answers about it, so that the
   hints of a scenario are found without guessing their type. It never compresses the names. It notes each query and answer
   decoded in the trace (`note()`), and explains the malformed queries, answered FORMERR (numbers in the wrong byte order, a name
-  written as text or without its final zero byte, bytes after the question...). A datagram that is not a query is ignored, with a
-  note, as real servers do.
+  written as text or without its final zero byte, bytes after the question...). The answer also holds this explanation, as a TXT
+  record of the root in its additional section, for the students who print the answers rather than read the trace. A datagram
+  that is not a query is ignored, with a note, as real servers do.
 * **The echo clients** (`EchoClient`, one per machine, named in the trace) talk to a UDP echo server written by the student.
   The exercise gives their lines with their time (`says()`): the lines of a same time leave in a burst, and the next ones only once
   their echoes arrived, so that a client without echo stays silent. A client may check that each echo is exactly its line

@@ -152,8 +152,8 @@ name was written before.</p>
 <tr><th>RCODE</th><th>Name</th><th>Meaning</th></tr>
 <tr><td>0</td><td>NOERROR</td><td>The name exists. The answer section holds its records of the asked type, and is empty if it
   has none of that type.</td></tr>
-<tr><td>1</td><td>FORMERR</td><td>The query is malformed. The answer is then only a header, with no copy of the
-  question.</td></tr>
+<tr><td>1</td><td>FORMERR</td><td>The query is malformed. The answer then has no copy of the question, but its additional
+  section holds a TXT record of the root (the name made of a single zero byte) explaining the mistake.</td></tr>
 <tr><td>3</td><td>NXDOMAIN</td><td>The name does not exist.</td></tr>
 <tr><td>4</td><td>NOTIMP</td><td>This kind of query (opcode) is not implemented.</td></tr>
 <tr><td>5</td><td>REFUSED</td><td>The server refuses to answer, here because the name is not in its zone, or because the
@@ -199,6 +199,7 @@ written for this world would mostly work on real networks, with some adaptations
   <li>The additional section only holds the TXT records of the asked name. A real server rather puts there the addresses of
     the names given by its answers (such as the targets of the SRV records), to save the client another query, and never
     puts unrequested TXT records there.</li>
+  <li>A real server answers FORMERR with a header only: it does not explain the mistake in a TXT record.</li>
   <li>The TXT records hold ASCII text. Real ones may hold any bytes, often UTF-8 text.</li>
   <li>This server does not implement EDNS (RFC 6891), which lets the client announce a larger buffer with an additional OPT
     record, so that the answers may exceed 512 bytes. It ignores the additional records of the queries, while a real server

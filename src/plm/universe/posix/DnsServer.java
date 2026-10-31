@@ -17,8 +17,8 @@ import plm.core.model.Game;
  *
  * Each query and each answer is noted decoded in the trace, so that the student sees how the server read the binary message. A
  * malformed query is answered FORMERR, with a note explaining the usual mistakes (byte order of the numbers, a name without its
- * length bytes or its final zero byte, bytes after the question...); a datagram too short to be a message, or holding an answer,
- * is ignored as real servers do, with a note.
+ * length bytes or its final zero byte, bytes after the question...), which the answer also holds as a TXT record of the root in
+ * its additional section; a datagram too short to be a message, or holding an answer, is ignored as real servers do, with a note.
  */
 public class DnsServer extends ProgramPeer {
   public static final int A = 1, TXT = 16, SRV = 33, ANY = 255;
@@ -75,13 +75,19 @@ public class DnsServer extends ProgramPeer {
   /** Adds a TXT record, whose text is sent in ASCII, in strings of at most 255 bytes */
   public DnsServer txt(String name, String text)
   {
-    String ascii       = ascii(text);
+    String ascii = ascii(text);
+    return add(name, TXT, strings(ascii), PosixWorld.quoted(ascii));
+  }
+
+  /** The data of a TXT record holding that text: strings of at most 255 bytes, each preceded by its length */
+  private static String strings(String ascii)
+  {
     StringBuilder data = new StringBuilder();
     for (int i = 0; i < ascii.length(); i += 255) {
       String part = ascii.substring(i, Math.min(ascii.length(), i + 255));
       data.append((char)part.length()).append(part);
     }
-    return add(name, TXT, data.toString(), PosixWorld.quoted(ascii));
+    return data.toString();
   }
 
   /** Adds a SRV record (RFC 2782): the target host and port of a service, the lowest priority being tried first */
@@ -184,8 +190,11 @@ public class DnsServer extends ProgramPeer {
       }
       return res.toString();
     } catch (Malformed e) {
-      note("FORMERR: " + e.getMessage());
-      return header(id, flags, FORMERR, 0, 0, 0);
+      // The explanation also comes in the answer, for the students who print it rather than read the trace: as a TXT record of
+      // the root (the name made of its final zero byte only) in the additional section, the question being unreadable
+      String explanation = ascii("FORMERR: " + e.getMessage());
+      note(explanation);
+      return header(id, flags, FORMERR, 0, 0, 1) + encode(new Record(List.of(), TXT, strings(explanation), PosixWorld.quoted(explanation)));
     }
   }
 
