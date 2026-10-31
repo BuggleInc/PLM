@@ -2215,8 +2215,9 @@ msgstr ""
 "{1}"
 
 #: src/plm/core/model/Users.java:88
-#, java-format
-msgid "User {0} exists already; don't add it again."
+#, fuzzy, java-format
+#| msgid "User {0} exists already; don't add it again."
+msgid "User {0} exists already; don''t add it again."
 msgstr "பயனர் {0} ஏற்கனவே உள்ளது; அதை மீண்டும் சேர்க்க வேண்டாம்."
 
 #: src/plm/core/model/Users.java:113
