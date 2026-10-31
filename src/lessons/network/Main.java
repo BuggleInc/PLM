@@ -5,6 +5,7 @@ import lessons.network.bsdsocks.TcpFramingIrc;
 import lessons.network.bsdsocks.TcpServer;
 import lessons.network.bsdsocks.UdpClient;
 import lessons.network.bsdsocks.UdpDns;
+import lessons.network.bsdsocks.UdpEcho;
 import plm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
@@ -15,5 +16,6 @@ public class Main extends Lesson {
     addExercise(new TcpFramingIrc(this));
     addExercise(new UdpClient(this));
     addExercise(new UdpDns(this));
+    addExercise(new UdpEcho(this));
   }
 }
