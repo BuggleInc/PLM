@@ -2179,8 +2179,9 @@ msgid "A new PLM user has been created for you: {0}. Save directory: {1}"
 msgstr "Um novo usuário PLM foi criado para você!"
 
 #: src/plm/core/model/Users.java:88
-#, java-format
-msgid "User {0} exists already; don't add it again."
+#, fuzzy, java-format
+#| msgid "User {0} exists already; don't add it again."
+msgid "User {0} exists already; don''t add it again."
 msgstr "Usuário {0} já existe; não vou adicionar de novo."
 
 #: src/plm/core/model/Users.java:113
