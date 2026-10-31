@@ -942,7 +942,8 @@ documentation](PEDAGOGY.md#system-programming).
   ```
   `Peer.udpServer()` and `Peer.udpClient()` give the same over UDP: their datagram socket is on 3 (bound to its port for a
   server), `recvfrom(3)` waits for a datagram and receives it whole, and `sendto(3, "...")` sends one at once, to the student's
-  port for a client, or to the sender of the last datagram received for a server.
+  port for a client, or to the sender of the last datagram received for a server. A translated text goes through `Peer.ascii()`
+  before being put in a script, as the peers send their texts in ASCII.
   The peers act as far as they can before and after each system call of the student (`PosixEntity`), and each of their steps
   is animated on its own (`PosixWorld.advancePeers()`). The student writes a function whose parameters (such as the address
   and the port of the server) are given by each world with `PosixWorld.setParameters()`, along with its peers, so that
@@ -977,7 +978,7 @@ documentation](PEDAGOGY.md#system-programming).
   the lines of the members, one per second (`packets()`). The addressed lines and the hints are `MessageFormat` patterns, whose
   `{0}` is the nickname of the client, and whose `{1}`, `{2}`... are the words expected by the other member (for the hints), so
   that a hint can give an exact sentence that stays consistent with the translated words. The texts, which may be translated,
-  lose their accents since the servers send them in ASCII (`ProgramPeer.ascii()`). A `PRIVMSG` whose text holds spaces without
+  lose their accents since the servers send them in ASCII (`Peer.ascii()`). A `PRIVMSG` whose text holds spaces without
   its `:` is refused with a notice telling how to write it, where a real server would only send its first word.
 * **The HTTP server** (`HttpServer`, software `plm-httpd/1.0`) serves static files (`file()`) with `GET` and `HEAD`, exact to the
   byte as the usual servers: its responses give `Content-Length`, the connections persist in HTTP/1.1 (unless `Connection:

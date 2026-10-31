@@ -1,6 +1,5 @@
 package plm.universe.posix;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -105,13 +104,6 @@ public abstract class ProgramPeer extends Peer {
   }
 
   // ---------------------------------------------------------------- helpers for act(), tracing their system calls
-
-  /** The text in ASCII, as the servers send their texts: the accents are removed (of a translated text), and the other characters become ? */
-  protected static String ascii(String text)
-  {
-    String res = Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{M}", "");
-    return res.replaceAll("[^\\x00-\\x7F]", "?");
-  }
 
   /** The time in the world */
   protected int now() { return world.now; }

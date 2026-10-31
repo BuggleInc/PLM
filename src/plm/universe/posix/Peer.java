@@ -1,5 +1,6 @@
 package plm.universe.posix;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,16 @@ public abstract class Peer {
     for (InetSocket socket : other.endpoints)
       endpoints.add(socket.copy(copies));
     since = other.since;
+  }
+
+  /**
+   * The text in ASCII, as the peers send their texts: the accents are removed (of a translated text), and the other characters
+   * become ?
+   */
+  public static String ascii(String text)
+  {
+    String res = Normalizer.normalize(text, Normalizer.Form.NFD).replaceAll("\\p{M}", "");
+    return res.replaceAll("[^\\x00-\\x7F]", "?");
   }
 
   /** A peer on ip:port, to which the student connects (its script should accept() the connection) */
