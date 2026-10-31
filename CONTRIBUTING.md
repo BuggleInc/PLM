@@ -1008,6 +1008,14 @@ documentation](PEDAGOGY.md#system-programming).
   comparison to some aspects with `PosixWorld.comparing()`, for example to the output and the descriptors when the student may
   talk with a server in several ways: `winning()` and `diffTo()` then ignore the rest, while `equals()` still compares
   everything.
+* **Redacting the objective**: when the exchanges would give the scenario away (a URL in a chat, hints in DNS records), an
+  exercise calls `PosixWorld.redactingTheObjective()`. Its expected worlds (the objective, also run by the demo) then show empty
+  cells in the queues of the sockets and only the sizes in their tooltips, show a notice on a click on a connected socket,
+  show the datagrams of a click on a datagram socket in hexadecimal only (their printable bytes as stars on the right, so that
+  the student can still compare them with the ones of their own world), and hide the quoted data of the calls in the trace and
+  in the timeline, as well as the notes of the programs (`note()`, kept apart as such in the trace). The view and the trace
+  panel decide it when they draw (`PosixWorld.redacted()`), since the expected worlds are also computed when the exercise
+  loads. The student's worlds still show everything.
 * **The C glue** is hand-written (`RemotePosixGlue.h` and `RemotePosixGlue.c`, with `@Glue(wrapped = true)`): it offers the real
   POSIX signatures, renames the student's calls with macros (`#define recv plm_recv`, which `LangC.withRealNames()` hides from
   the compiler messages, along with `-ftrack-macro-expansion=0` if the compiler accepts it, so that the errors are located where

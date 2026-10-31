@@ -10,9 +10,11 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BooleanSupplier;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
 import plm.core.ui.ResourcesCache;
 import plm.core.ui.WorldView;
 import plm.universe.EntityControlPanel;
@@ -62,7 +64,7 @@ public class PosixWorld extends World {
   /** The clock of the world, in seconds */
   int now;
   /** What happened so far, one event per line (a system call of the student's process, or a step of a peer), read by the UI */
-  List<String> trace = new CopyOnWriteArrayList<>();
+  List<Event> trace = new CopyOnWriteArrayList<>();
   /** The states of the world, the initial one and then one after each event of the trace (at most MAX_SCENES), read by the view */
   List<Scene> history         = new CopyOnWriteArrayList<>();
   static final int MAX_SCENES = 1000;
@@ -70,6 +72,8 @@ public class PosixWorld extends World {
   private int refusedInARow;
   /** What the comparison of the worlds checks */
   private Set<Aspect> compared = EnumSet.allOf(Aspect.class);
+  /** Whether the expected worlds hide their data (see redactingTheObjective()) */
+  private boolean redacting;
 
   public PosixWorld(String name)
   {
@@ -108,8 +112,26 @@ public class PosixWorld extends World {
     return this;
   }
 
+  /**
+   * Hides the data exchanged on the sockets in the expected worlds (shown as the objective, and run by the demo), when its text
+   * would give the scenario away: the content of their socket queues, the data of the calls in their trace, and the notes of the
+   * programs. The student's own worlds still show everything.
+   */
+  public PosixWorld redactingTheObjective()
+  {
+    redacting = true;
+    return this;
+  }
+
+  /** Whether this world hides its data: an expected world of the current exercise, which asked for it */
+  boolean redacted()
+  {
+    return redacting && Game.getInstance().getCurrentLesson() != null && Game.getInstance().getCurrentLesson().getCurrentExercise() instanceof Exercise exo &&
+        exo.getWorlds(Exercise.WorldKind.ANSWER).stream().anyMatch(w -> w == this);
+  }
+
   /** What happened so far, one event per line */
-  public List<String> getTrace() { return List.copyOf(trace); }
+  public List<String> getTrace() { return trace.stream().map(Event::line).toList(); }
 
   /** Sets the data that the process finds on its standard input */
   public PosixWorld setStdin(String data)
@@ -138,14 +160,15 @@ public class PosixWorld extends World {
     Map<FileDescription, FileDescription> copies = new IdentityHashMap<>();
     for (Peer p : other.peers)
       peers.add(p.copy(copies));
-    student = new PosixProcess(other.student, copies);
-    now      = other.now;
-    trace    = new CopyOnWriteArrayList<>(other.trace);
-    history  = new CopyOnWriteArrayList<>(other.history); // the scenes are never modified, so they can be shared
-    compared = EnumSet.copyOf(other.compared);
+    student   = new PosixProcess(other.student, copies);
+    now       = other.now;
+    trace     = new CopyOnWriteArrayList<>(other.trace);
+    history   = new CopyOnWriteArrayList<>(other.history); // the scenes are never modified, so they can be shared
+    compared  = EnumSet.copyOf(other.compared);
+    redacting = other.redacting;
     super.reset(initialWorld);
     if (history.isEmpty())
-      history.add(Scene.after(this, null, null, -1));
+      history.add(Scene.after(this, null, -1));
   }
 
   @Override public ImageIcon getIcon() { return ResourcesCache.getIcon("img/world_buggle.png"); }
@@ -164,12 +187,34 @@ public class PosixWorld extends World {
     return super.expandPlaceholders(html).replace("[!protocols/]", protocols);
   }
 
+  /**
+   * An event of the trace: its time, who did it, what happened, and whether it is a note of a program (such as what a server
+   * understood of a request) rather than a system call or the network carrying data
+   */
+  record Event(int time, String who, String what, boolean note) {
+    String line() { return "[t=" + time + "] " + who + ": " + what; }
+
+    /** What happened, with its data hidden in a redacted world: the whole of a note, and the quoted data of a call */
+    String shown(boolean redacted) { return redacted ? redacted(what, note) : what; }
+  }
+
+  /** The data between double quotes in the trace, as strace shows it (possibly followed by ... if cut) */
+  private static final Pattern QUOTED = Pattern.compile("\"(?:[^\"\\\\]|\\\\.)*\"(?:\\.\\.\\.)?");
+
+  /** The text of an event or of a step with its data hidden: entirely for a note, and the quoted data otherwise */
+  static String redacted(String what, boolean note) { return note ? "…" : QUOTED.matcher(what).replaceAll("\"…\""); }
+
   /** Adds an event of that process (null for the network) to the trace, stamped with the clock, and keeps the state it leads to */
-  void log(PosixProcess actor, String who, String what)
+  void log(PosixProcess actor, String who, String what) { addEvent(actor, new Event(now, who, what, false)); }
+
+  /** Adds a note of the program of that process to the trace, such as what it understood of a request */
+  void note(PosixProcess actor, String who, String what) { addEvent(actor, new Event(now, who, what, true)); }
+
+  private void addEvent(PosixProcess actor, Event event)
   {
-    trace.add("[t=" + now + "] " + who + ": " + what);
+    trace.add(event);
     if (history.size() < MAX_SCENES)
-      history.add(Scene.after(this, who, what, processes().indexOf(actor)));
+      history.add(Scene.after(this, event, processes().indexOf(actor)));
   }
 
   /** The data longer than this is cut in the trace, as strace does (see its option -s) */

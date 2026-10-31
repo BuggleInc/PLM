@@ -74,6 +74,8 @@ public class PosixWorldView extends WorldView {
   private record Link(Rectangle area, String title, Supplier<String> content) {}
   /** The links of the last painting */
   private final List<Link> links = new ArrayList<>();
+  /** Whether the world of the last painting hides the data of its sockets (see PosixWorld.redactingTheObjective()) */
+  private boolean redacted;
 
   private static final int GAP      = 34;   // room between two states of the timeline, for the arrow of the event
   private static final float DIMMED = 0.5f; // opacity of the machines that did not act in a state of the timeline
@@ -243,6 +245,7 @@ public class PosixWorldView extends WorldView {
       if (world == null)
         return;
       PosixWorld w = (PosixWorld)world;
+      redacted     = w.redacted();
       g2.setColor(Color.black);
       if (!timeline) {
         g2.drawString("t = " + w.now + "s", (getWidth() - 40) / 2, 18);
@@ -324,7 +327,8 @@ public class PosixWorldView extends WorldView {
     g2.setColor(Color.darkGray);
     g2.drawLine(x, from + 4, x, to - 4);
     g2.fillPolygon(new int[] {x, x - 4, x + 4}, new int[] {to - 1, to - 9, to - 9}, 3);
-    String label = scene.actor() == 0 ? scene.what() : scene.who() + ": " + scene.what();
+    String what  = scene.event().shown(redacted);
+    String label = scene.actor() == 0 ? what : scene.event().who() + ": " + what;
     Font font    = g2.getFont();
     g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 11));
     int y = (from + to) / 2 + 4;
@@ -462,10 +466,12 @@ public class PosixWorldView extends WorldView {
       box(g2, KERNEL, objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6, row.lines());
       Rectangle area = new Rectangle(objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6);
       if (live && row.key() instanceof Socket s && s.remote != null) {
-        links.add(new Link(area, title + ", socket " + row.fd(), () -> history(s)));
+        String hidden = Game.i18n.tr("The content of the objective world is redacted to not spoil the scenario. Please implement your own solution.");
+        links.add(new Link(area, title + ", socket " + row.fd(), redacted ? () -> hidden : () -> history(s)));
         tips.add(new Tip(area, "Click to see everything that went through this socket"));
       } else if (live && row.key() instanceof DatagramSocket d && d.port >= 0) {
-        links.add(new Link(area, title + ", socket " + row.fd(), () -> history(d)));
+        boolean hidden = redacted;
+        links.add(new Link(area, title + ", socket " + row.fd(), () -> history(d, hidden)));
         tips.add(new Tip(area, "Click to see every datagram that went through this socket"));
       } else if (live && row.key() instanceof StandardStream stream && !mirrored && (stream == process.stdout || stream == process.stderr)) {
         links.add(new Link(area, title + ", " + stream.name, () -> written(stream.name)));
@@ -510,9 +516,10 @@ public class PosixWorldView extends WorldView {
 
   /**
    * Every datagram that went through a socket, in order: where it came from or went, then its bytes as hexdump -C shows them, 16
-   * per line with their offset, and as text on the right (a dot for the bytes that are not printable).
+   * per line with their offset, and as text on the right (a dot for the bytes that are not printable). A redacted world hides that
+   * text behind stars, but keeps the bytes, so that the student can compare them with the ones of their own world.
    */
-  private static String history(DatagramSocket s)
+  private static String history(DatagramSocket s, boolean redacted)
   {
     StringBuilder res = new StringBuilder();
     for (DatagramSocket.Passage passage : s.passages) {
@@ -525,7 +532,7 @@ public class PosixWorldView extends WorldView {
           res.append(i == 8 ? "  " : " ").append(i < bytes.length() ? String.format("%02x", (int)bytes.charAt(i)) : "  ");
         res.append("  |");
         for (char c : bytes.toCharArray())
-          res.append(c >= ' ' && c < 0x7F ? c : '.');
+          res.append(c < ' ' || c >= 0x7F ? '.' : redacted ? '*' : c);
         res.append("|\n");
       }
       res.append('\n');
@@ -585,9 +592,11 @@ public class PosixWorldView extends WorldView {
    * The cells keep the reading order, and stick to the side where they leave, which an arrow shows. When the bytes do not fit,
    * each chunk of several gets its share of the width, ended by "…" if cut, so that their boundaries stay visible; a queue still
    * too long is cut, with the number of hidden bytes, and its full content in a tooltip. Labelled chunks show theirs as tooltip.
+   * The queues of the sockets of a redacted world show empty cells, and only the sizes in their tooltips.
    */
   private void queue(Graphics2D g2, int x, int y, int width, Queue q, boolean leavesRight)
   {
+    boolean secret       = redacted && (q.role() == SEND || q.role() == RECEIVE || q.role() == DATAGRAMS);
     int fit              = Math.max(1, (width - 10) / CELL);
     int bytes            = q.chunks().stream().mapToInt(String::length).sum();
     int share            = q.chunks().size() > 1 && bytes > fit ? Math.max(2, fit / q.chunks().size()) : Integer.MAX_VALUE;
@@ -597,7 +606,12 @@ public class PosixWorldView extends WorldView {
       String chunk = q.chunks().get(k);
       int kept     = chunk.length() > share ? share - 1 : chunk.length();
       for (char c : chunk.substring(0, kept).toCharArray())
-        cells.add(c == '\n' ? "⏎" : c == '\r' ? "↵" : c == '\t' ? "⇥" : c < ' ' || c >= 0x7F ? "·" : String.valueOf(c)); // the bytes in the tooltip
+        cells.add(secret                 ? ""
+                  : c == '\n'            ? "⏎"
+                  : c == '\r'            ? "↵"
+                  : c == '\t'            ? "⇥"
+                  : c < ' ' || c >= 0x7F ? "·"
+                                         : String.valueOf(c)); // the bytes in the tooltip
       if (kept < chunk.length())
         cells.add(ELLIPSIS);
       while (chunks.size() < cells.size())
@@ -617,7 +631,7 @@ public class PosixWorldView extends WorldView {
       for (int k = 0; k < q.chunks().size(); k++) { // one chunk per line if they are labelled
         if (q.labels() != null)
           all.append(k > 0 ? "<br>" : "").append(escape(q.labels().get(k))).append(": ");
-        all.append(escape("'" + PosixWorld.bytes(q.chunks().get(k)) + "'"));
+        all.append(secret ? q.chunks().get(k).length() + " bytes" : escape("'" + PosixWorld.bytes(q.chunks().get(k)) + "'"));
       }
       tips.add(new Tip(new Rectangle(x, y, width, CELL), all.append(q.eof() ? " then EOF" : "").append("</html>").toString()));
     }
@@ -645,7 +659,7 @@ public class PosixWorldView extends WorldView {
       if (q.labels() != null && i < used && (i + 1 == Math.min(used, cells.size()) || !chunks.get(i + 1).equals(chunks.get(i)))) { // the end of a chunk
         String chunk = q.chunks().get(chunks.get(i));
         tips.add(new Tip(new Rectangle(chunkStart, y, cx + w - chunkStart, CELL),
-                         q.labels().get(chunks.get(i)) + ", " + chunk.length() + " bytes: '" + PosixWorld.bytes(chunk) + "'"));
+                         q.labels().get(chunks.get(i)) + ", " + chunk.length() + " bytes" + (secret ? "" : ": '" + PosixWorld.bytes(chunk) + "'")));
       }
       if (cell != null)
         g2.drawString(cell, cx + (w - g2.getFontMetrics().stringWidth(cell)) / 2, y + CELL - 2);

@@ -14,8 +14,9 @@ public class UdpDns extends ExerciseTemplated {
     // The student queries the DNS server as it likes, so only its output and its descriptors are compared. The two XMPP servers
     // swap their priorities between the worlds, so that taking the first or the last SRV record fails one of them, and the address
     // of the Turtles one has a byte above 127, which Java and Scala read as negative.
-    setup(new PosixWorld[] {new PosixWorld("Buggles").comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).addPeer(zone(10, "10.0.0.6", 0, "10.0.0.5")),
-                            new PosixWorld("Turtles").comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).addPeer(zone(0, "10.0.200.5", 10, "10.0.0.7"))});
+    setup(new PosixWorld[] {
+        new PosixWorld("Buggles").comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).redactingTheObjective().addPeer(zone(10, "10.0.0.6", 0, "10.0.0.5")),
+        new PosixWorld("Turtles").comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).redactingTheObjective().addPeer(zone(0, "10.0.200.5", 10, "10.0.0.7"))});
   }
 
   /** The zone of buggleinc.lan, whose XMPP servers xmpp1 (listed first) and xmpp2 have these priorities and addresses */

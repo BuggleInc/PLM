@@ -35,17 +35,18 @@ public class PosixTracePanel extends EntityControlPanel implements IWorldView {
 
   private void refresh()
   {
+    boolean redacted   = world.redacted();
     StringBuilder html = new StringBuilder("<html><body style='font-family:monospace'>");
-    for (String event : world.trace)
-      html.append(escape(event)).append("<br>");
+    for (PosixWorld.Event event : world.trace)
+      html.append(escape("[t=" + event.time() + "] " + event.who() + ": " + event.shown(redacted))).append("<br>");
     for (Peer p : world.peers) // the peers act as far as they can, so what they do now is waiting
       if (p.ongoing() != null)
-        html.append(escape("[t=" + p.since + "…] " + p.ongoing() + " (ongoing)")).append("<br>");
+        html.append(escape("[t=" + p.since + "…] " + (redacted ? PosixWorld.redacted(p.ongoing(), false) : p.ongoing()) + " (ongoing)")).append("<br>");
     html.append("<span style='color:gray'>");
     String blank = "&nbsp;".repeat(("[t=" + world.now + "] ").length()); // the place of the timestamp in the monospace font
     for (Peer p : world.peers)
       for (String step : p.upcoming())
-        html.append(blank).append(escape(step)).append("<br>");
+        html.append(blank).append(escape(redacted ? PosixWorld.redacted(step, false) : step)).append("<br>");
     text.setText(html.append("</span></body></html>").toString());
     text.setCaretPosition(currentPoint(world.trace.size()));
   }
