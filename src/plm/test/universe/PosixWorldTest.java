@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 import plm.universe.ExplainedException;
 import plm.universe.posix.Datagram;
 import plm.universe.posix.DnsServer;
+import plm.universe.posix.EchoClient;
 import plm.universe.posix.FileDescription;
 import plm.universe.posix.FtpServer;
 import plm.universe.posix.HttpServer;
@@ -430,6 +431,63 @@ public class PosixWorldTest {
     Assertions.assertTrue(e.getMessage().contains("recvfrom"), e.getMessage()); // both wait forever
   }
 
+  /** A world where a client on 10.0.0.2 sends Hello and World at once, then Bye, to an echo server on the port 3000 */
+  private static PosixWorld echoClient(boolean checking)
+  {
+    EchoClient client = new EchoClient("10.0.0.2", "Bob", 3000).says(1, "Hello").says(1, "World").says(2, "Bye");
+    return new PosixWorld("echo").addPeer(checking ? client.complaining("Broken echo: {0} bytes sent, {1} received") : client);
+  }
+
+  /** Receives a datagram on the socket, and sends that echo to its sender */
+  private static String echo(PosixEntity p, int sock, String echo)
+  {
+    String data     = s(p.recvfrom(sock, 512, 0));
+    String[] sender = p.lastSender().split(":");
+    p.sendto(sock, b(echo == null ? data : echo), 0, sender[0], Integer.parseInt(sender[1]));
+    return data;
+  }
+
+  @Test public void testEchoClientWaitsForItsEchoes()
+  {
+    PosixWorld w  = echoClient(true);
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_DGRAM, 0);
+    p.bind(sock, "0.0.0.0", 3000);
+    Assertions.assertEquals("Hello", echo(p, sock, null)); // a burst, then the next line once both echoes arrived
+    Assertions.assertEquals("World", echo(p, sock, null));
+    Assertions.assertEquals("Bye", echo(p, sock, null));
+    Assertions.assertTrue(traced(w, "Bob: close(3)"), String.join("\n", w.getTrace()));
+    Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(sock, 512, 0));
+
+    // Without echo, the next line never comes
+    PosixEntity q = process(echoClient(true));
+    int other     = q.socket(AF_INET, SOCK_DGRAM, 0);
+    q.bind(other, "0.0.0.0", 3000);
+    Assertions.assertEquals("Hello", s(q.recvfrom(other, 512, 0)));
+    Assertions.assertEquals("World", s(q.recvfrom(other, 512, 0)));
+    ExplainedException e = Assertions.assertThrows(ExplainedException.class, () -> q.recvfrom(other, 512, 0));
+    Assertions.assertTrue(e.getMessage().contains("waiting for the echo of \"Hello\""), e.getMessage());
+  }
+
+  @Test public void testEchoClientComplainsAboutAWrongEcho()
+  {
+    PosixEntity p = process(echoClient(true));
+    int sock      = p.socket(AF_INET, SOCK_DGRAM, 0);
+    p.bind(sock, "0.0.0.0", 3000);
+    echo(p, sock, "Hel"); // truncated
+    echo(p, sock, null);
+    Assertions.assertEquals("Broken echo: 5 bytes sent, 3 received", s(p.recvfrom(sock, 512, 0)));
+    Assertions.assertThrows(ExplainedException.class, () -> p.recvfrom(sock, 512, 0)); // and nothing more
+
+    // A client that does not check accepts any echo
+    PosixEntity q = process(echoClient(false));
+    int other     = q.socket(AF_INET, SOCK_DGRAM, 0);
+    q.bind(other, "0.0.0.0", 3000);
+    echo(q, other, "Hel");
+    echo(q, other, "W");
+    Assertions.assertEquals("Bye", s(q.recvfrom(other, 512, 0)));
+  }
+
   /** The form of Bob's line in UdpEcho, holding the port of the XMPP server */
   private static final String BOB_PORT = "PORT <([0-9]+)>";
 
@@ -466,7 +524,7 @@ public class PosixWorldTest {
     for (PosixWorld w : UdpEcho.worlds()) {
       ExplainedException e = Assertions.assertThrows(ExplainedException.class, () -> echoUntil(process(w), PosixWorld.MAX_DATAGRAM, "(never)", true, false));
       Assertions.assertTrue(traced(w, "Bob: Did you receive my previous message?"), String.join("\n", w.getTrace()));
-      Assertions.assertFalse(e.getMessage().contains("waiting in"), e.getMessage());
+      Assertions.assertFalse(e.getMessage().contains("(waiting") || e.getMessage().contains("(sleeping"), e.getMessage());
     }
   }
 
@@ -492,10 +550,10 @@ public class PosixWorldTest {
       PosixEntity p = process(UdpEcho.worlds()[i]);
       Assertions.assertThrows(ExplainedException.class, () -> echoUntil(p, PosixWorld.MAX_DATAGRAM, BOB_PORT, true, true));
 
-      // Only the Turtles have a line longer than a buffer of 1024 bytes
-      w = UdpEcho.worlds()[i];
-      echoUntil(process(w), 1024, BOB_PORT, true, false);
-      Assertions.assertEquals(i == 0, w.winning(expected), "a buffer of 1024 bytes");
+      // A buffer of 1024 bytes truncates a line of Bob, who complains instead of giving the port
+      PosixWorld truncating = UdpEcho.worlds()[i];
+      Assertions.assertThrows(ExplainedException.class, () -> echoUntil(process(truncating), 1024, BOB_PORT, true, false));
+      Assertions.assertTrue(traced(truncating, "Bob: Broken echo"), String.join("\n", truncating.getTrace()));
     }
   }
 

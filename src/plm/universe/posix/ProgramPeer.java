@@ -53,6 +53,12 @@ public abstract class ProgramPeer extends Peer {
   /** When the program wants to act on its own, such as answering after a delay, or -1 */
   protected int timer() { return -1; }
 
+  /**
+   * Whether this program is a server documenting its protocol in the html file next to its class, in the documentation of the
+   * worlds where it runs (see PosixWorld.expandPlaceholders())
+   */
+  protected boolean documented() { return true; }
+
   @Override final boolean advance(PosixWorld world)
   {
     this.world = world;
@@ -177,6 +183,14 @@ public abstract class ProgramPeer extends Peer {
   {
     int fd = traced("socket(AF_INET, SOCK_DGRAM, 0)", world.socket(process, PosixWorld.AF_INET, PosixWorld.SOCK_DGRAM, 0));
     traced("bind(" + fd + ", 0.0.0.0:" + port + ")", world.bind(process, fd, "0.0.0.0", port));
+    endpoints.add((DatagramSocket)process.get(fd));
+    return fd;
+  }
+
+  /** Creates a datagram socket, which the system binds to a free port of the machine when it first sends, and returns its descriptor */
+  protected int datagramSocket()
+  {
+    int fd = traced("socket(AF_INET, SOCK_DGRAM, 0)", world.socket(process, PosixWorld.AF_INET, PosixWorld.SOCK_DGRAM, 0));
     endpoints.add((DatagramSocket)process.get(fd));
     return fd;
   }

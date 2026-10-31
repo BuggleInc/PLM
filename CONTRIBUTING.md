@@ -955,13 +955,15 @@ documentation](PEDAGOGY.md#system-programming).
   without blocking: `accept()` returns -1 when no connection waits, `peek()` shows what arrived without receiving it, and
   `receive(fd, delimiter)` returns null until the delimiter arrived. The data of `send()` reaches the
   student at once, while `sendInPackets()` lets the network carry it in packets after pauses, to make the framing matter. Over
-  UDP, `bindDatagrams()` binds a datagram socket, `receiveDatagram()` returns the next datagram with its sender (or null), and
+  UDP, `bindDatagrams()` binds a datagram socket (`datagramSocket()` creates one bound on its first send, for a client),
+  `receiveDatagram()` returns the next datagram with its sender (or null), and
   `sendDatagram()` sends one, which arrives at once. `note()` adds a line of the program to the trace, such as what it understood
   of a binary request. Their
   state is in the fields of their class, which their copy constructor copies (after the one of `ProgramPeer`), and `waiting()`
   tells the trace what they wait for. `PosixWorldTest.ShoutServer` is a small example.
 * **The documentation of the protocols**: `[!protocols/]` in `PosixWorld.html` stands for a section "The servers of this world"
-  holding, once per class of `ProgramPeer` among the peers of the world (in their order), the html file next to that class
+  holding, once per class of `ProgramPeer` among the peers of the world (in their order, except the clients, whose
+  `documented()` is false), the html file next to that class
   (`IrcServer.html`, `HttpServer.html`, `FtpServer.html`, `DnsServer.html`): its heading (such as "The IRC protocol"), the framing, the commands,
   the replies and the errors, and an example session to the byte. The section is absent from the worlds without such peers. A
   new server should come with its reference, listed in `po4a.conf`, which describes the protocol without revealing the scenario
@@ -1002,6 +1004,11 @@ documentation](PEDAGOGY.md#system-programming).
   decoded in the trace (`note()`), and explains the malformed queries, answered FORMERR (numbers in the wrong byte order, a name
   written as text or without its final zero byte, bytes after the question...). A datagram that is not a query is ignored, with a
   note, as real servers do.
+* **The echo clients** (`EchoClient`, one per machine, named in the trace) talk to a UDP echo server written by the student.
+  The exercise gives their lines with their time (`says()`): the lines of a same time leave in a burst, and the next ones only once
+  their echoes arrived, so that a client without echo stays silent. A client may check that each echo is exactly its line
+  (`complaining()`): on a wrong one, it sends the given complaint (a `MessageFormat` pattern with the numbers of bytes sent and
+  received) instead of its next lines, and stops.
 * **The network**: a connection is a pair of sockets pointing to each other, each with its send and receive queues, created by
   `connect()` in the backlog of the listening socket until `accept()` takes it. A peer's `send()` only fills the send queue of
   its socket, and `transmit(fd, n)` carries at most `n` bytes to the receive queue of the other end, in one packet. The end of

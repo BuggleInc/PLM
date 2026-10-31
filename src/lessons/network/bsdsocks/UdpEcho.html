@@ -70,8 +70,9 @@ stop. Other messages may look like it: only this exact form counts, and the port
 from its own machine and its own port: answer each datagram to the address of its own sender.</p>
 </div></li>
 
-<li><div class="tip" id="tip-truncated" alt="A client gets back only the beginning of its message">
-<p>A datagram arrives whole, or not at all: if your buffer is shorter than the datagram, the rest of it is lost. The largest
+<li><div class="tip" id="tip-truncated" alt="Bob says that my echo is broken">
+<p>Bob checks that each of his lines comes back exactly as he sent it, and stops talking to a broken echo server. Look at the
+trace for the line that came back wrong. A datagram arrives whole, or not at all: if your buffer is shorter than the datagram, the rest of it is lost. The largest
 datagram that UDP carries over IPv4 has 65507 bytes.</p>
 </div></li>
 

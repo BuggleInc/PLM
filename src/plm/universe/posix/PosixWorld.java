@@ -177,11 +177,15 @@ public class PosixWorld extends World {
 
   @Override public EntityControlPanel getEntityControlPanel() { return new PosixTracePanel(this); }
 
-  /** Expands [!protocols/] into the documentation of the protocol of each class of program peer (once per class), under a heading if any */
+  /** Expands [!protocols/] into the documentation of the protocol of each class of documented program peer (once per class), under a heading if any */
   @Override protected String expandPlaceholders(String html)
   {
     StringBuilder protocols = new StringBuilder();
-    peers.stream().filter(ProgramPeer.class ::isInstance).map(Object::getClass).distinct().forEach(server -> protocols.append(documentation(server)));
+    peers.stream()
+        .filter(peer -> peer instanceof ProgramPeer program && program.documented())
+        .map(Object::getClass)
+        .distinct()
+        .forEach(server -> protocols.append(documentation(server)));
     if (!protocols.isEmpty())
       protocols.insert(0, "<h2>" + Game.i18n.tr("The servers of this world") + "</h2>\n");
     return super.expandPlaceholders(html).replace("[!protocols/]", protocols);
