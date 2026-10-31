@@ -2037,7 +2037,7 @@ msgstr ""
 
 #: src/plm/core/model/Users.java:88
 #, java-format
-msgid "User {0} exists already; don't add it again."
+msgid "User {0} exists already; don''t add it again."
 msgstr ""
 
 #: src/plm/core/model/Users.java:113
