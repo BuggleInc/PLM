@@ -49,7 +49,9 @@ server understood each of your queries and what it answered, and explains why it
 
     <li><code>ByteBuffer.wrap(array)</code> reads and writes numbers in an array, in network byte order:
     <code>getShort(i)</code> and <code>putShort(i, n)</code> on 2 bytes, <code>getInt(i)</code> and <code>putInt(i, n)</code>
-    on 4 bytes, and <code>get(i)</code> for a single byte.</li>
+    on 4 bytes, and <code>get(i)</code> for a single byte. The bytes of Java are signed: a byte above 127, such as
+    <code>c8</code> (200), reads as a negative number (-56), and <code>b &amp; 0xFF</code> gives its value between 0 and
+    255.</li>
 </ol>
 [/!]
 
@@ -61,62 +63,29 @@ BuggleInc zone is not exactly the same in each of them. While exploring, you wil
 but your output is compared to the expected one: in the end, print only the address, and remove your other messages.</p>
 
 <p>The first step is certainly to ask the <code>TXT</code> records of the name <code>buggleinc.lan</code>, where the
-administrators of the zone leave notes, and to read all the records of the answer. They will probably give you more hints,
-and so may the <code>TXT</code> records coming in the additional section of the next answers.</p>
+administrators of the zone leave notes, and to read all the records of the answer. They will probably give you more hints, and
+so may the <code>TXT</code> records coming in the additional section of the next answers. You don't even have to parse these
+answers to read their texts: click on your UDP socket to see a dump of all the data exchanged over it.</p>
+
+<p>You still need to parse the final answer, though, as the target IP is not the same in all worlds of this exercise, so you
+cannot guess it. Parsing the answer is the only way to go.</p>
 
 <h2>Additional hints</h2>
 <p>Accessing a DNS server directly on the wire is not an easy task, but don't worry. This exercise provides several hints to
 help you in this task. Some of these hints are given below, while others come with the answers of the server.</p>
 <ul>
 <li><div class="tip" id="tip-txt-query" alt="How exactly should I format such a TXT query, and read its answer?">
-<p>Please refer to the world's documentation for more info about the DNS wire protocol.</p>
-
-<p>Your <code>TXT</code> query should contain a 12-byte header, formatted as follows:</p>
-<ol>
-    <li>2 bytes representing the query ID. The server will reuse the exact same ID in its answer. Pick the value you
-    want.</li>
-    <li>2 bytes representing the flags. <code>01 00</code> are the usual flags of a query: only RD (recursion desired) is
-    set. The BuggleInc server never goes recursive, so this will be ignored.</li>
-    <li>2 bytes representing the number of questions in this message, in network byte order. <code>00 01</code> for one
-    question.</li>
-    <li>2 bytes representing the number of answers in this message, in network byte order. <code>00 00</code> for zero
-    answer.</li>
-    <li>2 bytes representing the number of authority records in this message, in network byte order. <code>00 00</code> for
-    no such record.</li>
-    <li>2 bytes representing the number of additional records in this message, in network byte order. <code>00 00</code>
-    for no such record.</li>
-</ol>
-<p>Then comes the question: the name about which you are looking for something, plus the code of the <code>TXT</code> type,
-plus the class IN (Internet).</p>
+<p>The world's documentation describes each field (sections <i>Header</i>, <i>Names</i> and <i>Question</i>). Put together,
+the query for the <code>TXT</code> records of <code>buggleinc.lan</code>, with the ID 42, is made of these 31 bytes (in
+hexadecimal, the text between quotes standing for its ASCII bytes):</p>
 <pre>
-0x09 "buggleinc" 0x03 "lan"   # the name, each label prefixed by its length and encoded in ASCII
-0x00                          # this zero ends the name
-0x00 0x10                     # 0x00 0x10 in hexadecimal is 16 in decimal, which stands for TXT
-0x00 0x01                     # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)
+00 2a  01 00  00 01  00 00  00 00  00 00     the header: ID 42, flags (only RD), 1 question, no other record
+09 "buggleinc" 03 "lan" 00                   the name: each label preceded by its length, then a zero byte
+00 10  00 01                                 the type TXT (16) and the class IN (1)
 </pre>
-<p>In hexadecimal, the text between quotes standing for its ASCII bytes. The query thus has 31 bytes: 12 for the header, 12
-ASCII chars for the name without the dots, 2 bytes for the length of each label, the final zero byte ending the name, and
-2 bytes for the query type and 2 bytes for the Internet class.</p>
-
-<p>The answer starts with a header of 12 bytes as well: the same ID, the flags (whose last 4 bits are the response code, 0
-when everything went well), and the numbers of questions, answers, authority records and additional records. For example,
-if your query had the ID <code>0x12 0x34</code>:</p>
-<pre>
-0x12 0x34  0x85 0x00                 # your ID, and the flags of an answer (response code 0: NOERROR)
-0x00 0x01  0x00 0x01                 # 1 question and 1 answer...
-0x00 0x00  0x00 0x00                 # ...but no authority nor additional record
-0x09 "buggleinc" 0x03 "lan" 0x00     # the question, copied from your query: skip it
-0x00 0x10  0x00 0x01
-0x09 "buggleinc" 0x03 "lan" 0x00     # the answer record: its name,
-0x00 0x10  0x00 0x01                 # its type (TXT) and its class (IN),
-0x00 0x00 0x0e 0x10                  # its time to live (3600 seconds), that you can ignore,
-0xLL 0xLL                            # the length of its data, on 2 bytes,
-0xNN "..."                           # and its data: for a TXT record, the length of the text on 1 byte, then the text
-</pre>
-<p>To read it, skip the header and the question (the name up to its zero byte, then 4 bytes), then read each record in
-turn: its name up to its zero byte, its type, its class, its time to live and the length of its data, and finally its data.
-The length of the data tells you where the next record starts. Make sure to inspect every record of the answer, in
-particular the <code>TXT</code> records in the additional records of the other answers.</p>
+<p>Its answer is read as explained in the section <i>Answers of this server</i> of the documentation: skip the header and the
+question, then read the records one by one. Make sure to read every record, in particular the <code>TXT</code> records coming
+in the additional section of the answers to your next queries.</p>
 </div></li>
 
 <li><div class="tip" id="tip-txt-code" alt="I still don't get how to send a TXT query to the server">
@@ -165,77 +134,35 @@ socket.send(new DatagramPacket(data, data.length, InetAddress.getByName("10.0.0.
 <p>Then receive the answer with [!c|python]<code>recvfrom()</code>[/!][!java|scala]<code>socket.receive()</code>[/!],
 in a buffer of 512 bytes, and read it as explained in the previous tip.</p>
 
-[!c]<p>To prepare the buffer, you may want to create a set of procedures called <code>pack_unsigned_char()</code>,
-<code>pack_short()</code>, <code>pack_string()</code>, <code>pack_name()</code> that all operate over a static buffer and a
-pointer indicating the offset at which the next data should be packed.</p>[/!]
+[!c]<p>For the next queries, you probably want a few helpers rather than writing each byte by hand: a buffer of
+<code>unsigned char</code> with the position of its next byte, and functions writing a byte, a number on 2 bytes (calling
+<code>htons()</code>), a label and a whole name, plus their counterparts reading an answer (calling <code>ntohs()</code> and
+<code>ntohl()</code>). The main risk is to get out of sync with the bytes of the answer, so check each step: print what you read
+on <code>stderr</code>, and remove these messages once your program works, as only the address must remain.</p>[/!]
 </div></li>
 
-<li><div class="tip" id="tip-srv-query" alt="What if I need to run a SRV query on the service aze.buggleinc.lan?">
-<p>Please refer to the world's documentation for more info about the DNS wire protocol.</p>
-
-<p>Your <code>SRV</code> query should contain a 12-byte header, formatted as follows:</p>
-<ol>
-    <li>2 bytes representing the query ID. The server will reuse the exact same ID in its answer. Pick the value you
-    want.</li>
-    <li>2 bytes representing the flags. <code>01 00</code> are the usual flags of a query: only RD (recursion desired) is
-    set. The BuggleInc server never goes recursive, so this will be ignored.</li>
-    <li>2 bytes representing the number of questions in this message, in network byte order. <code>00 01</code> for one
-    question.</li>
-    <li>2 bytes representing the number of answers in this message, in network byte order. <code>00 00</code> for zero
-    answer.</li>
-    <li>2 bytes representing the number of authority records in this message, in network byte order. <code>00 00</code> for
-    no such record.</li>
-    <li>2 bytes representing the number of additional records in this message, in network byte order. <code>00 00</code>
-    for no such record.</li>
-</ol>
-<p>Then comes the question: the name about which you are looking for something, plus the code of the <code>SRV</code> type,
-plus the class IN (Internet).</p>
+<li><div class="tip" id="tip-srv-query" alt="How do I write a SRV query, and read its answer?">
+<p>A <code>SRV</code> query is written as the <code>TXT</code> one: only the name and the type change. For example, the
+question of a <code>SRV</code> query on <code>_imap._tcp.buggleinc.lan</code>, the example name of the world's
+documentation, is:</p>
 <pre>
-0x03 "aze" 0x09 "buggleinc" 0x03 "com"   # the name, each label prefixed by its length and encoded in ASCII
-0x00                                     # this zero ends the name
-0x00 0x21                                # 0x00 0x21 in hexadecimal is 33 in decimal, which stands for SRV
-0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)
+05 "_imap" 04 "_tcp" 09 "buggleinc" 03 "lan" 00     the name: the underscores are part of the labels
+00 21  00 01                                       the type SRV (33) and the class IN (1)
 </pre>
-<p>In hexadecimal, the text between quotes standing for its ASCII bytes. The query thus has 35 bytes: 12 for the header, 15
-ASCII chars for the name without the dots, 3 bytes for the length of each label, the final zero byte ending the name, and
-2 bytes for the query type and 2 bytes for the Internet class.</p>
-<p>Make sure to inspect every record of the answer, in particular the <code>TXT</code> records in the additional
-records.</p>
+<p>The documentation details a <code>SRV</code> record of an answer, field by field (section <i>Answers of this server</i>),
+and tells which target a client picks when there are several. Once you have the name of the target, a query of type
+<code>A</code> gives its address, which is what you print.</p>
 </div></li>
 
-<li><div class="tip" id="tip-srv-answer" alt="How do I read the data of a SRV record?">
-<p>A <code>SRV</code> record is read as any other record (see the first hint): its name, its type, its class, its time to
-live and the length of its data, then its data. For example, here is a record of the answer to a <code>SRV</code> query on
-<code>aze.buggleinc.lan</code>:</p>
-<pre>
-0x03 "aze" 0x09 "buggleinc" 0x03 "lan" 0x00            # the name of the record
-0x00 0x21  0x00 0x01                                   # its type (SRV) and its class (IN)
-0x00 0x00 0x0e 0x10                                    # its time to live (3600 seconds), that you can ignore
-0x00 0x1a                                              # the length of its data: 26 bytes
-0x00 0x0a                                              # the priority of the target: 10
-0x00 0x05                                              # its weight: 5
-0x10 0x92                                              # its port: 4242
-0x04 "srv1" 0x09 "buggleinc" 0x03 "lan" 0x00           # its name, written as all the names
-</pre>
-<p>The data holds 6 bytes of numbers, and 20 bytes of name. An answer may hold several such records, one after the other: the
-world documentation tells which target a client should use. Once you have the exact name of the host, you need another query to
-retrieve its IP address. Its IP address is what you need to write on your standard output to pass the exercise.</p>
+<li><div class="tip" id="tip-a-SRV-error" alt="All the answers have a response code other than 0, even if they look right">
+<p>Print the flags of the answer in hexadecimal: an answer without error has the flags <code>85 00</code>. If you get
+<code>0085</code>, you read the two bytes in the wrong order[!c]: apply <code>ntohs()</code> to the number that you
+read[/!].</p>
 </div></li>
 
-<li><div class="tip" id="tip-a-query" alt="What if I need the IP address of the server www.buggleinc.lan?">
-<p>Please refer to the world's documentation for more info about the DNS wire protocol.</p>
-
-<p>The IP address of a machine is given by its <code>A</code> record. Your query starts with the same 12-byte header as the
-other queries (an ID of your choice, the flags <code>01 00</code>, one question, and no other record), then comes the
-question: the name of the machine, plus the code of the <code>A</code> type, plus the class IN (Internet).</p>
-<pre>
-0x03 "www" 0x09 "buggleinc" 0x03 "com"   # the name, each label prefixed by its length and encoded in ASCII
-0x00                                     # this zero ends the name
-0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for A
-0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)
-</pre>
-<p>The query thus has 35 bytes, as the one of a name of the same length for any other type. In the answer, the data of an
-<code>A</code> record is 4 bytes long: these are the 4 numbers of the address, in order. The bytes <code>0x0a 0x00 0x00
-0x2a</code> stand for the address <code>10.0.0.42</code>, each byte being printed in decimal, between 0 and 255.</p>
+<li><div class="tip" id="tip-a-query" alt="How do I get the address of a machine, and print it?">
+<p>The world's documentation ends with a complete example of an <code>A</code> query and its answer, byte by byte: only the
+name changes. The data of the <code>A</code> record is the 4 bytes of the address, to print in decimal and separated by dots:
+<code>0a 00 00 2a</code> is <code>10.0.0.42</code>.</p>
 </div></li>
 </ul>

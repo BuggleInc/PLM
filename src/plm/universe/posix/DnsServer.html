@@ -21,10 +21,10 @@ additional records. The header tells how many entries each section holds.</p>
 <tr><th>Bytes</th><th>Field</th><th>Content</th></tr>
 <tr><td>0-1</td><td>ID</td><td>Chosen by the client, and copied in the answer, so that the client can match the answers with
   its queries (useful when issuing many queries).</td></tr>
-<tr><td>2-3</td><td>Flags</td><td>16 bits, numbered from 15 (the most significant one) to 0, detailed below: QR (the kind
-  of message), opcode (the kind of query), AA (authoritative answer), TC (truncated answer), RD (recursion desired), RA
-  (recursion available), Z (reserved) and RCODE (the response code). A query usually has the flags <code>01 00</code> (only RD
-  set).</td></tr>
+<tr><td>2-3</td><td>Flags</td><td>16 bits, numbered from 15 (the most significant one) to 0, detailed below: QR (the kind of
+  message), opcode (the kind of operation: 0 for a standard query, the only one that this server accepts), AA (authoritative
+  answer), TC (truncated answer), RD (recursion desired), RA (recursion available), Z (reserved) and RCODE (the response
+  code). A query usually has the flags <code>01 00</code> (only RD set).</td></tr>
 <tr><td>4-5</td><td>QDCOUNT</td><td>The number of questions: 1 in a query.</td></tr>
 <tr><td>6-7</td><td>ANCOUNT</td><td>The number of answer records (0 in a query).</td></tr>
 <tr><td>8-9</td><td>NSCOUNT</td><td>The number of authority records (0 in a query). They tell who is responsible for the zone of
@@ -135,17 +135,6 @@ Internet). The types known by this server are:</p>
 <code>_service._proto.domain</code>. For example, <code>_imap._tcp.buggleinc.lan</code> would give the IMAP server of the
 domain <code>buggleinc.lan</code>.</p>
 
-<h4>Records</h4>
-
-<p>Each record of the answer and additional sections is made of its name, its type (2 bytes), its class (2 bytes), its time to
-live in seconds (TTL, on 4 bytes, telling how long the clients may keep it in a cache), the length of its data (2 bytes), and
-its data, whose content depends on the type. The answer starts with a copy of the question of the query, before the
-records.</p>
-
-<p>A name may be written in a shorter form in the answers of a real server, which this server never uses (see below): a
-<i>compression pointer</i>, on two bytes whose two highest bits are set, telling at which offset of the message the rest of the
-name was written before.</p>
-
 <h4>Response codes</h4>
 
 <table border=1>
@@ -155,19 +144,57 @@ name was written before.</p>
 <tr><td>1</td><td>FORMERR</td><td>The query is malformed. The answer then has no copy of the question, but its additional
   section holds a TXT record of the root (the name made of a single zero byte) explaining the mistake.</td></tr>
 <tr><td>3</td><td>NXDOMAIN</td><td>The name does not exist.</td></tr>
-<tr><td>4</td><td>NOTIMP</td><td>This kind of query (opcode) is not implemented.</td></tr>
+<tr><td>4</td><td>NOTIMP</td><td>This kind of operation (opcode) is not implemented: this server only accepts the opcode 0,
+  for a standard query. As for FORMERR, the answer has no copy of the question.</td></tr>
 <tr><td>5</td><td>REFUSED</td><td>The server refuses to answer, here because the name is not in its zone, or because the
   class is not IN.</td></tr>
 </table>
 
 <h4>Answers of this server</h4>
 
-<p>Besides the answer section, the answers about a name hold its TXT records in their additional section, where the
-administrators of this zone leave notes. A datagram that is not a query (shorter than a header, or with the QR bit set) is
-ignored, as real servers do: the client then waits forever. The trace shows how the server read each query and what it
-answered, decoded, and explains why a query is malformed.</p>
+<p>After the header and the repeated question come the answer records and then the additional records (their counts are
+announced in the header). Each record of the answer and additional sections is made of the following elements:</p>
 
-<h4>Example exchange</h4>
+<table border=1>
+<tr><th>Size</th><th>Field</th><th>Content</th></tr>
+<tr><td>variable</td><td>NAME</td><td>The name that this record is about, written as in the questions.</td></tr>
+<tr><td>2 bytes</td><td>TYPE</td><td>The type of the record, as in the questions (1 for A, 16 for TXT, 33 for SRV).</td></tr>
+<tr><td>2 bytes</td><td>CLASS</td><td>Always 1 (IN).</td></tr>
+<tr><td>4 bytes</td><td>TTL</td><td>Its time to live, in seconds: how long the clients may keep it in a cache.</td></tr>
+<tr><td>2 bytes</td><td>RDLENGTH</td><td>The number of bytes of its data.</td></tr>
+<tr><td>RDLENGTH bytes</td><td>RDATA</td><td>Its data, whose content depends on the type (see the table of the types above).</td></tr>
+</table>
+
+<p>[!c]As everywhere in DNS, the numbers are written in network byte order: in C, the numbers on 2 bytes are decoded with
+<code>ntohs()</code>, and the ones on 4 bytes with <code>ntohl()</code>. [/!]To walk through an answer, skip the question (its name
+up to its final zero byte, then its 4 bytes of type and class), then read the records one by one. RDLENGTH lets you skip the
+data of a record whose type does not interest you, without decoding it. The next record starts right after it.</p>
+
+<p>For example, here is a SRV record, as it comes in the answer to a SRV query on <code>_imap._tcp.buggleinc.lan</code> (a
+name given here as an example, in hexadecimal, the text between quotes standing for its ASCII bytes):</p>
+
+<pre>
+05 "_imap" 04 "_tcp" 09 "buggleinc" 03 "lan" 00     NAME: the name of the record, as in the question
+00 21                                               TYPE: 33 (SRV)
+00 01                                               CLASS: 1 (IN)
+00 00 0e 10                                         TTL: 3600 seconds
+00 1a                                               RDLENGTH: 26 bytes of data
+00 0a                                               RDATA: the priority of the target (10),
+00 05                                                      its weight (5),
+00 8f                                                      its port (143),
+04 "mail" 09 "buggleinc" 03 "lan" 00                       and its name, written as all the names (20 bytes)
+</pre>
+
+<p>An answer may hold several such records, one after the other: the client picks its target among them as explained with the
+SRV type above (the lowest priority first, the others being fallbacks), then needs another query, of type A, to get the address
+of this target.</p>
+
+<p>Besides the answer section, the answers to a query of another type than TXT or ANY hold the TXT records of the asked name in
+their additional section: this is where the administrators of this zone leave notes. A datagram that is not a query (shorter
+than a header, or with the QR bit set) is ignored, as real servers do: the client then waits forever. The trace shows how the
+server read each query and what it answered, decoded, and explains why a query is malformed.</p>
+
+<h4>Example exchange for an A query</h4>
 
 <p>A client asks the address of <code>printer.buggleinc.lan</code>, a name given here as an example (C for the client, S for
 the server, in hexadecimal, the text between quotes standing for its ASCII bytes):</p>

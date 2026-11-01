@@ -25,7 +25,7 @@ public class UdpDns extends ExerciseTemplated {
     return new DnsServer("10.0.0.53", 53, "buggleinc.lan")
         .txt("buggleinc.lan", Game.i18n.tr(
                                   // Translator: please keep this string unchanged (without the quotes): "conference.buggleinc.lan"
-                                  "BuggleInc internal zone. The chat rooms are on conference.buggleinc.lan."))
+                                  "BuggleInc internal zone. The chat rooms are on conference.buggleinc.lan. The TXT of that name have more information."))
         .txt("conference.buggleinc.lan", Game.i18n.tr(
                                              // Translator: please keep this string unchanged (without the quotes): "_xmpp-client._tcp.buggleinc.lan"
                                              "The chat rooms are hosted by the XMPP server of buggleinc.lan. As all XMPP clients, look for its SRV record "
