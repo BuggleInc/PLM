@@ -70,17 +70,19 @@ static int address_of(const char* call, const struct sockaddr* addr, socklen_t l
     errno = EINVAL;
     return -1;
   }
-  if (addr->sa_family != AF_INET) {
-    if (addr->sa_family == 0)
+  // Read into an unsigned: sa_family_t has a single byte on macOS and the BSDs, where htons(AF_INET) does not fit (it becomes 0)
+  unsigned family = addr->sa_family;
+  if (family != AF_INET) {
+    if (family == 0)
       explain(&told_family, "the address given to %s() has the family 0: set its field sin_family to AF_INET (memset() sets it to 0).", call);
-    else if (addr->sa_family == htons(AF_INET))
+    else if (family == htons(AF_INET))
       explain(&told_family,
-              "the address given to %s() has the family %d, which is htons(AF_INET): unlike the port and the address, the field "
+              "the address given to %s() has the family %u, which is htons(AF_INET): unlike the port and the address, the field "
               "sin_family is in the byte order of the machine. Write addr.sin_family = AF_INET.",
-              call, addr->sa_family);
+              call, family);
     else
-      explain(&told_family, "the address given to %s() has the family %d, while only AF_INET (%d) is supported: set its field sin_family to AF_INET.", call,
-              addr->sa_family, AF_INET);
+      explain(&told_family, "the address given to %s() has the family %u, while only AF_INET (%d) is supported: set its field sin_family to AF_INET.", call,
+              family, AF_INET);
     errno = EAFNOSUPPORT;
     return -1;
   }

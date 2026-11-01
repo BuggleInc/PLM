@@ -1047,7 +1047,10 @@ documentation](PEDAGOGY.md#system-programming).
   the C library. `fscanf()` is not available on these streams, which it explains once on the PLM console (the real standard
   error, through `explain()`). `vfprintf()` is intercepted everywhere, as `fprintf()`. `explain()` also tells the usual mistakes
   in filling a `struct sockaddr_in` (`sin_family` forgotten or converted with `htons()`, size of a pointer, address 0.0.0.0 or
-  port 0), which the `errno` alone hardly tells.
+  port 0), which the `errno` alone hardly tells. The glue compiles without any warning on Linux, macOS and Windows (where any
+  compiler message fails the tests of the C corrections): mind that `sa_family_t` has a single byte on macOS. Its header
+  includes the system headers of each system (Winsock on Windows), so the C entities of the universe include it alone, never
+  `<sys/socket.h>` and the like, which Windows lacks.
   TODO: fseek(), ftell() and rewind() are not renamed, so the unintercepted version may crash when used on our own FILE*.
 * **The Python glue** (`RemotePosixGlue.py`, appended to the generated functions renamed `_plm_remote_xxx`) substitutes the
   system modules at import, so that the student's code uses them as usual: `sys.modules["socket"]` becomes a module of the world
