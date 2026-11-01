@@ -911,6 +911,23 @@ public class PosixWorldTest {
     Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0));
   }
 
+  @Test public void testIrcMemberRefusesPrivateMessages()
+  {
+    PosixEntity p = process(new PosixWorld("public").addPeer(new IrcServer("10.0.0.1", 6667)
+                                                                 .channel("#welcome", "Welcome, little buggles!", "Alice", "Bob")
+                                                                 .address(2, "#welcome", "Bob", "{0}: are you looking for something?")
+                                                                 .publicOnly("Bob", "Talk to me on the channel")
+                                                                 .answer("Bob", List.of(List.of("please")), "Thanks!", "What?")
+                                                                 .hints("#welcome", "Alice", "Bob", "{0}: be polite")));
+    Lines lines   = joined(p);
+    p.send(3, b("PRIVMSG Bob :please\r\n"), 0); // refused even when right, without hint, and Bob still calls the client
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG student :Talk to me on the channel", lines.next());
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG #welcome :student: are you looking for something?", lines.next());
+    p.send(3, b("PRIVMSG #welcome :Bob: please\r\n"), 0);
+    Assertions.assertEquals(":Bob!bob@buggleinc.com PRIVMSG #welcome :student: Thanks!", lines.next());
+    Assertions.assertThrows(ExplainedException.class, () -> p.recv(3, 512, 0));
+  }
+
   @Test public void testIrcMembersUnderstandAccents()
   {
     PosixWorld w  = new PosixWorld("accents").addPeer(new IrcServer("10.0.0.1", 6667)

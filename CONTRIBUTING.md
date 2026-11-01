@@ -974,10 +974,11 @@ documentation](PEDAGOGY.md#system-programming).
   errors. It splits the lines on `\n`, ignoring a `\r` before it. The exercise gives its channels with their topic and their
   simulated members (`channel()`), the lines these members say some seconds after a client joined the channel (`say()`, so that
   each client receives the whole chat), the answer of a member to the messages containing some words (each in one of its forms,
-  such as its translation and the English word, whatever their case and accents) and to the other ones (`answer()`), a line
-  addressed to the client who did not write to that member yet (`address()`), the hints of a member to the client who wrote to
-  another one without getting its answer, one more after each failure (`hints()`), and possibly the size of the packets cutting
-  the lines of the members, one per second (`packets()`). The addressed lines and the hints are `MessageFormat` patterns, whose
+  such as its translation and the English word, whatever their case and accents) and to the other ones (`answer()`), a refusal
+  of the private messages by a member who only answers on the channels (`publicOnly()`), a line addressed to the client who
+  did not write to that member yet (`address()`), the hints of a member to the client who wrote to another one without getting
+  its answer, one more after each failure (`hints()`), and possibly the size of the packets cutting the lines of the members,
+  one per second (`packets()`). The addressed lines and the hints are `MessageFormat` patterns, whose
   `{0}` is the nickname of the client, and whose `{1}`, `{2}`... are the words expected by the other member (for the hints), so
   that a hint can give an exact sentence that stays consistent with the translated words. The texts, which may be translated,
   lose their accents since the servers send them in ASCII (`Peer.ascii()`). A `PRIVMSG` whose text holds spaces without

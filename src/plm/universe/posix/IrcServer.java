@@ -24,7 +24,8 @@ import plm.core.model.Game;
  *
  * The other members of the channels are simulated: they say their lines at given times after a client joined the channel (each
  * client receives the whole chat, whenever it joins), and answer a private message after a second, depending on whether it
- * contains some words. They also answer on a channel the messages addressed to them, as in "Bob: hello". A member may also
+ * contains some words. They also answer on a channel the messages addressed to them, as in "Bob: hello". A member may refuse
+ * the private messages, and only answer on the channels. A member may also
  * address the client who did not write to it yet, or give hints to the client who wrote to another member without getting its
  * answer. The texts are converted to ASCII, as the servers send their texts (the translated texts lose their accents). The
  * lines of the members can be cut in packets, so that the framing of the lines matters.
@@ -84,6 +85,8 @@ public class IrcServer extends ProgramPeer {
   private final Map<String, List<Hints>> hints    = new TreeMap<>(String.CASE_INSENSITIVE_ORDER); // by the member they are about
   private final List<Pending> pending             = new ArrayList<>();
   private final Map<Integer, Client> clients      = new TreeMap<>();
+  /** The refusal of the simulated members who only talk on the channels, by their nick */
+  private final Map<String, String> refusals = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
   public IrcServer(String ip, int port)
   {
@@ -101,6 +104,7 @@ public class IrcServer extends ProgramPeer {
     other.members.forEach((channel, nicks) -> members.put(channel, new ArrayList<>(nicks)));
     said.addAll(other.said);
     answers.putAll(other.answers);
+    refusals.putAll(other.refusals);
     hints.putAll(other.hints); // the lists are never changed once the scenario is given
     pending.addAll(other.pending);
     other.clients.forEach((fd, client) -> clients.put(fd, new Client(client)));
@@ -145,6 +149,16 @@ public class IrcServer extends ProgramPeer {
   public IrcServer hints(String channel, String nick, String about, String... texts)
   {
     hints.computeIfAbsent(about, member -> new ArrayList<>()).add(new Hints(channel, nick, Stream.of(texts).map(ProgramPeer::ascii).toList()));
+    return this;
+  }
+
+  /**
+   * Makes a simulated member refuse the private messages, answering them with that text one second later instead of its answer
+   * (see answer()), which it then only gives on the channels
+   */
+  public IrcServer publicOnly(String nick, String refusal)
+  {
+    refusals.put(nick, ascii(refusal));
     return this;
   }
 
@@ -440,7 +454,16 @@ public class IrcServer extends ProgramPeer {
         .flatMap(List::stream)
         .filter(target::equalsIgnoreCase)
         .findFirst()
-        .ifPresentOrElse(nick -> ask(fd, client, nick, params.get(1), client.nick), () -> numeric(fd, client, "401", target + " :No such nick/channel"));
+        .ifPresentOrElse(nick -> privately(fd, client, nick, params.get(1)), () -> numeric(fd, client, "401", target + " :No such nick/channel"));
+  }
+
+  /** Makes a simulated member react to a private message of the client, or refuse it if it only talks on the channels */
+  private void privately(int fd, Client client, String nick, String message)
+  {
+    if (refusals.containsKey(nick)) // neither told (Bob still calls the client on the channel) nor a failure (no hint)
+      plan(now() + 1, fd, ":" + member(nick) + " PRIVMSG " + client.nick + " :" + refusals.get(nick), c -> true);
+    else
+      ask(fd, client, nick, message, client.nick);
   }
 
   /**

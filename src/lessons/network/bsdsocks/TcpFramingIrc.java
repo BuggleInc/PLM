@@ -30,6 +30,7 @@ public class TcpFramingIrc extends ExerciseTemplated {
             .say(11, "#welcome", "Dave", Game.i18n.tr("In a maze, I keep a paw on the wall at my right. It always works."))
             .say(13, "#welcome", "Alice", Game.i18n.tr("Not when the maze has islands, Dave! Then you must count your turns."))
             .say(15, "#welcome", "Carol", Game.i18n.tr("My turmite drew a square spiral, then got lost in a maze of its own."))
+            .publicOnly("Bob", Game.i18n.tr("Please talk to me on the public channel. Information wants to be free and I refuse private discussions."))
             .answer("Bob", polite,
                     Game.i18n.tr(
                         // Translator: please keep this string unchanged (without the quotes): "<xmpp:robots@conference.buggleinc.lan>"
@@ -51,6 +52,7 @@ public class TcpFramingIrc extends ExerciseTemplated {
             .say(11, "#welcome", "Dave", Game.i18n.tr("I tried, but I forgot to stop when the branches get too small. I am still drawing."))
             .say(13, "#welcome", "Alice", Game.i18n.tr("My Koch snowflake has four levels now. The fifth one will take all afternoon."))
             .say(15, "#welcome", "Carol", Game.i18n.tr("Recursion is just like us: it is turtles all the way down."))
+            .publicOnly("Bob", Game.i18n.tr("Please talk to me on the public channel. Information wants to be free and I refuse private discussions."))
             .answer("Bob", polite,
                     Game.i18n.tr(
                         // Translator: please keep this string unchanged (without the quotes): "<xmpp:lsystem@conference.buggleinc.lan>"
