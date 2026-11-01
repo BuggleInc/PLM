@@ -246,6 +246,7 @@ void run()
     // At least, we found the information. Parse and display it!
     printf("%d.%d.%d.%d\n", buffer[0], buffer[1], buffer[2], buffer[3]);
   }
+  close(sock);
   /* END SOLUTION */
 }
 /* END TEMPLATE */
