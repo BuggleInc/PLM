@@ -1,0 +1,139 @@
+<h1>UDP echo server</h1>
+
+<p>The DNS server said that the port 6666 of the XMPP server is a decoy, and
+that the real port would come by itself once a UDP echo server runs on the
+port 6666 of your own machine. An echo server is one of the oldest services
+of the Internet (RFC 862): it sends every datagram that it receives back to
+its sender, unchanged. Its clients use it to check that the network carries
+their data faithfully.</p>
+
+<p>This time, your program is the server of the datagrams. There is no
+connection in UDP: a single socket receives the datagrams of all the
+clients, in the order they arrive, and answers each of them with the address
+given by
+[!c|python]<code>recvfrom()</code>[/!][!java|scala]<code>receive()</code>[/!].
+The server cannot guess this address: each client sends from its own port,
+which its system picks for it.</p>
+
+[!c]
+<p>Here are the functions involved. Check the manpages for more info.</p>
+<ol>
+    <li><code>int bind(int sockfd, const struct sockaddr *addr, socklen_t
+addrlen)</code> attaches the socket to a port of your machine, as for a TCP
+server: the <code>struct sockaddr_in</code> holds the port (converted with
+<code>htons()</code> and stored in <code>addr.sin_port</code>) and the
+address <code>INADDR_ANY</code> (converted with <code>htonl()</code> and
+stored in <code>addr.sin_addr.s_addr</code>), meaning that any machine may
+send to it. A datagram sent to a port where no socket is bound is lost. As
+for TCP, set the address family to <code>AF_INET</code>.</li>
+
+    <li><code>recvfrom()</code> fills its <code>src_addr</code> with the address of
+the sender, and <code>sendto()</code> takes such an address as destination:
+you can give the one filled by <code>recvfrom()</code> as is.</li>
+
+    <li><code>recvfrom()</code> returns the number of bytes received. A datagram may
+contain any byte, so its data is not a string ended by a zero byte.</li>
+</ol>
+[/!] [!python]
+<p>Here are the methods involved. Check the documentation of the
+<code>socket</code> module for more info.</p>
+<ol>
+    <li><code>sock.bind(("", port))</code> attaches the socket to a port of your
+machine, as for a TCP server: the empty host means that any machine may send
+to it. A datagram sent to a port where no socket is bound is lost.</li>
+
+    <li><code>sock.recvfrom(bufsize)</code> returns the data and the address of its
+sender, which <code>sock.sendto(data, address)</code> takes as is.</li>
+
+    <li>The <code>re</code> module finds patterns in a text, or in bytes:
+<code>re.search(rb"...", data)</code> returns the first match of the pattern
+in the bytes, or <code>None</code>.</li>
+</ol>
+[/!] [!java|scala]
+<p>Here are the classes and methods involved[!scala], from Java[/!]. Check
+their documentation for more info.</p>
+<ol>
+    <li><code>new DatagramSocket(port)</code> creates a UDP socket attached to that
+port of your machine, as for a TCP server: any machine may send to it. A
+datagram sent to a port where no socket is bound is lost.</li>
+
+    <li>After <code>socket.receive(packet)</code>, the packet holds the address of
+the sender: <code>packet.getSocketAddress()</code>. <code>new
+DatagramPacket(byte[] buf, int length, SocketAddress address)</code>
+prepares a datagram to send to such an address.</li>
+
+    <li>The data of a received packet is in its array, from 0 to
+<code>packet.getLength()</code> (the rest of the array is what it held
+before): <code>new String(array, 0, length,
+StandardCharsets.US_ASCII)</code> gives its text.
+<code>Pattern.compile("...")</code> and its method
+<code>matcher(text)</code> find patterns in a text.</li>
+</ol>
+[/!]
+
+<h2>Cosa fa</h2>
+
+<p>Write the function <code>server(port)</code>, which echoes every datagram
+that arrives on the given port to its sender, whole and unchanged. Listen
+carefully to what the clients say: the XMPP server only lets in the users
+that it knows, and Alice will give your account on this server as <code>USER
+&lt;name&gt;</code> and <code>PASSWORD &lt;secret&gt;</code> (letters and
+digits). Print the user name, then the password, each alone on a line, as
+soon as they come. Later, a message of Bob will give the port of the XMPP
+server as <code>PORT &lt;12345&gt;</code>: echo it as the others, then print
+the port alone on a line, close your socket and stop. Other messages may
+look like these ones: only their exact form counts, and the values differ
+from one world to the other. You will need all three in the next exercise.</p>
+
+<h2>Additional hints</h2>
+<ul>
+<li><div class="tip" id="tip-lost" alt="My echoes are lost, or some clients never get theirs">
+<p>Look at the trace: it tells where each of your datagrams went, and whether a
+socket waited for it there. Each client sends from its own machine and its
+own port: answer each datagram to the address of its own sender.</p>
+</div></li>
+
+<li><div class="tip" id="tip-truncated" alt="Bob says that my echo is broken">
+<p>Bob checks that each of his lines comes back exactly as he sent it, and
+stops talking to a broken echo server. Look at the trace for the line that
+came back wrong. A datagram arrives whole, or not at all: if your buffer is
+shorter than the datagram, the rest of it is lost. The largest datagram that
+UDP carries over IPv4 has 65507 bytes.[!c] Send back the number of bytes
+returned by <code>recvfrom()</code>, not the length of a string: a datagram
+may hold a zero byte.[/!][!java|scala] <code>receive()</code> also shortens
+the length of the packet to the one of the datagram received: if you reuse
+the packet, the next datagrams are cut to this length. Create a new packet
+for each datagram.[/!]</p>
+</div></li>
+
+<li><div class="tip" id="tip-deadlock" alt="The world reports a deadlock at the end">
+<p>Once Bob gave the port, nobody will talk to you anymore, or not in a way
+that matters: waiting for another datagram waits forever. Stop right after
+Bob's message.</p>
+</div></li>
+
+<li><div class="tip" id="tip-port" alt="How do I find the port in Bob's message?">
+<p>Look for <code>PORT &lt;</code>, then check that digits follow, up to the
+<code>&gt;</code>.  [!c]<code>strstr()</code> finds the text, and
+<code>sscanf(found, "PORT &lt;%d&gt;", &amp;port)</code> returns 1 only if
+the number was read. The data of a datagram is not ended by a zero byte: add
+one after the bytes received (and keep room for it in your
+buffer).[/!][!python]<code>re.search(rb"PORT &lt;([0-9]+)&gt;", data)</code>
+finds it, and the <code>group(1)</code> of the match holds the digits, as
+bytes (<code>decode()</code> turns them into text).[/!][!java|scala]
+<code>Pattern.compile("PORT &lt;([0-9]+)&gt;")</code> finds it in the text
+of the datagram, and the <code>group(1)</code> of the matcher holds the
+digits, once <code>find()</code> returned true.[/!]</p>
+</div></li>
+
+<li><div class="tip" id="tip-account" alt="How do I find the user name and the password?">
+<p>As for the port, but with letters and digits between the <code>&lt;</code>
+and the <code>&gt;</code>, both in a single message of Alice: look for each
+of them in every datagram. [!c]<code>sscanf(found, "USER
+&lt;%63[a-z0-9]&gt;", user)</code> reads at most 63 letters or digits into
+the array <code>char user[64]</code>.[/!][!python]The pattern <code>rb"USER
+&lt;([0-9a-z]+)&gt;"</code> matches them.[/!][!java|scala]The pattern
+<code>"USER &lt;([0-9a-z]+)&gt;"</code> matches them.[/!]</p>
+</div></li>
+
+</ul>

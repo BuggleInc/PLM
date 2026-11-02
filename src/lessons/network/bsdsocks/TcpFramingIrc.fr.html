@@ -2,14 +2,16 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>Framing messages: IRC</h1>
 
-<p>One of the biggest difficulties when exchanging data over the Internet is to
-determine whether all bits of an incoming message have been received
-already, or whether more data is incoming. Since the data travels over the
-network in packets, the data received so far could be only the first bits of
-the intended message, while the rest is still in transit. The only case
-where TCP tells you for sure that you received all emitted data is when the
-other side closes its socket, but this makes it difficult to pursue a dialog
-in several steps.</p>
+<p>Now that you know how to connect two programs and exchange data between
+them, let's talk with Bob, who waits for you on IRC.  But first, you must
+overcome one of the biggest difficulties when exchanging data over the
+Internet: determining whether all bits of an incoming message have been
+received already, or whether more data is incoming. Since the data travels
+over the network in packets, the data received so far could be only the
+first bits of the intended message, while the rest is still in transit. The
+only case where TCP tells you for sure that you received all emitted data is
+when the other side closes its socket, but this makes it difficult to pursue
+a dialog in several steps.</p>
 
 <p>This problem is known as <b>message framing</b>. Since TCP does not provide
 any help here, solutions must be devised at the application level: the
@@ -62,17 +64,14 @@ the data, after the headers. So you have a framing between the header list
 and the data, another framing within that list and finally the data size is
 prefixed to the data itself.</p>
 
-<h2>The protocols serie</h2>
+<h2>Talking with Bob</h2>
 
-<p>The <i>protocols serie</i> contains several exercises that will let you
-explore several classical protocols: IRC, DNS, XMPP, HTTP and finally
-FTP. In this first exercise you have to connect to an IRC server, join a
-channel, get an information from a (simulated) participant, disconnect from
-the server and display the information on your command line. The server you
-will connected to is a simulation that runs within the PLM, but it's
-realistic and implements the exact protocol of real servers on the
-Internet. You can find its documentation in the world documentation by
-pressing Ctrl-H.</p>
+<p>In this exercise, you have to connect to an IRC server, join a channel, get
+an information from a (simulated) participant, disconnect from the server
+and display the information on your command line. The server you will
+connect to is a simulation that runs within the PLM, but it's realistic and
+implements the exact protocol of real servers on the Internet. You can find
+its documentation in the world documentation by pressing Ctrl-H.</p>
 
 <p>To inspect the protocols, run your code step by step and clic on any socket
 or file descriptor to open the socket content in a new editor tab.</p>
@@ -108,8 +107,9 @@ that the server is ready.</p>
 (simulated) participants of the discussion have to say, but the exercise
 requests you to ask Bob about the treasure trove he keeps talking
 about. Send a message to Bob to know more, but please be polite: Bob is a
-bit grumpy, but he's a good guy. If you're stuck, more hints may come from
-the other people on the channel, so keep reading the conversation for more
+bit grumpy, but he's a good guy. Only use the channel: Bob refuses to answer
+to private messages.  If you're stuck, more hints may come from the other
+people on the channel, so keep reading the conversation for more
 information.</p>
 
 <p>Once you got the information from Bob, simply print the obtained URL to your

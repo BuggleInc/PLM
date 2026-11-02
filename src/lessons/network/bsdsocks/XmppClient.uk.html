@@ -1,0 +1,279 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>Framing by nesting: XMPP</h1>
+
+<p>You now have everything to meet the friend of Bob: the address of the XMPP
+server (from the DNS), its port (from Bob, through your echo server), your
+account on it (from Alice), and the address of the chat room (from Bob, on
+IRC). XMPP (also known as Jabber) is the protocol of instant messaging
+standardized by the IETF, used by many chat services and by the online games
+and the connected objects that need to exchange messages.</p>
+
+<p>XMPP frames its messages in yet another way. A connection carries a single
+XML document in each direction, called a stream, which only ends when the
+connection ends. The messages, called stanzas, are the elements directly
+inside the root of this document. There is no length before them and no line
+end after them: a stanza ends when its first tag gets closed, which requires
+counting how deep you are in the nesting of the elements. The data still
+arrives in packets cut anywhere, as with IRC.  The XMPP server of this world
+is documented in the world documentation (Ctrl-H): read it before starting.</p>
+
+[!c]
+<p>The C library has no XML parser, so you will frame the stanzas by hand: scan
+the received bytes, count the depth of the nesting at each tag, and give the
+stanza once the depth gets back to the one of the stream. Here are the
+functions involved, besides the ones of the previous exercises. Check the
+manpages for more info.</p>
+<ol>
+    <li><code>void* memmove(void* dest, const void* src, size_t n)</code> copies
+<code>n</code> bytes, even when the two areas overlap, as when you remove
+the beginning of a buffer.</li>
+    <li><code>int sprintf(char* str, const char* format, ...)</code> writes as
+<code>printf()</code> into an array, and returns the number of bytes
+written: the format <code>%c</code> with the value 0 writes a zero byte.</li>
+    <li><code>char* strstr(const char* haystack, const char* needle)</code> and
+<code>char* strchr(const char* s, int c)</code> find a text or a character
+in a string.</li>
+</ol>
+[/!] [!python]
+<p>Python reads XML as it arrives, with the parser <code>XMLPullParser</code>
+of the module <code>xml.etree.ElementTree</code>. Check its documentation
+for more info.</p>
+<ol>
+    <li><code>parser = ElementTree.XMLPullParser(events=("start", "end"))</code>
+creates a parser telling when each element starts and ends.</li>
+    <li><code>parser.feed(data)</code> gives it some bytes, wherever they are cut,
+and <code>parser.flush()</code> makes it parse them at once (it may
+otherwise wait for more data before reading the end of a tag).</li>
+    <li><code>parser.read_events()</code> gives the pairs <code>(event,
+element)</code> of what was parsed since its last call.  The
+<code>element</code> of an event <code>"end"</code> is complete:
+<code>element.tag</code> is its name, preceded by its namespace between
+braces (such as <code>{jabber:client}message</code>),
+<code>element.get("from")</code> is the value of its attribute
+<code>from</code> (or <code>None</code>),
+<code>element.find("{jabber:client}body")</code> is its child element
+<code>body</code> (or <code>None</code>), and <code>element.text</code> is
+its text, with the references such as <code>&amp;lt;</code> already decoded.</li>
+    <li><code>base64.b64encode(data)</code> gives the base64 of some bytes, as
+bytes.</li>
+</ol>
+[/!]
+
+<h2>Що робити</h2>
+
+<p>Write the function <code>client(server, port, room, password)</code>, which
+connects to the XMPP server at this address and port, opens a stream to the
+domain <code>buggleinc.lan</code>, authenticates as the user
+<code>newcomer</code> with the password, and joins the room (such as
+<code>robots@conference.buggleinc.lan</code>) with the nickname
+<code>newcomer</code>.  The friend of Bob is in the room, and will call you
+once you joined: answer him, telling him who sent you and what you are
+looking for. He will give you a web address between <code>&lt;</code> and
+<code>&gt;</code>: print it alone on a line, without the <code>&lt;</code>
+and <code>&gt;</code>, then end your stream, wait for the server to end its
+own one, and close your socket.</p>
+
+<p>The parameters of your function differ from one world to the other, and the
+server cuts its stanzas in packets in some of them. As usual, the room is
+busy, and some of its occupants do not always speak to the point.</p>
+
+<h2>Additional hints</h2>
+<ul>
+<li><div class="tip" id="tip-header" alt="What do I send first?">
+<p>The header of your stream, as given in the reference: <code>&lt;?xml
+version='1.0'?&gt;&lt;stream:stream to='buggleinc.lan' xmlns='jabber:client'
+xmlns:stream='http://etherx.jabber.org/streams' version='1.0'&gt;</code>. Do
+not close it: the stream lasts as long as your connection. The server
+answers with its own header and its features.</p>
+</div></li>
+
+<li><div class="tip" id="tip-auth" alt="How do I authenticate?">
+<p>Send the element <code>&lt;auth&gt;</code> described in the reference,
+holding the base64 of a zero byte, the user name, a zero byte and the
+password. The trace shows how the server decoded your credentials, and its
+<code>&lt;failure&gt;</code> explains what went wrong.
+[!python]<code>base64.b64encode(b"\0newcomer\0" +
+password.encode("ascii"))</code> gives them.[/!]</p>
+</div></li>
+
+[!c]
+<li><div class="tip" id="tip-base64" alt="Give me a function computing the base64">
+<p>The base64 writes each group of 3 bytes (24 bits) as 4 characters of 6 bits
+each, completed by <code>=</code> at the end.  This function writes the
+base64 of <code>length</code> bytes into <code>out</code>:</p>
+<pre>
+void base64(const unsigned char* data, int length, char* out)
+{
+  const char* digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  for (int i = 0; i &lt; length; i += 3) {
+    int n  = data[i] &lt;&lt; 16 | (i + 1 &lt; length ? data[i + 1] &lt;&lt; 8 : 0) | (i + 2 &lt; length ? data[i + 2] : 0);
+    *out++ = digits[n &gt;&gt; 18 &amp; 63];
+    *out++ = digits[n &gt;&gt; 12 &amp; 63];
+    *out++ = i + 1 &lt; length ? digits[n &gt;&gt; 6 &amp; 63] : '=';
+    *out++ = i + 2 &lt; length ? digits[n &amp; 63] : '=';
+  }
+  *out = '\0';
+}
+</pre>
+<p>The credentials hold zero bytes, so they are not a string: keep their
+length, as given by <code>sprintf(credentials, "%cnewcomer%c%s", 0, 0,
+password)</code>.</p>
+</div></li>
+[/!]
+
+<li><div class="tip" id="tip-framing" alt="How do I know that a stanza arrived whole?">
+<p>Count the depth: the header of the stream opens the depth 1, each opening
+tag of a stanza goes one deeper, and each closing tag one back; a tag ending
+with <code>/&gt;</code> opens and closes its element at once. The stanza is
+whole when the depth gets back to 1. [!c]Inside a tag, the values between
+quotes may hold a <code>/</code> or a <code>&gt;</code> (as in
+<code>from='robots@conference.buggleinc.lan/Karel'</code>), which mean
+nothing there. Keep the bytes that follow the stanza for the next
+one.[/!][!python]Count the events <code>"start"</code> and
+<code>"end"</code> of the parser, and keep the element of an event
+<code>"end"</code> that brings the depth back to 1.[/!]</p>
+</div></li>
+
+[!python]
+<li><div class="tip" id="tip-python-stanzas" alt="Give me the complete code of a generator of stanzas">
+<pre>
+def stanzas(sock):
+    parser = ElementTree.XMLPullParser(events=("start", "end"))
+    depth = 0
+    while True:
+        for event, element in parser.read_events():
+            if event == "start":
+                depth += 1
+            else:
+                depth -= 1
+                if depth == 1:  # back in the stream, at the end of one of its children
+                    yield element
+        data = sock.recv(4096)
+        if not data:  # the end of the stream
+            return
+        parser.feed(data)
+        parser.flush()
+</pre>
+<p>Use it as the generator of lines of the IRC exercise: <code>reader =
+stanzas(sock)</code>, then <code>stanza = next(reader)</code>.</p>
+</div></li>
+[/!] [!c]
+<li><div class="tip" id="tip-c-stanzas" alt="Give me the complete code of a function reading the stanzas">
+<pre>
+char buffer[65536]; /* the data received and not given yet */
+int length  = 0;    /* how many bytes it holds */
+int scanned = 0;    /* how many of them were scanned */
+int depth   = 0;    /* 0 outside the stream, 1 in the stream, 2 or more in a stanza */
+int tag     = -1;   /* where the tag being scanned starts, or -1 in a text */
+char quote  = 0;    /* the quote of the value being scanned, or 0 */
+int start   = 0;    /* where the stanza being scanned starts */
+
+/* Writes the next stanza into stanza (of that size), ended by a zero byte, and returns 1, or 0 at the end of the stream */
+int next_stanza(int sock, char* stanza, int size)
+{
+  while (1) {
+    for (; scanned &lt; length; scanned++) {
+      char c = buffer[scanned];
+      if (tag &lt; 0) {          /* in a text, or between the stanzas */
+        if (c == '&lt;')
+          tag = scanned;
+      } else if (quote != 0) { /* in the value of an attribute */
+        if (c == quote)
+          quote = 0;
+      } else if (c == '\'' || c == '"')
+        quote = c;
+      else if (c == '&gt;') {    /* the end of a tag */
+        int stanza_ended = 0;
+        if (buffer[tag + 1] == '/') {        /* a closing tag */
+          depth--;
+          stanza_ended = depth == 1;
+        } else if (buffer[tag + 1] != '?') { /* an opening tag, unless the XML declaration */
+          if (depth == 1)
+            start = tag;
+          if (buffer[scanned - 1] == '/')    /* an empty element, as &lt;x/&gt; */
+            stanza_ended = depth == 1;
+          else
+            depth++;
+        }
+        tag = -1;
+        if (depth == 0)       /* &lt;/stream:stream&gt; */
+          return 0;
+        if (stanza_ended) {
+          int n = scanned + 1 - start;
+          if (n &gt;= size)
+            n = size - 1;
+          memcpy(stanza, buffer + start, n);
+          stanza[n] = '\0';
+          length -= scanned + 1; /* forget everything up to the end of the stanza */
+          memmove(buffer, buffer + scanned + 1, length);
+          scanned = 0;
+          return 1;
+        }
+      }
+    }
+    int received = recv(sock, buffer + length, sizeof(buffer) - length, 0);
+    if (received &lt;= 0)        /* the end of the stream, or an error */
+      return 0;
+    length += received;
+  }
+}
+</pre>
+</div></li>
+[/!]
+
+<li><div class="tip" id="tip-joined" alt="How do I know that I am in the room?">
+<p>The reference tells what the room sends when you join it, and what comes
+last.</p>
+</div></li>
+
+<li><div class="tip" id="tip-friend" alt="Who is the friend of Bob?">
+<p>His name differs from one world to the other, but he calls you by your
+nickname in a message, as an IRC member would. The attribute
+<code>from</code> of this message tells who he is: the room, a
+<code>/</code>, then his nickname. Answer him on the room, starting your
+message with his nickname and a colon. If he does not understand you, the
+other occupants may help.</p>
+</div></li>
+
+<li><div class="tip" id="tip-text" alt="The address that I print is wrong, or holds &amp;lt;">
+<p>The texts of XML write <code>&lt;</code> as <code>&amp;lt;</code> and
+<code>&gt;</code> as <code>&amp;gt;</code>, among others (see the
+reference). [!python]The parser decodes them for you, in
+<code>element.text</code>.[/!][!c]Look for <code>&amp;lt;http</code> in the
+stanza, or decode the references of the text before searching it, with a
+function such as this one.[/!]</p>
+[!c]
+<pre>
+void decode(char* text)
+{
+  const char* references[] = {"&amp;lt;", "&amp;gt;", "&amp;amp;", "&amp;apos;", "&amp;quot;"};
+  const char* characters   = "&lt;&gt;&amp;'\"";
+  char* out                = text;
+  while (*text != '\0') {
+    int found = 0;
+    for (int i = 0; i &lt; 5 &amp;&amp; !found; i++)
+      if (strncmp(text, references[i], strlen(references[i])) == 0) {
+        *out++ = characters[i];
+        text += strlen(references[i]);
+        found = 1;
+      }
+    if (!found)
+      *out++ = *text++;
+  }
+  *out = '\0';
+}
+</pre>
+[/!]
+<p>If you print another address than the one of the friend of Bob, look at who
+sent it, and where: a message may quote another one inside it, and only the
+attribute <code>from</code> of the stanza itself tells who sent it.</p>
+</div></li>
+
+<li><div class="tip" id="tip-deadlock" alt="The world reports a deadlock">
+<p>The world tells what each program waits for. If the server waits for a
+stanza while you wait for its answer, read the trace for the notes of the
+server: your stanza may be incomplete, or broken. If you wait for the end of
+the stream, did you end your own one first?</p>
+</div></li>
+</ul>
