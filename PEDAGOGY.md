@@ -408,32 +408,77 @@ TODO:
 
 ### The networking lesson
 
-This lesson (`lessons.network`) builds upon the POSIX universe. The two exercises (requesting 32 and 34 lines of C, 16 and 8 lines
-of Python, 12 and 3 lines of Java, 13 and 5 lines of Scala) ask for a function whose parameters (the address and the port of the
-server, or the port to listen on and the message to send) change from one world to the other, so that hard-coded values fail.
+This lesson (`lessons.network`) builds upon the POSIX universe. It provides 6 exercises (requesting 151/138/148/424 lines of
+either Java/Python/Scala/C -- C is not known to be terse). The first one asks for a TCP client (`socket()` and `connect()`),
+while the second one asks for a TCP server (`bind()`, `listen()`, `accept()`). In both cases, the server to contact or to
+establish is specified as a parameter of the function to write and change from one world to the other, so that hard-coded values
+fail. The several worlds test specific cases of increasing complexity, from a simple short message, to one containing %s (to
+teach about input sanitizing), to a long one that is sent in several bursts (leading to short reads). The world visualization
+builds a mental representation of the sockets, processes, kernel objects and file descriptors that I found useful in my own
+teachings.
 
-The first one, `client(server, port)`, downloads a message and displays it on the standard output. One of its worlds sends a
-`%s` to catch the programs using the received data as the format of `printf()`. Another one introduces the short reads: the data
-sent by the peers waits in their send queue until their script lets the network transmit it, in packets, which the world view
-shows travelling from one machine to the other. The programs calling `recv()` only once fail when the rest of the data is still
-on its way, while working in the first worlds: they must receive until the end of the stream. A last world faces a server that
-is not ready yet: the student must retry `connect()` after a `sleep()` on `ECONNREFUSED`, with a new socket, and the PLM
-interrupts the busy loops retrying without waiting.
+The technical assignments are embellished with a little story. The messages exchanged in these exercises are a little chit chat
+related to the PLM. In one of the world of each exercise, the buggles say buggle things such as "I paint the ground when I find
+baggels" while the other world contains Logo's turtle chit chat. The lame plot is that one of the messages received in the first
+exercice is about Bob speaking of a treasure and inviting the student to see him on IRC.
 
-The second one, `server(port, message)`, takes the server side of a connection (`bind()`, `listen()`, `accept()`), and sends
-the message to a client that reads until the end of the stream, as in the first exercise. The world view shows that the socket
-returned by `accept()` shares its port with the listening one, to fight the frequent confusion between ports and sockets. One of
-its worlds has a client that connects late, so that `accept()` waits.
+The protocol quest starts for real with the next exercise. The main learning objective of this quest is about message framing in
+application-level protocols: How do you know that you received the whole data from your peer before answering? This question is
+answered during a tour involving IRC (line-based protocol, with `\r\n` marking then end of a message), DNS (based on UDP, so a
+message is a datagram), XMPP (XML-based, so you know you got the end of a message when the first opening tag received gets
+closed), FTP in passive mode (a new connexion is opened for each transfer) and HTTP 1.1 with its multiple framing mechanisms
+(line-based for the headers, then prefixed content length for the data). 
 
-The planned progression continues with the framing of the messages (a client sending a line ended by `'\n'` and waiting for the
-answer, so that the server cannot wait for the end of the stream, in worlds splitting the line in packets), the deadlocks of badly
-designed protocols, the short writes, the handling of errors, and a server accepting several clients. A last exercise could send
-an emoji, to introduce the encoding of characters once the system calls are mastered: only ASCII data is accepted until then.
+In each exercise, the student interacts with servers that are simulated within the PLM. These servers implement a simplified but
+faithful version of the real protocols (IRC, DNS, XMPP, HTTP and FTP). They describe their protocol in the documentation of the
+world (Ctrl-H), as a summary of their RFC: the framing of the messages, the commands, the replies and the errors, and an example
+session to the byte. The missions can thus focus on the framing and refer to these references, so that the students practice
+reading a specification instead of copying the exchanges given by the mission. The references never reveal the scenario of the
+exercises. The mission text does not always give all the details right away to allow for the experimentations of the student.
 
-The servers of real protocols (IRC, HTTP and FTP) describe their protocol in the documentation of the world (Ctrl-H), as a
-summary of their RFC: the framing of the messages, the commands, the replies and the errors, and an example session to the byte.
-The missions can thus focus on the framing and refer to these references, so that the students practice reading a
-specification instead of copying the exchanges given by the mission. The references never reveal the scenario of the exercises.
+The `UdpDns` exercise for example is particularly challenging, mainly because of the binary protocol involved. The DNS server
+(and other ones) provide informative error messages, trying to diagnose the student's errors (wrong byte order in numbers,
+inconsistencies between the header and the query). To provide these error messages to the student even when their code to parse
+the answer packet is broken, the PLM interface can display the hexdump of any content exchanged on a given socket. Real servers
+are often realy terse with bogus clients, closing the connexion without even answering, or answering a binary message with a
+specific bit enabled, but this departure from realism is meant to ensure that the student never gets completely stuck and
+hopeless during the task. In addition to the server error message and the documentation with examples, the mission texts come
+with inline hints that only reveal when clicked. In some cases, the first hint gives the pseudocode to write while the second
+one presents a complete chunk of code that can be used, if needed.
+
+This mix of realistic protocols but rich feedback is specifically intended for authentic and adidactic tasks. The scripted
+interactions with the participants, that sometimes contain technical hints, hopefuly make the exercises more vivid.
+
+For each exercise covering one protocol, the student is expected to have several interactions, to amortize the cost of
+understanding the protocol and hopefuly making the exercise more conceptually consistant and less frustrating. In
+`TcpFramingIrc`, the student must send a specific sentence to one participant of the channel, with the other participants
+disseminate more hints in the (scripted) conversation if needed. The participant with whom the student must speak only answers
+polite messages while grumbling about unpolite messages (this is all done in a way that allows the translation of the script in
+any language). In `UdpEcho`, where the student writes an UDP server echoing back the requests of the clients, several clients
+connect. In `UdpDns`, the student is supposed to issue two `TXT` queries, one `SRV` query and finally an `A` query (the mission
+text lacks some information that are only accessible through the first `TXT` queries).
+
+The plot continues with Bob refusing to speak on an open IRC channel, and requesting to join a secret XMPP channel whose IP is
+not known (thus justifying the DNS exercise to retrieve that IP). The port and authentication information is then sent
+anonymously to an UDP port of the student's machine, justifying the `UdpEcho` exercise.
+
+In some exercises, the worlds are very similar only changing the atmosphere between the Buggle world that is discrete,
+grid-based and oriented to the speed and performance and the Turtle world that is continuous, free-form and less in a rush. The
+buggles cross the path of Turmites, Conway's patterns (the glider or the pulsar) and Karel the robot, while the Turtle interact
+with L-systems, Scratch the cat and Lenia systems.
+
+Other exercises use the several worlds to increase the complexity, allowing the student to write first a simplistic code that
+only pass simple cases, before moving on to more complex cases in the other worlds. In `TcpClient`, only the third world
+experience short reads. In `XmppClient` also, the worlds get harder: the stanzas arrive whole in the first one, cut in packets
+with spaces between them in the second one, and the third one adds stanzas holding elements with the same name as them, among
+which an old message of the friend of Bob forwarded just before his answer, which only a framing counting the depth tells from
+his own messages. In C, the student frames by hand with a depth counter (the tips give the code); in Python, it uses the
+incremental parser of the standard library, counting the depth of its events.
+
+The planned progression continues with the treasure hunt over HTTP (redirections and `Content-Length` on a persistent
+connection, then crawling a set of pages), FTP in passive mode, then the server side: the deadlocks of badly designed protocols,
+the short writes, the handling of errors, and a server accepting several clients. A last exercise could send an emoji, to
+introduce the encoding of characters once the system calls are mastered: only ASCII data is accepted until then.
 
 TODO:
 * The short writes are not exercised yet: `send()` and `write()` always write everything.
