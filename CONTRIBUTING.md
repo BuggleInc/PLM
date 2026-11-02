@@ -964,7 +964,7 @@ documentation](PEDAGOGY.md#system-programming).
 * **The documentation of the protocols**: `[!protocols/]` in `PosixWorld.html` stands for a section "The servers of this world"
   holding, once per class of `ProgramPeer` among the peers of the world (in their order, except the clients, whose
   `documented()` is false), the html file next to that class
-  (`IrcServer.html`, `HttpServer.html`, `FtpServer.html`, `DnsServer.html`): its heading (such as "The IRC protocol"), the framing, the commands,
+  (`IrcServer.html`, `HttpServer.html`, `FtpServer.html`, `DnsServer.html`, `XmppServer.html`): its heading (such as "The IRC protocol"), the framing, the commands,
   the replies and the errors, and an example session to the byte. The section is absent from the worlds without such peers. A
   new server should come with its reference, listed in `po4a.conf`, which describes the protocol without revealing the scenario
   of an exercise (such as the words that a member of an IRC channel expects).
@@ -1006,6 +1006,25 @@ documentation](PEDAGOGY.md#system-programming).
   written as text or without its final zero byte, bytes after the question...). The answer also holds this explanation, as a TXT
   record of the root in its additional section, for the students who print the answers rather than read the trace. A datagram
   that is not a query is ignored, with a note, as real servers do.
+* **The XMPP server** (`XmppServer`) serves the domain `buggleinc.lan` (RFC 6120 and 6121) and its chat rooms on
+  `conference.buggleinc.lan` (XEP-0045), exact to the byte as the usual servers on what it covers. The stream of each direction is
+  a single XML document whose top-level elements are the stanzas, framed by the nesting of their elements only: `Xml` reads the
+  XML of the client as it arrives (the header of the stream, then each top-level element once it arrived whole, then the end of
+  the stream), with the restrictions of XMPP (no comments, processing instructions nor DTD). The client authenticates with SASL
+  PLAIN (no TLS is offered), may restart its stream after the success (not required), and has no resource to bind: its address is
+  its bare JID. Joining a room sends the presences of the occupants, the presence of the client (status 110), the history with
+  its delays, then the subject, which ends the join. The messages to a room come back to their sender, as to every occupant. The
+  exercise gives the accounts (`account()`), the rooms with their subject and their simulated occupants (`room()`), their history
+  (`history()`), and the lines, answers and hints of the occupants as `IrcServer` (`say()`, `address()`, `answer()`, `hints()`),
+  a member answering the messages addressed to it on the room (as in "Karel: hello") or sent to it in private (type `chat`).
+  Some lines carry nested elements of the same name: an XHTML-IM version holding its own `<body>` (`sayInXhtml()`), or another
+  message forwarded inside (`forward()`). `afterWritingTo()` says the last line given when the client first writes to an
+  occupant rather than when it joined, so that it comes just before its answer. `packets()` cuts everything the server sends,
+  `keepAlives()` sends a space after each line of the occupants, and `doubleQuotes()` quotes the attributes with `"` instead of
+  `'`. The broken XML, an unknown element and a stanza sent before the authentication end the stream with a stream error, while
+  the stanzas sent to an unknown room or occupant, with a wrong type, or before joining get an error stanza, and the failures of
+  the authentication a `<failure>`: all of them hold a text explaining the mistake, also noted in the trace (with the credentials
+  decoded from base64).
 * **The echo clients** (`EchoClient`, one per machine, named in the trace) talk to a UDP echo server written by the student.
   The exercise gives their lines with their time (`says()`): the lines of a same time leave in a burst, and the next ones only once
   their echoes arrived, so that a client without echo stays silent. A client may check that each echo is exactly its line

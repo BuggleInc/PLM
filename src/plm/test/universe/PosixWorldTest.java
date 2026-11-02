@@ -29,6 +29,7 @@ import plm.universe.posix.Peer;
 import plm.universe.posix.PosixEntity;
 import plm.universe.posix.PosixWorld;
 import plm.universe.posix.ProgramPeer;
+import plm.universe.posix.XmppServer;
 
 /** Scenarios of the POSIX world, played directly on the entity (no remoting). */
 public class PosixWorldTest {
@@ -987,6 +988,339 @@ public class PosixWorldTest {
     Assertions.assertEquals(":irc.buggleinc.com 421 student HELLO :Unknown command", lines.until(":irc.buggleinc.com 421"));
     p.send(sock, b("PRIVMSG Carol :Hi\r\n"), 0);
     Assertions.assertEquals(":irc.buggleinc.com 401 student Carol :No such nick/channel", lines.next());
+    p.close(sock);
+  }
+
+  /** A world with an XMPP server on 10.0.0.5:5222, whose room robots has Alice and Karel, sending in packets of that size if positive */
+  private static XmppServer xmppServer(int packetSize)
+  {
+    return new XmppServer("10.0.0.5", 5222)
+        .account("newcomer", "c0ffee")
+        .room("robots", "Robots & buggles", "Alice", "Karel")
+        .history("robots", "Karel", "Back in a minute.")
+        .say(2, "robots", "Alice", "Is a < b? Ask Karel & co.")
+        .answer("Karel", List.of(List.of("please")), "Here: <http://www.buggleinc.lan/>", "Ask nicely.")
+        .packets(packetSize);
+  }
+
+  /** The header of the stream of a client of buggleinc.lan */
+  private static final String XMPP_HEADER =
+      "<?xml version='1.0'?><stream:stream to='buggleinc.lan' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>";
+
+  /** The header of the stream of the server, with that id */
+  private static String xmppServerHeader(int id)
+  {
+    return "<?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='plm" + id +
+        "' from='buggleinc.lan' version='1.0' xml:lang='en'>";
+  }
+
+  private static final String XMPP_FEATURES =
+      "<stream:features><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
+
+  /** The SASL PLAIN authentication of these credentials */
+  private static String xmppAuth(String credentials)
+  {
+    return "<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>" + java.util.Base64.getEncoder().encodeToString(b(credentials)) + "</auth>";
+  }
+
+  /** Receives exactly that data, whatever the packets carrying it */
+  private static void expect(PosixEntity p, int fd, String expected)
+  {
+    StringBuilder res = new StringBuilder();
+    while (res.length() < expected.length()) {
+      String data = s(p.recv(fd, expected.length() - res.length(), 0));
+      if (data.isEmpty())
+        break;
+      res.append(data);
+    }
+    Assertions.assertEquals(expected, res.toString());
+  }
+
+  /** Connects to the XMPP server, and opens a stream */
+  private static int xmppOpened(PosixEntity p)
+  {
+    int sock = p.socket(AF_INET, SOCK_STREAM, 0);
+    Assertions.assertEquals(0, p.connect(sock, "10.0.0.5", 5222));
+    p.send(sock, b(XMPP_HEADER), 0);
+    expect(p, sock, xmppServerHeader(1) + XMPP_FEATURES);
+    return sock;
+  }
+
+  private static final String XMPP_JOINED =
+      "<presence from='robots@conference.buggleinc.lan/Alice' to='newcomer@buggleinc.lan'><x xmlns='http://jabber.org/protocol/muc#user'>"
+      + "<item affiliation='member' role='participant'/></x></presence>"
+      + "<presence from='robots@conference.buggleinc.lan/Karel' to='newcomer@buggleinc.lan'><x xmlns='http://jabber.org/protocol/muc#user'>"
+      + "<item affiliation='member' role='participant'/></x></presence>"
+      + "<presence from='robots@conference.buggleinc.lan/newcomer' to='newcomer@buggleinc.lan'><x xmlns='http://jabber.org/protocol/muc#user'>"
+      + "<item affiliation='none' role='participant'/><status code='110'/></x></presence>"
+      + "<message from='robots@conference.buggleinc.lan/Karel' to='newcomer@buggleinc.lan' type='groupchat'><body>Back in a minute.</body>"
+      + "<delay xmlns='urn:xmpp:delay' from='robots@conference.buggleinc.lan' stamp='2023-12-31T23:59:00Z'/></message>"
+      + "<message from='robots@conference.buggleinc.lan' to='newcomer@buggleinc.lan' type='groupchat'><subject>Robots &amp; buggles</subject></message>";
+
+  /** Opens a stream, authenticates as newcomer and joins the room robots */
+  private static int xmppJoined(PosixEntity p)
+  {
+    int sock = xmppOpened(p);
+    p.send(sock, b(xmppAuth("\0newcomer\0c0ffee")), 0);
+    expect(p, sock, "<success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/>");
+    p.send(sock, b("<presence to='robots@conference.buggleinc.lan/newcomer'><x xmlns='http://jabber.org/protocol/muc'/></presence>"), 0);
+    expect(p, sock, XMPP_JOINED);
+    return sock;
+  }
+
+  @Test public void testXmppSessionToTheByte()
+  {
+    for (int packetSize : new int[] {0, 7}) {
+      PosixWorld w  = new PosixWorld("xmpp").addPeer(xmppServer(packetSize));
+      PosixEntity p = process(w);
+      int sock      = xmppJoined(p);
+      expect(p, sock,
+             "<message from='robots@conference.buggleinc.lan/Alice' to='newcomer@buggleinc.lan' type='groupchat'>"
+                 + "<body>Is a &lt; b? Ask Karel &amp; co.</body></message>");
+      p.send(sock, b("<message to='robots@conference.buggleinc.lan' type='groupchat' id='m1'><body>Karel: please, where?</body></message>"), 0);
+      expect(p, sock,
+             "<message from='robots@conference.buggleinc.lan/newcomer' to='newcomer@buggleinc.lan' type='groupchat' id='m1'>"
+                 + "<body>Karel: please, where?</body></message>"); // a room sends the messages to their sender too
+      expect(p, sock,
+             "<message from='robots@conference.buggleinc.lan/Karel' to='newcomer@buggleinc.lan' type='groupchat'>"
+                 + "<body>newcomer: Here: &lt;http://www.buggleinc.lan/&gt;</body></message>");
+      p.send(sock, b("</stream:stream>"), 0);
+      expect(p, sock, "</stream:stream>");
+      Assertions.assertEquals("", s(p.recv(sock, 10, 0)));
+      p.close(sock);
+    }
+  }
+
+  @Test public void testXmppServerReadsTheStanzasInPieces()
+  {
+    PosixEntity p = process(new PosixWorld("xmpp").addPeer(xmppServer(0)));
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.5", 5222);
+    p.send(sock, b(XMPP_HEADER.substring(0, 30)), 0); // the server waits for the rest
+    p.send(sock, b(XMPP_HEADER.substring(30) + "\n"), 0);
+    expect(p, sock, xmppServerHeader(1) + XMPP_FEATURES);
+    String auth = xmppAuth("\0newcomer\0c0ffee");
+    p.send(sock, b(auth.substring(0, 50)), 0);
+    p.send(sock, b(auth.substring(50) + " <message to='robots@conference.buggleinc.lan' type='groupchat'><body>&lt;Hi&gt;</body></message>"), 0);
+    expect(p, sock, "<success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/>"); // and the message before joining is refused
+    expect(p, sock,
+           "<message from='robots@conference.buggleinc.lan' to='newcomer@buggleinc.lan' type='error'><error type='cancel'>"
+               + "<not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/><text xmlns='urn:ietf:params:xml:ns:xmpp-stanzas' xml:lang='en'>"
+               + "Only the occupants of a room may send messages there: join it first.</text></error></message>");
+    p.send(sock, b(XMPP_HEADER), 0); // a restart, as RFC 6120 asks after the authentication
+    expect(p, sock, xmppServerHeader(2) + "<stream:features/>");
+    p.close(sock);
+  }
+
+  @Test public void testXmppServerExplainsTheFailedAuthentications()
+  {
+    PosixWorld w   = new PosixWorld("xmpp").addPeer(xmppServer(0));
+    PosixEntity p  = process(w);
+    int sock       = xmppOpened(p);
+    String failure = "<failure xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><%s/><text xmlns='urn:ietf:params:xml:ns:xmpp-sasl' xml:lang='en'>%s</text></failure>";
+    p.send(sock, b(xmppAuth("\0newcomer\0coffee")), 0);
+    expect(p, sock, String.format(failure, "not-authorized", "Wrong user name or password."));
+    Assertions.assertTrue(traced(w, "The credentials decoded from base64 are \"\\0newcomer\\0coffee\"."), String.join("\n", w.getTrace()));
+    p.send(sock, b(xmppAuth("newcomer:c0ffee")), 0);
+    expect(p, sock,
+           String.format(failure, "malformed-request",
+                         "The credentials hold 0 zero bytes, where PLAIN separates the user name and "
+                             + "the password with two of them: a zero byte, the user name, a zero byte and the password."));
+    p.send(sock, b("<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>newcomer!</auth>"), 0);
+    expect(p, sock,
+           String.format(failure, "incorrect-encoding",
+                         "The content of &lt;auth&gt; is not in base64: only letters, digits, + and / "
+                             + "in groups of four characters, the last group being completed by =."));
+    p.send(sock, b("<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='DIGEST-MD5'/>"), 0);
+    expect(p, sock, String.format(failure, "invalid-mechanism", "This server only offers the mechanism PLAIN, given as mechanism='PLAIN'."));
+    p.send(sock, b(xmppAuth("newcomer@buggleinc.lan\0newcomer@buggleinc.lan\0c0ffee")), 0); // the full addresses work too
+    expect(p, sock, "<success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/>");
+    p.close(sock);
+  }
+
+  /** The stream error of that condition and text, ending the stream */
+  private static String xmppStreamError(String condition, String text)
+  {
+    return "<stream:error><" + condition + " xmlns='urn:ietf:params:xml:ns:xmpp-streams'/><text xmlns='urn:ietf:params:xml:ns:xmpp-streams' xml:lang='en'>" +
+        text + "</text></stream:error></stream:stream>";
+  }
+
+  @Test public void testXmppServerEndsTheBrokenStreams()
+  {
+    String[][] cases = {
+        {"<message to='robots@conference.buggleinc.lan'><body>Hi</body></message>", "not-authorized",
+         "The client must authenticate with &lt;auth&gt; before sending any stanza."},
+        {"<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>AG5ld2NvbWVyAGMwZmZlZQ==</mechanism>", "not-well-formed",
+         "The element &lt;auth&gt; is closed by &lt;/mechanism&gt;: each element is closed by its own name, the last opened first."},
+        {"<message><body>a < b</body></message>", "not-well-formed",
+         "A &lt; starts a tag, followed by the name of an element: a &lt; in a text is written &amp;lt;."},
+        {"<message><body>Karel & co</body></message>", "not-well-formed",
+         "A &amp; starts a reference, such as &amp;lt; for &lt; or &amp;amp; for &amp;: a &amp; in a text is written &amp;amp;."},
+        {"<message to=robots@conference.buggleinc.lan/>", "not-well-formed", "The value of the attribute to of &lt;message&gt; must be quoted, with ' or \"."},
+        {"<!-- hello -->", "restricted-xml",
+         "XMPP forbids the comments (&lt;!-- --&gt;), the processing instructions (&lt;? ?&gt;) and the DTD (&lt;!DOCTYPE&gt;) in a stream."},
+        {"Hello", "not-well-formed", "Some text is outside of any stanza: only the elements and some spaces may come between the stanzas."},
+        {"<query/>", "unsupported-stanza-type",
+         "The element &lt;query&gt; is unknown at the top of a stream, where the stanzas are &lt;message&gt;, &lt;presence&gt; and &lt;iq&gt;."},
+    };
+    for (String[] mistake : cases) {
+      PosixWorld w  = new PosixWorld("xmpp").addPeer(xmppServer(0));
+      PosixEntity p = process(w);
+      int sock      = xmppOpened(p);
+      p.send(sock, b(mistake[0]), 0);
+      expect(p, sock, xmppStreamError(mistake[1], mistake[2]));
+      Assertions.assertEquals("", s(p.recv(sock, 10, 0))); // the server closed the connection
+      p.close(sock);
+    }
+  }
+
+  @Test public void testXmppServerChecksTheHeader()
+  {
+    String[][] cases = {
+        {"<stream:stream to='buggleinc.lan' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>", null},
+        {"<auth/>", "bad-format", "A stream starts with its header, the element &lt;stream:stream&gt; (after the optional XML declaration)."},
+        {"<stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>", "host-unknown",
+         "The header of the stream names the domain of the server in its attribute to, here to='buggleinc.lan'."},
+        {"<stream:stream to='10.0.0.5' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>", "host-unknown",
+         "This server serves the domain buggleinc.lan, not 10.0.0.5."},
+        {"<stream:stream to='buggleinc.lan' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>", "invalid-namespace",
+         "The header of the stream of a client declares xmlns='jabber:client'."},
+    };
+    for (String[] header : cases) {
+      PosixEntity p = process(new PosixWorld("xmpp").addPeer(xmppServer(0)));
+      int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+      p.connect(sock, "10.0.0.5", 5222);
+      p.send(sock, b(header[0]), 0);
+      expect(p, sock, xmppServerHeader(1) + (header[1] == null ? XMPP_FEATURES : xmppStreamError(header[1], header[2])));
+      p.close(sock);
+    }
+  }
+
+  /** The error stanza of that kind, from that address, with that type, condition and text */
+  private static String xmppStanzaError(String kind, String from, String id, String type, String condition, String text)
+  {
+    return "<" + kind + " from='" + from + "' to='newcomer@buggleinc.lan' type='error'" + (id == null ? "" : " id='" + id + "'") + "><error type='" + type +
+        "'><" + condition + " xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/><text xmlns='urn:ietf:params:xml:ns:xmpp-stanzas' xml:lang='en'>" + text +
+        "</text></error></" + kind + ">";
+  }
+
+  @Test public void testXmppServerAnswersTheWrongStanzas()
+  {
+    PosixEntity p = process(new PosixWorld("xmpp").addPeer(xmppServer(0)));
+    int sock      = xmppOpened(p);
+    p.send(sock, b(xmppAuth("\0newcomer\0c0ffee")), 0);
+    expect(p, sock, "<success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/>");
+    p.send(sock, b("<presence to='lobby@conference.buggleinc.lan/newcomer'/>"), 0);
+    expect(p, sock,
+           xmppStanzaError("presence", "lobby@conference.buggleinc.lan/newcomer", null, "cancel", "item-not-found",
+                           "There is no room lobby on conference.buggleinc.lan."));
+    p.send(sock, b("<presence to='robots@conference.buggleinc.lan'/>"), 0);
+    expect(p, sock,
+           xmppStanzaError("presence", "robots@conference.buggleinc.lan", null, "modify", "jid-malformed",
+                           "To join a room, the presence goes to name@conference.buggleinc.lan/nickname, with the nickname of the client."));
+    p.send(sock, b("<presence to='robots@conference.buggleinc.lan/Karel'/>"), 0);
+    expect(
+        p, sock,
+        xmppStanzaError("presence", "robots@conference.buggleinc.lan/Karel", null, "cancel", "conflict", "The nickname Karel is already taken in this room."));
+    p.send(sock, b("<presence to='robots@conference.buggleinc.lan/newcomer'/>"), 0); // without <x/>, as the old clients
+    expect(p, sock, XMPP_JOINED);
+    p.send(sock, b("<message to='robots@conference.buggleinc.lan' id='a'><body>Hi</body></message>"), 0);
+    expect(
+        p, sock,
+        xmppStanzaError("message", "robots@conference.buggleinc.lan", "a", "modify", "bad-request", "A message to a room has the type groupchat, not normal."));
+    p.send(sock, b("<message to='robots@conference.buggleinc.lan/Dave' type='chat'><body>Hi</body></message>"), 0);
+    expect(p, sock,
+           xmppStanzaError("message", "robots@conference.buggleinc.lan/Dave", null, "cancel", "item-not-found", "There is nobody named Dave in this room."));
+    p.send(sock, b("<message to='karel@buggleinc.lan' type='chat'><body>Hi</body></message>"), 0);
+    expect(p, sock,
+           xmppStanzaError("message", "karel@buggleinc.lan", null, "cancel", "item-not-found",
+                           "Nobody receives this message: the rooms are on conference.buggleinc.lan."));
+    p.send(sock, b("<iq type='get' id='b'><ping xmlns='urn:xmpp:ping'/></iq>"), 0);
+    expect(p, sock,
+           xmppStanzaError("iq", "buggleinc.lan", "b", "cancel", "service-unavailable",
+                           "This server answers no request &lt;iq&gt;: it only carries presences and messages."));
+    p.send(sock, b("<message to='robots@conference.buggleinc.lan/Karel' type='chat'><body>Please?</body></message>"), 0); // in private
+    expect(p, sock,
+           "<message from='robots@conference.buggleinc.lan/Karel' to='newcomer@buggleinc.lan' type='chat'>"
+               + "<body>Here: &lt;http://www.buggleinc.lan/&gt;</body><x xmlns='http://jabber.org/protocol/muc#user'/></message>");
+    p.send(sock, b("<presence to='robots@conference.buggleinc.lan/newcomer' type='unavailable'/>"), 0);
+    expect(p, sock,
+           "<presence from='robots@conference.buggleinc.lan/newcomer' to='newcomer@buggleinc.lan' type='unavailable'>"
+               + "<x xmlns='http://jabber.org/protocol/muc#user'><item affiliation='none' role='none'/><status code='110'/></x></presence>");
+    p.close(sock);
+  }
+
+  @Test public void testXmppOccupantsCallAndHelp()
+  {
+    PosixWorld w  = new PosixWorld("xmpp").addPeer(new XmppServer("10.0.0.5", 5222)
+                                                       .account("newcomer", "c0ffee")
+                                                       .room("robots", "Robots & buggles", "Alice", "Karel")
+                                                       .history("robots", "Karel", "Back in a minute.")
+                                                       .address(2, "robots", "Karel", "{0}: what do you want?")
+                                                       .answer("Karel", List.of(List.of("please"), List.of("treasure", "trésor")), "Thanks!", "What?")
+                                                       .hints("robots", "Alice", "Karel", "{0}: be polite", "{0}: say {1} and {2}"));
+    PosixEntity p = process(w);
+    int sock      = xmppJoined(p);
+    String from   = "<message from='robots@conference.buggleinc.lan/%s' to='newcomer@buggleinc.lan' type='groupchat'><body>%s</body></message>";
+    expect(p, sock, String.format(from, "Karel", "newcomer: what do you want?"));
+    for (String hint : List.of("newcomer: be polite", "newcomer: say please and treasure", "newcomer: say please and treasure")) {
+      p.send(sock, b("<message to='robots@conference.buggleinc.lan' type='groupchat'><body>karel, hello</body></message>"), 0);
+      expect(p, sock, String.format(from, "newcomer", "karel, hello"));
+      expect(p, sock, String.format(from, "Karel", "newcomer: What?"));
+      expect(p, sock, String.format(from, "Alice", hint)); // the last hint is repeated
+    }
+    p.send(sock,
+           "<message to='robots@conference.buggleinc.lan' type='groupchat'><body>Karel: le trésor, please</body></message>".getBytes(StandardCharsets.UTF_8),
+           0);
+    expect(p, sock, String.format(from, "newcomer", s("Karel: le trésor, please".getBytes(StandardCharsets.UTF_8))));
+    expect(p, sock, String.format(from, "Karel", "newcomer: Thanks!"));            // the accents do not matter
+    Assertions.assertThrows(ExplainedException.class, () -> p.recv(sock, 512, 0)); // no more hints: a deadlock
+  }
+
+  @Test public void testXmppLineAfterWritingToAnOccupant()
+  {
+    PosixWorld w  = new PosixWorld("xmpp").addPeer(xmppServer(0).say(0, "robots", "Alice", "Karel is slow.").afterWritingTo("Karel"));
+    PosixEntity p = process(w);
+    int sock      = xmppJoined(p);
+    String from   = "<message from='robots@conference.buggleinc.lan/%s' to='newcomer@buggleinc.lan' type='groupchat'><body>%s</body></message>";
+    for (int i = 0; i < 2; i++) { // only after the first message to Karel
+      p.send(sock, b("<message to='robots@conference.buggleinc.lan' type='groupchat'><body>Karel: hi</body></message>"), 0);
+      expect(p, sock, String.format(from, "newcomer", "Karel: hi"));
+      if (i == 0)
+        expect(p, sock, String.format(from, "Alice", "Karel is slow.")); // before the answer of Karel
+      else                                                               // the line of Alice two seconds after the joining, planned before the second answer
+        expect(p, sock, String.format(from, "Alice", "Is a &lt; b? Ask Karel &amp; co."));
+      expect(p, sock, String.format(from, "Karel", "newcomer: Ask nicely."));
+    }
+    p.close(sock);
+  }
+
+  @Test public void testXmppNestedElementsAndKeepAlives()
+  {
+    PosixWorld w  = new PosixWorld("xmpp").addPeer(new XmppServer("10.0.0.5", 5222)
+                                                       .account("newcomer", "c0ffee")
+                                                       .room("robots", "Robots", "Carol", "Karel")
+                                                       .sayInXhtml(1, "robots", "Carol", "I'm <b>bold</b>")
+                                                       .forward(2, "robots", "Carol", "Karel said:", "Karel", "Old news", "2023-12-24T18:00:00Z")
+                                                       .keepAlives()
+                                                       .doubleQuotes());
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.5", 5222);
+    p.send(sock, b(XMPP_HEADER + xmppAuth("\0newcomer\0c0ffee") + "<presence to='robots@conference.buggleinc.lan/newcomer'/>"), 0);
+    expect(p, sock, xmppServerHeader(1).replace('\'', '"') + XMPP_FEATURES.replace('\'', '"') + "<success xmlns=\"urn:ietf:params:xml:ns:xmpp-sasl\"/>");
+    String joined = s(p.recv(sock, 2000, 0));
+    Assertions.assertTrue(joined.endsWith("<subject>Robots</subject></message>"), joined);
+    expect(
+        p, sock,
+        "<message from=\"robots@conference.buggleinc.lan/Carol\" to=\"newcomer@buggleinc.lan\" type=\"groupchat\"><body>I'm &lt;b&gt;bold&lt;/b&gt;</body>"
+            +
+            "<html xmlns=\"http://jabber.org/protocol/xhtml-im\"><body xmlns=\"http://www.w3.org/1999/xhtml\"><p>I'm &lt;b&gt;bold&lt;/b&gt;</p></body></html>"
+            + "</message> ");
+    expect(p, sock,
+           "<message from=\"robots@conference.buggleinc.lan/Carol\" to=\"newcomer@buggleinc.lan\" type=\"groupchat\"><body>Karel said:</body>"
+               + "<forwarded xmlns=\"urn:xmpp:forward:0\"><delay xmlns=\"urn:xmpp:delay\" stamp=\"2023-12-24T18:00:00Z\"/><message xmlns=\"jabber:client\" "
+               + "from=\"robots@conference.buggleinc.lan/Karel\" type=\"groupchat\"><body>Old news</body></message></forwarded></message> ");
     p.close(sock);
   }
 

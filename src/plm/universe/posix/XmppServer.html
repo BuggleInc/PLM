@@ -1,0 +1,180 @@
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h3>The XMPP protocol</h3>
+
+<p>The XMPP server of this world serves the domain <code>buggleinc.lan</code> (RFC 6120 and 6121), and its chat rooms on
+<code>conference.buggleinc.lan</code> (XEP-0045, Multi-User Chat). Its users are known by their address (a JID), written as
+<code>user@buggleinc.lan</code>. They authenticate with a password, then join the rooms and talk there with the other
+occupants.</p>
+
+<h4>Framing</h4>
+
+<p>Each direction of the connection carries a single XML document, called a <b>stream</b>: it starts with the opening tag
+<code>&lt;stream:stream ...&gt;</code> (after an optional XML declaration <code>&lt;?xml version='1.0'?&gt;</code>), and only
+ends with <code>&lt;/stream:stream&gt;</code> when the connection ends. The messages are the elements directly inside this root
+element, called <b>stanzas</b>, such as <code>&lt;message&gt;...&lt;/message&gt;</code>. There is no length before them, and
+no line end after them: a stanza ends where its first tag is closed, once the nesting of its elements gets back to the root.
+A stanza may contain elements with the same name as itself, such as a <code>&lt;message&gt;</code> quoted inside a message, so
+the first <code>&lt;/message&gt;</code> found does not always end the stanza. An element without content may be written as a
+single tag, such as <code>&lt;success/&gt;</code>. Some spaces may come between two stanzas: the servers and the clients send a
+single space now and then to keep the connection alive. The network does not keep the limits of the stanzas either: a single
+<code>recv()</code> may return several stanzas, or only the beginning of one, cut anywhere, even in the middle of a tag.</p>
+
+<p>The values of the attributes are quoted with <code>'</code> or <code>"</code>, as each program likes. In the texts and the
+values, five characters are written as references: <code>&amp;lt;</code> for <code>&lt;</code>, <code>&amp;gt;</code> for
+<code>&gt;</code>, <code>&amp;amp;</code> for <code>&amp;</code>, <code>&amp;apos;</code> for <code>'</code> and
+<code>&amp;quot;</code> for <code>"</code>. A text never holds a raw <code>&lt;</code> nor <code>&amp;</code>, and the receiver
+must decode the references to get the text. XMPP forbids the comments, the processing instructions (but the XML declaration)
+and the DTD. The texts of this server are in ASCII.</p>
+
+<h4>Opening the stream and authenticating</h4>
+
+<p>The client speaks first, with the header of its stream, which names the domain of the server, the namespace of the stanzas of
+a client, the prefix <code>stream</code> and the version of XMPP:<br/>
+<code>&lt;stream:stream to='buggleinc.lan' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams'
+version='1.0'&gt;</code><br/>
+The server answers with the header of its own stream (with an id), then with its features: here, the authentication
+mechanisms of SASL that it offers, only <code>PLAIN</code>.</p>
+
+<p>With PLAIN (RFC 4616), the client sends its credentials in the element <code>&lt;auth
+xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'&gt;</code>: a zero byte, the user name (without the domain), a zero
+byte and the password, all encoded in base64. The server answers <code>&lt;success
+xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/&gt;</code>, or a <code>&lt;failure&gt;</code> holding the condition and a
+<code>&lt;text&gt;</code> explaining it, after which the client may try again.</p>
+
+<table border=1>
+<tr><td><code>not-authorized</code></td><td>The user name or the password is wrong.</td></tr>
+<tr><td><code>malformed-request</code></td><td>The decoded credentials do not hold two zero bytes, or are empty.</td></tr>
+<tr><td><code>incorrect-encoding</code></td><td>The content of <code>&lt;auth&gt;</code> is not in base64.</td></tr>
+<tr><td><code>invalid-authzid</code></td><td>The credentials start with something else than a zero byte (or the address of the
+  user).</td></tr>
+<tr><td><code>invalid-mechanism</code></td><td>The mechanism is not <code>PLAIN</code>.</td></tr>
+</table>
+
+<p>Once authenticated, the client may send its stanzas at once. RFC 6120 asks the client to restart the stream after the
+success, by sending a new header, which this server accepts: it then answers with a new header and empty features
+(<code>&lt;stream:features/&gt;</code>). The address of the client is then <code>user@buggleinc.lan</code>.</p>
+
+<h4>Chat rooms</h4>
+
+<p>A room has the address <code>name@conference.buggleinc.lan</code>, and each occupant the address of the room followed by its
+nickname, such as <code>name@conference.buggleinc.lan/Alice</code>. To join a room, the client sends its presence to its own
+address in the room: <code>&lt;presence to='name@conference.buggleinc.lan/nickname'&gt;&lt;x
+xmlns='http://jabber.org/protocol/muc'/&gt;&lt;/presence&gt;</code>. The server then sends, in this order:</p>
+<ul>
+  <li>the presence of each other occupant, from its address in the room;</li>
+  <li>the presence of the client in the room, holding <code>&lt;status code='110'/&gt;</code> to tell that it is its own;</li>
+  <li>the history of the room: the last messages said before the client came, each with a <code>&lt;delay
+    xmlns='urn:xmpp:delay'/&gt;</code> giving their time in its attribute <code>stamp</code>;</li>
+  <li>the subject of the room, in a message from the room itself, holding a <code>&lt;subject&gt;</code> but no body. It always
+    comes last, and tells that the client is in the room.</li>
+</ul>
+
+<p>The messages of the room then come as they are said: <code>&lt;message from='name@conference.buggleinc.lan/Alice'
+to='user@buggleinc.lan' type='groupchat'&gt;&lt;body&gt;the text&lt;/body&gt;&lt;/message&gt;</code>. A message may hold more
+elements than its <code>&lt;body&gt;</code>, such as its XHTML version (an <code>&lt;html&gt;</code> holding a
+<code>&lt;body&gt;</code> of its own, XEP-0071) or a message that it forwards (inside a <code>&lt;forwarded&gt;</code>,
+XEP-0297): its text is in the <code>&lt;body&gt;</code> directly inside the message.</p>
+
+<p>To talk in the room, the client sends a message of type <code>groupchat</code> to the room: <code>&lt;message
+to='name@conference.buggleinc.lan' type='groupchat'&gt;&lt;body&gt;the text&lt;/body&gt;&lt;/message&gt;</code>. The room sends
+it
+to every occupant, the client included, which thus gets its own message back from its address in the room. As on IRC, a message
+for someone in particular starts with its nickname and a colon, such as <code>Alice: hello!</code>, and the other occupants
+may answer it. A private message goes to the address of an occupant, with the type <code>chat</code>, and its answers come
+with the type <code>chat</code> too. The client leaves a room by sending its presence of type <code>unavailable</code> there,
+which the room confirms.</p>
+
+<h4>Ending the stream</h4>
+
+<p>The client ends its stream with <code>&lt;/stream:stream&gt;</code>. The server ends its own stream in turn and closes the
+connection.</p>
+
+<h4>Errors</h4>
+
+<p>A stanza that the server cannot deliver comes back as an error stanza of the same kind, of type <code>error</code>, from the
+address it was sent to (with its <code>id</code>, if it had one). It holds an <code>&lt;error&gt;</code> with its type, its
+condition and a text explaining it, such as <code>&lt;message from='lobby@conference.buggleinc.lan' to='user@buggleinc.lan'
+type='error'&gt;&lt;error type='cancel'&gt;&lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;&lt;text
+xmlns='urn:ietf:params:xml:ns:xmpp-stanzas' xml:lang='en'&gt;There is no room lobby on
+conference.buggleinc.lan.&lt;/text&gt;&lt;/error&gt;&lt;/message&gt;</code>. The stream goes on.</p>
+
+<table border=1>
+<tr><td><code>item-not-found</code></td><td>The room or the occupant does not exist, or the address is not a room.</td></tr>
+<tr><td><code>jid-malformed</code></td><td>The presence joining a room lacks the nickname.</td></tr>
+<tr><td><code>conflict</code></td><td>Another occupant has that nickname.</td></tr>
+<tr><td><code>not-acceptable</code></td><td>The client sends to a room that it did not join.</td></tr>
+<tr><td><code>bad-request</code></td><td>The type of the message is wrong: <code>groupchat</code> to a room, <code>chat</code>
+  to an
+  occupant.</td></tr>
+<tr><td><code>service-unavailable</code></td><td>A request <code>&lt;iq&gt;</code>, which this server does not answer.</td></tr>
+</table>
+
+<p>A worse mistake ends the stream: the server sends a <code>&lt;stream:error&gt;</code> with the condition and a text
+explaining
+it, ends its stream and closes the connection, such as <code>&lt;stream:error&gt;&lt;not-authorized
+xmlns='urn:ietf:params:xml:ns:xmpp-streams'/&gt;&lt;text xmlns='urn:ietf:params:xml:ns:xmpp-streams' xml:lang='en'&gt;The client
+must authenticate with &amp;lt;auth&amp;gt; before sending any
+stanza.&lt;/text&gt;&lt;/stream:error&gt;&lt;/stream:stream&gt;</code>.</p>
+
+<table border=1>
+<tr><td><code>not-well-formed</code></td><td>The XML is broken: an element closed by another name, a raw <code>&lt;</code> or
+  <code>&amp;</code> in a text, a value without quotes, some text between the stanzas...</td></tr>
+<tr><td><code>restricted-xml</code></td><td>A comment, a processing instruction or a DTD.</td></tr>
+<tr><td><code>bad-format</code></td><td>The stream does not start with its header.</td></tr>
+<tr><td><code>host-unknown</code></td><td>The header does not name the domain <code>buggleinc.lan</code>.</td></tr>
+<tr><td><code>invalid-namespace</code></td><td>The header lacks <code>xmlns='jabber:client'</code> or the declaration of the
+  prefix <code>stream</code>.</td></tr>
+<tr><td><code>unsupported-version</code></td><td>The header lacks <code>version='1.0'</code>.</td></tr>
+<tr><td><code>not-authorized</code></td><td>A stanza sent before the authentication.</td></tr>
+<tr><td><code>unsupported-stanza-type</code></td><td>An unknown element in the stream, such as <code>&lt;auth&gt;</code>
+  without its
+  namespace.</td></tr>
+<tr><td><code>policy-violation</code></td><td>An authentication when the client is already authenticated.</td></tr>
+</table>
+
+<h4>Example session</h4>
+
+<p>In this session, the user <code>student</code> has the password <code>secret</code>, and the room <code>lobby</code> has the
+subject "Say hello!" and Alice as only occupant, who speaks two seconds after the client joined. The lines starting with
+<code>C:</code> are sent by the client, and those starting with <code>S:</code> by the server. These prefixes and the line ends
+are not part of the data: each line is sent without anything between it and the next one.</p>
+
+<pre>
+C: &lt;?xml version='1.0'?&gt;&lt;stream:stream to='buggleinc.lan' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'&gt;
+S: &lt;?xml version='1.0'?&gt;&lt;stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='plm1' from='buggleinc.lan' version='1.0' xml:lang='en'&gt;
+S: &lt;stream:features&gt;&lt;mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'&gt;&lt;mechanism&gt;PLAIN&lt;/mechanism&gt;&lt;/mechanisms&gt;&lt;/stream:features&gt;
+C: &lt;auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'&gt;AHN0dWRlbnQAc2VjcmV0&lt;/auth&gt;
+S: &lt;success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/&gt;
+C: &lt;presence to='lobby@conference.buggleinc.lan/student'&gt;&lt;x xmlns='http://jabber.org/protocol/muc'/&gt;&lt;/presence&gt;
+S: &lt;presence from='lobby@conference.buggleinc.lan/Alice' to='student@buggleinc.lan'&gt;&lt;x xmlns='http://jabber.org/protocol/muc#user'&gt;&lt;item affiliation='member' role='participant'/&gt;&lt;/x&gt;&lt;/presence&gt;
+S: &lt;presence from='lobby@conference.buggleinc.lan/student' to='student@buggleinc.lan'&gt;&lt;x xmlns='http://jabber.org/protocol/muc#user'&gt;&lt;item affiliation='none' role='participant'/&gt;&lt;status code='110'/&gt;&lt;/x&gt;&lt;/presence&gt;
+S: &lt;message from='lobby@conference.buggleinc.lan' to='student@buggleinc.lan' type='groupchat'&gt;&lt;subject&gt;Say hello!&lt;/subject&gt;&lt;/message&gt;
+S: &lt;message from='lobby@conference.buggleinc.lan/Alice' to='student@buggleinc.lan' type='groupchat'&gt;&lt;body&gt;Hello everybody!&lt;/body&gt;&lt;/message&gt;
+C: &lt;message to='lobby@conference.buggleinc.lan' type='groupchat'&gt;&lt;body&gt;Hello Alice &amp;amp; all!&lt;/body&gt;&lt;/message&gt;
+S: &lt;message from='lobby@conference.buggleinc.lan/student' to='student@buggleinc.lan' type='groupchat'&gt;&lt;body&gt;Hello Alice &amp;amp; all!&lt;/body&gt;&lt;/message&gt;
+C: &lt;/stream:stream&gt;
+S: &lt;/stream:stream&gt;
+</pre>
+
+<h4>Realism of this server</h4>
+
+<p>This server behaves as the real ones in everything described above, but it is simpler on the following points. A client
+written for this world would mostly work on real servers, with some additions.</p>
+
+<ul>
+  <li>The connection is not encrypted: this server does not offer <code>&lt;starttls/&gt;</code> in its features. Most real
+    servers require TLS before the authentication (with <code>&lt;required/&gt;</code> in this feature), and refuse PLAIN on a
+    connection in clear text, where the password would travel readable by anyone.</li>
+  <li>The real servers offer stronger mechanisms than PLAIN, such as SCRAM-SHA-1 or SCRAM-SHA-256, which prove that the client
+  knows
+    the password without sending it.</li>
+  <li>After the restart of the stream, a real server offers to bind a resource (<code>&lt;bind/&gt;</code>), and only accepts
+    the stanzas once the client asked for one with an <code>&lt;iq&gt;</code>: its address then becomes
+    <code>user@domain/resource</code>, one per connection of the user. This server takes the address <code>user@domain</code>
+    at once.</li>
+  <li>This server answers no <code>&lt;iq&gt;</code>: no roster (the list of contacts), no discovery of the services, no
+    ping. The occupants of the rooms follow a script, and the rooms are neither created nor configured by the clients.</li>
+  <li>The messages carry no <code>id</code> unless the client gave one, nor the <code>&lt;stanza-id&gt;</code> of XEP-0359 that
+    the real rooms add, and this server never sends a space alone unless the world asks for it.</li>
+  <li>A real server limits the size of the stanzas and the rate of the client, and closes the idle connections.</li>
+</ul>
