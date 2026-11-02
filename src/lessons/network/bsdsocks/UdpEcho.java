@@ -11,6 +11,9 @@ import plm.universe.posix.PosixWorld;
 public class UdpEcho extends ExerciseTemplated {
   /** The port of the echo server, given by the hint of the DNS server (see UdpDns) */
   private static final int PORT = 6666;
+  /** The port of the XMPP server and the password of the newcomer on it, given in each world (see XmppClient) */
+  static final int BUGGLES_PORT = 52220, TURTLES_PORT = 15222;
+  static final String BUGGLES_PASSWORD = "ba6915c0de", TURTLES_PASSWORD = "70d1e5ca7f";
 
   /** A line of the chat, sent by that character to the echo server at that time (from 1, once the student bound its socket) */
   private record Line(int time, String who, String text) {}
@@ -23,11 +26,12 @@ public class UdpEcho extends ExerciseTemplated {
 
   /**
    * The worlds of the exercise, where the parameter of server() is the port to bind. Each character sends its lines from its own
-   * machine and waits for their echo, so that every aspect is compared: each line must come back whole to its sender. Bob's line
-   * holding PORT <n> gives the port of the XMPP server, which differs between the worlds, while other lines look like it without
-   * its exact form. A line sent at the same time as Bob's, after it, stays unanswered, as the student stops on Bob's line. Bob
-   * then asks whether his line arrived, which only a student going on after it receives (before an explained deadlock). Bob checks
-   * the echoes of his lines, one of which is longer than the usual buffers: on a wrong one, he complains and never gives the port.
+   * machine and waits for their echo, so that every aspect is compared: each line must come back whole to its sender. Alice's line
+   * holding USER <name> and PASSWORD <secret> gives the account of the student on the XMPP server, and Bob's line holding PORT <n>
+   * the port of this server, which differ between the worlds, while other lines look like them without their exact form. A line
+   * sent at the same time as Bob's, after it, stays unanswered, as the student stops on Bob's line. Bob then asks whether his line
+   * arrived, which only a student going on after it receives (before an explained deadlock). Bob checks the echoes of his lines,
+   * one of which is longer than the usual buffers: on a wrong one, he complains and never gives the port.
    */
   public static PosixWorld[] worlds()
   {
@@ -35,6 +39,13 @@ public class UdpEcho extends ExerciseTemplated {
         new Chat("Alice", "Carol", "Bob", "Dave")
             .says(1, "Alice", Game.i18n.tr("Testing, testing. Is the echo server of the newcomer up?"))
             .says(1, "Carol", Game.i18n.tr("Hello? Hello? Oh, it answers with my own words!"))
+            .says(2, "Alice",
+                  Game.i18n.tr(
+                      // Translator: please keep this string unchanged (without the quotes): "USER <newcomer>"
+                      // Translator: please keep this string unchanged (without the quotes): "PASSWORD <{0}>"
+                      "Newcomer, write this down: the XMPP server of Karel knows you as USER <newcomer> with the PASSWORD <{0}>. Without them, Karel will "
+                          + "not even see you.",
+                      BUGGLES_PASSWORD))
             .says(2, "Dave", Game.i18n.tr("Echo! Echo! Echo!"))
             .says(3, "Alice",
                   Game.i18n.tr(
@@ -53,43 +64,51 @@ public class UdpEcho extends ExerciseTemplated {
             .says(9, "Dave", Game.i18n.tr("In a maze, I shout and listen to the echo to find the walls."))
             .says(10, "Alice", Game.i18n.tr("That is not how mazes work, Dave."))
             .says(10, "Carol", Game.i18n.tr("Unless the maze is made of sockets."))
-            .says(11, "Bob", Game.i18n.tr("The echo is good. Newcomer, listen carefully now."))
+            .says(11, "Bob",
+                  Game.i18n.tr("The echo is good. Newcomer, I hope that you noted the USER and the PASSWORD that Alice gave you. Listen carefully now."))
             .says(12, "Bob",
                   Game.i18n.tr(
                       // Translator: please keep this string unchanged (without the quotes): "PORT <{0}>"
-                      "Karel waits for you on PORT <{0}> of the XMPP server whose address the DNS gave you. Hurry up!", String.valueOf(52220)))
+                      "Karel waits for you on PORT <{0}> of the XMPP server whose address the DNS gave you. Hurry up!", String.valueOf(BUGGLES_PORT)))
             .says(12, "Dave", Game.i18n.tr("Wait, what did Bob say? Can you repeat?"))
             .says(14, "Bob", Game.i18n.tr("Did you receive my previous message?"))
             .world("Buggles");
-    PosixWorld turtles = new Chat("Carol", "Dave", "Bob", "Alice")
-                             .says(1, "Alice", Game.i18n.tr("Is this the echo server of the newcomer? Hello, hello, hello..."))
-                             .says(2, "Dave", Game.i18n.tr("Slow and steady: one word per second. Echo."))
-                             .says(3, "Carol", Game.i18n.tr("Here is my Koch curve at level 4. Does it come back whole?") + " " + koch(4))
-                             .says(4, "Dave", Game.i18n.tr("Echo."))
-                             .says(4, "Alice", Game.i18n.tr("Carol, your curve took the whole queue!"))
-                             .says(5, "Bob",
-                                   Game.i18n.tr(
-                                       // Translator: please keep this string unchanged (without the quotes): "PORT <number>"
-                                       "Patience, everybody. The newcomer gets the PORT <number> once the echo works."))
-                             .says(5, "Bob", Game.i18n.tr("Here is my longest spiral, to check that the long lines come back whole:") + " " + spiral(50))
-                             .says(6, "Carol",
-                                   Game.i18n.tr(
-                                       // Translator: please keep this string unchanged (without the quotes): "PORT 5234"
-                                       "The old map says PORT 5234, but the map is older than me."))
-                             .says(7, "Dave", Game.i18n.tr("Echo, one."))
-                             .says(7, "Dave", Game.i18n.tr("Echo, two."))
-                             .says(8, "Alice", Game.i18n.tr("An echo is a spiral of sound, smaller at each turn."))
-                             .says(9, "Carol", Game.i18n.tr("Then it is recursive, and it needs a stop condition!"))
-                             .says(9, "Dave", Game.i18n.tr("My stop condition is a nap."))
-                             .says(10, "Bob", Game.i18n.tr("The echo is faithful. Newcomer, here is what you are waiting for."))
-                             .says(11, "Bob",
-                                   Game.i18n.tr(
-                                       // Translator: please keep this string unchanged (without the quotes): "PORT <{0}>"
-                                       "Karol waits for you on PORT <{0}> of the XMPP server whose address the DNS gave you. Take your time, but not too much.",
-                                       String.valueOf(15222)))
-                             .says(11, "Alice", Game.i18n.tr("Bob, can you say it again? I was drawing a circle."))
-                             .says(13, "Bob", Game.i18n.tr("Did you receive my previous message?"))
-                             .world("Turtles");
+    PosixWorld turtles =
+        new Chat("Carol", "Dave", "Bob", "Alice")
+            .says(1, "Alice", Game.i18n.tr("Is this the echo server of the newcomer? Hello, hello, hello..."))
+            .says(2, "Dave", Game.i18n.tr("Slow and steady: one word per second. Echo."))
+            .says(2, "Alice",
+                  Game.i18n.tr(
+                      // Translator: please keep this string unchanged (without the quotes): "USER <newcomer>"
+                      // Translator: please keep this string unchanged (without the quotes): "PASSWORD <{0}>"
+                      "Newcomer, Karol asked me to give you your account on his XMPP server: USER <newcomer> and PASSWORD <{0}>. Keep them safe.",
+                      TURTLES_PASSWORD))
+            .says(3, "Carol", Game.i18n.tr("Here is my Koch curve at level 4. Does it come back whole?") + " " + koch(4))
+            .says(4, "Dave", Game.i18n.tr("Echo."))
+            .says(4, "Alice", Game.i18n.tr("Carol, your curve took the whole queue!"))
+            .says(5, "Bob",
+                  Game.i18n.tr(
+                      // Translator: please keep this string unchanged (without the quotes): "PORT <number>"
+                      "Patience, everybody. The newcomer gets the PORT <number> once the echo works."))
+            .says(5, "Bob", Game.i18n.tr("Here is my longest spiral, to check that the long lines come back whole:") + " " + spiral(50))
+            .says(6, "Carol",
+                  Game.i18n.tr(
+                      // Translator: please keep this string unchanged (without the quotes): "PORT 5234"
+                      "The old map says PORT 5234, but the map is older than me."))
+            .says(7, "Dave", Game.i18n.tr("Echo, one."))
+            .says(7, "Dave", Game.i18n.tr("Echo, two."))
+            .says(8, "Alice", Game.i18n.tr("An echo is a spiral of sound, smaller at each turn."))
+            .says(9, "Carol", Game.i18n.tr("Then it is recursive, and it needs a stop condition!"))
+            .says(9, "Dave", Game.i18n.tr("My stop condition is a nap."))
+            .says(10, "Bob", Game.i18n.tr("The echo is faithful. Newcomer, you have the USER and the PASSWORD of Alice, here is the last piece."))
+            .says(11, "Bob",
+                  Game.i18n.tr(
+                      // Translator: please keep this string unchanged (without the quotes): "PORT <{0}>"
+                      "Karol waits for you on PORT <{0}> of the XMPP server whose address the DNS gave you. Take your time, but not too much.",
+                      String.valueOf(TURTLES_PORT)))
+            .says(11, "Alice", Game.i18n.tr("Bob, can you say it again? I was drawing a circle."))
+            .says(13, "Bob", Game.i18n.tr("Did you receive my previous message?"))
+            .world("Turtles");
     return new PosixWorld[] {buggles, turtles};
   }
 

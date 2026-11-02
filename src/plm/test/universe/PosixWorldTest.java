@@ -528,6 +528,26 @@ public class PosixWorldTest {
     }
   }
 
+  @Test public void testUdpEchoGivesTheAccountBeforeThePort()
+  {
+    String[] passwords = {"ba6915c0de", "70d1e5ca7f"};
+    for (int i = 0; i < 2; i++) {
+      PosixEntity p   = process(UdpEcho.worlds()[i]);
+      int sock        = p.socket(AF_INET, SOCK_DGRAM, 0);
+      String accounts = "";
+      p.bind(sock, "0.0.0.0", 6666);
+      for (String data = ""; !data.matches("(?s).*" + BOB_PORT + ".*");) {
+        data = s(p.recvfrom(sock, PosixWorld.MAX_DATAGRAM, 0));
+        p.sendto(sock, b(data), 0, p.lastSender().split(":")[0], Integer.parseInt(p.lastSender().split(":")[1]));
+        Matcher m = Pattern.compile("(?:USER|PASSWORD) <([0-9a-z]+)>").matcher(data);
+        while (m.find())
+          accounts += m.group(1) + " ";
+      }
+      Assertions.assertEquals("newcomer " + passwords[i] + " ", accounts);
+      p.close(sock);
+    }
+  }
+
   @Test public void testUdpEchoCatchesTheMistakes()
   {
     for (int i = 0; i < 2; i++) {

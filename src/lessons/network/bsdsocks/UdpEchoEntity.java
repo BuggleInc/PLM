@@ -14,14 +14,21 @@ public class UdpEchoEntity extends plm.universe.posix.PosixEntity {
   public void server(int port) throws IOException
   {
     /* BEGIN SOLUTION */
-    Pattern bob = Pattern.compile("PORT <([0-9]+)>");
+    Pattern[] alice = {Pattern.compile("USER <([0-9a-z]+)>"), Pattern.compile("PASSWORD <([0-9a-z]+)>")};
+    Pattern bob     = Pattern.compile("PORT <([0-9]+)>");
     try (DatagramSocket socket = new DatagramSocket(port)) {
       byte[] buffer = new byte[65507]; // the largest possible datagram
       while (true) {
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length); // a new one each time, as receive() shortens it
         socket.receive(packet);
         socket.send(new DatagramPacket(buffer, packet.getLength(), packet.getSocketAddress()));
-        Matcher found = bob.matcher(new String(buffer, 0, packet.getLength(), StandardCharsets.US_ASCII));
+        String text = new String(buffer, 0, packet.getLength(), StandardCharsets.US_ASCII);
+        for (Pattern account : alice) {
+          Matcher found = account.matcher(text);
+          if (found.find())
+            System.out.println(found.group(1));
+        }
+        Matcher found = bob.matcher(text);
         if (found.find()) {
           System.out.println(found.group(1));
           return;

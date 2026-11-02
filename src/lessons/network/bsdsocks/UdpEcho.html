@@ -60,9 +60,12 @@ client sends from its own port, which its system picks for it.</p>
 <h2>What to do</h2>
 
 <p>Write the function <code>server(port)</code>, which echoes every datagram that arrives on the given port to its sender,
-whole and unchanged. Among the datagrams will come a message of Bob giving the port of the XMPP server as
-<code>PORT &lt;12345&gt;</code>: echo it as the others, then print the port alone (followed by a new line), close your socket and
-stop. Other messages may look like it: only this exact form counts, and the port differs from one world to the other.</p>
+whole and unchanged. Listen carefully to what the clients say: the XMPP server only lets in the users that it knows, and Alice
+will give your account on this server as <code>USER &lt;name&gt;</code> and <code>PASSWORD &lt;secret&gt;</code> (letters and
+digits). Print the user name, then the password, each alone on a line, as soon as they come. Later, a message of Bob will give
+the port of the XMPP server as <code>PORT &lt;12345&gt;</code>: echo it as the others, then print the port alone on a line,
+close your socket and stop. Other messages may look like these ones: only their exact form counts, and the values differ from
+one world to the other. You will need all three in the next exercise.</p>
 
 <h2>Additional hints</h2>
 <ul>
@@ -93,6 +96,14 @@ your buffer).[/!][!python]<code>re.search(rb"PORT &lt;([0-9]+)&gt;", data)</code
 the match holds the digits, as bytes (<code>decode()</code> turns them into text).[/!][!java|scala]
 <code>Pattern.compile("PORT &lt;([0-9]+)&gt;")</code> finds it in the text of the datagram, and the <code>group(1)</code> of
 the matcher holds the digits, once <code>find()</code> returned true.[/!]</p>
+</div></li>
+
+<li><div class="tip" id="tip-account" alt="How do I find the user name and the password?">
+<p>As for the port, but with letters and digits between the <code>&lt;</code> and the <code>&gt;</code>, both in a single
+message of Alice: look for each of them in every datagram. [!c]<code>sscanf(found, "USER &lt;%63[a-z0-9]&gt;", user)</code>
+reads at most 63 letters or digits into the array <code>char user[64]</code>.[/!][!python]The pattern
+<code>rb"USER &lt;([0-9a-z]+)&gt;"</code> matches them.[/!][!java|scala]The pattern <code>"USER &lt;([0-9a-z]+)&gt;"</code>
+matches them.[/!]</p>
 </div></li>
 
 </ul>

@@ -12,6 +12,10 @@ def run():
             while True:
                 data, sender = sock.recvfrom(65507)  # the largest possible datagram
                 sock.sendto(data, sender)
+                for name in (rb"USER", rb"PASSWORD"):  # the account given by Alice
+                    found = re.search(name + rb" <([0-9a-z]+)>", data)
+                    if found:
+                        print(found.group(1).decode())
                 found = re.search(rb"PORT <([0-9]+)>", data)
                 if found:
                     print(found.group(1).decode())
