@@ -1640,6 +1640,22 @@ public class PosixWorldTest {
     p.close(sock);
   }
 
+  @Test public void testLiteralTextsInScripts()
+  {
+    String text   = "Bob said \"\\o/\" in Rennes, très content";
+    PosixWorld w  = new PosixWorld("literal").addPeer(Peer.server("10.0.0.1", 80, """
+        accept(3)
+        send(4, %s)
+        transmit(4, %d)
+        close(4)
+        """.formatted(Peer.literal(text), Peer.ascii(text).length())));
+    PosixEntity p = process(w);
+    int sock      = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    Assertions.assertEquals("Bob said \"\\o/\" in Rennes, tres content", s(p.recv(sock, 100, 0)));
+    p.close(sock);
+  }
+
   @Test public void testUnknownFileAndBadDescriptor()
   {
     PosixEntity p = process(new PosixWorld("errors"));

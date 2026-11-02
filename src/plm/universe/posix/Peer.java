@@ -43,6 +43,9 @@ public abstract class Peer {
     return res.replaceAll("[^\\x00-\\x7F]", "?");
   }
 
+  /** The text as a string of a script: in ASCII (see ascii()), between quotes, with its quotes and backslashes escaped */
+  public static String literal(String text) { return "\"" + ascii(text).replace("\\", "\\\\").replace("\"", "\\\"") + "\""; }
+
   /** A peer on ip:port, to which the student connects (its script should accept() the connection) */
   public static Peer server(String ip, int port, String script) { return new ScriptedPeer(true, false, ip, port, script); }
 

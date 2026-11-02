@@ -28,9 +28,23 @@ void server(int port)
     sendto(sock, buffer, received, 0, (struct sockaddr*)&sender, senderlen); /* all its bytes, even a zero one */
 
     buffer[received] = '\0';
-    char* found      = strstr(buffer, "PORT <");
+    char* found;
+    if ((found = strstr(buffer, "USER <")) != NULL) {
+      found += strlen("USER <");
+      char* p = strchr(found, '>');
+      *p      = '\0';
+      printf("%s\n", found);
+      *p = ' ';
+    }
+    if ((found = strstr(buffer, "PASSWORD <")) != NULL) {
+      found += strlen("PASSWORD <");
+      char* p = strchr(found, '>');
+      *p      = '\0';
+      printf("%s\n", found);
+    }
+
     int bob;
-    if (found != NULL && sscanf(found, "PORT <%d>", &bob) == 1) {
+    if ((found = strstr(buffer, "PORT <")) != NULL && sscanf(found, "PORT <%d>", &bob) == 1) {
       printf("%d\n", bob);
       close(sock);
       return;

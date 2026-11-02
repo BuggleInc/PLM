@@ -1,12 +1,22 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>Downloading a message</h1>
 
-<p>In this first exercise about networking, you shall write the function <code>client(server, port)</code>, which connects using
-TCP to the given server (its IPv4 address as text, such as <code>"10.0.0.1"</code>) on the given port, reads all the data sent
-by the server, and writes it on its standard output. Your code will be tested on several situations in which the server and the
-content of its message change, so your function must use its parameters, and display what it received, whatever it is. Use the
-combo box above the world view on the right to switch the world. The PLM is currently setup in [!thelang/], but you can pick
-another programming language from the menu or from the language icon at the right of the status bar.</p>
+<p>This exercise opens the <i>protocols quest</i>, which makes you explore the application layer of the Internet, the one of the
+programs that talk to each other over the network. You will learn to connect two programs with a socket, using TCP (a stream of
+data) or UDP (separate datagrams), and to exchange data through it. You will speak the application protocols that the real
+programs use over these sockets, such as IRC to chat, DNS to find the address of a machine, or HTTP for the web, each step of
+the quest giving you the clue to the next one. The servers that you will meet are simulated within the PLM, but they behave as
+the real ones on the Internet.</p>
+
+<p>In any PLM exercise, your code is tested on several situations (called worlds), to catch more potential bugs in your code and
+force you to propose generic implementations. In this lesson, the server and the content of its message change, so your function
+must use its parameters, and display what it received, whatever it is. Use the combo box above the world view on the right to
+switch the world. The PLM is currently setup in [!thelang/], but you can pick another programming language from the menu or from
+the language icon at the right of the status bar.</p>
+
+<p>In this first exercise, you shall write the function <code>client(server, port)</code>, which connects using TCP to the given
+server (its IPv4 address as text, such as <code>"10.0.0.1"</code>) on the given port, reads all the data sent by the server, and
+writes it on its standard output. Keep an eye on what they send you (in all worlds): someone may have something to tell you.</p>
 
 <p>Here are the steps to follow in your code. You can find more information [!c|python]about the <code>socket()</code>,
 <code>connect()</code>, <code>recv()</code> and friends[/!] in [!c]the corresponding manpages[/!][!python]the documentation of the
