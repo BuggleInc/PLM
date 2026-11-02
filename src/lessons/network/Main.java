@@ -6,6 +6,7 @@ import lessons.network.bsdsocks.TcpServer;
 import lessons.network.bsdsocks.UdpClient;
 import lessons.network.bsdsocks.UdpDns;
 import lessons.network.bsdsocks.UdpEcho;
+import lessons.network.bsdsocks.XmppClient;
 import plm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
@@ -17,5 +18,6 @@ public class Main extends Lesson {
     addExercise(new UdpClient(this));
     addExercise(new UdpDns(this));
     addExercise(new UdpEcho(this));
+    addExercise(new XmppClient(this));
   }
 }
