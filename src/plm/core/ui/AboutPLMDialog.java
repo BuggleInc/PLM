@@ -66,7 +66,8 @@ public class AboutPLMDialog extends JDialog {
                                   + "<li>Design and code: <i>M. Quinson (and G. Oster until 2015)</i></li>"
                                   + "<li>Tests: <i>Telecom Nancy students (classes from ''11 to ''15)</i></li>"
                                   + "</ul><br/>"
-                                  + "A coding assistant was used for some parts of the code, but all pedagogical content is 100% natural without AI.<br/>"
+                                  + "A coding assistant was used for some parts of the code, but the pedagogical content remains written by humans. "
+                                  + "The IA is asked to diagnostic the technical correctness of the pedagogical content, and draft the scriptwriting.<br/>"
                                   + "Your code is saved to {2}<br/>"
                                   + "Your secret session ID is {3}<br/>"
                                   + "</html>",
