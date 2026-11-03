@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-31 19:24+0100\n"
+"POT-Creation-Date: 2026-11-02 21:16+0100\n"
 "PO-Revision-Date: 2026-05-04 11:10+0000\n"
 "Last-Translator: BoneNI <bounkirdni@gmail.com>\n"
 "Language-Team: Lao <https://hosted.weblate.org/projects/programmers-learning-"
@@ -76,7 +76,7 @@ msgstr "ຊື່ໃນ [!thelang]"
 
 #. type: Content of: <table><tr><th>
 #: src/plm/universe/bugglequest/BuggleWorld.html:18
-#: src/plm/universe/posix/DnsServer.html:152
+#: src/plm/universe/posix/DnsServer.html:141
 msgid "Meaning"
 msgstr "ຄວາມໝາຍ"
 
@@ -229,11 +229,16 @@ msgid ""
 "instead of letting it wait forever."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li><div>
 #: src/plm/universe/posix/PosixWorld.html:17
-#: src/lessons/network/bsdsocks/TcpClient.html:75
+#: src/lessons/network/bsdsocks/TcpClient.html:86
 #: src/lessons/network/bsdsocks/UdpClient.html:22
 #: src/lessons/network/bsdsocks/UdpDns.html:13
+#: src/lessons/network/bsdsocks/UdpDns.html:137
+#: src/lessons/network/bsdsocks/UdpEcho.html:13
+#: src/lessons/network/bsdsocks/XmppClient.html:15
+#: src/lessons/network/bsdsocks/XmppClient.html:75
+#: src/lessons/network/bsdsocks/XmppClient.html:211
 msgid "[!c]"
 msgstr ""
 
@@ -369,9 +374,11 @@ msgstr ""
 #: src/plm/universe/posix/PosixWorld.html:53
 #: src/lessons/welcome/variables/Variables.html:35
 #: src/lessons/welcome/variables/Variables.html:69
-#: src/lessons/network/bsdsocks/TcpClient.html:78
+#: src/lessons/network/bsdsocks/TcpClient.html:89
 #: src/lessons/network/bsdsocks/UdpClient.html:41
 #: src/lessons/network/bsdsocks/UdpDns.html:26
+#: src/lessons/network/bsdsocks/UdpEcho.html:28
+#: src/lessons/network/bsdsocks/XmppClient.html:27
 msgid "[/!] [!python]"
 msgstr "[/!] [!python]"
 
@@ -491,11 +498,12 @@ msgstr ""
 #: src/plm/universe/posix/PosixWorld.html:89
 #: src/lessons/welcome/array/basics/Array1.html:116
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:61
-#: src/lessons/network/bsdsocks/TcpClient.html:35
+#: src/lessons/network/bsdsocks/TcpClient.html:46
 #: src/lessons/network/bsdsocks/TcpServer.html:19
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:165
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:166
 #: src/lessons/network/bsdsocks/UdpClient.html:56
 #: src/lessons/network/bsdsocks/UdpDns.html:40
+#: src/lessons/network/bsdsocks/UdpEcho.html:42
 msgid "[/!] [!java|scala]"
 msgstr "[/!] [!java|scala]"
 
@@ -616,6 +624,7 @@ msgstr ""
 #: src/plm/universe/posix/HttpServer.html:7
 #: src/plm/universe/posix/FtpServer.html:8
 #: src/plm/universe/posix/DnsServer.html:8
+#: src/plm/universe/posix/XmppServer.html:9
 msgid "Framing"
 msgstr ""
 
@@ -1007,6 +1016,7 @@ msgstr ""
 #: src/plm/universe/posix/IrcServer.html:83
 #: src/plm/universe/posix/HttpServer.html:61
 #: src/plm/universe/posix/FtpServer.html:78
+#: src/plm/universe/posix/XmppServer.html:135
 msgid "Example session"
 msgstr ""
 
@@ -1047,7 +1057,8 @@ msgstr ""
 
 #. type: Content of: <h4>
 #: src/plm/universe/posix/IrcServer.html:112
-#: src/plm/universe/posix/DnsServer.html:187
+#: src/plm/universe/posix/DnsServer.html:214
+#: src/plm/universe/posix/XmppServer.html:159
 #, fuzzy
 #| msgid "Goal of this exercise"
 msgid "Realism of this server"
@@ -1603,6 +1614,7 @@ msgstr ""
 
 #. type: Content of: <h4>
 #: src/plm/universe/posix/FtpServer.html:61
+#: src/plm/universe/posix/XmppServer.html:92
 msgid "Errors"
 msgstr ""
 
@@ -1792,11 +1804,13 @@ msgstr ""
 
 #. type: Content of: <table><tr><th>
 #: src/plm/universe/posix/DnsServer.html:21
+#: src/plm/universe/posix/DnsServer.html:159
 msgid "Field"
 msgstr ""
 
 #. type: Content of: <table><tr><th>
 #: src/plm/universe/posix/DnsServer.html:21
+#: src/plm/universe/posix/DnsServer.html:159
 msgid "Content"
 msgstr ""
 
@@ -1831,10 +1845,11 @@ msgstr ""
 #: src/plm/universe/posix/DnsServer.html:24
 msgid ""
 "16 bits, numbered from 15 (the most significant one) to 0, detailed below: "
-"QR (the kind of message), opcode (the kind of query), AA (authoritative "
-"answer), TC (truncated answer), RD (recursion desired), RA (recursion "
-"available), Z (reserved) and RCODE (the response code). A query usually has "
-"the flags <code>01 00</code> (only RD set)."
+"QR (the kind of message), opcode (the kind of operation: 0 for a standard "
+"query, the only one that this server accepts), AA (authoritative answer), TC "
+"(truncated answer), RD (recursion desired), RA (recursion available), Z "
+"(reserved) and RCODE (the response code). A query usually has the flags "
+"<code>01 00</code> (only RD set)."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -1963,7 +1978,7 @@ msgstr ""
 #: src/plm/universe/posix/DnsServer.html:39
 #: src/plm/universe/posix/DnsServer.html:70
 #: src/plm/universe/posix/DnsServer.html:99
-#: src/plm/universe/posix/DnsServer.html:152
+#: src/plm/universe/posix/DnsServer.html:141
 msgid "RCODE"
 msgstr ""
 
@@ -2257,7 +2272,7 @@ msgstr "ບໍ່ມີ"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/posix/DnsServer.html:108
-#: src/plm/universe/posix/DnsServer.html:153
+#: src/plm/universe/posix/DnsServer.html:142
 msgid "NOERROR"
 msgstr ""
 
@@ -2316,7 +2331,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/posix/DnsServer.html:126
-#: src/plm/universe/posix/DnsServer.html:155
+#: src/plm/universe/posix/DnsServer.html:144
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:15
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:30
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:33
@@ -2395,40 +2410,16 @@ msgstr ""
 
 #. type: Content of: <h4>
 #: src/plm/universe/posix/DnsServer.html:138
-msgid "Records"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/posix/DnsServer.html:140
-msgid ""
-"Each record of the answer and additional sections is made of its name, its "
-"type (2 bytes), its class (2 bytes), its time to live in seconds (TTL, on 4 "
-"bytes, telling how long the clients may keep it in a cache), the length of "
-"its data (2 bytes), and its data, whose content depends on the type. The "
-"answer starts with a copy of the question of the query, before the records."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/posix/DnsServer.html:145
-msgid ""
-"A name may be written in a shorter form in the answers of a real server, "
-"which this server never uses (see below): a <i>compression pointer</i>, on "
-"two bytes whose two highest bits are set, telling at which offset of the "
-"message the rest of the name was written before."
-msgstr ""
-
-#. type: Content of: <h4>
-#: src/plm/universe/posix/DnsServer.html:149
 msgid "Response codes"
 msgstr ""
 
 #. type: Content of: <table><tr><th>
-#: src/plm/universe/posix/DnsServer.html:152
+#: src/plm/universe/posix/DnsServer.html:141
 msgid "Name"
 msgstr "ຊື່"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:153
+#: src/plm/universe/posix/DnsServer.html:142
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:14
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:29
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:32
@@ -2439,96 +2430,248 @@ msgid "0"
 msgstr "0"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:153
+#: src/plm/universe/posix/DnsServer.html:142
 msgid ""
 "The name exists. The answer section holds its records of the asked type, and "
 "is empty if it has none of that type."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:155
+#: src/plm/universe/posix/DnsServer.html:144
 msgid "FORMERR"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:155
+#: src/plm/universe/posix/DnsServer.html:144
 msgid ""
-"The query is malformed. The answer is then only a header, with no copy of "
-"the question."
+"The query is malformed. The answer then has no copy of the question, but its "
+"additional section holds a TXT record of the root (the name made of a single "
+"zero byte) explaining the mistake."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:157
+#: src/plm/universe/posix/DnsServer.html:146
 msgid "3"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:157
+#: src/plm/universe/posix/DnsServer.html:146
 msgid "NXDOMAIN"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:157
+#: src/plm/universe/posix/DnsServer.html:146
 msgid "The name does not exist."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:158
+#: src/plm/universe/posix/DnsServer.html:147
 msgid "4"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:158
+#: src/plm/universe/posix/DnsServer.html:147
 msgid "NOTIMP"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:158
-msgid "This kind of query (opcode) is not implemented."
+#: src/plm/universe/posix/DnsServer.html:147
+msgid ""
+"This kind of operation (opcode) is not implemented: this server only accepts "
+"the opcode 0, for a standard query. As for FORMERR, the answer has no copy "
+"of the question."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:159
+#: src/plm/universe/posix/DnsServer.html:149
 msgid "5"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:159
+#: src/plm/universe/posix/DnsServer.html:149
 msgid "REFUSED"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/posix/DnsServer.html:159
+#: src/plm/universe/posix/DnsServer.html:149
 msgid ""
 "The server refuses to answer, here because the name is not in its zone, or "
 "because the class is not IN."
 msgstr ""
 
 #. type: Content of: <h4>
-#: src/plm/universe/posix/DnsServer.html:163
+#: src/plm/universe/posix/DnsServer.html:153
 #, fuzzy
 #| msgid "Goal of this exercise"
 msgid "Answers of this server"
 msgstr "ຈຸດປະສົງຂອງບົດຝຶກຫັດນີ້"
 
 #. type: Content of: <p>
-#: src/plm/universe/posix/DnsServer.html:165
+#: src/plm/universe/posix/DnsServer.html:155
 msgid ""
-"Besides the answer section, the answers about a name hold its TXT records in "
-"their additional section, where the administrators of this zone leave notes. "
-"A datagram that is not a query (shorter than a header, or with the QR bit "
-"set) is ignored, as real servers do: the client then waits forever. The "
-"trace shows how the server read each query and what it answered, decoded, "
-"and explains why a query is malformed."
+"After the header and the repeated question come the answer records and then "
+"the additional records (their counts are announced in the header). Each "
+"record of the answer and additional sections is made of the following "
+"elements:"
 msgstr ""
 
-#. type: Content of: <h4>
-#: src/plm/universe/posix/DnsServer.html:170
-msgid "Example exchange"
+#. type: Content of: <table><tr><th>
+#: src/plm/universe/posix/DnsServer.html:159
+msgid "Size"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:160
+#, fuzzy
+#| msgid "Variables"
+msgid "variable"
+msgstr "ຕົວປ່ຽນ (Variables)"
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:160
+msgid "NAME"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:160
+msgid "The name that this record is about, written as in the questions."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:161
+#: src/plm/universe/posix/DnsServer.html:162
+#: src/plm/universe/posix/DnsServer.html:164
+msgid "2 bytes"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:161
+msgid "TYPE"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:161
+msgid ""
+"The type of the record, as in the questions (1 for A, 16 for TXT, 33 for "
+"SRV)."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:162
+msgid "CLASS"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:162
+msgid "Always 1 (IN)."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:163
+msgid "4 bytes"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:163
+msgid "TTL"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:163
+msgid ""
+"Its time to live, in seconds: how long the clients may keep it in a cache."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:164
+msgid "RDLENGTH"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:164
+msgid "The number of bytes of its data."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:165
+msgid "RDLENGTH bytes"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:165
+msgid "RDATA"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/DnsServer.html:165
+msgid ""
+"Its data, whose content depends on the type (see the table of the types "
+"above)."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/posix/DnsServer.html:172
+#: src/plm/universe/posix/DnsServer.html:168
+msgid ""
+"[!c]As everywhere in DNS, the numbers are written in network byte order: in "
+"C, the numbers on 2 bytes are decoded with <code>ntohs()</code>, and the "
+"ones on 4 bytes with <code>ntohl()</code>. [/!]To walk through an answer, "
+"skip the question (its name up to its final zero byte, then its 4 bytes of "
+"type and class), then read the records one by one. RDLENGTH lets you skip "
+"the data of a record whose type does not interest you, without decoding it. "
+"The next record starts right after it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/DnsServer.html:173
+msgid ""
+"For example, here is a SRV record, as it comes in the answer to a SRV query "
+"on <code>_imap._tcp.buggleinc.lan</code> (a name given here as an example, "
+"in hexadecimal, the text between quotes standing for its ASCII bytes):"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/posix/DnsServer.html:177
+#, no-wrap
+msgid ""
+"05 \"_imap\" 04 \"_tcp\" 09 \"buggleinc\" 03 \"lan\" 00     NAME: the name of the record, as in the question\n"
+"00 21                                               TYPE: 33 (SRV)\n"
+"00 01                                               CLASS: 1 (IN)\n"
+"00 00 0e 10                                         TTL: 3600 seconds\n"
+"00 1a                                               RDLENGTH: 26 bytes of data\n"
+"00 0a                                               RDATA: the priority of the target (10),\n"
+"00 05                                                      its weight (5),\n"
+"00 8f                                                      its port (143),\n"
+"04 \"mail\" 09 \"buggleinc\" 03 \"lan\" 00                       and its name, written as all the names (20 bytes)\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/DnsServer.html:188
+msgid ""
+"An answer may hold several such records, one after the other: the client "
+"picks its target among them as explained with the SRV type above (the lowest "
+"priority first, the others being fallbacks), then needs another query, of "
+"type A, to get the address of this target."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/DnsServer.html:192
+msgid ""
+"Besides the answer section, the answers to a query of another type than TXT "
+"or ANY hold the TXT records of the asked name in their additional section: "
+"this is where the administrators of this zone leave notes. A datagram that "
+"is not a query (shorter than a header, or with the QR bit set) is ignored, "
+"as real servers do: the client then waits forever. The trace shows how the "
+"server read each query and what it answered, decoded, and explains why a "
+"query is malformed."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/DnsServer.html:197
+msgid "Example exchange for an A query"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/DnsServer.html:199
 msgid ""
 "A client asks the address of <code>printer.buggleinc.lan</code>, a name "
 "given here as an example (C for the client, S for the server, in "
@@ -2536,7 +2679,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/posix/DnsServer.html:176
+#: src/plm/universe/posix/DnsServer.html:203
 #, no-wrap
 msgid ""
 "C: 12 34  01 00  00 01  00 00  00 00  00 00       header: ID, flags (RD), 1 question\n"
@@ -2551,7 +2694,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/posix/DnsServer.html:189
+#: src/plm/universe/posix/DnsServer.html:216
 msgid ""
 "This server behaves as the real ones in everything described above, but it "
 "is simpler on the following points. A client written for this world would "
@@ -2559,7 +2702,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/plm/universe/posix/DnsServer.html:193
+#: src/plm/universe/posix/DnsServer.html:220
 msgid ""
 "The names of the answers are always written in full. The real servers "
 "compress them: a name already written in the message is replaced by a "
@@ -2569,7 +2712,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/plm/universe/posix/DnsServer.html:196
+#: src/plm/universe/posix/DnsServer.html:223
 msgid ""
 "The NXDOMAIN answers, and the NOERROR ones without records of the asked "
 "type, have no authority record. A real server adds the SOA record of its "
@@ -2579,7 +2722,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/plm/universe/posix/DnsServer.html:199
+#: src/plm/universe/posix/DnsServer.html:226
 msgid ""
 "The additional section only holds the TXT records of the asked name. A real "
 "server rather puts there the addresses of the names given by its answers "
@@ -2588,14 +2731,21 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/plm/universe/posix/DnsServer.html:202
+#: src/plm/universe/posix/DnsServer.html:229
+msgid ""
+"A real server answers FORMERR with a header only: it does not explain the "
+"mistake in a TXT record."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/DnsServer.html:230
 msgid ""
 "The TXT records hold ASCII text. Real ones may hold any bytes, often UTF-8 "
 "text."
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/plm/universe/posix/DnsServer.html:203
+#: src/plm/universe/posix/DnsServer.html:231
 msgid ""
 "This server does not implement EDNS (RFC 6891), which lets the client "
 "announce a larger buffer with an additional OPT record, so that the answers "
@@ -2607,7 +2757,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/plm/universe/posix/DnsServer.html:207
+#: src/plm/universe/posix/DnsServer.html:235
 msgid ""
 "A real server limits the rate of its answers to each client, and its queries "
 "usually come from a resolver (the one of the C library, or a server of the "
@@ -2617,7 +2767,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/plm/universe/posix/DnsServer.html:210
+#: src/plm/universe/posix/DnsServer.html:238
 msgid ""
 "As any server answering everybody, it uses <code>recvfrom()</code> and "
 "<code>sendto()</code> on an unconnected socket.  Its clients may either do "
@@ -2625,6 +2775,523 @@ msgid ""
 "<code>send()</code> and <code>recv()</code>, as the resolver of the GNU C "
 "library does: the server answers from the address on which it received the "
 "query, so both work."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/plm/universe/posix/XmppServer.html:2
+msgid "The XMPP protocol"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:4
+msgid ""
+"The XMPP server of this world serves the domain <code>buggleinc.lan</code> "
+"(RFC 6120 and 6121), and its chat rooms on <code>conference.buggleinc.lan</"
+"code> (XEP-0045, Multi-User Chat). Its users are known by their address (a "
+"JID), written as <code>user@buggleinc.lan</code>. They authenticate with a "
+"password, then join the rooms and talk there with the other occupants."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:11
+msgid ""
+"Each direction of the connection carries a single XML document, called a "
+"<b>stream</b>: it starts with the opening tag <code>&lt;stream:stream ...&gt;"
+"</code> (after an optional XML declaration <code>&lt;?xml version='1.0'?&gt;"
+"</code>), and only ends with <code>&lt;/stream:stream&gt;</code> when the "
+"connection ends. The messages are the elements directly inside this root "
+"element, called <b>stanzas</b>, such as <code>&lt;message&gt;...&lt;/"
+"message&gt;</code>. There is no length before them, and no line end after "
+"them: a stanza ends where its first tag is closed, once the nesting of its "
+"elements gets back to the root.  A stanza may contain elements with the same "
+"name as itself, such as a <code>&lt;message&gt;</code> quoted inside a "
+"message, so the first <code>&lt;/message&gt;</code> found does not always "
+"end the stanza. An element without content may be written as a single tag, "
+"such as <code>&lt;success/&gt;</code>. Some spaces may come between two "
+"stanzas: the servers and the clients send a single space now and then to "
+"keep the connection alive. The network does not keep the limits of the "
+"stanzas either: a single <code>recv()</code> may return several stanzas, or "
+"only the beginning of one, cut anywhere, even in the middle of a tag."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:22
+msgid ""
+"The values of the attributes are quoted with <code>'</code> or <code>\"</"
+"code>, as each program likes. In the texts and the values, five characters "
+"are written as references: <code>&amp;lt;</code> for <code>&lt;</code>, "
+"<code>&amp;gt;</code> for <code>&gt;</code>, <code>&amp;amp;</code> for "
+"<code>&amp;</code>, <code>&amp;apos;</code> for <code>'</code> and "
+"<code>&amp;quot;</code> for <code>\"</code>. A text never holds a raw "
+"<code>&lt;</code> nor <code>&amp;</code>, and the receiver must decode the "
+"references to get the text. XMPP forbids the comments, the processing "
+"instructions (but the XML declaration)  and the DTD. The texts of this "
+"server are in ASCII."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/XmppServer.html:29
+msgid "Opening the stream and authenticating"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:31
+msgid ""
+"The client speaks first, with the header of its stream, which names the "
+"domain of the server, the namespace of the stanzas of a client, the prefix "
+"<code>stream</code> and the version of XMPP:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:33
+msgid ""
+"<code>&lt;stream:stream to='buggleinc.lan' xmlns='jabber:client' "
+"xmlns:stream='http://etherx.jabber.org/streams' version='1.0'&gt;</code>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:35
+msgid ""
+"The server answers with the header of its own stream (with an id), then with "
+"its features: here, the authentication mechanisms of SASL that it offers, "
+"only <code>PLAIN</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:38
+msgid ""
+"With PLAIN (RFC 4616), the client sends its credentials in the element "
+"<code>&lt;auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'&gt;"
+"</code>: a zero byte, the user name (without the domain), a zero byte and "
+"the password, all encoded in base64. The server answers <code>&lt;success "
+"xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/&gt;</code>, or a "
+"<code>&lt;failure&gt;</code> holding the condition and a <code>&lt;text&gt;</"
+"code> explaining it, after which the client may try again."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:45
+#: src/plm/universe/posix/XmppServer.html:128
+msgid "<code>not-authorized</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:45
+msgid "The user name or the password is wrong."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:46
+msgid "<code>malformed-request</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:46
+msgid "The decoded credentials do not hold two zero bytes, or are empty."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:47
+msgid "<code>incorrect-encoding</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:47
+msgid "The content of <code>&lt;auth&gt;</code> is not in base64."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:48
+msgid "<code>invalid-authzid</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:48
+msgid ""
+"The credentials start with something else than a zero byte (or the address "
+"of the user)."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:50
+msgid "<code>invalid-mechanism</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:50
+msgid "The mechanism is not <code>PLAIN</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:53
+msgid ""
+"Once authenticated, the client may send its stanzas at once. RFC 6120 asks "
+"the client to restart the stream after the success, by sending a new header, "
+"which this server accepts: it then answers with a new header and empty "
+"features (<code>&lt;stream:features/&gt;</code>). The address of the client "
+"is then <code>user@buggleinc.lan</code>."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/XmppServer.html:57
+#, fuzzy
+#| msgid "What to do"
+msgid "Chat rooms"
+msgstr "ສິ່ງທີ່ຕ້ອງເຮັດ"
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:59
+msgid ""
+"A room has the address <code>name@conference.buggleinc.lan</code>, and each "
+"occupant the address of the room followed by its nickname, such as "
+"<code>name@conference.buggleinc.lan/Alice</code>. To join a room, the client "
+"sends its presence to its own address in the room: <code>&lt;presence "
+"to='name@conference.buggleinc.lan/nickname'&gt;&lt;x xmlns='http://"
+"jabber.org/protocol/muc'/&gt;&lt;/presence&gt;</code>. The server then "
+"sends, in this order:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:64
+msgid "the presence of each other occupant, from its address in the room;"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:65
+msgid ""
+"the presence of the client in the room, holding <code>&lt;status code='110'/"
+"&gt;</code> to tell that it is its own;"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:66
+msgid ""
+"the history of the room: the last messages said before the client came, each "
+"with a <code>&lt;delay xmlns='urn:xmpp:delay'/&gt;</code> giving their time "
+"in its attribute <code>stamp</code>;"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:68
+msgid ""
+"the subject of the room, in a message from the room itself, holding a "
+"<code>&lt;subject&gt;</code> but no body. It always comes last, and tells "
+"that the client is in the room."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:72
+msgid ""
+"The messages of the room then come as they are said: <code>&lt;message "
+"from='name@conference.buggleinc.lan/Alice' to='user@buggleinc.lan' "
+"type='groupchat'&gt;&lt;body&gt;the text&lt;/body&gt;&lt;/message&gt;</"
+"code>. A message may hold more elements than its <code>&lt;body&gt;</code>, "
+"such as its XHTML version (an <code>&lt;html&gt;</code> holding a "
+"<code>&lt;body&gt;</code> of its own, XEP-0071) or a message that it "
+"forwards (inside a <code>&lt;forwarded&gt;</code>, XEP-0297): its text is in "
+"the <code>&lt;body&gt;</code> directly inside the message."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:78
+msgid ""
+"To talk in the room, the client sends a message of type <code>groupchat</"
+"code> to the room: <code>&lt;message to='name@conference.buggleinc.lan' "
+"type='groupchat'&gt;&lt;body&gt;the text&lt;/body&gt;&lt;/message&gt;</"
+"code>. The room sends it to every occupant, the client included, which thus "
+"gets its own message back from its address in the room. As on IRC, a message "
+"for someone in particular starts with its nickname and a colon, such as "
+"<code>Alice: hello!</code>, and the other occupants may answer it. A private "
+"message goes to the address of an occupant, with the type <code>chat</code>, "
+"and its answers come with the type <code>chat</code> too. The client leaves "
+"a room by sending its presence of type <code>unavailable</code> there, which "
+"the room confirms."
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/plm/universe/posix/XmppServer.html:87
+msgid "Ending the stream"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:89
+msgid ""
+"The client ends its stream with <code>&lt;/stream:stream&gt;</code>. The "
+"server ends its own stream in turn and closes the connection."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:94
+msgid ""
+"A stanza that the server cannot deliver comes back as an error stanza of the "
+"same kind, of type <code>error</code>, from the address it was sent to (with "
+"its <code>id</code>, if it had one). It holds an <code>&lt;error&gt;</code> "
+"with its type, its condition and a text explaining it, such as "
+"<code>&lt;message from='lobby@conference.buggleinc.lan' "
+"to='user@buggleinc.lan' type='error'&gt;&lt;error type='cancel'&gt;&lt;item-"
+"not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;&lt;text "
+"xmlns='urn:ietf:params:xml:ns:xmpp-stanzas' xml:lang='en'&gt;There is no "
+"room lobby on conference.buggleinc.lan.&lt;/text&gt;&lt;/error&gt;&lt;/"
+"message&gt;</code>. The stream goes on."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:102
+msgid "<code>item-not-found</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:102
+msgid "The room or the occupant does not exist, or the address is not a room."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:103
+msgid "<code>jid-malformed</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:103
+msgid "The presence joining a room lacks the nickname."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:104
+msgid "<code>conflict</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:104
+msgid "Another occupant has that nickname."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:105
+msgid "<code>not-acceptable</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:105
+msgid "The client sends to a room that it did not join."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:106
+msgid "<code>bad-request</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:106
+msgid ""
+"The type of the message is wrong: <code>groupchat</code> to a room, "
+"<code>chat</code> to an occupant."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:109
+msgid "<code>service-unavailable</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:109
+msgid "A request <code>&lt;iq&gt;</code>, which this server does not answer."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:112
+msgid ""
+"A worse mistake ends the stream: the server sends a "
+"<code>&lt;stream:error&gt;</code> with the condition and a text explaining "
+"it, ends its stream and closes the connection, such as "
+"<code>&lt;stream:error&gt;&lt;not-authorized "
+"xmlns='urn:ietf:params:xml:ns:xmpp-streams'/&gt;&lt;text "
+"xmlns='urn:ietf:params:xml:ns:xmpp-streams' xml:lang='en'&gt;The client must "
+"authenticate with &amp;lt;auth&amp;gt; before sending any stanza.&lt;/"
+"text&gt;&lt;/stream:error&gt;&lt;/stream:stream&gt;</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:120
+msgid "<code>not-well-formed</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:120
+msgid ""
+"The XML is broken: an element closed by another name, a raw <code>&lt;</"
+"code> or <code>&amp;</code> in a text, a value without quotes, some text "
+"between the stanzas..."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:122
+msgid "<code>restricted-xml</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:122
+msgid "A comment, a processing instruction or a DTD."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:123
+msgid "<code>bad-format</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:123
+msgid "The stream does not start with its header."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:124
+msgid "<code>host-unknown</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:124
+msgid "The header does not name the domain <code>buggleinc.lan</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:125
+msgid "<code>invalid-namespace</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:125
+msgid ""
+"The header lacks <code>xmlns='jabber:client'</code> or the declaration of "
+"the prefix <code>stream</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:127
+msgid "<code>unsupported-version</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:127
+msgid "The header lacks <code>version='1.0'</code>."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:128
+msgid "A stanza sent before the authentication."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:129
+msgid "<code>unsupported-stanza-type</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:129
+msgid ""
+"An unknown element in the stream, such as <code>&lt;auth&gt;</code> without "
+"its namespace."
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:132
+msgid "<code>policy-violation</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/posix/XmppServer.html:132
+msgid "An authentication when the client is already authenticated."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:137
+msgid ""
+"In this session, the user <code>student</code> has the password "
+"<code>secret</code>, and the room <code>lobby</code> has the subject \"Say "
+"hello!\" and Alice as only occupant, who speaks two seconds after the client "
+"joined. The lines starting with <code>C:</code> are sent by the client, and "
+"those starting with <code>S:</code> by the server. These prefixes and the "
+"line ends are not part of the data: each line is sent without anything "
+"between it and the next one."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/posix/XmppServer.html:143
+#, no-wrap
+msgid ""
+"C: &lt;?xml version='1.0'?&gt;&lt;stream:stream to='buggleinc.lan' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'&gt;\n"
+"S: &lt;?xml version='1.0'?&gt;&lt;stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='plm1' from='buggleinc.lan' version='1.0' xml:lang='en'&gt;\n"
+"S: &lt;stream:features&gt;&lt;mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'&gt;&lt;mechanism&gt;PLAIN&lt;/mechanism&gt;&lt;/mechanisms&gt;&lt;/stream:features&gt;\n"
+"C: &lt;auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'&gt;AHN0dWRlbnQAc2VjcmV0&lt;/auth&gt;\n"
+"S: &lt;success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/&gt;\n"
+"C: &lt;presence to='lobby@conference.buggleinc.lan/student'&gt;&lt;x xmlns='http://jabber.org/protocol/muc'/&gt;&lt;/presence&gt;\n"
+"S: &lt;presence from='lobby@conference.buggleinc.lan/Alice' to='student@buggleinc.lan'&gt;&lt;x xmlns='http://jabber.org/protocol/muc#user'&gt;&lt;item affiliation='member' role='participant'/&gt;&lt;/x&gt;&lt;/presence&gt;\n"
+"S: &lt;presence from='lobby@conference.buggleinc.lan/student' to='student@buggleinc.lan'&gt;&lt;x xmlns='http://jabber.org/protocol/muc#user'&gt;&lt;item affiliation='none' role='participant'/&gt;&lt;status code='110'/&gt;&lt;/x&gt;&lt;/presence&gt;\n"
+"S: &lt;message from='lobby@conference.buggleinc.lan' to='student@buggleinc.lan' type='groupchat'&gt;&lt;subject&gt;Say hello!&lt;/subject&gt;&lt;/message&gt;\n"
+"S: &lt;message from='lobby@conference.buggleinc.lan/Alice' to='student@buggleinc.lan' type='groupchat'&gt;&lt;body&gt;Hello everybody!&lt;/body&gt;&lt;/message&gt;\n"
+"C: &lt;message to='lobby@conference.buggleinc.lan' type='groupchat'&gt;&lt;body&gt;Hello Alice &amp;amp; all!&lt;/body&gt;&lt;/message&gt;\n"
+"S: &lt;message from='lobby@conference.buggleinc.lan/student' to='student@buggleinc.lan' type='groupchat'&gt;&lt;body&gt;Hello Alice &amp;amp; all!&lt;/body&gt;&lt;/message&gt;\n"
+"C: &lt;/stream:stream&gt;\n"
+"S: &lt;/stream:stream&gt;\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/posix/XmppServer.html:161
+msgid ""
+"This server behaves as the real ones in everything described above, but it "
+"is simpler on the following points. A client written for this world would "
+"mostly work on real servers, with some additions."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:165
+msgid ""
+"The connection is not encrypted: this server does not offer "
+"<code>&lt;starttls/&gt;</code> in its features. Most real servers require "
+"TLS before the authentication (with <code>&lt;required/&gt;</code> in this "
+"feature), and refuse PLAIN on a connection in clear text, where the password "
+"would travel readable by anyone."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:168
+msgid ""
+"The real servers offer stronger mechanisms than PLAIN, such as SCRAM-SHA-1 "
+"or SCRAM-SHA-256, which prove that the client knows the password without "
+"sending it."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:171
+msgid ""
+"After the restart of the stream, a real server offers to bind a resource "
+"(<code>&lt;bind/&gt;</code>), and only accepts the stanzas once the client "
+"asked for one with an <code>&lt;iq&gt;</code>: its address then becomes "
+"<code>user@domain/resource</code>, one per connection of the user. This "
+"server takes the address <code>user@domain</code> at once."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:175
+msgid ""
+"This server answers no <code>&lt;iq&gt;</code>: no roster (the list of "
+"contacts), no discovery of the services, no ping. The occupants of the rooms "
+"follow a script, and the rooms are neither created nor configured by the "
+"clients."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:177
+msgid ""
+"The messages carry no <code>id</code> unless the client gave one, nor the "
+"<code>&lt;stanza-id&gt;</code> of XEP-0359 that the real rooms add, and this "
+"server never sends a space alone unless the world asks for it."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/plm/universe/posix/XmppServer.html:179
+msgid ""
+"A real server limits the size of the stanzas and the rate of the client, and "
+"closes the idle connections."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -3003,7 +3670,7 @@ msgstr ""
 "ຢ່າລືມເຄື່ອງໝາຍ <code>;</code> ຢູ່ທ້າຍຄຳສັ່ງ ເພື່ອບອກໃຫ້ຄອມພິວເຕີຮູ້ວ່າຄຳສັ່ງນັ້ນຈົບແລ້ວ (ແມ່ນແລ້ວ, "
 "ຄອມພິວເຕີມັນບໍ່ຮູ້ຈັກຄິດເອງ ມັນບໍ່ສາມາດ <i>ເດົາ</i> ສິ່ງທີ່ເຫັນໄດ້ຊັດເຈນແບບນີ້ໄດ້)."
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li><div>
 #: src/lessons/welcome/environment/Environment.html:23
 #: src/lessons/welcome/variables/Variables.html:78
 #: src/lessons/welcome/variables/Variables.html:152
@@ -3024,13 +3691,19 @@ msgstr ""
 #: src/lessons/recursion/lego/square/FourSquare.html:46
 #: src/lessons/maze/pledge/PledgeMaze.html:68
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
-#: src/lessons/network/bsdsocks/TcpClient.html:45
-#: src/lessons/network/bsdsocks/TcpClient.html:90
+#: src/lessons/network/bsdsocks/TcpClient.html:56
+#: src/lessons/network/bsdsocks/TcpClient.html:101
 #: src/lessons/network/bsdsocks/TcpServer.html:25
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:199
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:202
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:200
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:203
 #: src/lessons/network/bsdsocks/UdpClient.html:76
-#: src/lessons/network/bsdsocks/UdpDns.html:54
+#: src/lessons/network/bsdsocks/UdpDns.html:56
+#: src/lessons/network/bsdsocks/UdpDns.html:141
+#: src/lessons/network/bsdsocks/UdpEcho.html:58
+#: src/lessons/network/bsdsocks/XmppClient.html:45
+#: src/lessons/network/bsdsocks/XmppClient.html:96
+#: src/lessons/network/bsdsocks/XmppClient.html:194
+#: src/lessons/network/bsdsocks/XmppClient.html:232
 msgid "[/!]"
 msgstr "[/!]"
 
@@ -3911,7 +4584,7 @@ msgstr "x = 5"
 #: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
-#: src/lessons/network/bsdsocks/TcpClient.html:86
+#: src/lessons/network/bsdsocks/TcpClient.html:97
 msgid "[/!] [!scala]"
 msgstr "[/!] [!scala]"
 
@@ -4719,13 +5392,14 @@ msgstr ""
 msgid "Executing the loop body at least once"
 msgstr "ການເຮັດໃຫ້ loop ເຮັດວຽກຢ່າງໜ້ອຍໜຶ່ງຄັ້ງ"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
 #: src/lessons/welcome/loopdowhile/Poucet2.html:19
 #: src/lessons/welcome/array/basics/Array1.html:100
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/maze/pledge/PledgeMaze.html:59
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:88
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:89
+#: src/lessons/network/bsdsocks/XmppClient.html:107
 msgid "[!python]"
 msgstr "[!python]"
 
@@ -7333,7 +8007,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PatternPicture.html:11
 #: src/lessons/lander/lvl1_lander_101/Lander101.html:42
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:81
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:82
 msgid "Good luck!"
 msgstr "ຂໍໃຫ້ໂຊກດີ!"
 
@@ -7889,7 +8563,9 @@ msgstr "ຂໍ້ຄວາມ"
 #: src/lessons/welcome/bdr/BDR.html:158 src/lessons/welcome/bdr/BDR2.html:140
 #: src/lessons/network/bsdsocks/TcpFramingIrc.html:54
 #: src/lessons/network/bsdsocks/UdpClient.html:78
-#: src/lessons/network/bsdsocks/UdpDns.html:56
+#: src/lessons/network/bsdsocks/UdpDns.html:58
+#: src/lessons/network/bsdsocks/UdpEcho.html:60
+#: src/lessons/network/bsdsocks/XmppClient.html:47
 msgid "What to do"
 msgstr "ສິ່ງທີ່ຕ້ອງເຮັດ"
 
@@ -10411,7 +11087,7 @@ msgstr ""
 #: src/lessons/sort/basic/comb/AlgCombSort.html:27
 #: src/lessons/maze/island/IslandMaze.html:67
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:196
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:197
 msgid "[!scala]"
 msgstr "[!scala]"
 
@@ -16416,18 +17092,43 @@ msgstr "ເພີ່ມຂໍ້ຄວາມ"
 #. type: Content of: <p>
 #: src/lessons/network/bsdsocks/TcpClient.html:4
 msgid ""
-"In this first exercise about networking, you shall write the function "
-"<code>client(server, port)</code>, which connects using TCP to the given "
-"server (its IPv4 address as text, such as <code>\"10.0.0.1\"</code>) on the "
-"given port, reads all the data sent by the server, and writes it on its "
-"standard output. Your code will be tested on several situations in which the "
-"server and the content of its message change, so your function must use its "
-"parameters, and display what it received, whatever it is. Use the combo box "
-"above the world view on the right to switch the world."
+"This exercise opens the <i>protocols quest</i>, which makes you explore the "
+"application layer of the Internet, the one of the programs that talk to each "
+"other over the network. You will learn to connect two programs with a "
+"socket, using TCP (a stream of data) or UDP (separate datagrams), and to "
+"exchange data through it. You will speak the application protocols that the "
+"real programs use over these sockets, such as IRC to chat, DNS to find the "
+"address of a machine, or HTTP for the web, each step of the quest giving you "
+"the clue to the next one. The servers that you will meet are simulated "
+"within the PLM, but they behave as the real ones on the Internet."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpClient.html:10
+#: src/lessons/network/bsdsocks/TcpClient.html:11
+msgid ""
+"In any PLM exercise, your code is tested on several situations (called "
+"worlds), to catch more potential bugs in your code and force you to propose "
+"generic implementations. In this lesson, the server and the content of its "
+"message change, so your function must use its parameters, and display what "
+"it received, whatever it is. Use the combo box above the world view on the "
+"right to switch the world. The PLM is currently setup in [!thelang/], but "
+"you can pick another programming language from the menu or from the language "
+"icon at the right of the status bar."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:17
+msgid ""
+"In this first exercise, you shall write the function <code>client(server, "
+"port)</code>, which connects using TCP to the given server (its IPv4 address "
+"as text, such as <code>\"10.0.0.1\"</code>) on the given port, reads all the "
+"data sent by the server, and writes it on its standard output. Keep an eye "
+"on what they send you (in all worlds): someone may have something to tell "
+"you."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/TcpClient.html:21
 msgid ""
 "Here are the steps to follow in your code. You can find more information [!c|"
 "python]about the <code>socket()</code>, <code>connect()</code>, "
@@ -16438,7 +17139,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ol>
-#: src/lessons/network/bsdsocks/TcpClient.html:15
+#: src/lessons/network/bsdsocks/TcpClient.html:26
 #: src/lessons/network/bsdsocks/TcpServer.html:11
 #, fuzzy
 #| msgid "[!python]"
@@ -16446,7 +17147,7 @@ msgid "[!c|python]"
 msgstr "[!python]"
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:15
+#: src/lessons/network/bsdsocks/TcpClient.html:26
 msgid ""
 "[!c]Create a socket with <code>socket(AF_INET, SOCK_STREAM, 0)</code>, which "
 "returns a descriptor.[/!][!python]Import the <code>socket</code> module, and "
@@ -16458,7 +17159,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:20
+#: src/lessons/network/bsdsocks/TcpClient.html:31
 msgid ""
 "[!c]Fill a <code>struct sockaddr_in</code> to specify where you want to "
 "connect to. First use <code>memset(&variable, sizeof(variable), 0)</code> to "
@@ -16470,17 +17171,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <ol><li><div>
-#: src/lessons/network/bsdsocks/TcpClient.html:24
+#: src/lessons/network/bsdsocks/TcpClient.html:35
 msgid "Give me the complete code to fill that structure"
 msgstr ""
 
 #. type: Content of: <ol><li><div>
-#: src/lessons/network/bsdsocks/TcpClient.html:25
+#: src/lessons/network/bsdsocks/TcpClient.html:36
 msgid "Here is how to use the <code>connect()</code> syscall."
 msgstr ""
 
 #. type: Content of: <ol><li><div><pre>
-#: src/lessons/network/bsdsocks/TcpClient.html:27
+#: src/lessons/network/bsdsocks/TcpClient.html:38
 #, no-wrap
 msgid ""
 "  struct sockaddr_in addr;\n"
@@ -16492,14 +17193,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:34
+#: src/lessons/network/bsdsocks/TcpClient.html:45
 msgid ""
 "[/!][!python]The address of the server is simply the tuple <code>(server, "
 "port)</code>: the <code>socket</code> module converts it for the system.[/!]"
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:35
+#: src/lessons/network/bsdsocks/TcpClient.html:46
 msgid ""
 "Create a socket connected to the server with <code>new Socket(server, port)</"
 "code>, which creates a TCP socket and connects it at once. In this exercise, "
@@ -16510,14 +17211,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ol>
-#: src/lessons/network/bsdsocks/TcpClient.html:39
+#: src/lessons/network/bsdsocks/TcpClient.html:50
 #, fuzzy
 #| msgid "[/!] [!python]"
 msgid "[/!] [!c|python]"
 msgstr "[/!] [!python]"
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:40
+#: src/lessons/network/bsdsocks/TcpClient.html:51
 msgid ""
 "Connect your socket to the server with <code>connect()</code>. In this "
 "exercise, the server is sometimes slow to start, making <code>connect()</"
@@ -16531,7 +17232,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:46
+#: src/lessons/network/bsdsocks/TcpClient.html:57
 msgid ""
 "Receive the message [!java|scala]from the stream returned by "
 "<code>getInputStream[!java]()[/!]</code>, with <code>read(buffer)</code>, "
@@ -16559,7 +17260,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:61
+#: src/lessons/network/bsdsocks/TcpClient.html:72
 msgid ""
 "Write the received bytes on the standard output with [!c]<code>write()</"
 "code>, <code>printf()</code>, or similar[/!][!"
@@ -16577,7 +17278,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/TcpClient.html:68
+#: src/lessons/network/bsdsocks/TcpClient.html:79
 msgid ""
 "Close your socket with <code>close()</code>[!python], or create it in a "
 "<code>with</code> block that closes it at its end[/!][!java], or create it "
@@ -16588,7 +17289,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpClient.html:75
+#: src/lessons/network/bsdsocks/TcpClient.html:86
 msgid ""
 "These functions return -1 when they fail, and set <code>errno</code> to the "
 "reason of the failure. When this happens, use <code>perror()</code> to "
@@ -16599,7 +17300,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpClient.html:80
+#: src/lessons/network/bsdsocks/TcpClient.html:91
 msgid ""
 "These methods raise an <code>OSError</code> when they fail, whose subclass "
 "tells the reason of the failure (such as <code>ConnectionRefusedError</"
@@ -16608,14 +17309,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/network/bsdsocks/TcpClient.html:82
+#: src/lessons/network/bsdsocks/TcpClient.html:93
 #, fuzzy
 #| msgid "[/!] [!java|c]"
 msgid "[/!] [!java]"
 msgstr "[/!] [!java|c]"
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpClient.html:84
+#: src/lessons/network/bsdsocks/TcpClient.html:95
 msgid ""
 "These methods throw an <code>IOException</code> when they fail, whose "
 "subclass tells the reason of the failure (such as <code>ConnectException</"
@@ -16625,7 +17326,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpClient.html:88
+#: src/lessons/network/bsdsocks/TcpClient.html:99
 msgid ""
 "These methods throw an <code>IOException</code> when they fail, whose "
 "subclass tells the reason of the failure (such as <code>ConnectException</"
@@ -16634,7 +17335,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpClient.html:92
+#: src/lessons/network/bsdsocks/TcpClient.html:103
 msgid ""
 "Your debugging messages also reach the standard output (or the standard "
 "error), where the world view shows them. Remove them once your program "
@@ -16772,18 +17473,20 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/network/bsdsocks/TcpFramingIrc.html:4
 msgid ""
-"One of the biggest difficulties when exchanging data over the Internet is to "
-"determine whether all bits of an incoming message have been received "
-"already, or whether more data is incoming. Since the data travels over the "
-"network in packets, the data received so far could be only the first bits of "
-"the intended message, while the rest is still in transit. The only case "
-"where TCP tells you for sure that you received all emitted data is when the "
-"other side closes its socket, but this makes it difficult to pursue a dialog "
-"in several steps."
+"Now that you know how to connect two programs and exchange data between "
+"them, let's talk with Bob, who waits for you on IRC.  But first, you must "
+"overcome one of the biggest difficulties when exchanging data over the "
+"Internet: determining whether all bits of an incoming message have been "
+"received already, or whether more data is incoming. Since the data travels "
+"over the network in packets, the data received so far could be only the "
+"first bits of the intended message, while the rest is still in transit. The "
+"only case where TCP tells you for sure that you received all emitted data is "
+"when the other side closes its socket, but this makes it difficult to pursue "
+"a dialog in several steps."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:10
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:11
 msgid ""
 "This problem is known as <b>message framing</b>. Since TCP does not provide "
 "any help here, solutions must be devised at the application level: the "
@@ -16798,7 +17501,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:17
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:18
 msgid ""
 "Another solution is to agree on a specific marker that can be used to "
 "separate the messages. The IRC protocol (used for instant messaging) decides "
@@ -16810,7 +17513,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:22
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:23
 msgid ""
 "Extra difficulties may arise when the data can include the marker that was "
 "intended to mark the content end. When the user sends several lines in IRC, "
@@ -16829,7 +17532,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:31
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:32
 msgid ""
 "Another classical solution to frame the messages is to prefix the message by "
 "its size. The DNS over TCP protocol for example sends the data size as a 16-"
@@ -16840,7 +17543,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:36
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:37
 msgid ""
 "HTTP is interesting with regard to message framing, because it uses several "
 "mechanisms together. Within each HTTP response (from the server to the "
@@ -16855,21 +17558,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:43
-msgid "The protocols serie"
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:44
+msgid "Talking with Bob"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:45
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:46
 msgid ""
-"The <i>protocols serie</i> contains several exercises that will let you "
-"explore several classical protocols: IRC, DNS, XMPP, HTTP and finally FTP. "
-"In this first exercise you have to connect to an IRC server, join a channel, "
-"get an information from a (simulated) participant, disconnect from the "
-"server and display the information on your command line. The server you will "
-"connected to is a simulation that runs within the PLM, but it's realistic "
-"and implements the exact protocol of real servers on the Internet. You can "
-"find its documentation in the world documentation by pressing Ctrl-H."
+"In this exercise, you have to connect to an IRC server, join a channel, get "
+"an information from a (simulated) participant, disconnect from the server "
+"and display the information on your command line. The server you will "
+"connect to is a simulation that runs within the PLM, but it's realistic and "
+"implements the exact protocol of real servers on the Internet. You can find "
+"its documentation in the world documentation by pressing Ctrl-H."
 msgstr ""
 
 #. type: Content of: <p>
@@ -16924,27 +17625,27 @@ msgid ""
 "(simulated) participants of the discussion have to say, but the exercise "
 "requests you to ask Bob about the treasure trove he keeps talking about. "
 "Send a message to Bob to know more, but please be polite: Bob is a bit "
-"grumpy, but he's a good guy. If you're stuck, more hints may come from the "
-"other people on the channel, so keep reading the conversation for more "
-"information."
+"grumpy, but he's a good guy. Only use the channel: Bob refuses to answer to "
+"private messages.  If you're stuck, more hints may come from the other "
+"people on the channel, so keep reading the conversation for more information."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:78
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:79
 msgid ""
 "Once you got the information from Bob, simply print the obtained URL to your "
 "standard output to not forget, and proceed to the next exercise."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:83
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:84
 #, fuzzy
 #| msgid "Here are some existing types in [!thelang]:"
 msgid "Some help on framing messages in [!thelang]"
 msgstr "ນີ້ແມ່ນບາງປະເພດຂໍ້ມູນທີ່ມີໃນ [!thelang]:"
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:85
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:86
 msgid ""
 "The main technical difficulty is to get the framing right: you want a "
 "solution to get the lines received from the server one after the other, each "
@@ -16953,7 +17654,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:89
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:90
 msgid ""
 "A simple solution in Python is to write a little generator as follows. You "
 "should try to write it from this description before opening the hint that "
@@ -16961,7 +17662,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:93
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:94
 #, no-wrap
 msgid ""
 "def lines(sock):\n"
@@ -16978,12 +17679,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:106
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:107
 msgid "Give me the complete code of that generator"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:108
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:109
 #, no-wrap
 msgid ""
 "def lines(sock):\n"
@@ -17001,12 +17702,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:123
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:124
 msgid "Once you have the generator, your code can use it as follows."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:125
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:126
 #, no-wrap
 msgid ""
 "reader = lines(sock)\n"
@@ -17016,7 +17717,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:131
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:132
 msgid ""
 "Beware! this generator does not give strings but binary buffers. You can "
 "either encode your strings with <code>b\"some content\"</code> before "
@@ -17024,15 +17725,16 @@ msgid ""
 "<code>data.decode(\"ascii\")</code> before searching the strings in it."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:134
+#. type: Content of: <ul>
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:135
+#: src/lessons/network/bsdsocks/XmppClient.html:130
 #, fuzzy
 #| msgid "[/!] [!scala]"
 msgid "[/!] [!c]"
 msgstr "[/!] [!scala]"
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:137
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:138
 msgid ""
 "A simple solution in C is to use the <code>fgets()</code> function, that "
 "fills the provided buffer up to the next '\\n' in the input stream and adds "
@@ -17046,12 +17748,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:144
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:145
 msgid "Give me the complete code example using fdopen() and fgets()"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:146
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:147
 #, no-wrap
 msgid ""
 "FILE* in = fdopen(sock, \"r\");\n"
@@ -17062,14 +17764,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:154
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:155
 msgid ""
 "Some of the following functions may reveal useful, even if you don't need "
 "all of them."
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:156
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:157
 msgid ""
 "<code>char* strstr(const char* haystack, const char* needle)</code>: returns "
 "the first occurence of the substring <code>needle</code> in the string "
@@ -17077,21 +17779,21 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:158
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:159
 msgid ""
 "<code>char* strchr(const char* str, int c)</code>: returns the <i>first</i> "
 "occurence of the char <code>c</code> in the string <code>str</code>."
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:160
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:161
 msgid ""
 "<code>char* strrchr(const char* str, int c)</code>: returns the <i>last</i> "
 "occurence of the char <code>c</code> in the string <code>str</code>."
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:162
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:163
 msgid ""
 "<code>char* strtok(char* str, const char* delim)</code>: tokenize the string "
 "around the provided delimiters. This is useful to split a string on spaces, "
@@ -17099,7 +17801,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:168
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:169
 msgid ""
 "The easiest solution in [!thelang] is to build a <code>BufferedReader in</"
 "code> from the socket and then use <code>in.readLine()</code> to get the "
@@ -17110,12 +17812,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:173
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:174
 msgid "Give me the complete code example reading all lines"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:175
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:176
 #, no-wrap
 msgid ""
 "[!java]Socket socket = new Socket(\"10.0.0.1\", 194);\n"
@@ -17141,7 +17843,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:197
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:198
 msgid ""
 "The loop above is written as in Java. A more idiomatic Scala gives the lines "
 "as an iterator, which stops at the end of the stream: "
@@ -17149,7 +17851,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/TcpFramingIrc.html:200
+#: src/lessons/network/bsdsocks/TcpFramingIrc.html:201
 msgid ""
 "Remember that everything which is sent to the socket must be encoded with "
 "the method <code>String.getBytes(StandardCharsets.UTF_8)</code>."
@@ -17437,11 +18139,13 @@ msgid ""
 "<code>ByteBuffer.wrap(array)</code> reads and writes numbers in an array, in "
 "network byte order: <code>getShort(i)</code> and <code>putShort(i, n)</code> "
 "on 2 bytes, <code>getInt(i)</code> and <code>putInt(i, n)</code> on 4 bytes, "
-"and <code>get(i)</code> for a single byte."
+"and <code>get(i)</code> for a single byte. The bytes of Java are signed: a "
+"byte above 127, such as <code>c8</code> (200), reads as a negative number "
+"(-56), and <code>b &amp; 0xFF</code> gives its value between 0 and 255."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/UdpDns.html:58
+#: src/lessons/network/bsdsocks/UdpDns.html:60
 msgid ""
 "Find the IP address of the XMPP server hosting the chat room given by Bob, "
 "and print it on the standard output (such as <code>10.0.0.1</code>, followed "
@@ -17453,24 +18157,36 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/UdpDns.html:63
+#: src/lessons/network/bsdsocks/UdpDns.html:65
 msgid ""
 "The first step is certainly to ask the <code>TXT</code> records of the name "
 "<code>buggleinc.lan</code>, where the administrators of the zone leave "
 "notes, and to read all the records of the answer. They will probably give "
 "you more hints, and so may the <code>TXT</code> records coming in the "
-"additional section of the next answers."
+"additional section of the next answers. You don't even have to parse these "
+"answers to read their texts: click on your UDP socket to see a dump of all "
+"the data exchanged over it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/UdpDns.html:70
+msgid ""
+"You still need to parse the final answer, though, as the target IP is not "
+"the same in all worlds of this exercise, so you cannot guess it. Parsing the "
+"answer is the only way to go."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/network/bsdsocks/UdpDns.html:67
+#: src/lessons/network/bsdsocks/UdpDns.html:73
+#: src/lessons/network/bsdsocks/UdpEcho.html:70
+#: src/lessons/network/bsdsocks/XmppClient.html:60
 #, fuzzy
 #| msgid "Conditional instructions"
 msgid "Additional hints"
 msgstr "ຄຳສັ່ງແບບມີເງື່ອນໄຂ"
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/UdpDns.html:68
+#: src/lessons/network/bsdsocks/UdpDns.html:74
 msgid ""
 "Accessing a DNS server directly on the wire is not an easy task, but don't "
 "worry. This exercise provides several hints to help you in this task. Some "
@@ -17479,152 +18195,53 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/UdpDns.html:71
+#: src/lessons/network/bsdsocks/UdpDns.html:77
 msgid "How exactly should I format such a TXT query, and read its answer?"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:72
-#: src/lessons/network/bsdsocks/UdpDns.html:170
-#: src/lessons/network/bsdsocks/UdpDns.html:222
-msgid ""
-"Please refer to the world's documentation for more info about the DNS wire "
-"protocol."
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:74
-msgid ""
-"Your <code>TXT</code> query should contain a 12-byte header, formatted as "
-"follows:"
-msgstr ""
-
-#. type: Content of: <ul><li><div><ol><li>
-#: src/lessons/network/bsdsocks/UdpDns.html:76
-#: src/lessons/network/bsdsocks/UdpDns.html:174
-msgid ""
-"2 bytes representing the query ID. The server will reuse the exact same ID "
-"in its answer. Pick the value you want."
-msgstr ""
-
-#. type: Content of: <ul><li><div><ol><li>
 #: src/lessons/network/bsdsocks/UdpDns.html:78
-#: src/lessons/network/bsdsocks/UdpDns.html:176
 msgid ""
-"2 bytes representing the flags. <code>01 00</code> are the usual flags of a "
-"query: only RD (recursion desired) is set. The BuggleInc server never goes "
-"recursive, so this will be ignored."
+"The world's documentation describes each field (sections <i>Header</i>, "
+"<i>Names</i> and <i>Question</i>). Put together, the query for the "
+"<code>TXT</code> records of <code>buggleinc.lan</code>, with the ID 42, is "
+"made of these 31 bytes (in hexadecimal, the text between quotes standing for "
+"its ASCII bytes):"
 msgstr ""
 
-#. type: Content of: <ul><li><div><ol><li>
-#: src/lessons/network/bsdsocks/UdpDns.html:80
-#: src/lessons/network/bsdsocks/UdpDns.html:178
-msgid ""
-"2 bytes representing the number of questions in this message, in network "
-"byte order. <code>00 01</code> for one question."
-msgstr ""
-
-#. type: Content of: <ul><li><div><ol><li>
+#. type: Content of: <ul><li><div><pre>
 #: src/lessons/network/bsdsocks/UdpDns.html:82
-#: src/lessons/network/bsdsocks/UdpDns.html:180
+#, no-wrap
 msgid ""
-"2 bytes representing the number of answers in this message, in network byte "
-"order. <code>00 00</code> for zero answer."
+"00 2a  01 00  00 01  00 00  00 00  00 00     the header: ID 42, flags (only RD), 1 question, no other record\n"
+"09 \"buggleinc\" 03 \"lan\" 00                   the name: each label preceded by its length, then a zero byte\n"
+"00 10  00 01                                 the type TXT (16) and the class IN (1)\n"
 msgstr ""
 
-#. type: Content of: <ul><li><div><ol><li>
-#: src/lessons/network/bsdsocks/UdpDns.html:84
-#: src/lessons/network/bsdsocks/UdpDns.html:182
-msgid ""
-"2 bytes representing the number of authority records in this message, in "
-"network byte order. <code>00 00</code> for no such record."
-msgstr ""
-
-#. type: Content of: <ul><li><div><ol><li>
+#. type: Content of: <ul><li><div><p>
 #: src/lessons/network/bsdsocks/UdpDns.html:86
-#: src/lessons/network/bsdsocks/UdpDns.html:184
 msgid ""
-"2 bytes representing the number of additional records in this message, in "
-"network byte order. <code>00 00</code> for no such record."
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:89
-msgid ""
-"Then comes the question: the name about which you are looking for something, "
-"plus the code of the <code>TXT</code> type, plus the class IN (Internet)."
-msgstr ""
-
-#. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/UdpDns.html:92
-#, no-wrap
-msgid ""
-"0x09 \"buggleinc\" 0x03 \"lan\"   # the name, each label prefixed by its length and encoded in ASCII\n"
-"0x00                          # this zero ends the name\n"
-"0x00 0x10                     # 0x00 0x10 in hexadecimal is 16 in decimal, which stands for TXT\n"
-"0x00 0x01                     # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)\n"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:97
-msgid ""
-"In hexadecimal, the text between quotes standing for its ASCII bytes. The "
-"query thus has 31 bytes: 12 for the header, 12 ASCII chars for the name "
-"without the dots, 2 bytes for the length of each label, the final zero byte "
-"ending the name, and 2 bytes for the query type and 2 bytes for the Internet "
-"class."
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:101
-msgid ""
-"The answer starts with a header of 12 bytes as well: the same ID, the flags "
-"(whose last 4 bits are the response code, 0 when everything went well), and "
-"the numbers of questions, answers, authority records and additional records. "
-"For example, if your query had the ID <code>0x12 0x34</code>:"
-msgstr ""
-
-#. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/UdpDns.html:105
-#, no-wrap
-msgid ""
-"0x12 0x34  0x85 0x00                 # your ID, and the flags of an answer (response code 0: NOERROR)\n"
-"0x00 0x01  0x00 0x01                 # 1 question and 1 answer...\n"
-"0x00 0x00  0x00 0x00                 # ...but no authority nor additional record\n"
-"0x09 \"buggleinc\" 0x03 \"lan\" 0x00     # the question, copied from your query: skip it\n"
-"0x00 0x10  0x00 0x01\n"
-"0x09 \"buggleinc\" 0x03 \"lan\" 0x00     # the answer record: its name,\n"
-"0x00 0x10  0x00 0x01                 # its type (TXT) and its class (IN),\n"
-"0x00 0x00 0x0e 0x10                  # its time to live (3600 seconds), that you can ignore,\n"
-"0xLL 0xLL                            # the length of its data, on 2 bytes,\n"
-"0xNN \"...\"                           # and its data: for a TXT record, the length of the text on 1 byte, then the text\n"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:116
-msgid ""
-"To read it, skip the header and the question (the name up to its zero byte, "
-"then 4 bytes), then read each record in turn: its name up to its zero byte, "
-"its type, its class, its time to live and the length of its data, and "
-"finally its data.  The length of the data tells you where the next record "
-"starts. Make sure to inspect every record of the answer, in particular the "
-"<code>TXT</code> records in the additional records of the other answers."
+"Its answer is read as explained in the section <i>Answers of this server</i> "
+"of the documentation: skip the header and the question, then read the "
+"records one by one. Make sure to read every record, in particular the "
+"<code>TXT</code> records coming in the additional section of the answers to "
+"your next queries."
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/UdpDns.html:122
+#: src/lessons/network/bsdsocks/UdpDns.html:91
 msgid "I still don't get how to send a TXT query to the server"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:123
+#: src/lessons/network/bsdsocks/UdpDns.html:92
 msgid ""
 "Here is the code sending the query for the <code>TXT</code> records of "
 "<code>buggleinc.lan</code>, with the ID 42:"
 msgstr ""
 
 #. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/UdpDns.html:125
+#: src/lessons/network/bsdsocks/UdpDns.html:94
 #, no-wrap
 msgid ""
 "[!c]int sock = socket(AF_INET, SOCK_DGRAM, 0);\n"
@@ -17669,130 +18286,719 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:165
+#: src/lessons/network/bsdsocks/UdpDns.html:134
 msgid ""
 "Then receive the answer with [!c|python]<code>recvfrom()</code>[/!][!java|"
 "scala]<code>socket.receive()</code>[/!], in a buffer of 512 bytes, and read "
 "it as explained in the previous tip."
 msgstr ""
 
-#. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/UdpDns.html:169
-msgid "What if I need to run a SRV query on the service aze.buggleinc.lan?"
-msgstr ""
-
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:172
+#: src/lessons/network/bsdsocks/UdpDns.html:137
 msgid ""
-"Your <code>SRV</code> query should contain a 12-byte header, formatted as "
-"follows:"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:187
-msgid ""
-"Then comes the question: the name about which you are looking for something, "
-"plus the code of the <code>SRV</code> type, plus the class IN (Internet)."
-msgstr ""
-
-#. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/UdpDns.html:190
-#, no-wrap
-msgid ""
-"0x03 \"aze\" 0x09 \"buggleinc\" 0x03 \"com\"   # the name, each label prefixed by its length and encoded in ASCII\n"
-"0x00                                     # this zero ends the name\n"
-"0x00 0x21                                # 0x00 0x21 in hexadecimal is 33 in decimal, which stands for SRV\n"
-"0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)\n"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:195
-msgid ""
-"In hexadecimal, the text between quotes standing for its ASCII bytes. The "
-"query thus has 35 bytes: 12 for the header, 15 ASCII chars for the name "
-"without the dots, 3 bytes for the length of each label, the final zero byte "
-"ending the name, and 2 bytes for the query type and 2 bytes for the Internet "
-"class."
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:198
-msgid ""
-"Make sure to inspect every record of the answer, in particular the "
-"<code>TXT</code> records in the additional records."
+"For the next queries, you probably want a few helpers rather than writing "
+"each byte by hand: a buffer of <code>unsigned char</code> with the position "
+"of its next byte, and functions writing a byte, a number on 2 bytes (calling "
+"<code>htons()</code>), a label and a whole name, plus their counterparts "
+"reading an answer (calling <code>ntohs()</code> and <code>ntohl()</code>). "
+"The main risk is to get out of sync with the bytes of the answer, so check "
+"each step: print what you read on <code>stderr</code>, and remove these "
+"messages once your program works, as only the address must remain."
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/UdpDns.html:202
-msgid "How do I read the data of a SRV record?"
+#: src/lessons/network/bsdsocks/UdpDns.html:144
+msgid "How do I write a SRV query, and read its answer?"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:203
+#: src/lessons/network/bsdsocks/UdpDns.html:145
 msgid ""
-"A <code>SRV</code> record is read as any other record (see the first hint): "
-"its name, its type, its class, its time to live and the length of its data, "
-"then its data. For example, here is a record of the answer to a <code>SRV</"
-"code> query on <code>aze.buggleinc.lan</code>:"
+"A <code>SRV</code> query is written as the <code>TXT</code> one: only the "
+"name and the type change. For example, the question of a <code>SRV</code> "
+"query on <code>_imap._tcp.buggleinc.lan</code>, the example name of the "
+"world's documentation, is:"
 msgstr ""
 
 #. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/UdpDns.html:207
+#: src/lessons/network/bsdsocks/UdpDns.html:149
 #, no-wrap
 msgid ""
-"0x03 \"aze\" 0x09 \"buggleinc\" 0x03 \"lan\" 0x00            # the name of the record\n"
-"0x00 0x21  0x00 0x01                                   # its type (SRV) and its class (IN)\n"
-"0x00 0x00 0x0e 0x10                                    # its time to live (3600 seconds), that you can ignore\n"
-"0x00 0x1a                                              # the length of its data: 26 bytes\n"
-"0x00 0x0a                                              # the priority of the target: 10\n"
-"0x00 0x05                                              # its weight: 5\n"
-"0x10 0x92                                              # its port: 4242\n"
-"0x04 \"srv1\" 0x09 \"buggleinc\" 0x03 \"lan\" 0x00           # its name, written as all the names\n"
+"05 \"_imap\" 04 \"_tcp\" 09 \"buggleinc\" 03 \"lan\" 00     the name: the underscores are part of the labels\n"
+"00 21  00 01                                       the type SRV (33) and the class IN (1)\n"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:216
+#: src/lessons/network/bsdsocks/UdpDns.html:152
 msgid ""
-"The data holds 6 bytes of numbers, and 20 bytes of name. An answer may hold "
-"several such records, one after the other: the world documentation tells "
-"which target a client should use. Once you have the exact name of the host, "
-"you need another query to retrieve its IP address. Its IP address is what "
-"you need to write on your standard output to pass the exercise."
+"The documentation details a <code>SRV</code> record of an answer, field by "
+"field (section <i>Answers of this server</i>), and tells which target a "
+"client picks when there are several. Once you have the name of the target, a "
+"query of type <code>A</code> gives its address, which is what you print."
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/UdpDns.html:221
-msgid "What if I need the IP address of the server www.buggleinc.lan?"
+#: src/lessons/network/bsdsocks/UdpDns.html:157
+msgid ""
+"All the answers have a response code other than 0, even if they look right"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:224
+#: src/lessons/network/bsdsocks/UdpDns.html:158
 msgid ""
-"The IP address of a machine is given by its <code>A</code> record. Your "
-"query starts with the same 12-byte header as the other queries (an ID of "
-"your choice, the flags <code>01 00</code>, one question, and no other "
-"record), then comes the question: the name of the machine, plus the code of "
-"the <code>A</code> type, plus the class IN (Internet)."
+"Print the flags of the answer in hexadecimal: an answer without error has "
+"the flags <code>85 00</code>. If you get <code>0085</code>, you read the two "
+"bytes in the wrong order[!c]: apply <code>ntohs()</code> to the number that "
+"you read[/!]."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/UdpDns.html:163
+msgid "How do I get the address of a machine, and print it?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/UdpDns.html:164
+msgid ""
+"The world's documentation ends with a complete example of an <code>A</code> "
+"query and its answer, byte by byte: only the name changes. The data of the "
+"<code>A</code> record is the 4 bytes of the address, to print in decimal and "
+"separated by dots: <code>0a 00 00 2a</code> is <code>10.0.0.42</code>."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/network/bsdsocks/UdpEcho.html:1
+msgid "UDP echo server"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:3
+msgid ""
+"The DNS server said that the port 6666 of the XMPP server is a decoy, and "
+"that the real port would come by itself once a UDP echo server runs on the "
+"port 6666 of your own machine. An echo server is one of the oldest services "
+"of the Internet (RFC 862): it sends every datagram that it receives back to "
+"its sender, unchanged. Its clients use it to check that the network carries "
+"their data faithfully."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:8
+msgid ""
+"This time, your program is the server of the datagrams. There is no "
+"connection in UDP: a single socket receives the datagrams of all the "
+"clients, in the order they arrive, and answers each of them with the address "
+"given by [!c|python]<code>recvfrom()</code>[/!][!java|scala]<code>receive()</"
+"code>[/!]. The server cannot guess this address: each client sends from its "
+"own port, which its system picks for it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:14
+msgid "Here are the functions involved. Check the manpages for more info."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:16
+msgid ""
+"<code>int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen)</"
+"code> attaches the socket to a port of your machine, as for a TCP server: "
+"the <code>struct sockaddr_in</code> holds the port (converted with "
+"<code>htons()</code> and stored in <code>addr.sin_port</code>) and the "
+"address <code>INADDR_ANY</code> (converted with <code>htonl()</code> and "
+"stored in <code>addr.sin_addr.s_addr</code>), meaning that any machine may "
+"send to it. A datagram sent to a port where no socket is bound is lost. As "
+"for TCP, set the address family to <code>AF_INET</code>."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:22
+msgid ""
+"<code>recvfrom()</code> fills its <code>src_addr</code> with the address of "
+"the sender, and <code>sendto()</code> takes such an address as destination: "
+"you can give the one filled by <code>recvfrom()</code> as is."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:25
+msgid ""
+"<code>recvfrom()</code> returns the number of bytes received. A datagram may "
+"contain any byte, so its data is not a string ended by a zero byte."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:31
+msgid ""
+"Here are the methods involved. Check the documentation of the <code>socket</"
+"code> module for more info."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:33
+msgid ""
+"<code>sock.bind((\"\", port))</code> attaches the socket to a port of your "
+"machine, as for a TCP server: the empty host means that any machine may send "
+"to it. A datagram sent to a port where no socket is bound is lost."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:36
+msgid ""
+"<code>sock.recvfrom(bufsize)</code> returns the data and the address of its "
+"sender, which <code>sock.sendto(data, address)</code> takes as is."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:39
+msgid ""
+"The <code>re</code> module finds patterns in a text, or in bytes: "
+"<code>re.search(rb\"...\", data)</code> returns the first match of the "
+"pattern in the bytes, or <code>None</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:45
+msgid ""
+"Here are the classes and methods involved[!scala], from Java[/!]. Check "
+"their documentation for more info."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:47
+msgid ""
+"<code>new DatagramSocket(port)</code> creates a UDP socket attached to that "
+"port of your machine, as for a TCP server: any machine may send to it. A "
+"datagram sent to a port where no socket is bound is lost."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:50
+msgid ""
+"After <code>socket.receive(packet)</code>, the packet holds the address of "
+"the sender: <code>packet.getSocketAddress()</code>. <code>new "
+"DatagramPacket(byte[] buf, int length, SocketAddress address)</code> "
+"prepares a datagram to send to such an address."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/UdpEcho.html:54
+msgid ""
+"The data of a received packet is in its array, from 0 to "
+"<code>packet.getLength()</code> (the rest of the array is what it held "
+"before): <code>new String(array, 0, length, StandardCharsets.US_ASCII)</"
+"code> gives its text.  <code>Pattern.compile(\"...\")</code> and its method "
+"<code>matcher(text)</code> find patterns in a text."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:62
+msgid ""
+"Write the function <code>server(port)</code>, which echoes every datagram "
+"that arrives on the given port to its sender, whole and unchanged. Listen "
+"carefully to what the clients say: the XMPP server only lets in the users "
+"that it knows, and Alice will give your account on this server as <code>USER "
+"&lt;name&gt;</code> and <code>PASSWORD &lt;secret&gt;</code> (letters and "
+"digits). Print the user name, then the password, each alone on a line, as "
+"soon as they come. Later, a message of Bob will give the port of the XMPP "
+"server as <code>PORT &lt;12345&gt;</code>: echo it as the others, then print "
+"the port alone on a line, close your socket and stop. Other messages may "
+"look like these ones: only their exact form counts, and the values differ "
+"from one world to the other. You will need all three in the next exercise."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/UdpEcho.html:72
+msgid "My echoes are lost, or some clients never get theirs"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:73
+msgid ""
+"Look at the trace: it tells where each of your datagrams went, and whether a "
+"socket waited for it there. Each client sends from its own machine and its "
+"own port: answer each datagram to the address of its own sender."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/UdpEcho.html:77
+msgid "Bob says that my echo is broken"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:78
+msgid ""
+"Bob checks that each of his lines comes back exactly as he sent it, and "
+"stops talking to a broken echo server. Look at the trace for the line that "
+"came back wrong. A datagram arrives whole, or not at all: if your buffer is "
+"shorter than the datagram, the rest of it is lost. The largest datagram that "
+"UDP carries over IPv4 has 65507 bytes.[!c] Send back the number of bytes "
+"returned by <code>recvfrom()</code>, not the length of a string: a datagram "
+"may hold a zero byte.[/!][!java|scala] <code>receive()</code> also shortens "
+"the length of the packet to the one of the datagram received: if you reuse "
+"the packet, the next datagrams are cut to this length. Create a new packet "
+"for each datagram.[/!]"
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/UdpEcho.html:86
+msgid "The world reports a deadlock at the end"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:87
+msgid ""
+"Once Bob gave the port, nobody will talk to you anymore, or not in a way "
+"that matters: waiting for another datagram waits forever. Stop right after "
+"Bob's message."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/UdpEcho.html:91
+msgid "How do I find the port in Bob's message?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:92
+msgid ""
+"Look for <code>PORT &lt;</code>, then check that digits follow, up to the "
+"<code>&gt;</code>.  [!c]<code>strstr()</code> finds the text, and "
+"<code>sscanf(found, \"PORT &lt;%d&gt;\", &amp;port)</code> returns 1 only if "
+"the number was read. The data of a datagram is not ended by a zero byte: add "
+"one after the bytes received (and keep room for it in your buffer).[/!][!"
+"python]<code>re.search(rb\"PORT &lt;([0-9]+)&gt;\", data)</code> finds it, "
+"and the <code>group(1)</code> of the match holds the digits, as bytes "
+"(<code>decode()</code> turns them into text).[/!][!java|scala] "
+"<code>Pattern.compile(\"PORT &lt;([0-9]+)&gt;\")</code> finds it in the text "
+"of the datagram, and the <code>group(1)</code> of the matcher holds the "
+"digits, once <code>find()</code> returned true.[/!]"
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/UdpEcho.html:101
+msgid "How do I find the user name and the password?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/UdpEcho.html:102
+msgid ""
+"As for the port, but with letters and digits between the <code>&lt;</code> "
+"and the <code>&gt;</code>, both in a single message of Alice: look for each "
+"of them in every datagram. [!c]<code>sscanf(found, \"USER &lt;%63[a-z0-9]&gt;"
+"\", user)</code> reads at most 63 letters or digits into the array "
+"<code>char user[64]</code>.[/!][!python]The pattern <code>rb\"USER &lt;"
+"([0-9a-z]+)&gt;\"</code> matches them.[/!][!java|scala]The pattern "
+"<code>\"USER &lt;([0-9a-z]+)&gt;\"</code> matches them.[/!]"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/network/bsdsocks/XmppClient.html:2
+msgid "Framing by nesting: XMPP"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:4
+msgid ""
+"You now have everything to meet the friend of Bob: the address of the XMPP "
+"server (from the DNS), its port (from Bob, through your echo server), your "
+"account on it (from Alice), and the address of the chat room (from Bob, on "
+"IRC). XMPP (also known as Jabber) is the protocol of instant messaging "
+"standardized by the IETF, used by many chat services and by the online games "
+"and the connected objects that need to exchange messages."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:9
+msgid ""
+"XMPP frames its messages in yet another way. A connection carries a single "
+"XML document in each direction, called a stream, which only ends when the "
+"connection ends. The messages, called stanzas, are the elements directly "
+"inside the root of this document. There is no length before them and no line "
+"end after them: a stanza ends when its first tag gets closed, which requires "
+"counting how deep you are in the nesting of the elements. The data still "
+"arrives in packets cut anywhere, as with IRC.  The XMPP server of this world "
+"is documented in the world documentation (Ctrl-H): read it before starting."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:16
+msgid ""
+"The C library has no XML parser, so you will frame the stanzas by hand: scan "
+"the received bytes, count the depth of the nesting at each tag, and give the "
+"stanza once the depth gets back to the one of the stream. Here are the "
+"functions involved, besides the ones of the previous exercises. Check the "
+"manpages for more info."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:20
+msgid ""
+"<code>void* memmove(void* dest, const void* src, size_t n)</code> copies "
+"<code>n</code> bytes, even when the two areas overlap, as when you remove "
+"the beginning of a buffer."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:22
+msgid ""
+"<code>int sprintf(char* str, const char* format, ...)</code> writes as "
+"<code>printf()</code> into an array, and returns the number of bytes "
+"written: the format <code>%c</code> with the value 0 writes a zero byte."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:24
+msgid ""
+"<code>char* strstr(const char* haystack, const char* needle)</code> and "
+"<code>char* strchr(const char* s, int c)</code> find a text or a character "
+"in a string."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:30
+msgid ""
+"Python reads XML as it arrives, with the parser <code>XMLPullParser</code> "
+"of the module <code>xml.etree.ElementTree</code>. Check its documentation "
+"for more info."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:33
+msgid ""
+"<code>parser = ElementTree.XMLPullParser(events=(\"start\", \"end\"))</code> "
+"creates a parser telling when each element starts and ends."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:35
+msgid ""
+"<code>parser.feed(data)</code> gives it some bytes, wherever they are cut, "
+"and <code>parser.flush()</code> makes it parse them at once (it may "
+"otherwise wait for more data before reading the end of a tag)."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:37
+msgid ""
+"<code>parser.read_events()</code> gives the pairs <code>(event, element)</"
+"code> of what was parsed since its last call.  The <code>element</code> of "
+"an event <code>\"end\"</code> is complete: <code>element.tag</code> is its "
+"name, preceded by its namespace between braces (such as <code>{jabber:client}"
+"message</code>), <code>element.get(\"from\")</code> is the value of its "
+"attribute <code>from</code> (or <code>None</code>), "
+"<code>element.find(\"{jabber:client}body\")</code> is its child element "
+"<code>body</code> (or <code>None</code>), and <code>element.text</code> is "
+"its text, with the references such as <code>&amp;lt;</code> already decoded."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:43
+msgid ""
+"<code>base64.b64encode(data)</code> gives the base64 of some bytes, as bytes."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:49
+msgid ""
+"Write the function <code>client(server, port, room, password)</code>, which "
+"connects to the XMPP server at this address and port, opens a stream to the "
+"domain <code>buggleinc.lan</code>, authenticates as the user <code>newcomer</"
+"code> with the password, and joins the room (such as "
+"<code>robots@conference.buggleinc.lan</code>) with the nickname "
+"<code>newcomer</code>.  The friend of Bob is in the room, and will call you "
+"once you joined: answer him, telling him who sent you and what you are "
+"looking for. He will give you a web address between <code>&lt;</code> and "
+"<code>&gt;</code>: print it alone on a line, without the <code>&lt;</code> "
+"and <code>&gt;</code>, then end your stream, wait for the server to end its "
+"own one, and close your socket."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:57
+msgid ""
+"The parameters of your function differ from one world to the other, and the "
+"server cuts its stanzas in packets in some of them. As usual, the room is "
+"busy, and some of its occupants do not always speak to the point."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:62
+msgid "What do I send first?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:63
+msgid ""
+"The header of your stream, as given in the reference: <code>&lt;?xml "
+"version='1.0'?&gt;&lt;stream:stream to='buggleinc.lan' xmlns='jabber:client' "
+"xmlns:stream='http://etherx.jabber.org/streams' version='1.0'&gt;</code>. Do "
+"not close it: the stream lasts as long as your connection. The server "
+"answers with its own header and its features."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:68
+msgid "How do I authenticate?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:69
+msgid ""
+"Send the element <code>&lt;auth&gt;</code> described in the reference, "
+"holding the base64 of a zero byte, the user name, a zero byte and the "
+"password. The trace shows how the server decoded your credentials, and its "
+"<code>&lt;failure&gt;</code> explains what went wrong.  [!"
+"python]<code>base64.b64encode(b\"\\0newcomer\\0\" + "
+"password.encode(\"ascii\"))</code> gives them.[/!]"
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:76
+msgid "Give me a function computing the base64"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:77
+msgid ""
+"The base64 writes each group of 3 bytes (24 bits) as 4 characters of 6 bits "
+"each, completed by <code>=</code> at the end.  This function writes the "
+"base64 of <code>length</code> bytes into <code>out</code>:"
 msgstr ""
 
 #. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/UdpDns.html:228
+#: src/lessons/network/bsdsocks/XmppClient.html:80
 #, no-wrap
 msgid ""
-"0x03 \"www\" 0x09 \"buggleinc\" 0x03 \"com\"   # the name, each label prefixed by its length and encoded in ASCII\n"
-"0x00                                     # this zero ends the name\n"
-"0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for A\n"
-"0x00 0x01                                # 0x00 0x01 in hexadecimal is 1 in decimal, which stands for IN (Internet)\n"
+"void base64(const unsigned char* data, int length, char* out)\n"
+"{\n"
+"  const char* digits = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n"
+"  for (int i = 0; i &lt; length; i += 3) {\n"
+"    int n  = data[i] &lt;&lt; 16 | (i + 1 &lt; length ? data[i + 1] &lt;&lt; 8 : 0) | (i + 2 &lt; length ? data[i + 2] : 0);\n"
+"    *out++ = digits[n &gt;&gt; 18 &amp; 63];\n"
+"    *out++ = digits[n &gt;&gt; 12 &amp; 63];\n"
+"    *out++ = i + 1 &lt; length ? digits[n &gt;&gt; 6 &amp; 63] : '=';\n"
+"    *out++ = i + 2 &lt; length ? digits[n &amp; 63] : '=';\n"
+"  }\n"
+"  *out = '\\0';\n"
+"}\n"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/UdpDns.html:233
+#: src/lessons/network/bsdsocks/XmppClient.html:93
 msgid ""
-"The query thus has 35 bytes, as the one of a name of the same length for any "
-"other type. In the answer, the data of an <code>A</code> record is 4 bytes "
-"long: these are the 4 numbers of the address, in order. The bytes <code>0x0a "
-"0x00 0x00 0x2a</code> stand for the address <code>10.0.0.42</code>, each "
-"byte being printed in decimal, between 0 and 255."
+"The credentials hold zero bytes, so they are not a string: keep their "
+"length, as given by <code>sprintf(credentials, \"%cnewcomer%c%s\", 0, 0, "
+"password)</code>."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:98
+msgid "How do I know that a stanza arrived whole?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:99
+msgid ""
+"Count the depth: the header of the stream opens the depth 1, each opening "
+"tag of a stanza goes one deeper, and each closing tag one back; a tag ending "
+"with <code>/&gt;</code> opens and closes its element at once. The stanza is "
+"whole when the depth gets back to 1. [!c]Inside a tag, the values between "
+"quotes may hold a <code>/</code> or a <code>&gt;</code> (as in "
+"<code>from='robots@conference.buggleinc.lan/Karel'</code>), which mean "
+"nothing there. Keep the bytes that follow the stanza for the next one.[/!][!"
+"python]Count the events <code>\"start\"</code> and <code>\"end\"</code> of "
+"the parser, and keep the element of an event <code>\"end\"</code> that "
+"brings the depth back to 1.[/!]"
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:108
+msgid "Give me the complete code of a generator of stanzas"
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:110
+#, no-wrap
+msgid ""
+"def stanzas(sock):\n"
+"    parser = ElementTree.XMLPullParser(events=(\"start\", \"end\"))\n"
+"    depth = 0\n"
+"    while True:\n"
+"        for event, element in parser.read_events():\n"
+"            if event == \"start\":\n"
+"                depth += 1\n"
+"            else:\n"
+"                depth -= 1\n"
+"                if depth == 1:  # back in the stream, at the end of one of its children\n"
+"                    yield element\n"
+"        data = sock.recv(4096)\n"
+"        if not data:  # the end of the stream\n"
+"            return\n"
+"        parser.feed(data)\n"
+"        parser.flush()\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:127
+msgid ""
+"Use it as the generator of lines of the IRC exercise: <code>reader = "
+"stanzas(sock)</code>, then <code>stanza = next(reader)</code>."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:133
+msgid "Give me the complete code of a function reading the stanzas"
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:135
+#, no-wrap
+msgid ""
+"char buffer[65536]; /* the data received and not given yet */\n"
+"int length  = 0;    /* how many bytes it holds */\n"
+"int scanned = 0;    /* how many of them were scanned */\n"
+"int depth   = 0;    /* 0 outside the stream, 1 in the stream, 2 or more in a stanza */\n"
+"int tag     = -1;   /* where the tag being scanned starts, or -1 in a text */\n"
+"char quote  = 0;    /* the quote of the value being scanned, or 0 */\n"
+"int start   = 0;    /* where the stanza being scanned starts */\n"
+"\n"
+"/* Writes the next stanza into stanza (of that size), ended by a zero byte, and returns 1, or 0 at the end of the stream */\n"
+"int next_stanza(int sock, char* stanza, int size)\n"
+"{\n"
+"  while (1) {\n"
+"    for (; scanned &lt; length; scanned++) {\n"
+"      char c = buffer[scanned];\n"
+"      if (tag &lt; 0) {          /* in a text, or between the stanzas */\n"
+"        if (c == '&lt;')\n"
+"          tag = scanned;\n"
+"      } else if (quote != 0) { /* in the value of an attribute */\n"
+"        if (c == quote)\n"
+"          quote = 0;\n"
+"      } else if (c == '\\'' || c == '\"')\n"
+"        quote = c;\n"
+"      else if (c == '&gt;') {    /* the end of a tag */\n"
+"        int stanza_ended = 0;\n"
+"        if (buffer[tag + 1] == '/') {        /* a closing tag */\n"
+"          depth--;\n"
+"          stanza_ended = depth == 1;\n"
+"        } else if (buffer[tag + 1] != '?') { /* an opening tag, unless the XML declaration */\n"
+"          if (depth == 1)\n"
+"            start = tag;\n"
+"          if (buffer[scanned - 1] == '/')    /* an empty element, as &lt;x/&gt; */\n"
+"            stanza_ended = depth == 1;\n"
+"          else\n"
+"            depth++;\n"
+"        }\n"
+"        tag = -1;\n"
+"        if (depth == 0)       /* &lt;/stream:stream&gt; */\n"
+"          return 0;\n"
+"        if (stanza_ended) {\n"
+"          int n = scanned + 1 - start;\n"
+"          if (n &gt;= size)\n"
+"            n = size - 1;\n"
+"          memcpy(stanza, buffer + start, n);\n"
+"          stanza[n] = '\\0';\n"
+"          length -= scanned + 1; /* forget everything up to the end of the stanza */\n"
+"          memmove(buffer, buffer + scanned + 1, length);\n"
+"          scanned = 0;\n"
+"          return 1;\n"
+"        }\n"
+"      }\n"
+"    }\n"
+"    int received = recv(sock, buffer + length, sizeof(buffer) - length, 0);\n"
+"    if (received &lt;= 0)        /* the end of the stream, or an error */\n"
+"      return 0;\n"
+"    length += received;\n"
+"  }\n"
+"}\n"
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:196
+msgid "How do I know that I am in the room?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:197
+msgid ""
+"The reference tells what the room sends when you join it, and what comes "
+"last."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:200
+msgid "Who is the friend of Bob?"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:201
+msgid ""
+"His name differs from one world to the other, but he calls you by your "
+"nickname in a message, as an IRC member would. The attribute <code>from</"
+"code> of this message tells who he is: the room, a <code>/</code>, then his "
+"nickname. Answer him on the room, starting your message with his nickname "
+"and a colon. If he does not understand you, the other occupants may help."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:206
+msgid "The address that I print is wrong, or holds &amp;lt;"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:207
+msgid ""
+"The texts of XML write <code>&lt;</code> as <code>&amp;lt;</code> and "
+"<code>&gt;</code> as <code>&amp;gt;</code>, among others (see the "
+"reference). [!python]The parser decodes them for you, in <code>element.text</"
+"code>.[/!][!c]Look for <code>&amp;lt;http</code> in the stanza, or decode "
+"the references of the text before searching it, with a function such as this "
+"one.[/!]"
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:213
+#, no-wrap
+msgid ""
+"void decode(char* text)\n"
+"{\n"
+"  const char* references[] = {\"&amp;lt;\", \"&amp;gt;\", \"&amp;amp;\", \"&amp;apos;\", \"&amp;quot;\"};\n"
+"  const char* characters   = \"&lt;&gt;&amp;'\\\"\";\n"
+"  char* out                = text;\n"
+"  while (*text != '\\0') {\n"
+"    int found = 0;\n"
+"    for (int i = 0; i &lt; 5 &amp;&amp; !found; i++)\n"
+"      if (strncmp(text, references[i], strlen(references[i])) == 0) {\n"
+"        *out++ = characters[i];\n"
+"        text += strlen(references[i]);\n"
+"        found = 1;\n"
+"      }\n"
+"    if (!found)\n"
+"      *out++ = *text++;\n"
+"  }\n"
+"  *out = '\\0';\n"
+"}\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:233
+msgid ""
+"If you print another address than the one of the friend of Bob, look at who "
+"sent it, and where: a message may quote another one inside it, and only the "
+"attribute <code>from</code> of the stanza itself tells who sent it."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:237
+msgid "The world reports a deadlock"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:238
+msgid ""
+"The world tells what each program waits for. If the server waits for a "
+"stanza while you wait for its answer, read the trace for the notes of the "
+"server: your stanza may be incomplete, or broken. If you wait for the end of "
+"the stream, did you end your own one first?"
 msgstr ""
 
 #. type: Content of: <h2>
