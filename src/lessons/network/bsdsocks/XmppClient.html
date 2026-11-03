@@ -19,8 +19,9 @@ besides the ones of the previous exercises. Check the manpages for more info.</p
 <ol>
     <li><code>void* memmove(void* dest, const void* src, size_t n)</code> copies <code>n</code> bytes, even when the two areas
     overlap, as when you remove the beginning of a buffer.</li>
-    <li><code>int sprintf(char* str, const char* format, ...)</code> writes as <code>printf()</code> into an array, and returns
-    the number of bytes written: the format <code>%c</code> with the value 0 writes a zero byte.</li>
+    <li><code>int snprintf(char* str, size_t size, const char* format, ...)</code> writes as <code>printf()</code> into an array
+    of size <code>size</code>, and returns the number of bytes written. This function correctly truncates the output to never
+    overflow the buffer size.</li>
     <li><code>char* strstr(const char* haystack, const char* needle)</code> and <code>char* strchr(const char* s, int c)</code>
     find a text or a character in a string.</li>
 </ol>
