@@ -518,6 +518,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       explained. The documentation of the world hides the forbidden and undocumented primitives, and orders the groups as declared.
     * *`PosixWorldTest`:* the kernel of the POSIX universe (files, TCP and UDP sockets, deadlocks, binary data), its scripted and
       program peers (IRC server included), and the comparison of its worlds, by calling the primitives of the student's process.
+      Its worlds written in their `.map` file and read back give the same file, an equal world and the same differences.
     * *`LangCMessagesTest`:* the compiler messages show the real names of the functions that a C glue renames with macros.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
@@ -562,6 +563,10 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       `LinearHanoi`) refuse a call that would defeat their goal.
     * *`LightBotLessonTest`:* the LightBot boards are puzzles without correction: each one loads, and has lights that the
       empty program of a new student leaves off.
+    * *`PosixAnswerCacheTest`:* the POSIX exercises that do not declare translated texts in their expected worlds, whose cache
+      files are read in every language, give these files in French too: their worlds built in French and run by the Java
+      correction are written as the ones computed in English. It changes the human language of the whole PLM, so its methods
+      do not run in parallel.
     * *`WorldDiffTest`:* for every exercise, the initial worlds equal their copy, and `diffTo()` explains how they differ from the
       answer worlds, as it does for a failing student. The lander is skipped: its worlds are judged by `winning()`, not by
       equality.
@@ -1130,7 +1135,16 @@ documentation](PEDAGOGY.md#system-programming).
     server starts listening when its script reaches `accept()`.
   - The timeline only draws the states that are visible, follows the end of the history during a run if it was shown, and does
     not open the editor on a click (only the current state does, its tabs following the world).
-* **No world I/O yet**: the expected worlds are recomputed at each load.
+* **World I/O**: the `.map` file of an expected world holds the system calls of the correction with their arguments, one per
+  line in ASCII, as `PosixEntity.step()` and `processEnded()` record them in `PosixWorld.calls`. `MapFile` replays them on a
+  copy of the initial world, whose kernel and peers rebuild the trace, the timeline and the final state: the simulation is
+  deterministic and cheap. A new call needs no change in `MapFile`, which finds the method of `PosixEntity` by its name, but any
+  new primitive that change the world must go through `step()` to be correctly captured in the `.map` file (primitives that only
+  read such as `lastError()` or `lastSender()` may access directly to the kernel). A file whose replay fails (its world waiting
+  forever, say) is reported as broken.
+  - A world whose expected state holds translated texts (in its scenario, or in the notes of its servers) calls
+    `holdingTranslations()`: its file is then only read and written in English, the other languages recomputing it at each
+    load. `PosixAnswerCacheTest` checks the worlds that do not declare it.
 * **TODO**: `HttpServer.html` describes the persistent connections without the timeout of `HttpServer.keepAlive()`, which no
   world uses yet. A world using it should tell its timeout to the students, in the reference or in the mission.
 

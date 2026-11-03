@@ -100,6 +100,7 @@ public class XmppClient extends ExerciseTemplated {
   private static PosixWorld world(String name, String ip, int port, String room, String password, XmppServer server)
   {
     return new PosixWorld(name)
+        .holdingTranslations()
         .setParameters(ip, port, room + "@" + XmppServer.CONFERENCE, password)
         .comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS)
         .redactingTheObjective()

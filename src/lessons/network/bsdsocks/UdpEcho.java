@@ -131,7 +131,7 @@ public class UdpEcho extends ExerciseTemplated {
     /** The world of this chat, where the parameter of server() is the port to bind, and Bob checks the echoes of his lines */
     PosixWorld world(String name)
     {
-      PosixWorld world = new PosixWorld(name).setParameters(PORT).redactingTheObjective();
+      PosixWorld world = new PosixWorld(name).holdingTranslations().setParameters(PORT).redactingTheObjective();
       for (int i = 0; i < characters.size(); i++) {
         String who        = characters.get(i);
         EchoClient client = new EchoClient("10.0.0." + (21 + i), who, PORT);

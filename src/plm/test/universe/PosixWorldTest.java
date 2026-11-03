@@ -7,8 +7,13 @@ import static plm.universe.posix.PosixWorld.O_WRONLY;
 import static plm.universe.posix.PosixWorld.SOCK_DGRAM;
 import static plm.universe.posix.PosixWorld.SOCK_STREAM;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +22,7 @@ import java.util.regex.Pattern;
 import lessons.network.bsdsocks.UdpEcho;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import plm.universe.BrokenWorldFileException;
 import plm.universe.ExplainedException;
 import plm.universe.posix.Datagram;
 import plm.universe.posix.DnsServer;
@@ -1665,5 +1671,97 @@ public class PosixWorldTest {
     Assertions.assertEquals("EBADF", p.lastError());
     Assertions.assertNull(p.recv(1, 10, 0));
     Assertions.assertEquals("ENOTSOCK", p.lastError());
+  }
+
+  // ---------------------------------------------------------------- the .map files of the expected worlds
+
+  /** The content of the .map file of the world */
+  private static String written(PosixWorld w) throws IOException
+  {
+    StringWriter text = new StringWriter();
+    try (BufferedWriter writer = new BufferedWriter(text)) {
+      w.writeToFile(writer);
+    }
+    return text.toString();
+  }
+
+  /** The world read back from that content, on its initial world */
+  private static PosixWorld read(PosixWorld initial, String content) throws IOException, BrokenWorldFileException
+  {
+    File file = File.createTempFile("posix", ".map");
+    try {
+      Files.writeString(file.toPath(), content);
+      return (PosixWorld)initial.readFromFile(file.getPath());
+    } finally {
+      file.delete();
+    }
+  }
+
+  /** Reads back the played world on its initial world, and checks that it is the same: written alike, equal, and explaining the same differences */
+  private static void checkReadBack(PosixWorld initial, PosixWorld played) throws IOException, BrokenWorldFileException
+  {
+    String content  = written(played);
+    PosixWorld back = read(initial, content);
+    Assertions.assertEquals(content, written(back));
+    Assertions.assertEquals(played, back);
+    Assertions.assertEquals(played.getTrace(), back.getTrace());
+    Assertions.assertEquals("", back.diffTo(played, null));
+    PosixWorld unplayed = (PosixWorld)initial.copy();
+    Assertions.assertEquals(played.diffTo(unplayed, null), back.diffTo(unplayed, null));
+    Assertions.assertTrue(content.chars().allMatch(c -> c == '\n' || c >= ' ' && c < 0x7F), "the file is in ASCII");
+  }
+
+  @Test public void testMapFileKeepsTheLeftovers() throws IOException, BrokenWorldFileException
+  {
+    // Data left in the queues, a connection waiting for accept(), an open file, and texts needing escapes
+    PosixWorld initial = new PosixWorld("leftovers")
+                             .addFile("in.txt", "caf\u00e9 \"quoted\" \\ \t null")
+                             .addPeer(Peer.server("10.0.0.1", 80, """
+                                 accept(3)
+                                 send(4, "HELLO WORLD")
+                                 transmit(4, 5)
+                                 recv(4, 2)
+                                 sleep(100)
+                                 transmit(4, 6)
+                                 """))
+                             .addPeer(Peer.client("10.0.0.2", 3000, """
+                                 sleep(1)
+                                 connect(3)
+                                 """));
+    PosixWorld w       = (PosixWorld)initial.copy();
+    PosixEntity p      = process(w);
+    int master         = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.bind(master, "0.0.0.0", 3000);
+    p.listen(master, 5);
+    int sock = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, "10.0.0.1", 80);
+    Assertions.assertEquals("HEL", s(p.recv(sock, 3, 0)));
+    p.send(sock, new byte[] {(byte)0xff, 1, '\n'}, 0);
+    p.read(p.open("in.txt", PosixWorld.O_RDONLY), 4);
+    p.sleep(2);
+    p.write(1, b("done\n"));
+    p.processEnded(0);
+    checkReadBack(initial, w);
+  }
+
+  @Test public void testMapFileKeepsTheDatagramsAndTheNotes() throws IOException, BrokenWorldFileException
+  {
+    PosixWorld w = UdpEcho.worlds()[0];
+    echoUntil(process(w), PosixWorld.MAX_DATAGRAM, BOB_PORT, true, false);
+    checkReadBack(UdpEcho.worlds()[0], w);
+  }
+
+  @Test public void testMapFileRejectsTheBrokenFiles() throws IOException
+  {
+    PosixWorld initial = new PosixWorld("lonely");
+    PosixWorld w       = (PosixWorld)initial.copy();
+    process(w).write(1, b("hello\n"));
+    process(w).processEnded(0);
+    String content = written(w);
+    for (String broken :
+         List.of(content.substring(0, content.length() / 2), content.replace("lonely", "crowded"), content.replace("write", "wrote"),
+                 content.replace("write 1", "write one"), content.replace("processEnded 0", "processEnded 0 1"), content.replace("\"hello\\n\"", "\"hello"),
+                 content + "socket 2 1 0\nbind 3 \"0.0.0.0\" 3000\nlisten 3 1\naccept 3\n")) // a replay that fails, waiting forever
+      Assertions.assertThrows(BrokenWorldFileException.class, () -> read(initial, broken), broken);
   }
 }

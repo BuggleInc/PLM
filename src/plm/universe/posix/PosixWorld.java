@@ -1,5 +1,8 @@
 package plm.universe.posix;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -74,6 +77,13 @@ public class PosixWorld extends World {
   private Set<Aspect> compared = EnumSet.allOf(Aspect.class);
   /** Whether the expected worlds hide their data (see redactingTheObjective()) */
   private boolean redacting;
+  /** Whether the expected state of this world holds translated texts (see holdingTranslations()) */
+  private boolean translated;
+  /** The system calls of the student's process, with their arguments, which its file replays (see MapFile) */
+  List<Call> calls = new CopyOnWriteArrayList<>();
+
+  /** A system call of the student's process, named as its method in PosixEntity, with its arguments (data as kept by the kernel) */
+  record Call(String name, Object... arguments) {}
 
   public PosixWorld(String name)
   {
@@ -123,6 +133,16 @@ public class PosixWorld extends World {
     return this;
   }
 
+  /**
+   * Tells that the expected state of this world holds translated texts, in its scenario or in the notes of its servers: its
+   * file (see MapFile) is then only read and written in English, and the other languages compute it at each load.
+   */
+  public PosixWorld holdingTranslations()
+  {
+    translated = true;
+    return this;
+  }
+
   /** Whether this world hides its data: an expected world of the current exercise, which asked for it */
   boolean redacted()
   {
@@ -166,6 +186,8 @@ public class PosixWorld extends World {
     history   = new CopyOnWriteArrayList<>(other.history); // the scenes are never modified, so they can be shared
     compared  = EnumSet.copyOf(other.compared);
     redacting = other.redacting;
+    translated = other.translated;
+    calls      = new CopyOnWriteArrayList<>(other.calls);
     super.reset(initialWorld);
     if (history.isEmpty())
       history.add(Scene.after(this, null, -1));
@@ -176,6 +198,13 @@ public class PosixWorld extends World {
   @Override public WorldView getView() { return new PosixWorldView(this); }
 
   @Override public EntityControlPanel getEntityControlPanel() { return new PosixTracePanel(this); }
+
+  /** The expected state is cached in its file in every language, but in English only if it holds translated texts */
+  @Override public boolean haveIO() { return !translated || Game.getInstance().getLocale().getLanguage().equals("en"); }
+
+  @Override protected World parse(BufferedReader reader, String path) throws IOException { return MapFile.replay(this, reader); }
+
+  @Override public void writeToFile(BufferedWriter writer) throws IOException { MapFile.write(this, writer); }
 
   /** Expands [!protocols/] into the documentation of the protocol of each class of documented program peer (once per class), under a heading if any */
   @Override protected String expandPlaceholders(String html)

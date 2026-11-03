@@ -32,7 +32,7 @@ public class TcpClient extends ExerciseTemplated {
    */
   private static PosixWorld world(String name, String ip, int port, boolean booting, String text)
   {
-    return new PosixWorld(name).setParameters(ip, port).addPeer(
+    return new PosixWorld(name).holdingTranslations().setParameters(ip, port).addPeer(
         Peer.server(ip, port, """
         %saccept(3)
         sleep(1)
@@ -48,7 +48,7 @@ public class TcpClient extends ExerciseTemplated {
   {
     String ascii = Peer.ascii(text);
     int first = ascii.indexOf(' ', ascii.length() / 3) + 1, second = ascii.indexOf(' ', 2 * ascii.length() / 3) + 1;
-    return new PosixWorld(name).setParameters(ip, port).addPeer(Peer.server(
+    return new PosixWorld(name).holdingTranslations().setParameters(ip, port).addPeer(Peer.server(
         ip, port, """
         accept(3)
         sleep(1)

@@ -63,7 +63,8 @@ public class TcpFramingIrc extends ExerciseTemplated {
                    Game.i18n.tr("{0}: Bob wants the magic word, and to know what you look for: the treasure."),
                    Game.i18n.tr("{0}: say exactly this here: Bob: {1}, tell me the way to the {2}."))
             .packets(11); // the lines of the members arrive in pieces
-    setup(new PosixWorld[] {new PosixWorld("Buggles").comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).redactingTheObjective().addPeer(buggles),
-                            new PosixWorld("Turtles").comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).redactingTheObjective().addPeer(turtles)});
+    setup(new PosixWorld[] {
+        new PosixWorld("Buggles").holdingTranslations().comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).redactingTheObjective().addPeer(buggles),
+        new PosixWorld("Turtles").holdingTranslations().comparing(Aspect.OUTPUT, Aspect.DESCRIPTORS).redactingTheObjective().addPeer(turtles)});
   }
 }
