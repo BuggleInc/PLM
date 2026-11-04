@@ -55,25 +55,28 @@ public class AboutPLMDialog extends JDialog {
     text.setBorder(null);
     text.setBackground(Color.white);
     text.setOpaque(true);
-    text.setText(Game.i18n.tr("<html>"
-                                  + "<h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
-                                  + "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</span>"
-                                  + "</h3>"
-                                  + "<br/>"
-                                  + "&copy; 2008-2026 Contributors. All rights reserved.<br/>"
-                                  + "<ul style=\"margin-left:20px;\">"
-                                  + "<li>Original idea: <i>L. Turbak (Wellesley College)</i></li>"
-                                  + "<li>Design and code: <i>M. Quinson (and G. Oster until 2015)</i></li>"
-                                  + "<li>Tests: <i>Telecom Nancy students (classes from ''11 to ''15)</i></li>"
-                                  + "</ul><br/>"
-                                  + "A coding assistant was used for some parts of the code, but the pedagogical content remains written by humans. "
-                                  + "The IA is asked to diagnostic the technical correctness of the pedagogical content, and draft the scriptwriting.<br/>"
-                                  + "Your code is saved to {2}<br/>"
-                                  + "Your secret session ID is {3}<br/>"
-                                  + "</html>",
-                              Game.getProperty("plm.major.version", "internal", false),
-                              Game.getProperty("plm.major.version", "internal", false) + "." + Game.getProperty("plm.minor.version", "", false),
-                              Game.getSavingLocation(), Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString()));
+    text.setText(Game.i18n.tr(
+        "<html>"
+            + "<h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
+            + "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</span>"
+            + "</h3>"
+            + "<br/>"
+            + "&copy; 2008-2026 Contributors. All rights reserved.<br/>"
+            + "<ul style=\"margin-left:20px;\">"
+            + "<li>Original idea: <i>L. Turbak (Wellesley College)</i></li>"
+            + "<li>Design and code: <i>M. Quinson (and G. Oster until 2015)</i></li>"
+            + "<li>Tests: <i>Telecom Nancy students (classes from ''11 to ''15)</i></li>"
+            + "</ul><br/>"
+            + "Some parts of the technical code were written with a coding assistant, and carefully revised by humans, who also manually sharpen the technical "
+            + "documentation. It's much more like an electrically assisted bicycle keeping humans in charge, rather than the electric SUV of vibe coding.<br/>"
+            + "The pedagogical content remains written by humans, and reviewed for technical inaccuracies or didactic inconsistencies by a coding assistant. "
+            + "The plot and scripts underlying the networking lesson are part pedagogical content, but were drafted by the robot and reviewed by humans.<br/>"
+            + "Your code is saved to {2}<br/>"
+            + "Your secret session ID is {3}<br/>"
+            + "</html>",
+        Game.getProperty("plm.major.version", "internal", false),
+        Game.getProperty("plm.major.version", "internal", false) + "." + Game.getProperty("plm.minor.version", "", false), Game.getSavingLocation(),
+        Game.getInstance().getUsers().getCurrentUser().getUserUUIDasString()));
     aboutPane.add(BorderLayout.SOUTH, text);
 
     tabs.add(Game.i18n.tr("About"), aboutPane);
