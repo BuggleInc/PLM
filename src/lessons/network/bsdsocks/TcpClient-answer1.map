@@ -1,0 +1,8 @@
+PosixWorld "Weather"
+socket 2 1 0
+connect 3 "10.0.0.2" 8080
+recv 3 512 0
+write 1 "Sunny over the pond of the turtles: 25 degrees, a perfect day to draw spirals."
+recv 3 512 0
+close 3
+processEnded 0

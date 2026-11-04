@@ -1,0 +1,54 @@
+PosixWorld "Packets"
+socket 2 1 0
+connect 3 "10.0.0.3" 9001
+recv 3 512 0
+write 1 "Psst, n"
+recv 3 512 0
+write 1 "ewcomer"
+recv 3 512 0
+write 1 "! Bob h"
+recv 3 512 0
+write 1 "ere. I "
+recv 3 512 0
+write 1 "know wh"
+recv 3 512 0
+write 1 "ere a r"
+recv 3 512 0
+write 1 "eal tre"
+recv 3 512 0
+write 1 "asure "
+recv 3 512 0
+write 1 "is hi"
+recv 3 512 0
+write 1 "dden,"
+recv 3 512 0
+write 1 " but "
+recv 3 512 0
+write 1 "the w"
+recv 3 512 0
+write 1 "alls "
+recv 3 512 0
+write 1 "have "
+recv 3 512 0
+write 1 "ears."
+recv 3 512 0
+write 1 " Come"
+recv 3 512 0
+write 1 " and "
+recv 3 512 0
+write 1 "see m"
+recv 3 512 0
+write 1 "e on "
+recv 3 512 0
+write 1 "the IRC serve"
+recv 3 512 0
+write 1 "r of BuggleIn"
+recv 3 512 0
+write 1 "c, and I will"
+recv 3 512 0
+write 1 " tell you mor"
+recv 3 512 0
+write 1 "e."
+recv 3 512 0
+close 3
+processEnded 0

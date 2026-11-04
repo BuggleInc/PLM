@@ -1,0 +1,13 @@
+PosixWorld "Buggles"
+socket 2 2 0
+sendto 3 "\u0000*\u0001\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\tbuggleinc\u0003lan\u0000\u0000\u0010\u0000\u0001" 0 "10.0.0.53" 53
+recvfrom 3 512 0
+sendto 3 "\u0000*\u0001\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\nconference\tbuggleinc\u0003lan\u0000\u0000\u0010\u0000\u0001" 0 "10.0.0.53" 53
+recvfrom 3 512 0
+sendto 3 "\u0000*\u0001\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u000c_xmpp-client\u0004_tcp\tbuggleinc\u0003lan\u0000\u0000!\u0000\u0001" 0 "10.0.0.53" 53
+recvfrom 3 512 0
+sendto 3 "\u0000*\u0001\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0005xmpp2\tbuggleinc\u0003lan\u0000\u0000\u0001\u0000\u0001" 0 "10.0.0.53" 53
+recvfrom 3 512 0
+write 1 "10.0.0.5\n"
+close 3
+processEnded 0

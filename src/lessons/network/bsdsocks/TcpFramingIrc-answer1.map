@@ -1,0 +1,23 @@
+PosixWorld "Turtles"
+socket 2 1 0
+connect 3 "10.0.0.1" 194
+read 3 8192
+send 3 "NICK student\r\n" 0
+send 3 "USER student 0 * :myself.\r\n" 0
+read 3 8192
+send 3 "JOIN #welcome\r\n" 0
+read 3 8192
+send 3 "PRIVMSG #welcome :Bob: Please show me the way to the treasure trove.\r\n" 0
+read 3 8192
+read 3 8192
+read 3 8192
+read 3 8192
+read 3 8192
+read 3 8192
+read 3 8192
+read 3 8192
+read 3 8192
+read 3 8192
+write 1 "xmpp:lsystem@conference.buggleinc.lan\n"
+close 3
+processEnded 0

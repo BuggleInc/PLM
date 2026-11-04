@@ -1,0 +1,42 @@
+PosixWorld "Buggles"
+socket 2 2 0
+bind 3 "0.0.0.0" 6666
+recvfrom 3 65507 0
+sendto 3 "Alice: Testing, testing. Is the echo server of the newcomer up?" 0 "10.0.0.21" 36290
+recvfrom 3 65507 0
+sendto 3 "Carol: Hello? Hello? Oh, it answers with my own words!" 0 "10.0.0.22" 38051
+recvfrom 3 65507 0
+sendto 3 "Alice: Newcomer, write this down: the XMPP server of Karel knows you as USER <newcomer> with the PASSWORD <ba6915c0de>. Without them, Karel will not even see you." 0 "10.0.0.21" 36290
+write 1 "newcomer\n"
+write 1 "ba6915c0de\n"
+recvfrom 3 65507 0
+sendto 3 "Dave: Echo! Echo! Echo!" 0 "10.0.0.24" 46477
+recvfrom 3 65507 0
+sendto 3 "Alice: Bob says that he will give the PORT <number> to the newcomer once the echo works. Patience." 0 "10.0.0.21" 36290
+recvfrom 3 65507 0
+sendto 3 "Carol: Does it echo the baggles too? Here is one: (o)" 0 "10.0.0.22" 38051
+recvfrom 3 65507 0
+sendto 3 "Dave: I heard that the XMPP server is not on PORT 5234 anymore." 0 "10.0.0.24" 46477
+recvfrom 3 65507 0
+sendto 3 "Dave: Or was it 5243? I always swap my digits." 0 "10.0.0.24" 46477
+recvfrom 3 65507 0
+sendto 3 "Bob: Hold on, everybody. I am checking that the echo is faithful." 0 "10.0.0.23" 39812
+recvfrom 3 65507 0
+sendto 3 "Bob: Here is a long trail of baggles, to check that the long lines come back whole: (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o) (o)" 0 "10.0.0.23" 39812
+recvfrom 3 65507 0
+sendto 3 "Alice: I paint the echoes in red, to tell them from my own words." 0 "10.0.0.21" 36290
+recvfrom 3 65507 0
+sendto 3 "Carol: A turmite on a wall, an echo in a socket: they always come back." 0 "10.0.0.22" 38051
+recvfrom 3 65507 0
+sendto 3 "Dave: In a maze, I shout and listen to the echo to find the walls." 0 "10.0.0.24" 46477
+recvfrom 3 65507 0
+sendto 3 "Alice: That is not how mazes work, Dave." 0 "10.0.0.21" 36290
+recvfrom 3 65507 0
+sendto 3 "Carol: Unless the maze is made of sockets." 0 "10.0.0.22" 38051
+recvfrom 3 65507 0
+sendto 3 "Bob: The echo is good. Newcomer, I hope that you noted the USER and the PASSWORD that Alice gave you. Listen carefully now." 0 "10.0.0.23" 39812
+recvfrom 3 65507 0
+sendto 3 "Bob: Karel waits for you on PORT <52220> of the XMPP server whose address the DNS gave you. Hurry up!" 0 "10.0.0.23" 39812
+write 1 "52220\n"
+close 3
+processEnded 0

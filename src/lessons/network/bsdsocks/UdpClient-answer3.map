@@ -1,0 +1,7 @@
+PosixWorld "Long answer"
+socket 2 2 0
+sendto 3 "Tell me more" 0 "10.0.0.3" 9001
+recvfrom 3 65508 0
+write 1 "A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. A datagram arrives whole, or not at all. "
+close 3
+processEnded 0
