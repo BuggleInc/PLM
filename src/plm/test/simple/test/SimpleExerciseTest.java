@@ -144,6 +144,24 @@ public abstract class SimpleExerciseTest {
     }
   }
 
+  /** Without picky mode, a warning does not fail the compilation, and is located on its line of the editor */
+  @Test public void testWarningsOfASuccessfulCompilation() throws InterruptedException
+  {
+    setEditorContent(generateWarningCode());
+    RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, pl, false, new ArrayList<Future<?>>(), () -> {});
+    Assertions.assertTrue(outcome.isPassed(), outcome.compilationError + outcome.executionError);
+    Assertions.assertTrue(outcome.compilerMessages.stream().anyMatch(message -> message.line() == 2 && message.sure() && message.warning()),
+                          outcome.compilerMessages.toString());
+  }
+
+  /** In picky mode, the same warning fails the compilation */
+  @Test public void testWarningsFailThePickyCompilation() throws InterruptedException
+  {
+    setEditorContent(generateWarningCode());
+    RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, pl, true, new ArrayList<Future<?>>(), () -> {});
+    Assertions.assertTrue(outcome.isCompilationError(), outcome.executionError);
+  }
+
   // Used to generate compilation error for each programming languages tested
   public abstract String generateSyntaxErrorCode();
   public abstract String generateVariableErrorCode();
@@ -155,6 +173,9 @@ public abstract class SimpleExerciseTest {
 
   // Used to generate a code throwing no errors but not passing the exercise
   public abstract String generateWrongCode();
+
+  // Used to generate a code passing the exercise, but with a warning of the compiler on its second line
+  public abstract String generateWarningCode();
 
   public abstract String generateSolutionFollowedByError();
 }

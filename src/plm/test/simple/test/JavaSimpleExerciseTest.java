@@ -31,6 +31,14 @@ public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
         + "}";
   }
 
+  @Override public String generateWarningCode()
+  {
+    return "public void run() {\n"
+        + "    Integer i = new Integer(3);\n"
+        + "    setObjectif(true);\n"
+        + "}";
+  }
+
   @Override public String generateWrongCode()
   {
     return "public void run() {\n"

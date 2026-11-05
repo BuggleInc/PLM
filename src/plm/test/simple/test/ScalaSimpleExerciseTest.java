@@ -31,6 +31,14 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
         + "}";
   }
 
+  @Override public String generateWarningCode()
+  {
+    return "override def run(): Unit = {\n"
+        + "  val o: Option[Int] = Some(1); o match { case Some(v) => }\n"
+        + "  setObjectif(true);\n"
+        + "}";
+  }
+
   @Override public String generateWrongCode()
   {
     return "override def run(): Unit = {\n"

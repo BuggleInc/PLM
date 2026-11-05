@@ -35,6 +35,13 @@ public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
         + "  print(tab[42])";
   }
 
+  @Override public String generateWarningCode()
+  {
+    return "def run():\n"
+        + "  if 1 is 1:\n"
+        + "    setObjectif(True)\n";
+  }
+
   @Override public String generateWrongCode()
   {
     return "def run():\n"

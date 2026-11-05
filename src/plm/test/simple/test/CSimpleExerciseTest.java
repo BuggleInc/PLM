@@ -51,6 +51,14 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
         + "}\n";
   }
 
+  @Override public String generateWarningCode()
+  {
+    return "void run() {\n"
+        + "  int unused = 1;\n"
+        + "  setObjectif(true);\n"
+        + "}\n";
+  }
+
   @Override public String generateWrongCode()
   {
     return "void run() {\n"
