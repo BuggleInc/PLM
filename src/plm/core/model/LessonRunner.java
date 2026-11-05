@@ -44,24 +44,25 @@ public class LessonRunner extends Thread {
     final ProgrammingLanguage lang = this.game.getProgrammingLanguage();
 
     RunOutcome outcome = runExercise(exo, lang);
-    if (!stopped)
-      SwingUtilities.invokeLater(() -> MainFrame.getInstance().getEditorTabs().showCompilerMessages(exo, lang, outcome.compilerMessages));
+    if (stopped)
+      return;
+    SwingUtilities.invokeLater(() -> MainFrame.getInstance().getEditorTabs().showCompilerMessages(exo, lang, outcome.compilerMessages));
+    if (game.isCreativeEnabled())
+      return;
 
-    if (!game.isCreativeEnabled() && !stopped) {
-      try {
-        if (outcome.isPassed()) {
-          Game.getInstance().studentWork.setPassed(exo, outcome.language, true);
-          SwingUtilities.invokeAndWait(() -> new ExercisePassedDialog(exo, outcome));
-        } else {
-          SwingUtilities.invokeAndWait(() -> new ExerciseFailedDialog(outcome));
-        }
-      } catch (InvocationTargetException | InterruptedException e) {
-        if (e instanceof InterruptedException)
-          Thread.currentThread().interrupt();
-        e.printStackTrace();
+    try {
+      if (outcome.isPassed()) {
+        Game.getInstance().studentWork.setPassed(exo, outcome.language, true);
+        SwingUtilities.invokeAndWait(() -> new ExercisePassedDialog(exo, outcome));
+      } else {
+        SwingUtilities.invokeAndWait(() -> new ExerciseFailedDialog(outcome));
       }
-      Game.getInstance().getGitTracker().executed(exo, outcome);
+    } catch (InvocationTargetException | InterruptedException e) {
+      if (e instanceof InterruptedException)
+        Thread.currentThread().interrupt();
+      e.printStackTrace();
     }
+    Game.getInstance().getGitTracker().executed(exo, outcome);
   }
 
   /**
