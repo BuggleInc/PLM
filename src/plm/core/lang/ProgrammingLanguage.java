@@ -82,10 +82,27 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
   }
 
   /**
-   * Compile the exercise, and return a textual reference to the result (a jar or binary path) that {@link #runEntity} will
-   * later need to actually run it.
+   * What {@link #compileExo} produced: a textual reference to the result (a jar or binary path) that {@link #runEntity} will later
+   * need to actually run it, and the warnings of the compiler ("" if none).
    */
-  public abstract String compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
+  public record Compiled(String executable, String warnings) {}
+
+  /** Compile the exercise. The errors of the compiler, and its warnings in picky mode, are the message of the exception. */
+  public abstract Compiled compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
+
+  /**
+   * The warnings of a compiler, which are compilation errors in picky mode, and are displayed on the console otherwise.
+   * @return the warnings, when they are not errors
+   */
+  protected static String pickyWarnings(String warnings) throws PLMCompilerException
+  {
+    if (!warnings.isBlank()) {
+      if (Game.getInstance().isPickyEnabled())
+        throw new PLMCompilerException(warnings, null);
+      System.err.println(warnings.stripTrailing());
+    }
+    return warnings;
+  }
 
   /**
    * Make the entity run, according to the used universe and programming language.
@@ -100,7 +117,7 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    *  * LightBot entities are launched by executing the {@link LightBotEntity#run()} method,
    *    that is NOT defined by the student, but interprets the code of the students.
    *
-   *  @param executable the value {@link #compileExo} returned for this exercise/language (unused by languages that
+   *  @param executable the executable that {@link #compileExo} returned for this exercise/language (unused by languages that
    *         don't compile, e.g. LightBot).
    *  @see #run() that encodes the student logic in Java
    */

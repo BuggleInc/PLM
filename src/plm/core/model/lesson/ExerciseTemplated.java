@@ -182,7 +182,7 @@ public abstract class ExerciseTemplated extends Exercise {
   private String compileCorrection(ProgrammingLanguage lang)
   {
     try {
-      return lang.compileExo(this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+      return lang.compileExo(this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION).executable();
     } catch (PLMCompilerException e) {
       System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
       e.printStackTrace();

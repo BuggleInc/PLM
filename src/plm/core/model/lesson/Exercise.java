@@ -156,7 +156,7 @@ public abstract class Exercise extends Lecture {
     /* Compilation, then source-level API gating. Every compilation error is reported here. */
     String executable;
     try {
-      executable = lang.compileExo(this, out, whatToCompile);
+      executable = lang.compileExo(this, out, whatToCompile).executable();
       if (whatToCompile == StudentOrCorrection.STUDENT)
         verifySource(getEditorContent(lang));
     } catch (PLMCompilerException e) {

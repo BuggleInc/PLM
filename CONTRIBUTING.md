@@ -58,8 +58,9 @@ Here are the steps of the exercise execution:
 * **Compile**: The starting point is `ProgrammingLanguage.compileExo()`.
   - The code is then compiled to an external executable/jar if needed. Java/Scala compile in-process to avoid the startup time of an
     external JVM, C uses an external compiler, and Python is checked by `python3 -m py_compile`.
-  - `compileExo()` returns a textual reference to the result (the path to a jar, a binary, etc), which the caller then passes
-    down as-is to `runEntity()`'s `executable` parameter below.
+  - `compileExo()` returns a `Compiled` record: a textual reference to the result (the path to a jar, a binary, etc), which the
+    caller then passes down as-is to `runEntity()`'s `executable` parameter below, and the warnings of the compiler. The errors
+    are the message of a `PLMCompilerException`, and so are the warnings in picky mode (`ProgrammingLanguage.pickyWarnings()`).
 * **Source verification**: `Exercise.compileRunCheck()` then calls `Exercise.verifySource()` with the editor's content, for the
   student's code only (not for the correction). Exercises override it to refuse a code that compiles but misses the point (see
   "API gating" below).

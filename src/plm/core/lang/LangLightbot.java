@@ -19,9 +19,9 @@ public class LangLightbot extends ProgrammingLanguage {
   @Override public String getBrokenLanguageMessage() { return ""; }
   @Override public boolean isBrokenLanguage() { return false; }
 
-  @Override public String compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  @Override public Compiled compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
-    return null; /* Nothing to do */
+    return new Compiled(null, ""); /* Nothing to do */
   }
 
   @Override public void runEntity(Entity ent, RunOutcome progress, String executable)

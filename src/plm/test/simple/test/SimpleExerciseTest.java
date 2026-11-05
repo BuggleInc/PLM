@@ -74,7 +74,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateOutOfBoundsErrorCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
@@ -86,7 +86,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testNullPointerErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateNullPointerErrorCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
@@ -97,7 +97,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testExceptionRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateExceptionRaisingCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
@@ -109,7 +109,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testWrongCodeShouldNotPass() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateWrongCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
@@ -122,7 +122,7 @@ public abstract class SimpleExerciseTest {
   @Test public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateSolutionFollowedByError());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 

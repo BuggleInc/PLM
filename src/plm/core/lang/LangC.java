@@ -82,27 +82,27 @@ public class LangC extends TemplatedRemoteLang {
 
   @Override public boolean isC() { return true; }
 
-  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  @Override public Compiled compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
 
     List<SourceFile> sfs = exo.getSourceFilesList(this);
     if (sfs.isEmpty())
       throw new PLMCompilerException(exo.getName() + ": No source to compile", null);
 
-    String execPath = null;
+    Compiled compiled = null;
     for (SourceFile sf : sfs) {
       EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
       // The IMPORT sections come first. The #line directive makes the compiler errors point at the entity's own file
       String entityCode = sf.getImports() + segments.pre() + "#line 1 \"" + exo.getTabName() + ".c\" \n" + segments.body() + segments.post();
 
       entityCode = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
-      execPath   = compile(entityCode, sf.getRemote(), exo.getId(), exo, whatToCompile);
+      compiled   = compile(entityCode, sf.getRemote(), exo.getId(), exo, whatToCompile);
     }
-    return execPath;
+    return compiled;
   }
 
   /**
-   * Compile the given code and return the absolute path of the resulting executable.
+   * Compile the given code. The executable of the result is the absolute path of the binary.
    *
    * Each call gets its own fresh temp directory (holding the generated .c file and the executable), instead of a path
    * deterministically derived from exo.getId() alone: compileExo() is called separately -- and not necessarily in
@@ -116,7 +116,7 @@ public class LangC extends TemplatedRemoteLang {
    * reuses it afterwards. Only the student/correction file itself is compiled anew every time, then linked against
    * those cached objects.
    */
-  private String compile(String code, String remote, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  private Compiled compile(String code, String remote, String executable, Exercise exo, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     try {
       Files.createDirectories(C_ROOT);
@@ -164,9 +164,8 @@ public class LangC extends TemplatedRemoteLang {
       String untracked = "".equals(probe("-ftrack-macro-expansion=0", null)) ? " -ftrack-macro-expansion=0" : "";
       String linkCmd   = cc + untracked + " -o \"" + exec + "\" " + linkInputs + " -lm -lpthread" + (isWindows ? " -lws2_32" : "");
 
-      runCompiler(linkCmd, compileDir.toFile(), isWindows, messages -> withRealNames(messages, remoteWorldH));
-
-      return exec.getAbsolutePath();
+      String warnings = runCompiler(linkCmd, compileDir.toFile(), isWindows, messages -> withRealNames(messages, remoteWorldH));
+      return new Compiled(exec.getAbsolutePath(), pickyWarnings(warnings));
     } catch (IOException ioe) {
       throw new PLMCompilerException(ioe.getMessage(), null, ioe);
     } catch (InterruptedException e) {
@@ -213,7 +212,7 @@ public class LangC extends TemplatedRemoteLang {
 
         Path tmpObject = scratch.resolve(baseName + ".o");
         String compileCmd = cc + " -x c -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
-        runCompiler(compileCmd, scratch.toFile(), isWindows, UnaryOperator.identity());
+        pickyWarnings(runCompiler(compileCmd, scratch.toFile(), isWindows, UnaryOperator.identity()));
 
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
       } finally {
@@ -244,9 +243,8 @@ public class LangC extends TemplatedRemoteLang {
   }
 
   /**
-   * Run a compiler command line from workDir. Everything it prints on stdout+stderr, rewritten by messages, is the message of
-   * the exception thrown if it fails, or if it emits warnings in picky mode (the command is then displayed in debug mode).
-   * Otherwise, these warnings are displayed on the console, and returned.
+   * Run a compiler command line from workDir, and return everything it prints on stdout+stderr (its warnings), rewritten by
+   * messages. This text is the message of the exception thrown if it fails (the command is then displayed in debug mode).
    */
   private static String runCompiler(String shellCommand, File workDir, boolean isWindows, UnaryOperator<String> messages)
       throws IOException, InterruptedException, PLMCompilerException
@@ -265,12 +263,11 @@ public class LangC extends TemplatedRemoteLang {
     stderr.join();
 
     String said = messages.apply(out.toString());
-    if (status != 0 || (Game.getInstance().isPickyEnabled() && !said.isEmpty())) {
+    if (status != 0) {
       if (Game.getInstance().isDebugEnabled())
         System.err.println(Game.i18n.tr("Compilation error. The command {0} failed.", shellCommand));
       throw new PLMCompilerException(said, null);
     }
-    System.err.print(said);
     return said;
   }
 

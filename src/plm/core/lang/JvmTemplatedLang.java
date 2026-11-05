@@ -83,8 +83,8 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   protected abstract void compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile,
                                        File entityFile, File jarFile) throws PLMCompilerException;
 
-  /** Generates, compiles and packs the Entity of each source file of the exercise. Returns the path of the last jar. */
-  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  /** Generates, compiles and packs the Entity of each source file of the exercise. The executable is the path of the last jar. */
+  @Override public Compiled compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String packageNameCache = packageNameForExercise(exo, whatToCompile);
     Path entitiesJar        = deployResource(entitiesJarName, TMP_ROOT);
@@ -126,7 +126,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
       jarPath = jarFile.toPath().toString();
       lineShifts.put(jarPath, lineShift);
     }
-    return jarPath;
+    return new Compiled(jarPath, "");
   }
 
   @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }

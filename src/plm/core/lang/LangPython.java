@@ -87,7 +87,7 @@ public class LangPython extends TemplatedRemoteLang {
     return dot < 0 ? name : name.substring(0, dot);
   }
 
-  @Override public String compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
+  @Override public Compiled compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
     String runName = packageNameForExercise(exo, whatToCompile);
 
@@ -181,7 +181,7 @@ public class LangPython extends TemplatedRemoteLang {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return mainPath;
+    return new Compiled(mainPath, "");
   }
 
   /** Locations before the body, and all of them when debugging is enabled, are left untouched. */

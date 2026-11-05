@@ -22,7 +22,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldPass() throws PLMCompilerException, InterruptedException
   {
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION).executable();
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
@@ -33,7 +33,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException, InterruptedException
   {
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION).executable();
 
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
 
@@ -61,7 +61,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
     System.setErr(new PrintStream(capture, true));
     try {
       setEditorContent(generateExceptionRaisingCode());
-      String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+      String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
       RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
     } finally {
       System.setErr(realErr);
@@ -74,7 +74,7 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   protected void assertPassesThanksToImports(String code) throws PLMCompilerException, InterruptedException
   {
     setEditorContent(code);
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
     RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
     Assertions.assertEquals(RunOutcome.kind.PASS, result.outcome, result.executionError);
   }
