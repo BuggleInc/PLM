@@ -54,16 +54,33 @@ public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
   /** The error of a compilation is reported at its line in the editor, not in the generated source. */
   @Test public void testCompilationErrorLineMatchesEditor()
   {
-    setDebug(false);
-    try {
-      setEditorContent("def run():\n"
-                       + "  a = 1\n"
-                       + "  toto +=\n");
-      PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
-      assertErrorOnLine(3, e);
-    } finally {
-      setDebug(true);
-    }
+    setEditorContent("def run():\n"
+                     + "  a = 1\n"
+                     + "  toto +=\n");
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
+    assertMessageOnLine(3, false, e);
+  }
+
+  /** An indentation error, which python reports in another format than the other syntax errors, is located in the editor too */
+  @Test public void testIndentationErrorLineMatchesEditor()
+  {
+    setEditorContent("def run():\n"
+                     + "  a = 1\n"
+                     + "    b = 2\n");
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
+    assertMessageOnLine(3, false, e);
+    Assertions.assertTrue(e.getMessage().contains("IndentationError"), e.getMessage());
+  }
+
+  /** The syntax warnings are reported, which fails the compilation in picky mode (always on in the tests) */
+  @Test public void testSyntaxWarningIsReported()
+  {
+    setEditorContent("def run():\n"
+                     + "  if 1 is 1:\n"
+                     + "    setObjectif(True)\n");
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
+    assertMessageOnLine(2, true, e);
+    Assertions.assertTrue(e.getMessage().contains("SyntaxWarning"), e.getMessage());
   }
 
   /** The tabs of the indentation are read the way python does (tab stops every 8 columns), whatever the editor stored. */

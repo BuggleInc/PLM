@@ -57,16 +57,11 @@ public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
   /** The error of a compilation is reported at its line in the editor, not in the generated source. */
   @Test public void testCompilationErrorLineMatchesEditor()
   {
-    setDebug(false);
-    try {
-      setEditorContent("public void run() {\n"
-                       + "    int a = 1;\n"
-                       + "    toto++;\n"
-                       + "}");
-      PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
-      assertErrorOnLine(3, e);
-    } finally {
-      setDebug(true);
-    }
+    setEditorContent("public void run() {\n"
+                     + "    int a = 1;\n"
+                     + "    toto++;\n"
+                     + "}");
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
+    assertMessageOnLine(3, false, e);
   }
 }

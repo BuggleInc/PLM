@@ -57,16 +57,11 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
   /** The error of a compilation is reported at its line in the editor, not in the generated source. */
   @Test public void testCompilationErrorLineMatchesEditor()
   {
-    setDebug(false);
-    try {
-      setEditorContent("override def run(): Unit = {\n"
-                       + "  var a = 1;\n"
-                       + "  toto += 1;\n"
-                       + "}");
-      PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
-      assertErrorOnLine(3, e);
-    } finally {
-      setDebug(true);
-    }
+    setEditorContent("override def run(): Unit = {\n"
+                     + "  var a = 1;\n"
+                     + "  toto += 1;\n"
+                     + "}");
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
+    assertMessageOnLine(3, false, e);
   }
 }

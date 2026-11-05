@@ -55,12 +55,12 @@ public abstract class SimpleExerciseTest {
   /** Puts the code in the only source file of the exercise */
   protected void setEditorContent(String code) { exo.setEditorContent(pl, code); }
 
-  /** The first message of the compiler is an error surely located on that line of the editor */
-  protected void assertErrorOnLine(int line, PLMCompilerException e)
+  /** The first message of the compiler is an error (or a warning) surely located on that line of the editor */
+  protected void assertMessageOnLine(int line, boolean warning, PLMCompilerException e)
   {
     int editorLines       = exo.getEditorContent(pl).split("\\R", -1).length;
     CompilerMessage first = CompilerMessage.parse(e.getMessage(), pl.editorFileName(exo), e.getLineShift(), editorLines).get(0);
-    Assertions.assertEquals(new CompilerMessage(line, true, false, first.text()), first, e.getMessage());
+    Assertions.assertEquals(new CompilerMessage(line, true, warning, first.text()), first, e.getMessage());
   }
 
   @Test public void testNewSourceRefusesATabThatIsNotAnIdentifier()
