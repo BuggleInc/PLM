@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.core.PLMCompilerException;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage.Compiled;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise.StudentOrCorrection;
@@ -22,9 +23,9 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldPass() throws PLMCompilerException, InterruptedException
   {
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION).executable();
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
 
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
 
     if (!result.isPassed()) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should pass the exercise but the outcoume is " + result.outcome.toString());
@@ -33,9 +34,9 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
 
   @Test public void testSolutionShouldExecuteProperly() throws PLMCompilerException, InterruptedException
   {
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION).executable();
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.CORRECTION);
 
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
 
     if (result.executionError != null && !result.executionError.equals("")) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should execute properly and not throw the following error:\n" + result.executionError);
@@ -61,8 +62,8 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
     System.setErr(new PrintStream(capture, true));
     try {
       setEditorContent(generateExceptionRaisingCode());
-      String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
-      RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+      Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+      RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
     } finally {
       System.setErr(realErr);
       setDebug(true);
@@ -74,8 +75,8 @@ public abstract class CompiledSimpleExerciseTest extends SimpleExerciseTest {
   protected void assertPassesThanksToImports(String code) throws PLMCompilerException, InterruptedException
   {
     setEditorContent(code);
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
     Assertions.assertEquals(RunOutcome.kind.PASS, result.outcome, result.executionError);
   }
 

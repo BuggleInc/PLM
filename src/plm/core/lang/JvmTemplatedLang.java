@@ -36,8 +36,8 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /** Per-language scratch directory, nested under the shared TMP_ROOT, e.g. .../plm/java or .../plm/scala. */
   protected final File tempFolder = TMP_ROOT.resolve(getExt()).toFile();
 
-  /** The location of a line of the entity in a stack trace, e.g. "Entity.java:42". */
-  private static final Pattern ENTITY_LOCATION = Pattern.compile("([^\\s(]*Entity\\.(?:java|scala))(:)(\\d+)");
+  /** The location of a line of the entity in a stack trace or a message of the compiler, e.g. "Entity.java:42". */
+  private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.(?:java|scala):)(\\d+)");
 
   /**
    * The option giving \n as line separator to the JVM running the student's code, whatever the system: println() and the like
@@ -91,6 +91,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
     String jarPath                                 = null;
     String warnings                                = "";
+    int lineShift                                  = 0;
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
     for (SourceFile sf : exo.getSourceFilesList(this)) {
       EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
@@ -121,16 +122,15 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
       }
 
       // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
-      int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
+      lineShift     = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
       warnings      = compileToJar(diagnostic, workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile, jarFile);
 
       jarPath = jarFile.toPath().toString();
-      lineShifts.put(jarPath, lineShift);
     }
-    return new Compiled(jarPath, pickyWarnings(warnings));
+    return new Compiled(jarPath, pickyWarnings(warnings, lineShift), lineShift);
   }
 
-  @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
+  @Override public String shiftLines(String text, int lineShift) { return shiftLines(ENTITY_LOCATION, text, lineShift); }
 
   /** The first line of the stack trace printed by the generated Main, such as "java.net.ConnectException: Connection refused" */
   @Override protected String failureCause(String stderr) { return stderr.strip().lines().findFirst().orElse(null); }

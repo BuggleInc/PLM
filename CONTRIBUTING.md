@@ -183,14 +183,14 @@ teacher's correction) and `post` with what its language needs:
 Each language does this concatenation inline in its own `compileExo()`, to keep a single linear flow instead of jumping to a
 handful of one-off helper lines elsewhere:
   - Java/Scala/Python first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: it is the number of lines of the
-    generated source before the body's own first line. It is used to fix (shift) the location of compilation errors so that they
-    point to the code written by the student. Diagnostics located before the body keep their line, but get the full path of the
-    generated file so that they cannot be taken for lines of the editor, and all of them are left untouched when debugging is
-    enabled. Java gets them from javac's `DiagnosticCollector`, Scala from dotc's `SimpleReporter`, Python from the output of its
-    syntax check. All three languages also subtract this number from the `Entity.java:N`, `Entity.scala:N` and
-    `Entity.py", line N` locations found in the stack traces that the student process writes on its stderr, through the
-    `RemoteExecutionLang.shiftLocations()` hook (`JvmTemplatedLang` keeps the offset of each compiled jar in `lineShifts`). The
-    locations before the body are handled as in the compilation messages, by `TemplatedRemoteLang.shiftLines()`.
+    generated source before the body's own first line, which the student's code is compiled with (`lineShift` of `Compiled`, 0 for
+    the correction). The compilers report the lines of the generated source (Java gets them from javac's `DiagnosticCollector`,
+    Scala from dotc's `SimpleReporter`, Python from the output of its syntax check), and so do the stack traces that the student
+    process writes on its stderr. `ProgrammingLanguage.shiftLines()` subtracts the shift from the `Entity.java:N`,
+    `Entity.scala:N`, `Entity.py:N` and `Entity.py", line N` locations of the body when they are displayed, but leaves the
+    locations before the body untouched, and all of them when debugging is enabled. The compilation messages are also parsed for
+    the margin of the editor from the lines of the generated source, which works in debug mode too (see
+    [below](#compiler-messages-in-the-margin-of-the-editor)).
     - C does not need to compute the offset, as a `#line` preprocessor directive already fixes the error location.
   - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
     still parses.
@@ -221,26 +221,26 @@ messages of their line. Every language renders its compiler's messages in the sa
   compiler quotes and its caret come after a `|` (as gcc does), and are dropped with the context lines of gcc and of its linker
   (`In function`, `In file included from`). Any other line starts an error without location, such as the message of
   `Exercise.verifySource()` or the errors of the linker.
-- A message is surely on a line of the editor if its file is `ProgrammingLanguage.editorFileName()` (`Entity.java`, `Entity.scala`,
-  `Entity.py`, or the tab's name followed by `.c`) and its line is one of the editor. The others get a `?` bullet on the first
-  line.
+- The compilers report the lines of the generated source, which exceed the editor's by the `lineShift` of the compilation (in
+  `Compiled` and `PLMCompilerException`). A message is surely on a line of the editor if its file is
+  `ProgrammingLanguage.editorFileName()` (`Entity.java`, `Entity.scala`, `Entity.py`, or the tab's name followed by `.c`) and its
+  line, minus the shift, is one of the editor. The others (in the template, after the body or in another file) get a `?` bullet
+  on the first line.
 
 How each language produces this format:
-- Java: `LangJava.render()` writes the diagnostics of javac, the body ones as `Entity.java:N` with the editor's line, the
-  others with the full path of their file.
+- Java: `LangJava.render()` writes the diagnostics of javac, the ones of the entity as `Entity.java:N`, the others with the full
+  path of their file.
 - Scala: `LangScala.render()` does the same with the diagnostics of dotc, indenting the next lines of a message and quoting the
   code after a `|`. The summary of dotc ("2 errors found") is dropped.
-- Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format, whose
-  lines are then mapped back by `TemplatedRemoteLang.shiftLines()`.
-- C: gcc writes this format itself, and the `#line` directive locates the body in the tab's file. The code after the body continues
-  its numbering, beyond the lines of the editor.
+- Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format.
+- C: gcc writes this format itself, and the `#line` directive locates the body in the tab's file, so that the shift is 0. The
+  code after the body continues its numbering, beyond the lines of the editor.
 
-The lines of the template keep their number but get the full path of the generated file, so that they are not taken for lines of
-the editor. In debug mode, the lines are the ones of the generated source: a single `?` bullet then sends the student to the
-console. A new language renders its messages in this format, and overrides `editorFileName()` if its file is not `Entity.<ext>`.
+A new language renders its messages in this format, and overrides `editorFileName()` if its file is not `Entity.<ext>`.
 
 `Exercise.compileRunCheck()` parses the message of the `PLMCompilerException`, or the warnings of a successful compilation, into
-`RunOutcome.compilerMessages`. `LessonRunner` passes them to `MissionEditorTabs.showCompilerMessages()`, in the Swing thread,
+`RunOutcome.compilerMessages`, and displays them with the editor's lines (`ProgrammingLanguage.shiftLines()`, except in debug
+mode). `LessonRunner` passes them to `MissionEditorTabs.showCompilerMessages()`, in the Swing thread,
 which gives them to the `CompilerMarkers` of the editor if it still shows that exercise in that language. The bullets are
 replaced at each compilation, and disappear with the editor when the exercise or the language changes. They follow their lines
 when the code changes, but are then dimmed, with a tooltip telling that they may be obsolete. The run-time errors (stack traces,
@@ -323,7 +323,7 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   each of them waits for the others after each step, using a `Phaser`. That's why they run on threads of their own: the
   bounded pool of `Game` is only used to compute the expected worlds when loading a lesson, which are not animated.
 - **End of the run**: `runEntity()` also reads the stdout and stderr of the process, echoes them to the PLM console and keeps
-  them (stderr goes through `shiftLocations()`, see above). After the process ends, it joins its threads, lets the language
+  them (stderr goes through `shiftLines()`, see above). After the process ends, it joins its threads, lets the language
   inspect what the process left behind (`onProcessFinished()`, used by C for the address sanitizer report), and removes the
   socket. A non-zero exit code is reported as an execution error.
 

@@ -20,10 +20,10 @@ public record CompilerMessage(int line, boolean sure, boolean warning, String te
   /**
    * The messages of a compiler. Each one starts with a line matching START, whose kind is "error" (or "fatal error") for the
    * errors and anything else for the warnings, and goes on with the indented lines that follow it. A note is added to the previous
-   * message, if any. Any other line starts an error of its own. A message is sure of its line if it is located in editorFile and
-   * within its editorLines lines.
+   * message, if any. Any other line starts an error of its own. The code of the editor starts after the lineShift first lines of
+   * editorFile: a message is sure of its line if it is located there, within the editorLines lines of the editor.
    */
-  public static List<CompilerMessage> parse(String text, String editorFile, int editorLines)
+  public static List<CompilerMessage> parse(String text, String editorFile, int lineShift, int editorLines)
   {
     List<CompilerMessage> messages = new ArrayList<>();
     for (String line : text.split("\\R")) {
@@ -37,7 +37,7 @@ public record CompilerMessage(int line, boolean sure, boolean warning, String te
         String more          = note ? "note: " + start.group("text") : line;
         messages.set(messages.size() - 1, new CompilerMessage(last.line, last.sure, last.warning, last.text + "\n" + more.strip()));
       } else if (found) {
-        int number   = start.group("line") == null ? 0 : Integer.parseInt(start.group("line"));
+        int number   = start.group("line") == null ? 0 : Integer.parseInt(start.group("line")) - lineShift;
         boolean sure = editorFile.equals(start.group("file")) && number >= 1 && number <= editorLines;
         messages.add(new CompilerMessage(sure ? number : 1, sure, !start.group("kind").endsWith("error"), start.group("text").strip()));
       } else {

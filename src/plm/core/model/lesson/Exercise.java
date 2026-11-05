@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -61,7 +62,7 @@ public abstract class Exercise extends Lecture {
     }
   }
 
-  public abstract RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException;
+  public abstract RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, Compiled compiled) throws InterruptedException;
   public abstract void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException;
 
   /**
@@ -74,14 +75,14 @@ public abstract class Exercise extends Lecture {
    * {@code runEntity()} is unwrapped from its {@link ExecutionException} wrapper and re-thrown as-is, so that a
    * genuine bug is not hidden from whoever called this.
    */
-  public RunOutcome runAll(WorldKind kind, List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
+  public RunOutcome runAll(WorldKind kind, List<Future<?>> runnerVect, ProgrammingLanguage lang, Compiled compiled) throws InterruptedException
   {
     RunOutcome progress = new RunOutcome(lang);
     progress.outcome    = RunOutcome.kind.PASS;
 
     for (World w : getWorlds(kind)) {
       w.doDelay();
-      w.runEntities(runnerVect, progress, lang, executable);
+      w.runEntities(runnerVect, progress, lang, compiled);
     }
 
     for (Future<?> f : new ArrayList<Future<?>>(runnerVect)) {
@@ -162,13 +163,14 @@ public abstract class Exercise extends Lecture {
       if (whatToCompile == StudentOrCorrection.STUDENT)
         verifySource(getEditorContent(lang));
     } catch (PLMCompilerException e) {
+      String text  = Objects.toString(e.getMessage(), "Unknown compilation error");
+      String shown = lang.shiftLines(text, e.getLineShift());
       System.err.println(Game.i18n.tr("Compilation error:"));
-      System.err.println(e.getMessage());
+      System.err.println(shown);
       if (Game.getInstance().isDebugEnabled())
         for (String file : e.getClassNames())
           System.out.println("File involved in the compilation: " + file);
-      RunOutcome error       = RunOutcome.newCompilationError(lang, e.getMessage());
-      error.compilerMessages = compilerMessages(lang, whatToCompile, error.compilationError);
+      RunOutcome error = RunOutcome.newCompilationError(lang, shown, compilerMessages(lang, whatToCompile, text, e.getLineShift()));
       if (out != null)
         out.log(error.compilationError); // display the same error as in the ExerciseFailedDialog
       return error;
@@ -176,9 +178,12 @@ public abstract class Exercise extends Lecture {
 
     onCompiled.run(); // Change the footer message in the GUI
 
+    if (!compiled.warnings().isBlank())
+      System.err.println(lang.shiftLines(compiled.warnings(), compiled.lineShift()).stripTrailing());
+
     /* Execution */
-    RunOutcome result       = run(runners, lang, compiled.executable());
-    result.compilerMessages = compilerMessages(lang, whatToCompile, compiled.warnings());
+    RunOutcome result       = run(runners, lang, compiled);
+    result.compilerMessages = compilerMessages(lang, whatToCompile, compiled.warnings(), compiled.lineShift());
 
     /* Check */
     if (!creative)
@@ -186,22 +191,12 @@ public abstract class Exercise extends Lecture {
     return result;
   }
 
-  /**
-   * The messages of the compiler in its text, located in the editor of the student. In debug mode, where their lines are the ones of
-   * the generated source, a single message sends the student to the console.
-   */
-  private List<CompilerMessage> compilerMessages(ProgrammingLanguage lang, StudentOrCorrection whatToCompile, String text)
+  /** The messages of the compiler in its text, located in the editor of the student (see {@link CompilerMessage#parse}) */
+  private List<CompilerMessage> compilerMessages(ProgrammingLanguage lang, StudentOrCorrection whatToCompile, String text, int lineShift)
   {
     if (whatToCompile != StudentOrCorrection.STUDENT || text.isBlank())
       return List.of();
-    int editorLines                = getEditorContent(lang).split("\\R", -1).length;
-    List<CompilerMessage> messages = CompilerMessage.parse(text, lang.editorFileName(this), editorLines);
-    if (!Game.getInstance().isDebugEnabled())
-      return messages;
-    boolean warning = messages.stream().allMatch(CompilerMessage::warning);
-    return List.of(new CompilerMessage(1, false, warning,
-                                       Game.i18n.tr("Debug mode is enabled, which breaks the visual indicators. Read the messages in the "
-                                                    + "console below, or recompile without debug mode to restore this feature.")));
+    return CompilerMessage.parse(text, lang.editorFileName(this), lineShift, getEditorContent(lang).split("\\R", -1).length);
   }
 
   /**

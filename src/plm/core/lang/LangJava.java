@@ -63,21 +63,17 @@ public class LangJava extends JvmTemplatedLang {
       Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
       boolean success                                     = compiler.getTask(null, fileManager, diagnostic, null, null, compilationUnits).call();
 
-      String messages = diagnostic.getDiagnostics().stream().map(d -> render(d, lineShift)).collect(Collectors.joining("\n"));
+      String messages = diagnostic.getDiagnostics().stream().map(LangJava::render).collect(Collectors.joining("\n"));
       if (!success)
-        throw new PLMCompilerException(messages, new HashSet<>(paths), new Error());
+        throw new PLMCompilerException(messages, new HashSet<>(paths), lineShift);
       return messages;
     } catch (IOException e) {
       throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error());
     }
   }
 
-  /**
-   * A diagnostic as "file:line: kind: message", without its location if it has none. Unless debugging is enabled, a diagnostic of
-   * the body is located in Entity.java, at its line decreased by {@code lineShift} (the number of lines of the generated source
-   * before the body) to match the editor's. The other ones keep the full path of their file.
-   */
-  private static String render(Diagnostic<? extends JavaFileObject> d, int lineShift)
+  /** A diagnostic as "file:line: kind: message", without its location if it has none. The file is named alone if it is Entity.java. */
+  private static String render(Diagnostic<? extends JavaFileObject> d)
   {
     String kind = switch (d.getKind()) {
       case ERROR -> "error";
@@ -86,10 +82,8 @@ public class LangJava extends JvmTemplatedLang {
     };
     if (d.getSource() == null || d.getLineNumber() == Diagnostic.NOPOS)
       return kind + ": " + d.getMessage(null);
-    boolean inBody =
-        !Game.getInstance().isDebugEnabled() && d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) && d.getLineNumber() > lineShift;
-    String location = inBody ? "Entity.java:" + (d.getLineNumber() - lineShift) : d.getSource().getName() + ":" + d.getLineNumber();
-    return location + ": " + kind + ": " + d.getMessage(null);
+    String file = d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) ? "Entity.java" : d.getSource().getName();
+    return file + ":" + d.getLineNumber() + ": " + kind + ": " + d.getMessage(null);
   }
 
   private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File root, File packageFolder, File jarFile, File mainFile)

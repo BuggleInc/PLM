@@ -16,6 +16,8 @@ public class PLMCompilerException extends Exception {
    * The fully qualified name of the class that was being compiled.
    */
   private Set<String> classNames = Set.of();
+  /** The number of lines of the generated source before the code of the editor (see ProgrammingLanguage.Compiled) */
+  private int lineShift;
 
   public PLMCompilerException(String message, Set<String> qualifiedClassNames, Throwable cause)
   {
@@ -37,6 +39,13 @@ public class PLMCompilerException extends Exception {
 
   public PLMCompilerException(String message) { super(message); }
 
+  /** The messages of a compiler, whose locations in the code of the editor exceed its lines by lineShift */
+  public PLMCompilerException(String message, Set<String> qualifiedClassNames, int lineShift)
+  {
+    this(message, qualifiedClassNames);
+    this.lineShift = lineShift;
+  }
+
   private void setClassNames(Set<String> qualifiedClassNames)
   {
     // Creates a new HashSet because the set passed in may not be Serializable.
@@ -50,4 +59,6 @@ public class PLMCompilerException extends Exception {
    *         exception
    */
   public Collection<String> getClassNames() { return Collections.unmodifiableSet(classNames); }
+
+  public int getLineShift() { return lineShift; }
 }

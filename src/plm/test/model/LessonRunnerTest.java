@@ -71,7 +71,7 @@ public class LessonRunnerTest {
 
   @Test public void testCompilationErrorIsTheOutcome() throws Exception
   {
-    RunOutcome error = RunOutcome.newCompilationError(lang, "boom");
+    RunOutcome error = RunOutcome.newCompilationError(lang, "boom", List.of());
 
     RunOutcome outcome = new LessonRunner(game).runExercise(exerciseThat(error), lang);
 

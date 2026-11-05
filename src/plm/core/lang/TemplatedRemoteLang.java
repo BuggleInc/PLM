@@ -9,7 +9,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import plm.core.model.Game;
@@ -22,9 +21,6 @@ import plm.core.model.lesson.Exercise;
  */
 public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
 
-  /** For each compiled executable, the number of lines to subtract from the locations of the entity in the diagnostics: 0 for the correction. */
-  protected final Map<String, Integer> lineShifts = new ConcurrentHashMap<>();
-
   public TemplatedRemoteLang(String lang, String ext, ImageIcon i) { super(lang, ext, i); }
 
   /**
@@ -34,22 +30,17 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
   protected static int countLinesBeforeBody(String pre) { return (int)pre.chars().filter(c -> c == '\n').count(); }
 
   /**
-   * Translates the line numbers matched by {@code location} in {@code text} back into the editor's, by subtracting the shift of the
-   * executable. The groups of the pattern are the file, the text between the file and the number, and the number. The locations before
-   * the body keep their number, and get the full path of the generated file if they lack it, so that they cannot be taken for lines of
-   * the editor. All the locations are left untouched when debugging is enabled.
+   * Translates the line numbers matched by {@code location} in {@code text} back into the editor's, by subtracting lineShift. The
+   * group 1 of the pattern is the text before the number, and the group 2 is the number. Locations before the body, and all of them
+   * when debugging is enabled, are left untouched.
    */
-  protected String shiftLines(Pattern location, String text, String executable)
+  protected static String shiftLines(Pattern location, String text, int lineShift)
   {
-    int shift = lineShifts.getOrDefault(executable, 0);
-    if (shift == 0 || Game.getInstance().isDebugEnabled())
+    if (lineShift == 0 || Game.getInstance().isDebugEnabled())
       return text;
     return location.matcher(text).replaceAll(m -> {
-      int lineNumber = Integer.parseInt(m.group(3));
-      if (lineNumber > shift)
-        return Matcher.quoteReplacement(m.group(1) + m.group(2) + (lineNumber - shift));
-      String file = m.group(1).equals("Entity." + getExt()) ? Path.of(executable).resolveSibling(m.group(1)).toString() : m.group(1);
-      return Matcher.quoteReplacement(file + m.group(2) + lineNumber);
+      int lineNumber = Integer.parseInt(m.group(2));
+      return m.group(1) + (lineNumber > lineShift ? lineNumber - lineShift : lineNumber);
     });
   }
 

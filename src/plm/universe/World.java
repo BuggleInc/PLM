@@ -22,6 +22,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage.Compiled;
 import plm.core.lang.RemoteExecutionLang;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
@@ -186,7 +187,7 @@ public abstract class World {
    * own: a bounded pool could leave some of them waiting for a thread while the others wait for them. They also wait for each
    * other before starting, so that they all start together.
    */
-  public void runEntities(List<Future<?>> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl, final String executable)
+  public void runEntities(List<Future<?>> runnerVect, final RunOutcome progress, final ProgrammingLanguage pl, final Compiled compiled)
   {
     steps.bulkRegister(entities.size()); // all of them, before any can arrive
     for (final Entity b : entities) {
@@ -194,7 +195,7 @@ public abstract class World {
         try {
           steps.awaitAdvanceInterruptibly(steps.arrive());
           Game.getInstance().statusArgAdd(getName());
-          pl.runEntity(b, progress, executable);
+          pl.runEntity(b, progress, compiled);
           Game.getInstance().statusArgRemove(getName());
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt(); // stopped before starting

@@ -21,10 +21,10 @@ public class LangLightbot extends ProgrammingLanguage {
 
   @Override public Compiled compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
-    return new Compiled(null, ""); /* Nothing to do */
+    return new Compiled(null, "", 0); /* Nothing to do */
   }
 
-  @Override public void runEntity(Entity ent, RunOutcome progress, String executable)
+  @Override public void runEntity(Entity ent, RunOutcome progress, Compiled compiled)
   {
     try {
       ent.run();

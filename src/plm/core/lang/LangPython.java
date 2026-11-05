@@ -41,8 +41,8 @@ public class LangPython extends TemplatedRemoteLang {
    */
   private static final Map<String, List<String>> remoteExtraModules = Map.of("RemoteCons", List.of("RecList.py"));
 
-  /** The location of a line of the entity in a traceback, a syntax error or a warning, e.g. '/tmp/x/Entity.py", line 42' or 'Entity.py:42' */
-  private static final Pattern ENTITY_LOCATION = Pattern.compile("([^\\s\"]*Entity\\.py)(\", line |:)(\\d+)");
+  /** The location of a line of the entity in a traceback, a syntax error or a warning, e.g. 'Entity.py", line 42' or 'Entity.py:42' */
+  private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.py(?:\", line |:))(\\d+)");
 
   /**
    * Checks the syntax of Entity.py as "python3 -m py_compile" does, keeping its bytecode for the run, but reports the errors and the
@@ -119,6 +119,7 @@ public class LangPython extends TemplatedRemoteLang {
 
     String mainPath = null;
     String warnings = "";
+    int lineShift   = 0;
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
@@ -160,7 +161,7 @@ public class LangPython extends TemplatedRemoteLang {
 
         String executable = mainFile.toPath().toString();
         // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
-        lineShifts.put(executable, whatToCompile == StudentOrCorrection.STUDENT ? offset : 0);
+        lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
 
         // The PLM closes the standard input to interrupt the run: the stacks of the other threads then go to the PLM console. The
         // real os.read() is kept, as the glue of some universes replaces it.
@@ -195,9 +196,8 @@ public class LangPython extends TemplatedRemoteLang {
             script.write(SYNTAX_CHECK); // on the standard input, as Windows mangles the quotes of the arguments
           }
           String output = new BufferedReader(new InputStreamReader(proc.getInputStream())).lines().collect(Collectors.joining("\n"));
-          output        = shiftLines(ENTITY_LOCATION, output, executable);
           if (proc.waitFor() != 0)
-            throw new PLMCompilerException(output, Set.of(entityFile.toString()), new Error());
+            throw new PLMCompilerException(output, Set.of(entityFile.toString()), lineShift);
           warnings = output;
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
@@ -208,11 +208,10 @@ public class LangPython extends TemplatedRemoteLang {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return new Compiled(mainPath, pickyWarnings(warnings));
+    return new Compiled(mainPath, pickyWarnings(warnings, lineShift), lineShift);
   }
 
-  /** Locations before the body, and all of them when debugging is enabled, are left untouched. */
-  @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }
+  @Override public String shiftLines(String text, int lineShift) { return shiftLines(ENTITY_LOCATION, text, lineShift); }
 
   /** Main.py prints the stacks of the program and exits once its standard input is closed */
   @Override protected boolean reportsWhereItIs() { return true; }

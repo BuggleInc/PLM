@@ -82,16 +82,10 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
    */
   protected boolean reportsWhereItIs() { return false; }
 
-  /**
-   * Optional per-language hook, called on every line the student process writes on its stderr, before it is printed and
-   * captured. Returns the line to use instead, e.g. with the code locations of a stack trace translated back to the editor. The
-   * line is returned as is by default.
-   */
-  protected String shiftLocations(String line, String executable) { return line; }
-
-  @Override public void runEntity(final Entity ent, final RunOutcome progress, final String executable)
+  @Override public void runEntity(final Entity ent, final RunOutcome progress, final Compiled compiled)
   {
     final StringBuffer resEvaluationError = new StringBuffer();
+    final String executable               = compiled.executable();
 
     try {
       if (executable == null)
@@ -114,7 +108,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       try (ServerSocket server = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"))) {
         process        = buildProcess(executable, server.getLocalPort()).start();
         stdoutReader   = capture(process, process.getInputStream(), System.out, capturedStdout, line -> line);
-        stderrReader   = capture(process, process.getErrorStream(), System.err, capturedStderr, line -> shiftLocations(line, executable));
+        stderrReader   = capture(process, process.getErrorStream(), System.err, capturedStderr, line -> shiftLines(line, compiled.lineShift()));
         protocolSocket = acceptConnection(server, process);
       }
       if (protocolSocket == null) {

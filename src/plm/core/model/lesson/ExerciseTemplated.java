@@ -11,6 +11,7 @@ import java.util.concurrent.Future;
 import plm.core.PLMCompilerException;
 import plm.core.PLMEntityNotFound;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage.Compiled;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.SourceFile;
@@ -179,10 +180,10 @@ public abstract class ExerciseTemplated extends Exercise {
   }
 
   /** Compiles the correction entity in that language. Reports the error and returns null if it fails */
-  private String compileCorrection(ProgrammingLanguage lang)
+  private Compiled compileCorrection(ProgrammingLanguage lang)
   {
     try {
-      return lang.compileExo(this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION).executable();
+      return lang.compileExo(this, Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
     } catch (PLMCompilerException e) {
       System.err.println("Severe error: the correction of exercise " + getId() + " cannot be compiled in " + lang.getLang() + ". Please go fix your PLM.");
       e.printStackTrace();
@@ -195,8 +196,8 @@ public abstract class ExerciseTemplated extends Exercise {
   {
     RunOutcome progress = new RunOutcome(lang);
 
-    String path = compileCorrection(lang);
-    if (path == null) {
+    Compiled correction = compileCorrection(lang);
+    if (correction == null) {
       Game.getInstance().setState(Game.GameState.COMPILATION_ENDED);
       Game.getInstance().setState(Game.GameState.EXECUTION_ENDED);
       return;
@@ -205,7 +206,7 @@ public abstract class ExerciseTemplated extends Exercise {
     for (int rank : ranks) {
       World aw = answerWorld.get(rank);
       for (Entity ent : aw.getEntities())
-        lang.runEntity(ent, progress, path);
+        lang.runEntity(ent, progress, correction);
       aw.setAnswerWorld();
 
       if (aw.haveIO() && !aw.isRandomized())
@@ -229,9 +230,9 @@ public abstract class ExerciseTemplated extends Exercise {
     }
   }
 
-  @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
+  @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, Compiled compiled) throws InterruptedException
   {
-    return runAll(WorldKind.CURRENT, runnerVect, lang, executable);
+    return runAll(WorldKind.CURRENT, runnerVect, lang, compiled);
   }
 
   @Override public void runDemo(List<Future<?>> runnerVect, ProgrammingLanguage lang) throws InterruptedException
@@ -240,8 +241,8 @@ public abstract class ExerciseTemplated extends Exercise {
       answerWorld.get(i).reset(initialWorld.get(i));
       answerWorld.get(i).doDelay();
     }
-    String executable = compileCorrection(lang);
-    if (executable != null)
-      runAll(WorldKind.ANSWER, runnerVect, lang, executable);
+    Compiled correction = compileCorrection(lang);
+    if (correction != null)
+      runAll(WorldKind.ANSWER, runnerVect, lang, correction);
   }
 }

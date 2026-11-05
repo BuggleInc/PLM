@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 import javax.swing.JScrollPane;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage.Compiled;
 import plm.core.model.Game;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
@@ -68,10 +69,10 @@ public class LightBotExercise extends ExerciseTemplated {
         result.outcome = RunOutcome.kind.FAIL;
     }
   }
-  @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, String executable) throws InterruptedException
+  @Override public RunOutcome run(List<Future<?>> runnerVect, ProgrammingLanguage lang, Compiled compiled) throws InterruptedException
   {
     reset();
-    return runAll(WorldKind.CURRENT, runnerVect, lang, executable);
+    return runAll(WorldKind.CURRENT, runnerVect, lang, compiled);
   }
 
   @Override

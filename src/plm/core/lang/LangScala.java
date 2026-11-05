@@ -158,21 +158,19 @@ public class LangScala extends JvmTemplatedLang {
     List<String> messages = new ArrayList<>();
     ReporterResult result = new Driver().process(args.toArray(new String[0]), diagnostic -> {
       if (diagnostic.position().isPresent() || !SUMMARY.matcher(diagnostic.message()).matches())
-        messages.add(render(diagnostic, lineShift));
+        messages.add(render(diagnostic));
     }, null);
 
     if (result.hasErrors())
-      throw new PLMCompilerException(String.join("\n", messages), new HashSet<>(paths), new Error());
+      throw new PLMCompilerException(String.join("\n", messages), new HashSet<>(paths), lineShift);
     return String.join("\n", messages);
   }
 
   /**
    * "file:line:col: kind: message", the next lines of the message being indented as the notes of the other compilers, then the
-   * source line and a caret under the column, quoted after a | as gcc does. Positions are 0-based in dotc, 1-based here. Unless
-   * debugging is enabled, a line of the body of Entity.scala is decreased by {@code lineShift} (the number of lines of the generated
-   * source before the body) to match the editor's, while the other lines of Entity.scala are located with the full path of the file.
+   * source line and a caret under the column, quoted after a | as gcc does. Positions are 0-based in dotc, 1-based here.
    */
-  private static String render(Diagnostic diagnostic, int lineShift)
+  private static String render(Diagnostic diagnostic)
   {
     String kind    = diagnostic.level() == Diagnostic.ERROR ? "error" : diagnostic.level() == Diagnostic.WARNING ? "warning" : "info";
     String message = kind + ": " + diagnostic.message().stripTrailing().replace("\n", "\n  ");
@@ -180,16 +178,7 @@ public class LangScala extends JvmTemplatedLang {
       return message;
 
     SourcePosition position = diagnostic.position().get();
-    String file             = position.source().name();
-    int line                = position.line() + 1;
-    if (file.equals("Entity.scala") && !Game.getInstance().isDebugEnabled()) {
-      if (line > lineShift)
-        line -= lineShift;
-      else
-        file = position.source().path();
-    }
-
-    String location = file + ":" + line + ":" + (position.column() + 1) + ": ";
+    String location         = position.source().name() + ":" + (position.line() + 1) + ":" + (position.column() + 1) + ": ";
     return location + message + "\n  | " + position.lineContent().stripTrailing() + "\n  | "
         + " ".repeat(position.column()) + "^";
   }

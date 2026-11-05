@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import plm.core.PLMCompilerException;
 import plm.core.lang.CompilerMessage;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage.Compiled;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
@@ -54,12 +55,12 @@ public abstract class SimpleExerciseTest {
   /** Puts the code in the only source file of the exercise */
   protected void setEditorContent(String code) { exo.setEditorContent(pl, code); }
 
-  /** The first of these messages of the compiler is an error surely located on that line of the editor */
-  protected void assertErrorOnLine(int line, String messages)
+  /** The first message of the compiler is an error surely located on that line of the editor */
+  protected void assertErrorOnLine(int line, PLMCompilerException e)
   {
     int editorLines       = exo.getEditorContent(pl).split("\\R", -1).length;
-    CompilerMessage first = CompilerMessage.parse(messages, pl.editorFileName(exo), editorLines).get(0);
-    Assertions.assertEquals(new CompilerMessage(line, true, false, first.text()), first, messages);
+    CompilerMessage first = CompilerMessage.parse(e.getMessage(), pl.editorFileName(exo), e.getLineShift(), editorLines).get(0);
+    Assertions.assertEquals(new CompilerMessage(line, true, false, first.text()), first, e.getMessage());
   }
 
   @Test public void testNewSourceRefusesATabThatIsNotAnIdentifier()
@@ -83,9 +84,9 @@ public abstract class SimpleExerciseTest {
   @Test public void testOutOfBoundsErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateOutOfBoundsErrorCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
 
     if (result.executionError == null || result.executionError.equals("")) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should not execute properly but throw an error...\n");
@@ -95,9 +96,9 @@ public abstract class SimpleExerciseTest {
   @Test public void testNullPointerErrorRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateNullPointerErrorCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
 
     if (result.executionError == null || result.executionError.equals("")) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should not execute properly but throw an error...\n");
@@ -106,9 +107,9 @@ public abstract class SimpleExerciseTest {
   @Test public void testExceptionRisingCodeShouldNotExecuteProperly() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateExceptionRaisingCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
 
     if (result.executionError == null || result.executionError.equals("")) {
       Assertions.fail(getClass().getName().replace("Test", "Entity") + " should not execute properly but throw an exception...\n");
@@ -118,9 +119,9 @@ public abstract class SimpleExerciseTest {
   @Test public void testWrongCodeShouldNotPass() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateWrongCode());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
 
     exo.check(result);
 
@@ -131,9 +132,9 @@ public abstract class SimpleExerciseTest {
   @Test public void testSolutionFollowedByErrorShouldNotPass() throws PLMCompilerException, InterruptedException
   {
     setEditorContent(generateSolutionFollowedByError());
-    String executable = pl.compileExo(exo, null, StudentOrCorrection.STUDENT).executable();
+    Compiled compiled = pl.compileExo(exo, null, StudentOrCorrection.STUDENT);
 
-    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, executable);
+    RunOutcome result = exo.run(new ArrayList<Future<?>>(), pl, compiled);
 
     exo.check(result);
 

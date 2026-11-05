@@ -33,11 +33,13 @@ public class RunOutcome {
   public String feedbackInterest;
   public String feedback;
 
-  public static RunOutcome newCompilationError(ProgrammingLanguage language, String message)
+  /** The outcome of a compilation that failed with that message, whose errors are also located in the editor as compilerMessages */
+  public static RunOutcome newCompilationError(ProgrammingLanguage language, String message, List<CompilerMessage> compilerMessages)
   {
     RunOutcome ep = new RunOutcome(language);
 
     ep.compilationError = message;
+    ep.compilerMessages = compilerMessages;
     ep.passedTests      = -1;
     ep.totalTests       = -1;
     if (ep.compilationError == null)

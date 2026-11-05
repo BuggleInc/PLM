@@ -19,21 +19,21 @@ public class CompilerMessageTest {
   @Test public void linesWithoutLocationAreUnsureErrors()
   {
     assertEquals(List.of(unsure(false, "Your code must call left() exactly once.\nIt calls it twice."), unsure(false, "Factorize it.")),
-                 CompilerMessage.parse("Your code must call left() exactly once.\n  It calls it twice.\nFactorize it.\n", "Entity.java", 10));
+                 CompilerMessage.parse("Your code must call left() exactly once.\n  It calls it twice.\nFactorize it.\n", "Entity.java", 0, 10));
   }
 
   @Test public void onlyTheLinesOfTheEditorAreSure()
   {
     String text = """
-        Entity.java:0: error: before the editor
-        Entity.java:4: error: last line of the editor
-        Entity.java:5: error: after the editor
+        Entity.java:2: error: before the editor (in the template)
+        Entity.java:6: error: last line of the editor
+        Entity.java:7: error: after the editor
         Main.java:2: error: in another file
         error: nowhere
         """;
-    assertEquals(List.of(unsure(false, "before the editor"), error(4, "last line of the editor"), unsure(false, "after the editor"),
+    assertEquals(List.of(unsure(false, "before the editor (in the template)"), error(4, "last line of the editor"), unsure(false, "after the editor"),
                          unsure(false, "in another file"), unsure(false, "nowhere")),
-                 CompilerMessage.parse(text, "Entity.java", 4));
+                 CompilerMessage.parse(text, "Entity.java", 2, 4));
   }
 
   @Test public void notesGoToThePreviousMessageOrAreWarnings()
@@ -43,22 +43,22 @@ public class CompilerMessageTest {
         Tab.c:3:1: error: first
         Other.h:2:5: note: declared here
         """;
-    assertEquals(List.of(unsure(true, "alone"), error(3, "first\nnote: declared here")), CompilerMessage.parse(text, "Tab.c", 9));
+    assertEquals(List.of(unsure(true, "alone"), error(3, "first\nnote: declared here")), CompilerMessage.parse(text, "Tab.c", 0, 9));
   }
 
-  /** javac, as rendered by LangJava: a template line, a warning, two errors on a line, and notes without location */
+  /** javac, as rendered by LangJava with the lines of the generated source: a template line, a warning, two errors on a line, and notes without location */
   @Test public void javac()
   {
     String text = """
-        /tmp/plm/java/plm/runtime4/Entity.java:6: error: cannot find symbol
+        Entity.java:6: error: cannot find symbol
           symbol:   variable notDeclared
           location: class generated.Entity
-        Entity.java:2: error: cannot find symbol
+        Entity.java:8: error: cannot find symbol
           symbol:   variable y
           location: class generated.Entity
-        Entity.java:3: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
-        Entity.java:4: error: incompatible types: int cannot be converted to java.lang.String
-        Entity.java:4: error: incompatible types: java.lang.String cannot be converted to int
+        Entity.java:9: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
+        Entity.java:10: error: incompatible types: int cannot be converted to java.lang.String
+        Entity.java:10: error: incompatible types: java.lang.String cannot be converted to int
         note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.
         note: Recompile with -Xlint:unchecked for details.
         """;
@@ -69,57 +69,57 @@ public class CompilerMessageTest {
                          error(4, "incompatible types: java.lang.String cannot be converted to int\n"
                                       + "note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.\n"
                                       + "note: Recompile with -Xlint:unchecked for details.")),
-                 CompilerMessage.parse(text, "Entity.java", 5));
+                 CompilerMessage.parse(text, "Entity.java", 6, 5));
   }
 
   /** javac when the compilation succeeds: the notes follow the last warning */
   @Test public void javacWarnings()
   {
     String text = """
-        Entity.java:3: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
+        Entity.java:9: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
         note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.
         note: Recompile with -Xlint:unchecked for details.
         """;
     assertEquals(List.of(warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal\n"
                                         + "note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.\n"
                                         + "note: Recompile with -Xlint:unchecked for details.")),
-                 CompilerMessage.parse(text, "Entity.java", 5));
+                 CompilerMessage.parse(text, "Entity.java", 6, 5));
   }
 
-  /** dotc, as rendered by LangScala: a template line, two errors on a line, and the quoted code after a | */
+  /** dotc, as rendered by LangScala with the lines of the generated source: a template line, two errors on a line, and the quoted code after a | */
   @Test public void dotc()
   {
     String text = """
-        /tmp/plm/scala/plm/runtime4/Entity.scala:6:20: error: Not found: notDeclared
+        Entity.scala:6:20: error: Not found: notDeclared
           |   val templ: Int = notDeclared
           |                    ^
-        Entity.scala:2:16: error: Found:    ("s" : String)
+        Entity.scala:8:16: error: Found:    ("s" : String)
           Required: Int
           |   val x: Int = "s"; val y: String = 1
           |                ^
-        Entity.scala:2:37: error: Found:    (1 : Int)
+        Entity.scala:8:37: error: Found:    (1 : Int)
           Required: String
           |   val x: Int = "s"; val y: String = 1
           |                                     ^
-        Entity.scala:4:3: error: Not found: toto
+        Entity.scala:10:3: error: Not found: toto
           |   toto += 1
           |   ^
         """;
     assertEquals(List.of(unsure(false, "Not found: notDeclared"), error(2, "Found:    (\"s\" : String)\nRequired: Int"),
                          error(2, "Found:    (1 : Int)\nRequired: String"), error(4, "Not found: toto")),
-                 CompilerMessage.parse(text, "Entity.scala", 5));
+                 CompilerMessage.parse(text, "Entity.scala", 6, 5));
   }
 
   /** dotc when the compilation succeeds with warnings, whose explanations hold blank lines */
   @Test public void dotcWarnings()
   {
     String text = """
-        Entity.scala:2:30: warning: match may not be exhaustive.
+        Entity.scala:8:30: warning: match may not be exhaustive.
 
           It would fail on pattern case: None
           |   val o: Option[Int] = None; o match { case Some(v) => v }
           |                              ^
-        Entity.scala:3:15: warning: match may not be exhaustive.
+        Entity.scala:9:15: warning: match may not be exhaustive.
 
           It would fail on pattern case: List(_, _*), Nil
           |   val l = List(1) match { case 1 :: Nil => 1 }
@@ -127,33 +127,33 @@ public class CompilerMessageTest {
         """;
     assertEquals(List.of(warning(2, "match may not be exhaustive.\nIt would fail on pattern case: None"),
                          warning(3, "match may not be exhaustive.\nIt would fail on pattern case: List(_, _*), Nil")),
-                 CompilerMessage.parse(text, "Entity.scala", 5));
+                 CompilerMessage.parse(text, "Entity.scala", 6, 5));
   }
 
-  /** The syntax check of LangPython: a warning of the template (with its full path), then an error with its quoted code */
+  /** The syntax check of LangPython, with the lines of the generated source: a warning of the template, then an error with its quoted code */
   @Test public void python()
   {
     String text = """
-        /tmp/plm/python/run_Tab/Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
-        Entity.py:3: error: SyntaxError: invalid syntax
+        Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
+        Entity.py:7: error: SyntaxError: invalid syntax
           |     toto +=
           |            ^
         """;
     assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), error(3, "SyntaxError: invalid syntax")),
-                 CompilerMessage.parse(text, "Entity.py", 3));
+                 CompilerMessage.parse(text, "Entity.py", 4, 3));
   }
 
   /** The syntax check of LangPython when the compilation succeeds: warnings only */
   @Test public void pythonWarnings()
   {
     String text = """
-        /tmp/plm/python/run_Tab/Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
-        Entity.py:4: warning: SyntaxWarning: invalid escape sequence '\\d'
-        Entity.py:2: warning: SyntaxWarning: "is" with 'int' literal. Did you mean "=="?
+        Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
+        Entity.py:8: warning: SyntaxWarning: invalid escape sequence '\\d'
+        Entity.py:6: warning: SyntaxWarning: "is" with 'int' literal. Did you mean "=="?
         """;
     assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), warning(4, "SyntaxWarning: invalid escape sequence '\\d'"),
                          warning(2, "SyntaxWarning: \"is\" with 'int' literal. Did you mean \"==\"?")),
-                 CompilerMessage.parse(text, "Entity.py", 4));
+                 CompilerMessage.parse(text, "Entity.py", 4, 4));
   }
 
   /**
@@ -185,7 +185,7 @@ public class CompilerMessageTest {
                          warning(3, "unused variable 'x' [-Wunused-variable]"), warning(2, "unused variable 'unused' [-Wunused-variable]"),
                          unsure(false, "'undeclaredInPost' undeclared (first use in this function)"),
                          unsure(true, "control reaches end of non-void function [-Wreturn-type]")),
-                 CompilerMessage.parse(text, "Tab.c", 6));
+                 CompilerMessage.parse(text, "Tab.c", 0, 6));
   }
 
   /** gcc when the link fails: the messages of the linker are errors of their own, after the warnings of the compiler */
@@ -202,6 +202,6 @@ public class CompilerMessageTest {
                          unsure(false, "/tmp/plm/C/lessons.welcome.Tab-STUDENT-1/lessons.welcome.Tab.c:4:(.text+0x39): undefined reference to "
                                            + "`undefinedFunction'"),
                          unsure(false, "collect2: error: ld returned 1 exit status")),
-                 CompilerMessage.parse(text, "Tab.c", 6));
+                 CompilerMessage.parse(text, "Tab.c", 0, 6));
   }
 }

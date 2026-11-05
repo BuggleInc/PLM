@@ -60,8 +60,7 @@ public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
                        + "  a = 1\n"
                        + "  toto +=\n");
       PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
-      Assertions.assertTrue(e.getMessage().contains("Entity.py:3: error:"), e.getMessage());
-      assertErrorOnLine(3, e.getMessage());
+      assertErrorOnLine(3, e);
     } finally {
       setDebug(true);
     }

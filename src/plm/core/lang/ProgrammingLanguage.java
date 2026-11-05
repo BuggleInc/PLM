@@ -83,26 +83,31 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
 
   /**
    * What {@link #compileExo} produced: a textual reference to the result (a jar or binary path) that {@link #runEntity} will later
-   * need to actually run it, and the warnings of the compiler ("" if none).
+   * need to actually run it, the warnings of the compiler ("" if none), and the number of lines of the generated source before the
+   * code of the editor (0 for the correction), by which the locations of this code in the warnings and the stack traces exceed the
+   * lines of the editor (see {@link #shiftLines}).
    */
-  public record Compiled(String executable, String warnings) {}
-
-  /** Compile the exercise. The errors of the compiler, and its warnings in picky mode, are the message of the exception. */
-  public abstract Compiled compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
+  public record Compiled(String executable, String warnings, int lineShift) {}
 
   /**
-   * The warnings of a compiler, which are compilation errors in picky mode, and are displayed on the console otherwise.
-   * @return the warnings, when they are not errors
+   * Compile the exercise. The errors of the compiler, and its warnings in picky mode, are the message of the exception, whose line
+   * shift is the one of the generated source.
    */
-  protected static String pickyWarnings(String warnings) throws PLMCompilerException
+  public abstract Compiled compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
+
+  /** The warnings of a compiler, which are compilation errors in picky mode. Returns them, when they are not errors. */
+  protected static String pickyWarnings(String warnings, int lineShift) throws PLMCompilerException
   {
-    if (!warnings.isBlank()) {
-      if (Game.getInstance().isPickyEnabled())
-        throw new PLMCompilerException(warnings, null);
-      System.err.println(warnings.stripTrailing());
-    }
+    if (!warnings.isBlank() && Game.getInstance().isPickyEnabled())
+      throw new PLMCompilerException(warnings, null, lineShift);
     return warnings;
   }
+
+  /**
+   * The messages of a compiler or a stack trace, as displayed to the student: the locations of the code of the editor, which exceed
+   * its lines by lineShift (see {@link Compiled}), are shifted back to its lines. The text is returned as is by default.
+   */
+  public String shiftLines(String text, int lineShift) { return text; }
 
   /** The name of the file holding the code of the editor of exo in the messages of the compiler (see {@link CompilerMessage#parse}) */
   public String editorFileName(Exercise exo) { return "Entity." + ext; }
@@ -120,11 +125,11 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    *  * LightBot entities are launched by executing the {@link LightBotEntity#run()} method,
    *    that is NOT defined by the student, but interprets the code of the students.
    *
-   *  @param executable the executable that {@link #compileExo} returned for this exercise/language (unused by languages that
+   *  @param compiled what {@link #compileExo} returned for this exercise/language (unused by languages that
    *         don't compile, e.g. LightBot).
    *  @see #run() that encodes the student logic in Java
    */
-  public abstract void runEntity(Entity ent, RunOutcome progress, String executable);
+  public abstract void runEntity(Entity ent, RunOutcome progress, Compiled compiled);
 
   public enum BrokenLanguageState { Usable, NotUsable, Unitialized }
   ;

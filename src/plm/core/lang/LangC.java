@@ -168,7 +168,7 @@ public class LangC extends TemplatedRemoteLang {
       String linkCmd   = cc + untracked + " -o \"" + exec + "\" " + linkInputs + " -lm -lpthread" + (isWindows ? " -lws2_32" : "");
 
       String warnings = runCompiler(linkCmd, compileDir.toFile(), isWindows, messages -> withRealNames(messages, remoteWorldH));
-      return new Compiled(exec.getAbsolutePath(), pickyWarnings(warnings));
+      return new Compiled(exec.getAbsolutePath(), pickyWarnings(warnings, 0), 0); // the #line directive maps the lines already
     } catch (IOException ioe) {
       throw new PLMCompilerException(ioe.getMessage(), null, ioe);
     } catch (InterruptedException e) {
@@ -215,7 +215,7 @@ public class LangC extends TemplatedRemoteLang {
 
         Path tmpObject = scratch.resolve(baseName + ".o");
         String compileCmd = cc + " -x c -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
-        pickyWarnings(runCompiler(compileCmd, scratch.toFile(), isWindows, UnaryOperator.identity()));
+        pickyWarnings(runCompiler(compileCmd, scratch.toFile(), isWindows, UnaryOperator.identity()), 0);
 
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
       } finally {
