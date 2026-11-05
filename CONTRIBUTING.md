@@ -57,7 +57,7 @@ Here are the steps of the exercise execution:
   below.
 * **Compile**: The starting point is `ProgrammingLanguage.compileExo()`.
   - The code is then compiled to an external executable/jar if needed. Java/Scala compile in-process to avoid the startup time of an
-    external JVM, C uses an external compiler, and Python is checked by `python3 -m py_compile`.
+    external JVM, C uses an external compiler, and Python is checked by `py_compile` (see `LangPython.SYNTAX_CHECK`).
   - `compileExo()` returns a `Compiled` record: a textual reference to the result (the path to a jar, a binary, etc), which the
     caller then passes down as-is to `runEntity()`'s `executable` parameter below, and the warnings of the compiler. The errors
     are the message of a `PLMCompilerException`, and so are the warnings in picky mode (`ProgrammingLanguage.pickyWarnings()`).
@@ -183,13 +183,13 @@ Each language does this concatenation inline in its own `compileExo()`, to keep 
 handful of one-off helper lines elsewhere:
   - Java/Scala/Python first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: it is the number of lines of the
     generated source before the body's own first line. It is used to fix (shift) the location of compilation errors so that they
-    point to the code written by the student. Diagnostics located before the body are left untouched, and so are all of them
-    when debugging is enabled, to keep the path of the generated file. Java gets them from javac's `DiagnosticCollector`, Scala
-    from dotc's `SimpleReporter`. All three languages also subtract this number from the `Entity.java:N`, `Entity.scala:N` and
+    point to the code written by the student. Diagnostics located before the body keep their line, but get the full path of the
+    generated file so that they cannot be taken for lines of the editor, and all of them are left untouched when debugging is
+    enabled. Java gets them from javac's `DiagnosticCollector`, Scala from dotc's `SimpleReporter`, Python from the output of its
+    syntax check. All three languages also subtract this number from the `Entity.java:N`, `Entity.scala:N` and
     `Entity.py", line N` locations found in the stack traces that the student process writes on its stderr, through the
-    `RemoteExecutionLang.shiftLocations()` hook (`JvmTemplatedLang` keeps the offset of each compiled jar in `lineShifts`).
-    Locations before the body (and all of them when debugging is enabled) are left untouched in both compilation errors and
-    stack traces.
+    `RemoteExecutionLang.shiftLocations()` hook (`JvmTemplatedLang` keeps the offset of each compiled jar in `lineShifts`). The
+    locations before the body are handled as in the compilation messages, by `TemplatedRemoteLang.shiftLines()`.
     - C does not need to compute the offset, as a `#line` preprocessor directive already fixes the error location.
   - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
     still parses.
@@ -589,10 +589,11 @@ one checks the correction entities against it.
   - **Java**: compiled in-process with the JDK compiler (`javax.tools`), then run with `java -cp`.
   - **Scala**: `scala3-library_3`/`scala3-compiler_3` 3.9.0 (LTS), compiled in-process by driving `dotty.tools.dotc.Driver`
     with `-no-indent` (braces only, since many entities mix tabs and spaces), then run with `java -cp` like Java.
-  - **Python**: checked with `python3 -m py_compile`, so that syntax errors are reported as compilation errors before the
-    run, then run by `python3` (Python 3 must be on the PATH).
+  - **Python**: checked by `py_compile` (`LangPython.SYNTAX_CHECK`), so that syntax errors are reported as compilation errors
+    before the run, then run by `python3` (Python 3 must be on the PATH).
   - **C**: compiled and linked by an external compiler (with AddressSanitizer if it supports it), then the executable is run.
-    The compiler is given by the `c.compiler` property (`gcc` by default). Its warnings are displayed on the console, unless the
+    The compiler is given by the `c.compiler` property (`gcc` by default).
+  - In every language, the warnings of the compiler are displayed on the console and in the margin of the editor, unless the
     picky mode (`compiler.picky` property, checkbox of the Exercise menu, always on in the tests) turns them into compilation
     errors.
 - **Line endings**: the outputs of the student are compared with the ones of the correction, so every language writes `\n` at

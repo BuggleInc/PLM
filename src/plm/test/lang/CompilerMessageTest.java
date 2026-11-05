@@ -129,4 +129,30 @@ public class CompilerMessageTest {
                          warning(3, "match may not be exhaustive.\nIt would fail on pattern case: List(_, _*), Nil")),
                  CompilerMessage.parse(text, "Entity.scala", 5));
   }
+
+  /** The syntax check of LangPython: a warning of the template (with its full path), then an error with its quoted code */
+  @Test public void python()
+  {
+    String text = """
+        /tmp/plm/python/run_Tab/Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
+        Entity.py:3: error: SyntaxError: invalid syntax
+          |     toto +=
+          |            ^
+        """;
+    assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), error(3, "SyntaxError: invalid syntax")),
+                 CompilerMessage.parse(text, "Entity.py", 3));
+  }
+
+  /** The syntax check of LangPython when the compilation succeeds: warnings only */
+  @Test public void pythonWarnings()
+  {
+    String text = """
+        /tmp/plm/python/run_Tab/Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
+        Entity.py:4: warning: SyntaxWarning: invalid escape sequence '\\d'
+        Entity.py:2: warning: SyntaxWarning: "is" with 'int' literal. Did you mean "=="?
+        """;
+    assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), warning(4, "SyntaxWarning: invalid escape sequence '\\d'"),
+                         warning(2, "SyntaxWarning: \"is\" with 'int' literal. Did you mean \"==\"?")),
+                 CompilerMessage.parse(text, "Entity.py", 4));
+  }
 }

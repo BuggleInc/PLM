@@ -37,7 +37,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   protected final File tempFolder = TMP_ROOT.resolve(getExt()).toFile();
 
   /** The location of a line of the entity in a stack trace, e.g. "Entity.java:42". */
-  private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.(?:java|scala):)(\\d+)");
+  private static final Pattern ENTITY_LOCATION = Pattern.compile("([^\\s(]*Entity\\.(?:java|scala))(:)(\\d+)");
 
   /**
    * The option giving \n as line separator to the JVM running the student's code, whatever the system: println() and the like

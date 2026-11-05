@@ -1,6 +1,7 @@
 package plm.core.lang;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -28,7 +29,7 @@ import plm.core.utils.Indentation;
  *
  * The per-compile workspace name (packageNameForExercise(), shared with Java/Scala/C in TemplatedRemoteLang) is
  * factored; the rest of the pipeline isn't yet. Substantially simpler than LangJava/LangScala in one respect: compiling
- * only checks the syntax ("python3 -m py_compile Entity.py") before "python3 Main.py <socket>" runs the code, and there is no
+ * only checks the syntax (see SYNTAX_CHECK) before "python3 Main.py <socket>" runs the code, and there is no
  * import-rewriting for its support modules (ValueSerializer.py, Remote*.py, RecList.py): they are deployed once in ENTITIES_DIR,
  * which is on the PYTHONPATH of the run. Python resolves "from X import *" by module name, not by a package-qualified name the
  * way Java/Scala do, so there is no analogue of the ClassCastException-class bug LangJava/LangScala had to work around there.
@@ -40,8 +41,33 @@ public class LangPython extends TemplatedRemoteLang {
    */
   private static final Map<String, List<String>> remoteExtraModules = Map.of("RemoteCons", List.of("RecList.py"));
 
-  /** The location of a line of the entity in a traceback or a syntax error, e.g. 'Entity.py", line 42'. */
-  private static final Pattern ENTITY_LOCATION = Pattern.compile("(Entity\\.py\", line )(\\d+)");
+  /** The location of a line of the entity in a traceback, a syntax error or a warning, e.g. '/tmp/x/Entity.py", line 42' or 'Entity.py:42' */
+  private static final Pattern ENTITY_LOCATION = Pattern.compile("([^\\s\"]*Entity\\.py)(\", line |:)(\\d+)");
+
+  /**
+   * Checks the syntax of Entity.py as "python3 -m py_compile" does, keeping its bytecode for the run, but reports the errors and the
+   * warnings as the other languages do: "Entity.py:line: kind: Type: message", followed by the code of an error and a caret after a |.
+   */
+  private static final String SYNTAX_CHECK = """
+      import py_compile, sys, warnings
+
+      def show(message, category, filename, lineno, file=None, line=None):
+          print(f"{filename}:{lineno}: warning: {category.__name__}: {message}")
+
+      warnings.showwarning = show
+      try:
+          py_compile.compile("Entity.py", doraise=True)
+      except py_compile.PyCompileError as e:
+          error = e.exc_value
+          if not isinstance(error, SyntaxError):
+              print(f"error: {e.exc_type_name}: {error}")
+          else:
+              print(f"{error.filename}:{error.lineno}: error: {e.exc_type_name}: {error.msg}")
+              if error.text and error.offset:
+                  print("  | " + error.text.rstrip())
+                  print("  | " + " " * (error.offset - 1) + "^")
+          sys.exit(1)
+      """;
 
   /** Where the modules above are deployed once and for all. Python caches their bytecode in its __pycache__ on first import. */
   private static final Path ENTITIES_DIR = TMP_ROOT.resolve("python-entities");
@@ -92,6 +118,7 @@ public class LangPython extends TemplatedRemoteLang {
     String runName = packageNameForExercise(exo, whatToCompile);
 
     String mainPath = null;
+    String warnings = "";
 
     try {
       for (SourceFile sf : exo.getSourceFilesList(this)) {
@@ -161,17 +188,17 @@ public class LangPython extends TemplatedRemoteLang {
         Files.writeString(entityFile.toPath(), entityCode);
         Files.writeString(mainFile.toPath(), mainContent);
 
-        // "python3 -m py_compile" reports the syntax errors at compile time, as in the other languages, instead of at the
-        // first run.
+        // The syntax errors are reported at compile time, as in the other languages, instead of at the first run.
         try {
-          Process proc = new ProcessBuilder("python3", "-m", "py_compile", "Entity.py").directory(workspace).redirectErrorStream(true).start();
+          Process proc = new ProcessBuilder("python3", "-").directory(workspace).redirectErrorStream(true).start();
+          try (Writer script = new OutputStreamWriter(proc.getOutputStream(), StandardCharsets.UTF_8)) {
+            script.write(SYNTAX_CHECK); // on the standard input, as Windows mangles the quotes of the arguments
+          }
           String output = new BufferedReader(new InputStreamReader(proc.getInputStream())).lines().collect(Collectors.joining("\n"));
           output        = shiftLines(ENTITY_LOCATION, output, executable);
-          int retcode   = proc.waitFor();
-          if (retcode != 0) {
-            throw new PLMCompilerException("Compiling " + entityFile.toString() + " yielded the following output:\n" + output, Set.of(entityFile.toString()),
-                                           new Error());
-          }
+          if (proc.waitFor() != 0)
+            throw new PLMCompilerException(output, Set.of(entityFile.toString()), new Error());
+          warnings = output;
         } catch (InterruptedException e) {
           Thread.currentThread().interrupt();
         }
@@ -181,7 +208,7 @@ public class LangPython extends TemplatedRemoteLang {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return new Compiled(mainPath, "");
+    return new Compiled(mainPath, pickyWarnings(warnings));
   }
 
   /** Locations before the body, and all of them when debugging is enabled, are left untouched. */
