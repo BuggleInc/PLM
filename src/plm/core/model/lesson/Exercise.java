@@ -16,7 +16,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import javax.swing.JScrollPane;
 import plm.core.PLMCompilerException;
+import plm.core.lang.CompilerMessage;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.ProgrammingLanguage.Compiled;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.session.EntityFileSegments;
@@ -154,9 +156,9 @@ public abstract class Exercise extends Lecture {
       reset();
 
     /* Compilation, then source-level API gating. Every compilation error is reported here. */
-    String executable;
+    Compiled compiled;
     try {
-      executable = lang.compileExo(this, out, whatToCompile).executable();
+      compiled = lang.compileExo(this, out, whatToCompile);
       if (whatToCompile == StudentOrCorrection.STUDENT)
         verifySource(getEditorContent(lang));
     } catch (PLMCompilerException e) {
@@ -165,7 +167,8 @@ public abstract class Exercise extends Lecture {
       if (Game.getInstance().isDebugEnabled())
         for (String file : e.getClassNames())
           System.out.println("File involved in the compilation: " + file);
-      RunOutcome error = RunOutcome.newCompilationError(lang, e.getMessage());
+      RunOutcome error       = RunOutcome.newCompilationError(lang, e.getMessage());
+      error.compilerMessages = compilerMessages(lang, whatToCompile, error.compilationError);
       if (out != null)
         out.log(error.compilationError); // display the same error as in the ExerciseFailedDialog
       return error;
@@ -174,12 +177,31 @@ public abstract class Exercise extends Lecture {
     onCompiled.run(); // Change the footer message in the GUI
 
     /* Execution */
-    RunOutcome result = run(runners, lang, executable);
+    RunOutcome result       = run(runners, lang, compiled.executable());
+    result.compilerMessages = compilerMessages(lang, whatToCompile, compiled.warnings());
 
     /* Check */
     if (!creative)
       check(result);
     return result;
+  }
+
+  /**
+   * The messages of the compiler in its text, located in the editor of the student. In debug mode, where their lines are the ones of
+   * the generated source, a single message sends the student to the console.
+   */
+  private List<CompilerMessage> compilerMessages(ProgrammingLanguage lang, StudentOrCorrection whatToCompile, String text)
+  {
+    if (whatToCompile != StudentOrCorrection.STUDENT || text.isBlank())
+      return List.of();
+    int editorLines                = getEditorContent(lang).split("\\R", -1).length;
+    List<CompilerMessage> messages = CompilerMessage.parse(text, lang.editorFileName(this), editorLines);
+    if (!Game.getInstance().isDebugEnabled())
+      return messages;
+    boolean warning = messages.stream().allMatch(CompilerMessage::warning);
+    return List.of(new CompilerMessage(1, false, warning,
+                                       Game.i18n.tr("Debug mode is enabled, which breaks the visual indicators. Read the messages in the "
+                                                    + "console below, or recompile without debug mode to restore this feature.")));
   }
 
   /**

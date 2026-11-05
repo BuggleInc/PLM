@@ -1,6 +1,8 @@
 package plm.core.model.lesson;
 
 import java.util.Date;
+import java.util.List;
+import plm.core.lang.CompilerMessage;
 import plm.core.lang.ProgrammingLanguage;
 
 /**
@@ -14,6 +16,8 @@ public class RunOutcome {
   public kind outcome = kind.FAIL;
 
   public String compilationError;
+  /** The errors or warnings of the compiler, located in the editor of the student (empty for the correction) */
+  public List<CompilerMessage> compilerMessages = List.of();
   public String executionError = "";
   public int passedTests, totalTests = 0;
   public Date date                    = new Date();

@@ -7,6 +7,7 @@ import plm.test.git.GitTrackerImportTest;
 import plm.test.git.GitTrackerTest;
 import plm.test.git.GitUtilsTest;
 import plm.test.lang.CommandExecutorTest;
+import plm.test.lang.CompilerMessageTest;
 import plm.test.lang.EntityTemplateParserTest;
 import plm.test.lang.GlueGenerationTest;
 import plm.test.lang.IndentationTest;
@@ -53,5 +54,6 @@ import plm.universe.bat.ValueFormatterTest;
                 ApiGatingTest.class,
                 PosixWorldTest.class,
                 LangCMessagesTest.class,
+                CompilerMessageTest.class,
                 MethodsDogHouseSourceCheckTest.class})
 public class UnitTests {}

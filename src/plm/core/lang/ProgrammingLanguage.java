@@ -104,6 +104,9 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
     return warnings;
   }
 
+  /** The name of the file holding the code of the editor of exo in the messages of the compiler (see {@link CompilerMessage#parse}) */
+  public String editorFileName(Exercise exo) { return "Entity." + ext; }
+
   /**
    * Make the entity run, according to the used universe and programming language.
    *
