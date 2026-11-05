@@ -79,9 +79,9 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   /** The content of the Main file connecting to the PLM and running the Entity */
   protected abstract String mainSource();
 
-  /** Compiles the Entity and Main files, and packs the classes into jarFile, whose main class is generated.Main */
-  protected abstract void compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile,
-                                       File entityFile, File jarFile) throws PLMCompilerException;
+  /** Compiles the Entity and Main files, and packs the classes into jarFile, whose main class is generated.Main. Returns the warnings */
+  protected abstract String compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile,
+                                         File entityFile, File jarFile) throws PLMCompilerException;
 
   /** Generates, compiles and packs the Entity of each source file of the exercise. The executable is the path of the last jar. */
   @Override public Compiled compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
@@ -90,6 +90,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     Path entitiesJar        = deployResource(entitiesJarName, TMP_ROOT);
 
     String jarPath                                 = null;
+    String warnings                                = "";
     DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
     for (SourceFile sf : exo.getSourceFilesList(this)) {
       EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
@@ -121,12 +122,12 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
       // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
       int lineShift = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
-      compileToJar(diagnostic, workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile, jarFile);
+      warnings      = compileToJar(diagnostic, workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile, jarFile);
 
       jarPath = jarFile.toPath().toString();
       lineShifts.put(jarPath, lineShift);
     }
-    return new Compiled(jarPath, "");
+    return new Compiled(jarPath, pickyWarnings(warnings));
   }
 
   @Override protected String shiftLocations(String line, String executable) { return shiftLines(ENTITY_LOCATION, line, executable); }

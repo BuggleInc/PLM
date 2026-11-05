@@ -45,4 +45,44 @@ public class CompilerMessageTest {
         """;
     assertEquals(List.of(unsure(true, "alone"), error(3, "first\nnote: declared here")), CompilerMessage.parse(text, "Tab.c", 9));
   }
+
+  /** javac, as rendered by LangJava: a template line, a warning, two errors on a line, and notes without location */
+  @Test public void javac()
+  {
+    String text = """
+        /tmp/plm/java/plm/runtime4/Entity.java:6: error: cannot find symbol
+          symbol:   variable notDeclared
+          location: class generated.Entity
+        Entity.java:2: error: cannot find symbol
+          symbol:   variable y
+          location: class generated.Entity
+        Entity.java:3: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
+        Entity.java:4: error: incompatible types: int cannot be converted to java.lang.String
+        Entity.java:4: error: incompatible types: java.lang.String cannot be converted to int
+        note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.
+        note: Recompile with -Xlint:unchecked for details.
+        """;
+    assertEquals(List.of(unsure(false, "cannot find symbol\nsymbol:   variable notDeclared\nlocation: class generated.Entity"),
+                         error(2, "cannot find symbol\nsymbol:   variable y\nlocation: class generated.Entity"),
+                         warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal"),
+                         error(4, "incompatible types: int cannot be converted to java.lang.String"),
+                         error(4, "incompatible types: java.lang.String cannot be converted to int\n"
+                                      + "note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.\n"
+                                      + "note: Recompile with -Xlint:unchecked for details.")),
+                 CompilerMessage.parse(text, "Entity.java", 5));
+  }
+
+  /** javac when the compilation succeeds: the notes follow the last warning */
+  @Test public void javacWarnings()
+  {
+    String text = """
+        Entity.java:3: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
+        note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.
+        note: Recompile with -Xlint:unchecked for details.
+        """;
+    assertEquals(List.of(warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal\n"
+                                        + "note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.\n"
+                                        + "note: Recompile with -Xlint:unchecked for details.")),
+                 CompilerMessage.parse(text, "Entity.java", 5));
+  }
 }

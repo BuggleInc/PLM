@@ -221,8 +221,8 @@ public class LangScala extends JvmTemplatedLang {
   }
 
   @Override
-  protected void compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
-                              File jarFile) throws PLMCompilerException
+  protected String compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
+                                File jarFile) throws PLMCompilerException
   {
     compileScalaFiles(workspace, entitiesJar, lineShift, mainFile, entityFile);
 
@@ -232,6 +232,7 @@ public class LangScala extends JvmTemplatedLang {
     // not to its parent: this is what must end up as each entry's name inside the jar.
     // For example "plm/runtime4/Main.class" needs "-cp jarfile plm.runtime4.Main" to resolve.
     runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
+    return "";
   }
   /**
    * Runs "java -cp &lt;jarPath&gt;:&lt;entities jar&gt;:&lt;scala runtime jars&gt; generated.Main &lt;port&gt;", executable being the jar path

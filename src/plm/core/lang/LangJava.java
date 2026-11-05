@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
@@ -34,11 +35,8 @@ public class LangJava extends JvmTemplatedLang {
 
   @Override public ExternalPrimitiveLanguage getPrimitiveGenerator() { return new LangJavaExternalPrimitiveGenerator(); }
 
-  /**
-   * Compiles the files in-process. Unless debugging is enabled, the line numbers reported for Entity.java are decreased by
-   * {@code lineShift}, the number of lines of the generated source before the body, to match the lines of the editor.
-   */
-  private static void compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, int lineShift, File entitiesJar, File... files)
+  /** Compiles the files in-process, and returns the warnings of the compiler, rendered by {@link #render} */
+  private static String compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, int lineShift, File entitiesJar, File... files)
       throws PLMCompilerException
   {
     for (File javaFile : files) {
@@ -65,21 +63,33 @@ public class LangJava extends JvmTemplatedLang {
       Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
       boolean success                                     = compiler.getTask(null, fileManager, diagnostic, null, null, compilationUnits).call();
 
-      // Any diagnostic, even a warning, is treated as an error.
-      if (!success || !diagnostic.getDiagnostics().isEmpty()) {
-        String rtStderr = diagnostic.getDiagnostics()
-                              .stream()
-                              .map(d -> {
-                                boolean inBody = !Game.getInstance().isDebugEnabled() && d.getSource() != null &&
-                                                 d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) && d.getLineNumber() > lineShift;
-                                return inBody ? "Entity.java:" + (d.getLineNumber() - lineShift) + ": " + d.getMessage(null) : d.toString();
-                              })
-                              .collect(Collectors.joining("\n"));
-        throw new PLMCompilerException(rtStderr, new HashSet<>(paths), new Error());
-      }
+      String messages = diagnostic.getDiagnostics().stream().map(d -> render(d, lineShift)).collect(Collectors.joining("\n"));
+      if (!success)
+        throw new PLMCompilerException(messages, new HashSet<>(paths), new Error());
+      return messages;
     } catch (IOException e) {
       throw new PLMCompilerException(e.getMessage(), new HashSet<>(paths), new Error());
     }
+  }
+
+  /**
+   * A diagnostic as "file:line: kind: message", without its location if it has none. Unless debugging is enabled, a diagnostic of
+   * the body is located in Entity.java, at its line decreased by {@code lineShift} (the number of lines of the generated source
+   * before the body) to match the editor's. The other ones keep the full path of their file.
+   */
+  private static String render(Diagnostic<? extends JavaFileObject> d, int lineShift)
+  {
+    String kind = switch (d.getKind()) {
+      case ERROR -> "error";
+      case NOTE, OTHER -> "note";
+      default -> "warning";
+    };
+    if (d.getSource() == null || d.getLineNumber() == Diagnostic.NOPOS)
+      return kind + ": " + d.getMessage(null);
+    boolean inBody =
+        !Game.getInstance().isDebugEnabled() && d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) && d.getLineNumber() > lineShift;
+    String location = inBody ? "Entity.java:" + (d.getLineNumber() - lineShift) : d.getSource().getName() + ":" + d.getLineNumber();
+    return location + ": " + kind + ": " + d.getMessage(null);
   }
 
   private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File root, File packageFolder, File jarFile, File mainFile)
@@ -148,11 +158,12 @@ public class LangJava extends JvmTemplatedLang {
   }
 
   @Override
-  protected void compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
-                              File jarFile) throws PLMCompilerException
+  protected String compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
+                                File jarFile) throws PLMCompilerException
   {
-    compileJavaFiles(diagnostic, workspace, lineShift, entitiesJar, mainFile, entityFile);
+    String warnings = compileJavaFiles(diagnostic, workspace, lineShift, entitiesJar, mainFile, entityFile);
     createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
+    return warnings;
   }
 
   /** Runs "java -cp &lt;executable&gt;:&lt;entities jar&gt; generated.Main &lt;port&gt;", the executable being the jar path produced by compileExo(). */

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import plm.core.PLMCompilerException;
+import plm.core.lang.CompilerMessage;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
@@ -52,6 +53,14 @@ public abstract class SimpleExerciseTest {
 
   /** Puts the code in the only source file of the exercise */
   protected void setEditorContent(String code) { exo.setEditorContent(pl, code); }
+
+  /** The first of these messages of the compiler is an error surely located on that line of the editor */
+  protected void assertErrorOnLine(int line, String messages)
+  {
+    int editorLines       = exo.getEditorContent(pl).split("\\R", -1).length;
+    CompilerMessage first = CompilerMessage.parse(messages, pl.editorFileName(exo), editorLines).get(0);
+    Assertions.assertEquals(new CompilerMessage(line, true, false, first.text()), first, messages);
+  }
 
   @Test public void testNewSourceRefusesATabThatIsNotAnIdentifier()
   {

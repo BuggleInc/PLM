@@ -65,6 +65,7 @@ public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
                        + "}");
       PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
       Assertions.assertTrue(e.getMessage().contains("Entity.java:3: "), e.getMessage());
+      assertErrorOnLine(3, e.getMessage());
     } finally {
       setDebug(true);
     }
