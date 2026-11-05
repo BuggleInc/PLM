@@ -48,7 +48,8 @@ The entry point of the whole execution is `Exercise.compileRunCheck()`. It chain
 is called by `LessonRunner` when the student clicks "Run" (compiling the student's code) and by the integration tests (compiling the
 correction entity). It returns the `RunOutcome` of the execution. A compilation error, or a refusal by `verifySource()`, is
 returned too, as an outcome of kind `COMPILE` holding the message: the exceptions of the compilers do not go past this method.
-Nothing is stored in the `Exercise`: the outcome is passed along to the dialogs and to the progress trackers.
+Nothing is stored in the `Exercise`: the outcome is passed along to the dialogs, to the progress trackers, and to the editor, which
+shows the messages of the compiler in its margin (see [below](#compiler-messages-in-the-margin-of-the-editor)).
 
 Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
@@ -208,6 +209,42 @@ handful of one-off helper lines elsewhere:
     their bytecode by itself.
   - C: `LangC.ensureCachedObject()` compiles each file once to an object cached in `/tmp/plm/C/objects`, which is linked with each
     exercise.
+
+### Compiler messages in the margin of the editor
+
+The errors and warnings of the compilation of the student's code are bullets in the margin of the editor, whose tooltip lists the
+messages of their line. Every language renders its compiler's messages in the same format, which `CompilerMessage.parse()` reads:
+- A message starts with a line `file:line:column: kind: text`, whose column is optional, as is the whole location (`kind: text`).
+  The kind is `error` or `fatal error` for the errors; anything else (`warning`, `info`) is a warning. A `note` is added to the
+  previous message, if any.
+- The indented lines that follow belong to the message (such as the `symbol:` and `location:` of javac). The code that the
+  compiler quotes and its caret come after a `|` (as gcc does), and are dropped with the context lines of gcc and of its linker
+  (`In function`, `In file included from`). Any other line starts an error without location, such as the message of
+  `Exercise.verifySource()` or the errors of the linker.
+- A message is surely on a line of the editor if its file is `ProgrammingLanguage.editorFileName()` (`Entity.java`, `Entity.scala`,
+  `Entity.py`, or the tab's name followed by `.c`) and its line is one of the editor. The others get a `?` bullet on the first
+  line.
+
+How each language produces this format:
+- Java: `LangJava.render()` writes the diagnostics of javac, the body ones as `Entity.java:N` with the editor's line, the
+  others with the full path of their file.
+- Scala: `LangScala.render()` does the same with the diagnostics of dotc, indenting the next lines of a message and quoting the
+  code after a `|`. The summary of dotc ("2 errors found") is dropped.
+- Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format, whose
+  lines are then mapped back by `TemplatedRemoteLang.shiftLines()`.
+- C: gcc writes this format itself, and the `#line` directive locates the body in the tab's file. The code after the body continues
+  its numbering, beyond the lines of the editor.
+
+The lines of the template keep their number but get the full path of the generated file, so that they are not taken for lines of
+the editor. In debug mode, the lines are the ones of the generated source: a single `?` bullet then sends the student to the
+console. A new language renders its messages in this format, and overrides `editorFileName()` if its file is not `Entity.<ext>`.
+
+`Exercise.compileRunCheck()` parses the message of the `PLMCompilerException`, or the warnings of a successful compilation, into
+`RunOutcome.compilerMessages`. `LessonRunner` passes them to `MissionEditorTabs.showCompilerMessages()`, in the Swing thread,
+which gives them to the `CompilerMarkers` of the editor if it still shows that exercise in that language. The bullets are
+replaced at each compilation, and disappear with the editor when the exercise or the language changes. They follow their lines
+when the code changes, but are then dimmed, with a tooltip telling that they may be obsolete. The run-time errors (stack traces,
+tracebacks, AddressSanitizer reports) are not shown in the margin.
 
 ## Remoting: how the student's entity talks to the PLM
 
@@ -486,7 +523,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       code can be restored into the editor without loading (so parsing) the entity, and the name of the source files must be the
       one of the tab. Wrong code, exceptions (out of bounds, null, custom) and a valid code followed by an error do not pass.
       Syntax and variable errors do not compile. The line of a stack trace frame is the editor's one. Every language also checks
-      the line of a compilation error, and Python and C check that the `IMPORT` section is honored.
+      the line of a compilation error, as written and as parsed by `CompilerMessage`, and Python and C check that the `IMPORT`
+      section is honored.
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
@@ -521,6 +559,13 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       program peers (IRC server included), and the comparison of its worlds, by calling the primitives of the student's process.
       Its worlds written in their `.map` file and read back give the same file, an equal world and the same differences.
     * *`LangCMessagesTest`:* the compiler messages show the real names of the functions that a C glue renames with macros.
+    * *`CompilerMessageTest`:* the messages of javac, dotc, the syntax check of Python and gcc (real samples, as rendered by each
+      language) are located on the editor's lines, with their notes but without the quoted code. The lines of the template, the
+      ones after the body and the messages without location (`verifySource()`, linker) are not sure, several messages may share a
+      line, and the warnings are told from the errors.
+    * *`CompilerMarkersTest`:* through the API of its gutter, the editor shows one bullet per line, of the color of the most
+      severe message and whose tooltip lists them all, replaces them at each compilation, and dims them when the code changes,
+      moving them with their lines.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
@@ -602,7 +647,8 @@ one checks the correction entities against it.
   `newline="\n"` when they write, and the C glue writes its bytes as they are.
 - Adding a new language: see `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language` and extend
   `plm.core.lang.ProgrammingLanguage`. Be warned that you will have to adapt the mission text of every exercise, as they contain
-  language-specific chunks.
+  language-specific chunks. Its compiler messages must follow the format described in
+  [Compiler messages in the margin of the editor](#compiler-messages-in-the-margin-of-the-editor).
 
 ## Build & run
 
