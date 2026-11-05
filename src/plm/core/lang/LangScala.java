@@ -132,11 +132,10 @@ public class LangScala extends JvmTemplatedLang {
   private static String scalaRuntimeClasspath() { return classpathOf(true, SCALA_RUNTIME_CLASSES); }
 
   /**
-   * Compiles the Scala files into packageFolder, against the Scala runtime and the precompiled entities jar. Unless debugging is
-   * enabled, the line numbers reported for Entity.scala are decreased by {@code lineShift}, the number of lines of the generated
-   * source before the body, to match the lines of the editor.
+   * Compiles the Scala files into packageFolder, against the Scala runtime and the precompiled entities jar, and returns the warnings
+   * of the compiler, rendered by {@link #render}.
    */
-  private static void compileScalaFiles(File packageFolder, File entitiesJar, int lineShift, File... files) throws PLMCompilerException
+  private static String compileScalaFiles(File packageFolder, File entitiesJar, int lineShift, File... files) throws PLMCompilerException
   {
     List<String> paths = Arrays.stream(files).map(f -> f.toPath().toString()).toList();
     List<String> scalacArgs = new ArrayList<>(List.of("-classpath", scalaCompilerClasspath() + File.pathSeparator + entitiesJar.getAbsolutePath(), "-d",
@@ -144,35 +143,54 @@ public class LangScala extends JvmTemplatedLang {
                                                       "-deprecation")); // no ANSI escapes; braces only (sources mix tabs and spaces); detailed warnings
     for (File file : files)
       scalacArgs.add(file.getAbsolutePath());
-    runDotc(paths, scalacArgs, lineShift);
+    return runDotc(paths, scalacArgs, lineShift);
+  }
+
+  /** The summary that dotc reports at the end of the compilation, such as "1 warning found\n2 errors found" */
+  private static final Pattern SUMMARY = Pattern.compile("(\\d+ (warning|error)s? found\\s*)+");
+
+  /**
+   * Drives the Scala 3 compiler in-process (dotty.tools.dotc.Driver), mirroring LangJava's in-process javac call, and returns the
+   * warnings. The diagnostics are collected through dotc's SimpleReporter interface, except its summary.
+   */
+  private static String runDotc(List<String> paths, List<String> args, int lineShift) throws PLMCompilerException
+  {
+    List<String> messages = new ArrayList<>();
+    ReporterResult result = new Driver().process(args.toArray(new String[0]), diagnostic -> {
+      if (diagnostic.position().isPresent() || !SUMMARY.matcher(diagnostic.message()).matches())
+        messages.add(render(diagnostic, lineShift));
+    }, null);
+
+    if (result.hasErrors())
+      throw new PLMCompilerException(String.join("\n", messages), new HashSet<>(paths), new Error());
+    return String.join("\n", messages);
   }
 
   /**
-   * Drives the Scala 3 compiler in-process (dotty.tools.dotc.Driver), mirroring LangJava's in-process javac call. The diagnostics
-   * are collected through dotc's SimpleReporter interface. Any of them, even a mere warning, fails the compile.
+   * "file:line:col: kind: message", the next lines of the message being indented as the notes of the other compilers, then the
+   * source line and a caret under the column, quoted after a | as gcc does. Positions are 0-based in dotc, 1-based here. Unless
+   * debugging is enabled, a line of the body of Entity.scala is decreased by {@code lineShift} (the number of lines of the generated
+   * source before the body) to match the editor's, while the other lines of Entity.scala are located with the full path of the file.
    */
-  private static void runDotc(List<String> paths, List<String> args, int lineShift) throws PLMCompilerException
-  {
-    List<String> messages = new ArrayList<>();
-    ReporterResult result = new Driver().process(args.toArray(new String[0]), diagnostic -> messages.add(render(diagnostic, lineShift)), null);
-
-    if (result.hasErrors() || result.hasWarnings())
-      throw new PLMCompilerException(String.join("\n", messages), new HashSet<>(paths), new Error());
-  }
-
-  /** "file:line:col: message", then the source line and a caret under the column. Positions are 0-based in dotc, 1-based here. */
   private static String render(Diagnostic diagnostic, int lineShift)
   {
+    String kind    = diagnostic.level() == Diagnostic.ERROR ? "error" : diagnostic.level() == Diagnostic.WARNING ? "warning" : "info";
+    String message = kind + ": " + diagnostic.message().stripTrailing().replace("\n", "\n  ");
     if (diagnostic.position().isEmpty())
-      return diagnostic.message();
+      return message;
 
     SourcePosition position = diagnostic.position().get();
     String file             = position.source().name();
     int line                = position.line() + 1;
-    if (file.equals("Entity.scala") && !Game.getInstance().isDebugEnabled() && line > lineShift)
-      line -= lineShift;
+    if (file.equals("Entity.scala") && !Game.getInstance().isDebugEnabled()) {
+      if (line > lineShift)
+        line -= lineShift;
+      else
+        file = position.source().path();
+    }
 
-    return file + ":" + line + ":" + (position.column() + 1) + ": " + diagnostic.message() + "\n" + position.lineContent().stripTrailing() + "\n"
+    String location = file + ":" + line + ":" + (position.column() + 1) + ": ";
+    return location + message + "\n  | " + position.lineContent().stripTrailing() + "\n  | "
         + " ".repeat(position.column()) + "^";
   }
 
@@ -224,7 +242,7 @@ public class LangScala extends JvmTemplatedLang {
   protected String compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
                                 File jarFile) throws PLMCompilerException
   {
-    compileScalaFiles(workspace, entitiesJar, lineShift, mainFile, entityFile);
+    String warnings = compileScalaFiles(workspace, entitiesJar, lineShift, mainFile, entityFile);
 
     // Scala compiles "object Main" to Main.class (plus a Main$.class holding the singleton); the manifest only
     // needs the former as its Main-Class entry point, exactly like a Java class with a static main().
@@ -232,7 +250,7 @@ public class LangScala extends JvmTemplatedLang {
     // not to its parent: this is what must end up as each entry's name inside the jar.
     // For example "plm/runtime4/Main.class" needs "-cp jarfile plm.runtime4.Main" to resolve.
     runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
-    return "";
+    return warnings;
   }
   /**
    * Runs "java -cp &lt;jarPath&gt;:&lt;entities jar&gt;:&lt;scala runtime jars&gt; generated.Main &lt;port&gt;", executable being the jar path

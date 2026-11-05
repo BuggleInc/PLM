@@ -85,4 +85,48 @@ public class CompilerMessageTest {
                                         + "note: Recompile with -Xlint:unchecked for details.")),
                  CompilerMessage.parse(text, "Entity.java", 5));
   }
+
+  /** dotc, as rendered by LangScala: a template line, two errors on a line, and the quoted code after a | */
+  @Test public void dotc()
+  {
+    String text = """
+        /tmp/plm/scala/plm/runtime4/Entity.scala:6:20: error: Not found: notDeclared
+          |   val templ: Int = notDeclared
+          |                    ^
+        Entity.scala:2:16: error: Found:    ("s" : String)
+          Required: Int
+          |   val x: Int = "s"; val y: String = 1
+          |                ^
+        Entity.scala:2:37: error: Found:    (1 : Int)
+          Required: String
+          |   val x: Int = "s"; val y: String = 1
+          |                                     ^
+        Entity.scala:4:3: error: Not found: toto
+          |   toto += 1
+          |   ^
+        """;
+    assertEquals(List.of(unsure(false, "Not found: notDeclared"), error(2, "Found:    (\"s\" : String)\nRequired: Int"),
+                         error(2, "Found:    (1 : Int)\nRequired: String"), error(4, "Not found: toto")),
+                 CompilerMessage.parse(text, "Entity.scala", 5));
+  }
+
+  /** dotc when the compilation succeeds with warnings, whose explanations hold blank lines */
+  @Test public void dotcWarnings()
+  {
+    String text = """
+        Entity.scala:2:30: warning: match may not be exhaustive.
+
+          It would fail on pattern case: None
+          |   val o: Option[Int] = None; o match { case Some(v) => v }
+          |                              ^
+        Entity.scala:3:15: warning: match may not be exhaustive.
+
+          It would fail on pattern case: List(_, _*), Nil
+          |   val l = List(1) match { case 1 :: Nil => 1 }
+          |               ^
+        """;
+    assertEquals(List.of(warning(2, "match may not be exhaustive.\nIt would fail on pattern case: None"),
+                         warning(3, "match may not be exhaustive.\nIt would fail on pattern case: List(_, _*), Nil")),
+                 CompilerMessage.parse(text, "Entity.scala", 5));
+  }
 }

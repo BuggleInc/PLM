@@ -65,6 +65,7 @@ public class ScalaSimpleExerciseTest extends CompiledSimpleExerciseTest {
                        + "}");
       PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
       Assertions.assertTrue(e.getMessage().contains("Entity.scala:3:"), e.getMessage());
+      assertErrorOnLine(3, e.getMessage());
     } finally {
       setDebug(true);
     }
