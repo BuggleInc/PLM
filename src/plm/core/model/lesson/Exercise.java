@@ -143,12 +143,13 @@ public abstract class Exercise extends Lecture {
    * All the steps of the "Run" button, shared by the GUI and the tests: resets the worlds, generates the template, compiles the
    * code of {@code whatToCompile}, runs it on every world, then checks the result. The worlds are neither reset nor checked in
    * creative mode.
+   * @param picky whether the warnings of the compiler fail the compilation
    * @param runners receives the entity tasks, so that another thread can stop them
    * @param onCompiled called once the compilation succeeded, right before the execution
    * @return the outcome of the run, which is a compilation error if the compilation (or the source-level check) failed
    */
-  public RunOutcome compileRunCheck(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang, List<Future<?>> runners, Runnable onCompiled)
-      throws InterruptedException
+  public RunOutcome compileRunCheck(LogWriter out, StudentOrCorrection whatToCompile, ProgrammingLanguage lang, boolean picky, List<Future<?>> runners,
+                                    Runnable onCompiled) throws InterruptedException
   {
     boolean creative = Game.getInstance().isCreativeEnabled();
 
@@ -159,7 +160,7 @@ public abstract class Exercise extends Lecture {
     /* Compilation, then source-level API gating. Every compilation error is reported here. */
     Compiled compiled;
     try {
-      compiled = lang.compileExo(this, out, whatToCompile);
+      compiled = lang.compileExo(this, out, whatToCompile).checked(picky);
       if (whatToCompile == StudentOrCorrection.STUDENT)
         verifySource(getEditorContent(lang));
     } catch (PLMCompilerException e) {

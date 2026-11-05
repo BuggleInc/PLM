@@ -75,7 +75,7 @@ public class LessonRunner extends Thread {
       game.saveSession(); // for safety reasons;
 
       game.setState(Game.GameState.COMPILATION_STARTED);
-      RunOutcome outcome = exo.compileRunCheck(game.getOutputWriter(), StudentOrCorrection.STUDENT, lang, runners, () -> {
+      RunOutcome outcome = exo.compileRunCheck(game.getOutputWriter(), StudentOrCorrection.STUDENT, lang, game.isPickyEnabled(), runners, () -> {
         game.setState(Game.GameState.COMPILATION_ENDED);
         game.setState(Game.GameState.EXECUTION_STARTED);
       });

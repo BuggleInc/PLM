@@ -212,7 +212,7 @@ public class LangPython extends TemplatedRemoteLang {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    return new Compiled(mainPath, pickyWarnings(warnings, lineShift), lineShift);
+    return new Compiled(mainPath, warnings, lineShift);
   }
 
   @Override public String shiftLines(String text, int lineShift) { return shiftLines(ENTITY_LOCATION, text, lineShift); }

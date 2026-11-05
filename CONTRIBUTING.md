@@ -59,9 +59,10 @@ Here are the steps of the exercise execution:
 * **Compile**: The starting point is `ProgrammingLanguage.compileExo()`.
   - The code is then compiled to an external executable/jar if needed. Java/Scala compile in-process to avoid the startup time of an
     external JVM, C uses an external compiler, and Python is checked by `py_compile` (see `LangPython.SYNTAX_CHECK`).
-  - `compileExo()` returns a `Compiled` record: a textual reference to the result (the path to a jar, a binary, etc), which the
-    caller then passes down as-is to `runEntity()`'s `executable` parameter below, and the warnings of the compiler. The errors
-    are the message of a `PLMCompilerException`, and so are the warnings in picky mode (`ProgrammingLanguage.pickyWarnings()`).
+  - `compileExo()` returns a `Compiled` record: a textual reference to the result (the path to a jar, a binary, etc), the
+    warnings of the compiler and the line shift of the generated source, which the caller then passes down as-is to
+    `runEntity()` below. The errors are the message of a `PLMCompilerException`. The caller decides whether the warnings fail
+    the compilation from the returned values.
 * **Source verification**: `Exercise.compileRunCheck()` then calls `Exercise.verifySource()` with the editor's content, for the
   student's code only (not for the correction). Exercises override it to refuse a code that compiles but misses the point (see
   "API gating" below).
@@ -641,8 +642,8 @@ one checks the correction entities against it.
   - **C**: compiled and linked by an external compiler (with AddressSanitizer if it supports it), then the executable is run.
     The compiler is given by the `c.compiler` property (`gcc` by default).
   - In every language, the warnings of the compiler are displayed on the console and in the margin of the editor, unless the
-    picky mode (`compiler.picky` property, checkbox of the Exercise menu, always on in the tests) turns them into compilation
-    errors.
+    picky mode (`compiler.picky` property, checkbox of the Exercise menu, always on in batch for the corrections) turns them
+    into compilation errors.
 - **Line endings**: the outputs of the student are compared with the ones of the correction, so every language writes `\n` at
   the end of the lines, even on Windows: the JVMs run with `-Dline.separator=\n` (`JvmTemplatedLang.UNIX_LINES`, read by
   `println()`, `%n` and `BufferedWriter.newLine()`), the Python glue of the POSIX universe opens its text streams with

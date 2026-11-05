@@ -100,7 +100,7 @@ public class ExoTest {
     System.err.println("Test exo " + exo.getName() + " in " + lang + " (" + exo.getId() + ")");
     RunOutcome outcome;
     try {
-      outcome = exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, new ArrayList<Future<?>>(), () -> {});
+      outcome = exo.compileRunCheck(null, StudentOrCorrection.CORRECTION, lang, true, new ArrayList<Future<?>>(), () -> {});
     } catch (UnsupportedOperationException uoe) {
       System.err.println("UnsupportedOperationException while executing" + exo.getId());
       throw uoe;

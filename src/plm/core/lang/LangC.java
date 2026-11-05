@@ -139,9 +139,11 @@ public class LangC extends TemplatedRemoteLang {
       String remoteWorldH     = readResource(remote + ".h");
       String remoteWorldC     = readResource(remote + ".c");
 
-      Path valueSerializerObj = ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), cc, isWindows);
-      Path remoteObj          = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), cc, isWindows);
-      Path remoteWorldObj     = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), cc, isWindows);
+      StringBuilder glueWarnings = new StringBuilder();
+      Path valueSerializerObj =
+          ensureCachedObject("value_serializer", valueSerializerC, Map.of("value_serializer.h", valueSerializerH), cc, isWindows, glueWarnings);
+      Path remoteObj      = ensureCachedObject("Remote", remoteC, Map.of("Remote.h", remoteH), cc, isWindows, glueWarnings);
+      Path remoteWorldObj = ensureCachedObject(remote, remoteWorldC, Map.of("Remote.h", remoteH, remote + ".h", remoteWorldH), cc, isWindows, glueWarnings);
 
       // The student/correction file below #include's these headers directly: they need a physical presence in compileDir.
       Files.writeString(compileDir.resolve("value_serializer.h"), valueSerializerH);
@@ -168,7 +170,7 @@ public class LangC extends TemplatedRemoteLang {
       String linkCmd   = cc + untracked + " -o \"" + exec + "\" " + linkInputs + " -lm -lpthread" + (isWindows ? " -lws2_32" : "");
 
       String warnings = runCompiler(linkCmd, compileDir.toFile(), isWindows, messages -> withRealNames(messages, remoteWorldH));
-      return new Compiled(exec.getAbsolutePath(), pickyWarnings(warnings, 0), 0); // the #line directive maps the lines already
+      return new Compiled(exec.getAbsolutePath(), warnings + glueWarnings, 0); // the #line directive maps the lines already
     } catch (IOException ioe) {
       throw new PLMCompilerException(ioe.getMessage(), null, ioe);
     } catch (InterruptedException e) {
@@ -185,6 +187,7 @@ public class LangC extends TemplatedRemoteLang {
    *
    * headers lists every header (by filename) that baseName's own "#include" needs to find alongside it while it gets
    * compiled in isolation. The compiler command cc (with its flags) is part of the hash too, as objects built differently may not link together.
+   * The warnings of the compiler are added to warnings, so that the compilation that builds the object reports them.
    *
    * Two concurrent first-uses of the same not-yet-cached object are safe either way (Files.move() is atomic, so neither
    * can observe or link against a half-written object file, and both would produce byte-identical output regardless);
@@ -192,8 +195,8 @@ public class LangC extends TemplatedRemoteLang {
    */
   private static final ConcurrentHashMap<String, Object> objectLocks = new ConcurrentHashMap<>();
 
-  private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, String cc, boolean isWindows)
-      throws IOException, InterruptedException, PLMCompilerException
+  private static Path ensureCachedObject(String baseName, String sourceContent, Map<String, String> headers, String cc, boolean isWindows,
+                                         StringBuilder warnings) throws IOException, InterruptedException, PLMCompilerException
   {
     String hash     = contentHash(cc + "\n" + sourceContent, headers);
     Path objectFile = OBJECTS_DIR.resolve(baseName + "-" + hash + ".o");
@@ -215,7 +218,7 @@ public class LangC extends TemplatedRemoteLang {
 
         Path tmpObject = scratch.resolve(baseName + ".o");
         String compileCmd = cc + " -x c -c -o \"" + tmpObject + "\" \"" + sourceFile + "\"";
-        pickyWarnings(runCompiler(compileCmd, scratch.toFile(), isWindows, UnaryOperator.identity()), 0);
+        warnings.append(runCompiler(compileCmd, scratch.toFile(), isWindows, UnaryOperator.identity()));
 
         Files.move(tmpObject, objectFile, java.nio.file.StandardCopyOption.ATOMIC_MOVE);
       } finally {

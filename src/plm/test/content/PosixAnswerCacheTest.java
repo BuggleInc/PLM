@@ -51,7 +51,7 @@ public class PosixAnswerCacheTest {
       Game.waitInitThreads();
       for (World w : french.getWorlds(WorldKind.INITIAL))
         w.setDelay(0);
-      RunOutcome outcome = french.compileRunCheck(null, StudentOrCorrection.CORRECTION, Game.getInstance().programmingLanguageManager.JAVA,
+      RunOutcome outcome = french.compileRunCheck(null, StudentOrCorrection.CORRECTION, Game.getInstance().programmingLanguageManager.JAVA, true,
                                                   new ArrayList<Future<?>>(), () -> {});
       Assertions.assertTrue(outcome.isPassed(), exo.getId() + " fails in French against its cache: " + outcome.executionError);
       List<World> current = french.getWorlds(WorldKind.CURRENT);

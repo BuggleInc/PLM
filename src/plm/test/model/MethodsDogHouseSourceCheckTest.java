@@ -111,7 +111,7 @@ public class MethodsDogHouseSourceCheckTest {
   {
     ProgrammingLanguage java = Game.getInstance().programmingLanguageManager.JAVA;
     exo.setEditorContent(java, oneCall(java).replace("left()", "left(); left()"));
-    RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, java, new ArrayList<Future<?>>(), () -> {});
+    RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, java, true, new ArrayList<Future<?>>(), () -> {});
 
     Assertions.assertTrue(outcome.isCompilationError(), "the refusal must be a compilation error");
     Assertions.assertTrue(outcome.compilationError.contains("exactly once"), outcome.compilationError);

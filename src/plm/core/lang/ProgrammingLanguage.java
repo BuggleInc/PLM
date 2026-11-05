@@ -87,21 +87,21 @@ public abstract class ProgrammingLanguage implements Comparable<ProgrammingLangu
    * code of the editor (0 for the correction), by which the locations of this code in the warnings and the stack traces exceed the
    * lines of the editor (see {@link #shiftLines}).
    */
-  public record Compiled(String executable, String warnings, int lineShift) {}
+  public record Compiled(String executable, String warnings, int lineShift) {
+    /** This compilation, unless it has warnings in picky mode, which then fail it */
+    public Compiled checked(boolean picky) throws PLMCompilerException
+    {
+      if (picky && !warnings.isBlank())
+        throw new PLMCompilerException(warnings, null, lineShift);
+      return this;
+    }
+  }
 
   /**
-   * Compile the exercise. The errors of the compiler, and its warnings in picky mode, are the message of the exception, whose line
-   * shift is the one of the generated source.
+   * Compile the exercise. The errors of the compiler are the message of the exception, whose line shift is the one of the generated
+   * source, and its warnings are in the result.
    */
   public abstract Compiled compileExo(Exercise exercise, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException;
-
-  /** The warnings of a compiler, which are compilation errors in picky mode. Returns them, when they are not errors. */
-  protected static String pickyWarnings(String warnings, int lineShift) throws PLMCompilerException
-  {
-    if (!warnings.isBlank() && Game.getInstance().isPickyEnabled())
-      throw new PLMCompilerException(warnings, null, lineShift);
-    return warnings;
-  }
 
   /**
    * The messages of a compiler or a stack trace, as displayed to the student: the locations of the code of the editor, which exceed

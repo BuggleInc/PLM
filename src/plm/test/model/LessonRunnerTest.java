@@ -63,8 +63,8 @@ public class LessonRunnerTest {
   {
     Exercise exo = Mockito.mock(Exercise.class);
     Mockito
-        .when(exo.compileRunCheck(ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.<List<Future<?>>>any(),
-                                  ArgumentMatchers.any()))
+        .when(exo.compileRunCheck(ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.anyBoolean(),
+                                  ArgumentMatchers.<List<Future<?>>>any(), ArgumentMatchers.any()))
         .thenReturn(outcome);
     return exo;
   }
@@ -93,8 +93,8 @@ public class LessonRunnerTest {
   {
     Exercise exo = Mockito.mock(Exercise.class);
     Mockito
-        .when(exo.compileRunCheck(ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.<List<Future<?>>>any(),
-                                  ArgumentMatchers.any()))
+        .when(exo.compileRunCheck(ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.anyBoolean(),
+                                  ArgumentMatchers.<List<Future<?>>>any(), ArgumentMatchers.any()))
         .thenThrow(new InterruptedException());
 
     RunOutcome outcome = new LessonRunner(game).runExercise(exo, lang);

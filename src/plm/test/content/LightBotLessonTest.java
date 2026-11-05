@@ -26,7 +26,7 @@ public class LightBotLessonTest {
 
     for (Lecture lecture : lesson.exercises())
       if (lecture instanceof Exercise exo) {
-        RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, g.programmingLanguageManager.LIGHTBOT, new ArrayList<>(), () -> {});
+        RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, g.programmingLanguageManager.LIGHTBOT, true, new ArrayList<>(), () -> {});
         Assertions.assertFalse(outcome.isPassed(), exo.getId() + " is solved by the empty program, please fix it");
         Assertions.assertTrue(outcome.totalTests > 0, exo.getId() + " has no light to turn on, please fix it");
       }
