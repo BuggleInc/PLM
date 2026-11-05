@@ -2,6 +2,7 @@ package plm.core.ui;
 
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.util.List;
 import java.util.function.Supplier;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,6 +18,7 @@ import javax.swing.event.HyperlinkListener;
 import plm.core.GameListener;
 import plm.core.ProgLangChangesListener;
 import plm.core.UserSwitchesListener;
+import plm.core.lang.CompilerMessage;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
 import plm.core.model.User;
@@ -175,6 +177,16 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
     header.add(close);
     setTabComponentAt(indexOfComponent(tab), header);
     setSelectedComponent(tab);
+  }
+
+  /** Shows the messages of the compiler in the margin of the editor, if it still edits the code of that exercise in that language */
+  public void showCompilerMessages(Exercise exo, ProgrammingLanguage lang, List<CompilerMessage> messages)
+  {
+    if (currentExercise != exo || game.getProgrammingLanguage() != lang)
+      return;
+    for (int i = 1; i < getTabCount(); i++)
+      if (getComponentAt(i) instanceof JavaEditorPanel editor)
+        editor.markers.show(messages);
   }
 
   @Override public void selectedEntityHasChanged()

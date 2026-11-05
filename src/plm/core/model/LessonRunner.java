@@ -12,6 +12,7 @@ import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.ui.ExerciseFailedDialog;
 import plm.core.ui.ExercisePassedDialog;
+import plm.core.ui.MainFrame;
 
 /**
  * This class runs the student code of the current exercise in a separated thread
@@ -43,6 +44,8 @@ public class LessonRunner extends Thread {
     final ProgrammingLanguage lang = this.game.getProgrammingLanguage();
 
     RunOutcome outcome = runExercise(exo, lang);
+    if (!stopped)
+      SwingUtilities.invokeLater(() -> MainFrame.getInstance().getEditorTabs().showCompilerMessages(exo, lang, outcome.compilerMessages));
 
     if (!game.isCreativeEnabled() && !stopped) {
       try {

@@ -14,6 +14,8 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
   SourceFileDocumentSynchronizer sync;
   RSyntaxTextArea codeEditor;
   Entity tracedEntity;
+  /** The messages of the last compilation, in the margin */
+  final CompilerMarkers markers;
 
   public JavaEditorPanel(Exercise exo, ProgrammingLanguage lang)
   {
@@ -62,6 +64,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     codeEditor.setText(exo.getEditorContent(lang));
     codeEditor.convertTabsToSpaces(); // the code saved or given with tabulations
     codeEditor.discardAllEdits();
+    markers = new CompilerMarkers(this);
 
     /* Highlighting stuff, to trace entities */
     tracedEntity = Game.getInstance().getSelectedEntity();
