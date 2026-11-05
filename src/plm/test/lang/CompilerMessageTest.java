@@ -155,4 +155,53 @@ public class CompilerMessageTest {
                          warning(2, "SyntaxWarning: \"is\" with 'int' literal. Did you mean \"==\"?")),
                  CompilerMessage.parse(text, "Entity.py", 4));
   }
+
+  /**
+   * gcc, after the #line directive of LangC: an error in the template (quoted), the context lines, a note, several messages on a
+   * line, and an error in the code after the body, whose line is beyond the editor
+   */
+  @Test public void gcc()
+  {
+    String text = """
+        lessons.welcome.Tab.c:3:13: error: 'notDeclared' undeclared here (not in a function)
+            3 | int templ = notDeclared;
+              |             ^~~~~~~~~~~
+        Tab.c: In function 'run':
+        Tab.c:3:3: error: 'toto' undeclared (first use in this function)
+        Tab.c:3:3: note: each undeclared identifier is reported only once for each function it appears in
+        Tab.c:3:21: warning: initialization of 'int' from 'char *' makes integer from pointer without a cast [-Wint-conversion]
+        Tab.c:4:10: warning: format '%d' expects argument of type 'int', but argument 2 has type 'double' [-Wformat=]
+        Tab.c:3:17: warning: unused variable 'x' [-Wunused-variable]
+        Tab.c:2:7: warning: unused variable 'unused' [-Wunused-variable]
+        Tab.c: In function 'post':
+        Tab.c:7:25: error: 'undeclaredInPost' undeclared (first use in this function)
+        Tab.c:7:43: warning: control reaches end of non-void function [-Wreturn-type]
+        """;
+    assertEquals(List.of(unsure(false, "'notDeclared' undeclared here (not in a function)"),
+                         error(3, "'toto' undeclared (first use in this function)\n"
+                                      + "note: each undeclared identifier is reported only once for each function it appears in"),
+                         warning(3, "initialization of 'int' from 'char *' makes integer from pointer without a cast [-Wint-conversion]"),
+                         warning(4, "format '%d' expects argument of type 'int', but argument 2 has type 'double' [-Wformat=]"),
+                         warning(3, "unused variable 'x' [-Wunused-variable]"), warning(2, "unused variable 'unused' [-Wunused-variable]"),
+                         unsure(false, "'undeclaredInPost' undeclared (first use in this function)"),
+                         unsure(true, "control reaches end of non-void function [-Wreturn-type]")),
+                 CompilerMessage.parse(text, "Tab.c", 6));
+  }
+
+  /** gcc when the link fails: the messages of the linker are errors of their own, after the warnings of the compiler */
+  @Test public void gccLinker()
+  {
+    String text = """
+        Tab.c: In function 'run':
+        Tab.c:4:3: warning: implicit declaration of function 'undefinedFunction' [-Wimplicit-function-declaration]
+        /usr/bin/ld: /tmp/cckejCOI.o: in function `run':
+        /tmp/plm/C/lessons.welcome.Tab-STUDENT-1/lessons.welcome.Tab.c:4:(.text+0x39): undefined reference to `undefinedFunction'
+        collect2: error: ld returned 1 exit status
+        """;
+    assertEquals(List.of(warning(4, "implicit declaration of function 'undefinedFunction' [-Wimplicit-function-declaration]"),
+                         unsure(false, "/tmp/plm/C/lessons.welcome.Tab-STUDENT-1/lessons.welcome.Tab.c:4:(.text+0x39): undefined reference to "
+                                           + "`undefinedFunction'"),
+                         unsure(false, "collect2: error: ld returned 1 exit status")),
+                 CompilerMessage.parse(text, "Tab.c", 6));
+  }
 }

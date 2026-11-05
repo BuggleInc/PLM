@@ -96,6 +96,7 @@ public class CSimpleExerciseTest extends CompiledSimpleExerciseTest {
                      + "}\n");
     PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
     Assertions.assertTrue(e.getMessage().contains(exo.getName() + ".c:3:"), e.getMessage());
+    assertErrorOnLine(3, e.getMessage());
   }
 
   @Test public void testImportSegmentIsHonored() throws PLMCompilerException, InterruptedException

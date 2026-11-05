@@ -82,6 +82,9 @@ public class LangC extends TemplatedRemoteLang {
 
   @Override public boolean isC() { return true; }
 
+  /** The #line directive of the generated source names the editor's code after the tab */
+  @Override public String editorFileName(Exercise exo) { return exo.getTabName() + ".c"; }
+
   @Override public Compiled compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
   {
 
