@@ -1,6 +1,7 @@
 package plm.test.gui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
@@ -74,5 +75,23 @@ public class CompilerMarkersTest {
     String tip = iconsOn(4)[0].getToolTip();
     assertTrue(tip.startsWith("<html><i>Potentially obsolete, please recompile.</i><br>") && tip.contains("undeclared"), tip);
     assertTrue(colorOf(iconsOn(4)[0].getIcon()).getAlpha() < 128);
+  }
+
+  @Test public void aNewCompilationAfterAnEditShowsBrightIcons() throws Exception
+  {
+    markers.show(List.of(new CompilerMessage(3, true, false, "undeclared")));
+    code.insert("added\n", 0);
+    SwingUtilities.invokeAndWait(() -> {});
+    markers.show(List.of(new CompilerMessage(3, true, false, "undeclared")));
+    assertFalse(iconsOn(3)[0].getToolTip().contains("obsolete"), iconsOn(3)[0].getToolTip());
+    assertEquals(255, colorOf(iconsOn(3)[0].getIcon()).getAlpha());
+    assertEquals(0, iconsOn(4).length);
+  }
+
+  /** The code may have got shorter since its compilation */
+  @Test public void aMessageBeyondTheEndOfTheCodeIsOnItsLastLine() throws Exception
+  {
+    markers.show(List.of(new CompilerMessage(9, true, false, "undeclared")));
+    assertEquals(1, iconsOn(5).length);
   }
 }
