@@ -10,8 +10,6 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import javax.tools.DiagnosticCollector;
-import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
@@ -228,8 +226,7 @@ public class LangScala extends JvmTemplatedLang {
   }
 
   @Override
-  protected String compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
-                                File jarFile) throws PLMCompilerException
+  protected String compileToJar(File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile, File jarFile) throws PLMCompilerException
   {
     String warnings = compileScalaFiles(workspace, entitiesJar, lineShift, mainFile, entityFile);
 
@@ -238,7 +235,7 @@ public class LangScala extends JvmTemplatedLang {
     // The class files are named relative to workspace itself (where scalac actually wrote these under their package-name subdirectories),
     // not to its parent: this is what must end up as each entry's name inside the jar.
     // For example "plm/runtime4/Main.class" needs "-cp jarfile plm.runtime4.Main" to resolve.
-    runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace, diagnostic), diagnostic);
+    runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace));
     return warnings;
   }
   /**

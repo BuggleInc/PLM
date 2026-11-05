@@ -13,8 +13,6 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
-import javax.tools.DiagnosticCollector;
-import javax.tools.JavaFileObject;
 import plm.core.PLMCompilerException;
 import plm.core.lang.primitives.Answer;
 import plm.core.lang.primitives.CodeCreation;
@@ -80,8 +78,8 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
   protected abstract String mainSource();
 
   /** Compiles the Entity and Main files, and packs the classes into jarFile, whose main class is generated.Main. Returns the warnings */
-  protected abstract String compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile,
-                                         File entityFile, File jarFile) throws PLMCompilerException;
+  protected abstract String compileToJar(File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile, File jarFile)
+      throws PLMCompilerException;
 
   /** Generates, compiles and packs the Entity of each source file of the exercise. The executable is the path of the last jar. */
   @Override public Compiled compileExo(Exercise exo, LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException
@@ -92,7 +90,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
     String jarPath                                 = null;
     String warnings                                = "";
     int lineShift                                  = 0;
-    DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<JavaFileObject>();
     for (SourceFile sf : exo.getSourceFilesList(this)) {
       EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
       String pre                  = entityHeader(sf.getRemote(), sf.getImports()) + segments.pre();
@@ -123,7 +120,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
       // The correction is not shifted: its body is the raw entity span, which does not start at the first line of the editor
       lineShift     = whatToCompile == StudentOrCorrection.STUDENT ? offset : 0;
-      warnings      = compileToJar(diagnostic, workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile, jarFile);
+      warnings      = compileToJar(workspace, entitiesJar.toFile(), lineShift, mainFile, entityFile, jarFile);
 
       jarPath = jarFile.toPath().toString();
     }
@@ -159,7 +156,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    * ".class" files found under dir, as paths relative to dir itself -- e.g. "generated/Entity.class". Used to list
    * the entries a compiled exercise's jar needs, whichever language produced them.
    */
-  protected static Set<String> findClassFiles(File dir, DiagnosticCollector<JavaFileObject> diagnostic) throws PLMCompilerException
+  protected static Set<String> findClassFiles(File dir) throws PLMCompilerException
   {
     try (var walk = Files.walk(dir.toPath())) {
       return walk.filter(p -> p.toString().endsWith(".class")).map(p -> dir.toPath().relativize(p).toString()).collect(Collectors.toSet());
@@ -172,8 +169,7 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
    * Run "jar cfm &lt;jarFile&gt; &lt;manifest declaring Main-Class: mainClassDotPath&gt; &lt;classFiles...&gt;" from
    *  workDir, throwing if the tool reports anything on stderr.
    */
-  protected static void runJarTool(File workDir, File jarFile, String mainClassDotPath, Set<String> classFiles, DiagnosticCollector<JavaFileObject> diagnostic)
-      throws PLMCompilerException
+  protected static void runJarTool(File workDir, File jarFile, String mainClassDotPath, Set<String> classFiles) throws PLMCompilerException
   {
     File manifestFile = new File(jarFile.getParentFile(), "MANIFEST.MF");
     try {

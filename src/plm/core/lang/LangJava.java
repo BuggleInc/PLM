@@ -36,8 +36,7 @@ public class LangJava extends JvmTemplatedLang {
   @Override public ExternalPrimitiveLanguage getPrimitiveGenerator() { return new LangJavaExternalPrimitiveGenerator(); }
 
   /** Compiles the files in-process, and returns the warnings of the compiler, rendered by {@link #render} */
-  private static String compileJavaFiles(DiagnosticCollector<JavaFileObject> diagnostic, File classOutputDir, int lineShift, File entitiesJar, File... files)
-      throws PLMCompilerException
+  private static String compileJavaFiles(File classOutputDir, int lineShift, File entitiesJar, File... files) throws PLMCompilerException
   {
     for (File javaFile : files) {
 
@@ -54,6 +53,7 @@ public class LangJava extends JvmTemplatedLang {
     if (compiler == null)
       throw new PLMCompilerException("No system Java compiler available: PLM must run on a JDK, not a JRE.", new HashSet<>(paths), new Error());
 
+    DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<>();
     try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostic, null, StandardCharsets.UTF_8)) {
       // CLASS_PATH is the entities jar only, instead of java.class.path, so that the student code cannot see PLM's own classes.
       // CLASS_OUTPUT is classOutputDir itself, so ".class" files land nested under their "generated/" package folder.
@@ -86,8 +86,7 @@ public class LangJava extends JvmTemplatedLang {
     return file + ":" + d.getLineNumber() + ": " + kind + ": " + d.getMessage(null);
   }
 
-  private static void createJarFile(DiagnosticCollector<JavaFileObject> diagnostic, File root, File packageFolder, File jarFile, File mainFile)
-      throws PLMCompilerException
+  private static void createJarFile(File root, File packageFolder, File jarFile, File mainFile) throws PLMCompilerException
   {
 
     if (!packageFolder.toPath().toString().startsWith(root.toPath().toString())) {
@@ -101,7 +100,7 @@ public class LangJava extends JvmTemplatedLang {
     // source files, which no longer tells us where javac put the output.
     String mainFileDotPath = "generated." + mainFile.getName().substring(0, mainFile.getName().indexOf('.'));
 
-    runJarTool(packageFolder, jarFile, mainFileDotPath, findClassFiles(packageFolder, diagnostic), diagnostic);
+    runJarTool(packageFolder, jarFile, mainFileDotPath, findClassFiles(packageFolder));
   }
 
   @Override public boolean isJava() { return true; }
@@ -152,11 +151,10 @@ public class LangJava extends JvmTemplatedLang {
   }
 
   @Override
-  protected String compileToJar(DiagnosticCollector<JavaFileObject> diagnostic, File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile,
-                                File jarFile) throws PLMCompilerException
+  protected String compileToJar(File workspace, File entitiesJar, int lineShift, File mainFile, File entityFile, File jarFile) throws PLMCompilerException
   {
-    String warnings = compileJavaFiles(diagnostic, workspace, lineShift, entitiesJar, mainFile, entityFile);
-    createJarFile(diagnostic, tempFolder, workspace, jarFile, mainFile);
+    String warnings = compileJavaFiles(workspace, lineShift, entitiesJar, mainFile, entityFile);
+    createJarFile(tempFolder, workspace, jarFile, mainFile);
     return warnings;
   }
 
