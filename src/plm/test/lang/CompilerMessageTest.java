@@ -46,11 +46,14 @@ public class CompilerMessageTest {
     assertEquals(List.of(unsure(true, "alone"), error(3, "first\nnote: declared here")), CompilerMessage.parse(text, "Tab.c", 0, 9));
   }
 
-  /** javac, as rendered by LangJava with the lines of the generated source: a template line, a warning, two errors on a line, and notes without location */
+  /**
+   * javac, as rendered by LangJava with the lines of the generated source: a template line (with its full path), a warning, two errors on a line, and notes
+   * without location
+   */
   @Test public void javac()
   {
     String text = """
-        Entity.java:6: error: cannot find symbol
+        /tmp/plm/java/plm/runtimelessons_welcome_Environment_STUDENT/Entity.java:6: error: cannot find symbol
           symbol:   variable notDeclared
           location: class generated.Entity
         Entity.java:8: error: cannot find symbol
@@ -59,7 +62,7 @@ public class CompilerMessageTest {
         Entity.java:9: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
         Entity.java:10: error: incompatible types: int cannot be converted to java.lang.String
         Entity.java:10: error: incompatible types: java.lang.String cannot be converted to int
-        note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.
+        note: /tmp/plm/java/plm/runtimelessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.
         note: Recompile with -Xlint:unchecked for details.
         """;
     assertEquals(List.of(unsure(false, "cannot find symbol\nsymbol:   variable notDeclared\nlocation: class generated.Entity"),
@@ -67,7 +70,7 @@ public class CompilerMessageTest {
                          warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal"),
                          error(4, "incompatible types: int cannot be converted to java.lang.String"),
                          error(4, "incompatible types: java.lang.String cannot be converted to int\n"
-                                      + "note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.\n"
+                                      + "note: /tmp/plm/java/plm/runtimelessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.\n"
                                       + "note: Recompile with -Xlint:unchecked for details.")),
                  CompilerMessage.parse(text, "Entity.java", 6, 5));
   }
@@ -77,20 +80,24 @@ public class CompilerMessageTest {
   {
     String text = """
         Entity.java:9: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
-        note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.
+        note: /tmp/plm/java/plm/runtimelessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.
         note: Recompile with -Xlint:unchecked for details.
         """;
-    assertEquals(List.of(warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal\n"
-                                        + "note: /tmp/plm/java/plm/runtime4/Entity.java uses unchecked or unsafe operations.\n"
-                                        + "note: Recompile with -Xlint:unchecked for details.")),
-                 CompilerMessage.parse(text, "Entity.java", 6, 5));
+    assertEquals(
+        List.of(warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal\n"
+                               + "note: /tmp/plm/java/plm/runtimelessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.\n"
+                               + "note: Recompile with -Xlint:unchecked for details.")),
+        CompilerMessage.parse(text, "Entity.java", 6, 5));
   }
 
-  /** dotc, as rendered by LangScala with the lines of the generated source: a template line, two errors on a line, and the quoted code after a | */
+  /**
+   * dotc, as rendered by LangScala with the lines of the generated source: a template line (with its full path), two errors on a line, and the quoted code
+   * after a |
+   */
   @Test public void dotc()
   {
     String text = """
-        Entity.scala:6:20: error: Not found: notDeclared
+        /tmp/plm/scala/plm/runtimelessons_welcome_Environment_STUDENT/Entity.scala:6:20: error: Not found: notDeclared
           |   val templ: Int = notDeclared
           |                    ^
         Entity.scala:8:16: error: Found:    ("s" : String)
@@ -130,11 +137,13 @@ public class CompilerMessageTest {
                  CompilerMessage.parse(text, "Entity.scala", 6, 5));
   }
 
-  /** The syntax check of LangPython, with the lines of the generated source: a warning of the template, then an error with its quoted code */
+  /**
+   * The syntax check of LangPython, with the lines of the generated source: a warning of the template (with its full path), then an error with its quoted code
+   */
   @Test public void python()
   {
     String text = """
-        Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
+        /tmp/plm/python/plm.runtimelessons_welcome_Environment_STUDENT_Environment/Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
         Entity.py:7: error: SyntaxError: invalid syntax
           |     toto +=
           |            ^
@@ -147,7 +156,7 @@ public class CompilerMessageTest {
   @Test public void pythonWarnings()
   {
     String text = """
-        Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
+        /tmp/plm/python/plm.runtimelessons_welcome_Environment_STUDENT_Environment/Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
         Entity.py:8: warning: SyntaxWarning: invalid escape sequence '\\d'
         Entity.py:6: warning: SyntaxWarning: "is" with 'int' literal. Did you mean "=="?
         """;

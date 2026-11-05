@@ -47,12 +47,16 @@ public class LangPython extends TemplatedRemoteLang {
   /**
    * Checks the syntax of Entity.py as "python3 -m py_compile" does, keeping its bytecode for the run, but reports the errors and the
    * warnings as the other languages do: "Entity.py:line: kind: Type: message", followed by the code of an error and a caret after a |.
+   * The lines before the code of the editor (the first argument tells how many) are located with the full path of the file.
    */
   private static final String SYNTAX_CHECK = """
-      import py_compile, sys, warnings
+      import os, py_compile, sys, warnings
+
+      def located(filename, lineno):
+          return f"{filename if lineno and lineno > int(sys.argv[1]) else os.path.abspath(filename)}:{lineno}"
 
       def show(message, category, filename, lineno, file=None, line=None):
-          print(f"{filename}:{lineno}: warning: {category.__name__}: {message}")
+          print(f"{located(filename, lineno)}: warning: {category.__name__}: {message}")
 
       warnings.showwarning = show
       try:
@@ -62,7 +66,7 @@ public class LangPython extends TemplatedRemoteLang {
           if not isinstance(error, SyntaxError):
               print(f"error: {e.exc_type_name}: {error}")
           else:
-              print(f"{error.filename}:{error.lineno}: error: {e.exc_type_name}: {error.msg}")
+              print(f"{located(error.filename, error.lineno)}: error: {e.exc_type_name}: {error.msg}")
               if error.text and error.offset:
                   print("  | " + error.text.rstrip())
                   print("  | " + " " * (error.offset - 1) + "^")
@@ -191,7 +195,7 @@ public class LangPython extends TemplatedRemoteLang {
 
         // The syntax errors are reported at compile time, as in the other languages, instead of at the first run.
         try {
-          Process proc = new ProcessBuilder("python3", "-").directory(workspace).redirectErrorStream(true).start();
+          Process proc = new ProcessBuilder("python3", "-", String.valueOf(lineShift)).directory(workspace).redirectErrorStream(true).start();
           try (Writer script = new OutputStreamWriter(proc.getOutputStream(), StandardCharsets.UTF_8)) {
             script.write(SYNTAX_CHECK); // on the standard input, as Windows mangles the quotes of the arguments
           }

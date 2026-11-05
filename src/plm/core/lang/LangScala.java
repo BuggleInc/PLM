@@ -156,7 +156,7 @@ public class LangScala extends JvmTemplatedLang {
     List<String> messages = new ArrayList<>();
     ReporterResult result = new Driver().process(args.toArray(new String[0]), diagnostic -> {
       if (diagnostic.position().isPresent() || !SUMMARY.matcher(diagnostic.message()).matches())
-        messages.add(render(diagnostic));
+        messages.add(render(diagnostic, lineShift));
     }, null);
 
     if (result.hasErrors())
@@ -166,9 +166,10 @@ public class LangScala extends JvmTemplatedLang {
 
   /**
    * "file:line:col: kind: message", the next lines of the message being indented as the notes of the other compilers, then the
-   * source line and a caret under the column, quoted after a | as gcc does. Positions are 0-based in dotc, 1-based here.
+   * source line and a caret under the column, quoted after a | as gcc does. Positions are 0-based in dotc, 1-based here. The lines of
+   * Entity.scala before the code of the editor (its lineShift first lines, from the template) are located with the full path of the file.
    */
-  private static String render(Diagnostic diagnostic)
+  private static String render(Diagnostic diagnostic, int lineShift)
   {
     String kind    = diagnostic.level() == Diagnostic.ERROR ? "error" : diagnostic.level() == Diagnostic.WARNING ? "warning" : "info";
     String message = kind + ": " + diagnostic.message().stripTrailing().replace("\n", "\n  ");
@@ -176,7 +177,9 @@ public class LangScala extends JvmTemplatedLang {
       return message;
 
     SourcePosition position = diagnostic.position().get();
-    String location         = position.source().name() + ":" + (position.line() + 1) + ":" + (position.column() + 1) + ": ";
+    boolean edited          = position.source().name().equals("Entity.scala") && position.line() + 1 > lineShift;
+    String file             = edited ? position.source().name() : position.source().path();
+    String location         = file + ":" + (position.line() + 1) + ":" + (position.column() + 1) + ": ";
     return location + message + "\n  | " + position.lineContent().stripTrailing() + "\n  | "
         + " ".repeat(position.column()) + "^";
   }

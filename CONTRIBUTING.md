@@ -228,11 +228,13 @@ messages of their line. Every language renders its compiler's messages in the sa
   on the first line.
 
 How each language produces this format:
-- Java: `LangJava.render()` writes the diagnostics of javac, the ones of the entity as `Entity.java:N`, the others with the full
-  path of their file.
+- Java: `LangJava.render()` writes the diagnostics of javac, the ones of the editor's code as `Entity.java:N`, the others with
+  the full path of their file, including the lines of the template in the generated `Entity.java`, so that they cannot be taken
+  for lines of the editor, and that the student can report them in bug reports against the PLM.
 - Scala: `LangScala.render()` does the same with the diagnostics of dotc, indenting the next lines of a message and quoting the
   code after a `|`. The summary of dotc ("2 errors found") is dropped.
-- Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format.
+- Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format, the
+  lines of the template with the full path of the file.
 - C: gcc writes this format itself, and the `#line` directive locates the body in the tab's file, so that the shift is 0. The
   code after the body continues its numbering, beyond the lines of the editor.
 

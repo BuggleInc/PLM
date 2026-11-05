@@ -63,7 +63,7 @@ public class LangJava extends JvmTemplatedLang {
       Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(files));
       boolean success                                     = compiler.getTask(null, fileManager, diagnostic, null, null, compilationUnits).call();
 
-      String messages = diagnostic.getDiagnostics().stream().map(LangJava::render).collect(Collectors.joining("\n"));
+      String messages = diagnostic.getDiagnostics().stream().map(d -> render(d, lineShift)).collect(Collectors.joining("\n"));
       if (!success)
         throw new PLMCompilerException(messages, new HashSet<>(paths), lineShift);
       return messages;
@@ -72,8 +72,11 @@ public class LangJava extends JvmTemplatedLang {
     }
   }
 
-  /** A diagnostic as "file:line: kind: message", without its location if it has none. The file is named alone if it is Entity.java. */
-  private static String render(Diagnostic<? extends JavaFileObject> d)
+  /**
+   * A diagnostic as "file:line: kind: message", without its location if it has none. The file is named alone if it is Entity.java,
+   * except before the code of the editor (its lineShift first lines, from the template), located with the full path of the file.
+   */
+  private static String render(Diagnostic<? extends JavaFileObject> d, int lineShift)
   {
     String kind = switch (d.getKind()) {
       case ERROR -> "error";
@@ -82,7 +85,8 @@ public class LangJava extends JvmTemplatedLang {
     };
     if (d.getSource() == null || d.getLineNumber() == Diagnostic.NOPOS)
       return kind + ": " + d.getMessage(null);
-    String file = d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) ? "Entity.java" : d.getSource().getName();
+    boolean edited = d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) && d.getLineNumber() > lineShift;
+    String file    = edited ? "Entity.java" : d.getSource().getName();
     return file + ":" + d.getLineNumber() + ": " + kind + ": " + d.getMessage(null);
   }
 
