@@ -82,6 +82,9 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
    */
   protected boolean reportsWhereItIs() { return false; }
 
+  /** A line that the student process writes on its stderr, as displayed: its locations are shifted to the editor (see shiftLines()) */
+  protected String shiftTrace(String line, Compiled compiled) { return shiftLines(line, compiled.lineShift()); }
+
   @Override public void runEntity(final Entity ent, final RunOutcome progress, final Compiled compiled)
   {
     final StringBuffer resEvaluationError = new StringBuffer();
@@ -108,7 +111,7 @@ public abstract class RemoteExecutionLang extends ProgrammingLanguage {
       try (ServerSocket server = new ServerSocket(0, 1, InetAddress.getByName("127.0.0.1"))) {
         process        = buildProcess(executable, server.getLocalPort()).start();
         stdoutReader   = capture(process, process.getInputStream(), System.out, capturedStdout, line -> line);
-        stderrReader   = capture(process, process.getErrorStream(), System.err, capturedStderr, line -> shiftLines(line, compiled.lineShift()));
+        stderrReader   = capture(process, process.getErrorStream(), System.err, capturedStderr, line -> shiftTrace(line, compiled));
         protocolSocket = acceptConnection(server, process);
       }
       if (protocolSocket == null) {

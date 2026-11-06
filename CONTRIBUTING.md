@@ -184,14 +184,15 @@ teacher's correction) and `post` with what its language needs:
 Each language does this concatenation inline in its own `compileExo()`, to keep a single linear flow instead of jumping to a
 handful of one-off helper lines elsewhere:
   - Java/Scala/Python first compute `offset` via `JvmTemplatedLang.countLinesBeforeBody()`: it is the number of lines of the
-    generated source before the body's own first line, which the student's code is compiled with (`lineShift` of `Compiled`, 0 for
-    the correction). The compilers report the lines of the generated source (Java gets them from javac's `DiagnosticCollector`,
-    Scala from dotc's `SimpleReporter`, Python from the output of its syntax check), and so do the stack traces that the student
-    process writes on its stderr. `ProgrammingLanguage.shiftLines()` subtracts the shift from the `Entity.java:N`,
-    `Entity.scala:N`, `Entity.py:N` and `Entity.py", line N` locations of the body when they are displayed, but leaves the
-    locations before the body untouched, and all of them when debugging is enabled. The compilation messages are also parsed for
-    the margin of the editor from the lines of the generated source, which works in debug mode too (see
-    [below](#compiler-messages-in-the-margin-of-the-editor)).
+    generated source before the body's own first line, which the student's code is compiled with (`lineShift` of `Compiled`, 0
+    for the correction). The compilers report the lines of the generated source (Java gets them from javac's
+    `DiagnosticCollector`, Scala from dotc's `SimpleReporter`, Python from the output of its syntax check), and so do the stack
+    traces that the student process writes on its stderr. `ProgrammingLanguage.shiftLines()` subtracts the shift from the
+    `Entity.java:N`, `Entity.scala:N`, `Entity.py:N` and `Entity.py", line N` locations of the body when they are displayed, but
+    leaves the locations before the body untouched, and all of them when debugging is enabled. As the JVM names the generated
+    file alone in its stack traces, `JvmTemplatedLang.shiftTrace()` gives the frames of the template the full path of the
+    generated file. The compilation messages are also parsed for the margin of the editor from the lines of the generated
+    source, which works in debug mode too (see [below](#compiler-messages-in-the-margin-of-the-editor)).
     - C does not need to compute the offset, as a `#line` preprocessor directive already fixes the error location.
   - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
     still parses.
@@ -326,7 +327,7 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   each of them waits for the others after each step, using a `Phaser`. That's why they run on threads of their own: the
   bounded pool of `Game` is only used to compute the expected worlds when loading a lesson, which are not animated.
 - **End of the run**: `runEntity()` also reads the stdout and stderr of the process, echoes them to the PLM console and keeps
-  them (stderr goes through `shiftLines()`, see above). After the process ends, it joins its threads, lets the language
+  them (stderr goes through `shiftTrace()`, see above). After the process ends, it joins its threads, lets the language
   inspect what the process left behind (`onProcessFinished()`, used by C for the address sanitizer report), and removes the
   socket. A non-zero exit code is reported as an execution error.
 

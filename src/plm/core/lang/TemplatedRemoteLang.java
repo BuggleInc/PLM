@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import plm.core.model.Game;
@@ -31,16 +32,25 @@ public abstract class TemplatedRemoteLang extends RemoteExecutionLang {
 
   /**
    * Translates the line numbers matched by {@code location} in {@code text} back into the editor's, by subtracting lineShift. The
-   * group 1 of the pattern is the text before the number, and the group 2 is the number. Locations before the body, and all of them
-   * when debugging is enabled, are left untouched.
+   * group 1 of the pattern is the text before the number (ending with the file name), and the group 2 is the number. Locations
+   * before the body, and all of them when debugging is enabled, are left untouched.
    */
-  protected static String shiftLines(Pattern location, String text, int lineShift)
+  protected static String shiftLines(Pattern location, String text, int lineShift) { return shiftLines(location, text, lineShift, null); }
+
+  /**
+   * Same as {@link #shiftLines(Pattern, String, int)}, but the locations before the body also get the full path of the generated
+   * file, when the text names it alone (as in a JVM stack trace), so that they cannot be taken for lines of the editor.
+   */
+  protected static String shiftLines(Pattern location, String text, int lineShift, Path generated)
   {
     if (lineShift == 0 || Game.getInstance().isDebugEnabled())
       return text;
     return location.matcher(text).replaceAll(m -> {
       int lineNumber = Integer.parseInt(m.group(2));
-      return m.group(1) + (lineNumber > lineShift ? lineNumber - lineShift : lineNumber);
+      if (lineNumber > lineShift)
+        return Matcher.quoteReplacement(m.group(1) + (lineNumber - lineShift));
+      String file = generated == null ? m.group(1) : m.group(1).replace(generated.getFileName().toString(), generated.toString());
+      return Matcher.quoteReplacement(file + lineNumber);
     });
   }
 

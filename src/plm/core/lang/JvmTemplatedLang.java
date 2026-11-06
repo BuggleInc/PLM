@@ -129,6 +129,12 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
 
   @Override public String shiftLines(String text, int lineShift) { return shiftLines(ENTITY_LOCATION, text, lineShift); }
 
+  /** The JVM names the generated file alone in its stack traces: its frames in the template get the full path of the file next to the jar */
+  @Override protected String shiftTrace(String line, Compiled compiled)
+  {
+    return shiftLines(ENTITY_LOCATION, line, compiled.lineShift(), Path.of(compiled.executable()).resolveSibling("Entity." + getExt()));
+  }
+
   /** The first line of the stack trace printed by the generated Main, such as "java.net.ConnectException: Connection refused" */
   @Override protected String failureCause(String stderr) { return stderr.strip().lines().findFirst().orElse(null); }
 
