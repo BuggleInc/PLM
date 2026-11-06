@@ -10,7 +10,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
 import plm.core.ui.JavaEditorPanel;
 import plm.core.ui.MainFrame;
 
@@ -48,14 +50,20 @@ public class MainFrameSmokeTest {
     });
   }
 
-  /** Running a code that does not compile puts its errors in the margin of the editor (in creative mode, to skip the dialogs) */
+  /**
+   * Running a code that does not compile puts its errors in the margin of the editor (in creative mode, to skip the dialogs). The
+   * code is given to the exercise once the views are built for it, as they rebuild the editors when the exercise or the language
+   * changes, and the session may have restored another exercise, or a lecture without code.
+   */
   @Test public void theCompilationErrorsGoToTheMarginOfTheEditor() throws Exception
   {
-    Game game = Game.getInstance();
-    game.switchLesson("lessons.welcome", true);
-    game.setProgrammingLanguage(game.programmingLanguageManager.JAVA);
-    GuiActionRunner.execute(
-        () -> ((JavaEditorPanel)MainFrame.getInstance().getEditorTabs().getComponentAt(1)).getTextArea().setText("public void run() {\n  notDeclared();\n}\n"));
+    Game game                = Game.getInstance();
+    ProgrammingLanguage java = game.programmingLanguageManager.JAVA;
+    Exercise exo             = (Exercise)game.switchLesson("lessons.welcome", true).exercises().stream().filter(l -> l instanceof Exercise).findFirst().get();
+    game.setCurrentExercise(exo);
+    game.setProgrammingLanguage(java);
+    window.robot().waitForIdle();
+    exo.setEditorContent(java, "notDeclared();\n"); // the code of the first exercise (Environment) is the body of run()
     game.switchCreative();
     try {
       game.startExerciseExecution();

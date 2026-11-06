@@ -1,7 +1,7 @@
 PosixWorld "Malicious"
 socket 2 2 0
 sendto 3 "Hello?" 0 "10.0.0.1" 9001
-recvfrom 3 65508 0
+recvfrom 3 65507 0
 write 1 "Never trust %s from the network"
 close 3
 processEnded 0

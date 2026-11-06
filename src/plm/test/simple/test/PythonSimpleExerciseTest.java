@@ -79,13 +79,13 @@ public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
     Assertions.assertTrue(e.getMessage().contains("IndentationError"), e.getMessage());
   }
 
-  /** The syntax warnings are reported, which fails the compilation in picky mode (always on in the tests) */
+  /** The syntax warnings are reported, which fails the compilation in picky mode */
   @Test public void testSyntaxWarningIsReported()
   {
     setEditorContent("def run():\n"
                      + "  if 1 is 1:\n"
                      + "    setObjectif(True)\n");
-    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT).checked(true));
     assertMessageOnLine(2, true, e);
     Assertions.assertTrue(e.getMessage().contains("SyntaxWarning"), e.getMessage());
   }

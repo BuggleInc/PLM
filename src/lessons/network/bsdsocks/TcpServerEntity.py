@@ -8,7 +8,7 @@ def run():
 
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as master:
             master.bind(("", port))
-            master.listen(5)
+            master.listen(50)  # the default backlog of the ServerSocket of Java
             client, address = master.accept()
             with client:
                 client.sendall(message.encode())

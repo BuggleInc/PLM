@@ -1,7 +1,7 @@
 PosixWorld "Weather"
 socket 2 2 0
 sendto 3 "Weather in Rennes?" 0 "10.0.0.2" 8080
-recvfrom 3 65508 0
+recvfrom 3 65507 0
 write 1 "Sunny, 25 degrees in Rennes"
 close 3
 processEnded 0

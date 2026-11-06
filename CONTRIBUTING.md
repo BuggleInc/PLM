@@ -247,8 +247,11 @@ A new language renders its messages in this format, and overrides `editorFileNam
 mode). `LessonRunner` passes them to `MissionEditorTabs.showCompilerMessages()`, in the Swing thread,
 which gives them to the `CompilerMarkers` of the editor if it still shows that exercise in that language. The bullets are
 replaced at each compilation, and disappear with the editor when the exercise or the language changes. They follow their lines
-when the code changes, but are then dimmed, with a tooltip telling that they may be obsolete. The run-time errors (stack traces,
-tracebacks, AddressSanitizer reports) are not shown in the margin.
+when the code changes, but are then dimmed, with a tooltip telling that they may be obsolete.
+
+**TODO**: the run-time errors (Java and Scala stack traces, Python tracebacks, AddressSanitizer reports) are not shown in the
+margin. Their locations are already shifted to the editor's lines by `RemoteExecutionLang.shiftTrace()`, so their frames could be
+parsed the way `CompilerMessage.parse()` reads the compilation messages, and given to the editor with the outcome of the run.
 
 ## Remoting: how the student's entity talks to the PLM
 

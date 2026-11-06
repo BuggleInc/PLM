@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
 /* BEGIN TEMPLATE */
 void client(char* server, int port, char* request)
 {
@@ -26,14 +25,14 @@ void client(char* server, int port, char* request)
   char buffer[65508];
   struct sockaddr addr_recv;
   socklen_t addr_recv_len = sizeof(addr_recv);
-  ssize_t received        = recvfrom(sock, buffer, sizeof(buffer), 0, &addr_recv, &addr_recv_len);
+  ssize_t received        = recvfrom(sock, buffer, sizeof(buffer) - 1, 0, &addr_recv, &addr_recv_len); // room for the final \0
   if (received < 0) {
     perror("recvfrom");
     close(sock);
     return;
   }
 
-  buffer[MIN(received, 65507)] = '\0';
+  buffer[received] = '\0';
   printf("%s", buffer);
 
   close(sock);

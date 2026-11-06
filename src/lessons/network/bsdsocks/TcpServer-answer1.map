@@ -1,7 +1,7 @@
 PosixWorld "Other port"
 socket 2 1 0
 bind 3 "0.0.0.0" 4000
-listen 3 5
+listen 3 50
 accept 3
 send 4 "Welcome on the port 4000." 0
 close 4

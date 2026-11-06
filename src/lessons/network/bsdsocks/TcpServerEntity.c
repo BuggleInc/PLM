@@ -22,7 +22,7 @@ void server(int port, char* message)
     close(master);
     return;
   }
-  if (listen(master, 5) < 0) {
+  if (listen(master, 50) < 0) { // the default backlog of the ServerSocket of Java
     perror("listen");
     close(master);
     return;
