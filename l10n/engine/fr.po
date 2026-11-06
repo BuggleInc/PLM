@@ -886,12 +886,9 @@ msgstr "avance"
 
 #. Name of the primitive getAngle() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/lander/universe/LanderEntityPrimitives.java
-#, fuzzy
-#| msgctxt "primitive"
-#| msgid "setDesiredAngle"
 msgctxt "primitive"
 msgid "getAngle"
-msgstr "setAngleDesiré"
+msgstr "getAngle"
 
 #. Name of the primitive getBasesAmount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
