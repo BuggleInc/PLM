@@ -16,6 +16,7 @@ import plm.test.lang.LangCMessagesTest;
 import plm.test.lang.PoFileTest;
 import plm.test.lang.PrimitiveAliasesTest;
 import plm.test.lang.PrimitiveRegistrationTest;
+import plm.test.lang.StackTraceLinesTest;
 import plm.test.lang.ValueSerializerInteropTest;
 import plm.test.model.ColorMapperTest;
 import plm.test.model.LessonRunnerTest;
@@ -56,6 +57,7 @@ import plm.universe.bat.ValueFormatterTest;
                 PosixWorldTest.class,
                 LangCMessagesTest.class,
                 CompilerMessageTest.class,
+                StackTraceLinesTest.class,
                 CompilerMarkersTest.class,
                 MethodsDogHouseSourceCheckTest.class})
 public class UnitTests {}

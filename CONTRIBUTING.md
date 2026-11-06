@@ -568,6 +568,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       language) are located on the editor's lines, with their notes but without the quoted code. The lines of the template, the
       ones after the body and the messages without location (`verifySource()`, linker) are not sure, several messages may share a
       line, and the warnings are told from the errors.
+    * *`StackTraceLinesTest`:* in the stack traces of a Java process, the frames of the code of the editor get its lines, and the
+      frames of the template get the full path of the generated file.
     * *`CompilerMarkersTest`:* through the API of its gutter, the editor shows one bullet per line, of the color of the most
       severe message and whose tooltip lists them all, replaces them at each compilation (bright again after an edit), and dims
       them when the code changes, moving them with their lines. A message beyond the end of a code that got shorter is on its
