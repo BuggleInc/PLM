@@ -4,8 +4,10 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
 import plm.core.lang.ProgrammingLanguage;
+import plm.core.lang.RemoteExecutionLang;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.WorldKind;
 import plm.universe.Entity;
 import plm.universe.IEntityStackListener;
 
@@ -16,6 +18,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
   Entity tracedEntity;
   /** The messages of the last compilation, in the margin */
   final CompilerMarkers markers;
+  final CodeCompletion completion;
 
   public JavaEditorPanel(Exercise exo, ProgrammingLanguage lang)
   {
@@ -64,7 +67,8 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     codeEditor.setText(exo.getEditorContent(lang));
     codeEditor.convertTabsToSpaces(); // the code saved or given with tabulations
     codeEditor.discardAllEdits();
-    markers = new CompilerMarkers(this);
+    markers    = new CompilerMarkers(this);
+    completion = new CodeCompletion(codeEditor, exo.getWorlds(WorldKind.INITIAL).get(0), (RemoteExecutionLang)lang); // Lightbot has another editor
 
     /* Highlighting stuff, to trace entities */
     tracedEntity = Game.getInstance().getSelectedEntity();
@@ -74,6 +78,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
   @Override public void clear()
   {
     sync.clear();
+    completion.autoCompletion.uninstall(); // it listens to the look and feel, which would keep this editor
     sync       = null;
     codeEditor = null;
     if (tracedEntity != null)

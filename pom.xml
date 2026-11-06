@@ -95,6 +95,12 @@
       <version>2.5.8</version>
     </dependency>
     <dependency>
+      <!-- Completion in the editor; the version of rsyntaxtextarea -->
+      <groupId>com.fifesoft</groupId>
+      <artifactId>autocomplete</artifactId>
+      <version>2.5.8</version>
+    </dependency>
+    <dependency>
       <groupId>com.miglayout</groupId>
       <artifactId>miglayout-swing</artifactId>
       <version>4.2</version>

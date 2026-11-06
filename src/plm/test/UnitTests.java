@@ -6,6 +6,7 @@ import plm.core.ValueSerializerTest;
 import plm.test.git.GitTrackerImportTest;
 import plm.test.git.GitTrackerTest;
 import plm.test.git.GitUtilsTest;
+import plm.test.gui.CodeCompletionTest;
 import plm.test.gui.CompilerMarkersTest;
 import plm.test.lang.CommandExecutorTest;
 import plm.test.lang.CompilerMessageTest;
@@ -59,5 +60,6 @@ import plm.universe.bat.ValueFormatterTest;
                 CompilerMessageTest.class,
                 StackTraceLinesTest.class,
                 CompilerMarkersTest.class,
+                CodeCompletionTest.class,
                 MethodsDogHouseSourceCheckTest.class})
 public class UnitTests {}

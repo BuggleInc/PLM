@@ -253,6 +253,27 @@ when the code changes, but are then dimmed, with a tooltip telling that they may
 margin. Their locations are already shifted to the editor's lines by `RemoteExecutionLang.shiftTrace()`, so their frames could be
 parsed the way `CompilerMessage.parse()` reads the compilation messages, and given to the editor with the outcome of the run.
 
+### Completion in the editor
+
+`CodeCompletion` proposes completions in the editor, with the AutoComplete library of the author of RSyntaxTextArea. Ctrl+Space
+opens its popup, which also opens 2 seconds after the last letter typed. The popup lists the completions that start with the
+word before the caret (ignoring the case), and is never skipped, even for a single choice, so that its side window shows their
+documentation. It proposes:
+- the primitives of `World.getDocumentedPrimitives()` for the first initial world of the exercise: the documented primitives of
+  its first entity that the exercise does not forbid, as in the documentation of the world. Each one is proposed under its name
+  and under its alias in the current human language (read at each request, as the language may change), with the parameters of
+  its Java method. The side window shows its signature in the programming language of the editor, and its translated
+  documentation and group. Choosing one inserts the call with the names of its parameters, such as `avance(steps)`, which `Tab`
+  goes through. The `;` that ends a statement in Java, Scala and C is left to the student.
+- the names of the student's code: the identifiers of the editor's document, as told by its syntax highlighting (so without the
+  keywords, the comments and the strings), except the primitives already proposed and the word being typed.
+
+The completion does not know what the code means: no member of an object, no import, no keyword of the languages. A new
+universe gets its primitives in the completion by documenting them with `@Primitive`, and an exercise removes some by forbidding
+them (see [API gating](#api-gating-restricting-or-adapting-the-primitives)). The completion is uninstalled with the editor, in
+`JavaEditorPanel.clear()`, as it listens to the look and feel. AutoComplete 2.5.8 hints the parameters only when a function is
+inserted from the popup, not when the student types the `(` of a call.
+
 ## Remoting: how the student's entity talks to the PLM
 
 The student's code runs in its own process (`java -cp ... generated.Main`, `python3 Main.py`, or the C executable), while the
@@ -288,7 +309,8 @@ forwarded to the real `plm.universe.Entity` of the PLM, which does the actual wo
   `l10n/engine/plm.pot`, so that they get translated on weblate.
   The groups are ordered by `@PrimitiveGroups` on the primitives interface (or on the entity). `World.getAbout()` replaces the
   `[!primitives/]` placeholder of the world's html by a table of the documented primitives of its first entity, in the current
-  programming language (`ExternalPrimitiveLanguage.signature()`). The primitives forbidden by the exercise are not shown.
+  programming language (`ExternalPrimitiveLanguage.signature()`). The primitives forbidden by the exercise are not shown. This
+  selection is `World.getDocumentedPrimitives()`, which the [completion in the editor](#completion-in-the-editor) proposes too.
   Likewise, `[!colors/]` stands for the table of the named colors of `ColorMapper`: their name in the code, a sample, and their
   translated name used in the messages to the students.
 - **Translated primitives**: translators may give a localized name to each documented primitive (entries of context `primitive`
@@ -577,6 +599,10 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       severe message and whose tooltip lists them all, replaces them at each compilation (bright again after an edit), and dims
       them when the code changes, moving them with their lines. A message beyond the end of a code that got shorter is on its
       last line.
+    * *`CodeCompletionTest`:* in a Java editor of buggles in French, a prefix proposes the primitives under their name and their
+      alias, documented by their Java signature, but not the primitives forbidden by the exercise nor the undocumented ones. The
+      identifiers of the code are proposed, but not its keywords, comments, strings nor the word being typed. The popup opens on
+      Ctrl+Space and automatically, and never inserts a single choice without showing it.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
@@ -908,10 +934,12 @@ Extend at minimum: `World` (state/data), an `Entity` subclass (ancestor of corre
 entity class with `@Glue("RemoteXxx")`: `CodeCreation` then generates that glue in every language. Document the universe with an
 HTML file following the same convention as mission texts, where `[!primitives/]` stands for the table of the primitives,
 generated from their `@Primitive` annotations (see [Primitives](#remoting-how-the-students-entity-talks-to-the-plm) above), and
-`[!colors/]` for the table of the colors. A universe can offer its own placeholders by overriding `World.expandPlaceholders()`,
-which runs before the `[!langs]` blocks are resolved (so that the generated content may hold some), and load the html file next
-to any class with `World.documentation()`, translated as the one of the world. The placeholders must also be listed in
-`MissionMarkup`, which otherwise takes them for blocks. `PosixWorld` uses it for the `[!protocols/]` documentation.
+`[!colors/]` for the table of the colors. The documented primitives are also proposed by the
+[completion in the editor](#completion-in-the-editor). A universe can offer its own placeholders by overriding
+`World.expandPlaceholders()`, which runs before the `[!langs]` blocks are resolved (so that the generated content may hold
+some), and load the html file next to any class with `World.documentation()`, translated as the one of the world. The
+placeholders must also be listed in `MissionMarkup`, which otherwise takes them for blocks. `PosixWorld` uses it for the
+`[!protocols/]` documentation.
 
 Existing universes remain small (a few hundred to ~1500 lines including the buggle map editor) because all non-functional
 plumbing (compilation, templating, session handling) is factored into `plm.core`.
