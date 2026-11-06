@@ -237,7 +237,7 @@ public class LangScala extends JvmTemplatedLang {
     // needs the former as its Main-Class entry point, exactly like a Java class with a static main().
     // The class files are named relative to workspace itself (where scalac actually wrote these under their package-name subdirectories),
     // not to its parent: this is what must end up as each entry's name inside the jar.
-    // For example "plm/runtime4/Main.class" needs "-cp jarfile plm.runtime4.Main" to resolve.
+    // For example "generated/Main.class" needs "-cp jarfile generated.Main" to resolve.
     runJarTool(workspace, jarFile, "generated.Main", findClassFiles(workspace));
     return warnings;
   }
