@@ -436,26 +436,36 @@ public abstract class World {
   protected String expandPlaceholders(String html) { return html.replace("[!primitives/]", getPrimitivesDoc()).replace("[!colors/]", ColorMapper.colorsDoc()); }
 
   /**
-   * HTML table documenting the primitives that the first entity may use, in the current programming language. The groups are
-   * ordered as declared by @PrimitiveGroups (undeclared ones last) and the primitives by name. The undocumented and the forbidden
-   * primitives are not shown.
+   * The primitives that the first entity may use, under the English titles of their groups. The groups are ordered as declared by
+   * @PrimitiveGroups (undeclared ones last) and the primitives by name. The undocumented and the forbidden primitives are left out,
+   * as are the empty groups.
    */
-  private String getPrimitivesDoc()
+  public Map<String, List<PrimitiveMethod>> getDocumentedPrimitives()
   {
-    if (entities.isEmpty() || !(Game.getInstance().getProgrammingLanguage() instanceof RemoteExecutionLang lang))
-      return "";
+    Map<String, List<PrimitiveMethod>> groups = new LinkedHashMap<>();
+    if (entities.isEmpty())
+      return groups;
     Entity entity = entities.get(0);
 
-    Map<String, List<PrimitiveMethod>> groups = new LinkedHashMap<>();
     PrimitiveRegistration.getPrimitiveGroupsForEntity(entity.getClass()).forEach(group -> groups.put(group, new ArrayList<>()));
     for (PrimitiveMethod primitive : PrimitiveRegistration.getMinimalPrimitiveForEntity(entity.getClass()).values())
       if (!primitive.doc().isEmpty() && !entity.getForbiddenPrimitives().containsKey(primitive.name()))
         groups.computeIfAbsent(primitive.group(), group -> new ArrayList<>()).add(primitive);
+    groups.values().removeIf(List::isEmpty);
+    return groups;
+  }
+
+  /** HTML table documenting the primitives of {@link #getDocumentedPrimitives()}, in the current programming language. */
+  private String getPrimitivesDoc()
+  {
+    Map<String, List<PrimitiveMethod>> groups = getDocumentedPrimitives();
+    if (groups.isEmpty() || !(Game.getInstance().getProgrammingLanguage() instanceof RemoteExecutionLang lang))
+      return "";
 
     ExternalPrimitiveLanguage generator = lang.getPrimitiveGenerator();
     StringBuilder sb                    = new StringBuilder("<table border=1>\n");
     groups.forEach((group, primitives) -> {
-      if (!group.isEmpty() && !primitives.isEmpty())
+      if (!group.isEmpty())
         sb.append("<tr><td colspan=2 align=center><b>").append(Game.i18n.tr(group)).append("</b></td></tr>\n");
       for (PrimitiveMethod primitive : primitives)
         sb.append("<tr><td><code>")
