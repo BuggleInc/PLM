@@ -50,7 +50,7 @@ public class AboutPLMDialog extends JDialog {
     aboutPane.add(BorderLayout.CENTER, iconTitle);
 
     JTextPane text = new JTextPane();
-    text.setContentType("text/html");
+    text.setEditorKit(new PlmHtmlEditorKit());
     text.setEditable(false);
     text.setBorder(null);
     text.setBackground(Color.white);

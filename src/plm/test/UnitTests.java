@@ -8,6 +8,7 @@ import plm.test.git.GitTrackerTest;
 import plm.test.git.GitUtilsTest;
 import plm.test.gui.CodeCompletionTest;
 import plm.test.gui.CompilerMarkersTest;
+import plm.test.gui.ZoomTest;
 import plm.test.lang.CommandExecutorTest;
 import plm.test.lang.CompilerMessageTest;
 import plm.test.lang.EntityTemplateParserTest;
@@ -61,5 +62,6 @@ import plm.universe.bat.ValueFormatterTest;
                 StackTraceLinesTest.class,
                 CompilerMarkersTest.class,
                 CodeCompletionTest.class,
+                ZoomTest.class,
                 MethodsDogHouseSourceCheckTest.class})
 public class UnitTests {}

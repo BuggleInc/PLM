@@ -10,6 +10,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
 import javax.swing.UIManager;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
@@ -19,6 +20,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
 import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lecture;
@@ -79,11 +81,21 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
   public PlmHtmlEditorKit(Lecture _baseExercise) { baseExercise = _baseExercise; }
 
   @Override public ViewFactory getViewFactory() { return new HTMLFactoryX(); }
+
+  /** The font of the pane sizes its texts, following the zoom (the CSS of the documents gives no size) */
+  @Override public void install(JEditorPane pane)
+  {
+    super.install(pane);
+    if (!(pane.getDocument() instanceof HTMLDocument)) // setEditorKit() replaces the document after this, but the property needs one
+      pane.setDocument(createDefaultDocument());
+    pane.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
+    pane.setFont(Zoom.htmlFont());
+  }
+
   public static String getCSS()
   {
     String header = "  <style type=\"text/css\">\n"
-                    + "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:" + Game.getProperty(Game.PROP_FONT_SIZE, "10px", true) +
-                    "; margin:10px; }\n"
+                    + "    body { font-family: tahoma, \"Times New Roman\", serif; margin:10px; }\n"
                     + "    code { background:#EEEEEE; }\n"
                     + "    pre { background: #EEEEEE;\n"
                     + "          margin: 5px;\n"

@@ -104,6 +104,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     FileUtils.setLocale(this.getLocale());
     initComponents(Game.getInstance());
     this.keyListeners(exerciseView);
+    Zoom.bindKeys(getRootPane());
     Game.getInstance().addHumanLangListener(this);
   }
 

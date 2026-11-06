@@ -69,6 +69,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     codeEditor.setText(exo.getEditorContent(lang));
     codeEditor.convertTabsToSpaces(); // the code saved or given with tabulations
     codeEditor.discardAllEdits();
+    Zoom.apply(this);
     markers    = new CompilerMarkers(this);
     completion = new CodeCompletion(codeEditor, exo.getWorlds(WorldKind.INITIAL).get(0), (RemoteExecutionLang)lang); // Lightbot has another editor
 

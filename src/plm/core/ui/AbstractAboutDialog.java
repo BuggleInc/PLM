@@ -28,6 +28,7 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 
     area.setEditorKit(new PlmHtmlEditorKit());
     area.setEditable(false);
+    Zoom.bindKeys(getRootPane());
 
     setLayout(new MigLayout("fill"));
     add(new JScrollPane(area), "grow");

@@ -98,7 +98,7 @@ public class Game implements IWorldView {
   public static final String PROP_PICKY          = "compiler.picky"; // Whether the compiler warnings are errors, defaults to false.
                                                                      // Turning to false will slow down the startup process, but avoid out of date files
 
-  public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
+  public static final String PROP_ZOOM = "plm.display.zoom"; // the number of steps of the zoom of the texts (see Zoom)
 
   private List<GameListener> listeners = new ArrayList<GameListener>();
   private World selectedWorld;

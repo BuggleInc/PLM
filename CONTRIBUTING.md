@@ -218,6 +218,16 @@ handful of one-off helper lines elsewhere:
 language, line numbers, code folding, matching brackets, automatic indentation and closing braces. The tab key inserts 4 spaces.
 The other uses of the name under the caret are highlighted, and vertical guides show the indentation levels.
 
+### The zoom of the texts
+
+Ctrl and `+` (or `=`), `-` or `0` (Cmd on macOS) zoom in, out or back to normal the texts of the code editors and of the HTML
+panes, by steps of 10% (from -4 to +8 steps). `Zoom.bindKeys()` binds them in the main window and in the documentation viewers
+(world, mission and lesson), whatever has the focus, but not on the numeric keypad, where RSyntaxTextArea folds the code. The
+zoom applies at once to all the windows, and is saved in the properties as `plm.display.zoom`. The editors get it when created
+(`Zoom.apply()`), and so do the HTML panes of a `PlmHtmlEditorKit`: the font of the pane sizes the text
+(`JEditorPane.HONOR_DISPLAY_PROPERTIES`), so the CSS of the PLM gives no font size to the body, only its family. The texts drawn
+by the world views are not zoomed.
+
 ### Compiler messages in the margin of the editor
 
 The errors and warnings of the compilation of the student's code are bullets in the margin of the editor, whose tooltip lists the
@@ -609,6 +619,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       alias, documented by their Java signature, but not the primitives forbidden by the exercise nor the undocumented ones. The
       identifiers of the code are proposed, but not its keywords, comments, strings nor the word being typed. The popup opens on
       Ctrl+Space and automatically, and never inserts a single choice without showing it.
+    * *`ZoomTest`:* the shortcuts of the zoom are bound in a window, and they scale together the font of a code editor (with its
+      line numbers) and the one of an HTML pane, saving the number of steps in the properties. A new HTML pane gets the current
+      zoom, even a `JTextPane`, the number of steps is bounded, and an invalid one in the properties means no zoom.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.

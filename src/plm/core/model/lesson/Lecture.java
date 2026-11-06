@@ -26,7 +26,7 @@ public abstract class Lecture {
   public static final String HTMLTipHeader = "<head>\n"
                                              + "  <meta content=\"text/html; charset=UTF-8\" />\n"
                                              + "  <style>\n"
-                                             + "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"
+                                             + "    body { font-family: tahoma, \"Times New Roman\", serif; margin:10px; }\n"
                                              + "    code { background:#EEEEEE; }\n"
                                              + "    pre { background: #EEEEEE;\n"
                                              + "          margin: 5px;\n"
