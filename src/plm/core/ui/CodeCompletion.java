@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 import javax.swing.text.JTextComponent;
 import org.fife.ui.autocomplete.AutoCompletion;
 import org.fife.ui.autocomplete.BasicCompletion;
@@ -15,11 +16,11 @@ import org.fife.ui.autocomplete.ParameterizedCompletion;
 import org.fife.ui.rsyntaxtextarea.RSyntaxDocument;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.Token;
+import org.xnap.commons.i18n.I18n;
 import plm.core.lang.RemoteExecutionLang;
 import plm.core.lang.primitives.ExternalPrimitiveLanguage;
 import plm.core.lang.primitives.PrimitiveMethod;
 import plm.core.lang.primitives.PrimitivePot;
-import plm.core.model.Game;
 import plm.universe.World;
 
 /**
@@ -33,13 +34,16 @@ public class CodeCompletion extends DefaultCompletionProvider {
   private static final String NAME = "[\\p{L}_][\\p{L}\\p{Nd}_]*";
   private final World world;
   private final ExternalPrimitiveLanguage generator;
+  /** The translations into the current human language */
+  private final Supplier<I18n> i18n;
   /** The popup and its settings, to uninstall with the editor */
   public final AutoCompletion autoCompletion;
 
-  public CodeCompletion(RSyntaxTextArea editor, World world, RemoteExecutionLang lang)
+  public CodeCompletion(RSyntaxTextArea editor, World world, RemoteExecutionLang lang, Supplier<I18n> i18n)
   {
     this.world     = world;
     this.generator = lang.getPrimitiveGenerator();
+    this.i18n      = i18n;
     setAutoActivationRules(true, null);
     setParameterizedCompletionParams('(', ", ", ')'); // the calls to insert, with tab stops on the parameters
 
@@ -60,7 +64,7 @@ public class CodeCompletion extends DefaultCompletionProvider {
     Set<String> names            = new HashSet<>();
     world.getDocumentedPrimitives().forEach((group, primitives) -> {
       for (PrimitiveMethod primitive : primitives)
-        for (String name : List.of(primitive.name(), Game.i18n.trc(PrimitivePot.NAME_CONTEXT, primitive.name())))
+        for (String name : List.of(primitive.name(), i18n.get().trc(PrimitivePot.NAME_CONTEXT, primitive.name())))
           if (names.add(name))
             completions.add(function(primitive, name, group));
     });
@@ -80,8 +84,8 @@ public class CodeCompletion extends DefaultCompletionProvider {
   /** The primitive under that name, documented by its signature in the programming language, its description and its group */
   private FunctionCompletion function(PrimitiveMethod primitive, String name, String group)
   {
-    String summary                = "<html><b><code>" + generator.signature(primitive, name) + "</code></b><p>" + Game.i18n.tr(primitive.doc()) +
-                                    (group.isEmpty() ? "" : "<p><i>" + Game.i18n.tr(group) + "</i>");
+    String summary                = "<html><b><code>" + generator.signature(primitive, name) + "</code></b><p>" + i18n.get().tr(primitive.doc()) +
+                                    (group.isEmpty() ? "" : "<p><i>" + i18n.get().tr(group) + "</i>");
     FunctionCompletion completion = new FunctionCompletion(this, name, null) {
       @Override public String getSummary()
       {

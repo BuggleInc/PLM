@@ -71,7 +71,8 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     codeEditor.discardAllEdits();
     Zoom.apply(this);
     markers    = new CompilerMarkers(this);
-    completion = new CodeCompletion(codeEditor, exo.getWorlds(WorldKind.INITIAL).get(0), (RemoteExecutionLang)lang); // Lightbot has another editor
+    completion =
+        new CodeCompletion(codeEditor, exo.getWorlds(WorldKind.INITIAL).get(0), (RemoteExecutionLang)lang, () -> Game.i18n); // Lightbot has another editor
 
     /* Highlighting stuff, to trace entities */
     tracedEntity = Game.getInstance().getSelectedEntity();

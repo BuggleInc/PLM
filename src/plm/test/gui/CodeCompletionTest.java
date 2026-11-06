@@ -8,17 +8,16 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.KeyStroke;
 import org.fife.ui.autocomplete.AutoCompletion;
 import org.fife.ui.autocomplete.Completion;
 import org.fife.ui.autocomplete.FunctionCompletion;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import plm.core.lang.RemoteExecutionLang;
-import plm.core.model.Game;
+import org.xnap.commons.i18n.I18n;
+import plm.core.lang.LangJava;
 import plm.core.ui.CodeCompletion;
 import plm.test.universe.ApiGatingTest.TeleportingBuggle;
 import plm.universe.bugglequest.BuggleWorld;
@@ -28,15 +27,15 @@ public class CodeCompletionTest {
   private final RSyntaxTextArea code = new RSyntaxTextArea();
   private final CodeCompletion completion;
 
-  @BeforeAll static void inFrench() { Game.getInstance().setLocale(new Locale("fr")); }
-  @AfterAll static void inEnglish() { Game.getInstance().setLocale(new Locale("en")); }
+  /** Its own translations, as the instances of I18nFactory may be shared, Game.i18n included */
+  private static final I18n FRENCH = new I18n(ResourceBundle.getBundle("org.plm.i18n.Messages", Locale.FRENCH));
 
   public CodeCompletionTest()
   {
     code.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
     BuggleWorld world = new BuggleWorld("completion", 3, 3);
     world.addEntity(new TeleportingBuggle()); // forbids setX(), setY() and setPos()
-    completion = new CodeCompletion(code, world, (RemoteExecutionLang)Game.getInstance().programmingLanguageManager.JAVA);
+    completion = new CodeCompletion(code, world, new LangJava(), () -> FRENCH);
   }
 
   /** The completions proposed at the end of that code */
@@ -75,7 +74,7 @@ public class CodeCompletionTest {
   {
     String summary = completions("avan").get(0).getSummary();
     assertTrue(summary.contains("void avance(int steps)"), summary);
-    assertTrue(summary.contains(Game.i18n.tr("Moves the given amount of cells forward.")), summary);
+    assertTrue(summary.contains(FRENCH.tr("Moves the given amount of cells forward.")), summary);
   }
 
   @Test public void theNamesOfTheCodeAreProposed()
