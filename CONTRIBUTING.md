@@ -527,8 +527,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       code can be restored into the editor without loading (so parsing) the entity, and the name of the source files must be the
       one of the tab. Wrong code, exceptions (out of bounds, null, custom) and a valid code followed by an error do not pass.
       Syntax and variable errors do not compile. The line of a stack trace frame is the editor's one. Every language also checks
-      the line of a compilation error, as written and as parsed by `CompilerMessage`, and Python and C check that the `IMPORT`
-      section is honored.
+      that a compilation error is located on its line of the editor by `CompilerMessage`, even in debug mode, and that a warning
+      is located on its line without failing the compilation, unless in picky mode. Python checks that an `IndentationError` is
+      located too and that its syntax warnings are reported, and Python and C check that the `IMPORT` section is honored.
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
@@ -568,8 +569,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       ones after the body and the messages without location (`verifySource()`, linker) are not sure, several messages may share a
       line, and the warnings are told from the errors.
     * *`CompilerMarkersTest`:* through the API of its gutter, the editor shows one bullet per line, of the color of the most
-      severe message and whose tooltip lists them all, replaces them at each compilation, and dims them when the code changes,
-      moving them with their lines.
+      severe message and whose tooltip lists them all, replaces them at each compilation (bright again after an edit), and dims
+      them when the code changes, moving them with their lines. A message beyond the end of a code that got shorter is on its
+      last line.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.
@@ -620,7 +622,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`WorldDiffTest`:* for every exercise, the initial worlds equal their copy, and `diffTo()` explains how they differ from the
       answer worlds, as it does for a failing student. The lander is skipped: its worlds are judged by `winning()`, not by
       equality.
-* *`gui.MainFrameSmokeTest`:* the main window comes up. It needs a display (`xvfb` in CI).
+* *`gui.MainFrameSmokeTest`:* the main window comes up, and running a Java code that does not compile (in creative mode, to skip
+  the dialogs) puts its error in the margin of the editor. It needs a display (`xvfb` in CI).
 
 Only the *correction* entity is compiled by the `ExoTest*Lang` tests. The student path (editor content injected into the
 template) is exercised by the `SimpleExercise` tests and by `MethodsDogHouseSourceCheckTest`.
