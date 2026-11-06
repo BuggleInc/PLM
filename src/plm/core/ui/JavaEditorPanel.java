@@ -48,6 +48,8 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     codeEditor.setBracketMatchingEnabled(true);
     codeEditor.setCloseCurlyBraces(true);
     codeEditor.setCodeFoldingEnabled(true);
+    codeEditor.setMarkOccurrences(true); // the other uses of the name under the caret
+    codeEditor.setPaintTabLines(true);   // the guides of the indentation levels
     // The tab key inserts 4 spaces, as tabulations display differently elsewhere and Python refuses to mix them with spaces
     codeEditor.setTabSize(4);
     codeEditor.setTabsEmulated(true);

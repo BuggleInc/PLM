@@ -212,6 +212,12 @@ handful of one-off helper lines elsewhere:
   - C: `LangC.ensureCachedObject()` compiles each file once to an object cached in `/tmp/plm/C/objects`, which is linked with each
     exercise.
 
+### The code editor
+
+`JavaEditorPanel` is the editor of the student's code, an `RSyntaxTextArea` with the syntax highlighting of the programming
+language, line numbers, code folding, matching brackets, automatic indentation and closing braces. The tab key inserts 4 spaces.
+The other uses of the name under the caret are highlighted, and vertical guides show the indentation levels.
+
 ### Compiler messages in the margin of the editor
 
 The errors and warnings of the compilation of the student's code are bullets in the margin of the editor, whose tooltip lists the
