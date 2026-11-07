@@ -109,26 +109,28 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
   }
 
   /**
-   * Shows that text of the world in a read-only tab, which the student can close. Its title is followed by the name of the world, and
-   * by "objective" for the expected world, since the student may open the same text in several worlds. A tab already open on that
-   * text of that world is selected, and shows the given content from now on (a socket of a new execution, for example). The tab
+   * Shows that text of the world in a read-only tab, which the student can close. Its tooltip gives the name of the world, and tells
+   * whether it is the current or the expected one, since the student may open the same text in several worlds. A tab already open
+   * on that text of that world is selected, and shows the given content from now on (a socket of a new execution, for example). The tab
    * follows the changes of the world, and is closed when the exercise or the language changes.
    */
   public void showReadOnly(String title, World world, Supplier<String> content)
   {
-    title += " (" + world.getName() + (world == game.getAnswerOfSelectedWorld() ? ", " + Game.i18n.tr("objective") : "") + ")";
     for (int i = 1; i < getTabCount(); i++)
-      if (getComponentAt(i) instanceof ReadOnlyTab open && open.world == world && getTitleAt(i).equals(title)) {
+      if (getComponentAt(i) instanceof ReadOnlyTab open && open.world == world && open.title.equals(title)) {
         open.show(content);
         setSelectedIndex(i);
         return;
       }
-    ReadOnlyTab tab = new ReadOnlyTab(world, content);
-    addTab(title, null, tab, Game.i18n.tr("Read-only view of the world"));
+    String tip      = world.getName() + " (" + (world == game.getAnswerOfSelectedWorld() ? Game.i18n.tr("objective") : Game.i18n.tr("current")) + ")";
+    ReadOnlyTab tab = new ReadOnlyTab(title, world, content);
+    addTab(title, null, tab, tip);
 
     JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
     header.setOpaque(false);
-    header.add(new JLabel(title));
+    JLabel label = new JLabel(title);
+    label.setToolTipText(tip);
+    header.add(label);
     JButton close = new JButton("×");
     close.setBorder(BorderFactory.createEmptyBorder());
     close.setContentAreaFilled(false);

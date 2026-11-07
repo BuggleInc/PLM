@@ -15,12 +15,14 @@ import plm.universe.World;
 public class ReadOnlyTab extends JScrollPane implements IWorldView {
   private static final long serialVersionUID = 1L;
 
+  final String title;
   final World world;
   private Supplier<String> content;
   private final JTextArea text = new JTextArea();
 
-  ReadOnlyTab(World world, Supplier<String> content)
+  ReadOnlyTab(String title, World world, Supplier<String> content)
   {
+    this.title = title;
     this.world = world;
     text.setEditable(false);
     text.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
