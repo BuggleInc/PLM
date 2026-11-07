@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import plm.core.GameListener;
 import plm.core.ProgLangChangesListener;
 import plm.core.UserSwitchesListener;
@@ -28,11 +27,12 @@ import plm.universe.World;
 public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener, UserSwitchesListener {
   private static final long serialVersionUID = 1L;
 
-  private Game game;
+  private final Game game        = Game.getInstance();
   private JEditorPane missionTab = PlmHtmlEditorKit.pane();
 
   /* for code tabs */
   private Lecture currentExercise;
+  private TipsDialog tipsDialog;
 
   public MissionEditorTabs()
   {
@@ -40,35 +40,25 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
     /* Setup the mission tab */
 
-    missionTab.addHyperlinkListener(new HyperlinkListener() {
-      TipsDialog tipsDialog = null;
-
-      @Override public void hyperlinkUpdate(HyperlinkEvent event)
-      {
-        if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-          String desc = event.getDescription();
-          if (desc.startsWith("#tip-")) {
-            if (this.tipsDialog == null) {
-              this.tipsDialog = new TipsDialog(MainFrame.getInstance());
-            }
-            this.tipsDialog.setText("<html>\n" + Lecture.HTMLTipHeader + "<body>\n" + currentExercise.getTip(desc) + "</body>\n</html>\n");
-            this.tipsDialog.setVisible(true);
-            ProgrammingLanguage lang = Game.getInstance().getProgrammingLanguage();
-            String mission           = currentExercise.getMission(lang);
-            Game.getInstance().getGitTracker().readTip(desc, mission, lang);
-          }
-          if (desc.startsWith("plm://")) {
-            // Load a regular lesson
-            Game.getInstance().setCurrentExercise(desc);
-          }
-        }
+    missionTab.addHyperlinkListener(event -> {
+      if (event.getEventType() != HyperlinkEvent.EventType.ACTIVATED)
+        return;
+      String desc = event.getDescription();
+      if (desc.startsWith("#tip-")) {
+        if (tipsDialog == null)
+          tipsDialog = new TipsDialog(MainFrame.getInstance());
+        tipsDialog.setText("<html>\n" + Lecture.HTMLTipHeader + "<body>\n" + currentExercise.getTip(desc) + "</body>\n</html>\n");
+        tipsDialog.setVisible(true);
+        ProgrammingLanguage lang = game.getProgrammingLanguage();
+        game.getGitTracker().readTip(desc, currentExercise.getMission(lang), lang);
       }
+      if (desc.startsWith("plm://")) // Load a regular lesson
+        game.setCurrentExercise(desc);
     });
 
     this.addTab(Game.i18n.tr("Mission"), null, new JScrollPane(missionTab), Game.i18n.tr("Description of the work to do"));
 
     /* Register to game engine */
-    this.game = Game.getInstance();
     this.game.addGameListener(this);
     this.game.addProgLangListener(this);
     this.game.getUsers().addUserSwitchesListener(this);
