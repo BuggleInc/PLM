@@ -49,7 +49,7 @@ is called by `LessonRunner` when the student clicks "Run" (compiling the student
 correction entity). It returns the `RunOutcome` of the execution. A compilation error, or a refusal by `verifySource()`, is
 returned too, as an outcome of kind `COMPILE` holding the message: the exceptions of the compilers do not go past this method.
 Nothing is stored in the `Exercise`: the outcome is passed along to the dialogs, to the progress trackers, and to the editor, which
-shows the messages of the compiler in its margin (see [below](#compiler-messages-in-the-margin-of-the-editor)).
+shows the messages of the compiler in its margin (see [below](#compiler-messages-in-the-editor)).
 
 Here are the steps of the exercise execution:
 * **Reset**: `currentWorld` is reset from `initialWorld` for each world instance.
@@ -192,7 +192,7 @@ handful of one-off helper lines elsewhere:
     leaves the locations before the body untouched, and all of them when debugging is enabled. As the JVM names the generated
     file alone in its stack traces, `JvmTemplatedLang.shiftTrace()` gives the frames of the template the full path of the
     generated file. The compilation messages are also parsed for the margin of the editor from the lines of the generated
-    source, which works in debug mode too (see [below](#compiler-messages-in-the-margin-of-the-editor)).
+    source, which works in debug mode too (see [below](#compiler-messages-in-the-editor)).
     - C does not need to compute the offset, as a `#line` preprocessor directive already fixes the error location.
   - Java/Scala/Python add a trailing space and newline after the body, so that a body ending right before the closing brace
     still parses.
@@ -212,11 +212,15 @@ handful of one-off helper lines elsewhere:
   - C: `LangC.ensureCachedObject()` compiles each file once to an object cached in `/tmp/plm/C/objects`, which is linked with each
     exercise.
 
-### The code editor
+## The code editor
 
-`JavaEditorPanel` is the editor of the student's code, an `RSyntaxTextArea` with the syntax highlighting of the programming
-language, line numbers, code folding, matching brackets, automatic indentation and closing braces. The tab key inserts 4 spaces.
-The other uses of the name under the caret are highlighted, and vertical guides show the indentation levels.
+`JavaEditorPanel` (one per exercise and language, created by `Exercise.getEditorPanel()` for `MissionEditorTabs`) is an
+`RSyntaxTextArea` in an `RTextScrollPane`, with the syntax highlighting of the language, line numbers, code folding, matching
+brackets, automatic indentation and closing braces, 4 spaces for a tab, the other uses of the name under the caret highlighted,
+and guides of the indentation levels. Small helper classes attach to it, each tested on its own: `CompilerMarkers` (the compiler
+messages), `CodeCompletion` (the completion) and `Zoom` (the size of the texts). They all work in the Swing thread. A helper
+that registers with a global object (`UIManager`, `Game`, an entity) must be detached in `JavaEditorPanel.clear()`, or every
+editor ever opened would stay in memory.
 
 ### The zoom of the texts
 
@@ -228,59 +232,41 @@ zoom applies at once to all the windows, and is saved in the properties as `plm.
 (`JEditorPane.HONOR_DISPLAY_PROPERTIES`), so the CSS of the PLM gives no font size to the body, only its family. The texts drawn
 by the world views are not zoomed.
 
-### Compiler messages in the margin of the editor
+### Compiler messages in the editor
 
-The errors and warnings of the compilation of the student's code are bullets in the margin of the editor, whose tooltip lists the
-messages of their line, and wavy underlines in the code (see below). Every language renders its compiler's messages in the same
-format, which `CompilerMessage.parse()` reads:
-- A message starts with a line `file:line:column: kind: text`, whose column is optional, as is the whole location (`kind: text`).
-  The kind is `error` or `fatal error` for the errors; anything else (`warning`, `info`) is a warning. A `note` is added to the
-  previous message, if any.
-- The indented lines that follow belong to the message (such as the `symbol:` and `location:` of javac). The code that the
-  compiler quotes and its caret come after a `|` (as gcc does), and are dropped with the context lines of gcc and of its linker
-  (`In function`, `In file included from`). Any other line starts an error without location, such as the message of
-  `Exercise.verifySource()` or the errors of the linker.
-- The compilers report the lines of the generated source, which exceed the editor's by the `lineShift` of the compilation (in
-  `Compiled` and `PLMCompilerException`). A message is surely on a line of the editor if its file is
-  `ProgrammingLanguage.editorFileName()` (`Entity.java`, `Entity.scala`, `Entity.py`, or the tab's name followed by `.c`) and its
-  line, minus the shift, is one of the editor. The others (in the template, after the body or in another file) get a `?` bullet
-  on the first line.
-- The column counts the characters of the line of the editor from 1. Only the messages sure of their line keep it; it is 0 for
-  the others and when the compiler gives none.
+The errors and warnings of the compilation of the student's code appear twice in the editor: as a bullet in the margin for each
+line, whose tooltip lists the messages of that line, and as a wavy underline under the token at the column of each message (or
+under its whole line), with the message as tooltip. Both follow their lines when the code changes, but are then dimmed, as their
+messages may be obsolete, until the next compilation replaces them.
+
+Every language renders its compiler's messages in the same format, which `CompilerMessage.parse()` reads:
+- A message starts with `file:line:column: kind: text`, the column and the whole location being optional. The kind `error` or
+  `fatal error` makes an error, anything else a warning, and a `note` is added to the previous message. The indented lines that
+  follow belong to the message, while the code quoted after a `|` and the context lines of gcc are dropped. Any other line is an
+  error without location, such as the refusal of `Exercise.verifySource()` or an error of the linker.
+- The compilers count the lines of the generated source, which exceed the editor's by the `lineShift` of the compilation. A
+  message is sure of its line if its file is `ProgrammingLanguage.editorFileName()` and its line, minus the shift, is one of the
+  editor. The others (in the template or in another file) get a `?` bullet on the first line, and no underline. The column
+  counts the characters of the line from 1, or is 0 when unknown.
 
 How each language produces this format:
-- Java: `LangJava.render()` writes the diagnostics of javac, the ones of the editor's code as `Entity.java:N:C`, the others with
-  the full path of their file, including the lines of the template in the generated `Entity.java`, so that they cannot be taken
-  for lines of the editor, and that the student can report them in bug reports against the PLM.
-- Scala: `LangScala.render()` does the same with the diagnostics of dotc, indenting the next lines of a message and quoting the
-  code after a `|`. The summary of dotc ("2 errors found") is dropped.
-- Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format, the
-  lines of the template with the full path of the file. The body is indented deeper in the source than in the editor, so the
-  column of an error is shifted back by that depth, its second argument. The warnings have no column.
-- C: gcc writes this format itself, and the `#line` directive locates the body in the tab's file, so that the shift is 0. The
-  code after the body continues its numbering, beyond the lines of the editor.
+- Java and Scala: `LangJava.render()` and `LangScala.render()` write the diagnostics of javac and dotc, the lines of the
+  template with the full path of the generated file, so that they cannot be taken for lines of the editor.
+- Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its messages in this format, shifting the
+  columns back by the indentation that the body gains in the generated source. Its warnings have no column.
+- C: gcc writes this format itself, and the `#line` directive makes the shift 0.
 
 A new language renders its messages in this format, and overrides `editorFileName()` if its file is not `Entity.<ext>`.
 
-`Exercise.compileRunCheck()` parses the message of the `PLMCompilerException`, or the warnings of a successful compilation, into
-`RunOutcome.compilerMessages`, and displays them with the editor's lines (`ProgrammingLanguage.shiftLines()`, except in debug
-mode). `LessonRunner` passes them to `MissionEditorTabs.showCompilerMessages()`, in the Swing thread,
-which gives them to the `CompilerMarkers` of the editor if it still shows that exercise in that language. The bullets are
-replaced at each compilation, and disappear with the editor when the exercise or the language changes. They follow their lines
-when the code changes, but are then dimmed, with a tooltip telling that they may be obsolete.
+`Exercise.compileRunCheck()` parses the messages into `RunOutcome.compilerMessages`, which `LessonRunner` passes, in the Swing
+thread, to `MissionEditorTabs.showCompilerMessages()`, which gives them to the `CompilerMarkers` of the editor if it still shows
+that exercise in that language. `CompilerMarkers` keeps each message with a `Position` of its token or line, which follows the
+edits, and rebuilds the bullets and the underlines from them. The underlines are the notices of `CompilerMarkers` as a `Parser`
+of RSyntaxTextArea, which also calls it after each change of the code.
 
-Each message sure of its line also underlines the code, in red or yellow, with the same tooltip: the token at its column (as cut
-by the syntax highlighting, so a whole string or identifier), or its whole line when it has no column or when the column points
-at blanks or beyond the end of the line. `CompilerMarkers` is a `Parser` of RSyntaxTextArea for that: `show()` keeps the
-messages with a `Position` of their token, which follows the changes of the code, and `forceReparsing()` turns them into
-`ParserNotice`s at the current place of their positions. RSyntaxTextArea also calls `parse()` after each change of the code,
-which returns the same notices, dimmed once the code changed. The editor shows plain Swing tooltips, rather than the focusable
-ones of RSyntaxTextArea, so that the ones of the underlines look like the ones of the bullets. As the parser runs in the Swing
-thread, its tests show the messages and read the notices there.
-
-**TODO**: the run-time errors (Java and Scala stack traces, Python tracebacks, AddressSanitizer reports) are not shown in the
-margin. Their locations are already shifted to the editor's lines by `RemoteExecutionLang.shiftTrace()`, so their frames could be
-parsed the way `CompilerMessage.parse()` reads the compilation messages, and given to the editor with the outcome of the run.
+**TODO**: the run-time errors (stack traces, tracebacks, AddressSanitizer reports) are not shown in the editor. Their locations
+are already shifted to the editor's lines by `RemoteExecutionLang.shiftTrace()`, so their frames could be parsed the way
+`CompilerMessage.parse()` reads the compilation messages.
 
 ### Completion in the editor
 
@@ -569,9 +555,11 @@ since their common history. If the other side modified it, the side whose last c
 
 ## How tests work
 
-Tests live in `src/plm/test` and are compiled with the main code (see the surefire configuration in `pom.xml`). The unit tests of
-a few classes sit next to them. Surefire runs only `AllTests` and `MainFrameSmokeTest`, each in its own JVM (`reuseForks=false`),
-because the `Game` singleton would otherwise leak the GUI listeners of the latter into the former.
+Tests live in `src/plm/test` and are compiled with the main code (see the surefire configuration in `pom.xml`). The unit tests
+of a few classes sit next to them. The classes receive what they need as parameters rather than reading the `Game` singleton (as
+`CodeCompletion` takes its translations), so that their tests do not change its state. Surefire runs only `AllTests` and
+`MainFrameSmokeTest`, each in its own JVM (`reuseForks=false`), because the `Game` singleton would otherwise leak the GUI
+listeners of the latter into the former.
 
 * *`AllTests`:* the suite chaining `UnitTests` and `ContentTests`.
   * *`UnitTests`:* the code of the PLM, on a minimal universe or on a few real exercises when needed.
@@ -724,7 +712,7 @@ one checks the correction entities against it.
 - Adding a new language: see `https://github.com/oster/PLM/wiki/Adding-a-new-programming-language` and extend
   `plm.core.lang.ProgrammingLanguage`. Be warned that you will have to adapt the mission text of every exercise, as they contain
   language-specific chunks. Its compiler messages must follow the format described in
-  [Compiler messages in the margin of the editor](#compiler-messages-in-the-margin-of-the-editor).
+  [Compiler messages in the editor](#compiler-messages-in-the-editor).
 
 ## Build & run
 
