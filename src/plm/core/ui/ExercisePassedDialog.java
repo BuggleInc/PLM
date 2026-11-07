@@ -1,17 +1,22 @@
 package plm.core.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Vector;
+import java.util.stream.Stream;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.KeyStroke;
 import net.miginfocom.swing.MigLayout;
+import org.xnap.commons.i18n.I18n;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -73,21 +78,17 @@ public class ExercisePassedDialog extends JDialog {
 
     JLabel lbDifficulty = new JLabel(Game.i18n.tr("Difficulty:"));
     feedbackPane.add(lbDifficulty, "align right");
-    /* Difficulties are the text presented to the user while difficultiesEN are the one that will be added to the report */
-    String[] difficulties                       = new String[] {Game.i18n.tr("(please choose)"), Game.i18n.tr("Too easy"),  Game.i18n.tr("Easy"),
-                                                                Game.i18n.tr("Just right"),      Game.i18n.tr("Difficult"), Game.i18n.tr("Too difficult")};
-    final String[] difficultiesEN               = new String[] {"Too easy", "Easy", "Just right", "Difficult", "Too difficult"};
-    final JComboBox<String> difficultiesChooser = new JComboBox<String>(difficulties);
+    /* The English texts go in the report, and their translations in the choosers */
+    final String[] difficulties                 = {I18n.marktr("(please choose)"), I18n.marktr("Too easy"),  I18n.marktr("Easy"),
+                                                   I18n.marktr("Just right"),      I18n.marktr("Difficult"), I18n.marktr("Too difficult")};
+    final JComboBox<String> difficultiesChooser = translated(difficulties);
     feedbackPane.add(difficultiesChooser, "grow");
 
     JLabel lbInterest = new JLabel(Game.i18n.tr("Interest:"));
     feedbackPane.add(lbInterest, "");
-    String[] interests = new String[] {
-        Game.i18n.tr("(please choose)"), Game.i18n.tr("Really good"), Game.i18n.tr("Amusing"),
-        Game.i18n.tr("Just okay"),       Game.i18n.tr("Boring"),      Game.i18n.tr("Really bad"),
-    };
-    final String[] interestsEN              = new String[] {"(please choose)", "Really good", "Amusing", "Just okay", "Boring", "Really bad"};
-    final JComboBox<String> interestChooser = new JComboBox<String>(interests);
+    final String[] interests                = {I18n.marktr("(please choose)"), I18n.marktr("Really good"), I18n.marktr("Amusing"),
+                                               I18n.marktr("Just okay"),       I18n.marktr("Boring"),      I18n.marktr("Really bad")};
+    final JComboBox<String> interestChooser = translated(interests);
     feedbackPane.add(interestChooser, "grow,wrap");
 
     feedbackPane.add(new JLabel(Game.i18n.tr("Free comments on that exercise:")), "grow 0,spanx 4,wrap");
@@ -95,33 +96,41 @@ public class ExercisePassedDialog extends JDialog {
     JScrollPane spComment     = new JScrollPane(comment);
     feedbackPane.add(spComment, "push,grow 20000 20000,wrap,span");
 
-    /* ------------ The close button ------------ */
-    JButton close = new JButton(Game.i18n.tr("Close"));
-    close.addActionListener(new ActionListener() {
-      @Override public void actionPerformed(ActionEvent e)
+    /* ------------ The buttons, which record the feedback ------------ */
+    Runnable recordFeedback = () ->
+    {
+      result.feedbackDifficulty = difficulties[difficultiesChooser.getSelectedIndex()];
+      result.feedbackInterest   = interests[interestChooser.getSelectedIndex()];
+      result.feedback           = comment.getText();
+      if (result.feedback.equals(""))
+        result.feedback = null;
+      dispose();
+    };
+    JPanel buttons = new JPanel();
+    // Translator: button of the dialog of a passed exercise, switching to the next exercise chosen in its list
+    String proceed = Game.i18n.tr("Proceed");
+    JButton close  = new JButton(exoChooser == null ? Game.i18n.tr("Close") : proceed);
+    close.addActionListener(e -> {
+      if (exoChooser != null)
+        Game.getInstance().setCurrentExercise((Lecture)exoChooser.getSelectedItem());
+      recordFeedback.run();
+    });
+    buttons.add(close);
+    if (exoChooser != null) { // the student may want to improve their solution, or to try another language
+      // Translator: button of the dialog of a passed exercise, closing it without switching to the next exercise chosen in its list
+      JButton stay = new JButton(Game.i18n.tr("Stay on this exercise"));
+      stay.addActionListener(e -> recordFeedback.run());
+      buttons.add(stay);
+    }
+    add(buttons, "span, alignx 50%");
+    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); // the close button of the window stays on this exercise, and keeps the feedback
+    addWindowListener(new WindowAdapter() {
+      @Override public void windowClosing(WindowEvent e)
       {
-        if (exoChooser != null) {
-          Game.getInstance().setCurrentExercise((Lecture)exoChooser.getSelectedItem());
-        }
-
-        String chosenDifficulty = null;
-        for (String d : difficultiesEN)
-          if (difficultiesChooser.getSelectedItem().equals(Game.i18n.tr(d)))
-            chosenDifficulty = d;
-        String chosenInterest = null;
-        for (String d : interestsEN)
-          if (interestChooser.getSelectedItem().equals(Game.i18n.tr(d)))
-            chosenInterest = d;
-
-        result.feedbackDifficulty = chosenDifficulty;
-        result.feedbackInterest   = chosenInterest;
-        result.feedback           = comment.getText();
-        if (result.feedback.equals(""))
-          result.feedback = null;
-        dispose();
+        recordFeedback.run();
       }
     });
-    add(close, "span, alignx 50%");
+    getRootPane().registerKeyboardAction(e -> dispose(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 
     /* ------------ wrap up the dialog ------------ */
     setModal(true);
@@ -131,4 +140,7 @@ public class ExercisePassedDialog extends JDialog {
     setMinimumSize(getSize());
     setVisible(true);
   }
+
+  /** A chooser of these English texts, shown translated */
+  private static JComboBox<String> translated(String[] texts) { return new JComboBox<>(new Vector<>(Stream.of(texts).map(Game.i18n::tr).toList())); }
 }
