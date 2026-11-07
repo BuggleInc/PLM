@@ -82,15 +82,19 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
   {
     currentExercise = lecture;
 
-    currentProgrammingLanguageHasChanged(Game.getInstance().getProgrammingLanguage()); /* Redo any code panel, and reload the mission */
+    rebuildTabs(); /* Redo any code panel, and reload the mission */
     selectedEntityHasChanged();
     doLayout();
   }
   @Override public void selectedWorldHasChanged(World w) { selectedEntityHasChanged(); }
 
-  @Override public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang)
-  { /* Redo any code panel */
-    int tabPosition = getSelectedIndex();
+  @Override public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang) { rebuildTabs(); }
+
+  /** Redoes the code panel and the mission text for the current exercise and programming language, keeping the selected tab */
+  private void rebuildTabs()
+  {
+    ProgrammingLanguage lang = game.getProgrammingLanguage();
+    int tabPosition          = getSelectedIndex();
     /* Remove every tabs, but the mission one: the code editors, and the read-only tabs of the previous world */
     while (getTabCount() > 1) {
       Component tab = this.getComponentAt(getTabCount() - 1);
@@ -104,14 +108,14 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
     if (currentExercise instanceof Exercise) {
       /* Add back the code editor, if there is a source file in that language */
       Exercise exo = (Exercise)currentExercise;
-      if (exo.getSourceFileCount(newLang) > 0)
-        this.addTab(exo.getTabName(), null, exo.getEditorPanel(newLang), Game.i18n.tr("Type your code here"));
+      if (exo.getSourceFileCount(lang) > 0)
+        this.addTab(exo.getTabName(), null, exo.getEditorPanel(lang), Game.i18n.tr("Type your code here"));
       if (getTabCount() > tabPosition)
         setSelectedIndex(tabPosition);
     }
     /* Change the mission text, because the CSS changed */
     missionTab.setEditorKit(new PlmHtmlEditorKit(game.getCurrentLesson().getCurrentExercise()));
-    missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(newLang));
+    missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(lang));
     missionTab.setCaretPosition(0);
   }
 
@@ -169,5 +173,5 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
   }
   @Override public void selectedWorldWasUpdated() { /* don't care */ }
 
-  @Override public void userHasChanged(User newUser) { currentProgrammingLanguageHasChanged(Game.getInstance().getProgrammingLanguage()); }
+  @Override public void userHasChanged(User newUser) { rebuildTabs(); }
 }
