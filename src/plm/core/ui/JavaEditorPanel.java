@@ -54,14 +54,11 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel {
     codeEditor.setCaretPosition(0);
 
     /* Create a synchronization element, and connect it to the editor */
-    sync = new SourceFileDocumentSynchronizer(codeEditor);
-    sync.setDocument(codeEditor.getDocument());
+    sync = new SourceFileDocumentSynchronizer(codeEditor, exo, lang);
     codeEditor.getDocument().addDocumentListener(sync);
 
     /* Connect the synchronization element to the student's code */
     Game.getInstance().studentWork.setBodyListener(exo, lang, sync);
-    sync.setExercise(exo);
-    sync.setProgrammingLanguage(lang);
 
     codeEditor.setText(exo.getEditorContent(lang));
     codeEditor.convertTabsToSpaces(); // the code saved or given with tabulations

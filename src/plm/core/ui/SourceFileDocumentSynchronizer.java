@@ -27,9 +27,13 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
   private EditorKit editorKit;
   private boolean propagationInProgress = false, pendingPropagDocToSource = false, pendingPropagSourceToDoc = false;
 
-  public SourceFileDocumentSynchronizer(RSyntaxTextArea rtextarea) { this.editorKit = rtextarea.getUI().getEditorKit(rtextarea); }
-
-  public SourceFileDocumentSynchronizer(EditorKit kit) { this.editorKit = kit; }
+  public SourceFileDocumentSynchronizer(RSyntaxTextArea rtextarea, Exercise exo, ProgrammingLanguage lang)
+  {
+    this.document  = rtextarea.getDocument();
+    this.editorKit = rtextarea.getUI().getEditorKit(rtextarea);
+    this.exo       = exo;
+    this.lang      = lang;
+  }
 
   public void clear()
   {
@@ -39,12 +43,6 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
     this.exo        = null;
     editorKit       = null;
   }
-
-  public void setDocument(Document doc) { this.document = doc; }
-
-  public void setExercise(Exercise exo) { this.exo = exo; }
-
-  public void setProgrammingLanguage(ProgrammingLanguage lang) { this.lang = lang; }
 
   private void copyDocumentContentToSourceFileBody()
   {
