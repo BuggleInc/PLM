@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
+import org.assertj.swing.timing.Condition;
+import org.assertj.swing.timing.Pause;
 import org.fife.ui.rtextarea.GutterIconInfo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -67,10 +69,14 @@ public class MainFrameSmokeTest {
     game.switchCreative();
     try {
       game.startExerciseExecution();
-      for (int i = 0; i < 600 && marginTips().isEmpty(); i++)
-        Thread.sleep(100);
-      Assertions.assertFalse(marginTips().isEmpty(), "no compilation error in the margin");
-      Assertions.assertTrue(marginTips().stream().anyMatch(tip -> tip.contains("notDeclared")), marginTips().toString());
+      Pause.pause(new Condition("a compilation error in the margin") {
+        @Override public boolean test()
+        {
+          return !marginTips().isEmpty();
+        }
+      }, 60_000);
+      List<String> tips = marginTips();
+      Assertions.assertTrue(tips.stream().anyMatch(tip -> tip.contains("notDeclared")), tips.toString());
     } finally {
       game.switchCreative();
     }
