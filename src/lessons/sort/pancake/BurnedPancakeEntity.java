@@ -5,13 +5,13 @@ import lessons.sort.pancake.universe.PancakeEntity;
 public class BurnedPancakeEntity extends PancakeEntity {
 
   /* BEGIN REMOTE */
-  public void run() { this.solve(); }
+  public void run() { solve(); }
 
   /* BEGIN TEMPLATE */
   public void solve()
   {
     /* BEGIN SOLUTION */
-    int stackSize = this.getStackSize();
+    int stackSize = getStackSize();
     for (int rank = stackSize - 1; rank != -1 && !isSorted(); rank--) {
 
       if (getPancakeRadius(rank) != rank + 1 || isPancakeUpsideDown(rank)) { // current pancake not sorted yet

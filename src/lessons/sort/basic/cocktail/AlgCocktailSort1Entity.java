@@ -5,7 +5,7 @@ import plm.universe.sort.SortingEntity;
 public class AlgCocktailSort1Entity extends SortingEntity {
 
   /* BEGIN REMOTE */
-  public void run() { this.cocktailSort(); }
+  public void run() { cocktailSort(); }
 
   /* BEGIN TEMPLATE */
   public void cocktailSort()

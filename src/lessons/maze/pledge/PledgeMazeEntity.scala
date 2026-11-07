@@ -9,8 +9,8 @@ class PledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def run(): Unit = {
 		/* BEGIN SOLUTION */
 		var state = 0 ;
-		this.angleSum = 0;
-		this.setDirection(this.chosenDirection);
+		angleSum = 0;
+		setDirection(chosenDirection);
 		while ( !isOverBaggle() ) {
 			state match {
 			case 0 => // North runner mode

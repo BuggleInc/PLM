@@ -3,6 +3,7 @@ package plm.test;
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
+import plm.test.content.EntitiesWithoutThisTest;
 import plm.test.content.ExoTestCLang;
 import plm.test.content.ExoTestJavaLang;
 import plm.test.content.ExoTestPythonLang;
@@ -20,6 +21,7 @@ import plm.test.content.WorldDiffTest;
 @ConfigurationParameter(key = "junit.jupiter.execution.parallel.enabled", value = "true")
 @ConfigurationParameter(key = "junit.jupiter.execution.parallel.config.strategy", value = "fixed")
 @ConfigurationParameter(key = "junit.jupiter.execution.parallel.config.fixed.parallelism", value = "4")
-@SelectClasses({ExoTestJavaLang.class, ExoTestScalaLang.class, ExoTestPythonLang.class, ExoTestCLang.class, MissionMarkupTest.class, TranslationsTest.class,
-                GatedExercisesTest.class, LightBotLessonTest.class, WorldDiffTest.class, PosixAnswerCacheTest.class})
+@SelectClasses({ExoTestJavaLang.class, ExoTestScalaLang.class, ExoTestPythonLang.class, ExoTestCLang.class, MissionMarkupTest.class,
+                EntitiesWithoutThisTest.class, TranslationsTest.class, GatedExercisesTest.class, LightBotLessonTest.class, WorldDiffTest.class,
+                PosixAnswerCacheTest.class})
 public class ContentTests {}

@@ -251,8 +251,7 @@ format, which `CompilerMessage.parse()` reads:
 How each language produces this format:
 - Java: `LangJava.render()` writes the diagnostics of javac, the ones of the editor's code as `Entity.java:N:C`, the others with
   the full path of their file, including the lines of the template in the generated `Entity.java`, so that they cannot be taken
-  for lines of the editor, and that the student can report them in bug reports against the PLM. Java and Scala remove the
-  `this.` of the code before compiling it, which shifts the columns of the rest of its line.
+  for lines of the editor, and that the student can report them in bug reports against the PLM.
 - Scala: `LangScala.render()` does the same with the diagnostics of dotc, indenting the next lines of a message and quoting the
   code after a `|`. The summary of dotc ("2 errors found") is dropped.
 - Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format, the
@@ -669,6 +668,8 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       correction entity must pass in that language. They share `ExoTest`, which lists the exercises of the lessons offered to the
       students (`Lesson.OFFERED`, also shown by the lesson chooser), but LightBot (see below). The Python and C ones also fail when
       the exercise has no entity file in their language, and the Turmites get a longer timeout.
+    * *`EntitiesWithoutThisTest`:* the Java and Scala entity files of the exercises do not use `this.`, which the generated code
+      would not compile.
     * *`MissionMarkupTest`:* in every mission file, translations included, the `[!langs]...[/!]` blocks are balanced and only name
       known languages, and no tag is malformed (such as `[/!` without its closing bracket, or `[java]` without its `!`).
     * *`TranslationsTest`:* the work of the translators, who are not all programmers, does not break the PLM. The primitive names
@@ -812,6 +813,9 @@ https://github.com/BuggleInc/PLM/tree/javaUI/src/lessons/welcome/summative
 - MoriaEntity.py: Template and solution in python.
 - MoriaEntity.scala:  Template and solution in Scala.
 - MoriaEntity.c: Template and solution in C.
+
+In Java and Scala, the entity calls its methods without `this.`: the generated code imports the primitives instead of inheriting
+them, so `this.forward()` would not compile there.
 
 When the exercise is initialized, it will contain the TEMPLATE without
 the SOLUTION. It means that PLM takes everything between BEGIN

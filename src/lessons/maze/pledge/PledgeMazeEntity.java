@@ -11,8 +11,8 @@ public class PledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
   {
     /* BEGIN SOLUTION */
     int state     = 0;
-    this.angleSum = 0;
-    this.setDirection(this.chosenDirection);
+    angleSum      = 0;
+    setDirection(chosenDirection);
     while (!isOverBaggle()) {
       switch (state) {
         case 0: // North runner mode
@@ -24,8 +24,8 @@ public class PledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
           state = 1; // time to enter the Left Follower mode
           break;
         case 1:                  // Left Follower Mode
-          this.stepHandOnWall(); // follow the left wall
-          if (this.isChosenDirectionFree() && this.angleSum == 0)
+          stepHandOnWall();      // follow the left wall
+          if (isChosenDirectionFree() && angleSum == 0)
             state = 0; // time to enter in North Runner mode
 
           break;
@@ -41,10 +41,10 @@ public class PledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
     while (!isFacingWall()) {
       step();
       left();
-      this.angleSum++;
+      angleSum++;
     }
     right();
-    this.angleSum--;
+    angleSum--;
   }
 
   Direction chosenDirection = Direction.NORTH;
@@ -52,9 +52,9 @@ public class PledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
   private boolean isChosenDirectionFree()
   {
     Direction memorizedD = getDirection();
-    this.setDirection(this.chosenDirection);
+    setDirection(chosenDirection);
     boolean isFree = !isFacingWall();
-    this.setDirection(memorizedD);
+    setDirection(memorizedD);
     return isFree;
     /* END SOLUTION */
   }

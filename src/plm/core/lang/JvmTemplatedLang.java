@@ -96,7 +96,6 @@ public abstract class JvmTemplatedLang extends TemplatedRemoteLang {
       int offset                  = countLinesBeforeBody(pre);
       String entityCode           = pre + segments.body() + " \n" + segments.post() + "\n}";
       entityCode                  = entityCode.replace('\u00A0', ' '); // Kill those damn \160 chars (non-breaking spaces from copy/pasted examples?)
-      entityCode                  = Pattern.compile("this\\.").matcher(entityCode).replaceAll("");
       entityCode                  = adaptEntityCode(entityCode);
 
       File workspace = new File(tempFolder, packageNameCache.replace('.', '/'));

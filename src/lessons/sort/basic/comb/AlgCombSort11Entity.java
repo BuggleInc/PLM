@@ -5,7 +5,7 @@ import plm.universe.sort.SortingEntity;
 public class AlgCombSort11Entity extends SortingEntity {
 
   /* BEGIN REMOTE */
-  public void run() { this.combSort11(); }
+  public void run() { combSort11(); }
 
   /* BEGIN TEMPLATE */
   public void combSort11()

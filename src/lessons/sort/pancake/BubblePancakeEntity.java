@@ -5,7 +5,7 @@ import lessons.sort.pancake.universe.PancakeEntity;
 public class BubblePancakeEntity extends PancakeEntity {
 
   /* BEGIN REMOTE */
-  public void run() { this.solve(); }
+  public void run() { solve(); }
 
   /* BEGIN TEMPLATE */
   public void solve()

@@ -5,7 +5,7 @@ import plm.universe.sort.SortingEntity;
 public class AlgBubbleSort3Entity extends SortingEntity {
 
   /* BEGIN REMOTE */
-  public void run() { this.bubbleSort3(); }
+  public void run() { bubbleSort3(); }
 
   /* BEGIN TEMPLATE */
   public void bubbleSort3()

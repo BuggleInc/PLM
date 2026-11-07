@@ -5,7 +5,7 @@ import plm.universe.sort.SortingEntity;
 public class AlgGnomeSortEntity extends SortingEntity {
 
   /* BEGIN REMOTE */
-  public void run() { this.gnomeSort(); }
+  public void run() { gnomeSort(); }
 
   /* BEGIN TEMPLATE */
   public void gnomeSort()

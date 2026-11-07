@@ -11,7 +11,7 @@ public class BasicPancakeEntity extends PancakeEntity {
   public void solve()
   {
     /* BEGIN SOLUTION */
-    for (int rank = getStackSize() - 1; rank != -1 && !this.isSorted(); rank--) {
+    for (int rank = getStackSize() - 1; rank != -1 && !isSorted(); rank--) {
       if (getPancakeRadius(rank) != rank + 1) { // Current pancake is still to be sorted
         int indexBigPancake = -1;
         for (int currentPancake = 0; currentPancake < rank + 1; currentPancake++)
