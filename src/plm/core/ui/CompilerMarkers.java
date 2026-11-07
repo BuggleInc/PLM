@@ -9,9 +9,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import javax.swing.Icon;
@@ -29,7 +27,6 @@ import org.fife.ui.rsyntaxtextarea.parser.DefaultParseResult;
 import org.fife.ui.rsyntaxtextarea.parser.DefaultParserNotice;
 import org.fife.ui.rsyntaxtextarea.parser.ParseResult;
 import org.fife.ui.rsyntaxtextarea.parser.ParserNotice;
-import org.fife.ui.rtextarea.GutterIconInfo;
 import org.fife.ui.rtextarea.RTextScrollPane;
 import plm.core.lang.CompilerMessage;
 import plm.core.model.Game;
@@ -46,12 +43,13 @@ public class CompilerMarkers extends AbstractParser implements DocumentListener 
 
   private final RTextScrollPane editor;
   private final RSyntaxTextArea code;
-  private final List<GutterIconInfo> icons = new ArrayList<>();
-  private final List<Underline> underlines = new ArrayList<>();
+  /** The messages of the last compilation, with the place of their token or line */
+  private List<Mark> marks = List.of();
+  /** Whether the code changed since that compilation */
   private boolean dimmed;
 
-  /** A message underlined from that position, which follows the changes of the code, on that length (0 for its whole line) */
-  private record Underline(CompilerMessage message, Position start, int length) {}
+  /** A message from that position, which follows the changes of the code, on the length of its token (0 for its whole line) */
+  private record Mark(CompilerMessage message, Position start, int length) {}
 
   public CompilerMarkers(RTextScrollPane editor)
   {
@@ -63,47 +61,71 @@ public class CompilerMarkers extends AbstractParser implements DocumentListener 
     code.setUseFocusableTips(false); // the tooltips of the underlines look like the ones of the icons
   }
 
-  /** Replaces the icons and the underlines by the ones of these messages, the icons grouped by line */
+  /** Replaces the icons and the underlines by the ones of these messages */
   public void show(List<CompilerMessage> messages)
   {
+    marks  = messages.stream().map(this::mark).toList();
     dimmed = false;
-    editor.getGutter().removeAllTrackingIcons();
-    icons.clear();
-    Map<Integer, List<CompilerMessage>> byLine = messages.stream().collect(Collectors.groupingBy(CompilerMessage::line, TreeMap::new, Collectors.toList()));
-    int size                                   = Math.min(editor.getTextArea().getLineHeight(), 16); // the width of the icon row
-    byLine.forEach((line, onLine) -> add(line - 1, new Bullet(onLine, false, size)));
-    underlines.clear();
-    for (CompilerMessage message : messages)
-      if (message.sure())
-        underlines.add(underline(message));
-    code.forceReparsing(this);
+    refresh();
   }
 
-  /** The underline of that message: the token at its column, or its whole line if it has none or if it points at blanks */
-  private Underline underline(CompilerMessage message)
+  /** Dims the icons and the underlines, as their messages may be obsolete */
+  private void dim()
+  {
+    if (marks.isEmpty() || dimmed)
+      return;
+    dimmed = true;
+    refresh();
+  }
+
+  /** The mark of that message: the token at its column, or its whole line if it has none or if it points at blanks */
+  private Mark mark(CompilerMessage message)
   {
     Element line  = code.getDocument().getDefaultRootElement().getElement(Math.min(message.line(), code.getLineCount()) - 1);
     int offset    = line.getStartOffset() + message.column() - 1;
     Token token   = message.column() > 0 && offset < line.getEndOffset() - 1 ? code.modelToToken(offset) : null;
     boolean whole = token == null || token.isWhitespace();
     try {
-      return new Underline(message, code.getDocument().createPosition(whole ? line.getStartOffset() : token.getOffset()), whole ? 0 : token.length());
+      return new Mark(message, code.getDocument().createPosition(whole ? line.getStartOffset() : token.getOffset()), whole ? 0 : token.length());
     } catch (BadLocationException e) {
       throw new IllegalStateException(e); // never happens, as the offset is in the document
     }
   }
 
-  /** The notices of the underlines, on the current lines of their positions */
+  /**
+   * Replaces the icons by the ones of the marks, grouped on the current line of their position, which they then follow, and the
+   * underlines by asking RSyntaxTextArea to parse again
+   */
+  private void refresh()
+  {
+    editor.getGutter().removeAllTrackingIcons();
+    Element lines = code.getDocument().getDefaultRootElement();
+    int size      = Math.min(code.getLineHeight(), 16); // the width of the icon row
+    marks.stream()
+        .collect(Collectors.groupingBy(
+            mark -> lines.getElementIndex(mark.start().getOffset()), TreeMap::new, Collectors.mapping(Mark::message, Collectors.toList())))
+        .forEach((line, messages) -> {
+          try {
+            editor.getGutter().addLineTrackingIcon(line, new Bullet(messages, dimmed, size), tip(messages, dimmed));
+          } catch (BadLocationException e) {
+            throw new IllegalStateException(e); // never happens, as the line exists
+          }
+        });
+    code.forceReparsing(this);
+  }
+
+  /** The underlines of the messages sure of their line, on the current lines of their positions */
   @Override public ParseResult parse(RSyntaxDocument document, String style)
   {
     DefaultParseResult result = new DefaultParseResult(this);
     Element lines             = document.getDefaultRootElement();
-    for (Underline underline : underlines) {
-      CompilerMessage message    = underline.message();
-      int line                   = lines.getElementIndex(underline.start().getOffset());
-      DefaultParserNotice notice = underline.length() == 0
-                                       ? new DefaultParserNotice(this, message.text(), line)
-                                       : new DefaultParserNotice(this, message.text(), line, underline.start().getOffset(), underline.length());
+    for (Mark mark : marks) {
+      CompilerMessage message = mark.message();
+      if (!message.sure())
+        continue;
+      int line                   = lines.getElementIndex(mark.start().getOffset());
+      DefaultParserNotice notice = mark.length() == 0 ? new DefaultParserNotice(this, message.text(), line)
+                                                      : new DefaultParserNotice(this, message.text(), line, mark.start().getOffset(), mark.length());
       Color color                = message.warning() ? YELLOW : RED;
       notice.setLevel(message.warning() ? ParserNotice.Level.WARNING : ParserNotice.Level.ERROR);
       notice.setColor(dimmed ? new Color(color.getRed(), color.getGreen(), color.getBlue(), 90) : color);
@@ -111,33 +133,6 @@ public class CompilerMarkers extends AbstractParser implements DocumentListener 
       result.addNotice(notice);
     }
     return result;
-  }
-
-  /** Adds the icon on that line (counted from 0), or on the last line if the code got shorter */
-  private void add(int line, Bullet bullet)
-  {
-    try {
-      icons.add(editor.getGutter().addLineTrackingIcon(Math.min(line, code.getLineCount() - 1), bullet, tip(bullet.messages(), bullet.dimmed())));
-    } catch (BadLocationException e) {
-      throw new IllegalStateException(e); // never happens, as the line exists
-    }
-  }
-
-  /** Replaces the icons and the underlines by dimmed ones, on the lines where the changes of the code moved them */
-  private void dim()
-  {
-    if (icons.isEmpty() || dimmed)
-      return;
-    List<GutterIconInfo> bright = new ArrayList<>(icons);
-    editor.getGutter().removeAllTrackingIcons();
-    icons.clear();
-    Element lines = code.getDocument().getDefaultRootElement();
-    for (GutterIconInfo info : bright) {
-      Bullet bullet = (Bullet)info.getIcon();
-      add(lines.getElementIndex(info.getMarkedOffset()), new Bullet(bullet.messages(), true, bullet.size()));
-    }
-    dimmed = true;
-    code.forceReparsing(this);
   }
 
   @Override public void insertUpdate(DocumentEvent e) { SwingUtilities.invokeLater(this::dim); } // not while the document is changing

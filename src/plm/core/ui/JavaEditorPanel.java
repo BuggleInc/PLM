@@ -13,7 +13,7 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel {
   private static final long serialVersionUID = 1L;
   SourceFileDocumentSynchronizer sync;
   RSyntaxTextArea codeEditor;
-  /** The messages of the last compilation, in the margin */
+  /** The messages of the last compilation, in the margin and in the code */
   final CompilerMarkers markers;
   final CodeCompletion completion;
 
