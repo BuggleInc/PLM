@@ -818,10 +818,13 @@ public class Game implements IWorldView {
 
   private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
   public void addProgLangListener(ProgLangChangesListener l) { progLangListeners.add(l); }
+  /** Notifies the listeners, which are all part of the UI, on the Swing thread (see onSwingThread()) */
   public void fireProgLangChange(ProgrammingLanguage newLang)
   {
-    for (ProgLangChangesListener l : progLangListeners)
-      l.currentProgrammingLanguageHasChanged(newLang);
+    onSwingThread(() -> {
+      for (ProgLangChangesListener l : progLangListeners)
+        l.currentProgrammingLanguageHasChanged(newLang);
+    });
   }
   public void removeProgLangListener(ProgLangChangesListener l) { this.progLangListeners.remove(l); }
 
