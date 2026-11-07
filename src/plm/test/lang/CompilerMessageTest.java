@@ -12,9 +12,9 @@ import plm.core.lang.CompilerMessage;
  */
 public class CompilerMessageTest {
 
-  private static CompilerMessage error(int line, int column, String text) { return new CompilerMessage(line, column, true, false, text); }
-  private static CompilerMessage warning(int line, int column, String text) { return new CompilerMessage(line, column, true, true, text); }
-  private static CompilerMessage unsure(boolean warning, String text) { return new CompilerMessage(1, 0, false, warning, text); }
+  private static CompilerMessage error(int line, int column, String text) { return new CompilerMessage(line, column, false, text); }
+  private static CompilerMessage warning(int line, int column, String text) { return new CompilerMessage(line, column, true, text); }
+  private static CompilerMessage unsure(boolean warning, String text) { return new CompilerMessage(0, 0, warning, text); }
 
   @Test public void linesWithoutLocationAreUnsureErrors()
   {

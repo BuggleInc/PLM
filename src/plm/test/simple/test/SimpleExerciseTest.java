@@ -60,7 +60,7 @@ public abstract class SimpleExerciseTest {
   {
     int editorLines       = exo.getEditorContent(pl).split("\\R", -1).length;
     CompilerMessage first = CompilerMessage.parse(e.getMessage(), pl.editorFileName(exo), e.getLineShift(), editorLines).get(0);
-    Assertions.assertEquals(new CompilerMessage(line, first.column(), true, warning, first.text()), first, e.getMessage());
+    Assertions.assertEquals(new CompilerMessage(line, first.column(), warning, first.text()), first, e.getMessage());
     return first;
   }
 
@@ -151,8 +151,7 @@ public abstract class SimpleExerciseTest {
     setEditorContent(generateWarningCode());
     RunOutcome outcome = exo.compileRunCheck(null, StudentOrCorrection.STUDENT, pl, false, new ArrayList<Future<?>>(), () -> {});
     Assertions.assertTrue(outcome.isPassed(), outcome.compilationError + outcome.executionError);
-    Assertions.assertTrue(outcome.compilerMessages.stream().anyMatch(message -> message.line() == 2 && message.sure() && message.warning()),
-                          outcome.compilerMessages.toString());
+    Assertions.assertTrue(outcome.compilerMessages.stream().anyMatch(message -> message.line() == 2 && message.warning()), outcome.compilerMessages.toString());
   }
 
   /** In picky mode, the same warning fails the compilation */

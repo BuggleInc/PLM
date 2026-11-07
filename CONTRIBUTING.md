@@ -246,8 +246,8 @@ Every language renders its compiler's messages in the same format, which `Compil
   error without location, such as the refusal of `Exercise.verifySource()` or an error of the linker.
 - The compilers count the lines of the generated source, which exceed the editor's by the `lineShift` of the compilation. A
   message is sure of its line if its file is `ProgrammingLanguage.editorFileName()` and its line, minus the shift, is one of the
-  editor. The others (in the template or in another file) get a `?` bullet on the first line, and no underline. The column
-  counts the characters of the line from 1, or is 0 when unknown.
+  editor. The others (in the template or in another file) get the line 0, which stands for unknown: a `?` bullet on the first
+  line, and no underline. The column counts the characters of the line from 1, and is 0 when unknown too.
 
 How each language produces this format:
 - Java and Scala: `LangJava.render()` and `LangScala.render()` write the diagnostics of javac and dotc, the lines of the

@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 
 /**
  * A message of a compiler (or a refusal of Exercise.verifySource()), with the notes that follow it but not the code that it
- * quotes. Its line is the one of the editor when it surely designates one; otherwise, it is the first line, and not sure. Its
- * column, counted from 1 in characters, is the one that the compiler gives on that line, or 0 when it gives none or is not sure.
+ * quotes. Its line and its column (in characters) count from 1 in the editor, and are 0 when unknown: the line when the message does
+ * not surely designate a line of the editor, and the column then too, or when the compiler gives none.
  */
-public record CompilerMessage(int line, int column, boolean sure, boolean warning, String text) {
+public record CompilerMessage(int line, int column, boolean warning, String text) {
 
   /** The first line of a message, as "file:line:column: kind: text", whose location (or column) may be missing */
   private static final Pattern START =
@@ -37,14 +37,14 @@ public record CompilerMessage(int line, int column, boolean sure, boolean warnin
       if (!messages.isEmpty() && (note || !found && Character.isWhitespace(line.charAt(0)))) {
         CompilerMessage last = messages.get(messages.size() - 1);
         String more          = note ? "note: " + start.group("text") : line;
-        messages.set(messages.size() - 1, new CompilerMessage(last.line, last.column, last.sure, last.warning, last.text + "\n" + more.strip()));
+        messages.set(messages.size() - 1, new CompilerMessage(last.line, last.column, last.warning, last.text + "\n" + more.strip()));
       } else if (found) {
         int number   = start.group("line") == null ? 0 : Integer.parseInt(start.group("line")) - lineShift;
         boolean sure = editorFile.equals(start.group("file")) && number >= 1 && number <= editorLines;
         int column   = sure && start.group("column") != null ? Integer.parseInt(start.group("column")) : 0;
-        messages.add(new CompilerMessage(sure ? number : 1, column, sure, !start.group("kind").endsWith("error"), start.group("text").strip()));
+        messages.add(new CompilerMessage(sure ? number : 0, column, !start.group("kind").endsWith("error"), start.group("text").strip()));
       } else {
-        messages.add(new CompilerMessage(1, 0, false, false, line.strip()));
+        messages.add(new CompilerMessage(0, 0, false, line.strip()));
       }
     }
     return messages;

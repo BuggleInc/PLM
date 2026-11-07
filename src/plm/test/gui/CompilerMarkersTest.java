@@ -49,8 +49,8 @@ public class CompilerMarkersTest {
 
   @Test public void theMessagesOfALineShareOneIconOfTheMostSevereColor() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(2, 0, true, true, "unused <x>"), new CompilerMessage(2, 0, true, false, "undeclared\nnote: here"),
-                         new CompilerMessage(3, 0, true, true, "deprecated"), new CompilerMessage(1, 0, false, false, "call left() once")));
+    markers.show(List.of(new CompilerMessage(2, 0, true, "unused <x>"), new CompilerMessage(2, 0, false, "undeclared\nnote: here"),
+                         new CompilerMessage(3, 0, true, "deprecated"), new CompilerMessage(0, 0, false, "call left() once")));
     assertEquals(1, iconsOn(1).length);
     assertTrue(iconsOn(1)[0].getToolTip().contains("call left() once"), iconsOn(1)[0].getToolTip());
     GutterIconInfo[] second = iconsOn(2);
@@ -64,8 +64,8 @@ public class CompilerMarkersTest {
 
   @Test public void aNewCompilationReplacesTheIcons() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(2, 0, true, false, "undeclared")));
-    markers.show(List.of(new CompilerMessage(3, 0, true, true, "deprecated")));
+    markers.show(List.of(new CompilerMessage(2, 0, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, true, "deprecated")));
     assertEquals(0, iconsOn(2).length);
     assertEquals(1, iconsOn(3).length);
     markers.show(List.of());
@@ -74,7 +74,7 @@ public class CompilerMarkersTest {
 
   @Test public void editingTheCodeMovesAndDimsTheIcons() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(3, 0, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, false, "undeclared")));
     code.insert("added\n", 0);
     SwingUtilities.invokeAndWait(() -> {}); // the icons are dimmed once the document changed
     assertEquals(0, iconsOn(3).length);
@@ -85,10 +85,10 @@ public class CompilerMarkersTest {
 
   @Test public void aNewCompilationAfterAnEditShowsBrightIcons() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(3, 0, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, false, "undeclared")));
     code.insert("added\n", 0);
     SwingUtilities.invokeAndWait(() -> {});
-    markers.show(List.of(new CompilerMessage(3, 0, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, false, "undeclared")));
     assertFalse(iconsOn(3)[0].getToolTip().contains("obsolete"), iconsOn(3)[0].getToolTip());
     assertEquals(255, colorOf(iconsOn(3)[0].getIcon()).getAlpha());
     assertEquals(0, iconsOn(4).length);
@@ -97,7 +97,7 @@ public class CompilerMarkersTest {
   /** The code may have got shorter since its compilation */
   @Test public void aMessageBeyondTheEndOfTheCodeIsOnItsLastLine() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(9, 0, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(9, 0, false, "undeclared")));
     assertEquals(1, iconsOn(5).length);
   }
 
@@ -128,7 +128,7 @@ public class CompilerMarkersTest {
   @Test public void theTokenAtTheColumnOfAMessageIsUnderlined() throws Exception
   {
     code.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-    compiled("int a = 1;\n  toto = \"a string\";\n", new CompilerMessage(2, 3, true, false, "undeclared"), new CompilerMessage(2, 10, true, true, "a warning"));
+    compiled("int a = 1;\n  toto = \"a string\";\n", new CompilerMessage(2, 3, false, "undeclared"), new CompilerMessage(2, 10, true, "a warning"));
     assertEquals(List.of("1:13:4", "1:20:10"), underlines()); // toto, and the whole string
     ParserNotice error = notices().get(0);
     assertEquals(ParserNotice.Level.ERROR, error.getLevel());
@@ -141,14 +141,14 @@ public class CompilerMarkersTest {
 
   @Test public void aMessageWithoutColumnOrPointingAtBlanksUnderlinesItsLineAndAnUnsureOneNothing() throws Exception
   {
-    compiled("first\n  second\nthird\n", new CompilerMessage(1, 0, true, false, "no column"), new CompilerMessage(2, 1, true, false, "at blanks"),
-             new CompilerMessage(3, 9, true, false, "beyond the line"), new CompilerMessage(1, 0, false, false, "unsure"));
+    compiled("first\n  second\nthird\n", new CompilerMessage(1, 0, false, "no column"), new CompilerMessage(2, 1, false, "at blanks"),
+             new CompilerMessage(3, 9, false, "beyond the line"), new CompilerMessage(0, 0, false, "unsure"));
     assertEquals(List.of("0", "1", "2"), underlines());
   }
 
   @Test public void editingTheCodeMovesAndDimsTheUnderlinesUntilTheNextCompilation() throws Exception
   {
-    compiled("first\nsecond\nthird\n", new CompilerMessage(2, 1, true, false, "undeclared"));
+    compiled("first\nsecond\nthird\n", new CompilerMessage(2, 1, false, "undeclared"));
     SwingUtilities.invokeAndWait(() -> code.insert("added\n", 0));
     assertEquals(List.of("2:12:6"), underlines());
     ParserNotice notice = notices().get(0);

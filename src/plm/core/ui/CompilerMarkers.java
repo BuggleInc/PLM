@@ -81,7 +81,8 @@ public class CompilerMarkers extends AbstractParser implements DocumentListener 
   /** The mark of that message: the token at its column, or its whole line if it has none or if it points at blanks */
   private Mark mark(CompilerMessage message)
   {
-    Element line  = code.getDocument().getDefaultRootElement().getElement(Math.min(message.line(), code.getLineCount()) - 1);
+    Element line =
+        code.getDocument().getDefaultRootElement().getElement(Math.min(Math.max(message.line(), 1), code.getLineCount()) - 1); // first line if unknown
     int offset    = line.getStartOffset() + message.column() - 1;
     Token token   = message.column() > 0 && offset < line.getEndOffset() - 1 ? code.modelToToken(offset) : null;
     boolean whole = token == null || token.isWhitespace();
@@ -121,7 +122,7 @@ public class CompilerMarkers extends AbstractParser implements DocumentListener 
     Element lines             = document.getDefaultRootElement();
     for (Mark mark : marks) {
       CompilerMessage message = mark.message();
-      if (!message.sure())
+      if (message.line() == 0)
         continue;
       int line                   = lines.getElementIndex(mark.start().getOffset());
       DefaultParserNotice notice = mark.length() == 0 ? new DefaultParserNotice(this, message.text(), line)
@@ -176,7 +177,7 @@ public class CompilerMarkers extends AbstractParser implements DocumentListener 
       g2.setColor(error() ? RED : YELLOW);
       g2.fillOval(x + 1, y + 1, size - 2, size - 2);
       g2.setColor(error() ? Color.WHITE : Color.BLACK);
-      boolean sure = messages.stream().allMatch(CompilerMessage::sure);
+      boolean sure = messages.stream().allMatch(message -> message.line() > 0);
       if (sure && error()) {
         g2.setStroke(new BasicStroke(size / 8f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         int from = x + size * 5 / 16, to = x + size - size * 5 / 16, top = y + size * 5 / 16, bottom = y + size - size * 5 / 16;
