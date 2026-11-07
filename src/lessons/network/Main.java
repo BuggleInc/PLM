@@ -18,6 +18,6 @@ public class Main extends Lesson {
     addExercise(new UdpClient(this));
     addExercise(new UdpDns(this));
     addExercise(new UdpEcho(this));
-    addExercise(new XmppClient(this));
+    // addExercise(new XmppClient(this));
   }
 }
