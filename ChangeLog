@@ -5,33 +5,61 @@
       If the student writes an infinite loop, this won't get stopped, but at least the PLM can compile.
     - Modernize the build chain by using maven  [Juan Manuel Méndez Rey]
     - Modernize the C lang; student's printfs are now shown in the console
-    - C lang: use the Address Sanitizer rather than valgrind: it's ways faster and we control the compilation anyway.
+    - C lang: use the Address Sanitizer rather than valgrind: it's ways faster, and we control the compilation anyway.
     - Scala: Move from Scala2 to Scala 3.9
     - Move from junit4 to junit5.
 
-  * Simplify:
+  * The entities are now executed as a separate process, with a textual protocol for the RPCs from the entities to the PLM.
+    - The resulting design is less clumsy and that clearity makes the code more efficient and maintainable.
+    - Primitives (those RPCs) can now be translated with gettext, are now documented from the source code directly, and can be 
+      extended/adapted by a facade provided by the programming language.
+    - Primitives can be disabled by a given exercise if the pedagogy requires to (see "API gating" in the doc).
+    - Only the Java entity is compiled within the PLM jarfile. The other entities in Scala, Python and C are only used as a base
+      for the harness that executes the student code. So the Scala entities have a name clash with the Java entities but it's fine.
+
+  * Simplifications and refactorings:
     - Kill ExerciseTemplatingEntity. The design is so much simpler without it.
+    - The templating code was completely refactored, and all existing entities adapted.
+    - Several mutable globals and singletons were replaced by parameter passing, to allow for the tests to run in parallel.
+    - SessionDB (saves the student's code) was refactored. It would now be possible to change the PLM into a multiuser system.
+    - Kill the "call for help" feature. It never worked anyway.
+
+  * Learning material:
+    - Every universe can now serialize the worlds, to not recompute them when the lesson is loaded.
+    - Introduce a Networking lesson, limited to the applicative layer for now. See PEDAGOGY.md
+
+  * Documentation:
+    - CONTRIBUTING is now a complete technical documentation, giving an accurate overview of the code.
+    - PEDAGOGY describe the pedagogical stance, the mechanism provided to the teachers and content authors, as well as the
+      existing learning material, stressing the pedagogic choices underlying it. It also details our learning analytics.
+
+  * Editor and UI
+    - Add a search feature (Ctrl-F) to the code and HTML panes
+    - Add a zoom (Ctrl+/Ctrl-/Ctrl0) to the code and HTML panes
+    - Add code completion on the primitives provided by the current universe
+    - Turn the compilation errors and warnings into markers in the left margin and into underlyings with a tooltip
 
   * Fix bugs:
+    - Lang C is now very stable and well tested, in Linux, Mac and Windows.
+    - Add many tests to get a decent coverage of the core.
     - Make sure we don't try to sign git commits even if the user local configuration requests otherwise.
     - Only log error messages, not the deprecation messages from the PLM itself.  [Juan Manuel Méndez Rey]
     - #450, #523: Code was always reported as successful in C, even if it did not compile.
 
-  (TBC)
 
   This release is the first major PLM release since over 10 years, so I feel like I (Mt) need to explain a bit how we arrived
-  here. This text is a bit personal and maybe offtopic, so nobody forces you to read it if you're not interested :)
+  here. This text is a bit personal and maybe off-topic, so nobody forces you to read it if you're not interested :)
 
   The story of the PLM is not completely linear. This software was started in 2008 when I got frustrated from my other big
   project (SimGrid) which is technically very challenging. In some sense, I work on the PLM when I get fed up with the SimGrid
-  challenges. The PLM was initialy written with Gérald Oster for our students at ESIAL, a graduate school for IT engineers. 
+  challenges. The PLM was initially written with Gérald Oster for our students at ESIAL, a graduate school for IT engineers. 
   
   In 2014, It was working so well that we got a funding from Inria to modernize and extend this software. One important goal was
   to allow the teachers to efficiently help their students during a PLM session by converting a heavy client in Java into a
   webapp in Scala. We hired an engineer and started the conversion, but it turned out to be much more complicated than expected. 
   
   The technical debt was much higher than expected. Turning a single user tool into a multi-user system was difficult. Executing
-  the student code in remote shared executors was difficult. Orchestring the dockerized services was difficult. Rendering the
+  the student code in remote shared executors was difficult. Orchestrating the dockerized services was difficult. Rendering the
   outcome of remote executions was difficult. In addition, we did several design mistakes. We started the conversion too quickly
   without first clearing the technical debt. We went for a fancy but experimental web framework, and added many neat
   dependencies that resulted in a sort of technological firework (and dependency puzzle). Finally, I was hired by another
@@ -40,7 +68,7 @@
   In 2017, I released v2.7 (The Pragmatic and thus Despicable release), trying to restart the development of the v2 branch to
   build on a codebase that I at least understand. It was a tiny release only acknowledging the fact that v3 was a dead project.
   For almost 10 years, I was sad that I could not salvage the v3. I tried a reimplementation from scratch in Rust with a group
-  of students, but it did not went through. I tried to motivate colleagues to join me in this effort, but understandably nobody
+  of students, but it did not go through. I tried to motivate colleagues to join me in this effort, but understandably nobody
   wants to invest time in a dead project. I tried twice to get the PLM exercises adopted by another platform that would be
   maintained, but the exercise base heavily depends on didactic features that are very specific to the PLM (see PEDAGOGY.md).
 
@@ -54,10 +82,10 @@
   to be an individualistic plague, only intended to give a strong grip on our minds to the techno-fascists that are threatening
   our future.
 
-  I wanted to experiment on how Claude Code could help me salvaging the PLM from its technical debt (a dead project cannot
+  I wanted to experiment on how Claude Code could help me salvage the PLM from its technical debt (a dead project cannot
   suffer). I asked for a technical documentation of the compilation workflow, and the doc was rather good: perfectly
   enlightening how messy the situation was. I iterated 5 or 10 weeks, asking for small patches that change both the code and the
-  technical doc, reviewing everything and rewriting a lot myself. I managed to get it done. I got rid of the technical debt in
+  technical doc, reviewing everything and rewriting a lot myself. I managed to get it done, to get rid of the technical debt in
   the PLM. The compilation workflow is now rather clean and well tested, the C language is working well, the data mutability was
   pushed back to acceptable levels, and the Game singleton is only used in the UI. On Linux, Mac and Windows.
 
@@ -77,10 +105,10 @@
   addition to my usual work as a full professor at the university. It was also a very interesting period, very instructive on
   the addictive nature of this technology. Friends started to ask why I was inflicting this to myself, but I was hooked. It's a
   bit of https://xkcd.com/242/ but I also have a very strong incentive from my professional milieu to get acquainted to the gen
-  IA technology despite my initial conscientious objection, so that I can teach about it. So I kept taking the Kool Aid, just to
+  IA technology despite my initial conscientious objection, so that I can teach about it. So I kept taking the Kool-Aid, just to
   understand what I could do to the tool and what it would do to me.
 
-  At some point, a colleague felt pity and gave me an access to the team plan she had for free for her research team. It really
+  At some point, a colleague felt pity and gave me access to the team plan she had for free for her research team. It really
   helped to alleviate the addiction. Since I have more token that my methods could possibly use, I can have only one work
   sessions or two per day. I still don't get enough sleep, but at least my nights are not interrupted anymore. I still strive to
   save tokens, to at least not waste this manna that burns the planet, but also because it's an efficient way to review and
@@ -89,7 +117,7 @@
   As an experiment, I tried to use that version of the robot to design and implement a PLM lesson on the application layer of
   networking. This topic is challenging to teach because it is technically demanding for both the students and the teachers. The
   students cannot think in isolation but must work with an environment through an (obscure) API. The feedback they get from that
-  environment is scarce when it exists, making it difficult for the students to build an useful mental representation of what's
+  environment is scarce when it exists, making it difficult for the students to build a useful mental representation of what's
   going on. As a teacher, I was somewhat happy of my lectures but much less of the practical sessions. The network varies and
   fail so any harness I could build was failing faster that the student code it was supposed to test, while coding without
   harness within the time limits of practical sessions could only lead on hollow and uninteresting tasks.
@@ -98,7 +126,7 @@
   simulated servers to discover the IRC, DNS, XMPP, SMTP, HTTP and FTP protocols, to fully get the grasp on the message framing
   issue. The used network API has exactly the same syntax and semantic than the idiomatic network API of each language. Each
   server realistically implements a subset of the protocol. The documentation is instructive, if not nice looking. The graphical
-  representation of the situation helps building an effective mental representation. The simulated servers provide increadibly
+  representation of the situation helps to build an effective mental representation. The simulated servers provide incredibly
   affectionate error messages compared to real implementations. I even scripted the exercises to give the students to interact
   with scripted bots and make the exercise less ingrate.
   
@@ -108,50 +136,49 @@
   my students to handle IA as a strong drug (somehow related to a legal cocaine) and to not use it before 25 years, if I was a
   consumer myself? I decided to split the roles with the robot. It generates the code from my prompt and I review it before
   integration to the git. I also sharpen manually the technical documentation from its drafts. For the learning material
-  presented to the students, we do the opposite. I write it manually and the robot is only to diagnose technical inacuracy and
-  didactic inconsistancies. I also write the PEDAGOGY file that gives the teacher documentation. It's not perfect (and really
-  time consuming because the robot shows no mercy in its reviews), but this approach cannot be mistaken with an advertisment for
+  presented to the students, we do the opposite. I write it manually and the robot is only to diagnose technical inaccuracy and
+  didactic inconsistencies. I also write the PEDAGOGY file that gives the teacher documentation. It's not perfect (and really
+  time-consuming because the robot shows no mercy in its reviews), but this approach cannot be mistaken with an advertisement for
   the technology by my students. In case you wonder, I teach in a very specific institution where over 90% of our undergrads
   become academic researchers. Currently, maybe one quarter of our undergrad students are conscientious objectors while graduated
-  students seem to all wov to not use gen IA for there studies, to better understand what they are taught.
+  students seem to all vow to not use gen IA for there studies, to better understand what they are taught. ¯\_(ツ)_/¯
 
   I would not say that the coding assistant saved me any time ever. It allowed me to code things that I could not dream of
-  coding manually (no time for that), but it keeps side-questing me. Right now, I am supposed to write a XMPP client from
-  scratch to rewrite the draft of an mission text that was generated (rewriting almost everything is needed both for my ethical
+  coding manually (no time for that), but it keeps side-questing me. Right now, I am supposed to write an XMPP client from
+  scratch to rewrite the draft of a mission text that was generated (rewriting almost everything is needed both for my ethical
   point of view but also to fit my standards in learning material), but instead I added colored markers and underlining to
-  represent the compilers' error messages in the editor, code completion and I'm considering adding a full featured debugger. I
+  represent the compilers' error messages in the editor, code completion, and I'm considering adding a full-featured debugger. I
   think that the coding assistant almost never saved me any time, but instead trapped me into doing things that are neat and
-  useless. Some say it's a skill issue, I'd say that when your favorite tool is a screw driver, you lose interest in nails.
+  useless. Some say it's a skill issue, I'd say that when your favorite tool is a screwdriver, you lose interest in nails.
 
   I will continue to use a coding assistant for the implementation of the PLM as long as I have an access, but I will always use
-  it as if my access could be closed tomorrow. I want ensure that I could get back at writing each line of change next month.
-  
-  I very reluctant to use it in SimGrid, for two reasons. First, SimGrid is so hard to write that I'm afraid that the robot
-  could too easily fool me into lousy plans. The architecture and code of the PLM is simple enough that I can keep a clear
+  it as if my access could be closed tomorrow. I want to ensure that I could get back at writing each line of change next month.
+  But I am very reluctant to use it in SimGrid, for two reasons. First, SimGrid is so hard to write that I'm afraid that the
+  robot could too easily fool me into lousy plans. The architecture and code of the PLM is simple enough that I can keep a clear
   vision of the path I want to take. Working on a model-checker that can formally verify unmodified POSIX applications at
   industrial quality grade (it's the pitch of McSimGrid, my current work within SimGrid) is outrageously complicated. Something
-  nobody ever attempted before afaik. I could use the power of a coding assistant, but I'm affraid that a powerful coding tool
+  nobody ever attempted before (afaik). I could use the power of a coding assistant, but I'm afraid that a powerful coding tool
   could bring more complexity (rings and bells) that I could handle manually once the tool gets unavailable.
   
-  Second, SimGrid is a research project and I'm affraid that a coding assistant could drain my creativity and restrain me to
-  middling solutions. These tools are said to liberate their users of chore of the tactical programing, to save time for
-  strategic thinking, but I'm not sure about it. When your favorite tool is a screw driver, you lose interest in nails. I'm not
+  Second, SimGrid is a research project, and I'm afraid that a coding assistant could drain my creativity and restrain me to
+  middling solutions. These tools are said to liberate their users of chore of the tactical programming, to save time for
+  strategic thinking, but I'm not sure about it. When your favorite tool is a screwdriver, you lose interest in nails. I'm not
   sure at all that we would have written SimGrid 25 years ago if we had coding assistants at that time. We were initially not
   interested in writing a simulator of distributed systems in the first place, but we needed such a tool to test our scientific
-  contributions. As we intially disregarded the importance of this piece of software, we wrote it in a rush without a proper
-  literature review. In particular, we did not knew of discrete event simulation (DES) at that time. But that's a good news
+  contributions. As we initially disregarded the importance of this piece of software, we wrote it in a rush without a proper
+  literature review. In particular, we did not know of discrete event simulation (DES) at that time. But that's a good news
   because the main feature of SimGrid (computing the performance contention of data streams that compete over the resources)
-  would have been impossible in a DES where the events are supposed independent: congestion is not explicitely modeled in other
+  would have been impossible in a DES where the events are supposed independent: congestion is not explicitly modeled in other
   network simulators, but emerge from the simulation at microscopic scale of network packets. Not knowing about this commonplace
   allowed us to prove it wrong. Accuracy in network simulation is possible without computer-intensive detailed simulations,
-  provided a careful work to validate and calibrate the models. Retrospectively, I think that we'd have instead vibe coded a
+  provided a careful work to validate and calibrate the models. Retrospectively, I think that we'd have instead vibe-coded a
   middling simulator, but with an impressive graphical interface greatly increasing our publication productivity...
 
   Sorry to be so verbose on my motivations and on SimGrid in the PLM ChangeLog, but it's important for me to be very explicit
   about my feeling on coding assistants (see also the "Why to learn programming when I could vibe code it" section of the
   PEDAGOGY document). My opinion is now that these tools may be OK if you are more interested in using the program than in how
   it's built inside (provided that you're not a conscientious objector), but using them to do your work seems very toxic to me.
-  You'll soon lose your professional habilities because of these leeches.
+  You'll soon lose your professional abilities because of these leeches.
 
 20210630: 2.9.3
 
