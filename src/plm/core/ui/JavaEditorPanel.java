@@ -8,14 +8,11 @@ import plm.core.lang.RemoteExecutionLang;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Exercise.WorldKind;
-import plm.universe.Entity;
-import plm.universe.IEntityStackListener;
 
-public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IEntityStackListener {
+public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel {
   private static final long serialVersionUID = 1L;
   SourceFileDocumentSynchronizer sync;
   RSyntaxTextArea codeEditor;
-  Entity tracedEntity;
   /** The messages of the last compilation, in the margin */
   final CompilerMarkers markers;
   final CodeCompletion completion;
@@ -73,11 +70,6 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     markers    = new CompilerMarkers(this);
     completion =
         new CodeCompletion(codeEditor, exo.getWorlds(WorldKind.INITIAL).get(0), (RemoteExecutionLang)lang, () -> Game.i18n); // Lightbot has another editor
-
-    /* Highlighting stuff, to trace entities */
-    tracedEntity = Game.getInstance().getSelectedEntity();
-    if (tracedEntity != null)
-      tracedEntity.addStackListener(this);
   }
   @Override public void clear()
   {
@@ -85,28 +77,5 @@ public class JavaEditorPanel extends RTextScrollPane implements IEditorPanel, IE
     completion.autoCompletion.uninstall(); // it listens to the look and feel, which would keep this editor
     sync       = null;
     codeEditor = null;
-    if (tracedEntity != null)
-      tracedEntity.removeStackListener(this);
-  }
-  @Override public void entityTraceChanged(Entity e, StackTraceElement[] trace)
-  {
-    /* TODO:  the following code was not working anymore...
-    for (StackTraceElement elm:trace) {
-            // added defenses against NPE because sometimes (launched from a .jar file, a NullPointerException might happen...)
-            if (elm.getFileName() != null && codeEditor != null && (elm.getFileName().equals(srcFile.getName()) ||
-    elm.getFileName().equals(srcFile.getName()+".java from JavaFileObjectImpl"))) { SyntaxDocument sd = ((SyntaxDocument) codeEditor.getDocument()); if (sd !=
-    null) sd.setCurrentEditedLineNumber(elm.getLineNumber()); codeEditor.repaint();
-            }
-    }
-     */
-  }
-  @Override public void tracedEntityChanged(Entity e)
-  {
-    if (tracedEntity != null)
-      tracedEntity.removeStackListener(this);
-
-    tracedEntity = e;
-    if (tracedEntity != null)
-      tracedEntity.addStackListener(this);
   }
 }
