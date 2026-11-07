@@ -105,17 +105,16 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
       removeTabAt(getTabCount() - 1);
     }
 
-    if (currentExercise instanceof Exercise) {
+    if (currentExercise instanceof Exercise exo) {
       /* Add back the code editor, if there is a source file in that language */
-      Exercise exo = (Exercise)currentExercise;
       if (exo.getSourceFileCount(lang) > 0)
         this.addTab(exo.getTabName(), null, exo.getEditorPanel(lang), Game.i18n.tr("Type your code here"));
       if (getTabCount() > tabPosition)
         setSelectedIndex(tabPosition);
     }
     /* Change the mission text, because the CSS changed */
-    missionTab.setEditorKit(new PlmHtmlEditorKit(game.getCurrentLesson().getCurrentExercise()));
-    missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(lang));
+    missionTab.setEditorKit(new PlmHtmlEditorKit(currentExercise));
+    missionTab.setText(currentExercise.getMission(lang));
     missionTab.setCaretPosition(0);
   }
 
