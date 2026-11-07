@@ -6,13 +6,11 @@ import java.util.List;
 import java.util.function.Supplier;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.KeyStroke;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import plm.core.GameListener;
@@ -69,8 +67,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
     this.addTab(Game.i18n.tr("Mission"), null, new JScrollPane(missionTab), Game.i18n.tr("Description of the work to do"));
 
-    // PlmSyntaxPane.initKits();
-
     /* Register to game engine */
     this.game = Game.getInstance();
     this.game.addGameListener(this);
@@ -80,32 +76,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
     /* add code tabs if the initialization is done already */
     if (game.getCurrentLesson() != null)
       currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
-
-    /* removes keybindings from the JTextField
-     * Used to permit CTRL-PageUp and CTR-PageDown to change tabs */
-
-    //		this.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("ctrl pressed PAGE_DOWN"), null );
-    //		this.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("ctrl pressed PAGE_UP" ), null );
-    //		this.missionTab.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN,InputEvent.CTRL_DOWN_MASK
-    //), null );
-    //		this.missionTab.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP,InputEvent.CTRL_DOWN_MASK
-    //), null ); 		System.out.println(showKeys(this, "MissionEditorTabs")); 		System.out.println(showKeys(missionTab, "JEditorPane"));
   }
 
-  public static String showKeys(JComponent jc, String nom)
-  {
-    String res = "";
-    res += nom + " : ";
-
-    KeyStroke[] tab = jc.getInputMap().allKeys();
-    for (int i = 0; i < tab.length - 1; i++) {
-      res += tab[i].toString() + " , ";
-      if (tab[i].toString().contains("PAGE_UP") || tab[i].toString().contains("PAGE_DOWN"))
-        System.err.println(tab[i].toString());
-    }
-    res += tab[tab.length - 1].toString() + "";
-    return res;
-  }
   @Override public void currentExerciseHasChanged(Lecture lecture)
   {
     currentExercise = lecture;
