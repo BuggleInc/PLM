@@ -475,13 +475,19 @@ which an old message of the friend of Bob forwarded just before his answer, whic
 his own messages. In C, the student frames by hand with a depth counter (the tips give the code); in Python, it uses the
 incremental parser of the standard library, counting the depth of its events.
 
-The planned progression continues with the treasure hunt over HTTP (redirections and `Content-Length` on a persistent
-connection, then crawling a set of pages), FTP in passive mode, then the server side: the deadlocks of badly designed protocols,
-the short writes, the handling of errors, and a server accepting several clients. A last exercise could send an emoji, to
-introduce the encoding of characters once the system calls are mastered: only ASCII data is accepted until then.
+The planned progression of the framing quest continues with:
+* SMTP (Karel asks you to post an email in his name -- also teaching how insecure emails are)
+* a treasure hunt over HTTP (redirections and `Content-Length` on a persistent connection, then crawling a set of pages, then
+  Transfer-Encoding: chunked)
+* FTP in passive mode
+
+Then an
+* the server side: the deadlocks of badly designed protocols, the short writes, the handling of errors, and a TCP server
+  accepting several clients. A last exercise could send an emoji, to introduce the encoding of characters once the system calls
+  are mastered: only ASCII data is accepted until then.
 
 TODO:
-* The short writes are not exercised yet: `send()` and `write()` always write everything.
+* The short writes are not exercised yet: `write()` always write everything.
 
 ## Recreative lessons
 
