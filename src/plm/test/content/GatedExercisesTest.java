@@ -2,7 +2,6 @@ package plm.test.content;
 
 import static plm.test.lang.CommandExecutorTest.command;
 
-import java.util.Locale;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import plm.core.model.Game;
-import plm.core.utils.FileUtils;
 import plm.universe.CommandExecutor;
 import plm.universe.Entity;
 import plm.universe.PrimitiveRefusedException;
@@ -18,11 +16,7 @@ import plm.universe.PrimitiveRefusedException;
 /** The exercises that gate the API of their world refuse the calls that would defeat their pedagogical goal. */
 public class GatedExercisesTest {
 
-  @BeforeAll static void initTranslations()
-  {
-    FileUtils.setLocale(new Locale("en"));
-    Game.getInstance();
-  }
+  @BeforeAll static void initTranslations() { Game.getInstance(); }
 
   /** Entities of exercises that gate their API, and a call that each of them refuses */
   static Stream<Arguments> refusedCalls()

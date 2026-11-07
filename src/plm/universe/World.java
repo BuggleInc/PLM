@@ -294,7 +294,7 @@ public abstract class World {
    */
   public World readFromFile(String path) throws IOException, BrokenWorldFileException
   {
-    try (BufferedReader reader = FileUtils.newFileReader(path, "map", false)) {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "map", null)) {
       return parse(reader, path);
     } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) { // Includes NumberFormatException
       throw new BrokenWorldFileException(path + ".map: malformed content (" + e.getMessage() + ").");
@@ -423,7 +423,7 @@ public abstract class World {
   {
     String filename = type.getCanonicalName().replace('.', File.separatorChar);
     try {
-      return FileUtils.readContentAsText(filename, "html", true).toString();
+      return FileUtils.readContentAsText(filename, "html", Game.getInstance().getLocale()).toString();
     } catch (IOException ex) {
       return "File " + filename + ".html not found.";
     }

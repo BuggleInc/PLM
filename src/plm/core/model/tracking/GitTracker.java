@@ -292,7 +292,7 @@ public class GitTracker implements UserSwitchesListener {
       exoError = outcome.executionError;
     String exoCorrection = ""; // retrieve the correction: the whole entity file, if there is one in this language
     try {
-      exoCorrection = FileUtils.readContentAsText(exo.nameOfCorrectionEntity(), outcome.language.getExt(), false).toString();
+      exoCorrection = FileUtils.readContentAsText(exo.nameOfCorrectionEntity(), outcome.language.getExt(), null).toString();
     } catch (IOException e) {
       // no entity in this language
     }

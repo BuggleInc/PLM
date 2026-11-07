@@ -25,7 +25,6 @@ import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.tracking.GitTracker;
-import plm.core.utils.FileUtils;
 
 /* This ancestor class defines useful methods that are used in specific tests, that are subclasses */
 
@@ -50,7 +49,6 @@ public class ExoTest {
   {
     List<Arguments> result = new LinkedList<>();
 
-    FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
     g.setGitTracker(Mockito.mock(GitTracker.class)); // disable all progress trackers (git, etc)
     g.removeSessionKit();

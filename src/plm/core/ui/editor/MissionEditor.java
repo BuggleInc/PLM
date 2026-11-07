@@ -218,7 +218,7 @@ public class MissionEditor extends JFrame {
   public void loadMission(String path)
   {
     lastPathSelected = path;
-    try (BufferedReader reader = FileUtils.newFileReader(path, "html", false)) {
+    try (BufferedReader reader = FileUtils.newFileReader(path, "html", null)) {
       StringBuffer content = new StringBuffer();
       String line;
       while (null != (line = reader.readLine())) {

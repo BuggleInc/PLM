@@ -2,7 +2,6 @@ package plm.test.universe;
 
 import static plm.test.lang.CommandExecutorTest.command;
 
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +12,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import plm.core.lang.ProgrammingLanguage;
 import plm.core.model.BrokenProgrammingLanguageException;
 import plm.core.model.Game;
-import plm.core.utils.FileUtils;
 import plm.test.lang.CommandExecutorTest.GatedEntity;
 import plm.test.lang.CommandExecutorTest.RecordingEntity;
 import plm.universe.CommandExecutor;
@@ -37,11 +35,7 @@ public class ApiGatingTest {
     public MultiStepBuggle() { forbidMultiStep(); }
   }
 
-  @BeforeAll static void initTranslations()
-  {
-    FileUtils.setLocale(new Locale("en"));
-    Game.getInstance();
-  }
+  @BeforeAll static void initTranslations() { Game.getInstance(); }
 
   /** forbidTeleportation() makes the executor refuse these primitives before even reading their arguments. */
   @ParameterizedTest @ValueSource(strings = {"setX", "setY", "setPos"}) public void testTeleportationIsRefused(String primitive)

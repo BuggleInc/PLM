@@ -76,7 +76,7 @@ public abstract class Lecture {
   {
     StringBuffer sb = null;
     try {
-      sb = FileUtils.readContentAsText(missionFile, "html", true);
+      sb = FileUtils.readContentAsText(missionFile, "html", Game.getInstance().getLocale());
     } catch (IOException ex) {
       setMission(Game.i18n.tr("File {0}.html not found.", missionFile));
       return;

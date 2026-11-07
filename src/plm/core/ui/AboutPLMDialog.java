@@ -84,7 +84,7 @@ public class AboutPLMDialog extends JDialog {
       Pattern itemPattern    = Pattern.compile("^ +[*].*");
       Pattern subItemPattern = Pattern.compile("^ +[-].*");
       boolean inSubItem      = false;
-      for (String s : FileUtils.readContentAsText("ChangeLog", null, false).toString().split("\n")) {
+      for (String s : FileUtils.readContentAsText("ChangeLog", null, null).toString().split("\n")) {
         if (s.startsWith("20")) { // all releases are done in this century
           if (inSubItem)
             ctn.append("</ul>");

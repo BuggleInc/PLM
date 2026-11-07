@@ -58,7 +58,6 @@ import plm.core.ui.action.StopExecution;
 import plm.core.ui.action.SwitchExo;
 import plm.core.ui.action.SwitchLesson;
 import plm.core.ui.action.SwitchUser;
-import plm.core.utils.FileUtils;
 import plm.universe.World;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener, HumanLangChangesListener {
@@ -101,7 +100,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
   {
     super(frameTitle);
 
-    FileUtils.setLocale(this.getLocale());
     initComponents(Game.getInstance());
     this.keyListeners(exerciseView);
     Zoom.bindKeys(getRootPane());
@@ -325,7 +323,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
     for (String[] lang : Game.humanLangs) {
       JMenuItem item = new JRadioButtonMenuItem(new SetLanguage(g, lang[0], new Locale(lang[1])));
-      if (lang[1].equals(FileUtils.getLocale().getLanguage()))
+      if (lang[1].equals(Game.getInstance().getLocale().getLanguage()))
         item.setSelected(true);
       group.add(item);
       menuLangHuman.add(item);

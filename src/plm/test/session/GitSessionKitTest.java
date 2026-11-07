@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +16,6 @@ import plm.core.model.Game;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.SessionDB;
-import plm.core.utils.FileUtils;
 import plm.test.simple.Main;
 import plm.test.simple.SimpleExercise;
 
@@ -33,7 +31,6 @@ public class GitSessionKitTest {
 
   @BeforeEach public void setUp() throws IOException, InterruptedException
   {
-    FileUtils.setLocale(new Locale("en"));
     langs  = Game.getInstance().programmingLanguageManager;
     db     = Game.getInstance().studentWork;
     lesson = new Main();

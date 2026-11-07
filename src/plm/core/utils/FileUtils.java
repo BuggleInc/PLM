@@ -25,23 +25,18 @@ import plm.core.model.lesson.ExerciseTemplated;
  *
  *  The second problem it deals with is about translations. When looking for a help file,
  *  it first search for a suitable translated version. If not found, it fallbacks to the
- *  English version. This is done through the locale static variable. Yeah, that's not
- *  clean but it just works.
+ *  English version. The callers give the locale of the translation to look for, or null for
+ *  a file that is not translated.
  */
 public class FileUtils {
-  private static Locale locale;
-
   private final static String[] directories = {"", "lib/", "src/"};
 
-  /** Specifies the locale that we have to use when looking for translated files */
-  public static void setLocale(Locale l) { locale = l; }
-  public static Locale getLocale() { return locale == null ? new Locale("en") : locale; }
-
-  public static BufferedReader newFileReader(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException
+  /** Opens the file, in its translation into that locale if there is one; null for a file that is not translated */
+  public static BufferedReader newFileReader(String file, String extension, Locale locale) throws FileNotFoundException, UnsupportedEncodingException
   {
     /* first check if we can find it unmodified */
     int i = 0;
-    if (!translatable) { // extension is ignored in this case. That's useful to get it from a file chooser
+    if (locale == null) { // not translated: the extension is ignored in this case. That's useful to get it from a file chooser
       while (i < directories.length) {
         if ((new File(directories[i] + file)).exists()) {
           return new BufferedReader(new FileReader(directories[i] + file));
@@ -51,12 +46,9 @@ public class FileUtils {
       }
     }
 
-    if (translatable && locale == null)
-      throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
-
     /* Build the list of filenames we will iterate (translated if any, and raw) */
     String[] fileNames;
-    if (translatable && !locale.getLanguage().equals("en")) {
+    if (locale != null && !locale.getLanguage().equals("en")) {
       String lang = locale.getLanguage();
       if (lang.equals("pt_br"))
         lang = "pt_BR"; // Damn stupid java. Could you please stick to ISO norms and put the country uppercase?
@@ -116,9 +108,9 @@ public class FileUtils {
     return ExerciseTemplated.class.getResource("/" + fileName.replace('\\', '/')) != null;
   }
 
-  public static StringBuffer readContentAsText(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException
+  public static StringBuffer readContentAsText(String file, String extension, Locale locale) throws FileNotFoundException, UnsupportedEncodingException
   {
-    BufferedReader br = FileUtils.newFileReader(file, extension, translatable);
+    BufferedReader br = FileUtils.newFileReader(file, extension, locale);
     String newLine    = System.getProperty("line.separator");
 
     StringBuffer sb = new StringBuffer();

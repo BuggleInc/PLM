@@ -478,7 +478,8 @@
             <include>**/AllTests.java</include>
             <include>**/gui/MainFrameSmokeTest.java</include>
           </includes>
-          <argLine>${argLine} -Djava.awt.headless=false</argLine>
+          <!-- The tests expect the texts in English, the first human language of the PLM being the one of the system -->
+          <argLine>${argLine} -Djava.awt.headless=false -Duser.language=en -Duser.country=US</argLine>
           <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
           <!-- <redirectTestOutputToFile>true</redirectTestOutputToFile> -->
           <!-- Run each test class in its own JVM. PLM is full of singletons

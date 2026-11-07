@@ -19,7 +19,6 @@ import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.session.SourceFile;
 import plm.core.model.tracking.GitTracker;
-import plm.core.utils.FileUtils;
 import plm.test.simple.Main;
 import plm.test.simple.SimpleExercise;
 
@@ -33,7 +32,6 @@ public abstract class SimpleExerciseTest {
   {
     this.pl = pl;
 
-    FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
     g.setGitTracker(Mockito.mock(GitTracker.class)); // disable all progress trackers (git, etc)
     g.removeSessionKit();

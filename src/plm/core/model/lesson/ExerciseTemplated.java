@@ -47,7 +47,7 @@ public abstract class ExerciseTemplated extends Exercise {
     String shownFilename = filename.replace('.', '/') + "." + lang.getExt();
     StringBuffer sb      = null;
     try {
-      sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
+      sb = FileUtils.readContentAsText(filename, lang.getExt(), null);
     } catch (IOException ex) {
       throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.", filename.replace('.', '/'), lang.getExt()));
     }

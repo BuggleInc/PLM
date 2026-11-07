@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -34,7 +35,6 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.lesson.RunOutcome.kind;
 import plm.core.model.tracking.GitTracker;
-import plm.core.utils.FileUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class GitTrackerTest {
@@ -50,7 +50,7 @@ public class GitTrackerTest {
     Users users = Mockito.mock(Users.class);
     User user   = Mockito.mock(User.class);
 
-    Game.i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
+    Game.i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", Locale.ENGLISH, I18nFactory.FALLBACK);
 
     userUUID = UUID.randomUUID().toString();
 

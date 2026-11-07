@@ -3,7 +3,6 @@ package plm.test.model;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.Future;
 import javax.swing.SwingUtilities;
 import org.junit.jupiter.api.AfterEach;
@@ -19,7 +18,6 @@ import plm.core.model.Game.GameState;
 import plm.core.model.LessonRunner;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.RunOutcome;
-import plm.core.utils.FileUtils;
 
 /** What LessonRunner reports and the states that it goes through, whatever happens to the execution of the exercise. */
 public class LessonRunnerTest {
@@ -31,7 +29,6 @@ public class LessonRunnerTest {
 
   @BeforeEach public void setUp() throws ReflectiveOperationException
   {
-    FileUtils.setLocale(new Locale("en"));
     game = Game.getInstance();
     lang = game.programmingLanguageManager.JAVA;
 

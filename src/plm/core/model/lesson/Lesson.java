@@ -86,7 +86,7 @@ public abstract class Lesson {
     String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
     StringBuffer sb = null;
     try {
-      sb = FileUtils.readContentAsText(filename, "html", true);
+      sb = FileUtils.readContentAsText(filename, "html", Game.getInstance().getLocale());
     } catch (IOException ex) {
       about = Game.i18n.tr("File {0}.html not found.", filename);
       name  = filename;

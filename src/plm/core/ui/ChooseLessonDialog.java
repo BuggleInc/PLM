@@ -40,7 +40,6 @@ public class ChooseLessonDialog extends JFrame {
     super();
     Game.getInstance().setCaptureOutput(false);
     setTitle(Game.i18n.tr("Choose your lesson"));
-    FileUtils.setLocale(this.getLocale());
     initComponents(Game.getInstance());
   }
 
@@ -203,7 +202,7 @@ class LessonOverview extends JPanel {
     String filename = path.replace('.', File.separatorChar) + "/short_desc";
     StringBuffer sb = null;
     try {
-      sb = FileUtils.readContentAsText(filename, "html", true);
+      sb = FileUtils.readContentAsText(filename, "html", Game.getInstance().getLocale());
     } catch (IOException ex) {
       filename += ".html";
       sb = new StringBuffer(Game.i18n.tr("<p>(unable to display the short description of this lesson: file {0} not found)</p>", filename));
@@ -267,7 +266,7 @@ class LessonButton extends JButton {
       @Override public void mouseEntered(MouseEvent e)
       {
 
-        try (BufferedReader buffer = FileUtils.newFileReader(filename, "html", true)) {
+        try (BufferedReader buffer = FileUtils.newFileReader(filename, "html", Game.getInstance().getLocale())) {
           String line = buffer.readLine();
           while (line != null && !line.contains("<h3>"))
             line = buffer.readLine();

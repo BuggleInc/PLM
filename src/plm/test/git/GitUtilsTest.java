@@ -3,6 +3,7 @@ package plm.test.git;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Locale;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.NullProgressMonitor;
@@ -18,7 +19,6 @@ import org.xnap.commons.i18n.I18nFactory;
 import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.tracking.GitUtils;
-import plm.core.utils.FileUtils;
 
 public class GitUtilsTest {
 
@@ -38,7 +38,7 @@ public class GitUtilsTest {
   public GitUtilsTest()
   {
     Game.loadProperties();
-    Game.i18n            = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
+    Game.i18n            = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", Locale.ENGLISH, I18nFactory.FALLBACK);
     oldTrackUserProperty = Game.getProperty(trackUserProperty);
     testUser             = new User("testUser", "");
     userBranch           = testUser.getUserUUIDasString();

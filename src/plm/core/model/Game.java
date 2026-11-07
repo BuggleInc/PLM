@@ -46,7 +46,6 @@ import plm.core.model.lesson.Lesson.LoadingOutcome;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.tracking.GitTracker;
-import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.IWorldView;
 import plm.universe.World;
@@ -120,7 +119,7 @@ public class Game implements IWorldView {
   private Users users;
 
   private static boolean ongoingInitialization = false;
-  public static I18n i18n                      = I18nFactory.getI18n(Game.class, "org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
+  public static I18n i18n                      = I18nFactory.getI18n(Game.class, "org.plm.i18n.Messages", Locale.getDefault(), I18nFactory.FALLBACK);
 
   public static Game getInstance()
   {
@@ -771,9 +770,12 @@ public class Game implements IWorldView {
         l.stateChanged(msg);
     });
   }
+  /** The human language of the texts and of the translated files, the one of the system at first */
+  private Locale locale = Locale.getDefault();
+
   public void setLocale(Locale lang)
   {
-    FileUtils.setLocale(lang);
+    locale = lang;
     i18n = I18nFactory.getI18n(getClass(), "org.plm.i18n.Messages", getLocale(), I18nFactory.FALLBACK);
 
     /* FIXME: convert all this to a humanLanguage listener. Done before notifying the listeners, so that they display the new texts */
@@ -795,7 +797,7 @@ public class Game implements IWorldView {
     setCurrentLesson(getCurrentLesson());
     currentLesson.setCurrentExercise(currentLesson.getCurrentExercise());
   }
-  public Locale getLocale() { return FileUtils.getLocale(); }
+  public Locale getLocale() { return locale; }
 
   public void setProgrammingLanguageSafe(ProgrammingLanguage newLanguage)
   {

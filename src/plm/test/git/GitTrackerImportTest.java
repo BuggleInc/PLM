@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -28,7 +29,6 @@ import plm.core.model.User;
 import plm.core.model.Users;
 import plm.core.model.tracking.GitTracker;
 import plm.core.model.tracking.GitUtils;
-import plm.core.utils.FileUtils;
 
 /** Importing the session of a zip file merges its history into the local one, without losing anything */
 public class GitTrackerImportTest {
@@ -48,7 +48,7 @@ public class GitTrackerImportTest {
   @BeforeAll public static void setUpGame()
   {
     Game.getInstance().removeSessionKit(); // importSession() saves and reloads the session of the game: keep it away from the real one
-    Game.i18n = I18nFactory.getI18n(GitTrackerImportTest.class, "org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
+    Game.i18n = I18nFactory.getI18n(GitTrackerImportTest.class, "org.plm.i18n.Messages", Locale.ENGLISH, I18nFactory.FALLBACK);
   }
 
   private static User user(String uuid)

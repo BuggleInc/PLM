@@ -21,7 +21,6 @@ import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.RunOutcome;
 import plm.core.model.tracking.GitTracker;
-import plm.core.utils.FileUtils;
 
 /**
  * MethodsDogHouse refuses, through Exercise.verifySource(), the code that does not call left() exactly once. The check is called
@@ -32,7 +31,6 @@ public class MethodsDogHouseSourceCheckTest {
 
   @BeforeAll static void loadExercise() throws Exception
   {
-    FileUtils.setLocale(new Locale("en"));
     Game g = Game.getInstance();
     g.setGitTracker(Mockito.mock(GitTracker.class));
     g.removeSessionKit();

@@ -557,9 +557,10 @@ since their common history. If the other side modified it, the side whose last c
 
 Tests live in `src/plm/test` and are compiled with the main code (see the surefire configuration in `pom.xml`). The unit tests
 of a few classes sit next to them. The classes receive what they need as parameters rather than reading the `Game` singleton (as
-`CodeCompletion` takes its translations), so that their tests do not change its state. Surefire runs only `AllTests` and
-`MainFrameSmokeTest`, each in its own JVM (`reuseForks=false`), because the `Game` singleton would otherwise leak the GUI
-listeners of the latter into the former.
+`CodeCompletion` takes its translations), so that their tests do not change its state. The JVM of the tests runs in English
+(`-Duser.language=en` in `pom.xml`), since the PLM starts in the language of the system (`Game.getLocale()`). Surefire runs only
+`AllTests` and `MainFrameSmokeTest`, each in its own JVM (`reuseForks=false`), because the `Game` singleton would otherwise leak
+the GUI listeners of the latter into the former.
 
 * *`AllTests`:* the suite chaining `UnitTests` and `ContentTests`.
   * *`UnitTests`:* the code of the PLM, on a minimal universe or on a few real exercises when needed.

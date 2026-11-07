@@ -1,7 +1,6 @@
 package plm.test.session;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,18 +13,13 @@ import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.session.ISourceFileListener;
 import plm.core.model.session.SessionDB;
-import plm.core.utils.FileUtils;
 
 /** What the student wrote is stored by exercise, language and source name, independently from each other. */
 public class SessionDBTest {
   static ProgrammingLanguageManager langs;
   SessionDB db = new SessionDB();
 
-  @BeforeAll static void initGame()
-  {
-    FileUtils.setLocale(new Locale("en"));
-    langs = Game.getInstance().programmingLanguageManager;
-  }
+  @BeforeAll static void initGame() { langs = Game.getInstance().programmingLanguageManager; }
 
   static Lecture exercise(String id)
   {
