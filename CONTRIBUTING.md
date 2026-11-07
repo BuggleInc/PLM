@@ -231,7 +231,8 @@ by the world views are not zoomed.
 ### Compiler messages in the margin of the editor
 
 The errors and warnings of the compilation of the student's code are bullets in the margin of the editor, whose tooltip lists the
-messages of their line. Every language renders its compiler's messages in the same format, which `CompilerMessage.parse()` reads:
+messages of their line, and wavy underlines in the code (see below). Every language renders its compiler's messages in the same
+format, which `CompilerMessage.parse()` reads:
 - A message starts with a line `file:line:column: kind: text`, whose column is optional, as is the whole location (`kind: text`).
   The kind is `error` or `fatal error` for the errors; anything else (`warning`, `info`) is a warning. A `note` is added to the
   previous message, if any.
@@ -268,6 +269,15 @@ mode). `LessonRunner` passes them to `MissionEditorTabs.showCompilerMessages()`,
 which gives them to the `CompilerMarkers` of the editor if it still shows that exercise in that language. The bullets are
 replaced at each compilation, and disappear with the editor when the exercise or the language changes. They follow their lines
 when the code changes, but are then dimmed, with a tooltip telling that they may be obsolete.
+
+Each message sure of its line also underlines the code, in red or yellow, with the same tooltip: the token at its column (as cut
+by the syntax highlighting, so a whole string or identifier), or its whole line when it has no column or when the column points
+at blanks or beyond the end of the line. `CompilerMarkers` is a `Parser` of RSyntaxTextArea for that: `show()` keeps the
+messages with a `Position` of their token, which follows the changes of the code, and `forceReparsing()` turns them into
+`ParserNotice`s at the current place of their positions. RSyntaxTextArea also calls `parse()` after each change of the code,
+which returns the same notices, dimmed once the code changed. The editor shows plain Swing tooltips, rather than the focusable
+ones of RSyntaxTextArea, so that the ones of the underlines look like the ones of the bullets. As the parser runs in the Swing
+thread, its tests show the messages and read the notices there.
 
 **TODO**: the run-time errors (Java and Scala stack traces, Python tracebacks, AddressSanitizer reports) are not shown in the
 margin. Their locations are already shifted to the editor's lines by `RemoteExecutionLang.shiftTrace()`, so their frames could be
@@ -620,7 +630,9 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
     * *`CompilerMarkersTest`:* through the API of its gutter, the editor shows one bullet per line, of the color of the most
       severe message and whose tooltip lists them all, replaces them at each compilation (bright again after an edit), and dims
       them when the code changes, moving them with their lines. A message beyond the end of a code that got shorter is on its
-      last line.
+      last line. Through its parser notices, a message underlines the token at its column (a whole string included) with its
+      level, color and tooltip, or its whole line without column or when pointing at blanks or beyond the line, and an unsure
+      message underlines nothing. The underlines move and dim with the edits, and disappear at the next compilation.
     * *`CodeCompletionTest`:* in a Java editor of buggles in French, a prefix proposes the primitives under their name and their
       alias, documented by their Java signature, but not the primitives forbidden by the exercise nor the undocumented ones. The
       identifiers of the code are proposed, but not its keywords, comments, strings nor the word being typed. The popup opens on
