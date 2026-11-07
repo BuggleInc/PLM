@@ -46,14 +46,18 @@ public class LangPython extends TemplatedRemoteLang {
 
   /**
    * Checks the syntax of Entity.py as "python3 -m py_compile" does, keeping its bytecode for the run, but reports the errors and the
-   * warnings as the other languages do: "Entity.py:line: kind: Type: message", followed by the code of an error and a caret after a |.
-   * The lines before the code of the editor (the first argument tells how many) are located with the full path of the file.
+   * warnings as the other languages do: "Entity.py:line:column: kind: Type: message", followed by the code of an error and a caret
+   * after a |. The lines before the code of the editor (the first argument tells how many) are located with the full path of the
+   * file. The column of an error is the one of the editor, where the code is indented less (the second argument tells how much).
    */
   private static final String SYNTAX_CHECK = """
       import os, py_compile, sys, warnings
 
-      def located(filename, lineno):
-          return f"{filename if lineno and lineno > int(sys.argv[1]) else os.path.abspath(filename)}:{lineno}"
+      def located(filename, lineno, offset=None):
+          if not lineno or lineno <= int(sys.argv[1]):
+              return f"{os.path.abspath(filename)}:{lineno}"
+          column = offset - int(sys.argv[2]) if offset else 0
+          return f"{filename}:{lineno}" + (f":{column}" if column > 0 else "")
 
       def show(message, category, filename, lineno, file=None, line=None):
           print(f"{located(filename, lineno)}: warning: {category.__name__}: {message}")
@@ -66,7 +70,7 @@ public class LangPython extends TemplatedRemoteLang {
           if not isinstance(error, SyntaxError):
               print(f"error: {e.exc_type_name}: {error}")
           else:
-              print(f"{located(error.filename, error.lineno)}: error: {e.exc_type_name}: {error.msg}")
+              print(f"{located(error.filename, error.lineno, error.offset)}: error: {e.exc_type_name}: {error.msg}")
               if error.text and error.offset:
                   print("  | " + error.text.rstrip())
                   print("  | " + " " * (error.offset - 1) + "^")
@@ -142,10 +146,12 @@ public class LangPython extends TemplatedRemoteLang {
         String imports              = "from ValueSerializer import *\nfrom Remote import *\n" + extraImports + sf.getImports();
         EntityFileSegments segments = exo.getSegments(this, sf, whatToCompile);
         String body                 = segments.body();
+        int columnShift             = 0; // how much deeper the code of the editor is in the generated source
         if (whatToCompile == StudentOrCorrection.STUDENT) {
           // The editor content is flush left, but the body sits bodyIndent spaces deep in the template: python needs it to be indented
           // accordingly. Code that is already indented (saved by a previous version) keeps its relative indentation.
           String code = Indentation.expandLeadingTabs(body);
+          columnShift = sf.getBodyIndent() - Indentation.minLeadingSpaces(code);
           body        = Indentation.reindent(code, Indentation.minLeadingSpaces(code), sf.getBodyIndent());
         }
         String pre        = imports + "\n\n" + segments.pre();
@@ -195,7 +201,8 @@ public class LangPython extends TemplatedRemoteLang {
 
         // The syntax errors are reported at compile time, as in the other languages, instead of at the first run.
         try {
-          Process proc = new ProcessBuilder("python3", "-", String.valueOf(lineShift)).directory(workspace).redirectErrorStream(true).start();
+          Process proc =
+              new ProcessBuilder("python3", "-", String.valueOf(lineShift), String.valueOf(columnShift)).directory(workspace).redirectErrorStream(true).start();
           try (Writer script = new OutputStreamWriter(proc.getOutputStream(), StandardCharsets.UTF_8)) {
             script.write(SYNTAX_CHECK); // on the standard input, as Windows mangles the quotes of the arguments
           }

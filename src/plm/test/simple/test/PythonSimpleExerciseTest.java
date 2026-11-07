@@ -68,6 +68,15 @@ public class PythonSimpleExerciseTest extends CompiledSimpleExerciseTest {
     assertMessageOnLine(3, false, e);
   }
 
+  /** The column of a syntax error is the one of the editor, although the code is indented deeper in the generated source */
+  @Test public void testCompilationErrorColumnMatchesEditor()
+  {
+    setEditorContent("def run():\n"
+                     + "  x = (1,\n");
+    PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
+    Assertions.assertEquals(7, assertMessageOnLine(2, false, e).column(), e.getMessage()); // at the ( that was never closed
+  }
+
   /** An indentation error, which python reports in another format than the other syntax errors, is located in the editor too */
   @Test public void testIndentationErrorLineMatchesEditor()
   {

@@ -12,9 +12,9 @@ import plm.core.lang.CompilerMessage;
  */
 public class CompilerMessageTest {
 
-  private static CompilerMessage error(int line, String text) { return new CompilerMessage(line, true, false, text); }
-  private static CompilerMessage warning(int line, String text) { return new CompilerMessage(line, true, true, text); }
-  private static CompilerMessage unsure(boolean warning, String text) { return new CompilerMessage(1, false, warning, text); }
+  private static CompilerMessage error(int line, int column, String text) { return new CompilerMessage(line, column, true, false, text); }
+  private static CompilerMessage warning(int line, int column, String text) { return new CompilerMessage(line, column, true, true, text); }
+  private static CompilerMessage unsure(boolean warning, String text) { return new CompilerMessage(1, 0, false, warning, text); }
 
   @Test public void linesWithoutLocationAreUnsureErrors()
   {
@@ -26,12 +26,12 @@ public class CompilerMessageTest {
   {
     String text = """
         Entity.java:2: error: before the editor (in the template)
-        Entity.java:6: error: last line of the editor
-        Entity.java:7: error: after the editor
+        Entity.java:6:3: error: last line of the editor
+        Entity.java:7:4: error: after the editor
         Main.java:2: error: in another file
         error: nowhere
         """;
-    assertEquals(List.of(unsure(false, "before the editor (in the template)"), error(4, "last line of the editor"), unsure(false, "after the editor"),
+    assertEquals(List.of(unsure(false, "before the editor (in the template)"), error(4, 3, "last line of the editor"), unsure(false, "after the editor"),
                          unsure(false, "in another file"), unsure(false, "nowhere")),
                  CompilerMessage.parse(text, "Entity.java", 2, 4));
   }
@@ -43,7 +43,7 @@ public class CompilerMessageTest {
         Tab.c:3:1: error: first
         Other.h:2:5: note: declared here
         """;
-    assertEquals(List.of(unsure(true, "alone"), error(3, "first\nnote: declared here")), CompilerMessage.parse(text, "Tab.c", 0, 9));
+    assertEquals(List.of(unsure(true, "alone"), error(3, 1, "first\nnote: declared here")), CompilerMessage.parse(text, "Tab.c", 0, 9));
   }
 
   /**
@@ -53,25 +53,26 @@ public class CompilerMessageTest {
   @Test public void javac()
   {
     String text = """
-        /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java:6: error: cannot find symbol
+        /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java:6:20: error: cannot find symbol
           symbol:   variable notDeclared
           location: class generated.Entity
-        Entity.java:8: error: cannot find symbol
+        Entity.java:8:5: error: cannot find symbol
           symbol:   variable y
           location: class generated.Entity
-        Entity.java:9: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
-        Entity.java:10: error: incompatible types: int cannot be converted to java.lang.String
-        Entity.java:10: error: incompatible types: java.lang.String cannot be converted to int
+        Entity.java:9:17: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
+        Entity.java:10:22: error: incompatible types: int cannot be converted to java.lang.String
+        Entity.java:10:45: error: incompatible types: java.lang.String cannot be converted to int
         note: /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.
         note: Recompile with -Xlint:unchecked for details.
         """;
     assertEquals(List.of(unsure(false, "cannot find symbol\nsymbol:   variable notDeclared\nlocation: class generated.Entity"),
-                         error(2, "cannot find symbol\nsymbol:   variable y\nlocation: class generated.Entity"),
-                         warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal"),
-                         error(4, "incompatible types: int cannot be converted to java.lang.String"),
-                         error(4, "incompatible types: java.lang.String cannot be converted to int\n"
-                                      + "note: /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.\n"
-                                      + "note: Recompile with -Xlint:unchecked for details.")),
+                         error(2, 5, "cannot find symbol\nsymbol:   variable y\nlocation: class generated.Entity"),
+                         warning(3, 17, "Integer(int) in java.lang.Integer has been deprecated and marked for removal"),
+                         error(4, 22, "incompatible types: int cannot be converted to java.lang.String"),
+                         error(4, 45,
+                               "incompatible types: java.lang.String cannot be converted to int\n"
+                                   + "note: /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.\n"
+                                   + "note: Recompile with -Xlint:unchecked for details.")),
                  CompilerMessage.parse(text, "Entity.java", 6, 5));
   }
 
@@ -79,15 +80,15 @@ public class CompilerMessageTest {
   @Test public void javacWarnings()
   {
     String text = """
-        Entity.java:9: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
+        Entity.java:9:17: warning: Integer(int) in java.lang.Integer has been deprecated and marked for removal
         note: /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.
         note: Recompile with -Xlint:unchecked for details.
         """;
-    assertEquals(
-        List.of(warning(3, "Integer(int) in java.lang.Integer has been deprecated and marked for removal\n"
-                               + "note: /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.\n"
-                               + "note: Recompile with -Xlint:unchecked for details.")),
-        CompilerMessage.parse(text, "Entity.java", 6, 5));
+    assertEquals(List.of(warning(3, 17,
+                                 "Integer(int) in java.lang.Integer has been deprecated and marked for removal\n"
+                                     + "note: /tmp/plm/java/plm/runtime/lessons_welcome_Environment_STUDENT/Entity.java uses unchecked or unsafe operations.\n"
+                                     + "note: Recompile with -Xlint:unchecked for details.")),
+                 CompilerMessage.parse(text, "Entity.java", 6, 5));
   }
 
   /**
@@ -112,8 +113,8 @@ public class CompilerMessageTest {
           |   toto += 1
           |   ^
         """;
-    assertEquals(List.of(unsure(false, "Not found: notDeclared"), error(2, "Found:    (\"s\" : String)\nRequired: Int"),
-                         error(2, "Found:    (1 : Int)\nRequired: String"), error(4, "Not found: toto")),
+    assertEquals(List.of(unsure(false, "Not found: notDeclared"), error(2, 16, "Found:    (\"s\" : String)\nRequired: Int"),
+                         error(2, 37, "Found:    (1 : Int)\nRequired: String"), error(4, 3, "Not found: toto")),
                  CompilerMessage.parse(text, "Entity.scala", 6, 5));
   }
 
@@ -132,8 +133,8 @@ public class CompilerMessageTest {
           |   val l = List(1) match { case 1 :: Nil => 1 }
           |               ^
         """;
-    assertEquals(List.of(warning(2, "match may not be exhaustive.\nIt would fail on pattern case: None"),
-                         warning(3, "match may not be exhaustive.\nIt would fail on pattern case: List(_, _*), Nil")),
+    assertEquals(List.of(warning(2, 30, "match may not be exhaustive.\nIt would fail on pattern case: None"),
+                         warning(3, 15, "match may not be exhaustive.\nIt would fail on pattern case: List(_, _*), Nil")),
                  CompilerMessage.parse(text, "Entity.scala", 6, 5));
   }
 
@@ -144,11 +145,11 @@ public class CompilerMessageTest {
   {
     String text = """
         /tmp/plm/python/plm.runtime.lessons_welcome_Environment_STUDENT_Environment/Entity.py:2: warning: SyntaxWarning: invalid escape sequence '\\w'
-        Entity.py:7: error: SyntaxError: invalid syntax
+        Entity.py:7:8: error: SyntaxError: invalid syntax
           |     toto +=
           |            ^
         """;
-    assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), error(3, "SyntaxError: invalid syntax")),
+    assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), error(3, 8, "SyntaxError: invalid syntax")),
                  CompilerMessage.parse(text, "Entity.py", 4, 3));
   }
 
@@ -160,8 +161,8 @@ public class CompilerMessageTest {
         Entity.py:8: warning: SyntaxWarning: invalid escape sequence '\\d'
         Entity.py:6: warning: SyntaxWarning: "is" with 'int' literal. Did you mean "=="?
         """;
-    assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), warning(4, "SyntaxWarning: invalid escape sequence '\\d'"),
-                         warning(2, "SyntaxWarning: \"is\" with 'int' literal. Did you mean \"==\"?")),
+    assertEquals(List.of(unsure(true, "SyntaxWarning: invalid escape sequence '\\w'"), warning(4, 0, "SyntaxWarning: invalid escape sequence '\\d'"),
+                         warning(2, 0, "SyntaxWarning: \"is\" with 'int' literal. Did you mean \"==\"?")),
                  CompilerMessage.parse(text, "Entity.py", 4, 4));
   }
 
@@ -187,11 +188,12 @@ public class CompilerMessageTest {
         Tab.c:7:43: warning: control reaches end of non-void function [-Wreturn-type]
         """;
     assertEquals(List.of(unsure(false, "'notDeclared' undeclared here (not in a function)"),
-                         error(3, "'toto' undeclared (first use in this function)\n"
-                                      + "note: each undeclared identifier is reported only once for each function it appears in"),
-                         warning(3, "initialization of 'int' from 'char *' makes integer from pointer without a cast [-Wint-conversion]"),
-                         warning(4, "format '%d' expects argument of type 'int', but argument 2 has type 'double' [-Wformat=]"),
-                         warning(3, "unused variable 'x' [-Wunused-variable]"), warning(2, "unused variable 'unused' [-Wunused-variable]"),
+                         error(3, 3,
+                               "'toto' undeclared (first use in this function)\n"
+                                   + "note: each undeclared identifier is reported only once for each function it appears in"),
+                         warning(3, 21, "initialization of 'int' from 'char *' makes integer from pointer without a cast [-Wint-conversion]"),
+                         warning(4, 10, "format '%d' expects argument of type 'int', but argument 2 has type 'double' [-Wformat=]"),
+                         warning(3, 17, "unused variable 'x' [-Wunused-variable]"), warning(2, 7, "unused variable 'unused' [-Wunused-variable]"),
                          unsure(false, "'undeclaredInPost' undeclared (first use in this function)"),
                          unsure(true, "control reaches end of non-void function [-Wreturn-type]")),
                  CompilerMessage.parse(text, "Tab.c", 0, 6));
@@ -207,7 +209,7 @@ public class CompilerMessageTest {
         /tmp/plm/C/lessons.welcome.Tab-STUDENT-1/lessons.welcome.Tab.c:4:(.text+0x39): undefined reference to `undefinedFunction'
         collect2: error: ld returned 1 exit status
         """;
-    assertEquals(List.of(warning(4, "implicit declaration of function 'undefinedFunction' [-Wimplicit-function-declaration]"),
+    assertEquals(List.of(warning(4, 3, "implicit declaration of function 'undefinedFunction' [-Wimplicit-function-declaration]"),
                          unsure(false, "/tmp/plm/C/lessons.welcome.Tab-STUDENT-1/lessons.welcome.Tab.c:4:(.text+0x39): undefined reference to "
                                            + "`undefinedFunction'"),
                          unsure(false, "collect2: error: ld returned 1 exit status")),

@@ -244,15 +244,19 @@ messages of their line. Every language renders its compiler's messages in the sa
   `ProgrammingLanguage.editorFileName()` (`Entity.java`, `Entity.scala`, `Entity.py`, or the tab's name followed by `.c`) and its
   line, minus the shift, is one of the editor. The others (in the template, after the body or in another file) get a `?` bullet
   on the first line.
+- The column counts the characters of the line of the editor from 1. Only the messages sure of their line keep it; it is 0 for
+  the others and when the compiler gives none.
 
 How each language produces this format:
-- Java: `LangJava.render()` writes the diagnostics of javac, the ones of the editor's code as `Entity.java:N`, the others with
+- Java: `LangJava.render()` writes the diagnostics of javac, the ones of the editor's code as `Entity.java:N:C`, the others with
   the full path of their file, including the lines of the template in the generated `Entity.java`, so that they cannot be taken
-  for lines of the editor, and that the student can report them in bug reports against the PLM.
+  for lines of the editor, and that the student can report them in bug reports against the PLM. Java and Scala remove the
+  `this.` of the code before compiling it, which shifts the columns of the rest of its line.
 - Scala: `LangScala.render()` does the same with the diagnostics of dotc, indenting the next lines of a message and quoting the
   code after a `|`. The summary of dotc ("2 errors found") is dropped.
 - Python: `LangPython.SYNTAX_CHECK` checks the syntax with `py_compile` and prints its errors and warnings in this format, the
-  lines of the template with the full path of the file.
+  lines of the template with the full path of the file. The body is indented deeper in the source than in the editor, so the
+  column of an error is shifted back by that depth, its second argument. The warnings have no column.
 - C: gcc writes this format itself, and the `#line` directive locates the body in the tab's file, so that the shift is 0. The
   code after the body continues its numbering, beyond the lines of the editor.
 
@@ -568,9 +572,11 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       code can be restored into the editor without loading (so parsing) the entity, and the name of the source files must be the
       one of the tab. Wrong code, exceptions (out of bounds, null, custom) and a valid code followed by an error do not pass.
       Syntax and variable errors do not compile. The line of a stack trace frame is the editor's one. Every language also checks
-      that a compilation error is located on its line of the editor by `CompilerMessage`, even in debug mode, and that a warning
-      is located on its line without failing the compilation, unless in picky mode. Python checks that an `IndentationError` is
-      located too and that its syntax warnings are reported, and Python and C check that the `IMPORT` section is honored.
+      that a compilation error is located on its line and column of the editor by `CompilerMessage`, even in debug mode, and
+      that a warning is located on its line without failing the compilation, unless in picky mode. Python checks that an
+      `IndentationError` is located too, that the column of a syntax error is the one of the editor although the code is
+      indented deeper in the source, and that its syntax warnings are reported. Python and C check that the `IMPORT` section is
+      honored.
     * *`EntityTemplateParserTest`:* parsing of the `BEGIN/END` markers (`TEMPLATE`, `SOLUTION`, `IMPORT`, `REMOTE`) and the errors
       raised on invalid markup.
     * *`IndentationTest`:* the tab expansion and reindentation helpers used by the Python templating.
@@ -605,10 +611,10 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       program peers (IRC server included), and the comparison of its worlds, by calling the primitives of the student's process.
       Its worlds written in their `.map` file and read back give the same file, an equal world and the same differences.
     * *`LangCMessagesTest`:* the compiler messages show the real names of the functions that a C glue renames with macros.
-    * *`CompilerMessageTest`:* the messages of javac, dotc, the syntax check of Python and gcc (real samples, as rendered by each
-      language) are located on the editor's lines, with their notes but without the quoted code. The lines of the template, the
-      ones after the body and the messages without location (`verifySource()`, linker) are not sure, several messages may share a
-      line, and the warnings are told from the errors.
+    * *`CompilerMessageTest`:* the messages of javac, dotc, the syntax check of Python and gcc (real samples, as rendered by
+      each language) are located on the editor's lines and columns, with their notes but without the quoted code. The lines of
+      the template, the ones after the body and the messages without location (`verifySource()`, linker) are not sure, several
+      messages may share a line, and the warnings are told from the errors.
     * *`StackTraceLinesTest`:* in the stack traces of a Java process, the frames of the code of the editor get its lines, and the
       frames of the template get the full path of the generated file.
     * *`CompilerMarkersTest`:* through the API of its gutter, the editor shows one bullet per line, of the color of the most

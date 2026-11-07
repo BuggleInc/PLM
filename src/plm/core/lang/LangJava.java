@@ -73,8 +73,9 @@ public class LangJava extends JvmTemplatedLang {
   }
 
   /**
-   * A diagnostic as "file:line: kind: message", without its location if it has none. The file is named alone if it is Entity.java,
-   * except before the code of the editor (its lineShift first lines, from the template), located with the full path of the file.
+   * A diagnostic as "file:line:column: kind: message", without its location (or column) if it has none. The file is named alone if
+   * it is Entity.java, except before the code of the editor (its lineShift first lines, from the template), located with the full
+   * path of the file.
    */
   private static String render(Diagnostic<? extends JavaFileObject> d, int lineShift)
   {
@@ -87,7 +88,8 @@ public class LangJava extends JvmTemplatedLang {
       return kind + ": " + d.getMessage(null);
     boolean edited = d.getSource().isNameCompatible("Entity", JavaFileObject.Kind.SOURCE) && d.getLineNumber() > lineShift;
     String file    = edited ? "Entity.java" : d.getSource().getName();
-    return file + ":" + d.getLineNumber() + ": " + kind + ": " + d.getMessage(null);
+    String column  = d.getColumnNumber() == Diagnostic.NOPOS ? "" : d.getColumnNumber() + ":";
+    return file + ":" + d.getLineNumber() + ":" + column + " " + kind + ": " + d.getMessage(null);
   }
 
   private static void createJarFile(File root, File packageFolder, File jarFile, File mainFile) throws PLMCompilerException

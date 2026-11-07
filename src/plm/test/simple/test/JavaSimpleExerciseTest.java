@@ -70,6 +70,6 @@ public class JavaSimpleExerciseTest extends CompiledSimpleExerciseTest {
                      + "    toto++;\n"
                      + "}");
     PLMCompilerException e = Assertions.assertThrows(PLMCompilerException.class, () -> pl.compileExo(exo, null, StudentOrCorrection.STUDENT));
-    assertMessageOnLine(3, false, e);
+    Assertions.assertEquals(5, assertMessageOnLine(3, false, e).column(), e.getMessage()); // at toto
   }
 }

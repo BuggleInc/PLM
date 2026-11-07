@@ -43,8 +43,8 @@ public class CompilerMarkersTest {
 
   @Test public void theMessagesOfALineShareOneIconOfTheMostSevereColor() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(2, true, true, "unused <x>"), new CompilerMessage(2, true, false, "undeclared\nnote: here"),
-                         new CompilerMessage(3, true, true, "deprecated"), new CompilerMessage(1, false, false, "call left() once")));
+    markers.show(List.of(new CompilerMessage(2, 0, true, true, "unused <x>"), new CompilerMessage(2, 0, true, false, "undeclared\nnote: here"),
+                         new CompilerMessage(3, 0, true, true, "deprecated"), new CompilerMessage(1, 0, false, false, "call left() once")));
     assertEquals(1, iconsOn(1).length);
     assertTrue(iconsOn(1)[0].getToolTip().contains("call left() once"), iconsOn(1)[0].getToolTip());
     GutterIconInfo[] second = iconsOn(2);
@@ -58,8 +58,8 @@ public class CompilerMarkersTest {
 
   @Test public void aNewCompilationReplacesTheIcons() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(2, true, false, "undeclared")));
-    markers.show(List.of(new CompilerMessage(3, true, true, "deprecated")));
+    markers.show(List.of(new CompilerMessage(2, 0, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, true, true, "deprecated")));
     assertEquals(0, iconsOn(2).length);
     assertEquals(1, iconsOn(3).length);
     markers.show(List.of());
@@ -68,7 +68,7 @@ public class CompilerMarkersTest {
 
   @Test public void editingTheCodeMovesAndDimsTheIcons() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(3, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, true, false, "undeclared")));
     code.insert("added\n", 0);
     SwingUtilities.invokeAndWait(() -> {}); // the icons are dimmed once the document changed
     assertEquals(0, iconsOn(3).length);
@@ -79,10 +79,10 @@ public class CompilerMarkersTest {
 
   @Test public void aNewCompilationAfterAnEditShowsBrightIcons() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(3, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, true, false, "undeclared")));
     code.insert("added\n", 0);
     SwingUtilities.invokeAndWait(() -> {});
-    markers.show(List.of(new CompilerMessage(3, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(3, 0, true, false, "undeclared")));
     assertFalse(iconsOn(3)[0].getToolTip().contains("obsolete"), iconsOn(3)[0].getToolTip());
     assertEquals(255, colorOf(iconsOn(3)[0].getIcon()).getAlpha());
     assertEquals(0, iconsOn(4).length);
@@ -91,7 +91,7 @@ public class CompilerMarkersTest {
   /** The code may have got shorter since its compilation */
   @Test public void aMessageBeyondTheEndOfTheCodeIsOnItsLastLine() throws Exception
   {
-    markers.show(List.of(new CompilerMessage(9, true, false, "undeclared")));
+    markers.show(List.of(new CompilerMessage(9, 0, true, false, "undeclared")));
     assertEquals(1, iconsOn(5).length);
   }
 }
