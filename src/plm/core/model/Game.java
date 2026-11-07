@@ -19,7 +19,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
-import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -99,14 +99,14 @@ public class Game implements IWorldView {
 
   public static final String PROP_ZOOM = "plm.display.zoom"; // the number of steps of the zoom of the texts (see Zoom)
 
-  private List<GameListener> listeners = new ArrayList<GameListener>();
+  private List<GameListener> listeners = new CopyOnWriteArrayList<>();
   private World selectedWorld;
   private World answerOfSelectedWorld;
   private World initialOfSelectedWorld;
   private Entity selectedEntity;
   private List<Future<?>> demoRunners = new ArrayList<Future<?>>();
 
-  private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
+  private List<GameStateListener> gameStateListeners = new CopyOnWriteArrayList<>();
 
   private LogWriter outputWriter;
   private PrintStream outputOrig = System.out;
@@ -725,7 +725,7 @@ public class Game implements IWorldView {
   }
 
   /* Status bar label changing logic */
-  ArrayList<StatusStateListener> statusStateListeners = new ArrayList<StatusStateListener>();
+  List<StatusStateListener> statusStateListeners = new CopyOnWriteArrayList<>();
   public void addStatusStateListener(StatusStateListener l) { this.statusStateListeners.add(l); }
   public void removeStatusStateListener(StatusStateListener l) { this.statusStateListeners.remove(l); }
   ArrayList<String> statusArgs = new ArrayList<String>();
@@ -816,7 +816,7 @@ public class Game implements IWorldView {
   public ProgrammingLanguage getProgrammingLanguage() { return programmingLanguageManager.current(); }
   public ProgrammingLanguageManager getProgrammingLanguageManager() { return programmingLanguageManager; }
 
-  private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
+  private List<ProgLangChangesListener> progLangListeners = new CopyOnWriteArrayList<>();
   public void addProgLangListener(ProgLangChangesListener l) { progLangListeners.add(l); }
   /** Notifies the listeners, which are all part of the UI, on the Swing thread (see onSwingThread()) */
   public void fireProgLangChange(ProgrammingLanguage newLang)
@@ -828,7 +828,7 @@ public class Game implements IWorldView {
   }
   public void removeProgLangListener(ProgLangChangesListener l) { this.progLangListeners.remove(l); }
 
-  private List<HumanLangChangesListener> humanLangListeners = new Vector<HumanLangChangesListener>();
+  private List<HumanLangChangesListener> humanLangListeners = new CopyOnWriteArrayList<>();
   public void addHumanLangListener(HumanLangChangesListener l) { humanLangListeners.add(l); }
   public void fireHumanLangChange(Locale newLang)
   {
