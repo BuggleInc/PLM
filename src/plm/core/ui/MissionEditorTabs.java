@@ -31,7 +31,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
   private static final long serialVersionUID = 1L;
 
   private Game game;
-  private JEditorPane missionTab = new JEditorPane("text/html", "");
+  private JEditorPane missionTab = PlmHtmlEditorKit.pane();
 
   /* for code tabs */
   private Lecture currentExercise;
@@ -41,8 +41,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
     super();
 
     /* Setup the mission tab */
-    missionTab.setEditable(false);
-    missionTab.setEditorKit(new PlmHtmlEditorKit());
 
     missionTab.addHyperlinkListener(new HyperlinkListener() {
       TipsDialog tipsDialog = null;

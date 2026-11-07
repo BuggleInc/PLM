@@ -105,9 +105,7 @@ public class FeedbackDialog extends JDialog {
     headerToolbar.add(title);
     add(headerToolbar, BorderLayout.NORTH);
 
-    JEditorPane hints = new JEditorPane("text/html", "");
-    hints.setEditorKit(new PlmHtmlEditorKit());
-    hints.setEditable(false);
+    JEditorPane hints = PlmHtmlEditorKit.pane();
     hints.setText(
         Game.i18n.tr("<h1>Asking a question about the PLM</h1>\n"
                      + "<p>If you're stuck or unsure, you can come and discuss with us on our <a href='https://discord.gg/agxNPGj'>Discord server</a>. "

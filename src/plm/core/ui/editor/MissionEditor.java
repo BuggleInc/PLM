@@ -38,7 +38,7 @@ import plm.core.utils.FileUtils;
 public class MissionEditor extends JFrame {
   private static final long serialVersionUID = 1L;
 
-  private JEditorPane display = new JEditorPane("text/html", "");
+  private JEditorPane display = PlmHtmlEditorKit.pane();
   private JEditorPane editor;
 
   private String lastPathSelected;
@@ -183,8 +183,6 @@ public class MissionEditor extends JFrame {
     editor.setContentType("text/xhtml");
     editor.setEditable(true);
 
-    display.setEditorKit(new PlmHtmlEditorKit());
-    display.setEditable(false);
     editor.getDocument().addDocumentListener(new DocumentListener() {
       private void updateHTML()
       {

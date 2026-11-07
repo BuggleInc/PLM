@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
-import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rtextarea.RTextArea;
@@ -25,7 +24,7 @@ import plm.core.ui.Zoom;
 public class ZoomTest {
   private final JFrame frame         = new JFrame();
   private final RTextScrollPane code = new RTextScrollPane(new RSyntaxTextArea());
-  private final JEditorPane html     = htmlPane();
+  private final JEditorPane html     = PlmHtmlEditorKit.pane();
   private static final int CODE_SIZE = RTextArea.getDefaultFont().getSize();
   private static final int HTML_SIZE = 13;
 
@@ -41,13 +40,6 @@ public class ZoomTest {
   {
     press("zoomReset");
     frame.dispose();
-  }
-
-  private static JEditorPane htmlPane()
-  {
-    JEditorPane pane = new JEditorPane("text/html", "");
-    pane.setEditorKit(new PlmHtmlEditorKit());
-    return pane;
   }
 
   private void press(String action) { frame.getRootPane().getActionMap().get(action).actionPerformed(null); }
@@ -84,11 +76,7 @@ public class ZoomTest {
   @Test public void aNewPaneFollowsTheZoom()
   {
     press("zoomIn");
-    assertEquals(html.getFont(), htmlPane().getFont());
-    JTextPane styled = new JTextPane(); // its document is not an HTML one before the kit is set
-    styled.setEditorKit(new PlmHtmlEditorKit());
-    styled.setText("<html><body>Zoomed</body></html>");
-    assertEquals(html.getFont(), styled.getFont());
+    assertEquals(html.getFont(), PlmHtmlEditorKit.pane().getFont());
   }
 
   @Test public void theZoomIsBounded()
@@ -105,6 +93,6 @@ public class ZoomTest {
   @Test public void anInvalidZoomInThePropertiesIsIgnored()
   {
     Game.setProperty(Game.PROP_ZOOM, "big");
-    assertEquals(HTML_SIZE, htmlPane().getFont().getSize());
+    assertEquals(HTML_SIZE, PlmHtmlEditorKit.pane().getFont().getSize());
   }
 }

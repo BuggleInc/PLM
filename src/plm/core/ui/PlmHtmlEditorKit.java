@@ -20,7 +20,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
 import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import plm.core.model.Game;
 import plm.core.model.lesson.Lecture;
@@ -47,8 +46,8 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
     return true;
   }
 
-  public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
-    boolean visible = false;
+  /** Hides the parts of the other languages, and shows the images of the exercise */
+  private class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
     @Override public View create(Element element)
     {
       Element iterElem   = element;
@@ -69,27 +68,31 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
       if (tagName instanceof HTML.Tag) {
         HTML.Tag tag = (HTML.Tag)tagName;
         if (tag == HTML.Tag.IMG)
-          return new MyIconView(element, baseExercise);
+          return new MyIconView(element, exercise);
       }
       return super.create(element);
     }
   }
 
-  protected static Lecture baseExercise = null;
-  public PlmHtmlEditorKit() { baseExercise = null; }
+  /** The exercise whose images the documents show, if any */
+  private final Lecture exercise;
 
-  public PlmHtmlEditorKit(Lecture _baseExercise) { baseExercise = _baseExercise; }
+  public PlmHtmlEditorKit(Lecture exercise) { this.exercise = exercise; }
 
   @Override public ViewFactory getViewFactory() { return new HTMLFactoryX(); }
 
-  /** The font of the pane sizes its texts, following the zoom (the CSS of the documents gives no size) */
-  @Override public void install(JEditorPane pane)
+  /**
+   * A read-only pane of HTML, without exercise until a kit of an exercise replaces its own. Its font sizes the texts, following the
+   * zoom, as the CSS of the documents gives no size.
+   */
+  public static JEditorPane pane()
   {
-    super.install(pane);
-    if (!(pane.getDocument() instanceof HTMLDocument)) // setEditorKit() replaces the document after this, but the property needs one
-      pane.setDocument(createDefaultDocument());
+    JEditorPane pane = new JEditorPane();
+    pane.setEditorKit(new PlmHtmlEditorKit(null));
+    pane.setEditable(false);
     pane.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
     pane.setFont(Zoom.htmlFont());
+    return pane;
   }
 
   public static String getCSS()

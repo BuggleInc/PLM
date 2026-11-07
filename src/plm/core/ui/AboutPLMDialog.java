@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 import plm.core.model.Game;
 import plm.core.utils.FileUtils;
@@ -49,9 +48,7 @@ public class AboutPLMDialog extends JDialog {
     JLabel iconTitle = new JLabel(ResourcesCache.getIcon("img/BuggleQuestBETA.png"));
     aboutPane.add(BorderLayout.CENTER, iconTitle);
 
-    JTextPane text = new JTextPane();
-    text.setEditorKit(new PlmHtmlEditorKit());
-    text.setEditable(false);
+    JEditorPane text = PlmHtmlEditorKit.pane();
     text.setBorder(null);
     text.setBackground(Color.white);
     text.setOpaque(true);
@@ -81,9 +78,7 @@ public class AboutPLMDialog extends JDialog {
 
     tabs.add(Game.i18n.tr("About"), aboutPane);
 
-    JEditorPane changelogArea = new JEditorPane("text/html", "");
-    changelogArea.setEditorKit(new PlmHtmlEditorKit());
-    changelogArea.setEditable(false);
+    JEditorPane changelogArea = PlmHtmlEditorKit.pane();
     try {
       StringBuffer ctn       = new StringBuffer();
       Pattern itemPattern    = Pattern.compile("^ +[*].*");
@@ -118,9 +113,7 @@ public class AboutPLMDialog extends JDialog {
     sp.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
     tabs.add(Game.i18n.tr("Changes"), sp);
 
-    JEditorPane licenseArea = new JEditorPane("text/html", "");
-    licenseArea.setEditorKit(new PlmHtmlEditorKit());
-    licenseArea.setEditable(false);
+    JEditorPane licenseArea = PlmHtmlEditorKit.pane();
     licenseArea.setText(Game.i18n.tr("<h2>The PLM is proudly Free Software</h2>\n"
                                      + ""
                                      + "<p>Copyright (c) 2008-2021.<br/>\n "

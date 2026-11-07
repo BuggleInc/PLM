@@ -224,7 +224,7 @@ Ctrl and `+` (or `=`), `-` or `0` (Cmd on macOS) zoom in, out or back to normal 
 panes, by steps of 10% (from -4 to +8 steps). `Zoom.bindKeys()` binds them in the main window and in the documentation viewers
 (world, mission and lesson), whatever has the focus, but not on the numeric keypad, where RSyntaxTextArea folds the code. The
 zoom applies at once to all the windows, and is saved in the properties as `plm.display.zoom`. The editors get it when created
-(`Zoom.apply()`), and so do the HTML panes of a `PlmHtmlEditorKit`: the font of the pane sizes the text
+(`Zoom.apply()`), and so do the HTML panes, all built by `PlmHtmlEditorKit.pane()`: the font of the pane sizes the text
 (`JEditorPane.HONOR_DISPLAY_PROPERTIES`), so the CSS of the PLM gives no font size to the body, only its family. The texts drawn
 by the world views are not zoomed.
 
@@ -639,7 +639,7 @@ because the `Game` singleton would otherwise leak the GUI listeners of the latte
       Ctrl+Space and automatically, and never inserts a single choice without showing it.
     * *`ZoomTest`:* the shortcuts of the zoom are bound in a window, and they scale together the font of a code editor (with its
       line numbers) and the one of an HTML pane, saving the number of steps in the properties. A new HTML pane gets the current
-      zoom, even a `JTextPane`, the number of steps is bounded, and an invalid one in the properties means no zoom.
+      zoom, the number of steps is bounded, and an invalid one in the properties means no zoom.
     * *`LessonRunnerTest`:* `LessonRunner.runExercise()` returns the outcome of the execution, a compilation error included, and a
       failure with a "Not run" message if the execution was interrupted, going through the expected states of the game. The dialogs
       and the tracker are not tested, as they need a display.

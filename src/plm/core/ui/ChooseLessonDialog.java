@@ -57,9 +57,7 @@ public class ChooseLessonDialog extends JFrame {
     setBackground(Color.white);
     setLayout(new BorderLayout());
 
-    JEditorPane blurb = new JEditorPane("text/html", "");
-    blurb.setEditable(false);
-    blurb.setEditorKit(new PlmHtmlEditorKit());
+    JEditorPane blurb = PlmHtmlEditorKit.pane();
     blurb.setText(Game.i18n.tr("<table border=\"0\" align=\"center\"><tr>\n"
                                + "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
                                + "<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Programmer's Learning Machine</font>&nbsp;&nbsp;</td>\n"
@@ -162,9 +160,7 @@ class LessonOverview extends JPanel {
     setLayout(new BorderLayout());
 
     setBackground(Color.white);
-    desc = new JEditorPane("text/html", "");
-    desc.setEditable(false);
-    desc.setEditorKit(new PlmHtmlEditorKit());
+    desc = PlmHtmlEditorKit.pane();
     desc.setText(Game.i18n.tr("<h1>Please pick a lesson</h1>\n"
                               + "<p>Please click on an icon on the left to select a lesson.</p>\n"
                               + "<p>Lessons located above are generally simpler than the ones located below.</p>"));

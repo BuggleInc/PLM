@@ -13,7 +13,7 @@ import plm.universe.World;
 public abstract class AbstractAboutDialog extends JFrame implements GameListener {
 
   private static final long serialVersionUID = -6550658679688214378L;
-  protected JEditorPane area                 = new JEditorPane("text/html", "");
+  protected JEditorPane area                 = PlmHtmlEditorKit.pane();
 
   protected AbstractAboutDialog(JFrame parent)
   {
@@ -26,8 +26,6 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 
     setMinimumSize(new Dimension(600, 400));
 
-    area.setEditorKit(new PlmHtmlEditorKit());
-    area.setEditable(false);
     Zoom.bindKeys(getRootPane());
 
     setLayout(new MigLayout("fill"));
