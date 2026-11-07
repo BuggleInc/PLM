@@ -8,6 +8,7 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,14 +32,14 @@ public class ExerciseFailedDialog extends JDialog {
                                      Game.i18n.tr("We all learn from our mistakes, so, good job!"),
                                      Game.i18n.tr("We learn from failure, not from success!"),
                                      Game.i18n.tr("Success comes after failure"),
-                                     Game.i18n.tr("<i>The master has failed more time than the beginner has even tried</i>,<br> as they say."),
-                                     Game.i18n.tr("<i>Anyone who has never made a mistake has never <br>tried anything new.</i> (Einstein)."),
-                                     Game.i18n.tr("<i>Success does not consist in never making mistakes,<br> but in never making the same "
-                                                  + "one a second time.</i> (Shaw)")};
+                                     Game.i18n.tr("<i>The master has failed more times than the beginner has even tried</i>, as they say."),
+                                     Game.i18n.tr("<i>Anyone who has never made a mistake has never tried anything new.</i> (Einstein)."),
+                                     Game.i18n.tr("<i>Success does not consist in never making mistakes, but in never making the same one a "
+                                                  + "second time.</i> (Shaw)")};
 
     this.setTitle(Game.i18n.tr("Mmm, not quite"));
 
-    setLayout(new MigLayout("fill", ""));
+    setLayout(new MigLayout("fill", "[][grow, fill]")); // the icon in a fixed column, the texts taking the space
     add(new JLabel((Icon)UIManager.getLookAndFeelDefaults().get("OptionPane.errorIcon")));
 
     JButton close = new JButton(Game.i18n.tr("Close"));
@@ -49,32 +50,29 @@ public class ExerciseFailedDialog extends JDialog {
       }
     });
 
-    JLabel msg;
+    JEditorPane msg = PlmHtmlEditorKit.pane(); // wraps its text at the width of the dialog
+    msg.setOpaque(false);
+    msg.setBorder(null);
     JTextArea ta = new JTextArea();
     ta.setEditable(false);
     if (ep.compilationError == null) {
-      msg = new JLabel(Game.i18n.tr("<html>You didn''t manage to reach your objective this time. <br>\n"
-                                        + "That''s fine. {0}<br>\n"
-                                        + "<br>\n"
-                                        + "You should graphically compare the final state of your world <br>\n"
-                                        + "with the objective to understand the problem. <br>\n"
-                                        + "<br>\n"
-                                        + "If you don''t see the error, check the details below for a <br>\n"
-                                        + "textual description of this difference between both worlds.</html>",
-                                    fortune[(int)(Math.random() * fortune.length)]));
+      msg.setText(Game.i18n.tr("<html>You didn''t manage to reach your objective this time. That''s fine. {0}"
+                                   + "<p>You should graphically compare the final state of your world with the objective to understand the problem."
+                                   + "<p>If you don''t see the error, check the details below for a textual description of this difference "
+                                   + "between both worlds.</html>",
+                               fortune[(int)(Math.random() * fortune.length)]));
       ta.setText(ep.executionError);
       ta.setCaretPosition(0);
     } else {
-      msg = new JLabel(Game.i18n.tr("<html>Compilation error.<br>\n"
-                                        + "You can find below the detailed error message (as given by {0}).<br>\n"
-                                        + "Please read it carefully to understand the problem, and fix your code.</html>",
-                                    Game.getInstance().getProgrammingLanguage().getLang()));
+      msg.setText(Game.i18n.tr("<html>Compilation error.<p>You can find below the detailed error message (as given by {0}). Please read it "
+                                   + "carefully to understand the problem, and fix your code.</html>",
+                               Game.getInstance().getProgrammingLanguage().getLang()));
       ta.setText(ep.compilationError);
       ta.setCaretPosition(0);
     }
     msg.setFocusable(false);
     ta.setFocusable(true);
-    add(msg, "wrap");
+    add(msg, "w 550:550:, hmin 0, wrap"); // MigLayout computes the height of a wrapping text at its minimum width
     final JScrollPane sp = new JScrollPane(ta);
     sp.setFocusable(false);
     if (ep.compilationError == null) {
@@ -105,11 +103,11 @@ public class ExerciseFailedDialog extends JDialog {
       add(close, "span, alignx 50%");
     }
     getRootPane().registerKeyboardAction(e -> dispose(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
-    setMinimumSize(getSize());
     close.requestFocusInWindow();
     setModal(true);
     setModalityType(ModalityType.APPLICATION_MODAL);
     pack();
+    setMinimumSize(getSize());
     setVisible(true);
   }
 }
