@@ -199,6 +199,8 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
     InputMap inputMap = comp.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     inputMap.put(ctrlTab, "navigateNext");
     inputMap.put(ctrlShiftTab, "navigatePrevious");
+    inputMap.put(KeyStroke.getKeyStroke("ctrl PAGE_UP"), "navigatePrevious");
+    inputMap.put(KeyStroke.getKeyStroke("ctrl PAGE_DOWN"), "navigateNext");
   }
 
   public JTabbedPane getTabPane() { return tabPane; }

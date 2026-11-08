@@ -636,29 +636,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
   public void keyListeners(ExerciseView e)
   {
-    // CTLR PAGEUP
-    this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP, 0), null);
-    this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN, 0), null);
-    this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP, 0), "action pageup");
-    this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN, 0), "action pagedown");
-    this.getRootPane().getActionMap().put("action pageup", new AbstractAction() {
-      private static final long serialVersionUID = 1L;
-
-      public void actionPerformed(ActionEvent ae)
-      {
-        int index = (met.getSelectedIndex() == 0 ? met.getTabCount() - 1 : met.getSelectedIndex() - 1);
-        met.setSelectedIndex(index);
-      }
-    });
-    this.getRootPane().getActionMap().put("action pagedown", new AbstractAction() {
-      private static final long serialVersionUID = 1L;
-
-      public void actionPerformed(ActionEvent ae)
-      {
-        int index = (met.getSelectedIndex() == met.getTabCount() - 1 ? 0 : met.getSelectedIndex() + 1);
-        met.setSelectedIndex(index);
-      }
-    });
     this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("left"), "action left");
 
     // F1

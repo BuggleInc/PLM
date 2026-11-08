@@ -5,12 +5,15 @@ import java.awt.FlowLayout;
 import java.util.List;
 import java.util.function.Supplier;
 import javax.swing.BorderFactory;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.KeyStroke;
 import javax.swing.event.HyperlinkEvent;
 import plm.core.GameListener;
 import plm.core.ProgLangChangesListener;
@@ -57,6 +60,11 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
     });
 
     this.addTab(Game.i18n.tr("Mission"), null, new JScrollPane(missionTab), Game.i18n.tr("Description of the work to do"));
+
+    /* Ctrl-PageUp and Ctrl-PageDown switch the tab when the focus is in these tabs */
+    InputMap inputMap = getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    inputMap.put(KeyStroke.getKeyStroke("ctrl PAGE_UP"), "navigatePrevious");
+    inputMap.put(KeyStroke.getKeyStroke("ctrl PAGE_DOWN"), "navigateNext");
 
     /* Register to game engine */
     this.game.addGameListener(this);
