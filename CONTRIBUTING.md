@@ -289,6 +289,19 @@ them (see [API gating](#api-gating-restricting-or-adapting-the-primitives)). The
 `JavaEditorPanel.clear()`, as it listens to the look and feel. AutoComplete 2.5.8 hints the parameters only when a function is
 inserted from the popup, not when the student types the `(` of a call.
 
+## Bug reports and GitHub identity
+
+The `FeedbackDialog` opens issues on `BuggleInc/PLM`. Anonymous reports use a shared token embedded in the code
+(`anonymousToken()`). Users connected to GitHub (`GitHubLogin` action, `GitHubAuth`) report under their own identity, and their
+reports never contain the public user ID of their `PLM-data` traces, so that a GitHub identity is never linked to them.
+
+The login is the device flow of a GitHub App, which needs no client secret: its Client ID, in `plm.configuration.properties`
+(`plm.github.client.id`), is public by design. The user token is stored in the system keyring, or in the local properties
+(`~/.plm`) when there is none. It only allows to read and write issues (the only permission granted to the App), and only on the
+repositories where the App is installed, that is `BuggleInc/PLM` (unless someone installs the App elsewhere, which is not planned,
+and then only on that person's own repositories). A leaked token would let someone act on the issues of the PLM on behalf of its
+user, and nothing more. The App is configured with non-expiring user tokens, as `GitHubAuth` has no refresh logic.
+
 ## Remoting: how the student's entity talks to the PLM
 
 The student's code runs in its own process (`java -cp ... generated.Main`, `python3 Main.py`, or the C executable), while the

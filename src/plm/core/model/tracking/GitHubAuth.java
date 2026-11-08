@@ -79,11 +79,11 @@ public final class GitHubAuth {
     return token.isEmpty() ? null : token;
   }
 
-  /** The GitHub login of the user, or null if she is not logged in. */
+  /** The GitHub login of the user, or null if she is not logged in (or if her token got lost). */
   public static String getLogin()
   {
     String login = Game.getProperty(PROP_LOGIN);
-    return login.isEmpty() ? null : login;
+    return login.isEmpty() || getToken() == null ? null : login;
   }
 
   public static void logout()
