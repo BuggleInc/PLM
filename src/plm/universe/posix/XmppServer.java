@@ -56,8 +56,8 @@ public class XmppServer extends ProgramPeer {
   private record Hints(String room, String nick, List<String> texts) {}
   /** The answers of an occupant to the messages containing all the words (each in one of its forms), and to the other ones */
   private record Answers(List<List<String>> words, String answer, String otherwise) {}
-  /** A stanza waiting for its time, sent to the client if it is then in the condition */
-  private record Pending(int at, int fd, String stanza, Predicate<Client> condition) {}
+  /** A stanza waiting for its time, sent to the client if it is then in the condition, possibly the call of an occupant */
+  private record Pending(int at, int fd, String stanza, Predicate<Client> condition, String caller) {}
   /** An address: local@domain/resource, the local part and the resource being null when absent */
   private record Jid(String local, String domain, String resource) {
     static Jid of(String jid)
@@ -77,8 +77,13 @@ public class XmppServer extends ProgramPeer {
     String user;
     /** The rooms joined, with the nickname of the client in each */
     final Map<String, String> rooms = new LinkedHashMap<>();
-    /** The occupants to whom the client wrote, those who gave it their answer, and its failures with each */
+    /**
+     * The occupants to whom the client wrote, those who called it, those who gave it their answer, those whose name it wrote
+     * without addressing them (and was told so), and its failures with each
+     */
     final Set<String> told              = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+    final Set<String> mentioned         = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+    final Set<String> called            = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
     final Set<String> answered          = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
     final Map<String, Integer> failures = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
@@ -90,6 +95,8 @@ public class XmppServer extends ProgramPeer {
       user  = other.user;
       rooms.putAll(other.rooms);
       told.addAll(other.told);
+      called.addAll(other.called);
+      mentioned.addAll(other.mentioned);
       answered.addAll(other.answered);
       failures.putAll(other.failures);
     }
@@ -108,7 +115,9 @@ public class XmppServer extends ProgramPeer {
   private final Map<String, Room> rooms        = new LinkedHashMap<>();
   private final List<Said> said                = new ArrayList<>();
   private final Map<String, Answers> answers   = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+  private final Map<String, String> aways      = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
   private final Map<String, List<Hints>> hints = new TreeMap<>(String.CASE_INSENSITIVE_ORDER); // by the occupant they are about
+  private final Map<String, Hints> addressing  = new TreeMap<>(String.CASE_INSENSITIVE_ORDER); // by the occupant they are about
   private final List<Pending> pending          = new ArrayList<>();
   private final Map<Integer, Client> clients   = new TreeMap<>();
 
@@ -131,7 +140,9 @@ public class XmppServer extends ProgramPeer {
     rooms.putAll(other.rooms); // the scenario is never changed once given
     said.addAll(other.said);
     answers.putAll(other.answers);
+    aways.putAll(other.aways);
     hints.putAll(other.hints);
+    addressing.putAll(other.addressing);
     pending.addAll(other.pending);
     other.clients.forEach((fd, client) -> clients.put(fd, new Client(client)));
   }
@@ -161,7 +172,7 @@ public class XmppServer extends ProgramPeer {
     return this;
   }
 
-  /** Makes an occupant say a line on a room, that many seconds after a client joined it */
+  /** Makes an occupant say a line on a room, that many seconds after a client joined it (once the join arrived whole) */
   public XmppServer say(int delay, String room, String nick, String text) { return line(delay, room, nick, text, false, null); }
 
   /** Makes an occupant say a line on a room, followed by its XHTML-IM version (XEP-0071), whose <html> holds a <body> of its own */
@@ -181,7 +192,8 @@ public class XmppServer extends ProgramPeer {
 
   /**
    * Makes an occupant address the client on a room, that many seconds after it joined, unless the client wrote to this occupant
-   * before. The text is a MessageFormat pattern, whose {0} is the nickname of the client.
+   * before (but for an occupant away until then, see away()). The text is a MessageFormat pattern, whose {0} is the nickname of the
+   * client.
    */
   public XmppServer address(int delay, String room, String nick, String text) { return line(delay, room, nick, text, true, null); }
 
@@ -214,6 +226,17 @@ public class XmppServer extends ProgramPeer {
   }
 
   /**
+   * Makes an occupant tell the client how to address another one, two seconds after a message of the client on a room that
+   * names this other occupant without being addressed to anyone (as in "Hello Karel"), once per client. The text is a
+   * MessageFormat pattern, whose {0} is the nickname of the client.
+   */
+  public XmppServer addressingHint(String room, String nick, String about, String text)
+  {
+    addressing.put(about, new Hints(room, nick, List.of(ascii(text))));
+    return this;
+  }
+
+  /**
    * Makes an occupant answer one second later: answer to the messages containing all the words, and otherwise to the other ones.
    * Each word is given with its accepted forms, whatever their case and accents. It answers in private to the private messages,
    * and on the room to the messages addressed to it there (as in "Karel: hello"), addressing the client in turn.
@@ -222,6 +245,17 @@ public class XmppServer extends ProgramPeer {
   {
     List<List<String>> forms = words.stream().map(word -> word.stream().map(form -> ascii(form).toLowerCase(Locale.ROOT)).toList()).toList();
     answers.put(nick, new Answers(forms, ascii(answer), ascii(otherwise)));
+    return this;
+  }
+
+  /**
+   * Makes an occupant away from its keyboard until it addressed the client (see address()): it answers this automatic reply to
+   * the messages that it gets before, one second later, without counting them as failures nor giving hints, and it addresses the
+   * client in any case.
+   */
+  public XmppServer away(String nick, String reply)
+  {
+    aways.put(nick, ascii(reply));
     return this;
   }
 
@@ -290,8 +324,12 @@ public class XmppServer extends ProgramPeer {
     for (Pending stanza : pending) // in the order they were planned
       if (stanza.at() <= now()) {
         pending.remove(stanza);
-        if (clients.containsKey(stanza.fd()) && stanza.condition().test(clients.get(stanza.fd())))
+        Client client = clients.get(stanza.fd());
+        if (client != null && stanza.condition().test(client)) {
           out(stanza.fd(), stanza.stanza() + (keepAlives ? " " : ""));
+          if (stanza.caller() != null)
+            client.called.add(stanza.caller());
+        }
         return true;
       }
     return false;
@@ -531,17 +569,20 @@ public class XmppServer extends ProgramPeer {
     burst.append("<message" + attribute("from", jid.local() + "@" + CONFERENCE) + attribute("to", client.jid()) + attribute("type", "groupchat") +
                  "><subject>" + Xml.escape(room.subject(), (char)0) + "</subject></message>");
     out(fd, burst.toString());
-    for (Said line : said) // the lines of the occupants, for this client
+    int arrival = packetSize > 0 ? (burst.length() + packetSize - 1) / packetSize : 0; // the seconds that the packets take
+    for (Said line : said) // the lines of the occupants, for this client, counted from the arrival of the burst
       if (line.room().equals(jid.local()) && line.after() == null)
-        plan(client, fd, line);
+        plan(client, fd, line, arrival);
   }
 
-  /** Plans a line of an occupant to the client, said after its delay if the client is still in the room */
-  private void plan(Client client, int fd, Said line)
+  /** Plans a line of an occupant to the client, said after its delay (and that many more seconds) if it is still in the room */
+  private void plan(Client client, int fd, Said line, int later)
   {
-    String text = line.addressed() ? MessageFormat.format(line.text(), client.rooms.get(line.room())) : line.text();
-    plan(now() + line.delay(), fd, message(client, line.room(), line.nick(), "groupchat", null, text, payload(line, text)),
-         c -> c.rooms.containsKey(line.room()) && !(line.addressed() && c.told.contains(line.nick())));
+    String text      = line.addressed() ? MessageFormat.format(line.text(), client.rooms.get(line.room())) : line.text();
+    boolean silenced = line.addressed() && !aways.containsKey(line.nick()); // an occupant back from away calls the client anyway
+    pending.add(new Pending(now() + later + line.delay(), fd, message(client, line.room(), line.nick(), "groupchat", null, text, payload(line, text)),
+                            c -> c.rooms.containsKey(line.room()) && !(silenced && c.told.contains(line.nick())), line.addressed() ? line.nick() : null));
+    pending.sort((a, b) -> Integer.compare(a.at(), b.at()));
   }
 
   /** What follows the body of a line of an occupant */
@@ -561,7 +602,7 @@ public class XmppServer extends ProgramPeer {
   /** Plans a stanza to a client, sent at that time if the client is then in the condition */
   private void plan(int at, int fd, String stanza, Predicate<Client> condition)
   {
-    pending.add(new Pending(at, fd, stanza, condition));
+    pending.add(new Pending(at, fd, stanza, condition, null));
     pending.sort((a, b) -> Integer.compare(a.at(), b.at()));
   }
 
@@ -592,12 +633,11 @@ public class XmppServer extends ProgramPeer {
       else if (body != null) {
         out(fd, message(client, jid.local(), nick, "groupchat", message.attribute("id"), body.text(), ""));
         Matcher addressed = ADDRESSED.matcher(body.text());
-        if (addressed.matches())
-          room.nicks()
-              .stream()
-              .filter(addressed.group(1)::equalsIgnoreCase)
-              .findFirst()
-              .ifPresent(occupant -> ask(fd, client, jid.local(), occupant, addressed.group(2), false));
+        String occupant   = !addressed.matches() ? null : room.nicks().stream().filter(addressed.group(1)::equalsIgnoreCase).findFirst().orElse(null);
+        if (occupant != null)
+          ask(fd, client, jid.local(), occupant, addressed.group(2), false);
+        else
+          mentioned(fd, client, jid.local(), body.text());
       }
     } else if (!room.nicks().contains(jid.resource()))
       stanzaError(fd, client, message, "cancel", "item-not-found", Game.i18n.tr("There is nobody named {0} in this room.", jid.resource()));
@@ -607,13 +647,31 @@ public class XmppServer extends ProgramPeer {
       ask(fd, client, jid.local(), jid.resource(), body.text(), true);
   }
 
+  /** Tells the client how to address the occupants that its message names without being addressed to them, once per client */
+  private void mentioned(int fd, Client client, String room, String text)
+  {
+    addressing.forEach((occupant, hint) -> {
+      Pattern name = Pattern.compile("(?<![\\w+])" + Pattern.quote(occupant) + "(?![\\w+])", Pattern.CASE_INSENSITIVE); // not Karel in Karel++
+      if (hint.room().equals(room) && name.matcher(text).find() && client.mentioned.add(occupant))
+        plan(now() + 2, fd, message(client, room, hint.nick(), "groupchat", null, MessageFormat.format(hint.texts().get(0), client.rooms.get(room)), ""),
+             c -> c.rooms.containsKey(room));
+    });
+  }
+
   /** Makes an occupant react to a message of the client: in private, or addressed to it on the room, where it addresses the client */
   private void ask(int fd, Client client, String room, String occupant, String text, boolean privately)
   {
+    String muc = "<x" + attribute("xmlns", MUC_USER) + "/>";                // marks a private message coming from a room
+    if (aways.containsKey(occupant) && !client.called.contains(occupant)) { // its automatic reply, before it called the client
+      String away = aways.get(occupant);
+      plan(now() + 1, fd, privately ? message(client, room, occupant, "chat", null, away, muc) : message(client, room, occupant, "groupchat", null, away, ""),
+           c -> c.rooms.containsKey(room));
+      return;
+    }
     if (client.told.add(occupant))
       for (Said line : said)
         if (line.room().equals(room) && occupant.equalsIgnoreCase(line.after()))
-          plan(client, fd, line);
+          plan(client, fd, line, 0);
     Answers answer = answers.get(occupant);
     if (answer == null)
       return;
@@ -621,7 +679,6 @@ public class XmppServer extends ProgramPeer {
     String normalized = ascii(PosixWorld.text(text)).toLowerCase(Locale.ROOT); // the accents of the client's UTF-8 removed too
     boolean matches   = answer.words().stream().allMatch(forms -> forms.stream().anyMatch(normalized::contains));
     String reply      = matches ? answer.answer() : answer.otherwise();
-    String muc        = "<x" + attribute("xmlns", MUC_USER) + "/>"; // marks a private message coming from a room
     plan(now() + 1, fd,
          privately ? message(client, room, occupant, "chat", null, reply, muc) : message(client, room, occupant, "groupchat", null, nick + ": " + reply, ""),
          c -> c.rooms.containsKey(room));

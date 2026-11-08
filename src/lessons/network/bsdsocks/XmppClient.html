@@ -37,7 +37,8 @@ did not encounter a <code>&lt;</code> to end the text and start a tag. <code>&am
 <code>'...'</code> or double quotes <code>"..."</code>. A quote within an attribute value is written as an entity
 (<code>&amp;apos;</code> for <code>'</code> and <code>&amp;quot;</code> for <code>"</code>), so a value always ends at the next
 occurrence of the quote that started it. Don't worry, this is a lesson on networking, so your code does not need to handle angle
-brackets in attribute values. Likewise, there is no <code>&lt;![CDATA[...]]&gt;</code> construct in this exercise, even if it's
+brackets in attribute values, and the server of this exercise always encloses its attributes between double quotes. Likewise,
+there is no <code>&lt;![CDATA[...]]&gt;</code> construct in this exercise, even if it's
 a great way to escape some content from the XML parsing.</p>
 
 <h2>How to proceed</h2>
@@ -79,7 +80,7 @@ The framing is built upon a <b>buffered stream</b> from the standard library tha
 
 <p><b>The application</b>, at the top, speaks XMPP using the features proposed by the framing layer. It sends your stanzas, and
 looks in the stanzas received for what the scenario needs: who sent a message (its attribute <code>from</code>) and what it says
-(the text of its own <code>&lt;body&gt;</code>, whose entities must be decoded). It never sees a packet, nor counts a depth.</p>
+(the text of its own <code>&lt;body&gt;</code>). It never sees a packet, nor counts a depth.</p>
 
 [!c]
 <p>Here are the functions involved, besides the ones of the previous exercises. Check the manpages for more info.</p>
@@ -136,12 +137,13 @@ info.</p>
 
 <h2>What to do</h2>
 
-<p>Write the function <code>client(server, port, room, password)</code>, which connects using TCP to the XMPP server at this
-address and port, opens a stream to the domain <code>buggleinc.lan</code>, authenticates as the user <code>newcomer</code> with
-the password, and joins the room (such as <code>robots@conference.buggleinc.lan</code>) with the nickname <code>newcomer</code>.
-The friend of Bob is in the room, and will call you once you joined: answer him, telling him who sent you and what you are
-looking for. He will give you a web address between <code>&lt;</code> and <code>&gt;</code>: print it alone on a line, without
-the <code>&lt;</code> and <code>&gt;</code>, then end your stream, wait for the server to end its own one, and close your
+<p>Write the function <code>client(server, port, room, password, friend)</code>, which connects using TCP to the XMPP server at
+this address and port, opens a stream to the domain <code>buggleinc.lan</code>, authenticates as the user <code>newcomer</code>
+with the password, and joins the room (such as <code>robots@conference.buggleinc.lan</code>) with the nickname
+<code>newcomer</code>. The friend of Bob, whose nickname is <code>friend</code>, is in the room, and will call you once you
+joined: answer him then, starting your message with his nickname and a colon, and telling him who sent you and what you are
+looking for. He will give you a web address between <code>[</code> and <code>]</code>: print it alone on a line, without the
+<code>[</code> and <code>]</code>, then end your stream, wait for the server to end its own one, and close your
 socket.</p>
 
 <p>The parameters of your function differ from one world to the other, and the server cuts its stanzas in packets in some of
@@ -158,132 +160,10 @@ explains what went wrong.
 <code>Base64.getEncoder().encodeToString(("\0newcomer\0" + password).getBytes(StandardCharsets.US_ASCII))</code> gives
 them.[/!][!scala]
 <code>Base64.getEncoder.encodeToString(("\u0000newcomer\u0000" + password).getBytes(StandardCharsets.US_ASCII))</code> gives
-them (Scala writes the zero byte <code>\u0000</code>).[/!]</p>
-</div></li>
-
-[!c]
-<li><div class="tip" id="tip-base64" alt="Give me a function computing the base64">
-<p>The base64 writes each group of 3 bytes (24 bits) as 4 characters of 6 bits each, completed by <code>=</code> at the end.
-This function writes the base64 of <code>length</code> bytes into <code>out</code>:</p>
-<pre>
-void base64(const unsigned char* data, int length, char* out)
-{
-  const char* digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-  for (int i = 0; i &lt; length; i += 3) {
-    int n  = data[i] &lt;&lt; 16 | (i + 1 &lt; length ? data[i + 1] &lt;&lt; 8 : 0) | (i + 2 &lt; length ? data[i + 2] : 0);
-    *out++ = digits[n &gt;&gt; 18 &amp; 63];
-    *out++ = digits[n &gt;&gt; 12 &amp; 63];
-    *out++ = i + 1 &lt; length ? digits[n &gt;&gt; 6 &amp; 63] : '=';
-    *out++ = i + 2 &lt; length ? digits[n &amp; 63] : '=';
-  }
-  *out = '\0';
-}
-</pre>
-<p>The credentials hold zero bytes, so they are not a string: keep their length, as given by
-<code>snprintf(credentials, buffsize, "%cnewcomer%c%s", 0, 0, password)</code>.</p>
-</div></li>
-[/!]
-
-<li><div class="tip" id="tip-buffer" alt="How does a buffered stream work?">
-<p>It keeps an array of the bytes received but not read yet, with the position of the next one to read. When this array is
-empty, a single <code>recv()</code> fills it with everything that arrived meanwhile (a packet, or several), up to its size.
-Then each call returns the next byte from the array, without asking anything from the network. Reading byte by byte thus costs
-one system call per packet, not one per byte, and the packets do not matter to the code reading the stream.</p>
-<p>Putting a byte back (as [!c]<code>ungetc()</code>[/!][!python]<code>peek()</code>[/!][!java|scala]<code>unread()</code>[/!]
-does) simply moves the position of the next byte one step back, storing the byte there. When this position is already at the
-start of the array while some bytes remain to read, the stream first shifts them one step further to make room.</p>
-<p>Here is how you could write such a stream yourself, without putting bytes back:</p>
-[!c]
-<pre>
-struct reader {
-  int sock;
-  char data[4096];
-  int start, end; /* the bytes received but not read yet are data[start] to data[end - 1] */
-};
-
-/* The next byte, or -1 at the end of the stream */
-int reader_getc(struct reader* r)
-{
-  if (r-&gt;start == r-&gt;end) {
-    int received = recv(r-&gt;sock, r-&gt;data, sizeof(r-&gt;data), 0);
-    if (received &lt;= 0)
-      return -1;
-    r-&gt;start = 0;
-    r-&gt;end   = received;
-  }
-  return (unsigned char)r-&gt;data[r-&gt;start++];
-}
-</pre>
-<p>Create it with <code>struct reader r = {sock, {0}, 0, 0};</code>, then call <code>reader_getc(&amp;r)</code> where you would
-call <code>fgetc(in)</code>.</p>
-[/!]
-[!python]
-<pre>
-class Reader:
-    def __init__(self, sock):
-        self.sock = sock
-        self.data = b""
-        self.pos = 0  # the next byte to read in data
-
-    def read(self):
-        """The next byte, or None at the end of the stream"""
-        if self.pos == len(self.data):
-            self.data = self.sock.recv(4096)
-            self.pos = 0
-            if not self.data:
-                return None
-        self.pos += 1
-        return self.data[self.pos - 1]
-</pre>
-<p>Its <code>read()</code> returns the byte as an integer, where <code>stream.read(1)</code> returns it as a
-<code>bytes</code>.</p>
-[/!]
-[!java]
-<pre>
-class Reader {
-  private final InputStream in;
-  private final byte[] data = new byte[4096];
-  private int pos = 0, end = 0; // the bytes received but not read yet are data[pos] to data[end - 1]
-
-  Reader(InputStream in) { this.in = in; }
-
-  /** The next byte, or -1 at the end of the stream */
-  int read() throws IOException
-  {
-    if (pos == end) {
-      int received = in.read(data, 0, data.length);
-      if (received &lt;= 0)
-        return -1;
-      pos = 0;
-      end = received;
-    }
-    return data[pos++] &amp; 0xff;
-  }
-}
-</pre>
-[/!]
-[!scala]
-<pre>
-class Reader(in: InputStream) {
-  private val data = new Array[Byte](4096)
-  private var pos  = 0 // the bytes received but not read yet are data(pos) to data(end - 1)
-  private var end  = 0
-
-  /** The next byte, or -1 at the end of the stream */
-  def read(): Int = {
-    if (pos == end) {
-      val received = in.read(data, 0, data.length)
-      if (received &lt;= 0)
-        return -1
-      pos = 0
-      end = received
-    }
-    pos += 1
-    data(pos - 1) &amp; 0xff
-  }
-}
-</pre>
-[/!]
+them (Scala writes the zero byte <code>\u0000</code>).[/!][!c]The function <code>base64(data, length, out)</code>, given in your
+code, writes the base64 of the <code>length</code> bytes of <code>data</code> into <code>out</code>, ended by a zero byte: 4
+characters for each group of 3 bytes, completed by <code>=</code> at the end. The credentials hold zero bytes, so they are not a
+string: keep their length, as given by <code>snprintf(credentials, buffsize, "%cnewcomer%c%s", 0, 0, password)</code>.[/!]</p>
 </div></li>
 
 <li><div class="tip" id="tip-framing" alt="How do I know that a stanza arrived whole?">
@@ -295,7 +175,69 @@ the depth back to 1, or when a tag ending with <code>/&gt;</code> comes at the d
 depth back to 0.</p>
 </div></li>
 
-<li><div class="tip" id="tip-stanzas" alt="Give me the complete code reading the stanzas">
+<li><div class="tip" id="tip-parsing" alt="I struggle parsing the messages that I get">
+<p>Once a stanza is cut, two small functions are enough to find what the scenario needs in it. The first one gives the text of
+the body of a message: the text between the first <code>&lt;body&gt;</code> and the next <code>&lt;/body&gt;</code>, which is
+the body of the stanza itself in this exercise (a message that it quotes comes after it). The second one tells whether the
+stanza was sent by an address, such as <code>robots@conference.buggleinc.lan/Karel</code>: look for
+<code> from="</code>, the address and the closing quote in the opening tag of the stanza only, that is before its first
+<code>&gt;</code>, as a message quoted inside has its own attribute <code>from</code>.</p>
+[!c]
+<pre>
+/* Writes the text of the body of the stanza into text (an array of that size), and returns 1, or 0 if it has no body */
+int body(const char* stanza, char* text, int size);
+
+/* Returns 1 if the stanza itself was sent by that address, and 0 otherwise */
+int sent_by(const char* stanza, const char* sender);
+</pre>
+[/!]
+[!python]
+<pre>
+def body(stanza):
+    """The text of the body of the stanza, or an empty text if it has none"""
+
+def sent_by(stanza, sender):
+    """Whether the stanza itself was sent by that address"""
+</pre>
+[/!]
+[!java]
+<pre>
+/** The text of the body of the stanza, or an empty text if it has none */
+static String body(String stanza)
+
+/** Whether the stanza itself was sent by that address */
+static boolean sentBy(String stanza, String sender)
+</pre>
+[/!]
+[!scala]
+<pre>
+/** The text of the body of the stanza, or an empty text if it has none */
+def body(stanza: String): String
+
+/** Whether the stanza itself was sent by that address */
+def sentBy(stanza: String, sender: String): Boolean
+</pre>
+[/!]
+</div></li>
+
+<li><div class="tip" id="tip-joined" alt="How do I know that I am in the room?">
+<p>The reference tells what the room sends when you join it, and what comes last.</p>
+</div></li>
+
+<li><div class="tip" id="tip-text" alt="The address that I print is wrong">
+<p>Check who sent it: a message may quote another one inside it, so look for the sender in the opening tag of the stanza only,
+as [!c]<code>sent_by()</code>[/!][!python]<code>sent_by()</code>[/!][!java|scala]<code>sentBy()</code>[/!] does.</p>
+</div></li>
+
+<li><div class="tip" id="tip-deadlock" alt="The world reports a deadlock">
+<p>The world tells what each program waits for. If the server waits for a stanza while you wait for its answer, read the trace
+for the notes of the server: your stanza may be incomplete, or broken. If you wait for the end of the stream, did you end your
+own one first? If you wrote to the friend of Bob, read all the messages that came back, not only his: someone may tell you why
+he does not answer.</p>
+</div></li>
+
+<li><div class="tip" id="tip-stanzas" alt="Spoiler: give me the complete code reading the stanzas">
+<p>This is the core of the exercise: read this tip only if the other ones did not help you to write it yourself.</p>
 [!c]
 <pre>
 int depth = 0; /* 0 before the header of the stream, 1 inside it, 2 or more inside a stanza */
@@ -467,79 +409,5 @@ def nextStanza(in: PushbackInputStream): String = {
 </pre>
 <p>Call <code>nextStanza(in)</code> for each stanza, beginning with the features of the server.</p>
 [/!]
-</div></li>
-
-<li><div class="tip" id="tip-joined" alt="How do I know that I am in the room?">
-<p>The reference tells what the room sends when you join it, and what comes last.</p>
-</div></li>
-
-<li><div class="tip" id="tip-friend" alt="Who is the friend of Bob?">
-<p>His name differs from one world to the other, but he calls you by your nickname in a message, as an IRC member would. The
-attribute <code>from</code> of this message tells who he is: the room, a <code>/</code>, then his nickname. Answer him on the
-room, starting your message with his nickname and a colon. If he does not understand you, the other occupants may help.</p>
-</div></li>
-
-<li><div class="tip" id="tip-text" alt="The address that I print is wrong, or holds &amp;lt;">
-<p>The texts of XML write <code>&lt;</code> as <code>&amp;lt;</code> and <code>&gt;</code> as <code>&amp;gt;</code>, among
-others (see the reference). Look for <code>&amp;lt;http</code> in the stanza, or decode the references of the text before
-searching it, with a function such as this one.</p>
-[!c]
-<pre>
-/* Decodes the references of the text in place, such as &amp;lt; into &lt; */
-void decode(char* text)
-{
-  const char* references[] = {"&amp;lt;", "&amp;gt;", "&amp;amp;", "&amp;apos;", "&amp;quot;"};
-  const char* characters   = "&lt;&gt;&amp;'\"";
-  char* out                = text;
-  while (*text != '\0') {
-    int found = 0;
-    for (int i = 0; i &lt; 5 &amp;&amp; !found; i++)
-      if (strncmp(text, references[i], strlen(references[i])) == 0) {
-        *out++ = characters[i];
-        text += strlen(references[i]);
-        found = 1;
-      }
-    if (!found)
-      *out++ = *text++;
-  }
-  *out = '\0';
-}
-</pre>
-[/!]
-[!python]
-<pre>
-def decode(text):
-    """The text with its references decoded, such as &amp;lt; into &lt;"""
-    for reference, character in (("&amp;lt;", "&lt;"), ("&amp;gt;", "&gt;"), ("&amp;apos;", "'"), ("&amp;quot;", '"'), ("&amp;amp;", "&amp;")):
-        text = text.replace(reference, character)
-    return text
-</pre>
-[/!]
-[!java]
-<pre>
-/** The text with its references decoded, such as &amp;lt; into &lt; */
-static String decode(String text)
-{
-  return text.replace("&amp;lt;", "&lt;").replace("&amp;gt;", "&gt;").replace("&amp;apos;", "'").replace("&amp;quot;", "\"").replace("&amp;amp;", "&amp;");
-}
-</pre>
-[/!]
-[!scala]
-<pre>
-/** The text with its references decoded, such as &amp;lt; into &lt; */
-def decode(text: String): String =
-  text.replace("&amp;lt;", "&lt;").replace("&amp;gt;", "&gt;").replace("&amp;apos;", "'").replace("&amp;quot;", "\"").replace("&amp;amp;", "&amp;")
-</pre>
-[/!]
-<p>The <code>&amp;amp;</code> is decoded last: otherwise, a text holding <code>&amp;amp;lt;</code> (that is,
-<code>&amp;lt;</code> written in XML) would wrongly become <code>&lt;</code>.</p>
-<p>If you print another address than the one of the friend of Bob, look at who sent it, and where: a message may quote another
-one inside it, and only the attribute <code>from</code> of the stanza itself tells who sent it.</p>
-</div></li>
-
-<li><div class="tip" id="tip-deadlock" alt="The world reports a deadlock">
-<p>The world tells what each program waits for. If the server waits for a stanza while you wait for its answer, read the trace
-for the notes of the server: your stanza may be incomplete, or broken. If you wait for the end of the stream, did you end your
-own one first?</p>
 </div></li>
 </ul>

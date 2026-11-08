@@ -477,18 +477,21 @@ his own messages. In C, the student frames by hand with a depth counter (the tip
 incremental parser of the standard library, counting the depth of its events.
 
 The planned progression of the framing quest continues with:
-* SMTP (Karel asks you to post an email in his name -- also teaching how insecure emails are)
 * a treasure hunt over HTTP (redirections and `Content-Length` on a persistent connection, then crawling a set of pages, then
-  Transfer-Encoding: chunked)
+  maybe Transfer-Encoding: chunked)
 * FTP in passive mode
 
-Then an
 * the server side: the deadlocks of badly designed protocols, the short writes, the handling of errors, and a TCP server
-  accepting several clients. A last exercise could send an emoji, to introduce the encoding of characters once the system calls
-  are mastered: only ASCII data is accepted until then.
+  accepting several clients. 
 
 TODO:
 * The short writes are not exercised yet: `write()` always write everything.
+* An exercise could send an emoji, to introduce the encoding of characters: only ASCII data is accepted until then.
+* Maybe add a SMTP and PO3 exercise to the protocol quest. That could come after XMPP if Karel asks the newcomer to send an
+  email on his behaf. That would be a great occasion to also teach how insecure emails are.
+* Add a new quest on the server side could be used to teach about protocol design. Short writes, handling of errors, state machine.
+  See https://peer.asee.org/network-programming-beyond-sockets
+
 
 ## Recreative lessons
 

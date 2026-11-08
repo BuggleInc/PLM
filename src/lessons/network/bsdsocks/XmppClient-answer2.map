@@ -1,2 +1,83 @@
 PosixWorld "Busy buggles"
-processEnded 1
+socket 2 1 0
+connect 3 "10.0.0.5" 52220
+send 3 "<?xml version='1.0'?><stream:stream to='buggleinc.lan' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>" 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+send 3 "<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>AG5ld2NvbWVyAGJhNjkxNWMwZGU=</auth>" 0
+recv 3 8192 0
+recv 3 8192 0
+send 3 "<presence to='robots@conference.buggleinc.lan/newcomer'><x xmlns='http://jabber.org/protocol/muc'/></presence>" 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+send 3 "<message to='robots@conference.buggleinc.lan' type='groupchat'><body>Karel: Bob sent me for the treasure.</body></message>" 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+recv 3 8192 0
+write 1 "http://www.buggleinc.lan/hunt/buggles.html\n"
+send 3 "</stream:stream>" 0
+recv 3 8192 0
+recv 3 8192 0
+close 3
+processEnded 0

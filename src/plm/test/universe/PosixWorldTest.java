@@ -1301,6 +1301,53 @@ public class PosixWorldTest {
     p.close(sock);
   }
 
+  @Test public void testXmppOccupantAwayUntilItCalls()
+  {
+    PosixWorld w  = new PosixWorld("xmpp").addPeer(new XmppServer("10.0.0.5", 5222)
+                                                       .account("newcomer", "c0ffee")
+                                                       .room("robots", "Robots & buggles", "Alice", "Karel")
+                                                       .history("robots", "Karel", "Back in a minute.")
+                                                       .address(2, "robots", "Karel", "Back, {0}!")
+                                                       .away("Karel", "[auto-reply] Away.")
+                                                       .answer("Karel", List.of(List.of("please")), "Thanks!", "What?")
+                                                       .hints("robots", "Alice", "Karel", "{0}: be polite"));
+    PosixEntity p = process(w);
+    int sock      = xmppJoined(p);
+    String from   = "<message from='robots@conference.buggleinc.lan/%s' to='newcomer@buggleinc.lan' type='groupchat'><body>%s</body></message>";
+    p.send(sock, b("<message to='robots@conference.buggleinc.lan' type='groupchat'><body>Karel: please</body></message>"), 0);
+    expect(p, sock, String.format(from, "newcomer", "Karel: please"));
+    expect(p, sock, String.format(from, "Karel", "[auto-reply] Away.")); // no hint, even if the message was right
+    expect(p, sock, String.format(from, "Karel", "Back, newcomer!"));    // the call comes anyway
+    p.send(sock, b("<message to='robots@conference.buggleinc.lan' type='groupchat'><body>Karel: hello</body></message>"), 0);
+    expect(p, sock, String.format(from, "newcomer", "Karel: hello"));
+    expect(p, sock, String.format(from, "Karel", "newcomer: What?"));
+    expect(p, sock, String.format(from, "Alice", "newcomer: be polite"));
+    p.send(sock, b("<message to='robots@conference.buggleinc.lan/Karel' type='chat'><body>Please</body></message>"), 0);
+    expect(p, sock,
+           "<message from='robots@conference.buggleinc.lan/Karel' to='newcomer@buggleinc.lan' type='chat'><body>Thanks!</body>"
+               + "<x xmlns='http://jabber.org/protocol/muc#user'/></message>");
+    p.close(sock);
+  }
+
+  @Test public void testXmppHintOnMessagesNamingAnOccupant()
+  {
+    PosixWorld w  = new PosixWorld("xmpp").addPeer(new XmppServer("10.0.0.5", 5222)
+                                                       .account("newcomer", "c0ffee")
+                                                       .room("robots", "Robots & buggles", "Alice", "Karel")
+                                                       .history("robots", "Karel", "Back in a minute.")
+                                                       .answer("Karel", List.of(List.of("please")), "Thanks!", "What?")
+                                                       .addressingHint("robots", "Alice", "Karel", "{0}: start with Karel:"));
+    PosixEntity p = process(w);
+    int sock      = xmppJoined(p);
+    String from   = "<message from='robots@conference.buggleinc.lan/%s' to='newcomer@buggleinc.lan' type='groupchat'><body>%s</body></message>";
+    for (String text : List.of("Hi Karel++!", "Alice: where is Karel?", "Hello Karel, please", "Hello again KAREL")) {
+      p.send(sock, b("<message to='robots@conference.buggleinc.lan' type='groupchat'><body>" + text + "</body></message>"), 0);
+      expect(p, sock, String.format(from, "newcomer", text));
+    }
+    expect(p, sock, String.format(from, "Alice", "newcomer: start with Karel:")); // only once, for the third message
+    Assertions.assertThrows(ExplainedException.class, () -> p.recv(sock, 512, 0));
+  }
+
   @Test public void testXmppNestedElementsAndKeepAlives()
   {
     PosixWorld w  = new PosixWorld("xmpp").addPeer(new XmppServer("10.0.0.5", 5222)

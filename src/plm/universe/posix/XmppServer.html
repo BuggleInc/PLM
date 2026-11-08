@@ -61,12 +61,13 @@ nickname, such as <code>name@conference.buggleinc.lan/Alice</code>. To join a ro
 address in the room: <code>&lt;presence to='name@conference.buggleinc.lan/nickname'&gt;&lt;x
 xmlns='http://jabber.org/protocol/muc'/&gt;&lt;/presence&gt;</code>. The server then sends, in this order:</p>
 <ul>
-  <li>the presence of each other occupant, from its address in the room;</li>
+  <li>the presence of each other occupant, from its address in the room (one stanza per occupant);</li>
   <li>the presence of the client in the room, holding <code>&lt;status code='110'/&gt;</code> to tell that it is its own;</li>
   <li>the history of the room: the last messages said before the client came, each with a <code>&lt;delay
     xmlns='urn:xmpp:delay'/&gt;</code> giving their time in its attribute <code>stamp</code>;</li>
   <li>the subject of the room, in a message from the room itself, holding a <code>&lt;subject&gt;</code> but no body. It always
-    comes last, and tells that the client is in the room.</li>
+    comes last, and tells that the client is in the room. This is the last message you will get when joining a room. If you keep
+    reading, you will wait for the next messages of the room, which could lead to a deadlock if there is no such message.</li>
 </ul>
 
 <p>The messages of the room then come as they are said: <code>&lt;message from='name@conference.buggleinc.lan/Alice'
@@ -77,12 +78,11 @@ XEP-0297): its text is in the <code>&lt;body&gt;</code> directly inside the mess
 
 <p>To talk in the room, the client sends a message of type <code>groupchat</code> to the room: <code>&lt;message
 to='name@conference.buggleinc.lan' type='groupchat'&gt;&lt;body&gt;the text&lt;/body&gt;&lt;/message&gt;</code>. The room sends
-it
-to every occupant, the client included, which thus gets its own message back from its address in the room. As on IRC, a message
-for someone in particular starts with its nickname and a colon, such as <code>Alice: hello!</code>, and the other occupants
-may answer it. A private message goes to the address of an occupant, with the type <code>chat</code>, and its answers come
-with the type <code>chat</code> too. The client leaves a room by sending its presence of type <code>unavailable</code> there,
-which the room confirms.</p>
+it to every occupant, the client included, which thus gets its own message back from its address in the room. As on IRC, a
+message for someone in particular starts with its nickname and a colon, such as <code>Alice: hello!</code>, and the other
+occupants may answer it. A private message goes to the address of an occupant, with the type <code>chat</code>, and its answers
+come with the type <code>chat</code> too. The client leaves a room by sending its presence of type <code>unavailable</code>
+there, which the room confirms.</p>
 
 <h4>Ending the stream</h4>
 

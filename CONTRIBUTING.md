@@ -1143,9 +1143,13 @@ documentation](PEDAGOGY.md#system-programming).
   a member answering the messages addressed to it on the room (as in "Karel: hello") or sent to it in private (type `chat`).
   Some lines carry nested elements of the same name: an XHTML-IM version holding its own `<body>` (`sayInXhtml()`), or another
   message forwarded inside (`forward()`). `afterWritingTo()` says the last line given when the client first writes to an
-  occupant rather than when it joined, so that it comes just before its answer. `packets()` cuts everything the server sends,
-  `keepAlives()` sends a space after each line of the occupants, and `doubleQuotes()` quotes the attributes with `"` instead of
-  `'`. The broken XML, an unknown element and a stanza sent before the authentication end the stream with a stream error, while
+  occupant rather than when it joined, so that it comes just before its answer. `away()` makes an occupant answer an automatic
+  reply to the messages that it gets before calling the client with `address()` (which it then does anyway), without counting
+  failures nor giving hints. `addressingHint()` makes an occupant tell the client how to address another one, once, after a
+  message on the room that names this other occupant without being addressed to anyone (as in "Hello Karel"), which no occupant
+  answers otherwise. The delays of the lines count from the arrival of the last packet of the join. `packets()` cuts
+  everything the server sends, `keepAlives()` sends a space after each line of the occupants, and `doubleQuotes()` quotes the
+  attributes with `"` instead of `'`. The broken XML, an unknown element and a stanza sent before the authentication end the stream with a stream error, while
   the stanzas sent to an unknown room or occupant, with a wrong type, or before joining get an error stanza, and the failures of
   the authentication a `<failure>`: all of them hold a text explaining the mistake, also noted in the trace (with the credentials
   decoded from base64).
