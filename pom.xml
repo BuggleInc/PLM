@@ -139,6 +139,13 @@
       <version>2.1.5</version>
     </dependency>
 
+    <!-- System keyring, to store the GitHub token -->
+    <dependency>
+      <groupId>com.github.javakeyring</groupId>
+      <artifactId>java-keyring</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+
     <!-- jgit: THE POINT of this exercise. Was pinned at 3.2.0 (2013); now
          a CURRENT 6.x so deprecations surface against the modern API. -->
     <dependency>

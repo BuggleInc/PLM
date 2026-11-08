@@ -44,6 +44,7 @@ import plm.core.model.lesson.Lecture;
 import plm.core.ui.action.AbstractGameAction;
 import plm.core.ui.action.AddUser;
 import plm.core.ui.action.ExportSession;
+import plm.core.ui.action.GitHubLogin;
 import plm.core.ui.action.ImportSession;
 import plm.core.ui.action.PlayDemo;
 import plm.core.ui.action.QuitGame;
@@ -81,7 +82,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
   private JMenuItem miExoRevert, miExoDebug, miExoPicky, miExoCreative;
 
   private JMenu menuSession;
-  private JMenuItem miSessionExport, miSessionImport, miAddUser, miSwitchUser, miRemoveUser;
+  private JMenuItem miSessionExport, miSessionImport, miAddUser, miSwitchUser, miRemoveUser, miGitHub;
 
   private JMenu menuLanguage, menuLangHuman, menuLangProg;
   private JMenu menuHelp;
@@ -309,6 +310,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
     miRemoveUser = new JMenuItem(new RemoveUser(g, Game.i18n.tr("Remove user"), null, this));
     menuSession.add(miRemoveUser);
+    menuSession.addSeparator();
+
+    miGitHub = new JMenuItem(new GitHubLogin(g, Game.i18n.tr("GitHub account..."), null, this));
+    menuSession.add(miGitHub);
 
     /* === Language menu === */
     menuLanguage = new JMenu(Game.i18n.tr("Language"));
@@ -684,6 +689,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     miAddUser.setText(Game.i18n.tr("Add user"));
     miSwitchUser.setText(Game.i18n.tr("Switch user"));
     miRemoveUser.setText(Game.i18n.tr("Remove user"));
+    miGitHub.setText(Game.i18n.tr("GitHub account..."));
 
     menuLanguage.setText(Game.i18n.tr("Language"));
     menuLangHuman.setText(Game.i18n.tr("Human"));

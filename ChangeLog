@@ -38,6 +38,7 @@
     - Add a zoom (Ctrl+/Ctrl-/Ctrl0) to the code and HTML panes
     - Add code completion on the primitives provided by the current universe
     - Turn the compilation errors and warnings into markers in the left margin and into underlyings with a tooltip
+    - Allow to log into GitHub so that the student can get answer on their feedback
 
   * Fix bugs:
     - Lang C is now very stable and well tested, in Linux, Mac and Windows.
