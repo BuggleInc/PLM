@@ -1,4 +1,4 @@
-package plm.universe.sort;
+package lessons.sort.basic.universe;
 
 public class Swap extends Operation {
 

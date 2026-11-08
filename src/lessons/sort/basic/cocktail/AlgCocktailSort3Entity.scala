@@ -1,6 +1,6 @@
 package lessons.sort.basic.cocktail
 
-import plm.universe.sort.SortingEntity;
+import lessons.sort.basic.universe.SortingEntity;
 
 class AlgCocktailSort3Entity extends SortingEntity {
 

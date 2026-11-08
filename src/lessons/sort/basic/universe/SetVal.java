@@ -1,18 +1,18 @@
-package plm.universe.sort;
+package lessons.sort.basic.universe;
 
-public class GetVal extends Operation {
+public class SetVal extends Operation {
 
-  public int position;
+  int value;
 
   /**
    * Constructor of the class SetVal
    * @param position the source of the operation
    * @param destination the destination of the operation
    */
-  public GetVal(int position)
+  public SetVal(int position, int value)
   {
-    super(-1, -1);
-    this.position = position;
+    super(position, -1);
+    this.value = value;
   }
 
   /**
@@ -20,7 +20,12 @@ public class GetVal extends Operation {
    * @param init the values on which compute the operation
    * @return the array passed as parameter, once the operation is applied to it
    */
-  @Override public String toString() { return "get " + position; }
+  @Override public String toString() { return "set " + source + " " + value; }
 
-  @Override public int[] run(int[] init) { return init; }
+  @Override public int[] run(int[] init)
+  {
+    init[source] = value;
+
+    return init;
+  }
 }

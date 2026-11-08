@@ -2,10 +2,10 @@ package lessons.sort.basic.bubble;
 
 import java.util.Arrays;
 import lessons.sort.baseball.BubbleBaseballEntity;
+import lessons.sort.basic.universe.SortingWorld;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
-import plm.universe.sort.SortingWorld;
 
 public class AlgBubbleSort1 extends ExerciseTemplated {
 

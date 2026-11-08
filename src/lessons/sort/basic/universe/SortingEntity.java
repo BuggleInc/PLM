@@ -1,4 +1,4 @@
-package plm.universe.sort;
+package lessons.sort.basic.universe;
 
 import plm.core.lang.primitives.EntityPrimitives;
 import plm.core.lang.primitives.Glue;

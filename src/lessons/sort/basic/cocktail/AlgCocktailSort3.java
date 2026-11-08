@@ -2,10 +2,10 @@ package lessons.sort.basic.cocktail;
 
 import java.util.Arrays;
 import lessons.sort.basic.bubble.AlgBubbleSort1Entity;
+import lessons.sort.basic.universe.SortingWorld;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.universe.World;
-import plm.universe.sort.SortingWorld;
 
 public class AlgCocktailSort3 extends ExerciseTemplated {
 

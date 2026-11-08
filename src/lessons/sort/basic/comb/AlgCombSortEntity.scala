@@ -1,6 +1,6 @@
 package lessons.sort.basic.comb
 
-import plm.universe.sort.SortingEntity;
+import lessons.sort.basic.universe.SortingEntity;
 
 class AlgCombSortEntity extends SortingEntity {
 

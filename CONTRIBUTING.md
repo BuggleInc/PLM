@@ -17,7 +17,7 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   (or the teacher's correction code) against the world's primitives. 
 - **Universe**: a micro-world *kind*, i.e. a family of worlds/entities sharing a theme and a set of primitives (e.g. "a buggle
   can walk, paint, pick up objects" or "a turtle draws on the ground as it moves"). Universes are found in `src/plm/universe`
-  for the generic ones and in `src/lessons/*/universe` for the ones specifically tailored for a given lesson. See the
+  for the generic ones and in `src/lessons/**/universe` for the ones specifically tailored for a given lesson. See the
   [pedagogical documentation](PEDAGOGY.md#universes) for more information.
 
 - **Exercise**: the unit of work a student solves (`plm.core.model.lesson.Exercise`). An `Exercise` is a programming challenge

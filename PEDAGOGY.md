@@ -62,7 +62,7 @@ See the [contributor's guide](CONTRIBUTING.md#core-concepts) for more technical 
 ## Universes
 
 The PLM provides several **universes** that are *kinds* of microworlds, each adapted to a specific set of pedagogical
-challenges. Some universes are generic and adapted to a large set of situations while others are specific to a single exercise.
+challenges. Some universes are generic and adapted to a large set of situations while others are specific to a single lesson.
 Some are classical in CS classes (e.g. the sorting universe), others are more playful but still adapted to programming exercises
 (e.g. the buggles or the turtles) and others are only recreative (e.g. lightbot and lander). Almost all of the universes can be
 solved in either Java, Scala3, Python3 or C. Only the brain teaser `lightbot` is solved through a graphical interface with no
@@ -264,14 +264,15 @@ This topic is served by 4 lessons, each coming with a specific microworld.
 This is the main lesson on this algorithmic topic. It is composed of 12 exercises, requesting the students to write
 162/131/160/173 lines in either Java/Python/Scala/C. 
 
-It is served by a specific `Sort` universe. The primitives (`isSmaller`, `copy`, `swap`) observe the data access patterns so the
-student must reproduce the *expected algorithm*, not just produce a correctly sorted array. To make this efficient, the
-student-facing API is instrumented to count the amount of reads and writes to the data array, rather than to record the complete
-list of operations. This is not perfect as a student may manage to get the data sorted with the exact same amount of operations
-without following the expected algorithm, but it's rather unlikely and a perfect verification of the operations history would
-probably be too computationally intensive. Besides the array itself, the universe displays a time-space diagram (in the style of
-Aldo Cortesi's sorting visualizations) where each line follows a value of the array and crossings denote the swaps, which helps
-the students to understand and debug the behavior of their algorithm. A demo mode runs the algorithms side by side.
+It is served by a specific `Sort` universe (`lessons.sort.basic.universe`). The primitives (`isSmaller`, `copy`, `swap`) observe
+the data access patterns so the student must reproduce the *expected algorithm*, not just produce a correctly sorted array. To
+make this efficient, the student-facing API is instrumented to count the amount of reads and writes to the data array, rather
+than to record the complete list of operations. This is not perfect as a student may manage to get the data sorted with the
+exact same amount of operations without following the expected algorithm, but it's rather unlikely and a perfect verification of
+the operations history would probably be too computationally intensive. Besides the array itself, the universe displays a
+time-space diagram (in the style of Aldo Cortesi's sorting visualizations) where each line follows a value of the array and
+crossings denote the swaps, which helps the students to understand and debug the behavior of their algorithm. A demo mode runs
+the algorithms side by side.
 
 The lesson covers several in-place algorithms: bubble sort and its optimizations, cocktail, comb (and comb11), gnome, insertion,
 Shell and selection sorts. The number of reads and writes must match the expected algorithm. Even without coding, the demo mode

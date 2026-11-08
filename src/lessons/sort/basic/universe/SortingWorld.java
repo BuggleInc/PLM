@@ -1,4 +1,4 @@
-package plm.universe.sort;
+package lessons.sort.basic.universe;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,11 +17,11 @@ import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class SortingWorld extends World {
-  private int[] values;       // the values as they are sorted in the array
-  private int[] initValues;   // needed by the chronoview
+  private int[] values;          // the values as they are sorted in the array
+  private int[] initValues;      // needed by the chronoview
   private boolean someoneHomeOk; // whether a value may be in its sorted position in the initial state
-  private int readCount  = 0; // the count of the read made
-  private int writeCount = 0; // the count of the write made
+  private int readCount  = 0;    // the count of the read made
+  private int writeCount = 0;    // the count of the write made
   /*
    * It's needed by the chronoview
    * This list contains all the operations ( SetVal, CopyVal or Swap ) made on the world since
