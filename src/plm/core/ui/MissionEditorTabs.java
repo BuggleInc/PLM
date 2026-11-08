@@ -136,9 +136,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
     JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
     header.setOpaque(false);
-    JLabel label = new JLabel(title);
-    label.setToolTipText(tip);
-    header.add(label);
+    /* No tooltip on the label: it would take the clicks that select the tab, and the tab has the same tooltip anyway */
+    header.add(new JLabel(title));
     JButton close = new JButton("×");
     close.setBorder(BorderFactory.createEmptyBorder());
     close.setContentAreaFilled(false);
