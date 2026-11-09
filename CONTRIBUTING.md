@@ -40,7 +40,8 @@ Programming](https://hal.inria.fr/hal-01243646). On this page, you will find the
   microworlds with entities. The exercise owns **three parallel sets of worlds**:
   - `initialWorld`: the starting state, as built by `setup()`.
   - `answerWorld`: the target state, produced by either loading a cached solution from the disk, or by running the teacher's
-    correction code on the corresponding `initialWorld`. See [World I/O and the answer cache](#world-io-and-the-answer-cache) below.
+    correction code on the corresponding `initialWorld` (in Java when the exercise has it, whatever the language of the user).
+    See [World I/O and the answer cache](#world-io-and-the-answer-cache) below.
   - `currentWorld`: the current state while executing the student's code, initially equal to `initialWorld`. If the
     `currentWorld` becomes semantically equal to `answerWorld` after executing the student code, the exercise is passed.
 
@@ -619,8 +620,9 @@ the GUI listeners of the latter into the former.
       primitives are read-only and forbidden again by every new instance, and the likely mistakes (`Left()`, `penDown()`...) are
       explained. The documentation of the world hides the forbidden and undocumented primitives, and orders the groups as declared.
     * *`PosixWorldTest`:* the kernel of the POSIX universe (files, TCP and UDP sockets, deadlocks, binary data), its scripted and
-      program peers (IRC server included), and the comparison of its worlds, by calling the primitives of the student's process.
-      Its worlds written in their `.map` file and read back give the same file, an equal world and the same differences.
+      program peers (the servers included), and the comparison of its worlds, by calling the primitives of the student's process.
+      Its worlds written in their `.map` file and read back give the same file, an equal world and the same differences. The
+      header of the file lists its groups of tests.
     * *`LangCMessagesTest`:* the compiler messages show the real names of the functions that a C glue renames with macros.
     * *`CompilerMessageTest`:* the messages of javac, dotc, the syntax check of Python and gcc (real samples, as rendered by
       each language) are located on the editor's lines and columns, with their notes but without the quoted code. The lines of
@@ -1144,28 +1146,20 @@ documentation](PEDAGOGY.md#system-programming).
   record of the root in its additional section, for the students who print the answers rather than read the trace. A datagram
   that is not a query is ignored, with a note, as real servers do.
 * **The XMPP server** (`XmppServer`) serves the domain `buggleinc.lan` (RFC 6120 and 6121) and its chat rooms on
-  `conference.buggleinc.lan` (XEP-0045), exact to the byte as the usual servers on what it covers. The stream of each direction is
-  a single XML document whose top-level elements are the stanzas, framed by the nesting of their elements only: `Xml` reads the
-  XML of the client as it arrives (the header of the stream, then each top-level element once it arrived whole, then the end of
-  the stream), with the restrictions of XMPP (no comments, processing instructions nor DTD). The client authenticates with SASL
-  PLAIN (no TLS is offered), may restart its stream after the success (not required), and has no resource to bind: its address is
-  its bare JID. Joining a room sends the presences of the occupants, the presence of the client (status 110), the history with
-  its delays, then the subject, which ends the join. The messages to a room come back to their sender, as to every occupant. The
-  exercise gives the accounts (`account()`), the rooms with their subject and their simulated occupants (`room()`), their history
-  (`history()`), and the lines, answers and hints of the occupants as `IrcServer` (`say()`, `address()`, `answer()`, `hints()`),
-  a member answering the messages addressed to it on the room (as in "Karel: hello") or sent to it in private (type `chat`).
-  Some lines carry nested elements of the same name: an XHTML-IM version holding its own `<body>` (`sayInXhtml()`), or another
-  message forwarded inside (`forward()`). `afterWritingTo()` says the last line given when the client first writes to an
-  occupant rather than when it joined, so that it comes just before its answer. `away()` makes an occupant answer an automatic
-  reply to the messages that it gets before calling the client with `address()` (which it then does anyway), without counting
-  failures nor giving hints. `addressingHint()` makes an occupant tell the client how to address another one, once, after a
-  message on the room that names this other occupant without being addressed to anyone (as in "Hello Karel"), which no occupant
-  answers otherwise. The delays of the lines count from the arrival of the last packet of the join. `packets()` cuts
-  everything the server sends, `keepAlives()` sends a space after each line of the occupants, and `doubleQuotes()` quotes the
-  attributes with `"` instead of `'`. The broken XML, an unknown element and a stanza sent before the authentication end the stream with a stream error, while
-  the stanzas sent to an unknown room or occupant, with a wrong type, or before joining get an error stanza, and the failures of
-  the authentication a `<failure>`: all of them hold a text explaining the mistake, also noted in the trace (with the credentials
-  decoded from base64).
+  `conference.buggleinc.lan` (XEP-0045), exact to the byte as the usual servers on what it covers.
+  * *Protocol:* each direction is a single XML document whose top-level elements are the stanzas, framed by their nesting only;
+    `Xml` reads the client's stream as it arrives, with the restrictions of XMPP. The client authenticates with SASL PLAIN (no
+    TLS), may restart its stream, and binds no resource. Joining a room sends the presences of the occupants, the history, then
+    the subject, which ends the join; the messages to a room come back to their sender.
+  * *Scenario:* accounts, rooms with their simulated occupants and history, then the lines, answers and hints of the occupants
+    as in `IrcServer`. An occupant may be `away()` until it calls the client (answering an automatic reply before), and
+    `addressingHint()` explains a message that names an occupant without addressing it. The delays count from the arrival of
+    the join.
+  * *Traps:* `packets()`, `keepAlives()` (a space between stanzas), `doubleQuotes()`, and nested elements of the same name:
+    an XHTML body (`sayInXhtml()`), or a forwarded message (`forward()`, said just before an answer with `afterWritingTo()`).
+  * *Errors:* broken XML, an unknown element or a stanza before the authentication end the stream with a stream error, the
+    wrong stanzas get an error stanza, and the failed authentications a `<failure>`; each explains the mistake, in its text and
+    in the trace.
 * **The echo clients** (`EchoClient`, one per machine, named in the trace) talk to a UDP echo server written by the student.
   The exercise gives their lines with their time (`says()`): the lines of a same time leave in a burst, and the next ones only once
   their echoes arrived, so that a client without echo stays silent. A client may check that each echo is exactly its line
@@ -1197,7 +1191,8 @@ documentation](PEDAGOGY.md#system-programming).
   the student called the function), converts `struct sockaddr_in` and the local constants to the protocol ones, copies the
   received bytes in the caller's buffer, and sets the real `errno` from the undocumented `lastError()` primitive. It exposes
   `getParamString()` and `getParamInt()` to the code of the entity that calls the student's function (the generated functions of
-  a wrapped glue are private). It also intercepts the output functions of `stdio.h` on the standard streams (`printf()`,
+  a wrapped glue are private); the strings of `getParamString()` are allocated, and `run()` frees them, or AddressSanitizer
+  reports a leak to the student. It also intercepts the output functions of `stdio.h` on the standard streams (`printf()`,
   `fprintf()`, `puts()`, `fputs()`, `putchar()` and `perror()`), unbuffered, as the libc would otherwise write behind its back.
   Its `fopen()` and `fdopen()` give real streams of the libc, buffered as usual, whose reads and writes call the system calls of
   the world (`fopencookie()` of the glibc, which `LangC` enables with `-D_GNU_SOURCE`, or `funopen()` on macOS): the student can

@@ -98,20 +98,9 @@ public abstract class ExerciseTemplated extends Exercise {
 
   protected void computeAnswer()
   {
-    /* captured now, as the user may switch language meanwhile; falls back to the first language of this exercise if it lacks the current one */
-    ProgrammingLanguage current = Game.getInstance().getProgrammingLanguage();
-    ProgrammingLanguage java    = Game.getInstance().getProgrammingLanguageManager().JAVA;
-    final ProgrammingLanguage lang;
-    if (entityLanguages.contains(current))
-      // Prefer not to switch the language
-      lang = current;
-    else if (entityLanguages.contains(java))
-      // Prefer Java if we must switch, but only if it's possible
-      lang = java;
-    else {
-      // Use the first language of that exercise if Java is not possible
-      lang = entityLanguages.iterator().next();
-    }
+    /* Java when the exercise has it, so that the answers (and their cache files) never depend on the language of the user */
+    ProgrammingLanguage java       = Game.getInstance().getProgrammingLanguageManager().JAVA;
+    final ProgrammingLanguage lang = entityLanguages.contains(java) ? java : entityLanguages.iterator().next();
 
     Runnable task                  = new Runnable() {
       @Override public void run()

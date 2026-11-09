@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lessons.network.bsdsocks.UdpEcho;
+import lessons.network.bsdsocks.XmppClient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import plm.universe.BrokenWorldFileException;
@@ -37,7 +38,18 @@ import plm.universe.posix.PosixWorld;
 import plm.universe.posix.ProgramPeer;
 import plm.universe.posix.XmppServer;
 
-/** Scenarios of the POSIX world, played directly on the entity (no remoting). */
+/**
+ * Scenarios of the POSIX world, played directly on the entity (no remoting), in groups:
+ * - the kernel: files, TCP and UDP sockets, their errors, deadlocks, binary data, and the comparison of worlds;
+ * - the scripted peers, and the scripts given as translated texts (Peer.literal());
+ * - the IRC server: registration, channels, members answering and hinting, packets;
+ * - the DNS server: queries to the byte, explained malformed queries;
+ * - the echo clients of UdpEcho: echoes checked, the account and the port given;
+ * - the XMPP server, to the byte: the session, the stanzas read in pieces, the authentication and its failures, the stream and
+ *   stanza errors, the occupants (calls, answers, hints, away, addressing hints), nesting and keep-alives;
+ * - the worlds of XmppClient: the automatic reply in every world, and the forwarded message trapping the naive clients;
+ * - the world files: written and read back, they give the same file, an equal world and the same differences.
+ */
 public class PosixWorldTest {
 
   private static byte[] b(String text) { return text.getBytes(StandardCharsets.ISO_8859_1); }
@@ -1346,6 +1358,62 @@ public class PosixWorldTest {
     }
     expect(p, sock, String.format(from, "Alice", "newcomer: start with Karel:")); // only once, for the third message
     Assertions.assertThrows(ExplainedException.class, () -> p.recv(sock, 512, 0));
+  }
+
+  /** Receives until the data holds that text, and returns everything received */
+  private static String receiveUntil(PosixEntity p, int sock, String text)
+  {
+    StringBuilder res = new StringBuilder();
+    while (res.indexOf(text) < 0)
+      res.append(s(p.recv(sock, 4096, 0)));
+    return res.toString();
+  }
+
+  /** Connects to the XMPP server of that world of XmppClient, authenticates and joins its room, up to the subject */
+  private static int xmppClientJoined(PosixWorld w, PosixEntity p)
+  {
+    Object[] params = w.getParameters();
+    int sock        = p.socket(AF_INET, SOCK_STREAM, 0);
+    p.connect(sock, (String)params[0], (Integer)params[1]);
+    p.send(sock, b(XMPP_HEADER), 0);
+    receiveUntil(p, sock, "</stream:features>");
+    p.send(sock, b(xmppAuth("\0newcomer\0" + params[3])), 0);
+    receiveUntil(p, sock, "<success");
+    p.send(sock, b("<presence to='" + params[2] + "/newcomer'/>"), 0);
+    receiveUntil(p, sock, "</subject></message>");
+    return sock;
+  }
+
+  @Test public void testXmppClientFriendAwayUntilHisCall()
+  {
+    for (PosixWorld w : XmppClient.worlds()) {
+      PosixEntity p   = process(w);
+      int sock        = xmppClientJoined(w, p);
+      Object[] params = w.getParameters();
+      p.send(sock, b("<message to='" + params[2] + "' type='groupchat'><body>" + params[4] + ": Bob sent me for the treasure.</body></message>"), 0);
+      String received = receiveUntil(p, sock, "Back, sorry");
+      Assertions.assertTrue(received.contains("Automatic reply"), w.getName() + ": " + received);      // in every world, cut in packets or not
+      Assertions.assertFalse(received.contains("[http"), w.getName() + ": " + received);               // neither the answer nor the forwarded one
+      Assertions.assertFalse(received.contains(params[4] + " only"), w.getName() + ": " + received); // no hint either
+      p.close(sock);
+    }
+  }
+
+  @Test public void testXmppClientForwardTrapsTheNaiveClients()
+  {
+    PosixWorld w    = XmppClient.worlds()[2];
+    PosixEntity p   = process(w);
+    int sock        = xmppClientJoined(w, p);
+    Object[] params = w.getParameters();
+    receiveUntil(p, sock, "Back, sorry");
+    p.send(sock, b("<message to='" + params[2] + "' type='groupchat'><body>Karel: Bob sent me for the treasure.</body></message>"), 0);
+    String received = receiveUntil(p, sock, "hunt/buggles.html]");
+    int forwarded   = received.indexOf("hunt/2023.html]");
+    Assertions.assertTrue(forwarded >= 0 && forwarded < received.indexOf("hunt/buggles.html]"), received); // the old address comes first
+    Assertions.assertTrue(received.lastIndexOf("<message", forwarded) >
+                              received.lastIndexOf("<message from=\"robots@conference.buggleinc.lan/Carol\"", forwarded),
+                          received); // inside a message of Carol
+    p.close(sock);
   }
 
   @Test public void testXmppNestedElementsAndKeepAlives()
