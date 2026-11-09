@@ -5,6 +5,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import plm.core.model.Game;
 
 /**
  * A state of a world, drawn by its view: its processes (the student's first, then the ones of the peers in their order) with the
@@ -30,7 +31,7 @@ record Scene(int now, PosixWorld.Event event, int actor, List<PosixProcess> proc
 
   private static List<String> titles(PosixWorld world)
   {
-    List<String> res = new ArrayList<>(List.of("Your machine (" + PosixWorld.STUDENT_IP + ")"));
+    List<String> res = new ArrayList<>(List.of(Game.i18n.tr("Your machine ({0})", PosixWorld.STUDENT_IP)));
     for (Peer p : world.peers)
       res.add(p.title());
     return res;

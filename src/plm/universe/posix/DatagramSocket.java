@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+import plm.core.model.Game;
 
 /**
  * A UDP socket, bound to its port by bind(), or on an ephemeral port by its first sendto() or connect(). Each datagram arrives
@@ -42,7 +43,8 @@ final class DatagramSocket extends InetSocket {
   {
     incoming.add(datagram);
     arrived.append(datagram.data());
-    passages.add(new Passage("Received from " + datagram.ip() + ":" + datagram.port() + ", " + datagram.data().length() + " bytes", datagram.data()));
+    String what = Game.i18n.tr("Received from {0}:{1}, {2} bytes", datagram.ip(), String.valueOf(datagram.port()), String.valueOf(datagram.data().length()));
+    passages.add(new Passage(what, datagram.data()));
   }
 
   @Override String describe() { return "datagram socket" + (remoteIp == null ? "" : " connected to " + remoteIp + ":" + remotePort); }

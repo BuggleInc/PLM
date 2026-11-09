@@ -31,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.Scrollable;
 import javax.swing.SwingUtilities;
+import org.xnap.commons.i18n.I18n;
 import plm.core.model.Game;
 import plm.core.ui.MainFrame;
 import plm.core.ui.WorldView;
@@ -248,7 +249,8 @@ public class PosixWorldView extends WorldView {
       redacted     = w.redacted();
       g2.setColor(Color.black);
       if (!timeline) {
-        g2.drawString("t = " + w.now + "s", (getWidth() - 40) / 2, 18);
+        // Translator: the time of the simulation, in seconds
+        g2.drawString(Game.i18n.tr("t = {0}s", String.valueOf(w.now)), (getWidth() - 40) / 2, 18);
         scene(g2, 10, Scene.live(w), true);
         return;
       }
@@ -333,7 +335,8 @@ public class PosixWorldView extends WorldView {
     g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 11));
     int y = (from + to) / 2 + 4;
     g2.setColor(Color.gray);
-    g2.drawString("t=" + scene.now(), 10, y);
+    // Translator: the time of an event of the timeline, in seconds
+    g2.drawString(Game.i18n.tr("t={0}", String.valueOf(scene.now())), 10, y);
     g2.setColor(Color.black);
     g2.drawString(fit(g2, label, canvas.getWidth() - x - 18), x + 8, y);
     g2.setFont(font);
@@ -361,20 +364,21 @@ public class PosixWorldView extends WorldView {
     Queue(List<String> chunks, boolean eof, boolean outgoing, int capacity, String role) { this(chunks, eof, outgoing, capacity, role, null); }
   }
 
-  private static final String SEND    = "Send queue: the data sent by this process waits here before travelling to the peer";
-  private static final String RECEIVE = "Receive queue: the data from the peer waits here until this process receives it";
-  private static final String BACKLOG = "Backlog: the connected clients wait here until accept() takes them";
+  /* The roles of the queues, translated when shown */
+  private static final String SEND    = I18n.marktr("Send queue: the data sent by this process waits here before travelling to the peer");
+  private static final String RECEIVE = I18n.marktr("Receive queue: the data from the peer waits here until this process receives it");
+  private static final String BACKLOG = I18n.marktr("Backlog: the connected clients wait here until accept() takes them");
   /** The cell ending a chunk shortened to its share of a queue */
   private static final String ELLIPSIS = "…";
   private static final String DATAGRAMS =
-      "Receive queue: each datagram waits here, whole, until this process receives it (the bytes beyond the buffer of recvfrom() are lost)";
+      I18n.marktr("Receive queue: each datagram waits here, whole, until this process receives it (the bytes beyond the buffer of recvfrom() are lost)");
 
   /** The row of a standard stream: its single queue holds what waits on the input, or what was written on the outputs */
   private static Row stream(int fd, StandardStream stream)
   {
-    String output = stream.name.equals("stdout") ? "output" : "error";
-    String role   = stream.input ? "Standard input: its data waits here until this process reads it"
-                                 : "Standard " + output + ": everything this process wrote on it, displayed in the console";
+    String role   = stream.input                   ? I18n.marktr("Standard input: its data waits here until this process reads it")
+                    : stream.name.equals("stdout") ? I18n.marktr("Standard output: everything this process wrote on it, displayed in the console")
+                                                   : I18n.marktr("Standard error: everything this process wrote on it, displayed in the console");
     Queue queue   = new Queue(stream.data.isEmpty() ? List.of() : List.of(stream.data), stream.input, !stream.input, 0, role);
     return new Row(fd, new String[] {stream.name}, List.of(queue), stream.input, !stream.input, null, stream);
   }
@@ -393,25 +397,30 @@ public class PosixWorldView extends WorldView {
   {
     if (o instanceof StandardStream stream)
       return stream(fd, stream);
-    if (o instanceof RegularFile f)
-      return new Row(fd, new String[] {"file " + f.path, (f.writable ? "w" : "r") + ", offset " + f.offset}, f.readable, f.writable);
+    if (o instanceof RegularFile f) {
+      // Translator: w or r tells whether the file was opened for writing or for reading, as in fopen()
+      String offset = Game.i18n.tr("{0}, offset {1}", f.writable ? "w" : "r", String.valueOf(f.offset));
+      return new Row(fd, new String[] {Game.i18n.tr("file {0}", f.path), offset}, f.readable, f.writable);
+    }
     if (o instanceof Socket s) {
+      // Translator: the title of the box of a TCP socket, in the kernel of a machine
+      String socket = Game.i18n.tr("socket");
       String port = s.port >= 0 ? String.valueOf(s.port) : s.remote != null ? "" : null; // a client socket gets an anonymous port
       if (s.remote != null) { // the end of the stream waits in the send queue until its data was transmitted
         List<String> sent = s.outgoing.isEmpty() ? List.of() : List.of(s.outgoing.toString());
-        return new Row(fd, new String[] {"socket"}, connection(sent, s.writeClosed && !s.outgoing.isEmpty(), new ArrayList<>(s.incoming), s.eofArrived()), true,
+        return new Row(fd, new String[] {socket}, connection(sent, s.writeClosed && !s.outgoing.isEmpty(), new ArrayList<>(s.incoming), s.eofArrived()), true,
                        true, port, s);
       }
       if (s.listening) { // one place per connection that may wait to be accepted
         Queue backlog = new Queue(new ArrayList<>(Collections.nCopies(s.backlog.size(), "•")), false, false, s.backlogMax, BACKLOG);
-        return new Row(fd, new String[] {"socket"}, List.of(backlog), true, true, port, s);
+        return new Row(fd, new String[] {socket}, List.of(backlog), true, true, port, s);
       }
-      return new Row(fd, new String[] {"socket", s.port >= 0 ? "bound" : "unconnected"}, List.of(), true, true, port, s);
+      return new Row(fd, new String[] {socket, s.port >= 0 ? Game.i18n.tr("bound") : Game.i18n.tr("unconnected")}, List.of(), true, true, port, s);
     }
     if (o instanceof DatagramSocket s) { // the datagrams leave at once, so only the received ones wait, one chunk each
-      List<String> senders = s.incoming.stream().map(d -> "Datagram from " + d.ip() + ":" + d.port()).toList();
+      List<String> senders = s.incoming.stream().map(d -> Game.i18n.tr("Datagram from {0}:{1}", d.ip(), String.valueOf(d.port()))).toList();
       Queue received       = new Queue(s.incoming.stream().map(Datagram::data).toList(), false, false, 0, DATAGRAMS, senders);
-      return new Row(fd, new String[] {"UDP socket"}, List.of(received), true, true, s.port >= 0 ? String.valueOf(s.port) : null, s);
+      return new Row(fd, new String[] {Game.i18n.tr("UDP socket")}, List.of(received), true, true, s.port >= 0 ? String.valueOf(s.port) : null, s);
     }
     return new Row(fd, null, false, false);
   }
@@ -419,7 +428,9 @@ public class PosixWorldView extends WorldView {
   /** The queues of a connected socket: the sending one, and the receiving one, each followed by the end of the stream if needed */
   private static List<Queue> connection(List<String> sent, boolean sentEof, List<String> received, boolean receivedEof)
   {
-    List<String> packets = Collections.nCopies(received.size(), "Packet");
+    // Translator: a chunk of data that arrived on a TCP socket, shown in the tooltip of its bytes in the receive queue
+    String packet        = Game.i18n.tr("Packet");
+    List<String> packets = Collections.nCopies(received.size(), packet);
     return List.of(new Queue(sent, sentEof, true, 0, SEND), new Queue(received, receivedEof, false, 0, RECEIVE, packets));
   }
 
@@ -448,7 +459,7 @@ public class PosixWorldView extends WorldView {
     int objectFar    = mirrored ? objectLeft : objectLeft + objectWidth;
     int edge         = mirrored ? left : left + width;
     int toObject     = mirrored ? -1 : 1; // the direction from the process to the objects
-    box(g2, PROCESS, processLeft, rowsTop - 5, processWidth, Math.max(rows.size(), 1) * ROW, "Process");
+    box(g2, PROCESS, processLeft, rowsTop - 5, processWidth, Math.max(rows.size(), 1) * ROW, Game.i18n.tr("Process"));
 
     Map<String, Integer> portRows = new HashMap<>(); // the row of the first socket using each numbered port
     for (int index = 0; index < rows.size(); index++) {
@@ -467,15 +478,15 @@ public class PosixWorldView extends WorldView {
       Rectangle area = new Rectangle(objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6);
       if (live && row.key() instanceof Socket s && s.remote != null) {
         String hidden = Game.i18n.tr("The content of the objective world is redacted to not spoil the scenario. Please implement your own solution.");
-        links.add(new Link(area, title + ", socket " + row.fd(), redacted ? () -> hidden : () -> history(s)));
-        tips.add(new Tip(area, "Click to see everything that went through this socket"));
+        links.add(new Link(area, socketTitle(title, row.fd()), redacted ? () -> hidden : () -> history(s)));
+        tips.add(new Tip(area, Game.i18n.tr("Click to see everything that went through this socket")));
       } else if (live && row.key() instanceof DatagramSocket d && d.port >= 0) {
         boolean hidden = redacted;
-        links.add(new Link(area, title + ", socket " + row.fd(), () -> history(d, hidden)));
-        tips.add(new Tip(area, "Click to see every datagram that went through this socket"));
+        links.add(new Link(area, socketTitle(title, row.fd()), () -> history(d, hidden)));
+        tips.add(new Tip(area, Game.i18n.tr("Click to see every datagram that went through this socket")));
       } else if (live && row.key() instanceof StandardStream stream && !mirrored && (stream == process.stdout || stream == process.stderr)) {
         links.add(new Link(area, title + ", " + stream.name, () -> written(stream.name)));
-        tips.add(new Tip(area, "Click to see everything that your process wrote on it"));
+        tips.add(new Tip(area, Game.i18n.tr("Click to see everything that your process wrote on it")));
       }
       for (int i = 0; i < row.queues().size(); i++) { // on the right of the title, one under the other, a lone queue under the title
         Queue q  = row.queues().get(i);
@@ -490,8 +501,8 @@ public class PosixWorldView extends WorldView {
       g2.drawLine(objectFar, y, edge - 6 * toObject, portY);
       port(g2, edge, portY, row.port(), mirrored);
       if (row.port().isEmpty())
-        tips.add(new Tip(new Rectangle(edge - 8, portY - 8, 16, 16),
-                         "<html>Ephemeral port, chosen by the system during connect():<br>a client needs no fixed port, as nobody connects to it</html>"));
+        tips.add(new Tip(new Rectangle(edge - 8, portY - 8, 16, 16), Game.i18n.tr("<html>Ephemeral port, chosen by the system during connect():<br>"
+                                                                                  + "a client needs no fixed port, as nobody connects to it</html>")));
       if (row.key() != null)
         ports.put(row.key(), new Point(edge, portY));
     }
@@ -512,7 +523,13 @@ public class PosixWorldView extends WorldView {
   }
 
   /** Everything that went through a connected socket: what arrived on it (received or not), and what it sent (transmitted or not) */
-  private static String history(Socket s) { return PosixWorld.text("Received:\n" + s.arrived + "\n\nSent:\n" + s.remote.arrived + s.outgoing); }
+  private static String history(Socket s)
+  {
+    return PosixWorld.text(Game.i18n.tr("Received:") + "\n" + s.arrived + "\n\n" + Game.i18n.tr("Sent:") + "\n" + s.remote.arrived + s.outgoing);
+  }
+
+  /** The title of the tab showing a socket of a machine */
+  private static String socketTitle(String machine, int fd) { return Game.i18n.tr("{0}, socket {1}", machine, String.valueOf(fd)); }
 
   /**
    * Every datagram that went through a socket, in order: where it came from or went, then its bytes as hexdump -C shows them, 16
@@ -537,7 +554,7 @@ public class PosixWorldView extends WorldView {
       }
       res.append('\n');
     }
-    return res.isEmpty() ? "No datagram went through this socket yet." : res.toString();
+    return res.isEmpty() ? Game.i18n.tr("No datagram went through this socket yet.") : res.toString();
   }
 
   /** Draws a file as an icon with a folded corner: its name on top, then the first lines of its content (all of it as a tooltip) */
@@ -564,12 +581,12 @@ public class PosixWorldView extends WorldView {
     }
     g2.setFont(font);
     Rectangle area = new Rectangle(x, y, FILE_WIDTH, FILE_HEIGHT);
-    String click   = live ? "<i>Click to open it in the editor</i>" : "";
+    String click   = live ? "<i>" + Game.i18n.tr("Click to open it in the editor") + "</i>" : "";
     tips.add(new Tip(area, "<html>" + escape(name) + ":<br><pre>" + escape(PosixWorld.text(data)) + "</pre>" + click + "</html>"));
     if (live)
       links.add(new Link(area, name, () -> {
         String current = ((PosixWorld)world).files.get(name);
-        return current == null ? "(this file does not exist anymore)" : PosixWorld.text(current);
+        return current == null ? Game.i18n.tr("(this file does not exist anymore)") : PosixWorld.text(current);
       }));
   }
 
@@ -627,13 +644,14 @@ public class PosixWorldView extends WorldView {
     if (cells.size() > fit) {
       cells             = cells.subList(0, fit - 1);
       hidden            = bytes - (int)cells.stream().limit(used).filter(c -> c != null && !ELLIPSIS.equals(c)).count();
-      StringBuilder all = new StringBuilder("<html>");
+      StringBuilder all = new StringBuilder();
       for (int k = 0; k < q.chunks().size(); k++) { // one chunk per line if they are labelled
         if (q.labels() != null)
           all.append(k > 0 ? "<br>" : "").append(escape(q.labels().get(k))).append(": ");
-        all.append(secret ? q.chunks().get(k).length() + " bytes" : escape("'" + PosixWorld.bytes(q.chunks().get(k)) + "'"));
+        all.append(secret ? size(q.chunks().get(k)) : escape("'" + PosixWorld.bytes(q.chunks().get(k)) + "'"));
       }
-      tips.add(new Tip(new Rectangle(x, y, width, CELL), all.append(q.eof() ? " then EOF" : "").append("</html>").toString()));
+      String content = q.eof() ? Game.i18n.tr("{0} then EOF", all.toString()) : all.toString();
+      tips.add(new Tip(new Rectangle(x, y, width, CELL), "<html>" + content + "</html>"));
     }
     int cellsWidth = cells.isEmpty() ? CELL // the place of an empty queue
                                      : cells.stream().mapToInt(c -> "EOF".equals(c) ? 2 * CELL : CELL).sum() + (hidden > 0 ? 2 * CELL : 0);
@@ -641,7 +659,7 @@ public class PosixWorldView extends WorldView {
 
     g2.setColor(HIGHLIGHT);
     arrowHead(g2, leavesRight ? x + width : x, y + CELL / 2, leavesRight ? 1 : -1);
-    tips.add(new Tip(new Rectangle(leavesRight ? x + width - 9 : x - 1, y, 10, CELL), q.role()));
+    tips.add(new Tip(new Rectangle(leavesRight ? x + width - 9 : x - 1, y, 10, CELL), Game.i18n.tr(q.role())));
     Font font = g2.getFont();
     g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 10));
     int chunkStart = cx;
@@ -659,20 +677,21 @@ public class PosixWorldView extends WorldView {
       if (q.labels() != null && i < used && (i + 1 == Math.min(used, cells.size()) || !chunks.get(i + 1).equals(chunks.get(i)))) { // the end of a chunk
         String chunk = q.chunks().get(chunks.get(i));
         tips.add(new Tip(new Rectangle(chunkStart, y, cx + w - chunkStart, CELL),
-                         q.labels().get(chunks.get(i)) + ", " + chunk.length() + " bytes" + (secret ? "" : ": '" + PosixWorld.bytes(chunk) + "'")));
+                         q.labels().get(chunks.get(i)) + ", " + size(chunk) + (secret ? "" : ": '" + PosixWorld.bytes(chunk) + "'")));
       }
       if (cell != null)
         g2.drawString(cell, cx + (w - g2.getFontMetrics().stringWidth(cell)) / 2, y + CELL - 2);
       String meaning = null;
       if ("EOF".equals(cell)) {
         if (q.role() == RECEIVE)
-          meaning = "End of stream: the peer closed its side after this data. Once all the data is received, recv() returns 0";
+          meaning = Game.i18n.tr("End of stream: the peer closed its side after this data. Once all the data is received, recv() returns 0");
         else if (q.role() == SEND)
-          meaning = "End of stream: this process closed its side, and the end travels to the peer after this data";
+          meaning = Game.i18n.tr("End of stream: this process closed its side, and the end travels to the peer after this data");
         else
-          meaning = "End of the input: once all the data is read, read() returns 0";
+          meaning = Game.i18n.tr("End of the input: once all the data is read, read() returns 0");
       } else if (q.capacity() > 0)
-        meaning = cell == null ? "A free place: listen() allows that many clients to wait" : "A client that connected and waits for accept()";
+        meaning = cell == null ? Game.i18n.tr("A free place: listen() allows that many clients to wait")
+                               : Game.i18n.tr("A client that connected and waits for accept()");
       if (meaning != null)
         tips.add(new Tip(new Rectangle(cx, y, w, CELL), meaning));
       cx += w;
@@ -685,6 +704,9 @@ public class PosixWorldView extends WorldView {
     }
     g2.setFont(font);
   }
+
+  /** The size of some data, as shown in the tooltips */
+  private static String size(String data) { return Game.i18n.tr("{0} bytes", String.valueOf(data.length())); }
 
   /** Draws the head of a horizontal arrow ending at (x, y), pointing right (direction 1) or left (direction -1) */
   private static void arrowHead(Graphics2D g2, int x, int y, int direction)

@@ -523,7 +523,9 @@ public class PosixWorld extends World {
       s.port = ephemeralPort(proc.ip);
     DatagramSocket target = datagramSocket(ip, port);
     boolean arrives       = target != null && target.accepts(proc.ip, s.port);
-    String what           = "Sent to " + ip + ":" + port + ", " + data.length() + " bytes" + (arrives ? "" : ", lost as no socket waits for it there");
+    String length         = String.valueOf(data.length());
+    String what           = arrives ? Game.i18n.tr("Sent to {0}:{1}, {2} bytes", ip, String.valueOf(port), length)
+                                    : Game.i18n.tr("Sent to {0}:{1}, {2} bytes, lost as no socket waits for it there", ip, String.valueOf(port), length);
     s.passages.add(new DatagramSocket.Passage(what, data));
     if (arrives)
       target.deliver(new Datagram(proc.ip, s.port, data));
