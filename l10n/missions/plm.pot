@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-11-02 21:16+0100\n"
+"POT-Creation-Date: 2026-11-09 09:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/bugglequest/BuggleWorld.html:9
 #: src/lessons/turmites/universe/TurmiteWorld.html:6
-#: src/plm/universe/sort/SortingWorld.html:10
+#: src/lessons/sort/basic/universe/SortingWorld.html:10
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:4
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:13
@@ -216,9 +216,9 @@ msgstr ""
 #: src/lessons/network/bsdsocks/UdpDns.html:13
 #: src/lessons/network/bsdsocks/UdpDns.html:137
 #: src/lessons/network/bsdsocks/UdpEcho.html:13
-#: src/lessons/network/bsdsocks/XmppClient.html:15
-#: src/lessons/network/bsdsocks/XmppClient.html:75
-#: src/lessons/network/bsdsocks/XmppClient.html:211
+#: src/lessons/network/bsdsocks/XmppClient.html:85
+#: src/lessons/network/bsdsocks/XmppClient.html:185
+#: src/lessons/network/bsdsocks/XmppClient.html:241
 msgid "[!c]"
 msgstr ""
 
@@ -350,7 +350,7 @@ msgid ""
 "amount of seconds."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li><div>
 #: src/plm/universe/posix/PosixWorld.html:53
 #: src/lessons/welcome/variables/Variables.html:35
 #: src/lessons/welcome/variables/Variables.html:69
@@ -358,7 +358,9 @@ msgstr ""
 #: src/lessons/network/bsdsocks/UdpClient.html:41
 #: src/lessons/network/bsdsocks/UdpDns.html:26
 #: src/lessons/network/bsdsocks/UdpEcho.html:28
-#: src/lessons/network/bsdsocks/XmppClient.html:27
+#: src/lessons/network/bsdsocks/XmppClient.html:102
+#: src/lessons/network/bsdsocks/XmppClient.html:193
+#: src/lessons/network/bsdsocks/XmppClient.html:287
 msgid "[/!] [!python]"
 msgstr ""
 
@@ -484,6 +486,7 @@ msgstr ""
 #: src/lessons/network/bsdsocks/UdpClient.html:56
 #: src/lessons/network/bsdsocks/UdpDns.html:40
 #: src/lessons/network/bsdsocks/UdpEcho.html:42
+#: src/lessons/network/bsdsocks/XmppClient.html:119
 msgid "[/!] [!java|scala]"
 msgstr ""
 
@@ -2915,7 +2918,9 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/plm/universe/posix/XmppServer.html:64
-msgid "the presence of each other occupant, from its address in the room;"
+msgid ""
+"the presence of each other occupant, from its address in the room (one "
+"stanza per occupant);"
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -2938,11 +2943,13 @@ msgstr ""
 msgid ""
 "the subject of the room, in a message from the room itself, holding a "
 "<code>&lt;subject&gt;</code> but no body. It always comes last, and tells "
-"that the client is in the room."
+"that the client is in the room. This is the last message you will get when "
+"joining a room. If you keep reading, you will wait for the next messages of "
+"the room, which could lead to a deadlock if there is no such message."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/posix/XmppServer.html:72
+#: src/plm/universe/posix/XmppServer.html:73
 msgid ""
 "The messages of the room then come as they are said: <code>&lt;message "
 "from='name@conference.buggleinc.lan/Alice' to='user@buggleinc.lan' "
@@ -2956,7 +2963,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/posix/XmppServer.html:78
+#: src/plm/universe/posix/XmppServer.html:79
 msgid ""
 "To talk in the room, the client sends a message of type "
 "<code>groupchat</code> to the room: <code>&lt;message "
@@ -3673,10 +3680,9 @@ msgstr ""
 #: src/lessons/network/bsdsocks/UdpDns.html:56
 #: src/lessons/network/bsdsocks/UdpDns.html:141
 #: src/lessons/network/bsdsocks/UdpEcho.html:58
-#: src/lessons/network/bsdsocks/XmppClient.html:45
-#: src/lessons/network/bsdsocks/XmppClient.html:96
-#: src/lessons/network/bsdsocks/XmppClient.html:194
-#: src/lessons/network/bsdsocks/XmppClient.html:232
+#: src/lessons/network/bsdsocks/XmppClient.html:136
+#: src/lessons/network/bsdsocks/XmppClient.html:220
+#: src/lessons/network/bsdsocks/XmppClient.html:411
 msgid "[/!]"
 msgstr ""
 
@@ -4356,12 +4362,14 @@ msgstr ""
 msgid "x = 5"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li><div>
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/loopfor/LoopFor.html:68
 #: src/lessons/welcome/bdr/BDR2.html:83
 #: src/lessons/recursion/cons/universe/ConsWorld.html:34
 #: src/lessons/network/bsdsocks/TcpClient.html:97
+#: src/lessons/network/bsdsocks/XmppClient.html:211
+#: src/lessons/network/bsdsocks/XmppClient.html:367
 msgid "[/!] [!scala]"
 msgstr ""
 
@@ -5014,14 +5022,13 @@ msgstr ""
 msgid "Executing the loop body at least once"
 msgstr ""
 
-#. type: Content of: <ul>
+#. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
 #: src/lessons/welcome/loopdowhile/Poucet2.html:19
 #: src/lessons/welcome/array/basics/Array1.html:100
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:54
 #: src/lessons/maze/pledge/PledgeMaze.html:59
 #: src/lessons/network/bsdsocks/TcpFramingIrc.html:89
-#: src/lessons/network/bsdsocks/XmppClient.html:107
 msgid "[!python]"
 msgstr ""
 
@@ -7487,7 +7494,7 @@ msgstr ""
 #: src/lessons/network/bsdsocks/UdpClient.html:78
 #: src/lessons/network/bsdsocks/UdpDns.html:58
 #: src/lessons/network/bsdsocks/UdpEcho.html:60
-#: src/lessons/network/bsdsocks/XmppClient.html:47
+#: src/lessons/network/bsdsocks/XmppClient.html:138
 msgid "What to do"
 msgstr ""
 
@@ -8879,12 +8886,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/plm/universe/sort/SortingWorld.html:2
+#: src/lessons/sort/basic/universe/SortingWorld.html:2
 msgid "Sorting World"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/sort/SortingWorld.html:3
+#: src/lessons/sort/basic/universe/SortingWorld.html:3
 msgid ""
 "This world provides tools to experiment with the sorting algorithms. It can "
 "be used in two different ways: the first one is naturally to write the "
@@ -8894,33 +8901,33 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/sort/SortingWorld.html:9
+#: src/lessons/sort/basic/universe/SortingWorld.html:9
 msgid "Methods available to sorting algorithms"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:12
+#: src/lessons/sort/basic/universe/SortingWorld.html:12
 msgid "As always, the indices of cells range from 0 to"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/plm/universe/sort/SortingWorld.html:12
+#: src/lessons/sort/basic/universe/SortingWorld.html:12
 #, no-wrap
 msgid "getValueCount()-1"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:12
+#: src/lessons/sort/basic/universe/SortingWorld.html:12
 msgid ". Accessing a cell out of this range raises an error."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/sort/SortingWorld.html:14
+#: src/lessons/sort/basic/universe/SortingWorld.html:14
 msgid "History view"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:15
+#: src/lessons/sort/basic/universe/SortingWorld.html:15
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -8931,7 +8938,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:22
+#: src/lessons/sort/basic/universe/SortingWorld.html:22
 msgid ""
 "To help in this process, it is possible to graphically explore the history "
 "of your sorting algorithm. Switch to the Objective view and use the "
@@ -8940,7 +8947,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:27
+#: src/lessons/sort/basic/universe/SortingWorld.html:27
 #: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
@@ -8954,7 +8961,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:36
+#: src/lessons/sort/basic/universe/SortingWorld.html:36
 msgid ""
 "This view, inspired from Aldo Cortesi, reveals very helpful understand the "
 "inner behavior of sorting algorithms."
@@ -14710,8 +14717,10 @@ msgid ""
 "console shows where."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <ul><li><div>
 #: src/lessons/network/bsdsocks/TcpClient.html:93
+#: src/lessons/network/bsdsocks/XmppClient.html:202
+#: src/lessons/network/bsdsocks/XmppClient.html:324
 msgid "[/!] [!java]"
 msgstr ""
 
@@ -15133,9 +15142,8 @@ msgid ""
 "<code>data.decode(\"ascii\")</code> before searching the strings in it."
 msgstr ""
 
-#. type: Content of: <ul>
+#. type: Content of: outside any tag (error?)
 #: src/lessons/network/bsdsocks/TcpFramingIrc.html:135
-#: src/lessons/network/bsdsocks/XmppClient.html:130
 msgid "[/!] [!c]"
 msgstr ""
 
@@ -15591,7 +15599,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/network/bsdsocks/UdpDns.html:73
 #: src/lessons/network/bsdsocks/UdpEcho.html:70
-#: src/lessons/network/bsdsocks/XmppClient.html:60
+#: src/lessons/network/bsdsocks/XmppClient.html:152
 msgid "Additional hints"
 msgstr ""
 
@@ -16036,52 +16044,203 @@ msgid ""
 "You now have everything to meet the friend of Bob: the address of the XMPP "
 "server (from the DNS), its port (from Bob, through your echo server), your "
 "account on it (from Alice), and the address of the chat room (from Bob, on "
-"IRC). XMPP (also known as Jabber) is the protocol of instant messaging "
-"standardized by the IETF, used by many chat services and by the online games "
-"and the connected objects that need to exchange messages."
+"IRC). If not, please return to the previous exercises to follow the story "
+"without cheating :)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/XmppClient.html:9
+#: src/lessons/network/bsdsocks/XmppClient.html:8
 msgid ""
-"XMPP frames its messages in yet another way. A connection carries a single "
-"XML document in each direction, called a stream, which only ends when the "
-"connection ends. The messages, called stanzas, are the elements directly "
-"inside the root of this document. There is no length before them and no line "
-"end after them: a stanza ends when its first tag gets closed, which requires "
-"counting how deep you are in the nesting of the elements. The data still "
-"arrives in packets cut anywhere, as with IRC.  The XMPP server of this world "
-"is documented in the world documentation (Ctrl-H): read it before starting."
+"In this exercise, we will discover XMPP, that is also known as Jabber. It is "
+"the protocol of instant messaging standardized by the IETF, used by many "
+"chat services and by the online games and the connected objects that need to "
+"exchange messages. XMPP frames its messages in yet another way. A connection "
+"carries a single XML document in each direction, called a stream, which only "
+"ends when the connection ends. The messages, called stanzas, are the "
+"elements directly inside the root of this document.  There is no length "
+"before them and no line end after them: a stanza ends when its first tag "
+"gets closed, which requires counting how deep you are in the nesting of the "
+"elements. Something similar would have been possible with correctly "
+"parenthesized expressions: any stanza starts with an opening parenthesis "
+"<code>(</code> and you know that the message is complete only when you find "
+"the corresponding <code>)</code>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/network/bsdsocks/XmppClient.html:17
+msgid "An XML primer"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/XmppClient.html:16
+#: src/lessons/network/bsdsocks/XmppClient.html:19
 msgid ""
-"The C library has no XML parser, so you will frame the stanzas by hand: scan "
-"the received bytes, count the depth of the nesting at each tag, and give the "
-"stanza once the depth gets back to the one of the stream. Here are the "
-"functions involved, besides the ones of the previous exercises. Check the "
-"manpages for more info."
+"An XML tag has more information embedded than a single parenthesis: a name "
+"and attributes. The XML syntax is verbose and not very pleasant to read as a "
+"human, but it is very regular and somewhat easy to parse. The simplest form "
+"of tag is the tag name between angle brackets. <code>&lt;a&gt;</code> is the "
+"<code>a</code> tag. You can add attributes to any tag, as in <code>&lt;a "
+"href=\"http://buggleinc.com\"&gt;</code> which adds an attribute of name "
+"<code>href</code> and value <code>http://buggleinc.com</code>. Tags can also "
+"be used to enclose some text, as in <code>&lt;b&gt;some "
+"text&lt;/b&gt;</code>.  The first tag is said to be an opening tag because "
+"it does not start with <code>&lt;/</code> while the second tag is said to be "
+"a closing tag because it actually has a <code>/</code> between the angle "
+"bracket and the tag name (so the two <code>a</code> tags used earlier are "
+"opening tags too). Finally, some tags are self-closing such as "
+"<code>&lt;br/&gt;</code>. They are both the opening and the closing tag at "
+"once, because they have a <code>/</code> after the tag name and right before "
+"the closing angle bracket <code>&gt;</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:30
+msgid ""
+"The last piece of XML that you will need in this exercise is the solution to "
+"escape the <code>&lt;</code> and <code>&gt;</code> in the input data. In the "
+"text that lays outside of the tags, XML escapes <code>&lt;</code> as "
+"<code>&amp;lt;</code> (spelled \"the less-than entity\"), while "
+"<code>&gt;</code> may or may not be escaped (as <code>&amp;gt;</code> -- "
+"greater-than). Indeed, escaping <code>&gt;</code> in the text is useless: "
+"there is no tag to end if you did not encounter a <code>&lt;</code> to end "
+"the text and start a tag. <code>&amp;</code> itself is encoded as "
+"<code>&amp;amp;</code>. The <code>&gt;</code> may also appear in the "
+"attribute values (but not in their name, and a <code>&lt;</code> never "
+"appears there), but that's OK because attributes must be enclosed between "
+"simple quotes <code>'...'</code> or double quotes <code>\"...\"</code>. A "
+"quote within an attribute value is written as an entity "
+"(<code>&amp;apos;</code> for <code>'</code> and <code>&amp;quot;</code> for "
+"<code>\"</code>), so a value always ends at the next occurrence of the quote "
+"that started it. Don't worry, this is a lesson on networking, so your code "
+"does not need to handle angle brackets in attribute values, and the server "
+"of this exercise always encloses its attributes between double "
+"quotes. Likewise, there is no <code>&lt;![CDATA[...]]&gt;</code> construct "
+"in this exercise, even if it's a great way to escape some content from the "
+"XML parsing."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/network/bsdsocks/XmppClient.html:44
+msgid "How to proceed"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:46
+msgid ""
+"The goal of the exercise is to open a socket to the server specified as a "
+"parameter, send the header of your stream according to the protocol "
+"documentation, and parse the answers that you get. The server starts its own "
+"stream with the XML declaration <code>&lt;?xml version='1.0'?&gt;</code>, "
+"which is neither an opening nor a closing tag, then with its header "
+"<code>&lt;stream:stream ...&gt;</code>, an opening tag that only gets closed "
+"at the end of the connection: the messages are the elements inside this "
+"stream, possibly preceded by some spaces. If the received message starts "
+"with a self-closing tag (as in <code>&lt;br/&gt;</code>) then the message is "
+"complete and must be handled according to the XMPP protocol, which is "
+"documented in the world documentation (Ctrl-H): read it before starting. If "
+"the message starts with an opening tag, then you must fetch data from the "
+"network until you got the closing tag that brings you back to the depth of "
+"the stream, because the data still arrives in packets cut anywhere, as with "
+"IRC. Count the depth: a message may contain elements with its own name, so "
+"the first closing tag with the right name does not always end it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:57
+msgid ""
+"There are plenty of available XML parsers[!python|java|scala], including in "
+"the [!thelang/] standard library[/!], but we will do the parsing manually to "
+"better understand how the framing goes in this case. This is not as complex "
+"as it sounds, because we can assume that the server always sends valid XML "
+"stanzas, without angle brackets in attribute values or anything "
+"complex. Yet, it is advised to split your code in two layers to increase its "
+"readability."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:62
+msgid ""
+"<b>The framing</b> reads the network and cuts the stanzas. This is the core "
+"of this exercise. It reads the bytes one by one from a buffered stream, adds "
+"them to the stanza being built, and counts the depth at each tag: the byte "
+"after a <code>&lt;</code> tells a closing tag (<code>/</code>) from the XML "
+"declaration (<code>?</code>) and from an opening tag, and the byte before a "
+"<code>&gt;</code> tells a self-closing tag (<code>/</code>). The stanza is "
+"complete when its last tag brings the depth back to the one of the "
+"stream. The XML declaration, the header of the stream and the spaces between "
+"the stanzas are not part of any stanza.  [!python]Write it as a "
+"<i>generator</i>: a function that <code>yield</code>s each stanza in turn as "
+"a text, and that the rest of your code uses with <code>next()</code> or in a "
+"<code>for</code> loop.[/!] [!java|scala]Write it as a method "
+"<code>nextStanza()</code> returning the next stanza as a "
+"<code>String</code>, or <code>null</code> at the end of the stream. It plays "
+"the role of an iterator (what Python calls a <i>generator</i>): each call "
+"goes on reading where the previous one stopped.[/!] [!c]Write it as a "
+"function writing the next stanza into an array, and returning 0 at the end "
+"of the stream: each call goes on reading where the previous one stopped.[/!] "
+"The framing is built upon a <b>buffered stream</b> from the standard library "
+"that hides the packets, using [!c]<code>fdopen()</code>, "
+"<code>fgetc()</code> and <code>ungetc()</code>[/!] "
+"[!python]<code>sock.makefile(\"rb\")</code>, <code>read(1)</code> and "
+"<code>peek()</code>[/!] [!java|scala]<code>PushbackInputStream</code> and "
+"<code>BufferedInputStream</code>[/!] (see below)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:81
+msgid ""
+"<b>The application</b>, at the top, speaks XMPP using the features proposed "
+"by the framing layer. It sends your stanzas, and looks in the stanzas "
+"received for what the scenario needs: who sent a message (its attribute "
+"<code>from</code>) and what it says (the text of its own "
+"<code>&lt;body&gt;</code>). It never sees a packet, nor counts a depth."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:86
+msgid ""
+"Here are the functions involved, besides the ones of the previous "
+"exercises. Check the manpages for more info."
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/XmppClient.html:20
+#: src/lessons/network/bsdsocks/XmppClient.html:88
 msgid ""
-"<code>void* memmove(void* dest, const void* src, size_t n)</code> copies "
-"<code>n</code> bytes, even when the two areas overlap, as when you remove "
-"the beginning of a buffer."
+"<code>FILE* fdopen(int fd, const char* mode)</code> gives a buffered stream "
+"on a descriptor, such as your socket. Open it with the mode "
+"<code>\"r\"</code>, to read only: keep <code>send()</code> to write on the "
+"socket. <code>fclose()</code> closes the stream and the socket at once: do "
+"not <code>close()</code> the socket after it."
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/XmppClient.html:22
+#: src/lessons/network/bsdsocks/XmppClient.html:91
 msgid ""
-"<code>int sprintf(char* str, const char* format, ...)</code> writes as "
-"<code>printf()</code> into an array, and returns the number of bytes "
-"written: the format <code>%c</code> with the value 0 writes a zero byte."
+"<code>int fgetc(FILE* stream)</code> returns the next byte of the stream, or "
+"<code>EOF</code> at its end. Do not use <code>fread()</code> to read a "
+"stanza: it waits until it has all the bytes asked for, which may never come."
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/XmppClient.html:24
+#: src/lessons/network/bsdsocks/XmppClient.html:93
+msgid ""
+"<code>int ungetc(int c, FILE* stream)</code> puts the byte <code>c</code> "
+"back into the stream, so that the next <code>fgetc()</code> returns it "
+"again. It lets you look at the next byte without taking it: to skip the "
+"spaces between the stanzas, read until a byte that is not a space, then put "
+"it back, so that the stanza starts with its <code>&lt;</code>."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:96
+msgid ""
+"<code>int snprintf(char* str, size_t size, const char* format, ...)</code> "
+"writes as <code>printf()</code> into an array of size <code>size</code>, and "
+"returns the number of bytes written. This function correctly truncates the "
+"output to never overflow the buffer."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:99
 msgid ""
 "<code>char* strstr(const char* haystack, const char* needle)</code> and "
 "<code>char* strchr(const char* s, int c)</code> find a text or a character "
@@ -16089,68 +16248,109 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/XmppClient.html:30
+#: src/lessons/network/bsdsocks/XmppClient.html:105
 msgid ""
-"Python reads XML as it arrives, with the parser <code>XMLPullParser</code> "
-"of the module <code>xml.etree.ElementTree</code>. Check its documentation "
-"for more info."
+"Here are the functions involved, besides the ones of the previous "
+"exercises. Check the documentation of Python for more info."
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/XmppClient.html:33
+#: src/lessons/network/bsdsocks/XmppClient.html:108
 msgid ""
-"<code>parser = ElementTree.XMLPullParser(events=(\"start\", \"end\"))</code> "
-"creates a parser telling when each element starts and ends."
+"<code>sock.makefile(\"rb\")</code> gives a buffered file reading the bytes "
+"of the socket. Keep <code>sock.sendall()</code> to write on the socket, and "
+"close both the file and the socket at the end."
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/XmppClient.html:35
+#: src/lessons/network/bsdsocks/XmppClient.html:110
 msgid ""
-"<code>parser.feed(data)</code> gives it some bytes, wherever they are cut, "
-"and <code>parser.flush()</code> makes it parse them at once (it may "
-"otherwise wait for more data before reading the end of a tag)."
+"<code>stream.read(1)</code> returns the next byte as a <code>bytes</code> of "
+"length 1, or <code>b\"\"</code> at the end of the stream. Do not use "
+"<code>read(4096)</code> to read a stanza: it waits until it has all the "
+"bytes asked for, which may never come."
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/XmppClient.html:37
+#: src/lessons/network/bsdsocks/XmppClient.html:113
 msgid ""
-"<code>parser.read_events()</code> gives the pairs <code>(event, "
-"element)</code> of what was parsed since its last call.  The "
-"<code>element</code> of an event <code>\"end\"</code> is complete: "
-"<code>element.tag</code> is its name, preceded by its namespace between "
-"braces (such as <code>{jabber:client}message</code>), "
-"<code>element.get(\"from\")</code> is the value of its attribute "
-"<code>from</code> (or <code>None</code>), "
-"<code>element.find(\"{jabber:client}body\")</code> is its child element "
-"<code>body</code> (or <code>None</code>), and <code>element.text</code> is "
-"its text, with the references such as <code>&amp;lt;</code> already decoded."
+"<code>stream.peek(1)</code> returns the next bytes without taking them (at "
+"least one, unless at the end of the stream), so that the next "
+"<code>read(1)</code> returns them again: <code>stream.peek(1)[:1]</code> is "
+"the next byte. It plays the role of <code>ungetc()</code> in C: to skip the "
+"spaces between the stanzas, look at the next byte, and read it only if it is "
+"a space, so that the stanza starts with its <code>&lt;</code>."
 msgstr ""
 
 #. type: Content of: <ol><li>
-#: src/lessons/network/bsdsocks/XmppClient.html:43
+#: src/lessons/network/bsdsocks/XmppClient.html:117
 msgid ""
 "<code>base64.b64encode(data)</code> gives the base64 of some bytes, as "
 "bytes."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/XmppClient.html:49
+#: src/lessons/network/bsdsocks/XmppClient.html:122
 msgid ""
-"Write the function <code>client(server, port, room, password)</code>, which "
-"connects to the XMPP server at this address and port, opens a stream to the "
-"domain <code>buggleinc.lan</code>, authenticates as the user "
-"<code>newcomer</code> with the password, and joins the room (such as "
-"<code>robots@conference.buggleinc.lan</code>) with the nickname "
-"<code>newcomer</code>.  The friend of Bob is in the room, and will call you "
-"once you joined: answer him, telling him who sent you and what you are "
-"looking for. He will give you a web address between <code>&lt;</code> and "
-"<code>&gt;</code>: print it alone on a line, without the <code>&lt;</code> "
-"and <code>&gt;</code>, then end your stream, wait for the server to end its "
-"own one, and close your socket."
+"Here are the classes involved, besides the ones of the previous "
+"exercises. Check the documentation of Java for more info."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:125
+msgid ""
+"<code>new PushbackInputStream(new "
+"BufferedInputStream(socket.getInputStream()))</code> gives a buffered stream "
+"reading the bytes of the socket. Keep <code>socket.getOutputStream()</code> "
+"to write on it."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:127
+msgid ""
+"<code>in.read()</code> returns the next byte as an <code>int</code> between "
+"0 and 255, or -1 at the end of the stream.  Do not use "
+"<code>readNBytes()</code> to read a stanza: it waits until it has all the "
+"bytes asked for, which may never come."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:130
+msgid ""
+"<code>in.unread(b)</code> puts the byte <code>b</code> back into the stream, "
+"so that the next <code>read()</code> returns it again, as "
+"<code>ungetc()</code> does in C. It lets you look at the next byte without "
+"taking it: to skip the spaces between the stanzas, read until a byte that is "
+"not a space, then put it back, so that the stanza starts with its "
+"<code>&lt;</code>."
+msgstr ""
+
+#. type: Content of: <ol><li>
+#: src/lessons/network/bsdsocks/XmppClient.html:134
+msgid ""
+"<code>Base64.getEncoder().encodeToString(bytes)</code> (of "
+"<code>java.util</code>) gives the base64 of some bytes."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/network/bsdsocks/XmppClient.html:57
+#: src/lessons/network/bsdsocks/XmppClient.html:140
+msgid ""
+"Write the function <code>client(server, port, room, password, "
+"friend)</code>, which connects using TCP to the XMPP server at this address "
+"and port, opens a stream to the domain <code>buggleinc.lan</code>, "
+"authenticates as the user <code>newcomer</code> with the password, and joins "
+"the room (such as <code>robots@conference.buggleinc.lan</code>) with the "
+"nickname <code>newcomer</code>. The friend of Bob, whose nickname is "
+"<code>friend</code>, is in the room, and will call you once you joined: "
+"answer him then, starting your message with his nickname and a colon, and "
+"telling him who sent you and what you are looking for. He will give you a "
+"web address between <code>[</code> and <code>]</code>: print it alone on a "
+"line, without the <code>[</code> and <code>]</code>, then end your stream, "
+"wait for the server to end its own one, and close your socket."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/network/bsdsocks/XmppClient.html:149
 msgid ""
 "The parameters of your function differ from one world to the other, and the "
 "server cuts its stanzas in packets in some of them. As usual, the room is "
@@ -16158,296 +16358,396 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:62
-msgid "What do I send first?"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:63
-msgid ""
-"The header of your stream, as given in the reference: <code>&lt;?xml "
-"version='1.0'?&gt;&lt;stream:stream to='buggleinc.lan' xmlns='jabber:client' "
-"xmlns:stream='http://etherx.jabber.org/streams' version='1.0'&gt;</code>. Do "
-"not close it: the stream lasts as long as your connection. The server "
-"answers with its own header and its features."
-msgstr ""
-
-#. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:68
+#: src/lessons/network/bsdsocks/XmppClient.html:155
 msgid "How do I authenticate?"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:69
+#: src/lessons/network/bsdsocks/XmppClient.html:156
 msgid ""
 "Send the element <code>&lt;auth&gt;</code> described in the reference, "
 "holding the base64 of a zero byte, the user name, a zero byte and the "
 "password. The trace shows how the server decoded your credentials, and its "
 "<code>&lt;failure&gt;</code> explains what went wrong.  "
 "[!python]<code>base64.b64encode(b\"\\0newcomer\\0\" + "
-"password.encode(\"ascii\"))</code> gives them.[/!]"
+"password.encode(\"ascii\"))</code> gives them.[/!][!java] "
+"<code>Base64.getEncoder().encodeToString((\"\\0newcomer\\0\" + "
+"password).getBytes(StandardCharsets.US_ASCII))</code> gives "
+"them.[/!][!scala] "
+"<code>Base64.getEncoder.encodeToString((\"\\u0000newcomer\\u0000\" + "
+"password).getBytes(StandardCharsets.US_ASCII))</code> gives them (Scala "
+"writes the zero byte <code>\\u0000</code>).[/!][!c]The function "
+"<code>base64(data, length, out)</code>, given in your code, writes the "
+"base64 of the <code>length</code> bytes of <code>data</code> into "
+"<code>out</code>, ended by a zero byte: 4 characters for each group of 3 "
+"bytes, completed by <code>=</code> at the end. The credentials hold zero "
+"bytes, so they are not a string: keep their length, as given by "
+"<code>snprintf(credentials, buffsize, \"%cnewcomer%c%s\", 0, 0, "
+"password)</code>.[/!]"
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:76
-msgid "Give me a function computing the base64"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:77
-msgid ""
-"The base64 writes each group of 3 bytes (24 bits) as 4 characters of 6 bits "
-"each, completed by <code>=</code> at the end.  This function writes the "
-"base64 of <code>length</code> bytes into <code>out</code>:"
-msgstr ""
-
-#. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/XmppClient.html:80
-#, no-wrap
-msgid ""
-"void base64(const unsigned char* data, int length, char* out)\n"
-"{\n"
-"  const char* digits = "
-"\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n"
-"  for (int i = 0; i &lt; length; i += 3) {\n"
-"    int n  = data[i] &lt;&lt; 16 | (i + 1 &lt; length ? data[i + 1] &lt;&lt; "
-"8 : 0) | (i + 2 &lt; length ? data[i + 2] : 0);\n"
-"    *out++ = digits[n &gt;&gt; 18 &amp; 63];\n"
-"    *out++ = digits[n &gt;&gt; 12 &amp; 63];\n"
-"    *out++ = i + 1 &lt; length ? digits[n &gt;&gt; 6 &amp; 63] : '=';\n"
-"    *out++ = i + 2 &lt; length ? digits[n &amp; 63] : '=';\n"
-"  }\n"
-"  *out = '\\0';\n"
-"}\n"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:93
-msgid ""
-"The credentials hold zero bytes, so they are not a string: keep their "
-"length, as given by <code>sprintf(credentials, \"%cnewcomer%c%s\", 0, 0, "
-"password)</code>."
-msgstr ""
-
-#. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:98
+#: src/lessons/network/bsdsocks/XmppClient.html:169
 msgid "How do I know that a stanza arrived whole?"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:99
+#: src/lessons/network/bsdsocks/XmppClient.html:170
 msgid ""
 "Count the depth: the header of the stream opens the depth 1, each opening "
-"tag of a stanza goes one deeper, and each closing tag one back; a tag ending "
+"tag of a stanza goes one deeper, each closing tag one back, and a tag ending "
 "with <code>/&gt;</code> opens and closes its element at once. The stanza is "
-"whole when the depth gets back to 1. [!c]Inside a tag, the values between "
-"quotes may hold a <code>/</code> or a <code>&gt;</code> (as in "
-"<code>from='robots@conference.buggleinc.lan/Karel'</code>), which mean "
-"nothing there. Keep the bytes that follow the stanza for the next "
-"one.[/!][!python]Count the events <code>\"start\"</code> and "
-"<code>\"end\"</code> of the parser, and keep the element of an event "
-"<code>\"end\"</code> that brings the depth back to 1.[/!]"
+"whole when a tag brings the depth back to 1, or when a tag ending with "
+"<code>/&gt;</code> comes at the depth 1. Remember the byte after each "
+"<code>&lt;</code> and the byte before each <code>&gt;</code>: they tell the "
+"kind of the tag. The XML declaration (<code>&lt;?...?&gt;</code>) changes "
+"nothing, and the closing of the stream (<code>&lt;/stream:stream&gt;</code>) "
+"brings the depth back to 0."
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:108
-msgid "Give me the complete code of a generator of stanzas"
-msgstr ""
-
-#. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/XmppClient.html:110
-#, no-wrap
-msgid ""
-"def stanzas(sock):\n"
-"    parser = ElementTree.XMLPullParser(events=(\"start\", \"end\"))\n"
-"    depth = 0\n"
-"    while True:\n"
-"        for event, element in parser.read_events():\n"
-"            if event == \"start\":\n"
-"                depth += 1\n"
-"            else:\n"
-"                depth -= 1\n"
-"                if depth == 1:  # back in the stream, at the end of one of "
-"its children\n"
-"                    yield element\n"
-"        data = sock.recv(4096)\n"
-"        if not data:  # the end of the stream\n"
-"            return\n"
-"        parser.feed(data)\n"
-"        parser.flush()\n"
+#: src/lessons/network/bsdsocks/XmppClient.html:178
+msgid "I struggle parsing the messages that I get"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:127
+#: src/lessons/network/bsdsocks/XmppClient.html:179
 msgid ""
-"Use it as the generator of lines of the IRC exercise: <code>reader = "
-"stanzas(sock)</code>, then <code>stanza = next(reader)</code>."
-msgstr ""
-
-#. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:133
-msgid "Give me the complete code of a function reading the stanzas"
+"Once a stanza is cut, two small functions are enough to find what the "
+"scenario needs in it. The first one gives the text of the body of a message: "
+"the text between the first <code>&lt;body&gt;</code> and the next "
+"<code>&lt;/body&gt;</code>, which is the body of the stanza itself in this "
+"exercise (a message that it quotes comes after it). The second one tells "
+"whether the stanza was sent by an address, such as "
+"<code>robots@conference.buggleinc.lan/Karel</code>: look for <code> "
+"from=\"</code>, the address and the closing quote in the opening tag of the "
+"stanza only, that is before its first <code>&gt;</code>, as a message quoted "
+"inside has its own attribute <code>from</code>."
 msgstr ""
 
 #. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/XmppClient.html:135
+#: src/lessons/network/bsdsocks/XmppClient.html:187
 #, no-wrap
 msgid ""
-"char buffer[65536]; /* the data received and not given yet */\n"
-"int length  = 0;    /* how many bytes it holds */\n"
-"int scanned = 0;    /* how many of them were scanned */\n"
-"int depth   = 0;    /* 0 outside the stream, 1 in the stream, 2 or more in a "
-"stanza */\n"
-"int tag     = -1;   /* where the tag being scanned starts, or -1 in a text "
-"*/\n"
-"char quote  = 0;    /* the quote of the value being scanned, or 0 */\n"
-"int start   = 0;    /* where the stanza being scanned starts */\n"
+"/* Writes the text of the body of the stanza into text (an array of that "
+"size), and returns 1, or 0 if it has no body */\n"
+"int body(const char* stanza, char* text, int size);\n"
 "\n"
-"/* Writes the next stanza into stanza (of that size), ended by a zero byte, "
-"and returns 1, or 0 at the end of the stream */\n"
-"int next_stanza(int sock, char* stanza, int size)\n"
-"{\n"
-"  while (1) {\n"
-"    for (; scanned &lt; length; scanned++) {\n"
-"      char c = buffer[scanned];\n"
-"      if (tag &lt; 0) {          /* in a text, or between the stanzas */\n"
-"        if (c == '&lt;')\n"
-"          tag = scanned;\n"
-"      } else if (quote != 0) { /* in the value of an attribute */\n"
-"        if (c == quote)\n"
-"          quote = 0;\n"
-"      } else if (c == '\\'' || c == '\"')\n"
-"        quote = c;\n"
-"      else if (c == '&gt;') {    /* the end of a tag */\n"
-"        int stanza_ended = 0;\n"
-"        if (buffer[tag + 1] == '/') {        /* a closing tag */\n"
-"          depth--;\n"
-"          stanza_ended = depth == 1;\n"
-"        } else if (buffer[tag + 1] != '?') { /* an opening tag, unless the "
-"XML declaration */\n"
-"          if (depth == 1)\n"
-"            start = tag;\n"
-"          if (buffer[scanned - 1] == '/')    /* an empty element, as "
-"&lt;x/&gt; */\n"
-"            stanza_ended = depth == 1;\n"
-"          else\n"
-"            depth++;\n"
-"        }\n"
-"        tag = -1;\n"
-"        if (depth == 0)       /* &lt;/stream:stream&gt; */\n"
-"          return 0;\n"
-"        if (stanza_ended) {\n"
-"          int n = scanned + 1 - start;\n"
-"          if (n &gt;= size)\n"
-"            n = size - 1;\n"
-"          memcpy(stanza, buffer + start, n);\n"
-"          stanza[n] = '\\0';\n"
-"          length -= scanned + 1; /* forget everything up to the end of the "
-"stanza */\n"
-"          memmove(buffer, buffer + scanned + 1, length);\n"
-"          scanned = 0;\n"
-"          return 1;\n"
-"        }\n"
-"      }\n"
-"    }\n"
-"    int received = recv(sock, buffer + length, sizeof(buffer) - length, "
-"0);\n"
-"    if (received &lt;= 0)        /* the end of the stream, or an error */\n"
-"      return 0;\n"
-"    length += received;\n"
-"  }\n"
-"}\n"
+"/* Returns 1 if the stanza itself was sent by that address, and 0 otherwise "
+"*/\n"
+"int sent_by(const char* stanza, const char* sender);\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:196
+#, no-wrap
+msgid ""
+"def body(stanza):\n"
+"    \"\"\"The text of the body of the stanza, or an empty text if it has "
+"none\"\"\"\n"
+"\n"
+"def sent_by(stanza, sender):\n"
+"    \"\"\"Whether the stanza itself was sent by that address\"\"\"\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:205
+#, no-wrap
+msgid ""
+"/** The text of the body of the stanza, or an empty text if it has none */\n"
+"static String body(String stanza)\n"
+"\n"
+"/** Whether the stanza itself was sent by that address */\n"
+"static boolean sentBy(String stanza, String sender)\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:214
+#, no-wrap
+msgid ""
+"/** The text of the body of the stanza, or an empty text if it has none */\n"
+"def body(stanza: String): String\n"
+"\n"
+"/** Whether the stanza itself was sent by that address */\n"
+"def sentBy(stanza: String, sender: String): Boolean\n"
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:196
+#: src/lessons/network/bsdsocks/XmppClient.html:223
 msgid "How do I know that I am in the room?"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:197
+#: src/lessons/network/bsdsocks/XmppClient.html:224
 msgid ""
 "The reference tells what the room sends when you join it, and what comes "
 "last."
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:200
-msgid "Who is the friend of Bob?"
+#: src/lessons/network/bsdsocks/XmppClient.html:227
+msgid "The address that I print is wrong"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:201
+#: src/lessons/network/bsdsocks/XmppClient.html:228
 msgid ""
-"His name differs from one world to the other, but he calls you by your "
-"nickname in a message, as an IRC member would. The attribute "
-"<code>from</code> of this message tells who he is: the room, a "
-"<code>/</code>, then his nickname. Answer him on the room, starting your "
-"message with his nickname and a colon. If he does not understand you, the "
-"other occupants may help."
+"Check who sent it: a message may quote another one inside it, so look for "
+"the sender in the opening tag of the stanza only, as "
+"[!c]<code>sent_by()</code>[/!][!python]<code>sent_by()</code>[/!][!java|scala]<code>sentBy()</code>[/!] "
+"does."
 msgstr ""
 
 #. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:206
-msgid "The address that I print is wrong, or holds &amp;lt;"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:207
-msgid ""
-"The texts of XML write <code>&lt;</code> as <code>&amp;lt;</code> and "
-"<code>&gt;</code> as <code>&amp;gt;</code>, among others (see the "
-"reference). [!python]The parser decodes them for you, in "
-"<code>element.text</code>.[/!][!c]Look for <code>&amp;lt;http</code> in the "
-"stanza, or decode the references of the text before searching it, with a "
-"function such as this one.[/!]"
-msgstr ""
-
-#. type: Content of: <ul><li><div><pre>
-#: src/lessons/network/bsdsocks/XmppClient.html:213
-#, no-wrap
-msgid ""
-"void decode(char* text)\n"
-"{\n"
-"  const char* references[] = {\"&amp;lt;\", \"&amp;gt;\", \"&amp;amp;\", "
-"\"&amp;apos;\", \"&amp;quot;\"};\n"
-"  const char* characters   = \"&lt;&gt;&amp;'\\\"\";\n"
-"  char* out                = text;\n"
-"  while (*text != '\\0') {\n"
-"    int found = 0;\n"
-"    for (int i = 0; i &lt; 5 &amp;&amp; !found; i++)\n"
-"      if (strncmp(text, references[i], strlen(references[i])) == 0) {\n"
-"        *out++ = characters[i];\n"
-"        text += strlen(references[i]);\n"
-"        found = 1;\n"
-"      }\n"
-"    if (!found)\n"
-"      *out++ = *text++;\n"
-"  }\n"
-"  *out = '\\0';\n"
-"}\n"
+#: src/lessons/network/bsdsocks/XmppClient.html:232
+msgid "The world reports a deadlock"
 msgstr ""
 
 #. type: Content of: <ul><li><div><p>
 #: src/lessons/network/bsdsocks/XmppClient.html:233
 msgid ""
-"If you print another address than the one of the friend of Bob, look at who "
-"sent it, and where: a message may quote another one inside it, and only the "
-"attribute <code>from</code> of the stanza itself tells who sent it."
-msgstr ""
-
-#. type: Attribute 'alt' of: <ul><li><div>
-#: src/lessons/network/bsdsocks/XmppClient.html:237
-msgid "The world reports a deadlock"
-msgstr ""
-
-#. type: Content of: <ul><li><div><p>
-#: src/lessons/network/bsdsocks/XmppClient.html:238
-msgid ""
 "The world tells what each program waits for. If the server waits for a "
 "stanza while you wait for its answer, read the trace for the notes of the "
 "server: your stanza may be incomplete, or broken. If you wait for the end of "
-"the stream, did you end your own one first?"
+"the stream, did you end your own one first? If you wrote to the friend of "
+"Bob, read all the messages that came back, not only his: someone may tell "
+"you why he does not answer."
+msgstr ""
+
+#. type: Attribute 'alt' of: <ul><li><div>
+#: src/lessons/network/bsdsocks/XmppClient.html:239
+msgid "Spoiler: give me the complete code reading the stanzas"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:240
+msgid ""
+"This is the core of the exercise: read this tip only if the other ones did "
+"not help you to write it yourself."
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:243
+#, no-wrap
+msgid ""
+"int depth = 0; /* 0 before the header of the stream, 1 inside it, 2 or more "
+"inside a stanza */\n"
+"\n"
+"/* Writes the next stanza of the stream into stanza (an array of that size), "
+"ended by a zero byte, and returns 1, or 0 at the\n"
+" * end of the stream */\n"
+"int next_stanza(FILE* in, char* stanza, int size)\n"
+"{\n"
+"  int length = 0, kind = 0, previous = 0; /* kind: the byte after the &lt; "
+"of the tag being read, or 0 out of a tag */\n"
+"  while (1) {\n"
+"    int c;\n"
+"    if (depth == 1 &amp;&amp; length == 0) { /* the spaces between the "
+"stanzas */\n"
+"      while ((c = fgetc(in)) == ' ' || c == '\\t' || c == '\\r' || c == "
+"'\\n')\n"
+"        ;\n"
+"      ungetc(c, in);\n"
+"    }\n"
+"    c = fgetc(in);\n"
+"    if (c == EOF)\n"
+"      return 0;\n"
+"    if (length &lt; size - 1)\n"
+"      stanza[length++] = c;\n"
+"    if (previous == '&lt;')\n"
+"      kind = c;\n"
+"    else if (c == '&gt;' &amp;&amp; kind != 0) { /* the end of a tag */\n"
+"      int before = depth;\n"
+"      if (kind == '/') /* a closing tag */\n"
+"        depth--;\n"
+"      else if (kind != '?' &amp;&amp; previous != '/') /* an opening tag, "
+"unless the XML declaration or a self-closing tag */\n"
+"        depth++;\n"
+"      kind = 0;\n"
+"      if (before == 0) /* the XML declaration or the header of the stream, "
+"which are no stanzas */\n"
+"        length = 0;\n"
+"      else if (depth == 0) /* &lt;/stream:stream&gt; */\n"
+"        return 0;\n"
+"      else if (depth == 1) {\n"
+"        stanza[length] = '\\0';\n"
+"        return 1;\n"
+"      }\n"
+"    }\n"
+"    previous = c;\n"
+"  }\n"
+"}\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:284
+msgid ""
+"Open the stream with <code>FILE* in = fdopen(sock, \"r\");</code>, then call "
+"<code>next_stanza(in, stanza, sizeof(stanza))</code> with an array "
+"<code>char stanza[65536]</code> for each stanza, beginning with the features "
+"of the server."
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:290
+#, no-wrap
+msgid ""
+"def stanzas(stream):\n"
+"    \"\"\"Gives each stanza of the stream of the server as a text, once it "
+"arrived whole\"\"\"\n"
+"    depth = 0  # 0 before the header of the stream, 1 inside it, 2 or more "
+"inside a stanza\n"
+"    stanza = b\"\"\n"
+"    kind = b\"\"  # the byte after the &lt; of the tag being read, or b\"\" "
+"out of a tag\n"
+"    previous = b\"\"\n"
+"    while True:\n"
+"        if depth == 1 and stanza == b\"\":\n"
+"            while stream.peek(1)[:1].isspace():  # the spaces between the "
+"stanzas\n"
+"                stream.read(1)\n"
+"        byte = stream.read(1)\n"
+"        if byte == b\"\":  # the end of the stream\n"
+"            return\n"
+"        stanza += byte\n"
+"        if previous == b\"&lt;\":\n"
+"            kind = byte\n"
+"        elif byte == b\"&gt;\" and kind != b\"\":  # the end of a tag\n"
+"            before = depth\n"
+"            if kind == b\"/\":  # a closing tag\n"
+"                depth -= 1\n"
+"            elif kind != b\"?\" and previous != b\"/\":  # an opening tag, "
+"unless the XML declaration or a self-closing tag\n"
+"                depth += 1\n"
+"            kind = b\"\"\n"
+"            if before == 0:  # the XML declaration or the header of the "
+"stream, which are no stanzas\n"
+"                stanza = b\"\"\n"
+"            elif depth == 0:  # &lt;/stream:stream&gt;\n"
+"                return\n"
+"            elif depth == 1:\n"
+"                yield stanza.decode()\n"
+"                stanza = b\"\"\n"
+"        previous = byte\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:322
+msgid ""
+"Open the stream with <code>stream = sock.makefile(\"rb\")</code> and the "
+"generator with <code>reader = stanzas(stream)</code>, then "
+"<code>next(reader)</code> gives each stanza, beginning with the features of "
+"the server."
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:327
+#, no-wrap
+msgid ""
+"private int depth = 0; // 0 before the header of the stream, 1 inside it, 2 "
+"or more inside a stanza\n"
+"\n"
+"/** The next stanza of the stream, once it arrived whole, or null at the end "
+"of the stream */\n"
+"String nextStanza(PushbackInputStream in) throws IOException\n"
+"{\n"
+"  StringBuilder stanza = new StringBuilder();\n"
+"  int kind = 0, previous = 0; // kind: the byte after the &lt; of the tag "
+"being read, or 0 out of a tag\n"
+"  while (true) {\n"
+"    int c;\n"
+"    if (depth == 1 &amp;&amp; stanza.length() == 0) { // the spaces between "
+"the stanzas\n"
+"      while ((c = in.read()) == ' ' || c == '\\t' || c == '\\r' || c == "
+"'\\n')\n"
+"        ;\n"
+"      if (c != -1)\n"
+"        in.unread(c);\n"
+"    }\n"
+"    c = in.read();\n"
+"    if (c == -1)\n"
+"      return null;\n"
+"    stanza.append((char)c);\n"
+"    if (previous == '&lt;')\n"
+"      kind = c;\n"
+"    else if (c == '&gt;' &amp;&amp; kind != 0) { // the end of a tag\n"
+"      int before = depth;\n"
+"      if (kind == '/') // a closing tag\n"
+"        depth--;\n"
+"      else if (kind != '?' &amp;&amp; previous != '/') // an opening tag, "
+"unless the XML declaration or a self-closing tag\n"
+"        depth++;\n"
+"      kind = 0;\n"
+"      if (before == 0) // the XML declaration or the header of the stream, "
+"which are no stanzas\n"
+"        stanza.setLength(0);\n"
+"      else if (depth == 0) // &lt;/stream:stream&gt;\n"
+"        return null;\n"
+"      else if (depth == 1)\n"
+"        return stanza.toString();\n"
+"    }\n"
+"    previous = c;\n"
+"  }\n"
+"}\n"
+msgstr ""
+
+#. type: Content of: <ul><li><div><p>
+#: src/lessons/network/bsdsocks/XmppClient.html:366
+#: src/lessons/network/bsdsocks/XmppClient.html:410
+msgid ""
+"Call <code>nextStanza(in)</code> for each stanza, beginning with the "
+"features of the server."
+msgstr ""
+
+#. type: Content of: <ul><li><div><pre>
+#: src/lessons/network/bsdsocks/XmppClient.html:370
+#, no-wrap
+msgid ""
+"private var depth = 0 // 0 before the header of the stream, 1 inside it, 2 "
+"or more inside a stanza\n"
+"\n"
+"/** The next stanza of the stream, once it arrived whole, or null at the end "
+"of the stream */\n"
+"def nextStanza(in: PushbackInputStream): String = {\n"
+"  val stanza   = new StringBuilder\n"
+"  var kind     = 0 // the byte after the &lt; of the tag being read, or 0 "
+"out of a tag\n"
+"  var previous = 0\n"
+"  while (true) {\n"
+"    if (depth == 1 &amp;&amp; stanza.isEmpty) { // the spaces between the "
+"stanzas\n"
+"      var c = in.read()\n"
+"      while (c == ' ' || c == '\\t' || c == '\\r' || c == '\\n')\n"
+"        c = in.read()\n"
+"      if (c != -1)\n"
+"        in.unread(c)\n"
+"    }\n"
+"    val c = in.read()\n"
+"    if (c == -1)\n"
+"      return null\n"
+"    stanza.append(c.toChar)\n"
+"    if (previous == '&lt;')\n"
+"      kind = c\n"
+"    else if (c == '&gt;' &amp;&amp; kind != 0) { // the end of a tag\n"
+"      val before = depth\n"
+"      if (kind == '/') // a closing tag\n"
+"        depth -= 1\n"
+"      else if (kind != '?' &amp;&amp; previous != '/') // an opening tag, "
+"unless the XML declaration or a self-closing tag\n"
+"        depth += 1\n"
+"      kind = 0\n"
+"      if (before == 0) // the XML declaration or the header of the stream, "
+"which are no stanzas\n"
+"        stanza.clear()\n"
+"      else if (depth == 0) // &lt;/stream:stream&gt;\n"
+"        return null\n"
+"      else if (depth == 1)\n"
+"        return stanza.toString\n"
+"    }\n"
+"    previous = c\n"
+"  }\n"
+"  null\n"
+"}\n"
 msgstr ""
 
 #. type: Content of: <h2>
