@@ -1255,6 +1255,8 @@ documentation](PEDAGOGY.md#system-programming).
   (reached with `MainFrame.getInstance().getEditorTabs()`), which any universe can use: the tabs are `ReadOnlyTab`, listening
   to the world until the student closes them, or until the exercise or the language changes. Their title gives the name of the
   world (and "objective" for the expected one), and clicking again on a text shows its current content in the same tab.
+  The same texts can be clicked in every state of the timeline: their tab shows their content at that time, which its title
+  gives, from the copies of the world that the states are (`Scene`).
 * **The timeline**: the controls above `PosixWorldView` switch it to a timeline, drawing the successive states of the world one
   under the other, linked by arrows labelled by the event that led from one to the next. Each arrow hangs under the machine of
   the process that made the call (or between the machines for the network), and the machines that did not act are dimmed.

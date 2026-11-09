@@ -254,13 +254,13 @@ public class PosixWorldView extends WorldView {
         scene(g2, 10, Scene.live(w), true);
         return;
       }
-      Rectangle clip = g2.getClipBounds();
-      int previous   = -1; // the bottom of the previous state
+      Rectangle shown = getVisibleRect(); // not the clip, as the links and tips of all the visible states are redone at each paint
+      int previous    = -1;               // the bottom of the previous state
       for (Placed p : timelineLayout()) {
         int bottom = p.top() + sceneHeight(p.scene());
-        if (previous >= 0 && p.top() >= clip.y && previous <= clip.y + clip.height)
+        if (previous >= 0 && p.top() >= shown.y && previous <= shown.y + shown.height)
           event(g2, previous, p.top(), p.scene());
-        if (bottom >= clip.y && p.top() <= clip.y + clip.height)
+        if (bottom >= shown.y && p.top() <= shown.y + shown.height)
           scene(g2, p.top(), p.scene(), false);
         previous = bottom;
       }
@@ -286,8 +286,8 @@ public class PosixWorldView extends WorldView {
 
   /**
    * Draws a state of the world from top: the machine of the student's process on the left, and the ones of the peers on the
-   * right, mirrored, then the connections between their ports. In the timeline, the machines that did not act are dimmed. The
-   * current state links its texts to the editor.
+   * right, mirrored, then the connections between their ports. In the timeline, the machines that did not act are dimmed. Its
+   * texts link to the editor, where the ones of a state of the timeline show their content at that time.
    */
   private void scene(Graphics2D g2, int top, Scene scene, boolean live)
   {
@@ -295,14 +295,16 @@ public class PosixWorldView extends WorldView {
     int machineWidth         = canvas.getWidth() * 45 / 100;
     int peersTop             = top + 15;
     Composite plain          = g2.getComposite();
+    String moment            = live ? null : Game.i18n.tr("t = {0}s", String.valueOf(scene.now()));
     for (int i = 0; i < scene.processes().size(); i++) {
       if (!live && scene.actor() >= 0 && scene.actor() != i)
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, DIMMED));
       PosixProcess process = scene.processes().get(i);
       if (i == 0)
-        machine(g2, 10, machineWidth, top + 15, scene.titles().get(0), process, scene.files(), false, live, ports);
+        machine(g2, 10, machineWidth, top + 15, scene.titles().get(0), process, scene.files(), false, moment, ports);
       else
-        peersTop = machine(g2, canvas.getWidth() - 10 - machineWidth, machineWidth, peersTop, scene.titles().get(i), process, Map.of(), true, live, ports) + 20;
+        peersTop =
+            machine(g2, canvas.getWidth() - 10 - machineWidth, machineWidth, peersTop, scene.titles().get(i), process, Map.of(), true, moment, ports) + 20;
       g2.setComposite(plain);
     }
 
@@ -437,10 +439,11 @@ public class PosixWorldView extends WorldView {
   /**
    * Draws a machine: its process with one row per descriptor, the objects of the descriptors, and the ports on its edge (on the
    * right, or on the left if mirrored), followed by its files (name and content). Stores the position of the port of each keyed
-   * row in ports, and returns the bottom of the drawing. The machine of the current state links its texts to the editor.
+   * row in ports, and returns the bottom of the drawing. Its texts link to the editor, in tabs whose title tells the moment of a
+   * state of the timeline (null for the current state).
    */
   private int machine(Graphics2D g2, int left, int width, int top, String title, PosixProcess process, Map<String, String> files, boolean mirrored,
-                      boolean live, Map<Object, Point> ports)
+                      String moment, Map<Object, Point> ports)
   {
     List<Row> rows = rows(process);
     int rowsTop    = top + 15;
@@ -476,17 +479,18 @@ public class PosixWorldView extends WorldView {
         arrowHead(g2, fdX + 6 * toObject, y, -toObject);
       box(g2, KERNEL, objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6, row.lines());
       Rectangle area = new Rectangle(objectLeft, y - ROW / 2 + 3, objectWidth, ROW - 6);
-      if (live && row.key() instanceof Socket s && s.remote != null) {
+      if (row.key() instanceof Socket s && s.remote != null) {
         String hidden = Game.i18n.tr("The content of the objective world is redacted to not spoil the scenario. Please implement your own solution.");
-        links.add(new Link(area, socketTitle(title, row.fd()), redacted ? () -> hidden : () -> history(s)));
-        tips.add(new Tip(area, Game.i18n.tr("Click to see everything that went through this socket")));
-      } else if (live && row.key() instanceof DatagramSocket d && d.port >= 0) {
+        links.add(new Link(area, tabTitle(socketTitle(title, row.fd()), moment), redacted ? () -> hidden : () -> history(s)));
+        tips.add(new Tip(area, Game.i18n.tr("Click to see everything that went through this socket so far")));
+      } else if (row.key() instanceof DatagramSocket d && d.port >= 0) {
         boolean hidden = redacted;
-        links.add(new Link(area, socketTitle(title, row.fd()), () -> history(d, hidden)));
-        tips.add(new Tip(area, Game.i18n.tr("Click to see every datagram that went through this socket")));
-      } else if (live && row.key() instanceof StandardStream stream && !mirrored && (stream == process.stdout || stream == process.stderr)) {
-        links.add(new Link(area, title + ", " + stream.name, () -> written(stream.name)));
-        tips.add(new Tip(area, Game.i18n.tr("Click to see everything that your process wrote on it")));
+        links.add(new Link(area, tabTitle(socketTitle(title, row.fd()), moment), () -> history(d, hidden)));
+        tips.add(new Tip(area, Game.i18n.tr("Click to see every datagram that went through this socket so far")));
+      } else if (row.key() instanceof StandardStream stream && !mirrored && (stream == process.stdout || stream == process.stderr)) {
+        String data = stream.data; // the copies of the timeline do not change
+        links.add(new Link(area, tabTitle(title + ", " + stream.name, moment), moment == null ? () -> written(stream.name) : () -> PosixWorld.text(data)));
+        tips.add(new Tip(area, Game.i18n.tr("Click to see everything that your process wrote on it so far")));
       }
       for (int i = 0; i < row.queues().size(); i++) { // on the right of the title, one under the other, a lone queue under the title
         Queue q  = row.queues().get(i);
@@ -509,7 +513,7 @@ public class PosixWorldView extends WorldView {
 
     int x = left + 10;
     for (Map.Entry<String, String> file : files.entrySet()) {
-      file(g2, x, rowsTop + Math.max(rows.size(), 1) * ROW + 5, file.getKey(), file.getValue(), live);
+      file(g2, x, rowsTop + Math.max(rows.size(), 1) * ROW + 5, file.getKey(), file.getValue(), moment);
       x += FILE_WIDTH + 10;
     }
     return bottom;
@@ -527,6 +531,9 @@ public class PosixWorldView extends WorldView {
   {
     return PosixWorld.text(Game.i18n.tr("Received:") + "\n" + s.arrived + "\n\n" + Game.i18n.tr("Sent:") + "\n" + s.remote.arrived + s.outgoing);
   }
+
+  /** The title of a tab, with the moment of its state for a state of the timeline */
+  private static String tabTitle(String what, String moment) { return moment == null ? what : what + " (" + moment + ")"; }
 
   /** The title of the tab showing a socket of a machine */
   private static String socketTitle(String machine, int fd) { return Game.i18n.tr("{0}, socket {1}", machine, String.valueOf(fd)); }
@@ -558,7 +565,7 @@ public class PosixWorldView extends WorldView {
   }
 
   /** Draws a file as an icon with a folded corner: its name on top, then the first lines of its content (all of it as a tooltip) */
-  private void file(Graphics2D g2, int x, int y, String name, String data, boolean live)
+  private void file(Graphics2D g2, int x, int y, String name, String data, String moment)
   {
     int fold = 10;
     int[] xs = {x, x + FILE_WIDTH - fold, x + FILE_WIDTH, x + FILE_WIDTH, x};
@@ -581,9 +588,11 @@ public class PosixWorldView extends WorldView {
     }
     g2.setFont(font);
     Rectangle area = new Rectangle(x, y, FILE_WIDTH, FILE_HEIGHT);
-    String click   = live ? "<i>" + Game.i18n.tr("Click to open it in the editor") + "</i>" : "";
+    String click   = "<i>" + Game.i18n.tr("Click to open it in the editor") + "</i>";
     tips.add(new Tip(area, "<html>" + escape(name) + ":<br><pre>" + escape(PosixWorld.text(data)) + "</pre>" + click + "</html>"));
-    if (live)
+    if (moment != null)
+      links.add(new Link(area, tabTitle(name, moment), () -> PosixWorld.text(data)));
+    else
       links.add(new Link(area, name, () -> {
         String current = ((PosixWorld)world).files.get(name);
         return current == null ? Game.i18n.tr("(this file does not exist anymore)") : PosixWorld.text(current);
