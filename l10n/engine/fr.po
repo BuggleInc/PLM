@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 00:44+0100\n"
+"POT-Creation-Date: 2026-11-09 09:55+0100\n"
 "PO-Revision-Date: 2021-06-30 23:01+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@ens-rennes.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/programmers-"
@@ -127,7 +127,7 @@ msgid "Connects the socket to the given remote address."
 msgstr ""
 
 #. Documentation of the primitive copy()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid ""
 "Copies the value of cell fromPos into cell toPos. Costs one read and one "
 "write."
@@ -136,8 +136,8 @@ msgstr ""
 #. Documentation of the primitive socket()
 #: src/plm/universe/posix/PosixEntityPrimitives.java
 msgid ""
-"Creates a socket and returns its descriptor. Only AF_INET and SOCK_STREAM "
-"are supported, with protocol 0."
+"Creates a socket and returns its descriptor. Only AF_INET is supported, with "
+"SOCK_STREAM or SOCK_DGRAM and protocol 0."
 msgstr ""
 
 #. Title of a group of primitives in the documentation of a world
@@ -227,6 +227,7 @@ msgstr ""
 
 #. Documentation of the primitive forward()
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
+#: src/plm/test/gui/CodeCompletionTest.java:77
 msgid "Moves the given amount of cells forward."
 msgstr ""
 
@@ -388,7 +389,7 @@ msgid "Returns the amount of player positions per base."
 msgstr ""
 
 #. Documentation of the primitive getValueCount()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid "Returns the amount of values in the array. Costs nothing."
 msgstr ""
 
@@ -493,7 +494,7 @@ msgid "Returns the thrust of the lander."
 msgstr ""
 
 #. Documentation of the primitive getValue()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid "Returns the value of cell i. Costs one read."
 msgstr ""
 
@@ -516,6 +517,13 @@ msgstr ""
 msgid "Returns the width of the world."
 msgstr ""
 
+#. Documentation of the primitive sendto()
+#: src/plm/universe/posix/PosixEntityPrimitives.java
+msgid ""
+"Sends the data in one datagram to the given address, and returns the amount "
+"of bytes sent."
+msgstr ""
+
 #. Documentation of the primitive send()
 #: src/plm/universe/posix/PosixEntityPrimitives.java
 msgid ""
@@ -523,7 +531,7 @@ msgid ""
 msgstr ""
 
 #. Documentation of the primitive setValue()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid "Sets the value of cell i. Costs one write."
 msgstr ""
 
@@ -558,7 +566,7 @@ msgid "Swaps the given lines."
 msgstr ""
 
 #. Documentation of the primitive swap()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid "Swaps the values of cells i and j. Costs two reads and two writes."
 msgstr ""
 
@@ -623,7 +631,7 @@ msgid "Tells whether the current world is selected in the interface."
 msgstr ""
 
 #. Documentation of the primitive isSelected()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid ""
 "Tells whether the current world is selected in the interface. Costs nothing."
 msgstr ""
@@ -681,14 +689,14 @@ msgid "Tells whether the turtle is visible."
 msgstr ""
 
 #. Documentation of the primitive isSmallerThan()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid ""
 "Tells whether the value of cell i is strictly smaller than the given value. "
 "Costs one read."
 msgstr ""
 
 #. Documentation of the primitive isSmaller()
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgid ""
 "Tells whether the value of cell i is strictly smaller than the one of cell "
 "j. Costs two reads."
@@ -746,6 +754,13 @@ msgstr ""
 #. Documentation of the primitive right()
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgid "Turns right of the given angle (in degrees)."
+msgstr ""
+
+#. Documentation of the primitive recvfrom()
+#: src/plm/universe/posix/PosixEntityPrimitives.java
+msgid ""
+"Waits for a datagram and returns at most len bytes of it, the rest being "
+"lost. Its sender is given by lastSender()."
 msgstr ""
 
 #. Documentation of the primitive accept()
@@ -848,7 +863,7 @@ msgid "connect"
 msgstr ""
 
 #. Name of the primitive copy() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "copy"
 msgstr "copie"
@@ -1023,13 +1038,13 @@ msgid "getThrust"
 msgstr "getPoussée"
 
 #. Name of the primitive getValue() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "getValue"
 msgstr "getValeur"
 
 #. Name of the primitive getValueCount() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "getValueCount"
 msgstr "getNombreValeurs"
@@ -1155,23 +1170,23 @@ msgstr "estCrayonBaissé"
 #. Name of the primitive isSelected() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/lessons/recursion/hanoi/universe/HanoiEntityPrimitives.java
 #: src/lessons/sort/baseball/universe/BaseballEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
 #: src/lessons/sort/pancake/universe/PancakeEntityPrimitives.java
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
-#: src/plm/universe/sort/SortingEntityPrimitives.java
 #: src/plm/universe/turtles/TurtlePrimitives.java
 msgctxt "primitive"
 msgid "isSelected"
 msgstr "estChoisi"
 
 #. Name of the primitive isSmaller() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "isSmaller"
 msgstr "plusPetit"
 
 #. Name of the primitive isSmallerThan() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "isSmallerThan"
 msgstr "plusPetitQue"
@@ -1258,6 +1273,12 @@ msgctxt "primitive"
 msgid "recv"
 msgstr ""
 
+#. Name of the primitive recvfrom() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/posix/PosixEntityPrimitives.java
+msgctxt "primitive"
+msgid "recvfrom"
+msgstr ""
+
 #. Name of the primitive right() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
 #: src/plm/universe/bugglequest/AbstractBugglePrimitives.java
 #: src/plm/universe/turtles/TurtlePrimitives.java
@@ -1269,6 +1290,12 @@ msgstr "droite"
 #: src/plm/universe/posix/PosixEntityPrimitives.java
 msgctxt "primitive"
 msgid "send"
+msgstr ""
+
+#. Name of the primitive sendto() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/plm/universe/posix/PosixEntityPrimitives.java
+msgctxt "primitive"
+msgid "sendto"
 msgstr ""
 
 #. Name of the primitive setBodyColor() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
@@ -1327,7 +1354,7 @@ msgid "setPos"
 msgstr ""
 
 #. Name of the primitive setValue() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
-#: src/plm/universe/sort/SortingEntityPrimitives.java
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "setValue"
 msgstr "setValeur"
@@ -1383,8 +1410,8 @@ msgid "stepBack"
 msgstr "pasArrière"
 
 #. Name of the primitive swap() in the students' code. It must be a valid identifier in Java, Scala, Python and C, and must not be the name of another primitive of the same world. Leave it untranslated if the English name fits.
+#: src/lessons/sort/basic/universe/SortingEntityPrimitives.java
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntityPrimitives.java
-#: src/plm/universe/sort/SortingEntityPrimitives.java
 msgctxt "primitive"
 msgid "swap"
 msgstr "echange"
@@ -1407,21 +1434,52 @@ msgctxt "primitive"
 msgid "writeMessage"
 msgstr "ecritMessage"
 
-#: src/lessons/lightbot/universe/LightBotExercise.java:61
+#: src/lessons/lightbot/universe/LightBotExercise.java:62
 msgid "A light is still off."
 msgstr "Une lumière est encore éteinte."
 
-#: src/lessons/lightbot/universe/LightBotExercise.java:63
+#: src/lessons/lightbot/universe/LightBotExercise.java:64
 #, java-format
 msgid "{0} lights (out of {1}) are still off."
 msgstr "{0} lampes (sur {1}) sont encore éteintes."
+
+#: src/lessons/network/bsdsocks/TcpClient.java:16
+msgid ""
+"Hello, world! Alice the buggle here: I painted the whole floor blue today."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpClient.java:17
+msgid ""
+"Sunny over the pond of the turtles: 25 degrees, a perfect day to draw "
+"spirals."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "%s"
+#: src/lessons/network/bsdsocks/TcpClient.java:22
+#, java-printf-format
+msgid ""
+"Dave was here, and he painted %s on the wall. Never trust what comes from "
+"the network!"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpClient.java:23
+msgid "Sorry for the delay: my turtle was finishing its spiral."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpClient.java:25
+msgid ""
+"Psst, newcomer! Bob here. I know where a real treasure is hidden, but the "
+"walls have ears. Come and see me on the IRC server of BuggleInc, and I will "
+"tell you more."
+msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:20
 msgid "please"
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:20
-msgid "documentation"
+#: src/lessons/network/bsdsocks/XmppClient.java:76
+msgid "treasure"
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:23
@@ -1469,100 +1527,503 @@ msgid "My turmite drew a square spiral, then got lost in a maze of its own."
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:33
-msgid "There you go, friend! Fetch /docs/buggle-ftp.txt on the HTTP server."
-msgstr ""
-
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:34
-msgid "Hmm? Buggles who want to know things ask nicely, with the right words."
-msgstr ""
-
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:35
-#, java-format
-msgid "{0}: you should ask Bob again, but this time be polite."
-msgstr ""
-
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:36
-#, java-format
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:55
 msgid ""
-"{0}: Bob likes the magic word, and to know what you look for: the "
-"documentation."
+"Please talk to me on the public channel. Information wants to be free and I "
+"refuse private discussions."
 msgstr ""
 
+#. Translator: please keep this string unchanged (without the quotes): "<xmpp:robots@conference.buggleinc.lan>"
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:37
-#, java-format
-msgid "{0}: write exactly this here: Bob: {1}, I need the {2}."
+msgid ""
+"Hold on, pal. We should not speak on an open IRC channel. Go see my old "
+"friend Karel on this channel: <xmpp:robots@conference.buggleinc.lan> Use the "
+"BuggleInc DNS server to find it, and pay attention to the details while "
+"doing so."
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:39
-msgid "Slow and steady wins the race."
+msgid "Hmm? Buggles who want to know things ask nicely, with the right words."
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:40
-msgid "I drew a perfect circle today: 360 steps of one degree!"
+#, java-format
+msgid "{0}: you should ask Bob again, but this time be polite."
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:41
 #, java-format
 msgid ""
-"{0}: are you looking for something? Feel free to ask me where the "
-"documentation is."
+"{0}: Bob likes the magic word, and to know what you look for: the treasure "
+"trove."
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:42
-msgid "Pen up or pen down? I always forget which one I am in."
-msgstr ""
-
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:43
-msgid "I tried a spiral, and got dizzy after the third turn."
-msgstr ""
-
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:44
-msgid "Careful, Dave, last time you drew yourself into a corner."
+#, java-format
+msgid "{0}: write exactly this here: Bob: {1}, tell me the way to the {2}."
 msgstr ""
 
 #: src/lessons/network/bsdsocks/TcpFramingIrc.java:45
+msgid "Slow and steady wins the race."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:46
+msgid "I drew a perfect circle today: 360 steps of one degree!"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:47
+#, java-format
+msgid "{0}: are you looking for something? I know the path to a real treasure!"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:48
+msgid "Pen up or pen down? I always forget which one I am in."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:49
+msgid "I tried a spiral, and got dizzy after the third turn."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:50
+msgid "Careful, Dave, last time you drew yourself into a corner."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:51
 msgid ""
 "To draw a tree, draw a trunk, then two smaller trees on top. That is all!"
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:46
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:52
 msgid ""
 "I tried, but I forgot to stop when the branches get too small. I am still "
 "drawing."
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:47
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:53
 msgid ""
 "My Koch snowflake has four levels now. The fifth one will take all afternoon."
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:48
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:54
 msgid "Recursion is just like us: it is turtles all the way down."
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:49
-msgid "Slowly but surely: fetch /docs/turtle-ftp.txt on the HTTP server."
+#. Translator: please keep this string unchanged (without the quotes): "<xmpp:lsystem@conference.buggleinc.lan>"
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:59
+msgid ""
+"Not so quick, my friend. We should not speak on an open IRC channel. Go see "
+"my old friend Karol on this channel: <xmpp:lsystem@conference.buggleinc.lan> "
+"Use the BuggleInc DNS server to find it, and pay attention to the details "
+"while doing so."
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:50
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:61
 msgid "Turtles take their time, but they like polite requests."
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:51
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:62
 #, java-format
 msgid "{0}: ask Bob again, and be polite this time."
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:52
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:63
 #, java-format
 msgid ""
-"{0}: Bob wants the magic word, and to know what you look for: the "
-"documentation."
+"{0}: Bob wants the magic word, and to know what you look for: the treasure."
 msgstr ""
 
-#: src/lessons/network/bsdsocks/TcpFramingIrc.java:53
+#: src/lessons/network/bsdsocks/TcpFramingIrc.java:64
 #, java-format
-msgid "{0}: say exactly this here: Bob: {1}, I would like the {2}."
+msgid "{0}: say exactly this here: Bob: {1}, tell me the way to the {2}."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "conference.buggleinc.lan"
+#: src/lessons/network/bsdsocks/UdpDns.java:35
+msgid ""
+"BuggleInc internal zone. The chat rooms are on conference.buggleinc.lan. The "
+"TXT of that name have more information."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "_xmpp-client._tcp.buggleinc.lan"
+#: src/lessons/network/bsdsocks/UdpDns.java:38
+msgid ""
+"The chat rooms are hosted by the XMPP server of buggleinc.lan. As all XMPP "
+"clients, look for its SRV record _xmpp-client._tcp.buggleinc.lan."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "6666"
+#: src/lessons/network/bsdsocks/UdpDns.java:45
+msgid ""
+"6666 is a decoy. To get the real port, start a UDP echo server on the port "
+"6666 of your own machine, and the hint will come to you."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:40
+msgid "Testing, testing. Is the echo server of the newcomer up?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:41
+msgid "Hello? Hello? Oh, it answers with my own words!"
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "USER <newcomer>"
+#. Translator: please keep this string unchanged (without the quotes): "PASSWORD <{0}>"
+#: src/lessons/network/bsdsocks/UdpEcho.java:46
+#, java-format
+msgid ""
+"Newcomer, write this down: the XMPP server of Karel knows you as USER "
+"<newcomer> with the PASSWORD <{0}>. Without them, Karel will not even see "
+"you."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:49
+msgid "Echo! Echo! Echo!"
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "PORT <number>"
+#: src/lessons/network/bsdsocks/UdpEcho.java:53
+msgid ""
+"Bob says that he will give the PORT <number> to the newcomer once the echo "
+"works. Patience."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:54
+msgid "Does it echo the baggles too? Here is one: (o)"
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "PORT 5234"
+#: src/lessons/network/bsdsocks/UdpEcho.java:58
+msgid "I heard that the XMPP server is not on PORT 5234 anymore."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:59
+msgid "Or was it 5243? I always swap my digits."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:60
+msgid "Hold on, everybody. I am checking that the echo is faithful."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:61
+msgid ""
+"Here is a long trail of baggles, to check that the long lines come back "
+"whole:"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:62
+msgid "I paint the echoes in red, to tell them from my own words."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:63
+msgid "A turmite on a wall, an echo in a socket: they always come back."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:64
+msgid "In a maze, I shout and listen to the echo to find the walls."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:65
+msgid "That is not how mazes work, Dave."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:66
+msgid "Unless the maze is made of sockets."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:68
+msgid ""
+"The echo is good. Newcomer, I hope that you noted the USER and the PASSWORD "
+"that Alice gave you. Listen carefully now."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "PORT <{0}>"
+#: src/lessons/network/bsdsocks/UdpEcho.java:72
+#, java-format
+msgid ""
+"Karel waits for you on PORT <{0}> of the XMPP server whose address the DNS "
+"gave you. Hurry up!"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:73
+msgid "Wait, what did Bob say? Can you repeat?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:74
+#: src/lessons/network/bsdsocks/UdpEcho.java:110
+msgid "Did you receive my previous message?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:78
+msgid "Is this the echo server of the newcomer? Hello, hello, hello..."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:79
+msgid "Slow and steady: one word per second. Echo."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "USER <newcomer>"
+#. Translator: please keep this string unchanged (without the quotes): "PASSWORD <{0}>"
+#: src/lessons/network/bsdsocks/UdpEcho.java:84
+#, java-format
+msgid ""
+"Newcomer, Karol asked me to give you your account on his XMPP server: USER "
+"<newcomer> and PASSWORD <{0}>. Keep them safe."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:86
+msgid "Here is my Koch curve at level 4. Does it come back whole?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:87
+msgid "Echo."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:88
+msgid "Carol, your curve took the whole queue!"
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "PORT <number>"
+#: src/lessons/network/bsdsocks/UdpEcho.java:92
+msgid ""
+"Patience, everybody. The newcomer gets the PORT <number> once the echo works."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:93
+msgid ""
+"Here is my longest spiral, to check that the long lines come back whole:"
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "PORT 5234"
+#: src/lessons/network/bsdsocks/UdpEcho.java:97
+msgid "The old map says PORT 5234, but the map is older than me."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:98
+msgid "Echo, one."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:99
+msgid "Echo, two."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:100
+msgid "An echo is a spiral of sound, smaller at each turn."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:101
+msgid "Then it is recursive, and it needs a stop condition!"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:102
+msgid "My stop condition is a nap."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:103
+msgid ""
+"The echo is faithful. Newcomer, you have the USER and the PASSWORD of Alice, "
+"here is the last piece."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "PORT <{0}>"
+#: src/lessons/network/bsdsocks/UdpEcho.java:107
+#, java-format
+msgid ""
+"Karol waits for you on PORT <{0}> of the XMPP server whose address the DNS "
+"gave you. Take your time, but not too much."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:109
+msgid "Bob, can you say it again? I was drawing a circle."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/UdpEcho.java:143
+#, java-format
+msgid ""
+"Broken echo: I sent you {0} bytes, and got back {1} other bytes. Fix your "
+"server, and I will talk again."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:34
+msgid "Turtles, cats and sprites: everybody draws here."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:35
+msgid "I drew a cat with twelve blocks. A cat drawing a cat!"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:36
+msgid "Karol, can you draw with your bricks?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:37
+msgid "I lay bricks, I do not draw them. It is not the same."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:38
+msgid "Pen down, everybody: our new friend is coming."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:40
+#, java-format
+msgid ""
+"Back, sorry. Oh, hello {0}, you are here! Welcome to the lsystem room. Who "
+"sent you, and what do you seek?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:41
+msgid ""
+"Automatic reply: Karol is away from his keyboard. He will call you when he "
+"is back."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:42
+msgid "Meow. When the green flag is clicked, I say hello & spin."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:43
+msgid ""
+"My plant grows with F -> F[+F]F[-F]F. Five steps, and it fills the screen."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:44
+msgid "Is 3 < 4 in turtle geometry too?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:45
+msgid "I turned 360 degrees and ended where I started. Is that progress?"
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "[http://www.buggleinc.lan/hunt/turtles.html]"
+#: src/lessons/network/bsdsocks/XmppClient.java:49
+msgid ""
+"Ah, the friend of Bob. The hunt goes on on the web, from this page: [http://"
+"www.buggleinc.lan/hunt/turtles.html] Take your time, and read each page "
+"whole."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:51
+msgid "Slowly, slowly. Tell me who sent you, and what you seek."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:52
+#, java-format
+msgid "{0}: Karol only helps the friends of Bob. Tell him who sent you. Meow."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:53
+#, java-format
+msgid "{0}: tell Karol that Bob sent you, and that you seek the {2}."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:54
+#, java-format
+msgid "{0}: write exactly this here: Karol: Bob sent me for the {2}."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:56
+#, java-format
+msgid ""
+"{0}: Karol only reads the messages that start with his name and a colon, "
+"like this: Karol: hello. Meow."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:61
+msgid "I speak in XHTML now: my messages have two bodies!"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:62
+msgid "Wait! Karel already told us where the hunt starts, last year:"
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "[http://www.buggleinc.lan/hunt/2023.html]"
+#: src/lessons/network/bsdsocks/XmppClient.java:65
+msgid ""
+"Welcome, friend of Bob. The hunt starts on this page: [http://"
+"www.buggleinc.lan/hunt/2023.html]"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:84
+msgid "Robots and buggles. No beepers on the floor, please."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:85
+msgid "I can turn right now! I have a method for that."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:86
+msgid ""
+"Show-off. I turn right by turning left three times, as any honest robot."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:87
+msgid "Beep. I picked up 42 beepers today."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:88
+msgid "Hello robots! Has anyone seen our new friend?"
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:90
+#, java-format
+msgid ""
+"Back, sorry. Oh, hello {0}, you are here! So you are the one Bob talked "
+"about? Tell me what brings you here."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:91
+msgid ""
+"Automatic reply: Karel is away from his keyboard. He will call you when he "
+"is back."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:92
+msgid "Karel, your beepers look just like our baggles."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:93
+msgid "A baggle is a beeper with methods & attributes."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:94
+msgid "I tried to eat a beeper once. It does not taste like a biscuit."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:95
+msgid "In my world, a wall stands where x < 2. Do not ask why."
+msgstr ""
+
+#. Translator: please keep this string unchanged (without the quotes): "[http://www.buggleinc.lan/hunt/buggles.html]"
+#: src/lessons/network/bsdsocks/XmppClient.java:99
+msgid ""
+"Welcome, friend of Bob. The hunt goes on on the web, from this page: [http://"
+"www.buggleinc.lan/hunt/buggles.html] Read it carefully: the server likes to "
+"send you elsewhere."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:101
+msgid "Beep? I only talk to the friends of Bob, and only about one thing."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:102
+#, java-format
+msgid "{0}: Karel only trusts the friends of Bob. Tell him who sent you."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:103
+#, java-format
+msgid "{0}: tell Karel that Bob sent you, and what you look for: the {2}."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:104
+#, java-format
+msgid "{0}: write exactly this here: Karel: Bob sent me for the {2}."
+msgstr ""
+
+#: src/lessons/network/bsdsocks/XmppClient.java:106
+#, java-format
+msgid ""
+"{0}: Karel only reads the messages that start with his name and a colon, "
+"like this: Karel: hello."
 msgstr ""
 
 #: src/lessons/recursion/hanoi/LinearHanoiEntity.java:13
@@ -1661,7 +2122,7 @@ msgid "Walk to your goal instead."
 msgstr ""
 
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:64
-#: src/plm/core/ui/ChooseLessonDialog.java:180
+#: src/plm/core/ui/ChooseLessonDialog.java:175
 msgid "Go"
 msgstr "Aller"
 
@@ -1725,14 +2186,84 @@ msgstr ""
 "{2}, trop loin de sa position"
 
 #: src/lessons/sort/baseball/universe/BaseballWorldView.java:638
-#: src/plm/universe/sort/SortingWorldView.java:46
+#: src/lessons/sort/basic/universe/SortingWorldView.java:46
 msgid "Switch to time view"
 msgstr "Accéder à la vue temporelle"
 
 #: src/lessons/sort/baseball/universe/BaseballWorldView.java:640
-#: src/plm/universe/sort/SortingWorldView.java:48
+#: src/lessons/sort/basic/universe/SortingWorldView.java:48
 msgid "Switch to state view"
 msgstr "Accéder à la vue d'état"
+
+#: src/lessons/sort/basic/universe/SortingButtonPanel.java:60
+msgid "go"
+msgstr "aller"
+
+#: src/lessons/sort/basic/universe/SortingButtonPanel.java:70
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:137
+#, java-format
+msgid "swap({0},{1})"
+msgstr "echange({0},{1})"
+
+#: src/lessons/sort/basic/universe/SortingButtonPanel.java:74
+#, java-format
+msgid "setValue({0},{1})"
+msgstr "setValeur({0},{1})"
+
+#: src/lessons/sort/basic/universe/SortingButtonPanel.java:78
+#, java-format
+msgid "copy({0},{1})"
+msgstr "copie({0},{1})"
+
+#: src/lessons/sort/basic/universe/SortingButtonPanel.java:106
+msgid "swap"
+msgstr "echange"
+
+#: src/lessons/sort/basic/universe/SortingButtonPanel.java:106
+msgid "setValue"
+msgstr "setValeur"
+
+#: src/lessons/sort/basic/universe/SortingButtonPanel.java:106
+msgid "copy"
+msgstr "copie"
+
+#: src/lessons/sort/basic/universe/SortingWorld.java:135
+#, java-format
+msgid ""
+"This is very weird: There is not the same amount of values! Expected: {0}; "
+"Found: {1}\n"
+msgstr ""
+"C''est très bizarre. Il n''y a pas le même nombre de valeurs ! J''en "
+"attendais {0}, mais j''en ai {1}.\n"
+
+#: src/lessons/sort/basic/universe/SortingWorld.java:138
+#, java-format
+msgid "Invalid read count. Expected: {0}; Found: {1}\n"
+msgstr "Le nombre de lectures diffère. Attendu : {0} ; Observé : {1}\n"
+
+#: src/lessons/sort/basic/universe/SortingWorld.java:141
+#, java-format
+msgid "Invalid write count. Expected: {0}; Found: {1}\n"
+msgstr "Le nombre d''écritures diffère. Attendu : {0} ; Observé : {1}\n"
+
+#: src/lessons/sort/basic/universe/SortingWorld.java:145
+#, java-format
+msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
+msgstr "Les valeurs à l''index {0} diffère. Attendue : {1} ; Observée : {2}\n"
+
+#: src/lessons/sort/basic/universe/SortingWorld.java:377
+#: src/lessons/sort/basic/universe/SortingWorld.java:379
+#, java-format
+msgid "Out of bounds in swap({0},{1}): {2}<0"
+msgstr "Dépassement des bornes à l''appel de echange({0},{1}) : {2}<0"
+
+#: src/lessons/sort/basic/universe/SortingWorld.java:381
+#: src/lessons/sort/basic/universe/SortingWorld.java:383
+#, java-format
+msgid "Out of bounds in swap({0},{1}): {2}>value count"
+msgstr ""
+"Dépassement des bornes à l''appel de la méthode echange({0},{1}) : {2}"
+">nombre de valeurs"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntity.java:24
 msgid "Flag sorter"
@@ -1777,12 +2308,6 @@ msgstr ""
 "Ce n''est toujours pas trié ! ! MERCI DE RAPPORTER CE PROBLÈME, avec les "
 "informations suivantes :\n"
 "Situation initiale : {0}"
-
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:137
-#: src/plm/universe/sort/SortingButtonPanel.java:70
-#, java-format
-msgid "swap({0},{1})"
-msgstr "echange({0},{1})"
 
 #: src/lessons/sort/pancake/universe/PancakeFlipButtonPanel.java:67
 #, java-format
@@ -1890,13 +2415,13 @@ msgstr ""
 msgid "Use setPos(x,y) instead."
 msgstr ""
 
-#: src/plm/core/lang/LangC.java:270
+#: src/plm/core/lang/LangC.java:274
 #, fuzzy, java-format
 #| msgid "Compilation failed."
 msgid "Compilation error. The command {0} failed."
 msgstr "La compilation a échoué."
 
-#: src/plm/core/lang/LangC.java:307
+#: src/plm/core/lang/LangC.java:310
 #, java-format
 msgid ""
 "{0} cannot link with AddressSanitizer, so the C programs run without memory "
@@ -1904,14 +2429,14 @@ msgid ""
 "{1}"
 msgstr ""
 
-#: src/plm/core/lang/LangC.java:419 src/plm/core/lang/LangJava.java:163
-#: src/plm/core/lang/LangPython.java:177 src/plm/core/lang/LangScala.java:246
+#: src/plm/core/lang/LangC.java:422 src/plm/core/lang/LangJava.java:172
+#: src/plm/core/lang/LangPython.java:238 src/plm/core/lang/LangScala.java:254
 #, fuzzy, java-format
 #| msgid "Error, please recompile the exercise."
 msgid "Error, please recompile the exercise: {0} does not exist"
 msgstr "Erreur, veuillez recompiler l'exercice."
 
-#: src/plm/core/lang/LangC.java:440
+#: src/plm/core/lang/LangC.java:443
 msgid ""
 "The Address Sanitizer detected an issue with the execution of your entity. "
 "You probably want to fix it.\n"
@@ -1928,21 +2453,21 @@ msgstr ""
 "L''exécution de votre programme a déclenché une exception {0} : {1}\n"
 " Merci de corriger votre code.\n"
 
-#: src/plm/core/lang/LangPython.java:67
+#: src/plm/core/lang/LangPython.java:101
 msgid "python3 exited with an error while checking its version."
 msgstr ""
 
-#: src/plm/core/lang/LangPython.java:75
+#: src/plm/core/lang/LangPython.java:109
 #, java-format
 msgid "Cannot run python3: {0}. Is Python 3 installed and on the PATH?"
 msgstr ""
 
-#: src/plm/core/lang/LangScala.java:69
+#: src/plm/core/lang/LangScala.java:67
 #, java-format
 msgid "Error {0} while retrieving the Scala version: {1}"
 msgstr "Erreur {0} lors de l''obtention du numéro de version de Scala : {1}"
 
-#: src/plm/core/lang/LangScala.java:78
+#: src/plm/core/lang/LangScala.java:76
 #, fuzzy, java-format
 #| msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgid "Unsupported Scala version. Found {0} while I need Scala 3."
@@ -2101,17 +2626,17 @@ msgstr ""
 "Veuillez installer C et ses dépendances pour utiliser la PLM en C.\n"
 "\n"
 
-#: src/plm/core/lang/RemoteExecutionLang.java:124
+#: src/plm/core/lang/RemoteExecutionLang.java:128
 msgid "Protocol connection failed: the program never connected to the PLM."
 msgstr ""
 
-#: src/plm/core/lang/RemoteExecutionLang.java:162
+#: src/plm/core/lang/RemoteExecutionLang.java:166
 #, fuzzy, java-format
 #| msgid "The world ''{0}'' differs"
 msgid "In the world ''{0}'': {1}"
 msgstr "Le monde ''{0}'' diffère"
 
-#: src/plm/core/lang/RemoteExecutionLang.java:190
+#: src/plm/core/lang/RemoteExecutionLang.java:204
 msgid ""
 "You interrupted the execution, did you fall into an infinite loop ?\n"
 "Your program must stop by itself to successfully pass the exercise.\n"
@@ -2120,24 +2645,24 @@ msgstr ""
 "infinie ? \n"
 "Votre programme doit s'arrêter de lui-même pour réussir l'exercice.\n"
 
-#: src/plm/core/lang/RemoteExecutionLang.java:210
+#: src/plm/core/lang/RemoteExecutionLang.java:224
 #, java-format
 msgid ""
 "Your program stopped on this error: {0}\n"
 "See the console for the whole message."
 msgstr ""
 
-#: src/plm/core/model/Game.java:182 src/plm/core/model/Game.java:183
+#: src/plm/core/model/Game.java:181 src/plm/core/model/Game.java:182
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr "Impossible de passer à la leçon {0} : la classe Main est introuvable."
 
-#: src/plm/core/model/Game.java:184
+#: src/plm/core/model/Game.java:183
 #, java-format
 msgid "Load lesson {0}"
 msgstr "Chargement de la leçon {0}"
 
-#: src/plm/core/model/Game.java:205
+#: src/plm/core/model/Game.java:204
 #, java-format
 msgid ""
 "The lesson {0} encountered an issue while loading its exercises, please "
@@ -2146,11 +2671,11 @@ msgstr ""
 "La leçon {0} a rencontré un problème lors du chargement de ses exercices. "
 "Veuillez faire un rapport d'anomalie et choisir une autre leçon."
 
-#: src/plm/core/model/Game.java:206
+#: src/plm/core/model/Game.java:205
 msgid "Broken lesson"
 msgstr "Leçon cassée"
 
-#: src/plm/core/model/Game.java:345
+#: src/plm/core/model/Game.java:344
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -2161,11 +2686,11 @@ msgstr ""
 "à la place. Vous pourriez contribuer au projet en ajoutant votre langage à "
 "cet exercice."
 
-#: src/plm/core/model/Game.java:352
+#: src/plm/core/model/Game.java:351
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
-#: src/plm/core/model/Game.java:433
+#: src/plm/core/model/Game.java:432
 #, java-format
 msgid "The lecture {0} has no world that I can select."
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
@@ -2178,7 +2703,7 @@ msgstr "Demander de l'aide à l'enseignant"
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
-#: src/plm/core/model/LessonRunner.java:91
+#: src/plm/core/model/LessonRunner.java:95
 msgid "Not run, probably because the user interrupted the execution."
 msgstr ""
 
@@ -2236,33 +2761,33 @@ msgstr ""
 "{0}: END TEMPLATE sans BEGIN TEMPLATE correspondant. Veuillez corriger votre "
 "entité."
 
-#: src/plm/core/model/lesson/Exercise.java:117
+#: src/plm/core/model/lesson/Exercise.java:120
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr "Le monde ''{0}'' diffère"
 
-#: src/plm/core/model/lesson/Exercise.java:163
+#: src/plm/core/model/lesson/Exercise.java:169
 msgid "Compilation error:"
 msgstr "Erreur de compilation :"
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:40
+#: src/plm/core/model/lesson/ExerciseTemplated.java:41
 #, java-format
 msgid "Exercise {0} ({1}): the {2} entity is broken: {3}"
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:51
+#: src/plm/core/model/lesson/ExerciseTemplated.java:52
 #, java-format
 msgid "Source file {0}.{1} not found."
 msgstr "Le fichier source {0}.{1} est introuvable."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:56
+#: src/plm/core/model/lesson/ExerciseTemplated.java:57
 #, java-format
 msgid ""
 "{0}: cannot guess which RemoteXxx universe this entity belongs to. Please "
 "fix your entity."
 msgstr ""
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:85
+#: src/plm/core/model/lesson/ExerciseTemplated.java:86
 #, java-format
 msgid ""
 "Exercise {0} is said to be compatible with language {1}, but there is no "
@@ -2271,12 +2796,12 @@ msgstr ""
 "L''exercice {0} dit permettre l''usage du langage {1}, mais il n''y a pas "
 "d''entité pour ce langage : {2}"
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:93
+#: src/plm/core/model/lesson/ExerciseTemplated.java:94
 #, java-format
 msgid "{0}: No entity found. You should fix your paths and settings."
 msgstr "{0} : aucune entité trouvée. Vous devriez corriger vos réglages."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:153
+#: src/plm/core/model/lesson/ExerciseTemplated.java:143
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
@@ -2285,20 +2810,20 @@ msgstr ""
 "Recalcule la solution de {0} malgré le fichier de cache, comme demandé par "
 "la propriété {1}."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:168
+#: src/plm/core/model/lesson/ExerciseTemplated.java:158
 #, fuzzy, java-format
 #| msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgid "World {0} is broken ({1}). Recompute it."
 msgstr "Le monde {0} est cassé ({1}). Recalcule tous les mondes solutions."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:171
+#: src/plm/core/model/lesson/ExerciseTemplated.java:161
 #, fuzzy, java-format
 #| msgid "Cache file {0} is missing. Recompute all answer worlds."
 msgid "Cache file {0} is missing. Recompute it."
 msgstr ""
 "Le fichier de cache {0} est manquant. Recalcule tous les mondes solutions."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:174
+#: src/plm/core/model/lesson/ExerciseTemplated.java:164
 #, fuzzy, java-format
 #| msgid ""
 #| "IO exception while reading world {0} ({1}). Recompute all answer worlds."
@@ -2307,14 +2832,14 @@ msgstr ""
 "Exception d''entrée/sortie lors de la lecture du monde {0} ({1}). Recalcule "
 "tous les mondes solutions."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:221
+#: src/plm/core/model/lesson/ExerciseTemplated.java:211
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
 "Impossible d''écrire le monde de correction de {0}. Veuillez vérifier les "
 "permissions."
 
-#: src/plm/core/model/lesson/ExerciseTemplated.java:227
+#: src/plm/core/model/lesson/ExerciseTemplated.java:217
 #, java-format
 msgid "Error while writing answer world of {0}:"
 msgstr "Erreur lors de l''écriture du monde de correction de {0} :"
@@ -2362,27 +2887,27 @@ msgstr ""
 msgid "Pushing to the remote repository before exiting."
 msgstr "Envoi de vos changements sur le serveur avant de quitter."
 
-#: src/plm/core/model/tracking/GitUtils.java:76
+#: src/plm/core/model/tracking/GitUtils.java:83
 msgid "An error occurred while configuring the repository..."
 msgstr "Erreur lors de la configuration du dépôt..."
 
-#: src/plm/core/model/tracking/GitUtils.java:86
+#: src/plm/core/model/tracking/GitUtils.java:93
 msgid "Retrieving your session from the servers..."
 msgstr "Récupération de votre session depuis le serveur..."
 
-#: src/plm/core/model/tracking/GitUtils.java:130
+#: src/plm/core/model/tracking/GitUtils.java:137
 msgid "An error occurred while checking out the user's branch: "
 msgstr "Erreur lors de la récupération de la branche utilisateur : "
 
-#: src/plm/core/model/tracking/GitUtils.java:159
+#: src/plm/core/model/tracking/GitUtils.java:166
 msgid "Last session data successfully retrieved."
 msgstr "Les données de la session précédente ont été récupérées."
 
-#: src/plm/core/model/tracking/GitUtils.java:161
+#: src/plm/core/model/tracking/GitUtils.java:168
 msgid "Last session data successfully merged."
 msgstr "Les données de la session précédente ont été fusionnées avec succès."
 
-#: src/plm/core/model/tracking/GitUtils.java:163
+#: src/plm/core/model/tracking/GitUtils.java:170
 msgid ""
 "Conflicts have been detected while synchronizing with last session data, "
 "trying to resolve it..."
@@ -2390,31 +2915,31 @@ msgstr ""
 "Des conflits d'édition ont été détectés lors de la synchronisation de vos "
 "données. Tentative de résolution en cours..."
 
-#: src/plm/core/model/tracking/GitUtils.java:190
+#: src/plm/core/model/tracking/GitUtils.java:198
 msgid "Canceled the merge operation because of the following failures:"
 msgstr "L'opération de fusion a rencontré les problèmes suivants :"
 
-#: src/plm/core/model/tracking/GitUtils.java:197
+#: src/plm/core/model/tracking/GitUtils.java:205
 msgid "Can't merge data retrieved from server with local session data."
 msgstr ""
 "Impossible de fusionner les données reçues du serveur avec votre session "
 "locale."
 
-#: src/plm/core/model/tracking/GitUtils.java:241
+#: src/plm/core/model/tracking/GitUtils.java:259
 msgid "Cannot synchronize your session with the servers (network down)."
 msgstr ""
 "Impossible de synchroniser votre session avec les serveurs (le réseau est "
 "inutilisable)."
 
-#: src/plm/core/model/tracking/GitUtils.java:266
+#: src/plm/core/model/tracking/GitUtils.java:284
 msgid "Your session has been successfully saved into the clouds."
 msgstr "Votre session a été sauvegardée avec succès dans les nuages."
 
-#: src/plm/core/model/tracking/GitUtils.java:269
+#: src/plm/core/model/tracking/GitUtils.java:287
 msgid "Fetching the server's last version..."
 msgstr "Récupération de la dernière version depuis le serveur..."
 
-#: src/plm/core/model/tracking/GitUtils.java:276
+#: src/plm/core/model/tracking/GitUtils.java:294
 msgid ""
 "Fetching the data's last version didn't solve the issue, please report this "
 "bug."
@@ -2422,7 +2947,7 @@ msgstr ""
 "Récupérer la dernière version depuis le serveur n'a pas suffit. Merci de "
 "faire un rapport d'anomalie."
 
-#: src/plm/core/model/tracking/GitUtils.java:279
+#: src/plm/core/model/tracking/GitUtils.java:297
 msgid ""
 "A bug occurred while synchronizing your data with the server, please report "
 "the following error:"
@@ -2434,12 +2959,12 @@ msgstr ""
 msgid "About lesson - "
 msgstr "À propos de la leçon - "
 
-#: src/plm/core/ui/AboutPLMDialog.java:36 src/plm/core/ui/MainFrame.java:409
-#: src/plm/core/ui/MainFrame.java:721
+#: src/plm/core/ui/AboutPLMDialog.java:35 src/plm/core/ui/MainFrame.java:413
+#: src/plm/core/ui/MainFrame.java:703
 msgid "About the PLM"
 msgstr "À propos de la PLM"
 
-#: src/plm/core/ui/AboutPLMDialog.java:58
+#: src/plm/core/ui/AboutPLMDialog.java:56
 #, fuzzy, java-format
 #| msgid ""
 #| "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}"
@@ -2457,9 +2982,15 @@ msgid ""
 "style=\"margin-left:20px;\"><li>Original idea: <i>L. Turbak (Wellesley "
 "College)</i></li><li>Design and code: <i>M. Quinson (and G. Oster until "
 "2015)</i></li><li>Tests: <i>Telecom Nancy students (classes from ''11 to "
-"''15)</i></li></ul><br/>A coding assistant was used for some parts of the "
-"code, but all pedagogical content is 100% natural without AI.<br/>Your code "
-"is saved to {2}<br/>Your secret session ID is {3}<br/></html>"
+"''15)</i></li></ul><br/>Some parts of the technical code were written with a "
+"coding assistant, and carefully revised by humans, who also manually sharpen "
+"the technical documentation. It's much more like an electrically assisted "
+"bicycle keeping humans in charge, rather than the electric SUV of vibe "
+"coding.<br/>The pedagogical content remains written by humans, and reviewed "
+"for technical inaccuracies or didactic inconsistencies by a coding "
+"assistant. The plot and scripts underlying the networking lesson are part "
+"pedagogical content, but were drafted by the robot and reviewed by humans."
+"<br/>Your code is saved to {2}<br/>Your secret session ID is {3}<br/></html>"
 msgstr ""
 "<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
 "<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
@@ -2470,15 +3001,15 @@ msgstr ""
 "2015)</i></li></ul><br/>Votre code est sauvegardé dans {2}<br/>Votre "
 "identifiant secret de session est {3}<br/></html>"
 
-#: src/plm/core/ui/AboutPLMDialog.java:78
+#: src/plm/core/ui/AboutPLMDialog.java:79
 msgid "About"
 msgstr "À propos"
 
-#: src/plm/core/ui/AboutPLMDialog.java:115
+#: src/plm/core/ui/AboutPLMDialog.java:114
 msgid "Changes"
 msgstr "Changements"
 
-#: src/plm/core/ui/AboutPLMDialog.java:120
+#: src/plm/core/ui/AboutPLMDialog.java:117
 msgid ""
 "<h2>The PLM is proudly Free Software</h2>\n"
 "<p>Copyright (c) 2008-2021.<br/>\n"
@@ -2522,13 +3053,13 @@ msgstr ""
 "sont données (en anglais) dans le fichier COPYING distribué avec l'archive.</"
 "p>"
 
-#: src/plm/core/ui/AboutPLMDialog.java:145
+#: src/plm/core/ui/AboutPLMDialog.java:142
 msgid "Copying"
 msgstr "Licence"
 
-#: src/plm/core/ui/AboutPLMDialog.java:151
-#: src/plm/core/ui/ExerciseFailedDialog.java:41
-#: src/plm/core/ui/ExercisePassedDialog.java:99
+#: src/plm/core/ui/AboutPLMDialog.java:148
+#: src/plm/core/ui/ExerciseFailedDialog.java:45
+#: src/plm/core/ui/ExercisePassedDialog.java:112
 msgid "Close"
 msgstr "Fermer"
 
@@ -2545,7 +3076,7 @@ msgstr "Sélectionner votre prochain exercice"
 msgid "Choose your lesson"
 msgstr "Sélectionner une leçon"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:63
+#: src/plm/core/ui/ChooseLessonDialog.java:60
 msgid ""
 "<table border=\"0\" align=\"center\"><tr>\n"
 "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
@@ -2571,15 +3102,15 @@ msgstr ""
 "interactifs. De nombreux exercices sont proposés, pour vous permettre "
 "d'apprendre à votre rythme.</font></p><br/>"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:133
+#: src/plm/core/ui/ChooseLessonDialog.java:130
 msgid "PLM lesson files"
 msgstr "Fichiers de leçons pour la PLM"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:142
+#: src/plm/core/ui/ChooseLessonDialog.java:139
 msgid "Error"
 msgstr "Erreur"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:168
+#: src/plm/core/ui/ChooseLessonDialog.java:163
 msgid ""
 "<h1>Please pick a lesson</h1>\n"
 "<p>Please click on an icon on the left to select a lesson.</p>\n"
@@ -2590,7 +3121,7 @@ msgstr ""
 "<p>Cliquez sur un icône à gauche pour choisir une leçon.</p>\n"
 "<p>Les leçons du haut sont généralement plus simples que celles du bas.</p>"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:213
+#: src/plm/core/ui/ChooseLessonDialog.java:208
 #, java-format
 msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
@@ -2599,87 +3130,110 @@ msgstr ""
 "<p>(impossible d''afficher le descriptif court de cette leçon : le fichier "
 "{0} est introuvable)</p>"
 
-#: src/plm/core/ui/ChooseLessonDialog.java:216
+#: src/plm/core/ui/ChooseLessonDialog.java:211
 msgid "<p><b>Your score:</b> "
 msgstr "<p><b>Votre score :</b> "
 
-#: src/plm/core/ui/ChooseLessonDialog.java:224
+#: src/plm/core/ui/ChooseLessonDialog.java:219
 #, java-format
 msgid "{0} out of {1} exercises passed."
 msgstr "{0} exercices sur {1} réussis."
 
-#: src/plm/core/ui/ChooseLessonDialog.java:228
+#: src/plm/core/ui/ChooseLessonDialog.java:223
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
 msgstr "{0} exercices sur {1} réussis en {2}."
 
-#: src/plm/core/ui/ChooseLessonDialog.java:234
+#: src/plm/core/ui/ChooseLessonDialog.java:229
 msgid "You never attempted this lesson."
 msgstr "Vous n'avez jamais tenté cette leçon."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:25
+#. Translator: tooltip of the compiler messages in the margin and in the code of the editor, once the code changed since their compilation
+#: src/plm/core/ui/CompilerMarkers.java:149
+msgid "Potentially obsolete, please recompile."
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:29
 msgid "<i>Practice makes perfect</i>, as they say."
 msgstr "<i>C'est en forgeant qu'on devient forgeron</i>, comme on dit."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:26
+#: src/plm/core/ui/ExerciseFailedDialog.java:30
 msgid "<i>To err is human</i>, as they say."
 msgstr "<i>L'erreur est humaine</i>, comme on dit."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:27
+#: src/plm/core/ui/ExerciseFailedDialog.java:31
 msgid "You should keep trying until you get it right!"
 msgstr "Il faut persévérer jusqu'à y parvenir !"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:28
+#: src/plm/core/ui/ExerciseFailedDialog.java:32
 msgid "We all learn from our mistakes, so, good job!"
 msgstr "Nous apprenons tous de nos erreurs, donc bien joué !"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:29
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
 msgid "We learn from failure, not from success!"
 msgstr "Nous apprenons de nos échecs, pas de nos succès !"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:30
+#: src/plm/core/ui/ExerciseFailedDialog.java:34
 msgid "Success comes after failure"
 msgstr "Le succès vient après l'échec"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:31
+#: src/plm/core/ui/ExerciseFailedDialog.java:35
+#, fuzzy
+#| msgid ""
+#| "<i>The master has failed more time than the beginner has even tried</i>,"
+#| "<br> as they say."
 msgid ""
-"<i>The master has failed more time than the beginner has even tried</i>,<br> "
-"as they say."
+"<i>The master has failed more times than the beginner has even tried</i>, as "
+"they say."
 msgstr ""
 "<i>Le maître s'est trompé plus de fois que le débutant n'a jamais "
 "fait<br>d'essais</i>, comme on dit."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:32
+#: src/plm/core/ui/ExerciseFailedDialog.java:36
+#, fuzzy
+#| msgid ""
+#| "<i>Anyone who has never made a mistake has never <br>tried anything new.</"
+#| "i> (Einstein)."
 msgid ""
-"<i>Anyone who has never made a mistake has never <br>tried anything new.</i> "
+"<i>Anyone who has never made a mistake has never tried anything new.</i> "
 "(Einstein)."
 msgstr ""
 "<i>Ceux qui n'ont pas fait d'erreur de leur vie n'ont jamais rien essayé "
 "<br>de nouveau</i> (Einstein)."
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:33
+#: src/plm/core/ui/ExerciseFailedDialog.java:37
+#, fuzzy
+#| msgid ""
+#| "<i>Success does not consist in never making mistakes,<br> but in never "
+#| "making the same one a second time.</i> (Shaw)"
 msgid ""
-"<i>Success does not consist in never making mistakes,<br> but in never "
-"making the same one a second time.</i> (Shaw)"
+"<i>Success does not consist in never making mistakes, but in never making "
+"the same one a second time.</i> (Shaw)"
 msgstr ""
 "<i>La réussite n'est pas de ne jamais faire d'erreur, <br>mais de ne jamais "
 "faire la même deux fois</i>. (Shaw)"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:36
+#: src/plm/core/ui/ExerciseFailedDialog.java:40
 msgid "Mmm, not quite"
 msgstr "Mmm, pas tout à fait"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:53
-#, java-format
+#: src/plm/core/ui/ExerciseFailedDialog.java:59
+#, fuzzy, java-format
+#| msgid ""
+#| "<html>You didn''t manage to reach your objective this time. <br>\n"
+#| "That''s fine. {0}<br>\n"
+#| "<br>\n"
+#| "You should graphically compare the final state of your world <br>\n"
+#| "with the objective to understand the problem. <br>\n"
+#| "<br>\n"
+#| "If you don''t see the error, check the details below for a <br>\n"
+#| "textual description of this difference between both worlds.</html>"
 msgid ""
-"<html>You didn''t manage to reach your objective this time. <br>\n"
-"That''s fine. {0}<br>\n"
-"<br>\n"
-"You should graphically compare the final state of your world <br>\n"
-"with the objective to understand the problem. <br>\n"
-"<br>\n"
-"If you don''t see the error, check the details below for a <br>\n"
-"textual description of this difference between both worlds.</html>"
+"<html>You didn''t manage to reach your objective this time. That''s fine. {0}"
+"<p>You should graphically compare the final state of your world with the "
+"objective to understand the problem.<p>If you don''t see the error, check "
+"the details below for a textual description of this difference between both "
+"worlds.</html>"
 msgstr ""
 "<html>Vous n''avez pas atteint votre objectif cette fois. Ce n''est pas "
 "grave.<br>\n"
@@ -2691,12 +3245,17 @@ msgstr ""
 "Si vous ne voyez pas l''erreur, consultez les détails ci-dessous pour<br>\n"
 "une description textuelle des différences entre les deux mondes.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:65
-#, java-format
+#: src/plm/core/ui/ExerciseFailedDialog.java:67
+#, fuzzy, java-format
+#| msgid ""
+#| "<html>Compilation error.<br>\n"
+#| "You can find below the detailed error message (as given by {0}).<br>\n"
+#| "Please read it carefully to understand the problem, and fix your code.</"
+#| "html>"
 msgid ""
-"<html>Compilation error.<br>\n"
-"You can find below the detailed error message (as given by {0}).<br>\n"
-"Please read it carefully to understand the problem, and fix your code.</html>"
+"<html>Compilation error.<p>You can find below the detailed error message (as "
+"given by {0}). Please read it carefully to understand the problem, and fix "
+"your code.</html>"
 msgstr ""
 "<html>Erreur de compilation.<br>\n"
 "Vous trouverez ci-dessous le message d''erreur détaillé renvoyé par {0}."
@@ -2704,24 +3263,24 @@ msgstr ""
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:80
-#: src/plm/core/ui/ExerciseFailedDialog.java:87
+#: src/plm/core/ui/ExerciseFailedDialog.java:81
+#: src/plm/core/ui/ExerciseFailedDialog.java:88
 msgid "Details >>"
 msgstr "Détails >>"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:90
+#: src/plm/core/ui/ExerciseFailedDialog.java:91
 msgid "Details <<"
 msgstr "Détails <<"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:27
+#: src/plm/core/ui/ExercisePassedDialog.java:32
 msgid "Exercice passed \\o/"
 msgstr "Exercice réussi \\o/"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:36
+#: src/plm/core/ui/ExercisePassedDialog.java:41
 msgid "Congrats"
 msgstr "Bravo"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:45
+#: src/plm/core/ui/ExercisePassedDialog.java:50
 #, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>{0} tests passed.</html>"
@@ -2729,11 +3288,11 @@ msgstr ""
 "<html>Félicitations, vous avez réussi cet exercice.<br>{0} tests passés.</"
 "html>"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:47
+#: src/plm/core/ui/ExercisePassedDialog.java:52
 msgid "<html>Congratulations, you passed this exercise.</html>"
 msgstr "<html>Félicitations, vous avez réussi cet exercice.</html>"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:56
+#: src/plm/core/ui/ExercisePassedDialog.java:61
 #, java-format
 msgid ""
 "<html>Congratulations, you passed this exercise.<br>({0} tests "
@@ -2742,7 +3301,7 @@ msgstr ""
 "<html>Félicitations, vous avez réussi cet exercice.<br>({0} tests "
 "passés)<br><br><br>Choisissez votre prochain exercice :</html>"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:59
+#: src/plm/core/ui/ExercisePassedDialog.java:64
 msgid ""
 "<html>Congratulations, you passed this exercise.<br><br><br><br>Select your "
 "next exercise:</html>"
@@ -2750,210 +3309,172 @@ msgstr ""
 "<html>Félicitations, vous avez réussi cet exercice."
 "<br><br><br><br>Choisissez votre prochain exercice :</html>"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:69
+#: src/plm/core/ui/ExercisePassedDialog.java:74
 msgid "Give feedback"
 msgstr "Exprimez-vous"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:72
+#: src/plm/core/ui/ExercisePassedDialog.java:77
 msgid ""
 "Please help us to improve this exercise by filling this little evaluation."
 msgstr ""
 "Aidez nous à améliorer cet exercice en remplissant cette petite évaluation."
 
-#: src/plm/core/ui/ExercisePassedDialog.java:74
+#: src/plm/core/ui/ExercisePassedDialog.java:79
 msgid "Difficulty:"
 msgstr "Difficulté :"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:77
-#: src/plm/core/ui/ExercisePassedDialog.java:86
+#: src/plm/core/ui/ExercisePassedDialog.java:82
+#: src/plm/core/ui/ExercisePassedDialog.java:89
 msgid "(please choose)"
 msgstr "(choisissez)"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:77
+#: src/plm/core/ui/ExercisePassedDialog.java:82
 msgid "Too easy"
 msgstr "Trop simple"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:77
+#: src/plm/core/ui/ExercisePassedDialog.java:82
 msgid "Easy"
 msgstr "Simple"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:78
+#: src/plm/core/ui/ExercisePassedDialog.java:83
 msgid "Just right"
 msgstr "Juste bien"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:78
+#: src/plm/core/ui/ExercisePassedDialog.java:83
 msgid "Difficult"
 msgstr "Difficile"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:78
+#: src/plm/core/ui/ExercisePassedDialog.java:83
 msgid "Too difficult"
 msgstr "Trop difficile"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:83
+#: src/plm/core/ui/ExercisePassedDialog.java:87
 msgid "Interest:"
 msgstr "Intérêt :"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:86
+#: src/plm/core/ui/ExercisePassedDialog.java:89
 msgid "Really good"
 msgstr "Très bien"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:86
+#: src/plm/core/ui/ExercisePassedDialog.java:89
 msgid "Amusing"
 msgstr "Amusant"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:90
 msgid "Just okay"
 msgstr "Acceptable"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:90
 msgid "Boring"
 msgstr "Ennuyeux"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:87
+#: src/plm/core/ui/ExercisePassedDialog.java:90
 msgid "Really bad"
 msgstr "Très mauvais"
 
-#: src/plm/core/ui/ExercisePassedDialog.java:93
+#: src/plm/core/ui/ExercisePassedDialog.java:94
 msgid "Free comments on that exercise:"
 msgstr "Commentaires libres sur cet exercice :"
 
-#: src/plm/core/ui/ExerciseView.java:82 src/plm/core/ui/ExerciseView.java:210
+#. Translator: button of the dialog of a passed exercise, switching to the next exercise chosen in its list
+#: src/plm/core/ui/ExercisePassedDialog.java:111
+msgid "Proceed"
+msgstr "Continuer"
+
+#. Translator: button of the dialog of a passed exercise, closing it without switching to the next exercise chosen in its list
+#: src/plm/core/ui/ExercisePassedDialog.java:121
+#, fuzzy
+#| msgid "Switch to another exercise"
+msgid "Stay on this exercise"
+msgstr "Accéder à un autre exercice"
+
+#: src/plm/core/ui/ExerciseView.java:82 src/plm/core/ui/ExerciseView.java:212
 msgid "Change the speed of execution"
 msgstr "Changer la vitesse d'exécution"
 
 #: src/plm/core/ui/ExerciseView.java:89 src/plm/core/ui/ExerciseView.java:157
-#: src/plm/core/ui/ExerciseView.java:212
+#: src/plm/core/ui/ExerciseView.java:214
 msgid "World"
 msgstr "Monde"
 
 #: src/plm/core/ui/ExerciseView.java:89 src/plm/core/ui/ExerciseView.java:157
-#: src/plm/core/ui/ExerciseView.java:213
+#: src/plm/core/ui/ExerciseView.java:215
 msgid "The world as it is right now"
 msgstr "Le monde tel qu'il est"
 
 #: src/plm/core/ui/ExerciseView.java:93 src/plm/core/ui/ExerciseView.java:159
-#: src/plm/core/ui/ExerciseView.java:214
+#: src/plm/core/ui/ExerciseView.java:216
 msgid "Objective"
 msgstr "Objectif"
 
 #: src/plm/core/ui/ExerciseView.java:93 src/plm/core/ui/ExerciseView.java:159
-#: src/plm/core/ui/ExerciseView.java:215
+#: src/plm/core/ui/ExerciseView.java:217
 msgid "The world as it should be"
 msgstr "Le monde tel qu'il devrait être"
 
-#: src/plm/core/ui/ExerciseView.java:209
+#: src/plm/core/ui/ExerciseView.java:211
 msgid "Switch the displayed world"
 msgstr "Changer le monde affiché"
 
-#: src/plm/core/ui/ExerciseView.java:211
+#: src/plm/core/ui/ExerciseView.java:213
 msgid "Switch the entity"
 msgstr "Changer d'entité"
 
 #: src/plm/core/ui/FeedbackDialog.java:61
+msgid "Connect to GitHub"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:78
 msgid "Please describe the problem in a few words"
 msgstr "Décrivez le problème en quelques mots"
 
-#: src/plm/core/ui/FeedbackDialog.java:62
-msgid ""
-"Your suggestion comes here, with all necessary details.\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"(The following helps us fixing your problem, please don't erase)\n"
-"\n"
-"--------------------[ Technical Information ]--------------------\n"
-msgstr ""
-"Veuillez écrire proposition ici, avec tous les détails nécessaires.\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"(les informations suivantes nous aident à corriger les problèmes, merci de "
-"ne pas les effacer)\n"
-"\n"
-"--------------------[ Information techniques ]--------------------\n"
-
-#: src/plm/core/ui/FeedbackDialog.java:70
+#: src/plm/core/ui/FeedbackDialog.java:83
 msgid "--------------------[ my code for this exercise ]--------------------\n"
 msgstr ""
 "--------------------[ mon code pour cet exercice ]--------------------\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:95
+#: src/plm/core/ui/FeedbackDialog.java:87
+msgid ""
+"(The following helps us fixing your problem, please don't erase)\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:115
 msgid "Report your feedback"
 msgstr "Signaler un problème dans la PLM"
 
-#: src/plm/core/ui/FeedbackDialog.java:104
+#: src/plm/core/ui/FeedbackDialog.java:124
 msgid "Issue title:"
 msgstr "Intitulé du problème :"
 
-#: src/plm/core/ui/FeedbackDialog.java:112
+#: src/plm/core/ui/FeedbackDialog.java:129
 msgid ""
-"<h1>Asking a question about the PLM</h1>\n"
-"<p>If you're stuck or unsure, you can come and discuss with us on our <a "
-"href='https://discord.gg/agxNPGj'>Discord server</a>. You can also use this "
-"channel to chat about new ideas to extend the PLM, or simply to chat with us "
-"with working with the PLM.</p>\n"
-"<h1>Reporting a bug in PLM</h1>\n"
-"<p>If you have your own GitHub account, please head to the <a href='https://"
-"github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. If not, you can use this "
-"window to report an issue in the PLM (be it in one exercise or in the PLM "
-"itself), but <b>don't ask questions in this window</b>, as we have no way to "
-"provide an answer on this channel. Please write your report in English or "
-"French if possible.</p>\n"
-"<p>You should include all relevant information that could help us fixing the "
-"issue. Don't remove the technical details unless you are certain that they "
-"are not relevant. What you write here will be public: <b>Never disclose "
-"passwords or other sensible information on a bug tracker</b></p>\n"
-"<p>When you find a typo or a sentence that is hard to understand, it really "
-"helps to suggest a new wording.If you encounter a technical bug, please tell "
-"us what you did, which outcome you were expecting and what happened instead."
-"</p><br/>"
+"<p>Questions are better asked on our <a href='https://discord.gg/"
+"agxNPGj'>Discord server</a>. To report something here, choose a category "
+"below, and complete the proposed text, in English or French if possible.</"
+"p>\n"
+"<p>Your report will be <b>public</b>: never disclose passwords or other "
+"sensitive information. It is anonymous unless you connect to GitHub; an "
+"anonymous report contains a public user ID (a line that you can delete).</p>"
 msgstr ""
-"<h1>Poser une question sur la PLM</h1>\n"
-"<p>Si vous êtes bloqué(e) ou hésitant(e), venez en discuter avec nous sur le "
-"<a href='https://discord.gg/agxNPGj'>serveur Discord</a>. Vous pouvez aussi "
-"utiliser ce canal pour discuter de nouvelles idées d'extensions pour la PLM, "
-"ou simplement pour discuter avec nous pendant que vous travaillez sur la PLM."
-"</p>\n"
-"<h1>Signaler un bug dans la PLM</h1>\n"
-"<p>Si vous avez un compte sur GitHub, rendez vous sur le <a href='https://"
-"github.com/BuggleInc/PLM'>gestionnaire de bugs de la PLM</a>. Sinon, vous "
-"pouvez utiliser cette fenêtre pour signaler le problème (en anglais ou en "
-"français si possible), <b>mais ne posez pas de question dans cette fenêtre, "
-"car nous ne pouvons pas vous répondre ici</b>.</p>\n"
-"<p>Merci d'inclure toutes les informations qui peuvent nous aider à "
-"comprendre le problème. Ne retirez les informations techniques ci-dessous "
-"que si vous êtes certain qu'elles sont sans rapport avec votre problème. Ce "
-"que vous écrivez ici est publique : <b>Ne publiez jamais de mot de passe ou "
-"autres informations sensibles sur un gestionnaire de bugs</b></p>\n"
-"<p>Si vous trouvez une typo ou une phrase difficile à comprendre, suggérer "
-"une reformulation nous aide vraiment. Si vous trouvez un bogue technique, "
-"expliquez-nous comment le reproduire, ce que vous attendiez et ce qui s'est "
-"passé à la place.</p><br/>"
 
-#: src/plm/core/ui/FeedbackDialog.java:162
+#: src/plm/core/ui/FeedbackDialog.java:179
+#: src/plm/core/ui/action/GitHubLogin.java:70
 #: src/plm/core/ui/action/ImportSession.java:39
 #: src/plm/core/ui/action/RevertExercise.java:16
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/plm/core/ui/FeedbackDialog.java:166
+#: src/plm/core/ui/FeedbackDialog.java:183
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
 "Voulez-vous vraiment annuler votre retour et perdre ce que vous avez écrit ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:167
+#: src/plm/core/ui/FeedbackDialog.java:184
 msgid "are you sure?"
 msgstr "êtes-vous sûr ?"
 
-#: src/plm/core/ui/FeedbackDialog.java:174
-msgid "Send feedback"
-msgstr "Envoyer"
-
-#: src/plm/core/ui/FeedbackDialog.java:207
+#: src/plm/core/ui/FeedbackDialog.java:205
 #, java-format
 msgid ""
 "Thank you for your remark, we will do our best to integrate it.\n"
@@ -2963,15 +3484,15 @@ msgstr ""
 "prendre \n"
 "en compte. Suivez notre avancement sur {0}."
 
-#: src/plm/core/ui/FeedbackDialog.java:210
+#: src/plm/core/ui/FeedbackDialog.java:208
 msgid "Thanks for your suggestion"
 msgstr "Merci pour votre retour"
 
-#: src/plm/core/ui/FeedbackDialog.java:217
+#: src/plm/core/ui/FeedbackDialog.java:215
 msgid "Error while uploading your feedback"
 msgstr "Erreur lors de l'envoi de votre retour"
 
-#: src/plm/core/ui/FeedbackDialog.java:222
+#: src/plm/core/ui/FeedbackDialog.java:220
 msgid ""
 "Your feedback needs some little changes before being send,\n"
 "please fix the following issue(s):\n"
@@ -2981,11 +3502,20 @@ msgstr ""
 "de pouvoir l'envoyer. Merci de corriger les points suivants : \n"
 "\n"
 
-#: src/plm/core/ui/FeedbackDialog.java:224
+#: src/plm/core/ui/FeedbackDialog.java:222
 msgid "Incorrect feedback"
 msgstr "Rapport d'anomalie invalide"
 
-#: src/plm/core/ui/FeedbackDialog.java:249
+#: src/plm/core/ui/FeedbackDialog.java:266
+msgid "Send anonymously"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:266
+#, java-format
+msgid "Send as @{0}"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:312
 msgid ""
 "The feedback's title is still the default one, please specify a relevant "
 "one.\n"
@@ -2993,11 +3523,11 @@ msgstr ""
 "Le titre est encore celui par défaut. Merci de résumer votre problème dans "
 "le titre. \n"
 
-#: src/plm/core/ui/FeedbackDialog.java:252
+#: src/plm/core/ui/FeedbackDialog.java:315
 msgid "The current title is empty, please specify a relevant title.\n"
 msgstr "Le titre est vide. Merci de résumer votre problème dans le titre. \n"
 
-#: src/plm/core/ui/FeedbackDialog.java:256
+#: src/plm/core/ui/FeedbackDialog.java:319
 msgid ""
 "The feedback still contains the explanatory text (above the line of "
 "---------), please remove it.\n"
@@ -3005,11 +3535,115 @@ msgstr ""
 "Le corps du message contient encore le texte explicatif (au dessus de la "
 "ligne de -------------), merci de le retirer. \n"
 
+#: src/plm/core/ui/FeedbackDialog.java:339
+msgid "I want to report a technical problem"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:340
+msgid ""
+"I found a typo, or I want to suggest a better wording of the instructions"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:341
+msgid "I did not understand the instructions and I want to ask a question"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:342
+msgid "Something else"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:349
+msgid ""
+"What I did:\n"
+"\n"
+"\n"
+"\n"
+"What I expected to happen:\n"
+"\n"
+"\n"
+"\n"
+"What happened instead:\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:350
+msgid ""
+"Where (lesson, exercise, sentence):\n"
+"\n"
+"\n"
+"\n"
+"Current text:\n"
+"\n"
+"\n"
+"\n"
+"What is wrong or unclear:\n"
+"\n"
+"\n"
+"\n"
+"My proposal:\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:352
+msgid ""
+"My question, with all necessary details:\n"
+"\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:353
+msgid ""
+"Questions cannot be answered through this window, so please do not send them "
+"here.\n"
+"Come and ask on our Discord server instead: https://discord.gg/agxNPGj\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:355
+msgid ""
+"My report, with all necessary details:\n"
+"\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/ui/FindBar.java:209
+msgid "Find in this text (case insensitive)"
+msgstr ""
+
+#: src/plm/core/ui/FindBar.java:212
+msgid "Previous match (Shift+Enter)"
+msgstr ""
+
+#: src/plm/core/ui/FindBar.java:213
+msgid "Next match (Enter)"
+msgstr ""
+
+#: src/plm/core/ui/FindBar.java:214
+msgid "Close (Escape)"
+msgstr ""
+
+#: src/plm/core/ui/FindBar.java:361
+msgid "No match"
+msgstr ""
+
+#: src/plm/core/ui/FindBar.java:361
+#, java-format
+msgid "{0} of {1}"
+msgstr ""
+
 #: src/plm/core/ui/LoggerPanel.java:17 src/plm/core/ui/LoggerPanel.java:51
 msgid "Where error and other messages get written"
 msgstr "Endroit où les erreurs et autres messages sont écrits"
 
-#: src/plm/core/ui/MainFrame.java:174 src/plm/core/ui/MainFrame.java:691
+#: src/plm/core/ui/MainFrame.java:174 src/plm/core/ui/MainFrame.java:672
 msgid "File"
 msgstr "Fichier"
 
@@ -3017,7 +3651,7 @@ msgstr "Fichier"
 msgid "File related functions"
 msgstr "Fonction relatives à la gestion de fichiers"
 
-#: src/plm/core/ui/MainFrame.java:178 src/plm/core/ui/MainFrame.java:692
+#: src/plm/core/ui/MainFrame.java:178 src/plm/core/ui/MainFrame.java:673
 msgid "Save a picture"
 msgstr "Prendre une photo"
 
@@ -3040,41 +3674,41 @@ msgstr "{0} existe"
 msgid "Image saved into {0}."
 msgstr "L''image a été sauvegardée dans {0}."
 
-#: src/plm/core/ui/MainFrame.java:220 src/plm/core/ui/MainFrame.java:693
+#: src/plm/core/ui/MainFrame.java:220 src/plm/core/ui/MainFrame.java:674
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/plm/core/ui/MainFrame.java:227 src/plm/core/ui/MainFrame.java:695
+#: src/plm/core/ui/MainFrame.java:227 src/plm/core/ui/MainFrame.java:676
 msgid "Exercise"
 msgstr "Exercice"
 
-#: src/plm/core/ui/MainFrame.java:232 src/plm/core/ui/MainFrame.java:463
-#: src/plm/core/ui/MainFrame.java:696
+#: src/plm/core/ui/MainFrame.java:232 src/plm/core/ui/MainFrame.java:467
+#: src/plm/core/ui/MainFrame.java:677
 msgid "Switch lesson"
 msgstr "Changer de leçon"
 
-#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:466
-#: src/plm/core/ui/MainFrame.java:688 src/plm/core/ui/MainFrame.java:697
+#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:470
+#: src/plm/core/ui/MainFrame.java:669 src/plm/core/ui/MainFrame.java:678
 msgid "Switch exercise"
 msgstr "Changer d'exercice"
 
-#: src/plm/core/ui/MainFrame.java:255 src/plm/core/ui/MainFrame.java:698
+#: src/plm/core/ui/MainFrame.java:255 src/plm/core/ui/MainFrame.java:679
 msgid "Revert Exercise"
 msgstr "Recommencer l'exercice"
 
-#: src/plm/core/ui/MainFrame.java:259 src/plm/core/ui/MainFrame.java:699
+#: src/plm/core/ui/MainFrame.java:259 src/plm/core/ui/MainFrame.java:680
 msgid "Debug mode"
 msgstr "Mode débogage"
 
-#: src/plm/core/ui/MainFrame.java:271 src/plm/core/ui/MainFrame.java:700
+#: src/plm/core/ui/MainFrame.java:271 src/plm/core/ui/MainFrame.java:681
 msgid "Picky mode (compiler warnings are errors)"
 msgstr ""
 
-#: src/plm/core/ui/MainFrame.java:282 src/plm/core/ui/MainFrame.java:701
+#: src/plm/core/ui/MainFrame.java:282 src/plm/core/ui/MainFrame.java:682
 msgid "Creative mode"
 msgstr "Mode créatif"
 
-#: src/plm/core/ui/MainFrame.java:293 src/plm/core/ui/MainFrame.java:703
+#: src/plm/core/ui/MainFrame.java:293 src/plm/core/ui/MainFrame.java:684
 msgid "Session"
 msgstr "Session"
 
@@ -3086,128 +3720,130 @@ msgstr "Écrire la session sur disque"
 msgid "Read Session from disk"
 msgstr "Lire la session depuis le disque"
 
-#: src/plm/core/ui/MainFrame.java:305 src/plm/core/ui/MainFrame.java:708
+#: src/plm/core/ui/MainFrame.java:305 src/plm/core/ui/MainFrame.java:689
 #: src/plm/core/ui/action/AddUser.java:29
 msgid "Add user"
 msgstr "Ajouter un utilisateur"
 
-#: src/plm/core/ui/MainFrame.java:308 src/plm/core/ui/MainFrame.java:709
+#: src/plm/core/ui/MainFrame.java:308 src/plm/core/ui/MainFrame.java:690
 #: src/plm/core/ui/action/SwitchUser.java:27
 msgid "Switch user"
 msgstr "Changer d'utilisateur"
 
-#: src/plm/core/ui/MainFrame.java:311 src/plm/core/ui/MainFrame.java:710
+#: src/plm/core/ui/MainFrame.java:311 src/plm/core/ui/MainFrame.java:691
 #: src/plm/core/ui/action/RemoveUser.java:28
 msgid "Remove user"
 msgstr "Supprimer un utilisateur"
 
-#: src/plm/core/ui/MainFrame.java:315 src/plm/core/ui/MainFrame.java:712
+#: src/plm/core/ui/MainFrame.java:315 src/plm/core/ui/MainFrame.java:692
+msgid "GitHub account..."
+msgstr ""
+
+#: src/plm/core/ui/MainFrame.java:319 src/plm/core/ui/MainFrame.java:694
 msgid "Language"
 msgstr "Langage"
 
-#: src/plm/core/ui/MainFrame.java:320 src/plm/core/ui/MainFrame.java:713
+#: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:695
 msgid "Human"
 msgstr "Humain"
 
-#: src/plm/core/ui/MainFrame.java:333 src/plm/core/ui/MainFrame.java:714
+#: src/plm/core/ui/MainFrame.java:337 src/plm/core/ui/MainFrame.java:696
 msgid "Computer"
 msgstr "Ordinateur"
 
-#: src/plm/core/ui/MainFrame.java:337 src/plm/core/ui/MainFrame.java:716
+#: src/plm/core/ui/MainFrame.java:341 src/plm/core/ui/MainFrame.java:698
 msgid "Help"
 msgstr "Aide"
 
-#: src/plm/core/ui/MainFrame.java:341 src/plm/core/ui/MainFrame.java:717
+#: src/plm/core/ui/MainFrame.java:345 src/plm/core/ui/MainFrame.java:699
 msgid "Provide feedback"
 msgstr "Rapport d'anomalie"
 
-#: src/plm/core/ui/MainFrame.java:352 src/plm/core/ui/MainFrame.java:718
+#: src/plm/core/ui/MainFrame.java:356 src/plm/core/ui/MainFrame.java:700
 msgid "About this lesson"
 msgstr "À propos de cette leçon"
 
-#: src/plm/core/ui/MainFrame.java:366 src/plm/core/ui/MainFrame.java:719
+#: src/plm/core/ui/MainFrame.java:370 src/plm/core/ui/MainFrame.java:701
 msgid "About this world"
 msgstr "À propos de ce monde"
 
-#: src/plm/core/ui/MainFrame.java:382
+#: src/plm/core/ui/MainFrame.java:386
 msgid "Show the mission in a window"
 msgstr "Voir la mission dans une fenêtre"
 
-#: src/plm/core/ui/MainFrame.java:432 src/plm/core/ui/MainFrame.java:683
+#: src/plm/core/ui/MainFrame.java:436 src/plm/core/ui/MainFrame.java:664
 msgid "Run"
 msgstr "Exécuter"
 
-#: src/plm/core/ui/MainFrame.java:436 src/plm/core/ui/MainFrame.java:530
-#: src/plm/core/ui/MainFrame.java:684
+#: src/plm/core/ui/MainFrame.java:440 src/plm/core/ui/MainFrame.java:534
+#: src/plm/core/ui/MainFrame.java:665
 msgid "Step"
 msgstr "Un pas"
 
-#: src/plm/core/ui/MainFrame.java:440 src/plm/core/ui/MainFrame.java:685
+#: src/plm/core/ui/MainFrame.java:444 src/plm/core/ui/MainFrame.java:666
 msgid "Stop"
 msgstr "Stop"
 
-#: src/plm/core/ui/MainFrame.java:445 src/plm/core/ui/MainFrame.java:686
+#: src/plm/core/ui/MainFrame.java:449 src/plm/core/ui/MainFrame.java:667
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: src/plm/core/ui/MainFrame.java:450 src/plm/core/ui/MainFrame.java:687
+#: src/plm/core/ui/MainFrame.java:454 src/plm/core/ui/MainFrame.java:668
 msgid "Demo"
 msgstr "Démo"
 
-#: src/plm/core/ui/MainFrame.java:515
+#: src/plm/core/ui/MainFrame.java:519
 msgid "Next"
 msgstr "Suivant"
 
-#: src/plm/core/ui/MainFrame.java:582
+#: src/plm/core/ui/MainFrame.java:586
 msgid "Please wait, while the PLM is saving your session data."
 msgstr "Veuillez patienter pendant que la PLM sauvegarde votre session."
 
-#: src/plm/core/ui/MainFrame.java:704
+#: src/plm/core/ui/MainFrame.java:685
 msgid "Lesson related functions"
 msgstr "Fonctions relatives aux leçons"
 
-#: src/plm/core/ui/MainFrame.java:705
+#: src/plm/core/ui/MainFrame.java:686
 msgid "Export Session Cache"
 msgstr "Exporter le cache de session"
 
-#: src/plm/core/ui/MainFrame.java:706
+#: src/plm/core/ui/MainFrame.java:687
 msgid "Import Session Cache"
 msgstr "Importer le cache de session"
 
-#: src/plm/core/ui/MissionEditorTabs.java:70
+#: src/plm/core/ui/MissionEditorTabs.java:62
 msgid "Mission"
 msgstr "Mission"
 
-#: src/plm/core/ui/MissionEditorTabs.java:70
+#: src/plm/core/ui/MissionEditorTabs.java:62
 msgid "Description of the work to do"
 msgstr "Description de la tâche à effectuer"
 
-#: src/plm/core/ui/MissionEditorTabs.java:136
+#: src/plm/core/ui/MissionEditorTabs.java:109
 msgid "Type your code here"
 msgstr "Écrire votre code ici"
 
-#: src/plm/core/ui/MissionEditorTabs.java:154
+#: src/plm/core/ui/MissionEditorTabs.java:133
 #, fuzzy
 #| msgid "Objective"
 msgid "objective"
 msgstr "Objectif"
 
-#: src/plm/core/ui/MissionEditorTabs.java:162
-#, fuzzy
-#| msgid "Description of the work to do"
-msgid "Read-only view of the world"
-msgstr "Description de la tâche à effectuer"
+#: src/plm/core/ui/MissionEditorTabs.java:133
+msgid "current"
+msgstr ""
 
-#: src/plm/core/ui/MissionEditorTabs.java:170
+#: src/plm/core/ui/MissionEditorTabs.java:144
 msgid "Close this tab"
 msgstr ""
 
-#: src/plm/core/ui/PlmHtmlEditorKit.java:144
+#: src/plm/core/ui/PlmHtmlEditorKit.java:159
 #, java-format
 msgid "<img> tag without src attribute at offset {0}."
 msgstr "Tag <img> sans attribut src au caractère {0}."
 
-#: src/plm/core/ui/PlmHtmlEditorKit.java:146
+#: src/plm/core/ui/PlmHtmlEditorKit.java:161
 #, java-format
 msgid "<img> tag without src attribute in exercise {0} at offset {1}"
 msgstr "Tag <img> sans attribut src dans l''exercice {0} au caractère {1}"
@@ -3232,11 +3868,11 @@ msgstr "Exécution de la démo "
 msgid "Loading "
 msgstr "Chargement de "
 
-#: src/plm/core/ui/TipsDialog.java:19
+#: src/plm/core/ui/TipsDialog.java:23
 msgid "Tips"
 msgstr "Astuces"
 
-#: src/plm/core/ui/TipsDialog.java:20
+#: src/plm/core/ui/TipsDialog.java:24
 msgid "(no tips to display)"
 msgstr "(aucune astuce disponible pour l'instant)"
 
@@ -3283,6 +3919,58 @@ msgstr "Impossible de trouver le nom de la mission dans {0}.html"
 #| msgid "Test failed"
 msgid "Export failed"
 msgstr "Test raté"
+
+#: src/plm/core/ui/action/GitHubLogin.java:35
+#: src/plm/core/ui/action/RevertExercise.java:16
+msgid "OK"
+msgstr "OK"
+
+#: src/plm/core/ui/action/GitHubLogin.java:35
+msgid "Logout"
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:36
+#, java-format
+msgid ""
+"You are connected to GitHub as {0}.\n"
+"Your feedback can be sent under this identity."
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:37
+#: src/plm/core/ui/action/GitHubLogin.java:71
+#: src/plm/core/ui/action/GitHubLogin.java:83
+msgid "GitHub account"
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:67
+msgid "Your web browser was asked to open this GitHub page:"
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:68
+msgid "Please open this GitHub page in your web browser:"
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:69
+msgid "Then enter this code on that page:"
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:69
+msgid "This window closes once you authorized the PLM."
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:83
+#, java-format
+msgid "Logged in GitHub as {0}."
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:98
+#, java-format
+msgid "Cannot log in GitHub: {0}"
+msgstr ""
+
+#: src/plm/core/ui/action/GitHubLogin.java:98
+msgid "GitHub login failed"
+msgstr ""
 
 #: src/plm/core/ui/action/ImportSession.java:39
 msgid "Keep my identity"
@@ -3376,10 +4064,6 @@ msgstr "Réinitialise votre monde à l'état initial"
 #: src/plm/core/ui/action/Reset.java:23
 msgid "World cannot be reset right now"
 msgstr "Le monde ne peut être réinitialisé pour l'instant"
-
-#: src/plm/core/ui/action/RevertExercise.java:16
-msgid "OK"
-msgstr "OK"
 
 #: src/plm/core/ui/action/RevertExercise.java:18
 msgid ""
@@ -3501,34 +4185,34 @@ msgstr "PLM - Éditeur de missions (modifié)"
 msgid "PLM - Mission Editor"
 msgstr "PLM - Éditeur de missions"
 
-#: src/plm/core/ui/editor/MissionEditor.java:235
+#: src/plm/core/ui/editor/MissionEditor.java:233
 #: src/plm/core/ui/editor/buggleeditor/MainFrame.java:241
 #, java-format
 msgid "Error while reading {0}"
 msgstr "Erreur lors de la lecture de {0}"
 
-#: src/plm/core/ui/editor/MissionEditor.java:242
+#: src/plm/core/ui/editor/MissionEditor.java:240
 msgid "You did not save you changes. Do you want to save it before quiting?"
 msgstr ""
 "Vous n'avez pas sauvegardé vos modifications. Voulez-vous les sauver avant "
 "de quitter ?"
 
-#: src/plm/core/ui/editor/MissionEditor.java:243
-#: src/plm/core/ui/editor/MissionEditor.java:317
+#: src/plm/core/ui/editor/MissionEditor.java:241
+#: src/plm/core/ui/editor/MissionEditor.java:315
 msgid "Save or loose your change?"
 msgstr "Sauvegarder ou perdre vos changements ?"
 
-#: src/plm/core/ui/editor/MissionEditor.java:268
+#: src/plm/core/ui/editor/MissionEditor.java:266
 #, fuzzy, java-format
 #| msgid "Error while reading {0}"
 msgid "Error while writing {0}"
 msgstr "Erreur lors de la lecture de {0}"
 
-#: src/plm/core/ui/editor/MissionEditor.java:310
+#: src/plm/core/ui/editor/MissionEditor.java:308
 msgid "Open Mission..."
 msgstr "Ouvrir la mission..."
 
-#: src/plm/core/ui/editor/MissionEditor.java:316
+#: src/plm/core/ui/editor/MissionEditor.java:314
 msgid ""
 "You did not save you changes. Do you want to save it before opening another "
 "file?"
@@ -3536,11 +4220,11 @@ msgstr ""
 "Vous n'avez pas sauvegardé vos modifications. Voulez-vous les sauver avant "
 "d'ouvrir un autre fichier ?"
 
-#: src/plm/core/ui/editor/MissionEditor.java:332
+#: src/plm/core/ui/editor/MissionEditor.java:330
 msgid "HTML files"
 msgstr "Fichiers HTML"
 
-#: src/plm/core/ui/editor/MissionEditor.java:341
+#: src/plm/core/ui/editor/MissionEditor.java:339
 #, java-format
 msgid ""
 "You chose a translated mission text for edition ({0}).\n"
@@ -3558,11 +4242,11 @@ msgstr ""
 "\n"
 "Continuer malgré tout ?"
 
-#: src/plm/core/ui/editor/MissionEditor.java:346
+#: src/plm/core/ui/editor/MissionEditor.java:344
 msgid "This is a translated mission text"
 msgstr "C'est une mission traduite"
 
-#: src/plm/core/ui/editor/MissionEditor.java:359
+#: src/plm/core/ui/editor/MissionEditor.java:357
 msgid "Quit Map Editor"
 msgstr "Quitter l'éditeur de carte"
 
@@ -4066,106 +4750,635 @@ msgstr "marquer"
 msgid "Brush Color"
 msgstr "Couleur du pinceau"
 
-#: src/plm/universe/posix/IrcServer.java:180
+#: src/plm/universe/posix/DatagramSocket.java:46
+#, java-format
+msgid "Received from {0}:{1}, {2} bytes"
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:126
+#, java-format
+msgid ""
+"Ignored: a DNS message starts with a header of 12 bytes, but this datagram "
+"only has {0} bytes."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:131
+msgid ""
+"Ignored: the QR bit (the highest bit of the flags) is set, which marks an "
+"answer, not a query."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:137
+msgid ""
+"NOTIMP: the opcode (bits 11 to 14 of the flags) must be 0, for a standard "
+"query."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:142
+msgid ""
+"The header announces 256 questions (01 00), where a query has exactly one "
+"(00 01): the numbers of DNS are written in network byte order, the most "
+"significant byte first."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:144
+#, java-format
+msgid "The header announces {0} questions, where a query has exactly one."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:146
+msgid ""
+"The header announces answers or authority records, which a query does not "
+"have: their counts must be 0."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:150
+msgid ""
+"The question ends after its name: its type and its class (2 bytes each) are "
+"missing."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:155
+#, java-format
+msgid ""
+"{0} bytes follow the question, which ends the query: only send the bytes of "
+"the message."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:158
+msgid ""
+"A label of this name holds a dot: each part of the name between the dots is "
+"a label of its own, preceded by its length."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:161
+msgid ""
+"REFUSED: the class 256 (01 00) is not IN (00 01), the class of Internet: the "
+"numbers are written most significant byte first."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:163
+#, java-format
+msgid ""
+"REFUSED: this server only knows the class IN (1) of Internet, not the class "
+"{0}."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:168
+#, java-format
+msgid ""
+"REFUSED: this server only answers for the names of {0}, and does not ask the "
+"other servers (no recursion)."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:172
+#, java-format
+msgid "no such name in {0}"
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:179
+#, java-format
+msgid ""
+"The type {0} looks like the type {1} written least significant byte first."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:185
+msgid "no record of this type"
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:188
+#, java-format
+msgid ""
+"The answer is longer than the {0} bytes allowed over UDP: it is truncated "
+"(TC bit)."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:207
+msgid "The name runs past the end of the message: it ends with a zero byte."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:213
+#, java-format
+msgid ""
+"The byte {0} starts a compression pointer (its two highest bits are set), "
+"but there is no earlier name to point to in a question. Each label of the "
+"name must be preceded by its length, at most 63."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:217
+#, java-format
+msgid ""
+"The byte {0} announces a label of {0} bytes, but a label has at most 63 "
+"bytes."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:219
+#, java-format
+msgid ""
+"The byte {0} announces a label of {0} bytes, but the message ends before."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:225
+#, java-format
+msgid "The name is {0} bytes long, while a name has at most 255 bytes."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:233
+msgid "The length of a label is one byte, not its digits written as text."
+msgstr ""
+
+#: src/plm/universe/posix/DnsServer.java:235
+msgid ""
+"The dots of the name are not written: each label is preceded by a byte "
+"giving its length."
+msgstr ""
+
+#: src/plm/universe/posix/IrcServer.java:194
 msgid ""
 "Welcome! Please register with the NICK and USER commands (see the world "
 "documentation for details)."
 msgstr ""
 
-#: src/plm/universe/posix/IrcServer.java:415
+#: src/plm/universe/posix/IrcServer.java:429
 #, java-format
 msgid ""
 "Your message was not sent: a text holding spaces must start with a colon, as "
 "in PRIVMSG {0} :{1} (a real server would only send {2})."
 msgstr ""
 
-#: src/plm/universe/posix/PosixEntity.java:81
-msgid ""
-"This world only accepts ASCII data, without accented letters nor other "
-"special characters."
-msgstr ""
-
-#: src/plm/universe/posix/PosixWorld.java:151
+#: src/plm/universe/posix/PosixWorld.java:219
 #, fuzzy
 #| msgid "Description of the work to do"
 msgid "The servers of this world"
 msgstr "Description de la tâche à effectuer"
 
-#: src/plm/universe/posix/PosixWorld.java:221
+#: src/plm/universe/posix/PosixWorld.java:340
 #, java-format
 msgid ""
 "Deadlock: your process waits forever in {0}, while the other processes are:"
 msgstr ""
 
-#: src/plm/universe/posix/PosixWorld.java:307
+#: src/plm/universe/posix/PosixWorld.java:457
 msgid ""
 "Your process retries connect() in a busy loop: wait with sleep() before "
 "retrying."
 msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:60
-msgid "go"
-msgstr "aller"
-
-#: src/plm/universe/sort/SortingButtonPanel.java:74
+#: src/plm/universe/posix/PosixWorld.java:527
 #, java-format
-msgid "setValue({0},{1})"
-msgstr "setValeur({0},{1})"
+msgid "Sent to {0}:{1}, {2} bytes"
+msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:78
+#: src/plm/universe/posix/PosixWorld.java:528
 #, java-format
-msgid "copy({0},{1})"
-msgstr "copie({0},{1})"
+msgid "Sent to {0}:{1}, {2} bytes, lost as no socket waits for it there"
+msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:106
-msgid "swap"
-msgstr "echange"
+#: src/plm/universe/posix/PosixWorldView.java:91
+msgid "Standard streams"
+msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:106
-msgid "setValue"
-msgstr "setValeur"
+#: src/plm/universe/posix/PosixWorldView.java:92
+msgid "Timeline"
+msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:106
-msgid "copy"
-msgstr "copie"
+#: src/plm/universe/posix/PosixWorldView.java:93
+msgid "System calls only"
+msgstr ""
 
-#: src/plm/universe/sort/SortingWorld.java:135
+#: src/plm/universe/posix/PosixWorldView.java:93
+msgid "All events"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:103
+msgid "Show the standard input, output and error of the processes"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:104
+msgid "Show the successive states of the world, from the beginning"
+msgstr ""
+
+#. Translator: the time of the simulation, in seconds
+#: src/plm/universe/posix/PosixWorldView.java:253
+#: src/plm/universe/posix/PosixWorldView.java:298
+#, java-format
+msgid "t = {0}s"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:269
+#, java-format
+msgid "The timeline stops after {0} events."
+msgstr ""
+
+#. Translator: the time of an event of the timeline, in seconds
+#: src/plm/universe/posix/PosixWorldView.java:341
+#, java-format
+msgid "t={0}"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:370
+msgid ""
+"Send queue: the data sent by this process waits here before travelling to "
+"the peer"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:371
+msgid ""
+"Receive queue: the data from the peer waits here until this process receives "
+"it"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:372
+msgid "Backlog: the connected clients wait here until accept() takes them"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:376
+msgid ""
+"Receive queue: each datagram waits here, whole, until this process receives "
+"it (the bytes beyond the buffer of recvfrom() are lost)"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:381
+msgid "Standard input: its data waits here until this process reads it"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:382
+msgid ""
+"Standard output: everything this process wrote on it, displayed in the "
+"console"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:383
+msgid ""
+"Standard error: everything this process wrote on it, displayed in the console"
+msgstr ""
+
+#. Translator: w or r tells whether the file was opened for writing or for reading, as in fopen()
+#: src/plm/universe/posix/PosixWorldView.java:404
+#, java-format
+msgid "{0}, offset {1}"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:405
+#, java-format
+msgid "file {0}"
+msgstr ""
+
+#. Translator: the title of the box of a TCP socket, in the kernel of a machine
+#: src/plm/universe/posix/PosixWorldView.java:409
+msgid "socket"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:420
+msgid "bound"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:420
+msgid "unconnected"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:423
+#, java-format
+msgid "Datagram from {0}:{1}"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:425
+msgid "UDP socket"
+msgstr ""
+
+#. Translator: a chunk of data that arrived on a TCP socket, shown in the tooltip of its bytes in the receive queue
+#: src/plm/universe/posix/PosixWorldView.java:434
+msgid "Packet"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:465
+#, fuzzy
+#| msgid "Proceed"
+msgid "Process"
+msgstr "Continuer"
+
+#: src/plm/universe/posix/PosixWorldView.java:483
+msgid ""
+"The content of the objective world is redacted to not spoil the scenario. "
+"Please implement your own solution."
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:485
+msgid "Click to see everything that went through this socket so far"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:489
+msgid "Click to see every datagram that went through this socket so far"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:493
+msgid "Click to see everything that your process wrote on it so far"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:508
+msgid ""
+"<html>Ephemeral port, chosen by the system during connect():<br>a client "
+"needs no fixed port, as nobody connects to it</html>"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:532
+msgid "Received:"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:532
+msgid "Sent:"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:539
+#, java-format
+msgid "{0}, socket {1}"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:564
+msgid "No datagram went through this socket yet."
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:591
+msgid "Click to open it in the editor"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:598
+msgid "(this file does not exist anymore)"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:662
+#, java-format
+msgid "{0} then EOF"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:696
+msgid ""
+"End of stream: the peer closed its side after this data. Once all the data "
+"is received, recv() returns 0"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:698
+msgid ""
+"End of stream: this process closed its side, and the end travels to the peer "
+"after this data"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:700
+msgid "End of the input: once all the data is read, read() returns 0"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:702
+msgid "A free place: listen() allows that many clients to wait"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:703
+msgid "A client that connected and waits for accept()"
+msgstr ""
+
+#: src/plm/universe/posix/PosixWorldView.java:718
+#, fuzzy, java-format
+#| msgid "{0} exists"
+msgid "{0} bytes"
+msgstr "{0} existe"
+
+#: src/plm/universe/posix/Scene.java:34
+#, java-format
+msgid "Your machine ({0})"
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:98
+msgid ""
+"XMPP forbids the comments (<!-- -->), the processing instructions (<? ?>) "
+"and the DTD (<!DOCTYPE>) in a stream."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:124
+msgid ""
+"A stream starts with its header, the element <stream:stream> (after the "
+"optional XML declaration)."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:127
+msgid ""
+"The header <stream:stream/> ends the stream at once: it must stay open, as "
+"<stream:stream ...>."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:136
 #, java-format
 msgid ""
-"This is very weird: There is not the same amount of values! Expected: {0}; "
-"Found: {1}\n"
+"</{0}> closes no element: the stanzas are the elements in the stream, and </"
+"stream:stream> ends it."
 msgstr ""
-"C''est très bizarre. Il n''y a pas le même nombre de valeurs ! J''en "
-"attendais {0}, mais j''en ai {1}.\n"
 
-#: src/plm/universe/sort/SortingWorld.java:138
-#, java-format
-msgid "Invalid read count. Expected: {0}; Found: {1}\n"
-msgstr "Le nombre de lectures diffère. Attendu : {0} ; Observé : {1}\n"
-
-#: src/plm/universe/sort/SortingWorld.java:141
-#, java-format
-msgid "Invalid write count. Expected: {0}; Found: {1}\n"
-msgstr "Le nombre d''écritures diffère. Attendu : {0} ; Observé : {1}\n"
-
-#: src/plm/universe/sort/SortingWorld.java:145
-#, java-format
-msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
-msgstr "Les valeurs à l''index {0} diffère. Attendue : {1} ; Observée : {2}\n"
-
-#: src/plm/universe/sort/SortingWorld.java:377
-#: src/plm/universe/sort/SortingWorld.java:379
-#, java-format
-msgid "Out of bounds in swap({0},{1}): {2}<0"
-msgstr "Dépassement des bornes à l''appel de echange({0},{1}) : {2}<0"
-
-#: src/plm/universe/sort/SortingWorld.java:381
-#: src/plm/universe/sort/SortingWorld.java:383
-#, java-format
-msgid "Out of bounds in swap({0},{1}): {2}>value count"
+#: src/plm/universe/posix/Xml.java:142
+msgid ""
+"Some text is outside of any stanza: only the elements and some spaces may "
+"come between the stanzas."
 msgstr ""
-"Dépassement des bornes à l''appel de la méthode echange({0},{1}) : {2}"
-">nombre de valeurs"
+
+#: src/plm/universe/posix/Xml.java:175
+#, java-format
+msgid "The character {0} was expected here, but {1} came."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:186
+msgid ""
+"A < starts a tag, followed by the name of an element: a < in a text is "
+"written &lt;."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:208
+#, java-format
+msgid "The attributes of <{0}> must be separated by spaces."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:212
+#, java-format
+msgid "The attribute {0} of <{1}> must have a value, as {0}=''...''."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:217
+#, java-format
+msgid "The value of the attribute {0} of <{1}> must be quoted, with '' or \"."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:220
+#, java-format
+msgid "The attribute {0} is given twice in <{1}>."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:239
+#, java-format
+msgid ""
+"The element <{0}> is closed by </{1}>: each element is closed by its own "
+"name, the last opened first."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:264
+msgid "The value of an attribute cannot hold a <: it is written &lt;."
+msgstr ""
+
+#: src/plm/universe/posix/Xml.java:303
+msgid ""
+"A & starts a reference, such as &lt; for < or &amp; for &: a & in a text is "
+"written &amp;."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:318
+msgid ""
+"The client closed its connection without ending its stream with </"
+"stream:stream>."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:396
+#, java-format
+msgid ""
+"The header of the stream declares the prefix stream with "
+"xmlns:stream=''{0}''."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:398
+msgid "The header of the stream of a client declares xmlns='jabber:client'."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:401
+#, java-format
+msgid ""
+"The header of the stream names the domain of the server in its attribute to, "
+"here to=''{0}''."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:402
+#, java-format
+msgid "This server serves the domain {0}, not {1}."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:404
+msgid ""
+"The header of the stream asks for the version 1.0 of XMPP, with "
+"version='1.0'."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:426
+msgid "The client must authenticate with <auth> before sending any stanza."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:436
+#, java-format
+msgid ""
+"The element <{0}> is unknown at the top of a stream, where the stanzas are "
+"<message>, <presence> and <iq>."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:444
+#, java-format
+msgid "The element <auth> of SASL declares xmlns=''{0}''."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:448
+#, fuzzy
+#| msgid "There is already a baggle here."
+msgid "The client is already authenticated."
+msgstr "Il y a déjà un biscuit ici."
+
+#: src/plm/universe/posix/XmppServer.java:454
+msgid ""
+"This server only offers the mechanism PLAIN, given as mechanism='PLAIN'."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:461
+msgid ""
+"The content of <auth> is not in base64: only letters, digits, + and / in "
+"groups of four characters, the last group being completed by =."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:466
+msgid ""
+"The element <auth> holds no credentials: the base64 of a zero byte, the user "
+"name, a zero byte and the password."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:468
+#, java-format
+msgid "The credentials decoded from base64 are {0}."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:473
+#, java-format
+msgid ""
+"The credentials hold {0} zero bytes, where PLAIN separates the user name and "
+"the password with two of them: a zero byte, the user name, a zero byte and "
+"the password."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:478
+#, java-format
+msgid ""
+"The credentials start with {0} before their first zero byte, where nothing "
+"is expected."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:481
+msgid "Wrong user name or password."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:502
+msgid ""
+"This server answers no request <iq>: it only carries presences and messages."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:531
+msgid ""
+"This presence has no address: it tells the contacts of the client that it is "
+"available, but it has none here."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:538
+#: src/plm/universe/posix/XmppServer.java:620
+#, java-format
+msgid "There is no room {0} on {1}."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:539
+#, java-format
+msgid "The rooms are on {0}, as name@{0}/nickname."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:550
+#, java-format
+msgid ""
+"To join a room, the presence goes to name@{0}/nickname, with the nickname of "
+"the client."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:554
+#, java-format
+msgid "The nickname {0} is already taken in this room."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:621
+#, java-format
+msgid "Nobody receives this message: the rooms are on {0}."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:626
+msgid "Only the occupants of a room may send messages there: join it first."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:632
+#, java-format
+msgid "A message to a room has the type groupchat, not {0}."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:643
+#, java-format
+msgid "There is nobody named {0} in this room."
+msgstr ""
+
+#: src/plm/universe/posix/XmppServer.java:645
+msgid "A private message to an occupant has the type chat, not groupchat."
+msgstr ""
 
 #: src/plm/universe/turtles/Line.java:109
 msgid "x1 differs."
@@ -4249,6 +5462,82 @@ msgstr "Formes superflues dans votre solution : \n"
 #: src/plm/universe/turtles/TurtleWorld.java:325
 msgid "Missing shapes in your solution:\n"
 msgstr "Formes manquantes dans votre solution : \n"
+
+#~ msgid ""
+#~ "Your suggestion comes here, with all necessary details.\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "(The following helps us fixing your problem, please don't erase)\n"
+#~ "\n"
+#~ "--------------------[ Technical Information ]--------------------\n"
+#~ msgstr ""
+#~ "Veuillez écrire proposition ici, avec tous les détails nécessaires.\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "(les informations suivantes nous aident à corriger les problèmes, merci "
+#~ "de ne pas les effacer)\n"
+#~ "\n"
+#~ "--------------------[ Information techniques ]--------------------\n"
+
+#~ msgid ""
+#~ "<h1>Asking a question about the PLM</h1>\n"
+#~ "<p>If you're stuck or unsure, you can come and discuss with us on our <a "
+#~ "href='https://discord.gg/agxNPGj'>Discord server</a>. You can also use "
+#~ "this channel to chat about new ideas to extend the PLM, or simply to chat "
+#~ "with us with working with the PLM.</p>\n"
+#~ "<h1>Reporting a bug in PLM</h1>\n"
+#~ "<p>If you have your own GitHub account, please head to the <a "
+#~ "href='https://github.com/BuggleInc/PLM'>PLM Bug Tracker</a>. If not, you "
+#~ "can use this window to report an issue in the PLM (be it in one exercise "
+#~ "or in the PLM itself), but <b>don't ask questions in this window</b>, as "
+#~ "we have no way to provide an answer on this channel. Please write your "
+#~ "report in English or French if possible.</p>\n"
+#~ "<p>You should include all relevant information that could help us fixing "
+#~ "the issue. Don't remove the technical details unless you are certain that "
+#~ "they are not relevant. What you write here will be public: <b>Never "
+#~ "disclose passwords or other sensible information on a bug tracker</b></"
+#~ "p>\n"
+#~ "<p>When you find a typo or a sentence that is hard to understand, it "
+#~ "really helps to suggest a new wording.If you encounter a technical bug, "
+#~ "please tell us what you did, which outcome you were expecting and what "
+#~ "happened instead.</p><br/>"
+#~ msgstr ""
+#~ "<h1>Poser une question sur la PLM</h1>\n"
+#~ "<p>Si vous êtes bloqué(e) ou hésitant(e), venez en discuter avec nous sur "
+#~ "le <a href='https://discord.gg/agxNPGj'>serveur Discord</a>. Vous pouvez "
+#~ "aussi utiliser ce canal pour discuter de nouvelles idées d'extensions "
+#~ "pour la PLM, ou simplement pour discuter avec nous pendant que vous "
+#~ "travaillez sur la PLM.</p>\n"
+#~ "<h1>Signaler un bug dans la PLM</h1>\n"
+#~ "<p>Si vous avez un compte sur GitHub, rendez vous sur le <a href='https://"
+#~ "github.com/BuggleInc/PLM'>gestionnaire de bugs de la PLM</a>. Sinon, vous "
+#~ "pouvez utiliser cette fenêtre pour signaler le problème (en anglais ou en "
+#~ "français si possible), <b>mais ne posez pas de question dans cette "
+#~ "fenêtre, car nous ne pouvons pas vous répondre ici</b>.</p>\n"
+#~ "<p>Merci d'inclure toutes les informations qui peuvent nous aider à "
+#~ "comprendre le problème. Ne retirez les informations techniques ci-dessous "
+#~ "que si vous êtes certain qu'elles sont sans rapport avec votre problème. "
+#~ "Ce que vous écrivez ici est publique : <b>Ne publiez jamais de mot de "
+#~ "passe ou autres informations sensibles sur un gestionnaire de bugs</b></"
+#~ "p>\n"
+#~ "<p>Si vous trouvez une typo ou une phrase difficile à comprendre, "
+#~ "suggérer une reformulation nous aide vraiment. Si vous trouvez un bogue "
+#~ "technique, expliquez-nous comment le reproduire, ce que vous attendiez et "
+#~ "ce qui s'est passé à la place.</p><br/>"
+
+#~ msgid "Send feedback"
+#~ msgstr "Envoyer"
+
+#, fuzzy
+#~| msgid "Description of the work to do"
+#~ msgid "Read-only view of the world"
+#~ msgstr "Description de la tâche à effectuer"
 
 #~ msgid ""
 #~ "The C langage is currently very experimental in the PLM.\n"
@@ -4547,9 +5836,6 @@ msgstr "Formes manquantes dans votre solution : \n"
 
 #~ msgid "User aborted saving on system error."
 #~ msgstr "L'utilisateur a annulé la sauvegarde suite à une erreur système."
-
-#~ msgid "Proceed"
-#~ msgstr "Continuer"
 
 #~ msgid "Abort"
 #~ msgstr "Annuler"
